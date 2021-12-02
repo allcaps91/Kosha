@@ -31,7 +31,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND A.EXCODE = B.CODE(+)                                            ");
             parameter.AppendSql(" ORDER BY A.SEQNO,A.EXCODE                                             ");
 
-            parameter.Add("GROUPCODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GROUPCODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_GROUPEXAM_EXCODE>(parameter);
         }
@@ -64,7 +64,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND b.DELDATE IS NULL                   ");
             parameter.AppendSql("   AND b.EXCODE IS NOT NULL                ");
 
-            parameter.Add("GROUPCODE", argGrpCD, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GROUPCODE", argGrpCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

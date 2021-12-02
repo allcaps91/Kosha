@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("   AND GUBUN = :GUBUN                      ");
                 parameter.AppendSql("   AND GBRESV='1'                          ");
 
-                parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             parameter.Add("SDATE", argDate);
@@ -58,9 +58,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND YOIL   = :YOIL                                  ");
 
             parameter.Add("SDATE", argDate);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBRESV", argResv, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("YOIL", argYoil, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBRESV", argResv, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("YOIL", argYoil, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_RESV_SET>(parameter);
         }
@@ -76,7 +76,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN  = :GUBUN                                 ");
 
             parameter.Add("SDATE", argDate);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<long>(parameter);
         }
@@ -104,7 +104,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN  = :GUBUN                                 ");
 
             parameter.Add("SDATE", strRDate);
-            parameter.Add("GUBUN", strGb, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGb, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_RESV_SET>(parameter);
         }
@@ -167,7 +167,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FSDATE", argGetSDate);
             parameter.Add("TSDATE", argGetLDate);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_RESV_SET>(parameter);
         }
@@ -196,7 +196,7 @@ namespace ComHpcLibB.Repository
 
             if (argRow != 1)
             {
-                parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             
 
@@ -225,7 +225,7 @@ namespace ComHpcLibB.Repository
 
             if (argGubun != "00")
             { 
-                parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReaderSingle<HEA_RESV_SET>(parameter);
@@ -247,8 +247,8 @@ namespace ComHpcLibB.Repository
             }
 
             parameter.Add("SDATE", argDate);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBRESV", argResv, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBRESV", argResv, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (!argYoil.IsNullOrEmpty())
             {
                 parameter.Add("YOIL", argYoil);
@@ -283,7 +283,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("AMINWON", dto.AMINWON);
             parameter.Add("PMINWON", dto.PMINWON);
             parameter.Add("ENTSABUN", dto.ENTSABUN);
-            parameter.Add("YOIL", dto.YOIL, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YOIL", dto.YOIL, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             parameter.Add("EXAMNAME", dto.EXAMNAME);
             parameter.Add("GAINWONAM", dto.GAINWONAM);
@@ -291,7 +291,7 @@ namespace ComHpcLibB.Repository
 
             if (dto.GBRESV != "" && dto.GBRESV != null)
             {
-                parameter.Add("GBRESV", dto.GBRESV, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GBRESV", dto.GBRESV, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             parameter.Add("RID", dto.RID);
@@ -336,8 +336,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN  = :GUBUN                                 ");
 
             parameter.Add("SDATE", argDate);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBRESV", argResv, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBRESV", argResv, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_RESV_SET>(parameter);
         }
@@ -354,7 +354,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBRESV = '2'                                    ");
             
             parameter.Add("SDATE", argDate);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_RESV_SET>(parameter);
         }

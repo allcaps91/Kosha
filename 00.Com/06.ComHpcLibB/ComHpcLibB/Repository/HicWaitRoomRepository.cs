@@ -27,7 +27,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_ROOM   ");
             parameter.AppendSql(" WHERE ROOM = :ROOM                ");
 
-            parameter.Add("ROOM", strRoom, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ROOM", strRoom, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -40,7 +40,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_ROOM   ");
             parameter.AppendSql(" WHERE ROOM = :ROOM                ");
 
-            parameter.Add("ROOM", strRoom, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ROOM", strRoom, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_WAIT_ROOM>(parameter);
         }
@@ -61,7 +61,7 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("   AND PmUse = 'Y'                 ");
             }
 
-            parameter.AddInStatement("ROOM", strTemp, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("ROOM", strTemp, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_WAIT_ROOM>(parameter);
         }
@@ -74,7 +74,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_ROOM   ");
             parameter.AppendSql(" WHERE ROOM = :ROOM                ");
 
-            parameter.Add("ROOM", strNextRoom, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ROOM", strNextRoom, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_WAIT_ROOM>(parameter);
         }
@@ -85,7 +85,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT RoomName FROM KOSMOS_PMPA.HIC_WAIT_ROOM             ");
             parameter.AppendSql(" WHERE ROOM = :ROOMCD                                      ");
 
-            parameter.Add("ROOMCD", strCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ROOMCD", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -156,7 +156,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_ROOM   ");
             parameter.AppendSql(" WHERE ROOM = :ROOM                ");
 
-            parameter.Add("ROOM", strRoom, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ROOM", strRoom, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

@@ -145,12 +145,12 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("   AND b.ExCode IN (:EXCODE)                       ");
             }
 
-            parameter.Add("PTNO", ptno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", ptno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", jepDate);
 
             if (!strExcodes.IsNullOrEmpty())
             {
-                parameter.AddInStatement("EXCODE", strExcodes, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("EXCODE", strExcodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<EXAM_DISPLAY_NEW>(parameter);

@@ -9,7 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using ComBase;
 using ComEmrBase;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComLibB
 {

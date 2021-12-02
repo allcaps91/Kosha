@@ -43,7 +43,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND BUN =:BUN               ");
             parameter.AppendSql(" ORDER By CODE                 ");
 
-            parameter.Add("BUN", v, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("BUN", v, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_EXJONG>(parameter);
         }
@@ -130,10 +130,10 @@ namespace ComHpcLibB.Repository
 
 
             parameter.Add("JONG", fstrJong);
-            parameter.AddInStatement("JONG1", jong_1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.AddInStatement("JONG2", jong_2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.AddInStatement("JONG3", jong_3, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.AddInStatement("JONG4", jong_4, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("JONG1", jong_1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("JONG2", jong_2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("JONG3", jong_3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("JONG4", jong_4, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             return ExecuteReader<HIC_EXJONG>(parameter);
         }
 
@@ -168,7 +168,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
-            parameter.Add("CODE", argJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -180,7 +180,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
-            parameter.Add("CODE", argJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -230,7 +230,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
-            parameter.Add("CODE", grgJONG, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", grgJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -242,7 +242,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG                                          ");
             parameter.AppendSql(" WHERE CODE = :CODE                                                    ");
 
-            parameter.Add("CODE", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_EXJONG>(parameter);
         }
@@ -254,7 +254,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
-            parameter.Add("CODE", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -266,7 +266,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
-            parameter.Add("CODE", argJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -278,7 +278,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
-            parameter.Add("CODE", argJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -292,8 +292,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE CHASU = :CHASU              ");
             parameter.AppendSql("   AND BUN IN (:InBUN)               ");
 
-            parameter.Add("CHASU", strChasu, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.AddInStatement("InBUN", strBun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CHASU", strChasu, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("InBUN", strBun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_EXJONG>(parameter);
         }
@@ -306,7 +306,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE CODE = :CODE                ");
             parameter.AppendSql("   AND NAME LIKE '%»ý¾Ö%'          ");
 
-            parameter.Add("CODE", argGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -318,7 +318,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
-            parameter.Add("CODE", argJONG, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -330,7 +330,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
-            parameter.Add("CODE", argJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -345,7 +345,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE 1 = 1                                                                            ");
             parameter.AppendSql("   AND CODE = :CODE                                                                     ");
 
-            parameter.Add("CODE", v, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", v, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_EXJONG>(parameter);
         }
@@ -399,7 +399,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
-            parameter.Add("CODE", CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

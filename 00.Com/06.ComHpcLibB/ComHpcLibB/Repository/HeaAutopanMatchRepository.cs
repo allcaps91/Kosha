@@ -28,8 +28,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("        :WRTNO, :MCODE, :EXCODE)               ");
 
             parameter.Add("WRTNO", strWrtNo);
-            parameter.Add("MCODE", strMCode, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("EXCODE", strExcode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("MCODE", strMCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -41,7 +41,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("        EXCODE = :EXCODE                   ");
             parameter.AppendSql("  WHERE ROWID  = :RID                      ");
 
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RID", strRowId);
 
             return ExecuteNonQuery(parameter);
@@ -56,7 +56,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND MCODE = :MCODE                      ");
 
             parameter.Add("WRTNO", strWrtNo);
-            parameter.Add("MCODE", strMCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("MCODE", strMCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

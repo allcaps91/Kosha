@@ -74,10 +74,10 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBSTS <> 'D'                                ");
             //parameter.AppendSql("   AND GBRESERVED = '7'                            ");
 
-            parameter.Add("PANO", argPano, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("XCODE", argXCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANO", argPano, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("XCODE", argXCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", argBDate);
-            parameter.Add("DEPT", argDept, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPT", argDept, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -143,9 +143,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE,'YYYY-MM-DD')                                                ");
             parameter.AppendSql("   AND (GBEND IS NULL OR GBEND ='' )                                                       ");
 
-            parameter.Add("PANO", item.PANO, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("DEPTCODE", item.DEPTCODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("XCODE", item.XCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANO", item.PANO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", item.DEPTCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("XCODE", item.XCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", item.BDATE);
             parameter.Add("SEEKDATE", item.SEEKDATE.Value.ToString("yyyy-MM-dd HH:mm"));
 

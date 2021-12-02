@@ -26,7 +26,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_DOCTOR                      ");
             parameter.AppendSql(" WHERE DRCODE = :DRCODE                            ");
 
-            parameter.Add("DRCODE", strDrCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DRCODE", strDrCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<BAS_DOCTOR>(parameter);
         }
@@ -39,7 +39,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE 1=1                                         ");
             parameter.AppendSql(" AND DRCODE IN (:DRCODE)                           ");
 
-            parameter.AddInStatement("DRCODE", strDrCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("DRCODE", strDrCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader <BAS_DOCTOR>(parameter);
         }
@@ -54,8 +54,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND DRDEPT1 = :DRDEPT                           ");
             parameter.AppendSql("   AND DRCODE  = :DRCODE                           ");
 
-            parameter.Add("DRDEPT", strDeptCode, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("DRCODE", strDRCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DRDEPT", strDeptCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("DRCODE", strDRCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<BAS_DOCTOR>(parameter);
         }

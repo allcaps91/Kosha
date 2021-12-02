@@ -119,15 +119,15 @@ namespace ComHpcLibB.Repository
 
             if (fstrJong == "4")
             {
-                parameter.Add("MIRNO", nMirNo, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("MIRNO", nMirNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             else if (fstrJong == "6")
             {
-                parameter.Add("MIRNO", nMirNo, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("MIRNO", nMirNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             else
             {
-                parameter.Add("MIRNO", nMirNo, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("MIRNO", nMirNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (fstrLtdCode != "0174")

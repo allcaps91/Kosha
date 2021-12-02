@@ -46,7 +46,7 @@ namespace ComHpcLibB.Repository
             }
             parameter.AppendSql(" ORDER By SEQNO                                    ");
 
-            parameter.Add("JOBDATE", gstrSysDate, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JOBDATE", gstrSysDate, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GBBUSE", argBuse);
 
             return ExecuteReader<HIC_WAIT>(parameter);
@@ -62,8 +62,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBDISPLAY2 = :GBDISPLAY2                ");
             parameter.AppendSql("   AND PcNo <= 4                               "); //종합검진
 
-            parameter.Add("JOBDATE", argDate, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBDISPLAY2", argDisplay, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JOBDATE", argDate, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBDISPLAY2", argDisplay, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_WAIT>(parameter);
         }
@@ -133,8 +133,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CALLTIME IS NULL                                ");
             parameter.AppendSql("   AND GBJOB = :GBJOB                                  ");
             
-            parameter.Add("JOBDATE", argDate, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBJOB", argJob, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JOBDATE", argDate, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBJOB", argJob, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_WAIT>(parameter);
         }
@@ -351,7 +351,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND PCNO = :PCNO                  "); //종합건진
             
             parameter.Add("JOBDATE", DateTime.Now.ToShortDateString());
-            parameter.Add("PCNO", strWaitPcNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PCNO", strWaitPcNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

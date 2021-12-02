@@ -1,5 +1,5 @@
 ﻿using ComBase; //기본 클래스
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Data;
 using System.Windows.Forms;

@@ -30,7 +30,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN = :GUBUN                                                  ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteReaderSingle<HIC_RES_ETC>(parameter);
         }
@@ -58,7 +58,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", nWrtNo);
             parameter.Add("GUNDATE", strJepDate);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteNonQuery(parameter);
         }
@@ -74,7 +74,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("GBPANJENG", strGbPanjeng);
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -152,7 +152,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("    AND GUBUN = :GUBUN             ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteNonQuery(parameter);
         }
@@ -171,7 +171,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", argWrtno);
             parameter.Add("JOBSABUN", argJobSabun);
             parameter.Add("TONGBODATE", argTongbodate);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -187,7 +187,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", argWRTNO);
             parameter.Add("JEPDATE", argJepDate);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }

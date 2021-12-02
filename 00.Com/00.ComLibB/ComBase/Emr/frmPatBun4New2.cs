@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using ComDbB; //DB연결
 using FarPoint.Win.Spread;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using static ComBase.clsEmrFunc;
 
 namespace ComBase

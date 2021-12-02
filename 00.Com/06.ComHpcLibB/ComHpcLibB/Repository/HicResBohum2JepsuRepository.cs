@@ -38,10 +38,10 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("PANO", nPaNo);
             parameter.Add("JEPDATE", fstrJepDate);
-            parameter.Add("GJYEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (strBangi != "")
             {
-                parameter.Add("GJBANGI", strBangi, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJBANGI", strBangi, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReaderSingle<HIC_RES_BOHUM2_JEPSU>(parameter);

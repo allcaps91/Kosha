@@ -128,7 +128,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("ONE_INWON111", item.ONE_INWON111);
             parameter.Add("ONE_INWON112", item.ONE_INWON112);
             parameter.Add("ONE_INWON013", item.ONE_INWON013);
-            parameter.Add("GBERRCHK    ", item.GBERRCHK, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBERRCHK    ", item.GBERRCHK, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("TWO_INWON01 ", item.TWO_INWON01 );
             parameter.Add("TWO_INWON02 ", item.TWO_INWON02 );
             parameter.Add("TWO_INWON03 ", item.TWO_INWON03 );
@@ -177,41 +177,41 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , :BUILDCNT, SYSDATE, :CHASU, :BUILDSABUN, :MIRGBN, :LIFE_GBN)                            ");
 
             parameter.Add("MIRNO", nMirno);
-            parameter.Add("YEAR", argYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", argYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             switch (strJohap)
             {
                 case "사업장":
-                    parameter.Add("GUBUN", "1", Oracle.DataAccess.Client.OracleDbType.Char);
-                    parameter.Add("JOHAP", "K", Oracle.DataAccess.Client.OracleDbType.Char);
+                    parameter.Add("GUBUN", "1", Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+                    parameter.Add("JOHAP", "K", Oracle.ManagedDataAccess.Client.OracleDbType.Char);
                     break;
                 case "공무원":
-                    parameter.Add("GUBUN", "1", Oracle.DataAccess.Client.OracleDbType.Char);
-                    parameter.Add("JOHAP", "G", Oracle.DataAccess.Client.OracleDbType.Char);
+                    parameter.Add("GUBUN", "1", Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+                    parameter.Add("JOHAP", "G", Oracle.ManagedDataAccess.Client.OracleDbType.Char);
                     break;
                 case "성인병":
-                    parameter.Add("GUBUN", "1", Oracle.DataAccess.Client.OracleDbType.Char);
-                    parameter.Add("JOHAP", "J", Oracle.DataAccess.Client.OracleDbType.Char);
+                    parameter.Add("GUBUN", "1", Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+                    parameter.Add("JOHAP", "J", Oracle.ManagedDataAccess.Client.OracleDbType.Char);
                     break;
                 case "통합":
-                    parameter.Add("GUBUN", "1", Oracle.DataAccess.Client.OracleDbType.Char);
-                    parameter.Add("JOHAP", "T", Oracle.DataAccess.Client.OracleDbType.Char);
+                    parameter.Add("GUBUN", "1", Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+                    parameter.Add("JOHAP", "T", Oracle.ManagedDataAccess.Client.OracleDbType.Char);
                     break;
                 default:
                     break;
             }
 
-            parameter.Add("GBJOHAP", strGbJohap, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBJOHAP", strGbJohap, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("FRDATE", argFDate);
             parameter.Add("TODATE", argTDate);
-            parameter.Add("KIHO", strkiho, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("KIHO", strkiho, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPQTY", nTotCNT);
             parameter.Add("ONE_QTY", nCnt1);
             parameter.Add("TWO_QTY", nCnt2);
             parameter.Add("BUILDCNT", nTotCNT);
-            parameter.Add("CHASU", strChasu, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CHASU", strChasu, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BUILDSABUN", argSabun);
-            parameter.Add("MIRGBN", strMirGbn, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("LIFE_GBN", strLife_Gbn, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("MIRGBN", strMirGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("LIFE_GBN", strLife_Gbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }

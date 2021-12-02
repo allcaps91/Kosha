@@ -125,7 +125,7 @@ namespace ComHpcLibB.Repository
             }
             if (strJong != "**" && !strJong.IsNullOrEmpty())
             {
-                parameter.Add("GJJONG", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_JEPSU_EXJONG_PATIENT>(parameter);

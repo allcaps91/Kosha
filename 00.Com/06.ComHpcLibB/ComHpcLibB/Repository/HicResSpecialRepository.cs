@@ -129,13 +129,13 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , JINDRNO      = :JINDRNO             ");
             parameter.AppendSql(" WHERE WRTNO        = :WRTNO               ");
 
-            parameter.Add("GBHUYU", item2.GBHUYU, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBHUYU", item2.GBHUYU, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GBSANGTAE", item2.GBSANGTAE);
-            parameter.Add("HABIT1", item2.HABIT1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT2", item2.HABIT2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT3", item2.HABIT3, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT4", item2.HABIT4, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT5", item2.HABIT5, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT1", item2.HABIT1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT2", item2.HABIT2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT3", item2.HABIT3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT4", item2.HABIT4, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT5", item2.HABIT5, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("MUN_OLDMSYM", item2.MUN_OLDMSYM);
             parameter.Add("MUN_GAJOK", item2.MUN_GAJOK);
             parameter.Add("MUN_GIINSUNG", item2.MUN_GIINSUNG);
@@ -690,8 +690,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE WRTNO        = :WRTNO                               ");
 
             parameter.Add("UCODECNT"    , item.UCODECNT    );
-            parameter.Add("GBOHMS"      , item.GBOHMS, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBSPC"       , item.GBSPC, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBOHMS"      , item.GBOHMS, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSPC"       , item.GBSPC, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("UCODENAME"   , item.UCODENAME   );
             parameter.Add("SABUN"       , item.SABUN       );
             parameter.Add("BUSE"        , item.BUSE        );
@@ -717,13 +717,13 @@ namespace ComHpcLibB.Repository
             parameter.Add("OLDYEAR3"    , item.OLDYEAR3    );
             parameter.Add("OLDPGIGAN3"  , item.OLDPGIGAN3  );
             parameter.Add("OLDDAYTIME3" , item.OLDDAYTIME3 );
-            parameter.Add("HABIT1"      , item.HABIT1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT2"      , item.HABIT2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT3"      , item.HABIT3, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT4"      , item.HABIT4, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT5"      , item.HABIT5, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBHUYU"      , item.GBHUYU, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBSANGTAE"   , item.GBSANGTAE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT1"      , item.HABIT1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT2"      , item.HABIT2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT3"      , item.HABIT3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT4"      , item.HABIT4, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT5"      , item.HABIT5, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBHUYU"      , item.GBHUYU, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSANGTAE"   , item.GBSANGTAE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("OLDMYEAR1"   , item.OLDMYEAR1   );
             parameter.Add("OLDMYEAR2"   , item.OLDMYEAR2   );
             parameter.Add("OLDMYEAR3"   , item.OLDMYEAR3   );
@@ -740,8 +740,8 @@ namespace ComHpcLibB.Repository
             parameter.Add("DENTSOGEN"   , item.DENTSOGEN   );
             parameter.Add("DENTDOCT"    , item.DENTDOCT    );
             parameter.Add("JINDRNO"     , item.JINDRNO     );
-            parameter.Add("HSTAT"       , item.HSTAT, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("MCODE_STAT"  , item.MCODE_STAT, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("HSTAT"       , item.HSTAT, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("MCODE_STAT"  , item.MCODE_STAT, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JINREMARK"   , item.JINREMARK   );
             parameter.Add("WRTNO"       , item.WRTNO       );
 

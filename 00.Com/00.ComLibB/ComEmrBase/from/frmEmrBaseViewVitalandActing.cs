@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using ComBase;
 using FarPoint.Win;
 using FarPoint.Win.Spread;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComEmrBase
 {

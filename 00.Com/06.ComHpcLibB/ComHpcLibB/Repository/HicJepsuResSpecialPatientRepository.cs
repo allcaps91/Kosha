@@ -62,7 +62,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FDATE", strFdate);
             parameter.Add("TDATE", strTdate);
-            //parameter.Add("GBSPC", strGbspc, Oracle.DataAccess.Client.OracleDbType.Char);
+            //parameter.Add("GBSPC", strGbspc, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (nWrtno > 0)
             {
                 parameter.Add("WRTNO", nWrtno);

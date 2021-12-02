@@ -5,7 +5,7 @@ namespace ComHpcLibB.Repository
     using System.Data;
     using ComBase.Mvc;
     using ComHpcLibB.Dto;
-    using Oracle.DataAccess.Client;
+    using Oracle.ManagedDataAccess.Client;
 
     /// <summary>
     /// 

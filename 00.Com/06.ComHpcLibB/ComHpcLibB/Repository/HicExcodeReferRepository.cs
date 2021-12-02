@@ -33,7 +33,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN =:GUBUN                                                               ");
             parameter.AppendSql(" ORDER By FROMDATE DESC                                                            ");
 
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("FROMDATE", strFDate);
             parameter.Add("GUBUN", argGbn);
 
@@ -127,7 +127,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE RESULTTYPE :RESULTTYPE                  ");
             parameter.AppendSql(" ORDER BY Code                                 ");
 
-            parameter.Add("RESULTTYPE", strResultType, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("RESULTTYPE", strResultType, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_EXCODE_REFER>(parameter);
         }

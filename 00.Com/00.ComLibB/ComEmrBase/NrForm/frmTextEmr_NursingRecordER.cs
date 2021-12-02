@@ -1,6 +1,6 @@
 ﻿using ComBase;
 using FarPoint.Win.Spread.CellType;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Data;
 using System.Drawing;

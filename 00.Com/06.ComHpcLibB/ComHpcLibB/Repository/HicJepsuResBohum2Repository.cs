@@ -35,8 +35,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND a.Wrtno   = b.Wrtno(+)                                                      ");
 
             parameter.Add("PANO", strPANO);
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GJBANGI", strGJBANGI, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJBANGI", strGJBANGI, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", strJEPDATE);
 
             return ExecuteReaderSingle<HIC_JEPSU_RES_BOHUM2>(parameter);

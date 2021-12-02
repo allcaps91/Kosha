@@ -33,7 +33,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE 1 = 1                              ");
             parameter.AppendSql("   AND SUNEXT =:SUNEXT                   ");
 
-            parameter.Add("SUNEXT", gstrRetValue.Trim(), Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUNEXT", gstrRetValue.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<BAS_SUN>(parameter);
         }
@@ -45,7 +45,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SUN     ");
             parameter.AppendSql(" WHERE SUNEXT = :SUNEXT        ");
 
-            parameter.Add("SUNEXT", strSuCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUNEXT", strSuCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<BAS_SUN>(parameter);
         }
@@ -57,7 +57,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SUN     ");
             parameter.AppendSql(" WHERE SUNEXT = :SUNEXT        ");
 
-            parameter.Add("SUNEXT", strSuCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUNEXT", strSuCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<BAS_SUN>(parameter);
         }

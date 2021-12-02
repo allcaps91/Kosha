@@ -244,16 +244,16 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("MIRNO", nMirNo);
             parameter.Add("JEPQTY", fnTotCNT);
-            parameter.Add("YEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GUBUN", "4", Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("JOHAP", strjik, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", "4", Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("JOHAP", strjik, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("FRDATE", strFDate);
             parameter.Add("TODATE", strTDate);
-            parameter.Add("KIHO", strkiho, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("KIHO", strkiho, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BUILDCNT", fnTotCNT);
             parameter.Add("BUILDSABUN", idNumber);
-            parameter.Add("MIRGBN", strMirGbn, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("LIFE_GBN", strLife_Gbn, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("MIRGBN", strMirGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("LIFE_GBN", strLife_Gbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }

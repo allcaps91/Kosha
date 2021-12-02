@@ -86,7 +86,7 @@ namespace ComHpcLibB.Repository
             }
             if (strGjJong != "**" && !strGjJong.IsNullOrEmpty())
             {
-                parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_JEPSU_HEA_EXJONG>(parameter);
@@ -136,7 +136,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND a.DELDATE IS NULL                               ");
             parameter.AppendSql("   AND a.GJYEAR =:GJYEAR                               ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GJYEAR", argYear);
 
             return ExecuteReader<HIC_JEPSU_HEA_EXJONG>(parameter);
@@ -157,7 +157,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND b.DELDATE IS NULL                               ");
             parameter.AppendSql("   AND b.GBSTS = '0'                                   ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GJYEAR", argYear);
 
             return ExecuteReader<HIC_JEPSU_HEA_EXJONG>(parameter);
@@ -173,7 +173,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND a.JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD') ");
             parameter.AppendSql(" ORDER BY a.GJJONG                                 ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", argDate);
 
             return ExecuteReader<HIC_JEPSU_HEA_EXJONG>(parameter);
@@ -190,9 +190,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND a.GJYEAR = :YEAR                            ");
             parameter.AppendSql(" ORDER BY a.GJJONG                                 ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", argDate);
-            parameter.Add("YEAR", argYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", argYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_JEPSU_HEA_EXJONG>(parameter);
         }
@@ -216,7 +216,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ) x                                                 ");
             parameter.AppendSql(" ORDER BY x.JEPGBN, x.GJJONG                         ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", argDate);
             parameter.Add("SDATE", argDate);
 
@@ -238,7 +238,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND b.DELDATE IS NULL                             ");
             parameter.AppendSql("   AND b.SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')       ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", argDate);
             parameter.Add("SDATE", argDate);
 

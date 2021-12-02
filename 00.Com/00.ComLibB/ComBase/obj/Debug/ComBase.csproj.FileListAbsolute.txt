@@ -1,6 +1,3 @@
-C:\PSMHEXE\Debug\log4net.config
-C:\PSMHEXE\Debug\ComBase.dll
-C:\PSMHEXE\Debug\ComBase.pdb
 C:\PSMH\00.Com\00.ComLibB\ComBase\obj\Debug\ComBase.csproj.ResolveComReference.cache
 C:\PSMH\00.Com\00.ComLibB\ComBase\obj\Debug\ComBase.Controls.MedieineCodeSearchText.resources
 C:\PSMH\00.Com\00.ComLibB\ComBase\obj\Debug\ComBase.Controls.CodeSearchText.resources
@@ -46,6 +43,10 @@ C:\PSMH\00.Com\00.ComLibB\ComBase\obj\Debug\ComBase.csproj.CopyComplete
 C:\PSMH\00.Com\00.ComLibB\ComBase\obj\Debug\ComBase.dll
 C:\PSMH\00.Com\00.ComLibB\ComBase\obj\Debug\ComBase.pdb
 C:\PSMH\00.Com\00.ComLibB\ComBase\obj\Debug\ComBase.csproj.AssemblyReference.cache
+C:\PSMHEXE\Debug\log4net.config
+C:\PSMHEXE\Debug\ComBase.dll.config
+C:\PSMHEXE\Debug\ComBase.dll
+C:\PSMHEXE\Debug\ComBase.pdb
 C:\KOSHA\00.Com\00.ComLibB\ComBase\obj\Debug\ComBase.csproj.AssemblyReference.cache
 C:\KOSHA\00.Com\00.ComLibB\ComBase\obj\Debug\ComBase.csproj.ResolveComReference.cache
 C:\KOSHA\00.Com\00.ComLibB\ComBase\obj\Debug\ComBase.Controls.MedieineCodeSearchText.resources

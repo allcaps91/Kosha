@@ -33,7 +33,7 @@
             parameter.Add("SENDTYPE", item.SENDTYPE);
             parameter.Add("TEMPCD", item.TEMPCD);
             parameter.Add("ENTSABUN", item.ENTSABUN);
-            parameter.Add("PANO", item.PANO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANO", item.PANO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SNAME", item.SNAME);
             parameter.Add("HPHONE", item.HPHONE);
             parameter.Add("LTDNAME", item.LTDNAME);

@@ -33,7 +33,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("SDATE", SDATE);
             parameter.Add("PANO", PANO);
-            parameter.Add("EXCODE", CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -59,7 +59,7 @@ namespace ComHpcLibB.Repository
             {
                 parameter.Add("PANO", nPano);
             }
-            parameter.Add("GBEXAM", sGbExam, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBEXAM", sGbExam, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -393,7 +393,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("PANO", pANO);
             parameter.Add("SDATE", jEPDATE);
-            parameter.Add("EXCODE", argExcode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", argExcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_RESV_EXAM>(parameter);
         }
@@ -513,7 +513,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("RFTIME", argFDate);
             parameter.Add("RTTIME", argTDate);
-            parameter.Add("GBEXAM", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBEXAM", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_RESV_EXAM>(parameter);
         }
@@ -532,7 +532,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("RFTIME", argFDate);
             parameter.Add("RTTIME", argTDate);
-            parameter.Add("GBEXAM", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBEXAM", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_RESV_EXAM>(parameter);
         }
@@ -552,7 +552,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", sFrDate);
             parameter.Add("TODATE", sToDate);
-            parameter.Add("GBEXAM", sGbExam, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBEXAM", sGbExam, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_RESV_EXAM>(parameter);
         }
@@ -567,7 +567,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND DELDATE IS NULL                         ");
 
             parameter.Add("PANO", pANO);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_RESV_EXAM>(parameter);
         }
@@ -583,7 +583,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')   ");
 
             parameter.Add("PANO", pANO);
-            parameter.Add("GBEXAM", strGbExam, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBEXAM", strGbExam, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SDATE", strSDate);
             
 
@@ -606,7 +606,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("SDATE", argSdate);
             parameter.Add("PANO", argPano);
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_RESV_EXAM>(parameter);
         }
@@ -626,8 +626,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  AND B.DELDATE IS NULL                                    ");
 
             parameter.Add("SDATE", argSdate);
-            parameter.Add("GBEXAM", argGbExam, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("STIME", argSTime, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBEXAM", argGbExam, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("STIME", argSTime, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_RESV_EXAM>(parameter);
         }

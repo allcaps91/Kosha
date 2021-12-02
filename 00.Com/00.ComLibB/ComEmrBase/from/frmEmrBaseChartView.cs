@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using ComBase;
 using ComBase.Controls;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComEmrBase
 {

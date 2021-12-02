@@ -88,7 +88,7 @@ namespace ComHpcLibB.Repository
             }
             if (fnTab != 4)
             {
-                parameter.Add("GUBUN", strGuBun, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GUBUN", strGuBun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_JEPSU_SANGDAM_NEW_EXJONG>(parameter);
@@ -203,7 +203,7 @@ namespace ComHpcLibB.Repository
 
             if (strJong != "**" && !strJong.IsNullOrEmpty())
             {
-                parameter.Add("GJJONG", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (strRoom == "1" || strJob == "1")
@@ -227,7 +227,7 @@ namespace ComHpcLibB.Repository
             {
                 if (strGubun.Count > 0 && !strGubun[0].IsNullOrEmpty())
                 {
-                    parameter.AddInStatement("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+                    parameter.AddInStatement("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
                 }
             }
 

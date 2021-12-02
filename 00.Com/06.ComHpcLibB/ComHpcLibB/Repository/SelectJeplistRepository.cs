@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ORDER By a.Wrtno                                                  ");
 
             parameter.Add("SDATE", SDATE);
-            parameter.Add("ACTPART", PART, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ACTPART", PART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<Select_JepList>(parameter);
         }
@@ -63,7 +63,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ORDER By a.Wrtno                                                  ");
 
             parameter.Add("SDATE", SDATE);
-            parameter.Add("ACTPART", PART, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ACTPART", PART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<Select_JepList>(parameter);
         }

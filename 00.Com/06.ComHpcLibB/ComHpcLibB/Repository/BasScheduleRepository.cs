@@ -29,7 +29,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND DRCODE  = :DRCODE                           ");
 
             parameter.Add("SCHDATE", SCHDATE);
-            parameter.Add("DRCODE", DRCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DRCODE", DRCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<BAS_SCHEDULE>(parameter);
         }
@@ -57,7 +57,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND SCHDATE = TO_DATE(:SCHDATE, 'YYYY-MM-DD')   ");
 
             parameter.Add("SCHDATE", argDate);
-            parameter.Add("DRCODE", strDrCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DRCODE", strDrCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<BAS_SCHEDULE>(parameter);
         }
@@ -70,7 +70,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE DRCODE  = :DRCODE           ");
             parameter.AppendSql("   AND SCHDATE = TRUNC(SYSDATE)    ");
 
-            parameter.Add("DRCODE", dRCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DRCODE", dRCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<BAS_SCHEDULE>(parameter);
         }

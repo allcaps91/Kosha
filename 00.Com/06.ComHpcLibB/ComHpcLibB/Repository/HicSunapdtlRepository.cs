@@ -35,7 +35,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("               )                                                   ");
             parameter.AppendSql("   AND UCode IN ('L06','L07')                                      ");
 
-            parameter.Add("PTNO", PTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", PTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", JEPDATE);
 
             return ExecuteReader<HIC_SUNAPDTL>(parameter);
@@ -51,7 +51,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE  = :CODE               ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -65,7 +65,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE IN (:CODE)                                 ");
 
             parameter.Add("WRTNO", argWrtNo);
-            parameter.AddInStatement("CODE", g36_NIGHT_CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("CODE", g36_NIGHT_CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -85,7 +85,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", wRTNO);
             if (g36_NIGHT_CODE.Count > 0)
             {
-                parameter.AddInStatement("CODE", g36_NIGHT_CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("CODE", g36_NIGHT_CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReaderSingle<HIC_SUNAPDTL>(parameter);
@@ -124,8 +124,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     ( :WRTNO,:CODE,:UCODE,:AMT,:GBSELF )  ");
 
             parameter.Add("WRTNO", item.WRTNO);
-            parameter.Add("CODE", item.CODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("UCODE", item.UCODE.To<string>(""), Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", item.CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("UCODE", item.UCODE.To<string>(""), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AMT", item.AMT);
             parameter.Add("GBSELF", item.GBSELF);
 
@@ -160,7 +160,7 @@ namespace ComHpcLibB.Repository
             }
             parameter.AppendSql("                )                                           ");
 
-            parameter.Add("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("MIRNO", nMirNo);
 
             return ExecuteReaderSingle<HIC_SUNAPDTL>(parameter);
@@ -295,8 +295,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBSELF IN (:GBSELF)                                 ");
 
             parameter.Add("WRTNO", argWRTNO);
-            parameter.Add("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.AddInStatement("GBSELF", strGbSelf, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GBSELF", strGbSelf, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -310,7 +310,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE IN (:CODE)                                     ");
 
             parameter.Add("WRTNO1", nWRTNO1);
-            parameter.AddInStatement("CODE", strCodeList1, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("CODE", strCodeList1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_SUNAPDTL>(parameter);
         }
@@ -441,7 +441,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE IN (:CODE)                             ");
 
             parameter.Add("WRTNO", argWrtno);
-            parameter.AddInStatement("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -457,8 +457,8 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", argWrtno);
             parameter.Add("GUBUN", rSuInfo.RowStatus == RowStatus.Delete ? "1" : "");
-            parameter.Add("CODE", rSuInfo.GRPCODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("UCODE", rSuInfo.UCODE.To<string>(""), Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", rSuInfo.GRPCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("UCODE", rSuInfo.UCODE.To<string>(""), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AMT", rSuInfo.AMT);
             parameter.Add("GBSELF", rSuInfo.GBSELF);
             parameter.Add("SEQ", nSeq);
@@ -476,8 +476,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     ( :WRTNO,:CODE,:UCODE,:AMT,:GBSELF )  ");
 
             parameter.Add("WRTNO", argWrtno);
-            parameter.Add("CODE", rSuInfo.GRPCODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("UCODE", rSuInfo.UCODE.To<string>(""), Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", rSuInfo.GRPCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("UCODE", rSuInfo.UCODE.To<string>(""), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AMT", rSuInfo.AMT);
             parameter.Add("GBSELF", rSuInfo.GBSELF);
 
@@ -595,7 +595,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE  = :CODE                           ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -656,7 +656,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE  IN (:CODE)            ");
 
             parameter.Add("WRTNO", nWrtNo);
-            parameter.AddInStatement("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_SUNAPDTL>(parameter);
         }

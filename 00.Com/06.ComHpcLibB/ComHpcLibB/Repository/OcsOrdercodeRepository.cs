@@ -43,7 +43,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_OCS.OCS_ORDERCODE            ");
             parameter.AppendSql(" WHERE ORDERCODE = :ORDERCODE              ");
 
-            parameter.Add("ORDERCODE", argOrderCode.Trim(), Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ORDERCODE", argOrderCode.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<OCS_ORDERCODE>(parameter);
         }
@@ -55,7 +55,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_OCS.OCS_ORDERCODE    ");
             parameter.AppendSql(" WHERE ITEMCD = :ITEMCD            ");
 
-            parameter.Add("ITEMCD", fstrORDERCODE.Trim(), Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ITEMCD", fstrORDERCODE.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

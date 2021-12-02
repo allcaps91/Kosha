@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using System.IO;
 using ComDbB; //DB연결
 using ComBase; //기본 클래스
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComLibB
 {

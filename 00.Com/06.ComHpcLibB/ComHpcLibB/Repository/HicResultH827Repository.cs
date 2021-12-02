@@ -28,7 +28,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE = :EXCODE                            ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT_H827>(parameter);
         }
@@ -52,7 +52,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("BLOODDATE", item.BLOODDATE);
             parameter.Add("WRTNO", item.WRTNO);
-            parameter.Add("EXCODE", item.EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", item.EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("ENTSABUN", item.ENTSABUN);
 
             return ExecuteNonQuery(parameter);
@@ -98,7 +98,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", item.WRTNO);
             parameter.Add("PANO", item.PANO);
             parameter.Add("JEPDATE", item.JEPDATE);
-            parameter.Add("EXCODE", item.EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", item.EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BLOODDATE", item.BLOODDATE);
             parameter.Add("REMARK", item.REMARK);
             parameter.Add("ENTSABUN", item.ENTSABUN);

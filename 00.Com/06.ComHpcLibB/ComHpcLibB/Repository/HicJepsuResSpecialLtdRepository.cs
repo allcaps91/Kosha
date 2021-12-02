@@ -60,8 +60,8 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GJBANGI", strBangi, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJBANGI", strBangi, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (strLtdCode != "")
             {
                 parameter.Add("LTDCODE", strLtdCode);
@@ -128,7 +128,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.Add("GJYEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (!nLtdCode.IsNullOrEmpty() && nLtdCode != 0)
             {
                 parameter.Add("LTDCODE", nLtdCode);
@@ -190,10 +190,10 @@ namespace ComHpcLibB.Repository
             }
             parameter.Add("FRDATE", strFDate);
             parameter.Add("TODATE", strTDate);
-            parameter.Add("GJYEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (!strJong.IsNullOrEmpty() && strJong != "**")
             {
-                parameter.Add("GJJONG", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (!nLtdCode.IsNullOrEmpty() && nLtdCode != 0)
@@ -262,10 +262,10 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.Add("GJYEAR", fstrGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", fstrGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (fstrGjBangi != "" && fstrGjBangi != "*")
             {
-                parameter.Add("GJBANGI", fstrGjBangi, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJBANGI", fstrGjBangi, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (strLtdCode != "")
             {
@@ -324,12 +324,12 @@ namespace ComHpcLibB.Repository
 
             if (strGjYear != "")
             {
-                parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             
             if (fstrGjBangi != "" && fstrGjBangi != "전체")
             {
-                parameter.Add("GJBANGI", fstrGjBangi, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJBANGI", fstrGjBangi, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (nLtdCode != 0)
             {
@@ -394,12 +394,12 @@ namespace ComHpcLibB.Repository
 
             if (strGjYear != "")
             {
-                parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             
             if (strBangi != "" && strBangi != "전체")
             {
-                parameter.Add("GJBANGI", strBangi, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJBANGI", strBangi, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (strLtdCode != "")
             {

@@ -424,7 +424,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE JUMIN2  = :JUMIN                            ");
             parameter.AppendSql("   AND ENTDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')   ");
 
-            parameter.Add("JUMIN", strJumin, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN", strJumin, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", strJepDate); 
 
             return ExecuteScalar<int>(parameter);

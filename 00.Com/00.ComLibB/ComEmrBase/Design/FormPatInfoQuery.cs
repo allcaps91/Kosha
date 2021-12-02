@@ -1,5 +1,6 @@
 ﻿using ComBase; //기본 클래스
 using ComBase.Mvc;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -81,7 +82,7 @@ namespace ComEmrBase
             mParameter.Add("PTNO",        pAcp.ptNo);
             mParameter.Add("MEDFRDATE",   pAcp.medFrDate);
             mParameter.Add("ORDERNAME",   ORDERNAME);
-            mParameter.Add("SEQNO", SEQNO, Oracle.DataAccess.Client.OracleDbType.Int32);
+            mParameter.Add("SEQNO", SEQNO, OracleDbType.Int32);
 
             return clsDB.ExecuteNonQuery(mParameter, clsDB.DbCon);
         }

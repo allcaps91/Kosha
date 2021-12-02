@@ -146,7 +146,7 @@ namespace ComHpcLibB.Repository
 
             if (strGjJong != "**" && !strGjJong.IsNullOrEmpty())
             {
-                parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (strGbStart != "")
@@ -171,7 +171,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ORDER BY a.JEPDATE,a.SNAME                                                    ");
 
             parameter.Add("JEPDATE", strDate);
-            parameter.AddInStatement("EXCODE", strExCodes, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strExCodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_JEPSU_RESULT>(parameter);
         }
@@ -258,7 +258,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  ORDER By a.Wrtno                                                                     ");
 
             parameter.Add("JEPDATE", strJepDate);
-            parameter.Add("PART", strPart, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PART", strPart, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_JEPSU_RESULT>(parameter);
         }
@@ -314,7 +314,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND (b.Result IS NULL OR b.Result='')                       ");
             parameter.AppendSql(" ORDER BY a.SName                                              ");
 
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_JEPSU_RESULT>(parameter);
         }
@@ -350,7 +350,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_JEPSU_RESULT>(parameter);
         }
@@ -489,7 +489,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FDATE", argFDATE);
             parameter.Add("TDATE", argTDATE);
-            parameter.Add("EXCODE", argExcode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", argExcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RESULT", argResult);
 
             return ExecuteReader<HIC_JEPSU_RESULT>(parameter);

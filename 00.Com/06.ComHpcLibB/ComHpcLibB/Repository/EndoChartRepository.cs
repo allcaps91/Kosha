@@ -65,43 +65,43 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , GB_BIGO       = :GB_BIGO                        ");
             parameter.AppendSql(" WHERE ROWID         = :RID                            ");
 
-            parameter.Add("GUBUN", item3.GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_EGD1", item3.GB_EGD1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_EGD2", item3.GB_EGD2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_CFS1", item3.GB_CFS1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_CFS2", item3.GB_CFS2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_DIET", item3.GB_DIET, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_STS", item3.GB_STS, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD", item3.GB_OLD, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD1", item3.GB_OLD1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD2", item3.GB_OLD2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD3", item3.GB_OLD3, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD4", item3.GB_OLD4, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD5", item3.GB_OLD5, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD6", item3.GB_OLD6, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD7", item3.GB_OLD7, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD8", item3.GB_OLD8, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD9", item3.GB_OLD9, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD10", item3.GB_OLD10, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD11", item3.GB_OLD11, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD12", item3.GB_OLD12, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_OLD13", item3.GB_OLD13, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", item3.GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_EGD1", item3.GB_EGD1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_EGD2", item3.GB_EGD2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_CFS1", item3.GB_CFS1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_CFS2", item3.GB_CFS2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_DIET", item3.GB_DIET, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_STS", item3.GB_STS, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD", item3.GB_OLD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD1", item3.GB_OLD1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD2", item3.GB_OLD2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD3", item3.GB_OLD3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD4", item3.GB_OLD4, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD5", item3.GB_OLD5, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD6", item3.GB_OLD6, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD7", item3.GB_OLD7, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD8", item3.GB_OLD8, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD9", item3.GB_OLD9, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD10", item3.GB_OLD10, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD11", item3.GB_OLD11, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD12", item3.GB_OLD12, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD13", item3.GB_OLD13, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GB_OLD13_1", item3.GB_OLD13_1);
-            parameter.Add("GB_OLD14", item3.GB_OLD14, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_OLD14", item3.GB_OLD14, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GB_OLD15_1", item3.GB_OLD15_1);
-            parameter.Add("GB_DRUG", item3.GB_DRUG, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_DRUG1", item3.GB_DRUG1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_DRUG2", item3.GB_DRUG2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_DRUG3", item3.GB_DRUG3, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_DRUG4", item3.GB_DRUG4, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_DRUG5", item3.GB_DRUG5, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_DRUG6", item3.GB_DRUG6, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_DRUG7", item3.GB_DRUG7, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_DRUG", item3.GB_DRUG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_DRUG1", item3.GB_DRUG1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_DRUG2", item3.GB_DRUG2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_DRUG3", item3.GB_DRUG3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_DRUG4", item3.GB_DRUG4, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_DRUG5", item3.GB_DRUG5, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_DRUG6", item3.GB_DRUG6, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_DRUG7", item3.GB_DRUG7, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GB_DRUG8_1", item3.GB_DRUG8_1);
             parameter.Add("GB_DRUG_STOP1", item3.GB_DRUG_STOP1);
             parameter.Add("GB_DRUG_STOP2", item3.GB_DRUG_STOP2);
-            parameter.Add("GB_B_DRUG", item3.GB_B_DRUG, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GB_B_DRUG1", item3.GB_B_DRUG1, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_B_DRUG", item3.GB_B_DRUG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GB_B_DRUG1", item3.GB_B_DRUG1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GB_B_DRUG1_1", item3.GB_B_DRUG1_1);
             parameter.Add("GB_BIGO", item3.GB_BIGO);
             parameter.Add("RID", item3.ROWID);
@@ -119,10 +119,10 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("       (:PTNO, TO_DATE(:BDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("      , TO_DATE(:RDATE, 'YYYY-MM-DD'), :GUBUN) ");
 
-            parameter.Add("PTNO", item.PTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", item.PTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", item.BDATE);
             parameter.Add("RDATE", item.RDATE);
-            parameter.Add("GUBUN", item.GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", item.GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -136,7 +136,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE PTNO = :PTNO                            ");
             parameter.AppendSql("   AND RDATE = TO_DATE(:RDATE, 'YYYY-MM-DD')   ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RDATE", argJepDate);
 
             return ExecuteScalar<int>(parameter);
@@ -168,7 +168,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE PTNO = :PTNO                            ");
             parameter.AppendSql("   AND RDATE = TO_DATE(:RDATE, 'YYYY-MM-DD')   ");
 
-            parameter.Add("PTNO", fstrPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RDATE", fstrJepDate);
 
             return ExecuteScalar<string>(parameter);

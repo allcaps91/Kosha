@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
 
             if (!argGbn.IsNullOrEmpty())
             { 
-                parameter.Add("GBN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GBN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<OCS_MAYAK_JEGO>(parameter);
@@ -61,7 +61,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("JDATE", item.JDATE);
             parameter.Add("GBN", item.GBN);
             parameter.Add("WARDCODE", item.WARDCODE);
-            parameter.Add("SUCODE", item.SUCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUCODE", item.SUCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BQTY", item.BQTY);
             parameter.Add("QTY", item.QTY);
             parameter.Add("UNIT", item.UNIT);
@@ -95,7 +95,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND WARDCODE ='TO'                          ");  //Á¾°Ë            
             parameter.AppendSql("   AND JDATE = TO_DATE(:JDATE, 'YYYY-MM-DD')   ");
             
-            parameter.Add("SUCODE", argSuCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUCODE", argSuCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JDATE", argDate);
 
             return ExecuteScalar<string>(parameter);
@@ -128,7 +128,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("BUILDATE", argDate);
             parameter.Add("GBN2", argJob);
-            parameter.Add("SUCODE", argSucode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUCODE", argSucode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GBN", argGbn);
 
             if (nChasu > 0)
@@ -153,7 +153,7 @@ namespace ComHpcLibB.Repository
             
             parameter.Add("BUILDDATE", argDate);
             //parameter.Add("SUCODE", argSucde.PadRight(12));
-            parameter.Add("SUCODE", argSucde, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUCODE", argSucde, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -192,7 +192,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND A.SUCODE = B.SUNEXT(+)                              ");
             parameter.AppendSql(" ORDER BY A.JDATE DESC                                     ");
 
-            parameter.Add("SUCODE", argSucode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUCODE", argSucode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JDATE", argDate);
 
             return ExecuteReaderSingle<OCS_MAYAK_JEGO>(parameter);
@@ -212,7 +212,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("QTY", argQty);
             parameter.Add("BUILDDATE", argBuildDate);
-            parameter.Add("SUCODE", argSuCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUCODE", argSuCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }

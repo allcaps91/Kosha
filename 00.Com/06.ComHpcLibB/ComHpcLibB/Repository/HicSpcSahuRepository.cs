@@ -32,7 +32,7 @@ namespace ComHpcLibB.Repository
             }
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("GJYEAR", fstrGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", fstrGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (fstrLtdCode != "")
             {
                 parameter.Add("LTDCODE", fstrLtdCode);
@@ -49,7 +49,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("VALUES                                                         ");
             parameter.AppendSql("       (:GJYEAR,:LTDCODE,:WRTNO,:GUBUN,:SOGEN,:EXAM,:JOCHI)    ");
 
-            parameter.Add("GJYEAR", item.GJYEAR, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", item.GJYEAR, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", item.LTDCODE);
             parameter.Add("WRTNO", item.WRTNO);
             parameter.Add("GUBUN", item.GUBUN);

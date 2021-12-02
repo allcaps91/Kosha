@@ -161,7 +161,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("        WHERE SPECNO =:SPECNO                        ");
             
             #region Query 변수대입
-            parameter.Add("SPECNO", fstrSpecNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SPECNO", fstrSpecNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             #endregion
 
             return ExecuteNonQuery(parameter);

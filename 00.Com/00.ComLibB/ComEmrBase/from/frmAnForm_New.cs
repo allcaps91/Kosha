@@ -6,7 +6,7 @@ using FarPoint.Win.Chart;
 using FarPoint.Win.Spread;
 using FarPoint.Win.Spread.CellType;
 using FarPoint.Win.Spread.Model;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;

@@ -48,7 +48,7 @@ namespace ComHpcLibB.Repository
 
             if (strList.Count > 0)
             {
-                parameter.AddInStatement("LIST", strList, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("LIST", strList, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<ENDO_JUPMST>(parameter);
@@ -64,7 +64,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND JDATE = TO_DATE(:JDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND GBSUNAP <> '*'                          ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JDATE", argJepDate);
 
             return ExecuteScalar<int>(parameter);
@@ -83,7 +83,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND PACSNO IS NOT NULL                                                              ");
             parameter.AppendSql(" GROUP BY RESULTDRCODE                                                                 ");
 
-            parameter.Add("PTNO", fstrPano, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPano, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", fstrJepDate);
 
             return ExecuteScalar<long>(parameter);
@@ -216,10 +216,10 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND TRUNC(RDATE)!=TO_DATE('" + DateTime.Now.Year.ToString() + "-12-25','YYYY-MM-DD')    ");
             parameter.AppendSql(" ORDER BY RDATE DESC                                       ");
 
-            parameter.Add("PTNO", cHPC.PTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", cHPC.PTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JDATE", cHPC.JEPDATE);
             parameter.Add("GBJOB", argGbJob);
-            parameter.Add("DEPTCODE", argDept, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", argDept, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<ENDO_JUPMST>(parameter);
         }
@@ -254,7 +254,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBSUNAP IN ('1', '7')                           ");
             parameter.AppendSql("   AND GBJOB = :GBJOB                                  ");
 
-            parameter.Add("PTNO", pTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", pTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RDATE", strExamDate.Substring(0, 10));
             parameter.Add("GBJOB", strGbn);
 
@@ -298,7 +298,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("PACSSEND", rEJ.PACSSEND);
             parameter.Add("SEQNUM", rEJ.SEQNUM);
             parameter.Add("BDATE", rEJ.BDATE.Substring(0, 10));
-            parameter.Add("BUSE", rEJ.BUSE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("BUSE", rEJ.BUSE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             ExecuteNonQuery(parameter);
         }
@@ -332,7 +332,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBSUNAP IN ('1','7')                            ");
             parameter.AppendSql("   AND GBJOB = :GBJOB                                  ");
 
-            parameter.Add("PTNO", pTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", pTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RDATE", strExamDate.Substring(0, 10));
             parameter.Add("GBJOB", strGbJob);
 
@@ -378,7 +378,7 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("   AND ORDERCODE IN ('00440110','00440120','00440165','OO440916','E7660GA','E7660GB') "); //¿ß+¥Î¿Â
             }
 
-            parameter.Add("PTNO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", strBDATE);
             
             return ExecuteReader<ENDO_JUPMST>(parameter);
@@ -395,7 +395,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND ORDERCODE IN ('00440110','00440120','00440120','Q7611800','Q7612800','Q7620B')  ");
             parameter.AppendSql("   AND RESULTDATE IS NOT NULL                                                          ");
             parameter.AppendSql("   AND GBSUNAP = '7'                                                                   ");
-            parameter.Add("PTNO", fstrPano, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPano, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", fstrJepDate);
 
             return ExecuteReaderSingle<ENDO_JUPMST>(parameter);
@@ -414,7 +414,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND BUSE = '044500'                         ");
             parameter.AppendSql("   AND GBSUNAP <> '*'                          ");
 
-            parameter.Add("PTNO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
 
@@ -431,7 +431,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND RDATE >= TO_DATE(:RDATE, 'YYYY-MM-DD')  ");
             parameter.AppendSql("   AND DeptCode IN ('HR','TO')                 ");
 
-            parameter.Add("PTNO", fstrPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RDATE", fstrJepDate);
 
             return ExecuteScalar<string>(parameter);
@@ -447,8 +447,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND DeptCode IN('HR', 'TO')                     ");
             parameter.AppendSql("   AND RDATE >= TO_DATE(:RDATE,'YYYY-MM-DD')       ");
 
-            parameter.Add("ASA", strASA, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("PTNO", fstrPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ASA", strASA, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RDATE", fstrJepDate);
 
             return ExecuteNonQuery(parameter);
@@ -478,7 +478,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND BDATE >= TO_DATE(:BDATE, 'YYYY-MM-DD')          ");
             parameter.AppendSql("   AND GBSUNAP <> '*'                                  ");
 
-            parameter.Add("PTNO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", strBDate);
 
             return ExecuteReaderSingle<ENDO_JUPMST>(parameter);
@@ -496,9 +496,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBJOB = '2'                                 ");
             parameter.AppendSql("   AND DEPTCODE = :DEPTCODE                        ");
 
-            parameter.Add("PTNO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", strBDate);
-            parameter.Add("DEPTCODE", strDept, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", strDept, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<ENDO_JUPMST>(parameter);
         }
@@ -516,7 +516,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND PTNO = :PTNO                                            ");
             parameter.AppendSql("   AND RESULTDATE IS NOT NULL                                  ");
 
-            parameter.Add("PTNO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<ENDO_JUPMST>(parameter);
         }
@@ -534,7 +534,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND PTNO = :PTNO                                            ");
             parameter.AppendSql("   AND RESULTDATE IS NOT NULL                                  ");
 
-            parameter.Add("PTNO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<ENDO_JUPMST>(parameter);
         }
@@ -552,7 +552,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ORDER BY SNAME                                 ");
 
             parameter.Add("BDATE", strBDate);
-            parameter.Add("DEPTCODE", strDeptCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", strDeptCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BUSE", strBuse);
 
             return ExecuteReader<ENDO_JUPMST>(parameter);
@@ -571,9 +571,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND RDATE < TRUNC(SYSDATE)+1                    ");
             parameter.AppendSql("   AND GBSUNAP NOT IN ('7')                        ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBSUNAP", argGbsunap, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("DEPTCODE", argDeptcode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSUNAP", argGbsunap, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", argDeptcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -590,10 +590,10 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND RDATE <= TO_DATE(:TRDATE , 'YYYY-MM-DD HH24:MI')        ");
             parameter.AppendSql("   AND GBSUNAP NOT IN ('*','7')                                 ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBSUNAP", argGbsunap, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("DEPTCODE", argDeptcode, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.AddInStatement("GBJOB", argGbjob, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSUNAP", argGbsunap, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", argDeptcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GBJOB", argGbjob, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("FRDATE", argFRtime);
             parameter.Add("TRDATE", argTRtime);
 

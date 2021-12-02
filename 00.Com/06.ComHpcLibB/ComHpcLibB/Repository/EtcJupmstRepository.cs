@@ -114,9 +114,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN = :GUBUN                                          "); 
             parameter.AppendSql(" ORDER BY RDate DESC                                           ");
 
-            parameter.Add("PTNO", fstrPano, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPano, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", fstrJepDate);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);            
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);            
 
             return ExecuteScalar<int>(parameter);
         }
@@ -132,7 +132,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN = '4'                                             "); //PFT
             parameter.AppendSql(" ORDER BY RDate DESC                                           ");
 
-            parameter.Add("PTNO", pTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", pTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", jEPDATE);
 
             return ExecuteReader<ETC_JUPMST>(parameter);
@@ -151,7 +151,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBJOB <> '9'                                            "); //삭제제외
             parameter.AppendSql(" ORDER BY ENTDATE DESC                                         ");
 
-            parameter.Add("PTNO", pTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", pTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", jEPDATE);
 
             return ExecuteReaderSingle<ETC_JUPMST>(parameter);
@@ -168,7 +168,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN = '6'                                             "); //청력
             parameter.AppendSql(" ORDER BY RDate DESC                                           ");
 
-            parameter.Add("PTNO", pTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", pTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", jEPDATE);
 
             return ExecuteReaderSingle<ETC_JUPMST>(parameter);
@@ -190,10 +190,10 @@ namespace ComHpcLibB.Repository
             }
             parameter.AppendSql(" ORDER BY RDate DESC                                           ");
 
-            parameter.Add("PTNO", fstrPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", fstrJepDate);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("DEPTCODE", strDeptCode, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", strDeptCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteReader<ETC_JUPMST>(parameter);
         }
@@ -210,7 +210,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBJOB = '1'                                         ");
             parameter.AppendSql("   AND ORDERCODE = 'ABI'                                   ");
 
-            parameter.Add("PTNO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("FRDATE", strRDate);
             parameter.Add("TODATE", strEDATE);
 
@@ -229,9 +229,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN = :GUBUN                                          ");
             parameter.AppendSql(" ORDER BY RDate DESC                                           ");
 
-            parameter.Add("PTNO", fstrPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", fstrJepDate);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -248,9 +248,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND ORDERCODE = 'STRESS'                    ");
             parameter.AppendSql("   AND GUBUN = '18'                            ");  
 
-            parameter.Add("PTNO", fstrPano, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPano, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", fstrBDate);
-            parameter.Add("DEPTCODE", fstrDeptCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", fstrDeptCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<ETC_JUPMST>(parameter);
         }
@@ -282,7 +282,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE ROWID =:RID                     ");
 
             parameter.Add("IMAGE_GBN", strImage_Gbn);
-            parameter.Add("GBJOB", strGbJob, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBJOB", strGbJob, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("STRESS_SOGEN", strSogen);
             parameter.Add("RID", fstrROWID);
 
@@ -319,9 +319,9 @@ namespace ComHpcLibB.Repository
             }
             parameter.AppendSql(" ORDER BY RDate DESC                           ");
 
-            parameter.Add("PTNO", fstrPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", fstrJepDate);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -343,10 +343,10 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("   AND GBFTP IS NULL                            ");
             }
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", argDate);
-            parameter.Add("ORDERCODE", argOrderCode, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("DEPTCODE", argDept, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ORDERCODE", argOrderCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", argDept, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -367,9 +367,9 @@ namespace ComHpcLibB.Repository
             }
             parameter.AppendSql(" ORDER BY RDate DESC                                           ");
 
-            parameter.Add("PTNO", fstrPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", fstrJepDate);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteReader<ETC_JUPMST>(parameter);
         }
@@ -400,7 +400,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND ORDERCODE = 'USTCD'                                     ");
             parameter.AppendSql(" ORDER BY RDate DESC,Ptno                                      ");
 
-            parameter.Add("PTNO", fstrPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RDATE", fstrJepDate);
 
             return ExecuteReader<ETC_JUPMST>(parameter);
@@ -417,7 +417,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND DeptCode IN ('HR','TO')                             ");
             parameter.AppendSql("   AND Gubun = '18'                                        ");
 
-            parameter.Add("PTNO", fstrPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RDATE", fstrJepDate);
 
             return ExecuteReader<ETC_JUPMST>(parameter);
@@ -507,8 +507,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN = '18'                            ");
 
             parameter.Add("BDATE", fstrBDate);
-            parameter.Add("PTNO", fstrPano, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("DEPTCODE", fstrDeptCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPano, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", fstrDeptCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

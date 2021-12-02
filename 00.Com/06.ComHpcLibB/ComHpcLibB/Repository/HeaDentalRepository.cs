@@ -51,29 +51,29 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , PANJENG10   = :PANJENG10    ");
             parameter.AppendSql(" WHERE WRTNO       = :WRTNO        ");
 
-            parameter.Add("GBSTS",       item.GBSTS, Oracle.DataAccess.Client.OracleDbType.Char);   
+            parameter.Add("GBSTS",       item.GBSTS, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
             parameter.Add("PANJENGDRNO", item.PANJENGDRNO);
             parameter.Add("USIK",        item.USIK);
             parameter.Add("GYEOLSON",    item.GYEOLSON);
-            parameter.Add("CHIEUN",      item.CHIEUN, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CHIJU",       item.CHIJU, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CHIGUNMAK",   item.CHIGUNMAK, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("DENTURE",     item.DENTURE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CHIEUN",      item.CHIEUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CHIJU",       item.CHIJU, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CHIGUNMAK",   item.CHIGUNMAK, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("DENTURE",     item.DENTURE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("DENTURE_ETC", item.DENTURE_ETC);
-            parameter.Add("PANJENG1",    item.PANJENG1, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG2",    item.PANJENG2, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG3",    item.PANJENG3, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG4",    item.PANJENG4, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG5",    item.PANJENG5, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG6",    item.PANJENG6, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG7",    item.PANJENG7, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG8",    item.PANJENG8, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG9",    item.PANJENG9, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("PANJENG11",   item.PANJENG11, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG12",   item.PANJENG12, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG13",   item.PANJENG13, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG14",   item.PANJENG14, Oracle.DataAccess.Client.OracleDbType.Char);   
-            parameter.Add("PANJENG15",   item.PANJENG15, Oracle.DataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG1",    item.PANJENG1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG2",    item.PANJENG2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG3",    item.PANJENG3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG4",    item.PANJENG4, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG5",    item.PANJENG5, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG6",    item.PANJENG6, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG7",    item.PANJENG7, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG8",    item.PANJENG8, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG9",    item.PANJENG9, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANJENG11",   item.PANJENG11, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG12",   item.PANJENG12, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG13",   item.PANJENG13, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG14",   item.PANJENG14, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
+            parameter.Add("PANJENG15",   item.PANJENG15, Oracle.ManagedDataAccess.Client.OracleDbType.Char);   
             parameter.Add("PANJENG10",   item.PANJENG10);
             parameter.Add("WRTNO",       item.WRTNO); 
 
@@ -146,7 +146,7 @@ namespace ComHpcLibB.Repository
 
             
             parameter.Add("WRTNO", nWrtNo);
-            parameter.Add("GBCHK", strGbchk, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBCHK", strGbchk, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }

@@ -28,7 +28,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("VALUES                                                                 ");
             parameter.AppendSql("       (:GJYEAR, :LTDCODE, :PANJENG, :BUSE, :YUHE, :JANGGI, :INWON)    ");
 
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", nLtdCode);
             parameter.Add("PANJENG", strPan);
             parameter.Add("BUSE", strBuse);
@@ -47,7 +47,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GJYEAR  = :GJYEAR                   ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE                  ");
 
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", nLtdCode);
 
             return ExecuteNonQuery(parameter);
@@ -62,7 +62,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND LTDCODE = :LTDCODE                          ");
             parameter.AppendSql(" ORDER BY PANJENG, BUSE                            ");
 
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", nLtdCode);
 
             return ExecuteReader<HIC_SJ_JINDAN>(parameter);
@@ -92,7 +92,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND BUSE    = :BUSE                 ");
             parameter.AppendSql("   AND YUHE    = :YUHE                 ");
 
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", nLtdCode);
             parameter.Add("PANJENG", strPanjeng);
             parameter.Add("BUSE", strBuseName);

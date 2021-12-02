@@ -35,7 +35,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GJYEAR  = :GJYEAR                                                                   ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE                                                                  ");
 
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", strCode);
 
             return ExecuteReaderSingle<HIC_SJ_MST>(parameter);
@@ -49,7 +49,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GJYEAR  = :GJYEAR                       ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE                      ");
 
-            parameter.Add("GJYEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", nLtdCode);
 
             return ExecuteScalar<int>(parameter);
@@ -107,7 +107,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GJYEAR       = :GJYEAR                                      ");
             parameter.AppendSql("   AND LTDCODE      = :LTDCODE                                     ");
 
-            parameter.Add("GJYEAR", item.GJYEAR, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", item.GJYEAR, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", item.LTDCODE);
             parameter.Add("JEPDATE", item.JEPDATE);
             parameter.Add("INWON1", item.INWON1);
@@ -132,20 +132,20 @@ namespace ComHpcLibB.Repository
             parameter.Add("REMARK1", item.REMARK1);
             parameter.Add("REMARK2", item.REMARK2);
             parameter.Add("ENTSABUN", item.ENTSABUN);
-            parameter.Add("GBNEWLTD", item.GBNEWLTD, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBTEL", item.GBTEL, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("PLACE1", item.PLACE1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("PLACE2", item.PLACE2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBNEWLTD", item.GBNEWLTD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBTEL", item.GBTEL, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("PLACE1", item.PLACE1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("PLACE2", item.PLACE2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (strOut == "Y")
             {
-                parameter.Add("PLACE3", item.PLACE3, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("PLACE3", item.PLACE3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
-            parameter.Add("GBMAIL1", item.GBMAIL1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBMAIL2", item.GBMAIL2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBJUNBI1", item.GBJUNBI1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBJUNBI2", item.GBJUNBI2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBJUNBI3", item.GBJUNBI3, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBJUNBI4", item.GBJUNBI4, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBMAIL1", item.GBMAIL1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBMAIL2", item.GBMAIL2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBJUNBI1", item.GBJUNBI1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBJUNBI2", item.GBJUNBI2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBJUNBI3", item.GBJUNBI3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBJUNBI4", item.GBJUNBI4, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("OLDHOSPITAL", item.OLDHOSPITAL);
             parameter.Add("CHUKHOSPITAL", item.CHUKHOSPITAL);
 
@@ -160,7 +160,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("VALUES                                                     ");
             parameter.AppendSql("       (:GJYEAR, :LTDCODE, TO_DATE(:JEPDATE, 'YYYY-MM-DD'))");
 
-            parameter.Add("GJYEAR", item.GJYEAR, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", item.GJYEAR, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", item.LTDCODE);
             parameter.Add("JEPDATE", item.JEPDATE);
 

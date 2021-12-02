@@ -1,6 +1,6 @@
 ﻿using ComBase.Controls;
 using ComDbB; //기본 클래스
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;

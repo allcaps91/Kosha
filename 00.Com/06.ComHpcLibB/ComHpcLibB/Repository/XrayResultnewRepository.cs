@@ -62,9 +62,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND RESULT IS NOT NULL                                                          ");
             parameter.AppendSql(" GROUP BY PANO, DEPTCODE, XCODE, RESULT                                            ");
 
-            parameter.Add("PANO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SEEKDATE", argBDate);
-            parameter.Add("XCODE", strXCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("XCODE", strXCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<XRAY_RESULTNEW>(parameter);
         }
@@ -82,7 +82,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("PANO", fstrPano);
             parameter.Add("SEEKDATE", fstrJepDate);
-            parameter.AddInStatement("XCODE", strXCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("XCODE", strXCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<XRAY_RESULTNEW>(parameter);
         }
@@ -99,7 +99,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("PANO", fstrPano);
             parameter.Add("SEEKDATE", fstrJepDate);
-            parameter.AddInStatement("XCODE", strXCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("XCODE", strXCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<XRAY_RESULTNEW>(parameter);
         }
@@ -130,8 +130,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND XCODE    = :XCODE                                   ");
             parameter.AppendSql("   AND PANHIC IS NOT NULL                                  ");
 
-            parameter.Add("DEPTCODE", strDeptCode, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("XCODE", strXCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", strDeptCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("XCODE", strXCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<XRAY_RESULTNEW>(parameter);
         }
@@ -146,9 +146,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" AND XCODE = :XCODE                                            ");
             parameter.AppendSql(" ORDER BY SEEKDATE                                             ");
 
-            parameter.Add("PANO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SEEKDATE", argBDate);
-            parameter.Add("XCODE", strXCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("XCODE", strXCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<XRAY_RESULTNEW>(parameter);
         }

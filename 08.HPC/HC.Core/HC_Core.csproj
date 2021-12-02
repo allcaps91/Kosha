@@ -58,9 +58,8 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\PSMHEXE\exenet\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\exenet\Oracle.DataAccess.dll</HintPath>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\..\..\PSMH_HC\ZZ_HC\packages\Oracle.ManagedDataAccess.19.13.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\..\..\PSMHEXE\exenet\RestSharp.dll</HintPath>
@@ -874,7 +873,9 @@
     <Content Include="Resources\html\statusReportByNurse.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="App.config" />
     <None Include="HC_Core.snk" />
+    <None Include="packages.config" />
     <None Include="Resources\dmp\osha_export_schema.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

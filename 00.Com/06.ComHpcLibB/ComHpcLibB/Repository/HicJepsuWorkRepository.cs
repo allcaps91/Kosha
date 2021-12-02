@@ -81,7 +81,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("TODATE", strToDate);
             if (!strGjJong.IsNullOrEmpty())
             {
-                parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (!strLtdCode.IsNullOrEmpty())
             {
@@ -180,11 +180,11 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GJYEAR   = :GJYEAR                          ");
             parameter.AppendSql("   AND PANO     = :PANO                            ");
 
-            parameter.Add("XRAYNO", strXrayno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("XRAYNO", strXrayno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("FRDATE", strFDate);
             parameter.Add("TODATE", strTDate);
             parameter.Add("LTDCODE", strLtdCode);
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("PANO", nPaNo);
 
             return ExecuteNonQuery(parameter);
@@ -242,7 +242,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GJJONG = :GJJONG                        ");
 
             parameter.Add("PTNO", argPtNo);
-            parameter.Add("GJJONG", argGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", argGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -262,7 +262,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFDate);
             parameter.Add("TODATE", strTDate);
-            parameter.AddInStatement("GJJONG", strjong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GJJONG", strjong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_JEPSU_WORK>(parameter);
         }
@@ -340,44 +340,44 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE ROWID      = :RID                       ");
 
             parameter.Add("PANO", item.PANO);
-            parameter.Add("GJYEAR", item.GJYEAR, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", item.GJYEAR, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", item.JEPDATE);
             parameter.Add("SNAME", item.SNAME);
-            parameter.Add("SEX", item.SEX, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SEX", item.SEX, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AGE", item.AGE);
-            parameter.Add("GJJONG", item.GJJONG, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", item.GJJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("TEL", item.TEL);
-            parameter.Add("GJCHASU", item.GJCHASU, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GJBANGI", item.GJBANGI, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJCHASU", item.GJCHASU, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJBANGI", item.GJBANGI, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", item.LTDCODE);
             parameter.Add("BUSENAME", item.BUSENAME);
-            parameter.Add("MAILCODE", item.MAILCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("MAILCODE", item.MAILCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JUSO1", item.JUSO1);
             parameter.Add("JUSO2", item.JUSO2);
             parameter.Add("UCODES", item.UCODES);
             parameter.Add("SEXAMS", item.SEXAMS);
-            parameter.Add("PTNO", item.PTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", item.PTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BURATE", item.BURATE);
-            parameter.Add("JISA", item.JISA, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("KIHO", item.KIHO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JISA", item.JISA, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("KIHO", item.KIHO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GKIHO", item.GKIHO);
-            parameter.Add("JUMINNO", item.JUMINNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMINNO", item.JUMINNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JUMINNO2", item.JUMINNO2);
             if (!item.JIKGBN.IsNullOrEmpty())
             {
-                parameter.Add("JIKGBN", item.JIKGBN, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("JIKGBN", item.JIKGBN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
-            parameter.Add("GBCHUL", item.GBCHUL, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBDENTAL", item.GBDENTAL, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBINWON", item.GBINWON, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBCHUL", item.GBCHUL, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBDENTAL", item.GBDENTAL, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBINWON", item.GBINWON, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JOBSABUN", item.JOBSABUN);
-            parameter.Add("BOGUNSO", item.BOGUNSO, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("YOUNGUPSO", item.YOUNGUPSO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("BOGUNSO", item.BOGUNSO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("YOUNGUPSO", item.YOUNGUPSO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (!item.IPSADATE.IsNullOrEmpty())
             {
                 parameter.Add("IPSADATE", item.IPSADATE.Substring(0, 10));
             }
-            parameter.Add("MURYOAM", item.MURYOAM, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("MURYOAM", item.MURYOAM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("EMAIL", item.EMAIL);
             parameter.Add("REMARK", item.REMARK);
             parameter.Add("CLASS", item.CLASS);
@@ -420,46 +420,46 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      )                                                                                        ");
 
             parameter.Add("PANO", item.PANO);
-            parameter.Add("GJYEAR", item.GJYEAR, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", item.GJYEAR, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", item.JEPDATE);
             parameter.Add("SNAME", item.SNAME);
-            parameter.Add("SEX", item.SEX, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SEX", item.SEX, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AGE", item.AGE);
-            parameter.Add("GJJONG", item.GJJONG, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", item.GJJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("TEL", item.TEL);
-            parameter.Add("GJCHASU", item.GJCHASU, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GJBANGI", item.GJBANGI, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJCHASU", item.GJCHASU, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJBANGI", item.GJBANGI, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", item.LTDCODE);
             parameter.Add("BUSENAME", item.BUSENAME);
-            parameter.Add("MAILCODE", item.MAILCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("MAILCODE", item.MAILCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JUSO1", item.JUSO1);
             parameter.Add("JUSO2", item.JUSO2);
             parameter.Add("UCODES", item.UCODES);
             parameter.Add("SEXAMS", item.SEXAMS);
-            parameter.Add("PTNO", item.PTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", item.PTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BURATE", item.BURATE);
-            parameter.Add("JISA", item.JISA, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("KIHO", item.KIHO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JISA", item.JISA, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("KIHO", item.KIHO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GKIHO", item.GKIHO);
-            parameter.Add("JUMINNO", item.JUMINNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMINNO", item.JUMINNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JUMINNO2", item.JUMINNO2);
-            parameter.Add("JIKGBN", item.JIKGBN, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBCHUL", item.GBCHUL, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBDENTAL", item.GBDENTAL, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBINWON", item.GBINWON, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JIKGBN", item.JIKGBN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBCHUL", item.GBCHUL, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBDENTAL", item.GBDENTAL, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBINWON", item.GBINWON, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JOBSABUN", item.JOBSABUN);
-            parameter.Add("BOGUNSO", item.BOGUNSO, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("YOUNGUPSO", item.YOUNGUPSO, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("MURYOAM", item.MURYOAM, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("BOGUNSO", item.BOGUNSO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("YOUNGUPSO", item.YOUNGUPSO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("MURYOAM", item.MURYOAM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("EMAIL", item.EMAIL);
             parameter.Add("REMARK", item.REMARK);
-            parameter.Add("GBN", item.GBN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBN", item.GBN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("CLASS", item.CLASS);
             parameter.Add("BAN", item.BAN);
             parameter.Add("BUN", item.BUN);
             parameter.Add("HPHONE", item.HPHONE);
             parameter.Add("SABUN", item.SABUN);
-            parameter.Add("GBADDPAN", item.GBADDPAN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBADDPAN", item.GBADDPAN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             if (!item.IPSADATE.IsNullOrEmpty())
             {

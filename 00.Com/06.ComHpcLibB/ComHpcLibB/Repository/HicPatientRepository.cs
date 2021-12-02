@@ -79,7 +79,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE PTNO =:PTNO                                                                             ");
             parameter.AppendSql("   AND (SNAME IS NULL OR  SNAME <> '¿Ã¡ﬂ√≠∆Æ')                                                  ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_PATIENT>(parameter);
         }
@@ -544,7 +544,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE PTNO = :PTNO            ");
             parameter.AppendSql(" ORDER BY Pano                 ");
 
-            parameter.Add("PTNO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<long>(parameter);
         }
@@ -573,12 +573,12 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("       (:PANO, :JUMIN, :JUMIN2, :SNAME, :TEL, :PTNO, :SEX, :LTDCODE)   ");
 
             parameter.Add("PANO", fnPano);
-            parameter.Add("JUMIN", argJumin, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN", argJumin, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JUMIN2", argJuminAes);
             parameter.Add("SNAME", argSName);
             parameter.Add("TEL", argTel);
-            parameter.Add("PTNO", argPaNo, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("SEX", argSex, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPaNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("SEX", argSex, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", argLtdCode);
             
 
@@ -619,7 +619,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                                                             ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                                                                    ");
 
-            parameter.Add("JUMIN2", argJumin2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN2", argJumin2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_PATIENT>(parameter);
         }
@@ -753,7 +753,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE PTNO =:PTNO                                                                              ");
             parameter.AppendSql("   AND (SNAME IS NULL OR  SNAME <> '¿Ã¡ﬂ√≠∆Æ')                                                  ");
 
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_PATIENT>(parameter);
         }
@@ -860,7 +860,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("       (:PANO, :JUMIN, :JUMIN2)        ");
 
             parameter.Add("PANO", nPano);
-            parameter.Add("JUMIN", strJumin, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN", strJumin, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JUMIN2", strJumin2);
 
             return ExecuteNonQuery(parameter);
@@ -925,7 +925,7 @@ namespace ComHpcLibB.Repository
 
             if (!strPtno.IsNullOrEmpty())
             {
-                parameter.Add("PTNO", strPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("PTNO", strPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (nLtdCode > 0)
@@ -976,7 +976,7 @@ namespace ComHpcLibB.Repository
 
             if (!strPtno.IsNullOrEmpty())
             {
-                parameter.Add("PTNO", strPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("PTNO", strPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (nLtdCode > 0)
@@ -1019,12 +1019,12 @@ namespace ComHpcLibB.Repository
             }
             parameter.AppendSql(" WHERE PANO = :PANO                                    ");
 
-            parameter.Add("GONGJENG", item3.GONGJENG, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GONGJENG", item3.GONGJENG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SABUN", item3.SABUN);
             parameter.Add("IPSADATE", item3.IPSADATE);
             parameter.Add("BUSENAME", item3.BUSENAME);
             parameter.Add("BUSEIPSA", item3.BUSEIPSA);
-            //parameter.Add("GBSUCHEP", item3.GBSUCHEP, Oracle.DataAccess.Client.OracleDbType.Char);
+            //parameter.Add("GBSUCHEP", item3.GBSUCHEP, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("PANO", item3.PANO);
 
             return ExecuteNonQuery(parameter);

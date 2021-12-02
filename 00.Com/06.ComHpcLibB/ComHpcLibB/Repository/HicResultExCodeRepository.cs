@@ -170,7 +170,7 @@
             parameter.AppendSql("   AND a.ExCode=b.Code(+)                                                  ");
 
             parameter.Add("WRTNO", fnWrtNo);
-            parameter.Add("PART", strPart, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PART", strPart, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT_EXCODE>(parameter);
         }
@@ -187,7 +187,7 @@
             parameter.AppendSql("   AND a.EXCODE NOT IN (:EXCODE)                           ");
 
             parameter.Add("WRTNO", argWRTNO);
-            parameter.AddInStatement("EXCODE", strExCodes, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strExCodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT_EXCODE>(parameter);
         }
@@ -447,7 +447,7 @@
             {
                 parameter.Add("WRTNO", nWrtNo);
             }
-            parameter.Add("ENTPART", eNTPART, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ENTPART", eNTPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT_EXCODE>(parameter);
         }
@@ -555,7 +555,7 @@
             }
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.AddInStatement("EXCODE", strNewExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strNewExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT_EXCODE>(parameter);
         }
@@ -588,7 +588,7 @@
             parameter.AppendSql(" ORDER BY a.Part,a.ExCode                                                  ");
 
             parameter.Add("WRTNO", fnWrtNo);
-            parameter.Add("PART", strPart, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PART", strPart, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT_EXCODE>(parameter);
         }
@@ -704,7 +704,7 @@
             parameter.Add("WRTNO", fnWRTNO);
             if (g37_DOCT_ENTCODE.Count > 0)
             {
-                parameter.AddInStatement("EXCODE", g37_DOCT_ENTCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("EXCODE", g37_DOCT_ENTCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_RESULT_EXCODE>(parameter);
@@ -737,7 +737,7 @@
             parameter.Add("WRTNO", fnWRTNO);
             if (fstrPartExam.Count > 0 && fstrPartExam[0] != "전체")
             {
-                parameter.AddInStatement("EXCODE", fstrPartExam, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("EXCODE", fstrPartExam, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_RESULT_EXCODE>(parameter);
@@ -765,7 +765,7 @@
             parameter.Add("WRTNO", fnWRTNO);
             if (fstrExcode.Count > 0)
             {
-                parameter.AddInStatement("EXCODE", fstrExcode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("EXCODE", fstrExcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
                 
 
@@ -915,7 +915,7 @@
             parameter.AppendSql(" ORDER BY a.Panjeng,b.ExSort,b.Part,a.ExCode                                           ");
 
             parameter.Add("PANO", nPano);
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT_EXCODE>(parameter);
         }
@@ -933,7 +933,7 @@
             parameter.AppendSql(" ORDER BY a.Part,a.ExCode                                                              ");
 
             parameter.Add("WRTNO", fnWrtno);
-            parameter.Add("SOGENCODE", strGbn, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.Add("SOGENCODE", strGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteReader<HIC_RESULT_EXCODE>(parameter);
         }
@@ -973,11 +973,11 @@
             parameter.Add("WRTNO", fnWRTNO);
             if (argJob == "특수")
             {
-                parameter.Add("SOGENCODE", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("SOGENCODE", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (argJob != "특수" && argJob != "D1D2")
             {
-                parameter.Add("GBPANBUN2", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GBPANBUN2", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (argJob == "D1D2")
             {
@@ -1044,7 +1044,7 @@
             parameter.Add("WRTNO", fnWRTNO);
             if (argGbn != "11" && argGbn != "12")
             {
-                parameter.Add("GBPANBUN2", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GBPANBUN2", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_RESULT_EXCODE>(parameter);
@@ -1084,7 +1084,7 @@
             parameter.Add("WRTNO", fnWRTNO);
             if (strHeaSORT != "*")
             {
-                parameter.Add("HEASORT", strHeaSORT, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("HEASORT", strHeaSORT, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_RESULT_EXCODE>(parameter);

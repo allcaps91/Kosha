@@ -48,7 +48,7 @@
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO(+)                ");
             parameter.AppendSql(" ORDER BY a.WRTNO DESC                     ");
 
-            parameter.Add("PTNO", argPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_JEPSU_SUNAP>(parameter);
         }
@@ -65,7 +65,7 @@
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO                   ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_JEPSU_SUNAP>(parameter);
         }
@@ -643,7 +643,7 @@
             }
 
             parameter.Add("WRTNO", wRTNO2);
-            parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_JEPSU_SUNAP>(parameter);
         }
@@ -699,7 +699,7 @@
             }
 
             parameter.Add("WRTNO", wRTNO2);
-            parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_JEPSU_SUNAP>(parameter);
         }
@@ -754,7 +754,7 @@
             }
 
             parameter.Add("WRTNO", wRTNO2);
-            parameter.Add("GJJONG", strGbJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", strGbJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_JEPSU_SUNAP>(parameter);
         }
@@ -809,7 +809,7 @@
             }
 
             parameter.Add("WRTNO", wRTNO2);
-            parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_JEPSU_SUNAP>(parameter);
         }
@@ -865,7 +865,7 @@
             }
 
             parameter.Add("WRTNO", wRTNO2);
-            parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_JEPSU_SUNAP>(parameter);
         }
@@ -920,7 +920,7 @@
             }
 
             parameter.Add("WRTNO", wRTNO2);
-            parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_JEPSU_SUNAP>(parameter);
         }
@@ -1008,7 +1008,7 @@
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO                   ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -1094,7 +1094,7 @@
             parameter.AppendSql("   AND a.PANO   = b.PANO(+)            ");
             parameter.AppendSql("   AND a.GJJONG = b.GJJONG             ");
 
-            parameter.Add("PTNO", argPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_JEPSU_SUNAP>(parameter);
         }
@@ -1189,7 +1189,7 @@
 
             if (!fstrJong.Equals("**"))
             {
-                parameter.Add("GJJONG", fstrJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", fstrJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (fnLtdCode > 0)
@@ -1284,7 +1284,7 @@
 
             if (!fstrJong.Equals("**"))
             {
-                parameter.Add("GJJONG", fstrJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", fstrJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (fnLtdCode > 0)

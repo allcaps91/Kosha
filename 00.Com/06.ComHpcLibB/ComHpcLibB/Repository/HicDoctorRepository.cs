@@ -76,7 +76,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND ReDay IS NULL           ");
             parameter.AppendSql(" ORDER BY DrName               ");
 
-            parameter.AddInStatement("ROOM", strGubun,  Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("ROOM", strGubun,  Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_DOCTOR>(parameter);
         }

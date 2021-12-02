@@ -2,10 +2,8 @@
 using System.Data;
 using System.IO;
 using FarPoint.Win.Spread;
-using Oracle.DataAccess.Client;
 using ComDbB;
 using ComBase; //기본 클래스
-using Oracle.DataAccess.Types;
 using System.Reflection;
 using System.Data.Common;
 using System.Collections.Generic;
@@ -18,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComBase
 {

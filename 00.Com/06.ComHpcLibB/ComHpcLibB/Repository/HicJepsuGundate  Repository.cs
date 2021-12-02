@@ -39,7 +39,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND b.GunDate IS NOT NULL                                               ");
             parameter.AppendSql(" GROUP BY a.LtdCode                                                        ");
 
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_JEPSU_GUNDATE>(parameter);
         }
@@ -158,7 +158,7 @@ namespace ComHpcLibB.Repository
             
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.Add("GJYEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             if (!nLtdCode.IsNullOrEmpty() && nLtdCode != 0)
             {
@@ -170,11 +170,11 @@ namespace ComHpcLibB.Repository
             }
             if (!strJong1.IsNullOrEmpty() && strJong1 != "**")
             {
-                parameter.Add("GJJONG", strJong1, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strJong1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (!strBogunso.IsNullOrEmpty())
             {
-                parameter.Add("BOGUNSO", strBogunso, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("BOGUNSO", strBogunso, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_JEPSU_GUNDATE>(parameter);
@@ -290,7 +290,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", fstrFDate);
             parameter.Add("TODATE", fstrTDate);
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (fstrLtdCode != "")
             {
                 parameter.Add("LTDCODE", fstrLtdCode);
@@ -395,7 +395,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", fstrFDate);
             parameter.Add("TODATE", fstrTDate);
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (fstrLtdCode != "")
             {
                 parameter.Add("LTDCODE", fstrLtdCode);
@@ -458,7 +458,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", fstrFDate);
             parameter.Add("TODATE", fstrTDate);
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", fstrLtdCode);
 
             return ExecuteReader<HIC_JEPSU_GUNDATE>(parameter);

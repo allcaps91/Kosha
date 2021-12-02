@@ -60,7 +60,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("SABUN", idNumber);
             parameter.Add("SOGEN", strSogen);
             parameter.Add("PANJENGGBN", fstrPanjengGbn);
-            parameter.Add("GBN", strGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBN", strGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("REMARK", strRemark);
 
             return ExecuteNonQuery(parameter);
@@ -108,7 +108,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("SDATE", strSDate);
             parameter.Add("SOGEN", fstrSogen);
             parameter.Add("PANJENGGBN", fstrPanjengGbn);
-            parameter.Add("GBN", strGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBN", strGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SABUN", argSabun);
             parameter.Add("REMARK", strRemark);
             parameter.Add("RID", fstrROWID);

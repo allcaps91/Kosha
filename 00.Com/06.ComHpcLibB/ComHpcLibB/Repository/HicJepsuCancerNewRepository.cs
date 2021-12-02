@@ -187,7 +187,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("    AND A.DELDATE IS NULL                                      ");
             
             parameter.Add("PANO", argPano);
-            parameter.Add("GJYEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_JEPSU_CANCER_NEW>(parameter);
         }

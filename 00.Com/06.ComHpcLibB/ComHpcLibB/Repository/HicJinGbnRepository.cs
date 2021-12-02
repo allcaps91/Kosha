@@ -42,7 +42,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , ENTSABUN    = :ENTSABUN         ");
             parameter.AppendSql("  WHERE ROWID      = :RID              ");
 
-            parameter.Add("GUBUN", item.GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", item.GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("PANJENGDRNO", item.PANJENGDRNO);
             parameter.Add("ENTSABUN", item.ENTSABUN);
             parameter.Add("RID", item.ROWID);
@@ -103,7 +103,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("       (:WRTNO, :GUBUN, :PANJENGDRNO, SYSDATE, :ENTSABUN)  ");
 
             parameter.Add("WRTNO", item.WRTNO);
-            parameter.Add("GUBUN", item.GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", item.GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("PANJENGDRNO", item.PANJENGDRNO);
             parameter.Add("ENTSABUN", item.ENTSABUN);
 

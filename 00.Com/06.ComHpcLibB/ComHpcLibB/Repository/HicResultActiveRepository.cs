@@ -33,7 +33,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND Trim(B.HeaPART) = :HEAPART      ");
 
             parameter.Add("WRTNO", WRTNO); 
-            parameter.Add("HEAPART", HEAPART, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("HEAPART", HEAPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT_ACTIVE>(parameter);
         }
@@ -100,7 +100,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", WRTNO);
             if (HEAPART != "")
             {
-                parameter.Add("HEAPART", HEAPART, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("HEAPART", HEAPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_RESULT_ACTIVE>(parameter);
@@ -134,7 +134,7 @@ namespace ComHpcLibB.Repository
                    
             if (!ENTPART.IsNullOrEmpty())
             {
-                parameter.Add("ENTPART", ENTPART, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("ENTPART", ENTPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (strJong == "Y")
             {
@@ -162,7 +162,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND Trim(B.HeaPART) = :HEAPART              ");
 
             parameter.Add("WRTNO", WRTNO);
-            parameter.Add("HEAPART", HEAPART, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("HEAPART", HEAPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT_ACTIVE>(parameter);
         }

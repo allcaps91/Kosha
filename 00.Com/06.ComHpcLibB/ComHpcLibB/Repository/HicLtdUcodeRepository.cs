@@ -42,7 +42,7 @@ namespace ComHpcLibB.Repository
 
             if (!argJong.IsNullOrEmpty() && argJong != "*")
             {
-                parameter.Add("JONG", argJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("JONG", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
                 
 

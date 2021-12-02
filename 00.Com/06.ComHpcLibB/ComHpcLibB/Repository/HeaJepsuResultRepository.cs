@@ -133,7 +133,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND ( RESULT IS NULL OR RESULT ='' )    ");
 
             parameter.Add("RESULT", strActValue);
-            parameter.Add("ACTIVE", srActive, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ACTIVE", srActive, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("ENTSABUN", idNumber);
             parameter.Add("RID", strROWID);
             parameter.Add("WRTNO", nWRTNO);

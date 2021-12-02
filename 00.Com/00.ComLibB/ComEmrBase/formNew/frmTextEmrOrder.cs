@@ -1,7 +1,7 @@
 ﻿using ComBase;
 using ComBase.Controls;
 using FarPoint.Win.Spread;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

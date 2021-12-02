@@ -27,7 +27,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GAMCODE     ");
             parameter.AppendSql(" WHERE CODE =:CODE                ");
 
-            parameter.Add("CODE", CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -70,7 +70,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GAMCODE                             ");
             parameter.AppendSql(" WHERE CODE = :CODE                                        ");
 
-            parameter.Add("CODE", strGamCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strGamCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_GAMCODE>(parameter);
         }

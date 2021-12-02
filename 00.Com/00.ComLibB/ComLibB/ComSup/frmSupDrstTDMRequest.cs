@@ -531,7 +531,7 @@ namespace ComLibB
                     mParameter.AppendSql(" WHERE B.PANO  = :PANO                                                                                ");
                     mParameter.AppendSql("   AND B.BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                                                        ");
 
-                    mParameter.Add("PANO", PTNO.NotEmpty() ? PTNO : clsOrdFunction.Pat.PtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+                    mParameter.Add("PANO", PTNO.NotEmpty() ? PTNO : clsOrdFunction.Pat.PtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
                     mParameter.Add("BDATE", PTNO.NotEmpty() ? BDATE : clsOrdFunction.GstrBDate);
                 }
 
@@ -700,13 +700,13 @@ namespace ComLibB
                 mParameter.AppendSql("	       , SYSDATE                                     ");
                 mParameter.AppendSql("	  )                            				         ");
 
-                mParameter.Add("SEQNO",   item.SEQNO, Oracle.DataAccess.Client.OracleDbType.Int32);
-                mParameter.Add("JEPCODE", item.JEPCODE, Oracle.DataAccess.Client.OracleDbType.Char);
-                mParameter.Add("PTNO",    item.PTNO, Oracle.DataAccess.Client.OracleDbType.Char);
-                mParameter.Add("SABUN",   clsType.User.Sabun, Oracle.DataAccess.Client.OracleDbType.Char);
-                mParameter.Add("IPDNO",   IPDNO, Oracle.DataAccess.Client.OracleDbType.Int32);
-                mParameter.Add("GBIO", IPDNO > 0 ? "I" : "O", Oracle.DataAccess.Client.OracleDbType.Varchar2);
-                mParameter.Add("REQDATE", clsOrdFunction.GstrBDate, Oracle.DataAccess.Client.OracleDbType.Date);
+                mParameter.Add("SEQNO",   item.SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
+                mParameter.Add("JEPCODE", item.JEPCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+                mParameter.Add("PTNO",    item.PTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+                mParameter.Add("SABUN",   clsType.User.Sabun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+                mParameter.Add("IPDNO",   IPDNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
+                mParameter.Add("GBIO", IPDNO > 0 ? "I" : "O", Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2);
+                mParameter.Add("REQDATE", clsOrdFunction.GstrBDate, Oracle.ManagedDataAccess.Client.OracleDbType.Date);
 
                 result.SetSuccessCountPlus(clsDB.ExecuteNonQuery(mParameter, clsDB.DbCon));
                 result.SetSuccessMessage("성공");
@@ -731,7 +731,7 @@ namespace ComLibB
                 mParameter.AppendSql("DELETE KOSMOS_OCS.OCS_TDM_MASTERSUB			 ");
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO						     ");
 
-                mParameter.Add("SEQNO", SEQNO, Oracle.DataAccess.Client.OracleDbType.Int32);
+                mParameter.Add("SEQNO", SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
                 result.SetSuccessCountPlus(clsDB.ExecuteNonQuery(mParameter, clsDB.DbCon));
 
                 foreach (Control item in ComFunc.GetAllControls(panControl).OfType<Control>().Where(d => d.Tag.NotEmpty()))
@@ -773,9 +773,9 @@ namespace ComLibB
                     mParameter.AppendSql("	       , :SUBVAL                                     ");
                     mParameter.AppendSql("	    FROM DUAL                                        ");
 
-                    mParameter.Add("SEQNO", SEQNO, Oracle.DataAccess.Client.OracleDbType.Int32);
-                    mParameter.Add("SUBGB", VALGB, Oracle.DataAccess.Client.OracleDbType.Varchar2);
-                    mParameter.Add("SUBVAL", CONTENT, Oracle.DataAccess.Client.OracleDbType.Varchar2);
+                    mParameter.Add("SEQNO", SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
+                    mParameter.Add("SUBGB", VALGB, Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2);
+                    mParameter.Add("SUBVAL", CONTENT, Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2);
 
                     result.SetSuccessCountPlus(clsDB.ExecuteNonQuery(mParameter, clsDB.DbCon));
                 }
@@ -811,8 +811,8 @@ namespace ComLibB
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO						     ");
                 mParameter.AppendSql("   AND SABUN = :SABUN						     ");
 
-                mParameter.Add("SEQNO", sItem.SEQNO, Oracle.DataAccess.Client.OracleDbType.Int32);
-                mParameter.Add("SABUN", clsType.User.IdNumber, Oracle.DataAccess.Client.OracleDbType.Varchar2);
+                mParameter.Add("SEQNO", sItem.SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
+                mParameter.Add("SABUN", clsType.User.IdNumber, Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2);
 
                 if (clsDB.ExecuteScalar<int>(mParameter, clsDB.DbCon) == 0)
                 {
@@ -824,14 +824,14 @@ namespace ComLibB
                 mParameter.AppendSql("DELETE KOSMOS_OCS.OCS_TDM_MASTER  			 ");
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO						     ");
 
-                mParameter.Add("SEQNO", sItem.SEQNO, Oracle.DataAccess.Client.OracleDbType.Int32);
+                mParameter.Add("SEQNO", sItem.SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
                 result.SetSuccessCountPlus(clsDB.ExecuteNonQuery(mParameter, clsDB.DbCon));
 
                 mParameter = new MParameter();
                 mParameter.AppendSql("DELETE KOSMOS_OCS.OCS_TDM_MASTERSUB			 ");
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO						     ");
 
-                mParameter.Add("SEQNO", sItem.SEQNO, Oracle.DataAccess.Client.OracleDbType.Int32);
+                mParameter.Add("SEQNO", sItem.SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
                 result.SetSuccessCountPlus(clsDB.ExecuteNonQuery(mParameter, clsDB.DbCon));
 
                 result.SetSuccessMessage("삭제하였습니다.");

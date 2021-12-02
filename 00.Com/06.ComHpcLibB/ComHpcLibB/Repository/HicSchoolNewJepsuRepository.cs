@@ -31,7 +31,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND b.JEPDATE = TRUNC(SYSDATE)                              ");
 
             parameter.Add("LICENSE", License);
-            parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_SCHOOL_NEW_JEPSU>(parameter);
         }

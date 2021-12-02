@@ -3,7 +3,7 @@ using ComBase.Mvc.Exceptions;
 using ComBase.Mvc.Utils;
 using ComBase.Mvc.Validation;
 using FarPoint.Win.Spread;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

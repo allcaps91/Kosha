@@ -146,7 +146,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT     MAX(WRTNO) TAXWRTNO FROM MISU_TAX       ");
             parameter.AppendSql("WHERE      GJYEAR = :GJYEAR                        ");
 
-            parameter.Add("GJYEAR", strGjyear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjyear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             return ExecuteReader<MISU_TAX>(parameter);
         }
 

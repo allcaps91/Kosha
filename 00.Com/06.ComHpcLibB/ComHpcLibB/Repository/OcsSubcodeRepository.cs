@@ -29,7 +29,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND OrderCode = :OrderCode              ");
             parameter.AppendSql(" ORDER BY SeqNo,SubName                    ");
 
-            parameter.Add("OrderCode", strOrderCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("OrderCode", strOrderCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<OCS_SUBCODE>(parameter);
         }

@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
 
             if (!argCode.IsNullOrEmpty())
             {
-                parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_ORGANCODE>(parameter);
@@ -51,7 +51,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_ORGANCODE  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
-            parameter.Add("CODE", strCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -72,7 +72,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("GUBUN", strGubun);            
             if (!strCode.IsNullOrEmpty())
             {
-                parameter.Add("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_ORGANCODE>(parameter);
@@ -87,8 +87,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE SAYUCODE = :SAYUCODE        ");
             parameter.AppendSql("   AND CODE = :CODE                ");
 
-            parameter.Add("SAYUCODE", strSayuCode, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", strCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SAYUCODE", strSayuCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -100,9 +100,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_ORGANCODE (CODE,NAME,GUBUN)  ");
             parameter.AppendSql(" VALUES (:CODE,:NAME,:GUBUN)                             ");
 
-            parameter.Add("CODE", item.CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", item.CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("NAME", item.NAME);
-            parameter.Add("GUBUN", item.GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", item.GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -116,7 +116,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , NAME    = :NAME                 ");
             parameter.AppendSql(" WHERE ROWID   = :RID                  ");
 
-            parameter.Add("CODE", item.CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", item.CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("NAME", item.NAME);
             parameter.Add("RID", item.RID);
 

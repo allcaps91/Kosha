@@ -41,9 +41,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" VALUES (                                                  ");
             parameter.AppendSql("  :GROUPCODE,:EXCODE,:SUGAGBN,:SEQNO,:ENTSABUN,SYSDATE )   ");
 
-            parameter.Add("CODE",    code.GROUPCODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("EXCODE",  code.EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("SUGAGBN", code.SUGAGBN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE",    code.GROUPCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE",  code.EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUGAGBN", code.SUGAGBN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SEQNO",   code.SEQNO);
             parameter.Add("ENTSABUN", clsType.User.IdNumber);
 
@@ -80,7 +80,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GROUPCODE = :GROUPCODE                              ");
             parameter.AppendSql("   AND ExCode IN ('A136','A142','A154','A211','A213','TX11','TX13','TX14','TX16','TX53','TX54')  ");
 
-            parameter.Add("GROUPCODE", cODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GROUPCODE", cODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_GROUPEXAM>(parameter);
         }
@@ -123,8 +123,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)                  ");
             parameter.AppendSql("   GROUP BY EXCODE                          ");
 
-            parameter.AddInStatement("EXCODE", argExcode, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.AddInStatement("GROUPCODE", argGroupcode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", argExcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GROUPCODE", argGroupcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_GROUPEXAM>(parameter);
         }

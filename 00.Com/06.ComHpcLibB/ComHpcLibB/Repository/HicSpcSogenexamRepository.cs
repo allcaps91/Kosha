@@ -26,7 +26,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_SogenExam   ");
             parameter.AppendSql(" WHERE SOGENCODE = :SOGENCODE          ");
 
-            parameter.Add("SOGENCODE", fstrCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SOGENCODE", fstrCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_SPC_SOGENEXAM>(parameter);
         }

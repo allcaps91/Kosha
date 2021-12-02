@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using ComDbB; //DB연결
 using System.Drawing.Printing;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using static ComBase.clsEmrFunc;
 using System.Collections.Generic;
 

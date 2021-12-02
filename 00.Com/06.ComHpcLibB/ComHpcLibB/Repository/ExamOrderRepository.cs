@@ -96,8 +96,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND MASTERCODE =:MASTERCODE                        ");
 
             parameter.Add("BDATE", argBDate);
-            parameter.Add("PANO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("BI", argBi, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("BI", argBi, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("MASTERCODE", argMasterCD);
 
             return ExecuteScalar<string>(parameter);

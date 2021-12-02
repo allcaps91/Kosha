@@ -9,7 +9,7 @@ using ComBase;
 using ComBase.Controls;
 using FarPoint.Win;
 using FarPoint.Win.Spread.CellType;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComEmrBase
 {

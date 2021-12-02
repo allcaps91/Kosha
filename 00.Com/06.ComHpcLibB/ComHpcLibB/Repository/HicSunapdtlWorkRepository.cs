@@ -133,7 +133,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ORDER BY CODE                                                 ");
 
             parameter.Add("PANO", argPano);
-            parameter.Add("GJJONG", argJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -183,13 +183,13 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("       (:WRTNO, :CODE, :UCODE, :AMT, :GBSELF, TO_DATE(:SUDATE, 'YYYY-MM-DD'), :PANO, :GJJONG)  ");
 
             parameter.Add("WRTNO", item.WRTNO);
-            parameter.Add("CODE", item.CODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("UCODE", item.UCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", item.CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("UCODE", item.UCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AMT", item.AMT);
             parameter.Add("GBSELF", item.GBSELF);
             parameter.Add("SUDATE", item.SUDATE);
             parameter.Add("PANO", item.PANO);
-            parameter.Add("GJJONG", item.GJJONG, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", item.GJJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -203,7 +203,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GJJONG = :GJJONG                    ");
 
             parameter.Add("PANO", argPaNo);
-            parameter.Add("GJJONG", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }

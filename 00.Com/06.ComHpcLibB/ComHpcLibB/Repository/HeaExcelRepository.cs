@@ -80,7 +80,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" GROUP BY KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE), LTDCODE      ");
             parameter.AppendSql(" ORDER BY KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE), LTDCODE      ");
 
-            parameter.Add("YEAR", argYYMM, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", argYYMM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_EXCEL>(parameter);
         }
@@ -323,7 +323,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  WHERE ROWID = :RID                                   ");
 
             parameter.Add("RDATE", item.RDATE);
-            parameter.Add("SEX", item.SEX, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SEX", item.SEX, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AGE", item.AGE);
             parameter.Add("MODIFIEDUSER", item.MODIFIEDUSER); 
             parameter.Add("RID", item.RID);
@@ -364,7 +364,7 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("   AND LTDCODE = :LTDCODE  ");
             }
 
-            parameter.Add("YEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", nLtdCode);
 
             return ExecuteReader<HEA_EXCEL>(parameter);
@@ -402,7 +402,7 @@ namespace ComHpcLibB.Repository
             }
             parameter.AppendSql(" ORDER BY SNAME, BIRTH                                                         ");
 
-            parameter.Add("YEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (nLtd != 0)
             {
                 parameter.Add("LTDCODE", nLtd);
@@ -415,7 +415,7 @@ namespace ComHpcLibB.Repository
                 
             if (strBirth != "")
             { 
-                parameter.Add("BIRTH", strBirth, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("BIRTH", strBirth, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HEA_EXCEL>(parameter);

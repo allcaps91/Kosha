@@ -13,7 +13,7 @@ using ComBase.Controls;
 using ComBase.Mvc;
 using FarPoint.Win.Spread;
 using FarPoint.Win.Spread.CellType;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComEmrBase
 {
@@ -5143,12 +5143,12 @@ namespace ComEmrBase
             mParameter.AppendSql("   WHERE ROW_NUM = 1                                                                                                                            ");
             mParameter.AppendSql("   ORDER BY RESULTDATE DESC                                                                                                                   ");
 
-            mParameter.Add("PANO", pAcp.ptNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            mParameter.Add("PANO", pAcp.ptNo, OracleDbType.Char);
             mParameter.Add("INDATE", DateTime.ParseExact(pAcp.medFrDate, "yyyyMMdd", null).ToString("yyyy-MM-dd"));
 
-            //mParameter.AddInStatement("SBCODE", CodeList.Keys.ToList(), Oracle.DataAccess.Client.OracleDbType.Char);
-            //mParameter.AddInStatement("EXAMNAME", CodeList.Keys.ToList(), Oracle.DataAccess.Client.OracleDbType.Char);
-            //mParameter.Add("EXAMNAME", CodeList.Keys.ToList(), Oracle.DataAccess.Client.OracleDbType.Char);
+            //mParameter.AddInStatement("SBCODE", CodeList.Keys.ToList(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            //mParameter.AddInStatement("EXAMNAME", CodeList.Keys.ToList(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            //mParameter.Add("EXAMNAME", CodeList.Keys.ToList(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             List<Dictionary<string, object>> dt = clsDB.ExecuteReader(mParameter, clsDB.DbCon);
             if (dt.Count == 0)

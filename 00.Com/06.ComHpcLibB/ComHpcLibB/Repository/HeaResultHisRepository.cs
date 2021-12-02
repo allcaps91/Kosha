@@ -34,7 +34,7 @@
             parameter.Add("SABUN", SABUN);
             parameter.Add("RESULT", RESULT.Replace("'", "`"));
             parameter.Add("WRTNO", WRTNO);
-            parameter.Add("EXCODE", EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -53,7 +53,7 @@
             parameter.Add("RESULT", RESULT.Replace("'", "`"));
             parameter.Add("ENTSABUN", ENTSABUN);
             parameter.Add("WRTNO", WRTNO);
-            parameter.Add("EXCODE", EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }

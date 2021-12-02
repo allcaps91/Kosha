@@ -20,7 +20,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("KOSMOS_PMPA.PC_HIC_WAIT_PATIENT_CLEAR");
 
             parameter.AddProcIn("IN_WRTNO", WRTNO);
-            parameter.AddProcIn("IN_ROOMCD", GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddProcIn("IN_ROOMCD", GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteProc(parameter); 
         }
@@ -37,8 +37,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND(GBCALL IS NULL or GBCALL = '')      ");
 
             parameter.Add("WRTNO", WRTNO);
-            //parameter.Add("GUBUN", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.AddInStatement("GUBUN", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+            //parameter.Add("GUBUN", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GUBUN", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -59,7 +59,7 @@ namespace ComHpcLibB.Repository
 
             if (!ROOMCD.IsNullOrEmpty() && ROOMCD != "ALL")
             {
-                parameter.Add("ROOMCD", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("ROOMCD", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             
             return ExecuteReader<HEA_SANGDAM_WAIT>(parameter);
@@ -81,7 +81,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", WRTNO);
             if (!ROOMCD.IsNullOrEmpty())
             {
-                parameter.Add("ROOMCD", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("ROOMCD", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HEA_SANGDAM_WAIT>(parameter);
@@ -101,7 +101,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", nWrtNo);
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.AddInStatement("GUBUN", strEndo_Room, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GUBUN", strEndo_Room, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -120,7 +120,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", nWrtNo);
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.AddInStatement("GUBUN", strEndo_Room, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GUBUN", strEndo_Room, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -151,7 +151,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND(GBCALL IS NULL or GBCALL = '')  ");
 
             parameter.Add("WRTNO", WRTNO);
-            parameter.Add("GUBUN", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -166,7 +166,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN   = :GUBUN                ");
 
             parameter.Add("WRTNO", strPtNo);
-            parameter.Add("GUBUN", eNDO_ROOM, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", eNDO_ROOM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -181,7 +181,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN   = :GUBUN                ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("GUBUN", dENT_ROOM, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", dENT_ROOM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -198,7 +198,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.Add("GUBUN", strRoom, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strRoom, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -215,7 +215,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.Add("GUBUN", strRoom, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strRoom, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("WRTNO", nWrtNo);
 
             return ExecuteReaderSingle<HEA_SANGDAM_WAIT>(parameter);
@@ -230,7 +230,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN   = :GUBUN                ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -246,7 +246,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CallTime>=TRUNC(SYSDATE)        ");
             
             parameter.Add("WRTNO", nWrtNo);
-            parameter.AddInStatement("GUBUN", strACT_SET_Data, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GUBUN", strACT_SET_Data, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -261,7 +261,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("GBCALL", strGbCall);
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -279,7 +279,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -337,7 +337,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ORDER BY ENTTIME DESC                         ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.AddInStatement("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -353,7 +353,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND WRTNO <> :WRTNO                 ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("GUBUN", dENT_ROOM, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", dENT_ROOM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -383,7 +383,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBCALL IS NULL                                                      ");
             parameter.AppendSql(" ORDER BY WAITNO                                                           ");
 
-            parameter.Add("GUBUN", eNDO_ROOM, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", eNDO_ROOM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -398,9 +398,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , CALLTIME = :CALLTIME                ");
             parameter.AppendSql(" WHERE ROWID    = :RID                     ");
 
-            parameter.Add("GBENDO", item.GBENDO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBENDO", item.GBENDO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("WAITNO", item.WAITNO);
-            parameter.Add("GBCALL", item.GBCALL, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBCALL", item.GBCALL, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("CALLTIME", item.CALLTIME);
             parameter.Add("RID", item.RID);
 
@@ -420,7 +420,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ORDER BY WAITNO                                               ");
 
             //parameter.Add("ENTTIME", strSysDate);
-            parameter.Add("ENDO_ROOM", eNDO_ROOM, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ENDO_ROOM", eNDO_ROOM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -452,7 +452,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WAITNO", nWait);
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("GUBUN", eNDO_ROOM, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", eNDO_ROOM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -480,10 +480,10 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", item.WRTNO);
             parameter.Add("SNAME", item.SNAME);
-            parameter.Add("SEX", item.SEX, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SEX", item.SEX, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AGE", item.AGE);
-            parameter.Add("GJJONG", item.GJJONG, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GUBUN", item.GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", item.GJJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", item.GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("WAITNO", item.WAITNO);
 
             return ExecuteNonQuery(parameter);
@@ -499,12 +499,12 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", item.WRTNO);
             parameter.Add("SNAME", item.SNAME);
-            parameter.Add("SEX", item.SEX, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SEX", item.SEX, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AGE", item.AGE);
-            parameter.Add("GJJONG", item.GJJONG, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GUBUN", item.GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", item.GJJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", item.GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("WAITNO", item.WAITNO);
-            parameter.Add("GBENDO", item.GBENDO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBENDO", item.GBENDO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -531,12 +531,12 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", item.WRTNO);
             parameter.Add("SNAME", item.SNAME);
-            parameter.Add("SEX", item.SEX, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SEX", item.SEX, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AGE", item.AGE);
-            parameter.Add("GJJONG", item.GJJONG, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GUBUN", item.GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", item.GJJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", item.GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("WAITNO", item.WAITNO);
-            parameter.Add("ENTGUBUN", item.ENTGUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ENTGUBUN", item.ENTGUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -549,7 +549,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                              ");
             parameter.AppendSql("   AND ENTTIME >= TO_DATE(:TODATE, 'YYYY-MM-DD')   ");
 
-            parameter.Add("GUBUN", eNDO_ROOM, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", eNDO_ROOM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("TODATE", strSysDate);
 
             return ExecuteScalar<long>(parameter);
@@ -564,7 +564,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN  IN (:GUBUN)                  ");
 
             parameter.Add("WRTNO", WRTNO);
-            parameter.AddInStatement("GUBUN", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GUBUN", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -584,7 +584,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", WRTNO);
             if (!ROOMCD.IsNullOrEmpty())
             {
-                parameter.Add("ROOMCD", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("ROOMCD", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HEA_SANGDAM_WAIT>(parameter);
@@ -604,7 +604,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", WRTNO);
             if (ROOMCD != "")
             {
-                parameter.Add("ROOMCD", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("ROOMCD", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteNonQuery(parameter);
@@ -622,11 +622,11 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", item.WRTNO);
             parameter.Add("SNAME", item.SNAME);
-            parameter.Add("SEX", item.SEX, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SEX", item.SEX, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AGE", item.AGE);
-            parameter.Add("GJJONG", item.GJJONG, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBCALL", item.GBCALL, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GUBUN", item.GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", item.GJJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBCALL", item.GBCALL, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", item.GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("WAITNO", item.WAITNO);
 
             return ExecuteNonQuery(parameter);
@@ -644,10 +644,10 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", item.WRTNO);
             parameter.Add("SNAME", item.SNAME);
-            parameter.Add("SEX", item.SEX, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SEX", item.SEX, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AGE", item.AGE);
-            parameter.Add("GJJONG", item.GJJONG, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GUBUN", item.GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", item.GJJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", item.GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("WAITNO", item.WAITNO);
             return ExecuteNonQuery(parameter);
         }
@@ -664,10 +664,10 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", item.WRTNO);
             parameter.Add("SNAME", item.SNAME);
-            parameter.Add("SEX", item.SEX, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SEX", item.SEX, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AGE", item.AGE);
-            parameter.Add("GJJONG", item.GJJONG, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GUBUN", item.GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", item.GJJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", item.GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("WAITNO", item.WAITNO);
             return ExecuteNonQuery(parameter);
         }
@@ -680,7 +680,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                      ");
             parameter.AppendSql("   AND trunc(ENTTIME) >= trunc(SYSDATE)    ");
 
-            parameter.Add("GUBUN", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -699,7 +699,7 @@ namespace ComHpcLibB.Repository
             }
             parameter.AppendSql(" ORDER By WaitNo                           ");
 
-            parameter.Add("GUBUN", PART, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", PART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -714,7 +714,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND trunc(ENTTIME) >= trunc(SYSDATE)    ");
 
             parameter.Add("WRTNO", WRTNO);
-            parameter.Add("GUBUN", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -730,7 +730,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND (GBCALL IS NULL OR GBCALL = '')                 ");
 
             parameter.Add("WRTNO", WRTNO);
-            parameter.Add("GUBUN", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -744,7 +744,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBCALL IS NULL                  ");
 
             parameter.Add("WRTNO", WRTNO);
-            parameter.Add("ROOMCD", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ROOMCD", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -771,7 +771,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql("   AND trunc(ENTTIME) >= trunc(SYSDATE) ");
 
-            parameter.Add("GUBUN", GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -786,7 +786,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND (GBCALL IS NULL OR GBCALL = '') ");
             parameter.AppendSql(" ORDER By ENTTIME                      ");
 
-            parameter.Add("ROOMCD", ROOMCD, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ROOMCD", ROOMCD, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_SANGDAM_WAIT>(parameter);
         }
@@ -800,7 +800,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND trunc(ENTTIME) >= trunc(SYSDATE)");
             parameter.AppendSql("   AND(GBCALL IS NULL OR GBCALL = '')  ");
 
-            parameter.Add("GUBUN", GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_SANGDAM_WAIT>(parameter);
         }

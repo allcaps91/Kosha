@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND a.DeptCode IN ('HR','TO')                                                                       "); //건진,종검
             parameter.AppendSql("   AND a.GbSunap IN ('1','7')                                                                          ");
 
-            parameter.Add("PTNO", argPTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JDATE", argJepDate);
 
             return ExecuteReader<ENDO_JUPMST_RESULT>(parameter);
