@@ -46,9 +46,6 @@ namespace HC_Measurement
         private void SetControl()
         {
             cSpd = new clsSpread();
-            
-
-
         }
 
         void Screen_Display(long nWRTNO)
