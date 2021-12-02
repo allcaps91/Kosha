@@ -1,0 +1,711 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{96B3F25C-E1CC-40BF-9B28-5B3B3D0F1110}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HC_Student</RootNamespace>
+    <AssemblyName>HC_Student</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\PSMHEXE\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>HC_Student.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ComBase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5fd482dfae3e94e4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\Debug\ComBase.dll</HintPath>
+    </Reference>
+    <Reference Include="ComDbB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e6ce98bd00a5c45b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\Debug\ComDbB.dll</HintPath>
+    </Reference>
+    <Reference Include="ComEmrLibB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f65b1913726397f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\Debug\ComEmrLibB.dll</HintPath>
+    </Reference>
+    <Reference Include="ComHpcLibB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=72d1ae2000e2d89f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\Debug\ComHpcLibB.dll</HintPath>
+    </Reference>
+    <Reference Include="ComLibB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ddd7957e79a043b1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\Debug\ComLibB.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.CalcEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Excel, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Localization, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.PDF, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.PDF.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.PluginCalendar.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.Chart, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.Win.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.Spread, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.Win.Spread.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.Spread.Design, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.Win.Spread.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.Win.PluginInputMan, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\GrapeCity.Win.PluginInputMan.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\oracle\product\11.2.0\client_1\ODP.NET\bin\2.x\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="HC_Student.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="class\" />
+    <Folder Include="Dto\" />
+    <Folder Include="form\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\end.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Frame1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Frame2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Frame3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Frame4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Frame5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Frame6.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Frame7.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Frame8.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Guide.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Guide2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Score.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\보호.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\직인.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\통합환자정보.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\해외.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComEmrBase\ComEmrBase.csproj">
+      <Project>{58342dc4-90ad-47da-b4a4-b055b43107b0}</Project>
+      <Name>ComEmrBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

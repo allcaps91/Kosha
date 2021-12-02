@@ -1,0 +1,5 @@
+C:\PSMH\08.HPC\HC_OSHA_LOCALDB\obj\Debug\HC_OSHA_LOCALDB.csprojAssemblyReference.cache
+C:\PSMH\08.HPC\HC_OSHA_LOCALDB\obj\Debug\HC_OSHA_LOCALDB.Login.resources
+C:\PSMH\08.HPC\HC_OSHA_LOCALDB\obj\Debug\HC_OSHA_LOCALDB.Properties.Resources.resources
+C:\PSMH\08.HPC\HC_OSHA_LOCALDB\obj\Debug\HC_OSHA_LOCALDB.csproj.GenerateResource.cache
+C:\PSMH\08.HPC\HC_OSHA_LOCALDB\obj\Debug\HC_OSHA_LOCALDB.csproj.CoreCompileInputs.cache

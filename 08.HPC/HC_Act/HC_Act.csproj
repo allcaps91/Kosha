@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{458BFD02-59A0-4177-9396-E15CA8778A91}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HC_Act</RootNamespace>
+    <AssemblyName>HC_Act</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>게시\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\PSMHEXE\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>HC_Act.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BarcodeLib, Version=1.0.0.19, Culture=neutral, PublicKeyToken=57d99793dcacf06c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\exenet\BarcodeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ComEmrBase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f236795d73d52484, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\Debug\ComEmrBase.dll</HintPath>
+    </Reference>
+    <Reference Include="ComLibB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ddd7957e79a043b1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\Debug\ComLibB.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.Layout, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Excel, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Localization, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PDF, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Chart, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.Win.PluginInputMan, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\exenet\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmCounselMissCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmCounselMissCheck.Designer.cs">
+      <DependentUpon>frmCounselMissCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHaCounselSeqReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHaCounselSeqReg.Designer.cs">
+      <DependentUpon>frmHaCounselSeqReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHaEndoSeqReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHaEndoSeqReg.Designer.cs">
+      <DependentUpon>frmHaEndoSeqReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHaEndoWaitSeq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHaEndoWaitSeq.Designer.cs">
+      <DependentUpon>frmHaEndoWaitSeq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHaResultAutoSend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHaResultAutoSend.Designer.cs">
+      <DependentUpon>frmHaResultAutoSend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHaStressExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHaStressExam.Designer.cs">
+      <DependentUpon>frmHaStressExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHaAct1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHaAct1.Designer.cs">
+      <DependentUpon>frmHaAct1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcAct1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcAct1.Designer.cs">
+      <DependentUpon>frmHcAct1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcActExamRoomStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcActExamRoomStatus.Designer.cs">
+      <DependentUpon>frmHcActExamRoomStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcActMemoSave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcActMemoSave.Designer.cs">
+      <DependentUpon>frmHcActMemoSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcActMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcActMain.Designer.cs">
+      <DependentUpon>frmHcActMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcActRemarkMgmt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcActRemarkMgmt.Designer.cs">
+      <DependentUpon>frmHcActRemarkMgmt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcAdmin_Job.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcAdmin_Job.Designer.cs">
+      <DependentUpon>frmHcAdmin_Job.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcExamJepsu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcExamJepsu.Designer.cs">
+      <DependentUpon>frmHcExamJepsu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcExResultSend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcExResultSend.Designer.cs">
+      <DependentUpon>frmHcExResultSend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcGuide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcGuide.Designer.cs">
+      <DependentUpon>frmHcGuide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHicPcSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHicPcSet.Designer.cs">
+      <DependentUpon>frmHicPcSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmRoomNoSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmRoomNoSet.Designer.cs">
+      <DependentUpon>frmRoomNoSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmSONOReservedList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmSONOReservedList.Designer.cs">
+      <DependentUpon>frmSONOReservedList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmXrayAutoActing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmXrayAutoActing.Designer.cs">
+      <DependentUpon>frmXrayAutoActing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmCounselMissCheck.resx">
+      <DependentUpon>frmCounselMissCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHaCounselSeqReg.resx">
+      <DependentUpon>frmHaCounselSeqReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHaEndoSeqReg.resx">
+      <DependentUpon>frmHaEndoSeqReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHaEndoWaitSeq.resx">
+      <DependentUpon>frmHaEndoWaitSeq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHaResultAutoSend.resx">
+      <DependentUpon>frmHaResultAutoSend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHaStressExam.resx">
+      <DependentUpon>frmHaStressExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHaAct1.resx">
+      <DependentUpon>frmHaAct1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcAct1.resx">
+      <DependentUpon>frmHcAct1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcActExamRoomStatus.resx">
+      <DependentUpon>frmHcActExamRoomStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcActMemoSave.resx">
+      <DependentUpon>frmHcActMemoSave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcActMain.resx">
+      <DependentUpon>frmHcActMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcActRemarkMgmt.resx">
+      <DependentUpon>frmHcActRemarkMgmt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcAdmin_Job.resx">
+      <DependentUpon>frmHcAdmin_Job.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcExamJepsu.resx">
+      <DependentUpon>frmHcExamJepsu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcExResultSend.resx">
+      <DependentUpon>frmHcExResultSend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcGuide.resx">
+      <DependentUpon>frmHcGuide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHicPcSet.resx">
+      <DependentUpon>frmHicPcSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmRoomNoSet.resx">
+      <DependentUpon>frmRoomNoSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmSONOReservedList.resx">
+      <DependentUpon>frmSONOReservedList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmXrayAutoActing.resx">
+      <DependentUpon>frmXrayAutoActing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="HC_Act.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="class\" />
+    <Folder Include="Dto\" />
+    <Folder Include="Model\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComBase\ComBase.csproj">
+      <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
+      <Name>ComBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\05.ComSupLibB\ComSupLibB\ComSupLibB.csproj">
+      <Project>{2aa595ba-00eb-4a2f-99ac-e7e2347897f7}</Project>
+      <Name>ComSupLibB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\06.ComHpcLibB\ComHpcLibB\ComHpcLibB.csproj">
+      <Project>{9748399a-1223-4361-b341-2bc620eb7b2f}</Project>
+      <Name>ComHpcLibB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Guide.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Guide2.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

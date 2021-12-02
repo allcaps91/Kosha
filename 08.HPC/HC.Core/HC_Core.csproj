@@ -1,0 +1,968 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{64291242-9FF4-4F20-BC59-5235B9B7463B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HC_Core</RootNamespace>
+    <AssemblyName>HC_Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\PSMHEXE\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>HC_Core.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CefSharp">
+      <HintPath>..\..\..\PSMHEXE\exenet\CefSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Core">
+      <HintPath>..\..\..\PSMHEXE\exenet\CefSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.WinForms">
+      <HintPath>..\..\..\PSMHEXE\exenet\CefSharp.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Excel, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Localization, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.PDF, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Win, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Win.Chart, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Win.Spread, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.Win.PluginInputMan, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\PSMHEXE\exenet\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\exenet\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\..\PSMHEXE\exenet\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoCompleteMacro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AutoCompleteMacro.Designer.cs">
+      <DependentUpon>AutoCompleteMacro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AutoCompleteCode.cs" />
+    <Compile Include="Model\AutoCompleteFeeModel.cs" />
+    <Compile Include="Dto\BaseCode\HIC_USERSIGN.cs" />
+    <Compile Include="Dto\DataSync\DataSyncDto.cs" />
+    <Compile Include="Dto\HC_SITE_WORKER.cs" />
+    <Compile Include="form\SiteWorkerPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\SiteWorkerPopupForm.Designer.cs">
+      <DependentUpon>SiteWorkerPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataSync\DataSyncModel.cs" />
+    <Compile Include="Model\DataSync\DbLinkModel.cs" />
+    <Compile Include="Model\DataSync\HIC_JEPSU_MODEL.cs" />
+    <Compile Include="Model\DataSync\SequenceModel.cs" />
+    <Compile Include="form\SignPad\SignPadBound.cs" />
+    <Compile Include="form\SignPad\SignPadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\SignPad\SignPadForm.Designer.cs">
+      <DependentUpon>SignPadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HealthCare\ExResultModel.cs" />
+    <Compile Include="Model\HealthCare\ExResult_WRTNO_Model.cs" />
+    <Compile Include="Model\HealthCare\HealthCarePatientModel.cs" />
+    <Compile Include="Model\HealthCare\HealthCareReciptModel.cs" />
+    <Compile Include="Model\HealthCare\HealthCareResultModel.cs" />
+    <Compile Include="Model\HealthCare\PatientModel.cs" />
+    <Compile Include="Model\PrintSignModel.cs" />
+    <Compile Include="Repository\BaseCode\HcUserSignRepository.cs" />
+    <Compile Include="Repository\DataSync\DataSyncRepository.cs" />
+    <Compile Include="Repository\HcSiteWorkerRepository.cs" />
+    <Compile Include="Repository\HealthCare\ExResultRepository.cs" />
+    <Compile Include="Repository\HealthCare\HealthCarePatientRepository.cs" />
+    <Compile Include="Repository\HealthCare\HealthCareReceiptRepository.cs" />
+    <Compile Include="Service\DataSync\DataSyncService.cs" />
+    <Compile Include="Service\HcSiteWorkerService.cs" />
+    <Compile Include="Service\HealthCare\HealthCareReceiptService.cs" />
+    <Compile Include="Service\HealthCare\HealthCareService.cs" />
+    <Compile Include="Service\Session.cs" />
+    <Compile Include="Dto\BaseCode\HC_CODE.cs" />
+    <Compile Include="Dto\BaseCode\HC_USERS.cs" />
+    <Compile Include="Dto\BaseCode\HC_VIEW_USER.cs" />
+    <Compile Include="Dto\MacroWord\MacrowordDto.cs" />
+    <Compile Include="Dto\TaskHistory.cs" />
+    <Compile Include="Dto\TreeViewItem.cs" />
+    <Compile Include="form\Macroword\MacrowordCkEditorBound.cs" />
+    <Compile Include="form\Macroword\MacrowordCkeditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Macroword\MacrowordCkeditorForm.Designer.cs">
+      <DependentUpon>MacrowordCkeditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Macroword\MacrowordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Macroword\MacrowordForm.Designer.cs">
+      <DependentUpon>MacrowordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\TaskHistoryList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="form\TaskHistoryList.Designer.cs">
+      <DependentUpon>TaskHistoryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BaseCode\KoshaMsds.cs" />
+    <Compile Include="Model\TaskHistoryModel.cs" />
+    <Compile Include="Repository\BaseCode\HcCodeRepository.cs" />
+    <Compile Include="Repository\BaseCode\HcUsersRepository.cs" />
+    <Compile Include="Repository\BaseCode\HcViewUserRepository.cs" />
+    <Compile Include="Repository\Macroword\MacrowordRepository.cs" />
+    <Compile Include="Repository\TaskHistoryRepository.cs" />
+    <Compile Include="Service\BaseCode\HcCodeService.cs" />
+    <Compile Include="Service\BaseCode\HcUserService.cs" />
+    <Compile Include="Service\BaseCode\HcViewUserService.cs" />
+    <Compile Include="Service\BaseCode\KoshaMsdsService.cs" />
+    <Compile Include="form\BaseCode\GroupCodeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\BaseCode\GroupCodeForm.Designer.cs">
+      <DependentUpon>GroupCodeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\BaseCode\MsdsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\BaseCode\MsdsForm.Designer.cs">
+      <DependentUpon>MsdsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\BaseCode\SortSeqCellType.cs" />
+    <Compile Include="form\BaseCode\UserManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\BaseCode\UserManagerForm.Designer.cs">
+      <DependentUpon>UserManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\BaseCode\CodeManaerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\BaseCode\CodeManaerForm.Designer.cs">
+      <DependentUpon>CodeManaerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\BaseCode\HC_MSDS.cs" />
+    <Compile Include="Repository\BaseCode\HcMsdsRepository.cs" />
+    <Compile Include="Service\BaseCode\HcMsdsService.cs" />
+    <Compile Include="Common\Extension\DateTimeExtension.cs" />
+    <Compile Include="Common\Interface\IPrint.cs" />
+    <Compile Include="Common\Util\SpreadPrint.cs" />
+    <Compile Include="Service\CommonService.cs" />
+    <Compile Include="form\CommonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\CommonForm.Designer.cs">
+      <DependentUpon>CommonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\HcSiteViewRepository.cs" />
+    <Compile Include="Service\HcSiteViewService.cs" />
+    <Compile Include="form\SiteListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\SiteListForm.Designer.cs">
+      <DependentUpon>SiteListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\LogService.cs" />
+    <Compile Include="Service\Macroword\MacrowordService.cs" />
+    <Compile Include="UI_Guide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI_Guide.Designer.cs">
+      <DependentUpon>UI_Guide.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AutoCompleteMacro.resx">
+      <DependentUpon>AutoCompleteMacro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\BaseCode\GroupCodeForm.resx">
+      <DependentUpon>GroupCodeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\BaseCode\MsdsForm.resx">
+      <DependentUpon>MsdsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\BaseCode\UserManagerForm.resx">
+      <DependentUpon>UserManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\BaseCode\CodeManaerForm.resx">
+      <DependentUpon>CodeManaerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\CommonForm.resx">
+      <DependentUpon>CommonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Macroword\MacrowordCkeditorForm.resx">
+      <DependentUpon>MacrowordCkeditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Macroword\MacrowordForm.resx">
+      <DependentUpon>MacrowordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\SignPad\SignPadForm.resx">
+      <DependentUpon>SignPadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\SiteWorkerPopupForm.resx">
+      <DependentUpon>SiteWorkerPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\TaskHistoryList.resx">
+      <DependentUpon>TaskHistoryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\SiteListForm.resx">
+      <DependentUpon>SiteListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI_Guide.resx">
+      <DependentUpon>UI_Guide.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\dojang.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\engineerCkeditor.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\jquery-3.4.1.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\az.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\de-ch.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\en-au.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\es-mx.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\oc.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Resources\html\js\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Resources\html\js\plugins\about\dialogs\about.js" />
+    <Content Include="Resources\html\js\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Resources\html\js\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Resources\html\js\plugins\base64image\dialogs\base64image.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\icons\base64image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\icons\hidpi\base64image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\af.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\ar.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\bg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\bn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\bs.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\cs.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\cy.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\da.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\de.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\el.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\en-au.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\en-ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\en-gb.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\en.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\eo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\es.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\et.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\eu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\fa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\fi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\fo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\fr-ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\fr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\gl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\gu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\he.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\hi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\hr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\hu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\id.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\is.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\it.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\ja.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\ka.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\km.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\ko.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\ku.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\lt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\lv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\mk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\mn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\ms.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\nb.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\nl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\no.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\pl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\pt-br.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\pt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\ro.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\ru.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\si.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\sk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\sl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\sq.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\sr-latn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\sr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\sv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\th.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\tr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\ug.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\uk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\vi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\zh-cn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\lang\zh.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\base64image\plugin.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\clipboard\dialogs\paste.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\dialog\dialogDefinition.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\dialog\justify\icons\hidpi\justifyblock.png" />
+    <Content Include="Resources\html\js\plugins\dialog\justify\icons\hidpi\justifycenter.png" />
+    <Content Include="Resources\html\js\plugins\dialog\justify\icons\hidpi\justifyleft.png" />
+    <Content Include="Resources\html\js\plugins\dialog\justify\icons\hidpi\justifyright.png" />
+    <Content Include="Resources\html\js\plugins\dialog\justify\icons\justifyblock.png" />
+    <Content Include="Resources\html\js\plugins\dialog\justify\icons\justifycenter.png" />
+    <Content Include="Resources\html\js\plugins\dialog\justify\icons\justifyleft.png" />
+    <Content Include="Resources\html\js\plugins\dialog\justify\icons\justifyright.png" />
+    <Content Include="Resources\html\js\plugins\dialog\justify\plugin.js" />
+    <Content Include="Resources\html\js\plugins\dialog\styles\dialog.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\icons.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\icons_hidpi.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\image\dialogs\image.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\image\images\noimage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\justify\icons\hidpi\justifyblock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\justify\icons\hidpi\justifycenter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\justify\icons\hidpi\justifyleft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\justify\icons\hidpi\justifyright.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\justify\icons\justifyblock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\justify\icons\justifycenter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\justify\icons\justifyleft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\justify\icons\justifyright.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\justify\plugin.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\link\dialogs\anchor.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\link\dialogs\link.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\link\images\anchor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\link\images\hidpi\anchor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\magicline\images\hidpi\icon-rtl.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\magicline\images\hidpi\icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\magicline\images\icon-rtl.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\magicline\images\icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\opinion\icons\hidpi\templates.png" />
+    <Content Include="Resources\html\js\plugins\opinion\icons\opinion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\opinion\plugin.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\pastefromgdocs\filter\default.js" />
+    <Content Include="Resources\html\js\plugins\pastefromword\filter\default.js" />
+    <Content Include="Resources\html\js\plugins\pastetools\filter\common.js" />
+    <Content Include="Resources\html\js\plugins\resize\plugin.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\scayt\dialogs\dialog.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\scayt\dialogs\options.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\scayt\dialogs\toolbar.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\scayt\skins\moono-lisa\scayt.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\az.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\en-au.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\en-ca.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\es-mx.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\oc.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\ro.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\sr-latn.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\sr.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Resources\html\js\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Resources\html\js\plugins\tableresizerowandcolumn\dev\tableresize.html" />
+    <Content Include="Resources\html\js\plugins\tableresizerowandcolumn\plugin.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\tableresizerowandcolumn\samples\tableresize.html" />
+    <Content Include="Resources\html\js\plugins\tableresize\dev\tableresize.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\tableresize\plugin.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\tableresize\samples\tableresize.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\tableselection\styles\tableselection.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\tabletools\dialogs\tableCell.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\table\dialogs\table.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\widget\images\handle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\wsc\dialogs\ciframe.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\wsc\dialogs\tmpFrameset.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\wsc\dialogs\wsc.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\wsc\dialogs\wsc.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\wsc\dialogs\wsc_ie.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\plugins\wsc\skins\moono-lisa\wsc.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\signature.css" />
+    <Content Include="Resources\html\js\signature.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\signature_pad.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\dialog.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\dialog_ie.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\dialog_ie8.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\dialog_iequirks.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\editor.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\editor_gecko.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\editor_ie.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\editor_ie8.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\editor_iequirks.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\icons.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\icons_hidpi.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\images\arrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\images\close.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\images\hidpi\close.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\images\hidpi\lock-open.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\images\hidpi\lock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\images\hidpi\refresh.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\images\lock-open.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\images\lock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\images\refresh.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\skins\moono-lisa\images\spinner.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\statusReport.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\statusReportByDoctor.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\statusReportByEngineer.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\statusReportByNurse.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\styles.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\macroCkeditor.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\nurseCkeditor.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\opinion.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\print.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\signpad.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\statusReportByDoctor.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\statusReportByEngineer.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\statusReportByNurse.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="HC_Core.snk" />
+    <None Include="Resources\dmp\osha_export_schema.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\html\js\plugins\base64image\LICENSE.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\html\js\plugins\base64image\README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\html\js\plugins\scayt\CHANGELOG.md" />
+    <None Include="Resources\html\js\plugins\scayt\LICENSE.md" />
+    <None Include="Resources\html\js\plugins\scayt\README.md" />
+    <None Include="Resources\html\js\plugins\wsc\LICENSE.md" />
+    <None Include="Resources\html\js\plugins\wsc\README.md" />
+    <None Include="Resources\html\js\skins\moono-lisa\readme.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\GHS05.gif" />
+    <None Include="Resources\GHS06.gif" />
+    <None Include="Resources\GHS07.gif" />
+    <None Include="Resources\GHS08.gif" />
+    <None Include="Resources\GHS09.gif" />
+    <None Include="Resources\GHS01.gif" />
+    <None Include="Resources\GHS02.gif" />
+    <None Include="Resources\GHS03.gif" />
+    <None Include="Resources\GHS04.gif" />
+    <Content Include="Resources\html\ckeditor.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\bootstrap.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\ckeditor.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\config.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\contents.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\lang\en.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\lang\ko.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\moment.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\sample.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\html\js\schedule.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\html\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\html\bootstrap.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\dmp\osha_export.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\견적서.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dto\HealthCare\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComBase\ComBase.csproj">
+      <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
+      <Name>ComBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\06.ComHpcLibB\ComHpcLibB\ComHpcLibB.csproj">
+      <Project>{9748399a-1223-4361-b341-2bc620eb7b2f}</Project>
+      <Name>ComHpcLibB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

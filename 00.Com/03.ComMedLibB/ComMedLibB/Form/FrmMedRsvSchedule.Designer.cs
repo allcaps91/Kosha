@@ -1,0 +1,641 @@
+﻿namespace ComMedLibB
+{
+    partial class FrmMedRsvSchedule
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            FarPoint.Win.Spread.EnhancedFocusIndicatorRenderer enhancedFocusIndicatorRenderer1 = new FarPoint.Win.Spread.EnhancedFocusIndicatorRenderer();
+            FarPoint.Win.Spread.EnhancedScrollBarRenderer enhancedScrollBarRenderer1 = new FarPoint.Win.Spread.EnhancedScrollBarRenderer();
+            FarPoint.Win.Spread.EnhancedScrollBarRenderer enhancedScrollBarRenderer2 = new FarPoint.Win.Spread.EnhancedScrollBarRenderer();
+            System.Globalization.CultureInfo cultureInfo = new System.Globalization.CultureInfo("ko-KR", false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMedRsvSchedule));
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblDoctor = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtilsu = new System.Windows.Forms.TextBox();
+            this.ssSchedule = new FarPoint.Win.Spread.FpSpread();
+            this.ssSchedule_Sheet1 = new FarPoint.Win.Spread.SheetView();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ssSchedule)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ssSchedule_Sheet1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTitle.Location = new System.Drawing.Point(4, 3);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(134, 21);
+            this.lblTitle.TabIndex = 5;
+            this.lblTitle.Text = "예약 스케줄 조회";
+            // 
+            // lblDoctor
+            // 
+            this.lblDoctor.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lblDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblDoctor.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblDoctor.ForeColor = System.Drawing.Color.White;
+            this.lblDoctor.Location = new System.Drawing.Point(6, 32);
+            this.lblDoctor.Name = "lblDoctor";
+            this.lblDoctor.Size = new System.Drawing.Size(976, 37);
+            this.lblDoctor.TabIndex = 6;
+            this.lblDoctor.Text = "MN.김용섭 과장 외래 예약 스케쥴 조회";
+            this.lblDoctor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.BackColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(1168, 34);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(72, 30);
+            this.btnExit.TabIndex = 28;
+            this.btnExit.Text = "닫기";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.BackColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(1090, 34);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(72, 30);
+            this.btnSearch.TabIndex = 29;
+            this.btnSearch.Text = "조회";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtilsu);
+            this.groupBox1.Location = new System.Drawing.Point(987, 25);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(66, 45);
+            this.groupBox1.TabIndex = 30;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "일수";
+            // 
+            // txtilsu
+            // 
+            this.txtilsu.Location = new System.Drawing.Point(7, 16);
+            this.txtilsu.Name = "txtilsu";
+            this.txtilsu.Size = new System.Drawing.Size(53, 21);
+            this.txtilsu.TabIndex = 0;
+            this.txtilsu.Text = "120";
+            this.txtilsu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ssSchedule
+            // 
+            this.ssSchedule.AccessibleDescription = "ssSchedule, Sheet1, Row 0, Column 0, ";
+            this.ssSchedule.FocusRenderer = enhancedFocusIndicatorRenderer1;
+            this.ssSchedule.HorizontalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
+            this.ssSchedule.HorizontalScrollBar.Name = "";
+            this.ssSchedule.HorizontalScrollBar.Renderer = enhancedScrollBarRenderer1;
+            this.ssSchedule.HorizontalScrollBar.TabIndex = 22;
+            this.ssSchedule.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
+            this.ssSchedule.Location = new System.Drawing.Point(6, 76);
+            this.ssSchedule.Name = "ssSchedule";
+            this.ssSchedule.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
+            this.ssSchedule_Sheet1});
+            this.ssSchedule.Size = new System.Drawing.Size(1235, 442);
+            this.ssSchedule.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Office2007;
+            this.ssSchedule.TabIndex = 31;
+            this.ssSchedule.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
+            this.ssSchedule.VerticalScrollBar.Name = "";
+            this.ssSchedule.VerticalScrollBar.Renderer = enhancedScrollBarRenderer2;
+            this.ssSchedule.VerticalScrollBar.TabIndex = 23;
+            this.ssSchedule.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
+            // 
+            // ssSchedule_Sheet1
+            // 
+            this.ssSchedule_Sheet1.Reset();
+            this.ssSchedule_Sheet1.SheetName = "Sheet1";
+            // Formulas and custom names must be loaded with R1C1 reference style
+            this.ssSchedule_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1;
+            this.ssSchedule_Sheet1.RowCount = 55;
+            this.ssSchedule_Sheet1.Cells.Get(0, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(1, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 0).Value = "요일";
+            this.ssSchedule_Sheet1.Cells.Get(2, 1).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 1).Value = "월";
+            this.ssSchedule_Sheet1.Cells.Get(2, 2).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 2).Value = "화";
+            this.ssSchedule_Sheet1.Cells.Get(2, 3).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 3).Value = "수";
+            this.ssSchedule_Sheet1.Cells.Get(2, 4).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 4).Value = "목";
+            this.ssSchedule_Sheet1.Cells.Get(2, 5).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 5).Value = "금";
+            this.ssSchedule_Sheet1.Cells.Get(2, 6).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 7).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 8).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 9).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 10).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 11).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 12).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 13).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 14).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 15).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 16).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 17).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 18).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 19).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 20).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 21).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 22).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 23).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 24).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 25).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 26).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 27).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 28).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 29).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 30).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 31).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 32).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 33).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 34).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 35).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 36).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 37).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 38).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 39).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 40).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 41).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 42).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 43).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 44).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 45).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 46).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 47).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 48).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(2, 49).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 0).Value = "스케쥴(AM)";
+            this.ssSchedule_Sheet1.Cells.Get(3, 1).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 2).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 3).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 4).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 5).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 6).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 7).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 8).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 9).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 10).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 11).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 12).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 13).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 14).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 15).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 16).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 17).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 18).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 19).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 20).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 21).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 22).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 23).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 24).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 25).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 26).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 27).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 28).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 29).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 30).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 31).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 32).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 33).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 34).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 35).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 36).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 37).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 38).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 39).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 40).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 41).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 42).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 43).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 44).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 45).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 46).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 47).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 48).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(3, 49).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 0).Value = "스케쥴(PM)";
+            this.ssSchedule_Sheet1.Cells.Get(4, 1).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 2).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 3).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 4).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 5).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 6).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 7).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 8).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 9).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 10).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 11).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 12).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 13).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 14).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 15).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 16).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 17).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 18).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 19).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 20).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 21).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 22).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 23).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 24).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 25).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 26).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 27).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 28).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 29).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 30).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 31).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 32).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 33).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 34).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 35).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 36).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 37).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 38).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 39).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 40).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 41).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 42).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 43).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 44).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 45).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 46).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 47).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 48).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(4, 49).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Cells.Get(5, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(5, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(5, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(5, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(5, 0).Value = new System.DateTime(2017, 10, 11, 9, 0, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(6, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(6, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(6, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(6, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(6, 0).Value = new System.DateTime(2017, 10, 11, 9, 30, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(7, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(7, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(7, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(7, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(7, 0).Value = new System.DateTime(2017, 10, 11, 10, 0, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(8, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(8, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(8, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(8, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(8, 0).Value = new System.DateTime(2017, 10, 11, 10, 30, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(9, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(9, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(9, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(9, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(9, 0).Value = new System.DateTime(2017, 10, 11, 11, 0, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(10, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(10, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(10, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(10, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(10, 0).Value = new System.DateTime(2017, 10, 11, 11, 30, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(11, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(11, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(11, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(11, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(11, 0).Value = new System.DateTime(2017, 10, 11, 13, 30, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(12, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(12, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(12, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(12, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(12, 0).Value = new System.DateTime(2017, 10, 11, 14, 0, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(13, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(13, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(13, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(13, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(13, 0).Value = new System.DateTime(2017, 10, 11, 14, 30, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(14, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(14, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(14, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(14, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(14, 0).Value = new System.DateTime(2017, 10, 11, 15, 0, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(15, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(15, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(15, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(15, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(15, 0).Value = new System.DateTime(2017, 10, 11, 15, 30, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(15, 4).Font = new System.Drawing.Font("굴림", 10F);
+            this.ssSchedule_Sheet1.Cells.Get(16, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(16, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(16, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(16, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(16, 0).Value = new System.DateTime(2017, 10, 11, 16, 0, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(17, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(17, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(17, 0).ParseFormatInfo = ((System.Globalization.DateTimeFormatInfo)(cultureInfo.DateTimeFormat.Clone()));
+            this.ssSchedule_Sheet1.Cells.Get(17, 0).ParseFormatString = "H:mm";
+            this.ssSchedule_Sheet1.Cells.Get(17, 0).Value = new System.DateTime(2017, 10, 11, 16, 30, 0, 0);
+            this.ssSchedule_Sheet1.Cells.Get(18, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(18, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(19, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(19, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(20, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(20, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(21, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(21, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(22, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(22, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(23, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(23, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(24, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(24, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(25, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(25, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(26, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(26, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(27, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(27, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(28, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(28, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(29, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(29, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(30, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(30, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(31, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(31, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(32, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(32, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(33, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(33, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(34, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(34, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(35, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(35, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(36, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(36, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(37, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(37, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(38, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(38, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(39, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(39, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(40, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(40, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(41, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(41, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(42, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(42, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(43, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(43, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(44, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(44, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(45, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(45, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(46, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(46, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(47, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(47, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(48, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(48, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(49, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(49, 0).Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ssSchedule_Sheet1.Cells.Get(50, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(51, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(52, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(53, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.Cells.Get(54, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ssSchedule_Sheet1.ColumnFooter.DefaultStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            this.ssSchedule_Sheet1.ColumnFooter.DefaultStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.ssSchedule_Sheet1.ColumnFooter.DefaultStyle.Parent = "ColumnFooterEnhanced";
+            this.ssSchedule_Sheet1.ColumnFooter.DefaultStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            this.ssSchedule_Sheet1.ColumnFooterSheetCornerStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            this.ssSchedule_Sheet1.ColumnFooterSheetCornerStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.ssSchedule_Sheet1.ColumnFooterSheetCornerStyle.Parent = "CornerEnhanced";
+            this.ssSchedule_Sheet1.ColumnFooterSheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            this.ssSchedule_Sheet1.ColumnHeader.Cells.Get(0, 0).Value = " ";
+            this.ssSchedule_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "10/09";
+            this.ssSchedule_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "10/10";
+            this.ssSchedule_Sheet1.ColumnHeader.Cells.Get(0, 3).Value = "10/11";
+            this.ssSchedule_Sheet1.ColumnHeader.Cells.Get(0, 4).Value = "10/12";
+            this.ssSchedule_Sheet1.ColumnHeader.Cells.Get(0, 5).Value = "10/13";
+            this.ssSchedule_Sheet1.ColumnHeader.DefaultStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            this.ssSchedule_Sheet1.ColumnHeader.DefaultStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.ssSchedule_Sheet1.ColumnHeader.DefaultStyle.Parent = "ColumnHeaderEnhanced";
+            this.ssSchedule_Sheet1.ColumnHeader.DefaultStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            this.ssSchedule_Sheet1.ColumnHeader.Rows.Get(0).Height = 40F;
+            this.ssSchedule_Sheet1.Columns.Get(0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(0).Label = " ";
+            this.ssSchedule_Sheet1.Columns.Get(0).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(0).Width = 99F;
+            this.ssSchedule_Sheet1.Columns.Get(1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(1).Label = "10/09";
+            this.ssSchedule_Sheet1.Columns.Get(1).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(2).Label = "10/10";
+            this.ssSchedule_Sheet1.Columns.Get(2).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(3).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(3).Label = "10/11";
+            this.ssSchedule_Sheet1.Columns.Get(3).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(4).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(4).Label = "10/12";
+            this.ssSchedule_Sheet1.Columns.Get(4).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(5).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(5).Label = "10/13";
+            this.ssSchedule_Sheet1.Columns.Get(5).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(6).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(6).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(7).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(7).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(8).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(8).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(9).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(9).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(10).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(10).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(11).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(11).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(12).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(12).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(13).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(13).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(14).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(14).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(15).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(15).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(16).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(16).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(17).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(17).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(18).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(18).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(19).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(19).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(20).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(20).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(21).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(21).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(22).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(22).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(23).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(23).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(24).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(24).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(25).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(25).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(26).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(26).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(27).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(27).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(28).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(28).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(29).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(29).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(30).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(30).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(31).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(31).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(32).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(32).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(33).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(33).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(34).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(34).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(35).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(35).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(36).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(36).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(37).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(37).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(38).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(38).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(39).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(39).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(40).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(40).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(41).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(41).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(42).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(42).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(43).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(43).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(44).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(44).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(45).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(45).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(46).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(46).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(47).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(47).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(48).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(48).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(49).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.Columns.Get(49).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.DefaultStyle.Font = new System.Drawing.Font("굴림", 10F);
+            this.ssSchedule_Sheet1.DefaultStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            this.ssSchedule_Sheet1.DefaultStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.ssSchedule_Sheet1.DefaultStyle.Parent = "DataAreaDefault";
+            this.ssSchedule_Sheet1.DefaultStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            this.ssSchedule_Sheet1.FilterBar.DefaultStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            this.ssSchedule_Sheet1.FilterBar.DefaultStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.ssSchedule_Sheet1.FilterBar.DefaultStyle.Parent = "FilterBarEnhanced";
+            this.ssSchedule_Sheet1.FilterBar.DefaultStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            this.ssSchedule_Sheet1.FilterBarHeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(236)))), ((int)(((byte)(247)))));
+            this.ssSchedule_Sheet1.FilterBarHeaderStyle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ssSchedule_Sheet1.FilterBarHeaderStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.ssSchedule_Sheet1.FilterBarHeaderStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.ssSchedule_Sheet1.FilterBarHeaderStyle.Parent = "RowHeaderEnhanced";
+            this.ssSchedule_Sheet1.FilterBarHeaderStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            this.ssSchedule_Sheet1.FilterBarHeaderStyle.VisualStyles = FarPoint.Win.VisualStyles.Auto;
+            this.ssSchedule_Sheet1.GrayAreaBackColor = System.Drawing.Color.White;
+            this.ssSchedule_Sheet1.HorizontalGridLine = new FarPoint.Win.Spread.GridLine(FarPoint.Win.Spread.GridLineType.Flat, System.Drawing.Color.Black);
+            this.ssSchedule_Sheet1.LockBackColor = System.Drawing.Color.White;
+            this.ssSchedule_Sheet1.RowHeader.Columns.Default.Resizable = false;
+            this.ssSchedule_Sheet1.RowHeader.DefaultStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            this.ssSchedule_Sheet1.RowHeader.DefaultStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.ssSchedule_Sheet1.RowHeader.DefaultStyle.Parent = "RowHeaderEnhanced";
+            this.ssSchedule_Sheet1.RowHeader.DefaultStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            this.ssSchedule_Sheet1.Rows.Get(0).Height = 11F;
+            this.ssSchedule_Sheet1.Rows.Get(0).Visible = false;
+            this.ssSchedule_Sheet1.Rows.Get(1).Height = 11F;
+            this.ssSchedule_Sheet1.Rows.Get(1).Visible = false;
+            this.ssSchedule_Sheet1.Rows.Get(2).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Rows.Get(2).LockBackColor = System.Drawing.Color.White;
+            this.ssSchedule_Sheet1.Rows.Get(3).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Rows.Get(3).LockBackColor = System.Drawing.Color.White;
+            this.ssSchedule_Sheet1.Rows.Get(4).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.ssSchedule_Sheet1.Rows.Get(4).LockBackColor = System.Drawing.Color.White;
+            this.ssSchedule_Sheet1.SheetCornerStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            this.ssSchedule_Sheet1.SheetCornerStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.ssSchedule_Sheet1.SheetCornerStyle.Parent = "CornerEnhanced";
+            this.ssSchedule_Sheet1.SheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            this.ssSchedule_Sheet1.VerticalGridLine = new FarPoint.Win.Spread.GridLine(FarPoint.Win.Spread.GridLineType.Flat, System.Drawing.Color.Black);
+            this.ssSchedule_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
+            // 
+            // FrmMedRsvSchedule
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1244, 522);
+            this.Controls.Add(this.ssSchedule);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.lblDoctor);
+            this.Controls.Add(this.lblTitle);
+            this.Name = "FrmMedRsvSchedule";
+            this.Text = "예약스케쥴 조회";
+            this.Load += new System.EventHandler(this.FrmMedRsvSchedule_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ssSchedule)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ssSchedule_Sheet1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblDoctor;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtilsu;
+        private FarPoint.Win.Spread.FpSpread ssSchedule;
+        private FarPoint.Win.Spread.SheetView ssSchedule_Sheet1;
+    }
+}

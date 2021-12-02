@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2546325C-7B7A-4BD1-A78E-911D5BE6914D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HC.OSHA</RootNamespace>
+    <AssemblyName>HC.OSHA</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CefSharp">
+      <HintPath>..\..\..\PSMHEXE\exenet\CefSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Core">
+      <HintPath>..\..\..\PSMHEXE\exenet\CefSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.WinForms">
+      <HintPath>..\..\..\PSMHEXE\exenet\CefSharp.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="ComBase">
+      <HintPath>..\..\..\PSMHEXE\Debug\ComBase.dll</HintPath>
+    </Reference>
+    <Reference Include="ComHpcLibB">
+      <HintPath>..\..\..\PSMHEXE\Debug\ComHpcLibB.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Excel, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Localization, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PDF, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Chart, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.Win.PluginInputMan, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="HC_Core">
+      <HintPath>..\..\..\PSMHEXE\Debug\HC_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\PSMHEXE\exenet\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\exenet\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Site\Card\Dto\HC_OSHA_CARD6.cs" />
+    <Compile Include="Site\Card\Repository\HcOshaCard6Repository.cs" />
+    <Compile Include="Site\Card\Service\HcOshaCard6Service.cs" />
+    <Compile Include="Site\Card\UI\IndustrialAccidentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Site\Card\UI\IndustrialAccidentForm.Designer.cs">
+      <DependentUpon>IndustrialAccidentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Site\ETC\Dto\HC_SITE_PRODUCT.cs" />
+    <Compile Include="Site\ETC\Dto\HC_SITE_PRODUCT_MSDS.cs" />
+    <Compile Include="Site\ETC\Model\HC_SITE_MSDS_MODEL.cs" />
+    <Compile Include="Site\ETC\Model\HC_SITE_PRODUCT_MSDS_MODEL.cs" />
+    <Compile Include="Site\ETC\Repository\HcSiteMsdsModelRepository.cs" />
+    <Compile Include="Site\ETC\Repository\HcSiteProductMsdsRepository.cs" />
+    <Compile Include="Site\ETC\Repository\HcSiteProductRepository.cs" />
+    <Compile Include="Site\ETC\Service\HcSiteMsdsModelService.cs" />
+    <Compile Include="Site\ETC\Service\HcSiteProductMsdsService.cs" />
+    <Compile Include="Site\ETC\Service\HcSiteProductService.cs" />
+    <Compile Include="Site\Management\Dto\HC_OSHA_CONTRACT.cs" />
+    <Compile Include="Site\Management\Dto\HC_OSHA_CONTRACT_MANAGER.cs" />
+    <Compile Include="Site\Management\Model\HC_OSHA_CONTRACT_MANAGER_MODEL.cs" />
+    <Compile Include="Site\Management\Repository\HcOshaContractManagerRepository.cs" />
+    <Compile Include="Site\Management\Service\HcOshaContractManagerService.cs" />
+    <Compile Include="Site\Management\UI\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Site\Management\UI\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Site\ETC\UI\GHS_PictureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Site\ETC\UI\GHS_PictureForm.Designer.cs">
+      <DependentUpon>GHS_PictureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Site\ETC\UI\SiteMSDSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Site\ETC\UI\SiteMSDSForm.Designer.cs">
+      <DependentUpon>SiteMSDSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Site\ETC\UI\SiteMSDSListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Site\ETC\UI\SiteMSDSListForm.Designer.cs">
+      <DependentUpon>SiteMSDSListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Management\Dto\HC_OSHA_ESTIMATE.cs" />
+    <Compile Include="Site\Management\Dto\HC_SITE_WORKER.cs" />
+    <Compile Include="Site\Management\Model\HC_ESTIMATE_MODEL.cs" />
+    <Compile Include="Site\Management\Model\HC_OSHA_SITE.cs" />
+    <Compile Include="Site\Management\Model\HC_OSHA_SITE_MODEL.cs" />
+    <Compile Include="Site\Management\Repository\HcEstimateModelRepository.cs" />
+    <Compile Include="Site\Management\Repository\HcOshaContractRepository.cs" />
+    <Compile Include="Site\Management\Repository\HcOshaEstimateRepository.cs" />
+    <Compile Include="Site\Management\Repository\HcOshaSiteModelRepository.cs" />
+    <Compile Include="Site\Management\Repository\HcOshaSiteRepository.cs" />
+    <Compile Include="Site\Management\Repository\HcSiteWorkerRepository.cs" />
+    <Compile Include="Site\Management\Service\HcOshaContractService.cs" />
+    <Compile Include="Site\Management\Service\HcOshaEstimateService.cs" />
+    <Compile Include="Site\Management\Service\HcOshaSiteService.cs" />
+    <Compile Include="Site\Management\Service\HcSiteWorkerService.cs" />
+    <Compile Include="Site\Management\Service\OshaEstimateModelService.cs" />
+    <Compile Include="Site\Management\UI\EstimateMailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Site\Management\UI\EstimateMailForm.Designer.cs">
+      <DependentUpon>EstimateMailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Visit\Management\Dto\HC_OSHA_VISIT_COMMITTEE.cs" />
+    <Compile Include="Visit\Management\Dto\HC_OSHA_VISIT_EDU.cs" />
+    <Compile Include="Visit\Management\Dto\HC_OSHA_VISIT_INFORMATION.cs" />
+    <Compile Include="Visit\Management\Repository\HcOshaVisitCommitteeRepository.cs" />
+    <Compile Include="Visit\Management\Repository\HcOshaVisitEduRepository.cs" />
+    <Compile Include="Visit\Management\Repository\HcOshaVisitInformationRepository.cs" />
+    <Compile Include="Visit\Management\Service\HcOshaVisitCommitteeService.cs" />
+    <Compile Include="Visit\Management\Service\HcOshaVisitEduService.cs" />
+    <Compile Include="Visit\Management\Service\HcOshaVisitInformationService.cs" />
+    <Compile Include="Visit\Management\UI\CommitteeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visit\Management\UI\CommitteeForm.Designer.cs">
+      <DependentUpon>CommitteeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Visit\Management\UI\EducationReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visit\Management\UI\EducationReportForm.Designer.cs">
+      <DependentUpon>EducationReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Visit\Management\UI\InformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visit\Management\UI\InformationForm.Designer.cs">
+      <DependentUpon>InformationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Visit\Schedule\Dto\HC_OSHA_SCHEDULE.cs" />
+    <Compile Include="Visit\Schedule\Dto\HC_OSHA_VISIT.cs" />
+    <Compile Include="Visit\Schedule\Model\CalendarEventModel.cs" />
+    <Compile Include="Visit\Schedule\Model\CalendarSearchModel.cs" />
+    <Compile Include="Visit\Schedule\Model\UnvisitSiteModel.cs" />
+    <Compile Include="Visit\Schedule\Model\VisitSiteModel.cs" />
+    <Compile Include="Visit\Schedule\Repository\HcOshaScheduleRepository.cs" />
+    <Compile Include="Visit\Schedule\Repository\HcOshaVisitRepository.cs" />
+    <Compile Include="Visit\Schedule\Repository\ScheduleModelRepository.cs" />
+    <Compile Include="Visit\Schedule\Service\HcOshaVisitService.cs" />
+    <Compile Include="Visit\Schedule\Service\SchduleModelService.cs" />
+    <Compile Include="Visit\Schedule\Service\HcOshaScheduleService.cs" />
+    <Compile Include="Visit\Schedule\Service\JavascriptBoundCefSharp.cs" />
+    <Compile Include="Visit\Schedule\UI\CalendarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visit\Schedule\UI\CalendarForm.Designer.cs">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Management\UI\OshaSiteEstimateList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Site\Management\UI\OshaSiteEstimateList.Designer.cs">
+      <DependentUpon>OshaSiteEstimateList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Management\UI\OshaSiteList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Site\Management\UI\OshaSiteList.Designer.cs">
+      <DependentUpon>OshaSiteList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Management\UI\SiteMangerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Site\Management\UI\SiteMangerForm.Designer.cs">
+      <DependentUpon>SiteMangerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Management\UI\SiteWorkerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Site\Management\UI\SiteWorkerForm.Designer.cs">
+      <DependentUpon>SiteWorkerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Visit\Schedule\UI\ScheduleRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visit\Schedule\UI\ScheduleRegisterForm.Designer.cs">
+      <DependentUpon>ScheduleRegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Visit\Schedule\UI\ScheduleMailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visit\Schedule\UI\ScheduleMailForm.Designer.cs">
+      <DependentUpon>ScheduleMailForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Site\Card\UI\IndustrialAccidentForm.resx">
+      <DependentUpon>IndustrialAccidentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Site\Management\UI\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Site\ETC\UI\GHS_PictureForm.resx">
+      <DependentUpon>GHS_PictureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Site\ETC\UI\SiteMSDSForm.resx">
+      <DependentUpon>SiteMSDSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Site\ETC\UI\SiteMSDSListForm.resx">
+      <DependentUpon>SiteMSDSListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Site\Management\UI\EstimateMailForm.resx">
+      <DependentUpon>EstimateMailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visit\Management\UI\CommitteeForm.resx">
+      <DependentUpon>CommitteeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visit\Management\UI\EducationReportForm.resx">
+      <DependentUpon>EducationReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visit\Management\UI\InformationForm.resx">
+      <DependentUpon>InformationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visit\Schedule\UI\CalendarForm.resx">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Site\Management\UI\OshaSiteEstimateList.resx">
+      <DependentUpon>OshaSiteEstimateList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Site\Management\UI\OshaSiteList.resx">
+      <DependentUpon>OshaSiteList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Site\Management\UI\SiteMangerForm.resx">
+      <DependentUpon>SiteMangerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Site\Management\UI\SiteWorkerForm.resx">
+      <DependentUpon>SiteWorkerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visit\Schedule\UI\ScheduleMailForm.resx">
+      <DependentUpon>ScheduleMailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visit\Schedule\UI\ScheduleRegisterForm.resx">
+      <DependentUpon>ScheduleRegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ComBase.Mvc.Utils
+{
+
+    //구글사용시 https://myaccount.google.com/lesssecureapps 허용으로 해야함ㄴ
+    public class MailUtil
+    {
+        private string SMTP_URL = "smtp.gmail.com";
+        private int SMTP_PORT = 587;
+
+
+        /// <summary>
+        /// 보내는사람
+        /// </summary>
+        public string SenderMailAddress { get; set; }
+        /// <summary>
+        /// 받는사람 목록
+        /// </summary>
+        public List<string> ReciverMailSddress { get; set; }
+        /// <summary>
+        /// 첨부파일 목록
+        /// </summary>
+        public List<string> Attachments { get; set; }
+        /// <summary>
+        /// 제목
+        /// </summary>
+        public string Subject { get; set; }
+        /// <summary>
+        /// 내용
+        /// </summary>
+        public string Body { get; set; }
+
+        private SmtpClient smtpClient;
+        public MailUtil(string SmtpuserId, string SmtpPassword)
+        {
+            ReciverMailSddress = new List<string>();
+            Attachments = new List<string>();
+            smtpClient = new SmtpClient(SMTP_URL, SMTP_PORT);
+            smtpClient.EnableSsl = true;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtpClient.Credentials = new NetworkCredential(SmtpuserId, SmtpPassword);
+    
+        }
+        public void SendMaill()
+        {
+            MailMessage mail = new MailMessage();
+            mail.BodyEncoding = System.Text.Encoding.UTF8;
+            mail.From = new MailAddress(this.SenderMailAddress);
+
+            foreach(string receiverMail in ReciverMailSddress)
+            {
+                mail.To.Add(receiverMail);
+            }
+
+            mail.Subject = Subject;
+
+            mail.Body = Body;
+
+            foreach(string fileName in Attachments)
+            {
+                mail.Attachments.Add(new Attachment(fileName));
+            }
+
+            smtpClient.Send(mail);
+        }
+    }
+}

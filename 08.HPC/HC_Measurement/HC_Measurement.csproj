@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E20CABDE-5E97-4FD8-8A02-5DA3A5C16247}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HC_Measurement</RootNamespace>
+    <AssemblyName>HC_Measurement</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\PSMHEXE\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>HC_Measurement.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CefSharp, Version=86.0.241.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\exenet\CefSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Core, Version=86.0.241.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <HintPath>..\..\..\PSMHEXE\exenet\CefSharp.Core.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CefSharp.WinForms, Version=86.0.241.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\exenet\CefSharp.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Excel, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Localization, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.PDF, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Win, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Win.Chart, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Win.Spread, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.Win.PluginInputMan, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="RestSharp, Version=106.6.10.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\exenet\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dto\Code\HIC_CHK_MCODE.cs" />
+    <Compile Include="Dto\Code\HIC_CHK_SUGA.cs" />
+    <Compile Include="Dto\Code\HIC_CHK_UCODE .cs" />
+    <Compile Include="Dto\LtdManagement\HIC_CHUKDTL_DSTRB.cs" />
+    <Compile Include="Dto\LtdManagement\HIC_CHUKDTL_LOCATION.cs" />
+    <Compile Include="Dto\LtdManagement\HIC_CHUKDTL_SUBLTD.cs" />
+    <Compile Include="Dto\LtdManagement\HIC_CHUKDTL_CHEMICAL.cs" />
+    <Compile Include="Dto\LtdManagement\HIC_CHUKDTL_PLAN.cs" />
+    <Compile Include="Dto\LtdManagement\HIC_CHUK_ESTIMATE.cs" />
+    <Compile Include="Dto\LtdManagement\HIC_CHUK_WORKER.cs" />
+    <Compile Include="Dto\LtdManagement\HIC_CHUKMST_NEW.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Analysis\frmHcChkResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Analysis\frmHcChkResult.Designer.cs">
+      <DependentUpon>frmHcChkResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard11.Designer.cs">
+      <DependentUpon>frmHcChkCard11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard10.Designer.cs">
+      <DependentUpon>frmHcChkCard10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard09.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard09.Designer.cs">
+      <DependentUpon>frmHcChkCard09.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard08.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard08.Designer.cs">
+      <DependentUpon>frmHcChkCard08.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard07.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard07.Designer.cs">
+      <DependentUpon>frmHcChkCard07.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard06.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard06.Designer.cs">
+      <DependentUpon>frmHcChkCard06.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard05.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard05.Designer.cs">
+      <DependentUpon>frmHcChkCard05.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard04.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard04.Designer.cs">
+      <DependentUpon>frmHcChkCard04.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard03.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard03.Designer.cs">
+      <DependentUpon>frmHcChkCard03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard02.Designer.cs">
+      <DependentUpon>frmHcChkCard02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Card\frmHcChkCard01.Designer.cs">
+      <DependentUpon>frmHcChkCard01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkMCode_Entry_Old.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkMCode_Entry_Old.Designer.cs">
+      <DependentUpon>frmHcChkMCode_Entry_Old.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkSuga_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkSuga_Entry.Designer.cs">
+      <DependentUpon>frmHcChkSuga_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkSuga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkSuga.Designer.cs">
+      <DependentUpon>frmHcChkSuga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkMCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkMCode.Designer.cs">
+      <DependentUpon>frmHcChkMCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkMCode_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkMCode_Entry.Designer.cs">
+      <DependentUpon>frmHcChkMCode_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkUCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Code\frmHcChkUCode.Designer.cs">
+      <DependentUpon>frmHcChkUCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Etc\frmHcChkCodeHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Etc\frmHcChkCodeHelp.Designer.cs">
+      <DependentUpon>frmHcChkCodeHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Etc\frmMDI_WE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Etc\frmMDI_WE.Designer.cs">
+      <DependentUpon>frmMDI_WE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcChkEstimateMailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcChkEstimateMailForm.Designer.cs">
+      <DependentUpon>frmHcChkEstimateMailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcChkEstimate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcChkEstimate.Designer.cs">
+      <DependentUpon>frmHcChkEstimate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcChkMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcChkMain.Designer.cs">
+      <DependentUpon>frmHcChkMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcPreChkLtd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcPreChkLtd.Designer.cs">
+      <DependentUpon>frmHcPreChkLtd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcChkLtd_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcChkLtd_Entry.Designer.cs">
+      <DependentUpon>frmHcChkLtd_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcChkLtd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcChkLtd.Designer.cs">
+      <DependentUpon>frmHcChkLtd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcPreChkLtd_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\LtdManagement\frmHcPreChkLtd_Entry.Designer.cs">
+      <DependentUpon>frmHcPreChkLtd_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Print\frmHcPreChkPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Print\frmHcPreChkPrint.Designer.cs">
+      <DependentUpon>frmHcPreChkPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Schedule\frmHcChkSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Schedule\frmHcChkSchedule.Designer.cs">
+      <DependentUpon>frmHcChkSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HIC_CHUKDTL_PLAN_SUGA.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Code\HicChkSugaRepository.cs" />
+    <Compile Include="Repository\Code\HicChkMcodeRepository.cs" />
+    <Compile Include="Repository\Code\HicChkUcodeRepository.cs" />
+    <Compile Include="Repository\LtdManagement\HicChukDtlDstrbRepository.cs" />
+    <Compile Include="Repository\LtdManagement\HicChukDtlLocationRepository.cs" />
+    <Compile Include="Repository\LtdManagement\HicChukDtlSubltdRepository.cs" />
+    <Compile Include="Repository\LtdManagement\HicChukDtlChemicalRepository.cs" />
+    <Compile Include="Repository\LtdManagement\HicChukDtlPlanRepository.cs" />
+    <Compile Include="Repository\LtdManagement\HicChukDtlResultRepository.cs" />
+    <Compile Include="Repository\LtdManagement\HicChukEstimateRepository.cs" />
+    <Compile Include="Repository\LtdManagement\HicChukWorkerRepository.cs" />
+    <Compile Include="Repository\LtdManagement\HicChukMstNewRepository.cs" />
+    <Compile Include="Service\Code\HicChkSugaService.cs" />
+    <Compile Include="Service\Code\HicChkMcodeService.cs" />
+    <Compile Include="Service\Code\HicChkUcodeService.cs" />
+    <Compile Include="Service\LtdManagement\HicChukDtlDstrbService.cs" />
+    <Compile Include="Service\LtdManagement\HicChukDtlLocationService.cs" />
+    <Compile Include="Service\LtdManagement\HicChukDtlSubltdService.cs" />
+    <Compile Include="Service\LtdManagement\HicChukDtlChemicalService.cs" />
+    <Compile Include="Service\LtdManagement\HicChukDtlPlanService.cs" />
+    <Compile Include="Service\LtdManagement\HicChukDtlResultService.cs" />
+    <Compile Include="Service\LtdManagement\HicChukEstimateService.cs" />
+    <Compile Include="Service\LtdManagement\HicChukWorkerService.cs" />
+    <Compile Include="Service\LtdManagement\HicChukMstNewService.cs" />
+    <EmbeddedResource Include="form\Analysis\frmHcChkResult.resx">
+      <DependentUpon>frmHcChkResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Card\frmHcChkCard11.resx">
+      <DependentUpon>frmHcChkCard11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Card\frmHcChkCard10.resx">
+      <DependentUpon>frmHcChkCard10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Card\frmHcChkCard09.resx">
+      <DependentUpon>frmHcChkCard09.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Card\frmHcChkCard08.resx">
+      <DependentUpon>frmHcChkCard08.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Card\frmHcChkCard07.resx">
+      <DependentUpon>frmHcChkCard07.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Card\frmHcChkCard06.resx">
+      <DependentUpon>frmHcChkCard06.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Card\frmHcChkCard05.resx">
+      <DependentUpon>frmHcChkCard05.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Card\frmHcChkCard04.resx">
+      <DependentUpon>frmHcChkCard04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Card\frmHcChkCard03.resx">
+      <DependentUpon>frmHcChkCard03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Card\frmHcChkCard02.resx">
+      <DependentUpon>frmHcChkCard02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Card\frmHcChkCard01.resx">
+      <DependentUpon>frmHcChkCard01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Code\frmHcChkMCode_Entry_Old.resx">
+      <DependentUpon>frmHcChkMCode_Entry_Old.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Code\frmHcChkSuga_Entry.resx">
+      <DependentUpon>frmHcChkSuga_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Code\frmHcChkSuga.resx">
+      <DependentUpon>frmHcChkSuga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Code\frmHcChkMCode.resx">
+      <DependentUpon>frmHcChkMCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Code\frmHcChkMCode_Entry.resx">
+      <DependentUpon>frmHcChkMCode_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Code\frmHcChkUCode.resx">
+      <DependentUpon>frmHcChkUCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Etc\frmHcChkCodeHelp.resx">
+      <DependentUpon>frmHcChkCodeHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Etc\frmMDI_WE.resx">
+      <DependentUpon>frmMDI_WE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\LtdManagement\frmHcChkEstimateMailForm.resx">
+      <DependentUpon>frmHcChkEstimateMailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\LtdManagement\frmHcChkEstimate.resx">
+      <DependentUpon>frmHcChkEstimate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\LtdManagement\frmHcChkMain.resx">
+      <DependentUpon>frmHcChkMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\LtdManagement\frmHcPreChkLtd.resx">
+      <DependentUpon>frmHcPreChkLtd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\LtdManagement\frmHcChkLtd_Entry.resx">
+      <DependentUpon>frmHcChkLtd_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\LtdManagement\frmHcChkLtd.resx">
+      <DependentUpon>frmHcChkLtd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\LtdManagement\frmHcPreChkLtd_Entry.resx">
+      <DependentUpon>frmHcPreChkLtd_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Print\frmHcPreChkPrint.resx">
+      <DependentUpon>frmHcPreChkPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Schedule\frmHcChkSchedule.resx">
+      <DependentUpon>frmHcChkSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="HC_Measurement.snk" />
+    <None Include="log4net.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComBase\ComBase.csproj">
+      <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
+      <Name>ComBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\06.ComHpcLibB\ComHpcLibB\ComHpcLibB.csproj">
+      <Project>{9748399a-1223-4361-b341-2bc620eb7b2f}</Project>
+      <Name>ComHpcLibB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HC.Core\HC_Core.csproj">
+      <Project>{64291242-9ff4-4f20-bc59-5235b9b7463b}</Project>
+      <Name>HC_Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HC.OSHA\HC_OSHA.csproj">
+      <Project>{4b15b3c6-a091-46de-9049-7365eea34fe7}</Project>
+      <Name>HC_OSHA</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
