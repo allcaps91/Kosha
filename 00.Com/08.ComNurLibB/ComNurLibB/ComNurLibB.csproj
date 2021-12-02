@@ -1,0 +1,1667 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{342F6004-1BE9-4897-B6DD-3989DFBF9951}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ComNurLibB</RootNamespace>
+    <AssemblyName>ComNurLibB</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\PSMHEXE\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>ComNurLibB.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04" />
+    <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Excel, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Localization, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PDF, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Chart, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.Win.PluginInputMan, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Class\clsBXLLib.cs" />
+    <Compile Include="Class\clsEdisAgentDB.cs" />
+    <Compile Include="Class\clsErAgent.cs" />
+    <Compile Include="Class\clsErNr.cs" />
+    <Compile Include="Class\clsGume00.cs" />
+    <Compile Include="Class\clsHDNr.cs" />
+    <Compile Include="Class\clsIpdNr.cs" />
+    <Compile Include="Class\clsNrstd.cs" />
+    <Compile Include="Class\clsNurArray.cs" />
+    <Compile Include="Class\clsNurse.cs" />
+    <Compile Include="Class\clsOpdNr.cs" />
+    <Compile Include="Class\clsOpMain.cs" />
+    <Compile Include="Class\clsSpdNr.cs" />
+    <Compile Include="Class\clsSpreadSet.cs" />
+    <Compile Include="Class\opdNrPatientInfo.cs" />
+    <Compile Include="ErAutoPrintForm\frmAutoPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErAutoPrintForm\frmAutoPrint.Designer.cs">
+      <DependentUpon>frmAutoPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErBandPrintForm\frmBandPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErBandPrintForm\frmBandPrint.Designer.cs">
+      <DependentUpon>frmBandPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErEmcForm\frmCodeSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErEmcForm\frmCodeSet.Designer.cs">
+      <DependentUpon>frmCodeSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErEmcForm\frmEMC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErEmcForm\frmEMC.Designer.cs">
+      <DependentUpon>frmEMC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErEmcForm\frmEMC3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErEmcForm\frmEMC3.Designer.cs">
+      <DependentUpon>frmEMC3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErEmcForm\frmEmergencyRoomDuty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErEmcForm\frmEmergencyRoomDuty.Designer.cs">
+      <DependentUpon>frmEmergencyRoomDuty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErEmcForm\frmSendSearchProgram.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErEmcForm\frmSendSearchProgram.Designer.cs">
+      <DependentUpon>frmSendSearchProgram.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmAISCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmAISCode.Designer.cs">
+      <DependentUpon>frmAISCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmChulgoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmChulgoView.Designer.cs">
+      <DependentUpon>frmChulgoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmErListTOP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmErListTOP.Designer.cs">
+      <DependentUpon>frmErListTOP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmErList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmErList.Designer.cs">
+      <DependentUpon>frmErList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmErTaList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmErTaList.Designer.cs">
+      <DependentUpon>frmErTaList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmHOSPCODE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmHOSPCODE.Designer.cs">
+      <DependentUpon>frmHOSPCODE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmHuDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmHuDetail.Designer.cs">
+      <DependentUpon>frmHuDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmIPDReserved.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmIPDReserved.Designer.cs">
+      <DependentUpon>frmIPDReserved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmISS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmISS.Designer.cs">
+      <DependentUpon>frmISS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmJusaLabel_ER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmJusaLabel_ER.Designer.cs">
+      <DependentUpon>frmJusaLabel_ER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmKTAS_Ver02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmKTAS_Ver02.Designer.cs">
+      <DependentUpon>frmKTAS_Ver02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmKTAS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmKTAS.Designer.cs">
+      <DependentUpon>frmKTAS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmNIHSS_ER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmNIHSS_ER.Designer.cs">
+      <DependentUpon>frmNIHSS_ER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmROFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmROFind.Designer.cs">
+      <DependentUpon>frmROFind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErNedisForm\frmAgentSend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErNedisForm\frmAgentSend.Designer.cs">
+      <DependentUpon>frmAgentSend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErNedisForm\frmAgentSend_Chk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErNedisForm\frmAgentSend_Chk.Designer.cs">
+      <DependentUpon>frmAgentSend_Chk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErNedisForm\frmAgentSend_NEDIS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErNedisForm\frmAgentSend_NEDIS.Designer.cs">
+      <DependentUpon>frmAgentSend_NEDIS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmAutoInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmAutoInput.Designer.cs">
+      <DependentUpon>frmAutoInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmCommonKnowList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmCommonKnowList.Designer.cs">
+      <DependentUpon>frmCommonKnowList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmCommonKnowViewInfect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmCommonKnowViewInfect.Designer.cs">
+      <DependentUpon>frmCommonKnowViewInfect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmDangjikAngio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmDangjikAngio.Designer.cs">
+      <DependentUpon>frmDangjikAngio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmCalSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmCalSchedule.Designer.cs">
+      <DependentUpon>FrmCalSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmNrstdNewSTS02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmNrstdNewSTS02.Designer.cs">
+      <DependentUpon>frmNrstdNewSTS02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmNrstdNewSTS03.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmNrstdNewSTS03.Designer.cs">
+      <DependentUpon>frmNrstdNewSTS03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmNurseNotice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmNurseNotice.Designer.cs">
+      <DependentUpon>frmNurseNotice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmRunVBForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmRunVBForm.Designer.cs">
+      <DependentUpon>frmRunVBForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmScheduleEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmScheduleEntry.Designer.cs">
+      <DependentUpon>frmScheduleEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmERTransCheckList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmERTransCheckList.Designer.cs">
+      <DependentUpon>frmERTransCheckList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmEmlPatientList02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmEmlPatientList02.Designer.cs">
+      <DependentUpon>frmEmlPatientList02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmWardMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmWardMsg.Designer.cs">
+      <DependentUpon>frmWardMsg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErForm\frmEmlPatientList03.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErForm\frmEmlPatientList03.Designer.cs">
+      <DependentUpon>frmEmlPatientList03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmWorkListAntiCancer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmWorkListAntiCancer.Designer.cs">
+      <DependentUpon>frmWorkListAntiCancer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmCPInfo_Nurse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmCPInfo_Nurse.Designer.cs">
+      <DependentUpon>frmCPInfo_Nurse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmDCActing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmDCActing.Designer.cs">
+      <DependentUpon>frmDCActing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmIpdBSTCNT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmIpdBSTCNT.Designer.cs">
+      <DependentUpon>frmIpdBSTCNT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmPersonConditionCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmPersonConditionCheck.Designer.cs">
+      <DependentUpon>frmPersonConditionCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmActing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmActing.Designer.cs">
+      <DependentUpon>frmActing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageView1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageView1.Designer.cs">
+      <DependentUpon>frmEduManageView1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_Corona19.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_Corona19.Designer.cs">
+      <DependentUpon>frmMedicalInquiry_Corona19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmNurseNightTong2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmNurseNightTong2.Designer.cs">
+      <DependentUpon>frmNurseNightTong2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmDNRList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmDNRList.Designer.cs">
+      <DependentUpon>frmDNRList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmDNR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmDNR.Designer.cs">
+      <DependentUpon>frmDNR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmNurseNightTong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmNurseNightTong.Designer.cs">
+      <DependentUpon>frmNurseNightTong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmNurseEvaluationGraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmNurseEvaluationGraph.Designer.cs">
+      <DependentUpon>frmNurseEvaluationGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmNursingDepartmentDuty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmNursingDepartmentDuty.Designer.cs">
+      <DependentUpon>frmNursingDepartmentDuty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmNurseEvaluationGraph_2019.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmNurseEvaluationGraph_2019.Designer.cs">
+      <DependentUpon>frmNurseEvaluationGraph_2019.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmNurseEvaluationTong_2019.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmNurseEvaluationTong_2019.Designer.cs">
+      <DependentUpon>frmNurseEvaluationTong_2019.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\FrmEmIPationtList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\FrmEmIPationtList.Designer.cs">
+      <DependentUpon>FrmEmIPationtList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmEmlPationtListNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmEmlPationtListNew.Designer.cs">
+      <DependentUpon>frmEmlPationtListNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmPatientInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmPatientInfo.Designer.cs">
+      <DependentUpon>frmPatientInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmReportMonthICU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmReportMonthICU.Designer.cs">
+      <DependentUpon>frmReportMonthICU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmSAPS3Score.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmSAPS3Score.Designer.cs">
+      <DependentUpon>frmSAPS3Score.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmSepisisUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmSepisisUnit.Designer.cs">
+      <DependentUpon>frmSepisisUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmWardList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmWardList.Designer.cs">
+      <DependentUpon>frmWardList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodeArbeit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodeArbeit.Designer.cs">
+      <DependentUpon>frmNrCodeArbeit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmAFBChkList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmAFBChkList.Designer.cs">
+      <DependentUpon>frmAFBChkList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmDC_new2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmDC_new2.Designer.cs">
+      <DependentUpon>frmDC_new2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmIpdBST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmIpdBST.Designer.cs">
+      <DependentUpon>frmIpdBST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmPickUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmPickUp.Designer.cs">
+      <DependentUpon>frmPickUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmPickupR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmPickupR.Designer.cs">
+      <DependentUpon>frmPickupR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmPicUpCaution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmPicUpCaution.Designer.cs">
+      <DependentUpon>frmPicUpCaution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IpdForm\frmSimsa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IpdForm\frmSimsa.Designer.cs">
+      <DependentUpon>frmSimsa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodeBedCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodeBedCount.Designer.cs">
+      <DependentUpon>frmNrCodeBedCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodeChargeNurse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodeChargeNurse.Designer.cs">
+      <DependentUpon>frmNrCodeChargeNurse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodePrint.Designer.cs">
+      <DependentUpon>frmNrCodePrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodeSignYak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodeSignYak.Designer.cs">
+      <DependentUpon>frmNrCodeSignYak.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodeTongBuild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrcode\frmNrCodeTongBuild.Designer.cs">
+      <DependentUpon>frmNrCodeTongBuild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmAdministrationEorrReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmAdministrationEorrReport.Designer.cs">
+      <DependentUpon>frmAdministrationEorrReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmbedsoreList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmbedsoreList.Designer.cs">
+      <DependentUpon>frmbedsoreList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmDeathLisd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmDeathLisd.Designer.cs">
+      <DependentUpon>frmDeathLisd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEduAttendReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEduAttendReg.Designer.cs">
+      <DependentUpon>frmEduAttendReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEduAttendRegNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEduAttendRegNew.Designer.cs">
+      <DependentUpon>frmEduAttendRegNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEducationDetaillList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEducationDetaillList.Designer.cs">
+      <DependentUpon>frmEducationDetaillList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEducationTargetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEducationTargetList.Designer.cs">
+      <DependentUpon>frmEducationTargetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEduListViewNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEduListViewNew.Designer.cs">
+      <DependentUpon>frmEduListViewNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageCodeSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageCodeSet.Designer.cs">
+      <DependentUpon>frmEduManageCodeSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageMaster.Designer.cs">
+      <DependentUpon>frmEduManageMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageReg2New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageReg2New.Designer.cs">
+      <DependentUpon>frmEduManageReg2New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageView2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageView2.Designer.cs">
+      <DependentUpon>frmEduManageView2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageView3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageView3.Designer.cs">
+      <DependentUpon>frmEduManageView3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageView5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmEduManageView5.Designer.cs">
+      <DependentUpon>frmEduManageView5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmFallOccurView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmFallOccurView.Designer.cs">
+      <DependentUpon>frmFallOccurView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmInconvenienceReportNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmInconvenienceReportNew.Designer.cs">
+      <DependentUpon>frmInconvenienceReportNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmInconvenienceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmInconvenienceView.Designer.cs">
+      <DependentUpon>frmInconvenienceView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmMedicationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmMedicationList.Designer.cs">
+      <DependentUpon>frmMedicationList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmMortalityReturns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmMortalityReturns.Designer.cs">
+      <DependentUpon>frmMortalityReturns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdDetailView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdDetailView.Designer.cs">
+      <DependentUpon>frmNrstdDetailView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduManage.Designer.cs">
+      <DependentUpon>frmNrstdEduManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduManageOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduManageOld.Designer.cs">
+      <DependentUpon>frmNrstdEduManageOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduManageSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduManageSet.Designer.cs">
+      <DependentUpon>frmNrstdEduManageSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduManageViewOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduManageViewOld.Designer.cs">
+      <DependentUpon>frmNrstdEduManageViewOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduReg1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduReg1.Designer.cs">
+      <DependentUpon>frmNrstdEduReg1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduReg2Old.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdEduReg2Old.Designer.cs">
+      <DependentUpon>frmNrstdEduReg2Old.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdMain.Designer.cs">
+      <DependentUpon>frmNrstdMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdSTS02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdSTS02.Designer.cs">
+      <DependentUpon>frmNrstdSTS02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdSTS03.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdSTS03.Designer.cs">
+      <DependentUpon>frmNrstdSTS03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdTong2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmNrstdTong2.Designer.cs">
+      <DependentUpon>frmNrstdTong2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrstd\frmStrokeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrstd\frmStrokeView.Designer.cs">
+      <DependentUpon>frmStrokeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmBogosea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmBogosea.Designer.cs">
+      <DependentUpon>frmBogosea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmEmIljiPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmEmIljiPrint.Designer.cs">
+      <DependentUpon>frmEmIljiPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmGanDangJik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmGanDangJik.Designer.cs">
+      <DependentUpon>frmGanDangJik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmGumsaPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmGumsaPrint.Designer.cs">
+      <DependentUpon>frmGumsaPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmJinNameView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmJinNameView.Designer.cs">
+      <DependentUpon>frmJinNameView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmNrtongOpdIpwonYearPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmNrtongOpdIpwonYearPrint.Designer.cs">
+      <DependentUpon>frmNrtongOpdIpwonYearPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmNurseEvaluationTong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmNurseEvaluationTong.Designer.cs">
+      <DependentUpon>frmNurseEvaluationTong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmNurseJobPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmNurseJobPrint.Designer.cs">
+      <DependentUpon>frmNurseJobPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmNurseTong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmNurseTong.Designer.cs">
+      <DependentUpon>frmNurseTong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmOpdIlji2Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmOpdIlji2Print.Designer.cs">
+      <DependentUpon>frmOpdIlji2Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmOpdIlji3Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmOpdIlji3Print.Designer.cs">
+      <DependentUpon>frmOpdIlji3Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmOpdIlji3YearPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmOpdIlji3YearPrint.Designer.cs">
+      <DependentUpon>frmOpdIlji3YearPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmOpdIlji4Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmOpdIlji4Print.Designer.cs">
+      <DependentUpon>frmOpdIlji4Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmOpdIlji5Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmOpdIlji5Print.Designer.cs">
+      <DependentUpon>frmOpdIlji5Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmOpdiljiPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmOpdiljiPrint.Designer.cs">
+      <DependentUpon>frmOpdiljiPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmOpdInwonPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmOpdInwonPrint.Designer.cs">
+      <DependentUpon>frmOpdInwonPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmOPDInwonYearPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmOPDInwonYearPrint.Designer.cs">
+      <DependentUpon>frmOPDInwonYearPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmOperation.Designer.cs">
+      <DependentUpon>frmOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmOperation2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmOperation2.Designer.cs">
+      <DependentUpon>frmOperation2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmORInwonPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmORInwonPrint.Designer.cs">
+      <DependentUpon>frmORInwonPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmORInwonPrint2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmORInwonPrint2.Designer.cs">
+      <DependentUpon>frmORInwonPrint2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmORInwonPrintNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmORInwonPrintNew.Designer.cs">
+      <DependentUpon>frmORInwonPrintNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmORInwonYearPrintNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmORInwonYearPrintNew.Designer.cs">
+      <DependentUpon>frmORInwonYearPrintNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmORInwonYearPrint2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmORInwonYearPrint2.Designer.cs">
+      <DependentUpon>frmORInwonYearPrint2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmSchedule.Designer.cs">
+      <DependentUpon>frmSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmTuksu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmTuksu.Designer.cs">
+      <DependentUpon>frmTuksu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmWard24HNur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmWard24HNur.Designer.cs">
+      <DependentUpon>frmWard24HNur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwon2Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwon2Print.Designer.cs">
+      <DependentUpon>frmWardInwon2Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwonPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwonPrint.Designer.cs">
+      <DependentUpon>frmWardInwonPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwonPrint2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwonPrint2.Designer.cs">
+      <DependentUpon>frmWardInwonPrint2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwonPrint2New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwonPrint2New.Designer.cs">
+      <DependentUpon>frmWardInwonPrint2New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwonPrintNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwonPrintNew.Designer.cs">
+      <DependentUpon>frmWardInwonPrintNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwonYearPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nrtong\frmWardInwonYearPrint.Designer.cs">
+      <DependentUpon>frmWardInwonYearPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmCertList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmCertList.Designer.cs">
+      <DependentUpon>frmCertList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmCode.Designer.cs">
+      <DependentUpon>frmCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmConsultView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmConsultView.Designer.cs">
+      <DependentUpon>frmConsultView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmCytology.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmCytology.Designer.cs">
+      <DependentUpon>frmCytology.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmHappyCall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmHappyCall.Designer.cs">
+      <DependentUpon>frmHappyCall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmHappyTong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmHappyTong.Designer.cs">
+      <DependentUpon>frmHappyTong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry.Designer.cs">
+      <DependentUpon>frmMedicalInquiry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_integration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_integration.Designer.cs">
+      <DependentUpon>frmMedicalInquiry_integration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_MN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_MN.Designer.cs">
+      <DependentUpon>frmMedicalInquiry_MN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_NP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_NP.Designer.cs">
+      <DependentUpon>frmMedicalInquiry_NP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_OG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_OG.Designer.cs">
+      <DependentUpon>frmMedicalInquiry_OG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_OS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmMedicalInquiry_OS.Designer.cs">
+      <DependentUpon>frmMedicalInquiry_OS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmMedOpdNrIlbo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmMedOpdNrIlbo.Designer.cs">
+      <DependentUpon>frmMedOpdNrIlbo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmMedOpdNrSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmMedOpdNrSet.Designer.cs">
+      <DependentUpon>frmMedOpdNrSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmMessage.Designer.cs">
+      <DependentUpon>frmMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmOpdNrSlipView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmOpdNrSlipView.Designer.cs">
+      <DependentUpon>frmOpdNrSlipView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmOpdNurEndoList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmOpdNurEndoList.Designer.cs">
+      <DependentUpon>frmOpdNurEndoList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmReservedMng_FM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmReservedMng_FM.Designer.cs">
+      <DependentUpon>frmReservedMng_FM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmReservePaperTellMng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmReservePaperTellMng.Designer.cs">
+      <DependentUpon>frmReservePaperTellMng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmSetHrOgDr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmSetHrOgDr.Designer.cs">
+      <DependentUpon>frmSetHrOgDr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpdForm\frmViewOpdOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpdForm\frmViewOpdOrder.Designer.cs">
+      <DependentUpon>frmViewOpdOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OprForm\frmAppoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OprForm\frmAppoint.Designer.cs">
+      <DependentUpon>frmAppoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OprForm\frmDaily.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OprForm\frmDaily.Designer.cs">
+      <DependentUpon>frmDaily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OprForm\frmDailyBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OprForm\frmDailyBlock.Designer.cs">
+      <DependentUpon>frmDailyBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OprForm\frmDataEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OprForm\frmDataEntry.Designer.cs">
+      <DependentUpon>frmDataEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OprForm\frmErOpList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OprForm\frmErOpList.Designer.cs">
+      <DependentUpon>frmErOpList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OprForm\frmErOpUseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OprForm\frmErOpUseList.Designer.cs">
+      <DependentUpon>frmErOpUseList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OprForm\frmFix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OprForm\frmFix.Designer.cs">
+      <DependentUpon>frmFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OprForm\frmOpInfectWatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OprForm\frmOpInfectWatch.Designer.cs">
+      <DependentUpon>frmOpInfectWatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OprForm\frmOpRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OprForm\frmOpRegister.Designer.cs">
+      <DependentUpon>frmOpRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ErAutoPrintForm\frmAutoPrint.resx">
+      <DependentUpon>frmAutoPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErBandPrintForm\frmBandPrint.resx">
+      <DependentUpon>frmBandPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErEmcForm\frmCodeSet.resx">
+      <DependentUpon>frmCodeSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErEmcForm\frmEMC.resx">
+      <DependentUpon>frmEMC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErEmcForm\frmEMC3.resx">
+      <DependentUpon>frmEMC3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErEmcForm\frmEmergencyRoomDuty.resx">
+      <DependentUpon>frmEmergencyRoomDuty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErEmcForm\frmSendSearchProgram.resx">
+      <DependentUpon>frmSendSearchProgram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmAISCode.resx">
+      <DependentUpon>frmAISCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmChulgoView.resx">
+      <DependentUpon>frmChulgoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmErListTOP.resx">
+      <DependentUpon>frmErListTOP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmErList.resx">
+      <DependentUpon>frmErList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmErTaList.resx">
+      <DependentUpon>frmErTaList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmHOSPCODE.resx">
+      <DependentUpon>frmHOSPCODE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmHuDetail.resx">
+      <DependentUpon>frmHuDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmIPDReserved.resx">
+      <DependentUpon>frmIPDReserved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmISS.resx">
+      <DependentUpon>frmISS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmJusaLabel_ER.resx">
+      <DependentUpon>frmJusaLabel_ER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmKTAS_Ver02.resx">
+      <DependentUpon>frmKTAS_Ver02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmKTAS.resx">
+      <DependentUpon>frmKTAS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmNIHSS_ER.resx">
+      <DependentUpon>frmNIHSS_ER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErNedisForm\frmAgentSend.resx">
+      <DependentUpon>frmAgentSend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErNedisForm\frmAgentSend_Chk.resx">
+      <DependentUpon>frmAgentSend_Chk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErNedisForm\frmAgentSend_NEDIS.resx">
+      <DependentUpon>frmAgentSend_NEDIS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmAutoInput.resx">
+      <DependentUpon>frmAutoInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmCommonKnowList.resx">
+      <DependentUpon>frmCommonKnowList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmCommonKnowViewInfect.resx">
+      <DependentUpon>frmCommonKnowViewInfect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmDangjikAngio.resx">
+      <DependentUpon>frmDangjikAngio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmCalSchedule.resx">
+      <DependentUpon>FrmCalSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmNrstdNewSTS02.resx">
+      <DependentUpon>frmNrstdNewSTS02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmNrstdNewSTS03.resx">
+      <DependentUpon>frmNrstdNewSTS03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmNurseNotice.resx">
+      <DependentUpon>frmNurseNotice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmRunVBForm.resx">
+      <DependentUpon>frmRunVBForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmScheduleEntry.resx">
+      <DependentUpon>frmScheduleEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmERTransCheckList.resx">
+      <DependentUpon>frmERTransCheckList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmEmlPatientList02.resx">
+      <DependentUpon>frmEmlPatientList02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmWardMsg.resx">
+      <DependentUpon>frmWardMsg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErForm\frmEmlPatientList03.resx">
+      <DependentUpon>frmEmlPatientList03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmWorkListAntiCancer.resx">
+      <DependentUpon>frmWorkListAntiCancer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmCPInfo_Nurse.resx">
+      <DependentUpon>frmCPInfo_Nurse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmDCActing.resx">
+      <DependentUpon>frmDCActing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmIpdBSTCNT.resx">
+      <DependentUpon>frmIpdBSTCNT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmPersonConditionCheck.resx">
+      <DependentUpon>frmPersonConditionCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmActing.resx">
+      <DependentUpon>frmActing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEduManageView1.resx">
+      <DependentUpon>frmEduManageView1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmMedicalInquiry_Corona19.resx">
+      <DependentUpon>frmMedicalInquiry_Corona19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmDNRList.resx">
+      <DependentUpon>frmDNRList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmDNR.resx">
+      <DependentUpon>frmDNR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmNurseNightTong.resx">
+      <DependentUpon>frmNurseNightTong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmNurseEvaluationGraph.resx">
+      <DependentUpon>frmNurseEvaluationGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmNursingDepartmentDuty.resx">
+      <DependentUpon>frmNursingDepartmentDuty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmNurseEvaluationGraph_2019.resx">
+      <DependentUpon>frmNurseEvaluationGraph_2019.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmNurseEvaluationTong_2019.resx">
+      <DependentUpon>frmNurseEvaluationTong_2019.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\FrmEmIPationtList.resx">
+      <DependentUpon>FrmEmIPationtList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmEmlPationtListNew.resx">
+      <DependentUpon>frmEmlPationtListNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmPatientInfo.resx">
+      <DependentUpon>frmPatientInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmReportMonthICU.resx">
+      <DependentUpon>frmReportMonthICU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmSAPS3Score.resx">
+      <DependentUpon>frmSAPS3Score.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmSepisisUnit.resx">
+      <DependentUpon>frmSepisisUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmWardList.resx">
+      <DependentUpon>frmWardList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrcode\frmNrCodeArbeit.resx">
+      <DependentUpon>frmNrCodeArbeit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmAFBChkList.resx">
+      <DependentUpon>frmAFBChkList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmDC_new2.resx">
+      <DependentUpon>frmDC_new2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmIpdBST.resx">
+      <DependentUpon>frmIpdBST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmPickUp.resx">
+      <DependentUpon>frmPickUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmPickupR.resx">
+      <DependentUpon>frmPickupR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmPicUpCaution.resx">
+      <DependentUpon>frmPicUpCaution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IpdForm\frmSimsa.resx">
+      <DependentUpon>frmSimsa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrcode\frmNrCodeBedCount.resx">
+      <DependentUpon>frmNrCodeBedCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrcode\frmNrCodeChargeNurse.resx">
+      <DependentUpon>frmNrCodeChargeNurse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrcode\frmNrCodePrint.resx">
+      <DependentUpon>frmNrCodePrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrcode\frmNrCodeSignYak.resx">
+      <DependentUpon>frmNrCodeSignYak.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrcode\frmNrCodeTongBuild.resx">
+      <DependentUpon>frmNrCodeTongBuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmAdministrationEorrReport.resx">
+      <DependentUpon>frmAdministrationEorrReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmbedsoreList.resx">
+      <DependentUpon>frmbedsoreList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmDeathLisd.resx">
+      <DependentUpon>frmDeathLisd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEduAttendReg.resx">
+      <DependentUpon>frmEduAttendReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEduAttendRegNew.resx">
+      <DependentUpon>frmEduAttendRegNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEducationDetaillList.resx">
+      <DependentUpon>frmEducationDetaillList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEducationTargetList.resx">
+      <DependentUpon>frmEducationTargetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEduListViewNew.resx">
+      <DependentUpon>frmEduListViewNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEduManageCodeSet.resx">
+      <DependentUpon>frmEduManageCodeSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEduManageMaster.resx">
+      <DependentUpon>frmEduManageMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEduManageReg2New.resx">
+      <DependentUpon>frmEduManageReg2New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEduManageView2.resx">
+      <DependentUpon>frmEduManageView2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEduManageView3.resx">
+      <DependentUpon>frmEduManageView3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmEduManageView5.resx">
+      <DependentUpon>frmEduManageView5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmFallOccurView.resx">
+      <DependentUpon>frmFallOccurView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmInconvenienceReportNew.resx">
+      <DependentUpon>frmInconvenienceReportNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmInconvenienceView.resx">
+      <DependentUpon>frmInconvenienceView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmMedicationList.resx">
+      <DependentUpon>frmMedicationList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmMortalityReturns.resx">
+      <DependentUpon>frmMortalityReturns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmNrstdDetailView.resx">
+      <DependentUpon>frmNrstdDetailView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmNrstdEduManage.resx">
+      <DependentUpon>frmNrstdEduManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmNrstdEduManageOld.resx">
+      <DependentUpon>frmNrstdEduManageOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmNrstdEduManageSet.resx">
+      <DependentUpon>frmNrstdEduManageSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmNrstdEduManageViewOld.resx">
+      <DependentUpon>frmNrstdEduManageViewOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmNrstdEduReg1.resx">
+      <DependentUpon>frmNrstdEduReg1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmNrstdEduReg2Old.resx">
+      <DependentUpon>frmNrstdEduReg2Old.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmNrstdMain.resx">
+      <DependentUpon>frmNrstdMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmNrstdSTS02.resx">
+      <DependentUpon>frmNrstdSTS02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmNrstdSTS03.resx">
+      <DependentUpon>frmNrstdSTS03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmNrstdTong2.resx">
+      <DependentUpon>frmNrstdTong2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrstd\frmStrokeView.resx">
+      <DependentUpon>frmStrokeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmBogosea.resx">
+      <DependentUpon>frmBogosea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmEmIljiPrint.resx">
+      <DependentUpon>frmEmIljiPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmGanDangJik.resx">
+      <DependentUpon>frmGanDangJik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmGumsaPrint.resx">
+      <DependentUpon>frmGumsaPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmJinNameView.resx">
+      <DependentUpon>frmJinNameView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmNrtongOpdIpwonYearPrint.resx">
+      <DependentUpon>frmNrtongOpdIpwonYearPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmNurseEvaluationTong.resx">
+      <DependentUpon>frmNurseEvaluationTong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmNurseJobPrint.resx">
+      <DependentUpon>frmNurseJobPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmNurseNightTong2.resx">
+      <DependentUpon>frmNurseNightTong2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmNurseTong.resx">
+      <DependentUpon>frmNurseTong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmOpdIlji2Print.resx">
+      <DependentUpon>frmOpdIlji2Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmOpdIlji3Print.resx">
+      <DependentUpon>frmOpdIlji3Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmOpdIlji3YearPrint.resx">
+      <DependentUpon>frmOpdIlji3YearPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmOpdIlji4Print.resx">
+      <DependentUpon>frmOpdIlji4Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmOpdIlji5Print.resx">
+      <DependentUpon>frmOpdIlji5Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmOpdiljiPrint.resx">
+      <DependentUpon>frmOpdiljiPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmOpdInwonPrint.resx">
+      <DependentUpon>frmOpdInwonPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmOPDInwonYearPrint.resx">
+      <DependentUpon>frmOPDInwonYearPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmOperation.resx">
+      <DependentUpon>frmOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmOperation2.resx">
+      <DependentUpon>frmOperation2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmORInwonPrint.resx">
+      <DependentUpon>frmORInwonPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmORInwonPrint2.resx">
+      <DependentUpon>frmORInwonPrint2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmORInwonPrintNew.resx">
+      <DependentUpon>frmORInwonPrintNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmORInwonYearPrintNew.resx">
+      <DependentUpon>frmORInwonYearPrintNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmORInwonYearPrint2.resx">
+      <DependentUpon>frmORInwonYearPrint2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmSchedule.resx">
+      <DependentUpon>frmSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmTuksu.resx">
+      <DependentUpon>frmTuksu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmWard24HNur.resx">
+      <DependentUpon>frmWard24HNur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmWardInwon2Print.resx">
+      <DependentUpon>frmWardInwon2Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmWardInwonPrint.resx">
+      <DependentUpon>frmWardInwonPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmWardInwonPrint2.resx">
+      <DependentUpon>frmWardInwonPrint2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmWardInwonPrint2New.resx">
+      <DependentUpon>frmWardInwonPrint2New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmWardInwonPrintNew.resx">
+      <DependentUpon>frmWardInwonPrintNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nrtong\frmWardInwonYearPrint.resx">
+      <DependentUpon>frmWardInwonYearPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmCertList.resx">
+      <DependentUpon>frmCertList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmCode.resx">
+      <DependentUpon>frmCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmConsultView.resx">
+      <DependentUpon>frmConsultView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmCytology.resx">
+      <DependentUpon>frmCytology.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmHappyCall.resx">
+      <DependentUpon>frmHappyCall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmHappyTong.resx">
+      <DependentUpon>frmHappyTong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmMedicalInquiry.resx">
+      <DependentUpon>frmMedicalInquiry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmMedicalInquiry_integration.resx">
+      <DependentUpon>frmMedicalInquiry_integration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmMedicalInquiry_MN.resx">
+      <DependentUpon>frmMedicalInquiry_MN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmMedicalInquiry_NP.resx">
+      <DependentUpon>frmMedicalInquiry_NP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmMedicalInquiry_OG.resx">
+      <DependentUpon>frmMedicalInquiry_OG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmMedicalInquiry_OS.resx">
+      <DependentUpon>frmMedicalInquiry_OS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmMedOpdNrIlbo.resx">
+      <DependentUpon>frmMedOpdNrIlbo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmMedOpdNrSet.resx">
+      <DependentUpon>frmMedOpdNrSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmMessage.resx">
+      <DependentUpon>frmMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmOpdNrSlipView.resx">
+      <DependentUpon>frmOpdNrSlipView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmOpdNurEndoList.resx">
+      <DependentUpon>frmOpdNurEndoList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmReservedMng_FM.resx">
+      <DependentUpon>frmReservedMng_FM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmReservePaperTellMng.resx">
+      <DependentUpon>frmReservePaperTellMng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmSetHrOgDr.resx">
+      <DependentUpon>frmSetHrOgDr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpdForm\frmViewOpdOrder.resx">
+      <DependentUpon>frmViewOpdOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OprForm\frmAppoint.resx">
+      <DependentUpon>frmAppoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OprForm\frmDaily.resx">
+      <DependentUpon>frmDaily.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OprForm\frmDailyBlock.resx">
+      <DependentUpon>frmDailyBlock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OprForm\frmDataEntry.resx">
+      <DependentUpon>frmDataEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OprForm\frmErOpList.resx">
+      <DependentUpon>frmErOpList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OprForm\frmErOpUseList.resx">
+      <DependentUpon>frmErOpUseList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OprForm\frmFix.resx">
+      <DependentUpon>frmFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OprForm\frmOpInfectWatch.resx">
+      <DependentUpon>frmOpInfectWatch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OprForm\frmOpRegister.resx">
+      <DependentUpon>frmOpRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="basmsg\" />
+    <Folder Include="miretc\" />
+    <Folder Include="nrward\" />
+    <Folder Include="oprint\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.ComLibB\ComBase\ComBase.csproj">
+      <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
+      <Name>ComBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.ComLibB\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.ComLibB\ComEmrBase\ComEmrBase.csproj">
+      <Project>{58342DC4-90AD-47DA-B4A4-B055B43107B0}</Project>
+      <Name>ComEmrBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.ComLibB\ComLibB\ComLibB.csproj">
+      <Project>{9797b0e3-be03-4042-9dae-bdd3bf3e8f8d}</Project>
+      <Name>ComLibB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ComNurLibB.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pic_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pic_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pic_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pic_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pic_4.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

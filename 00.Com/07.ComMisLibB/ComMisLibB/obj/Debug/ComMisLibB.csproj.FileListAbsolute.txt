@@ -1,0 +1,5 @@
+C:\PSMH\00.Com\07.ComMisLibB\ComMisLibB\bin\Debug\ComMisLibB.dll
+C:\PSMH\00.Com\07.ComMisLibB\ComMisLibB\bin\Debug\ComMisLibB.pdb
+C:\PSMH\00.Com\07.ComMisLibB\ComMisLibB\obj\Debug\ComMisLibB.csproj.CoreCompileInputs.cache
+C:\PSMH\00.Com\07.ComMisLibB\ComMisLibB\obj\Debug\ComMisLibB.dll
+C:\PSMH\00.Com\07.ComMisLibB\ComMisLibB\obj\Debug\ComMisLibB.pdb

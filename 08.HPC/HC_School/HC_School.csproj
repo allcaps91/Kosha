@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0DFFBDE1-6F6B-474F-8A13-73B4AC1FF304}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HC_School</RootNamespace>
+    <AssemblyName>HC_School</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\PSMHEXE\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>HC_School.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ComBase">
+      <HintPath>..\..\..\PSMHEXE\Debug\ComBase.dll</HintPath>
+    </Reference>
+    <Reference Include="ComDbB">
+      <HintPath>..\..\..\PSMHEXE\Debug\ComDbB.dll</HintPath>
+    </Reference>
+    <Reference Include="ComEmrBase">
+      <HintPath>..\..\..\PSMHEXE\Debug\ComEmrBase.dll</HintPath>
+    </Reference>
+    <Reference Include="ComEmrLibB">
+      <HintPath>..\..\..\PSMHEXE\Debug\ComEmrLibB.dll</HintPath>
+    </Reference>
+    <Reference Include="ComHpcLibB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=72d1ae2000e2d89f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\Debug\ComHpcLibB.dll</HintPath>
+    </Reference>
+    <Reference Include="ComLibB">
+      <HintPath>..\..\..\PSMHEXE\Debug\ComLibB.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="edtFTPnet">
+      <HintPath>..\..\..\PSMHEXE\Debug\edtFTPnet.DLL</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.CalcEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Excel, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Localization, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.PDF, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.PDF.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.PluginCalendar.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.Chart, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.Win.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.Spread, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\FarPoint.Win.Spread.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.Spread.Design, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.Win.PluginInputMan, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\GrapeCity\Spread Studio 10\Windows Forms\v10.40.20171.0\bin\GrapeCity.Win.PluginInputMan.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PSMHEXE\exenet\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfiumViewer">
+      <HintPath>..\..\..\PSMHEXE\exenet\PdfiumViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolChargeExpenses_New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolChargeExpenses_New.Designer.cs">
+      <DependentUpon>frmHcSchoolChargeExpenses_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolChargeExpenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolChargeExpenses.Designer.cs">
+      <DependentUpon>frmHcSchoolChargeExpenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolExamPanjeng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolExamPanjeng.Designer.cs">
+      <DependentUpon>frmHcSchoolExamPanjeng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolExamResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolExamResult.Designer.cs">
+      <DependentUpon>frmHcSchoolExamResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolJepsuViewPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolJepsuViewPrint.Designer.cs">
+      <DependentUpon>frmHcSchoolJepsuViewPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolOpinionAfterMgmtPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolOpinionAfterMgmtPrint.Designer.cs">
+      <DependentUpon>frmHcSchoolOpinionAfterMgmtPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolResultMunjinPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolResultMunjinPrint.Designer.cs">
+      <DependentUpon>frmHcSchoolResultMunjinPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolStatic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolStatic.Designer.cs">
+      <DependentUpon>frmHcSchoolStatic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolStaticB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolStaticB.Designer.cs">
+      <DependentUpon>frmHcSchoolStaticB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolStudentPhysicalDevStatic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolStudentPhysicalDevStatic.Designer.cs">
+      <DependentUpon>frmHcSchoolStudentPhysicalDevStatic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolStudentStatic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolStudentStatic.Designer.cs">
+      <DependentUpon>frmHcSchoolStudentStatic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcSchoolTeethPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcSchoolTeethPrint.Designer.cs">
+      <DependentUpon>frmHcSchoolTeethPrint.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="form\frmHcSchoolChargeExpenses_New.resx">
+      <DependentUpon>frmHcSchoolChargeExpenses_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcSchoolChargeExpenses.resx">
+      <DependentUpon>frmHcSchoolChargeExpenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcSchoolExamPanjeng.resx">
+      <DependentUpon>frmHcSchoolExamPanjeng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcSchoolExamResult.resx">
+      <DependentUpon>frmHcSchoolExamResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcSchoolJepsuViewPrint.resx">
+      <DependentUpon>frmHcSchoolJepsuViewPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcSchoolOpinionAfterMgmtPrint.resx">
+      <DependentUpon>frmHcSchoolOpinionAfterMgmtPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcSchoolResultMunjinPrint.resx">
+      <DependentUpon>frmHcSchoolResultMunjinPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcSchoolStatic.resx">
+      <DependentUpon>frmHcSchoolStatic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcSchoolStaticB.resx">
+      <DependentUpon>frmHcSchoolStaticB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcSchoolStudentPhysicalDevStatic.resx">
+      <DependentUpon>frmHcSchoolStudentPhysicalDevStatic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcSchoolStudentStatic.resx">
+      <DependentUpon>frmHcSchoolStudentStatic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcSchoolTeethPrint.resx">
+      <DependentUpon>frmHcSchoolTeethPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="HC_School.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="class\" />
+    <Folder Include="Dto\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

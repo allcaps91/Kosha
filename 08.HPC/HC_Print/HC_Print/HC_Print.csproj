@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D2071CF-17AC-437C-8FF2-CEC37830518E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HC_Print</RootNamespace>
+    <AssemblyName>HC_Print</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\PSMHEXE\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>HC_Print.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BarcodeLib, Version=1.0.0.19, Culture=neutral, PublicKeyToken=57d99793dcacf06c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\BarcodeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Excel, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Localization, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PDF, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Chart, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Win.Spread.Design, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.Win.PluginInputMan, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="form\frmHaPrintMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHaPrintMain.Designer.cs">
+      <DependentUpon>frmHaPrintMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHCPrintMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHCPrintMain.Designer.cs">
+      <DependentUpon>frmHCPrintMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Add.Designer.cs">
+      <DependentUpon>frmHcPrint_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHCPrint_Bohum1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHCPrint_Bohum1.Designer.cs">
+      <DependentUpon>frmHCPrint_Bohum1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Bohum1_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Bohum1_Sub.Designer.cs">
+      <DependentUpon>frmHcPrint_Bohum1_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Certificate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Certificate.Designer.cs">
+      <DependentUpon>frmHcPrint_Certificate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Foreign_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Foreign_Main.Designer.cs">
+      <DependentUpon>frmHcPrint_Foreign_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Gongmu_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Gongmu_Sub.Designer.cs">
+      <DependentUpon>frmHcPrint_Gongmu_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_JinDan_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_JinDan_Main.Designer.cs">
+      <DependentUpon>frmHcPrint_JinDan_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHCXrayList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHCXrayList.Designer.cs">
+      <DependentUpon>frmHCXrayList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_BalDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_BalDate.Designer.cs">
+      <DependentUpon>frmHcPrint_BalDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcXrayView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcXrayView.Designer.cs">
+      <DependentUpon>frmHcXrayView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Xray.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Xray.Designer.cs">
+      <DependentUpon>frmHcPrint_Xray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Talk_ReSend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Talk_ReSend.Designer.cs">
+      <DependentUpon>frmHcPrint_Talk_ReSend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Dental_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Dental_Sub.Designer.cs">
+      <DependentUpon>frmHcPrint_Dental_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Cancer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Cancer.Designer.cs">
+      <DependentUpon>frmHcPrint_Cancer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Cancer_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Cancer_Sub.Designer.cs">
+      <DependentUpon>frmHcPrint_Cancer_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Spc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Spc.Designer.cs">
+      <DependentUpon>frmHcPrint_Spc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Spc_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Spc_Sub.Designer.cs">
+      <DependentUpon>frmHcPrint_Spc_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Gongmu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Gongmu.designer.cs">
+      <DependentUpon>frmHcPrint_Gongmu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Foreign_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Foreign_Sub.Designer.cs">
+      <DependentUpon>frmHcPrint_Foreign_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Jindan_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Jindan_Sub.Designer.cs">
+      <DependentUpon>frmHcPrint_Jindan_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Add_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Add_Sub.Designer.cs">
+      <DependentUpon>frmHcPrint_Add_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHicXrayPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHicXrayPrint.Designer.cs">
+      <DependentUpon>frmHicXrayPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHicXrayPrint_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHicXrayPrint_Sub.Designer.cs">
+      <DependentUpon>frmHicXrayPrint_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHicXrayView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHicXrayView.Designer.cs">
+      <DependentUpon>frmHicXrayView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Dental.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Dental.Designer.cs">
+      <DependentUpon>frmHcPrint_Dental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Xray_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Xray_Sub.Designer.cs">
+      <DependentUpon>frmHcPrint_Xray_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcBloodExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcBloodExam.Designer.cs">
+      <DependentUpon>frmHcBloodExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcBloodExam_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcBloodExam_Sub.Designer.cs">
+      <DependentUpon>frmHcBloodExam_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Job.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Job.Designer.cs">
+      <DependentUpon>frmHcPrint_Job.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Job_Sub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHcPrint_Job_Sub.Designer.cs">
+      <DependentUpon>frmHcPrint_Job_Sub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmHaPrint_HanSuWon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmHaPrint_HanSuWon.Designer.cs">
+      <DependentUpon>frmHaPrint_HanSuWon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form\frmHaPrintMain.resx">
+      <DependentUpon>frmHaPrintMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHaPrint_HanSuWon.resx">
+      <DependentUpon>frmHaPrint_HanSuWon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcBloodExam.resx">
+      <DependentUpon>frmHcBloodExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcBloodExam_Sub.resx">
+      <DependentUpon>frmHcBloodExam_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHCPrintMain.resx">
+      <DependentUpon>frmHCPrintMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Add.resx">
+      <DependentUpon>frmHcPrint_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Add_Sub.resx">
+      <DependentUpon>frmHcPrint_Add_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Bohum1_Sub.resx">
+      <DependentUpon>frmHcPrint_Bohum1_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Cancer.resx">
+      <DependentUpon>frmHcPrint_Cancer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Cancer_Sub.resx">
+      <DependentUpon>frmHcPrint_Cancer_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Dental.resx">
+      <DependentUpon>frmHcPrint_Dental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Dental_Sub.resx">
+      <DependentUpon>frmHcPrint_Dental_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Foreign_Main.resx">
+      <DependentUpon>frmHcPrint_Foreign_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Foreign_Sub.resx">
+      <DependentUpon>frmHcPrint_Foreign_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Gongmu_Sub.resx">
+      <DependentUpon>frmHcPrint_Gongmu_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_JinDan_Main.resx">
+      <DependentUpon>frmHcPrint_JinDan_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Job.resx">
+      <DependentUpon>frmHcPrint_Job.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Job_Sub.resx">
+      <DependentUpon>frmHcPrint_Job_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Spc.resx">
+      <DependentUpon>frmHcPrint_Spc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Spc_Sub.resx">
+      <DependentUpon>frmHcPrint_Spc_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Talk_ReSend.resx">
+      <DependentUpon>frmHcPrint_Talk_ReSend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_BalDate.resx">
+      <DependentUpon>frmHcPrint_BalDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHCPrint_Bohum1.resx">
+      <DependentUpon>frmHCPrint_Bohum1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Certificate.resx">
+      <DependentUpon>frmHcPrint_Certificate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Xray.resx">
+      <DependentUpon>frmHcPrint_Xray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHCXrayList.resx">
+      <DependentUpon>frmHCXrayList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcXrayView.resx">
+      <DependentUpon>frmHcXrayView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Gongmu.resx">
+      <DependentUpon>frmHcPrint_Gongmu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Jindan_Sub.resx">
+      <DependentUpon>frmHcPrint_Jindan_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHicXrayPrint.resx">
+      <DependentUpon>frmHicXrayPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHicXrayPrint_Sub.resx">
+      <DependentUpon>frmHicXrayPrint_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHicXrayView.resx">
+      <DependentUpon>frmHicXrayView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmHcPrint_Xray_Sub.resx">
+      <DependentUpon>frmHcPrint_Xray_Sub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="HC_Print.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dto\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\00.Com\00.ComLibB\ComBase\ComBase.csproj">
+      <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
+      <Name>ComBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\00.Com\00.ComLibB\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\00.Com\00.ComLibB\ComEmrBase\ComEmrBase.csproj">
+      <Project>{58342dc4-90ad-47da-b4a4-b055b43107b0}</Project>
+      <Name>ComEmrBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\00.Com\00.ComLibB\ComLibB\ComLibB.csproj">
+      <Project>{ab53a3ef-d2e1-40a3-abad-df1753372966}</Project>
+      <Name>ComLibB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\00.Com\01.ComPmpaLibB\ComPmpaLibB\ComPmpaLibB.csproj">
+      <Project>{12e278b5-6009-411d-98ec-6a3484945336}</Project>
+      <Name>ComPmpaLibB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\00.Com\06.ComHpcLibB\ComHpcLibB\ComHpcLibB.csproj">
+      <Project>{9748399a-1223-4361-b341-2bc620eb7b2f}</Project>
+      <Name>ComHpcLibB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

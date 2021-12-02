@@ -1,0 +1,2543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{58342DC4-90AD-47DA-B4A4-B055B43107B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ComEmrBase</RootNamespace>
+    <AssemblyName>ComEmrBase</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\PSMHEXE\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>ComEmrBase.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CefSharp, Version=73.1.130.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\CefSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Core, Version=73.1.130.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\CefSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.WinForms, Version=73.1.130.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\CefSharp.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DocToolkit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fbe89e604dbf15f7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\DocToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="DrawTools, Version=2.0.0.0, Culture=neutral, PublicKeyToken=18ff167e0c443fe8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\DrawTools.dll</HintPath>
+    </Reference>
+    <Reference Include="edtFTPnet, Version=2.2.3.0, Culture=neutral, PublicKeyToken=4b0c991f43097782, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\edtFTPnet.DLL</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Excel, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Localization, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PDF, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Chart, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FormPrinting15, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a39404004c0dd202, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\FormPrinting15.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.Win.PluginInputMan, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\PSMHEXE\exenet\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="KP-ImageViewerV2, Version=1.5.1.0, Culture=neutral, PublicKeyToken=90238a1ca3010956, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\KP-ImageViewerV2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="mtsImageListEx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=deb7a1fa7a3135e4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\mtsImageListEx.dll</HintPath>
+    </Reference>
+    <Reference Include="MTSImageListView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=900c34b334b7c441, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\MTSImageListView.dll</HintPath>
+    </Reference>
+    <Reference Include="mtsImgList, Version=1.0.6648.1442, Culture=neutral, PublicKeyToken=259f66ff6c2b9985, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\mtsImgList.dll</HintPath>
+    </Reference>
+    <Reference Include="mtsPanel15">
+      <HintPath>..\..\..\..\PSMHEXE\exenet\mtsPanel15.dll</HintPath>
+    </Reference>
+    <Reference Include="mtsPenDrawing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7f784670a74d815f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\mtsPenDrawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PSMHEXE\exenet\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfiumViewer">
+      <HintPath>C:\PSMHEXE\exenet\PdfiumViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="classOld\clsOldChart.cs" />
+    <Compile Include="classOld\clsOldEmrQuery.cs" />
+    <Compile Include="class\AcpOrdPatient.cs" />
+    <Compile Include="class\CefSharpNoContextMenu.cs" />
+    <Compile Include="class\clsEmrAnChartPrint.cs" />
+    <Compile Include="class\clsEmrChart.cs" />
+    <Compile Include="class\clsEmrFormEvent.cs" />
+    <Compile Include="class\clsEmrFormMap.cs" />
+    <Compile Include="class\clsEmrFormPrint.cs" />
+    <Compile Include="class\clsEmrFunc.cs" />
+    <Compile Include="class\clsEmrNum.cs" />
+    <Compile Include="class\clsEmrPublic.cs" />
+    <Compile Include="class\clsEmrQuery.cs" />
+    <Compile Include="class\clsEmrQueryEtc.cs" />
+    <Compile Include="class\clsEmrQueryOld.cs" />
+    <Compile Include="class\clsEmrQueryPohangS.cs" />
+    <Compile Include="class\clsEmrType.cs" />
+    <Compile Include="class\clsFormPrint.cs" />
+    <Compile Include="class\clsOcsForm.cs" />
+    <Compile Include="class\clsScan.cs" />
+    <Compile Include="class\clsScanPublic.cs" />
+    <Compile Include="class\clsScanQuery.cs" />
+    <Compile Include="class\clsScanSet.cs" />
+    <Compile Include="class\clsSpreadPrint.cs" />
+    <Compile Include="class\clsXML.cs" />
+    <Compile Include="class\clsXMLOld.cs" />
+    <Compile Include="class\EasManager.cs" />
+    <Compile Include="class\EasParam.cs" />
+    <Compile Include="class\EasTabaletViewerJavascriptBound.cs" />
+    <Compile Include="class\EasViewerJavascriptBound.cs" />
+    <Compile Include="class\EmrChartForm.cs" />
+    <Compile Include="class\EmrForm.cs" />
+    <Compile Include="class\EmrPatient.cs" />
+    <Compile Include="class\FormEmrMessage.cs" />
+    <Compile Include="class\JavascriptBoundCefSharp.cs" />
+    <Compile Include="Design\DesignFunc.cs" />
+    <Compile Include="Design\FormAttribute.cs" />
+    <Compile Include="Design\FormDesignQuery.cs" />
+    <Compile Include="Design\FormFlowSheet.cs" />
+    <Compile Include="Design\FormFlowSheetHead.cs" />
+    <Compile Include="Design\FormFunc.cs" />
+    <Compile Include="Design\FormLoadControl.cs" />
+    <Compile Include="Design\FormLoadDoct.cs" />
+    <Compile Include="Design\FormPatInfoFunc.cs" />
+    <Compile Include="Design\FormPatInfoQuery.cs" />
+    <Compile Include="Design\FormXml.cs" />
+    <Compile Include="DrForm\frmEmrForm_Progress_New2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DrForm\frmEmrForm_Progress_New2.Designer.cs">
+      <DependentUpon>frmEmrForm_Progress_New2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DrForm\frmEmrForm_Progress_New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DrForm\frmEmrForm_Progress_New.Designer.cs">
+      <DependentUpon>frmEmrForm_Progress_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DrForm\frmEmrForm_Progress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DrForm\frmEmrForm_Progress.Designer.cs">
+      <DependentUpon>frmEmrForm_Progress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="etc\frmCertTest_PhohangSM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="etc\frmCertTest_PhohangSM.Designer.cs">
+      <DependentUpon>frmCertTest_PhohangSM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExamMsg\clsExamMsg.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmDietScanView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmDietScanView.Designer.cs">
+      <DependentUpon>frmDietScanView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrBaseEmrCertify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrBaseEmrCertify.Designer.cs">
+      <DependentUpon>frmEmrBaseEmrCertify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrBaseItemSetBaseValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrBaseItemSetBaseValue.Designer.cs">
+      <DependentUpon>frmEmrBaseItemSetBaseValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrBaseProgressOcsNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrBaseProgressOcsNew.Designer.cs">
+      <DependentUpon>frmEmrBaseProgressOcsNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrHealthGraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrHealthGraph.Designer.cs">
+      <DependentUpon>frmEmrHealthGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrListMacro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrListMacro.Designer.cs">
+      <DependentUpon>frmEmrListMacro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrLogin.Designer.cs">
+      <DependentUpon>frmEmrLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrNewHisView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrNewHisView.Designer.cs">
+      <DependentUpon>frmEmrNewHisView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrPatMemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrPatMemo.Designer.cs">
+      <DependentUpon>frmEmrPatMemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrPeritonealDialysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrPeritonealDialysis.Designer.cs">
+      <DependentUpon>frmEmrPeritonealDialysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrPrintFlowSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrPrintFlowSheet.Designer.cs">
+      <DependentUpon>frmEmrPrintFlowSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrRecordView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrRecordView.Designer.cs">
+      <DependentUpon>frmEmrRecordView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrSugaLink.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrSugaLink.Designer.cs">
+      <DependentUpon>frmEmrSugaLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmEmrTuyakList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmEmrTuyakList.Designer.cs">
+      <DependentUpon>frmEmrTuyakList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmItemUserFunction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmItemUserFunction.Designer.cs">
+      <DependentUpon>frmItemUserFunction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmNewHemodialysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmNewHemodialysis.Designer.cs">
+      <DependentUpon>frmNewHemodialysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmNrActingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmNrActingList.Designer.cs">
+      <DependentUpon>frmNrActingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmNrActingSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmNrActingSet.Designer.cs">
+      <DependentUpon>frmNrActingSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmNrActingSetWard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmNrActingSetWard.Designer.cs">
+      <DependentUpon>frmNrActingSetWard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmNrEmrSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmNrEmrSchedule.Designer.cs">
+      <DependentUpon>frmNrEmrSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmRemarkImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmRemarkImage.Designer.cs">
+      <DependentUpon>frmRemarkImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmScanImageViewNew3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmScanImageViewNew3.Designer.cs">
+      <DependentUpon>frmScanImageViewNew3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmScanPageView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmScanPageView.Designer.cs">
+      <DependentUpon>frmScanPageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmTextEmrOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmTextEmrOrder.Designer.cs">
+      <DependentUpon>frmTextEmrOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmFormList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmFormList.Designer.cs">
+      <DependentUpon>frmFormList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmChartColorRank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmChartColorRank.Designer.cs">
+      <DependentUpon>frmChartColorRank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmBSTList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmBSTList.Designer.cs">
+      <DependentUpon>frmBSTList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmChartComplete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmChartComplete.Designer.cs">
+      <DependentUpon>frmChartComplete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmCodeSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmCodeSearch.Designer.cs">
+      <DependentUpon>frmCodeSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmChartLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmChartLog.Designer.cs">
+      <DependentUpon>frmChartLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\FrmCompleteAfterModfiy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\FrmCompleteAfterModfiy.Designer.cs">
+      <DependentUpon>FrmCompleteAfterModfiy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmConvEMR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmConvEMR.Designer.cs">
+      <DependentUpon>frmConvEMR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmERPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmERPatient.Designer.cs">
+      <DependentUpon>frmERPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmNPChartBatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmNPChartBatch.Designer.cs">
+      <DependentUpon>frmNPChartBatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmOutPatientSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmOutPatientSearch.Designer.cs">
+      <DependentUpon>frmOutPatientSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmOutPatientList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmOutPatientList.Designer.cs">
+      <DependentUpon>frmOutPatientList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmToiSabun_Cert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\ChartViewer\frmToiSabun_Cert.Designer.cs">
+      <DependentUpon>frmToiSabun_Cert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmAutoTextPT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmAutoTextPT.Designer.cs">
+      <DependentUpon>frmAutoTextPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmBST_D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmBST_D.Designer.cs">
+      <DependentUpon>frmBST_D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmDateSET.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmDateSET.Designer.cs">
+      <DependentUpon>frmDateSET.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmDualSign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmDualSign.Designer.cs">
+      <DependentUpon>frmDualSign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrBasePictureView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrBasePictureView.Designer.cs">
+      <DependentUpon>frmEmrBasePictureView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrJobOpdDataSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrJobOpdDataSearch.Designer.cs">
+      <DependentUpon>frmEmrJobOpdDataSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrPatientInfoSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrPatientInfoSearch.Designer.cs">
+      <DependentUpon>frmEmrPatientInfoSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrTimeTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrTimeTable.Designer.cs">
+      <DependentUpon>frmEmrTimeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmHemodialysisInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmHemodialysisInterface.Designer.cs">
+      <DependentUpon>frmHemodialysisInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmIO_D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmIO_D.Designer.cs">
+      <DependentUpon>frmIO_D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmPatientState_New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmPatientState_New.Designer.cs">
+      <DependentUpon>frmPatientState_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmPatientState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmPatientState.Designer.cs">
+      <DependentUpon>frmPatientState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmInfoEntrySimple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmInfoEntrySimple.Designer.cs">
+      <DependentUpon>frmInfoEntrySimple.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\FrmVital_D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\FrmVital_D.Designer.cs">
+      <DependentUpon>FrmVital_D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\Mibi\frmTextEmrMibi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\Mibi\frmTextEmrMibi.Designer.cs">
+      <DependentUpon>frmTextEmrMibi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\NrformOld\frmEmrNurJinResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\NrformOld\frmEmrNurJinResult.Designer.cs">
+      <DependentUpon>frmEmrNurJinResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\NrformOld\frmNursingRecordJindanOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\NrformOld\frmNursingRecordJindanOld.Designer.cs">
+      <DependentUpon>frmNursingRecordJindanOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\NrformOld\frmNursingRecordOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\NrformOld\frmNursingRecordOld.Designer.cs">
+      <DependentUpon>frmNursingRecordOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\CommentPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="from\CommentPanel.Designer.cs">
+      <DependentUpon>CommentPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmAnFormAgentItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmAnFormAgentItem.Designer.cs">
+      <DependentUpon>frmAnFormAgentItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmAnFormInfo_New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmAnForm_New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmAnForm_New.Designer.cs">
+      <DependentUpon>frmAnForm_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmAnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmAnForm.Designer.cs">
+      <DependentUpon>frmAnForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmAnFormExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmAnFormExam.Designer.cs">
+      <DependentUpon>frmAnFormExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmAnFormGrape.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmAnFormGrapeTurniquest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmAnFormGrapeTurniquest.Designer.cs">
+      <DependentUpon>frmAnFormGrapeTurniquest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmAnFormInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmAnFormMapping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmAnFormMapping.Designer.cs">
+      <DependentUpon>frmAnFormMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmAnFormSpdMacro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmAnFormSpdMacro.Designer.cs">
+      <DependentUpon>frmAnFormSpdMacro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmAnUserSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmAnUserSearch.Designer.cs">
+      <DependentUpon>frmAnUserSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEasDesigner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEasDesigner.designer.cs">
+      <DependentUpon>frmEasDesigner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEasTabletViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEasTabletViewer.designer.cs">
+      <DependentUpon>frmEasTabletViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEasViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEasViewer.designer.cs">
+      <DependentUpon>frmEasViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrAnItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrAnItem.Designer.cs">
+      <DependentUpon>frmEmrAnItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseAcpListWrite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseAcpListWrite.Designer.cs">
+      <DependentUpon>frmEmrBaseAcpListWrite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseChartWrite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseChartWrite.Designer.cs">
+      <DependentUpon>frmEmrBaseChartWrite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseDefaultValueSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseDefaultValueSet.Designer.cs">
+      <DependentUpon>frmEmrBaseDefaultValueSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseProgressImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseProgressImage.Designer.cs">
+      <DependentUpon>frmEmrBaseProgressImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseViewVitalandActing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseViewVitalandActing.Designer.cs">
+      <DependentUpon>frmEmrBaseViewVitalandActing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseViewVitalandActingItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseViewVitalandActingItem.Designer.cs">
+      <DependentUpon>frmEmrBaseViewVitalandActingItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrChartPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrChartPopup.Designer.cs">
+      <DependentUpon>frmEmrChartPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrConsult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrConsult.Designer.cs">
+      <DependentUpon>frmEmrConsult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrImageDrawingNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrImageDrawingNew.Designer.cs">
+      <DependentUpon>frmEmrImageDrawingNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrJobDTL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrJobDTL.Designer.cs">
+      <DependentUpon>frmEmrJobDTL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrProgressView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrProgressView.Designer.cs">
+      <DependentUpon>frmEmrProgressView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\ucEmrChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="from\ucEmrChart.Designer.cs">
+      <DependentUpon>ucEmrChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImgCvt\clsImgcvt.cs" />
+    <Compile Include="Interface\frmAutoBSTInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\frmAutoBSTInterface.Designer.cs">
+      <DependentUpon>frmAutoBSTInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\frmBSTHDInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\frmBSTHDInterface.Designer.cs">
+      <DependentUpon>frmBSTHDInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\frmBSTInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\frmBSTInterface.Designer.cs">
+      <DependentUpon>frmBSTInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\frmDaySugaInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\frmDaySugaInterface.Designer.cs">
+      <DependentUpon>frmDaySugaInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\frmEmrBaseInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\frmEmrBaseInterface.Designer.cs">
+      <DependentUpon>frmEmrBaseInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\frmH20View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\frmH20View.Designer.cs">
+      <DependentUpon>frmH20View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBaseNurseMemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBaseNurseMemo.Designer.cs">
+      <DependentUpon>frmEmrBaseNurseMemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBaseRRSDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBaseRRSDetail.Designer.cs">
+      <DependentUpon>frmEmrBaseRRSDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBaseRRSWardView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBaseRRSWardView.Designer.cs">
+      <DependentUpon>frmEmrBaseRRSWardView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBloodComponent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBloodComponent.Designer.cs">
+      <DependentUpon>frmEmrBloodComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBloodInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBloodInfo.Designer.cs">
+      <DependentUpon>frmEmrBloodInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBaseVitalAndActing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBaseVitalAndActing.Designer.cs">
+      <DependentUpon>frmEmrBaseVitalAndActing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBasVitalSetWard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrBasVitalSetWard.Designer.cs">
+      <DependentUpon>frmEmrBasVitalSetWard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrInsulinImg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrInsulinImg.Designer.cs">
+      <DependentUpon>frmEmrInsulinImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrFluidCalc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrFluidCalc.Designer.cs">
+      <DependentUpon>frmEmrFluidCalc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrIVRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrIVRate.Designer.cs">
+      <DependentUpon>frmEmrIVRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrNrCatheterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrNrCatheterView.Designer.cs">
+      <DependentUpon>frmEmrNrCatheterView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrNrNursingActNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmEmrNrNursingActNew.Designer.cs">
+      <DependentUpon>frmEmrNrNursingActNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmGFRCalc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmGFRCalc.Designer.cs">
+      <DependentUpon>frmGFRCalc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\frmPatientMonitorInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\frmPatientMonitorInterface.Designer.cs">
+      <DependentUpon>frmPatientMonitorInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmHDRecordView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmHDRecordView.Designer.cs">
+      <DependentUpon>frmHDRecordView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmHighRiskWomen_EMR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmHighRiskWomen_EMR.Designer.cs">
+      <DependentUpon>frmHighRiskWomen_EMR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrActingItemNew1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrActingItemNew1.Designer.cs">
+      <DependentUpon>frmNrActingItemNew1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrActingListNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrActingListNew.Designer.cs">
+      <DependentUpon>frmNrActingListNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrActingSetNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrActingSetNew.Designer.cs">
+      <DependentUpon>frmNrActingSetNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrImgCvt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrImgCvt.Designer.cs">
+      <DependentUpon>frmNrImgCvt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrIONew2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrIONew2.Designer.cs">
+      <DependentUpon>frmNrIONew2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrIONew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmNrIONew.Designer.cs">
+      <DependentUpon>frmNrIONew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmNurActOrderEntry_EMR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmNurActOrderEntry_EMR.Designer.cs">
+      <DependentUpon>frmNurActOrderEntry_EMR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmSugaOrderSave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmSugaOrderSave.Designer.cs">
+      <DependentUpon>frmSugaOrderSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrFormNew\frmTextEmrWardAllNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrFormNew\frmTextEmrWardAllNew.Designer.cs">
+      <DependentUpon>frmTextEmrWardAllNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmBigo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmBigo.Designer.cs">
+      <DependentUpon>frmBigo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmEmrBaseRingerIO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmEmrBaseRingerIO.Designer.cs">
+      <DependentUpon>frmEmrBaseRingerIO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmEmrBaseRingerIOAct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmEmrBaseRingerIOAct.Designer.cs">
+      <DependentUpon>frmEmrBaseRingerIOAct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmEmrBaseRingerIOViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmEmrBaseRingerIOViewer.Designer.cs">
+      <DependentUpon>frmEmrBaseRingerIOViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmEmrForm_1562_0_New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmEmrForm_1562_0_New.Designer.cs">
+      <DependentUpon>frmEmrForm_1562_0_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmEmrForm_1562_Nurse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmEmrForm_1562_Nurse.Designer.cs">
+      <DependentUpon>frmEmrForm_1562_Nurse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmEmrVitalSign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmEmrVitalSign.Designer.cs">
+      <DependentUpon>frmEmrVitalSign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmEmrVitalSignSaveError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmEmrVitalSignSaveError.Designer.cs">
+      <DependentUpon>frmEmrVitalSignSaveError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmSetup01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmSetup01.Designer.cs">
+      <DependentUpon>frmSetup01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmrTRFS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmrTRFS.Designer.cs">
+      <DependentUpon>frmTextEmrTRFS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmrWardAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmrWardAll.Designer.cs">
+      <DependentUpon>frmTextEmrWardAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmrVtChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmrVtChart.Designer.cs">
+      <DependentUpon>frmTextEmrVtChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_Hospice01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_Hospice01.Designer.cs">
+      <DependentUpon>frmTextEmr_Hospice01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_IONew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_IONew.Designer.cs">
+      <DependentUpon>frmTextEmr_IONew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActNewBon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActNewBon.Designer.cs">
+      <DependentUpon>frmTextEmr_NrActNewBon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActive1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActive1.Designer.cs">
+      <DependentUpon>frmTextEmr_NrActive1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActiveICU2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActiveICU2.Designer.cs">
+      <DependentUpon>frmTextEmr_NrActiveICU2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActGangBak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActGangBak.Designer.cs">
+      <DependentUpon>frmTextEmr_NrActGangBak.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActFallBaby.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActFallBaby.Designer.cs">
+      <DependentUpon>frmTextEmr_NrActFallBaby.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActFall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActFall.Designer.cs">
+      <DependentUpon>frmTextEmr_NrActFall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseAbbreviation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseAbbreviation.Designer.cs">
+      <DependentUpon>frmEmrBaseAbbreviation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseAbbreviationDes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseAbbreviationDes.Designer.cs">
+      <DependentUpon>frmEmrBaseAbbreviationDes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseEmrChartOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseEmrChartOld.Designer.cs">
+      <DependentUpon>frmEmrBaseEmrChartOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseEmrListOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseEmrListOld.Designer.cs">
+      <DependentUpon>frmEmrBaseEmrListOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseSingularRemark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseSingularRemark.Designer.cs">
+      <DependentUpon>frmEmrBaseSingularRemark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseSympOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseSympOld.Designer.cs">
+      <DependentUpon>frmEmrBaseSympOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseTextEmrMibiOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseTextEmrMibiOld.Designer.cs">
+      <DependentUpon>frmEmrBaseTextEmrMibiOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseUserChoRegOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrBaseUserChoRegOld.Designer.cs">
+      <DependentUpon>frmEmrBaseUserChoRegOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOld\frmEmrJobMiBiStatisticsTewon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOld\frmEmrJobMiBiStatisticsTewon.Designer.cs">
+      <DependentUpon>frmEmrJobMiBiStatisticsTewon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmMSG_IV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmMSG_IV.Designer.cs">
+      <DependentUpon>frmMSG_IV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmMSG_ICE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmMSG_ICE.Designer.cs">
+      <DependentUpon>frmMSG_ICE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmMSG_BEDSORE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmMSG_BEDSORE.Designer.cs">
+      <DependentUpon>frmMSG_BEDSORE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmMSG_FALL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmMSG_FALL.Designer.cs">
+      <DependentUpon>frmMSG_FALL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmMSG_BST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmMSG_BST.Designer.cs">
+      <DependentUpon>frmMSG_BST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseAcpListNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseAcpListNew.Designer.cs">
+      <DependentUpon>frmEmrBaseAcpListNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseChartDrawing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseChartDrawing.Designer.cs">
+      <DependentUpon>frmEmrBaseChartDrawing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formNew\frmTextEmrOrder2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNew\frmTextEmrOrder2.Designer.cs">
+      <DependentUpon>frmTextEmrOrder2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBasePatientState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBasePatientState.Designer.cs">
+      <DependentUpon>frmEmrBasePatientState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseProgressOcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseProgressOcs.Designer.cs">
+      <DependentUpon>frmEmrBaseProgressOcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseUserChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseUserChartForm.Designer.cs">
+      <DependentUpon>frmEmrBaseUserChartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseVitalSign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseVitalSign.Designer.cs">
+      <DependentUpon>frmEmrBaseVitalSign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBasicCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBasicCode.Designer.cs">
+      <DependentUpon>frmEmrBasicCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrChartNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrChartNew.Designer.cs">
+      <DependentUpon>frmEmrChartNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrEndoMIBI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrEndoMIBI.Designer.cs">
+      <DependentUpon>frmEmrEndoMIBI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrOrderOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrOrderOld.Designer.cs">
+      <DependentUpon>frmEmrOrderOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrSayu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrSayu.Designer.cs">
+      <DependentUpon>frmEmrSayu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmOcrHis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmOcrHis.Designer.cs">
+      <DependentUpon>frmOcrHis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmEmrForm_1562_0.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmEmrForm_1562_0.Designer.cs">
+      <DependentUpon>frmEmrForm_1562_0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmEmrNurJinNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmEmrNurJinNew.Designer.cs">
+      <DependentUpon>frmEmrNurJinNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmNrIcuTimeSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmNrIcuTimeSet.Designer.cs">
+      <DependentUpon>frmNrIcuTimeSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmNurMibi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmNurMibi.Designer.cs">
+      <DependentUpon>frmNurMibi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmNursingRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmNursingRecord.Designer.cs">
+      <DependentUpon>frmNursingRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseAcpList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseAcpList.Designer.cs">
+      <DependentUpon>frmEmrBaseAcpList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseChartView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseChartView.Designer.cs">
+      <DependentUpon>frmEmrBaseChartView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseContinuView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseContinuView.Designer.cs">
+      <DependentUpon>frmEmrBaseContinuView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrBaseInNrAcpList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrBaseInNrAcpList.Designer.cs">
+      <DependentUpon>frmEmrBaseInNrAcpList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrCaledar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrCaledar.Designer.cs">
+      <DependentUpon>frmEmrCaledar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrChartDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrChartDoc.Designer.cs">
+      <DependentUpon>frmEmrChartDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrChartFlowOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrChartFlowOld.Designer.cs">
+      <DependentUpon>frmEmrChartFlowOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrChartHisList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrChartHisList.Designer.cs">
+      <DependentUpon>frmEmrChartHisList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrChartToImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrChartToImage.Designer.cs">
+      <DependentUpon>frmEmrChartToImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrFormSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrFormSearch.Designer.cs">
+      <DependentUpon>frmEmrFormSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrPrintOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrPrintOption.Designer.cs">
+      <DependentUpon>frmEmrPrintOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrProgMacro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrProgMacro.Designer.cs">
+      <DependentUpon>frmEmrProgMacro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrMacrowordProg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrMacrowordProg.Designer.cs">
+      <DependentUpon>frmEmrMacrowordProg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrMacrowordProgTrs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrMacrowordProgTrs.Designer.cs">
+      <DependentUpon>frmEmrMacrowordProgTrs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrUserFormReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrUserFormReg.Designer.cs">
+      <DependentUpon>frmEmrUserFormReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmEmrUserImageReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmEmrUserImageReg.Designer.cs">
+      <DependentUpon>frmEmrUserImageReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmPainScaleHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmPainScaleHelp.Designer.cs">
+      <DependentUpon>frmPainScaleHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="from\frmScanImageViewNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="from\frmScanImageViewNew.Designer.cs">
+      <DependentUpon>frmScanImageViewNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActiveTotalCare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActiveTotalCare.Designer.cs">
+      <DependentUpon>frmTextEmr_NrActiveTotalCare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_ICUBundle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_ICUBundle.Designer.cs">
+      <DependentUpon>frmTextEmr_ICUBundle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NursingRecordRE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NursingRecordRE.Designer.cs">
+      <DependentUpon>frmTextEmr_NursingRecordRE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NursingRecordER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NursingRecordER.Designer.cs">
+      <DependentUpon>frmTextEmr_NursingRecordER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActYokPrevention.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActYokPrevention.Designer.cs">
+      <DependentUpon>frmTextEmr_NrActYokPrevention.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActiveTotalCare2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActiveTotalCare2.Designer.cs">
+      <DependentUpon>frmTextEmr_NrActiveTotalCare2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActPchy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTextEmr_NrActPchy.Designer.cs">
+      <DependentUpon>frmTextEmr_NrActPchy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmTransRecordingInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmTransRecordingInfo.Designer.cs">
+      <DependentUpon>frmTransRecordingInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NrForm\frmVitalSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NrForm\frmVitalSet.Designer.cs">
+      <DependentUpon>frmVitalSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UseCon\ucImageCon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UseCon\ucImageCon.Designer.cs">
+      <DependentUpon>ucImageCon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UseCon\usFormTopMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UseCon\usFormTopMenu.Designer.cs">
+      <DependentUpon>usFormTopMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UseCon\usTimeSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UseCon\usTimeSet.Designer.cs">
+      <DependentUpon>usTimeSet.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DrForm\frmEmrForm_Progress_New2.resx">
+      <DependentUpon>frmEmrForm_Progress_New2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DrForm\frmEmrForm_Progress_New.resx">
+      <DependentUpon>frmEmrForm_Progress_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DrForm\frmEmrForm_Progress.resx">
+      <DependentUpon>frmEmrForm_Progress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="etc\frmCertTest_PhohangSM.resx">
+      <DependentUpon>frmCertTest_PhohangSM.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmDietScanView.resx">
+      <DependentUpon>frmDietScanView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrBaseEmrCertify.resx">
+      <DependentUpon>frmEmrBaseEmrCertify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrBaseItemSetBaseValue.resx">
+      <DependentUpon>frmEmrBaseItemSetBaseValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrBaseProgressOcsNew.resx">
+      <DependentUpon>frmEmrBaseProgressOcsNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrHealthGraph.resx">
+      <DependentUpon>frmEmrHealthGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrListMacro.resx">
+      <DependentUpon>frmEmrListMacro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrLogin.resx">
+      <DependentUpon>frmEmrLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrNewHisView.resx">
+      <DependentUpon>frmEmrNewHisView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrPatMemo.resx">
+      <DependentUpon>frmEmrPatMemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrPeritonealDialysis.resx">
+      <DependentUpon>frmEmrPeritonealDialysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrPrintFlowSheet.resx">
+      <DependentUpon>frmEmrPrintFlowSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrRecordView.resx">
+      <DependentUpon>frmEmrRecordView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrSugaLink.resx">
+      <DependentUpon>frmEmrSugaLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmEmrTuyakList.resx">
+      <DependentUpon>frmEmrTuyakList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmItemUserFunction.resx">
+      <DependentUpon>frmItemUserFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmNewHemodialysis.resx">
+      <DependentUpon>frmNewHemodialysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmNrActingList.resx">
+      <DependentUpon>frmNrActingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmNrActingSet.resx">
+      <DependentUpon>frmNrActingSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmNrActingSetWard.resx">
+      <DependentUpon>frmNrActingSetWard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmNrEmrSchedule.resx">
+      <DependentUpon>frmNrEmrSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmRemarkImage.resx">
+      <DependentUpon>frmRemarkImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmScanImageViewNew3.resx">
+      <DependentUpon>frmScanImageViewNew3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmScanPageView.resx">
+      <DependentUpon>frmScanPageView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmTextEmrOrder.resx">
+      <DependentUpon>frmTextEmrOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmFormList.resx">
+      <DependentUpon>frmFormList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmChartColorRank.resx">
+      <DependentUpon>frmChartColorRank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmBSTList.resx">
+      <DependentUpon>frmBSTList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmChartComplete.resx">
+      <DependentUpon>frmChartComplete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmCodeSearch.resx">
+      <DependentUpon>frmCodeSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmChartLog.resx">
+      <DependentUpon>frmChartLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\FrmCompleteAfterModfiy.resx">
+      <DependentUpon>FrmCompleteAfterModfiy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmConvEMR.resx">
+      <DependentUpon>frmConvEMR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmERPatient.resx">
+      <DependentUpon>frmERPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmNPChartBatch.resx">
+      <DependentUpon>frmNPChartBatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmOutPatientSearch.resx">
+      <DependentUpon>frmOutPatientSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmOutPatientList.resx">
+      <DependentUpon>frmOutPatientList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\ChartViewer\frmToiSabun_Cert.resx">
+      <DependentUpon>frmToiSabun_Cert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmAutoTextPT.resx">
+      <DependentUpon>frmAutoTextPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmBST_D.resx">
+      <DependentUpon>frmBST_D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmDateSET.resx">
+      <DependentUpon>frmDateSET.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmDualSign.resx">
+      <DependentUpon>frmDualSign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrBasePictureView.resx">
+      <DependentUpon>frmEmrBasePictureView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrJobOpdDataSearch.resx">
+      <DependentUpon>frmEmrJobOpdDataSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrPatientInfoSearch.resx">
+      <DependentUpon>frmEmrPatientInfoSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrTimeTable.resx">
+      <DependentUpon>frmEmrTimeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmHemodialysisInterface.resx">
+      <DependentUpon>frmHemodialysisInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmIO_D.resx">
+      <DependentUpon>frmIO_D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmPatientState_New.resx">
+      <DependentUpon>frmPatientState_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmPatientState.resx">
+      <DependentUpon>frmPatientState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmInfoEntrySimple.resx">
+      <DependentUpon>frmInfoEntrySimple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\FrmVital_D.resx">
+      <DependentUpon>FrmVital_D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\Mibi\frmTextEmrMibi.resx">
+      <DependentUpon>frmTextEmrMibi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\NrformOld\frmEmrNurJinResult.resx">
+      <DependentUpon>frmEmrNurJinResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\NrformOld\frmNursingRecordJindanOld.resx">
+      <DependentUpon>frmNursingRecordJindanOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\NrformOld\frmNursingRecordOld.resx">
+      <DependentUpon>frmNursingRecordOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmAnForm_New.resx">
+      <DependentUpon>frmAnForm_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmAnForm.resx">
+      <DependentUpon>frmAnForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmAnFormExam.resx">
+      <DependentUpon>frmAnFormExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmAnFormGrapeTurniquest.resx">
+      <DependentUpon>frmAnFormGrapeTurniquest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmAnFormMapping.resx">
+      <DependentUpon>frmAnFormMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmAnFormSpdMacro.resx">
+      <DependentUpon>frmAnFormSpdMacro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmAnUserSearch.resx">
+      <DependentUpon>frmAnUserSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEasDesigner.resx">
+      <DependentUpon>frmEasDesigner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEasTabletViewer.resx">
+      <DependentUpon>frmEasTabletViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEasViewer.resx">
+      <DependentUpon>frmEasViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrAnItem.resx">
+      <DependentUpon>frmEmrAnItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseAcpListWrite.resx">
+      <DependentUpon>frmEmrBaseAcpListWrite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseChartWrite.resx">
+      <DependentUpon>frmEmrBaseChartWrite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseDefaultValueSet.resx">
+      <DependentUpon>frmEmrBaseDefaultValueSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseProgressImage.resx">
+      <DependentUpon>frmEmrBaseProgressImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseViewVitalandActing.resx">
+      <DependentUpon>frmEmrBaseViewVitalandActing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseViewVitalandActingItem.resx">
+      <DependentUpon>frmEmrBaseViewVitalandActingItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrChartPopup.resx">
+      <DependentUpon>frmEmrChartPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrConsult.resx">
+      <DependentUpon>frmEmrConsult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrImageDrawingNew.resx">
+      <DependentUpon>frmEmrImageDrawingNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrProgressView.resx">
+      <DependentUpon>frmEmrProgressView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\ucEmrChart.resx">
+      <DependentUpon>ucEmrChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\frmAutoBSTInterface.resx">
+      <DependentUpon>frmAutoBSTInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\frmBSTHDInterface.resx">
+      <DependentUpon>frmBSTHDInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\frmBSTInterface.resx">
+      <DependentUpon>frmBSTInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\frmDaySugaInterface.resx">
+      <DependentUpon>frmDaySugaInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\frmEmrBaseInterface.resx">
+      <DependentUpon>frmEmrBaseInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\frmH20View.resx">
+      <DependentUpon>frmH20View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrBaseNurseMemo.resx">
+      <DependentUpon>frmEmrBaseNurseMemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrBaseRRSDetail.resx">
+      <DependentUpon>frmEmrBaseRRSDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrBaseRRSWardView.resx">
+      <DependentUpon>frmEmrBaseRRSWardView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrBloodComponent.resx">
+      <DependentUpon>frmEmrBloodComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrBloodInfo.resx">
+      <DependentUpon>frmEmrBloodInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrBaseVitalAndActing.resx">
+      <DependentUpon>frmEmrBaseVitalAndActing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrBasVitalSetWard.resx">
+      <DependentUpon>frmEmrBasVitalSetWard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrInsulinImg.resx">
+      <DependentUpon>frmEmrInsulinImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrFluidCalc.resx">
+      <DependentUpon>frmEmrFluidCalc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrIVRate.resx">
+      <DependentUpon>frmEmrIVRate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrNrCatheterView.resx">
+      <DependentUpon>frmEmrNrCatheterView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmEmrNrNursingActNew.resx">
+      <DependentUpon>frmEmrNrNursingActNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmGFRCalc.resx">
+      <DependentUpon>frmGFRCalc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\frmPatientMonitorInterface.resx">
+      <DependentUpon>frmPatientMonitorInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmHDRecordView.resx">
+      <DependentUpon>frmHDRecordView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmHighRiskWomen_EMR.resx">
+      <DependentUpon>frmHighRiskWomen_EMR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmNrActingItemNew1.resx">
+      <DependentUpon>frmNrActingItemNew1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmNrActingListNew.resx">
+      <DependentUpon>frmNrActingListNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmNrActingSetNew.resx">
+      <DependentUpon>frmNrActingSetNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmNrImgCvt.resx">
+      <DependentUpon>frmNrImgCvt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmNrIONew2.resx">
+      <DependentUpon>frmNrIONew2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmNrIONew.resx">
+      <DependentUpon>frmNrIONew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmNurActOrderEntry_EMR.resx">
+      <DependentUpon>frmNurActOrderEntry_EMR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmSugaOrderSave.resx">
+      <DependentUpon>frmSugaOrderSave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrFormNew\frmTextEmrWardAllNew.resx">
+      <DependentUpon>frmTextEmrWardAllNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmBigo.resx">
+      <DependentUpon>frmBigo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmEmrBaseRingerIO.resx">
+      <DependentUpon>frmEmrBaseRingerIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmEmrBaseRingerIOAct.resx">
+      <DependentUpon>frmEmrBaseRingerIOAct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmEmrBaseRingerIOViewer.resx">
+      <DependentUpon>frmEmrBaseRingerIOViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmEmrForm_1562_0_New.resx">
+      <DependentUpon>frmEmrForm_1562_0_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmEmrForm_1562_Nurse.resx">
+      <DependentUpon>frmEmrForm_1562_Nurse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmEmrVitalSign.resx">
+      <DependentUpon>frmEmrVitalSign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmEmrVitalSignSaveError.resx">
+      <DependentUpon>frmEmrVitalSignSaveError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmSetup01.resx">
+      <DependentUpon>frmSetup01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmrTRFS.resx">
+      <DependentUpon>frmTextEmrTRFS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmrWardAll.resx">
+      <DependentUpon>frmTextEmrWardAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmrVtChart.resx">
+      <DependentUpon>frmTextEmrVtChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_Hospice01.resx">
+      <DependentUpon>frmTextEmr_Hospice01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_IONew.resx">
+      <DependentUpon>frmTextEmr_IONew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NrActNewBon.resx">
+      <DependentUpon>frmTextEmr_NrActNewBon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NrActive1.resx">
+      <DependentUpon>frmTextEmr_NrActive1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NrActiveICU2.resx">
+      <DependentUpon>frmTextEmr_NrActiveICU2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NrActGangBak.resx">
+      <DependentUpon>frmTextEmr_NrActGangBak.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NrActFallBaby.resx">
+      <DependentUpon>frmTextEmr_NrActFallBaby.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NrActFall.resx">
+      <DependentUpon>frmTextEmr_NrActFall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrBaseAbbreviation.resx">
+      <DependentUpon>frmEmrBaseAbbreviation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrBaseAbbreviationDes.resx">
+      <DependentUpon>frmEmrBaseAbbreviationDes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrBaseEmrChartOld.resx">
+      <DependentUpon>frmEmrBaseEmrChartOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrBaseEmrListOld.resx">
+      <DependentUpon>frmEmrBaseEmrListOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrBaseSingularRemark.resx">
+      <DependentUpon>frmEmrBaseSingularRemark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrBaseSympOld.resx">
+      <DependentUpon>frmEmrBaseSympOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrBaseTextEmrMibiOld.resx">
+      <DependentUpon>frmEmrBaseTextEmrMibiOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrBaseUserChoRegOld.resx">
+      <DependentUpon>frmEmrBaseUserChoRegOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOld\frmEmrJobMiBiStatisticsTewon.resx">
+      <DependentUpon>frmEmrJobMiBiStatisticsTewon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseAcpListNew.resx">
+      <DependentUpon>frmEmrBaseAcpListNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseChartDrawing.resx">
+      <DependentUpon>frmEmrBaseChartDrawing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNew\frmTextEmrOrder2.resx">
+      <DependentUpon>frmTextEmrOrder2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBasePatientState.resx">
+      <DependentUpon>frmEmrBasePatientState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseProgressOcs.resx">
+      <DependentUpon>frmEmrBaseProgressOcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseUserChartForm.resx">
+      <DependentUpon>frmEmrBaseUserChartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseVitalSign.resx">
+      <DependentUpon>frmEmrBaseVitalSign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBasicCode.resx">
+      <DependentUpon>frmEmrBasicCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrChartNew.resx">
+      <DependentUpon>frmEmrChartNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrEndoMIBI.resx">
+      <DependentUpon>frmEmrEndoMIBI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrOrderOld.resx">
+      <DependentUpon>frmEmrOrderOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrSayu.resx">
+      <DependentUpon>frmEmrSayu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmOcrHis.resx">
+      <DependentUpon>frmOcrHis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmEmrForm_1562_0.resx">
+      <DependentUpon>frmEmrForm_1562_0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmEmrNurJinNew.resx">
+      <DependentUpon>frmEmrNurJinNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmMSG_IV.resx">
+      <DependentUpon>frmMSG_IV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmMSG_ICE.resx">
+      <DependentUpon>frmMSG_ICE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmMSG_BEDSORE.resx">
+      <DependentUpon>frmMSG_BEDSORE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmMSG_FALL.resx">
+      <DependentUpon>frmMSG_FALL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmMSG_BST.resx">
+      <DependentUpon>frmMSG_BST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmNrIcuTimeSet.resx">
+      <DependentUpon>frmNrIcuTimeSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmNurMibi.resx">
+      <DependentUpon>frmNurMibi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmNursingRecord.resx">
+      <DependentUpon>frmNursingRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseAcpList.resx">
+      <DependentUpon>frmEmrBaseAcpList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseChartView.resx">
+      <DependentUpon>frmEmrBaseChartView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseContinuView.resx">
+      <DependentUpon>frmEmrBaseContinuView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrBaseInNrAcpList.resx">
+      <DependentUpon>frmEmrBaseInNrAcpList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrCaledar.resx">
+      <DependentUpon>frmEmrCaledar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrChartDoc.resx">
+      <DependentUpon>frmEmrChartDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrChartFlowOld.resx">
+      <DependentUpon>frmEmrChartFlowOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrChartHisList.resx">
+      <DependentUpon>frmEmrChartHisList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrChartToImage.resx">
+      <DependentUpon>frmEmrChartToImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrFormSearch.resx">
+      <DependentUpon>frmEmrFormSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrPrintOption.resx">
+      <DependentUpon>frmEmrPrintOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrProgMacro.resx">
+      <DependentUpon>frmEmrProgMacro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrMacrowordProg.resx">
+      <DependentUpon>frmEmrMacrowordProg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrMacrowordProgTrs.resx">
+      <DependentUpon>frmEmrMacrowordProgTrs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrUserFormReg.resx">
+      <DependentUpon>frmEmrUserFormReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmEmrUserImageReg.resx">
+      <DependentUpon>frmEmrUserImageReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmPainScaleHelp.resx">
+      <DependentUpon>frmPainScaleHelp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="from\frmScanImageViewNew.resx">
+      <DependentUpon>frmScanImageViewNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NrActiveTotalCare.resx">
+      <DependentUpon>frmTextEmr_NrActiveTotalCare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_ICUBundle.resx">
+      <DependentUpon>frmTextEmr_ICUBundle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NursingRecordRE.resx">
+      <DependentUpon>frmTextEmr_NursingRecordRE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NursingRecordER.resx">
+      <DependentUpon>frmTextEmr_NursingRecordER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NrActYokPrevention.resx">
+      <DependentUpon>frmTextEmr_NrActYokPrevention.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NrActiveTotalCare2.resx">
+      <DependentUpon>frmTextEmr_NrActiveTotalCare2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTextEmr_NrActPchy.resx">
+      <DependentUpon>frmTextEmr_NrActPchy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmTransRecordingInfo.resx">
+      <DependentUpon>frmTransRecordingInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NrForm\frmVitalSet.resx">
+      <DependentUpon>frmVitalSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UseCon\ucImageCon.resx">
+      <DependentUpon>ucImageCon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UseCon\usFormTopMenu.resx">
+      <DependentUpon>usFormTopMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UseCon\usTimeSet.resx">
+      <DependentUpon>usTimeSet.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ComEmrBase.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ComBase\ComBase.csproj">
+      <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
+      <Name>ComBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="MSDATASRC">
+      <Guid>{7C0FFAB0-CD84-11D0-949A-00A0C91110ED}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\혈액.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\접촉1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\접촉2_격리.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\공기.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\비말.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\보호.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\해외.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\피하주사순서1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0000111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I00111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0001111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I01111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0010111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I10111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0011111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I11111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0100111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0101111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0110111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I0111111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1000111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1001111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1010111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1011111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1100111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1101111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1110111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111010.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111110.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I1111111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\욕창분류 단계.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\욕창치유 사정도구.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\수혈기록지 참고사항2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\수혈기록지 참고사항21.PNG" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
