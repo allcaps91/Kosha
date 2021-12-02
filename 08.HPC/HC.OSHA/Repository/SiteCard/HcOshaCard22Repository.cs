@@ -52,7 +52,7 @@ namespace HC.OSHA.Repository
             parameter.Add("ID", dto.ID);
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
             parameter.Add("YEAR", dto.YEAR);
-            parameter.Add("IMAGEDATA", dto.ImageData, Oracle.DataAccess.Client.OracleDbType.LongRaw);
+            parameter.Add("IMAGEDATA", dto.ImageData, Oracle.ManagedDataAccess.Client.OracleDbType.LongRaw);
             
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Insert("HIC_OSHA_CARD22", dto.ID);
@@ -70,7 +70,7 @@ namespace HC.OSHA.Repository
             
             parameter.Add("ID", dto.ID);
             parameter.Add("YEAR", dto.YEAR);
-            parameter.Add("IMAGEDATA", dto.ImageData, Oracle.DataAccess.Client.OracleDbType.LongRaw);
+            parameter.Add("IMAGEDATA", dto.ImageData, Oracle.ManagedDataAccess.Client.OracleDbType.LongRaw);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Update("HIC_OSHA_CARD22", dto.ID);

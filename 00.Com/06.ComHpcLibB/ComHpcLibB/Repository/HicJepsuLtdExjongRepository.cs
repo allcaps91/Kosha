@@ -51,7 +51,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("TODATE", strTDate);
             if (strJong != "**")
             {
-                parameter.Add("GJJONG", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (nLtdCode != 0)
             {
@@ -96,7 +96,7 @@ namespace ComHpcLibB.Repository
 
             if (strGjJong != "**" && strGjJong != "")
             {
-                parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (nLtdCode != 0)
             {

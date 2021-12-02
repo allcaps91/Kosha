@@ -27,7 +27,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND SOGENCODE = :SOGENCODE      ");
 
             parameter.Add("WRTNO", argWrtNo);
-            parameter.Add("SOGENCODE", argSogenCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SOGENCODE", argSogenCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -584,7 +584,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU               ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                      ");
 
-            parameter.Add("MCODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("MCODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("WRTNO", gnWRTNO);
 
             return ExecuteNonQuery(parameter);
@@ -884,7 +884,7 @@ namespace ComHpcLibB.Repository
 
             if (!string.IsNullOrEmpty(strMCode))
             { 
-                parameter.Add("MCODE", strMCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("MCODE", strMCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteScalar<string>(parameter);

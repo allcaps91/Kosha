@@ -60,7 +60,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (strLtdCode != "")
             {
                 parameter.Add("LTDCODE", strLtdCode);
@@ -85,7 +85,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFDate);
             parameter.Add("TODATE", strTDate);
-            parameter.Add("GJJONG", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_JEPSU_LTD_RES_BOHUM1>(parameter);
         }
@@ -329,14 +329,14 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql(" ORDER BY a.JEPDate,a.SName,a.GjJong                                               ");
             }
 
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);            
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);            
             if (strGjJong == "**")
             {
                 parameter.AddInStatement("GJJONG", strFirstGjJong);
             }
             else
             {
-                parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (!nLtdCode.IsNullOrEmpty())
             {
@@ -344,7 +344,7 @@ namespace ComHpcLibB.Repository
             }
             if (strDAT != null)
             {
-                parameter.Add("PANJENG", strDAT, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("PANJENG", strDAT, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_JEPSU_LTD_RES_BOHUM1>(parameter);
@@ -375,11 +375,11 @@ namespace ComHpcLibB.Repository
             parameter.Add("TODATE", strTDate);
             if (strYear != "")
             {
-                parameter.Add("GJYEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJYEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (strBangi != "")
             {
-                parameter.Add("GJBANGI", strBangi, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJBANGI", strBangi, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (fstrLtdCode != "")
             {
@@ -407,8 +407,8 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFDate);
             parameter.Add("TODATE", strTDate);
-            parameter.Add("GJYEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GJBANGI", strBangi, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJBANGI", strBangi, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (fstrLtdCode != "")
             {
                 parameter.Add("LTDCODE", fstrLtdCode);
@@ -502,11 +502,11 @@ namespace ComHpcLibB.Repository
             parameter.Add("TODATE", fstrTDate);
             if (strYear != "")
             {
-                parameter.Add("GJYEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJYEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (strBangi != "")
             {
-                parameter.Add("GJBANGI", strBangi, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJBANGI", strBangi, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (fstrLtdCode != "")
             {
@@ -589,7 +589,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("PANO", argPano);
             parameter.Add("JEPDATE", argJepDate);
-            parameter.Add("GJYEAR", argGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", argGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_JEPSU_LTD_RES_BOHUM1>(parameter);
         }
@@ -645,10 +645,10 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFrDate);
             parameter.Add("TODATE", strToDate);
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (strGjBangi != "")
             {
-                parameter.Add("GJBANGI", strGjBangi, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJBANGI", strGjBangi, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (nLtdCode != 0)
             {

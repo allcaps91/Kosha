@@ -27,8 +27,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE SABUN = :SABUN          ");
             parameter.AppendSql("   AND YEAR  = :YEAR           ");
 
-            parameter.Add("SABUN", strSabun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("YEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SABUN", strSabun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

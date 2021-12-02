@@ -176,7 +176,7 @@ namespace ComHpcLibB.Repository
 
             if (strJong != "*")
             {
-                parameter.Add("STRJONG", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("STRJONG", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (strLtdCode != "") { parameter.Add("LTDCODE", LtdCode); }
@@ -537,7 +537,7 @@ namespace ComHpcLibB.Repository
 
             if (strJong != "*")
             {
-                parameter.Add("STRJONG", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("STRJONG", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (strJisaCode != "") { parameter.Add("JISACODE", strJisaCode); }
@@ -825,19 +825,19 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   WHERE               ROWID=:RID                                      ");
 
             parameter.Add("LTDCODE",        item.LTDCODE                                                );
-            parameter.Add("JISA",           item.JISA, Oracle.DataAccess.Client.OracleDbType.Char       );
-            parameter.Add("KIHO",           item.KIHO, Oracle.DataAccess.Client.OracleDbType.Char       );
-            parameter.Add("MISUJONG",       item.MISUJONG, Oracle.DataAccess.Client.OracleDbType.Char   );
+            parameter.Add("JISA",           item.JISA, Oracle.ManagedDataAccess.Client.OracleDbType.Char       );
+            parameter.Add("KIHO",           item.KIHO, Oracle.ManagedDataAccess.Client.OracleDbType.Char       );
+            parameter.Add("MISUJONG",       item.MISUJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char   );
             parameter.Add("BDATE",          item.BDATE                                                  );
-            parameter.Add("GJONG",          item.GJONG, Oracle.DataAccess.Client.OracleDbType.Char      );
-            parameter.Add("GBEND",          item.GBEND, Oracle.DataAccess.Client.OracleDbType.Char      );
+            parameter.Add("GJONG",          item.GJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char      );
+            parameter.Add("GBEND",          item.GBEND, Oracle.ManagedDataAccess.Client.OracleDbType.Char      );
             parameter.Add("PUMMOK",         item.PUMMOK                                                 );
-            parameter.Add("MISUGBN",        item.MISUGBN, Oracle.DataAccess.Client.OracleDbType.Char    );
+            parameter.Add("MISUGBN",        item.MISUGBN, Oracle.ManagedDataAccess.Client.OracleDbType.Char    );
             parameter.Add("GIRONO",         item.GIRONO                                                 );
             parameter.Add("CNO",            item.CNO                                                    );
             parameter.Add("DAMNAME",        item.DAMNAME                                                );
             parameter.Add("REMARK",         item.REMARK                                                 );
-            parameter.Add("MIRGBN",         item.MIRGBN, Oracle.DataAccess.Client.OracleDbType.Char     );
+            parameter.Add("MIRGBN",         item.MIRGBN, Oracle.ManagedDataAccess.Client.OracleDbType.Char     );
             parameter.Add("MIRCHAAMT",      item.MIRCHAAMT                                              );
             parameter.Add("MIRCHAREMARK",   item.MIRCHAREMARK                                           );
 
@@ -846,7 +846,7 @@ namespace ComHpcLibB.Repository
                 parameter.Add("MIRCHADATE", item.MIRCHADATE                                             );
             }
             
-            parameter.Add("YYMM_JIN",       item.YYMM_JIN, Oracle.DataAccess.Client.OracleDbType.Char   );
+            parameter.Add("YYMM_JIN",       item.YYMM_JIN, Oracle.ManagedDataAccess.Client.OracleDbType.Char   );
             parameter.Add("ENTSABUN",       item.ENTSABUN                                               );
             parameter.Add("MISUAMT",        item.MISUAMT                                                );
             parameter.Add("IPGUMAMT",       item.IPGUMAMT                                               );
@@ -889,14 +889,14 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO",          item.WRTNO                                                      );
             parameter.Add("LTDCODE",        item.LTDCODE                                                    );
-            parameter.Add("JISA",           item.JISA, Oracle.DataAccess.Client.OracleDbType.Char           );
-            parameter.Add("KIHO",           item.KIHO, Oracle.DataAccess.Client.OracleDbType.Char           );
-            parameter.Add("MISUJONG",       item.MISUJONG, Oracle.DataAccess.Client.OracleDbType.Char       );
+            parameter.Add("JISA",           item.JISA, Oracle.ManagedDataAccess.Client.OracleDbType.Char           );
+            parameter.Add("KIHO",           item.KIHO, Oracle.ManagedDataAccess.Client.OracleDbType.Char           );
+            parameter.Add("MISUJONG",       item.MISUJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char       );
             parameter.Add("PUMMOK",         item.PUMMOK                                                     );
             parameter.Add("BDATE",          item.BDATE                                                      );
-            parameter.Add("GJONG",          item.GJONG, Oracle.DataAccess.Client.OracleDbType.Char          );
-            parameter.Add("GBEND",          item.GBEND, Oracle.DataAccess.Client.OracleDbType.Char          );
-            parameter.Add("MISUGBN",        item.MISUGBN, Oracle.DataAccess.Client.OracleDbType.Char        );
+            parameter.Add("GJONG",          item.GJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char          );
+            parameter.Add("GBEND",          item.GBEND, Oracle.ManagedDataAccess.Client.OracleDbType.Char          );
+            parameter.Add("MISUGBN",        item.MISUGBN, Oracle.ManagedDataAccess.Client.OracleDbType.Char        );
             parameter.Add("MISUAMT",        item.MISUAMT                                                    );
             parameter.Add("IPGUMAMT",       item.IPGUMAMT                                                   );
             parameter.Add("GAMAMT",         item.GAMAMT                                                     );
@@ -906,10 +906,10 @@ namespace ComHpcLibB.Repository
             parameter.Add("GIRONO",         item.GIRONO                                                     );
             parameter.Add("DAMNAME",        item.DAMNAME                                                    );
             parameter.Add("REMARK",         item.REMARK                                                     );
-            parameter.Add("MIRGBN",         item.MIRGBN ,Oracle.DataAccess.Client.OracleDbType.Char         );
+            parameter.Add("MIRGBN",         item.MIRGBN ,Oracle.ManagedDataAccess.Client.OracleDbType.Char         );
             parameter.Add("MIRCHAAMT",      item.MIRCHAAMT                                                  );
             parameter.Add("MIRCHAREMARK",   item.MIRCHAREMARK                                               );
-            parameter.Add("YYMM_JIN",       item.YYMM_JIN, Oracle.DataAccess.Client.OracleDbType.Char       );
+            parameter.Add("YYMM_JIN",       item.YYMM_JIN, Oracle.ManagedDataAccess.Client.OracleDbType.Char       );
             parameter.Add("ENTSABUN",       item.ENTSABUN                                                   );
             parameter.Add("CNO",            item.CNO                                                        );
 
@@ -933,7 +933,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO",              item.WRTNO                                                 );
             parameter.Add("BDATE",              item.BDATE                                                 );
             parameter.Add("LTDCODE",            item.LTDCODE                                               );
-            parameter.Add("GEACODE",            item.GEACODE, Oracle.DataAccess.Client.OracleDbType.Char   );
+            parameter.Add("GEACODE",            item.GEACODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char   );
             parameter.Add("SLIPAMT",            item.SLIPAMT                                               );
             parameter.Add("REMARK",             item.REMARK                                                );
             parameter.Add("ENTSABUN",           item.ENTSABUN                                              );
@@ -953,7 +953,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   WHERE               ROWID=:RID                                                  ");
 
             parameter.Add("BDATE",          item.BDATE                                                  );
-            parameter.Add("GEACODE",        item.GEACODE, Oracle.DataAccess.Client.OracleDbType.Char    );
+            parameter.Add("GEACODE",        item.GEACODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char    );
             parameter.Add("SLIPAMT",        item.SLIPAMT                                                );
             parameter.Add("REMARK",         item.REMARK                                                 );
             parameter.Add("ENTSABUN",       item.ENTSABUN                                               );

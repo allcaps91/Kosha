@@ -98,7 +98,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
-            parameter.Add("CODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_EXCODE>(parameter);
         }
@@ -122,7 +122,7 @@ namespace ComHpcLibB.Repository
 
             if (!strGubun.IsNullOrEmpty())
             {
-                parameter.Add("PART", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("PART", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (!strView.IsNullOrEmpty())
@@ -201,7 +201,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE CODE =:CODE                                                             ");
             parameter.AppendSql(" ORDER BY ENTDATE DESC                                                         ");
 
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_EXCODE>(parameter);
         }
@@ -240,7 +240,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND trim(HAROOM) IS NOT NULL    ");
             parameter.AppendSql("   AND HEAPART = :HEAPART          ");
 
-            parameter.Add("HEAPART", strEntPart, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("HEAPART", strEntPart, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -276,7 +276,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE CODE       = :CODE      ");
             parameter.AppendSql("   AND ENDOGUBUN3 = 'Y'        ");
 
-            parameter.Add("CODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_EXCODE>(parameter);
         }
@@ -290,8 +290,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE CODE  = :CODE           ");
 
             #region Query 변수대입
-            parameter.Add("GBSUGA", argGbSuga, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", argExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSUGA", argGbSuga, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             #endregion
             return ExecuteNonQuery(parameter);
@@ -313,7 +313,7 @@ namespace ComHpcLibB.Repository
 
             if (!argPart.IsNullOrEmpty())
             {
-                parameter.Add("PART", argPart, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("PART", argPart, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_EXCODE>(parameter);
@@ -329,7 +329,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND DelDate IS NULL         ");
             parameter.AppendSql(" ORDER BY Code                 ");
 
-            parameter.Add("ENTPART", strPart, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ENTPART", strPart, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_EXCODE>(parameter);
         }
@@ -342,7 +342,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -357,7 +357,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBAUTOSEND='Y'          "); //결과 자동전송
             parameter.AppendSql("   AND DELDATE IS NULL         ");
 
-            parameter.Add("CODE", strHicCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strHicCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -381,7 +381,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE =:EXCODE                                                                             ");
             parameter.AppendSql(" ORDER BY CODE                                                                                     ");
 
-            parameter.Add("EXCODE", argExamCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", argExamCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             
             return ExecuteReader<HIC_EXCODE>(parameter);
         }
@@ -406,7 +406,7 @@ namespace ComHpcLibB.Repository
 
             if (!strPart.IsNullOrEmpty())
             {
-                parameter.Add("PART", strPart, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("PART", strPart, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (!strName.IsNullOrEmpty())
             {
@@ -487,7 +487,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
-            parameter.Add("CODE", strCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -513,7 +513,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -549,7 +549,7 @@ namespace ComHpcLibB.Repository
 
             if (!string.IsNullOrEmpty(fCode))
             {
-                parameter.Add("Code", fCode.Trim(), Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("Code", fCode.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReaderSingle<HIC_EXCODE>(parameter);
@@ -690,13 +690,13 @@ namespace ComHpcLibB.Repository
             parameter.Add("EName",      list.ENAME);
             parameter.Add("YName",      list.YNAME);
             parameter.Add("Unit",       list.UNIT);
-            parameter.Add("TongBun",    list.TONGBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("TongBun",    list.TONGBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("ExCode",     list.EXCODE);
-            parameter.Add("SuCode",     list.SUCODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GCode",      list.GCODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("ResCode",    list.RESCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SuCode",     list.SUCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GCode",      list.GCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("ResCode",    list.RESCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("Part",       list.PART);
-            parameter.Add("EntPart",    list.ENTPART, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EntPart",    list.ENTPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("EntSabun",   list.ENTSABUN);
             parameter.Add("BResult",    list.BRESULT);
             parameter.Add("Min_M",      list.MIN_M);
@@ -729,11 +729,11 @@ namespace ComHpcLibB.Repository
             parameter.Add("EXSORT",     list.EXSORT);
             parameter.Add("HeaPart",    list.HEAPART);
             parameter.Add("HaRoom",     list.HAROOM);
-            parameter.Add("EndoGubun1", list.ENDOGUBUN1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("EndoGubun2", list.ENDOGUBUN2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("EndoGubun3", list.ENDOGUBUN3, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("EndoGubun4", list.ENDOGUBUN4, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("EndoGubun5", list.ENDOGUBUN5, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EndoGubun1", list.ENDOGUBUN1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("EndoGubun2", list.ENDOGUBUN2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("EndoGubun3", list.ENDOGUBUN3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("EndoGubun4", list.ENDOGUBUN4, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("EndoGubun5", list.ENDOGUBUN5, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("EndoScope",  list.ENDOSCOPE);
             parameter.Add("XNAME",      list.XNAME);
             parameter.Add("XREMARK",    list.XREMARK);
@@ -1034,7 +1034,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" GROUP BY HAROOM                           ");
             parameter.AppendSql(" ORDER BY HAROOM                           ");
 
-            parameter.Add("HEAPART", HEAPART, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("HEAPART", HEAPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_EXCODE>(parameter);
         }
@@ -1049,7 +1049,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" GROUP BY HCROOM                           ");
             parameter.AppendSql(" ORDER BY HCROOM                           ");
 
-            parameter.Add("ENTPART", ENTPART, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ENTPART", ENTPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_EXCODE>(parameter);
         }
@@ -1064,7 +1064,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" AND CODE =:Code                                                               ");
             parameter.AppendSql(" AND (ENDOGUBUN2='Y' OR ENDOGUBUN3='Y' OR ENDOGUBUN4='Y' OR ENDOGUBUN5='Y')    ");
 
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_EXCODE>(parameter);
         }
@@ -1079,7 +1079,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" AND CODE =:Code                                                               ");
             parameter.AppendSql(" AND DELDATE IS NULL                                                           ");
 
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_EXCODE>(parameter);
         }

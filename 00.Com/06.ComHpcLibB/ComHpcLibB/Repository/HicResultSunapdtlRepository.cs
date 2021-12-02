@@ -27,7 +27,7 @@
             parameter.AppendSql("    AND B.GBSELF IN ('','1','01')                                              ");
 
             parameter.Add("WRTNO", argWrtno);
-            parameter.AddInStatement("EXCODE", lstExcode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", lstExcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT_SUNAPDTL>(parameter);
         }
@@ -91,7 +91,7 @@
             parameter.AppendSql("  GROUP by a.CODE                                                              ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("EXCODE", eXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", eXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT_SUNAPDTL>(parameter);
         }
@@ -117,7 +117,7 @@
             parameter.AppendSql("  GROUP BY a.Code                                                              ");
  
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("EXCODE", eXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", eXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT_SUNAPDTL>(parameter);
         }

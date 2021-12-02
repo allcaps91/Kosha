@@ -43,7 +43,7 @@ namespace ComHpcLibB.Repository
             {
                 parameter.Add("SUBCODE", argSubCode);
             }
-            parameter.Add("SPECNO", argSpecNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SPECNO", argSpecNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -112,7 +112,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND R.SUBCODE = M.MASTERCODE(+)             ");
             parameter.AppendSql(" ORDER BY R.SEQNO                              ");
 
-            parameter.Add("SPECNO", argSpecNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SPECNO", argSpecNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<EXAM_RESULTC>(parameter);
         }
@@ -155,8 +155,8 @@ namespace ComHpcLibB.Repository
 
 
             parameter.Add("WRTNO", ArgWRTNO);
-            parameter.Add("PTNO", ArgPTNO, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("EXCODE", ArgExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", ArgPTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", ArgExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
 
             return ExecuteReaderSingle<EXAM_RESULTC>(parameter);

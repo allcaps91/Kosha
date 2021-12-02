@@ -3,7 +3,7 @@ using System.Data;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComDbB
 {

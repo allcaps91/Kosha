@@ -47,7 +47,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GJJONG = :GJJONG                    ");
 
             parameter.Add("PANO", argPano);
-            parameter.Add("GJJONG", argGjjong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", argGjjong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -100,7 +100,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("SUNAPAMT", item.SUNAPAMT);
             parameter.Add("JOBSABUN", item.JOBSABUN);
             parameter.Add("BOGUNSOAMT", item.BOGUNSOAMT);
-            parameter.Add("GJJONG",   item.GJJONG, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG",   item.GJJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -114,7 +114,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GJJONG = :GJJONG                        ");
 
             parameter.Add("PANO", argPaNo);
-            parameter.Add("GJJONG", argGjjong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", argGjjong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }

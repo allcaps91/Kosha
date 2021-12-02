@@ -27,7 +27,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("       (:GBBUSE, :WRTNO)                   ");
 
             parameter.Add("WRTNO", WRTNO);
-            parameter.Add("GBBUSE", strBuse, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBBUSE", strBuse, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -60,7 +60,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("VALUES                                             ");
             parameter.AppendSql("       (:GBBUSE, :WRTNO, SYSDATE, :INPID, :INPIP)  ");
 
-            parameter.Add("GBBUSE", strGbBuse, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBBUSE", strGbBuse, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("WRTNO", nWRTNO);
             parameter.Add("INPID", idNumber);
             parameter.Add("INPIP", gstrCOMIP);

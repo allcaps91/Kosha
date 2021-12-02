@@ -33,7 +33,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBSTS  = '0'                                ");
             parameter.AppendSql("   AND ROWNUM = 1                                  ");
 
-            parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<WORK_NHIC>(parameter);
         }
@@ -82,11 +82,11 @@ namespace ComHpcLibB.Repository
 
             if (!argGbn.IsNullOrEmpty())
             {
-                parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
-            parameter.Add("GBSTS", argGbSts, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("YEAR", argYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSTS", argGbSts, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", argYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<WORK_NHIC>(parameter);
         }
@@ -154,11 +154,11 @@ namespace ComHpcLibB.Repository
 
             if (!argGbn.IsNullOrEmpty())
             {
-                parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
-            parameter.Add("GBSTS", argGbSTS, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("YEAR", argYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSTS", argGbSTS, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", argYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<WORK_NHIC>(parameter);
         }
@@ -411,15 +411,15 @@ namespace ComHpcLibB.Repository
 
             if (!argGbn.IsNullOrEmpty())
             {
-                parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (!argGbSTS.IsNullOrEmpty())
             {
-                parameter.Add("GBSTS", argGbSTS, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GBSTS", argGbSTS, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
-            parameter.Add("YEAR", argYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", argYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<WORK_NHIC>(parameter);
         }

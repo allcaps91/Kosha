@@ -52,7 +52,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GROUPCODE IN (:GROUPCODES)              ");
             parameter.AppendSql(" GROUP By EXCODE                               ");
 
-            parameter.AddInStatement("GROUPCODES", lstgrpCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GROUPCODES", lstgrpCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<GROUPCODE_EXAM_DISPLAY>(parameter);
         }
@@ -87,7 +87,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GROUPCODE IN (:GROUPCODES)              ");
             parameter.AppendSql(" GROUP By EXCODE                               ");
 
-            parameter.AddInStatement("GROUPCODES", lstgrpCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GROUPCODES", lstgrpCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<GROUPCODE_EXAM_DISPLAY>(parameter);
         }
@@ -145,7 +145,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" GROUP BY A.GROUPCODE, A.EXCODE, B.HNAME, B.AMT2                           ");
             parameter.AppendSql(" ORDER BY A.GROUPCODE, A.EXCODE                                            ");
 
-            parameter.AddInStatement("GROUPCODE", suInfo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("GROUPCODE", suInfo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<GROUPCODE_EXAM_DISPLAY>(parameter);
         }

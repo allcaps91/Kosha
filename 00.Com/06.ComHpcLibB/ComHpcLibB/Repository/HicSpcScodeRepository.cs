@@ -27,7 +27,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_Spc_SCODE_NEW   ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -43,7 +43,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_SCODE_NEW                                   ");
             parameter.AppendSql(" WHERE CODE = :CODE                                                ");
 
-            parameter.Add("CODE", argSogen, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argSogen, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_SPC_SCODE>(parameter);
         }
@@ -106,7 +106,7 @@ namespace ComHpcLibB.Repository
 
             if (!strRetValue.IsNullOrEmpty())
             {
-                parameter.Add("PANJENG", strRetValue, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("PANJENG", strRetValue, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (!strName.IsNullOrEmpty())
@@ -156,7 +156,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,SORT        =:SORT         ");
             parameter.AppendSql(" WHERE ROWID       =:RID          ");
 
-            parameter.Add("CODE",        item.CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE",        item.CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("PANJENG",     item.PANJENG);
             parameter.Add("DBUN",        item.DBUN); 
             parameter.Add("NAME",        item.NAME); 
@@ -230,7 +230,7 @@ namespace ComHpcLibB.Repository
 
             if (strPan != "*" && !strPan.IsNullOrEmpty())
             {
-                parameter.Add("PANJENG", strPan, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("PANJENG", strPan, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             
             return ExecuteReader<HIC_SPC_SCODE>(parameter);

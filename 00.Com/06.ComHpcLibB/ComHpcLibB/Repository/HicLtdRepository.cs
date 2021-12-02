@@ -239,7 +239,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("FROM                       KOSMOS_PMPA.HIC_LTD         ");
             parameter.AppendSql("WHERE                      KIHO = :BOGENSO             ");
 
-            parameter.Add("BOGENSO", strBogenso, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("BOGENSO", strBogenso, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_LTD>(parameter);
         }
@@ -455,7 +455,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD                                                             ");
             parameter.AppendSql(" WHERE CODE = :CODE                                                                    ");
 
-            parameter.Add("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_LTD>(parameter);
         }

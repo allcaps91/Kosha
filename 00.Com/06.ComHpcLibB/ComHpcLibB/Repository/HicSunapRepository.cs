@@ -504,7 +504,7 @@ namespace ComHpcLibB.Repository
 
             if (!argJong.IsNullOrEmpty())
             {
-                parameter.Add("GJJONG", argJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             ExecuteNonQuery(parameter);

@@ -1,7 +1,3 @@
-C:\PSMHEXE\Debug\log4net.config
-C:\PSMHEXE\Debug\ComPmpaLibB.dll.config
-C:\PSMHEXE\Debug\ComPmpaLibB.dll
-C:\PSMHEXE\Debug\ComPmpaLibB.pdb
 C:\PSMH\00.Com\01.ComPmpaLibB\ComPmpaLibB\obj\Debug\ComPmpaLibB.form.Form1.resources
 C:\PSMH\00.Com\01.ComPmpaLibB\ComPmpaLibB\obj\Debug\ComPmpaLibB.frmAutoPrintIPD.resources
 C:\PSMH\00.Com\01.ComPmpaLibB\ComPmpaLibB\obj\Debug\ComPmpaLibB.frmMisuAdd.resources
@@ -429,6 +425,10 @@ C:\PSMH\00.Com\01.ComPmpaLibB\ComPmpaLibB\obj\Debug\ComPmpaLibB.dll
 C:\PSMH\00.Com\01.ComPmpaLibB\ComPmpaLibB\obj\Debug\ComPmpaLibB.pdb
 C:\PSMH\00.Com\01.ComPmpaLibB\ComPmpaLibB\obj\Debug\ComPmpaLibB.frmPmpaTodayJupsuCancel.resources
 C:\PSMH\00.Com\01.ComPmpaLibB\ComPmpaLibB\obj\Debug\ComPmpaLibB.csproj.AssemblyReference.cache
+C:\PSMHEXE\Debug\log4net.config
+C:\PSMHEXE\Debug\ComPmpaLibB.dll.config
+C:\PSMHEXE\Debug\ComPmpaLibB.dll
+C:\PSMHEXE\Debug\ComPmpaLibB.pdb
 C:\KOSHA\00.Com\01.ComPmpaLibB\ComPmpaLibB\obj\Debug\ComPmpaLibB.csproj.AssemblyReference.cache
 C:\KOSHA\00.Com\01.ComPmpaLibB\ComPmpaLibB\obj\Debug\ComPmpaLibB.form.Form1.resources
 C:\KOSHA\00.Com\01.ComPmpaLibB\ComPmpaLibB\obj\Debug\ComPmpaLibB.frmAutoPrintIPD.resources

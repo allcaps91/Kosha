@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using ComBase;
 using FarPoint.Win.Spread;
 using FarPoint.Win.Spread.CellType;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComEmrBase
 {

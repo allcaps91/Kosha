@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND PTNO  = :PTNO                           ");
 
             parameter.Add("BDATE", rECEIVEDATE);
-            parameter.Add("PTNO", strPtno, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.Add("PTNO", strPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteReaderSingle<EXAM_ANATMST>(parameter);
         }
@@ -63,7 +63,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND SUBSTR(AnatNo,1,1) NOT IN ('C','P')                                         ");
             parameter.AppendSql(" ORDER BY BDate,Ptno                                                               ");
 
-            parameter.Add("PTNO", fstrPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", fstrJepDate);
 
             return ExecuteReader<EXAM_ANATMST>(parameter);
@@ -83,9 +83,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND MASTERCODE IN (:MASTERCODE)                                                 ");
             parameter.AppendSql(" ORDER BY BDate,Ptno                                                               ");
 
-            parameter.Add("PTNO", fstrPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", fstrPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BDATE", fstrJepDate);
-            parameter.AddInStatement("MASTERCODE", fstrMasterCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("MASTERCODE", fstrMasterCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<EXAM_ANATMST>(parameter);
         }

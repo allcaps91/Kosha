@@ -137,7 +137,7 @@ namespace ComHpcLibB.Repository
             }
             if (strPart != "")
             {
-                parameter.Add("PART", item.PART, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("PART", item.PART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<CARD_APPROV_CENTER>(parameter);
@@ -242,10 +242,10 @@ namespace ComHpcLibB.Repository
 
             if (strSaBun != "ÀüÃ¼" && strSaBun != "")
             {
-                parameter.Add("strSaBun", strSaBun, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("strSaBun", strSaBun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
-            parameter.Add("TDATE", argDate, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("TDATE", argDate, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<CARD_APPROV_CENTER>(parameter);
         }

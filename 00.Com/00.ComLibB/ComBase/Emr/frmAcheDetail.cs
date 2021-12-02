@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using ComDbB;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using static ComBase.clsEmrFunc;
 
 namespace ComBase

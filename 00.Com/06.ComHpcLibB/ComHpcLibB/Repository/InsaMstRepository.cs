@@ -27,7 +27,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_ADM.INSA_MST                     ");
             parameter.AppendSql(" WHERE SABUN = :SABUN                          ");
 
-            parameter.Add("SABUN", idNumber, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SABUN", idNumber, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -64,7 +64,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_ADM.INSA_MST                     ");
             parameter.AppendSql(" WHERE SABUN = :SABUN                          ");
 
-            parameter.Add("SABUN", argSabun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SABUN", argSabun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

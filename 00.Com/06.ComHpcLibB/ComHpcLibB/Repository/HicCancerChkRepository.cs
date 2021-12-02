@@ -29,7 +29,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND YEAR  = :YEAR                   ");
 
             parameter.Add("PANO", pANO);
-            parameter.Add("YEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -62,7 +62,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND YEAR  = :YEAR                   ");
 
             parameter.Add("PANO", strPano);
-            parameter.Add("YEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

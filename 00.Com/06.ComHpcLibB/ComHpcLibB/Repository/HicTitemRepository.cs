@@ -63,7 +63,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", fnWrtNo);
             parameter.Add("GUBUN", strGubun);
-            parameter.AddInStatement("CODE", strCodes, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("CODE", strCodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -85,7 +85,7 @@ namespace ComHpcLibB.Repository
             }
 
             parameter.Add("GUBUN", strGubun);
-            parameter.Add("CODE", strCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (nWRTNO > 0)
             {
                 parameter.Add("WRTNO", nWRTNO);
@@ -305,7 +305,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN = :GUBUN                  ");
             parameter.AppendSql("   AND JUMSU = :JUMSU                  ");
 
-            parameter.Add("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("PANO", fnPano);
             if (nWRTNO > 0)
             {
@@ -328,7 +328,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , JUMSU = :JUMSU                  ");
             parameter.AppendSql(" WHERE ROWID = :RID                    ");
 
-            parameter.Add("CODE", strCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("WRTNO", nWRTNO);
             parameter.Add("PANO", fnPano);
             parameter.Add("JUMSU", nJumsu);
@@ -360,7 +360,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", nWRTNO);
             parameter.Add("GUBUN", strGubun);
-            parameter.Add("CODE", strCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JUMSU", nJumsu);
             parameter.Add("PANO", fnPano);
 

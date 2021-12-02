@@ -224,7 +224,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN = :GUBUN                           ");
 
             parameter.Add("SDATE", argDate);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_RESV_LTD>(parameter);
         }
@@ -338,7 +338,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("SDATE", argDate);
             parameter.Add("LTDCODE", argLtdCode);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HEA_RESV_LTD>(parameter);
         }

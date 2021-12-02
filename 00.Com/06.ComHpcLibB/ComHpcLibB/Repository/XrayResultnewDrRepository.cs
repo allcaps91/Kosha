@@ -30,8 +30,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND DEPTCODE = :DEPTCODE                                        ");
             parameter.AppendSql(" ORDER BY READDATE DESC, PANO                                      ");
 
-            parameter.Add("XCODE", strXCode, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("DEPTCODE", strDeptCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("XCODE", strXCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("DEPTCODE", strDeptCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("DAY", nDay);
 
             return ExecuteReader<XRAY_RESULTNEW_DR>(parameter);

@@ -28,7 +28,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                          ");
 
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SDATE", argDate);
 
             return ExecuteReaderSingle<HEA_RESV_SET_TIME>(parameter);
@@ -47,7 +47,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("SDATE", argDate);
             parameter.Add("STIME", argSTime);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             
             return ExecuteReaderSingle<HEA_RESV_SET_TIME>(parameter);
         }
@@ -65,7 +65,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   ORDER BY STIME                                          ");
 
             parameter.Add("SDATE", argDate);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_RESV_SET_TIME>(parameter);
         }
@@ -94,7 +94,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN  = :GUBUN                                 ");
 
             parameter.Add("SDATE", argDate);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_RESV_SET_TIME>(parameter);
         }

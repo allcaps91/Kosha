@@ -28,7 +28,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN =:GUBUN               ");
 
             parameter.Add("CODE", argSpecCode);
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<EXAM_SPECODE>(parameter);
         }

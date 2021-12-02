@@ -330,7 +330,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("REMARK", item2.REMARK);
             parameter.Add("SANGDAMDRNO", item2.SANGDAMDRNO);
-            parameter.Add("GBSTS", item2.GBSTS, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSTS", item2.GBSTS, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("ENTSABUN", item2.ENTSABUN);
             parameter.Add("WRTNO", item2.WRTNO);
 
@@ -395,12 +395,12 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , ENTTIME     = SYSDATE               ");
             parameter.AppendSql(" WHERE WRTNO       = :WRTNO                ");
 
-            parameter.Add("JINCHAL2",    item.JINCHAL2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBSIKSA",     item.GBSIKSA, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JINCHAL2",    item.JINCHAL2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSIKSA",     item.GBSIKSA, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AMSANGDAM",   item.AMSANGDAM);
             parameter.Add("REMARK",      item.REMARK);
             parameter.Add("SANGDAMDRNO", item.SANGDAMDRNO);
-            parameter.Add("GBSTS",       item.GBSTS, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSTS",       item.GBSTS, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("ENTSABUN",    item.ENTSABUN);
             parameter.Add("WRTNO",       item.WRTNO);
 
@@ -423,13 +423,13 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , ENTSABUN    = :ENTSABUN             ");
             parameter.AppendSql(" WHERE WRTNO       = :WRTNO                ");
 
-            parameter.Add("DIABETES_1", item.DIABETES_1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("DIABETES_2", item.DIABETES_2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CYCLE_1", item.CYCLE_1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CYCLE_2", item.CYCLE_2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBSIKSA", item.GBSIKSA, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("DIABETES_1", item.DIABETES_1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("DIABETES_2", item.DIABETES_2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CYCLE_1", item.CYCLE_1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CYCLE_2", item.CYCLE_2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSIKSA", item.GBSIKSA, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("REMARK", item.REMARK);
-            parameter.Add("GBSTS", item.GBSTS, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSTS", item.GBSTS, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SANGDAMDRNO", item.SANGDAMDRNO);
             parameter.Add("ENTSABUN", item.ENTSABUN);
             parameter.Add("WRTNO", item.WRTNO);
@@ -448,12 +448,12 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("       , :PANO,:PTNO,:GBSTS)                                       ");
 
             parameter.Add("WRTNO", item.WRTNO);
-            parameter.Add("GJJONG", item.GJJONG, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GJCHASU", item.GJCHASU, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJJONG", item.GJJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJCHASU", item.GJCHASU, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", item.JEPDATE);
             parameter.Add("PANO", item.PANO);
-            parameter.Add("PTNO", item.PTNO, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("GBSTS", item.GBSTS, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", item.PTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBSTS", item.GBSTS, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -524,11 +524,11 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , ENTTIME  = SYSDATE              ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO               ");
 
-            parameter.Add("HABIT1", item.HABIT1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT2", item.HABIT2, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT3", item.HABIT3, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT4", item.HABIT4, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("HABIT5", item.HABIT5, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT1", item.HABIT1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT2", item.HABIT2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT3", item.HABIT3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT4", item.HABIT4, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("HABIT5", item.HABIT5, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("ENTSABUN", item.ENTSABUN);
             parameter.Add("WRTNO", item.WRTNO);
 

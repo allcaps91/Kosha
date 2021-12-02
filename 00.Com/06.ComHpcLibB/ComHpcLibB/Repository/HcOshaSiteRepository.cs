@@ -203,7 +203,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("JONGMOK",            item.JONGMOK        );
             parameter.Add("LTDNO",              item.LTDNO          );
             parameter.Add("LTDJUSO",            item.LTDJUSO        );
-            parameter.Add("LTDNAME",            item.LTDNAME, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("LTDNAME",            item.LTDNAME, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("ENTSABUN",           item.ENTSABUN       );
             parameter.Add("MISUNO",             item.MISUNO         );
 

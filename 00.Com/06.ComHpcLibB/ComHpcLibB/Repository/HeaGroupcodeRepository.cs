@@ -29,7 +29,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPCODE       ");
             parameter.AppendSql(" WHERE CODE = :CODE                    ");
 
-            parameter.Add("CODE", CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_GROUPCODE>(parameter);
         }
@@ -126,7 +126,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPCODE     ");
             parameter.AppendSql(" WHERE CODE =:CODE                ");
 
-            parameter.Add("CODE", gRPCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", gRPCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -207,7 +207,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("    AND DELDATE IS NULL                                ");
             parameter.AppendSql("  ORDER BY Code                                        ");
 
-            parameter.Add("JONG", argJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JONG", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_GROUPCODE>(parameter);
         }
@@ -353,7 +353,7 @@ namespace ComHpcLibB.Repository
             //parameter.AppendSql("   AND JONG <> '**'                                      ");
             parameter.AppendSql("   AND GBSELECT = 'N'                                    ");
 
-            parameter.Add("CODE", argGroupCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argGroupCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

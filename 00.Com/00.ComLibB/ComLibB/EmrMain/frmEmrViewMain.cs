@@ -7,7 +7,7 @@ using ComBase;
 using ComEmrBase;
 using FarPoint.CalcEngine;
 using Microsoft.Win32;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComLibB
 {

@@ -66,7 +66,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE ROWID       = :RID          ");
 
             #region Query 변수대입
-            parameter.Add("PANJENG", argPan, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANJENG", argPan, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RID", rOWID);
             #endregion
             return ExecuteNonQuery(parameter);
@@ -116,8 +116,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE ROWID    = :RID             ");
 
             parameter.Add("RESULT", item.RESULT);
-            parameter.Add("PANJENG", item.PANJENG, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("RESCODE", item.RESCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANJENG", item.PANJENG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("RESCODE", item.RESCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RID", item.RID);
 
             return ExecuteNonQuery(parameter);
@@ -136,8 +136,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE ROWID    = :RID             ");
 
             parameter.Add("RESULT", strResult);
-            parameter.Add("PANJENG", strNewPan, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("RESCODE", strResCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANJENG", strNewPan, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("RESCODE", strResCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("ENTSABUN", idNumber);
             parameter.Add("RID", strROWID);
 
@@ -239,7 +239,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  ORDER By EXCODE                                      ");
 
             parameter.Add("WRTNO", wRTNO);
-            parameter.AddInStatement("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT>(parameter);
         }
@@ -301,7 +301,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE = :EXCODE            ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("EXCODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -358,7 +358,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("RESULT", strResult);
             parameter.Add("WRTNO", nWRTNO);
             parameter.Add("ENTSABUN", nSabun);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -406,7 +406,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE ROWID    = :RID             ");
 
             parameter.Add("RESULT", item.RESULT);
-            parameter.Add("PANJENG", item.PANJENG, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANJENG", item.PANJENG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("ENTSABUN", item.ENTSABUN);
             parameter.Add("RID", item.RID);
 
@@ -457,7 +457,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE = :EXCODE        ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteScalar<string>(parameter);
         }
@@ -542,16 +542,16 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("   AND EXCODE    = :OLD_EXCODE     ");
             }
 
-            parameter.Add("NEW_GROUPCODE", strNew_Group, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("NEW_GROUPCODE", strNew_Group, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (!strNew_ExCode.IsNullOrEmpty())
             {
-                parameter.Add("NEW_EXCODE", strNew_ExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("NEW_EXCODE", strNew_ExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             parameter.Add("WRTNO", nWrtNo);
-            parameter.Add("OLD_GROUP", strOLD_Group, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("OLD_GROUP", strOLD_Group, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (!strOld_ExCode.IsNullOrEmpty())
             {
-                parameter.Add("OLD_EXCODE", strOld_ExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("OLD_EXCODE", strOld_ExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteNonQuery(parameter);
@@ -612,8 +612,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE ROWID    = :RID                                                                                 ");
 
             parameter.Add("RESULT", strResult);
-            parameter.Add("PANJENG", strNewPan, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("RESCODE", strResCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANJENG", strNewPan, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("RESCODE", strResCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("ENTSABUN", idNumber);
             parameter.Add("ENTTIME", sSysDate);
             parameter.Add("RID", strROWID);
@@ -645,7 +645,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)         ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.AddInStatement("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -659,7 +659,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)         ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.AddInStatement("EXCODE", strCodeList2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strCodeList2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT>(parameter);
         }
@@ -700,7 +700,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("WRTNO", fnWrtNo);
             parameter.Add("RESULT", strResult);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -756,8 +756,8 @@ namespace ComHpcLibB.Repository
             parameter.Add("RESULT", item1.RESULT);
             parameter.Add("ENTSABUN", item1.ENTSABUN);
             parameter.Add("WRTNO", item1.WRTNO);
-            parameter.Add("ACTIVE", item1.ACTIVE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("EXCODE", item1.EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ACTIVE", item1.ACTIVE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", item1.EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -770,7 +770,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND PART  = :PART                                                                               ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("PART", strPart, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PART", strPart, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -784,7 +784,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE = :EXCODE                                                                            ");
 
             parameter.Add("WRTNO", nWrtNo);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -881,7 +881,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)         ");
 
             parameter.Add("WRTNO", lstHicWrtno);
-            parameter.AddInStatement("EXCODE", lstExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", lstExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<long>(parameter);
         }
@@ -914,7 +914,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND WRTNO  = :WRTNO                 ");
 
             parameter.Add("WRTNO", argWrtNo);
-            parameter.Add("PART", strPart, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PART", strPart, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -942,7 +942,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO           ");
             parameter.AppendSql("   AND EXCODE   = 'A151'           "); //심전도
 
-            parameter.Add("RESCODE", strResCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("RESCODE", strResCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RESULT", strResult);
             parameter.Add("WRTNO", fnWRTNO);
 
@@ -979,7 +979,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)         ");
 
             parameter.Add("WRTNO", argWrtno);
-            parameter.AddInStatement("EXCODE", lstExcode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", lstExcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT>(parameter);
         }
@@ -993,7 +993,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE = :EXCODE            ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -1008,7 +1008,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE ROWID   = :RID                          ");
 
             parameter.Add("RESULT", strResult);
-            parameter.Add("PANJENG", strNewPan, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANJENG", strNewPan, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RID", rOWID);
 
             return ExecuteNonQuery(parameter);
@@ -1024,10 +1024,10 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" )  ");
 
             parameter.Add("WRTNO", hRES.WRTNO);
-            parameter.Add("GROUPCODE", hRES.GROUPCODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("PART", hRES.PART, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("EXCODE", hRES.EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("RESCODE", hRES.RESCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GROUPCODE", hRES.GROUPCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("PART", hRES.PART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", hRES.EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("RESCODE", hRES.RESCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             ExecuteNonQuery(parameter);
         }
@@ -1067,7 +1067,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)         ");
 
             parameter.Add("WRTNO", fnWrtNo);
-            parameter.AddInStatement("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -1083,7 +1083,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("                    AND DELDATE IS NULL)                   ");
             parameter.AppendSql("   AND EXCODE IN ('TX20', 'TX64', 'TX41')                  ");
 
-            parameter.Add("PTNO", sPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", sPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -1103,7 +1103,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("ENTSABUN", idNumber);
             parameter.Add("WRTNO", fnWRTNO);
             parameter.Add("RESULT", strInsomniaMun);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -1164,7 +1164,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("RESULT", strBiman);
             parameter.Add("ENTSABUN", idNumber);
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -1179,7 +1179,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ORDER BY ExCode DESC              ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.AddInStatement("EXCODE", sExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", sExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT>(parameter);
         }
@@ -1194,7 +1194,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ORDER BY ExCode                   ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.AddInStatement("EXCODE", sExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", sExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT>(parameter);
         }
@@ -1299,7 +1299,7 @@ namespace ComHpcLibB.Repository
             }
             parameter.Add("ENTSABUN", item.ENTSABUN);            
             parameter.Add("WRTNO", item.WRTNO);
-            parameter.Add("EXCODE", item.EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", item.EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -1319,7 +1319,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("FRDATE", fstrFDate);
             parameter.Add("TODATE", fstrTDate);
             parameter.Add("LTDCODE", fstrLtdCode);
-            parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -1379,7 +1379,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("JEPDATE", strJepDate);
             parameter.Add("PANO", nPano);
             parameter.Add("RESULT", strResult);
-            parameter.AddInStatement("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -1402,7 +1402,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("RESULT", strResult);
             parameter.Add("WRTNO", nWRTNO);
             parameter.Add("ENTSABUN", nSabun);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -1452,7 +1452,7 @@ namespace ComHpcLibB.Repository
             }
 
             parameter.Add("WRTNO", wRTNO);
-            parameter.AddInStatement("EXCODE", fstrPartExam, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", fstrPartExam, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -1466,7 +1466,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE = :EXCODE        ");
 
             parameter.Add("WRTNO", argwRTNO);
-            parameter.Add("EXCODE", argExcode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", argExcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -1483,9 +1483,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("                 AND DELDATE IS NULL )                             ");
             parameter.AppendSql("   AND EXCODE = :EXCODE        ");
 
-            parameter.Add("PTNO", argPTNO, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPTNO, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JEPDATE", argJEPDATE);
-            parameter.Add("EXCODE", argExcode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", argExcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -1507,7 +1507,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE  = :EXCODE           ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("EXCODE", strExam, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExam, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -1539,7 +1539,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  AND EXCODE = :EXCODE                                     ");
 
             parameter.Add("PTNO", strPano);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("DAY", nDay);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
@@ -1578,7 +1578,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("READTIME", argReadTime);
             parameter.Add("RESULT", argResult);
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("EXCODE", strCodes, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.Add("EXCODE", strCodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteNonQuery(parameter);
         }
@@ -1593,7 +1593,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)         ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.AddInStatement("EXCODE", strCodes, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.AddInStatement("EXCODE", strCodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -1622,8 +1622,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("                    AND DELDATE IS NULL)                       ");
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)                                     ");
 
-            parameter.Add("PTNO", strPano, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.AddInStatement("EXCODE", strCodes, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", strPano, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strCodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("DAY", nDay);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
@@ -1666,7 +1666,7 @@ namespace ComHpcLibB.Repository
             }
             parameter.Add("ENTSABUN", item.ENTSABUN);
             parameter.Add("WRTNO", item.WRTNO);
-            parameter.AddInStatement("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -1681,7 +1681,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)     ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.AddInStatement("EXCODE", strExcode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strExcode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -1697,7 +1697,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("SANGDAM", strSangdam);
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("EXCODE", strExam, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExam, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             return ExecuteNonQuery(parameter);
         }
 
@@ -1727,7 +1727,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ORDER BY EXCODE                   ");
 
             parameter.Add("WRTNO", wRTNO);
-            parameter.AddInStatement("EXCODE", strCodeList, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strCodeList, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT>(parameter);
         }
@@ -1742,7 +1742,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE = :EXCODE            ");
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -1759,7 +1759,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE ROWID      = :RID               ");
 
             parameter.Add("RESULT", item.RESULT);
-            parameter.Add("PANJENG", item.PANJENG, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.Add("PANJENG", item.PANJENG, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
             parameter.Add("ENTSABUN", item.ENTSABUN);
             parameter.Add("RID", item.RID);
 
@@ -1779,7 +1779,7 @@ namespace ComHpcLibB.Repository
             }
 
             parameter.Add("WRTNO", fnWRTNO);
-            parameter.Add("EXCODE", strNewCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strNewCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -1822,7 +1822,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", fnWRTNO);
             if (!strExamList.IsNullOrEmpty())
             {
-                parameter.AddInStatement("EXCODE", strExamList, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("EXCODE", strExamList, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             #endregion
             return ExecuteNonQuery(parameter);
@@ -1843,7 +1843,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", nWrtNo);
             if (!strExCode.IsNullOrEmpty())
             {
-                parameter.AddInStatement("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteScalar<int>(parameter);
@@ -1864,7 +1864,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", nWrtNo);
             if (!strExCode.IsNullOrEmpty())
             {
-                parameter.AddInStatement("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteScalar<int>(parameter);
@@ -1885,7 +1885,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", nWrtNo);
             if (!strExCode.IsNullOrEmpty())
             {
-                parameter.AddInStatement("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteScalar<int>(parameter);
@@ -1911,7 +1911,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", nWrtNo);
             if (strPart != "*" && strPart != "")
             {
-                parameter.AddInStatement("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteScalar<int>(parameter);
@@ -1956,7 +1956,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", nWrtNo);
             parameter.Add("JEPDATE", sysdate);
             parameter.Add("PANO", pano);
-            parameter.Add("ENTPART", strEntPart, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ENTPART", strEntPart, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int>(parameter);
         }
@@ -1998,7 +1998,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("ENTSABUN", item.ENTSABUN);
             parameter.Add("WRTNO", item.WRTNO);
             parameter.Add("ACTIVE", item.ACTIVE);
-            parameter.AddInStatement("EXCODE", strCodes, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strCodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -2117,7 +2117,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN ( :EXCODE )    ");
 
             parameter.Add("WRTNO", argWRTNO);
-            parameter.AddInStatement("EXCODE", strCodes, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strCodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT>(parameter);
         }
@@ -2131,7 +2131,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN ( :EXCODE )    ");
            
             parameter.AddInStatement("WRTNO", strWrtno);
-            parameter.AddInStatement("EXCODE", strCodes, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strCodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT>(parameter);
         }
@@ -2152,10 +2152,10 @@ namespace ComHpcLibB.Repository
             #region Query 변수대입
             parameter.Add("RESULT",     item3.RESULT);
             parameter.Add("PANJENG",    item3.PANJENG);
-            parameter.Add("RESCODE",    item3.RESCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("RESCODE",    item3.RESCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("ENTSABUN",   item3.ENTSABUN);
             parameter.Add("WRTNO",      item3.WRTNO);
-            parameter.Add("EXCODE",     item3.EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE",     item3.EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             #endregion
             return ExecuteNonQuery(parameter);
         }
@@ -2169,7 +2169,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)                             ");
 
             parameter.Add("WRTNO", argWrtNo);
-            parameter.AddInStatement("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.AddInStatement("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteScalar<string>(parameter);
         }
@@ -2183,7 +2183,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)                             ");
 
             parameter.Add("WRTNO", argWrtNo);
-            parameter.AddInStatement("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -2244,7 +2244,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", WRTNO);
             if (!ACTPART.IsNullOrEmpty())
             {
-                parameter.AddInStatement("ACTPART", ACTPART, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("ACTPART", ACTPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_RESULT>(parameter);
@@ -2260,7 +2260,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND Result <> '.'               ");
 
             parameter.Add("WRTNO", WRTNO);
-            parameter.Add("EXCODE", EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -2300,7 +2300,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT  ");
             parameter.AppendSql(" WHERE EXCODE = :GUBUN         ");
 
-            parameter.Add("GUBUN", CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -2341,7 +2341,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", argWRTNO);
             if (!argCodes.IsNullOrEmpty())
             {
-                parameter.AddInStatement("CODES", argCodes, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("CODES", argCodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_RESULT>(parameter);
@@ -2431,7 +2431,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND ACTPART IN (:ACTPART)   ");
 
             parameter.Add("WRTNO", WRTNO);
-            parameter.Add("ACTPART", ACTPART, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("ACTPART", ACTPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_RESULT>(parameter);
         }
@@ -2450,7 +2450,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("RESULT", item.RESULT);
             parameter.Add("ENTSABUN", item.ENTSABUN);
             parameter.Add("WRTNO", item.WRTNO);
-            parameter.Add("EXCODE", item.EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", item.EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -2464,7 +2464,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("    AND RESULT NOT IN ('미실시','.')                           ");
 
             parameter.Add("WRTNO", ArgWRTNO);
-            parameter.Add("EXCODE", ArgExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", ArgExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -2483,7 +2483,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("    AND A.RESULT NOT IN ('미실시','.')                         ");
 
             parameter.Add("WRTNO", ArgWRTNO);
-            parameter.Add("EXCODE", ArgExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", ArgExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
@@ -2499,7 +2499,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("    AND RESULT NOT IN ('미실시','.')                           ");
 
             parameter.Add("WRTNO", ArgWRTNO);
-            parameter.Add("EXCODE", ArgExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", ArgExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -2517,7 +2517,7 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("    AND RESULT IS NOT NULL                                     ");
             }
             parameter.Add("WRTNO", ArgWRTNO);
-            parameter.Add("EXCODE", ArgExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", ArgExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_RESULT>(parameter);
         }
@@ -2534,7 +2534,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" AND EXCODE = :EXCODE                          ");
 
             parameter.Add("WRTNO", nWrtno);
-            parameter.Add("EXCODE", strExCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<int> (parameter);
         }

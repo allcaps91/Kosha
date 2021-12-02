@@ -101,11 +101,11 @@ namespace ComHpcLibB.Repository
             parameter.Add("TODATE", strToDate);
             if (!strGjYear.IsNullOrEmpty())
             {
-                parameter.Add("GJYEAR", strGjYear, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJYEAR", strGjYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (!strBangi.IsNullOrEmpty())
             {
-                parameter.Add("GJBNAGI", strBangi, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJBNAGI", strBangi, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (!strLtdCode.IsNullOrEmpty())
             {
@@ -547,7 +547,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("FRDATE", strFDate);
             parameter.Add("TODATE", strTDate);
-            parameter.AddInStatement("GJJONG", strJong, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.AddInStatement("GJJONG", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteReader<HIC_JEPSU_PATIENT>(parameter);
         }
@@ -710,7 +710,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("TODATE", strToDate);
             if (strGjJong != "00" && !strGjJong.IsNullOrEmpty())
             {
-                parameter.Add("GJJONG", strGjJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strGjJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (nLtdCode != 0)
@@ -1033,7 +1033,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("TODATE", strDate2);
             if (strJong != "00")
             {
-                parameter.Add("GJJONG", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (nLtdCode != 0)
             {

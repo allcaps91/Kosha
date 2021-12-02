@@ -3,7 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using ComBase;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComEmrBase
 {

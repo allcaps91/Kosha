@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using ComDbB; //DB연결
 using ComBase; //기본 클래스
 

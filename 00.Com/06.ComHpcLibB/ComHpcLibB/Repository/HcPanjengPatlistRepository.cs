@@ -174,7 +174,7 @@ namespace ComHpcLibB.Repository
                 parameter.Add("TODATE", sItem.TODATE);
 
                 if (sItem.LTDCODE != 0) { parameter.Add("LTDCODE", sItem.LTDCODE); }
-                if (sItem.JONG != "**" && !sItem.JONG.IsNullOrEmpty()) { parameter.Add("GJJONG", sItem.JONG, Oracle.DataAccess.Client.OracleDbType.Char); }
+                if (sItem.JONG != "**" && !sItem.JONG.IsNullOrEmpty()) { parameter.Add("GJJONG", sItem.JONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char); }
 
                 if (sItem.JOB == "1")   //¹ÌÆÇÁ¤
                 {
@@ -193,7 +193,7 @@ namespace ComHpcLibB.Repository
 
                 if (!sItem.CHUL.IsNullOrEmpty())
                 {
-                    parameter.Add("GBCHUL", sItem.CHUL, Oracle.DataAccess.Client.OracleDbType.Char);
+                    parameter.Add("GBCHUL", sItem.CHUL, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
                 }
             }
 

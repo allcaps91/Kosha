@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DOCTOR   ");
             parameter.AppendSql(" WHERE SABUN = :SABUN          ");
 
-            parameter.Add("SABUN", SABUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SABUN", SABUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<string>(parameter);
         }

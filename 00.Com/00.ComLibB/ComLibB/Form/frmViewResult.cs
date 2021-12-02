@@ -9,7 +9,7 @@ using ComDbB; //DB연결
 using ComBase; //기본 클래스
 using FarPoint.Win.Spread;
 using System.Text;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using ComLibB.Dto;
 using ComLibB.Service;
 using System.Collections.Generic;

@@ -28,7 +28,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GJYEAR  = :GJYEAR       ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE      ");
 
-            parameter.Add("GJYEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", nLtdCode);
 
             return ExecuteNonQuery(parameter);
@@ -43,7 +43,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GJYEAR  = :GJYEAR           ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE          ");
 
-            parameter.Add("GJYEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", nLtdCode);
             parameter.Add("WRTNO", nWRTNO);
 
@@ -77,7 +77,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , GbDel   = 'Y'           ");
             parameter.AppendSql(" WHERE ROWID   = :RID          ");
 
-            //parameter.Add("GJYEAR", item.GJYEAR, Oracle.DataAccess.Client.OracleDbType.Char);
+            //parameter.Add("GJYEAR", item.GJYEAR, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("PANJENG", item.PANJENG);
             parameter.Add("RID", item.RID);
 
@@ -93,13 +93,13 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("VALUES                                                                     "); 
             parameter.AppendSql("       (:GJYEAR, :LTDCODE, :WRTNO, :BUSE, :CHUKRESULT, :PANJENG, :GBDEL)   ");
 
-            parameter.Add("GJYEAR", item.GJYEAR, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GJYEAR", item.GJYEAR, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("LTDCODE", item.LTDCODE);
             parameter.Add("WRTNO", item.WRTNO);
             parameter.Add("BUSE", item.BUSE);
             parameter.Add("CHUKRESULT", item.CHUKRESULT);
             parameter.Add("PANJENG", item.PANJENG);
-            parameter.Add("GBDEL", item.GBDEL, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBDEL", item.GBDEL, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }

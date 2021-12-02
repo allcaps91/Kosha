@@ -33,7 +33,7 @@ namespace HC_Measurement.Repository
             parameter.AppendSql(") ");
 
             parameter.Add("WRTNO", dto.WRTNO);
-            parameter.Add("REMARK", dto.REMARK, Oracle.DataAccess.Client.OracleDbType.LongRaw);
+            parameter.Add("REMARK", dto.REMARK, Oracle.ManagedDataAccess.Client.OracleDbType.LongRaw);
             parameter.Add("ENTDATE", dto.ENTDATE);
 
             ExecuteNonQuery(parameter);
@@ -103,7 +103,7 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , ENTDATE = SYSDATE");
             parameter.AppendSql(" WHERE ROWID = :RID ");
 
-            parameter.Add("REMARK", dto.REMARK, Oracle.DataAccess.Client.OracleDbType.LongRaw);
+            parameter.Add("REMARK", dto.REMARK, Oracle.ManagedDataAccess.Client.OracleDbType.LongRaw);
             parameter.Add("RID", dto.RID);
 
             ExecuteNonQuery(parameter);

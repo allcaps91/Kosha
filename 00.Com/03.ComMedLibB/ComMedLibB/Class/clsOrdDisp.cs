@@ -4,7 +4,7 @@ using ComBase.Mvc;
 using ComDbB; //DB연결
 using ComLibB;
 using FarPoint.Win.Spread;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Data;
 using System.Drawing;

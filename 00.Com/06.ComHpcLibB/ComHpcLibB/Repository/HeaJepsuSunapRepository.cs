@@ -103,7 +103,7 @@
 
             if (!fstrJong.Equals("**"))
             {
-                parameter.Add("GJJONG", fstrJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", fstrJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (fnLtdCode > 0)
@@ -184,7 +184,7 @@
 
             if (!fstrJong.Equals("**"))
             {
-                parameter.Add("GJJONG", fstrJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", fstrJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (fnLtdCode > 0)
@@ -265,7 +265,7 @@
 
             if (!fstrJong.Equals("**"))
             {
-                parameter.Add("GJJONG", fstrJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", fstrJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (fnLtdCode > 0)

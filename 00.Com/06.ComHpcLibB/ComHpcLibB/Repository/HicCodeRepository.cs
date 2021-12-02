@@ -51,7 +51,7 @@ namespace ComHpcLibB.Repository
 
             if (!string.IsNullOrEmpty(v))
             {
-                parameter.Add("Gubun", v.Trim(), Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("Gubun", v.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_CODE>(parameter);
@@ -95,7 +95,7 @@ namespace ComHpcLibB.Repository
 
             if (!string.IsNullOrEmpty(v))
             {
-                parameter.Add("GUBUN", v.Trim(), Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GUBUN", v.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_CODE>(parameter);
@@ -158,7 +158,7 @@ namespace ComHpcLibB.Repository
             }
 
 
-            parameter.Add("GUBUN", fstrGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", fstrGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -176,7 +176,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql(" ORDER BY CODE                                  ");
 
-            parameter.Add("GUBUN", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             if (!argKeyWard.IsNullOrEmpty())
             {
@@ -201,11 +201,11 @@ namespace ComHpcLibB.Repository
             
             parameter.AppendSql(" ORDER BY CODE                                  ");
 
-            parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             if (!strCode.IsNullOrEmpty())
             {
-                parameter.Add("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             
             return ExecuteReader<HIC_CODE>(parameter);
@@ -219,7 +219,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                           ");
             parameter.AppendSql(" ORDER BY NAME                                  ");
 
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -233,7 +233,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("WHERE          GUBUN='25'                               ");
             parameter.AppendSql("   AND         CODE = :CODE                             ");
 
-            parameter.Add("CODE", txtBogun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", txtBogun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             return ExecuteReader<HIC_CODE>(parameter);
         }
 
@@ -249,7 +249,7 @@ namespace ComHpcLibB.Repository
             }
             parameter.AppendSql(" ORDER BY Sort,CODE                                                            ");
 
-            parameter.Add("GUBUN", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (!strName.IsNullOrEmpty())
             {
                 parameter.AddLikeStatement("NAME", strName);
@@ -266,7 +266,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                                                          ");
             parameter.AppendSql("   AND GCODE = :GCODE                                                          ");
 
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GCODE", idNumber);
 
             return ExecuteReader<HIC_CODE>(parameter);
@@ -281,8 +281,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("VALUES                                 ");
             parameter.AppendSql("       (:GUBUN, :CODE, :NAME, :GCODE)  ");
 
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", strCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("NAME", strName);
             parameter.Add("GCODE", idNumber);
 
@@ -297,7 +297,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("       SORT    = :SORT             ");
             parameter.AppendSql(" WHERE ROWID   = :RID              ");
 
-            parameter.Add("SORT", cODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SORT", cODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("RID", rOWID);
 
             return ExecuteNonQuery(parameter);
@@ -312,7 +312,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("WHERE          GUBUN='25'     ");
             parameter.AppendSql("   AND         CODE =:CODE          ");
 
-            parameter.Add("CODE", strOldData, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strOldData, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -340,7 +340,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , NAME    = :NAME             ");
             parameter.AppendSql(" WHERE ROWID   = :RID              ");
 
-            parameter.Add("CODE", strCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("NAME", strName);
             parameter.Add("RID", strROWID);
 
@@ -463,7 +463,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GBDEL IS NULL                                       ");
             parameter.AppendSql(" ORDER BY CODE, NAME                                       ");
 
-            parameter.Add("GUBUN", gstrRetValue, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", gstrRetValue, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -477,7 +477,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql(" ORDER BY GCODE, NAME                  ");
 
-            parameter.Add("GUBUN", fstrJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", fstrJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -490,7 +490,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE            ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
 
-            parameter.Add("GUBUN", fstrJong, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", fstrJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -505,8 +505,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE IN (:CODE)                 ");
             parameter.AppendSql(" GROUP BY CODE, NAME                   ");
 
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.AddInStatement("CODE", lstCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("CODE", lstCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -520,7 +520,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql("   AND (GbDel = '' or GbDel IS NULL)   ");
 
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<long>(parameter);
         }
@@ -547,7 +547,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GCODE  IN (:GCODE)          ");
             parameter.AppendSql(" ORDER BY GCODE, NAME              ");
 
-            parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.AddInStatement("GCODE", argCode);
 
             return ExecuteReaderSingle<HIC_CODE>(parameter);
@@ -562,8 +562,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN              ");
             parameter.AppendSql("   AND CODE  = :CODE              ");
 
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -592,8 +592,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE  = :CODE                               ");
             parameter.AppendSql("   AND CODE NOT IN ('3', '6')                      ");
 
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -606,7 +606,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE            ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
 
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -621,8 +621,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE  = :CODE                                       ");
             parameter.AppendSql(" ORDER BY GCode,Name                                       ");
 
-            parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_CODE>(parameter);
         }
@@ -637,8 +637,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE  = :CODE                       ");
             parameter.AppendSql(" ORDER BY CODE                             ");
 
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", strCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_CODE>(parameter);
         }
@@ -654,7 +654,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("                  WHERE CODE IN (:CODE)                    ");
             parameter.AppendSql(" ORDER BY GCODE, CODE                                      ");
 
-            parameter.AddInStatement("CODE", strCodes, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("CODE", strCodes, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -669,7 +669,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE  = :CODE                   ");
             parameter.AppendSql(" ORDER BY Code                         ");
 
-            parameter.Add("CODE", strTempMGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strTempMGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -683,7 +683,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE Gubun = '52'                    "); //특검문진항목
             parameter.AppendSql("   AND CODE  = :CODE                   ");
 
-            parameter.Add("CODE", strMGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", strMGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -713,10 +713,10 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("VALUES                                             ");
             parameter.AppendSql("       (:GUBUN, :CODE, :NAME, :GBDEL, :GCODE)      ");
 
-            parameter.Add("GUBUN", v1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", v2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", v1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", v2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("NAME", strName);
-            parameter.Add("GBDEL", v3, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GBDEL", v3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GCODE", strGCode);
 
             return ExecuteNonQuery(parameter);
@@ -743,7 +743,7 @@ namespace ComHpcLibB.Repository
 
             if (!string.IsNullOrEmpty(v))
             {
-                parameter.Add("GUBUN", v.Trim(), Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GUBUN", v.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_CODE>(parameter);
@@ -759,7 +759,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE  IN (:CODE)                                    ");
             parameter.AppendSql(" ORDER BY GCode,Name                                       ");
 
-            parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.AddInStatement("CODE", argCode);
 
             return ExecuteReaderSingle<HIC_CODE>(parameter);
@@ -775,8 +775,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE  = :CODE           ");
             parameter.AppendSql(" ORDER BY GCODE, NAME          ");
 
-            parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_CODE>(parameter);
         }
@@ -790,7 +790,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                      ");
             parameter.AppendSql(" ORDER BY CODE                             ");
 
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -804,7 +804,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN =:GUBUN           ");
             parameter.AppendSql("   AND GCODE1=:GCODE1          ");
 
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GCODE1", argGcode1);
 
             return ExecuteScalar<string>(parameter);
@@ -818,7 +818,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE   ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN         ");
             
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -833,7 +833,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND CODE IN (:CODE)         ");
             
             parameter.AddInStatement("CODE", strCode);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -856,7 +856,7 @@ namespace ComHpcLibB.Repository
 
             if (!strGubun.IsNullOrEmpty())
             {
-                parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (!strName.IsNullOrEmpty())
@@ -876,8 +876,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN      = :GUBUN     ");
             parameter.AppendSql("   AND TRIM(CODE) = :CODE      ");
 
-            parameter.Add("GUBUN", v1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", v2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", v1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", v2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -891,7 +891,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GUBUN = :GUBUN                             ");
             parameter.AppendSql(" ORDER BY Sort,Code                               ");
 
-            parameter.Add("GUBUN", fstrGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", fstrGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HIC_CODE>(parameter);
         }
@@ -920,7 +920,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND GCODE  = :GCODE         ");
             parameter.AppendSql("   AND GCODE1 = :GCODE1        ");
 
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GCODE", argCode1);
             parameter.Add("GCODE1", argCode2);
 
@@ -935,7 +935,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SCODE   ");
             parameter.AppendSql(" WHERE SCODE  = :SCODE         ");
 
-            parameter.Add("SCODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SCODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_SCODE>(parameter);
         }
@@ -954,9 +954,9 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("   AND GCODE2 = :GCODE2    ");
             }
 
-            parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("GCODE", argPan);
-            parameter.Add("CODE", argSogen1, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argSogen1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (argSogen2 != string.Empty)
             {
                 parameter.Add("GCODE2", argSogen2);
@@ -986,8 +986,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND CODE  = :CODE           ");
 
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -1001,8 +1001,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  WHERE GUBUN = :GUBUN         ");
             parameter.AppendSql("    AND CODE  = :CODE          ");
 
-            parameter.Add("GUBUN", GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_CODE>(parameter);
         }
@@ -1016,8 +1016,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND GCODE  = :CODE          ");
 
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -1031,8 +1031,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND CODE  = :CODE           ");
 
-            parameter.Add("GUBUN", argGubun, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -1046,7 +1046,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  WHERE GUBUN = :GUBUN         ");
             parameter.AppendSql("    AND CODE IN (:CODE)        ");
 
-            parameter.Add("GUBUN", GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.AddInStatement("CODE", listCode);
 
             return ExecuteReader<HIC_CODE>(parameter);
@@ -1062,8 +1062,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  WHERE GUBUN = :GUBUN         ");
             parameter.AppendSql("    AND TRIM(CODE)  = :CODE    ");
 
-            parameter.Add("GUBUN", GUBUN, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("NAME", CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", GUBUN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("NAME", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -1077,7 +1077,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  WHERE CODE  = :CODE.substr(0, 1) ");
             parameter.AppendSql("    AND GUBUN = '07'               ");
 
-            parameter.Add("CODE", CODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -1091,8 +1091,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND CODE  = :CODE           ");
 
-            parameter.Add("GUBUN", argGbn, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", argGbn, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_CODE>(parameter);
         }

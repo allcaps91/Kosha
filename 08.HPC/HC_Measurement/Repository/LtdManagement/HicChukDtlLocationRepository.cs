@@ -42,7 +42,7 @@ namespace HC_Measurement.Repository
             parameter.Add("SEQNO", dto.SEQNO);
             parameter.Add("FILENAME", dto.FILENAME);
             parameter.Add("REMARK", dto.REMARK);
-            parameter.Add("IMAGEDATA", dto.IMAGEDATA, Oracle.DataAccess.Client.OracleDbType.LongRaw);
+            parameter.Add("IMAGEDATA", dto.IMAGEDATA, Oracle.ManagedDataAccess.Client.OracleDbType.LongRaw);
 
             ExecuteNonQuery(parameter);
         }
@@ -107,7 +107,7 @@ namespace HC_Measurement.Repository
 
             parameter.Add("SEQNO", dto.SEQNO);
             parameter.Add("REMARK", dto.REMARK);
-            parameter.Add("IMAGEDATA", dto.IMAGEDATA, Oracle.DataAccess.Client.OracleDbType.LongRaw);
+            parameter.Add("IMAGEDATA", dto.IMAGEDATA, Oracle.ManagedDataAccess.Client.OracleDbType.LongRaw);
             parameter.Add("RID", dto.RID);
 
             ExecuteNonQuery(parameter);

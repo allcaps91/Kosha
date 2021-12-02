@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" GROUP BY b.NAME, a.LTDCODE            ");
             parameter.AppendSql(" ORDER BY b.NAME, a.LTDCODE            ");
 
-            parameter.Add("YEAR", strYear, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", strYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (strName != "")
             {
                 parameter.AddLikeStatement("NAME", strName);
@@ -62,7 +62,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" GROUP BY b.Name, a.LtdCode                        ");
             parameter.AppendSql(" ORDER BY b.Name, a.LtdCode                        ");
 
-            parameter.Add("YEAR", text, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("YEAR", text, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<HEA_EXCEL_LTD>(parameter);
         }

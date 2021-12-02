@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using ComBase;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComEmrBase
 {

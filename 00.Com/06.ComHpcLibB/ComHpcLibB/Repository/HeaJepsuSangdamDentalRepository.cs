@@ -97,7 +97,7 @@ namespace ComHpcLibB.Repository
             }
             if (strJob == "1")
             {
-                parameter.Add("GUBUN", dENT_ROOM, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GUBUN", dENT_ROOM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (strSName.Trim() != "")
             {

@@ -181,8 +181,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , JIKJONG3 = :JIKJONG3            ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO               ");
 
-            parameter.Add("JINGBN", item.JINGBN, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("XP1", item.XP1, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JINGBN", item.JINGBN, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("XP1", item.XP1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("XPJONG", item.XPJONG);
             parameter.Add("XPLACE", item.XPLACE);
             parameter.Add("XREMARK", item.XREMARK);
@@ -196,24 +196,24 @@ namespace ComHpcLibB.Repository
             parameter.Add("JUNGSAN3", item.JUNGSAN3);
             parameter.Add("SANGDAM", item.SANGDAM);
             parameter.Add("MUNDRNO", item.MUNDRNO);
-            parameter.Add("JILBYUNG", item.JILBYUNG, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("BLOOD1", item.BLOOD1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("BLOOD2", item.BLOOD2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JILBYUNG", item.JILBYUNG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("BLOOD1", item.BLOOD1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("BLOOD2", item.BLOOD2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BLOOD3", item.BLOOD3);
-            parameter.Add("SKIN1", item.SKIN1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("SKIN2", item.SKIN2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SKIN1", item.SKIN1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("SKIN2", item.SKIN2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SKIN3", item.SKIN3);
             parameter.Add("NERVOUS1", item.NERVOUS1);
-            parameter.Add("EYE1", item.EYE1, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("EYE1", item.EYE1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("EYE2", item.EYE2);
             parameter.Add("CANCER1", item.CANCER1);
-            parameter.Add("GAJOK", item.GAJOK, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GAJOK", item.GAJOK, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("BLOOD", item.BLOOD);
             parameter.Add("NERVOUS2", item.NERVOUS2);
             parameter.Add("CANCER2", item.CANCER2);
             parameter.Add("SYMPTON", item.SYMPTON);
-            parameter.Add("JIKJONG1", item.JIKJONG1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("JIKJONG2", item.JIKJONG2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JIKJONG1", item.JIKJONG1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("JIKJONG2", item.JIKJONG2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JIKJONG3", item.JIKJONG3);
             parameter.Add("WRTNO", item.WRTNO);
 

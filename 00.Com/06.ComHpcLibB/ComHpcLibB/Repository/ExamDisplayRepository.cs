@@ -69,7 +69,7 @@ namespace ComHpcLibB.Repository
                     parameter.AddInStatement("WRTNO", AllWrtNo);
                 }
             }
-            parameter.AddInStatement("ENTPART", ENTPART, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.AddInStatement("ENTPART", ENTPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<EXAM_DISPLAY>(parameter);
         }

@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("SDATE", SDATE);
             if (!HEAPART.IsNullOrEmpty())
             {
-                parameter.Add("HEAPART", HEAPART.Trim(), Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("HEAPART", HEAPART.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<WAIT_CHECK>(parameter);
@@ -80,7 +80,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("JEPDATE", JEPDATE);
             if (!ENTPART.IsNullOrEmpty())
             {
-                parameter.Add("ENTPART", ENTPART, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("ENTPART", ENTPART, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<WAIT_CHECK>(parameter);
@@ -122,7 +122,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("SDATE", SDATE);
             if (!HEAPART.IsNullOrEmpty())
             {
-                parameter.Add("HEAPART", HEAPART.Trim(), Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("HEAPART", HEAPART.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReaderSingle <HEA_SANGDAM_WAIT>(parameter);
@@ -142,7 +142,7 @@ namespace ComHpcLibB.Repository
 
             if (strGbWait.Count > 0)
             {
-                parameter.AddInStatement("HEAPART", strGbWait, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.AddInStatement("HEAPART", strGbWait, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteScalar<int>(parameter);

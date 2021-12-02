@@ -77,7 +77,7 @@ namespace ComHpcLibB.Repository
             }
             if (strJong != "**" && !strJong.IsNullOrEmpty())
             {
-                parameter.Add("GJJONG", strJong, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (nLtdCode != 0)
             {

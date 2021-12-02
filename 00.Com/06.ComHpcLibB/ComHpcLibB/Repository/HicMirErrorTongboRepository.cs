@@ -86,9 +86,9 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", nWRTNO);
             parameter.Add("MIRNO", nMirno);
             parameter.Add("SNAME", strSName);
-            parameter.Add("SEX", strSex, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SEX", strSex, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AGE", nAge);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("REMARK", strRemark);
 
             return ExecuteNonQuery(parameter);
@@ -106,7 +106,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND OKDATE IS NULL                                                  ");
 
             parameter.Add("WRTNO", nWRTNO);
-            parameter.Add("GUBUN", strGubun, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("REMARK", strRemark);
 
             return ExecuteScalar<int>(parameter);

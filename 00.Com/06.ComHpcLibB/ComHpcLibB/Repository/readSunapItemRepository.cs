@@ -174,7 +174,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE 1 = 1                                                                       ");
             parameter.AppendSql("   AND CODE = :CODE                                                                ");
 
-            parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<READ_SUNAP_ITEM>(parameter);
         }
@@ -202,11 +202,11 @@ namespace ComHpcLibB.Repository
 
             if (argGbn.IsNullOrEmpty())
             {
-                parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             else
             {
-                parameter.Add("UCODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("UCODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReaderSingle<READ_SUNAP_ITEM>(parameter);
@@ -252,17 +252,17 @@ namespace ComHpcLibB.Repository
 
             if (string.Compare(argJong, "21") >= 0 && string.Compare(argJong, "29") <= 0)       //회사종검
             {
-                parameter.Add("SEX", argSex, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("SEX", argSex, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             else if (argJong == "43" || argJong == "44" || argJong == "69")        //효도검진 / 청소년검진 / 회사추가종검
             {
-                parameter.Add("JONG", argJong, Oracle.DataAccess.Client.OracleDbType.Char);
-                parameter.Add("SEX", argSex, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("JONG", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+                parameter.Add("SEX", argSex, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             else
             {
-                parameter.Add("JONG", argJong, Oracle.DataAccess.Client.OracleDbType.Char);
-                parameter.Add("SEX", argSex, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("JONG", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+                parameter.Add("SEX", argSex, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (argJong != "11" && argJong != "12" && nLtdCode > 0)

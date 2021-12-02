@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("WRTNO", nWrtNo);
             if (!strSuCode.IsNullOrEmpty())
             {
-                parameter.Add("SUCODE", strSuCode.Trim(), Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("SUCODE", strSuCode.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteNonQuery(parameter);
@@ -93,7 +93,7 @@ namespace ComHpcLibB.Repository
             //parameter.AppendSql("   AND DELDATE IS NULL                 ");
 
             parameter.Add("WRTNO", argWrtNo);
-            parameter.Add("SUCODE", strSuCode.Trim(), Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUCODE", strSuCode.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteNonQuery(parameter);
         }
@@ -129,7 +129,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND DELDATE IS NULL                         ");
 
             parameter.Add("WRTNO", argWrtNo);
-            parameter.Add("SUCODE", strSuCode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUCODE", strSuCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<HIC_HYANG>(parameter);
         }
@@ -159,9 +159,9 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("BDATE", argBdate);
             parameter.Add("WRTNO", argWrtno);
-            parameter.Add("PTNO", argPtno, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PTNO", argPtno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SNAME", argSname);
-            parameter.Add("SUCODE", argSucode, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("SUCODE", argSucode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }

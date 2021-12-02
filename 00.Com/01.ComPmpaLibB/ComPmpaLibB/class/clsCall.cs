@@ -7,7 +7,7 @@ using System.Data;
 using System.Windows.Forms;
 using FarPoint.Win.Spread;
 using System.Diagnostics;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComPmpaLibB
 {

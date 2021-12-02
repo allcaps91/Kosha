@@ -29,7 +29,7 @@ namespace ComHpcLibB.Repository
              parameter.AppendSql("WHERE      CLO_BSNS_GB = '0003'                    ");
             parameter.AppendSql("   AND     CLO_YMD = :COLYMD                       ");
 
-            parameter.Add("COLYMD", strCLOYMD, Oracle.DataAccess.Client.OracleDbType.Varchar2);
+            parameter.Add("COLYMD", strCLOYMD, Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2);
 
              return ExecuteReader<ACC_CLO_MGT>(parameter);
         }

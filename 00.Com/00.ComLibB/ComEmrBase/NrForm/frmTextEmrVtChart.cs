@@ -8,7 +8,7 @@ using System.Xml;
 using ComBase;
 using FarPoint.Win.Spread.CellType;
 using Microsoft.VisualBasic;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ComEmrBase
 {

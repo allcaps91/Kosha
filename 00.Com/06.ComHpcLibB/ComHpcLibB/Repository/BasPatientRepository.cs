@@ -31,8 +31,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND SUBSTR(PANO,1,1) <> '9'                                 ");
             parameter.AppendSql("   AND (SNAME IS NULL OR  SNAME <> '¿Ã¡ﬂ√≠∆Æ')                 ");
 
-            parameter.Add("JUMIN1", argJumin1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("JUMIN3", argJumin2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN1", argJumin1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN3", argJumin2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReader<BAS_PATIENT>(parameter);
         }
@@ -62,7 +62,7 @@ namespace ComHpcLibB.Repository
             }
             if (!argBirth.IsNullOrEmpty())
             {
-                parameter.Add("JUMIN1", argBirth, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("JUMIN1", argBirth, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (!argHPhone.IsNullOrEmpty())
             {
@@ -79,7 +79,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                 ");
             parameter.AppendSql(" WHERE PANO = :PANO                            ");
 
-            parameter.Add("PANO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<BAS_PATIENT>(parameter);
         }
@@ -91,7 +91,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                 ");
             parameter.AppendSql(" WHERE PANO = :PANO                            ");
 
-            parameter.Add("PANO", strPtNo, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("PANO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteScalar<string>(parameter);
         }
@@ -137,7 +137,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                        ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN3                        ");
 
-            parameter.Add("JUMIN1", strJumin1, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN1", strJumin1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JUMIN3", strJumin3);
 
             return ExecuteReaderSingle<BAS_PATIENT>(parameter);
@@ -155,8 +155,8 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("   AND SNAME NOT IN (:SNAME)               ");
             }
 
-            parameter.Add("JUMIN1", strJumin1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("JUMIN3", strJumin2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN1", strJumin1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN3", strJumin2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             if (b04_NOT_PATIENT.Count > 0)
             {
                 parameter.AddInStatement("SNAME", b04_NOT_PATIENT);
@@ -198,8 +198,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                                            ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN3                                            ");
 
-            parameter.Add("JUMIN1", strJumin1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("JUMIN3", strJumin3, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN1", strJumin1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN3", strJumin3, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
             return ExecuteReaderSingle<BAS_PATIENT>(parameter);
         }
@@ -372,7 +372,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                                    ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN3                                    ");
 
-            parameter.Add("JUMIN1", argJumin1, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN1", argJumin1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JUMIN3", argJumin3);
 
             return ExecuteReaderSingle<BAS_PATIENT>(parameter);
@@ -388,8 +388,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND (JUMIN2 = :JUMIN2                                       ");
             parameter.AppendSql("    OR  JUMIN3 = :JUMIN3)                                      ");
 
-            parameter.Add("JUMIN1", strJumin1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("JUMIN2", strJumin2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN1", strJumin1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN2", strJumin2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JUMIN3", strJumin3);
 
             return ExecuteScalar<string>(parameter);
@@ -404,8 +404,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND JUMIN2 = :JUMIN2                                        ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN3                                        ");
 
-            parameter.Add("JUMIN1", strJumin1, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("JUMIN2", strJumin2, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN1", strJumin1, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("JUMIN2", strJumin2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("JUMIN3", strJumin3);
 
             return ExecuteScalar<string>(parameter);

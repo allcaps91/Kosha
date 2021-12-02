@@ -41,8 +41,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" VALUES (                                          ");
             parameter.AppendSql("  :GROUPCODE,:EXCODE,:SEQNO,:ENTSABUN,SYSDATE )    ");
 
-            parameter.Add("GROUPCODE",  code.GROUPCODE, Oracle.DataAccess.Client.OracleDbType.Char);
-            parameter.Add("EXCODE",     code.EXCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("GROUPCODE",  code.GROUPCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("EXCODE",     code.EXCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("SEQNO",      code.SEQNO);
             parameter.Add("ENTSABUN", clsType.User.IdNumber);
 

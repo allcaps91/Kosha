@@ -91,7 +91,7 @@ namespace ComHpcLibB.Repository
 
             parameter.Add("GBDEL",  rSuInfo.ISDELTE);
             parameter.Add("WRTNO",  argWrtno);            
-            parameter.Add("CODE",   rSuInfo.GRPCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE",   rSuInfo.GRPCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AMT",    rSuInfo.AMT);
             parameter.Add("GBSELF", rSuInfo.BURATE);
             parameter.Add("GBHALIN", rSuInfo.GBHALIN);
@@ -113,7 +113,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     ( :WRTNO,:CODE,:AMT,:GBSELF,:GBHALIN,:CODENAME,:BONINAMT,:LTDAMT )  ");
 
             parameter.Add("WRTNO",  argWrtno);
-            parameter.Add("CODE",   rSuInfo.GRPCODE, Oracle.DataAccess.Client.OracleDbType.Char);
+            parameter.Add("CODE",   rSuInfo.GRPCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             parameter.Add("AMT",    rSuInfo.AMT);
             parameter.Add("GBSELF", rSuInfo.GBSELF);
             parameter.Add("GBHALIN", rSuInfo.GBHALIN);

@@ -42,12 +42,12 @@ namespace ComHpcLibB.Repository
 
             if (!argYear.IsNullOrEmpty())
             {
-                parameter.Add("YEAR", argYear, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("YEAR", argYear, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             if (!argCode.IsNullOrEmpty())
             {
-                parameter.Add("CODE", argCode, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
 
             return ExecuteReader<HIC_READING>(parameter);

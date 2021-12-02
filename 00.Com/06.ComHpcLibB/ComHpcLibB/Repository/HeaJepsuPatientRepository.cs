@@ -184,7 +184,7 @@
 
             parameter.Add("FRDATE", strFDate);
             parameter.Add("TODATE", strTDate);
-            parameter.AddInStatement("GJJONG", strjong, Oracle.DataAccess.Client.OracleDbType.Char); 
+            parameter.AddInStatement("GJJONG", strjong, Oracle.ManagedDataAccess.Client.OracleDbType.Char); 
 
             return ExecuteReader<HEA_JEPSU_PATIENT>(parameter);
         }
@@ -327,7 +327,7 @@
             }
             if (strJong != "00")
             {
-                parameter.Add("GJJONG", strToDate, Oracle.DataAccess.Client.OracleDbType.Char);
+                parameter.Add("GJJONG", strToDate, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
             }
             if (strLtdCode != "")
             {
