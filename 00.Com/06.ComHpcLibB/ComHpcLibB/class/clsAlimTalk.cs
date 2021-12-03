@@ -32,6 +32,7 @@ namespace ComHpcLibB
         EtcSmsService etcSmsService = null;
         HicJepsuPatientService hicJepsuPatientService = null;
 
+
         ComFunc CF = new ComFunc();
 
         public static string GstrSendKey;
