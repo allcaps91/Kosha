@@ -2161,7 +2161,7 @@ namespace ComHpcLibB
             clsCompuInfo.SetComputerInfo();
 
             clsHcVariable.GstrCardApprov = basPcconfigService.GetConfig_CardGubun(clsCompuInfo.gstrCOMIP);
-            //SELECT VALUEV FROM KOSMOS_PMPA.BAS_PCCONFIG
+            //SELECT VALUEV FROM ADMIN.BAS_PCCONFIG
             // WHERE GUBUN = '카드구분'
             //   AND IPADDRESS = :IPADDRESS
         }

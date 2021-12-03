@@ -3031,12 +3031,12 @@ namespace ComLibB
                     SQL = "SELECT";
                     SQL = SQL + ComNum.VBLF + " ITEMNO, ITEMCD, ITEMVALUE";
                     SQL = SQL + ComNum.VBLF + " , ((SELECT ITEMVALUE";
-                    SQL = SQL + ComNum.VBLF + "      FROM KOSMOS_EMR.AEMRCHARTROW";
+                    SQL = SQL + ComNum.VBLF + "      FROM ADMIN.AEMRCHARTROW";
                     SQL = SQL + ComNum.VBLF + "      WHERE EMRNO = A.EMRNO";
                     SQL = SQL + ComNum.VBLF + "        AND EMRNOHIS = A.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "        AND ITEMNO = 'I0000030686') || '병동 ' ||";
                     SQL = SQL + ComNum.VBLF + "      (SELECT ITEMVALUE";
-                    SQL = SQL + ComNum.VBLF + "      FROM KOSMOS_EMR.AEMRCHARTROW";
+                    SQL = SQL + ComNum.VBLF + "      FROM ADMIN.AEMRCHARTROW";
                     SQL = SQL + ComNum.VBLF + "      WHERE EMRNO = A.EMRNO";
                     SQL = SQL + ComNum.VBLF + "        AND EMRNOHIS = A.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "        AND ITEMCD = 'I0000018376')) AS WARDCALL ";

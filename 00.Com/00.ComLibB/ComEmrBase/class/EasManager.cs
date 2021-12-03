@@ -316,11 +316,11 @@ namespace ComEmrBase
             string SqlErr = "";
             try
             {
-                SQL = "SELECT C.ID FROM kosmos_emr.AEASFORMCONTENT A ";
-                SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_EMR.AEMRFORM B ";
+                SQL = "SELECT C.ID FROM ADMIN.AEASFORMCONTENT A ";
+                SQL += ComNum.VBLF + "  INNER JOIN ADMIN.AEMRFORM B ";
                 SQL += ComNum.VBLF + "  ON A.FORMNO = b.FORMNO ";
                 SQL += ComNum.VBLF + "  AND A.UPDATENO = B.UPDATENO ";
-                SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_EMR.AEASFORMDATA C ";
+                SQL += ComNum.VBLF + "  INNER JOIN ADMIN.AEASFORMDATA C ";
                 SQL += ComNum.VBLF + "  ON C.EASFORMCONTENT = A.ID ";
                 SQL += ComNum.VBLF + "  WHERE C.PTNO =   '" + AcpEmr.ptNo + "'";
                 SQL += ComNum.VBLF + "  AND C.MEDDEPTCD = '" + AcpEmr.medDeptCd + "'";
@@ -443,7 +443,7 @@ namespace ComEmrBase
 
                 StringBuilder strSql = new StringBuilder();
 
-                strSql.AppendLine("INSERT INTO KOSMOS_EMR.AEMROCRPRTHIS ");
+                strSql.AppendLine("INSERT INTO ADMIN.AEMROCRPRTHIS ");
                 strSql.AppendLine(" (OCRNO, FORMCODE, ACPNO, OCRDATE, OCRTIME, PTNO, PTNAME, INOUTCLS, MEDFRDATE, MEDDEPTCD, WARDCODE, FORMNO, UPDATENO, USEID, PAGECOUNT ) ");
                 strSql.AppendLine("VALUES (             ");
                 strSql.AppendLine("      " + ocrNo + ",");

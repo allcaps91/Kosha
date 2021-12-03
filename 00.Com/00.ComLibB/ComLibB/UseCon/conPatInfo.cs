@@ -686,7 +686,7 @@ namespace ComLibB
                 SQL = "SELECT 'POD[ ' || (TRUNC(SYSDATE) - OPDATE)      ";
                 SQL = SQL + ComNum.VBLF + "    || ' ] ' || OPTITLE || ' (' || TO_CHAR(OPDATE, 'YYYY-MM-DD')      ";
                 SQL = SQL + ComNum.VBLF + "    || ')' AS OPDATA      ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.ORAN_MASTER      ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.ORAN_MASTER      ";
                 SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + strPano + "'      ";
                 SQL = SQL + ComNum.VBLF + "    AND OPDATE >= TO_DATE('" + strIndate + "','YYYY-MM-DD')      ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY OPDATE DESC ";
@@ -742,48 +742,48 @@ namespace ComLibB
                 //SQL = SQL + "  SELECT                                                                                                                                        \r\n";
                 //SQL = SQL + "         OPD.PANO                                                                                  AS PANO     -- 01 환자번호                   \r\n";
                 //SQL = SQL + "       , OPD.SNAME                                                                                 AS SNAME    -- 02 환자성명                   \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_GET_AGE(KOSMOS_OCS.FC_BAS_PATIENT_BIRTH(OPD.PANO), TRUNC(SYSDATE))          AS AGE      -- 03 나이                       \r\n";
+                //SQL = SQL + "       , ADMIN.FC_GET_AGE(ADMIN.FC_BAS_PATIENT_BIRTH(OPD.PANO), TRUNC(SYSDATE))          AS AGE      -- 03 나이                       \r\n";
                 //SQL = SQL + "       , OPD.SEX                                                                                   AS SEX      -- 04 성별                       \r\n";
                 //SQL = SQL + "       , OPD.BI                                                                                    AS BI       -- 05 BI                         \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_BI_NM(OPD.BI)                                                               AS BI_NM    -- 06 보험유형                   \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_BAS_AUTO_MST_CHK(OPD.PANO, TRUNC(OPD.BDATE))                                AS AUTO_CHK -- 07 후불여부                   \r\n";
+                //SQL = SQL + "       , ADMIN.FC_BI_NM(OPD.BI)                                                               AS BI_NM    -- 06 보험유형                   \r\n";
+                //SQL = SQL + "       , ADMIN.FC_BAS_AUTO_MST_CHK(OPD.PANO, TRUNC(OPD.BDATE))                                AS AUTO_CHK -- 07 후불여부                   \r\n";
                 //SQL = SQL + "       , ''                                                                                        AS SECRET   -- 08 사생활                     \r\n";
                 //SQL = SQL + "       , ''                                                                                        AS GBDRG    -- 09 DRG여부                    \r\n";
                 //SQL = SQL + "       , '외래'                                                                                    AS GBIO     -- 10 진료구분                   \r\n";
                 //SQL = SQL + "       , OPD.DEPTCODE                                                                              AS DEPT     -- 11 진료과                     \r\n";
                 //SQL = SQL + "       , ''                                                                                        AS WRCODE   -- 12 병동병실                   \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(OPD.DRCODE)                                               AS DRNM     -- 13 지정의                     \r\n";
+                //SQL = SQL + "       , ADMIN.FC_BAS_DOCTOR_DRNAME(OPD.DRCODE)                                               AS DRNM     -- 13 지정의                     \r\n";
                 //SQL = SQL + "       , OPD.DRCODE                                                                                AS DRCD     -- 13 지정의코드                 \r\n";
                 //SQL = SQL + "       , OPD.BDATE                                                                                 AS INDATE   -- 14 입원일자, 외래는 발생일자  \r\n";
                 //SQL = SQL + "       , BAS.GB_VIP                                                                                AS VIP      -- 15 VIP                        \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_BAS_OCSMEMO_CHK(OPD.PANO, TRUNC(SYSDATE))                                   AS BLACK    -- 16 문제환자                   \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_BAS_GAMCODE_NM(OPD.GBGAMEK)                                                 AS GAMEK    -- 17 감액정보                   \r\n";
+                //SQL = SQL + "       , ADMIN.FC_BAS_OCSMEMO_CHK(OPD.PANO, TRUNC(SYSDATE))                                   AS BLACK    -- 16 문제환자                   \r\n";
+                //SQL = SQL + "       , ADMIN.FC_BAS_GAMCODE_NM(OPD.GBGAMEK)                                                 AS GAMEK    -- 17 감액정보                   \r\n";
                 //SQL = SQL + "       , BAS.RELIGION                                                                              AS SINGA    -- 18 가톨릭                     \r\n";
                 //SQL = SQL + "       , ''                                                                                        AS INFECT   -- 19 보호(격리)                 \r\n";
                 //SQL = SQL + "       , BAS.GBSMS                                                                                 AS GBSMS    -- 20 개인정보동의서             \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_ORAN_MASTER_OPDATE(OPD.PANO)                                                AS OPDATE   -- 21 수술일자                   \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_ORAN_MASTER_NM(OPD.PANO, KOSMOS_OCS.FC_ORAN_MASTER_OPDATE(OPD.PANO))        AS OPNM     -- 21 수술명                     \r\n ";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_OCS_ILLS(OPD.PANO, 'O', TRUNC(OPD.BDATE), OPD.DEPTCODE, NULL)               AS ILLS     -- 22 ILL                        \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_EXAM_INFECT_MASTER_IMG(OPD.PANO, TRUNC(OPD.BDATE))                          AS INFE_IMG -- 23 감염이미지                 \r\n";
-                //SQL = SQL + "	   , KOSMOS_OCS.FC_EXAM_BLOOD_MASTER_ABO(OPD.PANO)                                             AS ABO      -- 24 ABO                        \r\n";
+                //SQL = SQL + "       , ADMIN.FC_ORAN_MASTER_OPDATE(OPD.PANO)                                                AS OPDATE   -- 21 수술일자                   \r\n";
+                //SQL = SQL + "       , ADMIN.FC_ORAN_MASTER_NM(OPD.PANO, ADMIN.FC_ORAN_MASTER_OPDATE(OPD.PANO))        AS OPNM     -- 21 수술명                     \r\n ";
+                //SQL = SQL + "       , ADMIN.FC_OCS_ILLS(OPD.PANO, 'O', TRUNC(OPD.BDATE), OPD.DEPTCODE, NULL)               AS ILLS     -- 22 ILL                        \r\n";
+                //SQL = SQL + "       , ADMIN.FC_EXAM_INFECT_MASTER_IMG(OPD.PANO, TRUNC(OPD.BDATE))                          AS INFE_IMG -- 23 감염이미지                 \r\n";
+                //SQL = SQL + "	   , ADMIN.FC_EXAM_BLOOD_MASTER_ABO(OPD.PANO)                                             AS ABO      -- 24 ABO                        \r\n";
                 //SQL = SQL + "       , ''                                                                                        AS CVR      -- 25 CVR                        \r\n";  // TODO : CVR
-                //SQL = SQL + "       , KOSMOS_OCS.FC_NUR_FALL_REPORT_CHK(OPD.PANO, TRUNC(OPD.BDATE), 0, '0')                     AS FALL     -- 26 낙상                       \r\n";
+                //SQL = SQL + "       , ADMIN.FC_NUR_FALL_REPORT_CHK(OPD.PANO, TRUNC(OPD.BDATE), 0, '0')                     AS FALL     -- 26 낙상                       \r\n";
                 //SQL = SQL + "       , ''                                                                                        AS BRADEN   -- 27 욕창                       \r\n";
                 //SQL = SQL + "       , ''                                                                                        AS FIRE     -- 28 화재                       \r\n";
                 //SQL = SQL + "       , ''                                                                                        AS PNEUMONIA-- 29 폐렴                       \r\n";  // TODO : 폐렴
                 //SQL = SQL + "       , ''                                                                                        AS BRAIN    -- 30 뇌졸증                     \r\n";  // TODO : 뇌졸증
                 //SQL = SQL + "       , ''                                                                                        AS AMI      -- 31 AMI                        \r\n";  // TODO : AMI
                 //SQL = SQL + "       , ''                                                                                        AS OP_JIPYO -- 32 수술예방항생제             \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_XRAY_CONTRAST_CHK(OPD.PANO)                                                 AS CONTRAST -- 33 조영제부작용환자           \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_NUR_AST_CHK(OPD.PANO)                                                       AS AST      -- 34 항생반응                   \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_ETC_ALLERGY_MST_CHK(OPD.PANO)                                               AS ALLEGY   -- 35 알러지                     \r\n";
-                //SQL = SQL + "       , KOSMOS_OCS.FC_DRUG_ADR_CHK(OPD.PANO)                                                      AS ADR      -- 36 ADR                        \r\n";
+                //SQL = SQL + "       , ADMIN.FC_XRAY_CONTRAST_CHK(OPD.PANO)                                                 AS CONTRAST -- 33 조영제부작용환자           \r\n";
+                //SQL = SQL + "       , ADMIN.FC_NUR_AST_CHK(OPD.PANO)                                                       AS AST      -- 34 항생반응                   \r\n";
+                //SQL = SQL + "       , ADMIN.FC_ETC_ALLERGY_MST_CHK(OPD.PANO)                                               AS ALLEGY   -- 35 알러지                     \r\n";
+                //SQL = SQL + "       , ADMIN.FC_DRUG_ADR_CHK(OPD.PANO)                                                      AS ADR      -- 36 ADR                        \r\n";
                 //SQL = SQL + "       , ''                                                                                        AS NST      -- 37 NST                        \r\n";
                 //SQL = SQL + "       , ''                                                                                        AS HEIGHT   -- 38 키                         \r\n";  // TODO : Height
                 //SQL = SQL + "       , ''                                                                                        AS WEIGHT   -- 39 몸무게                     \r\n";  // TODO : Weight
                 //SQL = SQL + "       , OPD.PREGNANT                                                                              AS PREGNANT -- 40 산모여부                   \r\n";
-                //SQL = SQL + "  FROM KOSMOS_PMPA.OPD_MASTER  OPD                                                                                                              \r\n";
-                //SQL = SQL + "     , KOSMOS_PMPA.BAS_PATIENT BAS                                                                                                              \r\n";
+                //SQL = SQL + "  FROM ADMIN.OPD_MASTER  OPD                                                                                                              \r\n";
+                //SQL = SQL + "     , ADMIN.BAS_PATIENT BAS                                                                                                              \r\n";
                 //SQL = SQL + " WHERE 1 = 1                                                                                                                                    \r\n";
                 //SQL = SQL + "   AND '" + gbIo + "' IN ('O', 'E')                                                                                                             \r\n";
                 //SQL = SQL + "  AND OPD.PANO     = " + ComFunc.covSqlstr(Ptno, false);
@@ -794,57 +794,57 @@ namespace ComLibB
                 SQL = "SELECT";
                 SQL = SQL + ComNum.VBLF + "    BAS.PANO                                                                                    AS PANO     -- 01 환자번호";
                 SQL = SQL + ComNum.VBLF + "    , BAS.SNAME                                                                                 AS SNAME    -- 02 환자성명";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_GET_AGE(KOSMOS_OCS.FC_BAS_PATIENT_BIRTH(BAS.PANO), TRUNC(SYSDATE))          AS AGE      -- 03 나이";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_GET_AGE(ADMIN.FC_BAS_PATIENT_BIRTH(BAS.PANO), TRUNC(SYSDATE))          AS AGE      -- 03 나이";
                 SQL = SQL + ComNum.VBLF + "    , BAS.SEX                                                                                   AS SEX      -- 04 성별";
                 SQL = SQL + ComNum.VBLF + "    , OPD.BI                                                                                    AS BI       -- 05 BI";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_BI_NM(OPD.BI)                                                               AS BI_NM    -- 06 보험유형";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_BAS_AUTO_MST_CHK(OPD.PANO, TRUNC(OPD.BDATE))                                AS AUTO_CHK -- 07 후불여부";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_BI_NM(OPD.BI)                                                               AS BI_NM    -- 06 보험유형";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_BAS_AUTO_MST_CHK(OPD.PANO, TRUNC(OPD.BDATE))                                AS AUTO_CHK -- 07 후불여부";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS SECRET   -- 08 사생활";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS GBDRG    -- 09 DRG여부";
                 SQL = SQL + ComNum.VBLF + "    , '외래'                                                                                    AS GBIO     -- 10 진료구분";
                 SQL = SQL + ComNum.VBLF + "    , OPD.DEPTCODE                                                                              AS DEPT     -- 11 진료과";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS WRCODE   -- 12 병동병실";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(OPD.DRCODE)                                               AS DRNM     -- 13 지정의";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_BAS_DOCTOR_DRNAME(OPD.DRCODE)                                               AS DRNM     -- 13 지정의";
                 SQL = SQL + ComNum.VBLF + "    , OPD.DRCODE                                                                                AS DRCD     -- 13 지정의코드";
                 SQL = SQL + ComNum.VBLF + "    , OPD.BDATE                                                                                 AS INDATE   -- 14 입원일자, 외래는 발생일자";
                 SQL = SQL + ComNum.VBLF + "    , BAS.GB_VIP                                                                                AS VIP      -- 15 VIP";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_BAS_OCSMEMO_CHK(BAS.PANO, TRUNC(SYSDATE))                                   AS BLACK    -- 16 문제환자";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_BAS_GAMCODE_NM(BAS.GBGAMEK)                                                 AS GAMEK    -- 17 감액정보";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_BAS_OCSMEMO_CHK(BAS.PANO, TRUNC(SYSDATE))                                   AS BLACK    -- 16 문제환자";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_BAS_GAMCODE_NM(BAS.GBGAMEK)                                                 AS GAMEK    -- 17 감액정보";
                 SQL = SQL + ComNum.VBLF + "    , BAS.RELIGION                                                                              AS SINGA    -- 18 가톨릭";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS INFECT   -- 19 보호(격리)";
                 SQL = SQL + ComNum.VBLF + "    , BAS.GBSMS                                                                                 AS GBSMS    -- 20 개인정보동의서";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_ORAN_MASTER_OPDATE(BAS.PANO)                                                AS OPDATE   -- 21 수술일자";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_ORAN_MASTER_NM(OPD.PANO, KOSMOS_OCS.FC_ORAN_MASTER_OPDATE(BAS.PANO))        AS OPNM     -- 21 수술명";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_ORAN_MASTER_OPDATE(BAS.PANO)                                                AS OPDATE   -- 21 수술일자";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_ORAN_MASTER_NM(OPD.PANO, ADMIN.FC_ORAN_MASTER_OPDATE(BAS.PANO))        AS OPNM     -- 21 수술명";
                 if (DeptCode == "ER")
                 {
-                    SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_OCS_ILLS(BAS.PANO, 'E', TRUNC(OPD.BDATE), OPD.DEPTCODE, NULL)               AS ILLS     -- 22 ILL";
+                    SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_OCS_ILLS(BAS.PANO, 'E', TRUNC(OPD.BDATE), OPD.DEPTCODE, NULL)               AS ILLS     -- 22 ILL";
                 }
                 else
                 {
-                    SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_OCS_ILLS(BAS.PANO, 'O', TRUNC(OPD.BDATE), OPD.DEPTCODE, NULL)               AS ILLS     -- 22 ILL";
+                    SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_OCS_ILLS(BAS.PANO, 'O', TRUNC(OPD.BDATE), OPD.DEPTCODE, NULL)               AS ILLS     -- 22 ILL";
                 }
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_EXAM_INFECT_MASTER_IMG_EX(BAS.PANO, TRUNC(OPD.BDATE))                          AS INFE_IMG -- 23 감염이미지";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_EXAM_BLOOD_MASTER_ABO(BAS.PANO)                                             AS ABO      -- 24 ABO";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_EXAM_INFECT_MASTER_IMG_EX(BAS.PANO, TRUNC(OPD.BDATE))                          AS INFE_IMG -- 23 감염이미지";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_EXAM_BLOOD_MASTER_ABO(BAS.PANO)                                             AS ABO      -- 24 ABO";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS CVR      -- 25 CVR";
-                //SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_NUR_FALL_REPORT_CHK(BAS.PANO, TRUNC(OPD.BDATE))                              AS FALL     -- 26 낙상";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_NUR_FALL_REPORT_CHK(BAS.PANO, TRUNC(SYSDATE))                              AS FALL     -- 26 낙상";
+                //SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_NUR_FALL_REPORT_CHK(BAS.PANO, TRUNC(OPD.BDATE))                              AS FALL     -- 26 낙상";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_NUR_FALL_REPORT_CHK(BAS.PANO, TRUNC(SYSDATE))                              AS FALL     -- 26 낙상";
                 SQL = SQL + ComNum.VBLF + "    , 0                                                                                        AS BRADEN   -- 27 욕창";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS FIRE     -- 28 화재";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS PNEUMONIA-- 29 폐렴";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS BRAIN    -- 30 뇌졸증";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS AMI      -- 31 AMI";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS OP_JIPYO -- 32 수술예방항생제";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_XRAY_CONTRAST_CHK(BAS.PANO)                                                 AS CONTRAST -- 33 조영제부작용환자";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_NUR_AST_CHK(BAS.PANO)                                                       AS AST      -- 34 항생반응";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_ETC_ALLERGY_MST_CHK(BAS.PANO)                                               AS ALLEGY   -- 35 알러지";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_DRUG_ADR_CHK(BAS.PANO)                                                      AS ADR      -- 36 ADR";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_XRAY_CONTRAST_CHK(BAS.PANO)                                                 AS CONTRAST -- 33 조영제부작용환자";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_NUR_AST_CHK(BAS.PANO)                                                       AS AST      -- 34 항생반응";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_ETC_ALLERGY_MST_CHK(BAS.PANO)                                               AS ALLEGY   -- 35 알러지";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_DRUG_ADR_CHK(BAS.PANO)                                                      AS ADR      -- 36 ADR";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS NST      -- 37 NST";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS HEIGHT   -- 38 키";
                 SQL = SQL + ComNum.VBLF + "    , ''                                                                                        AS WEIGHT   -- 39 몸무게";
                 SQL = SQL + ComNum.VBLF + "    , OPD.PREGNANT                                                                              AS PREGNANT -- 40 산모여부";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_OCS.FC_EXAM_INFECT_MASTER_OM(BAS.PANO)                                             AS OM       -- 41 옴";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_PATIENT BAS";
-                SQL = SQL + ComNum.VBLF + "    LEFT OUTER JOIN KOSMOS_PMPA.OPD_MASTER OPD";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.FC_EXAM_INFECT_MASTER_OM(BAS.PANO)                                             AS OM       -- 41 옴";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_PATIENT BAS";
+                SQL = SQL + ComNum.VBLF + "    LEFT OUTER JOIN ADMIN.OPD_MASTER OPD";
                 SQL = SQL + ComNum.VBLF + "        ON OPD.PANO = BAS.PANO";
                 SQL = SQL + ComNum.VBLF + "            AND OPD.BDATE = " + ComFunc.covSqlDate(bDate, false);
                 SQL = SQL + ComNum.VBLF + "            AND OPD.DEPTCODE = " + ComFunc.covSqlstr(DeptCode, false);
@@ -855,50 +855,50 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " SELECT                                                                                                                               ";
                 SQL = SQL + ComNum.VBLF + "        IPD.PANO                                                                                  AS PANO     -- 01 환자번호          ";
                 SQL = SQL + ComNum.VBLF + "      , IPD.SNAME                                                                                 AS SNAME    -- 02 환자성명          ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_GET_AGE(KOSMOS_OCS.FC_BAS_PATIENT_BIRTH(IPD.PANO), TRUNC(SYSDATE))          AS AGE      -- 03 나이              ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_GET_AGE(ADMIN.FC_BAS_PATIENT_BIRTH(IPD.PANO), TRUNC(SYSDATE))          AS AGE      -- 03 나이              ";
                 SQL = SQL + ComNum.VBLF + "      , IPD.SEX                                                                                   AS SEX      -- 04 성별              ";
                 SQL = SQL + ComNum.VBLF + "      , IPD.BI                                                                                    AS BI       -- 05 BI                ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_BI_NM(IPD.BI)                                                               AS BI_NM    -- 06 보험유형          ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_BAS_AUTO_MST_CHK(IPD.PANO, TRUNC(IPD.INDATE))                               AS AUTO_CHK -- 07 후불여부          ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_BI_NM(IPD.BI)                                                               AS BI_NM    -- 06 보험유형          ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_BAS_AUTO_MST_CHK(IPD.PANO, TRUNC(IPD.INDATE))                               AS AUTO_CHK -- 07 후불여부          ";
                 SQL = SQL + ComNum.VBLF + "      , IPD.SECRET                                                                                AS SECRET   -- 08 사생활            ";
                 SQL = SQL + ComNum.VBLF + "      , IPD.GBDRG                                                                                 AS GBDRG    -- 09 DRG여부           ";
                 SQL = SQL + ComNum.VBLF + "      , '입원'                                                                                    AS GBIO     -- 10 진료구분          ";
                 SQL = SQL + ComNum.VBLF + "      , IPD.DEPTCODE                                                                              AS DEPT     -- 11 진료과            ";
                 SQL = SQL + ComNum.VBLF + "      , IPD.WARDCODE || '/' || IPD.ROOMCODE || DECODE(IPD.BEDNUM, NULL, '', '/' || IPD.BEDNUM)    AS WRCODE   -- 12 병동병실          ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(IPD.DRCODE)                                               AS DRNM     -- 13 지정의            ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_BAS_DOCTOR_DRNAME(IPD.DRCODE)                                               AS DRNM     -- 13 지정의            ";
                 SQL = SQL + ComNum.VBLF + "      , IPD.DRCODE                                                                                AS DRCD     -- 13 지정의코드       ";
                 SQL = SQL + ComNum.VBLF + "      , IPD.INDATE                                                                                AS INDATE   -- 14 입원일자          ";
                 SQL = SQL + ComNum.VBLF + "      , BAS.GB_VIP                                                                                AS VIP      -- 15 VIP               ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_BAS_OCSMEMO_CHK(IPD.PANO, TRUNC(IPD.INDATE))                                AS BLACK    -- 16 문제환자          ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_BAS_GAMCODE_NM(IPD.GBGAMEK)                                                 AS GAMEK    -- 17 감액정보          ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_BAS_OCSMEMO_CHK(IPD.PANO, TRUNC(IPD.INDATE))                                AS BLACK    -- 16 문제환자          ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_BAS_GAMCODE_NM(IPD.GBGAMEK)                                                 AS GAMEK    -- 17 감액정보          ";
                 SQL = SQL + ComNum.VBLF + "      , BAS.RELIGION                                                                              AS SINGA    -- 18 가톨릭            ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_IPD_TRANSFOR_INFECT_CHK(IPD.PANO, IPD.IPDNO)                                AS INFECT   -- 19 보호(격리)        ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_IPD_TRANSFOR_INFECT_CHK(IPD.PANO, IPD.IPDNO)                                AS INFECT   -- 19 보호(격리)        ";
                 SQL = SQL + ComNum.VBLF + "      , BAS.GBSMS                                                                                 AS GBSMS    -- 20 개인정보동의서    ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_ORAN_MASTER_OPDATE(IPD.PANO)                                                AS OPDATE   -- 21 수술일자          ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_ORAN_MASTER_NM(IPD.PANO, KOSMOS_OCS.FC_ORAN_MASTER_OPDATE(IPD.PANO))        AS OPNM     -- 21 수술명            ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_OCS_ILLS(IPD.PANO, 'I', TRUNC(IPD.INDATE), IPD.DEPTCODE, NULL)              AS ILLS     -- 22 ILL               ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_EXAM_INFECT_MASTER_IMG_EX(IPD.PANO, TRUNC(IPD.INDATE))                         AS INFE_IMG -- 23 감염이미지        ";
-                SQL = SQL + ComNum.VBLF + "	  , KOSMOS_OCS.FC_EXAM_BLOOD_MASTER_ABO(IPD.PANO)                                                AS ABO      -- 24 ABO                  ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_ORAN_MASTER_OPDATE(IPD.PANO)                                                AS OPDATE   -- 21 수술일자          ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_ORAN_MASTER_NM(IPD.PANO, ADMIN.FC_ORAN_MASTER_OPDATE(IPD.PANO))        AS OPNM     -- 21 수술명            ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_OCS_ILLS(IPD.PANO, 'I', TRUNC(IPD.INDATE), IPD.DEPTCODE, NULL)              AS ILLS     -- 22 ILL               ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_EXAM_INFECT_MASTER_IMG_EX(IPD.PANO, TRUNC(IPD.INDATE))                         AS INFE_IMG -- 23 감염이미지        ";
+                SQL = SQL + ComNum.VBLF + "	  , ADMIN.FC_EXAM_BLOOD_MASTER_ABO(IPD.PANO)                                                AS ABO      -- 24 ABO                  ";
                 SQL = SQL + ComNum.VBLF + "      , ''                                                                                        AS CVR      -- 25 CVR               "; // TODO : CVR
-                //SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_NUR_FALL_REPORT_CHK(IPD.PANO, TRUNC(IPD.INDATE))                            AS FALL     -- 26 낙상              ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_NUR_FALL_REPORT_CHK(IPD.PANO, TRUNC(SYSDATE))                            AS FALL     -- 26 낙상              ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_READ_WARNING_BRADEN(IPD.IPDNO)                                          AS BRADEN   -- 27 욕창   "; // TODO : 욕창
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_NUR_MASTER_FIRE(IPD.IPDNO)                                                  AS FIRE     -- 28 화재              ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_NUR_MASTER_pneumonia(IPD.IPDNO)                                             AS PNEUMONIA-- 29 폐렴              "; // TODO : 폐렴
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_IPD_TRANS_BRAIN(IPD.IPDNO)                                                  AS BRAIN    -- 30 뇌졸증            "; // TODO : 뇌졸증
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_NUR_MASTER_AMI(IPD.IPDNO)                                                   AS AMI      -- 31 AMI               "; // TODO : AMI
+                //SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_NUR_FALL_REPORT_CHK(IPD.PANO, TRUNC(IPD.INDATE))                            AS FALL     -- 26 낙상              ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_NUR_FALL_REPORT_CHK(IPD.PANO, TRUNC(SYSDATE))                            AS FALL     -- 26 낙상              ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_READ_WARNING_BRADEN(IPD.IPDNO)                                          AS BRADEN   -- 27 욕창   "; // TODO : 욕창
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_NUR_MASTER_FIRE(IPD.IPDNO)                                                  AS FIRE     -- 28 화재              ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_NUR_MASTER_pneumonia(IPD.IPDNO)                                             AS PNEUMONIA-- 29 폐렴              "; // TODO : 폐렴
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_IPD_TRANS_BRAIN(IPD.IPDNO)                                                  AS BRAIN    -- 30 뇌졸증            "; // TODO : 뇌졸증
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_NUR_MASTER_AMI(IPD.IPDNO)                                                   AS AMI      -- 31 AMI               "; // TODO : AMI
                 SQL = SQL + ComNum.VBLF + "      , IPD.OP_JIPYO                                                                              AS OP_JIPYO -- 32 수술예방항생제    ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_XRAY_CONTRAST_CHK(IPD.PANO)                                                 AS CONTRAST -- 33 조영제부작용환자  ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_NUR_AST_CHK(IPD.PANO)                                                       AS AST      -- 34 항생반응          ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_ETC_ALLERGY_MST_CHK(IPD.PANO)                                               AS ALLEGY   -- 35 알러지            ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_DRUG_ADR_CHK(IPD.PANO)                                                      AS ADR      -- 36 ADR               ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_DIET_NST_PROGRESS_CHK(IPD.IPDNO)                                            AS NST      -- 37 NST               ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_XRAY_CONTRAST_CHK(IPD.PANO)                                                 AS CONTRAST -- 33 조영제부작용환자  ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_NUR_AST_CHK(IPD.PANO)                                                       AS AST      -- 34 항생반응          ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_ETC_ALLERGY_MST_CHK(IPD.PANO)                                               AS ALLEGY   -- 35 알러지            ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_DRUG_ADR_CHK(IPD.PANO)                                                      AS ADR      -- 36 ADR               ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_DIET_NST_PROGRESS_CHK(IPD.IPDNO)                                            AS NST      -- 37 NST               ";
                 SQL = SQL + ComNum.VBLF + "      , TO_CHAR(IPD.HEIGHT)                                                                       AS HEIGHT   -- 38 키                ";
                 SQL = SQL + ComNum.VBLF + "      , TO_CHAR(IPD.WEIGHT)                                                                       AS WEIGHT   -- 39 몸무게            ";
                 SQL = SQL + ComNum.VBLF + "      , IPD.PREGNANT                                                                              AS PREGNANT -- 40 산모여부          ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_EXAM_INFECT_MASTER_OM(IPD.PANO)                                             AS OM       -- 41 옴";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER    IPD                                                                                               ";
-                SQL = SQL + ComNum.VBLF + "    , KOSMOS_PMPA.BAS_PATIENT       BAS                                                                                               ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_EXAM_INFECT_MASTER_OM(IPD.PANO)                                             AS OM       -- 41 옴";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER    IPD                                                                                               ";
+                SQL = SQL + ComNum.VBLF + "    , ADMIN.BAS_PATIENT       BAS                                                                                               ";
                 SQL = SQL + ComNum.VBLF + "WHERE 1    = 1                                                                                                                        ";
                 SQL = SQL + ComNum.VBLF + "     AND '" + gbIo + "' IN ('I')                                                                                                      ";
                 SQL = SQL + ComNum.VBLF + "     AND IPD.PANO = " + ComFunc.covSqlstr(Ptno, false);
@@ -1138,7 +1138,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT IPDNO, WARDCODE, AGE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER IPD ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER IPD ";
                 SQL = SQL + ComNum.VBLF + " WHERE IPD.PANO = " + ComFunc.covSqlstr(argPTNO, false);
                 SQL = SQL + ComNum.VBLF + "   AND ((IPD.OUTDATE IS NULL AND IPD.JDATE = TO_DATE('1900-01-01', 'YYYY-MM-DD'))";
                 SQL = SQL + ComNum.VBLF + "         OR (INDATE <= TO_DATE('" + argDATE + " 23:59', 'YYYY-MM-DD HH24:MI')";
@@ -1193,12 +1193,12 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = "  SELECT PANO, TOTAL ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_FALLMORSE_SCALE";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_FALLMORSE_SCALE";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + argPTNO + "'";
                 SQL = SQL + ComNum.VBLF + " AND IPDNO = " + ArgIPDNO;
                 SQL = SQL + ComNum.VBLF + "     AND ROWID = (";
                 SQL = SQL + ComNum.VBLF + "   SELECT ROWID FROM (";
-                SQL = SQL + ComNum.VBLF + "  SELECT * FROM KOSMOS_PMPA.NUR_FALLMORSE_SCALE";
+                SQL = SQL + ComNum.VBLF + "  SELECT * FROM ADMIN.NUR_FALLMORSE_SCALE";
                 SQL = SQL + ComNum.VBLF + "  WHERE ACTDATE = TO_DATE('" + argDATE + "','YYYY-MM-DD')";
                 SQL = SQL + ComNum.VBLF + "       AND IPDNO = " + ArgIPDNO;
                 SQL = SQL + ComNum.VBLF + "  ORDER BY DECODE(ENTDATE, NULL, 2, 1), ACTDATE DESC)";
@@ -1209,12 +1209,12 @@ namespace ComLibB
                 if (VB.Val(ArgAge) < 18)
                 {
                     SQL = "  SELECT PANO, TOTAL ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_FALLHUMPDUMP_SCALE";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_FALLHUMPDUMP_SCALE";
                     SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + argPTNO + "'";
                     SQL = SQL + ComNum.VBLF + " AND IPDNO = " + ArgIPDNO;
                     SQL = SQL + ComNum.VBLF + "     AND ROWID = (";
                     SQL = SQL + ComNum.VBLF + "   SELECT ROWID FROM (";
-                    SQL = SQL + ComNum.VBLF + "  SELECT * FROM KOSMOS_PMPA.NUR_FALLHUMPDUMP_SCALE";
+                    SQL = SQL + ComNum.VBLF + "  SELECT * FROM ADMIN.NUR_FALLHUMPDUMP_SCALE";
                     SQL = SQL + ComNum.VBLF + "  WHERE ACTDATE = TO_DATE('" + argDATE + "','YYYY-MM-DD')";
                     SQL = SQL + ComNum.VBLF + "       AND IPDNO = " + ArgIPDNO;
                     SQL = SQL + ComNum.VBLF + "  ORDER BY DECODE(ENTDATE, NULL, 2, 1), ACTDATE DESC)";
@@ -1254,7 +1254,7 @@ namespace ComLibB
                 strDrug = "";
                 SQL = "";
                 SQL = " SELECT * ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.NUR_FALL_WARNING";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.NUR_FALL_WARNING";
                 SQL = SQL + ComNum.VBLF + " WHERE IPDNO = " + ArgIPDNO;
                 SQL = SQL + ComNum.VBLF + "   AND (WARNING1 = '1'";
                 SQL = SQL + ComNum.VBLF + "                  OR WARNING2 = '1'";
@@ -1431,7 +1431,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT IPDNO, WARDCODE, AGE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER IPD ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER IPD ";
                 SQL = SQL + ComNum.VBLF + " WHERE IPD.PANO = " + ComFunc.covSqlstr(argPTNO, false);
                 SQL = SQL + ComNum.VBLF + "   AND ((IPD.OUTDATE IS NULL AND IPD.JDATE = TO_DATE('1900-01-01', 'YYYY-MM-DD'))";
                 SQL = SQL + ComNum.VBLF + "         OR (INDATE <= TO_DATE('" + argDATE + " 23:59', 'YYYY-MM-DD HH24:MI')";
@@ -1479,7 +1479,7 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL = " SELECT A.PANO, A.TOTAL, A.AGE ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_BRADEN_SCALE A";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_BRADEN_SCALE A";
                     SQL = SQL + ComNum.VBLF + " WHERE A.IPDNO = " + ArgIPDNO;
                     SQL = SQL + ComNum.VBLF + "   AND A.PANO = '" + argPTNO + "' ";
                     if (ArgDate2 != "")
@@ -1493,7 +1493,7 @@ namespace ComLibB
                     }
                     SQL = SQL + ComNum.VBLF + "     AND A.ROWID = (";
                     SQL = SQL + ComNum.VBLF + "   SELECT ROWID FROM (";
-                    SQL = SQL + ComNum.VBLF + "  SELECT * FROM KOSMOS_PMPA.NUR_BRADEN_SCALE";
+                    SQL = SQL + ComNum.VBLF + "  SELECT * FROM ADMIN.NUR_BRADEN_SCALE";
                     SQL = SQL + ComNum.VBLF + "  WHERE ACTDATE = TO_DATE('" + argDATE + "','YYYY-MM-DD')";
                     SQL = SQL + ComNum.VBLF + "       AND IPDNO = " + ArgIPDNO;
                     SQL = SQL + ComNum.VBLF + "       AND PANO = '" + argPTNO + "' ";
@@ -1529,7 +1529,7 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL = "SELECT TOTAL ";
-                    SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.NUR_BRADEN_SCALE_BABY ";
+                    SQL = SQL + ComNum.VBLF + "   FROM ADMIN.NUR_BRADEN_SCALE_BABY ";
                     SQL = SQL + ComNum.VBLF + " WHERE IPDNO=" + ArgIPDNO;
                     SQL = SQL + ComNum.VBLF + "   AND PANO = '" + argPTNO + "' ";
                     if (ArgDate2 != "")
@@ -1568,7 +1568,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT *";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_BRADEN_WARNING ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_BRADEN_WARNING ";
                 SQL = SQL + ComNum.VBLF + " WHERE IPDNO = " + ArgIPDNO;
                 SQL = SQL + ComNum.VBLF + "   AND PANO = '" + argPTNO + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND ( ";
@@ -1684,7 +1684,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT IPDNO, WARDCODE, AGE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER IPD ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER IPD ";
                 SQL = SQL + ComNum.VBLF + " WHERE IPD.PANO = " + ComFunc.covSqlstr(argPTNO, false);
                 SQL = SQL + ComNum.VBLF + "   AND ((IPD.OUTDATE IS NULL AND IPD.JDATE = TO_DATE('1900-01-01', 'YYYY-MM-DD'))";
                 SQL = SQL + ComNum.VBLF + "         OR (INDATE <= TO_DATE('" + argDATE + " 23:59', 'YYYY-MM-DD HH24:MI')";
@@ -1711,7 +1711,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT FIRE_EXIT_GUBUN ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.NUR_MASTER ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.NUR_MASTER ";
                 SQL = SQL + ComNum.VBLF + "  WHERE IPDNO = " + ArgIPDNO;
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1782,7 +1782,7 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL = " SELECT IPDNO, WARDCODE, AGE ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER IPD ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER IPD ";
                     SQL = SQL + ComNum.VBLF + " WHERE IPD.PANO = " + ComFunc.covSqlstr(GPtno, false);
                     SQL = SQL + ComNum.VBLF + "   AND ((IPD.OUTDATE IS NULL AND IPD.JDATE = TO_DATE('1900-01-01', 'YYYY-MM-DD'))";
                     SQL = SQL + ComNum.VBLF + "         OR (INDATE <= TO_DATE('" + GbDate + " 23:59', 'YYYY-MM-DD HH24:MI')";
@@ -1834,7 +1834,7 @@ namespace ComLibB
 
             try
             {                
-                SQL = "SELECT MAX(WRTNO) WRTNO FROM KOSMOS_PMPA.DIET_NST_PROGRESS ";
+                SQL = "SELECT MAX(WRTNO) WRTNO FROM ADMIN.DIET_NST_PROGRESS ";
                 SQL = SQL + ComNum.VBLF + " WHERE IPDNO = '" + ArgIPDNO + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);

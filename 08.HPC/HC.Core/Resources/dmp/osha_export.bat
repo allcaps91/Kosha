@@ -1,1 +1,1 @@
-exp kosmos_pmpa/hospital@ora7 tables=HIC_USERS file='Resources\dmp\hic.dmp'
+exp ADMIN/hospital@ora7 tables=HIC_USERS file='Resources\dmp\hic.dmp'

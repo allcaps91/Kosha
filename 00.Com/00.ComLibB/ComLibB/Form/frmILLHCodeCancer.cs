@@ -73,7 +73,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT ILLCODE, ILLNAMEK, ROWID  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_CANCER ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_CANCER ";
                 SQL = SQL + ComNum.VBLF + " WHERE 1 = 1 ";
                 SQL = SQL + ComNum.VBLF + "   AND ILLCODE = '" + txtIllCode_S.Text + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -141,7 +141,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT ILLCODE, ILLNAMEK, ROWID   ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_CANCER ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_CANCER ";
                 if (intIndex != 26)
                 {
                     SQL = SQL + ComNum.VBLF + " WHERE ILLCODE LIKE  ('" + strIllCode + "' ) ";
@@ -213,7 +213,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT ILLCODE, ILLNAMEK, ILLSEQ, ILLNAMEE, ";
                 SQL = SQL + ComNum.VBLF + " GIJUN, GBN1, GBN2, GBN3, GBN4, GBN5, GBN6, JIGUN, EXCEP ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_CANCER ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_CANCER ";
                 SQL = SQL + ComNum.VBLF + "  WHERE ROWID = '" + GstrROWID + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 

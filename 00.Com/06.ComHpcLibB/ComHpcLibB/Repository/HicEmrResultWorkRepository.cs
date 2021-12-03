@@ -20,7 +20,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID RID, JOBDATE                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EMR_RESULT_WORK         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EMR_RESULT_WORK         ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql(" AND WRTNO = :WRTNO                            ");
             parameter.AppendSql(" AND GUBUN = :GUBUN                            ");
@@ -35,7 +35,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_EMR_RESULT_WORK(                               ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_EMR_RESULT_WORK(                               ");
             parameter.AppendSql(" JOBDATE, GUBUN, WRTNO, DRNO, ENTSABUN, ENTDATE, FILENAME)                 ");
             parameter.AppendSql("VALUES(                                                                    ");
             parameter.AppendSql(" :JOBDATE, :GUBUN, :WRTNO, :DRNO, :ENTSABUN, SYSDATE, :FILENAME)           ");
@@ -56,7 +56,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_EMR_RESULT_WORK SET             ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_EMR_RESULT_WORK SET             ");
             parameter.AppendSql(" FILENAME = :FILENAME                                  ");
             parameter.AppendSql(" WHERE ROWID  = :ROWID                                 ");
 
@@ -71,7 +71,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT PRTRESULT                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EMR_RESULT_WORK         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EMR_RESULT_WORK         ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql(" AND WRTNO = :WRTNO                            ");
             parameter.AppendSql(" AND GUBUN = :GUBUN                            ");

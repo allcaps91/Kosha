@@ -22,7 +22,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(ENTDATE, 'YYYY-MM-DD') AS ENTDATE, FILENAME     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PRIVACY_ACCEPT                          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PRIVACY_ACCEPT                          ");
             parameter.AppendSql(" WHERE 1 =1                                                    ");
             parameter.AppendSql(" AND PTNO = :PTNO                                              ");
             parameter.AppendSql(" AND GJYEAR = :YEAR                                              ");

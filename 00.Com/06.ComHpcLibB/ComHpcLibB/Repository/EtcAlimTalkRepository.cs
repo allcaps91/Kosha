@@ -21,7 +21,7 @@
         public int Insert(ETC_ALIMTALK item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_PMPA.ETC_ALIMTALK                                                          ");
+            parameter.AppendSql(" INSERT INTO ADMIN.ETC_ALIMTALK                                                          ");
             parameter.AppendSql("        (JOBDATE, SENDFLAG, SENDTYPE, TEMPCD, ENTSABUN, ENTDATE, PANO, SNAME                   ");
             parameter.AppendSql("      , HPHONE, LTDNAME, DEPTNAME, DRNAME, RDATE, RETTEL, SENDUID, WRTNO, GJNAME, QUESTLINK)   ");
             parameter.AppendSql(" VALUES                                                                                        ");
@@ -52,7 +52,7 @@
         public void UpDateDelDateByPanoRDateTmpCD(long argPano, string argSDate, string argTmpCD)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_PMPA.ETC_ALIMTALK               ");
+            parameter.AppendSql(" UPDATE ADMIN.ETC_ALIMTALK               ");
             parameter.AppendSql("    SET DELDATE = SYSDATE                      ");
             parameter.AppendSql("  WHERE PANO = :PANO                           ");
             parameter.AppendSql("    AND RDATE >= TO_DATE(:RDATE, 'YYYY-MM-DD') ");
@@ -73,7 +73,7 @@
             parameter.AppendSql("SELECT TO_CHAR(JOBDATE,'YYYY-MM-DD HH24:MI') JOBDATE, PANO, DEPTNAME, SNAME                                        ");
             parameter.AppendSql("     , HPHONE, ENTSABUN, REPORT_CODE, TEMPCD, RETTEL, DECODE(REPORT_TYPE, 'AT','알림톡','SM','SMS') REPORT_TYPE    ");
             parameter.AppendSql("     , TO_CHAR(RDATE,'YYYY-MM-DD HH24:MI') RDATE, RESEND_REPORT_CODE, QUESTLINK                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.ETC_ALIMTALK                                                                                    ");
+            parameter.AppendSql("  FROM ADMIN.ETC_ALIMTALK                                                                                    ");
             parameter.AppendSql("  WHERE TRUNC(JOBDATE) >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                                           ");
             parameter.AppendSql("    AND TRUNC(JOBDATE) <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                                           ");
             if (!strDeptName.IsNullOrEmpty() && strDeptName != "**")
@@ -131,7 +131,7 @@
             parameter.AppendSql("SELECT TO_CHAR(RDate, 'YYYY-MM-DD HH24:MI') RDATE, TEMPCD, ENTSABUN, ENTDATE       ");
             parameter.AppendSql("     , PANO, SNAME, Hphone, LtdName, DEPTNAME, DrName, RDate, RetTel, SendUID      ");
             parameter.AppendSql("     , GjName, QUESTTITLE, QUESTMSG, QUESTLINK, SENDTYPE                           ");
-            parameter.AppendSql("  From KOSMOS_PMPA.ETC_ALIMTALK                                                    ");
+            parameter.AppendSql("  From ADMIN.ETC_ALIMTALK                                                    ");
             parameter.AppendSql(" Where JOBDATE >= TRUNC(SYSDATE)                                                   ");
             parameter.AppendSql("   AND (WebSend IS NULL OR WebSend = '')                                           ");
             parameter.AppendSql("   AND SENDFLAG = :SENDFLAG                                                        ");
@@ -146,7 +146,7 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TO_CHAR(RDate,'YYYY-MM-DD HH24:MI') RDate           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.ETC_ALIMTALK                            ");
+            parameter.AppendSql("  FROM ADMIN.ETC_ALIMTALK                            ");
             parameter.AppendSql(" WHERE JOBDATE >= TO_DATE(:FRDATE,  'YYYY-MM-DD')          ");
             parameter.AppendSql("   AND JOBDATE <= TO_DATE(:TODATE', 'YYYY-MM-DD HH24:MI')  ");
             //등록번호가 공백이 아닐경우

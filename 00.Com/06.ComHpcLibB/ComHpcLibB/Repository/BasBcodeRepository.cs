@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT *                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE   ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE   ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql(" AND CODE = :CODE              ");
 
@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT *                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE   ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE   ");
             parameter.AppendSql(" WHERE GUBUN  = :GUBUN         ");
             parameter.AppendSql(" AND GUBUN2 = :CODE              ");
 
@@ -52,7 +52,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE   ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE   ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND DELDATE IS NULL         ");
             if (!strJobSabun.IsNullOrEmpty())
@@ -74,7 +74,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE   ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE   ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql(" ORDER BY CODE                 ");
 
@@ -88,7 +88,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GAMCODE,  GAMMESSAGE                    ");
             parameter.AppendSql("     , TO_CHAR(GamEnd, 'YYYY-MM-DD') GamEnd    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_GAMF                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_GAMF                    ");
             parameter.AppendSql(" WHERE GamJumin3 = :JUMIN                      ");
 
             parameter.Add("JUMIN", JUMIN);
@@ -100,7 +100,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE                       ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE                       ");
             parameter.AppendSql(" WHERE 1 = 1                                       ");
             parameter.AppendSql("   AND GUBUN =:GUBUN                               ");
             parameter.AppendSql("   AND CODE IN (:CODE)                            ");
@@ -117,7 +117,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE                       ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE                       ");
             parameter.AppendSql(" WHERE 1 = 1                                       ");
             parameter.AppendSql("   AND GUBUN =:GUBUN                               ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE>TRUNC(SYSDATE)) ");
@@ -132,7 +132,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE                       ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE                       ");
             parameter.AppendSql(" WHERE 1 = 1                                       ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                              ");
             parameter.AppendSql("   AND CODE  = :CODE                               ");
@@ -148,7 +148,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME, PART, SORT, CNT, GUBUN2                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE                                       ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE                                       ");
             parameter.AppendSql(" WHERE 1 = 1                                                       ");
             parameter.AppendSql("   AND GUBUN ='HIC_EXAM_MST'                                       ");
             parameter.AppendSql("   AND SUBSTR(CODE, 1, 1) = :GUBUN                                 ");
@@ -159,12 +159,12 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" GROUP BY CODE, NAME, PART, SORT, CNT, GUBUN2                      ");
             parameter.AppendSql(" UNION                                                             ");
             parameter.AppendSql("SELECT CODE, NAME, PART, SORT, CNT, GUBUN2                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE                                       ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE                                       ");
             parameter.AppendSql(" WHERE 1 = 1                                                       ");
             parameter.AppendSql("   AND GUBUN ='HIC_EXAM_MST'                                       ");
             parameter.AppendSql("   AND CODE IN (                                                   ");
             parameter.AppendSql("       SELECT SUBSTR(CODE, 1, 8) AS CODE                           ");
-            parameter.AppendSql("         FROM KOSMOS_PMPA.BAS_BCODE                                ");
+            parameter.AppendSql("         FROM ADMIN.BAS_BCODE                                ");
             parameter.AppendSql("        WHERE 1 = 1                                                ");
             parameter.AppendSql("          AND GUBUN ='HIC_EXAM_MST_SUB'                            ");
             parameter.AppendSql("          AND SUBSTR(CODE, 1, 1) = :GUBUN                          ");
@@ -190,7 +190,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT CODE,NAME,TO_CHAR(JDATE,'YYYY-MM-DD') JDATE         ");
             parameter.AppendSql("      ,TO_CHAR(DELDATE,'YYYY-MM-DD') DELDATE,ROWID AS RID  ");
             parameter.AppendSql("      ,SORT,PART,CNT,GUBUN2                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE                       ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE                       ");
             parameter.AppendSql(" WHERE 1 = 1                                       ");
             parameter.AppendSql("   AND GUBUN =:GUBUN                               ");
             parameter.AppendSql(" ORDER BY CODE                                     ");
@@ -204,7 +204,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.BAS_BCODE                 ");
+            parameter.AppendSql("DELETE ADMIN.BAS_BCODE                 ");
             parameter.AppendSql(" WHERE ROWID =:RID                            ");
             parameter.Add("RID", code.RID);
 
@@ -215,7 +215,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.BAS_BCODE                       ");
+            parameter.AppendSql("UPDATE ADMIN.BAS_BCODE                       ");
             parameter.AppendSql("   SET CODE     =:CODE                             ");
             parameter.AppendSql("      ,NAME     =:NAME                             ");
             parameter.AppendSql("      ,GUBUN2   =:GUBUN2                           ");
@@ -246,7 +246,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT KOSMOS_PMPA.BAS_BCODE (                                                     ");
+            parameter.AppendSql("INSERT ADMIN.BAS_BCODE (                                                     ");
             parameter.AppendSql("   GUBUN,CODE,NAME,GUBUN2,SORT,PART,CNT,JDATE,DELDATE,ENTSABUN,ENTDATE             ");
             parameter.AppendSql(" ) VALUES (                                                                        ");
             parameter.AppendSql("  :GUBUN,:CODE,:NAME,:GUBUN2,:SORT,:PART,:CNT,TO_CHAR(:JDATE,'YYYY-MM-DD')         ");

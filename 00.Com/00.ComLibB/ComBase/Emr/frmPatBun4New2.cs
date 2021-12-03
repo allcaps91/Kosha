@@ -246,7 +246,7 @@ namespace ComBase
                     dblEmrHisNo = GetSequencesNo(ComNum.DB_EMR + "EMRXMLHISNO");
 
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + " INSERT INTO KOSMOS_EMR.EMRXMLHISTORY";
+                    SQL = SQL + ComNum.VBLF + " INSERT INTO ADMIN.EMRXMLHISTORY";
                     SQL = SQL + ComNum.VBLF + "      (HISTORYNO, EMRNO,FORMNO,USEID,CHARTDATE,CHARTTIME,ACPNO,PTNO,";
                     SQL = SQL + ComNum.VBLF + "      INOUTCLS,MEDFRDATE,MEDFRTIME,MEDENDDATE,MEDENDTIME,MEDDEPTCD,MEDDRCD,";
                     SQL = SQL + ComNum.VBLF + "      WRITEDATE,WRITETIME,CHARTXML,CONTENTS,UPDATENO,HISTORYWRITEDATE,HISTORYWRITETIME,DELUSEID,CERTNO)";
@@ -256,7 +256,7 @@ namespace ComBase
                     SQL = SQL + ComNum.VBLF + "      WRITEDATE,WRITETIME,CHARTXML,CONTENTS,UPDATENO,";
                     SQL = SQL + ComNum.VBLF + "      '" + ComFunc.FormatStrToDateEx(ComQuery.CurrentDateTime(clsDB.DbCon, "D"), "D", "-").Replace("-", "") + "',";
                     SQL = SQL + ComNum.VBLF + "      '" + ComFunc.FormatStrToDateEx(ComQuery.CurrentDateTime(clsDB.DbCon, "T"), "M", ":").Replace(":", "") + "', '" + clsType.User.Sabun + "',CERTNO";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRXML";
                     SQL = SQL + ComNum.VBLF + "  WHERE EMRNO = " + nEMRNO;
 
 
@@ -2016,7 +2016,7 @@ namespace ComBase
                 dt = null;
 
                 SQL = "";
-                SQL = " DELETE KOSMOS_PMPA.NUR_FALLMORSE_SCALE ";
+                SQL = " DELETE ADMIN.NUR_FALLMORSE_SCALE ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + argROWID + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -2037,13 +2037,13 @@ namespace ComBase
                 }
 
                 //'기존차트를 변경할 경우 : 백업 테이블로 백업을 하고 신규 data를 입력한다
-                //'KOSMOS_EMR.EMRXMLHISTORY_HISTORYNO_SEQ
+                //'ADMIN.EMRXMLHISTORY_HISTORYNO_SEQ
                 if (nEMRNO > 0)
                 {
                     dblEmrHisNo = GetSequencesNo("" + ComNum.DB_EMR + "EMRXMLHISNO");
 
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + " INSERT INTO KOSMOS_EMR.EMRXMLHISTORY";
+                    SQL = SQL + ComNum.VBLF + " INSERT INTO ADMIN.EMRXMLHISTORY";
                     SQL = SQL + ComNum.VBLF + "      (HISTORYNO, EMRNO,FORMNO,USEID,CHARTDATE,CHARTTIME,ACPNO,PTNO,";
                     SQL = SQL + ComNum.VBLF + "      INOUTCLS,MEDFRDATE,MEDFRTIME,MEDENDDATE,MEDENDTIME,MEDDEPTCD,MEDDRCD,";
                     SQL = SQL + ComNum.VBLF + "      WRITEDATE,WRITETIME,CHARTXML,CONTENTS,UPDATENO,HISTORYWRITEDATE,HISTORYWRITETIME,DELUSEID,CERTNO)";
@@ -2053,7 +2053,7 @@ namespace ComBase
                     SQL = SQL + ComNum.VBLF + "      WRITEDATE,WRITETIME,CHARTXML,CONTENTS,UPDATENO,";
                     SQL = SQL + ComNum.VBLF + "      '" + ComFunc.FormatStrToDateEx(ComQuery.CurrentDateTime(clsDB.DbCon, "D"), "D", "-").Replace("-", "") + "',";
                     SQL = SQL + ComNum.VBLF + "      '" + ComFunc.FormatStrToDateEx(ComQuery.CurrentDateTime(clsDB.DbCon, "T"), "M", ":").Replace(":", "") + "', '" + clsType.User.Sabun + "',CERTNO";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRXML";
                     SQL = SQL + ComNum.VBLF + "  WHERE EMRNO = " + nEMRNO;
 
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -2500,7 +2500,7 @@ namespace ComBase
 
             cmd.Connection = pDbCon.Con;
             cmd.InitialLONGFetchSize = 1000;
-            cmd.CommandText = "KOSMOS_EMR.XMLINSRT3";
+            cmd.CommandText = "ADMIN.XMLINSRT3";
             cmd.CommandType = CommandType.StoredProcedure;
 
             try

@@ -22,7 +22,7 @@ namespace HC_Measurement.Repository
         public void InSert(HIC_CHUKDTL_PLAN dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHUKDTL_PLAN");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHUKDTL_PLAN");
             parameter.AppendSql("(");
             parameter.AppendSql("    WRTNO");
             parameter.AppendSql("  , SEQNO");
@@ -84,7 +84,7 @@ namespace HC_Measurement.Repository
         public void DeleteAll(long nWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKDTL_PLAN");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKDTL_PLAN");
             parameter.AppendSql("   SET DELDATE = SYSDATE ");
             parameter.AppendSql(" WHERE WRTNO =:WRTNO ");
 
@@ -97,17 +97,17 @@ namespace HC_Measurement.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.MCODE");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HICCHUK_MCODENM(A.MCODE) AS MCODE_NM");
+            parameter.AppendSql("     , ADMIN.FC_HICCHUK_MCODENM(A.MCODE) AS MCODE_NM");
             parameter.AppendSql("     , B.AMT");
             parameter.AppendSql("     , B.GAMT");
             parameter.AppendSql("     , B.SUCODE");
             parameter.AppendSql("     , B.SUNAME");
             parameter.AppendSql("     , A.CHKWAY_CD");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE('15', A.CHKWAY_CD) AS CHKWAY_NM");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE1('15', A.CHKWAY_CD) AS ANALWAY_NM");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE('15', A.CHKWAY_CD) AS CHKWAY_NM");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE1('15', A.CHKWAY_CD) AS ANALWAY_NM");
             parameter.AppendSql("     , SUM(A.CHKCOUNT) AS CHKCOUNT");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHUKDTL_PLAN A");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_CHK_SUGA B");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHUKDTL_PLAN A");
+            parameter.AppendSql("     , ADMIN.HIC_CHK_SUGA B");
             parameter.AppendSql(" WHERE A.WRTNO=:WRTNO");
             parameter.AppendSql("   AND A.DELDATE IS NULL");
             parameter.AppendSql("   AND B.GJYEAR = :GJYEAR");
@@ -118,8 +118,8 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("   AND A.CHKWAY_CD < '500' ");     //固没备 备盒 力寇
             parameter.AppendSql("   AND A.CHKCOUNT > 0 ");
             parameter.AppendSql(" GROUP BY A.MCODE, B.AMT, B.GAMT, B.SUCODE,B.SUNAME, A.CHKWAY_CD ");
-            parameter.AppendSql("        , KOSMOS_PMPA.FC_HIC_CODE_GCODE('15', A.CHKWAY_CD) ");
-            parameter.AppendSql("        , KOSMOS_PMPA.FC_HIC_CODE_GCODE1('15', A.CHKWAY_CD) ");
+            parameter.AppendSql("        , ADMIN.FC_HIC_CODE_GCODE('15', A.CHKWAY_CD) ");
+            parameter.AppendSql("        , ADMIN.FC_HIC_CODE_GCODE1('15', A.CHKWAY_CD) ");
             parameter.AppendSql(" ORDER BY B.SUCODE ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -148,8 +148,8 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.DELDATE");
             parameter.AppendSql("     , A.CHKWAY_CD");
             parameter.AppendSql("     , DECODE(A.DELDATE, '', 'N', 'Y') AS IsDelete");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE('15', A.CHKWAY_CD) AS CHKWAY_NM");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE1('15', A.CHKWAY_CD) AS ANALWAY_NM");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE('15', A.CHKWAY_CD) AS CHKWAY_NM");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE1('15', A.CHKWAY_CD) AS ANALWAY_NM");
             parameter.AppendSql("     , A.ROWID AS RID");
             parameter.AppendSql("  FROM HIC_CHUKDTL_PLAN A");
             parameter.AppendSql(" WHERE A.WRTNO=:WRTNO");
@@ -169,7 +169,7 @@ namespace HC_Measurement.Repository
         public void Delete(HIC_CHUKDTL_PLAN dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKDTL_PLAN");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKDTL_PLAN");
             parameter.AppendSql("   SET DELDATE = SYSDATE ");
             parameter.AppendSql(" WHERE ROWID =:RID ");
 

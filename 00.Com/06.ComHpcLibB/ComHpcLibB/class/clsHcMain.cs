@@ -4706,7 +4706,7 @@ namespace ComHpcLibB
 
             try
             {
-                //string strRowid = comHpcLibBService.GetRowidByTableWRTNO(nHJ.WRTNO, "KOSMOS_PMPA.HIC_RES_SPECIAL");
+                //string strRowid = comHpcLibBService.GetRowidByTableWRTNO(nHJ.WRTNO, "ADMIN.HIC_RES_SPECIAL");
 
                 for (int i = 0; i < lstRSI.Count; i++)
                 {

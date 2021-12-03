@@ -353,7 +353,7 @@ namespace ComLibB
                 else
                 {
                     SQL = "  SELECT IPDNO,         ACTDATE,         BIRTH,         DRNAME,        PANO,  ";
-                    SQL += ComNum.VBLF + " ( SELECT BASNAME FROM KOSMOS_PMPA.BAS_BASCD ";
+                    SQL += ComNum.VBLF + " ( SELECT BASNAME FROM ADMIN.BAS_BASCD ";
                     SQL += ComNum.VBLF + "      WHERE GRPCDB = 'CP관리' ";
                     SQL += ComNum.VBLF + "        AND GRPCD = 'CP코드관리' ";
                     SQL += ComNum.VBLF + "        AND BASCD = CPCODE) CPNAME, ";
@@ -373,8 +373,8 @@ namespace ComLibB
                     SQL += ComNum.VBLF + "                 A.DROPGB, ";
                     SQL += ComNum.VBLF + "                 A.CANCERGB, ";
                     SQL += ComNum.VBLF + "                 A.CPCODE ";
-                    SQL += ComNum.VBLF + "            FROM KOSMOS_PMPA.IPD_NEW_MASTER C,            KOSMOS_OCS.OCS_IILLS Q,                 KOSMOS_PMPA.IPD_NEW_SLIP S, ";
-                    SQL += ComNum.VBLF + "                 KOSMOS_OCS.OCS_DOCTOR E,                 KOSMOS_PMPA.BAS_PATIENT B,              KOSMOS_OCS.OCS_CP_RECORD A ";
+                    SQL += ComNum.VBLF + "            FROM ADMIN.IPD_NEW_MASTER C,            ADMIN.OCS_IILLS Q,                 ADMIN.IPD_NEW_SLIP S, ";
+                    SQL += ComNum.VBLF + "                 ADMIN.OCS_DOCTOR E,                 ADMIN.BAS_PATIENT B,              ADMIN.OCS_CP_RECORD A ";
                     SQL += ComNum.VBLF + "           WHERE C.IPDNO = Q.IPDNO(+) ";
                     SQL += ComNum.VBLF + "                 AND C.IPDNO = S.IPDNO(+) ";
                     SQL += ComNum.VBLF + "                 AND C.DRCODE = E.DRCODE ";
@@ -602,7 +602,7 @@ namespace ComLibB
 
                 for(int i = 0; i< ssList_Sheet1.NonEmptyRowCount; i++)
                 {
-                    if(ssList_Sheet1.Cells[i, 0].Text.Trim() == "True" && ssList_Sheet1.Rows[i].ForeColor == Color.RoyalBlue) //KOSMOS_OCS.OCS_CP_RECORD_P 등록된 환자 일때만
+                    if(ssList_Sheet1.Cells[i, 0].Text.Trim() == "True" && ssList_Sheet1.Rows[i].ForeColor == Color.RoyalBlue) //ADMIN.OCS_CP_RECORD_P 등록된 환자 일때만
                     {
                         SQL = "DELETE " + ComNum.DB_MED + "OCS_CP_RECORD_P";
                         SQL += ComNum.VBLF + "WHERE PTNO = '" + ssList_Sheet1.Cells[i, 3].Text.Trim() + "'";
@@ -1117,7 +1117,7 @@ namespace ComLibB
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = "SELECT DRNAME, DRCODE FROM KOSMOS_OCS.OCS_DOCTOR";
+                SQL = "SELECT DRNAME, DRCODE FROM ADMIN.OCS_DOCTOR";
                 SQL += ComNum.VBLF + "WHERE GBOUT = 'N'";
                 SQL += ComNum.VBLF + "  AND DEPTCODE = '" + strDept + "'";
 

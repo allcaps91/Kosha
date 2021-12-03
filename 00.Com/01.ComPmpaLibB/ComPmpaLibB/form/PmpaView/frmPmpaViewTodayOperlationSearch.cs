@@ -65,7 +65,7 @@ namespace ComPmpaLibB
                 SQL = " SELECT ";
                 SQL = SQL + ComNum.VBLF + "PANO,SNAME,SEX,AGE,DEPTCODE,DRCODE,WARDCODE,ROOMCODE,GBSTS, ";
                 SQL = SQL + ComNum.VBLF + "  TO_CHAR(INDATE,'YYYY-MM-DD') INDATE,TO_CHAR(OUTDATE,'YYYY-MM-DD') OUTDATE   ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER ";
                 SQL = SQL + ComNum.VBLF + "  WHERE ( ActDate IS NULL OR ActDate=TO_DATE('" + dtpFDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD')  ) ";
                 SQL = SQL + ComNum.VBLF + "   AND GBSTS <> '9' "; //  '취소제외
                 SQL = SQL + ComNum.VBLF + "   AND GBSUDAY ='Y' ";// '일일수술센터

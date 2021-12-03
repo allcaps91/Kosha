@@ -145,7 +145,7 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "     , STARTY, STARTX, ENDY, ENDX";
             SQL = SQL + ComNum.VBLF + "     , HEIGHT, BACKCOLOR";
             SQL = SQL + ComNum.VBLF + "     , COMMENTDATE, COMMENTTIME, IDNUMBER";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRCHARTCOMMENT";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRCHARTCOMMENT";
             SQL = SQL + ComNum.VBLF + " WHERE EMRNO         = '" + ChartInfo["EMRNO"] + "'";
             SQL = SQL + ComNum.VBLF + "   AND EMRNOHIS      = '" + ChartInfo["EMRNOHIS"] + "'";
             SQL = SQL + ComNum.VBLF + "   AND IDNUMBER = '" + clsType.User.IdNumber + "'";
@@ -465,7 +465,7 @@ namespace ComEmrBase
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL = SQL + ComNum.VBLF + "DELETE FROM KOSMOS_EMR.AEMRCHARTCOMMENT";
+                SQL = SQL + ComNum.VBLF + "DELETE FROM ADMIN.AEMRCHARTCOMMENT";
                 SQL = SQL + ComNum.VBLF + " WHERE EMRNO         = '" + ChartInfo["EMRNO"] + "'";
                 SQL = SQL + ComNum.VBLF + "   AND EMRNOHIS      = '" + ChartInfo["EMRNOHIS"] + "'";
                 SQL = SQL + ComNum.VBLF + "   AND IDNUMBER = '" + clsType.User.IdNumber + "'";
@@ -486,7 +486,7 @@ namespace ComEmrBase
                     RectangleInfo item = allList[i];
 
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_EMR.AEMRCHARTCOMMENT(";
+                    SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.AEMRCHARTCOMMENT(";
                     SQL = SQL + ComNum.VBLF + "    EMRNO, EMRNOHIS, SEQ";
                     SQL = SQL + ComNum.VBLF + "  , STARTY, STARTX, ENDY, ENDX";
                     SQL = SQL + ComNum.VBLF + "  , HEIGHT, BACKCOLOR";
@@ -562,7 +562,7 @@ namespace ComEmrBase
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL = SQL + ComNum.VBLF + "DELETE FROM KOSMOS_EMR.AEMRCHARTCOMMENT";
+                SQL = SQL + ComNum.VBLF + "DELETE FROM ADMIN.AEMRCHARTCOMMENT";
                 SQL = SQL + ComNum.VBLF + " WHERE EMRNO         = '" + ChartInfo["EMRNO"] + "'";
                 SQL = SQL + ComNum.VBLF + "   AND EMRNOHIS      = '" + ChartInfo["EMRNOHIS"] + "'";
                 SQL = SQL + ComNum.VBLF + "   AND IDNUMBER = '" + clsType.User.IdNumber + "'";

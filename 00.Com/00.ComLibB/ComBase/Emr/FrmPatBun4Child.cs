@@ -344,8 +344,8 @@ namespace ComBase
                 if (nEMRNO > 0 && pForm.FmOLDGB == 1)
                 {
                     //기존차트를 변경할 경우 : 백업 테이블로 백업을 하고 신규 data를 입력한다
-                    //KOSMOS_EMR.EMRXMLHISTORY_HISTORYNO_SEQ
-                    dblEmrHisNo = ComQuery.GetSequencesNo(clsDB.DbCon, "KOSMOS_EMR.EMRXMLHISNO");
+                    //ADMIN.EMRXMLHISTORY_HISTORYNO_SEQ
+                    dblEmrHisNo = ComQuery.GetSequencesNo(clsDB.DbCon, "ADMIN.EMRXMLHISNO");
 
                     SQL = "";
                     SQL = SQL + ComNum.VBLF + " INSERT INTO " + ComNum.DB_EMR + "EMRXMLHISTORY";
@@ -1178,7 +1178,7 @@ namespace ComBase
                 strXMLCert = strXML;
 
                 SQL = "";
-                SQL = "SELECT KOSMOS_EMR.GetEmrXmlNo() FunSeqNo FROM Dual";
+                SQL = "SELECT ADMIN.GetEmrXmlNo() FunSeqNo FROM Dual";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
 
@@ -2134,7 +2134,7 @@ namespace ComBase
                 dt = null;
 
                 SQL = "";
-                SQL = " DELETE KOSMOS_PMPA.NUR_FALLHUMPDUMP_SCALE ";
+                SQL = " DELETE ADMIN.NUR_FALLHUMPDUMP_SCALE ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + argROWID + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -2155,7 +2155,7 @@ namespace ComBase
                 }
 
                 //'기존차트를 변경할 경우 : 백업 테이블로 백업을 하고 신규 data를 입력한다
-                //'KOSMOS_EMR.EMRXMLHISTORY_HISTORYNO_SEQ
+                //'ADMIN.EMRXMLHISTORY_HISTORYNO_SEQ
                 if (nEMRNO > 0)
                 {
                     dblEmrHisNo = GetSequencesNo("" + ComNum.DB_EMR + "EMRXMLHISNO");
@@ -2516,7 +2516,7 @@ namespace ComBase
 
             cmd.Connection = pDbCon.Con;
             cmd.InitialLONGFetchSize = 1000;
-            cmd.CommandText = "KOSMOS_EMR.XMLINSRT3";
+            cmd.CommandText = "ADMIN.XMLINSRT3";
             cmd.CommandType = CommandType.StoredProcedure;
 
             try

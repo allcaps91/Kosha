@@ -27,7 +27,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT a.WRTNO, TO_CHAR(b.JepDate,'YYYY-MM-DD') JepDate,b.SName,b.Sex,b.Age,b.GjJong,b.JobSabun        ");
             parameter.AppendSql(" ,a.Gubun,a.Remark,a.DamName,TO_CHAR(a.TongboDate,'YYYY-MM-DD') TongboDate                             ");
             parameter.AppendSql(" ,TO_CHAR(a.OkDate,'YYYY-MM-DD') OkDate,a.Gubun,a.ActMemo,a.ROWID, b.ptno, b.PRTSABUN                  ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_MIR_ERROR_TONGBO a,KOSMOS_PMPA.HIC_JEPSU b                                       ");
+            parameter.AppendSql(" FROM ADMIN.HIC_MIR_ERROR_TONGBO a,ADMIN.HIC_JEPSU b                                       ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                           ");
             parameter.AppendSql(" AND A.WRTNO = B.WRTNO                                                                                 ");
             
@@ -77,7 +77,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_MIR_ERROR_TONGBO                               ");            
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_MIR_ERROR_TONGBO                               ");            
             parameter.AppendSql("       (WRTNO, TONGBODATE ,MIRNO, SNAME, SEX, AGE, GUBUN,REMARK)           ");
             parameter.AppendSql("VALUES                                                                     ");
             parameter.AppendSql("       (:WRTNO, TRUNC(SYSDATE) ,:MIRNO, :SNAME, :SEX,                      ");
@@ -99,7 +99,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MIR_ERROR_TONGBO                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MIR_ERROR_TONGBO                                ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                                 ");
             parameter.AppendSql("   AND GUBUN  = :GUBUN                                                 ");
             parameter.AppendSql("   AND REMARK = :REMARK                                                ");
@@ -117,7 +117,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MIR_ERROR                                       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MIR_ERROR                                       ");
             parameter.AppendSql(" WHERE MIRNO = :MIRNO                                                  ");
 
             parameter.Add("MIRNO", fnMirNo);
@@ -129,7 +129,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_MIR_ERROR_TONGBO                ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_MIR_ERROR_TONGBO                ");
             if (strCHK == "True")
             {
                 parameter.AppendSql("   SET OKDATE     = SYSDATE                        ");

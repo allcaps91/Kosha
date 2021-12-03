@@ -2080,7 +2080,7 @@ namespace ComPmpaLibB
                     SQL += ComNum.VBLF + "    AND SeqNo     =  " + clsPmpaPb.GnJeaSeqNo + " ";
                     SQL += ComNum.VBLF + "    AND PART      = '" + clsPmpaPb.GstrJeaPart + "' ";
                     SQL += ComNum.VBLF + "    AND TRIM(SUNEXT) NOT IN (SELECT CODE ";
-                    SQL += ComNum.VBLF + "                               FROM KOSMOS_PMPA.BAS_BCODE ";
+                    SQL += ComNum.VBLF + "                               FROM ADMIN.BAS_BCODE ";
                     SQL += ComNum.VBLF + "                              WHERE GUBUN ='원무영수제외코드') "; //저가약제 제외코드 2010-11-22
                     SQL += ComNum.VBLF + "  GROUP BY BUN, GBSELF ";
                     SqlErr = clsDB.GetDataTable(ref DtP, SQL, pDbCon);
@@ -2164,7 +2164,7 @@ namespace ComPmpaLibB
                     SQL += ComNum.VBLF + "    AND SEQNO     = '" + ArgSeq + "' ";
                     SQL += ComNum.VBLF + "    AND PART      = '" + clsType.User.JobPart + "'";
                     SQL += ComNum.VBLF + "    AND TRIM(SUNEXT) NOT IN (SELECT CODE ";
-                    SQL += ComNum.VBLF + "                               FROM KOSMOS_PMPA.BAS_BCODE ";
+                    SQL += ComNum.VBLF + "                               FROM ADMIN.BAS_BCODE ";
                     SQL += ComNum.VBLF + "                              WHERE GUBUN ='원무영수제외코드') "; // 저가약제 제외코드 2010-11-22
                     SQL += ComNum.VBLF + "  GROUP BY BUN, GBSELF ";
                     SqlErr = clsDB.GetDataTable(ref DtP, SQL, pDbCon);
@@ -2201,7 +2201,7 @@ namespace ComPmpaLibB
                     SQL += ComNum.VBLF + "    AND SEQNO     = '" + ArgSeq + "' ";
                     SQL += ComNum.VBLF + "    AND PART      = '" + clsType.User.IdNumber + "'";
                     SQL += ComNum.VBLF + "    AND TRIM(SUNEXT) NOT IN (SELECT CODE ";
-                    SQL += ComNum.VBLF + "                               FROM KOSMOS_PMPA.BAS_BCODE ";
+                    SQL += ComNum.VBLF + "                               FROM ADMIN.BAS_BCODE ";
                     SQL += ComNum.VBLF + "                              WHERE GUBUN ='원무영수제외코드') "; // 저가약제 제외코드 2010-11-22
                     SQL += ComNum.VBLF + "  GROUP BY BUN, GBSELF ";
                     SqlErr = clsDB.GetDataTable(ref DtP, SQL, pDbCon);
@@ -2449,7 +2449,7 @@ namespace ComPmpaLibB
             }
 
             SQL += ComNum.VBLF + "    AND TRIM(a.SUNEXT) NOT IN (SELECT CODE ";
-            SQL += ComNum.VBLF + "                                 FROM KOSMOS_PMPA.BAS_BCODE ";
+            SQL += ComNum.VBLF + "                                 FROM ADMIN.BAS_BCODE ";
             SQL += ComNum.VBLF + "                                WHERE GUBUN ='원무영수제외코드') "; // 저가약제 제외코드 2010-11-22
             SQL += ComNum.VBLF + "    AND a.SeqNo   = " + ArgSeq + " ";
             SqlErr = clsDB.GetDataTable(ref DtP, SQL, pDbCon);
@@ -3589,7 +3589,7 @@ namespace ComPmpaLibB
                     SQL += ComNum.VBLF + "    AND SeqNo     =  " + clsPmpaPb.GnJeaSeqNo + " ";
                     SQL += ComNum.VBLF + "    AND PART      = '" + clsPmpaPb.GstrJeaPart + "' ";
                     SQL += ComNum.VBLF + "    AND TRIM(SUNEXT) NOT IN (SELECT CODE ";
-                    SQL += ComNum.VBLF + "                               FROM KOSMOS_PMPA.BAS_BCODE ";
+                    SQL += ComNum.VBLF + "                               FROM ADMIN.BAS_BCODE ";
                     SQL += ComNum.VBLF + "                              WHERE GUBUN ='원무영수제외코드') "; //저가약제 제외코드 2010-11-22
                     SQL += ComNum.VBLF + "  GROUP BY BUN, GBSELF ";
                     SqlErr = clsDB.GetDataTable(ref DtP, SQL, pDbCon);
@@ -3673,7 +3673,7 @@ namespace ComPmpaLibB
                     SQL += ComNum.VBLF + "    AND SEQNO     = '" + ArgSeq + "' ";
                     SQL += ComNum.VBLF + "    AND PART      = '" + clsType.User.JobPart + "'";
                     SQL += ComNum.VBLF + "    AND TRIM(SUNEXT) NOT IN (SELECT CODE ";
-                    SQL += ComNum.VBLF + "                               FROM KOSMOS_PMPA.BAS_BCODE ";
+                    SQL += ComNum.VBLF + "                               FROM ADMIN.BAS_BCODE ";
                     SQL += ComNum.VBLF + "                              WHERE GUBUN ='원무영수제외코드') "; // 저가약제 제외코드 2010-11-22
                     SQL += ComNum.VBLF + "  GROUP BY BUN, GBSELF ";
                     SqlErr = clsDB.GetDataTable(ref DtP, SQL, pDbCon);
@@ -3710,7 +3710,7 @@ namespace ComPmpaLibB
                     SQL += ComNum.VBLF + "    AND SEQNO     = '" + ArgSeq + "' ";
                     SQL += ComNum.VBLF + "    AND PART      = '" + clsType.User.IdNumber + "'";
                     SQL += ComNum.VBLF + "    AND TRIM(SUNEXT) NOT IN (SELECT CODE ";
-                    SQL += ComNum.VBLF + "                               FROM KOSMOS_PMPA.BAS_BCODE ";
+                    SQL += ComNum.VBLF + "                               FROM ADMIN.BAS_BCODE ";
                     SQL += ComNum.VBLF + "                              WHERE GUBUN ='원무영수제외코드') "; // 저가약제 제외코드 2010-11-22
                     SQL += ComNum.VBLF + "  GROUP BY BUN, GBSELF ";
                     SqlErr = clsDB.GetDataTable(ref DtP, SQL, pDbCon);
@@ -3956,7 +3956,7 @@ namespace ComPmpaLibB
             }
 
             SQL += ComNum.VBLF + "    AND TRIM(a.SUNEXT) NOT IN (SELECT CODE ";
-            SQL += ComNum.VBLF + "                                 FROM KOSMOS_PMPA.BAS_BCODE ";
+            SQL += ComNum.VBLF + "                                 FROM ADMIN.BAS_BCODE ";
             SQL += ComNum.VBLF + "                                WHERE GUBUN ='원무영수제외코드') "; // 저가약제 제외코드 2010-11-22
             SQL += ComNum.VBLF + "    AND a.SeqNo   = " + ArgSeq + " ";
             SqlErr = clsDB.GetDataTable(ref DtP, SQL, pDbCon);
@@ -4917,7 +4917,7 @@ namespace ComPmpaLibB
                 if (clsPmpaPb.GstrLABStat == "OK")
                 {
                     SQL = "";
-                    SQL += ComNum.VBLF + " SELECT PANO FROM KOSMOS_OCS.EXAM_ORDER ";
+                    SQL += ComNum.VBLF + " SELECT PANO FROM ADMIN.EXAM_ORDER ";
                     SQL += ComNum.VBLF + "  WHERE 1         = 1 ";
                     SQL += ComNum.VBLF + "    AND BDATE     = TO_DATE('" + ArgBDate + "','YYYY-MM-DD') ";
                     SQL += ComNum.VBLF + "    AND SPECNO IS NULL ";
@@ -5017,7 +5017,7 @@ namespace ComPmpaLibB
                     if (clsPmpaPb.GstrXRAYStat10 == "OK")
                     {
                         SQL = "";
-                        SQL += ComNum.VBLF + " SELECT NVL(COUNT(*), 0) CNT From KOSMOS_PMPA.XRAY_DETAIL ";
+                        SQL += ComNum.VBLF + " SELECT NVL(COUNT(*), 0) CNT From ADMIN.XRAY_DETAIL ";
                         SQL += ComNum.VBLF + "  WHERE 1             = 1 ";
                         SQL += ComNum.VBLF + "    AND SeekDate      >= TO_DATE('" + ArgBDate + "', 'YYYY-MM-DD') ";
                         SQL += ComNum.VBLF + "    AND SeekDate      <  TO_DATE('" + VB.DateAdd("D", 1, ArgBDate).ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD') ";
@@ -5219,7 +5219,7 @@ namespace ComPmpaLibB
                 if (clsPmpaPb.GstrENDOStat == "OK")
                 {
                     SQL = "";
-                    SQL += ComNum.VBLF + " SELECT PTNO FROM KOSMOS_OCS.ENDO_JUPMST ";
+                    SQL += ComNum.VBLF + " SELECT PTNO FROM ADMIN.ENDO_JUPMST ";
                     SQL += ComNum.VBLF + "  WHERE RDATE = TO_DATE('" + ArgBDate + "','YYYY-MM-DD') ";
                     SQL += ComNum.VBLF + "    AND RESULTDATE IS NULL ";
                     SqlErr = clsDB.GetDataTable(ref DtP, SQL, pDbCon);

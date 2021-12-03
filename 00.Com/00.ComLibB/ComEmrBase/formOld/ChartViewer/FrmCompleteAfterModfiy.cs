@@ -110,20 +110,20 @@ namespace ComEmrBase
             {
                 #region 쿼리 수정
                 SQL += ComNum.VBLF + "  SELECT (M.WRITEDATE || ' ' || SUBSTR(M.WRITETIME, 0, 4)) AS HISDATE , A.PTNO, I.SNAME, TO_CHAR(I.OUTDATE, 'YYYY-MM-DD') OUTDATE, I.DEPTCODE";
-                SQL += ComNum.VBLF + ", (SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = LTRIM(M.USEID, '0')) AS NAME";
+                SQL += ComNum.VBLF + ", (SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = LTRIM(M.USEID, '0')) AS NAME";
                 SQL += ComNum.VBLF + ", M.USEID, (B.CHARTDATE || ' ' || SUBSTR(B.CHARTTIME, 0, 4)) AS WRITEDATE";
                 SQL += ComNum.VBLF + ", TO_CHAR(CDATE, 'YYYY-MM-DD HH24:MI') CDATE";
-                SQL += ComNum.VBLF + ", (SELECT KORNAME FROM KOSMOS_ADM.INSA_MST WHERE SABUN3 = A.CSABUN) AS CNAME";
+                SQL += ComNum.VBLF + ", (SELECT KORNAME FROM ADMIN.INSA_MST WHERE SABUN3 = A.CSABUN) AS CNAME";
                 SQL += ComNum.VBLF + ", A.EMRNO";
-                SQL += ComNum.VBLF + "    FROM KOSMOS_EMR.EMRXML_COMPLETE A ";
-                SQL += ComNum.VBLF + "      INNER JOIN KOSMOS_EMR.EMRXMLMST_HISTORY B ";
+                SQL += ComNum.VBLF + "    FROM ADMIN.EMRXML_COMPLETE A ";
+                SQL += ComNum.VBLF + "      INNER JOIN ADMIN.EMRXMLMST_HISTORY B ";
                 SQL += ComNum.VBLF + "         ON A.EMRNO = B.EMRNO";
-                SQL += ComNum.VBLF + "      INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER I ";
+                SQL += ComNum.VBLF + "      INNER JOIN ADMIN.IPD_NEW_MASTER I ";
                 SQL += ComNum.VBLF + "         ON I.PANO = A.PTNO";
                 SQL += ComNum.VBLF + "        AND I.INDATE >= TO_DATE(A.MEDFRDATE || ' 00:00','YYYY-MM-DD HH24:MI') ";
                 SQL += ComNum.VBLF + "        AND I.INDATE <= TO_DATE(A.MEDFRDATE || ' 23:59','YYYY-MM-DD HH24:MI') ";
                 SQL += ComNum.VBLF + "        AND GBSTS NOT IN ('9') ";
-                SQL += ComNum.VBLF + "      INNER JOIN KOSMOS_EMR.EMRXMLMST M ";
+                SQL += ComNum.VBLF + "      INNER JOIN ADMIN.EMRXMLMST M ";
                 SQL += ComNum.VBLF + "         ON A.PTNO = M.PTNO";
                 SQL += ComNum.VBLF + "        AND A.MEDFRDATE = M.MEDFRDATE";
                 SQL += ComNum.VBLF + "        AND M.FORMNO = 1647";
@@ -132,7 +132,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "        AND NOT EXISTS";
                 SQL += ComNum.VBLF + "        (";
                 SQL += ComNum.VBLF + "          SELECT 1";
-                SQL += ComNum.VBLF + "            FROM KOSMOS_EMR.EMRXML_COMPLETE";
+                SQL += ComNum.VBLF + "            FROM ADMIN.EMRXML_COMPLETE";
                 SQL += ComNum.VBLF + "           WHERE EMRNO = M.EMRNO";
                 SQL += ComNum.VBLF + "        )";
                 SQL += ComNum.VBLF + " WHERE A.CDATE >= TO_DATE('1900-01-01','YYYY-MM-DD') ";
@@ -146,25 +146,25 @@ namespace ComEmrBase
                 #region 신규
                 SQL += ComNum.VBLF + " UNION ALL";
                 SQL += ComNum.VBLF + "  SELECT (M.WRITEDATE || ' ' || SUBSTR(M.WRITETIME, 0, 4)) AS HISDATE , A.PTNO, I.SNAME, TO_CHAR(I.OUTDATE, 'YYYY-MM-DD') OUTDATE, I.DEPTCODE";
-                SQL += ComNum.VBLF + ", (SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = M.CHARTUSEID) AS NAME";
+                SQL += ComNum.VBLF + ", (SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = M.CHARTUSEID) AS NAME";
                 SQL += ComNum.VBLF + ", M.CHARTUSEID, (B.CHARTDATE || ' ' || SUBSTR(B.CHARTTIME, 0, 4)) AS WRITEDATE";
                 SQL += ComNum.VBLF + ", TO_CHAR(CDATE, 'YYYY-MM-DD HH24:MI') CDATE";
-                SQL += ComNum.VBLF + ", (SELECT KORNAME FROM KOSMOS_ADM.INSA_MST WHERE SABUN3 = A.CSABUN) AS CNAME";
+                SQL += ComNum.VBLF + ", (SELECT KORNAME FROM ADMIN.INSA_MST WHERE SABUN3 = A.CSABUN) AS CNAME";
                 SQL += ComNum.VBLF + ", A.EMRNO";
-                SQL += ComNum.VBLF + "    FROM KOSMOS_EMR.EMRXML_COMPLETE A ";
-                SQL += ComNum.VBLF + "      INNER JOIN KOSMOS_EMR.AEMRCHARTMSTHIS B ";
+                SQL += ComNum.VBLF + "    FROM ADMIN.EMRXML_COMPLETE A ";
+                SQL += ComNum.VBLF + "      INNER JOIN ADMIN.AEMRCHARTMSTHIS B ";
                 SQL += ComNum.VBLF + "         ON A.EMRNOHIS = B.EMRNOHIS";
                 SQL += ComNum.VBLF + "        AND B.DCDATE >= '" + dtpSDATE.Value.ToString("yyyyMMdd") + "'";
                 SQL += ComNum.VBLF + "        AND B.DCDATE <= '" + dtpEDATE.Value.ToString("yyyyMMdd") + "'";
-                SQL += ComNum.VBLF + "      INNER JOIN KOSMOS_EMR.AEMRCHARTMST M ";
+                SQL += ComNum.VBLF + "      INNER JOIN ADMIN.AEMRCHARTMST M ";
                 SQL += ComNum.VBLF + "         ON A.EMRNO = M.EMRNO";
                 SQL += ComNum.VBLF + "        AND A.EMRNOHIS <> M.EMRNOHIS";
-                SQL += ComNum.VBLF + "      INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER I ";
+                SQL += ComNum.VBLF + "      INNER JOIN ADMIN.IPD_NEW_MASTER I ";
                 SQL += ComNum.VBLF + "         ON I.PANO = A.PTNO";
                 SQL += ComNum.VBLF + "        AND EXISTS ";
                 SQL += ComNum.VBLF + "        (";
                 SQL += ComNum.VBLF + "          SELECT 1";
-                SQL += ComNum.VBLF + "            FROM KOSMOS_PMPA.IPD_NEW_MASTER";
+                SQL += ComNum.VBLF + "            FROM ADMIN.IPD_NEW_MASTER";
                 SQL += ComNum.VBLF + "           WHERE PANO  = M.PTNO ";
                 SQL += ComNum.VBLF + "             AND I.INDATE >= TO_DATE(A.MEDFRDATE || ' 00:00','YYYY-MM-DD HH24:MI') ";
                 SQL += ComNum.VBLF + "             AND I.INDATE <= TO_DATE(A.MEDFRDATE || ' 23:59','YYYY-MM-DD HH24:MI') ";
@@ -229,9 +229,9 @@ namespace ComEmrBase
 
                 #region 첫번째 읽음
                 //SQL = " SELECT EMRNO, ROWID ";
-                //SQL += ComNum.VBLF + "    FROM KOSMOS_EMR.EMRXML_COMPLETE A ";
+                //SQL += ComNum.VBLF + "    FROM ADMIN.EMRXML_COMPLETE A ";
                 //SQL += ComNum.VBLF + " WHERE NOT EXISTS ";
-                //SQL += ComNum.VBLF + " (SELECT * FROM KOSMOS_EMR.EMRXML B ";
+                //SQL += ComNum.VBLF + " (SELECT * FROM ADMIN.EMRXML B ";
                 //SQL += ComNum.VBLF + " WHERE A.EMRNO = B.EMRNO) ";
                 //SQL += ComNum.VBLF + "      AND A.CDATE >= TO_DATE('" + dtpSDATE.Value.ToShortDateString() + "','YYYY-MM-DD') ";
                 //SQL += ComNum.VBLF + "      AND A.CDATE <= TO_DATE('" + dtpEDATE.Value.ToShortDateString() + "','YYYY-MM-DD') ";
@@ -264,17 +264,17 @@ namespace ComEmrBase
                 //        SQL += ComNum.VBLF + " P.SNAME, TO_CHAR(D.OUTDATE, 'YYYY-MM-DD') OUTDATE, D.DEPTCODE,";
                 //        SQL += ComNum.VBLF + " B.KORNAME, C.NAME";
 
-                //        SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRXMLHISTORY A";
-                //        SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.BAS_PATIENT P";
+                //        SQL += ComNum.VBLF + " FROM ADMIN.EMRXMLHISTORY A";
+                //        SQL += ComNum.VBLF + "   INNER JOIN ADMIN.BAS_PATIENT P";
                 //        SQL += ComNum.VBLF + "      ON P.PANO = A.PTNO";
-                //        SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_ADM.INSA_MST B";
+                //        SQL += ComNum.VBLF + "   INNER JOIN ADMIN.INSA_MST B";
                 //        SQL += ComNum.VBLF + "      ON B.SABUN3 = A.USEID";
-                //        SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.BAS_BUSE C";
+                //        SQL += ComNum.VBLF + "   INNER JOIN ADMIN.BAS_BUSE C";
                 //        SQL += ComNum.VBLF + "      ON C.BUCODE = B.BUSE";
-                //        SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_EMR.AEMRFORM F";
+                //        SQL += ComNum.VBLF + "   INNER JOIN ADMIN.AEMRFORM F";
                 //        SQL += ComNum.VBLF + "      ON F.FORMNO = A.FORMNO";
                 //        SQL += ComNum.VBLF + "      AND F.UPDATENO = 1";
-                //        SQL += ComNum.VBLF + "   LEFT OUTER JOIN KOSMOS_PMPA.IPD_NEW_MASTER D";
+                //        SQL += ComNum.VBLF + "   LEFT OUTER JOIN ADMIN.IPD_NEW_MASTER D";
                 //        SQL += ComNum.VBLF + "      ON D.PANO = A.PTNO";
                 //        SQL += ComNum.VBLF + "      AND INDATE >= TO_DATE(A.MEDFRDATE || ' 00:00','YYYY-MM-DD HH24:MI') ";
                 //        SQL += ComNum.VBLF + "      AND INDATE <= TO_DATE(A.MEDFRDATE || ' 23:59','YYYY-MM-DD HH24:MI') ";
@@ -329,19 +329,19 @@ namespace ComEmrBase
                 #region 두번째 읽음
                 //SQL = "  SELECT B.WRITEDATE, B.WRITETIME, B.PTNO, P.SNAME, TO_CHAR(D.OUTDATE,'YYYY-MM-DD') OUTDATE, D.DEPTCODE,";
                 //SQL += ComNum.VBLF + " C.NAME, I.KORNAME, B.USEID, B.CHARTDATE, B.CHARTTIME, F.FORMNAME";
-                //SQL += ComNum.VBLF + "FROM KOSMOS_EMR.EMRXML_COMPLETE A";
-                //SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_EMR.EMRXML B";
+                //SQL += ComNum.VBLF + "FROM ADMIN.EMRXML_COMPLETE A";
+                //SQL += ComNum.VBLF + "   INNER JOIN ADMIN.EMRXML B";
                 //SQL += ComNum.VBLF + "      ON B.EMRNO = A.EMRNO";
-                //SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.BAS_PATIENT P";
+                //SQL += ComNum.VBLF + "   INNER JOIN ADMIN.BAS_PATIENT P";
                 //SQL += ComNum.VBLF + "      ON P.PANO = A.PTNO";
-                //SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_ADM.INSA_MST I";
+                //SQL += ComNum.VBLF + "   INNER JOIN ADMIN.INSA_MST I";
                 //SQL += ComNum.VBLF + "      ON I.SABUN3 = B.USEID";
-                //SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.BAS_BUSE C";
+                //SQL += ComNum.VBLF + "   INNER JOIN ADMIN.BAS_BUSE C";
                 //SQL += ComNum.VBLF + "      ON C.BUCODE = I.BUSE";
-                //SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_EMR.AEMRFORM F";
+                //SQL += ComNum.VBLF + "   INNER JOIN ADMIN.AEMRFORM F";
                 //SQL += ComNum.VBLF + "      ON F.FORMNO = B.FORMNO";
                 //SQL += ComNum.VBLF + "      AND F.UPDATENO = 1";
-                //SQL += ComNum.VBLF + "   LEFT OUTER JOIN KOSMOS_PMPA.IPD_NEW_MASTER D";
+                //SQL += ComNum.VBLF + "   LEFT OUTER JOIN ADMIN.IPD_NEW_MASTER D";
                 //SQL += ComNum.VBLF + "      ON D.PANO = A.PTNO";
                 //SQL += ComNum.VBLF + "      AND D.INDATE >= TO_DATE(A.MEDFRDATE || ' 00:00','YYYY-MM-DD HH24:MI') ";
                 //SQL += ComNum.VBLF + "      AND D.INDATE <= TO_DATE(A.MEDFRDATE || ' 23:59','YYYY-MM-DD HH24:MI') ";

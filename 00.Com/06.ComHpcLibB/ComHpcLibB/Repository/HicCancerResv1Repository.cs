@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CANCER_RESV1                                                   ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CANCER_RESV1                                                   ");
             parameter.AppendSql("       (JOBDATE, WEEK, UGI, GFS, GFSH, MAMMO, RECTUM, SONO, WOMB, WOMB1, UGI1, GFS1        ");
             parameter.AppendSql("     , GFSH1, MAMMO1, RECTUM1, SONO1, BOHUM, BOHUM1, CT, CT1, REMARK, ENTSABUN             ");
             parameter.AppendSql("     , ENTTIME, LUNG_SANGDAM, LUNG_SANGDAM1 )                                              ");
@@ -65,7 +65,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT UGI,UGI1,GFS,GFS1,GFSH,GFSH1               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV1               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV1               ");
             parameter.AppendSql(" WHERE JOBDATE = TO_DATE(:JOBDATE,'YYYY-MM-DD')   ");
 
             parameter.Add("JOBDATE", strDate);
@@ -81,7 +81,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , SONO,WOMB,UGI1, GFS1,GFSH1, MAMMO1                                                  ");
             parameter.AppendSql("     , RECTUM1, SONO1,WOMB1,BOHUM,BOHUM1, CT, CT1, REMARK, REMARK1, ENTSABUN, ENTTIME, ROWID        ");
             parameter.AppendSql("     , LUNG_SANGDAM, LUNG_SANGDAM1                                                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV1                                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV1                                                        ");
             parameter.AppendSql(" WHERE JOBDATE >= TO_DATE(:FRDATE,'YYYY-MM-DD')                                            ");
             parameter.AppendSql("   AND JOBDATE <= TO_DATE(:TODATE,'YYYY-MM-DD')                                            ");
             parameter.AppendSql(" ORDER BY JobDate                                                                          ");
@@ -95,7 +95,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CANCER_RESV1 SET                            ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CANCER_RESV1 SET                            ");
             parameter.AppendSql("       UGI1          = :UGI1                                       ");
             parameter.AppendSql("     , GFS1          = :GFS1                                       ");
             parameter.AppendSql("     , GFSH1         = :GFSH1                                      ");
@@ -132,7 +132,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CANCER_RESV1 SET                        ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CANCER_RESV1 SET                        ");
             parameter.AppendSql("       UGI          = :UGI                                     ");
             parameter.AppendSql("     , GFS          = :GFS                                     ");
             parameter.AppendSql("     , GFSH         = :GFSH                                    ");

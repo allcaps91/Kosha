@@ -162,22 +162,22 @@ namespace ComEmrBase
                 SQL = " SELECT SEQNAME, SEQNO  ";
                 SQL = SQL + ComNum.VBLF + "     , CASE WHEN EXISTS(";
                 SQL = SQL + ComNum.VBLF + "     SELECT 1";
-                SQL = SQL + ComNum.VBLF + "       FROM KOSMOS_PMPA.BAS_SUT B";
-                SQL = SQL + ComNum.VBLF + "         INNER JOIN KOSMOS_PMPA.NUR_CARECODE B2";
+                SQL = SQL + ComNum.VBLF + "       FROM ADMIN.BAS_SUT B";
+                SQL = SQL + ComNum.VBLF + "         INNER JOIN ADMIN.NUR_CARECODE B2";
                 SQL = SQL + ComNum.VBLF + "            ON B.SUNEXT = B2.SUCODE";
                 SQL = SQL + ComNum.VBLF + "           AND B.DELDATE IS NOT NULL";
                 SQL = SQL + ComNum.VBLF + "      WHERE A.SEQNO = B2.SEQNO";
                 SQL = SQL + ComNum.VBLF + "      UNION ALL";
                 SQL = SQL + ComNum.VBLF + "     SELECT 1";
-                SQL = SQL + ComNum.VBLF + "       FROM KOSMOS_OCS.OCS_ORDERCODE B";
-                SQL = SQL + ComNum.VBLF + "         INNER JOIN KOSMOS_PMPA.NUR_CARECODE B2";
+                SQL = SQL + ComNum.VBLF + "       FROM ADMIN.OCS_ORDERCODE B";
+                SQL = SQL + ComNum.VBLF + "         INNER JOIN ADMIN.NUR_CARECODE B2";
                 SQL = SQL + ComNum.VBLF + "            ON B.SUCODE = B2.SUCODE";
                 SQL = SQL + ComNum.VBLF + "           AND B.ORDERCODE = B2.ORDERCODE";
                 SQL = SQL + ComNum.VBLF + "      WHERE A.SEQNO = B2.SEQNO";
                 SQL = SQL + ComNum.VBLF + "        AND B.SENDDEPT = 'Y'";
                 SQL = SQL + ComNum.VBLF + "     ) ";
                 SQL = SQL + ComNum.VBLF + "     THEN 'Y' END CHECK_DEL";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_CAREMST A";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_CAREMST A";
                 SQL = SQL + ComNum.VBLF + " WHERE WARDCODE = '" + cboWard.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY SEQNO ASC ";
 
@@ -224,7 +224,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT SEQNO, SEQNAME ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_CAREMST ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_CAREMST ";
                 SQL = SQL + ComNum.VBLF + " WHERE SEQNO = " + ArgSeqno;
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -271,8 +271,8 @@ namespace ComEmrBase
                 SQL = " SELECT ";
                 SQL = SQL + ComNum.VBLF + "   A.SEQNO";
                 SQL = SQL + ComNum.VBLF + " , SEQNAME";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRSUGAMAPPING A";
-                SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_PMPA.NUR_CAREMST B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRSUGAMAPPING A";
+                SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.NUR_CAREMST B";
                 SQL = SQL + ComNum.VBLF + "       ON A.SEQNO = B.SEQNO";
                 SQL = SQL + ComNum.VBLF + " WHERE A.FORMNO     = " + FormNo;
                 SQL = SQL + ComNum.VBLF + "   AND A.ITEMCD     = '" + Itemcd + "'";
@@ -327,7 +327,7 @@ namespace ComEmrBase
 
             #region 쿼리
             SQL = "SELECT FORMNO, FORMNAME";
-            SQL += ComNum.VBLF + "FROM KOSMOS_EMR.AEMRFORM";
+            SQL += ComNum.VBLF + "FROM ADMIN.AEMRFORM";
             SQL += ComNum.VBLF + "WHERE FORMNO IN (3150, 1575, 1573, 1725, 2638, 2240) -- 임상관찰, 기본간호활동, 욕창간호, 상처간호, 중심정맥관, 말초정맥관";
             SQL += ComNum.VBLF + "  AND UPDATENO > 0";
             SQL += ComNum.VBLF + "  AND USECHECK = 1";
@@ -410,7 +410,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "  , BASNAME";
                 SQL += ComNum.VBLF + "  , BASCD";
 
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.AEMRBASCD A";
+                SQL += ComNum.VBLF + " FROM ADMIN.AEMRBASCD A";
                 SQL += ComNum.VBLF + "WHERE A.BSNSCLS = '기록지관리'";
 
                 if (formNo.Equals("3150"))
@@ -431,7 +431,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "  , BASNAME";
                 SQL += ComNum.VBLF + "  , BASCD";
 
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.AEMRBASCD A";
+                SQL += ComNum.VBLF + " FROM ADMIN.AEMRBASCD A";
 
 
                 SQL += ComNum.VBLF + "WHERE A.BSNSCLS = '기록지관리'";
@@ -447,10 +447,10 @@ namespace ComEmrBase
 
                 SQL += ComNum.VBLF + "   AND EXISTS";
                 SQL += ComNum.VBLF + "   (";
-                // JOIN KOSMOS_EMR.AEMRSUGAMAPPING B
-                // JOIN KOSMOS_EMR.AEMRSUGAMAPPING B
+                // JOIN ADMIN.AEMRSUGAMAPPING B
+                // JOIN ADMIN.AEMRSUGAMAPPING B
                 SQL += ComNum.VBLF + "      SELECT 1 ";
-                SQL += ComNum.VBLF + "        FROM KOSMOS_EMR.AEMRSUGAMAPPING B";
+                SQL += ComNum.VBLF + "        FROM ADMIN.AEMRSUGAMAPPING B";
                 SQL += ComNum.VBLF + "       WHERE A.BASCD = B.ITEMCD";
                 SQL += ComNum.VBLF + "         AND FORMNO = " + formNo;
                 SQL += ComNum.VBLF + "         AND WARD = '" + cboWard.Text + "'";
@@ -549,7 +549,7 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "FROM";
             SQL = SQL + ComNum.VBLF + "(";
             SQL = SQL + ComNum.VBLF + "SELECT ITEMVALUE, 0 AS DSPSEQ ";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRSUGAMAPPING ";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRSUGAMAPPING ";
             SQL = SQL + ComNum.VBLF + " WHERE FORMNO    = " + SelectFormNo;
             SQL = SQL + ComNum.VBLF + "   AND ITEMCD    = '" + SelectItemcd + "'";
             SQL = SQL + ComNum.VBLF + "   AND WARD      = '" + cboWard.Text + "'";
@@ -695,7 +695,7 @@ namespace ComEmrBase
 
             try
             {
-                SQL = "     DELETE KOSMOS_EMR.AEMRSUGAMAPPING";
+                SQL = "     DELETE ADMIN.AEMRSUGAMAPPING";
                 SQL = SQL + ComNum.VBLF + "      WHERE FORMNO     = " + SelectFormNo;
                 SQL = SQL + ComNum.VBLF + "        AND ITEMCD     = '" + SelectItemcd + "'";
                 SQL = SQL + ComNum.VBLF + "        AND ITEMVALUE  = '" + SelectItemVal + "'";
@@ -723,7 +723,7 @@ namespace ComEmrBase
                         SQL = SQL + ComNum.VBLF + "WHERE EXISTS";
                         SQL = SQL + ComNum.VBLF + "(";
                         SQL = SQL + ComNum.VBLF + "     SELECT 1";
-                        SQL = SQL + ComNum.VBLF + "       FROM KOSMOS_EMR.AEMRSUGAMAPPING";
+                        SQL = SQL + ComNum.VBLF + "       FROM ADMIN.AEMRSUGAMAPPING";
                         SQL = SQL + ComNum.VBLF + "      WHERE FORMNO     = " + SelectFormNo;
                         SQL = SQL + ComNum.VBLF + "        AND ITEMCD     = '" + SelectItemcd + "'";
                         SQL = SQL + ComNum.VBLF + "        AND ITEMVALUE  = '" + SelectItemVal + "'";
@@ -741,7 +741,7 @@ namespace ComEmrBase
                         reader.Dispose();
                         #endregion
 
-                        SQL = " INSERT INTO KOSMOS_EMR.AEMRSUGAMAPPING ";
+                        SQL = " INSERT INTO ADMIN.AEMRSUGAMAPPING ";
                         SQL = SQL + ComNum.VBLF + " (FORMNO, WARD, ITEMCD, ITEMVALUE, SEQNO)";
                         SQL = SQL + ComNum.VBLF + "SELECT ";
                         SQL = SQL + ComNum.VBLF + SelectFormNo        + ", ";
@@ -793,7 +793,7 @@ namespace ComEmrBase
 
             try
             {
-                //SQL = " DELETE KOSMOS_EMR.AEMRSUGAMAPPING";
+                //SQL = " DELETE ADMIN.AEMRSUGAMAPPING";
                 //SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + ssDetail_Sheet1.Cells[e.Row, 1].Text + "'";
 
                 int intRowAffected = 0;

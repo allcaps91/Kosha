@@ -561,7 +561,7 @@ namespace ComPmpaLibB
 
 
             //'변경일자의 전화접수 중복점검                
-            SQL = "   SELECT PANO FROM KOSMOS_PMPA.OPD_TELRESV                                     ";
+            SQL = "   SELECT PANO FROM ADMIN.OPD_TELRESV                                     ";
             SQL += ComNum.VBLF + " WHERE Pano = '" + txtPtno1.Text.Trim() + "'                     ";
             SQL += ComNum.VBLF + "   AND RDate = TO_DATE('" + dtpUpDate.Text + "','YYYY-MM-DD')    ";
             SQL += ComNum.VBLF + "   AND DeptCode = '" + strDept.Trim() + "'                       ";
@@ -1044,7 +1044,7 @@ namespace ComPmpaLibB
             
             SQL = "";
             SQL += ComNum.VBLF + " SELECT A.DEPTCODE, A.SNAME, A.DRCODE, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(A.DRCODE) DRNAME, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_DOCTOR_DRNAME(A.DRCODE) DRNAME, ";
             SQL += ComNum.VBLF + "        B.GbSPC, ";
             SQL += ComNum.VBLF + "        TO_CHAR(A.DATE3, 'YYYY-MM-DD') DATE3, ";
             SQL += ComNum.VBLF + "        TO_CHAR(A.DATE3, 'HH24:MI') TIME3, ";
@@ -1120,7 +1120,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT SNAME, DEPTCODE, DRCODE, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
             SQL += ComNum.VBLF + "        TO_CHAR(DATE1,'YYYY-MM-DD') DATE1, ";
             SQL += ComNum.VBLF + "        TO_CHAR(DATE3,'YYYY-MM-DD') DATE3, ";
             SQL += ComNum.VBLF + "        ROWID, BI, Chojae, ";

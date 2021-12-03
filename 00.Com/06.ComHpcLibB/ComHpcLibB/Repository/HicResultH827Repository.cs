@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(BloodDate,'YYYY-MM-DD') BloodDate   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT_H827                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT_H827                 ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                             ");
             parameter.AppendSql("   AND EXCODE = :EXCODE                            ");
 
@@ -36,7 +36,7 @@ namespace ComHpcLibB.Repository
         public int Update(HIC_RESULT_H827 item, string strBloodDate)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RESULT_H827 SET                         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RESULT_H827 SET                         ");
             parameter.AppendSql("       BLOODDATE = to_date(:BLOODDATE, 'yyyy-mm-dd')           ");
             if (strBloodDate == "")
             {
@@ -61,7 +61,7 @@ namespace ComHpcLibB.Repository
         public int UpdateRemarkbyWrtNo(string strRemark, long nWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RESULT_H827 SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RESULT_H827 SET     ");
             parameter.AppendSql("       REMARK = :REMARK                    ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                     ");
 
@@ -74,8 +74,8 @@ namespace ComHpcLibB.Repository
         public int Delete(string strFrDate, string strToDate)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE FROM KOSMOS_PMPA.HIC_RESULT_H827                            ");
-            parameter.AppendSql(" WHERE WRTNO IN (SELECT WRTNO FROM KOSMOS_PMPA.HIC_JEPSU           ");
+            parameter.AppendSql("DELETE FROM ADMIN.HIC_RESULT_H827                            ");
+            parameter.AppendSql(" WHERE WRTNO IN (SELECT WRTNO FROM ADMIN.HIC_JEPSU           ");
             parameter.AppendSql("                  WHERE JEPDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')  ");
             parameter.AppendSql("                    AND JEPDATE <= TO_DATE(:TODATE, 'YYYY-MM-DD')  ");
             parameter.AppendSql("                    AND DELDATE IS NOT NULL)                       ");
@@ -89,7 +89,7 @@ namespace ComHpcLibB.Repository
         public int Insert(HIC_RESULT_H827 item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_RESULT_H827                                        ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_RESULT_H827                                        ");
             parameter.AppendSql("       (WRTNO, PANO, JEPDATE, EXCODE, BLOODDATE, REMARK, ENTSABUN, ENTDATE)    ");
             parameter.AppendSql("VALUES                                                                         ");
             parameter.AppendSql("       (:WRTNO,:PANO, to_date(:JEPDATE, 'yyyy-mm-dd'), :EXCODE                 ");

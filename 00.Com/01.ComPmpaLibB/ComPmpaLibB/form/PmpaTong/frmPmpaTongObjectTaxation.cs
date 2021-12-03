@@ -55,8 +55,8 @@ namespace ComPmpaLibB
             try
             {
                 SQL = "";
-                SQL += ComNum.VBLF + " select A.pano,sum(amt) amt,B.JUMIN1,B.JUMIN3,B.SNAME,KOSMOS_OCS.FC_BAS_GAMF_MESSAGE(A.pano) MESSAGE,KOSMOS_OCS.FC_BAS_GAMF_SABUN(A.pano) SABUN, ";
-                SQL += ComNum.VBLF + "       KOSMOS_OCS.FC_BAS_BUCODE_DEPTNAMEK(SUBSTR(KOSMOS_OCS.FC_BAS_GAMF_SABUN(A.pano),2,6)) DEPT ,gubun,decode(trim(sunext),'Y92I','감액[직원본인]','Y92J','직원[직원배우자]','Y92K','감액(직원직계,존비속]','Y92L','감액[배우자부모,형제자매]')  sunext  from (  ";
+                SQL += ComNum.VBLF + " select A.pano,sum(amt) amt,B.JUMIN1,B.JUMIN3,B.SNAME,ADMIN.FC_BAS_GAMF_MESSAGE(A.pano) MESSAGE,ADMIN.FC_BAS_GAMF_SABUN(A.pano) SABUN, ";
+                SQL += ComNum.VBLF + "       ADMIN.FC_BAS_BUCODE_DEPTNAMEK(SUBSTR(ADMIN.FC_BAS_GAMF_SABUN(A.pano),2,6)) DEPT ,gubun,decode(trim(sunext),'Y92I','감액[직원본인]','Y92J','직원[직원배우자]','Y92K','감액(직원직계,존비속]','Y92L','감액[배우자부모,형제자매]')  sunext  from (  ";
                 SQL += ComNum.VBLF + "       select pano,amt ,'I' gubun,sunext from    ipd_new_cash where sunext  IN ('Y92I','Y92J','Y92K','Y92L') ";
                 SQL += ComNum.VBLF + "       and actdate >=to_date('2015-01-01','yyyy-mm-dd') and  actdate <=to_date('2015-12-31','yyyy-mm-dd')  ";
                 SQL += ComNum.VBLF + "       union all";
@@ -127,12 +127,12 @@ namespace ComPmpaLibB
             try
             {
                 SQL = " SELECT b.GamMessage ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_ADM.INSA_MSTB a, KOSMOS_PMPA.BAS_GAMF b ";
+                SQL += ComNum.VBLF + " FROM ADMIN.INSA_MSTB a, ADMIN.BAS_GAMF b ";
                 SQL += ComNum.VBLF + "  WHERE a.JUMIN3 = b.GAMJUMIN3 ";
                 SQL += ComNum.VBLF + "   AND a.JUMIN3 ='" + clsAES.AES(ArgJumin) + "' ";
                 SQL += ComNum.VBLF + "   AND rownum=1 union all ";
                 SQL += ComNum.VBLF + " SELECT '퇴사' GamMessage  ";
-                SQL += ComNum.VBLF + "  FROM kosmos_adm.insa_mst ";
+                SQL += ComNum.VBLF + "  FROM ADMIN.insa_mst ";
                 SQL += ComNum.VBLF + " WHERE Jumin3  = '" + clsAES.AES(ArgJumin) + "'  ";//   '2013-02-20
                 SQL += ComNum.VBLF + "   AND SABUN <'60000' ";
 
@@ -181,7 +181,7 @@ namespace ComPmpaLibB
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = " SELECT kosmos_ocs.FC_BAS_BUCODE_DEPTNAMEK( '" + Argsabun +"') buname     from dual";
+                SQL = " SELECT ADMIN.FC_BAS_BUCODE_DEPTNAMEK( '" + Argsabun +"') buname     from dual";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")

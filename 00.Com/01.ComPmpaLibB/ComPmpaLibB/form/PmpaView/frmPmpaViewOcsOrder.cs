@@ -212,7 +212,7 @@ namespace ComPmpaLibB
                 }
                 else if (optSunap2.Checked == true)
                 {
-                    SQL += ComNum.VBLF + "  AND  a.Ptno in ( SELECT PANO FROM KOSMOS_PMPA.OPD_MASTER                                                ";
+                    SQL += ComNum.VBLF + "  AND  a.Ptno in ( SELECT PANO FROM ADMIN.OPD_MASTER                                                ";
                     SQL += ComNum.VBLF + "                    WHERE ACTDATE =TO_DATE('" + dtpDate.Text + "','YYYY-MM-DD')                           ";
                     SQL += ComNum.VBLF + "                    AND GBGAMEK IN ('11')  )                                                              ";
                 }

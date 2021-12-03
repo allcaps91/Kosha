@@ -785,7 +785,7 @@ namespace ComPmpaLibB
             #region SQL10
             SQL10 = "";
             SQL10 += ComNum.VBLF + "SELECT";
-            SQL10 += ComNum.VBLF + " A.SEQNO, B.PTNO PANO, '' IPDOPD,  (SELECT DRDEPT1 FROM KOSMOS_PMPA.BAS_DOCTOR C WHERE B.DRCODE = C.DRCODE) DEPTCODE, '장애인증명서' REMARK, '' BDATE, B.TNAME SNAME, A.SEQDATE PRTDATE";
+            SQL10 += ComNum.VBLF + " A.SEQNO, B.PTNO PANO, '' IPDOPD,  (SELECT DRDEPT1 FROM ADMIN.BAS_DOCTOR C WHERE B.DRCODE = C.DRCODE) DEPTCODE, '장애인증명서' REMARK, '' BDATE, B.TNAME SNAME, A.SEQDATE PRTDATE";
             SQL10 += ComNum.VBLF + "FROM " + ComNum.DB_MED + "OCS_MCCERTIFI_WONMU A, " + ComNum.DB_MED + "OCS_MCCERTIFI19 B";
             SQL10 += ComNum.VBLF + "WHERE 1=1";
             SQL10 += ComNum.VBLF + "     AND a.MCNO = b.MCNO";

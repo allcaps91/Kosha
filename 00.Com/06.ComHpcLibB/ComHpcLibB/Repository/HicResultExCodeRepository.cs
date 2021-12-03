@@ -24,8 +24,8 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.WRTNO, a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID      ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse, b.Unit    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                            ");
             parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                   ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE                                                   ");
             parameter.AppendSql("   AND b.PART   = '5'                                                      ");
@@ -42,8 +42,8 @@
             parameter.AppendSql("SELECT b.PART, a.WRTNO, a.EXCODE,b.HNAME,a.RESULT,a.RESCODE,a.PANJENG,a.ROWID  ");
             parameter.AppendSql("     , b.MIN_M,b.MAX_M,b.MIN_F,b.MAX_F,b.RESULTTYPE,b.GBCODEUSE, b.UNIT        ");
             parameter.AppendSql("     , b.XRAYCODE,b.ENDOGUBUN2,b.ENDOGUBUN3,b.ENDOGUBUN4,b.ENDOGUBUN5          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                                ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                ");
             parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                       ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                    ");
             parameter.AppendSql(" ORDER BY a.PANJENG, b.PART, a.EXCODE                                          ");
@@ -60,8 +60,8 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.Excode Code,b.HName,a.Result,a.ResCode,a.Panjeng                      ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.HName,B.HEASORT, a.SangDam   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                                                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                                                ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                                ");
             parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                                       ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                                    ");
             parameter.AppendSql("   AND b.PART   != '5'                                                                         ");
@@ -87,8 +87,8 @@
             {
                 parameter.AppendSql("SELECT b.part, a.WRTNO, a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID      ");
                 parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse, b.Unit,b.HEAPART  ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                                    ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                    ");
+                parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                                    ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                    ");
                 parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                           ");
                 parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                        ");
                 //parameter.AppendSql(" ORDER BY a.PANJENG, b.PART, a.EXCODE                                              ");
@@ -98,8 +98,8 @@
             {
                 parameter.AppendSql("SELECT b.part, a.WRTNO, a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID      ");
                 parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse, b.Unit,b.HEAPART  ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                                    ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                    ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                                    ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                    ");
                 parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                           ");
                 parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                        ");
                 //parameter.AppendSql(" ORDER BY b.HeaSORT,a.ExCode                                                       ");
@@ -117,8 +117,8 @@
 
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.Excode Code,b.HName,a.Result,a.ResCode,a.Panjeng          ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.HName,B.HEASORT  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                                    ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                                    ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                    ");
             parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                           ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                        ");
             //parameter.AppendSql(" ORDER BY b.HEASORT, a.ExCode                                                      ");            
@@ -133,7 +133,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.EXCODE, b.ENDOGUBUN1, b.ENDOGUBUN2, b.ENDOGUBUN3, b.ENDOGUBUN4, b.ENDOGUBUN5  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                              ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a, ADMIN.HIC_EXCODE b                              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                                ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE                                                               ");
             parameter.AppendSql("   AND b.DELDATE IS NULL                                                               ");
@@ -148,7 +148,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT B.HNAME   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                  ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                    ");
             parameter.AppendSql("   AND B.ENTPART IN('A')                                                   ");
             parameter.AppendSql("   AND a.ExCode=b.Code(+)                                                  ");
@@ -163,7 +163,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.RESULT, b.PART, B.CODE, B.HNAME                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                  ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                    ");
             parameter.AppendSql("   AND b.PART != :PART                                                     ");
             parameter.AppendSql("   AND a.Result IS NULL                                                    ");
@@ -179,7 +179,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.Code, b.HName                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b  ");
             parameter.AppendSql(" WHERE a.ExCode=b.Code(+)                                  ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                    ");
             parameter.AppendSql("   AND a.RESULT IS NULL                                    ");
@@ -197,7 +197,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,b.ResCode,a.Panjeng,a.ROWID AS RID ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                  ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                    ");
             parameter.AppendSql("   AND a.ExCode NOT IN ('ZE47','TX20')                                     "); //위수면내시경
             parameter.AppendSql("   AND b.Part <> '5'                                                       ");
@@ -214,8 +214,8 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,b.ResCode,a.Panjeng,a.ROWID                            ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                                                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                                                ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                                ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                                        ");
             parameter.AppendSql("   AND a.ExCode NOT IN ('ZE47', 'TX20')                                                        ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                                    ");
@@ -232,8 +232,8 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.Excode Code,b.HName,a.Result,a.ResCode,a.Panjeng, a.ROWID AS RID      ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.HName,B.HEASORT,a.SangDam    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                                                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.Hic_EXCODE b                                                                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                                                ");
+            parameter.AppendSql("     , ADMIN.Hic_EXCODE b                                                                ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                                        ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                                    ");
             parameter.AppendSql("   AND b.Part <> '5'                                                                           "); //액팅코드 제외            
@@ -251,13 +251,13 @@
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.Unit,b.ExSort                        ");
             if (strGubun == "HIC")
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                                                    ");
+                parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                                                    ");
             }
             else
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                                                    ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                                                    ");
             }
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                                        ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                                        ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                                                ");
             parameter.AppendSql("   AND (b.PANDISP IS NULL OR B.PANDISP = 'N')                                                          ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                                            ");
@@ -277,8 +277,8 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.HeaSORT,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng                 ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.HName        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                                ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                ");
             parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                       ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                    ");
             parameter.AppendSql(" ORDER BY b.HeaSORT,a.ExCode                                                   ");
@@ -292,7 +292,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.EXCODE, b.ENDOGUBUN1, b.ENDOGUBUN2, b.ENDOGUBUN3, b.ENDOGUBUN4, b.ENDOGUBUN5  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                              ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a, ADMIN.HIC_EXCODE b                              ");
             parameter.AppendSql(" WHERE a.WRTNO IN (:WRTNO)                                                             ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE                                                               ");
             parameter.AppendSql("   AND b.DELDATE IS NULL                                                               ");
@@ -308,7 +308,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.HeaSORT,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng             ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.HName    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a, ADMIN.HIC_EXCODE b                  ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                    ");
             parameter.AppendSql("   AND a.ExCode=b.Code(+)                                                  ");
             parameter.AppendSql(" ORDER BY b.HeaSORT,a.ExCode                                               ");
@@ -323,9 +323,9 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.WRTNO,a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng                    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.Unit                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                                        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU  c                                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                                        ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                        ");
+            parameter.AppendSql("     , ADMIN.HIC_JEPSU  c                                                        ");
             parameter.AppendSql(" WHERE c.PANO = :PANO                                                                  ");
             if (fnWrtno1 > 0 && fnWrtno2 > 0)
             {
@@ -357,7 +357,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.ExCode, a.GroupCode, b.HName, b.EName, b.YName, b.XRayCode                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                                ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                            ");
             parameter.AppendSql("   AND b.Code IN ('A142','TX13','TX14','TX11','A213','TX16','A211')                    ");
@@ -371,7 +371,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.ExCode, a.GroupCode, b.HName, b.EName, b.YName, b.XRayCode                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                              ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a, ADMIN.HIC_EXCODE b                              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                                ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                            ");
             parameter.AppendSql("   AND b.Code IN ('A142','TX13','TX14','TX11','A213','TX16','A211')                    ");
@@ -388,11 +388,11 @@
             parameter.AppendSql("      ,b.SENDBUSE1,b.SENDBUSE2                                                     ");
             if (argBuse == "TO")
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                      ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a, ADMIN.HIC_EXCODE b                      ");
             }
             else
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                      ");
+                parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                      ");
             }
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                            ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                        ");
@@ -421,11 +421,11 @@
         public List<HIC_RESULT_EXCODE> GetCountbyPaNoJepDateWrtNoEntPart(long pano, string sysdate, long nWrtNo, string eNTPART, string strJong)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT Active FROM KOSMOS_PMPA.HIC_RESULT A, KOSMOS_PMPA.HIC_EXCODE B          ");
+            parameter.AppendSql("SELECT Active FROM ADMIN.HIC_RESULT A, ADMIN.HIC_EXCODE B          ");
             if (strJong == "Y")
             {
                 parameter.AppendSql(" WHERE A.WRTNO IN (                                                        ");
-                parameter.AppendSql("              SELECT WRTNO FROM KOSMOS_PMPA.HIC_JEPSU                      ");
+                parameter.AppendSql("              SELECT WRTNO FROM ADMIN.HIC_JEPSU                      ");
                 parameter.AppendSql("               WHERE PANO = :PANO                                          ");
                 parameter.AppendSql("                 AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')             ");
                 parameter.AppendSql("                 AND DELDATE IS NULL )                                     ");
@@ -456,7 +456,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.EXCODE, b.ENDOGUBUN1, b.ENDOGUBUN2, b.ENDOGUBUN3, b.ENDOGUBUN4, b.ENDOGUBUN5  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                                ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE                                                               ");
             parameter.AppendSql("   AND b.DELDATE IS NULL                                                               ");
@@ -470,7 +470,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.ENTPART                                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b  ");
             parameter.AppendSql(" WHERE a.WRTNO =:WRTNO                                     ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                ");
             parameter.AppendSql("   AND b.ENTPART NOT IN (' ','Z')                          ");
@@ -486,7 +486,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.EXCODE, b.ENDOGUBUN1, b.ENDOGUBUN2, b.ENDOGUBUN3, b.ENDOGUBUN4, b.ENDOGUBUN5  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                              ");
             parameter.AppendSql(" WHERE a.WRTNO IN (:WRTNO)                                                             ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE                                                               ");
             parameter.AppendSql("   AND b.DELDATE IS NULL                                                               ");
@@ -502,7 +502,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID AS RID   ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                ");
             parameter.AppendSql("   AND a.ExCode IN('TI01','TI02','TR11','TH01','TH02')                 ");
             parameter.AppendSql("   AND a.ExCode=b.Code(+)                                              ");
@@ -522,7 +522,7 @@
                 parameter.AppendSql("SELECT a.part, a.excode, b.hname, b.yname, a.RESULT, a.rescode, a.panjeng      ");
                 parameter.AppendSql("     , a.ROWID, b.min_m, b.max_m, b.min_f, b.max_f, b.resulttype               ");
                 parameter.AppendSql("     , b.gbcodeuse, b.unit, b.min_m, b.max_m, b.min_f, b.max_f                 ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                      ");
+                parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                      ");
                 parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                        ");
                 parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                    ");
                 parameter.AppendSql("   AND a.EXCODE IN  (:EXCODE)                                                  ");
@@ -535,8 +535,8 @@
                 parameter.AppendSql("     , b.gbcodeuse, b.unit                                                     ");
                 parameter.AppendSql("     , c.Min_M,c.Min_M1,c.Min_M2,c.Min_M3,c.Max_M,c.Max_M1,c.Max_M2,c.Max_M3   ");
                 parameter.AppendSql("     , c.Min_F,c.Min_F1,c.Min_F2,c.Min_F3,c.Max_F,c.Max_F1,c.Max_F2,c.Max_F3   ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                      ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_YakCode c                                               ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a, ADMIN.HIC_EXCODE b                      ");
+                parameter.AppendSql("     , ADMIN.HIC_YakCode c                                               ");
                 parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                        ");
                 parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                    ");
                 parameter.AppendSql("   AND a.ExCode = c.Code(+)                                                    ");
@@ -547,7 +547,7 @@
             {
                 parameter.AppendSql("SELECT b.HeaSORT,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng                 ");
                 parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.HName        ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                      ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a, ADMIN.HIC_EXCODE b                      ");
                 parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                        ");
                 parameter.AppendSql("   AND a.EXCODE IN  (:EXCODE)                                                  ");
                 parameter.AppendSql("   AND a.ExCode=b.Code(+)                                                      ");
@@ -564,8 +564,8 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.ExCode                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b            ");
             parameter.AppendSql(" WHERE a.WRTNO   = :WRTNO                  ");
             parameter.AppendSql("   AND a.ExCode  = b.Code(+)               ");
             parameter.AppendSql("   AND b.GbUline = 'Y'                     "); //소변컵라벨 인쇄 여부
@@ -581,7 +581,7 @@
             parameter.AppendSql("SELECT a.part, a.excode, b.hname, b.yname, a.RESULT, a.rescode, a.panjeng  ");
             parameter.AppendSql("     , a.ROWID, b.min_m, b.max_m, b.min_f, b.max_f, b.resulttype           ");
             parameter.AppendSql("     , b.gbcodeuse, b.unit, b.min_m, b.max_m, b.min_f, b.max_f             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                  ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                    ");
             parameter.AppendSql("   AND a.ExCode = b.Code                                                   ");
             parameter.AppendSql("   AND a.PART != :PART                                                     ");
@@ -597,7 +597,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(*) CNT                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b      ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                        ");
             parameter.AppendSql("   AND a.RESULT IS NULL                                        ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                    ");
@@ -613,7 +613,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.RESULT, a.excode, b.HNAME            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                  ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                    ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                ");
             parameter.AppendSql("   AND a.Result IS NULL                                                    ");
@@ -631,8 +631,8 @@
             parameter.AppendSql("SELECT a.part, a.excode, b.hname, b.yname, a.RESULT, a.rescode, a.panjeng  ");
             parameter.AppendSql("     , a.ROWID, b.min_m, b.max_m, b.min_f, b.max_f, b.resulttype           ");
             parameter.AppendSql("     , b.gbcodeuse, b.unit, b.min_m, b.max_m, b.min_f, b.max_f             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                            ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                    ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                ");
             parameter.AppendSql("   AND a.EXCODE NOT IN  (:EXCODE)                                          ");
@@ -651,7 +651,7 @@
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,a.ResCode,DECODE(NVL(a.Panjeng, ''), ' ', '', a.Panjeng) AS PANJENG,a.ROWID AS RID    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse        ");
             parameter.AppendSql("     , b.Unit, b.ExSort, b.GBAUTOSEND, a.GROUPCODE                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                ");
             parameter.AppendSql("   AND a.ExCode=b.Code(+)                                              ");
             parameter.AppendSql("   AND b.Part <> '9'                                                   ");
@@ -673,7 +673,7 @@
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,a.ResCode,DECODE(NVL(a.Panjeng, ''), ' ', '', a.Panjeng) AS PANJENG,a.ROWID AS RID    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse        ");
             parameter.AppendSql("     , b.Unit, b.ExSort, b.GBAUTOSEND, a.GROUPCODE                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b              ");
             parameter.AppendSql(" WHERE a.WRTNO IN (:WRTNO)                                             ");
             parameter.AppendSql("   AND a.ExCode=b.Code(+)                                              ");
             parameter.AppendSql("   AND b.Part <> '9'                                                   ");
@@ -691,7 +691,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID AS RID    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                ");
             if (g37_DOCT_ENTCODE.Count > 0)
             {
@@ -717,7 +717,7 @@
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID RID    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,a.ENTSABUN ");
             parameter.AppendSql("     , b.GBAUTOSEND                                                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                  ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                    ");
             if (fstrPartExam.Count > 0 && fstrPartExam[0] != "전체")
             {
@@ -750,7 +750,7 @@
 
             parameter.AppendSql(" SELECT a.WRTNO,a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng       ");
             parameter.AppendSql(" , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.Unit         ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                   ");
+            parameter.AppendSql(" FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                   ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                    ");
             if (fstrExcode.Count > 0 )
             {
@@ -778,7 +778,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                ");
             parameter.AppendSql("  AND b.PART <> '5'                                                    ");
             parameter.AppendSql("  AND a.ExCode = b.Code(+)                                             ");
@@ -794,7 +794,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.WRTNO,a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng                ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.Unit             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b, KOSMOS_PMPA.HIC_JEPSU c ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b, ADMIN.HIC_JEPSU c ");
             parameter.AppendSql(" WHERE c.PANO = :PANO                                                              ");
             if (fstrGjChasu == "2")
             {
@@ -827,7 +827,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse, b.Unit");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                            ");
 
@@ -841,7 +841,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse, b.Unit");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                            ");
             parameter.AppendSql("   ORDER BY A.PART, A.EXCODE                                           ");
@@ -856,7 +856,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse, b.Unit");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                ");
             parameter.AppendSql("   AND a.ExCode NOT IN ('A139','A999')                                 ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                            ");
@@ -872,7 +872,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID AS RID   ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                ");
             parameter.AppendSql("   AND a.ExCode IN ('A142','A154','A215')                              ");
             parameter.AppendSql("   AND a.ExCode=b.Code(+)                                              ");
@@ -888,7 +888,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.YName,a.Result,b.GbCodeUse,b.ResCode              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b  ");
             parameter.AppendSql(" WHERE a.ExCode = b.Code(+)                                ");
             parameter.AppendSql("   AND a.Panjeng = 'R'                                     ");
             parameter.AppendSql("   AND a.Excode IN ('A108','A109','A122','A108')           ");
@@ -904,9 +904,9 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID, A.WRTNO           ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.Unit,b.ExSort        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                              ");
             parameter.AppendSql(" WHERE a.WRTNO IN (SELECT WRTNO                                                        ");
-            parameter.AppendSql("                     FROM KOSMOS_PMPA.HIC_JEPSU                                        ");
+            parameter.AppendSql("                     FROM ADMIN.HIC_JEPSU                                        ");
             parameter.AppendSql("                    WHERE PANO = :PANO AND GJYEAR = :GJYEAR                            ");
             parameter.AppendSql("                    AND GJJONG IN ('11','16','23','28'))                                ");
             parameter.AppendSql("   AND (b.PANDISP IS NULL OR B.PANDISP = 'N')                                          ");
@@ -925,11 +925,11 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,b.YName,a.Result,a.ResCode,a.Panjeng,a.ROWID            ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.Unit                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                              ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                                ");
             parameter.AppendSql("   AND a.Result <> '.'                                                                 ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                            ");
-            parameter.AppendSql("   AND a.ExCode IN (SELECT ExCode FROM KOSMOS_PMPA.HIC_SPC_SogenExam WHERE SOGENCODE = :SOGENCODE) ");           
+            parameter.AppendSql("   AND a.ExCode IN (SELECT ExCode FROM ADMIN.HIC_SPC_SogenExam WHERE SOGENCODE = :SOGENCODE) ");           
             parameter.AppendSql(" ORDER BY a.Part,a.ExCode                                                              ");
 
             parameter.Add("WRTNO", fnWrtno);
@@ -943,14 +943,14 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,b.YName,a.Result,a.ResCode,a.Panjeng,a.ROWID    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.Unit         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                      ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                        ");
             parameter.AppendSql("   AND a.Result IS NOT NULL                                                    ");
             parameter.AppendSql("   AND a.Result <> '.'                                                         ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                    ");
             if (argJob == "특수")
             {
-                parameter.AppendSql("   AND a.ExCode IN (SELECT ExCode FROM KOSMOS_PMPA.HIC_SPC_SogenExam WHERE SOGENCODE = :SOGENCODE) ");
+                parameter.AppendSql("   AND a.ExCode IN (SELECT ExCode FROM ADMIN.HIC_SPC_SogenExam WHERE SOGENCODE = :SOGENCODE) ");
             }
             else if (argJob == "D1D2")
             {
@@ -992,7 +992,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,b.YName,a.Result,a.ResCode,a.Panjeng,a.ROWID    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.Unit         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                      ");
             parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                       ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                    ");
             if (strPanjeng == "")
@@ -1019,7 +1019,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,b.YName,a.Result,a.ResCode,a.Panjeng,a.ROWID    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.Unit         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b                      ");
             parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                       ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                    ");
             if (argGbn == "04") //고지혈증
@@ -1054,8 +1054,8 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.EXCODE, a.RESULT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b            ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b            ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                    ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                ");
             parameter.AppendSql("   AND b.PART <> '5'                       ");
@@ -1070,8 +1070,8 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.HeaSORT, a.ExCode, b.HName, a.Result, b.ResCode, a.Panjeng, a.ROWID AS RID ");
             parameter.AppendSql("     , b.Min_M, b.Max_M, b.Min_F, b.Max_F, b.ResultType, b.GbCodeUse, a.SangDam    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                                    ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                                    ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                    ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                            ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                        ");
             parameter.AppendSql("   AND b.Part <> '5'                                                               "); //액팅코드 제외
@@ -1094,8 +1094,8 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('x') CNT              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a    ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a    ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b    ");
             parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO           ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)        ");
             parameter.AppendSql("   AND b.PART   = '5'              ");
@@ -1110,8 +1110,8 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.EXCODE, b.ENDOGUBUN3, b.ENDOGUBUN4, b.ENDOGUBUN5                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                            ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                            ");
             parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                   ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE                                                   ");
             parameter.AppendSql("   AND b.DELDATE IS NULL                                                   ");
@@ -1129,8 +1129,8 @@
             {
                 parameter.AppendSql("SELECT b.HEASORT, a.EXCODE, b.HNAME, a.RESULT, a.RESCODE, a.PANJENG                ");
                 parameter.AppendSql("     , b.min_m, b.max_m, b.min_f, b.max_f, b.RESULTTYPE, b.GBCODEUSE               ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                                    ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                    ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                                    ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                    ");
                 parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                           ");
                 parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                        ");
                 parameter.AppendSql(" ORDER BY b.HeaSORT,a.ExCode                                                       ");
@@ -1139,8 +1139,8 @@
             {
                 parameter.AppendSql("SELECT a.Part, a.ExCode, b.HName, a.Result, a.ResCode, a.Panjeng, B.HEASORT        ");
                 parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.HName, b.UNIT    ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                                    ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                    ");
+                parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                                    ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                    ");
                 parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                           ");
                 parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                        ");
                 parameter.AppendSql(" ORDER BY b.HeaSORT,a.ExCode                                                       ");

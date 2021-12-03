@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(TOIDAY,'YYYY-MM-DD') TOIDAY     ");
-            parameter.AppendSql("  FROM KOSMOS_ADM.INSA_MST                     ");
+            parameter.AppendSql("  FROM ADMIN.INSA_MST                     ");
             parameter.AppendSql(" WHERE SABUN = :SABUN                          ");
 
             parameter.Add("SABUN", idNumber, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -36,7 +36,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SABUN CODE,KORNAME NAME                 ");
-            parameter.AppendSql("  FROM KOSMOS_ADM.INSA_MST                     ");
+            parameter.AppendSql("  FROM ADMIN.INSA_MST                     ");
             if (!strName.IsNullOrEmpty())
             {
                 parameter.AppendSql(" WHERE KORNAME LIKE :KORNAME               ");
@@ -61,7 +61,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT KORNAME                                 ");
-            parameter.AppendSql("  FROM KOSMOS_ADM.INSA_MST                     ");
+            parameter.AppendSql("  FROM ADMIN.INSA_MST                     ");
             parameter.AppendSql(" WHERE SABUN = :SABUN                          ");
 
             parameter.Add("SABUN", argSabun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -73,7 +73,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT KORNAME                              ");
-            parameter.AppendSql("  FROM KOSMOS_ADM.INSA_MST                     ");
+            parameter.AppendSql("  FROM ADMIN.INSA_MST                     ");
             parameter.AppendSql(" WHERE MYEN_BUNHO = :MYENBUNHO                 ");
 
             parameter.Add("MYENBUNHO", argBunho);

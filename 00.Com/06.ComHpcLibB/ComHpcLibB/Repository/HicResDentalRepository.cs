@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(PANJENGDATE, 'YYYY-MM-DD') PANJENGDATE                                              ");
             parameter.AppendSql("     , TO_CHAR(TONGBODATE, 'YYYY-MM-DD') TONGBODATE                                                ");
             parameter.AppendSql("     , ROWID RID                                                                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_DENTAL                                                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_DENTAL                                                                  ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                                                             ");
 
             parameter.Add("WRTNO", argWRTNO);
@@ -56,7 +56,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_RES_DENTAL         ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_RES_DENTAL         ");
             parameter.AppendSql("       (WRTNO)                                 ");
             parameter.AppendSql("VALUES                                         ");
             parameter.AppendSql("       (:WRTNO)                                ");
@@ -71,7 +71,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PanjengDrno, TO_CHAR(PanjengDate,'YYYY-MM-DD') PanjengDate,'0' PrtSabun     ");
             parameter.AppendSql("     , TO_CHAR(TongboDate,'YYYY-MM-DD') TongboDate                                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_DENTAL                                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_DENTAL                                                  ");
             parameter.AppendSql(" WHERE WRTNO =  :WRTNO                                                             ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -83,7 +83,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(PanjengDate,'YYYY-MM-DD') PanjengDate,OpdDnt,DntStatus              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_DENTAL                                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_DENTAL                                                  ");
             parameter.AppendSql(" WHERE WRTNO =  :WRTNO                                                             ");
 
             parameter.Add("WRTNO", wRTNO);
@@ -95,7 +95,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL SET                      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL SET                      ");
             if (!strDate.IsNullOrEmpty())
             {
                 parameter.AppendSql("       TONGBODATE  = TO_DATE(:TONGBODATE, 'YYYY-MM-DD')");
@@ -126,7 +126,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL SET                      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL SET                      ");
             if (nDrNO > 0)
             {
                 parameter.AppendSql("     , TONGBODATE  = TO_DATE(:TONGBODATE, 'YYYY-MM-DD')    ");
@@ -158,7 +158,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL SET  ");
             parameter.AppendSql("       WRTNO = :WRTNO                  ");
             parameter.AppendSql(" WHERE WRTNO = :FWRTNO                 ");
 
@@ -172,7 +172,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL SET                      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL SET                      ");
             parameter.AppendSql("       PANJENGDATE =TO_DATE(:PANJENGDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO                                   ");
 
@@ -186,7 +186,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL SET                          ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL SET                          ");
             parameter.AppendSql("       DENTSOGEN       = :DENTSOGEN                            ");
             parameter.AppendSql("     , DENTDOCT        = :DENTDOCT                             ");
             parameter.AppendSql(" WHERE WRTNO           = :WRTNO                                ");
@@ -202,7 +202,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL SET                          ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL SET                          ");
             parameter.AppendSql("       T_PAN_ETC       = :T_PAN_ETC                            ");
             parameter.AppendSql("     , T40_PAN1        = :T40_PAN1                             ");
             parameter.AppendSql("     , T40_PAN2        = :T40_PAN2                             ");
@@ -270,7 +270,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL SET  ");
             switch (strGbn)             
             {
                 case "E1":
@@ -323,7 +323,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL SET  ");
             if (strGbn == "E0")
             {
                 parameter.AppendSql("       BUSIK0      = 'Y'           ");
@@ -352,7 +352,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID RID                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_DENTAL              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_DENTAL              ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                         ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -364,7 +364,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(PANJENGDATE, 'YYYY-MM-DD') PANJENGDATE, PANJENGDRNO ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_DENTAL                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_DENTAL                                  ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                             ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -377,7 +377,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(PANJENGDATE, 'YYYY-MM-DD') PANJENGDATE, PANJENGDRNO ");
             parameter.AppendSql("     , RES_JOCHI                                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_DENTAL                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_DENTAL                                  ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                             ");
             parameter.AppendSql("   AND PANJENGDRNO > 0                                             "); //판정완료
 
@@ -390,7 +390,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_DENTAL  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_DENTAL  ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO             ");
 
             parameter.Add("WRTNO", argWRTNO);
@@ -402,7 +402,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL SET  ");
             parameter.AppendSql("       OPDDNT      = :OPDDNT           ");
             parameter.AppendSql("     , DNTSTATUS   = :DNTSTATUS        ");
             parameter.AppendSql("     , T_HABIT1    = :T_HABIT1         ");
@@ -446,7 +446,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_RES_DENTAL                                                             ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_RES_DENTAL                                                             ");
             parameter.AppendSql("       (WRTNO, OPDDNT, DNTSTATUS, T_HABIT1, T_HABIT2, T_HABIT4, T_HABIT5, T_HABIT6         ");
             parameter.AppendSql("     , T_HABIT7, T_HABIT8, T_HABIT9, T_STAT1, T_STAT2, T_FUNCTION1                                 ");
             parameter.AppendSql("     , T_JILBYUNG1, T_JILBYUNG2, MUNJINETC)                                                        ");
@@ -480,7 +480,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL SET  ");
             parameter.AppendSql("       GBMUNJIN2 = ''                  ");
             parameter.AppendSql(" WHERE WRTNO     = :WRTNO              ");
 
@@ -493,7 +493,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_RES_DENTAL  ");
+            parameter.AppendSql("DELETE ADMIN.HIC_RES_DENTAL  ");
             parameter.AppendSql(" WHERE WRTNO      = :WRTNO         ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -505,7 +505,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANJENGDRNO, PANJENGDATE    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_DENTAL  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_DENTAL  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO              ");
 
             parameter.Add("WRTNO", wRTNO);
@@ -517,7 +517,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANJENGDRNO                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_DENTAL  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_DENTAL  ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO             ");
 
             parameter.Add("WRTNO", wRTNO);
@@ -529,7 +529,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL                      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL                      ");
             parameter.AppendSql("   SET PANJENGDATE = TO_DATE(:PANDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("     , T_PANJENG1  = :T_PANJENG1                       ");
             parameter.AppendSql("     , RES_MUNJIN  = :RES_MUNJIN                       ");
@@ -554,7 +554,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_DENTAL SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_DENTAL SET  ");
             parameter.AppendSql("       GBPRINT = 'Y'                   ");
             parameter.AppendSql("       , TONGBODATE = SYSDATE          ");
             parameter.AppendSql("       , TONGBOGBN = :TONGBOGBN        ");

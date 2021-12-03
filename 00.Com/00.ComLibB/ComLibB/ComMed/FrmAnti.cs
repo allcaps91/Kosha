@@ -156,7 +156,7 @@ namespace ComLibB
                 SQL += "   FROM \r";
                 SQL += "   (\r";
                 SQL += " SELECT A.CHARTDATE, A.CHARTTIME, EXTRACTVALUE(A.CHARTXML, '//it11') AS HEIGHT                                \r";
-                SQL += "   FROM KOSMOS_EMR.EMRXML A, KOSMOS_EMR.EMRXMLMST B                                 \r";
+                SQL += "   FROM ADMIN.EMRXML A, ADMIN.EMRXMLMST B                                 \r";
                 SQL += "  WHERE a.EMRNO = b.EMRNO                                                           \r";
                 SQL += "    AND B.FORMNO = 1562                                                             \r";
                 SQL += "    AND B.PTNO = '" + txtPano.Text + "'                                             \r";
@@ -165,8 +165,8 @@ namespace ComLibB
                 SQL += "    AND TRIM(EXTRACTVALUE(A.CHARTXML, '//it11')) IS NOT NULL                        \r";
                 SQL += " UNION ALL                                                                          \r";
                 SQL += " SELECT A.CHARTDATE, A.CHARTTIME, B.ITEMVALUE AS HEIGHT                             \r";
-                SQL += "   FROM KOSMOS_EMR.AEMRCHARTMST A                                                   \r";
-                SQL += "     INNER JOIN KOSMOS_EMR.AEMRCHARTROW B                                           \r";
+                SQL += "   FROM ADMIN.AEMRCHARTMST A                                                   \r";
+                SQL += "     INNER JOIN ADMIN.AEMRCHARTROW B                                           \r";
                 SQL += "        ON A.EMRNO    = B.EMRNO                                                     \r";
                 SQL += "       AND A.EMRNOHIS = B.EMRNOHIS                                                  \r";
                 SQL += "       AND B.ITEMCD = 'I0000000002'                                                 \r";
@@ -235,7 +235,7 @@ namespace ComLibB
                 SQL += "   FROM                                                                             \r";
                 SQL += "   (                                                                                \r";
                 SQL += " SELECT A.CHARTDATE, A.CHARTTIME, EXTRACTVALUE(A.CHARTXML, '//it10') AS WEIGHT      \r";
-                SQL += "   FROM KOSMOS_EMR.EMRXML A, KOSMOS_EMR.EMRXMLMST B                                 \r";
+                SQL += "   FROM ADMIN.EMRXML A, ADMIN.EMRXMLMST B                                 \r";
                 SQL += "  WHERE a.EMRNO = b.EMRNO                                                           \r";
                 SQL += "    AND B.FORMNO = 1562                                                             \r";
                 SQL += "    AND B.PTNO = '" + txtPano.Text + "'                                             \r";
@@ -244,8 +244,8 @@ namespace ComLibB
                 SQL += "    AND TRIM(EXTRACTVALUE(A.CHARTXML, '//it10')) IS NOT NULL                        \r";
                 SQL += " UNION ALL                                                                          \r";
                 SQL += " SELECT A.CHARTDATE, A.CHARTTIME, B.ITEMVALUE AS WEIGHT                             \r";
-                SQL += "   FROM KOSMOS_EMR.AEMRCHARTMST A                                                   \r";
-                SQL += "     INNER JOIN KOSMOS_EMR.AEMRCHARTROW B                                           \r";
+                SQL += "   FROM ADMIN.AEMRCHARTMST A                                                   \r";
+                SQL += "     INNER JOIN ADMIN.AEMRCHARTROW B                                           \r";
                 SQL += "        ON A.EMRNO    = B.EMRNO                                                     \r";
                 SQL += "       AND A.EMRNOHIS = B.EMRNOHIS                                                  \r";
                 SQL += "       AND B.ITEMNO = 'I0000000418'                                                 \r";
@@ -315,7 +315,7 @@ namespace ComLibB
                 SQL += "   FROM                                                                             \r";
                 SQL += "   (                                                                                \r";
                 SQL += " SELECT A.CHARTDATE, A.CHARTTIME, EXTRACTVALUE(A.CHARTXML, '//it8') AS BDTEMP       \r";
-                SQL += "   FROM KOSMOS_EMR.EMRXML A, KOSMOS_EMR.EMRXMLMST B                                 \r";
+                SQL += "   FROM ADMIN.EMRXML A, ADMIN.EMRXMLMST B                                 \r";
                 SQL += "  WHERE a.EMRNO = b.EMRNO                                                           \r";
                 SQL += "    AND B.FORMNO = 1562                                                             \r";
                 SQL += "    AND B.PTNO = '" + txtPano.Text + "'                                             \r";
@@ -324,8 +324,8 @@ namespace ComLibB
                 SQL += "    AND TRIM(EXTRACTVALUE(A.CHARTXML, '//it8')) IS NOT NULL                         \r";
                 SQL += " UNION ALL                                                                          \r";
                 SQL += " SELECT A.CHARTDATE, A.CHARTTIME, B.ITEMVALUE AS BDTEMP                             \r";
-                SQL += "   FROM KOSMOS_EMR.AEMRCHARTMST A                                                   \r";
-                SQL += "     INNER JOIN KOSMOS_EMR.AEMRCHARTROW B                                           \r";
+                SQL += "   FROM ADMIN.AEMRCHARTMST A                                                   \r";
+                SQL += "     INNER JOIN ADMIN.AEMRCHARTROW B                                           \r";
                 SQL += "        ON A.EMRNO    = B.EMRNO                                                     \r";
                 SQL += "       AND A.EMRNOHIS = B.EMRNOHIS                                                  \r";
                 SQL += "       AND B.ITEMNO = 'I0000001811'                                                 \r";
@@ -373,8 +373,8 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT A.ILLCODE, B.ILLNAMEK                                   \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_IILLS A                                  \r";
-                SQL += "      , KOSMOS_PMPA.BAS_ILLS B                                  \r";
+                SQL += "   FROM ADMIN.OCS_IILLS A                                  \r";
+                SQL += "      , ADMIN.BAS_ILLS B                                  \r";
                 SQL += "  WHERE A.ILLCODE  = B.ILLCODE(+)                               \r";
                 SQL += "    AND A.PTNO     = '" + sPano + "'                            \r";
                 SQL += "    AND A.BDATE   >= TO_DATE('" + sInDate + "','YYYY-MM-DD')    \r";
@@ -414,7 +414,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT TO_CHAR(OPDATE,'YYYY-MM-DD') OPDATE, OPTITLE        \r";
-                SQL += "   FROM KOSMOS_PMPA.ORAN_MASTER                             \r";
+                SQL += "   FROM ADMIN.ORAN_MASTER                             \r";
                 SQL += "  WHERE PANO = '" + sPano + "'                              \r";
                 SQL += "    AND OPDATE >= TO_DATE('" + sInDate + "','YYYY-MM-DD')   \r";
                 SQL += "  ORDER BY OPDATE DESC                                      \r";
@@ -456,14 +456,14 @@ namespace ComLibB
                 SQL = "";
                 SQL += " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE           \r";
                 SQL += "      , A.SUNEXT, SUM(QTY * NAL) QTY, B.SUNAMEK     \r";
-                SQL += "   FROM KOSMOS_PMPA.IPD_NEW_SLIP A                  \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUN      B                  \r";
+                SQL += "   FROM ADMIN.IPD_NEW_SLIP A                  \r";
+                SQL += "      , ADMIN.BAS_SUN      B                  \r";
                 SQL += "  WHERE A.PANO = '" + sPano + "'                    \r";
                 SQL += "    AND A.BDATE >=TRUNC(SYSDATE - 30)               \r";
                 //SQL += "    AND A.SUNEXT LIKE 'W-%'                         \r";
-                //SQL += "    AND TRIM(a.SuCode) IN ( SELECT TRIM(CODE) FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='OCS_항생제코드' AND (DELDATE IS NULL OR DELDATE ='')  )  \r";
+                //SQL += "    AND TRIM(a.SuCode) IN ( SELECT TRIM(CODE) FROM ADMIN.BAS_BCODE WHERE GUBUN ='OCS_항생제코드' AND (DELDATE IS NULL OR DELDATE ='')  )  \r";
                 //2021-06-24 조회 기준 약품마스터로 변경
-                SQL += "    AND A.SUCODE IN ( SELECT JEPCODE FROM KOSMOS_ADM.DRUG_MASTER2 WHERE SUB  IN (02, 07))  \r";
+                SQL += "    AND A.SUCODE IN ( SELECT JEPCODE FROM ADMIN.DRUG_MASTER2 WHERE SUB  IN (02, 07))  \r";
                 SQL += "    AND A.SUNEXT = B.SUNEXT(+)                      \r";
                 SQL += "  GROUP BY BDATE, A.SUNEXT, B.SUNAMEK               \r";
                 SQL += "  ORDER BY BDATE DESC, 2                            \r";
@@ -570,10 +570,10 @@ namespace ComLibB
                 SQL += "      , TO_CHAR(A.EXDATE,'YYYY-MM-DD') EXDATE, B.WARDCODE, B.ROOMCODE, A.PANO, B.SNAME              \r";
                 SQL += "      , DECODE ( A.STATE, '1', '승인','2','보류','') STATE,  D.ORDERNAME, D.SUCODE                   \r";
                 SQL += "      , TO_CHAR(B.INDATE,'YYYY-MM-DD') INDATE, E.DOSNAME                                            \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ANTI_MST    A                                                                \r";
-                SQL += "      , KOSMOS_PMPA.IPD_NEW_MASTER B                                                                \r";
-                SQL += "      , KOSMOS_OCS.OCS_ORDERCODE   D                                                                \r";
-                SQL += "      , KOSMOS_OCS.OCS_ODOSAGE     E                                                                \r";
+                SQL += "   FROM ADMIN.OCS_ANTI_MST    A                                                                \r";
+                SQL += "      , ADMIN.IPD_NEW_MASTER B                                                                \r";
+                SQL += "      , ADMIN.OCS_ORDERCODE   D                                                                \r";
+                SQL += "      , ADMIN.OCS_ODOSAGE     E                                                                \r";
                 SQL += "  WHERE A.ROWID = '" + strRowId + "'                                                                \r";
                 SQL += "    AND A.IPDNO = B.IPDNO                                                                           \r";
                 SQL += "    AND B.ACTDATE IS NULL                                                                           \r"; //재원자만
@@ -664,7 +664,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT JONG, REMARK                        \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_SIMSAINFOR_WARD     \r";
+                SQL += "   FROM ADMIN.BAS_SIMSAINFOR_WARD     \r";
                 SQL += "  WHERE SUNEXT = '" + strSuCode + "'        \r";
                 SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -721,7 +721,7 @@ namespace ComLibB
                 SQL += "      , R.SubCode, R.Result, R.Refer, R.Panic                                                   \r";
                 SQL += "      , R.Delta, R.Unit, R.SeqNo, M.ExamName                                                    \r";
                 SQL += "      , R.MASTERCODE                                                                            \r";
-                SQL += "   FROM KOSMOS_OCS.EXAM_SPECMST A,  KOSMOS_OCS.Exam_ResultC R, KOSMOS_OCS.Exam_Master M         \r";
+                SQL += "   FROM ADMIN.EXAM_SPECMST A,  ADMIN.Exam_ResultC R, ADMIN.Exam_Master M         \r";
                 SQL += "  WHERE A. SpecNo= R.SPECNO                                                                     \r";
                 SQL += "    AND A.PANO = '" + sPano + "'                                                                \r";
                 SQL += "    AND A.BDATE >=TO_DATE('" + sInDate + "','YYYY-MM-DD')                                       \r";
@@ -801,7 +801,7 @@ namespace ComLibB
                             //Foot Note를 READ
                             SQL = "";
                             SQL += " SELECT FootNote                                                                    \r";
-                            SQL += "   FROM KOSMOS_OCS.Exam_ResultCf                                                    \r";
+                            SQL += "   FROM ADMIN.Exam_ResultCf                                                    \r";
                             SQL += "  WHERE SpecNo = '" + sSpecNo + "'                                                  \r";
                             SQL += "    AND SeqNo =  '" + VB.Val(dt1.Rows[i]["SeqNo"].ToString()).ToString("00") + "' \r";
                             SqlErr = clsDB.GetDataTable(ref dt2, SQL, clsDB.DbCon);
@@ -845,7 +845,7 @@ namespace ComLibB
                                 //Foot Note를 READ
                                 SQL = "";
                                 SQL += " SELECT FootNote                                                                    \r";
-                                SQL += "   FROM KOSMOS_OCS.Exam_ResultCf                                                    \r";
+                                SQL += "   FROM ADMIN.Exam_ResultCf                                                    \r";
                                 SQL += "  WHERE SpecNo = '" + sSpecNo + "'                                                  \r";
                                 SQL += "    AND SeqNo =  '" + VB.Val(dt1.Rows[i]["SeqNo"].ToString()).ToString("00") + "' \r";
                                 SqlErr = clsDB.GetDataTable(ref dt2, SQL, clsDB.DbCon);
@@ -909,7 +909,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT MasterCode, Normal, Sex, AgeFrom, AgeTo, RefvalFrom, RefvalTo   \r";
-                SQL += "   FROM KOSMOS_OCS.Exam_Master_Sub                                      \r";
+                SQL += "   FROM ADMIN.Exam_Master_Sub                                      \r";
                 SQL += "  WHERE MasterCode = '" + strSubCode + "'                               \r";
                 SQL += "    AND Gubun = '41'                                                    \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1185,7 +1185,7 @@ namespace ComLibB
                 try
                 {
                     SQL = "";
-                    SQL += " UPDATE KOSMOS_OCS.OCS_ANTI_MST                                                     \r";
+                    SQL += " UPDATE ADMIN.OCS_ANTI_MST                                                     \r";
                     SQL += "    SET SABUN       = '" + string.Format("{0:00000}", clsType.User.Sabun.Trim()) + "' \r";
                     SQL += "      , GB_INIT     = '" + strGB_INIT + "'                                          \r";
                     SQL += "      , GB_INFECT   = '" + strGB_INFECT + "'                                        \r";
@@ -1228,7 +1228,7 @@ namespace ComLibB
                 try
                 {
                     SQL = "";
-                    SQL += " INSERT INTO KOSMOS_OCS.OCS_ANTI_MST (SABUN, IPDNO, PANO, SDATE, OKDATE, EXDATE                         \r";
+                    SQL += " INSERT INTO ADMIN.OCS_ANTI_MST (SABUN, IPDNO, PANO, SDATE, OKDATE, EXDATE                         \r";
                     SQL += "      , SSABUN, STATE, GB_INIT, GB_INFECT, GB_CULTURE, REMARK, HEIGHT, WEIGHT, TEMPER,  LEANWEIGHT      \r";
                     SQL += "      , GB_SCR, GB_ECCR, GB_SERIOUS, GB_IMM, GB_PREG, GB_ANTI, GB_ANTINAME, ORDERCODE                   \r";
                     SQL += "      , SUCODE, CONTENTS, BCONTENTS, QTY, NAL, DOSCODE, ORDERNO,GUBUN,ENTDATE,BDate)                    \r";
@@ -1292,7 +1292,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " INSERT INTO KOSMOS_OCS.OCS_ANTI_MST_HIS ( WRTNO , SABUN, IPDNO, Pano, sDate, OKDATE    \r";
+                SQL += " INSERT INTO ADMIN.OCS_ANTI_MST_HIS ( WRTNO , SABUN, IPDNO, Pano, sDate, OKDATE    \r";
                 SQL += "      , EXDATE, SSABUN, State, GB_INIT, GB_INFECT                                       \r";
                 SQL += "       , GB_CULTURE,REMARK,HEIGHT,WEIGHT,TEMPER,LEANWEIGHT,GB_SCR,GB_ECCR,GB_SERIOUS    \r";
                 SQL += "      , GB_IMM,GB_PREG,GB_ANTI,GB_ANTINAME,ORDERCODE,SUCODE,CONTENTS,BCONTENTS,QTY      \r";
@@ -1301,7 +1301,7 @@ namespace ComLibB
                 SQL += "      , GB_CULTURE,REMARK,HEIGHT,WEIGHT,TEMPER,LEANWEIGHT,GB_SCR,GB_ECCR,GB_SERIOUS     \r";
                 SQL += "      , GB_IMM,GB_PREG,GB_ANTI,GB_ANTINAME,ORDERCODE,SUCODE,CONTENTS,BCONTENTS,QTY      \r";
                 SQL += "      , NAL,DOSCODE, ORDERNO, SMSDATE, SMSDATE2, TOREMARK, Gubun, EntDate, 'D'          \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ANTI_MST                                                         \r";
+                SQL += "   FROM ADMIN.OCS_ANTI_MST                                                         \r";
                 SQL += "  WHERE ROWID = '" + clsOrdFunction.GstrANTI_ROWID + "'                                \r";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -1314,7 +1314,7 @@ namespace ComLibB
                 }
 
                 SQL = "";
-                SQL += " DELETE KOSMOS_OCS.OCS_ANTI_MST WHERE ROWID = '" + clsOrdFunction.GstrANTI_ROWID + "'  \r";
+                SQL += " DELETE ADMIN.OCS_ANTI_MST WHERE ROWID = '" + clsOrdFunction.GstrANTI_ROWID + "'  \r";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
                 {

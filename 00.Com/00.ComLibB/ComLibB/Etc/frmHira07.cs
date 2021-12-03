@@ -65,7 +65,7 @@ namespace ComLibB
 
                 SQL = "   SELECT C.SUNEXT SUNEXT, C.SUNAMEK,  A.EXAM_TYPE, A.CONTRAD_GRADE, A.ADPT_TYPE, A.INCOMP_REASON, ";
                 SQL += ComNum.VBLF + "    A.ADPT_FR_DT,  A.ADPT_TO_DT , D.DELDATE";
-                SQL += ComNum.VBLF + "    FROM KOSMOS_PMPA.HIRA_TBJBD63 A, KOSMOS_PMPA.EDI_SUGA B,  KOSMOS_PMPA.BAS_SUN C, KOSMOS_PMPA.BAS_SUT D";
+                SQL += ComNum.VBLF + "    FROM ADMIN.HIRA_TBJBD63 A, ADMIN.EDI_SUGA B,  ADMIN.BAS_SUN C, ADMIN.BAS_SUT D";
                 SQL += ComNum.VBLF + "    WHERE A.ELMT_CD = B.SCODE";
                 SQL += ComNum.VBLF + "    AND  B.CODE = C.BCODE";
                 SQL += ComNum.VBLF + "    AND C.SUNEXT = D.SUNEXT(+)";

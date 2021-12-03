@@ -109,7 +109,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT";
-                SQL = SQL + ComNum.VBLF + "     /*+ index( kosmos_ocs.ocs_iorder INXOCS_IORDER1) **/ Min(A.BDATE) AS MinDate, Max(A.BDATE) AS MaxDate, a.SuCode ";
+                SQL = SQL + ComNum.VBLF + "     /*+ index( ADMIN.ocs_iorder INXOCS_IORDER1) **/ Min(A.BDATE) AS MinDate, Max(A.BDATE) AS MaxDate, a.SuCode ";
                 SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_MED + "OCS_IORDER A, " + ComNum.DB_PMPA + "BAS_SUN B";
                 SQL = SQL + ComNum.VBLF + "     WHERE A.PTNO = '" + FstrPtno + "' ";
                 SQL = SQL + ComNum.VBLF + "         AND A.BDATE >= TO_DATE('" + dtpSDATE.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";

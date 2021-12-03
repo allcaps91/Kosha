@@ -24,8 +24,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.WRTNO, b.PANO, TO_CHAR(b.SDATE,'YYYY-MM-DD') SDATE    ");
             parameter.AppendSql("     , b.STIME, b.SEX, b.AGE, b.SNAME, b.GBSTS                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT a                               ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_JEPSU   b                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT a                               ");
+            parameter.AppendSql("     , ADMIN.HEA_JEPSU   b                               ");
             parameter.AppendSql(" WHERE 1 = 1                                                   ");
             if (strJumin.Length == 13)
             {

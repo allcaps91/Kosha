@@ -162,7 +162,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT TO_CHAR(RDATE, 'YYYY-MM-DD HH24:MI') RDATE, ROWID ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_SAFETY_REPORT2 ";
+                SQL += ComNum.VBLF + " FROM ADMIN.ETC_SAFETY_REPORT2 ";
                 SQL += ComNum.VBLF + " WHERE WSABUN = " + clsType.User.Sabun;
                 SQL += ComNum.VBLF + " ORDER BY WDATE DESC";
 
@@ -226,7 +226,7 @@ namespace ComLibB
                 SQL += ComNum.VBLF + "  ACCI14, ACCI15, ACCI16, ACCI17,";
                 SQL += ComNum.VBLF + "  RESULT1, RESULT2, REPORT1, REPORT2,";
                 SQL += ComNum.VBLF + "  REPORT3, ANONY";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_SAFETY_REPORT2 ";
+                SQL += ComNum.VBLF + " FROM ADMIN.ETC_SAFETY_REPORT2 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -450,8 +450,8 @@ namespace ComLibB
 
                 if (!string.IsNullOrEmpty(strRowid))
                 {
-                    SQL = " INSERT INTO KOSMOS_PMPA.ETC_SAFETY_REPORT2_HISTORY ";
-                    SQL = SQL + ComNum.VBLF + " SELECT * FROM KOSMOS_PMPA.ETC_SAFETY_REPORT2 ";
+                    SQL = " INSERT INTO ADMIN.ETC_SAFETY_REPORT2_HISTORY ";
+                    SQL = SQL + ComNum.VBLF + " SELECT * FROM ADMIN.ETC_SAFETY_REPORT2 ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strRowid + "' ";
 
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -464,7 +464,7 @@ namespace ComLibB
                         return rtnVal;
                     }
 
-                    SQL = " DELETE KOSMOS_PMPA.ETC_SAFETY_REPORT2";
+                    SQL = " DELETE ADMIN.ETC_SAFETY_REPORT2";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strRowid + "' ";
 
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -478,7 +478,7 @@ namespace ComLibB
                     }
                 }
 
-                SQL = " INSERT INTO KOSMOS_PMPA.ETC_SAFETY_REPORT2(";
+                SQL = " INSERT INTO ADMIN.ETC_SAFETY_REPORT2(";
                 SQL = SQL + "\r" + " WDATE, WSABUN, WBUSE, RDATE, ";
                 SQL = SQL + "\r" + "  TARGET1, TARGET2, TARGET3, TARGET4, ";
                 SQL = SQL + "\r" + "  TARGET5, TARGET6, TARGET7, TARGET8, ";
@@ -554,8 +554,8 @@ namespace ComLibB
 
             try
             {
-                SQL = " INSERT INTO KOSMOS_PMPA.ETC_SAFETY_REPORT2_HISTORY ";
-                SQL += ComNum.VBLF + " SELECT * FROM KOSMOS_PMPA.ETC_SAFETY_REPORT2 ";
+                SQL = " INSERT INTO ADMIN.ETC_SAFETY_REPORT2_HISTORY ";
+                SQL += ComNum.VBLF + " SELECT * FROM ADMIN.ETC_SAFETY_REPORT2 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -568,7 +568,7 @@ namespace ComLibB
                     return rtnVal;
                 }
 
-                SQL = " DELETE KOSMOS_PMPA.ETC_SAFETY_REPORT2";
+                SQL = " DELETE ADMIN.ETC_SAFETY_REPORT2";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

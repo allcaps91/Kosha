@@ -147,15 +147,15 @@ namespace ComLibB
                 SQL = "SELECT ILLCODE, ILLNAMEK, ROWID  ";
                 if (rdo2018.Checked == true)
                 {
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_H ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_H ";
                 }
                 else if(rdo2019.Checked == true)
                 {
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_H2 ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_H2 ";
                 }
                 else
                 {
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_H3 ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_H3 ";
                 }
 
                 SQL = SQL + ComNum.VBLF + " WHERE 1 = 1 ";
@@ -269,15 +269,15 @@ namespace ComLibB
                 SQL = "SELECT ILLCODE, ILLNAMEK, ROWID   ";
                 if (rdo2018.Checked == true)
                 {
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_H ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_H ";
                 }
                 else if (rdo2019.Checked == true)
                 {
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_H2 ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_H2 ";
                 }
                 else
                 {
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_H3 ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_H3 ";
                 }
                 if (intIndex != 26)
                 {
@@ -411,17 +411,17 @@ namespace ComLibB
                 if (rdo2018.Checked == true)
                 {
                     SQL = SQL + ComNum.VBLF + " '' PART, '' BIGO, '' BIGO2 ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_H ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_H ";
                 }
                 else if (rdo2019.Checked == true)
                 {
                     SQL = SQL + ComNum.VBLF + " PART, BIGO, '' BIGO2 ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_H2 ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_H2 ";
                 }
                 else
                 {
                     SQL = SQL + ComNum.VBLF + " PART, BIGO, BIGO2 ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_H3 ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_H3 ";
                 }
                 SQL = SQL + ComNum.VBLF + "  WHERE ROWID = '" + GstrROWID + "' ";
 
@@ -579,15 +579,15 @@ namespace ComLibB
                     SQL = "";
                     if (rdo2018.Checked == true)
                     {
-                        SQL = "UPDATE  KOSMOS_PMPA.BAS_ILLS_H";
+                        SQL = "UPDATE  ADMIN.BAS_ILLS_H";
                     }
                     else if (rdo2019.Checked == true)
                     {
-                        SQL = "UPDATE  KOSMOS_PMPA.BAS_ILLS_H2";
+                        SQL = "UPDATE  ADMIN.BAS_ILLS_H2";
                     }
                     else
                     {
-                        SQL = "UPDATE  KOSMOS_PMPA.BAS_ILLS_H3";
+                        SQL = "UPDATE  ADMIN.BAS_ILLS_H3";
                     }
                     
                     SQL = SQL + ComNum.VBLF + "     SET";

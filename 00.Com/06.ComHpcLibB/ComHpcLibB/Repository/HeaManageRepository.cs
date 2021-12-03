@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID AS RID                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_MANAGE  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_MANAGE  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO              ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -36,7 +36,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_MANAGE                             ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_MANAGE                             ");
             parameter.AppendSql("       (WRTNO, JEPDATE, LTDCODE)                               ");
             parameter.AppendSql("VALUES                                                         ");
             parameter.AppendSql("       (:WRTNO, TO_DATE(:JEPDATE, 'YYYY-MM-DD'), :LTDCODE)     ");

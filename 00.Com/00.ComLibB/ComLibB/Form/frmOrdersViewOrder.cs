@@ -85,7 +85,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT TO_CHAR(InDate,  'YYYY-MM-DD') InDate, ";
                 SQL = SQL + ComNum.VBLF + "       TO_CHAR(SysDate, 'YYYY-MM-DD') SysDate1  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_NEW_MASTER ";
                 SQL = SQL + ComNum.VBLF + " WHERE GBSTS ='0' ";
                 SQL = SQL + ComNum.VBLF + "   AND Pano ='" + GstrPtNo + "' ";
 
@@ -169,7 +169,7 @@ namespace ComLibB
                 SQL = "SELECT TO_CHAR(InDate,   'YYYY-MM-DD') InDate1,  DeptCode, ";
                 SQL = SQL + ComNum.VBLF + "      TO_CHAR(ACTDate,   'YYYY-MM-DD') DcDate1,            ";
                 SQL = SQL + ComNum.VBLF + "      TO_CHAR(A.OutDate,'YYYY-MM-DD') OutDate1, DrName    ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER A, KOSMOS_PMPA.BAS_DOCTOR B  ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER A, ADMIN.BAS_DOCTOR B  ";
                 SQL = SQL + ComNum.VBLF + "WHERE Pano     = '" + GstrPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.DrCode = B.DrCode(+)";
                 SQL = SQL + ComNum.VBLF + "ORDER BY InDate DESC ";
@@ -206,7 +206,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = "SELECT distinct TO_CHAR(BDate,'YYYY-MM-DD') BDate1, DeptCode, DrName ";
-                SQL = SQL + ComNum.VBLF + " FROM OCS_OORDER A, KOSMOS_PMPA.BAS_DOCTOR B  ";
+                SQL = SQL + ComNum.VBLF + " FROM OCS_OORDER A, ADMIN.BAS_DOCTOR B  ";
                 SQL = SQL + ComNum.VBLF + "WHERE Ptno     = '" + GstrPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND GbSunap  = '1' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.DrCode = B.DrCode(+) ";
@@ -297,7 +297,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "SELECT DrName FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = "SELECT DrName FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + " WHERE Sabun = '" + strDrCode.Trim() + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -768,7 +768,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT A.*, TO_CHAR(A.BDate,'YYYY-MM-DD') BDate1, IllNameE ";
-                SQL = SQL + ComNum.VBLF + " FROM OCS_OILLS A, KOSMOS_PMPA.BAS_ILLS B ";
+                SQL = SQL + ComNum.VBLF + " FROM OCS_OILLS A, ADMIN.BAS_ILLS B ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.Ptno    = '" + GstrPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND BDate    >= TO_DATE('" + dtpFrDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "  AND BDate    <= TO_DATE('" + dtpToDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
@@ -1372,7 +1372,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "           TO_CHAR(A.RemoveDate,'YYYY-MM-DD') RemoveDate1, ";
                 SQL = SQL + ComNum.VBLF + "           TO_CHAR(A.CfDate,'YYYY-MM-DD') CfDate1, ";
                 SQL = SQL + ComNum.VBLF + "           TO_CHAR(A.EDate,'YYYY-MM-DD') EDate1    ";
-                SQL = SQL + ComNum.VBLF + " FROM OCS_IILLS A, KOSMOS_PMPA.BAS_ILLS B ";
+                SQL = SQL + ComNum.VBLF + " FROM OCS_IILLS A, ADMIN.BAS_ILLS B ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.Ptno    = '" + GstrPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND BDate    >= TO_DATE('" + dtpFrDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "  AND BDate    <= TO_DATE('" + dtpToDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
@@ -1555,7 +1555,7 @@ namespace ComLibB
 
                             SQL = "";
                             SQL = "SELECT    SuGbN ";
-                            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SUN  ";
+                            SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SUN  ";
                             SQL = SQL + ComNum.VBLF + "WHERE SuNext = '" + ssOrder_Sheet1.Cells[i, 16].Text.Trim() + "' ";
                             SQL = SQL + ComNum.VBLF + "  AND SuGbN  = '1' ";
 

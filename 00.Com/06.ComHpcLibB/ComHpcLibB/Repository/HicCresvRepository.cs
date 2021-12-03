@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("   SELECT GUBUN,LTDCODE,TO_CHAR(RDATE,'YYYY-MM-DD') RDATE,Man ");
 
-            parameter.AppendSql("   FROM   KOSMOS_PMPA.HIC_CRESV");
+            parameter.AppendSql("   FROM   ADMIN.HIC_CRESV");
 
             parameter.AppendSql("   WHERE RDATE >= TO_DATE(:FDATE,'YYYY-MM-DD')  ");
             parameter.AppendSql("       AND RDATE <= TO_DATE(:STRNEXTDATE,'YYYY-MM-DD')  ");

@@ -271,7 +271,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT distinct PRMname                                            \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OPRM                                         \r";
+                SQL += "   FROM ADMIN.OCS_OPRM                                         \r";
                 if (clsOrdFunction.GstrGbJob == "OPD")
                 {
                     SQL += "  WHERE DeptDr = '" + strDeptDr.Trim() + "'                     \r";
@@ -617,7 +617,7 @@ namespace ComMedLibB
             try
             {
                 SQL = "";
-                SQL += " UPDATE KOSMOS_OCS.OCS_OPRM SET                                                             \r";
+                SQL += " UPDATE ADMIN.OCS_OPRM SET                                                             \r";
                 SQL += "        PRMNAME = '" + txtSetName.Text.Trim() + "'                                          \r";
                 if (clsOrdFunction.GstrGbPrm == "PROM")
                 {
@@ -699,7 +699,7 @@ namespace ComMedLibB
                         {
 
                             SQL = "";
-                            SQL += " DELETE FROM KOSMOS_OCS.OCS_OPRM                                            \r";
+                            SQL += " DELETE FROM ADMIN.OCS_OPRM                                            \r";
                             SQL += "  WHERE ROWID = '" + ssSetOrder.ActiveSheet.Cells[i, 25].Text.Trim() + "'   \r";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                             if (SqlErr != "")
@@ -754,7 +754,7 @@ namespace ComMedLibB
                 {
                     SQL = "";
                     SQL += " SELECT DeptDr                                          \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_OPRM                             \r";
+                    SQL += "   FROM ADMIN.OCS_OPRM                             \r";
                     if (btnOrderCopy.Text == "과 약속처방 등록")
                     {
                         SQL += "  WHERE DeptDr = '" + clsPublic.GstrDeptCode + "'   \r";
@@ -800,7 +800,7 @@ namespace ComMedLibB
             try
             {
                 SQL = "";
-                SQL += " INSERT INTO KOSMOS_OCS.OCS_OPRM                                                \r";
+                SQL += " INSERT INTO ADMIN.OCS_OPRM                                                \r";
                 SQL += "        (DEPTDR, PRMNAME, SEQNO, ORDERCODE, SUCODE, BUN, SLIPNO                 \r";
                 SQL += "      , REALQTY, QTY, NAL, GBDIV, DOSCODE, GBBOTH, GBINFO, GBER, GBSELF         \r";
                 SQL += "      , GBSPC, REMARK, ILLCODES, BOOWI1, BOOWI2, BOOWI3, BOOWI4, ENTDATE        \r";
@@ -821,7 +821,7 @@ namespace ComMedLibB
                 SQL += "      , Boowi1, Boowi2, Boowi3, Boowi4, SYSDATE                                 \r";
                 SQL += "      , GbOrder, GbPrn, GbTflag, GbPort, GbGroup                                \r";
                 SQL += "      , Contents, BContents, CPCODE, CPDAY, ILLCODES_KCD6                       \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OPRM                                                     \r";
+                SQL += "   FROM ADMIN.OCS_OPRM                                                     \r";
                 if (btnOrderCopy.Text == "과 약속처방 등록")
                 {
                     SQL += "  WHERE DeptDr  = '" + clsOrdFunction.GstrDrCode + "'                       \r";
@@ -1028,7 +1028,7 @@ namespace ComMedLibB
                     try
                     {
                         SQL = "";
-                        SQL += " DELETE KOSMOS_OCS.OCS_OPRM                             \r";
+                        SQL += " DELETE ADMIN.OCS_OPRM                             \r";
                         SQL += "  WHERE PRMNAME = '" + txtSetName.Text.Trim() + "'      \r";
                         SQL += "    AND DEPTDR = '" + strDeptDrPRM + "'                 \r";
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1117,7 +1117,7 @@ namespace ComMedLibB
                         {
                             SQL = "";
                             SQL = "";
-                            SQL += " UPDATE FROM KOSMOS_OCS.OCS_OPRM                                                \r";
+                            SQL += " UPDATE FROM ADMIN.OCS_OPRM                                                \r";
                             SQL += "    SET ILLCODES      = ''                                                      \r";
                             SQL += "      , BOWI1         = ''                                                      \r";
                             SQL += "      , BOWI2         = ''                                                      \r";
@@ -1166,7 +1166,7 @@ namespace ComMedLibB
                 try
                 {
                     SQL = "";
-                    SQL += " UPDATE KOSMOS_OCS.OCS_OPRM                 \r";
+                    SQL += " UPDATE ADMIN.OCS_OPRM                 \r";
                     SQL += "    SET ILLCODES      = ''                  \r";
                     SQL += "      , BOOWI1        = ''                  \r";
                     SQL += "      , BOOWI2        = ''                  \r";
@@ -1485,7 +1485,7 @@ namespace ComMedLibB
             try
             {
                 SQL = "";
-                SQL += " DELETE KOSMOS_OCS.OCS_OPRM                             \r";
+                SQL += " DELETE ADMIN.OCS_OPRM                             \r";
                 if (strDeptDr.Trim() == "MG" || strDeptDr.Trim() == "MC" || strDeptDr.Trim() == "MP" ||
                     strDeptDr.Trim() == "ME" || strDeptDr.Trim() == "MN" || strDeptDr.Trim() == "MR" || strDeptDr.Trim() == "MI")
                 {

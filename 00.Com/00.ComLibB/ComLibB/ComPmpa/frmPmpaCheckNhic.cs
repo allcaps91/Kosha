@@ -708,7 +708,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = SQL + ComNum.VBLF + " SELECT PANO FROM KOSMOS_PMPA.OPD_NHIC_RARE ";
+                        SQL = SQL + ComNum.VBLF + " SELECT PANO FROM ADMIN.OPD_NHIC_RARE ";
                         SQL = SQL + ComNum.VBLF + "  WHERE PANO  = '" + Dt.Rows[0]["PANO"].ToString().Trim() + "' ";
                         SQL = SQL + ComNum.VBLF + "    AND BDATE = TO_DATE('" + Dt.Rows[0]["BDATE"].ToString().Trim() + "','YYYY-MM-DD') ";
                         SqlErr = clsDB.GetDataTable(ref DtSub, SQL, clsDB.DbCon);
@@ -730,7 +730,7 @@ namespace ComLibB
                             try
                             {
                                 SQL = "";
-                                SQL += ComNum.VBLF + " INSERT INTO KOSMOS_PMPA.OPD_NHIC_RARE ";
+                                SQL += ComNum.VBLF + " INSERT INTO ADMIN.OPD_NHIC_RARE ";
                                 SQL += ComNum.VBLF + "        (BDATE,PANO,MCODE,";
                                 SQL += ComNum.VBLF + "         SDATE) ";
                                 SQL += ComNum.VBLF + " VALUES(TO_DATE('" + Dt.Rows[0]["BDATE"].ToString().Trim() + "','YYYY-MM-DD'), ";

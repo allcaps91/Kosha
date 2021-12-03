@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT LTDCODE, RDATE, STARTTIME, LTDNAME, INWON, SPECIAL, REMARK  ");
             parameter.AppendSql("      ,GBCHANGE, RTIME                                             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHULRESV                                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHULRESV                                    ");
             parameter.AppendSql(" WHERE 1 = 1                                                       ");
             parameter.AppendSql("   AND RDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')                      ");
             parameter.AppendSql("   AND RDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')                      ");
@@ -44,10 +44,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(RDATE, 'YYYY-MM-DD') AS RDATE, LTDCODE              ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE) LTDNAME                 ");
+            parameter.AppendSql("      ,ADMIN.FC_HIC_LTDNAME(LTDCODE) LTDNAME                 ");
             parameter.AppendSql("      ,RTIME, INWON, STARTTIME, SPECIAL, REMARK, JOBSABUN, ENTTIME ");
             parameter.AppendSql("      ,GBCHANGE, LTDNAME AS PLACE, ROWID AS RID                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHULRESV                                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHULRESV                                    ");
             parameter.AppendSql(" WHERE 1 = 1                                                       ");
             if (fstrDate.IsNullOrEmpty())
             {
@@ -92,7 +92,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql(" UPDATE KOSMOS_PMPA.HIC_CHULRESV                   ");
+            parameter.AppendSql(" UPDATE ADMIN.HIC_CHULRESV                   ");
             parameter.AppendSql("    SET RDATE      =TO_DATE(:RDATE,'YYYY-MM-DD')   ");
             parameter.AppendSql("       ,LTDCODE    =:LTDCODE                       ");
             parameter.AppendSql("       ,LTDNAME    =:LTDNAME                       ");
@@ -127,7 +127,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("   SELECT LTDCODE,TO_CHAR(RDATE,'YYYY-MM-DD') RDATE  ");
 
-            parameter.AppendSql("   FROM    KOSMOS_PMPA.HIC_CHULRESV");
+            parameter.AppendSql("   FROM    ADMIN.HIC_CHULRESV");
 
             parameter.AppendSql("   WHERE RDATE >= TO_DATE(:FDATE,'YYYY-MM-DD')  ");
             parameter.AppendSql("       AND RDATE <= TO_DATE(:STRNEXTDATE,'YYYY-MM-DD')  ");
@@ -145,7 +145,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql(" INSERT INTO KOSMOS_PMPA.HIC_CHULRESV (                                ");
+            parameter.AppendSql(" INSERT INTO ADMIN.HIC_CHULRESV (                                ");
             parameter.AppendSql("        RDATE, LTDCODE, LTDNAME, RTIME, INWON, STARTTIME, SPECIAL      ");
             parameter.AppendSql("       ,REMARK, JOBSABUN, ENTTIME, GUBUN                               ");
             parameter.AppendSql(" ) VALUES (                                                            ");
@@ -170,7 +170,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql(" UPDATE KOSMOS_PMPA.HIC_CHULRESV   ");
+            parameter.AppendSql(" UPDATE ADMIN.HIC_CHULRESV   ");
             parameter.AppendSql("    SET DELDATE = TRUNC(SYSDATE)   ");
             parameter.AppendSql("  WHERE ROWID =:RID                ");
 

@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME, YNAME, WSGROUP  ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_SPECODE     ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_SPECODE     ");
             parameter.AppendSql(" WHERE CODE =:CODE                 ");
             parameter.AppendSql("   AND GUBUN =:GUBUN               ");
 
@@ -36,7 +36,7 @@ namespace ComHpcLibB.Repository
         public List<EXAM_SPECODE> GetNamebyCode(string vOLUMECODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT NAME FROM KOSMOS_OCS.EXAM_SPECODE   ");
+            parameter.AppendSql("SELECT NAME FROM ADMIN.EXAM_SPECODE   ");
             parameter.AppendSql(" WHERE Gubun = '16'                        ");
             parameter.AppendSql("   AND (Code LIKE 'W%' OR Code LIKE 'V%')  ");
             parameter.AppendSql("   AND CODE = :CODE                        ");

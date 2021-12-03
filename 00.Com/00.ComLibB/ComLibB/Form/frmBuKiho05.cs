@@ -269,7 +269,7 @@ namespace ComLibB
                 }
                 else if (fstrGubun == "SA")
                 {
-                    SQL = " SELECT SABUN CODE,KORNAME NAME FROM KOSMOS_ADM.INSA_MST  ";
+                    SQL = " SELECT SABUN CODE,KORNAME NAME FROM ADMIN.INSA_MST  ";
                     if (txtdata.Text != "")
                     {
                         SQL = SQL + ComNum.VBLF + "WHERE KORNAME LIKE '%" + txtdata.Text.Trim() + "%' ";

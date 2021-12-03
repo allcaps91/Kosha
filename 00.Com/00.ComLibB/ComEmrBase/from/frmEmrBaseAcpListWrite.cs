@@ -553,8 +553,8 @@ namespace ComEmrBase
             SQL = "SELECT ";
             SQL = SQL + ComNum.VBLF + "  XX.INOUTCLS, XX.PTNO, XX.PTNAME, XX.SEX, XX.AGE,";
             SQL = SQL + ComNum.VBLF + "  XX.MEDDEPTCD, XX.MEDDRCD, XX.MEDFRDATE, XX.MEDFRTIME, XX.MEDENDDATE, XX.MEDENDTIME, XX.DRNAME, XX.GBSPC, XX.GBSTS,  ";
-            SQL = SQL + ComNum.VBLF + "  (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = XX.MEDDEPTCD) AS DEPTKORNAME ";
-            SQL = SQL + ComNum.VBLF + "  , CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_OCS.OCS_MCCERTIFI_WONMU_REPRINT WHERE PANO = XX.PTNO AND BDATE = TO_DATE(XX.MEDFRDATE, 'YYYYMMDD') AND DEPTCODE = XX.MEDDEPTCD) THEN 1 END READ_DOCREPRINT";
+            SQL = SQL + ComNum.VBLF + "  (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = XX.MEDDEPTCD) AS DEPTKORNAME ";
+            SQL = SQL + ComNum.VBLF + "  , CASE WHEN EXISTS (SELECT 1 FROM ADMIN.OCS_MCCERTIFI_WONMU_REPRINT WHERE PANO = XX.PTNO AND BDATE = TO_DATE(XX.MEDFRDATE, 'YYYYMMDD') AND DEPTCODE = XX.MEDDEPTCD) THEN 1 END READ_DOCREPRINT";
 
             SQL = SQL + ComNum.VBLF + "FROM (";
 
@@ -636,7 +636,7 @@ namespace ComEmrBase
                     SQL = SQL + ComNum.VBLF + "    MAX(A.MEDDEPTCD) AS MEDDEPTCD, MAX(A.MEDDRCD) AS MEDDRCD, ";
                     SQL = SQL + ComNum.VBLF + "    MAX(A.MEDFRDATE) AS MEDFRDATE, MAX(A.MEDFRTIME) AS MEDFRTIME, ";
                     SQL = SQL + ComNum.VBLF + "    MAX(TO_CHAR(B.OUTDATE,'YYYYMMDD')) AS MEDENDDATE, '' AS MEDENDTIME, B.DRNAME , B.GBSPC, B.GBSTS   ";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.EMRXMLMST A, ";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.EMRXMLMST A, ";
                     SQL = SQL + ComNum.VBLF + "    " + ComNum.DB_PMPA + "IPD_NEW_MASTER B, " + ComNum.DB_PMPA + "BAS_DOCTOR C ";
                     SQL = SQL + ComNum.VBLF + "WHERE A.PTNO =  '" + mPTNO + "' ";
                     SQL = SQL + ComNum.VBLF + "AND A.INOUTCLS = 'I' ";
@@ -654,7 +654,7 @@ namespace ComEmrBase
                     SQL = SQL + ComNum.VBLF + "    MAX(A.MEDDEPTCD) AS MEDDEPTCD, MAX(A.MEDDRCD) AS MEDDRCD, ";
                     SQL = SQL + ComNum.VBLF + "    MAX(A.MEDFRDATE) AS MEDFRDATE, MAX(A.MEDFRTIME) AS MEDFRTIME, ";
                     SQL = SQL + ComNum.VBLF + "    MAX(TO_CHAR(B.OUTDATE,'YYYYMMDD')) AS MEDENDDATE, '' AS MEDENDTIME, B.DRNAME , B.GBSPC, B.GBSTS   ";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.AEMRCHARTMST A, ";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.AEMRCHARTMST A, ";
                     SQL = SQL + ComNum.VBLF + "    " + ComNum.DB_PMPA + "IPD_NEW_MASTER B, " + ComNum.DB_PMPA + "BAS_DOCTOR C ";
                     SQL = SQL + ComNum.VBLF + "WHERE A.PTNO =  '" + mPTNO + "' ";
                     SQL = SQL + ComNum.VBLF + "AND A.INOUTCLS = 'I' ";
@@ -695,7 +695,7 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "    A.CLINCODE AS MEDDEPTCD, C.DRCODE AS MEDDRCD, ";
             SQL = SQL + ComNum.VBLF + "    A.INDATE AS MEDFRDATE, '120000' AS MEDFRTIME, ";
             SQL = SQL + ComNum.VBLF + "    A.OUTDATE AS MEDENDDATE, '120000' AS MEDENDTIME, C.DRNAME , '' GBSPC, '0' GBSTS   ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.EMR_TREATT A, KOSMOS_EMR.EMR_PATIENTT B, " + ComNum.DB_MED + "OCS_DOCTOR C ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.EMR_TREATT A, ADMIN.EMR_PATIENTT B, " + ComNum.DB_MED + "OCS_DOCTOR C ";
             SQL = SQL + ComNum.VBLF + "WHERE A.PATID = '" + mPTNO + "' ";
             SQL = SQL + ComNum.VBLF + "  AND A.DOCCODE = C.DOCCODE(+) ";
             SQL = SQL + ComNum.VBLF + "AND A.DELDATE IS NULL";

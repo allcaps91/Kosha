@@ -30,7 +30,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(a.SECOND_TONGBO,'YYYY/MM/DD') SECOND_TONGBO                             ");
             parameter.AppendSql("     , TO_CHAR(a.SECOND_DATE,'YYYY/MM/DD')   SECOND_DATE                               ");
             parameter.AppendSql("     , a.MailCode,a.Juso1,a.Juso2                                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_EXJONG b, KOSMOS_PMPA.HIC_PATIENT c    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_EXJONG b, ADMIN.HIC_PATIENT c    ");
             parameter.AppendSql(" WHERE a.JEPDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                     ");
             parameter.AppendSql("   AND a.JEPDATE <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                     ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                               ");
@@ -90,7 +90,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT a.WRTNO,a.SName,TO_CHAR(a.JepDate,'YY-MM-DD') JepDate,a.GjJong  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_EXJONG b               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_EXJONG b               ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                     ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                     ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                               ");
@@ -137,8 +137,8 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT a.GJJONG,a.GBMUNJIN1,a.GBMUNJIN2,a.GBMUNJIN3    ");
             parameter.AppendSql("      ,a.UCODES,a.GBDENTAL,b.GBMUNJIN                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a                         ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_EXJONG b                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a                         ");
+            parameter.AppendSql("      ,ADMIN.HIC_EXJONG b                        ");
             parameter.AppendSql(" WHERE 1 = 1                                           ");
             parameter.AppendSql("   AND a.WRTNO =:WRTNO                                ");
             parameter.AppendSql("   AND a.GJJONG =b.CODE(+)                             ");
@@ -162,7 +162,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , a.YOUNGUPSO,a.MILEAGEAM, a.MURYOAM,a.GUMDAESANG,a.MILEAGEAMGBN,a.MURYOGBN , a.REMARK, a.EMAIL       ");
             parameter.AppendSql("     , c.Hphone, TO_CHAR(a.SECOND_TONGBO,'YYYY-MM-DD') SECOND_TONGBO                                       ");
             parameter.AppendSql("     , TO_CHAR(a.SECOND_DATE,'YYYY-MM-DD') SECOND_DATE                                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_EXJONG b, KOSMOS_PMPA.HIC_PATIENT c                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_EXJONG b, ADMIN.HIC_PATIENT c                        ");
             if (str2ChaWrtno.IsNullOrEmpty())
             {
                 parameter.AppendSql(" WHERE a.WRTNO IN (:WRTNO)                                                                             ");
@@ -215,7 +215,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GBMUNJIN                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_EXJONG b   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_EXJONG b   ");
             parameter.AppendSql(" WHERE a.GJJONG = b.CODE                                   ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                    ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                   ");

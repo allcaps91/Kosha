@@ -337,7 +337,7 @@ namespace ComPmpaLibB
 
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT PANO, SNAME, SEX, JUMIN1, JUMIN2, JUMIN3, PNAME";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_PATIENT";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.BAS_PATIENT";
                 SQL = SQL + ComNum.VBLF + "  WHERE 1 = 1";
                 SQL = SQL + ComNum.VBLF + "    AND JUMIN1     = '" + txtJumin1.Text + "'";
                 SQL = SQL + ComNum.VBLF + "    AND JUMIN3     = '" + clsAES.AES(txtJumin2.Text) + "'";
@@ -390,7 +390,7 @@ namespace ComPmpaLibB
 
                     SQL = "";
                     SQL = SQL + ComNum.VBLF + " SELECT PANO, SNAME, SEX, JUMIN1, JUMIN2, JUMIN3, PNAME";
-                    SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_PATIENT";
+                    SQL = SQL + ComNum.VBLF + "   FROM ADMIN.BAS_PATIENT";
                     SQL = SQL + ComNum.VBLF + "  WHERE 1 = 1";
                     SQL = SQL + ComNum.VBLF + "    AND SNAME      = '" + txtSname.Text.Trim() + "'";
                     SQL = SQL + ComNum.VBLF + "    AND JUMIN1     = '" + txtJumin1.Text + "'";
@@ -461,7 +461,7 @@ namespace ComPmpaLibB
 
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT PANO, SNAME, SEX, JUMIN1, JUMIN2, JUMIN3";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_ETCPANO";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.OCS_ETCPANO";
                 SQL = SQL + ComNum.VBLF + "  WHERE 1 = 1";
                 SQL = SQL + ComNum.VBLF + "    AND SNAME      = '" + txtSname.Text.Trim() + "'";
                 SQL = SQL + ComNum.VBLF + "    AND JUMIN1     = '" + txtJumin1.Text + "'";

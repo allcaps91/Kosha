@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE_ECG   ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE_ECG   ");
             parameter.AppendSql(" ORDER BY SORT,CODE                ");
 
             return ExecuteReader<BAS_BCODE_ECG>(parameter);
@@ -32,7 +32,7 @@ namespace ComHpcLibB.Repository
         public int DeletebyRowId(string strROWID)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE KOSMOS_PMPA.BAS_BCODE_ECG   ");
+            parameter.AppendSql("DELETE ADMIN.BAS_BCODE_ECG   ");
             parameter.AppendSql(" WHERE ROWID = :RID                ");
 
             parameter.Add("RID", strROWID);
@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME , SORT, ROWID    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE_ECG   ");
+            parameter.AppendSql("  FROM ADMIN.BAS_BCODE_ECG   ");
             parameter.AppendSql(" ORDER BY CODE                     ");
 
             return ExecuteReader<BAS_BCODE_ECG>(parameter);
@@ -53,7 +53,7 @@ namespace ComHpcLibB.Repository
         public int UPdate(string strCODE, string strName, string strROWID)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.BAS_BCODE_ECG SET   ");
+            parameter.AppendSql("UPDATE ADMIN.BAS_BCODE_ECG SET   ");
             parameter.AppendSql("       CODE = :CODE                    ");
             parameter.AppendSql("     , NAME = :NAME                    ");
             parameter.AppendSql(" WHERE ROWID = :RID                    ");
@@ -66,7 +66,7 @@ namespace ComHpcLibB.Repository
         public int InsertAll(string strCODE, string strName)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.BAS_BCODE_ECG  ");
+            parameter.AppendSql("INSERT INTO ADMIN.BAS_BCODE_ECG  ");
             parameter.AppendSql("       ( CODE, NAME )                  ");
             parameter.AppendSql("VALUES                                 ");
             parameter.AppendSql("       ( :CODE, :NAME )                ");

@@ -29,8 +29,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse            ");
             parameter.AppendSql("      ,a.Part,b.Unit,a.ExCode                                              ");
             parameter.AppendSql("      ,b.ENDOGUBUN2,b.ENDOGUBUN3,b.ENDOGUBUN4,b.ENDOGUBUN5                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                            ");
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
             parameter.AppendSql("   AND a.WRTNO =:WRTNO                                                     "); 
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                ");
@@ -58,8 +58,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse            ");
             parameter.AppendSql("      ,a.Part,b.Unit,a.ExCode                                              ");
             parameter.AppendSql("      ,b.ENDOGUBUN2,b.ENDOGUBUN3,b.ENDOGUBUN4,b.ENDOGUBUN5                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                            ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                            ");
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
             parameter.AppendSql("   AND a.WRTNO =:WRTNO                                                     ");
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                                                ");
@@ -84,8 +84,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT A.WRTNO                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU A                     ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_RESULT B                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU A                     ");
+            parameter.AppendSql("     , ADMIN.HIC_RESULT B                    ");
             parameter.AppendSql(" WHERE 1 = 1                                       ");
             parameter.AppendSql("   AND A.PANO    =:PANO                           ");
             parameter.AppendSql("   AND A.JEPDATE =TO_DATE(:JEPDATE,'YYYY-MM-DD') ");
@@ -105,8 +105,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT B.RESULT, B.ACTIVE                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU A                 ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_RESULT B                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU A                 ");
+            parameter.AppendSql("     , ADMIN.HIC_RESULT B                ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql("   AND A.WRTNO   =:WRTNO                      ");
             parameter.AppendSql("   AND A.WRTNO   =  B.WRTNO                    ");
@@ -132,8 +132,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT b.ExCode,b.Result                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a                         ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_RESULT b                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a                         ");
+            parameter.AppendSql("     , ADMIN.HIC_RESULT b                        ");
             parameter.AppendSql(" WHERE 1 = 1                                           ");
             parameter.AppendSql("   AND a.WRTNO   =  b.WRTNO(+)                         ");
             parameter.AppendSql("   AND a.PTNO    = :PTNO                               ");

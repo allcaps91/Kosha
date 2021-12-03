@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      , T_DIET7, T_DIET8, T_DIET9, T_DIET10, T_DIET11, T_BIMAN1, T_BIMAN2, T_BIMAN3, T_BIMAN4          ");
             parameter.AppendSql("      , T_BIMAN5, T_BIMAN6, T_BIMAN7, T_BIMAN8, T_BIMAN9, T_CESD, T_GDS, T_KDSQC, T_SANGDAM            ");
             parameter.AppendSql("      , PANJENGSAHU1, PANJENGSAHU2, T_SANGDAM_1, PRTSABUN, SOGENB, GBGONGHU,ROWID RID                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_BOHUM2                                                                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_BOHUM2                                                                      ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                                                                 ");
 
             parameter.Add("WRTNO", argWRTNO);
@@ -49,7 +49,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_BOHUM2 SET                      ");            
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_BOHUM2 SET                      ");            
             parameter.AppendSql("       CYCLE1 = :CYCLE1                                    ");            
             parameter.AppendSql("     , CYCLE2 = :CYCLE2                                    ");            
             parameter.AppendSql("     , CYCLE3 = :CYCLE3                                    ");            
@@ -86,7 +86,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_BOHUM2 SET                      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_BOHUM2 SET                      ");
             if (!strDate.IsNullOrEmpty())
             {
                 parameter.AppendSql("       TONGBODATE  = TO_DATE(:TONGBODATE, 'YYYY-MM-DD')");
@@ -120,7 +120,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_BOHUM2 SET                      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_BOHUM2 SET                      ");
             if (nDrNO > 0)
             {
                 parameter.AppendSql("     TONGBODATE  = TO_DATE(:TONGBODATE, 'YYYY-MM-DD')    ");
@@ -151,7 +151,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_BOHUM2 SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_BOHUM2 SET  ");
             parameter.AppendSql("       T_SANGDAM_1 = :T_SANGDAM_1      ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
@@ -166,7 +166,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT T_SANGDAM_1                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_BOHUM2   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_BOHUM2   ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO              ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -178,7 +178,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_RES_BOHUM2  ");
+            parameter.AppendSql("DELETE ADMIN.HIC_RES_BOHUM2  ");
             parameter.AppendSql(" WHERE WRTNO  =:WRTNO              ");
 
             parameter.Add("WRTNO", argWrtno);
@@ -190,7 +190,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_BOHUM2 SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_BOHUM2 SET  ");
             parameter.AppendSql("       WRTNO = :WRTNO                  ");
             parameter.AppendSql(" WHERE WRTNO = :FWRTNO                 ");
 
@@ -204,7 +204,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_BOHUM2 SET          ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_BOHUM2 SET          ");
             parameter.AppendSql("       DIABETES_1  = :DIABETES_1               ");
             parameter.AppendSql("     , DIABETES_2  = :DIABETES_2               ");
             parameter.AppendSql("     , CYCLE_1     = :CYCLE_1                  ");
@@ -236,7 +236,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_BOHUM2 SET          ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_BOHUM2 SET          ");
             parameter.AppendSql("       DIABETES_RES      = :DIABETES_RES       ");
             parameter.AppendSql("     , DIABETES_RES_CARE = :DIABETES_RES_CARE  ");
             parameter.AppendSql("     , CYCLE_RES         = :CYCLE_RES          ");
@@ -259,7 +259,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT T_SANGDAM                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_BOHUM2  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_BOHUM2  ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO             ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -272,7 +272,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT COUNT('X') CNT             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_BOHUM2  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_BOHUM2  ");
             parameter.AppendSql("   AND WRTNO  = :WRTNO             ");
 
             parameter.Add("WRTNO", argWRTNO);

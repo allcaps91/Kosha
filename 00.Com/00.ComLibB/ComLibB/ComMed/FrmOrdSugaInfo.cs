@@ -77,7 +77,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT JONG, REMARK, ROWID                 \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_SIMSAINFOR          \r";
+                SQL += "   FROM ADMIN.BAS_SIMSAINFOR          \r";
                 SQL += "  WHERE SUNEXT = '" + txtSuCode.Text + "'   \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -106,8 +106,8 @@ namespace ComLibB
                 SQL += " SELECT a.Bun, a.Nu, a.SugbA, a.SugbB, a.SugbC  \r";
                 SQL += "      , a.SugbD, a.SugbE, a.SugbC, a.SugbF      \r";
                 SQL += "      , b.SUNAMEK, b.SUNAMEE, a.BAMT            \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_SUT a                   \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUN b                   \r";
+                SQL += "   FROM ADMIN.BAS_SUT a                   \r";
+                SQL += "      , ADMIN.BAS_SUN b                   \r";
                 SQL += "  WHERE a.SuCode = '" + txtSuCode.Text + "'     \r";
                 SQL += "    AND a.SuNext = b.SuNext(+)                  \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon); 
@@ -191,7 +191,7 @@ namespace ComLibB
                 SQL = "";
                 SQL += " SELECT CERT, Contents, Bun, LTDNAME, BCode, JEPCODE, JEPNAME, UNIT1, UNIT2, UNIT3, PART_J  \r";
                 SQL += "      , PART_F, PART_O, SDATE, BIGO, PRICE, JEPENAME, SUNGBUN, DOSCODE, JEHYUNG             \r";
-                SQL += "   FROM KOSMOS_ADM.DRUG_JEP_REQ_DETAIL                                                      \r";
+                SQL += "   FROM ADMIN.DRUG_JEP_REQ_DETAIL                                                      \r";
                 SQL += "  WHERE JEPCODE = '" + strSuNext + "'                                                       \r";
                 SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
                 if (SqlErr != "")

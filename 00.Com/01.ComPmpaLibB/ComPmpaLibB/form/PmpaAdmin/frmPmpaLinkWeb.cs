@@ -61,7 +61,7 @@ namespace ComPmpaLibB
             SQL = "";
             SQL += ComNum.VBLF + " SELECT PANO, SNAME, JUMIN1, ";
             SQL += ComNum.VBLF + "        SEX,  HPHONE , ROWID ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_PATIENT ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.BAS_PATIENT ";
             SQL += ComNum.VBLF + "  WHERE PANO = '" + txtPtno.Text + "'";
             SqlErr = clsDB.GetDataTable(ref Dt, SQL, pDbCon);
 
@@ -112,7 +112,7 @@ namespace ComPmpaLibB
                 //End If
 
                 //If strOK = "OK" Then
-                //   SQL = " UPDATE KOSMOS_PMPA.BAS_PATIENT SET WEBSEND ='*' , WEBSENDDATE = SYSDATE "
+                //   SQL = " UPDATE ADMIN.BAS_PATIENT SET WEBSEND ='*' , WEBSENDDATE = SYSDATE "
                 //   SQL = SQL & " WHERE ROWID = '" & Trim(RsBas!ROWID & "") & "' "
                 //   Result = AdoExecute(SQL)
                 //End If

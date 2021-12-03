@@ -72,14 +72,14 @@ namespace ComEmrBase
             {
                 SQL = " SELECT Pano, SName, TO_CHAR(JTime,'YYYY-MM-DD') JDATE,         ";
                 SQL += ComNum.VBLF + "Jin, Bunup, PNEUMONIA, ERPATIENT   ";
-                SQL += ComNum.VBLF + "FROM KOSMOS_PMPA.OPD_MASTER K  ";
+                SQL += ComNum.VBLF + "FROM ADMIN.OPD_MASTER K  ";
                 SQL += ComNum.VBLF + "WHERE BDate BETWEEN TO_DATE('" + dtpFDate.Value.ToShortDateString() + "', 'YYYY-MM-DD')  AND TO_DATE('" + dtpTDate.Value.ToShortDateString() + "', 'YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "AND DeptCode IN ('EM' ,'ER')      ";
                 SQL += ComNum.VBLF + "AND Jin IN ('0','1','2','3','4','5','6','F','R','S')  ";
                 SQL += ComNum.VBLF + "AND EXISTS (  ";
                 SQL += ComNum.VBLF + "              SELECT a.Pano,b.SName,TO_CHAR(a.JDate,'YYYY-MM-DD') JDate,  ";
                 SQL += ComNum.VBLF + "               TO_CHAR(a.EntDate,'YYYY-MM-DD HH24:MI') EntDate,a.EntSabun  ";
-                SQL += ComNum.VBLF + "               FROM KOSMOS_PMPA.NUR_ER_PATIENT a, KOSMOS_PMPA.BAS_PATIENT b   ";
+                SQL += ComNum.VBLF + "               FROM ADMIN.NUR_ER_PATIENT a, ADMIN.BAS_PATIENT b   ";
 
                 if(chkCheck.Checked)
                 {
@@ -125,7 +125,7 @@ namespace ComEmrBase
                 if( ComboJob.Checked)
                 {
                     SQL += ComNum.VBLF + " AND OCSJIN = '#' ";
-                    SQL += ComNum.VBLF + " AND PANO IN ( SELECT PANO FROM  KOSMOS_PMPA.IPD_NEW_MASTER ";
+                    SQL += ComNum.VBLF + " AND PANO IN ( SELECT PANO FROM  ADMIN.IPD_NEW_MASTER ";
                     SQL += ComNum.VBLF + "                WHERE GBSTS = '0' ";
                     SQL += ComNum.VBLF + "                AND INDATE BETWEEN TO_DATE('" + dtpFDate.Value.ToShortDateString() + "', 'YYYY-MM-DD')  AND TO_DATE('" + dtpTDate.Value.ToShortDateString() + "', 'YYYY-MM-DD') ) ";
                 }

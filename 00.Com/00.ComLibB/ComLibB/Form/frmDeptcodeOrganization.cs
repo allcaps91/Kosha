@@ -61,7 +61,7 @@ namespace ComLibB
             try
             {
                 strSql = "";
-                strSql = strSql + " SELECT BuCode,Name FROM KOSMOS_PMPA.BAS_BUSE ";
+                strSql = strSql + " SELECT BuCode,Name FROM ADMIN.BAS_BUSE ";
                 strSql = strSql + ComNum.VBLF + " WHERE DelDate IS NULL ";
                 strSql = strSql + ComNum.VBLF + " ORDER BY BuCode,Name ";
 

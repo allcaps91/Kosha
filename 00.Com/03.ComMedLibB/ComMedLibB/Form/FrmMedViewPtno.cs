@@ -70,7 +70,7 @@ namespace ComMedLibB
                 SQL = "";
                 SQL += " SELECT Pano, Sname, Jumin1, Jumin2,Jumin3, Sex             \r";
                 SQL += "      , Tel, TO_CHAR(LastDate,'YYYY-MM-DD') Ldate           \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_PATIENT                             \r";
+                SQL += "   FROM ADMIN.BAS_PATIENT                             \r";
                 SQL += "  WHERE Sname  =  '" + txtSName.Text.Trim() + "'            \r";
                 SQL += "    AND LastDate > SysDate - 200                            \r"; //내원일이 210일 안에
                 SQL += "  ORDER BY Sname, Jumin1, Jumin2                            \r";

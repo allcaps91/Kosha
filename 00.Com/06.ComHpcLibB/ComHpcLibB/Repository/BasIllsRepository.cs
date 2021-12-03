@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ILLNAMEK                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_ILLS    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_ILLS    ");
             parameter.AppendSql(" WHERE ILLCODE = :ILLCODE      ");
 
             parameter.Add("ILLCODE", argCode);
@@ -36,7 +36,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT IllCode CODE, IllNameK NAME ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_ILLS        ");
+            parameter.AppendSql("  FROM ADMIN.BAS_ILLS        ");
             parameter.AppendSql(" WHERE ROWNUM <= 500               ");
             if (!strName.IsNullOrEmpty())
             {

@@ -253,11 +253,11 @@ namespace ComEmrBase
                     SQL = "  SELECT O.BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames, O.REMARK,";
                     SQL = SQL + ComNum.VBLF + "    C.DispHeader, O.Qty, O.CONTENTS, O.GbGroup,";
                     SQL = SQL + ComNum.VBLF + "    O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE, '' RES ";
-                    SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_OCS.OCS_IORDER O,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_ORDERCODE C,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_ODOSAGE D,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_DOCTOR N,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_PMPA.BAS_SUN     S";
+                    SQL = SQL + ComNum.VBLF + "    FROM ADMIN.OCS_IORDER O,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_ORDERCODE C,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_ODOSAGE D,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_DOCTOR N,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.BAS_SUN     S";
                     SQL = SQL + ComNum.VBLF + "      WHERE O.PTNO = '" + pAcp.ptNo + "' ";
                     if (mstrOrderDate != "")
                     {
@@ -306,11 +306,11 @@ namespace ComEmrBase
                     SQL = "  SELECT O.BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames,  O.REMARK,";
                     SQL = SQL + ComNum.VBLF + "    C.DispHeader, O.Qty, O.RealQty AS CONTENTS, '' AS GbGroup,";
                     SQL = SQL + ComNum.VBLF + "     O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE, O.RES ";
-                    SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_OCS.OCS_OORDER O,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_ORDERCODE C,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_ODOSAGE D,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_DOCTOR N,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_PMPA.BAS_SUN     S";
+                    SQL = SQL + ComNum.VBLF + "    FROM ADMIN.OCS_OORDER O,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_ORDERCODE C,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_ODOSAGE D,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_DOCTOR N,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.BAS_SUN     S";
                     SQL = SQL + ComNum.VBLF + "      WHERE O.PTNO = '" + pAcp.ptNo + "' ";
                     SQL = SQL + ComNum.VBLF + "          AND O.BDATE = TO_DATE('" + dateTimePicker1.Value.ToShortDateString() + "','YYYY-MM-DD') ";
 
@@ -342,11 +342,11 @@ namespace ComEmrBase
                     SQL = "  SELECT O.BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames, O.REMARK,";
                     SQL = SQL + ComNum.VBLF + "  C.DispHeader, O.Qty, O.CONTENTS, O.GbGroup,";
                     SQL = SQL + ComNum.VBLF + "  O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE , '' RES";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_IORDER O,";
-                    SQL = SQL + ComNum.VBLF + "       KOSMOS_OCS.OCS_ORDERCODE C,";
-                    SQL = SQL + ComNum.VBLF + "       KOSMOS_OCS.OCS_ODOSAGE D,";
-                    SQL = SQL + ComNum.VBLF + "       KOSMOS_OCS.OCS_DOCTOR N,";
-                    SQL = SQL + ComNum.VBLF + "       KOSMOS_PMPA.BAS_SUN     S";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_IORDER O,";
+                    SQL = SQL + ComNum.VBLF + "       ADMIN.OCS_ORDERCODE C,";
+                    SQL = SQL + ComNum.VBLF + "       ADMIN.OCS_ODOSAGE D,";
+                    SQL = SQL + ComNum.VBLF + "       ADMIN.OCS_DOCTOR N,";
+                    SQL = SQL + ComNum.VBLF + "       ADMIN.BAS_SUN     S";
                     SQL = SQL + ComNum.VBLF + "  WHERE O.PTNO = '" + pAcp.ptNo + "' ";
                     SQL = SQL + ComNum.VBLF + "    AND O.BDATE >= TO_DATE('" + dateTimePicker1.Value.ToShortDateString() + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "    AND O.BDATE <= TO_DATE('" + dateTimePicker1.Value.AddDays(1).ToShortDateString() + "','YYYY-MM-DD') ";
@@ -479,7 +479,7 @@ namespace ComEmrBase
                 }
 
                 SQL = " SELECT NAL ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMR_OPTION_SETDATE ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMR_OPTION_SETDATE ";
                 SQL = SQL + ComNum.VBLF + " WHERE IO = '" + strIO + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND USEID = " + strUseId;
                 if (strIO != "I")
@@ -540,11 +540,11 @@ namespace ComEmrBase
                     SQL = "  SELECT O.BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames, O.REMARK,";
                     SQL = SQL + ComNum.VBLF + "    C.DispHeader, O.Qty, O.CONTENTS, O.GbGroup,";
                     SQL = SQL + ComNum.VBLF + "    O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE, '' RES ";
-                    SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_OCS.OCS_IORDER O,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_ORDERCODE C,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_ODOSAGE D,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_DOCTOR N,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_PMPA.BAS_SUN     S";
+                    SQL = SQL + ComNum.VBLF + "    FROM ADMIN.OCS_IORDER O,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_ORDERCODE C,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_ODOSAGE D,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_DOCTOR N,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.BAS_SUN     S";
                     SQL = SQL + ComNum.VBLF + "      WHERE O.PTNO = '" +pAcp.ptNo + "' ";
                     if (mstrOrderDate != "")
                     {
@@ -593,11 +593,11 @@ namespace ComEmrBase
                     SQL = "  SELECT O.BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames,  O.REMARK,";
                     SQL = SQL + ComNum.VBLF + "    C.DispHeader, O.Qty, O.RealQty AS CONTENTS, '' AS GbGroup,";
                     SQL = SQL + ComNum.VBLF + "     O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE, O.RES ";
-                    SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_OCS.OCS_OORDER O,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_ORDERCODE C,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_ODOSAGE D,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_DOCTOR N,";
-                    SQL = SQL + ComNum.VBLF + "          KOSMOS_PMPA.BAS_SUN     S";
+                    SQL = SQL + ComNum.VBLF + "    FROM ADMIN.OCS_OORDER O,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_ORDERCODE C,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_ODOSAGE D,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_DOCTOR N,";
+                    SQL = SQL + ComNum.VBLF + "          ADMIN.BAS_SUN     S";
                     SQL = SQL + ComNum.VBLF + "      WHERE O.PTNO = '" + pAcp.ptNo + "' ";
                     SQL = SQL + ComNum.VBLF + "          AND O.BDATE = TO_DATE('" + dateTimePicker1.Value.ToShortDateString() + "','YYYY-MM-DD') ";
 
@@ -629,11 +629,11 @@ namespace ComEmrBase
                     SQL = "  SELECT O.BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames, O.REMARK,";
                     SQL = SQL + ComNum.VBLF + "  C.DispHeader, O.Qty, O.CONTENTS, O.GbGroup,";
                     SQL = SQL + ComNum.VBLF + "  O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE , '' RES";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_IORDER O,";
-                    SQL = SQL + ComNum.VBLF + "       KOSMOS_OCS.OCS_ORDERCODE C,";
-                    SQL = SQL + ComNum.VBLF + "       KOSMOS_OCS.OCS_ODOSAGE D,";
-                    SQL = SQL + ComNum.VBLF + "       KOSMOS_OCS.OCS_DOCTOR N,";
-                    SQL = SQL + ComNum.VBLF + "       KOSMOS_PMPA.BAS_SUN     S";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_IORDER O,";
+                    SQL = SQL + ComNum.VBLF + "       ADMIN.OCS_ORDERCODE C,";
+                    SQL = SQL + ComNum.VBLF + "       ADMIN.OCS_ODOSAGE D,";
+                    SQL = SQL + ComNum.VBLF + "       ADMIN.OCS_DOCTOR N,";
+                    SQL = SQL + ComNum.VBLF + "       ADMIN.BAS_SUN     S";
                     SQL = SQL + ComNum.VBLF + "  WHERE O.PTNO = '" + pAcp.ptNo + "' ";
                     SQL = SQL + ComNum.VBLF + "    AND O.BDATE >= TO_DATE('" + dateTimePicker1.Value.ToShortDateString() +  "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "    AND O.BDATE <= TO_DATE('" + dateTimePicker1.Value.AddDays(1).ToShortDateString() + "','YYYY-MM-DD') ";

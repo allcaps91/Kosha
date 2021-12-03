@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.XRAY_PACSSEND (                                            ");
+            parameter.AppendSql("INSERT INTO ADMIN.XRAY_PACSSEND (                                            ");
             parameter.AppendSql("       ENTDATE,PACSNO,SENDGBN,PANO,SNAME                                           ");
             parameter.AppendSql("      ,SEX,AGE,IPDOPD,DEPTCODE,DRCODE,XJONG,XSUBCODE                               ");
             parameter.AppendSql("      ,XCODE,ORDERCODE,SEEKDATE,REMARK,XRAYROOM,XRAYNAME                           ");

@@ -293,7 +293,7 @@ namespace ComLibB
                     if (ssOrder.ActiveSheet.Cells[i, 0].Text == "True")
                     {
                         SQL = "";
-                        SQL += " UPDATE  KOSMOS_OCS.OCS_MSG                                             \r";
+                        SQL += " UPDATE  ADMIN.OCS_MSG                                             \r";
                         SQL += "    SET STATE = 'Y'                                                     \r";
                         SQL += "  WHERE ROWID ='" + ssOrder.ActiveSheet.Cells[i, 7].Text.Trim() + "'    \r";
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -332,7 +332,7 @@ namespace ComLibB
                     if (ssConsult.ActiveSheet.Cells[i, 0].Text == "True")
                     {
                         SQL = "";
-                        SQL += " UPDATE KOSMOS_OCS.OCS_ITRANSFER                                        \r";
+                        SQL += " UPDATE ADMIN.OCS_ITRANSFER                                        \r";
                         SQL += "    SET NURSEOK = '*'                                                   \r";
                         SQL += "  WHERE ROWID ='" + ssConsult.ActiveSheet.Cells[i, 15].Text.Trim() + "' \r";
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -371,7 +371,7 @@ namespace ComLibB
                     if (ssConsult.ActiveSheet.Cells[i, 0].Text == "True")
                     {
                         SQL = "";
-                        SQL += " UPDATE KOSMOS_OCS.EXAM_RESULTC_CV                                      \r";
+                        SQL += " UPDATE ADMIN.EXAM_RESULTC_CV                                      \r";
                         SQL += "    SET CHKDATE= SYSDATE                                                \r";
                         SQL += "      , CHKSABUN  = '" + txtSabun.Text.Trim() + "'                      \r";
                         SQL += "  WHERE ROWID ='" + ssConsult.ActiveSheet.Cells[i, 15].Text.Trim() + "' \r";

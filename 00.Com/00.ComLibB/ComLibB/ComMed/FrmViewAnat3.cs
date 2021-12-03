@@ -94,7 +94,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT REQUEST1, REQUEST2                                                                                               \r";
-                SQL += "   FROM KOSMOS_OCS.EXAM_ORDER_PB                                                                                         \r";
+                SQL += "   FROM ADMIN.EXAM_ORDER_PB                                                                                         \r";
                 SQL += "  WHERE PAno      = '" + clsOrdFunction.Pat.PtNo + "'                                                                    \r";
                 SQL += "    AND BDate     = TO_DATE('" + clsOrdFunction.GstrBDate + "','YYYY-MM-DD')                                             \r";
                 SQL += "    AND GbIO      = '" + strGBIO + "'                                                                                    \r";
@@ -175,7 +175,7 @@ namespace ComLibB
                 if (rdoCP0.Checked)
                 {
                     SQL = "";
-                    SQL += " SELECT ROWID FROM  KOSMOS_OCS.EXAM_ORDER_PB                                                                             \r";
+                    SQL += " SELECT ROWID FROM  ADMIN.EXAM_ORDER_PB                                                                             \r";
                     SQL += "  WHERE Pano      = '" + clsOrdFunction.Pat.PtNo + "'                                                                    \r";
                     SQL += "    AND BDate     = TO_DATE('" + clsOrdFunction.GstrBDate + "','YYYY-MM-DD')                                             \r";
                     SQL += "    AND GbIO      = '" + strGBIO + "'                                                                                    \r";
@@ -197,7 +197,7 @@ namespace ComLibB
 
 
                     SQL = "";
-                    SQL += "   merge into KOSMOS_OCS.EXAM_ORDER_PB b                                \r";
+                    SQL += "   merge into ADMIN.EXAM_ORDER_PB b                                \r";
                     SQL += "   using dual d                                                         \r";
                     SQL += "      on (b.ROWID = '" + strRowId + "')                                 \r";
                     SQL += "    when matched then                                                   \r";
@@ -247,7 +247,7 @@ namespace ComLibB
                 else
                 {
                     SQL = "";
-                    SQL += " SELECT ROWID FROM  KOSMOS_OCS.EXAM_ORDER_PB_CP                                                                          \r";
+                    SQL += " SELECT ROWID FROM  ADMIN.EXAM_ORDER_PB_CP                                                                          \r";
                     SQL += "  WHERE CPCODE    = '" + lstCode[cboCP.SelectedIndex] + "'                                                               \r";
                     SQL += "    AND GbIO      = '" + strGBIO + "'                                                                                    \r";
 
@@ -268,7 +268,7 @@ namespace ComLibB
 
 
                     SQL = "";
-                    SQL += "   merge into KOSMOS_OCS.EXAM_ORDER_PB_CP b                             \r";
+                    SQL += "   merge into ADMIN.EXAM_ORDER_PB_CP b                             \r";
                     SQL += "   using dual d                                                         \r";
                     SQL += "      on (b.ROWID = '" + strRowId + "')                                 \r";
                     SQL += "    when matched then                                                   \r";

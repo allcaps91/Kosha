@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO, RANKING, TEXT, ROWID, GRPNO  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN             ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN             ");
             parameter.AppendSql(" WHERE TEXT LIKE :TEXT                     ");
             parameter.AppendSql(" ORDER BY RANKING ASC, WRTNO ASC           ");
 
@@ -35,7 +35,7 @@ namespace ComHpcLibB.Repository
         public int Insert(HEA_AUTOPAN item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_PMPA.HEA_AUTOPAN                       ");
+            parameter.AppendSql(" INSERT INTO ADMIN.HEA_AUTOPAN                       ");
             parameter.AppendSql("        (WRTNO, RANKING, WRITEDATE, WRITESABUN, TEXT)      ");
             parameter.AppendSql(" VALUES                                                    ");
             parameter.AppendSql("        (:WRTNO, :RANKING, SYSDATE, :WRITESABUN, :TEXT)    ");
@@ -52,7 +52,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN ");
             parameter.AppendSql(" ORDER BY RANKING ASC          ");
 
             return ExecuteReader<HEA_AUTOPAN>(parameter);
@@ -62,7 +62,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.commandType = CommandType.StoredProcedure;
-            parameter.AppendSql("KOSMOS_PMPA.PC_DELETE_HIC_AUTOPAN");
+            parameter.AppendSql("ADMIN.PC_DELETE_HIC_AUTOPAN");
 
             parameter.AddProcIn("IN_WRTNO", WRTNO);            
 
@@ -72,7 +72,7 @@ namespace ComHpcLibB.Repository
         public int UpdateGrpNobyWrtNo(string strWrtNo, string strGrpNo)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_PMPA.HEA_AUTOPAN SET    ");
+            parameter.AppendSql(" UPDATE ADMIN.HEA_AUTOPAN SET    ");
             parameter.AppendSql("        GRPNO  = GRPNO                 ");
             parameter.AppendSql("  WHERE WRTNO  = :WRTNO                ");
 
@@ -86,7 +86,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TEXT                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN         ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN         ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.AddLikeStatement("WRTNO", nWrtNo);
@@ -97,7 +97,7 @@ namespace ComHpcLibB.Repository
         public int Update(HEA_AUTOPAN item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_PMPA.HEA_AUTOPAN SET    ");
+            parameter.AppendSql(" UPDATE ADMIN.HEA_AUTOPAN SET    ");
             parameter.AppendSql("        WRITEDATE  = SYSDATE           ");
             parameter.AppendSql("      , WRITESABUN = :WRITESABUN       ");
             parameter.AppendSql("      , TEXT       = :TEXT             ");

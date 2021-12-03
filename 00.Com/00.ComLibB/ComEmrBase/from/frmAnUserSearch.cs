@@ -104,7 +104,7 @@ namespace ComEmrBase
             try
             {
                 SQL = "";
-                SQL = " SELECT SABUN, DRNAME AS NAME FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = " SELECT SABUN, DRNAME AS NAME FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + " WHERE  DEPTCODE IN ( 'RT','PC')  ";  // '~1;
                 SQL = SQL + ComNum.VBLF + "   AND  GBOUT = 'N'   ";
                 SQL = SQL + ComNum.VBLF + " ORDER  BY DRCODE  ";
@@ -152,8 +152,8 @@ namespace ComEmrBase
             try
             {
                 SQL = SQL + ComNum.VBLF + "SELECT SABUN, KORNAME AS NAME";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_MST A";
-                SQL = SQL + ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_BUSE B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_MST A";
+                SQL = SQL + ComNum.VBLF + "  INNER JOIN ADMIN.BAS_BUSE B";
                 SQL = SQL + ComNum.VBLF + "          ON A.BUSE = B.BUCODE";
                 SQL = SQL + ComNum.VBLF + " WHERE A.BUSE = '" + SearchGbn + "'";
                 SQL = SQL + ComNum.VBLF + "   AND TOIDAY IS NULL";
@@ -206,7 +206,7 @@ namespace ComEmrBase
             try
             {
                 SQL = "";
-                SQL = " SELECT DEPTCODE, DEPTNAMEK FROM KOSMOS_PMPA.BAS_CLINICDEPT ";
+                SQL = " SELECT DEPTCODE, DEPTNAMEK FROM ADMIN.BAS_CLINICDEPT ";
                 SQL = SQL + ComNum.VBLF + " WHERE  DEPTCODE  NOT IN ('II','R6','HR','PT', 'TO' ) ";
                 SQL = SQL + ComNum.VBLF + " ORDER  BY  PRINTRANKING ";
 
@@ -271,7 +271,7 @@ namespace ComEmrBase
 
                 SQL = "";
                 SQL = " SELECT DRCODE AS SABUN, DRNAME AS NAME ";
-                SQL = SQL + ComNum.VBLF + " FROM   KOSMOS_PMPA.BAS_DOCTOR ";
+                SQL = SQL + ComNum.VBLF + " FROM   ADMIN.BAS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + " WHERE  DRDEPT1 = '" + medDept + "' ";
                 SQL = SQL + ComNum.VBLF + " AND    TOUR <> 'Y' ";
                 SQL = SQL + ComNum.VBLF + " ORDER  BY PRINTRANKING, DRCODE ";
@@ -296,8 +296,8 @@ namespace ComEmrBase
                 {
                     SQL = "";
                     SQL = SQL + ComNum.VBLF + "SELECT SABUN, KORNAME AS NAME";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_MST A";
-                    SQL = SQL + ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_BUSE B";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_MST A";
+                    SQL = SQL + ComNum.VBLF + "  INNER JOIN ADMIN.BAS_BUSE B";
                     SQL = SQL + ComNum.VBLF + "          ON A.BUSE = B.BUCODE";
                     SQL = SQL + ComNum.VBLF + " WHERE A.BUSE = '033103'";
                     SQL = SQL + ComNum.VBLF + "   AND TOIDAY IS NULL";

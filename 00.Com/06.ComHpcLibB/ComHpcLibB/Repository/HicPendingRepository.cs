@@ -21,7 +21,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID RID, EXAMNAME, SAYU   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PENDING     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PENDING     ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO              ");
             parameter.AppendSql("   AND GUBUN = :GUBUN              ");
 
@@ -34,7 +34,7 @@ namespace ComHpcLibB.Repository
         public int DeletebyRowId(string fstrROWID)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE FROM KOSMOS_PMPA.HIC_PENDING    ");
+            parameter.AppendSql("DELETE FROM ADMIN.HIC_PENDING    ");
             parameter.AppendSql(" WHERE ROWID = :RID                    ");
 
             parameter.Add("RID", fstrROWID);
@@ -46,7 +46,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PENDING SET ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PENDING SET ");
             parameter.AppendSql("       EXAMNAME = :EXAMNAME        ");
             parameter.AppendSql("     , SAYU     = :SAYU            ");
             parameter.AppendSql(" WHERE ROWID    = :RID             ");
@@ -63,7 +63,7 @@ namespace ComHpcLibB.Repository
         public int Insert(HIC_PENDING item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_PENDING                                        ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_PENDING                                        ");
             parameter.AppendSql("       (JEPDATE, WRTNO, EXAMNAME, SAYU, ENTDATE, ENTSABUN, GUBUN)          ");
             parameter.AppendSql("VALUES                                                                     ");
             parameter.AppendSql("       (:JEPDATE, :WRTNO, :EXAMNAME, :SAYU, SYSDATE, :ENTSABUN, :GUBUN)    ");

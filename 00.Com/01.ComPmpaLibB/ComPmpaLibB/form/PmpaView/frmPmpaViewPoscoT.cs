@@ -366,7 +366,7 @@ namespace ComPmpaLibB
                     if (strMCNO == "-1") return rtVal;
                     txtMcNo.Text = strMCNO;
 
-                    SQL = "INSERT INTO KOSMOS_OCS.OCS_MCCERTIFI28(";
+                    SQL = "INSERT INTO ADMIN.OCS_MCCERTIFI28(";
                     SQL = SQL + ComNum.VBLF + " MCCLASS, PTNO, MCNO,";
                     SQL = SQL + ComNum.VBLF + " JUMIN1, JUMIN3, SEX, SNAME, JUSO,";
                     SQL = SQL + ComNum.VBLF + " JDATE, SABUN, BUSE,";
@@ -400,7 +400,7 @@ namespace ComPmpaLibB
                 }
                 else
                 {
-                    SQL = "UPDATE KOSMOS_OCS.OCS_MCCERTIFI28 SET";
+                    SQL = "UPDATE ADMIN.OCS_MCCERTIFI28 SET";
                     SQL = SQL + ComNum.VBLF + " EXAM01_01 = '" + strExam01_01 + "',";
                     SQL = SQL + ComNum.VBLF + " EXAM01_02 = '" + strExam01_02 + "',";
                     SQL = SQL + ComNum.VBLF + " EXAM01_03 = '" + strExam01_03 + "',";
@@ -489,8 +489,8 @@ namespace ComPmpaLibB
 
             try
             {
-                SQL = " INSERT INTO KOSMOS_OCS.OCS_MCCERTIFI28_HISTORY ";
-                SQL = SQL + ComNum.VBLF + " SELECT * FROM KOSMOS_OCS.OCS_MCCERTIFI28";
+                SQL = " INSERT INTO ADMIN.OCS_MCCERTIFI28_HISTORY ";
+                SQL = SQL + ComNum.VBLF + " SELECT * FROM ADMIN.OCS_MCCERTIFI28";
                 SQL = SQL + ComNum.VBLF + " WHERE MCNO = '" + ComFunc.SetAutoZero(VB.Trim(txtMcNo.Text), 8) + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -503,7 +503,7 @@ namespace ComPmpaLibB
                     return rtVal;
                 }
 
-                SQL = " DELETE KOSMOS_OCS.OCS_MCCERTIFI28 ";
+                SQL = " DELETE ADMIN.OCS_MCCERTIFI28 ";
                 SQL = SQL + ComNum.VBLF + " WHERE MCNO = '" + ComFunc.SetAutoZero(VB.Trim(txtMcNo.Text), 8) + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -708,7 +708,7 @@ namespace ComPmpaLibB
                 SQL = SQL + ComNum.VBLF + " EXAM03_01, EXAM03_02, EXAM03_03, EXAM03_04, EXAM03_05, EXAM03_REMARK,";
                 SQL = SQL + ComNum.VBLF + " EXAM_DATE, RESULT_DATE , DRNAME, HOSPITAL, DRCODE, LICENSE,";
                 SQL = SQL + ComNum.VBLF + " CHK_EXAM02_01, CHK_EXAM02_02, CHK_EXAM02_03, CHK_EXAM02_04 ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_MCCERTIFI28 ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_MCCERTIFI28 ";
                 SQL = SQL + ComNum.VBLF + "   WHERE MCNO = '" + strMCNO + "'";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -828,7 +828,7 @@ namespace ComPmpaLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return; //권한 확인
 
                 SQL = "SELECT JDATE, PANO, SNAME, SEX, JUMIN1, JUMIN3, BUSE, SABUN, JUSO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT_POSCO ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PATIENT_POSCO ";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + strPano + "'";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -934,7 +934,7 @@ namespace ComPmpaLibB
 
             try
             {
-                SQL = " SELECT MYEN_BUNHO FROM KOSMOS_ADM.INSA_MST ";
+                SQL = " SELECT MYEN_BUNHO FROM ADMIN.INSA_MST ";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + ComFunc.SetAutoZero(argSABUN, 5) + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -975,7 +975,7 @@ namespace ComPmpaLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " SELECT  KOSMOS_OCS.SEQ_MCNO.NEXTVAL SEQ ";
+                SQL = SQL + ComNum.VBLF + " SELECT  ADMIN.SEQ_MCNO.NEXTVAL SEQ ";
                 SQL = SQL + ComNum.VBLF + " FROM    DUAL ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

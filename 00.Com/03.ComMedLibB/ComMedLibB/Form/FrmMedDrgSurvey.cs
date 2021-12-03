@@ -305,8 +305,8 @@ namespace ComMedLibB
                 SQL += "      , TO_CHAR(a.OUTDATE, 'YYYY-MM-DD') OUTDATE                    \r";
                 SQL += "      , b.SNAME, a.DEPTCODE, a.ROWID, a.PANO, a.TRSNO, a.IPDNO      \r";
                 SQL += "      , a.ILLCODE1, a.ILLCODE2, a.ILLCODE3, a.ILLCODE4              \r";
-                SQL += "   FROM KOSMOS_PMPA.IPD_TRANS      a                                \r";
-                SQL += "      , KOSMOS_PMPA.IPD_NEW_MASTER b                                \r";
+                SQL += "   FROM ADMIN.IPD_TRANS      a                                \r";
+                SQL += "      , ADMIN.IPD_NEW_MASTER b                                \r";
                 SQL += "  WHERE a.Pano  = b.Pano(+)                                         \r";
                 SQL += "    AND a.IPDNO = b.IPDNO(+)                                        \r";
                 SQL += "    AND a.PANO  = '" + FstrPANO + "'                                \r";
@@ -373,8 +373,8 @@ namespace ComMedLibB
                 SQL += "       , TO_CHAR(a.INDATE, 'YYYY-MM-DD') INDATE                     \r";
                 SQL += "       , TO_CHAR(a.OUTDATE, 'YYYY-MM-DD') OUTDATE                   \r";
                 SQL += "       , a.ILLCODE1, a.ILLCODE2, a.ILLCODE3, a.ILLCODE4             \r";
-                SQL += "    FROM KOSMOS_PMPA.IPD_TRANS      a                               \r";
-                SQL += "       , KOSMOS_PMPA.IPD_NEW_MASTER b                               \r";
+                SQL += "    FROM ADMIN.IPD_TRANS      a                               \r";
+                SQL += "       , ADMIN.IPD_NEW_MASTER b                               \r";
                 SQL += "   WHERE a.Pano = b.Pano(+)                                         \r";
                 SQL += "     AND a.IPDNO = b.IPDNO(+)                                       \r";
                 SQL += "     AND a.ROWID = '" + strRowid + "'                               \r";
@@ -421,7 +421,7 @@ namespace ComMedLibB
                 SQL += "       , OPT322, OPT323, OPT324, OPT325                             \r";
                 SQL += "       , TO_CHAR(LSDATE, 'YYYY-MM-DD') LSDATE, ENTSABUN, ENTNAME    \r";
                 SQL += "       , TO_CHAR(OPDATE,'YYYY-MM-DD') OPDATE                        \r";
-                SQL += "    FROM KOSMOS_PMPA.DRG_CHART1                                     \r";
+                SQL += "    FROM ADMIN.DRG_CHART1                                     \r";
                 SQL += "   WHERE TRSNO = '" + FstrTRSNO + "'                                \r";
                 SQL += "     AND IPDNO = '" + FstrIPDNO + "'                                \r";
                 SQL += "     AND (DelDate IS NULL OR DelDate ='')                           \r";
@@ -684,7 +684,7 @@ namespace ComMedLibB
                 {
                     SQL = "";
                     SQL += " SELECT TO_CHAR(OPDATE, 'YYYY-MM-DD') OPDATE        \r";
-                    SQL += "   FROM KOSMOS_PMPA.ORAN_MASTER                     \r";
+                    SQL += "   FROM ADMIN.ORAN_MASTER                     \r";
                     SQL += "  WHERE PANO = '" + FstrPANO + "'                   \r";
                     SQL += "  ORDER BY OPDATE DESC                              \r";
                     clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1043,7 +1043,7 @@ namespace ComMedLibB
             {   
                 SQL = "";
                 SQL += " merge                                                                  \r";
-                SQL += "  into KOSMOS_PMPA.DRG_CHART1 a                                         \r";
+                SQL += "  into ADMIN.DRG_CHART1 a                                         \r";
                 SQL += " using dual b                                                           \r";
                 SQL += "    on (a.TRSNO = '" + FstrTRSNO + "'                                   \r";
                 SQL += "   and  a.IPDNO = '" + FstrIPDNO + "')                                  \r";
@@ -1183,7 +1183,7 @@ namespace ComMedLibB
                 try
                 {
                     SQL = "";
-                    SQL = " UPDATE KOSMOS_PMPA.DRG_CHART1 SET       \r";
+                    SQL = " UPDATE ADMIN.DRG_CHART1 SET       \r";
                     SQL += "       DelDate = SYSDATE                \r";
                     SQL += " WHERE TRSNO = '" + FstrTRSNO + "'      \r";
                     SQL += "   AND IPDNO = '" + FstrIPDNO + "'      \r";

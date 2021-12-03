@@ -60,7 +60,7 @@ namespace ComEmrBase
 
         private void MenuModify_Click(object sender, EventArgs e)
         {
-            if (fstrTable.Equals("KOSMOS_EMR.EMRETCMACRO") == false)
+            if (fstrTable.Equals("ADMIN.EMRETCMACRO") == false)
             {
                 panContent.Visible = true;
                 panContent.BringToFront();
@@ -80,7 +80,7 @@ namespace ComEmrBase
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL = "UPDATE KOSMOS_EMR.EMRETCMACRO SET ";
+                SQL = "UPDATE ADMIN.EMRETCMACRO SET ";
                 SQL += ComNum.VBLF + " CONTENTS = '" + strCONTENTS + "'";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + fstrROWID + "'";
 
@@ -114,7 +114,7 @@ namespace ComEmrBase
             if (ComFunc.MsgBoxQEx(this, "해당 항목을 삭제하시겠습니까?", "확인") == DialogResult.No)
                 return;
 
-            if (fstrTable.Equals("KOSMOS_EMR.EMRETCMACRO") == false && fstrTable.Equals("KOSMOS_EMR.EMRETCMACROSUB") == false)
+            if (fstrTable.Equals("ADMIN.EMRETCMACRO") == false && fstrTable.Equals("ADMIN.EMRETCMACROSUB") == false)
             {
                 fstrTable = "";
                 fstrROWID = "";
@@ -129,19 +129,19 @@ namespace ComEmrBase
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                if (fstrTable.Equals("KOSMOS_EMR.EMRETCMACRO"))
+                if (fstrTable.Equals("ADMIN.EMRETCMACRO"))
                 {
                     if (ComFunc.MsgBoxQEx(this, "구분을 삭제하면 하위 내용도 모두 삭제 됩니다. 계속 하시겠습니까?", "확인") == DialogResult.No)
                         return;
 
-                    SQL = " UPDATE KOSMOS_EMR.EMRETCMACRO SET";
+                    SQL = " UPDATE ADMIN.EMRETCMACRO SET";
                     SQL += ComNum.VBLF + " DELDATE = SYSDATE ";
                     SQL += ComNum.VBLF + " WHERE ROWID = '" + fstrROWID + "' ";
 
                 }
-                else if (fstrTable.Equals("KOSMOS_EMR.EMRETCMACROSUB"))
+                else if (fstrTable.Equals("ADMIN.EMRETCMACROSUB"))
                 {
-                    SQL = " UPDATE KOSMOS_EMR.EMRETCMACROSUB SET";
+                    SQL = " UPDATE ADMIN.EMRETCMACROSUB SET";
                     SQL += ComNum.VBLF + " DELDATE = SYSDATE ";
                     SQL += ComNum.VBLF + " WHERE ROWID = '" + fstrROWID + "' ";
                 }
@@ -157,11 +157,11 @@ namespace ComEmrBase
 
                 clsDB.setCommitTran(clsDB.DbCon);
 
-                if (fstrTable.Equals("KOSMOS_EMR.EMRETCMACRO"))
+                if (fstrTable.Equals("ADMIN.EMRETCMACRO"))
                 {
                     readContent(VB.Left(cboGubun.Text, 4));
                 }
-                else if (fstrTable.Equals("KOSMOS_EMR.EMRETCMACROSUB"))
+                else if (fstrTable.Equals("ADMIN.EMRETCMACROSUB"))
                 {
                     readContentSub(gSEQNO);
                 }
@@ -194,11 +194,11 @@ namespace ComEmrBase
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL = " INSERT INTO KOSMOS_EMR.EMRETCMACRO( ";
+                SQL = " INSERT INTO ADMIN.EMRETCMACRO( ";
                 SQL += ComNum.VBLF + " BUSE, SEQNO, FORMNO, WRITEDATE, ";
                 SQL += ComNum.VBLF + " WRITESABUN, CONTENTS) ";
                 SQL += ComNum.VBLF + " SELECT ";
-                SQL += ComNum.VBLF + "'" + clsType.User.BuseCode + "', KOSMOS_EMR.SEQNO_EMRETCMACRO.NEXTVAL,'" + strMacroFormNO + "', SYSDATE, ";
+                SQL += ComNum.VBLF + "'" + clsType.User.BuseCode + "', ADMIN.SEQNO_EMRETCMACRO.NEXTVAL,'" + strMacroFormNO + "', SYSDATE, ";
                 SQL += ComNum.VBLF + clsType.User.IdNumber + ", '" + strCONTENTS + "'";
                 SQL += ComNum.VBLF + " FROM DUAL ";
 
@@ -277,7 +277,7 @@ namespace ComEmrBase
             {
                 if (string.IsNullOrWhiteSpace(fstrROWID) && string.IsNullOrWhiteSpace(fstrTable))
                 {
-                    SQL = " INSERT INTO KOSMOS_EMR.EMRETCMACROSUB( ";
+                    SQL = " INSERT INTO ADMIN.EMRETCMACROSUB( ";
                     SQL += ComNum.VBLF + " SEQNO, WRITEDATE, ";
                     SQL += ComNum.VBLF + " WRITESABUN, CONTENTS) VALUES (";
                     SQL += ComNum.VBLF + gSEQNO + ", SYSDATE, ";
@@ -292,9 +292,9 @@ namespace ComEmrBase
                         return;
                     }
                 }
-                else if (string.IsNullOrWhiteSpace(fstrROWID) == false && fstrTable.Equals("KOSMOS_EMR.EMRETCMACROSUB"))
+                else if (string.IsNullOrWhiteSpace(fstrROWID) == false && fstrTable.Equals("ADMIN.EMRETCMACROSUB"))
                 {
-                    SQL = " UPDATE KOSMOS_EMR.EMRETCMACROSUB SET";
+                    SQL = " UPDATE ADMIN.EMRETCMACROSUB SET";
                     SQL += ComNum.VBLF + " CONTENTS = '" + strCONTENTS + "' ";
                     SQL += ComNum.VBLF + " WHERE ROWID = '" + fstrROWID + "' ";
 
@@ -359,7 +359,7 @@ namespace ComEmrBase
 
             #region 쿼리
             SQL = " SELECT A.FORMNO, A.FORMNAME";
-            SQL += ComNum.VBLF + " FROM KOSMOS_EMR.AEMRFORM A";
+            SQL += ComNum.VBLF + " FROM ADMIN.AEMRFORM A";
             SQL += ComNum.VBLF + " WHERE A.GRPFORMNO = 1031";
             SQL += ComNum.VBLF + "   AND A.USECHECK = 1";
             #endregion
@@ -422,7 +422,7 @@ namespace ComEmrBase
 
             #region 쿼리
             SQL = " SELECT CONTENTS, ROWID, WRITESABUN, SEQNO ";
-            SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRETCMACRO ";
+            SQL += ComNum.VBLF + " FROM ADMIN.EMRETCMACRO ";
             SQL += ComNum.VBLF + " WHERE BUSE = '" + clsType.User.BuseCode + "' ";
             if (strFormNo.Equals("****") == false)
             {
@@ -491,7 +491,7 @@ namespace ComEmrBase
 
             #region 쿼리
             SQL = "SELECT CONTENTS, ROWID, WRITESABUN";
-            SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRETCMACROSUB ";
+            SQL += ComNum.VBLF + " FROM ADMIN.EMRETCMACROSUB ";
             SQL += ComNum.VBLF + " WHERE SEQNO = " + ArgSeqno;
             SQL += ComNum.VBLF + "   AND DELDATE IS NULL";
             #endregion
@@ -558,7 +558,7 @@ namespace ComEmrBase
                     return;
                 }
 
-                fstrTable = "KOSMOS_EMR.EMRETCMACRO";
+                fstrTable = "ADMIN.EMRETCMACRO";
                 fstrROWID = SS1_Sheet1.Cells[e.Row, 2].Text.Trim();
                 fstrContents = SS1_Sheet1.Cells[e.Row, 0].Text.Trim();
 

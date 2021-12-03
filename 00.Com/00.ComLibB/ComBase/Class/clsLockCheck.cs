@@ -62,7 +62,7 @@ namespace ComBase
                 }
 
                 SQL = "";
-                SQL += " DELETE KOSMOS_OCS.OCS_OLOCK                        \r";
+                SQL += " DELETE ADMIN.OCS_OLOCK                        \r";
                 SQL += "  WHERE Ptno   = '" + strLockPtno + "'              \r";
                 if (GstrPart != "")
                 {
@@ -107,7 +107,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL += "SELECT UserName, JobComment, TO_CHAR(WrtTime, 'yy-mm-dd hh24:mi') Jtime \r";
-                SQL += "  FROM KOSMOS_PMPA.IPD_LOCK                                             \r";
+                SQL += "  FROM ADMIN.IPD_LOCK                                             \r";
                 SQL += " WHERE Pano   = '" + VB.UCase(GstrLockPtno.Trim()) + "'                 \r";
                 clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
 
@@ -158,7 +158,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL += " SELECT Remark, TO_CHAR(EntDate,'YY-MM-DD HH24:MI') EntTime, PART, SABUN, IP, EXENAME   \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OLOCK                                                            \r";
+                SQL += "   FROM ADMIN.OCS_OLOCK                                                            \r";
                 SQL += "  WHERE Ptno   = '" + GstrLockPtno + "'                                                 \r";
                 SQL += "    AND ROWNUM = 1                                                                      \r";
                 clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
@@ -228,8 +228,8 @@ namespace ComBase
                 SQL = "";
                 SQL += " SELECT A.IPADDR,  A.USE,  A.USENAME, A.BUCODE, B.NAME          \r";
                 SQL += "      , SUBSTR(JACODE, 1,4) || '-' || SUBSTR(JACODE,5) JACODE   \r";
-                SQL += "   FROM KOSMOS_ADM.JAS_MASTER A                                 \r";
-                SQL += "      , KOSMOS_PMPA.BAS_BUSE  B                                 \r";
+                SQL += "   FROM ADMIN.JAS_MASTER A                                 \r";
+                SQL += "      , ADMIN.BAS_BUSE  B                                 \r";
                 SQL += "  WHERE IPADDR ='" + sIP + "'                                 \r";
                 SQL += "    AND A.BUCODE = B.BUCODE                                     \r";
                 clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
@@ -253,7 +253,7 @@ namespace ComBase
                 }
                 else
                 {
-                    SQL = " SELECT A.REMARK FROM KOSMOS_ADM.JAS_ETCIPADDR A \r";
+                    SQL = " SELECT A.REMARK FROM ADMIN.JAS_ETCIPADDR A \r";
                     SQL += " WHERE IPADDR = '" + strIP + "'                 \r";
                     SqlErr = clsDB.GetDataTableEx(ref dt2, SQL, clsDB.DbCon);
 
@@ -309,7 +309,7 @@ namespace ComBase
          //   clsType.User.IdNumber
             try
             {
-                SQL = " INSERT INTO KOSMOS_OCS.OCS_OLOCK                            \r";
+                SQL = " INSERT INTO ADMIN.OCS_OLOCK                            \r";
                 SQL += "      (Ptno,Remark,EntDate, SABUN,  part, EXENAME, ip )     \r";
                 SQL += "VALUES                                                      \r";
                 SQL += "       ('" + GstrLockPtno + "', '" + GstrLockRemark + "'    \r";

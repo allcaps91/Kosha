@@ -394,7 +394,7 @@ namespace ComEmrBase
             {
                 SQL = string.Empty;
                 SQL = " SELECT NAL ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMR_OPTION_SETDATE ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMR_OPTION_SETDATE ";
                 SQL = SQL + ComNum.VBLF + " WHERE IO = '" + ArgIO + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND USEID = " + argUSEID;
                 if (ArgIO != "I")
@@ -453,21 +453,21 @@ namespace ComEmrBase
             OracleDataReader reader = null;
 
             //string SQL = " SELECT EMRNO";
-            //SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.EMRXML_COMPLETE";
+            //SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EMRXML_COMPLETE";
             //SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + argPTNO + "' ";
             //SQL = SQL + ComNum.VBLF + "   AND MEDFRDATE = '" + argMEDFRDATE + "' ";
 
             string SQL = " SELECT A.EMRNO";
             if (OldGB.Equals("1"))
             {
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRXMLMST A";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMRXMLMST A";
             }
             else
             {
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.AEMRCHARTMST A";
+                SQL += ComNum.VBLF + " FROM ADMIN.AEMRCHARTMST A";
             }
 
-            SQL += ComNum.VBLF + " INNER JOIN KOSMOS_EMR.EMRXML_COMPLETE B";
+            SQL += ComNum.VBLF + " INNER JOIN ADMIN.EMRXML_COMPLETE B";
             SQL += ComNum.VBLF + "    ON A.EMRNO = B.EMRNO";
             if (OldGB.Equals("1") == false)
             {
@@ -509,7 +509,7 @@ namespace ComEmrBase
             OracleDataReader reader = null;
 
             string SQL = " SELECT BOLD_YN ";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRFORM ";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRFORM ";
             SQL = SQL + ComNum.VBLF + " WHERE FORMNO = " + argFORMNO;
 
             string SqlErr = clsDB.GetAdoRs(ref reader, SQL, pDbCon);
@@ -542,7 +542,7 @@ namespace ComEmrBase
             OracleDataReader reader = null;
 
             string SQL = "  SELECT CODE ";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE";
             SQL = SQL + ComNum.VBLF + " WHERE GUBUN = 'EMR_ER_대면기록지'";
             SQL = SQL + ComNum.VBLF + "   AND CODE = '" + argFORMNO + "' ";
             SQL = SQL + ComNum.VBLF + "   AND DELDATE IS NULL ";
@@ -712,8 +712,8 @@ namespace ComEmrBase
             DataTable dt = null;
 
             SQL = " SELECT A.MACROGB AS WARDCD, MAX(B.NAME) AS WARDNAME ";
-            SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRMACROETC A ";
-            SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.EMR_CLINICT B ";
+            SQL = SQL + ComNum.VBLF + "    FROM ADMIN.EMRMACROETC A ";
+            SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.EMR_CLINICT B ";
             SQL = SQL + ComNum.VBLF + "    ON A.MACROGB = B.CLINCODE ";
             SQL = SQL + ComNum.VBLF + "    GROUP BY A.MACROGB ";
 
@@ -755,7 +755,7 @@ namespace ComEmrBase
             DataTable dt = null;
 
             SQL = " SELECT CODE ";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_BCODE ";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_BCODE ";
             SQL = SQL + ComNum.VBLF + " WHERE GUBUN = 'NUR_챠팅근무시간제한NEW' ";
             SQL = SQL + ComNum.VBLF + "   AND CODE = 'USE' ";
             SQL = SQL + ComNum.VBLF + "   AND NAME = 'N' ";
@@ -780,7 +780,7 @@ namespace ComEmrBase
 
             #region 당직자 챠트 설정 체크
             SQL = " SELECT BASCD";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BASCD";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BASCD";
             SQL = SQL + ComNum.VBLF + "WHERE GRPCDB = '간호EMR 관리'";
             SQL = SQL + ComNum.VBLF + "  AND GRPCD  = '예외 사번'";
             SQL = SQL + ComNum.VBLF + "  AND BASCD = '" + clsType.User.Sabun + "'";
@@ -803,7 +803,7 @@ namespace ComEmrBase
             #endregion
 
             SQL = " SELECT WARDCODE, SCHEDULE";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_SCHEDULE1";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_SCHEDULE1";
             SQL = SQL + ComNum.VBLF + " WHERE YYMM  = TO_CHAR(SYSDATE,'YYYYMM')";
             SQL = SQL + ComNum.VBLF + "   AND SABUN = '" + clsType.User.Sabun + "'";
 
@@ -858,7 +858,7 @@ namespace ComEmrBase
             if (strDAY.Equals("01"))
             {
                 SQL = " SELECT WARDCODE, SCHEDULE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_SCHEDULE1";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_SCHEDULE1";
                 SQL = SQL + ComNum.VBLF + " WHERE YYMM  = TO_CHAR(SYSDATE - 1,'YYYYMM')";
                 SQL = SQL + ComNum.VBLF + "   AND SABUN = '" + clsType.User.Sabun + "'";
 
@@ -971,7 +971,7 @@ namespace ComEmrBase
             {                
                 SQL = "";
                 SQL = " SELECT EMRNO, PRINTDATE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRPRTREQ ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRPRTREQ ";
                 SQL = SQL + ComNum.VBLF + " WHERE EMRNO = " + strEmrNo;
                 SQL = SQL + ComNum.VBLF + " ORDER BY PRINTDATE DESC ";
 

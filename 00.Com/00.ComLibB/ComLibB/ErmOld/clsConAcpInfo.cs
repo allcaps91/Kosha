@@ -396,7 +396,7 @@ namespace ComLibB
                 {
                     //입원
                     SQL =                     "SELECT  S.PANO, TO_CHAR(S.INDATE, 'YYYYMMDD') INDATE,  TO_CHAR(S.OUTDATE, 'YYYYMMDD') OUTDATE, S.DeptCode, S.ROWID,  D.SABUN";
-                    SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "ipd_new_master S, kosmos_ocs.ocs_doctor d";
+                    SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "ipd_new_master S, ADMIN.ocs_doctor d";
                     SQL = SQL + ComNum.VBLF + "WHERE S.DrCode = d.drcode";
                     SQL = SQL + ComNum.VBLF +            "AND S.PANO = '" + strPatid + "' ";
                     SQL = SQL + ComNum.VBLF +            "AND S.DeptCode = '" + strDeptCode + "' ";
@@ -550,7 +550,7 @@ namespace ComLibB
                     {
                         SQL =                           "INSERT INTO " + ComNum.DB_EMR + "EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
                         SQL = SQL + ComNum.VBLF +       "ERFLAG, INTIME, OLDPATID, FSTFLAG, WARD, ROOM, COMPLETED";
-                        SQL = SQL + ComNum.VBLF +               ") values( KOSMOS_EMR.SEQ_TREATNO.NEXTVAL, '" + strPatid.ToString().Trim() + "' ,";
+                        SQL = SQL + ComNum.VBLF +               ") values( ADMIN.SEQ_TREATNO.NEXTVAL, '" + strPatid.ToString().Trim() + "' ,";
                         SQL = SQL + ComNum.VBLF +               "'O' , "; //CLASS
                         SQL = SQL + ComNum.VBLF +               "'" + strBDate + "' ,";   //INDATE
                         SQL = SQL + ComNum.VBLF +               "'" + strDeptCode + "' ,";    //CLINCODE 2009-09-17 윤조연수정
@@ -779,7 +779,7 @@ namespace ComLibB
 
                 // 입원
                 SQL = "SELECT  S.PANO, TO_CHAR(S.INDATE, 'YYYYMMDD') INDATE,  TO_CHAR(S.OUTDATE, 'YYYYMMDD') OUTDATE, S.DeptCode, S.ROWID,D.SABUN";
-                SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "ipd_new_master S , kosmos_ocs.ocs_doctor d";
+                SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "ipd_new_master S , ADMIN.ocs_doctor d";
                 SQL = SQL + ComNum.VBLF + "WHERE S.DrCode = d.drcode";
                 SQL = SQL + ComNum.VBLF + "AND S.PANO = '" + strPatid + "'";
                 SQL = SQL + ComNum.VBLF + "AND TRUNC(S.InDate) = TO_DATE('" + strBDate + "', 'YYYYMMDD')";

@@ -1547,7 +1547,7 @@ namespace ComMedLibB
                             clsDB.setBeginTran(clsDB.DbCon);
 
                             SQL = "";
-                            SQL = " UPDATE KOSMOS_PMPA.DUR_MASTER SET DDATE =SYSDATE WHERE PANO ='" + clsOrdFunction.Pat.PtNo + "' AND SLIPNO = '" + strSlipNo + "' ";
+                            SQL = " UPDATE ADMIN.DUR_MASTER SET DDATE =SYSDATE WHERE PANO ='" + clsOrdFunction.Pat.PtNo + "' AND SLIPNO = '" + strSlipNo + "' ";
                             if (DurAtc.strIO != "")
                             {
                                 SQL += "  AND GbIO = '" + DurAtc.strIO + "'    ";
@@ -1611,7 +1611,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT NAME                        \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_BCODE       \r";
+                SQL += "   FROM ADMIN.BAS_BCODE       \r";
                 SQL += "  WHERE GUBUN = 'DUR_퇴원약_시행'   \r";
                 SQL += "    AND CODE = 'USE'                \r";
                 SQL += "    AND NAME = 'Y'                  \r";
@@ -1660,7 +1660,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT NAME                        \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_BCODE       \r";
+                SQL += "   FROM ADMIN.BAS_BCODE       \r";
                 SQL += "  WHERE GUBUN = 'DUR_응급실_시행'     \r";
                 SQL += "    AND CODE = 'USE'                \r";
                 SQL += "    AND NAME = 'Y'                  \r";
@@ -1710,7 +1710,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT NAME                                \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_BCODE               \r";
+                SQL += "   FROM ADMIN.BAS_BCODE               \r";
                 SQL += "  WHERE GUBUN = 'DUR_예외처리_등록번호'        \r";
                 SQL += "    AND CODE = '" + strPtno + "'            \r";
                 SQL += "    AND NAME = 'Y'                          \r";
@@ -1880,7 +1880,7 @@ namespace ComMedLibB
         //    try
         //    {
         //        SQL = "";
-        //        SQL += "   merge into KOSMOS_OCS.EXAM_INFECT_MASTER a                                   \r";
+        //        SQL += "   merge into ADMIN.EXAM_INFECT_MASTER a                                   \r";
         //        SQL += "   using dual b                                                                 \r";
         //        SQL += "      on (a.PTNO = '" + clsOrdFunction.Pat.PtNo + "'                            \r";
         //        SQL += "     and  a.GUBUN = '06'                                                        \r";
@@ -1936,7 +1936,7 @@ namespace ComMedLibB
             try
             {
                 SQL = "";
-                SQL += " SELECT SLIPNO FROM KOSMOS_PMPA.DUR_MASTER                              \r";
+                SQL += " SELECT SLIPNO FROM ADMIN.DUR_MASTER                              \r";
                 SQL += "  WHERE BDATE =TO_DATE('" + clsOrdFunction.GstrBDate + "','YYYY-MM-DD') \r";
                 SQL += "    AND PANO = '" + clsOrdFunction.Pat.PtNo + "'                        \r";
                 SQL += "    AND DEPTCODE= '" + clsOrdFunction.Pat.DeptCode + "'                 \r";
@@ -1978,7 +1978,7 @@ namespace ComMedLibB
 
                 //당일 없으면 처방번호 생성
                 SQL = "";
-                SQL += " SELECT  KOSMOS_PMPA.SEQ_DUR_SLIPNO.NEXTVAL  NVAL FROM DUAL \r";
+                SQL += " SELECT  ADMIN.SEQ_DUR_SLIPNO.NEXTVAL  NVAL FROM DUAL \r";
                 SqlErr = clsDB.GetAdoRs(ref reader, SQL, pDbCon);
 
                 if (reader.HasRows && reader.Read())

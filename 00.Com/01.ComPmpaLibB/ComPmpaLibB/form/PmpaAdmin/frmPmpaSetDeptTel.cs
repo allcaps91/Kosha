@@ -57,7 +57,7 @@ namespace ComPmpaLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT CODE, NAME, PART, GUBUN, ROWID";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_BCODE";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_BCODE";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1";
                 SQL += ComNum.VBLF + "    AND GUBUN = '진료사실증명서_전화번호'";
                 SQL += ComNum.VBLF + "  ORDER BY CODE ";
@@ -166,7 +166,7 @@ namespace ComPmpaLibB
                         if (strRowid == "" && strDel == "")
                         {
                             SQL = "";
-                            SQL += ComNum.VBLF + " INSERT INTO KOSMOS_PMPA.BAS_BCODE";
+                            SQL += ComNum.VBLF + " INSERT INTO ADMIN.BAS_BCODE";
                             SQL += ComNum.VBLF + "        (GUBUN, CODE, NAME)";
                             SQL += ComNum.VBLF + " VALUES ('" + strGubun + "',";
                             SQL += ComNum.VBLF + "         '" + strCode + "',";
@@ -178,13 +178,13 @@ namespace ComPmpaLibB
                             if (strDel != "")
                             {
                                 SQL = "";
-                                SQL += ComNum.VBLF + " DELETE  KOSMOS_PMPA.BAS_BCODE WHERE ROWID = '" + strRowid + "' ";
+                                SQL += ComNum.VBLF + " DELETE  ADMIN.BAS_BCODE WHERE ROWID = '" + strRowid + "' ";
                                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowCnt, clsDB.DbCon);
                             }
                             else if (strChange == "Y")
                             {
                                 SQL = "";
-                                SQL += ComNum.VBLF + " UPDATE KOSMOS_PMPA.BAS_BCODE";
+                                SQL += ComNum.VBLF + " UPDATE ADMIN.BAS_BCODE";
                                 SQL += ComNum.VBLF + "    SET Code = '" + strCode + "',";
                                 SQL += ComNum.VBLF + "        Name = '" + strName + "'";
                                 SQL += ComNum.VBLF + "  WHERE 1 = 1";

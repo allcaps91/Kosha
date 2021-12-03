@@ -30,7 +30,7 @@ namespace ComLibB
             cboDept.Items.Clear();
             cboDept.Items.Add("전체");
 
-            SQL = "SELECT DeptCode FROM KOSMOS_PMPA.BAS_CLINICDEPT ";
+            SQL = "SELECT DeptCode FROM ADMIN.BAS_CLINICDEPT ";
             SQL = SQL + "WHERE DeptCode NOT IN ('TO','HR','HD','CS','PC','OC','II','R6',";
             SQL = SQL + "      'PT','AN','HC','OM','LM') ";
             SQL = SQL + "ORDER BY PrintRanking ";
@@ -122,7 +122,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT TO_CHAR(BDATE, 'MM') MONTH, c.PrintRanking,  A.TODEPTCODE DEPTCODE, A.TODRCODE DRCODE, B.DRNAME, COUNT(*) QTY  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_ITRANSFER A, BAS_DOCTOR b,BAS_CLINICDEPT c  ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_ITRANSFER A, BAS_DOCTOR b,BAS_CLINICDEPT c  ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.GBCONFIRM ='*' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.GBDEL <> '*'  ";
                 SQL = SQL + ComNum.VBLF + "   AND A.GBFLAG ='1' ";

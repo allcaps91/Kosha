@@ -82,10 +82,10 @@ namespace ComPmpaLibB
             SQL = "";
             SQL += ComNum.VBLF + "SELECT                                                                                ";
             SQL += ComNum.VBLF + "  a.PTNO ,TO_CHAR(a.BDate,'YYYY-MM-DD') BDATE,b.SName, COUNT(a.PTNO) CNT              ";
-            SQL += ComNum.VBLF + "FROM " + ComNum.DB_MED + "OCS_IORDER a, KOSMOS_PMPA.BAS_PATIENT b                      ";
+            SQL += ComNum.VBLF + "FROM " + ComNum.DB_MED + "OCS_IORDER a, ADMIN.BAS_PATIENT b                      ";
             SQL += ComNum.VBLF + "WHERE 1=1                                                                             ";
             SQL += ComNum.VBLF + "  AND a.Ptno=b.Pano(+)                                                                ";
-            SQL += ComNum.VBLF + "  AND a.PTNO IN ( SELECT PANO FROM KOSMOS_PMPA.IPD_TRANS WHERE OUTDATE >=TO_DATE('" + CF.DATE_ADD(clsDB.DbCon, argDate, -1) + "','YYYY-MM-DD')  AND ACTDATE IS NULL AND GBIPD NOT IN ('D')) ";  //퇴원대상자만
+            SQL += ComNum.VBLF + "  AND a.PTNO IN ( SELECT PANO FROM ADMIN.IPD_TRANS WHERE OUTDATE >=TO_DATE('" + CF.DATE_ADD(clsDB.DbCon, argDate, -1) + "','YYYY-MM-DD')  AND ACTDATE IS NULL AND GBIPD NOT IN ('D')) ";  //퇴원대상자만
             SQL += ComNum.VBLF + "  AND a.BDate >=TO_DATE('" + CF.DATE_ADD(clsDB.DbCon, argDate, -1) + "','YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "  AND a.GBSEND = ' '                                                                  ";
             SQL += ComNum.VBLF + "  AND a.GBPRN ='A'                                                                    ";

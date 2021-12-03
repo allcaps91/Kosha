@@ -391,7 +391,7 @@ namespace ComEmrBase
 
             SQL = " SELECT TO_CHAR(MIN(DDATE),'YYYY-MM-DD') MINDATE FROM";
             SQL = SQL + ComNum.VBLF + " (SELECT MIN(INDATE) DDATE";
-            SQL = SQL + ComNum.VBLF + " From KOSMOS_PMPA.IPD_NEW_MASTER";
+            SQL = SQL + ComNum.VBLF + " From ADMIN.IPD_NEW_MASTER";
             SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + AcpEmr.ptNo + " '";
             if (arg == "")
             {
@@ -417,7 +417,7 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "   AND DEPTCODE IN (" + strDeptCode + ") ";
             }
             SQL = SQL + ComNum.VBLF + " Union All";
-            SQL = SQL + ComNum.VBLF + " SELECT MIN(ACTDATE) DDATE FROM KOSMOS_PMPA.OPD_MASTER";
+            SQL = SQL + ComNum.VBLF + " SELECT MIN(ACTDATE) DDATE FROM ADMIN.OPD_MASTER";
             SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + AcpEmr.ptNo + "' ";
             if (arg == "")
             {
@@ -650,7 +650,7 @@ namespace ComEmrBase
                 string strCurDate = VB.Left(strCurDateTime, 8);
                 string strCurTime = VB.Right(strCurDateTime, 6);
 
-                SQL = " SELECT EMRNO FROM KOSMOS_EMR.EMRXMLIMAGES";
+                SQL = " SELECT EMRNO FROM ADMIN.EMRXMLIMAGES";
                 SQL = SQL + ComNum.VBLF + " WHERE WRITEDATE = '" + strCurDate + "'";
                 SQL = SQL + ComNum.VBLF + " AND USEID = '" + clsType.User.IdNumber + "'";
                 SQL = SQL + ComNum.VBLF + " AND PTNO = '" + AcpEmr.ptNo + "'";
@@ -677,11 +677,11 @@ namespace ComEmrBase
                 dt.Dispose();
                 dt = null;
 
-                SQL = " INSERT INTO KOSMOS_EMR.EMRXMLMST";
+                SQL = " INSERT INTO ADMIN.EMRXMLMST";
                 SQL = SQL + ComNum.VBLF + " SELECT EMRNO, PTNO, '1', FORMNO, USEID,";
                 SQL = SQL + ComNum.VBLF + " CHARTDATE, CHARTTIME, INOUTCLS, MEDFRDATE,";
                 SQL = SQL + ComNum.VBLF + " MedFrTime , MedEndDate, MedEndTime, MedDeptCd, MedDrCd, writeDate, writeTime";
-                SQL = SQL + ComNum.VBLF + "  From KOSMOS_EMR.EMRXML";
+                SQL = SQL + ComNum.VBLF + "  From ADMIN.EMRXML";
                 SQL = SQL + ComNum.VBLF + " Where EMRNO = " + strEmrNo;
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")

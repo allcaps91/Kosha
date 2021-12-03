@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO, DEPTCODE, XCODE, RESULT               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_RESULTNEW                  ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_RESULTNEW                  ");
             parameter.AppendSql(" WHERE PANO  = :PANO                               ");
             parameter.AppendSql("   AND SEEKDATE = TO_DATE(:SEEKDATE,'YYYY-MM-DD')  ");
             parameter.AppendSql("   AND XCODE = 'HC341'                             ");
@@ -40,7 +40,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO,TO_CHAR(SEEKDATE,'YYYY-MM-DD') SEEKDATE, XJONG, XCODE, RESULT, RESULT1 ");
             parameter.AppendSql("     , TO_CHAR(READDATE,'YYYY-MM-DD') READDATE                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_RESULTNEW                                                  ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_RESULTNEW                                                  ");
             parameter.AppendSql(" WHERE SEEKDATE = TO_DATE(:SEEKDATE, 'YYYY-MM-DD')                                 ");
             parameter.AppendSql("   AND DEPTCODE IN ('HR','TO')                                                     ");
             parameter.AppendSql("   AND (APPROVE = 'Y' OR APPROVE IS NULL)                                          ");
@@ -55,7 +55,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO, DEPTCODE, XCODE, RESULT                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_RESULTNEW                                                  ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_RESULTNEW                                                  ");
             parameter.AppendSql(" WHERE PANO  = :PANO                                                               ");
             parameter.AppendSql("   AND SEEKDATE = TO_DATE(:SEEKDATE, 'YYYY-MM-DD')                                 ");
             parameter.AppendSql("   AND XCODE = :XCODE                                                              ");
@@ -73,7 +73,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT XDRCODE1                                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_RESULTNEW                      ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_RESULTNEW                      ");
             parameter.AppendSql(" WHERE PANO = :PANO                                    ");
             parameter.AppendSql("   AND SEEKDATE = TO_DATE(:SEEKDATE, 'YYYY-MM-DD')     ");
             parameter.AppendSql("   AND XCODE IN (:XCODE)                               ");
@@ -91,7 +91,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT XDRCODE1                                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_RESULTNEW                      ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_RESULTNEW                      ");
             parameter.AppendSql(" WHERE PANO = :PANO                                    ");
             parameter.AppendSql("   AND SEEKDATE = TO_DATE(:SEEKDATE, 'YYYY-MM-DD')     ");
             parameter.AppendSql("   AND XCODE IN (:XCODE)                               ");
@@ -108,7 +108,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT XJong,XDrCode1,XCode,XName,Result,TO_CHAR(ReadDate,'YYYY-MM-DD') ReadDate   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_RESULTNEW                                                  ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_RESULTNEW                                                  ");
             parameter.AppendSql(" WHERE PANO = :PANO                                                                ");
             parameter.AppendSql("   AND DEPTCODE = 'HR'                                                             ");
             parameter.AppendSql("   AND TRUNC(SeekDate)=TO_DATE(:SEEKDATE, 'YYYY-MM-DD')                            ");
@@ -124,7 +124,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO,TO_CHAR(SEEKDATE,'YYYY-MM-DD') SEEKDATE,PANHIC ");
             parameter.AppendSql("     , RESULT                                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_RESULTNEW                          ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_RESULTNEW                          ");
             parameter.AppendSql("WHERE ReadDate >= TRUNC(SYSDATE-14)                        ");
             parameter.AppendSql("   AND DEPTCODE = :DEPTCODE                                ");
             parameter.AppendSql("   AND XCODE    = :XCODE                                   ");
@@ -140,7 +140,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SEEKDATE, RESULT, RESULT1                               ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.XRAY_RESULTNEW                               ");
+            parameter.AppendSql(" FROM ADMIN.XRAY_RESULTNEW                               ");
             parameter.AppendSql(" WHERE PANO  = :PANO                                           ");
             parameter.AppendSql(" AND SEEKDATE >= TO_DATE(:SEEKDATE, 'YYYY-MM-DD')              ");
             parameter.AppendSql(" AND XCODE = :XCODE                                            ");

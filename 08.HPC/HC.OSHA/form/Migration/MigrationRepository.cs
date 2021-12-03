@@ -14,7 +14,7 @@
         public List<SiteMaxModel> GetMaxContract(long siteid)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("   SELECT YYYYMM  FROM KOSMOS_PMPA.HIC_BOGENLTDSET ");
+            parameter.AppendSql("   SELECT YYYYMM  FROM ADMIN.HIC_BOGENLTDSET ");
             parameter.AppendSql("       WHERE LtdCode = :SITEID ");
             parameter.AppendSql("   AND(DELDATE IS NULL OR DELDATE = '') ");
             parameter.AppendSql("  ORDER BY YYYYMM DESC ");

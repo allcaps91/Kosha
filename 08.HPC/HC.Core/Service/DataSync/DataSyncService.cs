@@ -91,7 +91,7 @@ namespace HC_Core.Service
             }
 
 
-            clsDB.DbCon = clsDB.DBConnect("192.168.100.31", "1521", "ORA7", "KOSMOS_PMPA", "hospital");
+            clsDB.DbCon = clsDB.DBConnect("192.168.100.31", "1521", "ORA7", "ADMIN", "hospital");
             DataSyncService.Instance.IsLocalDB = false;
             if (clsDB.DbCon == null)
             {
@@ -105,7 +105,7 @@ namespace HC_Core.Service
                 clsDB.DbCon.DisDBConnect();
             }
 
-            clsDB.DbCon = clsDB.DBConnect("localhost", "1521", "ORCL", "KOSMOS_PMPA", "hospital");
+            clsDB.DbCon = clsDB.DBConnect("localhost", "1521", "ORCL", "ADMIN", "hospital");
 
             DataSyncService.Instance.IsLocalDB = true;
             if (clsDB.DbCon == null)
@@ -165,7 +165,7 @@ namespace HC_Core.Service
 
         public void Export(string tables)
         {
-            string command = @"exp kosmos_pmpa/hospital@ora7 tables=" + tables + " file='Resources\\dmp\\hic.dmp' ";
+            string command = @"exp ADMIN/hospital@ora7 tables=" + tables + " file='Resources\\dmp\\hic.dmp' ";
             StreamWriter writer = new StreamWriter(tempBatchFile, false, Encoding.Default);
             writer.WriteLine(command);
             writer.Close();
@@ -191,7 +191,7 @@ namespace HC_Core.Service
             {
 
 
-                string command = @"imp kosmos_pmpa/hospital@orcl tables=" + schemaTables + " file='Resources\\dmp\\hic_schema.dmp' ignore=y";
+                string command = @"imp ADMIN/hospital@orcl tables=" + schemaTables + " file='Resources\\dmp\\hic_schema.dmp' ignore=y";
                 StreamWriter writer = new StreamWriter(tempBatchFileBySchema, false, Encoding.Default);
                 writer.WriteLine(command);
                 writer.Close();
@@ -221,7 +221,7 @@ namespace HC_Core.Service
                     dataSyncRepository.CreateSequence(seqList);
                 }
 
-                string command = @"imp kosmos_pmpa/hospital@orcl tables=" + tables + " file='Resources\\dmp\\hic.dmp' ignore=y";
+                string command = @"imp ADMIN/hospital@orcl tables=" + tables + " file='Resources\\dmp\\hic.dmp' ignore=y";
                 using (StreamWriter writer = new StreamWriter(tempBatchFile, false, Encoding.Default))
                 {
 
@@ -249,7 +249,7 @@ namespace HC_Core.Service
 
         public void ExportSchema(string tables)
         {
-            string command = @"exp kosmos_pmpa/hospital@ora7 tables=" + tables + " file='Resources\\dmp\\hic_schema.dmp' rows=n ";
+            string command = @"exp ADMIN/hospital@ora7 tables=" + tables + " file='Resources\\dmp\\hic_schema.dmp' rows=n ";
             StreamWriter writer = new StreamWriter(tempBatchFileBySchema, false, Encoding.Default);
             writer.WriteLine(command);
             writer.Close();

@@ -56,8 +56,8 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT PANO, SNAME, TDEPT, TDOCTOR, B.DRNAME, TWARD, TO_CHAR(OUTDATE, 'YYYY-MM-DD') OUTDATE";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.MID_SUMMARY A";
-                SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.BAS_DOCTOR B";
+                SQL += ComNum.VBLF + " FROM ADMIN.MID_SUMMARY A";
+                SQL += ComNum.VBLF + "   INNER JOIN ADMIN.BAS_DOCTOR B";
                 SQL += ComNum.VBLF + "      ON B.DRCODE = A.TDOCTOR";
                 SQL += ComNum.VBLF + " WHERE OUTDATE = TO_DATE('" + dtpDate.Value.ToShortDateString() + "','YYYY-MM-DD') ";
                 if(chkER.Checked)

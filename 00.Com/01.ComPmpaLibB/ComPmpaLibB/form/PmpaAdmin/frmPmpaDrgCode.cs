@@ -375,7 +375,7 @@ namespace ComPmpaLibB
                         if (strSuNext != "")    //등록
                         {
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + " INSERT INTO KOSMOS_PMPA.DRG_MAP_SUGA                        ";
+                            SQL = SQL + ComNum.VBLF + " INSERT INTO ADMIN.DRG_MAP_SUGA                        ";
                             SQL = SQL + ComNum.VBLF + " (DCODE, SUNEXT ,ENTDATE,GBN ) VALUES (                      ";
                             SQL = SQL + ComNum.VBLF + "  '" + strDrgCode + "', '" + strSuNext + "', SYSDATE ,'A' )  ";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -401,7 +401,7 @@ namespace ComPmpaLibB
                     {
                         if (strSuNext == "")  //삭제
                         {
-                            SQL = " DELETE KOSMOS_PMPA.DRG_MAP_SUGA WHERE ROWID = '" + strRowid + "' ";
+                            SQL = " DELETE ADMIN.DRG_MAP_SUGA WHERE ROWID = '" + strRowid + "' ";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                             if (SqlErr != "")
                             {
@@ -414,7 +414,7 @@ namespace ComPmpaLibB
                         else //갱신
                         {
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + " UPDATE KOSMOS_PMPA.DRG_MAP_SUGA SET ";
+                            SQL = SQL + ComNum.VBLF + " UPDATE ADMIN.DRG_MAP_SUGA SET ";
                             SQL = SQL + ComNum.VBLF + " SUNEXT = '" + strSuNext + "'        ";
                             SQL = SQL + ComNum.VBLF + "  WHERE ROWID = '" + strRowid + "'   ";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -432,7 +432,7 @@ namespace ComPmpaLibB
                         if (strSuNext != "") //등록
                         {
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + " INSERT INTO KOSMOS_PMPA.DRG_MAP_SUGA                        ";
+                            SQL = SQL + ComNum.VBLF + " INSERT INTO ADMIN.DRG_MAP_SUGA                        ";
                             SQL = SQL + ComNum.VBLF + " (DCODE, SUNEXT ,ENTDATE, GBN) VALUES (                      ";
                             SQL = SQL + ComNum.VBLF + " '" + strDrgCode + "', '" + strSuNext + "', SYSDATE, 'B' )   ";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

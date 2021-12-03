@@ -161,7 +161,7 @@ namespace ComLibB
                 SQL = " SELECT /*+ index(bas_zips_road INDEX_ZIPSROAD9)*/ZIPNAME1 || ' ' || ZIPNAME2 || ' ' || ZIPNAME3 AS HEADJUSO, ";
                 SQL = SQL + ComNum.VBLF + "        ROADNAME, BUN1, BUN2, DONGNAME, RINAME, DONGNAME2, SAN,    ";
                 SQL = SQL + ComNum.VBLF + "        JIBUN1, JIBUN2, ROADCODE, BUILDNAME, BUILDNO, ZIPCODE, MAILJIYEK      ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.Bas_ZIPS_ROAD                                  ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.Bas_ZIPS_ROAD                                  ";
                 SQL = SQL + ComNum.VBLF + "  Where ZIPNAME1 ='" + strZipName + "'                             ";
 
                 if (ComboCap.Text.Trim() != "전체")
@@ -343,7 +343,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = " SELECT ZIPNAME2 From KOSMOS_PMPA.BAS_ZIPS_ROAD Where ZIPNAME1 ='경상북도' ";
+                SQL = " SELECT ZIPNAME2 From ADMIN.BAS_ZIPS_ROAD Where ZIPNAME1 ='경상북도' ";
                 SQL = SQL + ComNum.VBLF + " Group By ZIPNAME2 ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -427,7 +427,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = " SELECT ZIPNAME2 From KOSMOS_PMPA.BAS_ZIPS_ROAD Where ZIPNAME1 ='" + strCap1 + "' ";
+                SQL = " SELECT ZIPNAME2 From ADMIN.BAS_ZIPS_ROAD Where ZIPNAME1 ='" + strCap1 + "' ";
                 SQL = SQL + ComNum.VBLF + " Group By ZIPNAME2 ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

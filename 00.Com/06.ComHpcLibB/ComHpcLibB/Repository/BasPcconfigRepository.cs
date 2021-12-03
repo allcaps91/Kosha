@@ -19,7 +19,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT IPADDRESS, GUBUN,   CODE,    VALUEV, VALUEN ");
             parameter.AppendSql("     , DISSEQNO,  INPDATE, INPTIME, DELGB          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PCCONFIG                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PCCONFIG                    ");
             parameter.AppendSql(" WHERE GUBUN = '검진센터계측항목'                  ");
 
             if (!string.IsNullOrEmpty(IPADDRESS))
@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT VALUEV                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PCCONFIG                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PCCONFIG                    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                              ");
 
             if (!string.IsNullOrEmpty(iPADDRESS))
@@ -55,7 +55,7 @@ namespace ComHpcLibB.Repository
         public int GetConfig_Code(string sIpAddress)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE KOSMOS_PMPA.BAS_PCCONFIG   ");
+            parameter.AppendSql("DELETE ADMIN.BAS_PCCONFIG   ");
             parameter.AppendSql(" WHERE IPADDRESS = :IPADDRESS     ");
 
             parameter.Add("IPADDRESS", sIpAddress);
@@ -67,7 +67,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE                                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PCCONFIG                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PCCONFIG                    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                              ");
 
             if (!string.IsNullOrEmpty(gstrCOMIP))
@@ -85,7 +85,7 @@ namespace ComHpcLibB.Repository
         public int Save_PcConfig(BAS_PCCONFIG item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("MERGE INTO KOSMOS_PMPA.BAS_PCCONFIG a  ");
+            parameter.AppendSql("MERGE INTO ADMIN.BAS_PCCONFIG a  ");
             parameter.AppendSql("using dual d                           ");
             parameter.AppendSql("   on (a.GUBUN     = :GUBUN            ");
             parameter.AppendSql("  and  a.CODE      = :CODE             ");
@@ -136,7 +136,7 @@ namespace ComHpcLibB.Repository
         public int Save_PcConfig_Test(BAS_PCCONFIG item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.BAS_PCCONFIG   ");
+            parameter.AppendSql("INSERT INTO ADMIN.BAS_PCCONFIG   ");
             parameter.AppendSql("         (IPADDRESS                    ");
             parameter.AppendSql("        , GUBUN                        ");
             parameter.AppendSql("        , CODE                         ");
@@ -174,7 +174,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT VALUEV                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PCCONFIG                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PCCONFIG                    ");
             parameter.AppendSql(" WHERE GUBUN = '폐활량장비S/N'                     ");
 
             if (!string.IsNullOrEmpty(IPADDRESS))
@@ -192,7 +192,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT VALUEV                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PCCONFIG                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PCCONFIG                    ");
             parameter.AppendSql(" WHERE GUBUN = '카드구분'                     ");
 
             if (!string.IsNullOrEmpty(IPADDRESS))

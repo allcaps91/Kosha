@@ -131,7 +131,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " select NAME                            \r";
-                SQL += "   from kosmos_pmpa.bas_bcode           \r";
+                SQL += "   from ADMIN.bas_bcode           \r";
                 SQL += "  where gubun = 'BAS_환자종류'          \r";
                 SQL += "    and code = '" + ArgCode.Trim() + "' \r";
                 clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -191,7 +191,7 @@ namespace ComMedLibB
                 SQL += " SELECT Pano, SETC6                                         \r";
                 SQL += "      , TO_CHAR(SDATE,'YYYY-MM-DD') SDATE                   \r";
                 SQL += "      , TO_CHAR(EDATE,'YYYY-MM-DD') EDATE                   \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_SELECT_MST                          \r";
+                SQL += "   FROM ADMIN.BAS_SELECT_MST                          \r";
                 SQL += "  WHERE PANO = '" + ArgPano + "'                            \r";
                 SQL += "    AND DRCODE = '" + ArgDrCode + "'                        \r";
                 SQL += "    AND GUBUN = '" + ArgIO + "'                             \r";
@@ -251,7 +251,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += "SELECT Pano,IPDNO                                               \r";
-                SQL += "  FROM KOSMOS_PMPA.IPD_NEW_MASTER                               \r";
+                SQL += "  FROM ADMIN.IPD_NEW_MASTER                               \r";
                 SQL += " WHERE IPDNO = " + ArgIpdNo + "                                 \r";
                 SQL += "   AND INDATE >= TO_DATE('2011-06-01 00:01','YYYY-MM-DD HH24:MI')\r";
                 SQL += "   AND GBSTS NOT IN ('9')                                       \r";
@@ -305,7 +305,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT SUCODE, REMARK                      \r";
-                SQL += "   FROM KOSMOS_PMPA.JSIM_SIMSAMSG           \r";
+                SQL += "   FROM ADMIN.JSIM_SIMSAMSG           \r";
                 SQL += "  WHERE  SUCODE = '" + sOrdCode.Trim() + "' \r";
                 SQL += "    AND  DDATE IS NULL                      \r";
                 switch (sBi.Substring(0, 1))

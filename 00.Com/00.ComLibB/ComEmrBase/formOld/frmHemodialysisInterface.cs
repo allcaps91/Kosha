@@ -142,7 +142,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + " DIALINSTR E, DIALTOTTIME F, DIALSPECIES G,"          ;
                 SQL += ComNum.VBLF + " TEMPERATURE H, HEPARINFSCAP I, HEPARINMAINTCAP J,"   ;
                 SQL += ComNum.VBLF + " WGTH K, TARGET L"                                    ;
-                SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_INTERFACE_DIALTRANS"           ;
+                SQL += ComNum.VBLF + "  FROM ADMIN.EXAM_INTERFACE_DIALTRANS"           ;
                 SQL += ComNum.VBLF + " WHERE PANO = '" + mstrPano + "'"                     ;
                 SQL += ComNum.VBLF + "   AND DIALDATE >= '" + dtpSDATE.Value.ToString("yyyy-MM-dd") + "'"           ;
                 SQL += ComNum.VBLF + "   AND DIALDATE <= '" + dtpEDATE.Value.ToString("yyyy-MM-dd") + "'"           ;
@@ -203,7 +203,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "         '' J, NULL K, NULL L,";
                 SQL += ComNum.VBLF + "         '' M, '' N, '' O, '' P, '' Q,";
                 SQL += ComNum.VBLF + "         NULL R, NULL S, NULL T, NULL U, NULL V";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_INTERFACE_BIPRSTRANS";
+                SQL += ComNum.VBLF + "  FROM ADMIN.EXAM_INTERFACE_BIPRSTRANS";
                 SQL += ComNum.VBLF + " WHERE PANO IN ('" + mstrPano + "', '" + mstrPano.PadLeft(8, '0') + "', '" + VB.Val(mstrPano) + "')";
                 SQL += ComNum.VBLF + "   AND DIALDATE >= '" + dtpSDATE.Value.ToString("yyyy-MM-dd") + "'";
                 SQL += ComNum.VBLF + "   AND DIALDATE <= '" + dtpEDATE.Value.ToString("yyyy-MM-dd") + "'";
@@ -212,7 +212,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "       DIALENDTIME J, DIALPREWGHT K, DIALPOSTWGHT L,";
                 SQL += ComNum.VBLF + "       UF1 M, UF2 N, UF3 O, UF4 P, UF5 Q,";
                 SQL += ComNum.VBLF + "       TMP1 R, TMP2 S, TMP3 T, TMP4 U, TMP5 V";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_INTERFACE_DIALTRANS";
+                SQL += ComNum.VBLF + "  FROM ADMIN.EXAM_INTERFACE_DIALTRANS";
                 SQL += ComNum.VBLF + " WHERE PANO IN ('" + mstrPano + "', '" + mstrPano.PadLeft(8, '0') + "', '" + VB.Val(mstrPano) + "')";
                 SQL += ComNum.VBLF + "   AND DIALDATE >= '" + dtpSDATE.Value.ToString("yyyy-MM-dd") + "'";
                 SQL += ComNum.VBLF + "   AND DIALDATE <= '" + dtpEDATE.Value.ToString("yyyy-MM-dd") + "'";

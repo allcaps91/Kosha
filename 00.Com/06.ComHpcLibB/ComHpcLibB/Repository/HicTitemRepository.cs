@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT JUMSU, CODE                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM               ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                      ");
             parameter.AppendSql("   AND Gubun = '13'                        ");
             parameter.AppendSql("   AND Jumsu IN (910,911,912,913,914,915)  ");
@@ -41,7 +41,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
             parameter.AppendSql("   AND GUBUN = '18'            ");
             parameter.AppendSql("   AND CODE >= '80902'         ");
@@ -56,7 +56,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
             parameter.AppendSql("   AND GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND CODE IN (:CODE)         ");
@@ -72,7 +72,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT ROWID FROM KOSMOS_PMPA.HIC_TITEM        ");
+            parameter.AppendSql("SELECT ROWID FROM ADMIN.HIC_TITEM        ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                          ");
             parameter.AppendSql("   AND CODE  = :CODE                           ");
             if (nWRTNO > 0)
@@ -102,7 +102,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("DELETE ADMIN.HIC_TITEM   ");
             if (nWRTNO > 0)
             {
                 parameter.AppendSql(" WHERE WRTNO = :WRTNO      ");
@@ -133,7 +133,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT WRTNO, GUBUN, CODE, JUMSU               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                          ");
             if (strGubun == "11")
@@ -153,7 +153,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT WRTNO, GUBUN, CODE, JUMSU               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                          ");
             parameter.AppendSql("   AND JUMSU < 900                             ");
@@ -171,7 +171,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT WRTNO, GUBUN, CODE, JUMSU               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                          ");
             parameter.AppendSql(" GROUP BY WRTNO, GUBUN, CODE, JUMSU            ");
@@ -188,7 +188,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT WRTNO, GUBUN, CODE, JUMSU, PANO         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND GUBUN = '13'                            ");
             parameter.AppendSql("   AND JUMSU >= 901                            ");
@@ -204,7 +204,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SUM(JUMSU) TOTAL        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
             parameter.AppendSql("   AND GUBUN = :GUBUN          ");
 
@@ -219,7 +219,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -232,7 +232,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND JUMSU > :JUMSU          ");
             if (nWRTNO > 0)
@@ -263,7 +263,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE Gubun = '13'            ");
             parameter.AppendSql("   AND JUMSU > 900             ");
             if (nWRTNO > 0)
@@ -291,7 +291,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_TItem SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_TItem SET       ");
             parameter.AppendSql("       CODE  = :CODE                   ");
             parameter.AppendSql("     , PANO  = :PANO                   ");
             if (nWRTNO > 0)
@@ -321,7 +321,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_TItem SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_TItem SET       ");
             parameter.AppendSql("       CODE  = :CODE                   ");
             parameter.AppendSql("     , WRTNO = :WRTNO                  ");
             parameter.AppendSql("     , PANO  = :PANO                   ");
@@ -341,7 +341,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("DELETE ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE ROWID = :RID            ");
 
             parameter.Add("RID", strROWID);
@@ -353,7 +353,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_TITEM                  ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_TITEM                  ");
             parameter.AppendSql("       (WRTNO, GUBUN, CODE, JUMSU, PANO)           ");
             parameter.AppendSql("VALUES                                             ");
             parameter.AppendSql("       (:WRTNO, :GUBUN, :CODE, :JUMSU, :PANO)      ");
@@ -371,7 +371,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("DELETE ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
             parameter.AppendSql("   AND GUBUN = :GUBUN          ");
 
@@ -386,7 +386,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GUBUN, CODE, JUMSU      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
             parameter.AppendSql("   AND GUBUN > '16'            ");
             parameter.AppendSql(" ORDER BY CODE                 ");
@@ -401,7 +401,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GUBUN, CODE, JUMSU      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");                        
             if (sGbn.IsNullOrEmpty())
             {
@@ -427,7 +427,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SUM(JUMSU) TOTAL        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
             parameter.AppendSql("   AND GUBUN = :GUBUN          ");
 
@@ -442,7 +442,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
             parameter.AppendSql("   AND GUBUN = '13'            ");
             parameter.AppendSql("   AND CODE LIKE '318%'        ");
@@ -457,10 +457,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_TITEM SET               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_TITEM SET               ");
             parameter.AppendSql("       PANO = :PANO                            ");
             parameter.AppendSql(" WHERE PANO IN (SELECT PANO                    ");
-            parameter.AppendSql("                  FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("                  FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql("                 WHERE JUMIN2 = :JUMIN2        ");
             parameter.AppendSql("                   AND PANO <> :PANO)          ");
 
@@ -475,7 +475,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_TITEM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_TITEM   ");
             parameter.AppendSql(" WHERE 1= 1                    ");
             parameter.AppendSql("   AND WRTNO = :WRTNO          ");
 

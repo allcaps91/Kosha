@@ -108,7 +108,7 @@ namespace ComMedLibB
                 SQL += " SELECT DrDept1, DrCode, DrName, YTimeGbn   \r";
                 SQL += "      , YInwon, AmTime, PmTime, YInwon2     \r";
                 SQL += "      , AmTime2, PmTime2                    \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_DOCTOR              \r";
+                SQL += "   FROM ADMIN.BAS_DOCTOR              \r";
                 SQL += "  WHERE DRCODE = '" + sDrCode + "'          \r";
                 clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -236,7 +236,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT TO_CHAR(SchDate,'YYYY-MM-DD') SchDate,TO_CHAR(SchDate,'DY') Yoil,GbDay,GbJin,GbJin2     \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_SCHEDULE                                                                \r";
+                SQL += "   FROM ADMIN.BAS_SCHEDULE                                                                \r";
                 SQL += "  WHERE DrCode = '" + sDrCode + "'                                                              \r";
                 SQL += "    AND SchDate > TRUNC(SYSDATE)                                                                \r";
                 SQL += "    AND SchDate <= TO_DATE('" + strGDate + "','YYYY-MM-DD')                                     \r";
@@ -399,7 +399,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT TO_CHAR(SchDate,'YYYY-MM-DD') SchDate,STime,ETime       \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_SCHEDULE_ETC                            \r";
+                SQL += "   FROM ADMIN.BAS_SCHEDULE_ETC                            \r";
                 SQL += "  WHERE DrCode = '" + sDrCode + "'                              \r";
                 SQL += "    AND SchDate > TRUNC(SYSDATE)                                \r";
                 SQL += "    AND SchDate <= TO_DATE('" + strGDate + "','YYYY-MM-DD')     \r";
@@ -457,7 +457,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT TO_CHAR(Date3,'YYYY-MM-DD HH24:MI') RTime,COUNT(*) CNT          \r";
-                SQL += "   FROM KOSMOS_PMPA.OPD_RESERVED_NEW                                    \r";
+                SQL += "   FROM ADMIN.OPD_RESERVED_NEW                                    \r";
                 SQL += "  WHERE Date3 > TRUNC(SYSDATE)                                          \r";
                 SQL += "    AND Date3 <= TO_DATE('" + strGDate + " 23:59','YYYY-MM-DD HH24:MI') \r";
                 SQL += "    AND DeptCode = '" + strDeptCode.Trim() + "'                         \r";
@@ -524,7 +524,7 @@ namespace ComMedLibB
                 // 병동의 퇴원자예약 미수납자를 READ
                 SQL = "";
                 SQL += " SELECT TO_CHAR(RDate,'YYYY-MM-DD HH24:MI') RTime,COUNT(*) CNT          \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_RESERVED                                         \r";
+                SQL += "   FROM ADMIN.OCS_RESERVED                                         \r";
                 SQL += "  WHERE BDate = TRUNC(SYSDATE)                                          \r";
                 SQL += "    AND RDate > TRUNC(SYSDATE)                                          \r";
                 SQL += "    AND RDate <= TO_DATE('" + strGDate + " 23:59','YYYY-MM-DD HH24:MI') \r";
@@ -588,7 +588,7 @@ namespace ComMedLibB
                 //전화접수 인원을 COUNT
                 SQL = "";
                 SQL += " SELECT TO_CHAR(RDate,'YYYY-MM-DD') RDate,RTime,COUNT(*) CNT    \r";
-                SQL += "   FROM KOSMOS_PMPA.OPD_TELRESV                                 \r";
+                SQL += "   FROM ADMIN.OPD_TELRESV                                 \r";
                 SQL += "  WHERE RDate > TRUNC(SYSDATE)                                  \r";
                 SQL += "    AND RDate <= TO_DATE('" + strGDate + "','YYYY-MM-DD')       \r";
                 SQL += "    AND DrCode = '" + sDrCode + "'                              \r";

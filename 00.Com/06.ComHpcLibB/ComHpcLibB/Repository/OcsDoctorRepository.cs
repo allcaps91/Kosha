@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT DRCODE                  ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DOCTOR   ");
+            parameter.AppendSql("  FROM ADMIN.OCS_DOCTOR   ");
             parameter.AppendSql(" WHERE SABUN = :SABUN          ");
 
             parameter.Add("SABUN", strSabun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT DRNAME                  ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DOCTOR   ");
+            parameter.AppendSql("  FROM ADMIN.OCS_DOCTOR   ");
             parameter.AppendSql(" WHERE SABUN = :SABUN          ");
 
             parameter.Add("SABUN", strSabun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -50,7 +50,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SABUN                   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DOCTOR   ");
+            parameter.AppendSql("  FROM ADMIN.OCS_DOCTOR   ");
             parameter.AppendSql(" WHERE DRCODE = :DRCODE        ");
 
             parameter.Add("DRCODE", argDrCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -63,7 +63,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT DRNAME                      ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DOCTOR       ");
+            parameter.AppendSql("  FROM ADMIN.OCS_DOCTOR       ");
             parameter.AppendSql(" WHERE DRBUNHO = :DRBUNHO          ");
 
             parameter.Add("DRBUNHO", pANJENGDRNO8, Oracle.ManagedDataAccess.Client.OracleDbType.Char);

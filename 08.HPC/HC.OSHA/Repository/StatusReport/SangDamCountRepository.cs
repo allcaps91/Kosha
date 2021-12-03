@@ -33,7 +33,7 @@ namespace HC_OSHA.Repository.StatusReport
             parameter.AppendSql("SUM(DECODE(PANJENGR5, '1', '1', '0')) ETC_C3,SUM(DECODE(PANJENGR7, '1', '1', '0')) ETC_C4,SUM(DECODE(PANJENGR8, '1', '1', '0')) ETC_C5,    ");
             parameter.AppendSql("SUM(DECODE(PANJENGR9, '1', '1', '0')) ETC_C6,SUM(DECODE(PANJENGR12, '1', '1', '0')) ETC_C7,SUM(DECODE(PANJENGR11, '1', '1', '0')) ETC_C8,SUM(DECODE(PANJENGR10, '1', '1', '0')) ETC_C9,    ");
             parameter.AppendSql("SUM(DECODE(PANJENGU4, '1', '1', '0')) ETC_D1    ");
-            parameter.AppendSql("FROM KOSMOS_PMPA.HIC_RES_BOHUM1 WHERE WRTNO = :WRTNO; ");
+            parameter.AppendSql("FROM ADMIN.HIC_RES_BOHUM1 WHERE WRTNO = :WRTNO; ");
 
             parameter.Add("WRTNO", WRTNO);
 
@@ -71,8 +71,8 @@ namespace HC_OSHA.Repository.StatusReport
             MParameter parameter = CreateParameter();
             parameter.AppendSql("               SELECT B.TONGBUN,    ");
             parameter.AppendSql("      SUM(DECODE(PANJENG, '5', '1', '0')) D1,  SUM(DECODE(PANJENG, '6', '1', '0')) D2  ,  SUM(DECODE(PANJENG, '3', '1', '0')) C1, SUM(DECODE(PANJENG, '7', '1', '0')) 미판정1, SUM(DECODE(PANJENG, '9', '1', '0')) 미판정2, SUM(DECODE(PANJENG, 'A', '1', '0')) 미판정3   ");
-            parameter.AppendSql("      FROM KOSMOS_PMPA.HIC_SPC_PANJENG A   ");
-            parameter.AppendSql("      RIGHT OUTER JOIN KOSMOS_PMPA.HIC_MCODE B   ");
+            parameter.AppendSql("      FROM ADMIN.HIC_SPC_PANJENG A   ");
+            parameter.AppendSql("      RIGHT OUTER JOIN ADMIN.HIC_MCODE B   ");
             parameter.AppendSql("      ON A.MCODE = B.CODE   ");
             parameter.AppendSql("      INNER JOIN   ");
             parameter.AppendSql("      (");
@@ -136,7 +136,7 @@ namespace HC_OSHA.Repository.StatusReport
             parameter.AppendSql("     , SUM(DECODE(PANJENGR11, '1', '1', '0'))   AS ETC_C8                         ");
             parameter.AppendSql("     , SUM(DECODE(PANJENGR10, '1', '1', '0'))   AS ETC_C9                         ");
             parameter.AppendSql("     , SUM(DECODE(PANJENGU4, '1', '1', '0'))    AS ETC_D1                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_BOHUM1 A                                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_BOHUM1 A                                               ");
             parameter.AppendSql("  INNER JOIN                                                                      ");
             parameter.AppendSql("  (                                                                               ");
             parameter.AppendSql("        SELECT MAX(D.WRTNO) AS WRTNO                                              ");

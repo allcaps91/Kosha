@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT a.WRTNO                                                                                         ");
             parameter.AppendSql("     , TO_CHAR(a.PANJENGDATE,'YYYY-MM-DD') PANJENGDATE,a.PANJENGDRNO PANJENGDRNO1,a.SOGEN AS AddSo     ");
             parameter.AppendSql("     , TO_CHAR(a.GUNDATE,'YYYY-MM-DD') GUNDATE,a.GBPANJENG, a.GBPRINT, b.*                             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_ETC a, KOSMOS_PMPA.HIC_RES_BOHUM1 b                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_ETC a, ADMIN.HIC_RES_BOHUM1 b                                         ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                                                ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO(+)                                                                            ");
             parameter.AppendSql("   AND a.Gubun = '2'                                                                                   ");

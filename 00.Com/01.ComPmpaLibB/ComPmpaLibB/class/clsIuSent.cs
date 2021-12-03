@@ -130,7 +130,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "       ,GBSELF                                                                                    ";
                 SQL += ComNum.VBLF + "       ,GbChild,DeptCode                                                                          ";
                 SQL += ComNum.VBLF + "       ,DECODE(GbNgt,'0','',' ','',GBNGT) GBNGT,DrCode,GbSlip                            ";
-                SQL += ComNum.VBLF + "       ,GbHost,a.Sunext,KOSMOS_OCS.FC_BAS_SUN_SUNAMEK(a.Sunext) SunameK                           ";
+                SQL += ComNum.VBLF + "       ,GbHost,a.Sunext,ADMIN.FC_BAS_SUN_SUNAMEK(a.Sunext) SunameK                           ";
                 SQL += ComNum.VBLF + "       ,b.SUGBQ,t.SUGBF                                                                ";
                 SQL += ComNum.VBLF + "       ,SUM(Nal) Nal,SUM(Amt1) Amt1,SUM(Amt2) Amt2                                                ";
                 SQL += ComNum.VBLF + "       ,nvl(DIV,0) DIV , T.SUGBC                                                        ";
@@ -212,7 +212,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "           GbSelf,                                                                                ";
                 SQL += ComNum.VBLF + "           GbChild,DeptCode,                                                                      ";
                 SQL += ComNum.VBLF + "           DECODE(GbNgt,'0','',' ','',GBNGT),DrCode,                                     ";
-                SQL += ComNum.VBLF + "           GbSlip,GbHost,a.SuNext,KOSMOS_OCS.FC_BAS_SUN_SUNAMEK(a.Sunext),                        ";
+                SQL += ComNum.VBLF + "           GbSlip,GbHost,a.SuNext,ADMIN.FC_BAS_SUN_SUNAMEK(a.Sunext),                        ";
                 SQL += ComNum.VBLF + "           b.SUGBQ,t.SUGBF,                                                            ";
                 SQL += ComNum.VBLF + "           nvl(DIV,0), T.SUGBC,                                                         ";
                 SQL += ComNum.VBLF + "           DECODE(a.GBSUGBS,'0','',' ', '',a.GBSUGBS),                                            ";
@@ -295,7 +295,7 @@ namespace ComPmpaLibB
                 //SQL += ComNum.VBLF + "       ,DECODE(GbSelf,'0','',' ','',GBSELF) GBSELF,GbChild,DeptCode                               ";
                 SQL += ComNum.VBLF + "       ,GBSELF,GbChild,DeptCode                                                                   ";
                 SQL += ComNum.VBLF + "       ,DECODE(GbNgt,'0','',' ','',GBNGT) GBNGT,DrCode,GbSlip                            ";
-                SQL += ComNum.VBLF + "       ,GbHost,a.Sunext,KOSMOS_OCS.FC_BAS_SUN_SUNAMEK(a.Sunext) SunameK                           ";
+                SQL += ComNum.VBLF + "       ,GbHost,a.Sunext,ADMIN.FC_BAS_SUN_SUNAMEK(a.Sunext) SunameK                           ";
                 SQL += ComNum.VBLF + "       ,b.SUGBQ,t.SUGBF                                                                ";
                 SQL += ComNum.VBLF + "       ,SUM(Nal) Nal,SUM(Amt1) Amt1,SUM(Amt2) Amt2                                                ";
                 SQL += ComNum.VBLF + "       ,nvl(a.DIV,0) DIV , T.SUGBC                                                        ";
@@ -343,7 +343,7 @@ namespace ComPmpaLibB
                 //SQL += ComNum.VBLF + "           GbGisul,DECODE(GbSelf,'0','',' ','',GBSELF),GbChild,DeptCode,                          ";
                 SQL += ComNum.VBLF + "           GbGisul,GBSELF,GbChild,DeptCode,                                                       ";//WardCode, 
                 SQL += ComNum.VBLF + "           DECODE(GbNgt,'0','',' ','',GBNGT),DrCode,                                    ";
-                SQL += ComNum.VBLF + "           GbSlip,GbHost,a.SuNext,KOSMOS_OCS.FC_BAS_SUN_SUNAMEK(a.Sunext),                        ";
+                SQL += ComNum.VBLF + "           GbSlip,GbHost,a.SuNext,ADMIN.FC_BAS_SUN_SUNAMEK(a.Sunext),                        ";
                 SQL += ComNum.VBLF + "           b.SUGBQ,t.SUGBF,                                                            ";           //A.ROOMCODE,  
                 SQL += ComNum.VBLF + "           nvl(a.DIV,0), T.SUGBC,                                                         ";
                 SQL += ComNum.VBLF + "           DECODE(a.GBSUGBS,'0','',' ', '',a.GBSUGBS),                                            ";
@@ -425,7 +425,7 @@ namespace ComPmpaLibB
             {
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT IPDNO,TRSNO,PANO,BI,SNAME,FLAG,               ";
-                SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_IPD_GBSTS_NM(GBSTS) GBSTS,    ";
+                SQL += ComNum.VBLF + "        ADMIN.FC_IPD_GBSTS_NM(GBSTS) GBSTS,    ";
                 SQL += ComNum.VBLF + "        TO_CHAR(OUTDATE,'YYYY-MM-DD') OUTDATE,        ";
                 SQL += ComNum.VBLF + "        TO_CHAR(INDATE, 'YYYY/MM/DD') INDATE,         ";
                 SQL += ComNum.VBLF + "        TO_CHAR(SIMSA_OK,'MM/DD HH24:MI') SIMSA_OK,   ";

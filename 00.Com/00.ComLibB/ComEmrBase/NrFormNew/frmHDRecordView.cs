@@ -73,8 +73,8 @@ namespace ComEmrBase
             {
                 #region 쿼리
                 SQL.AppendLine("SELECT CHARTDATE, CHARTTIME, R.ITEMVALUE");
-                SQL.AppendLine("  FROM KOSMOS_EMR.AEMRCHARTMST A");
-                SQL.AppendLine("    INNER JOIN KOSMOS_EMR.AEMRCHARTROW R");
+                SQL.AppendLine("  FROM ADMIN.AEMRCHARTMST A");
+                SQL.AppendLine("    INNER JOIN ADMIN.AEMRCHARTROW R");
                 SQL.AppendLine("       ON A.EMRNO    = R.EMRNO");
                 SQL.AppendLine("      AND A.EMRNOHIS = R.EMRNOHIS");
                 SQL.AppendLine("      AND R.ITEMCD = 'I0000011061' -- AF(ml/min)");
@@ -305,8 +305,8 @@ namespace ComEmrBase
             {
                 #region 쿼리
                 SQL.AppendLine("SELECT CHARTDATE, CHARTTIME, R.ITEMVALUE");
-                SQL.AppendLine("  FROM KOSMOS_EMR.AEMRCHARTMST A");
-                SQL.AppendLine("    INNER JOIN KOSMOS_EMR.AEMRCHARTROW R");
+                SQL.AppendLine("  FROM ADMIN.AEMRCHARTMST A");
+                SQL.AppendLine("    INNER JOIN ADMIN.AEMRCHARTROW R");
                 SQL.AppendLine("       ON A.EMRNO    = R.EMRNO");
                 SQL.AppendLine("      AND A.EMRNOHIS = R.EMRNOHIS");
                 SQL.AppendLine("      AND R.ITEMCD = 'I0000030990' -- Spkt/V");

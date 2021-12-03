@@ -1846,7 +1846,7 @@ namespace ComEmrBase
                 {
 
                     SQL = SQL + ComNum.VBLF + "SELECT JEPCODE AS CODE, JEPNAME AS NAME, BUSE_UNIT AS UNIT";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.ORD_JEP";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.ORD_JEP";
                     SQL = SQL + ComNum.VBLF + " WHERE JEPNAME LIKE '%" + viewData + "%'";
                     SQL = SQL + ComNum.VBLF + "ORDER BY JEPNAME";
                 }
@@ -1854,8 +1854,8 @@ namespace ComEmrBase
                 {
                     SQL = SQL + ComNum.VBLF + "SELECT A.SUCODE AS CODE, B.SUNAMEK AS NAME, A.BUN";
                     SQL = SQL + ComNum.VBLF + "     , B.HCODE, B.UNIT AS UNIT";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_SUT A";
-                    SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN KOSMOS_PMPA.BAS_SUN B";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_SUT A";
+                    SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN ADMIN.BAS_SUN B";
                     SQL = SQL + ComNum.VBLF + "               ON A.SUNEXT = B.SUNEXT";
                     SQL = SQL + ComNum.VBLF + " WHERE B.SUNAMEK LIKE '%" + viewData + "%'   ";
                     SQL = SQL + ComNum.VBLF + "ORDER BY B.SUNAMEK, A.SUCODE ";

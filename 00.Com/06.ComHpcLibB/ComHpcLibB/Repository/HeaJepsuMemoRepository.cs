@@ -21,7 +21,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.WRTNO,b.MEMO,TO_CHAR(b.ENTTIME,'YYYY-MM-DD HH24:MI') ENTTIME,b.JOBSABUN,b.ROWID RID   ");
             parameter.AppendSql("     , TO_CHAR(a.SDATE,'YYYY-MM-DD') SDATE, a.PTNO                                             ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HEA_JEPSU a, KOSMOS_PMPA.HEA_MEMO b                                         ");
+            parameter.AppendSql("  From ADMIN.HEA_JEPSU a, ADMIN.HEA_MEMO b                                         ");
             parameter.AppendSql(" WHERE a.PANO = :PANO                                                                          ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO                                                                       ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                                                       ");
@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.WRTNO,b.MEMO,TO_CHAR(b.ENTTIME,'YYYY-MM-DD HH24:MI') ENTTIME,b.JOBSABUN,b.ROWID RID   ");
             parameter.AppendSql("     , TO_CHAR(a.SDATE,'YYYY-MM-DD') SDATE, a.PTNO                                             ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HEA_JEPSU a, KOSMOS_PMPA.HEA_MEMO b                                         ");
+            parameter.AppendSql("  From ADMIN.HEA_JEPSU a, ADMIN.HEA_MEMO b                                         ");
             parameter.AppendSql(" WHERE a.PTNO = :PTNO                                                                          ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO                                                                       ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                                                       ");

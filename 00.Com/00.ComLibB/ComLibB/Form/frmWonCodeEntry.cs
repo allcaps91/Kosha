@@ -47,7 +47,7 @@ namespace ComLibB
                 cboWongaList.Items.Add ("0000.분류누락분");
                 cboWongaList.Items.Add ("9999.전체코드");
 
-                SQL = "SELECT Hang,HangName FROM KOSMOS_ADM.WON_HANG ";
+                SQL = "SELECT Hang,HangName FROM ADMIN.WON_HANG ";
                 SQL = SQL + ComNum.VBLF + "WHERE Hang >= '1000' AND Hang <= '1999' ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY SORTKEY ";
 
@@ -105,7 +105,7 @@ namespace ComLibB
                 {
                     return "";
                 }
-                SQL = "SELECT HangName FROM KOSMOS_ADM.WON_HANG ";
+                SQL = "SELECT HangName FROM ADMIN.WON_HANG ";
                 SQL = SQL + ComNum.VBLF + "WHERE Hang='" + ArgCode.Trim () + "' ";
 
                 SqlErr = clsDB.GetDataTable (ref dt , SQL, clsDB.DbCon);

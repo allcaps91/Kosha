@@ -81,7 +81,7 @@ namespace ComPmpaLibB
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT   A.SABUN, C.KORNAME, SUBSTR(C.BUSE,1,4) BUSE, BUSE BUSECODE, ";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.BDATE, 'YYYY-MM-DD') BDATE, A.AMT, A.PANO               ";
-                SQL = SQL + ComNum.VBLF + " FROM " + ComNum.DB_PMPA + "MISU_GAINSLIP A, " + ComNum.DB_PMPA + "BAS_BUSE B, KOSMOS_ADM.INSA_MST C           ";
+                SQL = SQL + ComNum.VBLF + " FROM " + ComNum.DB_PMPA + "MISU_GAINSLIP A, " + ComNum.DB_PMPA + "BAS_BUSE B, ADMIN.INSA_MST C           ";
                 SQL = SQL + ComNum.VBLF + " WHERE 1=1         ";
                 SQL = SQL + ComNum.VBLF + "   AND A.BDATE >= TO_DATE('" + strFdate + "','YYYY-MM-DD')         ";
                 SQL = SQL + ComNum.VBLF + "   AND A.BDATE <= TO_DATE('" + strTdate + "','YYYY-MM-DD')         ";

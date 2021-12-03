@@ -93,7 +93,7 @@ namespace ComLibB
             try
             {
                 Sql.Append("SELECT TO_CHAR(WDATE,'YYYY-MM-DD') AS WDATE, WNAME, SEQNO     ").Append("\n");
-                Sql.Append("  FROM KOSMOS_ADM.DRUG_ADR1    ").Append("\n");
+                Sql.Append("  FROM ADMIN.DRUG_ADR1    ").Append("\n");
                 Sql.Append(" WHERE PTNO = '" + argPTNO + "'").Append("\n");
                 Sql.Append("ORDER BY WDATE DESC            ").Append("\n");
 
@@ -170,10 +170,10 @@ namespace ComLibB
                 Sql.Append("       TO_CHAR(C.WDATE,'YYYY-MM-DD') ADR3,                   ").Append("\n");
                 Sql.Append("       DECODE(TRIM(D.REPORT1 || D.REPORT2), '00', '', '01', ").Append("\n");
                 Sql.Append("       '식약처 보고', '10', '위원회보고', '') ADR4          ").Append("\n");
-                Sql.Append("  FROM KOSMOS_ADM.DRUG_ADR1 A,                              ").Append("\n");
-                Sql.Append("       KOSMOS_ADM.DRUG_ADR2 B,                              ").Append("\n");
-                Sql.Append("       KOSMOS_ADM.DRUG_ADR3 C,                              ").Append("\n");
-                Sql.Append("       KOSMOS_ADM.DRUG_ADR4 D                               ").Append("\n");
+                Sql.Append("  FROM ADMIN.DRUG_ADR1 A,                              ").Append("\n");
+                Sql.Append("       ADMIN.DRUG_ADR2 B,                              ").Append("\n");
+                Sql.Append("       ADMIN.DRUG_ADR3 C,                              ").Append("\n");
+                Sql.Append("       ADMIN.DRUG_ADR4 D                               ").Append("\n");
                 Sql.Append(" WHERE A.SEQNO = B.SEQNO(+)                                 ").Append("\n");
                 Sql.Append("   AND A.SEQNO = C.SEQNO(+)                                 ").Append("\n");
                 Sql.Append("   AND A.SEQNO = D.SEQNO(+)                                 ").Append("\n");
@@ -272,7 +272,7 @@ namespace ComLibB
             try
             {
                 Sql.Append("SELECT ROWID                      ").Append("\n");
-                Sql.Append("  FROM KOSMOS_ADM.DRUG_ADR4       ").Append("\n");
+                Sql.Append("  FROM ADMIN.DRUG_ADR4       ").Append("\n");
                 Sql.Append(" WHERE SEQNO = '" + GstrSEQNO + "'").Append("\n");
 
                 SqlErr = clsDB.GetDataTable(ref dt, Sql.ToString(), clsDB.DbCon);

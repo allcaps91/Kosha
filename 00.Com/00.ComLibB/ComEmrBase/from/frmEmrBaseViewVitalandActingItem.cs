@@ -153,7 +153,7 @@ namespace ComEmrBase
             if (Spd == ssFormUser_Sheet1)
             {
                 SQL = SQL + ComNum.VBLF + "     , (SELECT U1.ITEMCD ";
-                SQL = SQL + ComNum.VBLF + "         FROM KOSMOS_EMR.AEMRUSERITEMVS U1 ";
+                SQL = SQL + ComNum.VBLF + "         FROM ADMIN.AEMRUSERITEMVS U1 ";
                 SQL = SQL + ComNum.VBLF + "         WHERE U1.JOBGB = '" + mJOBGB + "'";
                 SQL = SQL + ComNum.VBLF + "            AND U1.USEGB = '" + clsType.User.BuseCode + "'";
                 SQL = SQL + ComNum.VBLF + "            AND U1.ITEMCD = B.ITEMNO ";
@@ -258,7 +258,7 @@ namespace ComEmrBase
             if (Spd == ssFormUser_Sheet1)
             {
                 SQL = SQL + ComNum.VBLF + "     , (SELECT U1.ITEMCD ";
-                SQL = SQL + ComNum.VBLF + "         FROM KOSMOS_EMR.AEMRUSERITEMVS U1 ";
+                SQL = SQL + ComNum.VBLF + "         FROM ADMIN.AEMRUSERITEMVS U1 ";
                 SQL = SQL + ComNum.VBLF + "         WHERE U1.JOBGB = '" + mJOBGB + "'";
                 SQL = SQL + ComNum.VBLF + "            AND U1.USEGB = '" + clsType.User.BuseCode + "'";
                 SQL = SQL + ComNum.VBLF + "            AND U1.ITEMCD = B.ITEMNO ";
@@ -364,7 +364,7 @@ namespace ComEmrBase
             if (Spd == ssFormUser_Sheet1)
             {
                 SQL = SQL + ComNum.VBLF + "     , (SELECT U1.ITEMCD ";
-                SQL = SQL + ComNum.VBLF + "         FROM KOSMOS_EMR.AEMRUSERITEMVS U1 ";
+                SQL = SQL + ComNum.VBLF + "         FROM ADMIN.AEMRUSERITEMVS U1 ";
                 SQL = SQL + ComNum.VBLF + "         WHERE U1.JOBGB = '" + mJOBGB + "'";
                 SQL = SQL + ComNum.VBLF + "            AND U1.USEGB = '" + clsType.User.BuseCode + "'";
                 SQL = SQL + ComNum.VBLF + "            AND U1.ITEMCD = B.ITEMNO ";
@@ -470,7 +470,7 @@ namespace ComEmrBase
             if (Spd == ssFormUser_Sheet1)
             {
                 SQL.AppendLine("     , (SELECT U1.ITEMCD ");
-                SQL.AppendLine("         FROM KOSMOS_EMR.AEMRUSERITEMVS U1 ");
+                SQL.AppendLine("         FROM ADMIN.AEMRUSERITEMVS U1 ");
                 SQL.AppendLine("         WHERE U1.JOBGB = '" + mJOBGB + "'");
                 SQL.AppendLine("            AND U1.USEGB = '" + clsType.User.BuseCode + "'");
                 SQL.AppendLine("            AND U1.ITEMCD = B.BASCD ");
@@ -492,7 +492,7 @@ namespace ComEmrBase
             SQL.AppendLine("  AND EXISTS                                                               ");
             SQL.AppendLine("  (                                                                        ");
             SQL.AppendLine("  SELECT 1                                                                 ");
-            SQL.AppendLine("   FROM  KOSMOS_EMR.AEMRBASCD BB                                           ");
+            SQL.AppendLine("   FROM  ADMIN.AEMRBASCD BB                                           ");
             SQL.AppendLine("   WHERE B.VFLAG1 = BB.BASCD                                               ");
             SQL.AppendLine("     AND BB.BSNSCLS = '기록지관리'                                            ");
             SQL.AppendLine("     AND BB.UNITCLS IN ('간호활동그룹', '기본간호그룹' ,'섭취배설그룹', '특수치료그룹')   ");
@@ -591,7 +591,7 @@ namespace ComEmrBase
             if (Spd == ssFormUser_Sheet1)
             {
                 SQL = SQL + ComNum.VBLF + "     , (SELECT U1.ITEMCD ";
-                SQL = SQL + ComNum.VBLF + "         FROM KOSMOS_EMR.AEMRUSERITEMVS U1 ";
+                SQL = SQL + ComNum.VBLF + "         FROM ADMIN.AEMRUSERITEMVS U1 ";
                 SQL = SQL + ComNum.VBLF + "         WHERE U1.JOBGB = '" + mJOBGB + "'";
                 SQL = SQL + ComNum.VBLF + "            AND U1.USEGB = '" + clsType.User.BuseCode + "'";
                 SQL = SQL + ComNum.VBLF + "            AND U1.ITEMCD = B.BASCD ";
@@ -699,7 +699,7 @@ namespace ComEmrBase
             if (Spd == ssFormUser_Sheet1)
             {
                 SQL = SQL + ComNum.VBLF + "     , (SELECT U1.ITEMCD ";
-                SQL = SQL + ComNum.VBLF + "         FROM KOSMOS_EMR.AEMRUSERITEMVS U1 ";
+                SQL = SQL + ComNum.VBLF + "         FROM ADMIN.AEMRUSERITEMVS U1 ";
                 SQL = SQL + ComNum.VBLF + "         WHERE U1.JOBGB = '" + mJOBGB + "'";
                 SQL = SQL + ComNum.VBLF + "            AND U1.USEGB = '" + clsType.User.BuseCode + "'";
                 SQL = SQL + ComNum.VBLF + "            AND U1.ITEMCD = B.BASCD ";

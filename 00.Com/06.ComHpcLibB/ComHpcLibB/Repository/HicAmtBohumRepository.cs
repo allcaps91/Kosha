@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SDATE, ROWID AS RID         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_AMT_BOHUM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_AMT_BOHUM   ");
             parameter.AppendSql(" WHERE 1 = 1                       ");
             parameter.AppendSql(" ORDER BY SDATE DESC               ");
 
@@ -40,7 +40,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,TWO_AMT04, TWO_AMT05, TWO_AMT06, TWO_AMT07, TWO_AMT08, TWO_AMT09, TWO_AMT10, TWO_AMT11  ");
             parameter.AppendSql("      ,TWO_AMT12, TWO_AMT13, TWO_AMT14, TWO_AMT15                                              ");
             parameter.AppendSql("      ,ROWID AS RID                                                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_AMT_BOHUM                                                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_AMT_BOHUM                                                               ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                   ");
             parameter.AppendSql("   AND SDATE =:SDATE                                                                           ");
             parameter.AppendSql(" ORDER BY SDATE DESC                                                                           ");
@@ -60,7 +60,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,TWO_AMT04, TWO_AMT05, TWO_AMT06, TWO_AMT07, TWO_AMT08, TWO_AMT09, TWO_AMT10, TWO_AMT11  ");
             parameter.AppendSql("      ,TWO_AMT12, TWO_AMT13, TWO_AMT14, TWO_AMT15                                              ");
             parameter.AppendSql("      ,ROWID AS RID                                                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_AMT_BOHUM                                                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_AMT_BOHUM                                                               ");
             parameter.AppendSql(" WHERE SDATE >= :FDATE                                                                         ");
             parameter.AppendSql("   AND SDATE <= :TDATE                                                                         ");
             parameter.AppendSql(" ORDER BY SDate DESC                                                                           ");
@@ -75,7 +75,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETTE KOSMOS_PMPA.HIC_AMT_BOHUM    ");
+            parameter.AppendSql("DELETTE ADMIN.HIC_AMT_BOHUM    ");
             parameter.AppendSql("  WHERE ROWID = :RID              ");
 
             #region Query 변수대입

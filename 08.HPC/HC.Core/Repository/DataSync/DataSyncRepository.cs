@@ -277,7 +277,7 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TABLE_NAME FROM ALL_TABLES ");
             parameter.AppendSql("WHERE TABLE_NAME = :tableName ");
-            parameter.AppendSql("AND OWNER = 'KOSMOS_PMPA' ");
+            parameter.AppendSql("AND OWNER = 'ADMIN' ");
             parameter.Add("tableName", tableName);
             if (ExecuteScalar<string>(parameter) == null)
             {
@@ -338,7 +338,7 @@
         public void CreateWorkerView()
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("        CREATE OR REPLACE FORCE VIEW KOSMOS_PMPA.HC_SITE_WORKER_VIEW           ");
+            parameter.AppendSql("        CREATE OR REPLACE FORCE VIEW ADMIN.HC_SITE_WORKER_VIEW           ");
             parameter.AppendSql("       (                                                                                  ");
             parameter.AppendSql("          ID,                                                                             ");
             parameter.AppendSql("          PTNO,                                                                           ");
@@ -387,7 +387,7 @@
         public void CreateSiteView()
         {
             MParameter parameter = CreateParameter();
-            // parameter.AppendSql("  DROP VIEW KOSMOS_PMPA.HC_SITE_VIEW ");
+            // parameter.AppendSql("  DROP VIEW ADMIN.HC_SITE_VIEW ");
 
             parameter.AppendSql("CREATE OR REPLACE FORCE VIEW HC_SITE_VIEW              ");
             parameter.AppendSql("(                                                      ");
@@ -464,7 +464,7 @@
             //parameter.AppendSql("          A.GBGUKGO AS GBGUKGO,                                                                                  ");
             //parameter.AppendSql("          A.DELDATE,                                                                                             ");
             //parameter.AppendSql("          A.gbdaehang                                                                                            ");
-            //parameter.AppendSql("     FROM    KOSMOS_PMPA.HIC_LTD A                                                                               ");
+            //parameter.AppendSql("     FROM    ADMIN.HIC_LTD A                                                                               ");
             //parameter.AppendSql("          LEFT OUTER JOIN                                                                                        ");
             //parameter.AppendSql("             HIC_CODE B                                                                                          ");
             //parameter.AppendSql("          ON A.JISA = B.CODE AND B.GUBUN = '21'                                                                  ");

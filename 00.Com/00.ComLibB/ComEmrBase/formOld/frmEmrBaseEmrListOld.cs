@@ -59,7 +59,7 @@ namespace ComEmrBase
             SQL += ComNum.VBLF + "WHERE EXISTS";
             SQL += ComNum.VBLF + "(";
             SQL += ComNum.VBLF + " SELECT 1 ";
-            SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BASCD";
+            SQL += ComNum.VBLF + " FROM ADMIN.BAS_BASCD";
             SQL += ComNum.VBLF + " WHERE GRPCDB = '간호EMR 관리'";
             SQL += ComNum.VBLF + "   AND GRPCD  = 'EMRList 상용구 관리'";
             SQL += ComNum.VBLF + "   AND BASCD  = '" + clsType.User.IdNumber + "'";
@@ -96,7 +96,7 @@ namespace ComEmrBase
             contextMenu = new ContextMenu();
             OracleDataReader reader = null;
             string SQL = " SELECT NAME";
-            SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE";
+            SQL += ComNum.VBLF + " FROM ADMIN.BAS_BCODE";
             SQL += ComNum.VBLF + " WHERE GUBUN = 'EMR_LIST_사용자_상용구'";
             SQL += ComNum.VBLF + " ORDER BY SORT";
 
@@ -157,13 +157,13 @@ namespace ComEmrBase
                 if (clsType.User.DrCode.Length > 0)
                 {
                     SQL = " SELECT DEPTCODE  ";
-                    SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_DOCTOR ";
+                    SQL += ComNum.VBLF + " FROM ADMIN.OCS_DOCTOR ";
                     SQL += ComNum.VBLF + " WHERE SABUN = '" + ComFunc.SetAutoZero(clsType.User.Sabun, 5) + "' ";
                 }
                 else
                 {
                     SQL = " SELECT VALUEV AS DEPTCODE ";
-                    SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PCCONFIG";
+                    SQL += ComNum.VBLF + " FROM ADMIN.BAS_PCCONFIG";
                     SQL += ComNum.VBLF + "WHERE IPADDRESS = '" + clsCompuInfo.gstrCOMIP + "'";
                     //SQL += ComNum.VBLF + "WHERE IPADDRESS = '192.168.33.58'";
                     SQL += ComNum.VBLF + "  AND GUBUN = '외래OCS진료과세팅'";
@@ -188,7 +188,7 @@ namespace ComEmrBase
                 dt = null;
 
                 SQL = " SELECT MEDDEPTCD, DEPTKORNAME";
-                SQL += ComNum.VBLF + "    FROM KOSMOS_EMR.VIEWBMEDDEPT ";
+                SQL += ComNum.VBLF + "    FROM ADMIN.VIEWBMEDDEPT ";
                 SQL += ComNum.VBLF + " WHERE OUTMEDACPYN =  '1' ";
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -274,7 +274,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT GUBUN, WRITESABUN, TO_CHAR(WRITEDATE, 'HH24:MI') WRITEDATE, MAGAMNAME ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_EMR.EMR_LIST_MAGAM";
+                SQL += ComNum.VBLF + "   FROM ADMIN.EMR_LIST_MAGAM";
                 SQL += ComNum.VBLF + " WHERE BDATE = TO_DATE('" + strBDATE + "','YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "   AND DRCODE = '" + strDrCode + "'";
                 SQL += ComNum.VBLF + "   AND DEPTCODE = '" + strDeptCode + "'";
@@ -443,10 +443,10 @@ namespace ComEmrBase
 
                     SQL = "  SELECT A.Pano Ptno,A.SName,A.DrCode, A.DeptCode,TO_CHAR(A.JTime,'HH24:MI') JTime1,  a.OcsJin,";
                     SQL += ComNum.VBLF + "      TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE,";
-                    SQL += ComNum.VBLF + " (SELECT  TO_CHAR(MAX(LASTDATE),'YYYY-MM-DD') FROM KOSMOS_PMPA.BAS_LASTEXAM WHERE PANO = A.PANO AND DEPTCODE = A.DEPTCODE) AS LASTDATE";
+                    SQL += ComNum.VBLF + " (SELECT  TO_CHAR(MAX(LASTDATE),'YYYY-MM-DD') FROM ADMIN.BAS_LASTEXAM WHERE PANO = A.PANO AND DEPTCODE = A.DEPTCODE) AS LASTDATE";
                     SQL += ComNum.VBLF + " , '' ETC_ADD";
                     //     
-                    SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_MASTER a,KOSMOS_PMPA.OPD_DEPTJEPSU b ";
+                    SQL += ComNum.VBLF + " FROM ADMIN.OPD_MASTER a,ADMIN.OPD_DEPTJEPSU b ";
                     SQL += ComNum.VBLF + "WHERE a.BDate  = TO_DATE('" + dtpChartDate1.Text + "','YYYY-MM-DD')";
                     if (strDeptCd != "")
                     {
@@ -524,7 +524,7 @@ namespace ComEmrBase
                     SQL = "  SELECT A.Pano Ptno,A.SName,A.DrCode, A.DeptCode,TO_CHAR(A.JTime,'HH24:MI') JTime1,  a.OcsJin,";
                     SQL += ComNum.VBLF + " TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE,";
                     SQL += ComNum.VBLF + " (SELECT TO_CHAR(MAX(LASTDATE),'YYYY-MM-DD') ";
-                    SQL += ComNum.VBLF + "    FROM KOSMOS_PMPA.BAS_LASTEXAM";
+                    SQL += ComNum.VBLF + "    FROM ADMIN.BAS_LASTEXAM";
                     SQL += ComNum.VBLF + "   WHERE PANO = A.PANO";
                     if (clsOrdFunction.GstrDrCode == "1107")
                     {
@@ -537,8 +537,8 @@ namespace ComEmrBase
                     }
                     SQL += ComNum.VBLF + ")  AS LASTDATE";
                     SQL += ComNum.VBLF + " , '' ETC_ADD";
-                    //SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_MASTER A, KOSMOS_PMPA.BAS_LASTEXAM B ";
-                    SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_MASTER A";
+                    //SQL += ComNum.VBLF + " FROM ADMIN.OPD_MASTER A, ADMIN.BAS_LASTEXAM B ";
+                    SQL += ComNum.VBLF + " FROM ADMIN.OPD_MASTER A";
                     SQL += ComNum.VBLF + "WHERE A.BDate  = TO_DATE('" + dtpChartDate1.Text + "','YYYY-MM-DD')";
 
                     if (strDeptCd != "")
@@ -609,7 +609,7 @@ namespace ComEmrBase
 
                 }
 
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_LIST A, KOSMOS_PMPA.BAS_PATIENT B, KOSMOS_PMPA.BAS_DOCTOR C";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMR_LIST A, ADMIN.BAS_PATIENT B, ADMIN.BAS_DOCTOR C";
                 SQL += ComNum.VBLF + " Where a.PtNo = b.Pano";
                 SQL += ComNum.VBLF + " AND A.DRCODE = C.DRCODE";
                 SQL += ComNum.VBLF + " AND A.BDATE = TO_DATE('" + strBDATE + "','YYYY-MM-DD')";
@@ -638,7 +638,7 @@ namespace ComEmrBase
                     SQL += ComNum.VBLF + " UNION ALL ";
                     SQL += ComNum.VBLF + " SELECT A.PTNO, B.SNAME, A.DRCODE, C.DRDEPT1, JUPTIME JTIME1, '' OCSJIN, TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, ";
                     SQL += ComNum.VBLF + " TO_CHAR(A.BDATE,'YYYY-MM-DD') LASTDATE, A.ETC_ADD";
-                    SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_LIST A, KOSMOS_PMPA.BAS_PATIENT B, KOSMOS_PMPA.BAS_DOCTOR C";
+                    SQL += ComNum.VBLF + " FROM ADMIN.EMR_LIST A, ADMIN.BAS_PATIENT B, ADMIN.BAS_DOCTOR C";
                     SQL += ComNum.VBLF + " Where a.PtNo = b.Pano";
                     SQL += ComNum.VBLF + " AND A.DRCODE = C.DRCODE";
                     SQL += ComNum.VBLF + " AND A.BDATE = TO_DATE('" + strBDATE + "','YYYY-MM-DD')";
@@ -808,13 +808,13 @@ namespace ComEmrBase
                     #region EMR 차트 정보 읽어오기
                     //6/7 EMR
                     SQL = "SELECT A.CHARTTIME, A.FORMNO, FORMNAME";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.EMRXMLMST A";
-                    SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.AEMRFORM B";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.EMRXMLMST A";
+                    SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.AEMRFORM B";
                     SQL = SQL + ComNum.VBLF + "   ON A.FORMNO = B.FORMNO";
                     SQL = SQL + ComNum.VBLF + "  AND B.UPDATENO > 0";
                     SQL = SQL + ComNum.VBLF + "  AND B.OLDGB = '1'";
                     SQL = SQL + ComNum.VBLF + "  AND (B.GRPFORMNO = 1000 OR B.FORMNO = 963)";
-                    SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.AEMRGRPFORM C";
+                    SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.AEMRGRPFORM C";
                     SQL = SQL + ComNum.VBLF + "   ON C.GRPFORMNO = B.GRPFORMNO";
                     SQL = SQL + ComNum.VBLF + "WHERE A.PTNO = '" + strPtNo + "'";
                     SQL = SQL + ComNum.VBLF + "  AND A.CHARTDATE = '" + dt.Rows[i]["BDATE"].ToString().Replace("-", "") + "'";
@@ -831,8 +831,8 @@ namespace ComEmrBase
 
                     SQL = SQL + ComNum.VBLF + "UNION ALL";
                     SQL = SQL + ComNum.VBLF + "SELECT A.CHARTTIME, A.FORMNO, FORMNAME";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.AEMRCHARTMST A";
-                    SQL = SQL + ComNum.VBLF + "  INNER JOIN KOSMOS_EMR.AEMRFORM B";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.AEMRCHARTMST A";
+                    SQL = SQL + ComNum.VBLF + "  INNER JOIN ADMIN.AEMRFORM B";
                     SQL = SQL + ComNum.VBLF + "     ON A.FORMNO = B.FORMNO";
                     SQL = SQL + ComNum.VBLF + "    AND A.UPDATENO = B.UPDATENO";
                     SQL = SQL + ComNum.VBLF + "    AND (B.GRPFORMNO = 1000 OR B.FORMNO = 963)";
@@ -842,7 +842,7 @@ namespace ComEmrBase
                     }
                     else
                     {
-                        SQL = SQL + ComNum.VBLF + "  INNER JOIN KOSMOS_OCS.OCS_DOCTOR C";
+                        SQL = SQL + ComNum.VBLF + "  INNER JOIN ADMIN.OCS_DOCTOR C";
                         SQL = SQL + ComNum.VBLF + "     ON TRIM(LTRIM(C.SABUN, '0')) = A.CHARTUSEID";
                         SQL = SQL + ComNum.VBLF + "    AND C.DRCODE = '" + dt.Rows[i]["DrCode"].ToString() + "'";
                     }
@@ -943,7 +943,7 @@ namespace ComEmrBase
             {
 
                 SQL = "";
-                SQL = " SELECT ROWID FROM KOSMOS_PMPA.OPD_MASTER";
+                SQL = " SELECT ROWID FROM ADMIN.OPD_MASTER";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + ArgPano + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND DEPTCODE = '" + ArgDeptCode + "'";
                 SQL = SQL + ComNum.VBLF + "    AND ACTDATE < TRUNC(SYSDATE) ";
@@ -1047,7 +1047,7 @@ namespace ComEmrBase
             {
                 SQL = " SELECT A.PTNO, B.SNAME, A.DRCODE, A.DEPTCODE, JUPTIME JTIME1, '' OCSJIN, TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, ";
                 SQL += ComNum.VBLF + " TO_CHAR(A.BDATE,'YYYY-MM-DD') LASTDATE, A.ETC_ADD";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_LIST A, KOSMOS_PMPA.BAS_PATIENT B, KOSMOS_PMPA.BAS_DOCTOR C";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMR_LIST A, ADMIN.BAS_PATIENT B, ADMIN.BAS_DOCTOR C";
                 SQL += ComNum.VBLF + " Where a.PtNo = b.Pano";
                 SQL += ComNum.VBLF + " AND A.DRCODE = C.DRCODE";
                 SQL += ComNum.VBLF + " AND A.BDATE = TO_DATE('" + strBDATE + "','YYYY-MM-DD')";
@@ -1193,7 +1193,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT PTNO ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_LIST";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMR_LIST";
                 SQL += ComNum.VBLF + " WHERE PTNO = '" + argPTNO + "' ";
                 SQL += ComNum.VBLF + "      AND BDATE = TO_DATE('" + argDATE + "','YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + "      AND GUBUN_AMPM = '" + argAMPM + "' ";
@@ -1240,7 +1240,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT SAYU, BIGO, ROWID";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_LIST ";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMR_LIST ";
                 SQL += ComNum.VBLF + " WHERE PTNO = '" + argPTNO + "'";
                 SQL += ComNum.VBLF + "   AND BDATE = TO_DATE('" + ArgBDate + "','YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + "   AND DRCODE = '" + ArgDrCode + "' ";
@@ -1302,7 +1302,7 @@ namespace ComEmrBase
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = "SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR";
+                SQL = "SELECT DRNAME FROM ADMIN.OCS_DOCTOR";
                 SQL += ComNum.VBLF +"WHERE DRCODE = '" + strDrCode + "'";
                 SQL += ComNum.VBLF +"  AND GBOUT = 'N'";
                 SQL += ComNum.VBLF + "  AND GRADE = '1'";
@@ -1389,7 +1389,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT A.PTNO, B.SNAME, C.DRNAME, A.JUPTIME, A.BIGO, A.SAYU, A.ROWID";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_LIST A, KOSMOS_PMPA.BAS_PATIENT B, KOSMOS_PMPA.BAS_DOCTOR C";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMR_LIST A, ADMIN.BAS_PATIENT B, ADMIN.BAS_DOCTOR C";
                 SQL += ComNum.VBLF + " WHERE BDATE = TO_DATE('" + strBDATE + "','YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + "   AND A.PTNO = B.PANO";
                 SQL += ComNum.VBLF + "   AND A.DRCODE = C.DRCODE";
@@ -1596,8 +1596,8 @@ namespace ComEmrBase
                             #region 중복 점검
                             //// '2016-08-11 김경동 작업
                             //SQL = " SELECT PTNO, B.SNAME, BDATE, A.GUBUN_AMPM, A.BIGO";
-                            //SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_LIST A";
-                            //SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.BAS_PATIENT B";
+                            //SQL += ComNum.VBLF + " FROM ADMIN.EMR_LIST A";
+                            //SQL += ComNum.VBLF + "   INNER JOIN ADMIN.BAS_PATIENT B";
                             //SQL += ComNum.VBLF + "     ON A.PTNO = B.PANO";
                             //SQL += ComNum.VBLF + " WHERE A.BDate = TO_DATE('" + strBDATE + "','YYYY-MM-DD') ";
                             //SQL += ComNum.VBLF + "   AND A.PTNO = '" + strPtNo + "' ";
@@ -1633,7 +1633,7 @@ namespace ComEmrBase
                             //}
                             #endregion
 
-                            SQL = " INSERT INTO KOSMOS_EMR.EMR_LIST( ";
+                            SQL = " INSERT INTO ADMIN.EMR_LIST( ";
                             SQL = SQL + ComNum.VBLF + " BDATE, PTNO, JUPTIME, WRITEDATE, ";
                             SQL = SQL + ComNum.VBLF + " WRITESABUN, BIGO, DRCODE, GUBUN_AMPM, ";
                             SQL = SQL + ComNum.VBLF + " ETC_ADD, SAYU, DEPTCODE, DISPSEQ) VALUES (";
@@ -1643,7 +1643,7 @@ namespace ComEmrBase
                         }
                         else
                         {
-                            SQL = " UPDATE KOSMOS_EMR.EMR_LIST SET ";
+                            SQL = " UPDATE ADMIN.EMR_LIST SET ";
                             //'SQL = SQL + ComNum.VBLF + " WRITEDATE = SYSDATE, "
                             //'SQL = SQL + ComNum.VBLF + " WRITESABUN = " + GnJobSabun + ", "
                             //'SQL = SQL + ComNum.VBLF + "  GUBUN_AMPM = '" + strGUBUN_AMPM + "', "
@@ -1690,8 +1690,8 @@ namespace ComEmrBase
                             #region 중복 점검
                             // '2016-08-11 김경동 작업
                             //SQL = " SELECT PTNO, B.SNAME, BDATE, A.GUBUN_AMPM, A.BIGO";
-                            //SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_LIST A";
-                            //SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.BAS_PATIENT B";
+                            //SQL += ComNum.VBLF + " FROM ADMIN.EMR_LIST A";
+                            //SQL += ComNum.VBLF + "   INNER JOIN ADMIN.BAS_PATIENT B";
                             //SQL += ComNum.VBLF + "     ON A.PTNO = B.PANO";
                             //SQL += ComNum.VBLF + " WHERE A.BDate = TO_DATE('" + strBDATE + "','YYYY-MM-DD') ";
                             //SQL += ComNum.VBLF + "   AND A.PTNO = '" + strPtNo + "' ";
@@ -1726,7 +1726,7 @@ namespace ComEmrBase
                             //}
                             #endregion
 
-                            SQL = " INSERT INTO KOSMOS_EMR.EMR_LIST( ";
+                            SQL = " INSERT INTO ADMIN.EMR_LIST( ";
                             SQL = SQL + ComNum.VBLF + " BDATE, PTNO, JUPTIME, WRITEDATE, ";
                             SQL = SQL + ComNum.VBLF + " WRITESABUN, BIGO, DRCODE, GUBUN_AMPM, ";
                             SQL = SQL + ComNum.VBLF + " ETC_ADD, SAYU, DEPTCODE, DISPSEQ ) VALUES (";
@@ -1736,7 +1736,7 @@ namespace ComEmrBase
                         }
                         else
                         {
-                            SQL = " UPDATE KOSMOS_EMR.EMR_LIST SET ";
+                            SQL = " UPDATE ADMIN.EMR_LIST SET ";
                             //'SQL = SQL + vbCr + " WRITEDATE = SYSDATE, "
                             //'SQL = SQL + vbCr + " WRITESABUN = " + GnJobSabun + ", "
                             //'SQL = SQL + vbCr + "  GUBUN_AMPM = '" + strGUBUN_AMPM + "', "
@@ -1791,7 +1791,7 @@ namespace ComEmrBase
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = " SELECT DRCODE FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = " SELECT DRCODE FROM ADMIN.OCS_DOCTOR ";
                 SQL += ComNum.VBLF + " WHERE DRNAME = '" + arg + "' ";
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -1835,7 +1835,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT DRDEPT1, DRDEPT2 ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_DOCTOR ";
+                SQL += ComNum.VBLF + " FROM ADMIN.BAS_DOCTOR ";
                 SQL += ComNum.VBLF + "WHERE DRCODE = '" + DrCd + "' ";
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -1880,7 +1880,7 @@ namespace ComEmrBase
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = " SELECT RECNAME FROM KOSMOS_EMR.EMR_LIST_MAGAM";
+                SQL = " SELECT RECNAME FROM ADMIN.EMR_LIST_MAGAM";
                 SQL += ComNum.VBLF + " WHERE BDATE = TO_DATE('" + argDATE + "','YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "   AND DRCODE = '" + argDRCD + "'";
                 SQL += ComNum.VBLF + "   AND GUBUN = '" + ArgGubun + "'";
@@ -2120,7 +2120,7 @@ namespace ComEmrBase
                 if (VB.Right(btnMagam1.Text, 2) == "마감" || VB.Right(btnMagam2.Text, 2) == "마감")
                 {
                     SQL = "SELECT COUNT(*) CNT";
-                    SQL += ComNum.VBLF + "  FROM KOSMOS_EMR.EMR_LIST_MAGAM";
+                    SQL += ComNum.VBLF + "  FROM ADMIN.EMR_LIST_MAGAM";
                     SQL += ComNum.VBLF + " WHERE BDATE = TO_DATE('" + strBDATE + "','YYYY-MM-DD') ";
                     SQL += ComNum.VBLF + "   AND DEPTCODE = '" + strDeptCode + "' ";
                     SQL += ComNum.VBLF + "   AND DRCODE = '" + strDrCode + "' ";
@@ -2150,7 +2150,7 @@ namespace ComEmrBase
                         return rtnVal;
                     }
 
-                    SQL = " INSERT INTO KOSMOS_EMR.EMR_LIST_MAGAM( ";
+                    SQL = " INSERT INTO ADMIN.EMR_LIST_MAGAM( ";
                     SQL += ComNum.VBLF + " BDATE, DEPTCODE, DRCODE, GUBUN, ";
                     SQL += ComNum.VBLF + " WRITESABUN, WRITEDATE, MAGAMNAME ) VALUES ( ";
                     SQL += ComNum.VBLF + "TO_DATE('" + strBDATE + "','YYYY-MM-DD'), '" + strDeptCode + "','" + strDrCode + "','" + strGubun + "', ";
@@ -2158,7 +2158,7 @@ namespace ComEmrBase
                 }
                 else
                 {
-                    SQL = " DELETE KOSMOS_EMR.EMR_LIST_MAGAM";
+                    SQL = " DELETE ADMIN.EMR_LIST_MAGAM";
                     SQL += ComNum.VBLF + " WHERE BDATE = TO_DATE('" + strBDATE + "','YYYY-MM-DD') ";
                     SQL += ComNum.VBLF + "   AND DEPTCODE = '" + strDeptCode + "' ";
                     SQL += ComNum.VBLF + "   AND DRCODE = '" + strDrCode + "' ";
@@ -2214,7 +2214,7 @@ namespace ComEmrBase
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = " SELECT * FROM KOSMOS_EMR.EMR_LIST";
+                SQL = " SELECT * FROM ADMIN.EMR_LIST";
                 SQL += ComNum.VBLF + " WHERE BDATE = TO_DATE('" + ArgBDate + "','YYYY-MM-DD')";
                 SQL += ComNum.VBLF +  " AND DRCODE = '" + ArgDrCode + "'";
                 SQL += ComNum.VBLF +  " AND GUBUN_AMPM = '" + argAMPM + "'";
@@ -2286,7 +2286,7 @@ namespace ComEmrBase
 
             try
             {
-                SQL = " UPDATE KOSMOS_EMR.EMR_LIST_MAGAM SET";
+                SQL = " UPDATE ADMIN.EMR_LIST_MAGAM SET";
                 SQL += ComNum.VBLF + " MAGAMNAME = '" + strMagamName + "' ";
                 SQL += ComNum.VBLF + " WHERE BDATE = TO_DATE('" + strBDATE + "','YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + "    AND DEPTCODE = '" + strDeptCode + "' ";
@@ -2365,7 +2365,7 @@ namespace ComEmrBase
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = " SELECT DRNAME,DRCODE FROM KOSMOS_PMPA.BAS_DOCTOR  ";
+                SQL = " SELECT DRNAME,DRCODE FROM ADMIN.BAS_DOCTOR  ";
                 SQL += ComNum.VBLF + "  WHERE TOUR = 'N' ";
 
                 if(strDeptCd == "RA" )
@@ -2769,7 +2769,7 @@ namespace ComEmrBase
                         if (string.IsNullOrWhiteSpace(strROWID))
                             continue;
 
-                        SQL = " UPDATE KOSMOS_EMR.EMR_LIST ";
+                        SQL = " UPDATE ADMIN.EMR_LIST ";
                         SQL += ComNum.VBLF + " SET BIGO = NULL";
                         SQL += ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
 
@@ -2868,7 +2868,7 @@ namespace ComEmrBase
                         if (string.IsNullOrWhiteSpace(strROWID))
                             continue;
 
-                        SQL = " DELETE KOSMOS_EMR.EMR_LIST ";
+                        SQL = " DELETE ADMIN.EMR_LIST ";
                         SQL += ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

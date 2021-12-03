@@ -240,7 +240,7 @@ namespace ComLibB
             SQL += ComNum.VBLF + "SELECT                                                                                ";
             SQL += ComNum.VBLF + "  A.ILLCODE                                                                           ";
             SQL += ComNum.VBLF + ",(SELECT ILLNAMEE                                                                     ";
-            SQL += ComNum.VBLF + "    FROM KOSMOS_PMPA.BAS_ILLS                                                         ";
+            SQL += ComNum.VBLF + "    FROM ADMIN.BAS_ILLS                                                         ";
             SQL += ComNum.VBLF + "   WHERE 1=1                                                                          ";
             SQL += ComNum.VBLF + "     AND ILLCODE = A.ILLCODE                                                          ";
             SQL += ComNum.VBLF + "     AND ILLCLASS = '1'                                                               ";
@@ -488,7 +488,7 @@ namespace ComLibB
             if (strROWID == "")
             {
                 SQL = "";
-                SQL += ComNum.VBLF + "INSERT INTO KOSMOS_OCS.ETC_HOSPICE_REQ";
+                SQL += ComNum.VBLF + "INSERT INTO ADMIN.ETC_HOSPICE_REQ";
                 SQL += ComNum.VBLF + "(ILLNAME, JINDATE, GBNOTICE, GBPATIENT1, GBFAMILY1";
                 SQL += ComNum.VBLF + ",GBPATIENT2, GBFAMILY2, GBSAYU, GBSTATUS, STATUSETC";
                 SQL += ComNum.VBLF + ",PANO, ENTDATE)";
@@ -510,7 +510,7 @@ namespace ComLibB
             else
             {
                 SQL = "";
-                SQL += ComNum.VBLF + "UPDATE KOSMOS_OCS.ETC_HOSPICE_REQ";                
+                SQL += ComNum.VBLF + "UPDATE ADMIN.ETC_HOSPICE_REQ";                
                 SQL += ComNum.VBLF + "SET ";
                 SQL += ComNum.VBLF + "  ILLNAME = '" + strILLNAME + "'";
                 SQL += ComNum.VBLF + ", JINDATE = '" + strJINDATE + "'";

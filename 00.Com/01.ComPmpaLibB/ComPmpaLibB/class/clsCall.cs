@@ -120,7 +120,7 @@ namespace ComPmpaLibB
 
             cmd.Connection = pDbCon.Con;
             cmd.InitialLONGFetchSize = 1000;
-            cmd.CommandText = "KOSMOS_PMPA.PR_DESKCALL_PROC";
+            cmd.CommandText = "ADMIN.PR_DESKCALL_PROC";
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("P_JOBTYPE", OracleDbType.Varchar2, 9, "1", ParameterDirection.Input);
@@ -189,7 +189,7 @@ namespace ComPmpaLibB
 
             cmd.Connection = pDbCon.Con;
             cmd.InitialLONGFetchSize = 1000;
-            cmd.CommandText = "KOSMOS_PMPA.PR_DESKCALL_PROC";
+            cmd.CommandText = "ADMIN.PR_DESKCALL_PROC";
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("P_JOBTYPE", OracleDbType.Varchar2, 9, "2", ParameterDirection.Input);
@@ -423,7 +423,7 @@ namespace ComPmpaLibB
             
            // int intRowAffected = 0;
            // SQL1 = "";
-           // SQL1 = SQL1 + ComNum.VBLF + "INSERT INTO KOSMOS_PMPA.KYOTEST_SQLLOG(SQL,SQL1,SQL2,SQL3,ENTDATE) VALUES ( ";
+           // SQL1 = SQL1 + ComNum.VBLF + "INSERT INTO ADMIN.KYOTEST_SQLLOG(SQL,SQL1,SQL2,SQL3,ENTDATE) VALUES ( ";
            // SQL1 = SQL1 + ComNum.VBLF + " '" + SQL + "','"  + GstrPano_Call + "','" + ArgTKNO + "','" + ArgTKID + "', SysDate) ";
            // SqlErr = clsDB.ExecuteNonQueryEx(SQL1, ref intRowAffected, pDbCon);
 

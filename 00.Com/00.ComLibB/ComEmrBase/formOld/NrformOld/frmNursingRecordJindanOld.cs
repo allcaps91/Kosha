@@ -112,9 +112,9 @@ namespace ComEmrBase
             
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT A.MACROGB, A.MACROINDEX, A.MACROKEY, A.MACROPARENT, A.MACRONAME,";
-            SQL = SQL + ComNum.VBLF + "      (SELECT MAX(O.MACROINDEX) FROM KOSMOS_EMR.EMRMACROETCDTL O";
+            SQL = SQL + ComNum.VBLF + "      (SELECT MAX(O.MACROINDEX) FROM ADMIN.EMRMACROETCDTL O";
             SQL = SQL + ComNum.VBLF + "              WHERE O.MACROGB = A.MACROGB AND O.MACROINDEX = A.MACROINDEX) AS DTLYN";
-            SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.EMRMACROETC A";
+            SQL = SQL + ComNum.VBLF + "          FROM ADMIN.EMRMACROETC A";
             SQL = SQL + ComNum.VBLF + "         WHERE A.MACROGB = '" + strMACROGB + "'";
             SQL = SQL + ComNum.VBLF + "         ORDER BY A.MACROPARENTV, A.SYSDSPINDEX";
 
@@ -290,7 +290,7 @@ namespace ComEmrBase
             try
             {
                 SQL = "";                
-                SQL = SQL + ComNum.VBLF + "  INSERT INTO KOSMOS_EMR.EMRMACROETC ";
+                SQL = SQL + ComNum.VBLF + "  INSERT INTO ADMIN.EMRMACROETC ";
                 SQL = SQL + ComNum.VBLF + "      (MACROGB,MACROINDEX,MACROKEY,MACROPARENT,MACRONAME,MACROKEYV,MACROPARENTV) ";
                 SQL = SQL + ComNum.VBLF + "  VALUES  (";
                 SQL = SQL + ComNum.VBLF + "      '" + mMACROGB + "',";
@@ -321,7 +321,7 @@ namespace ComEmrBase
                     for (k = 1; k <= tnParent.GetNodeCount(false);  k++)
                     {
                         SQL = "";
-                        SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_EMR.EMRMACROETC ";
+                        SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.EMRMACROETC ";
                         SQL = SQL + ComNum.VBLF + "  SET SYSDSPINDEX = " + k;
                         SQL = SQL + ComNum.VBLF + "  WHERE MACROINDEX = " + (int)VB.Val(trvJindan.Nodes[intNode].Name.Split('_')[1]);
 
@@ -532,7 +532,7 @@ namespace ComEmrBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "  INSERT INTO KOSMOS_EMR.EMRMACROETC ";
+                SQL = SQL + ComNum.VBLF + "  INSERT INTO ADMIN.EMRMACROETC ";
                 SQL = SQL + ComNum.VBLF + "      (MACROGB,MACROINDEX,MACROKEY,MACROPARENT,MACRONAME,MACROKEYV,MACROPARENTV) ";
                 SQL = SQL + ComNum.VBLF + "  VALUES  (";
                 SQL = SQL + ComNum.VBLF + "      '" + mMACROGB + "', ";
@@ -563,7 +563,7 @@ namespace ComEmrBase
                             if (n.Level == 0)
                             {
                                 SQL = "";
-                                SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_EMR.EMRMACROETC ";
+                                SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.EMRMACROETC ";
                                 SQL = SQL + ComNum.VBLF + "  SET SYSDSPINDEX = " + n.Index;
                                 SQL = SQL + ComNum.VBLF + "  WHERE MACROINDEX = " + (int)VB.Val(n.Name.Split('_')[1]);
 
@@ -589,7 +589,7 @@ namespace ComEmrBase
                         while (mNode.Equals(mNode.Parent.LastNode) == false)
                         {
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_EMR.EMRMACROETC ";
+                            SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.EMRMACROETC ";
                             SQL = SQL + ComNum.VBLF + "  SET SYSDSPINDEX = " + k;
                             SQL = SQL + ComNum.VBLF + "  WHERE MACROINDEX = " + (int)VB.Val(mNode.Name.Split('_')[1]);
 
@@ -608,7 +608,7 @@ namespace ComEmrBase
                         }
 
                         SQL = "";
-                        SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_EMR.EMRMACROETC ";
+                        SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.EMRMACROETC ";
                         SQL = SQL + ComNum.VBLF + "  SET SYSDSPINDEX = " + k;
                         SQL = SQL + ComNum.VBLF + "  WHERE MACROINDEX = " + (int)VB.Val(mLastNode.Name.Split('_')[1]);
 
@@ -710,7 +710,7 @@ namespace ComEmrBase
             bool rtnVal = false;
 
             SQL = "";
-            SQL = SQL + ComNum.VBLF + " SELECT * FROM KOSMOS_EMR.EMRMACROETCDTL";
+            SQL = SQL + ComNum.VBLF + " SELECT * FROM ADMIN.EMRMACROETCDTL";
             SQL = SQL + ComNum.VBLF + "       WHERE MACROGB = '" + mMACROGB + "'";
             SQL = SQL + ComNum.VBLF + "       AND MACROINDEX = " + mlngMACROINDEX;
 
@@ -893,7 +893,7 @@ namespace ComEmrBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "  INSERT INTO KOSMOS_EMR.EMRMACROETC ";
+                SQL = SQL + ComNum.VBLF + "  INSERT INTO ADMIN.EMRMACROETC ";
                 SQL = SQL + ComNum.VBLF + "      (MACROGB,MACROINDEX,MACROKEY,MACROPARENT,MACRONAME,MACROKEYV,MACROPARENTV) ";
                 SQL = SQL + ComNum.VBLF + "  VALUES  (";
                 SQL = SQL + ComNum.VBLF + "      '" + mMACROGB + "',";
@@ -925,7 +925,7 @@ namespace ComEmrBase
                     while (iFirstNode != trvJindan.Nodes[iFirstNode].LastNode.Index)
                     {
                         SQL = "";
-                        SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_EMR.EMRMACROETC ";
+                        SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.EMRMACROETC ";
                         SQL = SQL + ComNum.VBLF + "  SET SYSDSPINDEX = " + k;
                         SQL = SQL + ComNum.VBLF + "  WHERE MACROINDEX = " + (int)VB.Val(trvJindan.Nodes[iFirstNode].LastNode.Name.Split('_')[1]);
 
@@ -941,7 +941,7 @@ namespace ComEmrBase
                     }
 
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_EMR.EMRMACROETC ";
+                    SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.EMRMACROETC ";
                     SQL = SQL + ComNum.VBLF + "  SET SYSDSPINDEX = " + k;
                     SQL = SQL + ComNum.VBLF + "  WHERE MACROINDEX = " + (int)VB.Val(trvJindan.Nodes[iLastNode].LastNode.Name.Split('_')[1]);
 
@@ -1096,7 +1096,7 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + " SELECT ";
             SQL = SQL + ComNum.VBLF + "  A.MACROCD, MACROINDEX, ";
             SQL = SQL + ComNum.VBLF + "  A.MACROSEQ, A.MACROTEXT, A.MACRODSP";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRMACROETCDTL A";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRMACROETCDTL A";
             SQL = SQL + ComNum.VBLF + "          WHERE A.MACROGB = '" + mMACROGB + "'";
             SQL = SQL + ComNum.VBLF + "          AND A.MACROINDEX = " + mlngMACROINDEX;
             SQL = SQL + ComNum.VBLF + "          AND A.MACROCD = '"+ mMACROCD + "'";
@@ -1294,7 +1294,7 @@ namespace ComEmrBase
                 //SQL = SQL + ComNum.VBLF + " WHERE    GRPFORMNO = " + Convert.ToInt32(VB.Val(tnParent.Name));
                 //SQL = SQL + ComNum.VBLF + "     AND    USERGB = '" + strUserGb + "'";
                 //SQL = SQL + ComNum.VBLF + "     AND    USECLS ='1'";
-                SQL = SQL + ComNum.VBLF + " UPDATE KOSMOS_EMR.EMRMACROETC SET MACRONAME = '" + nodeName + "'";
+                SQL = SQL + ComNum.VBLF + " UPDATE ADMIN.EMRMACROETC SET MACRONAME = '" + nodeName + "'";
                 SQL = SQL + ComNum.VBLF + "       WHERE MACROGB = '" + mMACROGB + "'";
                 SQL = SQL + ComNum.VBLF + "       AND MACROINDEX = " + mlngMACROINDEX;
 
@@ -1412,7 +1412,7 @@ namespace ComEmrBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " DELETE FROM KOSMOS_EMR.EMRMACROETCDTL";
+                SQL = SQL + ComNum.VBLF + " DELETE FROM ADMIN.EMRMACROETCDTL";
                 SQL = SQL + ComNum.VBLF + "  WHERE MACROGB = '" + mMACROGB + "'";
                 SQL = SQL + ComNum.VBLF + "    AND MACROINDEX = " + tnParent.Name.Split('_')[1];
 
@@ -1431,7 +1431,7 @@ namespace ComEmrBase
                 }
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " DELETE FROM KOSMOS_EMR.EMRMACROETC ";
+                SQL = SQL + ComNum.VBLF + " DELETE FROM ADMIN.EMRMACROETC ";
                 SQL = SQL + ComNum.VBLF + "  WHERE MACROGB = '" + mMACROGB + "'";
                 SQL = SQL + ComNum.VBLF + "    AND MACROINDEX = " + tnParent.Name.Split('_')[1];
 
@@ -1642,7 +1642,7 @@ namespace ComEmrBase
                     {
                         lngMACROSEQ = (int)VB.Val(spd.Cells[i, 3].Text);
 
-                        SQL = " DELETE FROM KOSMOS_EMR.EMRMACROETCDTL";
+                        SQL = " DELETE FROM ADMIN.EMRMACROETCDTL";
                         SQL = SQL + ComNum.VBLF + " WHERE MACROGB = '" + mMACROGB + "'";
                         SQL = SQL + ComNum.VBLF + " AND MACROINDEX = " + mlngMACROINDEX;
                         SQL = SQL + ComNum.VBLF + " AND MACROCD = '" + strMacroCd + "'";
@@ -1754,7 +1754,7 @@ namespace ComEmrBase
             {
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " DELETE FROM KOSMOS_EMR.EMRMACROETCDTL";
+                SQL = SQL + ComNum.VBLF + " DELETE FROM ADMIN.EMRMACROETCDTL";
                 SQL = SQL + ComNum.VBLF + "       WHERE MACROGB = '" + mMACROGB + "'";
                 SQL = SQL + ComNum.VBLF + "       AND MACROINDEX = " + mlngMACROINDEX;
                 SQL = SQL + ComNum.VBLF + "       AND MACROCD = '" + strTYPE + "'";
@@ -1781,7 +1781,7 @@ namespace ComEmrBase
                     //}
                     
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + " INSERT INTO KOSMOS_EMR.EMRMACROETCDTL";
+                    SQL = SQL + ComNum.VBLF + " INSERT INTO ADMIN.EMRMACROETCDTL";
                     SQL = SQL + ComNum.VBLF + "      (MACROGB, MACROINDEX, MACROCD, MACROSEQ, MACROTEXT, MACRODSP)";
                     SQL = SQL + ComNum.VBLF + "      VALUES(";
                     SQL = SQL + ComNum.VBLF + "     '" + mMACROGB + "',";

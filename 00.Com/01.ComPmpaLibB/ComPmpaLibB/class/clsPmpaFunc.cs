@@ -901,7 +901,7 @@ namespace ComPmpaLibB
             long rtnVal = 0;
 
             SQL = "";
-            SQL += ComNum.VBLF + " SELECT KOSMOS_PMPA.SEQ_IPDNO.NEXTVAL IPDNO ";
+            SQL += ComNum.VBLF + " SELECT ADMIN.SEQ_IPDNO.NEXTVAL IPDNO ";
             SQL += ComNum.VBLF + "   FROM DUAL";
             SqlErr = clsDB.GetDataTableEx(ref Dt, SQL, pDbCon);
 
@@ -934,7 +934,7 @@ namespace ComPmpaLibB
             long rtnVal = 0;
 
             SQL = "";
-            SQL += ComNum.VBLF + " SELECT KOSMOS_PMPA.SEQ_IPDNO2.NEXTVAL IPDNO ";
+            SQL += ComNum.VBLF + " SELECT ADMIN.SEQ_IPDNO2.NEXTVAL IPDNO ";
             SQL += ComNum.VBLF + "   FROM DUAL";
             SqlErr = clsDB.GetDataTableEx(ref Dt, SQL, pDbCon);
 
@@ -2586,8 +2586,8 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT PANO, SNAME, MEMO, JobSabun, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_PASS_NAME(JOBSABUN) NAME, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_ETC_TELBOOK(JOBSABUN) TEL ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_PASS_NAME(JOBSABUN) NAME, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_ETC_TELBOOK(JOBSABUN) TEL ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "BAS_OCSMEMO_SIM ";
             SQL += ComNum.VBLF + "  WHERE 1     = 1 ";
             SQL += ComNum.VBLF + "    AND PANO  = '" + ArgPano + "' ";
@@ -4939,7 +4939,7 @@ namespace ComPmpaLibB
             long rtnVal = 0;
 
             SQL = "";
-            SQL += ComNum.VBLF + " SELECT KOSMOS_PMPA.SEQ_CARDSEQNO.NEXTVAL CARDSEQNO  ";
+            SQL += ComNum.VBLF + " SELECT ADMIN.SEQ_CARDSEQNO.NEXTVAL CARDSEQNO  ";
             SQL += ComNum.VBLF + "   FROM DUAL";
             SqlErr = clsDB.GetDataTableEx(ref DtFunc, SQL, pDbCon);
 
@@ -4971,7 +4971,7 @@ namespace ComPmpaLibB
             long rtnVal = 0;
 
             SQL = "";
-            SQL += ComNum.VBLF + " SELECT KOSMOS_PMPA.SEQ_CDSEQNO.NEXTVAL CDSEQNO ";
+            SQL += ComNum.VBLF + " SELECT ADMIN.SEQ_CDSEQNO.NEXTVAL CDSEQNO ";
             SQL += ComNum.VBLF + "   FROM DUAL";
             SqlErr = clsDB.GetDataTableEx(ref DtFunc, SQL, pDbCon);
 
@@ -5673,7 +5673,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "      AND Bi       = '" + ArgBi + "'                                                                      ";
             SQL += ComNum.VBLF + "      AND DeptCode = '" + ArgDept + "'                                                                    ";
             SQL += ComNum.VBLF + "      AND SeqNo    = " + ArgSeq + "                                                                       ";
-            SQL += ComNum.VBLF + "      AND TRIM(SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드')   ";
+            SQL += ComNum.VBLF + "      AND TRIM(SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드')   ";
             SQL += ComNum.VBLF + "GROUP BY BUN, GBSELF                                                                                      ";
             SqlErr = clsDB.GetDataTableEx(ref dt1, SQL, pDbCon);
 
@@ -5942,7 +5942,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "      AND a.DeptCode = '" + ArgDept + "'                                                                  ";
                 SQL += ComNum.VBLF + "      AND a.ActDate  = TO_DATE('" + clsPmpaPb.GstrJeaDate + "','YYYY-MM-DD')                              ";
                 SQL += ComNum.VBLF + "      AND a.Part = '" + clsPmpaPb.GstrJeaPart.Trim() + "'                                                 ";
-                SQL += ComNum.VBLF + "      AND TRIM(a.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
+                SQL += ComNum.VBLF + "      AND TRIM(a.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
                 SQL += ComNum.VBLF + "      AND a.SeqNo = " + ArgSeq + "                                                                        ";
             }
             else
@@ -5961,7 +5961,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "      AND DeptCode = '" + ArgDept + "'                                                                    ";
                 SQL += ComNum.VBLF + "      AND ActDate  = TO_DATE('" + clsPmpaPb.GstrJeaDate + "','YYYY-MM-DD')                                ";
                 SQL += ComNum.VBLF + "      AND Part = '" + clsPmpaPb.GstrJeaPart.Trim() + "'                                                   ";
-                SQL += ComNum.VBLF + "      AND TRIM(SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드')   ";
+                SQL += ComNum.VBLF + "      AND TRIM(SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드')   ";
                 SQL += ComNum.VBLF + "      AND SeqNo = " + ArgSeq + "                                                                          ";
             }
 
@@ -10269,7 +10269,7 @@ namespace ComPmpaLibB
             string strRtn = "";
 
             SQL = "";
-            SQL = "SELECT RateValue FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+            SQL = "SELECT RateValue FROM ADMIN.BAS_ACCOUNT ";
             SQL = SQL + ComNum.VBLF + "WHERE 1=1";
             if (ArgIO == "IPD")
                 SQL = SQL + ComNum.VBLF + "AND IDName='IPD_BON' ";
@@ -10372,7 +10372,7 @@ namespace ComPmpaLibB
                     break;
             }
             SQL = "";
-            SQL = "SELECT RateValue FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+            SQL = "SELECT RateValue FROM ADMIN.BAS_ACCOUNT ";
             SQL = SQL + ComNum.VBLF + "WHERE IDName='GISUL' ";
             SQL = SQL + ComNum.VBLF + " AND ArrayClass=" + intRtn + " ";
             SQL = SQL + ComNum.VBLF + " AND StartDate<=TO_DATE('" + argDATE + "','YYYY-MM-DD') ";
@@ -12787,7 +12787,7 @@ namespace ComPmpaLibB
             long rtnVal = 0;
 
             SQL = "";
-            SQL += ComNum.VBLF + " SELECT KOSMOS_PMPA.SEQ_OPDNO.NEXTVAL OPDNO ";
+            SQL += ComNum.VBLF + " SELECT ADMIN.SEQ_OPDNO.NEXTVAL OPDNO ";
             SQL += ComNum.VBLF + "   FROM DUAL";
             SqlErr = clsDB.GetDataTableEx(ref DtFunc, SQL, pDbCon);
 

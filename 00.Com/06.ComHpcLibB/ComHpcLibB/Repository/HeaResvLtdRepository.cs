@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESV_LTD                    ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESV_LTD                    ");
             parameter.AppendSql("   SET AMJEPSU = 0                                 ");
             parameter.AppendSql("      ,PMJEPSU = 0                                 ");
             parameter.AppendSql("      ,AMJAN   = AMINWON                           ");
@@ -56,7 +56,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESV_LTD        ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESV_LTD        ");
             parameter.AppendSql("   SET AMJEPSU = :AMJEPSU              ");
             parameter.AppendSql("     , PMJEPSU = :PMJEPSU              ");
             parameter.AppendSql("     , AMJAN   = :AMJAN                ");
@@ -130,7 +130,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESV_LTD        ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESV_LTD        ");
             parameter.AppendSql("   SET AMJEPSU = :AMJEPSU              ");
             parameter.AppendSql("     , PMJEPSU = :PMJEPSU              ");
             parameter.AppendSql("     , AMJAN   = :AMJAN                ");
@@ -153,7 +153,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HEA_RESV_LTD    ");
+            parameter.AppendSql("DELETE ADMIN.HEA_RESV_LTD    ");
             parameter.AppendSql(" WHERE SDATE  >= TRUNC(SYSDATE)    ");
             parameter.AppendSql("   AND GUBUN IS NULL               ");
 
@@ -164,7 +164,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT AMINWON, PMINWON                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_LTD                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_LTD                ");
             parameter.AppendSql(" WHERE SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                          ");
 
@@ -177,10 +177,10 @@ namespace ComHpcLibB.Repository
         public List<HEA_RESV_LTD> GetListAmPmJanBySDateGubun(string argDate, string argGbn, int argRow)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE) AS LTDNAME      ");
+            parameter.AppendSql("SELECT ADMIN.FC_HIC_LTDNAME(LTDCODE) AS LTDNAME      ");
             parameter.AppendSql("      ,AMJAN, PMJAN, ENTSABUN                              ");
-            parameter.AppendSql("      ,KOSMOS_OCS.FC_BAS_USER_NAME(ENTSABUN) AS JOBNAME    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_LTD                            ");
+            parameter.AppendSql("      ,ADMIN.FC_BAS_USER_NAME(ENTSABUN) AS JOBNAME    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_LTD                            ");
             parameter.AppendSql(" WHERE SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')               ");
 
             if (argRow == 1)
@@ -208,7 +208,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HEA_RESV_LTD WHERE ROWID =:RID  ");
+            parameter.AppendSql("DELETE ADMIN.HEA_RESV_LTD WHERE ROWID =:RID  ");
             
             parameter.Add("RID", argRowid);
 
@@ -219,7 +219,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SUM(AMJAN) AS AMJAN, SUM(PMJAN) AS PMJAN ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_LTD                 ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_LTD                 ");
             parameter.AppendSql(" WHERE SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                           ");
 
@@ -233,7 +233,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(SDATE,'YYYY-MM-DD') SDATE, GUBUN, AMINWON, PMINWON, AMJAN, PMJAN    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_LTD                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_LTD                                                    ");
             parameter.AppendSql(" WHERE 1 =1                                                                        ");
             parameter.AppendSql("   AND SDATE >= TRUNC(SYSDATE-1)                                                   ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE                                                          ");
@@ -248,7 +248,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GUBUN, AMINWON, PMINWON, AMJEPSU, PMJEPSU, AMJAN, PMJAN, ROWID AS RID   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_LTD                                                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_LTD                                                ");
             parameter.AppendSql(" WHERE 1 =1                                                                    ");
             parameter.AppendSql("   AND SDATE = TO_DATE(:SDATE,'YYYY-MM-DD')                                    ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE                                                      ");
@@ -264,7 +264,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HEA_RESV_LTD        ");
+            parameter.AppendSql("DELETE ADMIN.HEA_RESV_LTD        ");
             parameter.AppendSql(" WHERE SDATE >= TRUNC(SYSDATE)         ");
             if (!argLtdList.IsNullOrEmpty())
             {
@@ -284,8 +284,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GBEXAM,SUM(DECODE(A.AMPM,'A',1,1)) AS AMCNT             ");
             parameter.AppendSql("      ,SUM(DECODE(A.AMPM,'A',0,1)) AS PMCNT                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM A                             ");
-            parameter.AppendSql("       ,KOSMOS_PMPA.HIC_PATIENT B                              ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM A                             ");
+            parameter.AppendSql("       ,ADMIN.HIC_PATIENT B                              ");
             parameter.AppendSql(" WHERE 1 =1                                                    ");
             parameter.AppendSql("   AND A.RTIME >= TO_DATE(:RTIME, 'YYYY-MM-DD')                ");
             parameter.AppendSql("   AND A.RTIME <= TO_DATE(:RTIME, 'YYYY-MM-DD') + 0.99999      ");
@@ -303,7 +303,7 @@ namespace ComHpcLibB.Repository
         public int InsertData(HEA_RESV_LTD data)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_PMPA.HEA_RESV_LTD (                            ");
+            parameter.AppendSql(" INSERT INTO ADMIN.HEA_RESV_LTD (                            ");
             parameter.AppendSql("        SDATE,GUBUN,LTDCODE,ENTSABUN,ENTTIME,AMINWON,PMINWON,      ");
             parameter.AppendSql("        AMJEPSU,PMJEPSU,AMJAN,PMJAN,YOIL                           ");
             parameter.AppendSql(") VALUES (                                                         ");
@@ -331,7 +331,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT AMINWON, PMINWON, ROWID AS RID          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_LTD                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_LTD                ");
             parameter.AppendSql(" WHERE SDATE   = TO_DATE(:SDATE, 'YYYY-MM-DD') ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE                      ");
             parameter.AppendSql("   AND GUBUN   = :GUBUN                        ");

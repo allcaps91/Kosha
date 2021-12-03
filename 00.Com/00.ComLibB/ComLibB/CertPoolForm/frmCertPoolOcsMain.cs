@@ -179,8 +179,8 @@ namespace ComLibB
             {
                 #region // QUERY
                 SQL = "";
-                SQL += "SELECT KOSMOS_OCS.OCS_ITRANSFER.*, ROWID \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_ITRANSFER  \r";
+                SQL += "SELECT ADMIN.OCS_ITRANSFER.*, ROWID \r";
+                SQL += "  FROM ADMIN.OCS_ITRANSFER  \r";
                 SQL += " WHERE 1=1   \r";
                 SQL += "   AND sDATE >= TRUNC(SYSDATE - 10)  \r";
                 SQL += "   AND sDATE < TRUNC(SYSDATE)  \r";
@@ -406,7 +406,7 @@ namespace ComLibB
                 SQL += "       A.RESULTDRCODE, TO_CHAR(A.BirthDate,'YYYY-MM-DD') BIRTHDate,  \r";
                 SQL += "       B.REMARK1, B.REMARK2, B.REMARK3, B.REMARK4, B.REMARK5, B.REMARK6, \r";
                 SQL += "       C.REMARKC , C.REMARKX, C.REMARKP, C.REMARKD \r";
-                SQL += "  FROM KOSMOS_OCS.ENDO_JUPMST A, KOSMOS_OCS.ENDO_RESULT B , KOSMOS_OCS.ENDO_REMARK C \r";
+                SQL += "  FROM ADMIN.ENDO_JUPMST A, ADMIN.ENDO_RESULT B , ADMIN.ENDO_REMARK C \r";
                 SQL += " WHERE A.RESULTDATE BETWEEN TRUNC(SYSDATE - 30) AND TRUNC(SYSDATE +1) \r";
                 SQL += "   AND A.CERTNO IS NULL \r";
                 SQL += "   AND A.SEQNO = B.SEQNO \r";
@@ -466,7 +466,7 @@ namespace ComLibB
 
 
                         SQL = " SELECT      REMARKC , REMARKX, REMARKP, REMARKD  \r";
-                        SQL = SQL + "  FROM KOSMOS_OCS.ENDO_REMARK  \r";
+                        SQL = SQL + "  FROM ADMIN.ENDO_REMARK  \r";
                         SQL = SQL + " WHERE PTNO = '" + strPano + "'  \r";
                         SQL = SQL + "   AND JDATE = TO_DATE('" + strJDate + "','YYYY-MM-DD') \r";
                         SQL = SQL + "   AND ORDERCODE = '" + dt.Rows[i]["ORDERCODE"].ToString().Trim() + "'  \r";
@@ -654,7 +654,7 @@ namespace ComLibB
                 SQL += "       RESULTSABUN,ITEMS1,ITEMS2,DISEASE, \r";
                 SQL += "       VERIFY1,VERIFY2,VERIFY3,VERIFY4,VERIFY5,VERIFY6, \r";
                 SQL += "       COMMENTS,RECOMMENDATION,PRINT, ROWID   \r";
-                SQL += "  FROM KOSMOS_OCS.EXAM_VERIFY  \r";
+                SQL += "  FROM ADMIN.EXAM_VERIFY  \r";
                 SQL += " WHERE RESULTDATE BETWEEN TRUNC(SYSDATE - 30) AND TRUNC(SYSDATE +1)  \r";
                 SQL += "   AND STATUS = '3' \r";     //'결과 완료된것
                 SQL += "   AND RESULTDATE IS NOT NULL  \r";
@@ -870,7 +870,7 @@ namespace ComLibB
                 SQL = "";
                 SQL += "SELECT PTNO, SNAME , BI,  AGE, SEX, JUMIN, BDATE,  DEPTCODE, DRSABUN, IO, ORDERNO, JUSO,  REMARK1, REMARK2,  \r";
                 SQL += "       SUCODE, QTY, REALQTY, NAL ,DOSCODE , ROWID  \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MAYAK  \r";
+                SQL += "  FROM ADMIN.OCS_MAYAK  \r";
                 SQL += " WHERE ENTDATE BETWEEN TRUNC(SYSDATE -30) AND TRUNC(SYSDATE +1)  \r";
                 SQL += "   AND BDATE >= TRUNC(SYSDATE -30) \r";
                 SQL += "   AND CERTNO IS NULL  \r";     //'전사서명 않된오더
@@ -1034,7 +1034,7 @@ namespace ComLibB
                 SQL = "";
                 SQL += "SELECT PTNO, SNAME , BI,  AGE, SEX, JUMIN, BDATE,  DEPTCODE, DRSABUN, IO, ORDERNO, JUSO,  REMARK1, REMARK2,  \r";
                 SQL += "       SUCODE, QTY, REALQTY, NAL ,DOSCODE , ROWID  \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_HYANG  \r";
+                SQL += "  FROM ADMIN.OCS_HYANG  \r";
                 SQL += " WHERE ENTDATE BETWEEN TRUNC(SYSDATE -30) AND TRUNC(SYSDATE +1)  \r";
                 SQL += "   AND BDATE >= TRUNC(SYSDATE -30) \r";
                 SQL += "   AND CERTNO IS NULL  \r";     //'전사서명 않된오더
@@ -1199,7 +1199,7 @@ namespace ComLibB
                 SQL = "";
                 SQL += "SELECT PTNO, SNAME , BI,  AGE, SEX, JUMIN, BDATE,  DEPTCODE, DRSABUN, IO, ORDERNO, JUSO,  REMARK1, REMARK2,  \r";
                 SQL += "       SUCODE, QTY, REALQTY, NAL ,DOSCODE , ROWID  \r";
-                SQL += "  FROM KOSMOS_PMPA.HIC_HYANG  \r";
+                SQL += "  FROM ADMIN.HIC_HYANG  \r";
                 SQL += " WHERE ENTDATE BETWEEN TRUNC(SYSDATE -30) AND TRUNC(SYSDATE +1)  \r";
                 SQL += "   AND BDATE >= TRUNC(SYSDATE -30) \r";
                 SQL += "   AND CERTNO IS NULL  \r";     //'전사서명 않된오더
@@ -1367,7 +1367,7 @@ namespace ComLibB
                 SQL += "       WRTNO,PANO,SNAME,JONG,GBSITE,DEPTCODE,SUCODE,QTY,REALQTY,PTNO,SEX,AGE, \r";
                 SQL += "       TO_CHAR(ENTDATE,'YYYY-MM-DD HH24:MI') ENTDATE,DRSABUN, \r";
                 SQL += "       TO_CHAR(APPROVETIME,'YYYY-MM-DD HH24:MI') APPROVETIME,GBSLEEP,JUMIN2,ROWID  \r";
-                SQL += "  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE  \r";
+                SQL += "  FROM ADMIN.HIC_HYANG_APPROVE  \r";
                 SQL += " WHERE SDATE >= TRUNC(SYSDATE - 20)  \r";
                 SQL += "   AND DRSABUN IS NOT NULL  \r";
                 SQL += "   AND APPROVETIME IS NOT NULL  \r";
@@ -1537,7 +1537,7 @@ namespace ComLibB
                 SQL += "       WARDCODE,ROOMCODE,XDRCODE1,XDRCODE2,XDRCODE3,ILLCODE1,ILLCODE2,ILLCODE3,XCODE,  \r";
                 SQL += "       XNAME,RESULT,RESULT1,PRTCNT,VIEWCNT,ENTDATE,APPROVE,GBOUT,STIME,ETIME,RESULTEC,  \r";
                 SQL += "       RESULTEC1,GBANAT,SENDEMR,SENDEMRNO,GBSPC,PART,ADDENDUM1,ADDENDUM2,ADDDATE,ADDDRCODE,ROWID  \r";
-                SQL += "  FROM KOSMOS_PMPA.XRAY_RESULTNEW    \r";
+                SQL += "  FROM ADMIN.XRAY_RESULTNEW    \r";
                 SQL += " WHERE READDATE >= TRUNC(SYSDATE -30)  \r";
                 SQL += "   AND (CERTNO IS NULL OR Certno =0 )  \r";             //'전사서명 않된오더
                 SQL += "   AND xDRCODE1 IS NOT NULL  \r";
@@ -1745,7 +1745,7 @@ namespace ComLibB
                 SQL += "SELECT WRTNO,PANO,OPDATE,DEPTCODE,DRCODE,IPDOPD,CODEGBN,JEPCODE,SUCODE,SUBUN,  \r";
                 SQL += "       GUBUN,QTY,GBSELF,GBSUSUL,GBNGT,GBSUNAP,BUCODE,OPROOM,OPTIMEFROM,SLIPSEND, ENTDATE,  \r";
                 SQL += "       ENTSABUN , GUMECONFIRM, DRUG_CHULGO, GBOK, AUTO_SEND, CERTNO, ROWID  \r";
-                SQL += "  FROM KOSMOS_PMPA.ORAN_SLIP  \r";
+                SQL += "  FROM ADMIN.ORAN_SLIP  \r";
                 SQL += " WHERE OPDATE >= TO_DATE('2014-01-01','YYYY-MM-DD') \r";
                 SQL += "   AND SLIPSEND >= TRUNC(SYSDATE - 30)  \r";
                 SQL += "   AND CERTNO IS NULL  \r";         //'전사서명 않된오더
@@ -1921,7 +1921,7 @@ namespace ComLibB
                 SQL += "       JINCODE1, JINCODE2, JINCODE3, JINCODE4, SUSULCODE1, SUSULCODE2, \r";
                 SQL += "       SUSULDATE, SUSULCODE3, SUSULCODE4, SUSULDATE2, SUSULDATE3, SUSULDATE4, \r";
                 SQL += "       JINDAN, SUSUL, PRT, GUBUN, DRCODE, DELDATE, PRTDATE, CERTNO, REQCNT, ENG_GUBUN, PDUSE, ROWID \r";
-                SQL += "  FROM KOSMOS_PMPA.ETC_WONSELU a \r";
+                SQL += "  FROM ADMIN.ETC_WONSELU a \r";
                 SQL += " WHERE ACTDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 SQL += " ORDER BY ACTDATE \r";
@@ -2096,13 +2096,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI01 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI01 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 SQL += "   AND SEND = 'P' \r";
@@ -2281,13 +2281,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI02 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI02 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -2476,13 +2476,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI03 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI03 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -2672,13 +2672,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI05 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI05 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -2883,13 +2883,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI08 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI08 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -3070,13 +3070,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI12 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI12 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -3261,13 +3261,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI14 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI14 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -3444,13 +3444,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI18 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI18 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -3628,13 +3628,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI19 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI19 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -3816,13 +3816,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT B.SABUN \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI20 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI20 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -4020,13 +4020,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICNO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI21 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI21 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -4240,13 +4240,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICNO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI22 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI22 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -4447,13 +4447,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSE \r";
                 SQL += "           AND B.FDATE <= BALDATE \r";
                 SQL += "           AND B.TDATE >= BALDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI23 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI23 X \r";
                 SQL += " WHERE BALDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -4659,13 +4659,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSE \r";
                 SQL += "           AND B.FDATE <= BALDATE \r";
                 SQL += "           AND B.TDATE >= BALDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI24 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI24 X \r";
                 SQL += " WHERE BALDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -4844,13 +4844,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSE \r";
                 SQL += "           AND B.FDATE <= BALDATE \r";
                 SQL += "           AND B.TDATE >= BALDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI25 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI25 X \r";
                 SQL += " WHERE BALDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -5053,13 +5053,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSE \r";
                 SQL += "           AND B.FDATE <= BALDATE \r";
                 SQL += "           AND B.TDATE >= BALDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI26 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI26 X \r";
                 SQL += " WHERE BALDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -5250,13 +5250,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 SQL += "           AND B.FDATE <= LSDATE \r";
                 SQL += "           AND B.TDATE >= LSDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI27 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI27 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -5442,13 +5442,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID, \r";
                 SQL += "       (SELECT MAX(B.SABUN) \r";
-                SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 SQL += "         WHERE A.SABUN = B.SABUN \r";
                 SQL += "           AND A.MYEN_BUNHO = X.LICENSE \r";
                 SQL += "           AND B.FDATE <= BALDATE \r";
                 SQL += "           AND B.TDATE >= BALDATE \r";
                 SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI28 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI28 X \r";
                 SQL += " WHERE BALDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";
@@ -5656,13 +5656,13 @@ namespace ComLibB
                 SQL += "       X.*,     \r";
                 SQL += "       X.ROWID  \r";
                 //SQL += "       (SELECT B.SABUN \r";
-                //SQL += "          FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B \r";
+                //SQL += "          FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B \r";
                 //SQL += "         WHERE A.SABUN = B.SABUN \r";
                 //SQL += "           AND A.MYEN_BUNHO = X.LICENSENO \r";
                 //SQL += "           AND B.FDATE <= LSDATE \r";
                 //SQL += "           AND B.TDATE >= LSDATE \r";
                 //SQL += "       ) AS DRSABUN \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_MCCERTIFI29 X \r";
+                SQL += "  FROM ADMIN.OCS_MCCERTIFI29 X \r";
                 SQL += " WHERE LSDATE BETWEEN TO_DATE('2013-06-01', 'YYYY-MM-DD') AND TRUNC(SYSDATE) \r";
                 SQL += "   AND CERTNO IS NULL \r";
                 //SQL += "   AND SEND = 'P' \r";

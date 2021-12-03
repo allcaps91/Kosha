@@ -440,7 +440,7 @@ namespace ComEmrBase
         //    {
         //        SQL = " SELECT A.PTNO, B.SNAME AS PTNAME, ";
         //        SQL = SQL + ComNum.VBLF + "        A.MEDFRDATE, A.MEDENDDATE, A.MIBIGRP, A.MIBICD, A.MIBIRMK ";
-        //        SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRMIBI A, KOSMOS_PMPA.BAS_PATIENT B ";
+        //        SQL = SQL + ComNum.VBLF + "    FROM ADMIN.EMRMIBI A, ADMIN.BAS_PATIENT B ";
         //        SQL = SQL + ComNum.VBLF + "    WHERE A.MEDDEPTCD = '" + clsType.User.DeptCode + "' ";
         //        SQL = SQL + ComNum.VBLF + "    AND A.MEDDRCD = '" + clsType.User.IdNumber + "' ";
         //        SQL = SQL + ComNum.VBLF + "    AND A.MIBICLS = 1";
@@ -487,7 +487,7 @@ namespace ComEmrBase
         //    try
         //    {
         //        SQL = SQL + ComNum.VBLF + " SELECT REMARK ";
-        //        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.SGLRMK ";
+        //        SQL = SQL + ComNum.VBLF + " FROM ADMIN.SGLRMK ";
         //        SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + strPtNo + "'";
         //        SQL = SQL + ComNum.VBLF + " AND GUBUN = '1'";
         //        SQL = SQL + ComNum.VBLF + " ORDER BY INPDATE DESC";
@@ -532,7 +532,7 @@ namespace ComEmrBase
         //    try
         //    {
         //        SQL = SQL + ComNum.VBLF + " SELECT REMARK ";
-        //        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.SGLRMK ";
+        //        SQL = SQL + ComNum.VBLF + " FROM ADMIN.SGLRMK ";
         //        SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + strPtNo + "'";
         //        SQL = SQL + ComNum.VBLF + " AND GUBUN = '0'";
         //        SQL = SQL + ComNum.VBLF + " ORDER BY INPDATE DESC";
@@ -676,7 +676,7 @@ namespace ComEmrBase
         //    if (mIsFirtQuery == true)
         //    {
         //        SQL = " SELECT PANO";
-        //        SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_MASTER";
+        //        SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OPD_MASTER";
         //        SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + AcpEmr.ptNo + "'";
         //        SQL = SQL + ComNum.VBLF + "   AND DEPTCODE = '" + AcpEmr.medDeptCd + "'";
         //        SQL = SQL + ComNum.VBLF + "   AND BDATE < TO_DATE('" + strCurDate + "','YYYY-MM-DD')";
@@ -698,7 +698,7 @@ namespace ComEmrBase
         //        {
         //            intRowCnt = 0;
         //            SQL = " SELECT A.EMRNO";
-        //            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRXMLMST A, KOSMOS_EMR.EMRGRPFORM B, KOSMOS_EMR.EMRFORM C";
+        //            SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRXMLMST A, ADMIN.EMRGRPFORM B, ADMIN.EMRFORM C";
         //            SQL = SQL + ComNum.VBLF + " WHERE C.GRPFORMNO = b.GRPFORMNO";
         //            SQL = SQL + ComNum.VBLF + "   AND A.FORMNO = C.FORMNO";
         //            SQL = SQL + ComNum.VBLF + "   AND B.GRPFORMNO IN (27,2)";
@@ -853,7 +853,7 @@ namespace ComEmrBase
 
         //    SQL = " SELECT TO_CHAR(MIN(DDATE),'YYYY-MM-DD') MINDATE FROM";
         //    SQL = SQL + ComNum.VBLF + " (SELECT MIN(INDATE) DDATE";
-        //    SQL = SQL + ComNum.VBLF + " From KOSMOS_PMPA.IPD_NEW_MASTER";
+        //    SQL = SQL + ComNum.VBLF + " From ADMIN.IPD_NEW_MASTER";
         //    SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + AcpEmr.ptNo + " '";
         //    if (arg == "")
         //    {
@@ -879,7 +879,7 @@ namespace ComEmrBase
         //        SQL = SQL + ComNum.VBLF + "   AND DEPTCODE IN (" + strDeptCode + ") ";
         //    }
         //    SQL = SQL + ComNum.VBLF + " Union All";
-        //    SQL = SQL + ComNum.VBLF + " SELECT MIN(ACTDATE) DDATE FROM KOSMOS_PMPA.OPD_MASTER";
+        //    SQL = SQL + ComNum.VBLF + " SELECT MIN(ACTDATE) DDATE FROM ADMIN.OPD_MASTER";
         //    SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + AcpEmr.ptNo + "' ";
         //    if (arg == "")
         //    {
@@ -981,9 +981,9 @@ namespace ComEmrBase
         //    {
         //        SQL = "";
         //        SQL = SQL + ComNum.VBLF + "  SELECT B.GRPFORMNO, B.GRPFORMNAME, A.FORMNO, A.FORMNAME1 FORMNAME,  C.DISPSEQ ";
-        //        SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRFORM A INNER JOIN KOSMOS_EMR.EMRGRPFORM B";
+        //        SQL = SQL + ComNum.VBLF + "    FROM ADMIN.EMRFORM A INNER JOIN ADMIN.EMRGRPFORM B";
         //        SQL = SQL + ComNum.VBLF + "        ON A.GRPFORMNO = B.GRPFORMNO";
-        //        SQL = SQL + ComNum.VBLF + "        INNER JOIN KOSMOS_EMR.EMRUSERFORMCHO C";
+        //        SQL = SQL + ComNum.VBLF + "        INNER JOIN ADMIN.EMRUSERFORMCHO C";
         //        SQL = SQL + ComNum.VBLF + "        ON A.FORMNO = C.FORMNO";
         //        SQL = SQL + ComNum.VBLF + "    WHERE (B.USECHECK IS NULL ";
         //        SQL = SQL + ComNum.VBLF + "        OR B.USECHECK = '0')";
@@ -1045,8 +1045,8 @@ namespace ComEmrBase
         //        SQL = "";
         //        SQL = "SELECT ";
         //        SQL = SQL + ComNum.VBLF + "     A.MEDDEPTCD, A.DEPTKORNAME, B.USEID ";
-        //        SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.VIEWBMEDDEPT A ";
-        //        SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_EMR.EMRUSERDEPT B";
+        //        SQL = SQL + ComNum.VBLF + "FROM ADMIN.VIEWBMEDDEPT A ";
+        //        SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.EMRUSERDEPT B";
         //        SQL = SQL + ComNum.VBLF + "    ON A.MEDDEPTCD = B.MEDDEPTCD ";
         //        SQL = SQL + ComNum.VBLF + "     AND B.USEID = '" + clsType.User.IdNumber + "'";
         //        SQL = SQL + ComNum.VBLF + " ORDER BY A.DEPTKORNAME, A.PRTGRD ";

@@ -31,7 +31,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(a.JDATE,'YYYY-MM-DD') JDATE                                                             ");
             parameter.AppendSql("     , TO_CHAR(a.RDATE,'YYYY-MM-DD HH24:MI') RDATE                                                     ");
             parameter.AppendSql("     , TO_CHAR(a.RESULTDATE,'YYYY-MM-DD HH24:MI') RESULTDATE                                           ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST a,KOSMOS_OCS.ENDO_RESULT b                                               ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST a,ADMIN.ENDO_RESULT b                                               ");
             parameter.AppendSql(" WHERE a.PTNO = :PTNO                                                                                  ");
             parameter.AppendSql("   AND a.JDATE = TO_DATE(:JDATE, 'YYYY-MM-DD')                                                         ");
             parameter.AppendSql("   AND a.SEQNO = b.SEQNO(+)                                                                            ");

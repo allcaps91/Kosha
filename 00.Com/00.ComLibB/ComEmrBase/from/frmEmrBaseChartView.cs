@@ -1142,17 +1142,17 @@ namespace ComEmrBase
                         {
                             case 2678:
                             case 3129:
-                                SQL += ComNum.VBLF + "      , (SELECT NAME FROM KOSMOS_PMPA.BAS_PASS WHERE IDNUMBER = TO_NUMBER(A.USEID)  AND PROGRAMID = '      ') AS NAME";
+                                SQL += ComNum.VBLF + "      , (SELECT NAME FROM ADMIN.BAS_PASS WHERE IDNUMBER = TO_NUMBER(A.USEID)  AND PROGRAMID = '      ') AS NAME";
                                 break;
                             default:
-                                SQL += ComNum.VBLF + "      , (SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = LTRIM(A.USEID, '0')) AS NAME";
+                                SQL += ComNum.VBLF + "      , (SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = LTRIM(A.USEID, '0')) AS NAME";
                                 break;
                         }
 
                         SQL += ComNum.VBLF + "      , A.WRITEDATE";
                         SQL += ComNum.VBLF + "      , A.WRITETIME";
                         SQL += ComNum.VBLF + "      , C.JUMIN3";
-                        SQL += ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM KOSMOS_OCS.OCS_DOCTOR WHERE DOCCODE = LTRIM(A.USEID, '0')) THEN LTRIM(A.USEID, '0') END USEID";
+                        SQL += ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM ADMIN.OCS_DOCTOR WHERE DOCCODE = LTRIM(A.USEID, '0')) THEN LTRIM(A.USEID, '0') END USEID";
                         SQL += ComNum.VBLF + "      , '' AS COMPUSENAME";
                         SQL += ComNum.VBLF + "      , '' AS COMPUSEID";
 
@@ -1173,18 +1173,18 @@ namespace ComEmrBase
                         {
                             case 2678:
                             case 3129:
-                                SQL += ComNum.VBLF + "      , (SELECT NAME FROM KOSMOS_PMPA.BAS_PASS WHERE IDNUMBER = TO_NUMBER(A.CHARTUSEID)  AND PROGRAMID = '      ') AS NAME";
+                                SQL += ComNum.VBLF + "      , (SELECT NAME FROM ADMIN.BAS_PASS WHERE IDNUMBER = TO_NUMBER(A.CHARTUSEID)  AND PROGRAMID = '      ') AS NAME";
                                 break;
                             default:
-                                SQL += ComNum.VBLF + "      , (SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = A.CHARTUSEID) AS NAME";
+                                SQL += ComNum.VBLF + "      , (SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = A.CHARTUSEID) AS NAME";
                                 break;
                         }
                         SQL += ComNum.VBLF + "      , A.WRITEDATE";
                         SQL += ComNum.VBLF + "      , A.WRITETIME";
                         SQL += ComNum.VBLF + "      , C.JUMIN3";
-                        SQL += ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM KOSMOS_OCS.OCS_DOCTOR WHERE DOCCODE = A.CHARTUSEID) THEN A.CHARTUSEID END USEID";
-                        SQL += ComNum.VBLF + "      , (SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = A.COMPUSEID) AS COMPUSENAME";
-                        SQL += ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM KOSMOS_OCS.OCS_DOCTOR WHERE DOCCODE = A.COMPUSEID) THEN A.COMPUSEID END COMPUSEID";
+                        SQL += ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM ADMIN.OCS_DOCTOR WHERE DOCCODE = A.CHARTUSEID) THEN A.CHARTUSEID END USEID";
+                        SQL += ComNum.VBLF + "      , (SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = A.COMPUSEID) AS COMPUSENAME";
+                        SQL += ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM ADMIN.OCS_DOCTOR WHERE DOCCODE = A.COMPUSEID) THEN A.COMPUSEID END COMPUSEID";
 
 
                         SQL += ComNum.VBLF + "FROM " + ComNum.DB_EMR + "AEMRCHARTMST A";
@@ -1312,11 +1312,11 @@ namespace ComEmrBase
                 if (strSCANYN == "E")
                 {
                     SQL = "SELECT C.ID, C.CREATED, '18:00:00', C.USERID, B.FORMNAME, '' AS SAVECERT";
-                    SQL += ComNum.VBLF + "  FROM KOSMOS_EMR.AEASFORMCONTENT A ";
-                    SQL += ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRFORM B ";
+                    SQL += ComNum.VBLF + "  FROM ADMIN.AEASFORMCONTENT A ";
+                    SQL += ComNum.VBLF + "    INNER JOIN ADMIN.AEMRFORM B ";
                     SQL += ComNum.VBLF + "       ON A.FORMNO = b.FORMNO ";
                     SQL += ComNum.VBLF + "      AND A.UPDATENO = B.UPDATENO ";
-                    SQL += ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEASFORMDATA C ";
+                    SQL += ComNum.VBLF + "    INNER JOIN ADMIN.AEASFORMDATA C ";
                     SQL += ComNum.VBLF + "       ON C.EASFORMCONTENT = A.ID ";
                     SQL += ComNum.VBLF + " WHERE C.PTNO      = '" + AcpEmr.ptNo + "'";
                     SQL += ComNum.VBLF + "   AND C.MEDDEPTCD = '" + AcpEmr.medDeptCd + "'";

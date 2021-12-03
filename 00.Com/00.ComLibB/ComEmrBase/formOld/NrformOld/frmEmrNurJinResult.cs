@@ -43,7 +43,7 @@ namespace ComEmrBase
             #region 쿼리
             OracleDataReader reader = null;
             string SQL = " SELECT CODE ";
-            SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_CODE_DAR ";
+            SQL += ComNum.VBLF + " FROM ADMIN.NUR_CODE_DAR ";
             SQL += ComNum.VBLF + " WHERE CODE = '" + GstrHelpCode + "'";
             SQL += ComNum.VBLF + "    AND GUBUN = '3' ";
 
@@ -85,7 +85,7 @@ namespace ComEmrBase
 
 
                 SQL = " SELECT CODE, NAME ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.NUR_CODE_DAR";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.NUR_CODE_DAR";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN = 'D'";
                 SQL = SQL + ComNum.VBLF + "    AND CODE LIKE '" + Code + "%'";
                 SQL = SQL + ComNum.VBLF + "    AND DELDATE IS NULL";

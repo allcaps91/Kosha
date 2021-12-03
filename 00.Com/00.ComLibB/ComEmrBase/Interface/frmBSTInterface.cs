@@ -57,9 +57,9 @@ namespace ComEmrBase
                 //SQL = SQL + ComNum.VBLF + " TO_CHAR(M.InDate,'YYYY-MM-DD') InDate,M.Ilsu,M.IpdNo,M.GbSts,";
                 //SQL = SQL + ComNum.VBLF + " TO_CHAR(M.OutDate,'YYYY-MM-DD') OutDate,";
                 //SQL = SQL + ComNum.VBLF + " M.DeptCode,M.DrCode,D.DrName,M.AmSet1,M.AmSet4,M.AmSet6,M.AmSet7 ";
-                //SQL = SQL + ComNum.VBLF + " FROM   KOSMOS_PMPA.IPD_NEW_MASTER  M, ";
-                //SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.BAS_PATIENT P, ";
-                //SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.BAS_DOCTOR  D ";
+                //SQL = SQL + ComNum.VBLF + " FROM   ADMIN.IPD_NEW_MASTER  M, ";
+                //SQL = SQL + ComNum.VBLF + "        ADMIN.BAS_PATIENT P, ";
+                //SQL = SQL + ComNum.VBLF + "        ADMIN.BAS_DOCTOR  D ";
 
                 //switch (cboWard.Text.Trim())
                 //{
@@ -86,7 +86,7 @@ namespace ComEmrBase
                     if (ChkMu.Checked == true)
                     {
                         SQL = " SELECT  'ER' ROOMCODE, B.PATIENT_ID PANO, '무명남' SNAME, '측정 값: ' AGE, VALUE SEX, '(mg/dL)' DEPTCODE, TRUNC(SYSDATE) INDATE, B.EMR ";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_INTERFACE_BST  B ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_INTERFACE_BST  B ";
                         SQL = SQL + ComNum.VBLF + " WHERE MEASURE_DT >= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "000000'";
                         SQL = SQL + ComNum.VBLF + "   AND MEASURE_DT <= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "235959'";
                         SQL = SQL + ComNum.VBLF + "   AND B.WARD LIKE 'ER%'";
@@ -95,8 +95,8 @@ namespace ComEmrBase
                     else
                     {
                         SQL = " SELECT  'ER' ROOMCODE, I.PANO, I.SNAME, I.AGE, I.SEX, I.DEPTCODE, TO_CHAR(I.BDATE, 'YYYYMMDD') INDATE, SUM(DECODE(B.EMR, NULL, 1, 0)) EMR ";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_INTERFACE_BST  B ";
-                        SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.OPD_MASTER I ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_INTERFACE_BST  B ";
+                        SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.OPD_MASTER I ";
                         SQL = SQL + ComNum.VBLF + "      ON SUBSTR(B.PATIENT_ID,1,8) = I.PANO";
                         SQL = SQL + ComNum.VBLF + "     AND I.ACTDATE >= TO_CHAR(SYSDATE-2, 'YYYY-MM-DD')";
                         SQL = SQL + ComNum.VBLF + "     AND I.DEPTCODE = 'ER'";
@@ -111,10 +111,10 @@ namespace ComEmrBase
                 else
                 {
                     SQL = "SELECT I.ROOMCODE, I.PANO, I.SNAME, I.AGE, I.SEX, I.DEPTCODE, TO_CHAR(I.INDATE, 'YYYYMMDD') INDATE, SUM(DECODE(B.EMR, NULL, 1, 0)) EMR ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_INTERFACE_BST  B ";
-                    //SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_OCS.EXAM_SPECMST S ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_INTERFACE_BST  B ";
+                    //SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.EXAM_SPECMST S ";
                     //SQL = SQL + ComNum.VBLF + "      ON S.SPECNO = B.PATIENT_ID";
-                    SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER I ";
+                    SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.IPD_NEW_MASTER I ";
                     //SQL = SQL + ComNum.VBLF + "      ON S.PANO = I.PANO";
                     SQL = SQL + ComNum.VBLF + "      ON SUBSTR(B.PATIENT_ID,1,8) = I.PANO";
                     SQL = SQL + ComNum.VBLF + "     AND ((I.JDATE = TO_DATE('1900-01-01', 'YYYY-MM-DD') AND I.GBSTS <> '7') OR (I.JDATE = TO_DATE('" + dtpExamDate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD') AND I.GBSTS = '7')";
@@ -126,7 +126,7 @@ namespace ComEmrBase
                     if (chkTran.Checked == true)
                     {
                         SQL = SQL + ComNum.VBLF + "   AND EXISTS ( ";
-                        SQL = SQL + ComNum.VBLF + "              SELECT * FROM KOSMOS_PMPA.IPD_TRANSFOR SUB ";
+                        SQL = SQL + ComNum.VBLF + "              SELECT * FROM ADMIN.IPD_TRANSFOR SUB ";
                         SQL = SQL + ComNum.VBLF + "              WHERE SUB.TRSDATE >= I.INDATE ";
                         SQL = SQL + ComNum.VBLF + "                AND SUB.TRSDATE <= TRUNC(SYSDATE) ";
                         SQL = SQL + ComNum.VBLF + "                AND SUB.PANO = I.PANO ";
@@ -209,8 +209,8 @@ namespace ComEmrBase
                 if (cboWard.Text.Trim() == "ER")
                 {
                         SQL = "SELECT MEASURE_DT, B.VALUE, SUBSTR(B.PATIENT_ID,1,8) PATIENT_ID ,TO_CHAR(B.EMR, 'YYYY-MM-DD') EMR";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_MASTER I  ";
-                        SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_OCS.EXAM_INTERFACE_BST B";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_MASTER I  ";
+                        SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.EXAM_INTERFACE_BST B";
                         SQL = SQL + ComNum.VBLF + "      ON MEASURE_DT >= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "000000'";
                         SQL = SQL + ComNum.VBLF + "      AND MEASURE_DT <= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "235959'";
                         SQL = SQL + ComNum.VBLF + "      AND B.WARD LIKE '" + cboWard.Text.Trim() + "%'";
@@ -225,8 +225,8 @@ namespace ComEmrBase
                 {
                     //SQL = "SELECT MEASURE_DT, B.VALUE, S.SPECNO, TO_CHAR(B.EMR, 'YYYY-MM-DD') EMR";
                     SQL = "SELECT MEASURE_DT, B.VALUE, SUBSTR(B.PATIENT_ID,1,8) PATIENT_ID ,TO_CHAR(B.EMR, 'YYYY-MM-DD') EMR";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER I  ";
-                    SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_OCS.EXAM_INTERFACE_BST B";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER I  ";
+                    SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.EXAM_INTERFACE_BST B";
                     SQL = SQL + ComNum.VBLF + "      ON MEASURE_DT >= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "000000'";
                     SQL = SQL + ComNum.VBLF + "     AND MEASURE_DT <= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "235959'";
                     if (chkTran.Checked == true)
@@ -238,7 +238,7 @@ namespace ComEmrBase
                         SQL = SQL + ComNum.VBLF + "     AND B.WARD LIKE '" + cboWard.Text.Trim() + "%'";
                     }
                     SQL = SQL + ComNum.VBLF + "      AND SUBSTR(B.PATIENT_ID,1,8) = '" + strPano + "'";
-                    //SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_OCS.EXAM_SPECMST S ";
+                    //SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.EXAM_SPECMST S ";
                     //SQL = SQL + ComNum.VBLF + "      ON S.SPECNO = B.PATIENT_ID";
                     //SQL = SQL + ComNum.VBLF + "     AND S.PANO   = I.PANO";
                     //SQL = SQL + ComNum.VBLF + "     AND S.BDATE = TO_DATE('" + dtpExamDate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD')";
@@ -310,7 +310,7 @@ namespace ComEmrBase
                 if (cboWard.Text.Trim() == "ER")
                 {
                     SQL = "SELECT 1";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_INTERFACE_BST B";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_INTERFACE_BST B";
                     SQL = SQL + ComNum.VBLF + "WHERE MEASURE_DT >= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "000000'";
                     SQL = SQL + ComNum.VBLF + "  AND MEASURE_DT <= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "235959'";
                     SQL = SQL + ComNum.VBLF + "  AND B.WARD LIKE '" + cboWard.Text.Trim() + "%'";
@@ -320,7 +320,7 @@ namespace ComEmrBase
                 {
                     //SQL = "SELECT MEASURE_DT, B.VALUE, S.SPECNO, TO_CHAR(B.EMR, 'YYYY-MM-DD') EMR";
                     SQL = "SELECT 1";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_INTERFACE_BST B";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_INTERFACE_BST B";
                     SQL = SQL + ComNum.VBLF + "WHERE MEASURE_DT >= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "000000'";
                     SQL = SQL + ComNum.VBLF + "  AND MEASURE_DT <= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "235959'";
                     SQL = SQL + ComNum.VBLF + "  AND B.WARD LIKE '" + cboWard.Text.Trim() + "%'";
@@ -350,7 +350,7 @@ namespace ComEmrBase
                     SQL = SQL + ComNum.VBLF + " when   substr(MEASURE_DT,9,2) >= '10' and substr(MEASURE_DT,9,2) <= '13'  then '14'";
                     SQL = SQL + ComNum.VBLF + " when   substr(MEASURE_DT,9,2) >= '14' and substr(MEASURE_DT,9,2) <= '21'  then '22'";
                     SQL = SQL + ComNum.VBLF + " else   '23' end timeline ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_INTERFACE_BST B";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_INTERFACE_BST B";
                     SQL = SQL + ComNum.VBLF + "WHERE MEASURE_DT >= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "000000'";
                     SQL = SQL + ComNum.VBLF + "  AND MEASURE_DT <= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "235959'";
                     SQL = SQL + ComNum.VBLF + "  AND B.WARD LIKE '" + cboWard.Text.Trim() + "%'";
@@ -363,7 +363,7 @@ namespace ComEmrBase
                     SQL = SQL + ComNum.VBLF + " when   substr(MEASURE_DT,9,2) >= '10' and substr(MEASURE_DT,9,2) <= '13'  then '14'";
                     SQL = SQL + ComNum.VBLF + " when   substr(MEASURE_DT,9,2) >= '14' and substr(MEASURE_DT,9,2) <= '21'  then '22'";
                     SQL = SQL + ComNum.VBLF + " else   '23' end timeline ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_INTERFACE_BST B";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_INTERFACE_BST B";
                     SQL = SQL + ComNum.VBLF + "WHERE MEASURE_DT >= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "000000'";
                     SQL = SQL + ComNum.VBLF + "  AND MEASURE_DT <= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "235959'";
                     SQL = SQL + ComNum.VBLF + "  AND B.WARD LIKE '" + cboWard.Text.Trim() + "%'";
@@ -427,7 +427,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT  'ER' ROOMCODE, B.PATIENT_ID PANO, '무명남' SNAME, '측정 값: ' AGE, VALUE SEX, '(mg/dL)' DEPTCODE, TRUNC(SYSDATE) INDATE, B.EMR EMR ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_INTERFACE_BST  B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_INTERFACE_BST  B ";
                 SQL = SQL + ComNum.VBLF + " WHERE MEASURE_DT >= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "000000'";
                 SQL = SQL + ComNum.VBLF + "   AND MEASURE_DT <= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "235959'";
                 SQL = SQL + ComNum.VBLF + "   AND B.WARD LIKE 'ER%'";
@@ -541,7 +541,7 @@ namespace ComEmrBase
 
                         #region 해당 날짜/시간에 작성된 기록지 있는지 확인
                         //SQL = "SELECT 1 ";
-                        //SQL += ComNum.VBLF + "FROM KOSMOS_EMR.AEMRCHARTMST";
+                        //SQL += ComNum.VBLF + "FROM ADMIN.AEMRCHARTMST";
                         //SQL += ComNum.VBLF + "WHERE MEDFRDATE = '" + AcpEmr.medFrDate + "'";
                         //SQL += ComNum.VBLF + "  AND FORMNO = 1572";
                         //SQL += ComNum.VBLF + "  AND CHARTDATE = '" + strChartDate + "'";
@@ -697,11 +697,11 @@ namespace ComEmrBase
             {
                 //SQL = "SELECT MEASURE_DT, B.VALUE, S.SPECNO, S.PANO, TO_CHAR(I.INDATE, 'YYYYMMDD') MEDFRDATE, I.DEPTCODE, TO_CHAR(B.EMR, 'YYYY-MM-DD') EMR";
                 SQL = "SELECT MEASURE_DT, B.VALUE, SUBSTR(B.PATIENT_ID,1,8) PATIENT_ID, TO_CHAR(I.INDATE, 'YYYYMMDD') MEDFRDATE, I.DEPTCODE, TO_CHAR(B.EMR, 'YYYY-MM-DD') EMR";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_INTERFACE_BST B  ";
-                //SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_OCS.EXAM_SPECMST S ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_INTERFACE_BST B  ";
+                //SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.EXAM_SPECMST S ";
                 //SQL = SQL + ComNum.VBLF + "      ON S.SPECNO = B.PATIENT_ID";
                 //SQL = SQL + ComNum.VBLF + "     AND S.BDATE = TO_DATE('" + dtpExamDate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD')";
-                SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER I ";
+                SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.IPD_NEW_MASTER I ";
                 SQL = SQL + ComNum.VBLF + "      ON ((I.JDATE = TO_DATE('1900-01-01', 'YYYY-MM-DD') AND I.GBSTS <> '7') OR (I.JDATE = TO_DATE('" + dtpExamDate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD') AND I.GBSTS = '7')";
                 SQL = SQL + ComNum.VBLF + "       OR OUTDATE = TO_DATE('" + dtpExamDate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD'))";
                 //SQL = SQL + ComNum.VBLF + "      ON (I.JDATE = TO_DATE('1900-01-01', 'YYYY-MM-DD') OR I.JDATE = TRUNC(SYSDATE))";
@@ -766,7 +766,7 @@ namespace ComEmrBase
 
                     #region 해당 날짜/시간에 작성된 기록지 있는지 확인
                     //SQL = "SELECT 1 ";
-                    //SQL += ComNum.VBLF + "FROM KOSMOS_EMR.AEMRCHARTMST";
+                    //SQL += ComNum.VBLF + "FROM ADMIN.AEMRCHARTMST";
                     //SQL += ComNum.VBLF + "WHERE MEDFRDATE = '" + AcpEmr.medFrDate + "'";
                     //SQL += ComNum.VBLF + "  AND FORMNO = 1572";
                     //SQL += ComNum.VBLF + "  AND CHARTDATE = '" + strChartDate + "'";
@@ -945,7 +945,7 @@ namespace ComEmrBase
             try
             {
                 //SQL = "SELECT MEASURE_DT, B.VALUE, S.SPECNO, TO_CHAR(B.EMR, 'YYYY-MM-DD') EMR";
-                SQL = "UPDATE KOSMOS_OCS.EXAM_INTERFACE_BST SET ";
+                SQL = "UPDATE ADMIN.EXAM_INTERFACE_BST SET ";
                 SQL = SQL + ComNum.VBLF + " PATIENT_ID = '" + TxtPano.Text.Trim() + "'  ";
                 SQL = SQL + ComNum.VBLF + "      WHERE MEASURE_DT >= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "000000'";
                 SQL = SQL + ComNum.VBLF + "     AND MEASURE_DT <= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "235959'";

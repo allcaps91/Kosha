@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(DECODE(a.DPANDRNO, :LICENSE, 1)) CNT              ");
             parameter.AppendSql("     , COUNT(DECODE(a.DPANDRNO,'', 1)) CNT2                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SCHOOL_NEW a, KOSMOS_PMPA.HIC_JEPSU b   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SCHOOL_NEW a, ADMIN.HIC_JEPSU b   ");
             parameter.AppendSql(" WHERE b.WRTNO = a.WRTNO                                       ");
             parameter.AppendSql("   AND b.DELDATE IS NULL                                       ");
             parameter.AppendSql("   AND b.GJJONG = :GJJONG                                      ");

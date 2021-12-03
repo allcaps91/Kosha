@@ -199,13 +199,13 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "     P.BUN, P.PTNO, P.SUCODE, ORDERNAMES, A.SNAME, P.ROOMCODE,";
                     SQL = SQL + ComNum.VBLF + "     TRUNC(SUM( DECODE(P.BCONTENTS,'0',P.REALQTY * P.NAL, P.CONTENTS / P.BCONTENTS * P.REALQTY * P.NAL)),2) AS SUM1,";
                     SQL = SQL + ComNum.VBLF + "     SUM(P.QTY * P.NAL) AS QTY";
-                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND (TRIM(WARD) = DECODE(P.WARDCODE, 'IU', DECODE(RTRIM(P.ROOMCODE), '233', 'SICU', '234', 'MICU'), P.WARDCODE) OR WARD IS NULL)) THEN '(집계)' END ||";
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND (TRIM(WARD) = DECODE(P.WARDCODE, 'IU', DECODE(RTRIM(P.ROOMCODE), '233', 'SICU', '234', 'MICU'), P.WARDCODE) OR WARD IS NULL)) THEN '(집계)' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
 
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
                     SQL = SQL + ComNum.VBLF + " 	(                                                                                                                            ";
                     SQL = SQL + ComNum.VBLF + "         SELECT LISTAGG(SHORTTEXT, '') WITHIN GROUP(ORDER BY JEPCODE) AS FORMNO                                                   ";
-                    SQL = SQL + ComNum.VBLF + "           FROM KOSMOS_ADM.DRUG_LAJEP                                                                                             ";
+                    SQL = SQL + ComNum.VBLF + "           FROM ADMIN.DRUG_LAJEP                                                                                             ";
                     SQL = SQL + ComNum.VBLF + "          WHERE JEPCODE = P.SUCODE                                                                                                ";
                     SQL = SQL + ComNum.VBLF + "            AND LABUN = 'Y'                                                                                                       ";
                     SQL = SQL + ComNum.VBLF + "     ) AS GET_EXPRESS                                                                                                             ";
@@ -267,13 +267,13 @@ namespace ComLibB
                     //'약국 약처방전, 집계리스트, 반납리스트에 오더(또는 반환) 포함
                     SQL = SQL + ComNum.VBLF + "       SUM(P.QTY  * P.NAL) AS QTY";
                     //'====================================================
-                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND (TRIM(WARD) = DECODE(P.WARDCODE, 'IU', DECODE(RTRIM(P.ROOMCODE), '233', 'SICU', '234', 'MICU'), P.WARDCODE) OR WARD IS NULL)) THEN '(집계)' END ||";
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND (TRIM(WARD) = DECODE(P.WARDCODE, 'IU', DECODE(RTRIM(P.ROOMCODE), '233', 'SICU', '234', 'MICU'), P.WARDCODE) OR WARD IS NULL)) THEN '(집계)' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
 
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
                     SQL = SQL + ComNum.VBLF + " 	(                                                                                                                            ";
                     SQL = SQL + ComNum.VBLF + "         SELECT LISTAGG(SHORTTEXT, '') WITHIN GROUP(ORDER BY JEPCODE) AS FORMNO                                                   ";
-                    SQL = SQL + ComNum.VBLF + "           FROM KOSMOS_ADM.DRUG_LAJEP                                                                                             ";
+                    SQL = SQL + ComNum.VBLF + "           FROM ADMIN.DRUG_LAJEP                                                                                             ";
                     SQL = SQL + ComNum.VBLF + "          WHERE JEPCODE = P.SUCODE                                                                                                ";
                     SQL = SQL + ComNum.VBLF + "            AND LABUN = 'Y'                                                                                                       ";
                     SQL = SQL + ComNum.VBLF + "     ) AS GET_EXPRESS                                                                                                             ";
@@ -315,13 +315,13 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "     P.BUN, P.PTNO, P.SUCODE, ORDERNAMES, A.SNAME, P.ROOMCODE,";
                     SQL = SQL + ComNum.VBLF + "     TRUNC(SUM( DECODE(P.BCONTENTS,'0',P.REALQTY * P.NAL, P.CONTENTS / P.BCONTENTS * P.REALQTY * P.NAL)),2) AS SUM1,";
                     SQL = SQL + ComNum.VBLF + "     SUM(P.QTY  * P.NAL) AS QTY";
-                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND (TRIM(WARD) = DECODE(P.WARDCODE, 'IU', DECODE(RTRIM(P.ROOMCODE), '233', 'SICU', '234', 'MICU'), P.WARDCODE) OR WARD IS NULL)) THEN '(집계)' END ||";
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND (TRIM(WARD) = DECODE(P.WARDCODE, 'IU', DECODE(RTRIM(P.ROOMCODE), '233', 'SICU', '234', 'MICU'), P.WARDCODE) OR WARD IS NULL)) THEN '(집계)' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
 
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
                     SQL = SQL + ComNum.VBLF + " 	(                                                                                                                            ";
                     SQL = SQL + ComNum.VBLF + "         SELECT LISTAGG(SHORTTEXT, '') WITHIN GROUP(ORDER BY JEPCODE) AS FORMNO                                                   ";
-                    SQL = SQL + ComNum.VBLF + "           FROM KOSMOS_ADM.DRUG_LAJEP                                                                                             ";
+                    SQL = SQL + ComNum.VBLF + "           FROM ADMIN.DRUG_LAJEP                                                                                             ";
                     SQL = SQL + ComNum.VBLF + "          WHERE JEPCODE = P.SUCODE                                                                                                ";
                     SQL = SQL + ComNum.VBLF + "            AND LABUN = 'Y'                                                                                                       ";
                     SQL = SQL + ComNum.VBLF + "     ) AS GET_EXPRESS                                                                                                             ";
@@ -366,13 +366,13 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "     A.BUN, A.SUNEXT AS SUCODE, B.SUNAMEK AS ORDERNAMES, SUM(A.QTY*A.NAL) AS SUM1 ,";
                     SQL = SQL + ComNum.VBLF + "     A.PANO AS PTNO, C.SNAME, D.WARDCODE, A.ROOMCODE,";
                     SQL = SQL + ComNum.VBLF + "     DECODE(D.WARDCODE,'IU',DECODE(RTRIM(A.ROOMCODE),'233','SICU','234','MICU','MICU'), D.WARDCODE) AS WARDCODE1";
-                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND (TRIM(WARD) = DECODE(P.WARDCODE, 'IU', DECODE(RTRIM(P.ROOMCODE), '233', 'SICU', '234', 'MICU'), P.WARDCODE) OR WARD IS NULL)) THEN '(집계)' END ||";
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND (TRIM(WARD) = DECODE(P.WARDCODE, 'IU', DECODE(RTRIM(P.ROOMCODE), '233', 'SICU', '234', 'MICU'), P.WARDCODE) OR WARD IS NULL)) THEN '(집계)' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
 
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
                     SQL = SQL + ComNum.VBLF + " 	(                                                                                                                            ";
                     SQL = SQL + ComNum.VBLF + "         SELECT LISTAGG(SHORTTEXT, '') WITHIN GROUP(ORDER BY JEPCODE) AS FORMNO                                                   ";
-                    SQL = SQL + ComNum.VBLF + "           FROM KOSMOS_ADM.DRUG_LAJEP                                                                                             ";
+                    SQL = SQL + ComNum.VBLF + "           FROM ADMIN.DRUG_LAJEP                                                                                             ";
                     SQL = SQL + ComNum.VBLF + "          WHERE JEPCODE = P.SUCODE                                                                                                ";
                     SQL = SQL + ComNum.VBLF + "            AND LABUN = 'Y'                                                                                                       ";
                     SQL = SQL + ComNum.VBLF + "     ) AS GET_EXPRESS                                                                                                             ";
@@ -577,12 +577,12 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "     P.BUN, P.SUCODE, ORDERNAMES,";
                     SQL = SQL + ComNum.VBLF + "     TRUNC(SUM( DECODE(P.BCONTENTS,'0',P.REALQTY * P.NAL, P.CONTENTS / P.BCONTENTS * P.REALQTY * P.NAL)),2) AS SUM1,";
                     SQL = SQL + ComNum.VBLF + "     SUM(P.QTY * P.NAL) AS QTY ";
-                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND WARD = '" + cboWard.Text.Trim() + "') THEN '(집계)' END ||";
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND WARD = '" + cboWard.Text.Trim() + "') THEN '(집계)' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
                     SQL = SQL + ComNum.VBLF + " 	(                                                                                                                            ";
                     SQL = SQL + ComNum.VBLF + "         SELECT LISTAGG(SHORTTEXT, '') WITHIN GROUP(ORDER BY JEPCODE) AS FORMNO                                                   ";
-                    SQL = SQL + ComNum.VBLF + "           FROM KOSMOS_ADM.DRUG_LAJEP                                                                                             ";
+                    SQL = SQL + ComNum.VBLF + "           FROM ADMIN.DRUG_LAJEP                                                                                             ";
                     SQL = SQL + ComNum.VBLF + "          WHERE JEPCODE = P.SUCODE                                                                                                ";
                     SQL = SQL + ComNum.VBLF + "            AND LABUN = 'Y'                                                                                                       ";
                     SQL = SQL + ComNum.VBLF + "     ) AS GET_EXPRESS                                                                                                             ";
@@ -631,12 +631,12 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "     P.BUN, P.SUCODE, ORDERNAMES,";
                     SQL = SQL + ComNum.VBLF + "     TRUNC(SUM( DECODE(P.BCONTENTS,'0',P.REALQTY * P.NAL, P.CONTENTS / P.BCONTENTS * P.REALQTY * P.NAL)),2) AS SUM1,";
                     SQL = SQL + ComNum.VBLF + "     SUM(P.QTY * P.NAL) QTY ";
-                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND WARD = '" + cboWard.Text.Trim() + "') THEN '(집계)' END ||";
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND WARD = '" + cboWard.Text.Trim() + "') THEN '(집계)' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
                     SQL = SQL + ComNum.VBLF + " 	(                                                                                                                            ";
                     SQL = SQL + ComNum.VBLF + "         SELECT LISTAGG(SHORTTEXT, '') WITHIN GROUP(ORDER BY JEPCODE) AS FORMNO                                                   ";
-                    SQL = SQL + ComNum.VBLF + "           FROM KOSMOS_ADM.DRUG_LAJEP                                                                                             ";
+                    SQL = SQL + ComNum.VBLF + "           FROM ADMIN.DRUG_LAJEP                                                                                             ";
                     SQL = SQL + ComNum.VBLF + "          WHERE JEPCODE = P.SUCODE                                                                                                ";
                     SQL = SQL + ComNum.VBLF + "            AND LABUN = 'Y'                                                                                                       ";
                     SQL = SQL + ComNum.VBLF + "     ) AS GET_EXPRESS                                                                                                             ";
@@ -676,12 +676,12 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "     P.BUN, P.SUCODE, ORDERNAMES,";
                     SQL = SQL + ComNum.VBLF + "     TRUNC(SUM( DECODE(P.BCONTENTS,'0',P.REALQTY * P.NAL, P.CONTENTS / P.BCONTENTS * P.REALQTY * P.NAL)),2) AS SUM1,";
                     SQL = SQL + ComNum.VBLF + "     SUM(P.QTY * P.NAL) AS QTY ";
-                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND WARD = '" + cboWard.Text.Trim() + "') THEN '(집계)' END ||";
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
-                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	 , CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_WARDJEP WHERE JEPCODE = P.SUCODE AND BUN = '20' AND WARD = '" + cboWard.Text.Trim() + "') THEN '(집계)' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '16' AND BUN = '2') THEN '★(향) ' END ||";
+                    SQL = SQL + ComNum.VBLF + "	   CASE WHEN EXISTS (SELECT 1 FROM ADMIN.DRUG_JEP WHERE JEPCODE = P.SUCODE AND SUB = '17' AND BUN = '3') THEN '▼(마) ' END ||";
                     SQL = SQL + ComNum.VBLF + " 	(                                                                                                                            ";
                     SQL = SQL + ComNum.VBLF + "         SELECT LISTAGG(SHORTTEXT, '') WITHIN GROUP(ORDER BY JEPCODE) AS FORMNO                                                   ";
-                    SQL = SQL + ComNum.VBLF + "           FROM KOSMOS_ADM.DRUG_LAJEP                                                                                             ";
+                    SQL = SQL + ComNum.VBLF + "           FROM ADMIN.DRUG_LAJEP                                                                                             ";
                     SQL = SQL + ComNum.VBLF + "          WHERE JEPCODE = P.SUCODE                                                                                                ";
                     SQL = SQL + ComNum.VBLF + "            AND LABUN = 'Y'                                                                                                       ";
                     SQL = SQL + ComNum.VBLF + "     ) AS GET_EXPRESS                                                                                                             ";

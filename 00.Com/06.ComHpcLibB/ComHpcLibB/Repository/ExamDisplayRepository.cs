@@ -29,8 +29,8 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("SELECT b.HeaSORT,a.ExCode,b.HName,a.Result,b.ResCode,a.Panjeng,a.ROWID RID ");
                 parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,a.SangDam  ");
                 parameter.AppendSql("     , a.ACTPART, b.ENTPART, b.HEAPART                                     ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                            ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                            ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                            ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                            ");
                 parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                    ");
                 if (ENTPART.To<string>() != "W")
                 {
@@ -44,8 +44,8 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("SELECT a.Part,a.ExCode,b.HName,a.Result,b.ResCode,a.Panjeng,a.ROWID RID    ");
                 parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse            ");
                 parameter.AppendSql("     , '' ACTPART, b.ENTPART, b.HEAPART                                    ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                            ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                            ");
+                parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                            ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                            ");
                 parameter.AppendSql(" WHERE 1 = 1                                                               ");
                 if (AllWrtNo.Count > 0)
                 {
@@ -81,8 +81,8 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT a.ExCode,b.HName,a.Result           ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b            ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b            ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                    ");            
             parameter.AppendSql("   AND a.ExCode = b.Code(+)                ");
             parameter.AppendSql("   AND a.ExCode IN (:EXCODE)               ");

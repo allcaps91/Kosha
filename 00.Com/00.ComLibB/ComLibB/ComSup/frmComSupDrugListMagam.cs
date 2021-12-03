@@ -35,7 +35,7 @@ namespace ComLibB
         //마감 원래대로 돌리기 
         //액팅취소 -> ocs_drug(마감정보) 삭제
         //부서코드
-        //DELETE KOSMOS_OCS.OCS_DRUG
+        //DELETE ADMIN.OCS_DRUG
         //WHERE WARDCODE = ''
         //조건1(등록번호)
         //WHERE PTNO = '81000004'
@@ -1136,7 +1136,7 @@ namespace ComLibB
 
                                         SQL = SQL + ComNum.VBLF + "     AND DOSCODE NOT IN ";                    //내시경용법제외
                                         SQL = SQL + ComNum.VBLF + "          (SELECT DOSCODE ";
-                                        SQL = SQL + ComNum.VBLF + "             FROM KOSMOS_OCS.OCS_ODOSAGE ";
+                                        SQL = SQL + ComNum.VBLF + "             FROM ADMIN.OCS_ODOSAGE ";
                                         SQL = SQL + ComNum.VBLF + "           WHERE WARDCODE = 'EN')";
                                         SQL = SQL + ComNum.VBLF + "ORDER BY ENTDATE ";
 
@@ -1487,7 +1487,7 @@ namespace ComLibB
 
                                         SQL = SQL + ComNum.VBLF + "    AND DOSCODE NOT IN  ";                    //내시경용법제외
                                         SQL = SQL + ComNum.VBLF + "             (SELECT DOSCODE ";
-                                        SQL = SQL + ComNum.VBLF + "                 FROM KOSMOS_OCS.OCS_ODOSAGE ";
+                                        SQL = SQL + ComNum.VBLF + "                 FROM ADMIN.OCS_ODOSAGE ";
                                         SQL = SQL + ComNum.VBLF + "              WHERE WARDCODE = 'EN') ";  //내시경실 제외
 
                                         switch (GstrWardCode)
@@ -2724,7 +2724,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "    AND ACTTIME IS NULL";
                 SQL = SQL + ComNum.VBLF + "    AND DOSCODE NOT IN  ";                    //내시경용법제외
                 SQL = SQL + ComNum.VBLF + "          (SELECT DOSCODE ";
-                SQL = SQL + ComNum.VBLF + "             FROM KOSMOS_OCS.OCS_ODOSAGE ";
+                SQL = SQL + ComNum.VBLF + "             FROM ADMIN.OCS_ODOSAGE ";
                 SQL = SQL + ComNum.VBLF + "           WHERE WARDCODE = 'EN') ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY ENTDATE ";
 
@@ -2824,7 +2824,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "     AND ACTTIME IS NULL ";
                 SQL = SQL + ComNum.VBLF + "     AND DOSCODE NOT IN ";                    //내시경용법제외
                 SQL = SQL + ComNum.VBLF + "                 (SELECT DOSCODE ";
-                SQL = SQL + ComNum.VBLF + "                     FROM KOSMOS_OCS.OCS_ODOSAGE ";
+                SQL = SQL + ComNum.VBLF + "                     FROM ADMIN.OCS_ODOSAGE ";
                 SQL = SQL + ComNum.VBLF + "                 WHERE WARDCODE = 'EN') ";  //내시경실 제외
                 SQL = SQL + ComNum.VBLF + "ORDER BY ENTDATE ";
 
@@ -3472,7 +3472,7 @@ namespace ComLibB
             dt = null;
 
             SQL = "";
-            SQL = "INSERT INTO KOSMOS_OCS.OCS_DRUG";
+            SQL = "INSERT INTO ADMIN.OCS_DRUG";
             SQL = SQL + ComNum.VBLF + "     (NO1, BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY , NAL, ENTDATE, BUILDDATE )   ";
             SQL = SQL + ComNum.VBLF + "SELECT";
             SQL = SQL + ComNum.VBLF + "     NO1, TO_DATE('" + strDate + "','YYYY-MM-DD'), '2' ,'1',  'TO', SUCODE, SUM(QTY *  NAL) ,  1, SYSDATE, TO_DATE('" + strDate + "','YYYY-MM-DD') ";

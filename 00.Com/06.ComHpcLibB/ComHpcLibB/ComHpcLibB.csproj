@@ -52,10 +52,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\PSMHEXE\exenet\CefSharp.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="ComLibB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ddd7957e79a043b1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\PSMHEXE\Debug\ComLibB.dll</HintPath>
-    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.TreeGX, Version=14.0.0.18, Culture=neutral, PublicKeyToken=055db68f670cfeab, processorArchitecture=MSIL" />
     <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
@@ -2509,19 +2505,23 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\00.ComLibB\ComBase\ComBase.csproj">
-      <Project>{15FB9AB6-B58A-4808-8FC4-772EA4DA8E18}</Project>
+      <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
       <Name>ComBase</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\00.ComLibB\ComDbB\ComDbB.csproj">
-      <Project>{8385746C-582C-4520-B68C-8F62A7F2CD08}</Project>
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
       <Name>ComDbB</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\00.ComLibB\ComEmrBase\ComEmrBase.csproj">
       <Project>{58342dc4-90ad-47da-b4a4-b055b43107b0}</Project>
       <Name>ComEmrBase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\00.ComLibB\ComLibB\ComLibB.csproj">
+      <Project>{ab53a3ef-d2e1-40a3-abad-df1753372966}</Project>
+      <Name>ComLibB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\01.ComPmpaLibB\ComPmpaLibB\ComPmpaLibB.csproj">
-      <Project>{12E278B5-6009-411D-98EC-6A3484945336}</Project>
+      <Project>{12e278b5-6009-411d-98ec-6a3484945336}</Project>
       <Name>ComPmpaLibB</Name>
     </ProjectReference>
   </ItemGroup>

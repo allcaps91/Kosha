@@ -430,7 +430,7 @@ namespace ComPmpaLibB
             SQL = "";
             SQL += ComNum.VBLF + " SELECT SLIPDATE, SLIPNO, PANO, ";
             SQL += ComNum.VBLF + "        BDATE, DEPTCODE, DRCODE, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
             SQL += ComNum.VBLF + "        BI, TO_CHAR(ENTDATE,'YYYY-MM-DD HH24:MI') ENTDATE, FLAG, ";
             SQL += ComNum.VBLF + "        WRTNO, ROWID ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_MED + "OCS_OUTDRUGMST ";

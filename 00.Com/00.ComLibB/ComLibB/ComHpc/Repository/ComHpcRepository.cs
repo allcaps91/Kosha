@@ -25,7 +25,7 @@ namespace ComLibB.Repository
             parameter.AppendSql("     , PTNO, GBEKG, AGE, IEMUNNO                       ");
             parameter.AppendSql("     , PANCODE, PANREMARK, DRSABUN, DRNAME             ");
             parameter.AppendSql("     , TO_CHAR(SDATE, 'YYYY-MM-DD') SDATE              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU                           ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU                           ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                 ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -38,7 +38,7 @@ namespace ComLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(SDate, 'YYYY-MM-DD') SDate,WRTNO,PanCode,PanRemark,DrName   ");
             parameter.AppendSql("     , SNAME, SEX, AGE, PTNO                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU                                               ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU                                               ");
             parameter.AppendSql(" WHERE PANO = :PANO                                                        ");
             parameter.AppendSql("   AND SDATE < TO_DATE(:SDATE, 'YYYY-MM-DD')                               ");
             parameter.AppendSql("   AND DELDATE IS NULL                                                     ");
@@ -60,8 +60,8 @@ namespace ComLibB.Repository
 
             parameter.AppendSql("SELECT a.Part,a.ExCode,b.Excode Code,b.HName,a.Result,a.ResCode,a.Panjeng          ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.HName,B.HEASORT  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                                    ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                                    ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                    ");
             parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                           ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                        ");
             //parameter.AppendSql(" ORDER BY b.HEASORT, a.ExCode                                                      ");            
@@ -77,8 +77,8 @@ namespace ComLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.HeaSORT,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng                 ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.HName        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                                ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                ");
             parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                       ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                    ");
             parameter.AppendSql(" ORDER BY b.HeaSORT,a.ExCode                                                   ");
@@ -99,7 +99,7 @@ namespace ComLibB.Repository
             parameter.AppendSql("      ,DELDATE,JEPUMLIST,REMARK,GBSCHOOL,SPCHUNGGU,HEMSNO,HTEL,HEAGAJEPSU1                                 ");
             parameter.AppendSql("      ,HEAGAJEPSU2,HEAGAJEPSU3,HEAGAJEPSU4,TAX_REMARK,BUILDNO,TAX_MAILCODE,TAX_JUSO,TAX_JUSODETAIL 		");
             parameter.AppendSql("      ,DLTD,CHULNOTSAYU,CHREMARK,BOREMARK, NAME AS DNAME, ROWID AS RID	");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD                                                                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD                                                                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                               ");
             parameter.AppendSql("  AND Code  =:Code                                                                                         ");
 
@@ -111,7 +111,7 @@ namespace ComLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXJONG      ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXJONG      ");
             parameter.AppendSql(" WHERE CODE =:CODE                 ");
 
             parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -123,7 +123,7 @@ namespace ComLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESCODE                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESCODE                 ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                          ");
             parameter.AppendSql("   AND CODE  = :CODE                           ");
 
@@ -143,7 +143,7 @@ namespace ComLibB.Repository
                 parameter.AppendSql("     , SABUN, BUSENAME, GBSUCHEP, JIKJONG, GJCHASU, GJBANGI                                        ");
                 parameter.AppendSql("     , JONGGUMYN, GBHEAENDO, IEMUNNO, GBN, CLASS, GBCHK3                                           ");
                 parameter.AppendSql("     , TEL, BUSEIPSA, SANGDAMDRNO                                                                  ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU                                                                       ");
+                parameter.AppendSql("  FROM ADMIN.HIC_JEPSU                                                                       ");
                 parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                                              ");
                 parameter.AppendSql("   AND DELDATE IS NULL                                                                             ");
             }
@@ -154,7 +154,7 @@ namespace ComLibB.Repository
                 parameter.AppendSql("     , SABUN, '' BUSENAME, '' GBSUCHEP, '' JIKJONG, '' GJCHASU, '' GJBANGI                         ");
                 parameter.AppendSql("     , '' JONGGUMYN, '' GBHEAENDO, IEMUNNO, '' GBN, '' CLASS, '' GBCHK3                            ");
                 parameter.AppendSql("     , '' TEL, '' BUSEIPSA, DRSABUN SANGDAMDRNO                                                    ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU                                                                       ");
+                parameter.AppendSql("  FROM ADMIN.HEA_JEPSU                                                                       ");
                 parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                                              ");
                 parameter.AppendSql("   AND DELDATE IS NULL                                                                             ");
             }
@@ -172,8 +172,8 @@ namespace ComLibB.Repository
             {
                 parameter.AppendSql("SELECT b.part, a.WRTNO, a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID      ");
                 parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse, b.Unit,b.HEAPART  ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                                    ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                    ");
+                parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                                    ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                    ");
                 parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                           ");
                 parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                        ");
                 //parameter.AppendSql(" ORDER BY a.PANJENG, b.PART, a.EXCODE                                              ");
@@ -183,8 +183,8 @@ namespace ComLibB.Repository
             {
                 parameter.AppendSql("SELECT b.part, a.WRTNO, a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng,a.ROWID      ");
                 parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse, b.Unit,b.HEAPART  ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                                    ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                                                    ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                                    ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE b                                                    ");
                 parameter.AppendSql(" WHERE a.WRTNO  = :WRTNO                                                           ");
                 parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                        ");
                 //parameter.AppendSql(" ORDER BY b.HeaSORT,a.ExCode                                                       ");
@@ -199,7 +199,7 @@ namespace ComLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXJONG  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXJONG  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -211,7 +211,7 @@ namespace ComLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -223,7 +223,7 @@ namespace ComLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT *                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU       ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                ");
             parameter.AppendSql("   AND DELDATE IS NULL             ");
             parameter.AppendSql(" ORDER BY SDATE DESC               ");
@@ -237,7 +237,7 @@ namespace ComLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT JEPDATE, FC_HIC_GJJONG_NAME(GJJONG,UCODES) GJJONG, WRTNO    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU                                       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU                                       ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                                ");
             parameter.AppendSql("   AND DELDATE IS NULL                                             ");
             parameter.AppendSql(" ORDER BY WRTNO DESC                                               ");

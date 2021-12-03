@@ -65,7 +65,7 @@ namespace ComEmrBase
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL = "DELETE KOSMOS_EMR.AEMRSUGAMAPPING";
+                SQL = "DELETE ADMIN.AEMRSUGAMAPPING";
                 SQL += ComNum.VBLF + "WHERE FORMNO = " + SelectFormNo;
 
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAdd, clsDB.DbCon);
@@ -92,7 +92,7 @@ namespace ComEmrBase
                     if (APPOINTMENT.IsNullOrEmpty() || ORDERGBN.IsNullOrEmpty())
                         continue;
 
-                    SQL = "INSERT INTO KOSMOS_EMR.AEMRSUGAMAPPING";
+                    SQL = "INSERT INTO ADMIN.AEMRSUGAMAPPING";
                     SQL += ComNum.VBLF + "(FORMNO, ITEMCD, ORDERGBN, APPOINTMENT)";
                     SQL += ComNum.VBLF + "VALUES";
                     SQL += ComNum.VBLF + "(";
@@ -144,7 +144,7 @@ namespace ComEmrBase
 
                     string ItemCd = ssItem_Sheet1.Cells[i, 3].Text.Trim();
 
-                    SQL = "DELETE KOSMOS_EMR.AEMRSUGAMAPPING";
+                    SQL = "DELETE ADMIN.AEMRSUGAMAPPING";
                     SQL += ComNum.VBLF + "WHERE FORMNO =  " + SelectFormNo;
                     SQL += ComNum.VBLF + "  AND ITEMCD = '" + ItemCd + "'";
 
@@ -182,7 +182,7 @@ namespace ComEmrBase
 
             #region 쿼리
             SQL = "SELECT FORMNO, FORMNAME";
-            SQL += ComNum.VBLF + " FROM KOSMOS_EMR.AEMRFORM";
+            SQL += ComNum.VBLF + " FROM ADMIN.AEMRFORM";
             SQL += ComNum.VBLF + "WHERE FORMNO IN (3150, 1575) -- 임상관찰, 기본간호활동";
             SQL += ComNum.VBLF + "  AND UPDATENO > 0";
             SQL += ComNum.VBLF + "  AND USECHECK = 1";
@@ -241,16 +241,16 @@ namespace ComEmrBase
             SQL += ComNum.VBLF + "  , APPOINTMENT";
             SQL += ComNum.VBLF + "  , B.ITEMCD";
 
-            SQL += ComNum.VBLF + " FROM KOSMOS_EMR.AEMRBASCD A";
+            SQL += ComNum.VBLF + " FROM ADMIN.AEMRBASCD A";
             if (rdoSave.Checked)
             {
-                SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_EMR.AEMRSUGAMAPPING B";
+                SQL += ComNum.VBLF + "   INNER JOIN ADMIN.AEMRSUGAMAPPING B";
                 SQL += ComNum.VBLF + "      ON B.FORMNO = " + formNo;
                 SQL += ComNum.VBLF + "     AND B.ITEMCD = A.BASCD";
             }
             else
             {
-                SQL += ComNum.VBLF + "    LEFT OUTER JOIN KOSMOS_EMR.AEMRSUGAMAPPING B";
+                SQL += ComNum.VBLF + "    LEFT OUTER JOIN ADMIN.AEMRSUGAMAPPING B";
                 SQL += ComNum.VBLF + "      ON B.FORMNO = " + formNo;
                 SQL += ComNum.VBLF + "     AND B.ITEMCD = A.BASCD";
             }

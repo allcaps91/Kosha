@@ -42,7 +42,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SUNAMEK, UNIT           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SUN     ");
+            parameter.AppendSql("  FROM ADMIN.BAS_SUN     ");
             parameter.AppendSql(" WHERE SUNEXT = :SUNEXT        ");
 
             parameter.Add("SUNEXT", strSuCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -54,7 +54,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SUNAMEK,UNITNEW2        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SUN     ");
+            parameter.AppendSql("  FROM ADMIN.BAS_SUN     ");
             parameter.AppendSql(" WHERE SUNEXT = :SUNEXT        ");
 
             parameter.Add("SUNEXT", strSuCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -66,7 +66,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT UNITNEW1, UNITNEW2, UNITNEW3, UNITNEW4  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SUN                     ");
+            parameter.AppendSql("  FROM ADMIN.BAS_SUN                     ");
             parameter.AppendSql(" WHERE SUNEXT = :SUNEXT                        ");
 
             parameter.Add("SUNEXT", strSuCode);

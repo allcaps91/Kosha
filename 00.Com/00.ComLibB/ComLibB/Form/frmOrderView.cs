@@ -152,7 +152,7 @@ namespace ComLibB
                 SQL = "SELECT TO_CHAR(StartDate, 'YYYY-MM-DD') Sdate,";
                 SQL = SQL + ComNum.VBLF + "       TO_CHAR(LastDate, 'YYYY-MM-DD') Ldate, ";
                 SQL = SQL + ComNum.VBLF + "       Sname, Sex, Jumin1, Jumin2, Jumin3 ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE Pano = '" + txtPtNo.Text + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -211,7 +211,7 @@ namespace ComLibB
                 SQL = "SELECT TO_CHAR(ActDate,'YYYY-MM-DD') Adate, ";
                 SQL = SQL + ComNum.VBLF + "       DeptCode, DrName, Bi, o.DRCode,   ";
                 SQL = SQL + ComNum.VBLF + "       TO_CHAR(BDATE,'YYYY-MM-DD') BDATE ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_SLIP O, KOSMOS_PMPA.BAS_DOCTOR B ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OPD_SLIP O, ADMIN.BAS_DOCTOR B ";
                 SQL = SQL + ComNum.VBLF + " WHERE Pano     = '" + txtPtNo.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND O.DrCode = B.DrCode(+) ";
                 SQL = SQL + ComNum.VBLF + " GROUP BY ActDate, DeptCode, DrName, Bi, o.DrCode, BDATE ";
@@ -285,7 +285,7 @@ namespace ComLibB
                         SQL = "";
                         SQL = "SELECT TO_CHAR(ACTDATE, 'YYYY-MM-DD') JOBDATE, ";
                         SQL = SQL + ComNum.VBLF + " TO_CHAR(BDATE, 'YYYY-MM-DD') BDATE ";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_HOANBUL ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_HOANBUL ";
                         SQL = SQL + ComNum.VBLF + " WHERE PANO  = '" + txtPtNo.Text + "'";
                         SQL = SQL + ComNum.VBLF + "   AND JOBDATE = TO_DATE('" + dt.Rows[i]["ADATE"].ToString().Trim() + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "   AND BDATE = TO_DATE('" + dt.Rows[i]["BDATE"].ToString().Trim() + "','YYYY-MM-DD') ";
@@ -313,7 +313,7 @@ namespace ComLibB
                         ssPat_Sheet1.Cells[ssPat_Sheet1.RowCount - 1, 7].Text = dt.Rows[i]["BDATE"].ToString().Trim();
 
                         SQL = "";
-                        SQL = "SELECT BonRate From KOSMOS_PMPA.OPD_Master ";
+                        SQL = "SELECT BonRate From ADMIN.OPD_Master ";
                         SQL = SQL + ComNum.VBLF + " Where Pano= '" + txtPtNo.Text + "' ";
                         SQL = SQL + ComNum.VBLF + "   AND BDATE = TO_DATE('" + dt.Rows[i]["BDATE"].ToString().Trim() + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "   AND DEPTCODE = '" + dt.Rows[i]["DEPTCODE"].ToString().Trim() + "' ";
@@ -365,7 +365,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "SELECT MEMO FROM KOSMOS_PMPA.BAS_OCSMEMO_O ";
+                SQL = "SELECT MEMO FROM ADMIN.BAS_OCSMEMO_O ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO ='" + txtPtNo.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND DDATE IS NULL ";
 
@@ -426,7 +426,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "SELECT MEMO FROM KOSMOS_PMPA.BAS_OCSMEMO_MIR ";
+                SQL = "SELECT MEMO FROM ADMIN.BAS_OCSMEMO_MIR ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO ='" + txtPtNo.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND DDATE IS NULL ";
 
@@ -594,7 +594,7 @@ namespace ComLibB
                 SQL = "SELECT Sucode, SunameK, BaseAmt, Qty, Nal,o.bun,o.bi,o.nu,b.SUGBQ,";
                 SQL = SQL + ComNum.VBLF + "       GbSpc, GbNgt, GbGisul, GbSelf, GbChild,";
                 SQL = SQL + ComNum.VBLF + "       Amt1, Amt2, SeqNo, Part, O.Rowid, O.GbSlip, O.GbSuGbS ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_SLIP O,  KOSMOS_PMPA.BAS_SUN B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OPD_SLIP O,  ADMIN.BAS_SUN B";
                 SQL = SQL + ComNum.VBLF + " WHERE ActDate  = TO_DATE('" + strDate + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND Pano     = '" + txtPtNo.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND Bi       = '" + strBi + "' ";
@@ -701,7 +701,7 @@ namespace ComLibB
 
                 //JJY(2005-02-17) 심사계요청으로 추가
                 SQL = "";
-                SQL = "SELECT A.ILLCODE, B.ILLNAMEK FROM KOSMOS_OCS.OCS_OILLS A, KOSMOS_PMPA.BAS_ILLS B";
+                SQL = "SELECT A.ILLCODE, B.ILLNAMEK FROM ADMIN.OCS_OILLS A, ADMIN.BAS_ILLS B";
                 SQL = SQL + ComNum.VBLF + " WHERE a.BDate  = TO_DATE('" + strArrDate + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND a.PTno     = '" + txtPtNo.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.DeptCode = '" + strDept + "' ";
@@ -760,7 +760,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "SELECT SugbS FROM KOSMOS_PMPA.BAS_SUN  ";
+                SQL = "SELECT SugbS FROM ADMIN.BAS_SUN  ";
                 SQL = SQL + ComNum.VBLF + " WHERE SuNext  = '" + strSuNext.Trim() + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -806,7 +806,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "SELECT JIN, JINDTL, JepsuSayu From KOSMOS_PMPA.OPD_MASTER ";
+                SQL = "SELECT JIN, JINDTL, JepsuSayu From ADMIN.OPD_MASTER ";
                 SQL = SQL + ComNum.VBLF + " Where Pano ='" + strPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND BDate = TO_DATE('" + strBDate + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND DEPTCODE ='" + strDept + "' ";
@@ -859,7 +859,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT PANO,VCODE,MCODE,JIN,JINDTL,ETCAMT,ETCAMT2,JINDTL2,GELCODE,Remark,amt ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_SUNAP ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_SUNAP ";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO ='" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND (DEPTCODE ='" + strArrDept + "' OR DEPTCODE ='II')  ";
                 SQL = SQL + ComNum.VBLF + "   AND ACTDATE =TO_DATE('" + strArrActDate + "','YYYY-MM-DD') ";
@@ -1132,7 +1132,7 @@ namespace ComLibB
 
                 //원외약제 루틴
                 SQL = "";
-                SQL = "UPDATE KOSMOS_OCS.OCS_OUTDRUG";
+                SQL = "UPDATE ADMIN.OCS_OUTDRUG";
                 SQL = SQL + ComNum.VBLF + " SET";
                 SQL = SQL + ComNum.VBLF + "     GBSELF = '" + strF + "' ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + txtPtNo.Text.Trim() + "' ";

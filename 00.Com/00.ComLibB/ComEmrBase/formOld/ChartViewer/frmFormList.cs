@@ -49,11 +49,11 @@ namespace ComEmrBase
             {
 
                 SQL = " SELECT FORMNO, FORMNAME";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.AEMRFORM A";
+                SQL += ComNum.VBLF + " FROM ADMIN.AEMRFORM A";
                 SQL += ComNum.VBLF + " WHERE UPPER(FORMNAME) LIKE '%" + txtTitle.Text.Trim().ToUpper() + "%' ";
                 //SQL += ComNum.VBLF + "   AND USECHECK = 1";
                 SQL += ComNum.VBLF + " AND NOT EXISTS";
-                SQL += ComNum.VBLF + " (SELECT FORMNO, SABUN FROM KOSMOS_EMR.EMRFORM_SET_LIST SUB";
+                SQL += ComNum.VBLF + " (SELECT FORMNO, SABUN FROM ADMIN.EMRFORM_SET_LIST SUB";
                 SQL += ComNum.VBLF + " WHERE SABUN = " + clsType.User.IdNumber;
                 SQL += ComNum.VBLF + " AND A.FORMNO = SUB.FORMNO)";
                 SQL += ComNum.VBLF + " ORDER BY FORMNAME ASC";
@@ -121,7 +121,7 @@ namespace ComEmrBase
                 {
                     if (SS1_Sheet1.Cells[i, 0].Text.Trim().Equals("True"))
                     {
-                        SQL = " INSERT INTO KOSMOS_EMR.EMRFORM_SET_LIST(SABUN, FORMNO) VALUES ";
+                        SQL = " INSERT INTO ADMIN.EMRFORM_SET_LIST(SABUN, FORMNO) VALUES ";
                         SQL += ComNum.VBLF + "(" + clsType.User.IdNumber + ",'" + SS1_Sheet1.Cells[i, 2].Text.Trim() + "')";
 
                         string SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

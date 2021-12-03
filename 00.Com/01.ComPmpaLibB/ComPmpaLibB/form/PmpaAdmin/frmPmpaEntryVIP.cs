@@ -155,7 +155,7 @@ namespace ComPmpaLibB
             {
                 SQL += ComNum.VBLF + " SELECT PANO, SNAME, ";
                 SQL += ComNum.VBLF + "        GB_VIP,                                                                       --VIP 고객구분";
-                SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_BCODE_NAMEREAD('BAS_VIP_구분코드', GB_VIP)  AS VIPNAME,     --VIP 고객구분명";
+                SQL += ComNum.VBLF + "        ADMIN.FC_BAS_BCODE_NAMEREAD('BAS_VIP_구분코드', GB_VIP)  AS VIPNAME,     --VIP 고객구분명";
                 SQL += ComNum.VBLF + "        GB_VIP_REMARK,                                                                --VIP 고객 참고사항";
                 SQL += ComNum.VBLF + "        SEX, Jumin1, Jumin2, Jumin3, ROWID ";
                 SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "BAS_PATIENT ";
@@ -164,7 +164,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "    AND GB_VIP_DATE <  TO_DATE('" + dtpTdate.Text + "','YYYY-MM-DD')";
 
                 if (strGubun == "**")
-                    SQL += ComNum.VBLF + "  AND TRIM(GB_VIP) IN ( SELECT TRIM(CODE) FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='BAS_VIP_구분코드' ) ";
+                    SQL += ComNum.VBLF + "  AND TRIM(GB_VIP) IN ( SELECT TRIM(CODE) FROM ADMIN.BAS_BCODE WHERE GUBUN ='BAS_VIP_구분코드' ) ";
                 else
                     SQL += ComNum.VBLF + "  AND GB_VIP  = '" + strGubun + "' ";
 
@@ -446,7 +446,7 @@ namespace ComPmpaLibB
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT A.GAMJUMIN, A.GAMJUMIN3, A.GAMNAME, A.GAMMESSAGE, ";
                 SQL += ComNum.VBLF + "        C.SABUN, A.GAMCODE, A.GAMNAME AS SNAME, C.BUSE, ";
-                SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_BUSE_NAME(C.BUSE) BUSENAME ";
+                SQL += ComNum.VBLF + "        ADMIN.FC_BAS_BUSE_NAME(C.BUSE) BUSENAME ";
                 SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "BAS_GAMF A, ";
                 SQL += ComNum.VBLF + "        " + ComNum.DB_ERP + "INSA_MST C ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
@@ -459,7 +459,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "  UNION ALL ";
                 SQL += ComNum.VBLF + " SELECT A.GAMJUMIN, A.GAMJUMIN3, A.GAMNAME, A.GAMMESSAGE,";
                 SQL += ComNum.VBLF + "        C.SABUN, A.GAMCODE, A.GAMNAME AS SNAME, D.BUSE, ";
-                SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_BUSE_NAME(D.BUSE) BUSENAME ";
+                SQL += ComNum.VBLF + "        ADMIN.FC_BAS_BUSE_NAME(D.BUSE) BUSENAME ";
                 SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "BAS_GAMF A, ";
                 SQL += ComNum.VBLF + "        " + ComNum.DB_ERP + "INSA_MSTB C, ";
                 SQL += ComNum.VBLF + "        " + ComNum.DB_ERP + "INSA_MST D ";

@@ -278,7 +278,7 @@ namespace ComLibB
         //    strXMLCert = strXML;
 
         //    SQL = "";
-        //    SQL += ComNum.VBLF + "SELECT KOSMOS_EMR.GetEmrXmlNo() FunSeqNo FROM Dual";
+        //    SQL += ComNum.VBLF + "SELECT ADMIN.GetEmrXmlNo() FunSeqNo FROM Dual";
 
         //    SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -365,7 +365,7 @@ namespace ComLibB
         ////    With cmd
         ////     .ActiveConnection = adoConnect
 
-        ////     .CommandText = "KOSMOS_EMR.XMLINSRT3"
+        ////     .CommandText = "ADMIN.XMLINSRT3"
         ////     .CommandType = adCmdStoredProc
 
         ////     .Parameters.Append.CreateParameter("p_EMRNO", adDouble, adParamInput, 0, dblEmrNo)

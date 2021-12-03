@@ -372,7 +372,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "       AND PANO = '" + strPtNo + "'";
                 SQL = SQL + ComNum.VBLF + "   Union";
                 SQL = SQL + ComNum.VBLF + "   SELECT PANO, '기타 산정특례' GUBUN, ILLCODE1, ILLCODE2, ILLCODE3, ILLCODE4, ILLCODE5";
-                SQL = SQL + ComNum.VBLF + "   From KOSMOS_PMPA.BAS_CANCER";
+                SQL = SQL + ComNum.VBLF + "   From ADMIN.BAS_CANCER";
                 SQL = SQL + ComNum.VBLF + "   WHERE GUBUN = '2'";
                 SQL = SQL + ComNum.VBLF + "       AND PANO = '" + strPtNo + "'";
                 SQL = SQL + ComNum.VBLF + "   Union";
@@ -940,7 +940,7 @@ namespace ComLibB
 
                 //중증등록여부표시-원내
                 SQL = "";
-                SQL = "SELECT Gubun FROM KOSMOS_PMPA.BAS_CANCER";
+                SQL = "SELECT Gubun FROM ADMIN.BAS_CANCER";
                 SQL = SQL + ComNum.VBLF + "     WHERE  PANO ='" + txtPtNo.Text + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1045,7 +1045,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "SELECT KOSMOS_PMPA.SEQ_OPD_NHIC.NEXTVAL WRTNO FROM DUAL";
+                SQL = "SELECT ADMIN.SEQ_OPD_NHIC.NEXTVAL WRTNO FROM DUAL";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -1375,7 +1375,7 @@ namespace ComLibB
                 if(strFlag != "" && VB.Val(ComQuery.CurrentDateTime(clsDB.DbCon, "D")) <= 20150120)
                 {
                     SQL = "";
-                    SQL = "SELECT ROWID FROM KOSMOS_PMPA.BAS_CANCER";
+                    SQL = "SELECT ROWID FROM ADMIN.BAS_CANCER";
                     SQL = SQL + ComNum.VBLF + "     WHERE PANO ='" + strPtNo + "' ";
                     SQL = SQL + ComNum.VBLF + "     AND GUBUN ='2'";
                     SQL = SQL + ComNum.VBLF + "     AND FDATE >= TO_DATE('" + ComFunc.FormatStrToDateEx(ComQuery.CurrentDateTime(clsDB.DbCon, "D"), "D", "-") + "','YYYY-MM-DD')";

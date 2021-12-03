@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NEXTROOM                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             if (argRoom != "")
             {
@@ -45,7 +45,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MAX(WAITNO) + 1 WAIT            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql("   AND ENTTIME >= TRUNC(SYSDATE)       ");
 
@@ -58,7 +58,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NEXTROOM                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE GUBUN = :ROOM                   ");
             parameter.AppendSql(" GROUP BY NEXTROOM                     ");
 
@@ -70,7 +70,7 @@ namespace ComHpcLibB.Repository
         public int GetCountbyWrtNoGubun(string gstrDrRoom, long nWrtNo)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT WRTNO FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT     ");
+            parameter.AppendSql("SELECT WRTNO FROM ADMIN.HIC_SANGDAM_WAIT     ");
             parameter.AppendSql(" WHERE CALLTIME IS NOT NULL                        ");
             parameter.AppendSql("   AND (GBCALL IS NULL or GBCALL = '')             ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                              ");
@@ -85,7 +85,7 @@ namespace ComHpcLibB.Repository
         public int UpdateCallTimeDisplaybyOnlyWrtNo(long nWrtNo)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET                    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET                    ");
             parameter.AppendSql("       CALLTIME = ''                                       ");
             parameter.AppendSql("     , DISPLAY  = ''                                       ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO                                   ");
@@ -99,7 +99,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MAX(WaitNo) + 1 MaxNo           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql("   AND ENTTIME >= TRUNC(SYSDATE)       ");
             if (strTemp == "N")
@@ -116,7 +116,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GUBUN, WAITNO, PANO             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE ENTTIME >= TRUNC(SYSDATE)       ");
             parameter.AppendSql("   AND ENTTIME <= TRUNC(SYSDATE) + 1   ");
             parameter.AppendSql("   AND GBCALL IS NOT NULL              ");
@@ -129,7 +129,7 @@ namespace ComHpcLibB.Repository
         public int Insert(HIC_SANGDAM_WAIT item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SANGDAM_WAIT                                                   ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SANGDAM_WAIT                                                   ");
             parameter.AppendSql("       (WRTNO, SNAME, SEX, AGE, GJJONG, GUBUN, ENTTIME, WAITNO, PANO, NEXTROOM)            ");
             parameter.AppendSql("VALUES                                                                                     ");   
             parameter.AppendSql("       (:WRTNO, :SNAME, :SEX, :AGE, :GJJONG, :GUBUN, SYSDATE, :WAITNO, :PANO, :NEXTROOM)   ");
@@ -151,7 +151,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO,WAITNO                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT                            ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                                          ");
             parameter.AppendSql("   AND (GBCALL IS NULL OR GBCALL = '')                         ");
             parameter.AppendSql("   AND ENTTIME >= TO_DATE(:FRDATE, 'YYYY-MM-DD')               ");
@@ -170,7 +170,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO, WAITNO                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT                        ");
             parameter.AppendSql(" WHERE GUBUN  = :GUBUN                                     ");
             parameter.AppendSql("   AND ENTTIME >= TO_DATE(:FRDATE, 'YYYY-MM-DD')           ");
             parameter.AppendSql("   AND ENTTIME <= TO_DATE(:TODATE, 'YYYY-MM-DD')           ");
@@ -188,7 +188,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NEXTROOM                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT                        ");
             parameter.AppendSql(" WHERE GUBUN IN (:GUBUN)                                   ");
             parameter.AppendSql("   AND WRTNO = :WRTNO                                      ");
 
@@ -201,7 +201,7 @@ namespace ComHpcLibB.Repository
         public int InserWrtNoSNameGubunt(HIC_SANGDAM_WAIT item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SANGDAM_WAIT                           ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SANGDAM_WAIT                           ");
             parameter.AppendSql("       (WRTNO,SNAME,GBCALL,GUBUN,ENTTIME,CALLTIME,WAITNO,DISPLAY)  ");
             parameter.AppendSql("VALUES                                                             ");
             parameter.AppendSql("       (:WRTNO, :SNAME, '', :GUBUN, SYSDATE, '', 0, '')            ");
@@ -217,7 +217,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GUBUN, GBCALL, ROWID RID            ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HIC_SangDam_WAIT        ");
+            parameter.AppendSql("  From ADMIN.HIC_SangDam_WAIT        ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                      ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                      ");
             parameter.AppendSql("   AND trunc(ENTTIME) >= trunc(SYSDATE)    ");
@@ -234,7 +234,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT MAX(WaitNo) + 1 WAITNO          ");
             //parameter.AppendSql("     , ROWID RID                       ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  From ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql("   AND trunc(ENTTIME) >= trunc(SYSDATE)");
 
@@ -247,7 +247,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Wrtno, Sname, Gjjong            ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HIC_SangDam_WAIT    ");
+            parameter.AppendSql("  From ADMIN.HIC_SangDam_WAIT    ");
             parameter.AppendSql(" WHERE GUBUN = :ROOMCD                 ");
             parameter.AppendSql("   AND (GBCALL IS NULL OR GBCALL = '') ");
             parameter.AppendSql(" ORDER By ENTTIME                      ");
@@ -261,7 +261,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NEXTROOM                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND Gubun IN ('08','09')            ");
 
@@ -274,7 +274,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SNAME, WRTNO                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT        ");
             parameter.AppendSql(" WHERE TRUNC(ENTTIME) >= TRUNC(SYSDATE)    ");
             parameter.AppendSql("   AND (GBCALL IS NULL OR GBCALL = '')     ");
             if (!strPart.IsNullOrEmpty())
@@ -295,7 +295,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(WRTNO) CNT                ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  From ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql("   AND trunc(ENTTIME) >= trunc(SYSDATE)");
             parameter.AppendSql("   AND(GBCALL IS NULL OR GBCALL = '')  ");
@@ -309,7 +309,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SANGDAM_WAIT       ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SANGDAM_WAIT       ");
             parameter.AppendSql("       (WRTNO, SNAME, SEX, AGE, GJJONG         ");
             parameter.AppendSql("     , GUBUN, ENTTIME,  WAITNO, PANO)          ");
             parameter.AppendSql("VALUES                                         ");
@@ -333,7 +333,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SNAME,SEX,AGE,GJJONG            ");
             parameter.AppendSql("     , ROWID RID                       ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  From ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", argWrtNo);
@@ -344,7 +344,7 @@ namespace ComHpcLibB.Repository
         public int Delete_Sangdam_PreData(long argWrtNo, string strPart)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("DELETE ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO               ");
             parameter.AppendSql("   AND GUBUN    = :ROOMCD              ");
 
@@ -359,7 +359,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GUBUN,TO_CHAR(CALLTIME,'YYYY-MM-DD') CALLTIME   ");
             parameter.AppendSql("     , ROWID RID                                       ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HIC_SANGDAM_WAIT                    ");
+            parameter.AppendSql("  From ADMIN.HIC_SANGDAM_WAIT                    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                  ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                                  ");
             parameter.AppendSql("   AND (GBCALL IS NULL OR GBCALL = '')                 ");
@@ -375,7 +375,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT                            ");
             parameter.AppendSql(" WHERE ENTTIME >= TO_DATE(:SDATE, 'yyyy-MM-dd')                ");
             //parameter.AppendSql("   AND Gubun <> '12'                                           "); //상담대기
             if (!hCROOM.IsNullOrEmpty())
@@ -405,7 +405,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SNAME, WRTNO                                ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HIC_SangDam_WAIT                ");
+            parameter.AppendSql("  From ADMIN.HIC_SangDam_WAIT                ");
             parameter.AppendSql(" WHERE TRUNC(ENTTIME) = TRUNC(SYSDATE)             ");
             if (!fstrRoom.IsNullOrEmpty() && fstrRoom != "ALL")
             {
@@ -426,7 +426,7 @@ namespace ComHpcLibB.Repository
         public int DeletebyEntTime(string strDate)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                   ");
+            parameter.AppendSql("DELETE FROM ADMIN.HIC_SANGDAM_WAIT                   ");
             parameter.AppendSql(" WHERE ENTTIME = TO_DATE(:ENTTIME, 'YYYY-MM-DD HH24:MI')   ");
 
             parameter.Add("ENTTIME", strDate);
@@ -437,7 +437,7 @@ namespace ComHpcLibB.Repository
         public int DeletebyGubunSName(string fstrRoom, string strSName)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT       ");
+            parameter.AppendSql("DELETE FROM ADMIN.HIC_SANGDAM_WAIT       ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                          ");
             parameter.AppendSql("   AND SNAME = :SNAME                          ");
 
@@ -451,7 +451,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT                ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                              ");
             parameter.AppendSql("   AND SNAME = :SNAME                              ");
 
@@ -465,7 +465,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NEXTROOM                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT                ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                              ");
             parameter.AppendSql("   AND GUBUN IN (:GUBUN)                           ");
 
@@ -479,7 +479,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO, WAITNO                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT                ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                              ");
             parameter.AppendSql("   AND ENTTIME >= TO_DATE(:FRDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND ENTTIME <= TO_DATE(:TODATE, 'YYYY-MM-DD')   ");
@@ -497,7 +497,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WAITNO                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE GUBUN IN(:GUBUN)                ");
             parameter.AppendSql("   AND WAITNO = 2                      ");
 
@@ -509,7 +509,7 @@ namespace ComHpcLibB.Repository
         public int DeletebyWrtNo(long wRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                       ");
+            parameter.AppendSql("DELETE FROM ADMIN.HIC_SANGDAM_WAIT                       ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                         ");
 
             parameter.Add("WRTNO", wRTNO);
@@ -520,7 +520,7 @@ namespace ComHpcLibB.Repository
         public int UpdateCallTimebyWrtNoGubun(long nWrtNo, string gstrDrRoom)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET                        ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET                        ");
             parameter.AppendSql("       CALLTIME = SYSDATE                                      ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                         ");
             parameter.AppendSql("   AND GUBUN  = :GUBUN                                         ");
@@ -536,7 +536,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT        ");
             parameter.AppendSql(" WHERE CALLTIME IS NOT NULL                ");
             parameter.AppendSql("   AND (GBCALL IS NULL or GBCALL = '')     ");
             parameter.AppendSql("   AND GUBUN  = :GUBUN                     ");
@@ -551,7 +551,7 @@ namespace ComHpcLibB.Repository
         public int UpdateWaitNobyWrtnoGubunEntTime(int nWaitNo, long wRTNO, string gstrDrRoom, string strFrDate1, string strToDate1)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET                    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET                    ");
             parameter.AppendSql("       WAITNO = :WAITNO                                    ");            
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                     ");
             parameter.AppendSql("   AND GUBUN  = :GUBUN                                     ");
@@ -571,7 +571,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WAITNO                                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT                        ");
             parameter.AppendSql(" WHERE GUBUN  = :GUBUN                                     ");
             parameter.AppendSql("   AND WAITNO = 2                                          ");
 
@@ -584,7 +584,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GUBUN                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT                        ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                      ");
 
             parameter.Add("WRTNO", gnWRTNO);
@@ -595,7 +595,7 @@ namespace ComHpcLibB.Repository
         public int UpdateWaitNoGubunbyWrtNo(string gstrDrRoom, long gnWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET                    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET                    ");
             parameter.AppendSql("       WAITNO = '2'                                        ");
             parameter.AppendSql("     , GUBUN  = :GUBUN                                     ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                     ");
@@ -609,7 +609,7 @@ namespace ComHpcLibB.Repository
         public int UpdateWaitNobyWrtNo(int nWaitNo, long wRTNO, string gstrDrRoom, string strFrDate1, string strToDate1)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET                    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET                    ");
             parameter.AppendSql("       WAITNO = :WAITNO                                    ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                     ");
             parameter.AppendSql("   AND GUBUN  = :GUBUN                                     ");
@@ -629,7 +629,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WAITNO                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE GUBUN  = :GUBUN                 ");
             parameter.AppendSql("   AND WAITNO = 2                      ");
 
@@ -651,7 +651,7 @@ namespace ComHpcLibB.Repository
         public int UpdateCallTimebyWrtNo(string strSysDate, long nWrtNo)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET                    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET                    ");
             parameter.AppendSql("       CALLTIME = TO_DATE(:SYSDATE, 'YYYY-MM-DD HH24:MI')  ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO                                   ");
             parameter.AppendSql("   AND GUBUN IN('8', '9')                                  ");
@@ -666,7 +666,7 @@ namespace ComHpcLibB.Repository
         public int DeletebyPaNo(long fnPano)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SANGDAM_WAIT");
+            parameter.AppendSql("DELETE ADMIN.HIC_SANGDAM_WAIT");
             parameter.AppendSql(" WHERE PANO = :PANO                ");
 
             parameter.Add("PANO", fnPano);
@@ -677,7 +677,7 @@ namespace ComHpcLibB.Repository
         public int UpdateGbCallCallTimeGubunbyWrtNo(string gstrDrRoom, long fnWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET    ");
             parameter.AppendSql("       GBCALL   = 'Y'                      ");
             parameter.AppendSql("     , CallTime = SYSDATE                  ");
             parameter.AppendSql("     , GUBUN    = :GUBUN                   ");
@@ -692,7 +692,7 @@ namespace ComHpcLibB.Repository
         public int UpdateGbCallGubunbyWrtNo(string gstrDrRoom, long fnWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET    ");
             parameter.AppendSql("       GBCALL   = 'Y'                      ");
             parameter.AppendSql("     , GUBUN    = :GUBUN                   ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO                   ");
@@ -706,7 +706,7 @@ namespace ComHpcLibB.Repository
         public int UpdateCallTimeDisplaybyWrtNo(List<string> strWrtNo, string strGubun = "")
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET    ");
             parameter.AppendSql("       CALLTIME = ''                       ");
             parameter.AppendSql("     , DISPLAY  = ''                       ");
             parameter.AppendSql(" WHERE WRTNO IN (:WRTNO)                   ");
@@ -724,7 +724,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT            ");
             parameter.AppendSql(" WHERE WRTNO != :WRTNO                         ");
             parameter.AppendSql("   AND CALLTIME IS NOT NULL                    ");
             parameter.AppendSql("   AND (GBCALL IS NULL or GBCALL = '')         ");
@@ -739,7 +739,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND EntTime>=TRUNC(SYSDATE)         ");
             parameter.AppendSql("   AND GUBUN IN ('8','9')              "); //구강상담실
@@ -753,7 +753,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", nWrtNo);
@@ -765,7 +765,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NEXTROOM                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND GUBUN IN ('08','09')            ");
 
@@ -777,7 +777,7 @@ namespace ComHpcLibB.Repository
         public int InsertCall(string gstrDrRoom)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SANGDAM_WAIT                            ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SANGDAM_WAIT                            ");
             parameter.AppendSql("       (WRTNO,SNAME,GBCALL,GUBUN,ENTTIME,CALLTIME,WAITNO,DISPLAY)   ");
             parameter.AppendSql("VALUES                                                              ");
             parameter.AppendSql("       (0, '{수검자호출}', '', :GUBUN, SYSDATE, '', 0, '')          ");
@@ -790,7 +790,7 @@ namespace ComHpcLibB.Repository
         public int DeletebyGubun(string gstrDrRoom)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SANGDAM_WAIT        ");
+            parameter.AppendSql("DELETE ADMIN.HIC_SANGDAM_WAIT        ");
             parameter.AppendSql(" WHERE WRTNO = 0                           ");
             parameter.AppendSql("   AND SName IN ('{수검자호출}','{자리비움}')");
             parameter.AppendSql("   AND GUBUN= :GUBUN                       ");
@@ -804,7 +804,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MAX(WaitNo) + 1 MaxNo                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT            ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                          ");
             parameter.AppendSql("   AND TRUNC(ENTTIME) >= TRUNC(SYSDATE)        ");
 
@@ -816,7 +816,7 @@ namespace ComHpcLibB.Repository
         public int UpdateGbCallbyWrtNo(string gstrDrRoom, long fnWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET    ");
             parameter.AppendSql("       GBCALL   = 'Y'                      ");
             parameter.AppendSql("     , CALLTIME = SYSDATE                  ");
             if (!gstrDrRoom.IsNullOrEmpty())
@@ -838,7 +838,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NEXTROOM                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND GUBUN IN ('08','09')            "); //구강상담
 
@@ -851,7 +851,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SNAME, AGE, SEX, GUBUN, PANO, WAITNO    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT            ");
             parameter.AppendSql(" WHERE ENTTIME >= TRUNC(SYSDATE)               ");
             parameter.AppendSql("   AND ENTTIME <= TRUNC(SYSDATE) + 1           ");
             parameter.AppendSql("   AND GBCALL IS NULL                          ");
@@ -866,8 +866,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("DELETE HIC_SANGDAM_WAIT                                    ");
             parameter.AppendSql(" WHERE WRTNO IN (SELECT a.WRTNO                            ");
-            parameter.AppendSql("                   FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT a     ");
-            parameter.AppendSql("                      , KOSMOS_PMPA.HIC_JEPSU        b     "); 
+            parameter.AppendSql("                   FROM ADMIN.HIC_SANGDAM_WAIT a     ");
+            parameter.AppendSql("                      , ADMIN.HIC_JEPSU        b     "); 
             parameter.AppendSql("                  WHERE a.ENTTIME >= TRUNC(SYSDATE)        ");
             parameter.AppendSql("                    AND a.ENTTIME <= TRUNC(SYSDATE) + 1    ");
             parameter.AppendSql("                    AND a.GBCALL IS NULL                   ");
@@ -880,7 +880,7 @@ namespace ComHpcLibB.Repository
         public int UpdateWaitNobyPaNo(HIC_SANGDAM_WAIT item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET    ");
             parameter.AppendSql("       GUBUN  = :GUBUN                     ");
             parameter.AppendSql("       WAITNO = :WAITNO                    ");
             parameter.AppendSql(" WHERE PANO   = :PANO                      ");
@@ -898,7 +898,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NEXTROOM, ROOMNAME              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                  ");
 
@@ -913,7 +913,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MAX(WaitNo) + 1 WAITNO          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql("   AND ENTTIME >= TRUNC(SYSDATE)       ");
 
@@ -926,7 +926,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GUBUN, NEXTROOM                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND EntTime>=TRUNC(SYSDATE)         ");
 
@@ -939,7 +939,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(*) CNT                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql("   AND CallTime IS NULL                ");
 
@@ -951,7 +951,7 @@ namespace ComHpcLibB.Repository
         public int Insert_Hic_Sangdam_Wait(long nWrtNo, string strSName, string strSex, long nAge, string strGjJong, string strRoom, long nWait, long argPano, string strNextRoom)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SANGDAM_WAIT               ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SANGDAM_WAIT               ");
             parameter.AppendSql("       (WRTNO, SNAME, SEX, AGE, GJJONG                 ");
             parameter.AppendSql("      , GUBUN, ENTTIME, WAITNO, PANO, NEXTROOM)        ");
             parameter.AppendSql("VALUES                                                 ");
@@ -990,7 +990,7 @@ namespace ComHpcLibB.Repository
         public int Update_Patient_Call(long argPano, string argRoom)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_WAIT SET    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_WAIT SET    ");
             parameter.AppendSql("       GBCALL = 'Y'                        "); 
             parameter.AppendSql("     , CALLTIME = SYSDATE                  ");
             parameter.AppendSql("     , GUBUN = :GUBUN                      ");

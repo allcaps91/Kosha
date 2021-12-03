@@ -127,7 +127,7 @@ namespace ComPmpaLibB
             if (txtDeptCode.Text.Trim() == "") { ComFunc.MsgBox("진료과목 공란임"); return; }
 
             SQL = "";
-            SQL += ComNum.VBLF + " SELECT * FROM KOSMOS_PMPA.OPD_MASTER ";
+            SQL += ComNum.VBLF + " SELECT * FROM ADMIN.OPD_MASTER ";
             SQL += ComNum.VBLF + "  WHERE 1         = 1 ";
             SQL += ComNum.VBLF + "    AND Pano      = '" + txtPtno2.Text + "' ";
             SQL += ComNum.VBLF + "    AND Bdate     = TO_DATE('" + dtpBdate.Text + "','YYYY-MM-DD')  ";

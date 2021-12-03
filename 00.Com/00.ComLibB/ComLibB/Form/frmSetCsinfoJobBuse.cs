@@ -110,8 +110,8 @@ namespace ComLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT A.BuCode, B.NAME AS BUNAME, A.ROWID";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.ETC_CSINFO_BUSE A,";
-                SQL += ComNum.VBLF + "        KOSMOS_PMPA.BAS_BUSE B ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.ETC_CSINFO_BUSE A,";
+                SQL += ComNum.VBLF + "        ADMIN.BAS_BUSE B ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1";
                 SQL += ComNum.VBLF + "    AND A.Code='" + strGubun + "' ";
                 SQL += ComNum.VBLF + "    AND B.DELDATE IS NULL";
@@ -216,7 +216,7 @@ namespace ComLibB
                         if (strRowid == "" && strDel == "")
                         {
                             SQL = "";
-                            SQL += ComNum.VBLF + " INSERT INTO KOSMOS_PMPA.ETC_CSINFO_BUSE";
+                            SQL += ComNum.VBLF + " INSERT INTO ADMIN.ETC_CSINFO_BUSE";
                             SQL += ComNum.VBLF + "        (CODE, BUCODE, BUNAME, ENTSABUN, ENTDATE)";
                             SQL += ComNum.VBLF + " VALUES ('" + strGubun + "',";
                             SQL += ComNum.VBLF + "         '" + strCode + "',";
@@ -230,13 +230,13 @@ namespace ComLibB
                             if (strDel != "")
                             {
                                 SQL = "";
-                                SQL += ComNum.VBLF + " DELETE  KOSMOS_PMPA.ETC_CSINFO_BUSE WHERE ROWID = '" + strRowid + "' ";
+                                SQL += ComNum.VBLF + " DELETE  ADMIN.ETC_CSINFO_BUSE WHERE ROWID = '" + strRowid + "' ";
                                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowCnt, clsDB.DbCon);
                             }
                             else if (strChange == "Y")
                             {
                                 SQL = "";
-                                SQL += ComNum.VBLF + " UPDATE KOSMOS_PMPA.ETC_CSINFO_BUSE";
+                                SQL += ComNum.VBLF + " UPDATE ADMIN.ETC_CSINFO_BUSE";
                                 SQL += ComNum.VBLF + "    SET BuCode = '" + strCode + "',";
                                 SQL += ComNum.VBLF + "        BuName = '" + strName + "',";
                                 SQL += ComNum.VBLF + "        EntSabun = '" + clsPublic.GstrJobSabun + "',";

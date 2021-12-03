@@ -26,7 +26,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(a.JepDate,'YYYY-MM-DD') JepDate,a.WRTNO,a.SName,a.LtdCode           ");
             parameter.AppendSql("     , a.GjJong,a.GjChasu,a.GbSTS,a.UCodes,a.SExams,a.GbMunjin1,a.GbMunjin2        ");
             parameter.AppendSql("     , a.GbMunjin3,a.GbDental,b.Name LtdName,c.Name ExName                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_LTD b, KOSMOS_PMPA.HIC_EXJONG c    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_LTD b, ADMIN.HIC_EXJONG c    ");
             parameter.AppendSql(" WHERE a.JEPDATE > =TO_DATE(:FRDATE, 'YYYY-MM-DD')                                 ");
             parameter.AppendSql("   AND a.JEPDATE < =TO_DATE(:TODATE, 'YYYY-MM-DD')                                 ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                           ");
@@ -68,7 +68,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , a.GjJong,a.GjChasu,a.GbSTS,a.UCodes,a.SExams,a.GbMunjin1,a.GbMunjin2                    ");
             parameter.AppendSql("     , TO_CHAR(a.ErTongbo,'MM/DD')  ErTongbo                                                   ");
             parameter.AppendSql("     , a.GbMunjin3,a.GbDental,b.Name LtdName,c.Name ExName                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_LTD b, KOSMOS_PMPA.HIC_EXJONG c                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_LTD b, ADMIN.HIC_EXJONG c                ");
             parameter.AppendSql(" WHERE a.JEPDATE >= TRUNC(SYSDATE-200)                                                         ");
             //parameter.AppendSql("   AND a.ErFlag = 'Y'                                                                          ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                                       ");

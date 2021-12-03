@@ -54,7 +54,7 @@ namespace ComLibB
                 //'진행상태;
                 SQL = "";
                 SQL = " SELECT CODE,NAME ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + "  WHERE GUBUN ='ETC_내시경_도착구분'";
                 SQL = SQL + ComNum.VBLF + "   AND ( DELDATE IS NULL OR DELDATE ='')";
                 SQL = SQL + ComNum.VBLF + " ORDER BY CODE ";
@@ -87,7 +87,7 @@ namespace ComLibB
                 //'검사종류;
                 SQL = "";
                 SQL = "SELECT CODE,NAME ";
-                SQL = SQL + "FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = SQL + "FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + "WHERE GUBUN ='ETC_내시경_검사구분'";
                 SQL = SQL + "   AND ( DELDATE IS NULL OR DELDATE ='')";
                 SQL = SQL + "ORDER BY CODE ";
@@ -117,7 +117,7 @@ namespace ComLibB
                 //'의사;
                 SQL = "";
                 SQL = " SELECT CODE,NAME ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + "  WHERE GUBUN ='ETC_내시경_의사구분'";
                 SQL = SQL + ComNum.VBLF + "   AND ( DELDATE IS NULL OR DELDATE ='')";
                 SQL = SQL + ComNum.VBLF + " ORDER BY CODE ";
@@ -205,7 +205,7 @@ namespace ComLibB
                         if (ComQuery.IsJobAuth(this, "C", clsDB.DbCon) == false) return; //권한 확인
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_PMPA.ETC_HTML (DRCODE, TIME, HREF, GUBUN, APPLY) VALUES (";
+                        SQL = " INSERT INTO ADMIN.ETC_HTML (DRCODE, TIME, HREF, GUBUN, APPLY) VALUES (";
                         SQL = SQL + ComNum.VBLF + " '" + strDrCode + "', '" + strDept + "', '" + strDrName + "' ,";
                         SQL = SQL + ComNum.VBLF + " 'S', '" + strApply + "' ) ";
 
@@ -225,7 +225,7 @@ namespace ComLibB
                         if (strROWID != "")
                         {
                             SQL = "";
-                            SQL = " UPDATE KOSMOS_PMPA.ETC_HTML SET  APPLY = '" + strApply + "' ";
+                            SQL = " UPDATE ADMIN.ETC_HTML SET  APPLY = '" + strApply + "' ";
                             SQL = SQL + " WHERE ROWID = '" + strROWID + "' ";
                         }
 
@@ -277,14 +277,14 @@ namespace ComLibB
                 SQL = "SELECT A.PANO,A.SNAME,A.DRCODE,A.GBSTS,A.GBEXAM,A.SEQ_RTIME,A.RTIME,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.DEPTJTIME,'YYYY-MM-DD HH24:MI') DEPTJTIME,";
                 SQL = SQL + ComNum.VBLF + " A.ROWID ,B.DRNAME, C.NAME AS STSNAME, D.NAME AS EXAMNAME ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.ENDO_DISP A ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_DOCTOR B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ENDO_DISP A ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_DOCTOR B";
                 SQL = SQL + ComNum.VBLF + "    ON A.DRCODE = B.DRCODE";
-                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_PMPA.BAS_BCODE C";
+                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.BAS_BCODE C";
                 SQL = SQL + ComNum.VBLF + "    ON A.GbSTS = C.CODE";
                 SQL = SQL + ComNum.VBLF + "    AND C.GUBUN = 'ETC_내시경_도착구분'";
                 SQL = SQL + ComNum.VBLF + "    AND(C.DELDATE IS NULL OR C.DELDATE = '')";
-                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_PMPA.BAS_BCODE D";
+                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.BAS_BCODE D";
                 SQL = SQL + ComNum.VBLF + "    ON A.GbEXAM = C.CODE";
                 SQL = SQL + ComNum.VBLF + "    AND C.GUBUN = 'ETC_내시경_검사구분'";
                 SQL = SQL + ComNum.VBLF + "    AND(C.DELDATE IS NULL OR C.DELDATE = '')";
@@ -350,10 +350,10 @@ namespace ComLibB
                 //'모든 의사의 명단을 읽음;
                 SQL = "";
                 SQL = "SELECT B.PRINTRANKING, A.DRDEPT1, A.DRCODE, A.DRNAME  , C.APPLY, C.ROWID AS ETCROWID";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_DOCTOR A        ";
-                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_PMPA.BAS_CLINICDEPT B        ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_DOCTOR A        ";
+                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.BAS_CLINICDEPT B        ";
                 SQL = SQL + ComNum.VBLF + "    ON A.DRDEPT1 = B.DEPTCODE        ";
-                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_PMPA.ETC_HTML C        ";
+                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.ETC_HTML C        ";
                 SQL = SQL + ComNum.VBLF + "    ON A.DRCODE = C.DRCODE        ";
                 SQL = SQL + ComNum.VBLF + "    AND C.GUBUN = 'S'        ";
                 SQL = SQL + ComNum.VBLF + "WHERE(A.DRDEPT1 IN('MG', 'MP') OR A.DRCODE IN('1402', '1407'))        ";
@@ -444,7 +444,7 @@ namespace ComLibB
                     if (ComQuery.IsJobAuth(this, "U", clsDB.DbCon) == false) return; //권한 확인
 
                     SQL = "";
-                    SQL = " UPDATE KOSMOS_OCS.ENDO_DISP SET ";
+                    SQL = " UPDATE ADMIN.ENDO_DISP SET ";
                     SQL = SQL + ComNum.VBLF + " GBSTS ='" + strSTS + "' ,";
                     SQL = SQL + ComNum.VBLF + " GBEXAM ='" + strExam + "' ,";
                     SQL = SQL + ComNum.VBLF + " DEPTJTIME = SYSDATE, ";
@@ -466,7 +466,7 @@ namespace ComLibB
                     if (ComQuery.IsJobAuth(this, "C", clsDB.DbCon) == false) return; //권한 확인
 
                     SQL = "";
-                    SQL = " INSERT INTO KOSMOS_OCS.ENDO_DISP ";
+                    SQL = " INSERT INTO ADMIN.ENDO_DISP ";
                     SQL = SQL + ComNum.VBLF + " (PANO,BDATE,SNAME,DRCODE,GBSTS,GBEXAM,DEPTJTIME,RTIME,GBJOB,GUBUN ) VALUES ( ";
                     SQL = SQL + ComNum.VBLF + " '" + strPano + "', TRUNC(SYSDATE),'" + strSName + "', ";
                     SQL = SQL + ComNum.VBLF + " '" + strDrCode + "','" + strSTS + "','" + strExam + "', SYSDATE ,'" + strSTIME + "','N','1' ) ";
@@ -517,7 +517,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "U", clsDB.DbCon) == false) return; //권한 확인
 
                 SQL = "";
-                SQL = " DELETE FROM KOSMOS_OCS.ENDO_DISP  ";
+                SQL = " DELETE FROM ADMIN.ENDO_DISP  ";
                 SQL = SQL + " WHERE ROWID ='" + FstrROWID + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

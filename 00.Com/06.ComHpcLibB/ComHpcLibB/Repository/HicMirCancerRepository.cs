@@ -32,7 +32,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(FrDate,'YYYY.MM.DD') FrDate                                                 ");
             parameter.AppendSql("     , TO_CHAR(ToDate,'YYYY.MM.DD') ToDate                                                 ");
             parameter.AppendSql("     , TO_CHAR(BuildDate,'YYYY-MM-DD') BuildDate,FileName,ROWID                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MIR_CANCER                                                          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MIR_CANCER                                                          ");
             parameter.AppendSql(" WHERE 1 = 1                                                                               ");
             parameter.AppendSql("   AND WRTNO  = :WRTNO                                                                     ");
 
@@ -46,7 +46,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT                 COUNT(FILENAME) CNT                      ");
-            parameter.AppendSql("FROM                   KOSMOS_PMPA.HIC_MIR_CANCER               ");
+            parameter.AppendSql("FROM                   ADMIN.HIC_MIR_CANCER               ");
             parameter.AppendSql("WHERE                  MIRNO=:MIRNO                             ");
             parameter.AppendSql("   AND                 FILENAME > ' '                           ");
 
@@ -61,7 +61,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT TO_CHAR(FrDate,'YYYY-MM-DD') FrDate                                                 ");
             parameter.AppendSql("     , TO_CHAR(ToDate,'YYYY-MM-DD') ToDate                                                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MIR_CANCER                                                          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MIR_CANCER                                                          ");
             parameter.AppendSql(" WHERE MIRNO  = :MIRNO                                                                     ");
 
             parameter.Add("MIRNO", nMirNo);
@@ -73,7 +73,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_MIR_CANCER SET      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_MIR_CANCER SET      ");
             parameter.AppendSql("       MIRNO    = 0                        ");
             parameter.AppendSql("     , OLDMIRNO = :MIRNO                   ");
             parameter.AppendSql(" WHERE MIRNO    = :MIRNO                   ");
@@ -95,7 +95,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(FrDate,'YYYY.MM.DD') FrDate                                                 ");
             parameter.AppendSql("     , TO_CHAR(ToDate,'YYYY.MM.DD') ToDate                                                 ");
             parameter.AppendSql("     , TO_CHAR(BuildDate,'YYYY-MM-DD') BuildDate,FileName, ROWID                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MIR_CANCER                                                          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MIR_CANCER                                                          ");
             parameter.AppendSql(" WHERE MIRNO = :MIRNO                                                                      ");
 
             parameter.Add("MIRNO", argMirno);
@@ -107,7 +107,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_MIR_CANCER SET      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_MIR_CANCER SET      ");
             parameter.AppendSql("       JEPQTY    = :JEPQTY                 ");
             parameter.AppendSql("     , BUILDCNT  = :BUILDCNT               ");
             parameter.AppendSql("     , GBERRCHK   = :GBERRCHK              ");
@@ -125,7 +125,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_MIR_CANCER SET      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_MIR_CANCER SET      ");
             parameter.AppendSql("       GBERRCHK  = :GBERRCHK               ");
             parameter.AppendSql("     , INWON01   = :INWON01                ");
             parameter.AppendSql("     , INWON02   = :INWON02                ");
@@ -215,7 +215,7 @@ namespace ComHpcLibB.Repository
 
             if (strJong == "4")
             {
-                parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_MIR_CANCER                                                             ");
+                parameter.AppendSql("INSERT INTO ADMIN.HIC_MIR_CANCER                                                             ");
                 parameter.AppendSql("       (MIRNO,JEPQTY,YEAR,GUBUN,JOHAP,FRDATE,TODATE                                                ");
                 parameter.AppendSql("     , KIHO,BUILDCNT,BUILDDATE,BUILDSABUN,MIRGBN,LIFE_GBN)                                         ");
                 parameter.AppendSql("VALUES                                                                                             ");
@@ -224,7 +224,7 @@ namespace ComHpcLibB.Repository
             }
             else if (strJong == "E")
             {
-                parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_MIR_CANCER                                                             ");
+                parameter.AppendSql("INSERT INTO ADMIN.HIC_MIR_CANCER                                                             ");
                 parameter.AppendSql("       (MIRNO,JEPQTY,GBBOGUN,YEAR,GUBUN,JOHAP,FRDATE,TODATE                                        ");
                 parameter.AppendSql("     , KIHO,BUILDCNT,BUILDDATE,BUILDSABUN,MIRGBN,LIFE_GBN)                                         ");
                 parameter.AppendSql("VALUES                                                                                             ");
@@ -272,7 +272,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_MIR_CANCER SET          ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_MIR_CANCER SET          ");
             parameter.AppendSql("       TAMT  = :TAMT                           ");
             parameter.AppendSql(" WHERE MIRNO = :MIRNO                          ");
 

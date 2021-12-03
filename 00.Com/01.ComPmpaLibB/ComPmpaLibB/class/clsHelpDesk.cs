@@ -23,7 +23,7 @@ namespace ComPmpaLibB
 
             try
             {
-                SQL = "SELECT Name,SName FROM KOSMOS_PMPA.BAS_BUSE ";
+                SQL = "SELECT Name,SName FROM ADMIN.BAS_BUSE ";
                 SQL += ComNum.VBLF + " WHERE BuCode='" + strBuseCode + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -69,7 +69,7 @@ namespace ComPmpaLibB
                 }
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT PANO,SNAME,MEMO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_OCSMEMO_MID ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_OCSMEMO_MID ";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO  = '" + ArgPano + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND (DDATE IS NULL OR DDATE ='' )";
                 SQL = SQL + ComNum.VBLF + "   AND GBN  in ( '" + ArgGbn + "' ,'0' )  ";
@@ -268,7 +268,7 @@ namespace ComPmpaLibB
                 }
 
                 SQL = "";
-                SQL += " SELECT Name FROM KOSMOS_PMPA.ETC_Return_Code   \r";
+                SQL += " SELECT Name FROM ADMIN.ETC_Return_Code   \r";
                 SQL += "  WHERE Code  = '" + sHCode + "'                \r";
                 SQL += "    AND Gubun = '01'                            \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -356,7 +356,7 @@ namespace ComPmpaLibB
 
             try
             {
-                SQL = " SELECT DrBunho FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = " SELECT DrBunho FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + " WHERE DRCODE='" + ArgDrCode + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -398,7 +398,7 @@ namespace ComPmpaLibB
 
             try
             {
-                SQL = " SELECT TelNo FROM KOSMOS_PMPA.BAS_DOCTOR ";
+                SQL = " SELECT TelNo FROM ADMIN.BAS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + " WHERE DRCODE='" + ArgDrCode + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -613,7 +613,7 @@ namespace ComPmpaLibB
             try
             {
                 SQL = " SELECT SUNAMEK ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SUN ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SUN ";
                 SQL = SQL + ComNum.VBLF + " WHERE SUNEXT = '" + ArgCode + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -659,7 +659,7 @@ namespace ComPmpaLibB
             try
             {
                 SQL = " SELECT DrName AS NAME ";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL += ComNum.VBLF + "  FROM ADMIN.OCS_DOCTOR ";
                 SQL += ComNum.VBLF + "  WHERE GbOut <> 'Y' ";
                 SQL += ComNum.VBLF + "   AND DRCODE ='" + strDrCode + "'";
 
@@ -702,7 +702,7 @@ namespace ComPmpaLibB
             try
             {
                 SQL = "SELECT Name ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_RETURN_CODE ";
+                SQL += ComNum.VBLF + " FROM ADMIN.ETC_RETURN_CODE ";
                 SQL += ComNum.VBLF + "WHERE Gubun ='05' ";
                 SQL += ComNum.VBLF + "  AND Code ='" + strCode + "'";
 
@@ -853,7 +853,7 @@ namespace ComPmpaLibB
 
             try
             {
-                SQL = "SELECT HolyDay,TempHolyDay FROM KOSMOS_PMPA.BAS_JOB ";
+                SQL = "SELECT HolyDay,TempHolyDay FROM ADMIN.BAS_JOB ";
                 SQL += ComNum.VBLF + " WHERE JobDate=TO_DATE('" + ArgDate + "','YYYY-MM-DD') ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

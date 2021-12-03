@@ -22,8 +22,8 @@
 
             parameter.AppendSql("SELECT a.BURATE,a.GAMCODE,a.GAMCODE2,b.CODE,b.AMT,b.GBSELF ");
             parameter.AppendSql("      ,b.GBHALIN,a.GAMAMT,a.LTDSAMT, b.BONINAMT, B.LTDAMT  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU a                             ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_SUNAPDTL b                          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU a                             ");
+            parameter.AppendSql("     , ADMIN.HEA_SUNAPDTL b                          ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                    ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                   ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO                                   ");

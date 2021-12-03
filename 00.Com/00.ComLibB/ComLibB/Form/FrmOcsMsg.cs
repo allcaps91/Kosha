@@ -438,7 +438,7 @@ namespace ComLibB
                 if (strROWID == "")
                 {
                     SQL = "";
-                    SQL = " INSERT INTO KOSMOS_PMPA.JSIM_SIMSAMSG ( SUCODE, SDATE, DDATE,REMARK, B1, B2, B3, B4 )";
+                    SQL = " INSERT INTO ADMIN.JSIM_SIMSAMSG ( SUCODE, SDATE, DDATE,REMARK, B1, B2, B3, B4 )";
                     SQL = SQL + ComNum.VBLF + " VALUES('" + txtSuCode.Text + "', TO_DATE('" + dtpSdate.Text + "','YYYY-MM-DD'), ";
 
                     if (chkEnd.Checked == true)

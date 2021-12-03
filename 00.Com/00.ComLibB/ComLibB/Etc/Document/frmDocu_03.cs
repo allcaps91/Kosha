@@ -68,7 +68,7 @@ namespace ComLibB
             ToDate.Value = DateTime.Parse(clsPublic.GstrSysDate);
 
 
-            SQL = "SELECT BUCODE, NAME FROM KOSMOS_PMPA.BAS_BUSE ";
+            SQL = "SELECT BUCODE, NAME FROM ADMIN.BAS_BUSE ";
             SQL = SQL + ComNum.VBLF + " WHERE BUCODE IN ('033101','044101','044201','044301','044501','055100','055200', '066101','077101', '055201', '070101',";
             //'간호부  약제과   기록실    영양실  건강관리  방사선   임상병리  관리과   비서실    검사실    기획행정과
             SQL = SQL + ComNum.VBLF + "                   '077501','078201','077601','077201','077301','077401','088100', '077701',         ";
@@ -102,7 +102,7 @@ namespace ComLibB
             Show_yn = "n";
             if (clsType.User.Sabun.Equals("04349")) strBuseGbn = "1";
 
-            SQL = "SELECT BUSE FROM KOSMOS_ADM.INSA_MST";
+            SQL = "SELECT BUSE FROM ADMIN.INSA_MST";
             SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + clsType.User.Sabun + "'";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -157,7 +157,7 @@ namespace ComLibB
 
             SQL = "SELECT A.SEQNO ASEQNO, A.DOCUNO ADOCUNO, A.PLACENAME APLACENAME, A.DOCUNAME ADOCUNAME,";
             SQL = SQL + ComNum.VBLF + " B.NAME BNAME, A.OUTMAN AOUTMAN, TO_CHAR(A.WORKDAY,'YYYY-MM-DD') AWORKDAY";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_DOCU1 A, KOSMOS_PMPA.BAS_BUSE B";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_DOCU1 A, ADMIN.BAS_BUSE B";
             SQL = SQL + ComNum.VBLF + " WHERE A.BUSE = B.BUCODE";
             SQL = SQL + ComNum.VBLF + "   AND TO_CHAR(A.WORKDAY, 'YYYY-MM-DD') >= '" + VB.Trim(strFrDate) + "'";
             SQL = SQL + ComNum.VBLF + "   AND TO_CHAR(A.WORKDAY, 'YYYY-MM-DD') <= '" + VB.Trim(strToDate) + "'";

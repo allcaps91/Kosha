@@ -22,8 +22,8 @@
 
             parameter.AppendSql("SELECT to_char(a.JEPDATE,'YYYY-MM-DD') JEPDATE, a.WRTNO        ");
             parameter.AppendSql("     , a.GJJONG, a.GJYEAR, a.GJBANGI, SUM(b.TOTAMT) TOTAMT     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a                                 ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_SUNAP b                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a                                 ");
+            parameter.AppendSql("     , ADMIN.HIC_SUNAP b                                 ");
             parameter.AppendSql(" WHERE a.PANO = :PANO                                          ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                       ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO(+)                                    ");
@@ -40,8 +40,8 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT a.WRTNO, b.CODE                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU    a          ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_SUNAPDTL b          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU    a          ");
+            parameter.AppendSql("     , ADMIN.HIC_SUNAPDTL b          ");
             parameter.AppendSql(" WHERE a.PTNO = :PTNO                      ");
             parameter.AppendSql("   AND a.GJJONG IN ('31','35')             ");
             parameter.AppendSql("   AND a.JEPDATE >= TRUNC(SYSDATE - 30)    ");
@@ -58,8 +58,8 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT A.WRTNO, A.JEPDATE, B.GBSELF        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU    a          ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_SUNAPDTL b          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU    a          ");
+            parameter.AppendSql("     , ADMIN.HIC_SUNAPDTL b          ");
             parameter.AppendSql(" WHERE A.WRTNO = :WRTNO                    ");
             parameter.AppendSql("   AND B.CODE = :CODE                      ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO                   ");
@@ -79,7 +79,7 @@
             parameter.AppendSql("     , c.SunapAmt,c.TotAmt,c.JohapAmt                                                          ");
             parameter.AppendSql("     , c.LtdAmt,c.BoninAmt,c.MisuAmt                                                           ");
             parameter.AppendSql("     , c.HalinAmt,c.BogenAmt,b.UCodes,a.JobSabun                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP a, KOSMOS_PMPA.HIC_JEPSU b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP a, ADMIN.HIC_JEPSU b                                        ");
             parameter.AppendSql(" WHERE a.SuDate >= TO_DATE(:FDATE','YYYY-MM-DD')                                               ");
             parameter.AppendSql("   AND a.SuDate <= TO_DATE(:TDATE','YYYY-MM-DD')                                               ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO(+)                                                                    ");
@@ -617,7 +617,7 @@
                 parameter.AppendSql("SELECT SUM(a.TOTAMT) TOTAMT, B.MIRNO5                                                      ");
             }
 
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP a, KOSMOS_PMPA.HIC_JEPSU b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP a, ADMIN.HIC_JEPSU b                                        ");
             parameter.AppendSql(" WHERE a.WRTNO = b.WRTNO(+)                                                                    ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                                                        ");
             parameter.AppendSql("   AND b.GJJONG = :GJJONG                                                                      ");
@@ -673,7 +673,7 @@
                 parameter.AppendSql("SELECT SUM(a.LTDAMT) LTDAMT, B.MIRNO5                                                      ");
             }
 
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP a, KOSMOS_PMPA.HIC_JEPSU b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP a, ADMIN.HIC_JEPSU b                                        ");
             parameter.AppendSql(" WHERE a.WRTNO = b.WRTNO(+)                                                                    ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                                                        ");
             parameter.AppendSql("   AND b.GJJONG = :GJJONG                                                                      ");
@@ -728,7 +728,7 @@
             {
                 parameter.AppendSql("SELECT SUM(a.JOHAPAMT) JOHAPAMT, B.MIRNO5                                                  ");
             }
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP a, KOSMOS_PMPA.HIC_JEPSU b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP a, ADMIN.HIC_JEPSU b                                        ");
             parameter.AppendSql(" WHERE a.WRTNO = b.WRTNO(+)                                                                    ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                                                        ");
             parameter.AppendSql("   AND b.GJJONG = :GJJONG                                                                      ");
@@ -783,7 +783,7 @@
             {
                 parameter.AppendSql("SELECT SUM(a.BONINAMT) BONINAMT, b.MIRNO5                                                  ");
             }
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP a, KOSMOS_PMPA.HIC_JEPSU b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP a, ADMIN.HIC_JEPSU b                                        ");
             parameter.AppendSql(" WHERE a.WRTNO = b.WRTNO(+)                                                                    ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                                                        ");
             parameter.AppendSql("   AND b.GJJONG = :GJJONG                                                                      ");
@@ -839,7 +839,7 @@
                 parameter.AppendSql("SELECT SUM(a.JOHAPAMT) JOHAPAMT, b.MIRNO5                                                  ");
             }
 
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP a, KOSMOS_PMPA.HIC_JEPSU b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP a, ADMIN.HIC_JEPSU b                                        ");
             parameter.AppendSql(" WHERE a.WRTNO = b.WRTNO(+)                                                                    ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                                                        ");
             parameter.AppendSql("   AND b.GJJONG = :GJJONG                                                                      ");
@@ -894,7 +894,7 @@
             {
                 parameter.AppendSql("SELECT SUM(a.JOHAPAMT) JOHAPAMT, b.MIRNO5                                                  ");
             }
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP a, KOSMOS_PMPA.HIC_JEPSU b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP a, ADMIN.HIC_JEPSU b                                        ");
             parameter.AppendSql(" WHERE a.WRTNO = b.WRTNO(+)                                                                    ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                                                        ");
             parameter.AppendSql("   AND b.GJJONG = :GJJONG                                                                      ");
@@ -934,12 +934,12 @@
             parameter.AppendSql("     , c.SunapAmt,c.TotAmt,c.JohapAmt                                                          ");
             parameter.AppendSql("     , c.LtdAmt,c.BoninAmt,c.MisuAmt                                                           ");
             parameter.AppendSql("     , c.HalinAmt,c.BogenAmt,b.UCodes,a.JobSabun                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP a, KOSMOS_PMPA.HIC_JEPSU b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP a, ADMIN.HIC_JEPSU b                                        ");
             parameter.AppendSql("     , (select a.wrtno,max(a.seqno) seqno,sum(a.SunapAmt) sunapamt                             ");
             parameter.AppendSql("             , sum(a.TotAmt) totamt,sum(a.JohapAmt)  johapamt,sum(a.LtdAmt) ltdamt             ");
             parameter.AppendSql("             , sum(a.BoninAmt) boninamt,sum(a.MisuAmt) misuamt,sum( a.HalinAmt) halinamt       ");
             parameter.AppendSql("             , sum(a.BogenAmt) BogenAmt                                                        ");
-            parameter.AppendSql("          from KOSMOS_PMPA.HIC_SUNAP a, KOSMOS_PMPA.HIC_JEPSU b                                ");
+            parameter.AppendSql("          from ADMIN.HIC_SUNAP a, ADMIN.HIC_JEPSU b                                ");
             parameter.AppendSql("         WHERE a.SuDate >= TO_DATE(:FDATE,'YYYY-MM-DD')                                        ");
             parameter.AppendSql("           AND a.SuDate <= TO_DATE(:TDATE,'YYYY-MM-DD')                                        ");
             parameter.AppendSql("           AND a.wrtno = b.wrtno(+)                                                            ");
@@ -1001,8 +1001,8 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU    a          ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_SUNAPDTL b          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU    a          ");
+            parameter.AppendSql("     , ADMIN.HIC_SUNAPDTL b          ");
             parameter.AppendSql(" WHERE A.WRTNO = :WRTNO                    ");
             parameter.AppendSql("   AND B.CODE = :CODE                      ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO                   ");
@@ -1018,8 +1018,8 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GjJong,SUM(b.JohapAmt) JOHAPAMT                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU    a                              ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_SUNAPDTL b                              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU    a                              ");
+            parameter.AppendSql("     , ADMIN.HIC_SUNAPDTL b                              ");
             parameter.AppendSql(" WHERE a.Wrtno = b.Wrtno(+)                                    ");
             parameter.AppendSql("   AND  a.JepDate >= to_date(:FRDATE, 'YYYY-MM-DD')            ");
             parameter.AppendSql("   AND  a.JepDate <= TRUNC(SYSDATE)                            ");
@@ -1041,12 +1041,12 @@
             parameter.AppendSql("      , TO_CHAR(b.JepDate,'YYYY-MM-DD') JepDate,b.LtdCode, c.SunapAmt,c.TotAmt,c.JohapAmt  ");
             parameter.AppendSql("      , c.BogenAmt, c.LtdAmt,c.BoninAmt,c.MisuAmt, c.HalinAmt,b.UCodes,a.JobSabun          ");
             parameter.AppendSql("      , b.BOGUNSO, b.muryoam                                                               ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_SUNAP a, KOSMOS_PMPA.HIC_JEPSU b,                                  ");
+            parameter.AppendSql("   FROM ADMIN.HIC_SUNAP a, ADMIN.HIC_JEPSU b,                                  ");
             parameter.AppendSql("        (select a.wrtno,max(a.seqno) seqno,sum(a.SunapAmt) sunapamt                        ");
             parameter.AppendSql("              , sum(a.TotAmt) totamt,sum(a.JohapAmt)  johapamt,sum(a.LtdAmt) ltdamt        ");
             parameter.AppendSql("              , sum(a.BoninAmt) boninamt,sum(a.MisuAmt) misuamt,sum( a.HalinAmt) halinamt  ");
             parameter.AppendSql("              , sum(a.bogenamt) bogenamt                                                   ");
-            parameter.AppendSql("            from KOSMOS_PMPA.HIC_SUNAP a, KOSMOS_PMPA.hic_jepsu b                          ");
+            parameter.AppendSql("            from ADMIN.HIC_SUNAP a, ADMIN.hic_jepsu b                          ");
             parameter.AppendSql("           WHERE b.Jepdate >= to_date(:JEPDATE, 'YYYY-MM-DD')                              ");
             parameter.AppendSql("             and a.WRTNO = b.wrtno(+)                                                      ");
             parameter.AppendSql("             and a.WRTNO = :WRTNO                                                          ");
@@ -1071,8 +1071,8 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU    a                                  ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_SUNAPDTL b                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU    a                                  ");
+            parameter.AppendSql("     , ADMIN.HIC_SUNAPDTL b                                  ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                            ");
             parameter.AppendSql("   AND a.Wrtno = b.Wrtno(+)                                        ");
             parameter.AppendSql("   AND b.Code IN ( SELECT CODE FROM HIC_CODE WHERE GUBUN ='98' )   ");
@@ -1087,8 +1087,8 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT b.CODE                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU_WORK a    ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_SUNAPDTL_WORK b ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU_WORK a    ");
+            parameter.AppendSql("     , ADMIN.HIC_SUNAPDTL_WORK b ");
             parameter.AppendSql(" WHERE a.PTNO = :PTNO                  ");
             parameter.AppendSql("   AND a.GJJONG IN ('31','35')         ");
             parameter.AppendSql("   AND a.PANO   = b.PANO(+)            ");
@@ -1110,12 +1110,12 @@
             parameter.AppendSql("      ,c.SUNAPAMT AS SUNAPAMT1, c.SUNAPAMT2, c.TOTAMT, c.JOHAPAMT                                          ");
             parameter.AppendSql("      ,c.BONINAMT, c.MISUAMT, c.HALINAMT, b.UCODES, a.JOBSABUN                                             ");
             parameter.AppendSql("      ,DECODE(b.JONGGUMYN, '1', 'Y', '') AS JONGGUMYN, a.BOGENAMT                                          ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.FC_HC_PATIENT_JUMINNO(b.PTNO) AS JUMINNO                                                ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE) AS LTDNAME                                                    ");
-            parameter.AppendSql("      ,KOSMOS_OCS.FC_INSA_MST_KORNAME(a.JOBSABUN) JOBNAME                                                  ");
+            parameter.AppendSql("      ,ADMIN.FC_HC_PATIENT_JUMINNO(b.PTNO) AS JUMINNO                                                ");
+            parameter.AppendSql("      ,ADMIN.FC_HIC_LTDNAME(b.LTDCODE) AS LTDNAME                                                    ");
+            parameter.AppendSql("      ,ADMIN.FC_INSA_MST_KORNAME(a.JOBSABUN) JOBNAME                                                  ");
             parameter.AppendSql("      ,CASE WHEN a.SUNAPAMT2 > 0 THEN '◎' ELSE '' END AS GBCARD                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP a                                                                             ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU b                                                                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP a                                                                             ");
+            parameter.AppendSql("     , ADMIN.HIC_JEPSU b                                                                             ");
             parameter.AppendSql("     ,(                                                                                                    ");
             parameter.AppendSql("       SELECT a.WRTNO, MAX(a.SEQNO) AS SEQNO, SUM(a.SUNAPAMT) AS SUNAPAMT, SUM(a.SUNAPAMT2) AS SUNAPAMT2   ");
             parameter.AppendSql("             ,SUM(a.TOTAMT) AS TOTAMT, SUM(a.JOHAPAMT) AS JOHAPAMT, SUM(a.LTDAMT) AS LTDAMT                ");
@@ -1130,7 +1130,7 @@
             parameter.AppendSql("      ) c                                                                                                  ");
             if (strSunap != "0")
             {
-                parameter.AppendSql("     , KOSMOS_ADM.INSA_MST d                                                                           ");
+                parameter.AppendSql("     , ADMIN.INSA_MST d                                                                           ");
             }
             parameter.AppendSql(" WHERE 1 = 1                                                                                               ");
             parameter.AppendSql("   AND A.PANO NOT IN (991,992,993,994,995,996,997,998,999)                                                 ");
@@ -1216,20 +1216,20 @@
             parameter.AppendSql("      ,a.SUNAPAMT AS SUNAPAMT1, a.SUNAPAMT2, a.TOTAMT, a.JOHAPAMT          ");
             parameter.AppendSql("      ,a.BONINAMT, a.MISUAMT, a.HALINAMT, b.UCODES, a.JOBSABUN             ");
             parameter.AppendSql("      ,DECODE(b.JONGGUMYN, '1', 'Y', '') AS JONGGUMYN, a.BOGENAMT          ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.FC_HC_PATIENT_JUMINNO(b.PTNO) AS JUMINNO                ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE) AS LTDNAME                    ");
-            parameter.AppendSql("      ,KOSMOS_OCS.FC_INSA_MST_KORNAME(a.JOBSABUN) JOBNAME                  ");
+            parameter.AppendSql("      ,ADMIN.FC_HC_PATIENT_JUMINNO(b.PTNO) AS JUMINNO                ");
+            parameter.AppendSql("      ,ADMIN.FC_HIC_LTDNAME(b.LTDCODE) AS LTDNAME                    ");
+            parameter.AppendSql("      ,ADMIN.FC_INSA_MST_KORNAME(a.JOBSABUN) JOBNAME                  ");
             parameter.AppendSql("      ,CASE WHEN a.SUNAPAMT2 > 0 THEN '◎' ELSE '' END AS GBCARD            ");
             if (strSunap == "0")    //수납구분(전체)
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP a                                         ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU b                                         ");
+                parameter.AppendSql("  FROM ADMIN.HIC_SUNAP a                                         ");
+                parameter.AppendSql("     , ADMIN.HIC_JEPSU b                                         ");
             }
             else
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP a                                         ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU b                                         ");
-                parameter.AppendSql("     , KOSMOS_ADM.INSA_MST   d                                         ");
+                parameter.AppendSql("  FROM ADMIN.HIC_SUNAP a                                         ");
+                parameter.AppendSql("     , ADMIN.HIC_JEPSU b                                         ");
+                parameter.AppendSql("     , ADMIN.INSA_MST   d                                         ");
             }
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
             parameter.AppendSql("   AND A.PANO NOT IN (991,992,993,994,995,996,997,998,999)                 ");
@@ -1307,8 +1307,8 @@
             parameter.AppendSql("SELECT '' GUBUN, to_char(a.JEPDATE,'YYYY-MM-DD') JEPDATE, a.WRTNO                          ");
             parameter.AppendSql("     , a.GJJONG, a.GJYEAR, a.GJBANGI, SUM(b.TOTAMT) TOTAMT, SECOND_SAYU                    ");
             parameter.AppendSql("     , a.JUSO1, a.JUSO2                                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a                                                             ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_SUNAP b                                                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a                                                             ");
+            parameter.AppendSql("     , ADMIN.HIC_SUNAP b                                                             ");
             parameter.AppendSql(" WHERE a.PANO = :PANO                                                                      ");
             parameter.AppendSql("   AND (a.DelDate IS NULL OR a.DelDate ='')                                                ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO(+)                                                                ");
@@ -1317,8 +1317,8 @@
             parameter.AppendSql("SELECT '종검' GUBUN, to_char(a.SDATE,'YYYY-MM-DD') JEPDATE, a.WRTNO                        ");
             parameter.AppendSql("     , a.GJJONG,'' GJYEAR, '' GJBANGI, SUM(b.TOTAMT) TOTAMT, '' SECOND_SAYU                ");
             parameter.AppendSql("     , a.JUSO1, a.JUSO2                                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU a                                                             ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_SUNAP b                                                             ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU a                                                             ");
+            parameter.AppendSql("     , ADMIN.HEA_SUNAP b                                                             ");
             parameter.AppendSql(" WHERE a.PANO = :PANO                                                                      ");
             parameter.AppendSql("   AND (a.DelDate IS NULL OR a.DelDate ='')                                                ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO(+)                                                                ");

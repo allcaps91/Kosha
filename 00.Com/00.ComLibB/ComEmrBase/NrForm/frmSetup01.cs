@@ -38,7 +38,7 @@ namespace ComEmrBase
         {
             DataTable dt = null;
             string SQL = " SELECT BUSE, VAL1, VAL2 ";
-            SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_SETUP_01 ";
+            SQL += ComNum.VBLF + " FROM ADMIN.EMR_SETUP_01 ";
             SQL += ComNum.VBLF + " WHERE BUSE = '" + VB.Right(cboWard.Text.Trim(), 6) + "' ";
 
             string SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -69,7 +69,7 @@ namespace ComEmrBase
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL = " DELETE KOSMOS_EMR.EMR_SETUP_01 ";
+                SQL = " DELETE ADMIN.EMR_SETUP_01 ";
                 SQL += ComNum.VBLF + " WHERE BUSE = '" + VB.Right(cboWard.Text.Trim(), 6) + "' ";
 
                 string SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
@@ -81,7 +81,7 @@ namespace ComEmrBase
                     return;
                 }
 
-                SQL = " INSERT INTO KOSMOS_EMR.EMR_SETUP_01(BUSE, VAL1, VAL2) VALUES (";
+                SQL = " INSERT INTO ADMIN.EMR_SETUP_01(BUSE, VAL1, VAL2) VALUES (";
                 SQL += ComNum.VBLF + "'" + VB.Right(cboWard.Text.Trim(), 6) + "','" + cboVal1.Text.Trim() + "','" + cboVal2.Text.Trim() + "') ";
 
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);

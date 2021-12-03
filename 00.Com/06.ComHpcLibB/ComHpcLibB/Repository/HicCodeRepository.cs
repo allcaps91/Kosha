@@ -106,7 +106,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT             CODE,NAME,GCODE                                                         ");
-            parameter.AppendSql("  FROM             KOSMOS_PMPA.HIC_CODE                                                    ");
+            parameter.AppendSql("  FROM             ADMIN.HIC_CODE                                                    ");
             parameter.AppendSql(" WHERE             GUBUN = :GUBUN                                                          ");
 
             if(txtData.Trim() != "")
@@ -167,7 +167,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE,NAME,GBDEL,GCODE,GCODE1,ROWID AS RID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                     ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                           ");
             if (!argKeyWard.IsNullOrEmpty())
             {
@@ -192,7 +192,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE,NAME,GBDEL,GCODE,GCODE1,ROWID AS RID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                     ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                           ");
             if (!strCode.IsNullOrEmpty())
             {
@@ -215,7 +215,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GUBUN,CODE,NAME,GBDEL,GCODE,ROWID AS RID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                     ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                           ");
             parameter.AppendSql(" ORDER BY NAME                                  ");
 
@@ -229,7 +229,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT         CODE,NAME,GCODE                          ");
-            parameter.AppendSql("FROM           KOSMOS_PMPA.HIC_CODE                     ");
+            parameter.AppendSql("FROM           ADMIN.HIC_CODE                     ");
             parameter.AppendSql("WHERE          GUBUN='25'                               ");
             parameter.AppendSql("   AND         CODE = :CODE                             ");
 
@@ -241,7 +241,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE,NAME,GBDEL,GCODE,GCODE1,GCODE2,SORT,ROWID                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                                                    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                                                          ");
             if (!strName.IsNullOrEmpty())
             {
@@ -262,7 +262,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GUBUN,CODE,NAME,GBDEL,GCODE,ROWID                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                                                    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                                                          ");
             parameter.AppendSql("   AND GCODE = :GCODE                                                          ");
 
@@ -276,7 +276,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CODE       ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CODE       ");
             parameter.AppendSql("       (Gubun, Code, Name, GCode)      ");
             parameter.AppendSql("VALUES                                 ");
             parameter.AppendSql("       (:GUBUN, :CODE, :NAME, :GCODE)  ");
@@ -293,7 +293,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CODE SET    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CODE SET    ");
             parameter.AppendSql("       SORT    = :SORT             ");
             parameter.AppendSql(" WHERE ROWID   = :RID              ");
 
@@ -335,7 +335,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CODE SET    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CODE SET    ");
             parameter.AppendSql("       CODE    = :CODE             ");
             parameter.AppendSql("     , NAME    = :NAME             ");
             parameter.AppendSql(" WHERE ROWID   = :RID              ");
@@ -352,7 +352,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, NAME                                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                                ");            
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                                ");            
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                                      ");
             if (!strName.IsNullOrEmpty())
             {
@@ -411,7 +411,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_CODE        ");
+            parameter.AppendSql("DELETE ADMIN.HIC_CODE        ");
             parameter.AppendSql(" WHERE ROWID   = :RID              ");
 
             parameter.Add("RID", strROWID);
@@ -423,7 +423,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CODE SET    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CODE SET    ");
             parameter.AppendSql("       GCODE2  = :GCODE2           ");
             parameter.AppendSql(" WHERE ROWID   = :RID              ");
 
@@ -438,7 +438,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, NAME                                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                                ");
             if (!strName.IsNullOrEmpty())
             {
                 parameter.AppendSql(" WHERE NAME LIKE :NAME                                 ");                
@@ -458,7 +458,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT LPAD(CODE, 5) CODE, NAME, GBDEL, GCODE, GCODE2, ROWID    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                                ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                                      ");
             parameter.AppendSql("   AND GBDEL IS NULL                                       ");
             parameter.AppendSql(" ORDER BY CODE, NAME                                       ");
@@ -473,7 +473,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, NAME, GBDEL, GCODE, ROWID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE            ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql(" ORDER BY GCODE, NAME                  ");
 
@@ -487,7 +487,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MAX(CODE) MAXCODE               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE            ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
 
             parameter.Add("GUBUN", fstrJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -500,7 +500,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, NAME                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE            ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql("   AND CODE IN (:CODE)                 ");
             parameter.AppendSql(" GROUP BY CODE, NAME                   ");
@@ -516,7 +516,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE                            "); 
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE            ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
             parameter.AppendSql("   AND (GbDel = '' or GbDel IS NULL)   ");
 
@@ -529,7 +529,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("DELETE ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE ROWID = :RID            ");
 
             parameter.Add("RID", strROWID);
@@ -542,7 +542,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, NAME, GCODE           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE        ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN              ");
             parameter.AppendSql("   AND GCODE  IN (:GCODE)          ");
             parameter.AppendSql(" ORDER BY GCODE, NAME              ");
@@ -558,7 +558,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GCODE                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE        ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN              ");
             parameter.AppendSql("   AND CODE  = :CODE              ");
 
@@ -573,7 +573,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE        ");
             parameter.AppendSql(" WHERE GUBUN = '21'                ");
             parameter.AppendSql("   AND NAME LIKE :NAME             ");
 
@@ -587,7 +587,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT DECODE(GCODE1, '', NAME, GCODE1) NEWNAME    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                        ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                              "); 
             parameter.AppendSql("   AND CODE  = :CODE                               ");
             parameter.AppendSql("   AND CODE NOT IN ('3', '6')                      ");
@@ -603,7 +603,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT LPAD(CODE, 5) CODE              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE            ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                  ");
 
             parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -616,7 +616,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT Code,Name,DECODE(GCode1,'',Name,GCode1) NewName     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                                ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                                      ");
             parameter.AppendSql("   AND CODE  = :CODE                                       ");
             parameter.AppendSql(" ORDER BY GCode,Name                                       ");
@@ -632,7 +632,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE,NAME,GCODE,GCODE1,GCODE2,ROWID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                      "); //특검문진항목
             parameter.AppendSql("   AND CODE  = :CODE                       ");
             parameter.AppendSql(" ORDER BY CODE                             ");
@@ -648,9 +648,9 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, GCODE                                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                                ");
             parameter.AppendSql(" WHERE GUBUN = '52'                                        "); //특검문진항목
-            parameter.AppendSql("   AND CODE  IN (SELECT UCode FROM KOSMOS_PMPA.HIC_MCODE   ");
+            parameter.AppendSql("   AND CODE  IN (SELECT UCode FROM ADMIN.HIC_MCODE   ");
             parameter.AppendSql("                  WHERE CODE IN (:CODE)                    ");
             parameter.AppendSql(" ORDER BY GCODE, CODE                                      ");
 
@@ -664,7 +664,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, NAME                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE            ");
             parameter.AppendSql(" WHERE Gubun = '52'                    "); //특검문진항목
             parameter.AppendSql("   AND CODE  = :CODE                   ");
             parameter.AppendSql(" ORDER BY Code                         ");
@@ -679,7 +679,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT NAME                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE            ");
             parameter.AppendSql(" WHERE Gubun = '52'                    "); //특검문진항목
             parameter.AppendSql("   AND CODE  = :CODE                   ");
 
@@ -692,7 +692,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CONSENT SET         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CONSENT SET         ");
             parameter.AppendSql("       NAME  = :NAME                       ");
             parameter.AppendSql("     , GCODE = :GCODE                      ");            
             parameter.AppendSql(" WHERE ROWID = :RID                        ");
@@ -708,7 +708,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CODE                   ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CODE                   ");
             parameter.AppendSql("       (GUBUN,CODE, NAME,GBDEL, GCODE)             ");
             parameter.AppendSql("VALUES                                             ");
             parameter.AppendSql("       (:GUBUN, :CODE, :NAME, :GBDEL, :GCODE)      ");
@@ -754,7 +754,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT Code,Name,DECODE(GCode1,'',Name,GCode1) NewName     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                                ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                                      ");
             parameter.AppendSql("   AND CODE  IN (:CODE)                                    ");
             parameter.AppendSql(" ORDER BY GCode,Name                                       ");
@@ -770,7 +770,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, NAME, GCODE2      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND CODE  = :CODE           ");
             parameter.AppendSql(" ORDER BY GCODE, NAME          ");
@@ -786,7 +786,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE,NAME,GCODE1,GCODE2, ROWID      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                      ");
             parameter.AppendSql(" ORDER BY CODE                             ");
 
@@ -800,7 +800,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT NAME                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE GUBUN =:GUBUN           ");
             parameter.AppendSql("   AND GCODE1=:GCODE1          ");
 
@@ -815,7 +815,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE,GCODE1,GCODE2     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE   ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN         ");
             
             parameter.Add("GUBUN", strGubun, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -828,7 +828,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GCODE                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND CODE IN (:CODE)         ");
             
@@ -872,7 +872,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT NAME                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE GUBUN      = :GUBUN     ");
             parameter.AppendSql("   AND TRIM(CODE) = :CODE      ");
 
@@ -901,7 +901,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE GUBUN  = '21'            ");
             parameter.AppendSql("   AND NAME   = :NAME          ");
 
@@ -915,7 +915,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE GCODE  = :GUBUN         ");
             parameter.AppendSql("   AND GCODE  = :GCODE         ");
             parameter.AppendSql("   AND GCODE1 = :GCODE1        ");
@@ -932,7 +932,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT Code, JCode, Chasu      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SCODE   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SCODE   ");
             parameter.AppendSql(" WHERE SCODE  = :SCODE         ");
 
             parameter.Add("SCODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -945,7 +945,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GCODE1                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE GUBUN  = :GUBUN         ");
             parameter.AppendSql("   AND GCODE  = :GCODE         ");
             parameter.AppendSql("   AND CODE   = :CODE          ");
@@ -970,7 +970,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE DRCODE, NAME SNAME, GCODE SABUN    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE                    ");
             parameter.AppendSql("  WHERE GUBUN = '30'                           ");
             parameter.AppendSql("  AND Code NOT IN ('178','361','669','64282')  ");
 
@@ -982,7 +982,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GCODE                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND CODE  = :CODE           ");
 
@@ -997,7 +997,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE,NAME,GCODE         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql("  WHERE GUBUN = :GUBUN         ");
             parameter.AppendSql("    AND CODE  = :CODE          ");
 
@@ -1012,7 +1012,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND GCODE  = :CODE          ");
 
@@ -1027,7 +1027,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GCODE2                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND CODE  = :CODE           ");
 
@@ -1042,7 +1042,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT NAME                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql("  WHERE GUBUN = :GUBUN         ");
             parameter.AppendSql("    AND CODE IN (:CODE)        ");
 
@@ -1058,7 +1058,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT NAME                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql("  WHERE GUBUN = :GUBUN         ");
             parameter.AppendSql("    AND TRIM(CODE)  = :CODE    ");
 
@@ -1073,7 +1073,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT NAME                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE        ");
             parameter.AppendSql("  WHERE CODE  = :CODE.substr(0, 1) ");
             parameter.AppendSql("    AND GUBUN = '07'               ");
 
@@ -1087,7 +1087,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT  NAME, GCODE            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CODE    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CODE    ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN          ");
             parameter.AppendSql("   AND CODE  = :CODE           ");
 

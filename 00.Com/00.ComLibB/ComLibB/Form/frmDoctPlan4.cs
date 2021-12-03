@@ -532,7 +532,7 @@ namespace ComLibB
                 {
                     SQL = SQL + ComNum.VBLF + "  AND A.DRCODE IN ( ";
                     SQL = SQL + ComNum.VBLF + "     SELECT B.DRCODE ";
-                    SQL = SQL + ComNum.VBLF + "       FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B ";
+                    SQL = SQL + ComNum.VBLF + "       FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B ";
                     SQL = SQL + ComNum.VBLF + "      WHERE A.SABUN = B.SABUN ";
                     SQL = SQL + ComNum.VBLF + "        AND (TOIDAY > TO_DATE('" + strTDate + "','YYYY-MM-DD') OR TOIDAY IS NULL)";
                     SQL = SQL + ComNum.VBLF + "        AND KUNDAY <= TO_DATE('" + strTDate + "','YYYY-MM-DD')) ";
@@ -997,10 +997,10 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT * ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SCHEDULE";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SCHEDULE";
                 SQL = SQL + ComNum.VBLF + " WHERE DRCODE IN ( ";
                 SQL = SQL + ComNum.VBLF + " SELECT DRCODE ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_DOCTOR";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_DOCTOR";
                 SQL = SQL + ComNum.VBLF + " WHERE DEPTCODE = 'PC'";
                 SQL = SQL + ComNum.VBLF + "    AND GBOUT = 'N') ";
                 SQL = SQL + ComNum.VBLF + "    AND SCHDATE >= TO_DATE('" + strSDATE + "','YYYY-MM-DD') ";
@@ -1029,7 +1029,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT DRCODE ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_DOCTOR";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_DOCTOR";
                 SQL = SQL + ComNum.VBLF + " WHERE DEPTCODE = 'PC'";
                 SQL = SQL + ComNum.VBLF + "    AND GBOUT = 'N'";
 
@@ -1100,7 +1100,7 @@ namespace ComLibB
                             }
                             
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_PMPA.BAS_SCHEDULE(";
+                            SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.BAS_SCHEDULE(";
                             SQL = SQL + ComNum.VBLF + " DRCODE, SCHDATE, GBDAY, GBJIN, GBJIN2) VALUES (";
                             if (strHuil != "OK" && strYoil == "토요일")
                             {

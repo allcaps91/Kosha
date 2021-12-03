@@ -180,7 +180,7 @@ namespace ComPmpaLibB
                     Cursor.Current = Cursors.WaitCursor;
 
 
-                    SQL += ComNum.VBLF + "UPDATE KOSMOS_PMPA.ETC_IPDPRT                     ";
+                    SQL += ComNum.VBLF + "UPDATE ADMIN.ETC_IPDPRT                     ";
                     SQL += ComNum.VBLF + "       SET DELDATE =SYSDATE ,                     ";
                     SQL += ComNum.VBLF + "           ENTDATE =SYSDATE ,                     ";
                     SQL += ComNum.VBLF + "           ENTPART = " + clsType.User.IdNumber + " ";
@@ -321,7 +321,7 @@ namespace ComPmpaLibB
                 SQL += "        TO_CHAR(A.OUTDATE,'YYYY-MM-DD') OUTDATE,  \r\n";
                 SQL += "        a.ILSU, A.BI, A.DEPTCODE, A.DRCODE, A.GBIPD, A.SANGAMT,  \r\n";
                 SQL += "         A.OGPDBUN,A.OGPDBUNdtl, A.AMSET3,b.Secret,    \r\n";
-                SQL += "         B.ROOMCODE, B.WARDCODE, A.VCODE, A.IPDNO, A.TRSNO,KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(A.DRCODE) DRNAME , \r\n";
+                SQL += "         B.ROOMCODE, B.WARDCODE, A.VCODE, A.IPDNO, A.TRSNO,ADMIN.FC_BAS_DOCTOR_DRNAME(A.DRCODE) DRNAME , \r\n";
                 SQL += "        TO_CHAR(A.ACTDATE,'YYYY-MM-DD') ACTDATE, B.AGE,a.GbSPC   \r\n";
                 SQL += "   FROM  " + ComNum.DB_PMPA + "IPD_TRANS A, " + ComNum.DB_PMPA + "IPD_NEW_MASTER B                \r\n";
                 SQL += "  WHERE 1 = 1                                               \r\n";

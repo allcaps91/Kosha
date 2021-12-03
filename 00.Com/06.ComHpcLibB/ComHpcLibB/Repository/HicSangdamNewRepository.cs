@@ -31,7 +31,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,ENTSABUN, ENTTIME, T_STAT61, T_STAT62, DIABETES_1, DIABETES_2, CYCLE_1, CYCLE_2, SCHPAN1        ");
             parameter.AppendSql("      ,SCHPAN2, SCHPAN3, SCHPAN4, SCHPAN5, SCHPAN6, SCHPAN7, SCHPAN8, SCHPAN9, SCHPAN10, SCHPAN11      ");
             parameter.AppendSql("      ,T_STAT71, T_STAT72, AMSANGDAM, MUN_OLDMSYM, PJSANGDAM, GBCHK                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW                                                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW                                                                     ");
             parameter.AppendSql("  WHERE 1 = 1                                                                                          ");
             parameter.AppendSql("    AND WRTNO  =:WRTNO                                                                                 ");
 
@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_NEW SET ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_NEW SET ");
             parameter.AppendSql("       HABIT1       = :HABIT1          ");
             parameter.AppendSql("     , HABIT2       = :HABIT2          ");
             parameter.AppendSql("     , HABIT3       = :HABIT3          ");
@@ -140,7 +140,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW     ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND SANGDAMDRNO > 0                 ");    
 
@@ -153,7 +153,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_NEW SET         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_NEW SET         ");
             if (nDrno > 0)
             {
                 parameter.AppendSql("       SANGDAMDRNO = :SANGDAMDRNO          ");
@@ -180,7 +180,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT PJSANGDAM                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW                 ");
             parameter.AppendSql("  WHERE  WRTNO  =:WRTNO                            ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -192,10 +192,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_NEW SET         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_NEW SET         ");
             parameter.AppendSql("       PANO = :PANO                            ");
             parameter.AppendSql(" WHERE PANO IN (SELECT PANO                    ");
-            parameter.AppendSql("                  FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("                  FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql("                 WHERE JUMIN2 = :JUMIN2        ");
             parameter.AppendSql("                   AND PANO <> :PANO)          ");
 
@@ -209,7 +209,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_NEW SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_NEW SET     ");
             parameter.AppendSql("       WRTNO = :WRTNO                      ");
             parameter.AppendSql("     , GJJONG = :GJJONG                    ");
             parameter.AppendSql(" WHERE WRTNO  = :FWRTNO                    ");
@@ -225,7 +225,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_NEW SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_NEW SET     ");
             parameter.AppendSql("       HABIT1 = :HABIT1                    ");
             parameter.AppendSql("     , HABIT2 = :HABIT2                    ");
             parameter.AppendSql("     , HABIT3 = :HABIT3                    ");
@@ -248,7 +248,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW     ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", argWrtNo);
@@ -261,7 +261,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SANGDAMDRNO                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW     ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -274,7 +274,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SANGDAMDRNO, AMSANGDAM, GBSTS   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW     ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -294,7 +294,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , DIABETES_2, CYCLE_1, CYCLE_2, SCHPAN1, SCHPAN2, SCHPAN3, SCHPAN4, SCHPAN5       ");
             parameter.AppendSql("     , SCHPAN6, SCHPAN7, SCHPAN8, SCHPAN9, SCHPAN10, SCHPAN11, T_STAT71, T_STAT72      ");
             parameter.AppendSql("     , AMSANGDAM, MUN_OLDMSYM, PJSANGDAM, GBCHK                                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW                                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW                                                     ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                                  ");
 
             parameter.Add("WRTNO", argWrtNo);
@@ -308,7 +308,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT GBSTS,REMARK,PJSANGDAM    ");
             parameter.AppendSql("     , HABIT1, HABIT2, HABIT3, HABIT4, ROWID RID      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW         ");
             parameter.AppendSql(" WHERE WRTNO  =:WRTNO                      ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -320,7 +320,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_NEW SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_NEW SET     ");
             parameter.AppendSql("       REMARK      = :REMARK               ");
             parameter.AppendSql("     , SANGDAMDRNO = :SANGDAMDRNO          ");
             parameter.AppendSql("     , GBSTS       = :GBSTS                ");
@@ -341,7 +341,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_NEW SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_NEW SET     ");
             parameter.AppendSql("       SCHPAN1     = :SCHPAN1              ");
             parameter.AppendSql("     , SCHPAN2     = :SCHPAN2              ");
             parameter.AppendSql("     , SCHPAN3     = :SCHPAN3              ");
@@ -384,7 +384,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_NEW SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_NEW SET     ");
             parameter.AppendSql("       JINCHAL2    = :JINCHAL2             ");
             parameter.AppendSql("     , GBSIKSA     = :GBSIKSA              ");
             parameter.AppendSql("     , AMSANGDAM   = :AMSANGDAM            ");
@@ -411,7 +411,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_NEW SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_NEW SET     ");
             parameter.AppendSql("       DIABETES_1  = :DIABETES_1           ");
             parameter.AppendSql("     , DIABETES_2  = :DIABETES_2           ");
             parameter.AppendSql("     , CYCLE_1     = :CYCLE_1              ");
@@ -441,7 +441,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SANGDAM_NEW                            ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SANGDAM_NEW                            ");
             parameter.AppendSql("       (WRTNO,GJJONG,GJCHASU,JEPDATE,PANO,PTNO,GBSTS)              ");
             parameter.AppendSql("VALUES                                                             ");
             parameter.AppendSql("       (:WRTNO,:GJJONG,:GJCHASU,TO_DATE(:JEPDATE, 'YYYY-MM-DD')    ");
@@ -463,7 +463,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GBSTS, ROWID RID                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW             ");
             parameter.AppendSql(" WHERE WRTNO  =:WRTNO                          ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -476,7 +476,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT REMARK  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW             ");
             parameter.AppendSql(" WHERE WRTNO  =:WRTNO                          ");
 
             parameter.Add("WRTNO", nWrtNo);
@@ -489,7 +489,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT HABIT1, HABIT2, HABIT3, HABIT4, HABIT5  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW             ");
             parameter.AppendSql(" WHERE WRTNO  =:WRTNO                          ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -502,7 +502,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GBSTS,ROWID                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW ");
             parameter.AppendSql(" WHERE WRTNO  =:WRTNO              ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -514,7 +514,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SANGDAM_NEW SET ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SANGDAM_NEW SET ");
             parameter.AppendSql("       HABIT1   = :HABIT1              ");
             parameter.AppendSql("     , HABIT2   = :HABIT2              ");
             parameter.AppendSql("     , HABIT3   = :HABIT3              ");
@@ -540,7 +540,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID RID                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW     ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -553,7 +553,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT Pano,COUNT(*) CNT               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW     ");
             parameter.AppendSql(" WHERE JEPDATE = TRUNC(SYSDATE)        ");
             parameter.AppendSql("   AND SANGDAMDRNO = :DRNO             ");
             parameter.AppendSql(" GROUP BY PANO                         ");

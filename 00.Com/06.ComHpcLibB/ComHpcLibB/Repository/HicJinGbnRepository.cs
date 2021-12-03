@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JIN_GBN ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JIN_GBN ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
 
             parameter.Add("WRTNO", nWrtNo);
@@ -35,7 +35,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_JIN_GBN SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_JIN_GBN SET     ");
             parameter.AppendSql("       GUBUN       = :GUBUN            ");
             parameter.AppendSql("     , PANJENGDRNO = :PANJENGDRNO      ");
             parameter.AppendSql("     , ENTDATE     = SYSDATE           ");
@@ -54,7 +54,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_JIN_GBN SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_JIN_GBN SET     ");
             parameter.AppendSql("       PANJENGDRNO = :PANJENGDRNO      ");
             parameter.AppendSql("     , ENTDATE     = SYSDATE           ");
             parameter.AppendSql("  WHERE ROWID      = :RID              ");
@@ -69,7 +69,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_JIN_GBN SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_JIN_GBN SET     ");
             parameter.AppendSql("       GBPRINT       = 'Y'             ");
             parameter.AppendSql("  WHERE WRTNO      = :WRTNO            ");
 
@@ -84,7 +84,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(b.ENTDATE,'YYYY-MM-DD') ENTDATE,b.ENTSABUN, B.GBPRINT   ");
             parameter.AppendSql(" , B.GUBUN, B.WRTNO                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a , KOSMOS_PMPA.HIC_JIN_GBN b             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a , ADMIN.HIC_JIN_GBN b             ");
             parameter.AppendSql(" WHERE a.WRTNO   = :WRTNO                                              ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO(+)                                            ");
 
@@ -97,7 +97,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_JIN_GBN                        ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_JIN_GBN                        ");
             parameter.AppendSql("       (WRTNO, GUBUN, PANJENGDRNO, ENTDATE, ENTSABUN)      ");
             parameter.AppendSql("VALUES                                                     ");
             parameter.AppendSql("       (:WRTNO, :GUBUN, :PANJENGDRNO, SYSDATE, :ENTSABUN)  ");

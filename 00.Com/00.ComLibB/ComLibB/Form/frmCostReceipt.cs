@@ -78,7 +78,7 @@ namespace ComLibB
                 SQL += ComNum.VBLF + "   SELECT A.SUNEXT, A.SUCODE, B.SUNAMEK, TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE,";
                 SQL += ComNum.VBLF + "             A.DEPTCODE, A.DRCODE , A.PANO, C.DRNAME ";
                 SQL += ComNum.VBLF + "       ,SUM(A.QTY * A.NAL) QTY ";
-                SQL += ComNum.VBLF + "   from " + ComNum.DB_PMPA + "OPD_SLIP A, KOSMOS_PMPA.BAS_SUN B , KOSMOS_PMPA.BAS_DOCTOR C";
+                SQL += ComNum.VBLF + "   from " + ComNum.DB_PMPA + "OPD_SLIP A, ADMIN.BAS_SUN B , ADMIN.BAS_DOCTOR C";
                 SQL += ComNum.VBLF + "   WHERE A.BDATE >= TO_DATE('" + dtpFDate.Text + "' ,'YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "     AND A.BDATE <= TO_DATE('" + dtpTDate.Text + "','YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "     AND A.PANO = '" + GstrPANO + "' ";
@@ -95,7 +95,7 @@ namespace ComLibB
                 SQL += ComNum.VBLF + "   SELECT A.SUNEXT, A.SUCODE, B.SUNAMEK, TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE,";
                 SQL += ComNum.VBLF + "             A.DEPTCODE, A.DRCODE , A.PANO, C.DRNAME ";
                 SQL += ComNum.VBLF + "       ,SUM(A.QTY * A.NAL) QTY ";
-                SQL += ComNum.VBLF + "   from " + ComNum.DB_PMPA + "IPD_NEW_SLIP A, KOSMOS_PMPA.BAS_SUN B , KOSMOS_PMPA.BAS_DOCTOR C";
+                SQL += ComNum.VBLF + "   from " + ComNum.DB_PMPA + "IPD_NEW_SLIP A, ADMIN.BAS_SUN B , ADMIN.BAS_DOCTOR C";
                 SQL += ComNum.VBLF + "   WHERE A.BDATE >= TO_DATE('" + dtpFDate.Text + "' ,'YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "     AND A.BDATE <= TO_DATE('" + dtpTDate.Text + "','YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "     AND A.PANO = '" + GstrPANO + "' ";

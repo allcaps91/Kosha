@@ -165,7 +165,7 @@ namespace ComLibB
                     //'입원 오더는 오더 발생하면 무조건 전자 서명 발생 시킴
                     SQL = "";
                     SQL += "SELECT A.EMRNO , B.PTNO, B.USEID, B.ROWID,  B.CHARTDATE,  B.FORMNO, B.CERTNO  \r";
-                    SQL += "  FROM KOSMOS_EMR.EMRXMLMST A, KOSMOS_EMR.EMRXML B  \r";
+                    SQL += "  FROM ADMIN.EMRXMLMST A, ADMIN.EMRXML B  \r";
                     if (chkDate.Checked == true)
                     {
                         SQL += "    WHERE  A.WRITEDATE >= '" + dtpFrDate.Value.ToString("yyyyMMdd") + "'  \r";
@@ -348,7 +348,7 @@ namespace ComLibB
                     SQL = "";
                     SQL += " SELECT EMRNO, PTNO, USEID, ROWID,  CHARTDATE,  FORMNO, CERTNO,  \r";
                     SQL += "        IT1, IT2, IT3, IT4, IT5, IT6, IT7, IT8, IT9, IT10 \r";
-                    SQL += "   FROM KOSMOS_EMR.EMRXML_TUYAK   \r";
+                    SQL += "   FROM ADMIN.EMRXML_TUYAK   \r";
                     if (chkDate.Checked == true)
                     {
                         SQL += "     WHERE  WRITEDATE >= '" + dtpFrDate.Value.ToString("yyyyMMdd") + "'  \r";
@@ -508,7 +508,7 @@ namespace ComLibB
                 SQL = "";
                 SQL += "SELECT                              \r";
                 SQL += "    CHARTXML                        \r";
-                SQL += " FROM KOSMOS_EMR.EMRXML             \r";
+                SQL += " FROM ADMIN.EMRXML             \r";
                 SQL += "WHERE EMRNO = '" + strEmrNo + "'    \r";
                 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -547,7 +547,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += "SELECT FORMNAME FROM KOSMOS_EMR.EMRFORM  \r";
+                SQL += "SELECT FORMNAME FROM ADMIN.EMRFORM  \r";
                 SQL += " WHERE FORMNO = '" + strFormNo + "'    \r";
 
 
@@ -595,8 +595,8 @@ namespace ComLibB
                     SQL += "SELECT \r";
                     SQL += "    A.EMRNO, \r";
                     SQL += "    '{' || '\"ITEMCD\"' || ':\"' || B.TITLE || '\", ' || '\"ITEMVALUE\"' || ':\"' || B.CONTROLVALUE || '\"}' AS ITEM \r";
-                    SQL += "FROM KOSMOS_EMR.AEMRCHARTMST A \r";
-                    SQL += "INNER JOIN KOSMOS_EMR.AEMRANCHART B \r";
+                    SQL += "FROM ADMIN.AEMRCHARTMST A \r";
+                    SQL += "INNER JOIN ADMIN.AEMRANCHART B \r";
                     SQL += "   ON A.EMRNO = B.EMRNO \r";
                     SQL += "  AND A.EMRNOHIS = B.EMRNOHIS \r";
                     SQL += "WHERE A.EMRNO = " + strEmrNo + "    \r";
@@ -617,8 +617,8 @@ namespace ComLibB
                     SQL += "       'PROBLEM : ' || PROBLEM || ' | ' || \r";
                     SQL += "       'TYPE : ' || TYPE || ' | ' || \r";
                     SQL += "       'NRRECODE : ' || NRRECODE AS JSON \r";
-                    SQL += " FROM KOSMOS_EMR.AEMRCHARTMST A \r";
-                    SQL += "INNER JOIN KOSMOS_EMR.AEMRNURSRECORD B \r";
+                    SQL += " FROM ADMIN.AEMRCHARTMST A \r";
+                    SQL += "INNER JOIN ADMIN.AEMRNURSRECORD B \r";
                     SQL += "   ON A.EMRNO = B.EMRNO \r";
                     SQL += "WHERE A.EMRNO = " + strEmrNo + "    \r";
                 }
@@ -629,8 +629,8 @@ namespace ComLibB
                     SQL += "SELECT \r";
                     SQL += "    A.EMRNO, \r";
                     SQL += "    TO_CLOB('{' || '\"ITEMCD\"' || ':\"' || B.ITEMCD || '\", ' || '\"ITEMVALUE\"' || ':\"' || B.ITEMVALUE || '\", ' || '\"ITEMVALUE1\"' || ':\"' || B.ITEMVALUE1 || '\", ITEMVALUE2\"' || ':\"' || B.ITEMVALUE2 || '\"}') AS ITEM \r";
-                    SQL += "FROM KOSMOS_EMR.AEMRCHARTMST A \r";
-                    SQL += "INNER JOIN KOSMOS_EMR.AEMRCHARTROW B \r";
+                    SQL += "FROM ADMIN.AEMRCHARTMST A \r";
+                    SQL += "INNER JOIN ADMIN.AEMRCHARTROW B \r";
                     SQL += "   ON A.EMRNO = B.EMRNO \r";
                     SQL += "  AND A.EMRNOHIS = B.EMRNOHIS \r";
                     SQL += "  AND B.ITEMCD > CHR(0) \r";
@@ -653,8 +653,8 @@ namespace ComLibB
                     SQL += "    ,   B.ITEMVALUE                                                                                     \r";
                     SQL += "    ,   B.ITEMVALUE1                                                                                    \r";
                     SQL += "    ,   B.ITEMVALUE2                                                                                    \r";
-                    SQL += "FROM KOSMOS_EMR.AEMRCHARTMST A                                                                          \r";
-                    SQL += "INNER JOIN KOSMOS_EMR.AEMRCHARTROW B                                                                    \r";
+                    SQL += "FROM ADMIN.AEMRCHARTMST A                                                                          \r";
+                    SQL += "INNER JOIN ADMIN.AEMRCHARTROW B                                                                    \r";
                     SQL += "   ON A.EMRNO = B.EMRNO                                                                                 \r";
                     SQL += "  AND A.EMRNOHIS = B.EMRNOHIS                                                                           \r";
                     SQL += "  AND B.ITEMCD > CHR(0)                                                                                 \r";
@@ -707,8 +707,8 @@ namespace ComLibB
                         SQL += "SELECT \r";
                         SQL += "    A.EMRNO, \r";
                         SQL += "    TO_CLOB('{' || '\"ITEMCD\"' || ':\"' || B.ITEMCD || '\", ' || '\"ITEMVALUE\"' || ':\"' || B.ITEMVALUE || '\"}') AS ITEM \r";
-                        SQL += "FROM KOSMOS_EMR.AEMRCHARTMST A \r";
-                        SQL += "INNER JOIN KOSMOS_EMR.AEMRCHARTROW B \r";
+                        SQL += "FROM ADMIN.AEMRCHARTMST A \r";
+                        SQL += "INNER JOIN ADMIN.AEMRCHARTROW B \r";
                         SQL += "   ON A.EMRNO = B.EMRNO \r";
                         SQL += "  AND A.EMRNOHIS = B.EMRNOHIS \r";
                         SQL += "  AND B.ITEMCD > CHR(0) \r";
@@ -773,8 +773,8 @@ namespace ComLibB
                     SQL += "SELECT \r";
                     SQL += "    A.EMRNOHIS, \r";
                     SQL += "    '{' || '\"ITEMCD\"' || ':\"' || B.TITLE || '\", ' || '\"ITEMVALUE\"' || ':\"' || B.CONTROLVALUE || '\"}' AS ITEM \r";
-                    SQL += "FROM KOSMOS_EMR.AEMRCHARTMSTHIS A \r";
-                    SQL += "INNER JOIN KOSMOS_EMR.AEMRANCHART B \r";
+                    SQL += "FROM ADMIN.AEMRCHARTMSTHIS A \r";
+                    SQL += "INNER JOIN ADMIN.AEMRANCHART B \r";
                     SQL += "    ON A.EMRNOHIS = B.EMRNOHIS \r";
                     SQL += "WHERE A.EMRNOHIS = '" + strEmrNoHis + "'    \r";
                     SQL += ") \r";
@@ -796,8 +796,8 @@ namespace ComLibB
                     SQL += "       'PROBLEM : ' || PROBLEM || ' | ' || \r";
                     SQL += "       'TYPE : ' || TYPE || ' | ' || \r";
                     SQL += "       'NRRECODE : ' || NRRECODE AS JSON \r";
-                    SQL += " FROM KOSMOS_EMR.AEMRCHARTMSTHIS A \r";
-                    SQL += "INNER JOIN KOSMOS_EMR.AEMRNURSRECORDHIS B \r";
+                    SQL += " FROM ADMIN.AEMRCHARTMSTHIS A \r";
+                    SQL += "INNER JOIN ADMIN.AEMRNURSRECORDHIS B \r";
                     SQL += "   ON A.EMRNOHIS = B.EMRNOHIS \r";
                     SQL += "WHERE A.EMRNOHIS = '" + strEmrNoHis + "'    \r";
                 }
@@ -808,8 +808,8 @@ namespace ComLibB
                     SQL += "SELECT \r";
                     SQL += "    A.EMRNOHIS, \r";
                     SQL += "    '{' || '\"ITEMCD\"' || ':\"' || B.ITEMCD || '\", ' || '\"ITEMVALUE\"' || ':\"' || SUBSTRB(B.ITEMVALUE, 0, 3950) || '\"}' AS ITEM \r";
-                    SQL += "FROM KOSMOS_EMR.AEMRCHARTMSTHIS A \r";
-                    SQL += "INNER JOIN KOSMOS_EMR.AEMRCHARTROWHIS B \r";
+                    SQL += "FROM ADMIN.AEMRCHARTMSTHIS A \r";
+                    SQL += "INNER JOIN ADMIN.AEMRCHARTROWHIS B \r";
                     SQL += "    ON A.EMRNOHIS = B.EMRNOHIS \r";
                     SQL += "WHERE A.EMRNOHIS = '" + strEmrNoHis + "'    \r";
                     SQL += "ORDER BY B.DSPSEQ \r";
@@ -855,7 +855,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += "SELECT FORMNAME FROM KOSMOS_EMR.AEMRFORM  \r";
+                SQL += "SELECT FORMNAME FROM ADMIN.AEMRFORM  \r";
                 SQL += " WHERE FORMNO = '" + strFormNo + "'    \r";
                 SQL += "   AND UPDATENO = '" + strUpdateNo + "'    \r";
 
@@ -910,12 +910,12 @@ namespace ComLibB
             try
             {
                 //'입원 오더는 오더 발생하면 무조건 전자 서명 발생 시킴
-                parameter.AppendSql("SELECT /*+ INDEX(KOSMOS_EMR.AEMRCHARTMST AEMRCHARTMSTHIS_IDX_MIBI) */                  ");
+                parameter.AppendSql("SELECT /*+ INDEX(ADMIN.AEMRCHARTMST AEMRCHARTMSTHIS_IDX_MIBI) */                  ");
                 parameter.AppendSql("       A.EMRNO, A.PTNO, A.CHARTUSEID, A.ROWID,                                         ");
                 parameter.AppendSql("       A.CHARTDATE, A.WRITEDATE, A.FORMNO, A.UPDATENO, A.CERTNO                        ");
                 parameter.AppendSql("       , TO_CHAR(SYSDATE, 'YYYYMMDD') AS NOWDATE                                       ");
-                parameter.AppendSql("  FROM KOSMOS_EMR.AEMRCHARTMST A                                                       ");
-                parameter.AppendSql("  LEFT OUTER JOIN KOSMOS_PMPA.BAS_PATIENT  B                                            ");
+                parameter.AppendSql("  FROM ADMIN.AEMRCHARTMST A                                                       ");
+                parameter.AppendSql("  LEFT OUTER JOIN ADMIN.BAS_PATIENT  B                                            ");
                 parameter.AppendSql("    ON A.PTNO = B.PANO                                                                 ");
                 parameter.AppendSql(" WHERE 1 = 1                                                                           ");
                 parameter.AppendSql("   AND A.CHARTUSEID <> '합계'                                                           ");
@@ -943,14 +943,14 @@ namespace ComLibB
                 parameter.AppendSql("   AND EXISTS                                                                          ");
                 parameter.AppendSql("   (                                                                                   ");
                 parameter.AppendSql("   		SELECT 1                                                                    ");
-                parameter.AppendSql("             FROM KOSMOS_PMPA.BAS_PATIENT                                              ");
+                parameter.AppendSql("             FROM ADMIN.BAS_PATIENT                                              ");
                 parameter.AppendSql("   		 WHERE PANO = A.PTNO    	                                                ");
                 parameter.AppendSql("   )                                                                                   ");
 
                 parameter.AppendSql("   AND EXISTS                                                                          ");
                 parameter.AppendSql("   (                                                                                   ");
                 parameter.AppendSql("   		SELECT 1                                                                    ");
-                parameter.AppendSql("             FROM KOSMOS_ERP.HR_EMP_BASIS  SUB                                            ");
+                parameter.AppendSql("             FROM ADMIN.HR_EMP_BASIS  SUB                                            ");
                 parameter.AppendSql("   		 WHERE SUB.EMP_ID = A.CHARTUSEID    	                                        ");
                 parameter.AppendSql("   		   AND SUB.RETIRE_YMD IS NULL    	                                        ");
                 parameter.AppendSql("   )                                                                                   ");
@@ -1114,12 +1114,12 @@ namespace ComLibB
             try
             {
                 //'입원 오더는 오더 발생하면 무조건 전자 서명 발생 시킴
-                parameter.AppendSql("SELECT /*+ INDEX(KOSMOS_EMR.AEMRCHARTMSTHIS AEMRCHARTMSTHIS_IDX4) */       "); 
+                parameter.AppendSql("SELECT /*+ INDEX(ADMIN.AEMRCHARTMSTHIS AEMRCHARTMSTHIS_IDX4) */       "); 
                 parameter.AppendSql("       A.EMRNOHIS, A.PTNO, A.CHARTUSEID, A.ROWID,                          "); 
                 parameter.AppendSql("       A.CHARTDATE, A.WRITEDATE, A.FORMNO, A.UPDATENO, A.CERTNO            "); 
                 parameter.AppendSql("       , TO_CHAR(SYSDATE, 'YYYYMMDD') AS NOWDATE                             "); 
-                parameter.AppendSql("  FROM KOSMOS_EMR.AEMRCHARTMSTHIS A                                        ");
-                parameter.AppendSql("  LEFT OUTER JOIN KOSMOS_PMPA.BAS_PATIENT  B                                            ");
+                parameter.AppendSql("  FROM ADMIN.AEMRCHARTMSTHIS A                                        ");
+                parameter.AppendSql("  LEFT OUTER JOIN ADMIN.BAS_PATIENT  B                                            ");
                 parameter.AppendSql("    ON A.PTNO = B.PANO                                                             ");
                 parameter.AppendSql("WHERE 1 = 1                                                                "); 
                 parameter.AppendSql("    AND A.CHARTUSEID <> '합계'                                              "); 
@@ -1148,14 +1148,14 @@ namespace ComLibB
                 parameter.AppendSql("   AND EXISTS                                                                          ");
                 parameter.AppendSql("   (                                                                                   ");
                 parameter.AppendSql("   		SELECT 1                                                                    ");
-                parameter.AppendSql("              FROM KOSMOS_PMPA.BAS_PATIENT                                             ");
+                parameter.AppendSql("              FROM ADMIN.BAS_PATIENT                                             ");
                 parameter.AppendSql("   		 WHERE PANO = A.PTNO    	                                                ");
                 parameter.AppendSql("   )                                                                                   ");
 
                 parameter.AppendSql("   AND EXISTS                                                                          ");
                 parameter.AppendSql("   (                                                                                   ");
                 parameter.AppendSql("   		SELECT 1                                                                    ");
-                parameter.AppendSql("             FROM KOSMOS_ERP.HR_EMP_BASIS  SUB                                            ");
+                parameter.AppendSql("             FROM ADMIN.HR_EMP_BASIS  SUB                                            ");
                 parameter.AppendSql("   		 WHERE SUB.EMP_ID = A.CHARTUSEID    	                                        ");
                 parameter.AppendSql("   		   AND SUB.RETIRE_YMD IS NULL    	                                        ");
                 parameter.AppendSql("   )                                                                                   ");
@@ -1322,10 +1322,10 @@ namespace ComLibB
 
                     SQL = "";
                     SQL += "SELECT A.ID, A.PTNO, A.MODIFIED, A.MODIFIEDUSER, A.JSON, A.ROWID, C.FORMNAME, A.CERTDATE, A.CERTNO  \r";
-                    SQL += "  FROM KOSMOS_EMR.AEASFORMDATA A \r";
-                    SQL += " INNER JOIN KOSMOS_EMR.AEASFORMCONTENT B \r";
+                    SQL += "  FROM ADMIN.AEASFORMDATA A \r";
+                    SQL += " INNER JOIN ADMIN.AEASFORMCONTENT B \r";
                     SQL += "    ON A.EASFORMCONTENT = B.ID \r";
-                    SQL += " INNER JOIN KOSMOS_EMR.AEMRFORM C \r";
+                    SQL += " INNER JOIN ADMIN.AEMRFORM C \r";
                     SQL += "    ON C.FORMNO = B.FORMNO \r";
                     SQL += "   AND C.UPDATENO = B.UPDATENO \r";
                     SQL += " WHERE A.ISDELETED = 'N' \r";

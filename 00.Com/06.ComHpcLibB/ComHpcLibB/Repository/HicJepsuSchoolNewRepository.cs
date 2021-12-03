@@ -26,7 +26,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT a.WRTNO,a.SName,TO_CHAR(a.JepDate,'YY-MM-DD') JepDate,a.GjJong,a.UCodes,a.SangDamDrno   ");
             parameter.AppendSql("     , b.DPANDRNO, b.DPANDATE                                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_SCHOOL_NEW b                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_SCHOOL_NEW b                                   ");
             parameter.AppendSql(" WHERE a.JEPDATE >= TO_DATE(:FRDATE, 'yyyy-mm-dd')                                             ");
             parameter.AppendSql("   AND a.JEPDATE <= TO_DATE(:TODATE, 'yyyy-mm-dd')                                             ");
             parameter.AppendSql("   AND b.WRTNO = a.WRTNO                                                                       ");
@@ -75,7 +75,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT a.sname, a.ltdcode, b.class, b.ban, b.bun, a.sex, a.age,to_char(a.jepdate,'yyyy-mm-dd') jepdate     ");
             parameter.AppendSql("     , a.wrtno,b.jumin2,b.PPANA1,b.PPANA2,b.PPANA3,b.PPANA4                                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.hic_jepsu a, KOSMOS_PMPA.hic_school_new b                                               ");
+            parameter.AppendSql("  FROM ADMIN.hic_jepsu a, ADMIN.hic_school_new b                                               ");
             parameter.AppendSql(" WHERE a.jepdate >= to_date(:FRDATE, 'YYYY-MM-DD')                                                         ");
             parameter.AppendSql("   AND a.jepdate <= to_date(:TODATE, 'YYYY-MM-DD')                                                         ");
             parameter.AppendSql("   AND a.wrtno = b.wrtno(+)                                                                                ");
@@ -145,9 +145,9 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT TO_CHAR(a.JEPDATE,'YYYY-MM-DD') JEPDATE,a.PANO,a.SNAME,a.SEX,a.AGE  ");
             parameter.AppendSql("     , a.WRTNO,a.LTDCODE,b.JUMIN2, c.*                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU      a                                        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_PATIENT    b                                        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_SCHOOL_NEW c                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU      a                                        ");
+            parameter.AppendSql("     , ADMIN.HIC_PATIENT    b                                        ");
+            parameter.AppendSql("     , ADMIN.HIC_SCHOOL_NEW c                                        ");
             parameter.AppendSql(" WHERE a.JEPDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                         ");
             parameter.AppendSql("   AND a.JEPDATE <= TO_DATE(:TODATE, 'YYYY-MM-DD')                         ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                                   ");

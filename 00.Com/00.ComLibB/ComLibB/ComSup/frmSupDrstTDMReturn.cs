@@ -122,8 +122,8 @@ namespace ComLibB
             mParameter.AppendSql("  	,   TO_CHAR(A.JEPDATE, 'YYYY-MM-DD') JEPDATE                                                    ");
             mParameter.AppendSql("  	,   B.SUBGB                                                                                     ");
             mParameter.AppendSql("  	,   B.SUBVAL                                                                                    ");
-            mParameter.AppendSql("    FROM KOSMOS_OCS.OCS_TDM_RETURN A                                                                  ");
-            mParameter.AppendSql("   INNER JOIN KOSMOS_OCS.OCS_TDM_RETURNSUB B                                                          ");
+            mParameter.AppendSql("    FROM ADMIN.OCS_TDM_RETURN A                                                                  ");
+            mParameter.AppendSql("   INNER JOIN ADMIN.OCS_TDM_RETURNSUB B                                                          ");
             mParameter.AppendSql("      ON A.SEQNO = B.SEQNO                                                                            ");
             mParameter.AppendSql("   WHERE A.SEQNO = :SEQNO                                                                             ");
             mParameter.AppendSql("     AND B.SUBGB NOT IN ('001', '002')                                                                    ");
@@ -135,7 +135,7 @@ namespace ComLibB
             mParameter.AppendSql("  	,   '' AS JEPDATE                                                                               ");
             mParameter.AppendSql("  	,   CASE WHEN A.SUBGB = '000' THEN '003' ELSE A.SUBGB END SUBGB                                                                                     ");
             mParameter.AppendSql("  	,   A.SUBVAL                                                                                    ");
-            mParameter.AppendSql("    FROM KOSMOS_OCS.OCS_TDM_MASTERSUB A                                                               ");
+            mParameter.AppendSql("    FROM ADMIN.OCS_TDM_MASTERSUB A                                                               ");
             mParameter.AppendSql("   WHERE A.SEQNO = :SEQNO                                                                             ");
             mParameter.AppendSql("     AND A.SUBGB IN ('000', '001', '002')                                                                    ");
 
@@ -180,8 +180,8 @@ namespace ComLibB
             mParameter.AppendSql("   	,	 I.SNAME                                                                                                   ");
             mParameter.AppendSql("   	,	 I.WARDCODE || '/' || I.ROOMCODE AS WARD_INFO                                                              ");
             mParameter.AppendSql("   	,	 A.MEDDEPTCD                                                                                               ");
-            mParameter.AppendSql("   	,	 (SELECT DEPTNAMEK  FROM KOSMOS_PMPA.BAS_CLINICDEPT WHERE DEPTCODE = A.MEDDEPTCD) AS DEPTNAMEK             ");
-            mParameter.AppendSql("   	,	 (SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR WHERE DRCODE = I.DRCODE) AS DRNAME                              ");
+            mParameter.AppendSql("   	,	 (SELECT DEPTNAMEK  FROM ADMIN.BAS_CLINICDEPT WHERE DEPTCODE = A.MEDDEPTCD) AS DEPTNAMEK             ");
+            mParameter.AppendSql("   	,	 (SELECT DRNAME FROM ADMIN.OCS_DOCTOR WHERE DRCODE = I.DRCODE) AS DRNAME                              ");
             mParameter.AppendSql("   	,	 I.SEX                                                                                                     ");
             mParameter.AppendSql("   	,	 I.AGE                                                                                                     ");
             mParameter.AppendSql("   	,	 I.HEIGHT                                                                                                   ");
@@ -192,10 +192,10 @@ namespace ComLibB
             mParameter.AppendSql("   	,	 A.CHARTTIME                                                                                               ");
             mParameter.AppendSql("   	,	 TO_CHAR(I.INDATE,  'YYYY-MM-DD')  INDATE                                                                  ");
             mParameter.AppendSql("   	,	 TO_CHAR(M.REQDATE, 'YYYY-MM-DD') REQDATE                                                                  ");
-            mParameter.AppendSql("     FROM KOSMOS_EMR.AEMRCHARTMST A                                                                                  ");
-            mParameter.AppendSql("    INNER JOIN KOSMOS_OCS.OCS_TDM_MASTER M                                                                           ");
+            mParameter.AppendSql("     FROM ADMIN.AEMRCHARTMST A                                                                                  ");
+            mParameter.AppendSql("    INNER JOIN ADMIN.OCS_TDM_MASTER M                                                                           ");
             mParameter.AppendSql("       ON M.SEQNO = :SEQNO                                                                                           ");
-            mParameter.AppendSql("    INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER I                                                                          ");
+            mParameter.AppendSql("    INNER JOIN ADMIN.IPD_NEW_MASTER I                                                                          ");
             mParameter.AppendSql("       ON M.IPDNO = I.IPDNO                                                                                          ");
             mParameter.AppendSql("    WHERE A.PTNO = M.PTNO                                                                                            ");
             mParameter.AppendSql("      AND FORMNO IN (1562, 1969, 2135, 2201, 2431, 3150)                                                              ");
@@ -207,13 +207,13 @@ namespace ComLibB
             mParameter.AppendSql(" SELECT    A.EMRNO                                                                                                                                                 ");
             mParameter.AppendSql("   	,	 A.EMRNOHIS                                                                                                                                              ");
             mParameter.AppendSql("   	,	NVL(HEIGHT,  (SELECT ITEMVALUE                                                                                                                                       ");
-            mParameter.AppendSql("   			FROM KOSMOS_EMR.AEMRCHARTROW                                                                                                                         ");
+            mParameter.AppendSql("   			FROM ADMIN.AEMRCHARTROW                                                                                                                         ");
             mParameter.AppendSql(" 		       WHERE EMRNO = A.EMRNO                                                                                                                                 ");
             mParameter.AppendSql("   		   	 AND EMRNOHIS = A.EMRNOHIS                                                                                                                           ");
             mParameter.AppendSql("   		     AND ITEMCD = 'I0000000002'                                                                                                                          ");
             mParameter.AppendSql("	         )) AS HEIGHT                                                                                                                                             ");
             mParameter.AppendSql("	    ,	NVL(WEIGHT, (SELECT ITEMVALUE                                                                                                                                       ");
-            mParameter.AppendSql("   			FROM KOSMOS_EMR.AEMRCHARTROW                                                                                                                         ");
+            mParameter.AppendSql("   			FROM ADMIN.AEMRCHARTROW                                                                                                                         ");
             mParameter.AppendSql("   		   WHERE EMRNO = A.EMRNO                                                                                                                                 ");
             mParameter.AppendSql("   		   	 AND EMRNOHIS = A.EMRNOHIS                                                                                                                           ");
             mParameter.AppendSql("   		     AND ITEMCD = 'I0000000418'                                                                                                                          ");
@@ -349,8 +349,8 @@ namespace ComLibB
             mParameter.AppendSql("  	,   C.SUBCODE                                                                                                                           ");
             mParameter.AppendSql("  	,   C.RESULT                                                                                                                            ");
             mParameter.AppendSql("  	, ROW_NUMBER() OVER(PARTITION BY C.SUBCODE ORDER BY C.RESULTDATE DESC) AS ROW_NUM                                                       ");
-            mParameter.AppendSql("    FROM KOSMOS_OCS.EXAM_SPECMST A                                                                                                            ");
-            mParameter.AppendSql("   INNER JOIN KOSMOS_OCS.EXAM_RESULTC C                                                                                                       ");
+            mParameter.AppendSql("    FROM ADMIN.EXAM_SPECMST A                                                                                                            ");
+            mParameter.AppendSql("   INNER JOIN ADMIN.EXAM_RESULTC C                                                                                                       ");
             mParameter.AppendSql("      ON A.SPECNO = C.SPECNO                                                                                                                  ");
             mParameter.AppendSql("     AND C.RESULTDATE >= TO_DATE(:REQDATE, 'YYYY-MM-DD HH24:MI')                                                                              ");
             mParameter.AppendSql("     AND C.RESULT IS NOT NULL                                                                                                                 ");
@@ -456,7 +456,7 @@ namespace ComLibB
 
             try
             {
-                mParameter.AppendSql("	  MERGE INTO KOSMOS_OCS.OCS_TDM_RETURN D			 ");
+                mParameter.AppendSql("	  MERGE INTO ADMIN.OCS_TDM_RETURN D			 ");
                 mParameter.AppendSql("	  USING DUAL			                             ");
                 mParameter.AppendSql("	     ON (D.SEQNO = :SEQNO)                           ");
                 mParameter.AppendSql("	   WHEN MATCHED THEN                                 ");
@@ -510,7 +510,7 @@ namespace ComLibB
             {
 
                 mParameter = new MParameter();
-                mParameter.AppendSql("DELETE KOSMOS_OCS.OCS_TDM_RETURNSUB			 ");
+                mParameter.AppendSql("DELETE ADMIN.OCS_TDM_RETURNSUB			 ");
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO						     ");
 
                 mParameter.Add("SEQNO", SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
@@ -532,7 +532,7 @@ namespace ComLibB
                     string CONTENT = SSMain.ActiveSheet.Cells[sPD_INFO.ROW, sPD_INFO.COL].Text.Trim();
 
                     mParameter = new MParameter();
-                    mParameter.AppendSql("	  INSERT INTO KOSMOS_OCS.OCS_TDM_RETURNSUB			 ");
+                    mParameter.AppendSql("	  INSERT INTO ADMIN.OCS_TDM_RETURNSUB			 ");
                     mParameter.AppendSql("	  (                            				         ");
                     mParameter.AppendSql("	      SEQNO											 ");
                     mParameter.AppendSql("	    , SUBGB                                          ");
@@ -546,7 +546,7 @@ namespace ComLibB
                     mParameter.AppendSql("	   WHERE NOT EXISTS                                  ");
                     mParameter.AppendSql("	  (										             ");
                     mParameter.AppendSql("	  SELECT 1										     ");
-                    mParameter.AppendSql("	    FROM KOSMOS_OCS.OCS_TDM_RETURNSUB                ");
+                    mParameter.AppendSql("	    FROM ADMIN.OCS_TDM_RETURNSUB                ");
                     mParameter.AppendSql("	   WHERE SEQNO = :SEQNO                              ");
                     mParameter.AppendSql("	     AND SUBGB = :SUBGB                              ");
                     mParameter.AppendSql("	  )										             ");
@@ -580,14 +580,14 @@ namespace ComLibB
             {
 
                 mParameter = new MParameter();
-                mParameter.AppendSql("DELETE KOSMOS_OCS.OCS_TDM_RETURN  			 ");
+                mParameter.AppendSql("DELETE ADMIN.OCS_TDM_RETURN  			 ");
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO						     ");
 
                 mParameter.Add("SEQNO", SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
                 result.SetSuccessCountPlus(clsDB.ExecuteNonQuery(mParameter, clsDB.DbCon));
 
                 mParameter = new MParameter();
-                mParameter.AppendSql("DELETE KOSMOS_OCS.OCS_TDM_RETURNSUB			 ");
+                mParameter.AppendSql("DELETE ADMIN.OCS_TDM_RETURNSUB			 ");
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO						     ");
 
                 mParameter.Add("SEQNO", SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);

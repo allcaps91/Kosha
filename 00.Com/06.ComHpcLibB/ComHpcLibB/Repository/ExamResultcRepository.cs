@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID                      ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_RESULTC  ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_RESULTC  ");
             parameter.AppendSql(" WHERE PANO =:PANO     ");
             if (!argSubCode.IsNullOrEmpty())
             {
@@ -52,7 +52,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID                       ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_RESULTC     ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_RESULTC     ");
             parameter.AppendSql(" WHERE PANO =:PANO                 ");
             parameter.AppendSql("   AND MASTERCODE =:MASTERCODE     ");
             parameter.AppendSql("   AND SPECNO IN (:SPECNO)         ");
@@ -68,7 +68,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MASTERCODE                  ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_RESULTC     ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_RESULTC     ");
             parameter.AppendSql(" WHERE SPECNO = :SPECNO            ");
             parameter.AppendSql("   AND MASTERCODE =:MASTERCODE     ");
 
@@ -82,9 +82,9 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SUBCODE,RESULT                              ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_RESULTC                     ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_RESULTC                     ");
             parameter.AppendSql(" WHERE SPECNO IN (                                 ");
-            parameter.AppendSql("       SELECT SPECNO FROM KOSMOS_OCS.EXAM_SPECMST  ");
+            parameter.AppendSql("       SELECT SPECNO FROM ADMIN.EXAM_SPECMST  ");
             parameter.AppendSql("        WHERE HICNO=:HICNO                         ");
             parameter.AppendSql("          AND BDATE=TO_DATE(:BDATE,'YYYY-MM-DD')   ");
             parameter.AppendSql("          AND STATUS IN ('05')                     ");
@@ -104,8 +104,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT R.SEQNO, R.SUBCODE, R.RESULT,M.EXAMNAME ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_RESULTC R               ");
-            parameter.AppendSql("      ,KOSMOS_OCS.EXAM_MASTER M                ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_RESULTC R               ");
+            parameter.AppendSql("      ,ADMIN.EXAM_MASTER M                ");
             parameter.AppendSql(" WHERE R.SPECNO = :SPECNO                      ");
             parameter.AppendSql("   AND R.STATUS = 'V'                          ");     //검사실에서 확인한것만
             parameter.AppendSql("   AND R.RESULTWS NOT IN ('A','T')             ");     //세포,조직은 제외
@@ -120,7 +120,7 @@ namespace ComHpcLibB.Repository
         public int InsertData(EXAM_RESULTC item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_OCS.EXAM_RESULTC (                                             ");
+            parameter.AppendSql(" INSERT INTO ADMIN.EXAM_RESULTC (                                             ");
             parameter.AppendSql("        SPECNO,RESULTWS,EQUCODE,SEQNO,PANO,MASTERCODE,SUBCODE,UNIT,STATUS          ");
             parameter.AppendSql(" ) VALUES (                                                                        ");
             parameter.AppendSql("       :SPECNO,:RESULTWS,:EQUCODE,:SEQNO,:PANO,:MASTERCODE,:SUBCODE,:UNIT,:STATUS  ");
@@ -144,7 +144,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql(" SELECT B.RESULT FROM KOSMOS_OCS.EXAM_SPECMST A, KOSMOS_OCS.EXAM_RESULTC B         ");
+            parameter.AppendSql(" SELECT B.RESULT FROM ADMIN.EXAM_SPECMST A, ADMIN.EXAM_RESULTC B         ");
             parameter.AppendSql(" WHERE A.PANO = :WRTNO                                                             ");
             parameter.AppendSql(" AND B.RESULT IS NOT NULL                                                          ");
             parameter.AppendSql(" AND A.SPECNO = B.SPECNO                                                           ");

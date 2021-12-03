@@ -23,9 +23,9 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MEMO,TO_CHAR(ENTTIME,'YYYY-MM-DD HH24:MI') ENTTIME,PANO,PTNO        ");
-            parameter.AppendSql("      ,JOBSABUN,KOSMOS_OCS.FC_INSA_MST_KORNAME(JOBSABUN) AS JOBNAME        ");
+            parameter.AppendSql("      ,JOBSABUN,ADMIN.FC_INSA_MST_KORNAME(JOBSABUN) AS JOBNAME        ");
             parameter.AppendSql("      ,ROWID AS RID                                                        ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HIC_MEMO                                                ");
+            parameter.AppendSql("  From ADMIN.HIC_MEMO                                                ");
             parameter.AppendSql(" WHERE PANO = :PANO                                                        ");
             parameter.AppendSql("   AND Memo IS NOT NULL                                                    ");
             parameter.AppendSql("   AND DelDate IS NULL                                                     ");
@@ -40,7 +40,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_MEMO           ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_MEMO           ");
             parameter.AppendSql("       (PANO, MEMO, ENTTIME, JOBSABUN, PTNO)     ");
             parameter.AppendSql("VALUES                                     ");
             parameter.AppendSql("       (:PANO, :MEMO, SYSDATE, :JOBSABUN, :PTNO)  ");
@@ -59,11 +59,11 @@ namespace ComHpcLibB.Repository
 
             if (strGbn == "종검")
             {
-                parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_MEMO SET    ");
+                parameter.AppendSql("UPDATE ADMIN.HEA_MEMO SET    ");
             }
             else
             {
-                parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_MEMO SET    ");
+                parameter.AppendSql("UPDATE ADMIN.HIC_MEMO SET    ");
             }
             
             parameter.AppendSql("       DELDATE = SYSDATE           ");
@@ -79,8 +79,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT '종검' AS JOBGBN, MEMO, TO_CHAR(ENTTIME, 'YYYY-MM-DD HH24:MI') ENTTIME, JOBSABUN   ");
-            parameter.AppendSql("       ,KOSMOS_OCS.FC_BAS_USER(JOBSABUN) AS JOBNAME,PTNO,ROWID AS RID    ");
-            parameter.AppendSql("   From KOSMOS_PMPA.HEA_MEMO                                             ");
+            parameter.AppendSql("       ,ADMIN.FC_BAS_USER(JOBSABUN) AS JOBNAME,PTNO,ROWID AS RID    ");
+            parameter.AppendSql("   From ADMIN.HEA_MEMO                                             ");
             parameter.AppendSql("  WHERE PTNO = :PTNO                                                     ");
             parameter.AppendSql("    AND DELDATE IS NULL                                                     ");
             parameter.AppendSql("  ORDER By ENTTIME DESC                                                  ");
@@ -95,8 +95,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT '일반' AS JOBGBN, MEMO, TO_CHAR(ENTTIME, 'YYYY-MM-DD HH24:MI') ENTTIME, JOBSABUN   ");
-            parameter.AppendSql("       ,KOSMOS_OCS.FC_BAS_USER(JOBSABUN) AS JOBNAME,PTNO,ROWID AS RID    ");
-            parameter.AppendSql("   From KOSMOS_PMPA.HIC_MEMO                                             ");
+            parameter.AppendSql("       ,ADMIN.FC_BAS_USER(JOBSABUN) AS JOBNAME,PTNO,ROWID AS RID    ");
+            parameter.AppendSql("   From ADMIN.HIC_MEMO                                             ");
             parameter.AppendSql("  WHERE PTNO = :PTNO                                                     ");
             parameter.AppendSql("    AND DELDATE IS NULL                                                  ");
             parameter.AppendSql("  ORDER By ENTTIME DESC                                                  ");
@@ -112,7 +112,7 @@ namespace ComHpcLibB.Repository
 
             if (item.JOBGBN == "종검")
             {
-                parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_MEMO                           ");
+                parameter.AppendSql("INSERT INTO ADMIN.HEA_MEMO                           ");
                 parameter.AppendSql("       (WRTNO, MEMO, ENTTIME, JOBSABUN, PTNO, GUBUN1)      ");
                 parameter.AppendSql("VALUES                                                     ");
                 parameter.AppendSql("       (:WRTNO, :MEMO, SYSDATE, :JOBSABUN, :PTNO, :GUBUN)  ");
@@ -125,7 +125,7 @@ namespace ComHpcLibB.Repository
             }
             else
             {
-                parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_MEMO                           ");
+                parameter.AppendSql("INSERT INTO ADMIN.HIC_MEMO                           ");
                 parameter.AppendSql("       (PANO, MEMO, ENTTIME, JOBSABUN, PTNO, GUBUN1)       ");
                 parameter.AppendSql("VALUES                                                     ");
                 parameter.AppendSql("       (:PANO, :MEMO, SYSDATE, :JOBSABUN, :PTNO, :GUBUN)   ");
@@ -146,11 +146,11 @@ namespace ComHpcLibB.Repository
 
             if (item.JOBGBN == "종검")
             {
-                parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_MEMO SET    ");
+                parameter.AppendSql("UPDATE ADMIN.HEA_MEMO SET    ");
             }
             else
             {
-                parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_MEMO SET    ");
+                parameter.AppendSql("UPDATE ADMIN.HIC_MEMO SET    ");
             }
 
             parameter.AppendSql("       DELDATE = SYSDATE           ");
@@ -173,8 +173,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  FROM (                                                                       ");
 
             parameter.AppendSql("       SELECT '일반' AS JOBGBN, MEMO, TO_CHAR(ENTTIME, 'YYYY-MM-DD HH24:MI') ENTTIME, JOBSABUN   ");
-            parameter.AppendSql("             ,KOSMOS_OCS.FC_BAS_USER(JOBSABUN) AS JOBNAME,PTNO,ROWID AS RID    ");
-            parameter.AppendSql("         From KOSMOS_PMPA.HIC_MEMO                                             ");
+            parameter.AppendSql("             ,ADMIN.FC_BAS_USER(JOBSABUN) AS JOBNAME,PTNO,ROWID AS RID    ");
+            parameter.AppendSql("         From ADMIN.HIC_MEMO                                             ");
             parameter.AppendSql("        WHERE PTNO = :PTNO                                                     ");
             parameter.AppendSql("          AND DELDATE IS NULL                                                  ");
             if (argGubun =="D")
@@ -189,8 +189,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" UNION ALL                                                                     ");
 
             parameter.AppendSql("       SELECT '종검' AS JOBGBN, MEMO, TO_CHAR(ENTTIME, 'YYYY-MM-DD HH24:MI') ENTTIME, JOBSABUN   ");
-            parameter.AppendSql("             ,KOSMOS_OCS.FC_BAS_USER(JOBSABUN) AS JOBNAME,PTNO,ROWID AS RID    ");
-            parameter.AppendSql("         From KOSMOS_PMPA.HEA_MEMO                                             ");
+            parameter.AppendSql("             ,ADMIN.FC_BAS_USER(JOBSABUN) AS JOBNAME,PTNO,ROWID AS RID    ");
+            parameter.AppendSql("         From ADMIN.HEA_MEMO                                             ");
             parameter.AppendSql("        WHERE PTNO = :PTNO                                                     ");
             parameter.AppendSql("          AND DELDATE IS NULL                                                  ");
             if (argGubun == "D")

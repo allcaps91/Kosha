@@ -93,7 +93,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      , LUNG_RESULT072, LUNG_RESULT073, LUNG_RESULT074, LUNG_RESULT075, LUNG_RESULT076                 ");
             parameter.AppendSql("      , LUNG_RESULT077, LUNG_RESULT078, LUNG_PLACE, NEW_WOMAN37, LUNG_RESULT079, LUNG_RESULT080        ");
             parameter.AppendSql("      , LUNG_SANGDAM1, LUNG_SANGDAM2, LUNG_SANGDAM3, LUNG_SANGDAM4                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_NEW                                                                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_NEW                                                                      ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                                                                 ");
 
             parameter.Add("WRTNO", argWRTNO);
@@ -106,7 +106,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT GBSTOMACH,GBLIVER,GBRECTUM,GBBREAST,GbWomb ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_NEW                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_NEW                  ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                             ");
 
             parameter.Add("WRTNO", wRTNO);
@@ -119,7 +119,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT TO_CHAR(GunDate,'YYYY-MM-DD') GUNDATE      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_NEW                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_NEW                  ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                             ");
 
             parameter.Add("WRTNO", wRTNO);
@@ -131,7 +131,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CANCER_NEW SET                              ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CANCER_NEW SET                              ");
             parameter.AppendSql("       S_PLACE = :S_PLACE                                          ");
             parameter.AppendSql("     , C_PLACE = :C_PLACE                                          ");
             parameter.AppendSql("     , LIVER_PLACE = :LIVER_PLACE                                  ");
@@ -766,7 +766,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CANCER_NEW SET                          ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CANCER_NEW SET                          ");
             parameter.AppendSql("       PANJENGYN = :PANJENGYN                                  ");
             parameter.AppendSql(" WHERE ROWID     = :RID                                        ");
 
@@ -781,7 +781,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT GBPRINT                    ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_CANCER_NEW ");
+            parameter.AppendSql("   FROM ADMIN.HIC_CANCER_NEW ");
             parameter.AppendSql("  WHERE WRTNO  = :WRTNO            ");
 
             parameter.Add("WRTNO", fnWrtNo);
@@ -794,7 +794,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT ROWID RID, WRTNO           ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_CANCER_NEW ");
+            parameter.AppendSql("   FROM ADMIN.HIC_CANCER_NEW ");
             parameter.AppendSql("  WHERE WRTNO  = :WRTNO            ");
 
             parameter.Add("WRTNO", fnWrtNo);
@@ -806,7 +806,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CANCER_NEW SET                      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CANCER_NEW SET                      ");
             if (!strDate.IsNullOrEmpty())
             {
                 parameter.AppendSql("       TONGBODATE  = TO_DATE(:TONGBODATE, 'YYYY-MM-DD')");
@@ -837,7 +837,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CANCER_NEW (                                                               ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CANCER_NEW (                                                               ");
             parameter.AppendSql("       WRTNO,WEIGHT,NEW_SICK19,NEW_SICK20,NEW_SICK01,NEW_SICK03,NEW_SICK06,NEW_SICK08,NEW_SICK11       ");
             parameter.AppendSql("      ,NEW_SICK13,NEW_SICK16,NEW_SICK18,NEW_SICK21,NEW_SICK23,NEW_SICK26,NEW_SICK28,NEW_SICK30         ");
             parameter.AppendSql("      ,NEW_SICK25,NEW_CAN_WOMAN01,NEW_CAN_WOMAN04,NEW_CAN_WOMAN06,NEW_CAN_WOMAN09,NEW_CAN_WOMAN11      ");
@@ -848,7 +848,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,NEW_SICK25,NEW_CAN_WOMAN01,NEW_CAN_WOMAN04,NEW_CAN_WOMAN06,NEW_CAN_WOMAN09,NEW_CAN_WOMAN11      ");
             parameter.AppendSql("      ,NEW_CAN_WOMAN14,NEW_CAN_WOMAN16,NEW_CAN_WOMAN19,NEW_SICK61,NEW_SICK62,NEW_WOMAN01,NEW_WOMAN02   ");
             parameter.AppendSql("      ,NEW_WOMAN11,NEW_WOMAN14,NEW_WOMAN18,NEW_WOMAN21,NEW_WOMAN41,NEW_WOMAN27,NEW_WOMAN31             ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_CANCER_NEW                                                                       ");
+            parameter.AppendSql(" FROM ADMIN.HIC_CANCER_NEW                                                                       ");
             parameter.AppendSql("WHERE WRTNO =:NEWWRTNO                                                                                 ");
 
             parameter.Add("WRTNO", argWrtno);
@@ -861,7 +861,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_CANCER_NEW  ");
+            parameter.AppendSql("DELETE ADMIN.HIC_CANCER_NEW  ");
             parameter.AppendSql(" WHERE WRTNO  =:WRTNO              ");
 
             parameter.Add("WRTNO", argWrtno);
@@ -873,7 +873,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CANCER_NEW SET                          ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CANCER_NEW SET                          ");
             parameter.AppendSql("       LUNG_SANGDAM1 = :LUNG_SANGDAM1                          ");
             parameter.AppendSql("     , LUNG_SANGDAM2 = :LUNG_SANGDAM2                          ");
             parameter.AppendSql("     , LUNG_SANGDAM3 = TO_DATE(:LUNG_SANGDAM3, 'YYYY-MM-DD')   ");
@@ -896,7 +896,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT LUNG_SANGDAM1, LUNG_SANGDAM2                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_NEW                              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_NEW                              ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                         ");
             parameter.AppendSql(" AND (LUNG_SANGDAM1 IS NOT NULL AND LUNG_SANGDAM2 IS NOT NULL) ");
 
@@ -909,7 +909,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
                                   
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CANCER_NEW SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CANCER_NEW SET              ");
             switch (strJob)
             {
                 case "1":
@@ -952,7 +952,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT PANJENGDRNO                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_NEW      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_NEW      ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                 ");
 
             parameter.Add("WRTNO", argWrtNo);
@@ -965,7 +965,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT COUNT('X') CNT                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_NEW      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_NEW      ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                 ");
 
             parameter.Add("WRTNO", argWRTNO);
@@ -983,7 +983,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ,TO_CHAR(L_PanjengDate,'YYYY-MM-DD') L_PanjengDate    ");
             parameter.AppendSql(" ,TO_CHAR(B_PanjengDate,'YYYY-MM-DD') B_PanjengDate    ");
             parameter.AppendSql(" ,TO_CHAR(W_PanjengDate,'YYYY-MM-DD') W_PanjengDate    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_NEW                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_NEW                      ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                 ");
 
             parameter.Add("WRTNO", argWrtno);

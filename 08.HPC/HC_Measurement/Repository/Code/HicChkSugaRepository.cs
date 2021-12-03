@@ -25,12 +25,12 @@ namespace HC_Measurement.Repository
 
             parameter.AppendSql(" SELECT GJYEAR,SUCODE,SUNAME,CHKNAME,CALNAME,ACCNAME,AMT,GAMT,CHKCODE,GCODE ");
             parameter.AppendSql("      , GBUSE, ENTSABUN, ENTDATE, MCODE    ");
-            parameter.AppendSql("      , KOSMOS_PMPA.FC_HICCHUK_MCODENM(MCODE) AS MCODE_NM");
-            parameter.AppendSql("      , KOSMOS_PMPA.FC_HIC_CODE_NM('15', CHKCODE) AS HANG1");
-            parameter.AppendSql("      , KOSMOS_PMPA.FC_HIC_CODE_GCODE('15', CHKCODE) AS HANG2");
-            parameter.AppendSql("      , KOSMOS_PMPA.FC_HIC_CODE_GCODE1('15', CHKCODE) AS HANG3");
+            parameter.AppendSql("      , ADMIN.FC_HICCHUK_MCODENM(MCODE) AS MCODE_NM");
+            parameter.AppendSql("      , ADMIN.FC_HIC_CODE_NM('15', CHKCODE) AS HANG1");
+            parameter.AppendSql("      , ADMIN.FC_HIC_CODE_GCODE('15', CHKCODE) AS HANG2");
+            parameter.AppendSql("      , ADMIN.FC_HIC_CODE_GCODE1('15', CHKCODE) AS HANG3");
             parameter.AppendSql("      , ROWID AS RID  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHK_SUGA                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHK_SUGA                 ");
             parameter.AppendSql(" WHERE 1 = 1                                    ");
             parameter.AppendSql("   AND GJYEAR = :GJYEAR                         ");
             if (!argKeyWord.IsNullOrEmpty())
@@ -53,7 +53,7 @@ namespace HC_Measurement.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHK_SUGA");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHK_SUGA");
             parameter.AppendSql("   SET GJYEAR = :GJYEAR");
             parameter.AppendSql("     , SUCODE = :SUCODE");
             parameter.AppendSql("     , SUNAME = :SUNAME");
@@ -93,7 +93,7 @@ namespace HC_Measurement.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHK_SUGA");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHK_SUGA");
             parameter.AppendSql("(");
             parameter.AppendSql("    GJYEAR");
             parameter.AppendSql("  , SUCODE");
@@ -162,11 +162,11 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.ENTSABUN");
             parameter.AppendSql("     , A.ENTDATE");
             parameter.AppendSql("     , A.MCODE");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HICCHUK_MCODENM(A.MCODE) AS MCODE_NM");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_NM('15', A.CHKCODE) AS HANG1");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE('15', A.CHKCODE) AS HANG2");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE1('15', A.CHKCODE) AS HANG3");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHK_SUGA A ");
+            parameter.AppendSql("     , ADMIN.FC_HICCHUK_MCODENM(A.MCODE) AS MCODE_NM");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_NM('15', A.CHKCODE) AS HANG1");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE('15', A.CHKCODE) AS HANG2");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE1('15', A.CHKCODE) AS HANG3");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHK_SUGA A ");
             parameter.AppendSql(" WHERE A.ROWID = :RID");
 
             parameter.Add("RID", argRid);
@@ -192,11 +192,11 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.ENTSABUN");
             parameter.AppendSql("     , A.ENTDATE");
             parameter.AppendSql("     , A.MCODE");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HICCHUK_MCODENM(A.MCODE) AS MCODE_NM");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_NM('15', A.CHKCODE) AS HANG1");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE('15', A.CHKCODE) AS HANG2");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE1('15', A.CHKCODE) AS HANG3");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHK_SUGA A ");
+            parameter.AppendSql("     , ADMIN.FC_HICCHUK_MCODENM(A.MCODE) AS MCODE_NM");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_NM('15', A.CHKCODE) AS HANG1");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE('15', A.CHKCODE) AS HANG2");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE1('15', A.CHKCODE) AS HANG3");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHK_SUGA A ");
             parameter.AppendSql(" WHERE A.SUCODE = :SUCODE");
 
             parameter.Add("SUCODE", argCode);

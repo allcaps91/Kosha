@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT INWON, GAINWON, ROWID AS RID            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_SET_TIME           ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_SET_TIME           ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql("   AND SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                          ");
@@ -39,7 +39,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT INWON, GAINWON, ROWID AS RID            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_SET_TIME           ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_SET_TIME           ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql("   AND SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                          ");
@@ -57,7 +57,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SDATE, STIME, SUM(INWON ) AS INWON, SUM(GAINWON) AS GAINWON ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_SET_TIME                               ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_SET_TIME                               ");
             parameter.AppendSql(" WHERE 1 = 1                                                       ");
             parameter.AppendSql("   AND SDATE  = TO_DATE(:SDATE, 'YYYY-MM-DD')                      ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                                              ");
@@ -74,7 +74,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE FROM KOSMOS_PMPA.HEA_RESV_SET_TIME      ");
+            parameter.AppendSql("DELETE FROM ADMIN.HEA_RESV_SET_TIME      ");
             parameter.AppendSql(" WHERE SDATE >=TO_DATE(:FDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND SDATE <=TO_DATE(:TDATE, 'YYYY-MM-DD')   ");
 
@@ -88,7 +88,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT STIME, INWON, GAINWON, ROWID AS RID             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_SET_TIME                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_SET_TIME                   ");
             parameter.AppendSql(" WHERE 1 = 1                                           ");
             parameter.AppendSql("   AND SDATE  = TO_DATE(:SDATE, 'YYYY-MM-DD')          ");
             parameter.AppendSql("   AND GUBUN  = :GUBUN                                 ");
@@ -103,7 +103,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_RESV_SET_TIME (                            ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_RESV_SET_TIME (                            ");
             parameter.AppendSql("       SDATE,STIME,GUBUN,ENTSABUN,ENTTIME,INWON,GAINWON)               ");
             parameter.AppendSql(" VALUES (                                                              ");
             parameter.AppendSql("      TO_DATE(:SDATE,'YYYY-MM-DD'),:STIME,:GUBUN,:ENTSABUN,SYSDATE     ");
@@ -124,7 +124,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESV_SET_TIME   ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESV_SET_TIME   ");
             parameter.AppendSql("   SET INWON     =:INWON               ");
             parameter.AppendSql("      ,GAINWON   =:GAINWON             ");
             parameter.AppendSql("      ,STIME     =:STIME               ");

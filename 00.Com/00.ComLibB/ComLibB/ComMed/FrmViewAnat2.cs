@@ -121,11 +121,11 @@ namespace ComLibB
                 SQL = "";
                 SQL += " SELECT A.*                                                                                                                                         \r";
                 SQL += "   , (SELECT TRIM(SUNAMEK)                                                                                                                          \r";
-                SQL += "        FROM KOSMOS_PMPA.BAS_SUN                                                                                                                    \r";
+                SQL += "        FROM ADMIN.BAS_SUN                                                                                                                    \r";
                 SQL += "       WHERE SUNEXT = '" + strSuCode.PadRight(12, ' ') +        "'                                                                                  \r";
                 SQL += "     ) AS SUNAMEK                                                                                                                                   \r";
 
-                SQL += "   FROM KOSMOS_OCS.EXAM_ANATMST A                                                                                                                   \r";
+                SQL += "   FROM ADMIN.EXAM_ANATMST A                                                                                                                   \r";
                 SQL += "  WHERE PTNO      = '" + (clsOrdFunction.Pat.PtNo != null ? clsOrdFunction.Pat.PtNo.Trim() : "") + "'                                               \r";
                 SQL += "    AND BDATE     = TO_DATE('" + clsOrdFunction.GstrBDate + "','YYYY-MM-DD')                                                                        \r";
                 SQL += "    AND ORDERCODE = '" + strAnatCode.Trim() + "'                                                                                                    \r";
@@ -171,7 +171,7 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL += "   SELECT TRIM(SUNAMEK)  AS SUNAMEK                                                                                                       \r";
-                    SQL += "     FROM KOSMOS_PMPA.BAS_SUN                                                                                                             \r";
+                    SQL += "     FROM ADMIN.BAS_SUN                                                                                                             \r";
                     SQL += "    WHERE SUNEXT = '" + strSuCode.PadRight(12, ' ') + "'                                                                                  \r";
 
                     SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -340,7 +340,7 @@ namespace ComLibB
                 if (rdoCP0.Checked)
                 {
                     SQL = "";
-                    SQL += " SELECT ROWID FROM KOSMOS_OCS.EXAM_ANATMST                                  \r";
+                    SQL += " SELECT ROWID FROM ADMIN.EXAM_ANATMST                                  \r";
                     SQL += "  WHERE Ptno      = '" + clsOrdFunction.Pat.PtNo + "'                       \r";
                     SQL += "    AND BDate     = TO_DATE('" + clsOrdFunction.GstrBDate + "','YYYY-MM-DD')\r";
                     SQL += "    AND OrderCode = '" + strAnatCode.Trim() + "'                            \r";
@@ -364,7 +364,7 @@ namespace ComLibB
 
 
                     SQL = "";
-                    SQL += "   merge into KOSMOS_OCS.EXAM_ANATMST b                                     \r";
+                    SQL += "   merge into ADMIN.EXAM_ANATMST b                                     \r";
                     SQL += "   using dual d                                                             \r";
                     SQL += "      on (b.ROWID = '" + strRowId + "'                                      \r";
                     SQL += "     AND  b.PTNO = '" + clsOrdFunction.Pat.PtNo + "'                        \r";
@@ -420,7 +420,7 @@ namespace ComLibB
                 else
                 {
                     SQL = "";
-                    SQL += " SELECT ROWID FROM KOSMOS_OCS.EXAM_ANATMST_CP                               \r";
+                    SQL += " SELECT ROWID FROM ADMIN.EXAM_ANATMST_CP                               \r";
                     SQL += "  WHERE CPCODE      = '" + lstCode[cboCP.SelectedIndex] + "'                \r";
                     SQL += "    AND OrderCode = '" + strAnatCode.Trim() + "'                            \r";
 
@@ -440,7 +440,7 @@ namespace ComLibB
                     dt = null;
 
                     SQL = "";
-                    SQL += "   merge into KOSMOS_OCS.EXAM_ANATMST_CP b                                  \r";
+                    SQL += "   merge into ADMIN.EXAM_ANATMST_CP b                                  \r";
                     SQL += "   using dual d                                                             \r";
                     SQL += "      on (b.ROWID  = '" + strRowId + "'                                     \r";
                     SQL += "     AND  b.CPCODE = '" + lstCode[cboCP.SelectedIndex] + "'                 \r";                    
@@ -531,7 +531,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT JUMIN1,JUMIN2, JUMIN3                       \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_PATIENT                     \r";
+                SQL += "   FROM ADMIN.BAS_PATIENT                     \r";
                 SQL += "  WHERE PANO = '" + clsOrdFunction.Pat.PtNo + "'    \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")

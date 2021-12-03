@@ -60,7 +60,7 @@ namespace ComPmpaLibB
             try
             {
                 SQL = "";
-                SQL += ComNum.VBLF + " SELECT PANO,  KOSMOS_OCS.FC_BAS_PATIENT_SNAME(PANO) SNAME, TO_CHAR(INDATE,'YYYY-MM-DD') INDATE, ";
+                SQL += ComNum.VBLF + " SELECT PANO,  ADMIN.FC_BAS_PATIENT_SNAME(PANO) SNAME, TO_CHAR(INDATE,'YYYY-MM-DD') INDATE, ";
                 SQL += ComNum.VBLF + "        TO_CHAR(OUTDATE,'YYYY-MM-DD') OUTDATE, SANGAMT, AMT55";
                 //SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "IPD_SAN_MASTER";
                 SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "IPD_TRANS";
@@ -103,7 +103,7 @@ namespace ComPmpaLibB
                     ssView_Sheet1.Cells[i, 1].Text = dt.Rows[i]["SNAME"].ToString().Trim();
 
                     SQL = "";
-                    SQL += ComNum.VBLF + " SELECT DEPTCODE, DRCODE, KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
+                    SQL += ComNum.VBLF + " SELECT DEPTCODE, DRCODE, ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
                     SQL += ComNum.VBLF + "        ROOMCODE";
                     SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "IPD_NEW_MASTER";
                     SQL += ComNum.VBLF + "  WHERE 1 = 1";

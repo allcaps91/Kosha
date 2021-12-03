@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GAMCODE,  GAMMESSAGE                    ");
             parameter.AppendSql("     , TO_CHAR(GamEnd, 'YYYY-MM-DD') GamEnd    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_GAMF                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_GAMF                    ");
             parameter.AppendSql(" WHERE GamJumin3 = :JUMIN                      ");
 
             parameter.Add("JUMIN", JUMIN);

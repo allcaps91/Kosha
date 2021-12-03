@@ -541,14 +541,14 @@ namespace ComPmpaLibB
             {
                 if (strROWID == "")
                 {
-                    SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_PMPA.WORK_IPD_JANGI ( BDATE,PANO,IPDNO,TRSNO,GBYN,REMARK,OUTDATE) ";
+                    SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.WORK_IPD_JANGI ( BDATE,PANO,IPDNO,TRSNO,GBYN,REMARK,OUTDATE) ";
                     SQL = SQL + ComNum.VBLF + " VALUES (  TO_DATE('" + strBDate + "','YYYY-MM-DD') ,'" + strPano + "',";
                     SQL = SQL + ComNum.VBLF + "  " + nIpdNo + "," + nTRSNo + ",'" + strGbYN + "','" + strRemark + "',TO_DATE('" + strTDate + "','YYYY-MM-DD') ) ";
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 }
                 else if (strROWID != "" && strCHK == "Y")
                 {
-                    SQL = SQL + ComNum.VBLF + " UPDATE KOSMOS_PMPA.WORK_IPD_JANGI SET ";
+                    SQL = SQL + ComNum.VBLF + " UPDATE ADMIN.WORK_IPD_JANGI SET ";
                     SQL = SQL + ComNum.VBLF + "  GBYN ='" + strGbYN + "',";
                     SQL = SQL + ComNum.VBLF + "  OUTDATE =TO_DATE('" + strTDate + "','YYYY-MM-DD'), ";
                     SQL = SQL + ComNum.VBLF + "  REMARK ='" + strRemark + "' ";
@@ -557,7 +557,7 @@ namespace ComPmpaLibB
                 }
                 else
                 {
-                    SQL = SQL + ComNum.VBLF + " UPDATE KOSMOS_PMPA.WORK_IPD_JANGI SET ";
+                    SQL = SQL + ComNum.VBLF + " UPDATE ADMIN.WORK_IPD_JANGI SET ";
                     SQL = SQL + ComNum.VBLF + "  GBYN ='" + strGbYN + "',";
                     SQL = SQL + ComNum.VBLF + "  OUTDATE =TO_DATE('" + strTDate + "','YYYY-MM-DD'), ";
                     SQL = SQL + ComNum.VBLF + "  REMARK ='" + strRemark + "' ";

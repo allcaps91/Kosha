@@ -96,8 +96,8 @@ namespace ComMedLibB
                     SQL = SQL + ComNum.VBLF + "      TO_CHAR(A.ORDERDATE,'YYYY-MM-DD HH24:MI') ORDERDATE,";
                     SQL = SQL + ComNum.VBLF + "      TO_CHAR(A.RECEIVEDATE,'YYYY-MM-DD HH24:MI') RECEIVEDATE,";
                     SQL = SQL + ComNum.VBLF + "      TO_CHAR(A.RESULTDATE,'YYYY-MM-DD HH24:MI') RESULTDATE ";
-                    SQL = SQL + ComNum.VBLF + " ,    (SELECT NAME FROM KOSMOS_OCS.EXAM_SPECODE WHERE GUBUN = '14' AND CODE = A.SPECCODE AND ROWNUM = 1) AS BASCODE ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_SPECMST A";
+                    SQL = SQL + ComNum.VBLF + " ,    (SELECT NAME FROM ADMIN.EXAM_SPECODE WHERE GUBUN = '14' AND CODE = A.SPECCODE AND ROWNUM = 1) AS BASCODE ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_SPECMST A";
                     SQL = SQL + ComNum.VBLF + " WHERE A.IPDOPD IN ('O') ";
 
                     if (Convert.ToDateTime(GstrBDate).AddDays(-21) >= Convert.ToDateTime(GstrInDate))
@@ -129,16 +129,16 @@ namespace ComMedLibB
                     SQL = SQL + ComNum.VBLF + "      TO_CHAR(A.ORDERDATE,'YYYY-MM-DD HH24:MI') ORDERDATE,";
                     SQL = SQL + ComNum.VBLF + "      TO_CHAR(A.RECEIVEDATE,'YYYY-MM-DD HH24:MI') RECEIVEDATE,";
                     SQL = SQL + ComNum.VBLF + "      TO_CHAR(A.RESULTDATE,'YYYY-MM-DD HH24:MI') RESULTDATE, SUM(B.QTY*B.NAL) ";
-                    SQL = SQL + ComNum.VBLF + " ,    (SELECT NAME FROM KOSMOS_OCS.EXAM_SPECODE WHERE GUBUN = '14' AND CODE = A.SPECCODE AND ROWNUM = 1) AS BASCODE ";
+                    SQL = SQL + ComNum.VBLF + " ,    (SELECT NAME FROM ADMIN.EXAM_SPECODE WHERE GUBUN = '14' AND CODE = A.SPECCODE AND ROWNUM = 1) AS BASCODE ";
 
                     if (rdoExam0.Checked == true)
                     {
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_SPECMST A, KOSMOS_OCS.OCS_IORDER B";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_SPECMST A, ADMIN.OCS_IORDER B";
                         SQL = SQL + ComNum.VBLF + " WHERE A.IPDOPD = 'I'";
                     }
                     else
                     {
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_SPECMST A, KOSMOS_OCS.OCS_IORDER B";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_SPECMST A, ADMIN.OCS_IORDER B";
                         SQL = SQL + ComNum.VBLF + " WHERE A.IPDOPD IN ('O','I') ";
                     }
 
@@ -283,7 +283,7 @@ namespace ComMedLibB
 
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT B.WSCODE1,B.WSCODE1POS,A.MASTERCODE,B.EXAMNAME,COUNT(A.MASTERCODE) CNT ";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_RESULTC A,KOSMOS_OCS.EXAM_MASTER B ";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EXAM_RESULTC A,ADMIN.EXAM_MASTER B ";
             SQL = SQL + ComNum.VBLF + " WHERE A.SPECNO = '" + strSpecNo + "' ";
             SQL = SQL + ComNum.VBLF + "   AND A.MASTERCODE = A.SUBCODE ";
             SQL = SQL + ComNum.VBLF + "   AND A.MASTERCODE = B.MASTERCODE(+) ";
@@ -330,7 +330,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL = "SELECT NAME      ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.EXAM_SPECODE ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.EXAM_SPECODE ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN ='14' "; //'검체;
                 SQL = SQL + ComNum.VBLF + "    AND CODE = '" + argCode + "' ";
 

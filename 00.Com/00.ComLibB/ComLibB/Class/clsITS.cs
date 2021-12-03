@@ -100,7 +100,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += "   merge into KOSMOS_OCS.EXAM_INFECT_MASTER a                                   \r";
+                SQL += "   merge into ADMIN.EXAM_INFECT_MASTER a                                   \r";
                 SQL += "   using dual b                                                                 \r";
                 SQL += "      on (a.PTNO = '" + clsOrdFunction.Pat.PtNo + "'                            \r";
                 SQL += "     and  a.GUBUN = '06'                                                        \r";

@@ -2893,7 +2893,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT                                   ";
                 SQL = SQL + ComNum.VBLF + "    PTNO, SEQNO, KCDCODE, SORT           ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_MILLS              ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_MILLS              ";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + strPano + "'          ";
                 SQL = SQL + ComNum.VBLF + "   AND BARCODE = '" + strBarCode + "'    ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY SORT                           ";
@@ -2922,7 +2922,7 @@ namespace ComLibB
                     //'응급실
                     SQL = "";
                     SQL = SQL + ComNum.VBLF + " SELECT PANO, MAX(TO_CHAR(BDATE,'YYYY-MM-DD')) AS BDATE";
-                    SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.OPD_MASTER om";
+                    SQL = SQL + ComNum.VBLF + "   FROM ADMIN.OPD_MASTER om";
                     SQL = SQL + ComNum.VBLF + "  WHERE om.PANO = '" + strPano + "' ";
                     SQL = SQL + ComNum.VBLF + "    AND om.DEPTCODE = 'ER'";
                     SQL = SQL + ComNum.VBLF + "    AND TRUNC(om.BDATE) <= TO_DATE('" + strBdate + "','YYYY-MM-DD')";
@@ -2954,8 +2954,8 @@ namespace ComLibB
                         SQL = SQL + ComNum.VBLF + "     END AS KCDCODE, ";
                         SQL = SQL + ComNum.VBLF + "     ROWNUM AS SORT, ";
                         SQL = SQL + ComNum.VBLF + "     oe.ROWID ";
-                        SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_EILLS oe ";
-                        SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_PMPA.BAS_ILLS bi ";
+                        SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_EILLS oe ";
+                        SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.BAS_ILLS bi ";
                         SQL = SQL + ComNum.VBLF + "    ON oe.ILLCODE = bi.ILLCODE ";
                         SQL = SQL + ComNum.VBLF + "   AND bi.DDATE IS NULL ";
                         SQL = SQL + ComNum.VBLF + "   AND bi.ILLCLASS <> 'C' ";
@@ -3006,8 +3006,8 @@ namespace ComLibB
                         SQL = SQL + ComNum.VBLF + "     END  AS KCDCODE,";
                         SQL = SQL + ComNum.VBLF + "     ROWNUM AS SORT, ";
                         SQL = SQL + ComNum.VBLF + "     oo.ROWID";
-                        SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_OILLS oo";
-                        SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_PMPA.BAS_ILLS bi";
+                        SQL = SQL + ComNum.VBLF + "   FROM ADMIN.OCS_OILLS oo";
+                        SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.BAS_ILLS bi";
                         SQL = SQL + ComNum.VBLF + "     ON oo.ILLCODE = bi.ILLCODE";
                         //SQL = SQL + ComNum.VBLF + "    AND bi.KCD7 = '*' ";
                         SQL = SQL + ComNum.VBLF + "    AND bi.DDATE IS NULL ";
@@ -3042,7 +3042,7 @@ namespace ComLibB
                         //입원
                         SQL = "";
                         SQL = SQL + ComNum.VBLF + " SELECT PANO, MAX(TO_CHAR(INDATE,'YYYY-MM-DD')) AS INDATE";
-                        SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.IPD_NEW_MASTER inm";
+                        SQL = SQL + ComNum.VBLF + "   FROM ADMIN.IPD_NEW_MASTER inm";
                         SQL = SQL + ComNum.VBLF + "  WHERE inm.PANO = '" + strPano + "' ";
                         //SQL = SQL + ComNum.VBLF + "    AND inm.DEPTCODE = '" + strDept + "'";
                         SQL = SQL + ComNum.VBLF + "    AND TRUNC(inm.INDATE) <= TO_DATE('" + strBdate + "','YYYY-MM-DD')";
@@ -3079,11 +3079,11 @@ namespace ComLibB
                             SQL = SQL + ComNum.VBLF + "  FROM ";
                             SQL = SQL + ComNum.VBLF + "(SELECT ";
                             SQL = SQL + ComNum.VBLF + "     PTNO, ILLCODE ";
-                            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_IILLS ";
+                            SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_IILLS ";
                             SQL = SQL + ComNum.VBLF + "WHERE PTNO = '" + strPano + "' ";
                             SQL = SQL + ComNum.VBLF + "  AND BDATE >= TO_DATE('" + dt.Rows[0]["INDATE"].ToString().Trim() + "','YYYY-MM-DD')";
                             SQL = SQL + ComNum.VBLF + "GROUP BY PTNO, ILLCODE) oi ";
-                            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_ILLS bi ";
+                            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_ILLS bi ";
                             SQL = SQL + ComNum.VBLF + "   ON oi.ILLCODE = bi.ILLCODE ";
                             SQL = SQL + ComNum.VBLF + "  AND bi.DDATE IS NULL ";
                             SQL = SQL + ComNum.VBLF + "  AND bi.ILLCLASS <> 'C' ";
@@ -3105,8 +3105,8 @@ namespace ComLibB
                          //   SQL = SQL + ComNum.VBLF + "     ROWNUM AS SORT, ";
                          //   SQL = SQL + ComNum.VBLF + "     oi.MAIN,";
                          //   SQL = SQL + ComNum.VBLF + "     oi.ROWID";
-                         //   SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_IILLS oi";
-                         //   SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_PMPA.BAS_ILLS bi";
+                         //   SQL = SQL + ComNum.VBLF + "   FROM ADMIN.OCS_IILLS oi";
+                         //   SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.BAS_ILLS bi";
                          //   SQL = SQL + ComNum.VBLF + "     ON oi.ILLCODE = bi.ILLCODE";
                          //   //SQL = SQL + ComNum.VBLF + "    AND bi.KCD7 = '*' ";
                          //   SQL = SQL + ComNum.VBLF + "    AND bi.DDATE IS NULL ";
@@ -3170,7 +3170,7 @@ namespace ComLibB
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_OCS.OCS_MILLS                                 ";
+                SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.OCS_MILLS                                 ";
                 SQL = SQL + ComNum.VBLF + "(                                                                ";
                 SQL = SQL + ComNum.VBLF + "    PTNO, SEQNO, BDATE, DEPTCODE, DRCODE, ILLCODE, KCDCODE, SORT, BARCODE ";
                 SQL = SQL + ComNum.VBLF + ")                                                                ";

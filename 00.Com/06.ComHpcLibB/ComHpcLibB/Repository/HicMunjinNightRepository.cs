@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID RID                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MUNJIN_NIGHT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MUNJIN_NIGHT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -35,7 +35,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_MUNJIN_NIGHT                                       ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_MUNJIN_NIGHT                                       ");
             parameter.AppendSql("        (WRTNO, ITEM1_DATA, ITEM1_JEMSU, ITEM1_PANJENG, EntDate, ENTSABUN)     ");
             parameter.AppendSql(" VALUES                                                                        ");
             parameter.AppendSql("        (:WRTNO, :ITEM1_DATA, :ITEM1_JEMSU, :ITEM1_PANJENG, SYSDATE, :ENTSABUN)");
@@ -58,7 +58,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , ITEM4_DATA, ITEM4_JEMSU, ITEM4_PANJENG          ");
             parameter.AppendSql("     , ITEM5_DATA, ITEM5_JEMSU, ITEM5_PANJENG          ");
             parameter.AppendSql("     , ENTDATE, ENTSABUN                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MUNJIN_NIGHT                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MUNJIN_NIGHT                    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                  ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -69,7 +69,7 @@ namespace ComHpcLibB.Repository
         public int SavebyWrtNo(HIC_MUNJIN_NIGHT item, string strGubun)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("MERGE INTO KOSMOS_PMPA.HIC_MUNJIN_NIGHT a                                  ");
+            parameter.AppendSql("MERGE INTO ADMIN.HIC_MUNJIN_NIGHT a                                  ");
             parameter.AppendSql("using dual d                                                               ");
             parameter.AppendSql("   on (a.WRTNO     = :WRTNO)                                               ");
             parameter.AppendSql(" when matched then                                                         ");
@@ -133,7 +133,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , ITEM4_DATA, ITEM4_JEMSU, ITEM4_PANJENG  ");
             parameter.AppendSql("     , ITEM5_DATA, ITEM5_JEMSU, ITEM5_PANJENG  ");
             parameter.AppendSql("     , ENTDATE, ENTSABUN               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MUNJIN_NIGHT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MUNJIN_NIGHT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", argWrtNo);
@@ -145,7 +145,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MUNJIN_NIGHT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MUNJIN_NIGHT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", argWrtNo);
@@ -157,7 +157,7 @@ namespace ComHpcLibB.Repository
         public int UpDate(HIC_MUNJIN_NIGHT Item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_PMPA.HIC_MUNJIN_NIGHT               ");
+            parameter.AppendSql(" UPDATE ADMIN.HIC_MUNJIN_NIGHT               ");
             parameter.AppendSql("    SET ITEM4_PANJENG = :PANJENG1                  ");
             parameter.AppendSql("       ,ITEM5_PANJENG = :PANJENG2                  ");
             parameter.AppendSql(" WHERE 1 = 1                                       ");
@@ -177,7 +177,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_MUNJIN_NIGHT    ");
+            parameter.AppendSql("DELETE ADMIN.HIC_MUNJIN_NIGHT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", argWrtno);

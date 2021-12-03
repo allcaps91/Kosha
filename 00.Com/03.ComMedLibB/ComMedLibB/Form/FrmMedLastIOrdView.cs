@@ -1593,7 +1593,7 @@ namespace ComMedLibB
 
             //            SSOrder.Col = 17: strSuCode = Trim(SSOrder.Text)
             //            GstrSQL = " SELECT    SuGbN "
-            //            GstrSQL = GstrSQL & " FROM KOSMOS_PMPA.BAS_SUN  "
+            //            GstrSQL = GstrSQL & " FROM ADMIN.BAS_SUN  "
             //            GstrSQL = GstrSQL & "WHERE SuNext = '" & Trim(SSOrder.Text) & "' "
             //            GstrSQL = GstrSQL & "  AND SuGbN  = '1' "
             //            result = AdoOpenSet(AdoRes, GstrSQL)

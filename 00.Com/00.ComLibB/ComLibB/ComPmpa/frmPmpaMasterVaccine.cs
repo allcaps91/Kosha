@@ -487,7 +487,7 @@ namespace ComLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT ROWID ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.VACCINE_TPATIENT ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.VACCINE_TPATIENT ";
             SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
             SQL += ComNum.VBLF + "   AND PANO = '" + txtPtno.Text + "' ";
             SqlErr = clsDB.GetDataTableEx(ref Dt, SQL, clsDB.DbCon);
@@ -731,7 +731,7 @@ namespace ComLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT ROWID ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.VACCINE_TPATIENT ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.VACCINE_TPATIENT ";
             SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
             SQL += ComNum.VBLF + "   AND PANO = '" + txtPtno.Text + "' ";
             SqlErr = clsDB.GetDataTableEx(ref Dt, SQL, clsDB.DbCon);

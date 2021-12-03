@@ -968,7 +968,7 @@ namespace ComLibB
                 //SQL += "  from(                                                                                         \r";
                 //SQL += "       SELECT ''                                                                                \r";
                 //SQL += "           , (select ordername                                                                  \r";
-                //SQL += "                from KOSMOS_OCS.OCS_ORDERCODE                                                   \r";
+                //SQL += "                from ADMIN.OCS_ORDERCODE                                                   \r";
                 //SQL += "               where slipno = a.slipno                                                          \r";
                 //SQL += "                 and seqno = 0 ) slipname                                                       \r";
                 //SQL += "          , a.OrderCode, ''                                                                     \r";                
@@ -988,10 +988,10 @@ namespace ComLibB
                 //SQL += "          , a.Speccode,  a.GbDosage,  a.Slipno,      '' SPECNAME                                \r";
                 //SQL += "          , a.GbImiv,    '' INPUTSEQ, a.SubRate,     SENDDEPT                                   \r";
                 //SQL += "          , '' temp1, '' temp2, a.CBUN                                                          \r";
-                //SQL += "          , KOSMOS_OCS.FC_DRUG_OUTCHK(B.SUCODE, a.CBUN) DELOUTSTAT                              \r";
-                //SQL += "       FROM kosmos_ocs.ocs_ordercode a                                                          \r";
-                //SQL += "          , kosmos_pmpa.bas_sut      b                                                          \r";
-                //SQL += "          , kosmos_pmpa.bas_sun      c                                                          \r";
+                //SQL += "          , ADMIN.FC_DRUG_OUTCHK(B.SUCODE, a.CBUN) DELOUTSTAT                              \r";
+                //SQL += "       FROM ADMIN.ocs_ordercode a                                                          \r";
+                //SQL += "          , ADMIN.bas_sut      b                                                          \r";
+                //SQL += "          , ADMIN.bas_sun      c                                                          \r";
                 //SQL += "      WHERE a.SuCode = b.SuCode(+)                                                              \r";
                 //SQL += "        AND a.SuCode = c.SuNext(+)                                                              \r";
                 //SQL += "        AND a.Seqno <> 0                                                                        \r";
@@ -1004,7 +1004,7 @@ namespace ComLibB
                 //SQL += "        AND(b.SugbJ <> '2' OR b.SugbJ IS NULL)                                                  \r";
                 //SQL += "        AND a.SLIPNO NOT IN ('0106', 'MD')                                                      \r";    //자가약 제외
                 //SQL += "        AND (a.GBSUB <> '1' OR a.GBSUB IS NULL)                                                 \r";
-                //SQL += "        AND a.SLIPNO NOT IN(select trim(deptcode) from kosmos_pmpa.bas_clinicdept where gbjupsu = '1') \r"; //과처방 제외
+                //SQL += "        AND a.SLIPNO NOT IN(select trim(deptcode) from ADMIN.bas_clinicdept where gbjupsu = '1') \r"; //과처방 제외
                 //SQL += "        AND(upper(a.ordercode)  like '" + "%" + strSearch + "%" + "'                            \r";
                 //SQL += "         or upper(c.sunameg)    like '" + "%" + strSearch + "%" + "'                            \r";
                 //SQL += "         or upper(a.ordername)  like '" + "%" + strSearch + "%" + "'                            \r";
@@ -1023,32 +1023,32 @@ namespace ComLibB
                 //SQL += "      UNION ALL                                                                                 \r";
                 //SQL += "     SELECT ''                                                                                  \r";
                 //SQL += "          , (select ordername                                                                   \r";
-                //SQL += "               from KOSMOS_OCS.OCS_ORDERCODE                                                    \r";
-                //SQL += "              where slipno = (select slipno from kosmos_ocs.ocs_ordercode where ordercode = a.sunext)\r";
+                //SQL += "               from ADMIN.OCS_ORDERCODE                                                    \r";
+                //SQL += "              where slipno = (select slipno from ADMIN.ocs_ordercode where ordercode = a.sunext)\r";
                 //SQL += "                and seqno = 0 ) slipname                                                        \r";
                 //SQL += "          , a.sunext, ''                                                                        \r";
                 //SQL += "          , RPAD(NVL(a.UNIT, '                    ') , 20) || a.HNAME ordername                 \r";
                 //SQL += "          , '' remark                                                                           \r";
                 //SQL += "          , '1' GbInput,  '' GBINFO,   '' GBBOTH                                                \r";
-                //SQL += "          , (select bun from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) Bun           \r";
+                //SQL += "          , (select bun from ADMIN.ocs_ordercode where ordercode = a.sunext) Bun           \r";
                 //SQL += "          , '' NEXTCODE,  A.sunext,      '' INFO                                                \r";
-                //SQL += "          , (select SPECCODE from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) Speccode \r";
-                //SQL += "          , (select GbDosage from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) GbDosage \r";
-                //SQL += "          , (select SLIPNO from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) Slipno     \r";
+                //SQL += "          , (select SPECCODE from ADMIN.ocs_ordercode where ordercode = a.sunext) Speccode \r";
+                //SQL += "          , (select GbDosage from ADMIN.ocs_ordercode where ordercode = a.sunext) GbDosage \r";
+                //SQL += "          , (select SLIPNO from ADMIN.ocs_ordercode where ordercode = a.sunext) Slipno     \r";
                 //SQL += "          , '' SPECNAME                                                                         \r";
-                //SQL += "          , (select GBIMIV from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) GbImiv     \r";
+                //SQL += "          , (select GBIMIV from ADMIN.ocs_ordercode where ordercode = a.sunext) GbImiv     \r";
                 //SQL += "          , '' INPUTSEQ                                                                         \r";
-                //SQL += "          , (select SUBRATE from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) SubRate   \r";
-                //SQL += "          , (select SENDDEPT from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) SENDDEPT \r";
-                //SQL += "          , '' temp1, '' temp2, (select CBUN from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) CBUN \r";
-                //SQL += "          , KOSMOS_OCS.FC_DRUG_OUTCHK(a.SUNEXT, (select CBUN from kosmos_ocs.ocs_ordercode where ordercode = a.sunext)) DELOUTSTAT  \r";
-                //SQL += "       FROM KOSMOS_OCS.OCS_DRUGINFO_new  A                                                      \r";
-                //SQL += "          , KOSMOS_ADM.DRUG_JEP          B                                                      \r";
+                //SQL += "          , (select SUBRATE from ADMIN.ocs_ordercode where ordercode = a.sunext) SubRate   \r";
+                //SQL += "          , (select SENDDEPT from ADMIN.ocs_ordercode where ordercode = a.sunext) SENDDEPT \r";
+                //SQL += "          , '' temp1, '' temp2, (select CBUN from ADMIN.ocs_ordercode where ordercode = a.sunext) CBUN \r";
+                //SQL += "          , ADMIN.FC_DRUG_OUTCHK(a.SUNEXT, (select CBUN from ADMIN.ocs_ordercode where ordercode = a.sunext)) DELOUTSTAT  \r";
+                //SQL += "       FROM ADMIN.OCS_DRUGINFO_new  A                                                      \r";
+                //SQL += "          , ADMIN.DRUG_JEP          B                                                      \r";
                 //SQL += "      WHERE A.SUNEXT = B.JEPCODE(+)                                                             \r";
                 //SQL += "        AND B.DELDATE IS NULL                                                                   \r";
                 //if (clsOrdFunction.GstrSlipSearch == "Y")
                 //{
-                //    SQL += "    AND (select slipno from kosmos_ocs.ocs_ordercode where ordercode = a.sunext             \r";
+                //    SQL += "    AND (select slipno from ADMIN.ocs_ordercode where ordercode = a.sunext             \r";
                 //    SQL += "                and seqno = 0 ) = '" + clsOrdFunction.GstrSelSlipno.Trim() + "'             \r";
                 //}
                 //SQL += "        AND (upper(A.SName) LIKE '" + "%" + strSearch + "%" + "'                                \r";
@@ -1073,7 +1073,7 @@ namespace ComLibB
                 SQL += "  from(                                                                                         \r";
                 SQL += "       SELECT ''                                                                                \r";
                 SQL += "           , (select ordername                                                                  \r";
-                SQL += "                from KOSMOS_OCS.OCS_ORDERCODE                                                   \r";
+                SQL += "                from ADMIN.OCS_ORDERCODE                                                   \r";
                 SQL += "               where slipno = a.slipno                                                          \r";
                 SQL += "                 and seqno = 0 ) slipname                                                       \r";
                 SQL += "          , a.OrderCode, ''                                                                     \r";
@@ -1092,13 +1092,13 @@ namespace ComLibB
                 SQL += "          , a.Speccode,  a.GbDosage,  a.Slipno,      '' SPECNAME                                \r";
                 SQL += "          , a.GbImiv,    '' INPUTSEQ, a.SubRate,     SENDDEPT                                   \r";
                 SQL += "          , '' temp1, '' temp2, a.CBUN                                                          \r";
-                SQL += "          , KOSMOS_OCS.FC_DRUG_OUTCHK(B.SUCODE, a.CBUN) DELOUTSTAT                              \r";
-                SQL += "       FROM kosmos_ocs.ocs_ordercode a                                                          \r";
-                SQL += "       LEFT OUTER JOIN kosmos_pmpa.bas_sut b                                                    \r";
+                SQL += "          , ADMIN.FC_DRUG_OUTCHK(B.SUCODE, a.CBUN) DELOUTSTAT                              \r";
+                SQL += "       FROM ADMIN.ocs_ordercode a                                                          \r";
+                SQL += "       LEFT OUTER JOIN ADMIN.bas_sut b                                                    \r";
                 SQL += "         ON a.SuCode = b.SuCode                                                                 \r";
                 SQL += "        AND (B.DELDATE IS NULL OR B.DELDATE > TRUNC(SYSDATE))                                   \r";
                 SQL += "        AND (b.SugbJ <> '2' OR b.SugbJ IS NULL)                                                 \r";
-                SQL += "       LEFT OUTER JOIN kosmos_pmpa.bas_sun c                                                    \r";
+                SQL += "       LEFT OUTER JOIN ADMIN.bas_sun c                                                    \r";
                 SQL += "         ON a.SuCode = c.SuNext                                                                 \r";                
                 SQL += "      WHERE a.Seqno <> 0                                                                        \r";                
                 if (clsPublic.GstrIpAddress != "192.168.2.15")
@@ -1119,7 +1119,7 @@ namespace ComLibB
                 }
                 //SQL += "        AND a.SLIPNO NOT IN ('0106', 'MD')                                                      \r";    //자가약 제외
                 SQL += "        AND (a.GBSUB <> '1' OR a.GBSUB IS NULL)                                                 \r";
-                SQL += "        AND a.SLIPNO NOT IN(select trim(deptcode) from kosmos_pmpa.bas_clinicdept where gbjupsu = '1') \r"; //과처방 제외
+                SQL += "        AND a.SLIPNO NOT IN(select trim(deptcode) from ADMIN.bas_clinicdept where gbjupsu = '1') \r"; //과처방 제외
                 SQL += "        AND(upper(a.ordercode)  like '" + "%" + strSearch + "%" + "'                            \r";
                 SQL += "         or upper(c.sunameg)    like '" + "%" + strSearch + "%" + "'                            \r";
                 SQL += "         or upper(a.ordername)  like '" + "%" + strSearch + "%" + "'                            \r";
@@ -1137,32 +1137,32 @@ namespace ComLibB
                 SQL += "     UNION ALL                                                                                 \r";
                 SQL += "     SELECT ''                                                                                  \r";
                 SQL += "          , (select ordername                                                                   \r";
-                SQL += "               from KOSMOS_OCS.OCS_ORDERCODE                                                    \r";
-                SQL += "              where slipno = (select slipno from kosmos_ocs.ocs_ordercode where ordercode = a.sunext)\r";
+                SQL += "               from ADMIN.OCS_ORDERCODE                                                    \r";
+                SQL += "              where slipno = (select slipno from ADMIN.ocs_ordercode where ordercode = a.sunext)\r";
                 SQL += "                and seqno = 0 ) slipname                                                        \r";
                 SQL += "          , a.sunext, ''                                                                        \r";
                 SQL += "          , RPAD(NVL(a.UNIT, '                    ') , 20) || a.HNAME ordername                 \r";
                 SQL += "          , '' remark                                                                           \r";
                 SQL += "          , '1' GbInput,  '' GBINFO,   '' GBBOTH                                                \r";
-                SQL += "          , (select bun from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) Bun           \r";
+                SQL += "          , (select bun from ADMIN.ocs_ordercode where ordercode = a.sunext) Bun           \r";
                 SQL += "          , '' NEXTCODE,  A.sunext,      '' INFO                                                \r";
-                SQL += "          , (select SPECCODE from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) Speccode \r";
-                SQL += "          , (select GbDosage from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) GbDosage \r";
-                SQL += "          , (select SLIPNO from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) Slipno     \r";
+                SQL += "          , (select SPECCODE from ADMIN.ocs_ordercode where ordercode = a.sunext) Speccode \r";
+                SQL += "          , (select GbDosage from ADMIN.ocs_ordercode where ordercode = a.sunext) GbDosage \r";
+                SQL += "          , (select SLIPNO from ADMIN.ocs_ordercode where ordercode = a.sunext) Slipno     \r";
                 SQL += "          , '' SPECNAME                                                                         \r";
-                SQL += "          , (select GBIMIV from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) GbImiv     \r";
+                SQL += "          , (select GBIMIV from ADMIN.ocs_ordercode where ordercode = a.sunext) GbImiv     \r";
                 SQL += "          , '' INPUTSEQ                                                                         \r";
-                SQL += "          , (select SUBRATE from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) SubRate   \r";
-                SQL += "          , (select SENDDEPT from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) SENDDEPT \r";
-                SQL += "          , '' temp1, '' temp2, (select CBUN from kosmos_ocs.ocs_ordercode where ordercode = a.sunext) CBUN \r";
-                SQL += "          , KOSMOS_OCS.FC_DRUG_OUTCHK(a.SUNEXT, (select CBUN from kosmos_ocs.ocs_ordercode where ordercode = a.sunext)) DELOUTSTAT  \r";
-                SQL += "       FROM KOSMOS_OCS.OCS_DRUGINFO_new A                                                       \r";
-                SQL += "       LEFT OUTER JOIN KOSMOS_ADM.DRUG_JEP B                                                    \r";
+                SQL += "          , (select SUBRATE from ADMIN.ocs_ordercode where ordercode = a.sunext) SubRate   \r";
+                SQL += "          , (select SENDDEPT from ADMIN.ocs_ordercode where ordercode = a.sunext) SENDDEPT \r";
+                SQL += "          , '' temp1, '' temp2, (select CBUN from ADMIN.ocs_ordercode where ordercode = a.sunext) CBUN \r";
+                SQL += "          , ADMIN.FC_DRUG_OUTCHK(a.SUNEXT, (select CBUN from ADMIN.ocs_ordercode where ordercode = a.sunext)) DELOUTSTAT  \r";
+                SQL += "       FROM ADMIN.OCS_DRUGINFO_new A                                                       \r";
+                SQL += "       LEFT OUTER JOIN ADMIN.DRUG_JEP B                                                    \r";
                 SQL += "         ON A.SUNEXT = B.JEPCODE                                                                \r";
                 SQL += "      WHERE B.DELDATE IS NULL                                                                   \r";                
                 if (clsOrdFunction.GstrSlipSearch == "Y")
                 {
-                    SQL += "    AND (select slipno from kosmos_ocs.ocs_ordercode where ordercode = a.sunext             \r";
+                    SQL += "    AND (select slipno from ADMIN.ocs_ordercode where ordercode = a.sunext             \r";
                     SQL += "                and seqno = 0 ) = '" + clsOrdFunction.GstrSelSlipno.Trim() + "'             \r";
                 }
                 SQL += "        AND (upper(A.SName) LIKE '" + "%" + strSearch + "%" + "'                                \r";
@@ -1208,7 +1208,7 @@ namespace ComLibB
                     SQL = "";
                     SQL += " SELECT ''                                                                      \r";
                     SQL += "      , (select ordername                                                       \r";
-                    SQL += "           from KOSMOS_OCS.OCS_ORDERCODE                                        \r";
+                    SQL += "           from ADMIN.OCS_ORDERCODE                                        \r";
                     SQL += "          where slipno = b.slipno                                               \r";
                     SQL += "            and seqno = 0 ) slipname                                            \r";
                     SQL += "      , b.OrderCode, ''                                                         \r";
@@ -1227,7 +1227,7 @@ namespace ComLibB
                     SQL += "      , B.Speccode,  B.GbDosage,  B.Slipno,      '' SPECNAME                    \r";
                     SQL += "      , B.GbImiv,    '' INPUTSEQ, B.SubRate,     SENDDEPT                       \r";
                     SQL += "      , '', '', B.CBUN                                                          \r";
-                    SQL += "      , KOSMOS_OCS.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
+                    SQL += "      , ADMIN.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
                     SQL += "   FROM " + ComNum.DB_MED + "OCS_ORDERCODE  B                                   \r";
                     SQL += "      , " + ComNum.DB_PMPA + "BAS_SUT       C                                   \r";
                     SQL += "      , " + ComNum.DB_PMPA + "BAS_SUN       D                                   \r";
@@ -1336,7 +1336,7 @@ namespace ComLibB
                     SQL = "";
                     SQL += " SELECT ''                                                                      \r";
                     SQL += "      , (select ordername                                                       \r";
-                    SQL += "           from KOSMOS_OCS.OCS_ORDERCODE                                        \r";
+                    SQL += "           from ADMIN.OCS_ORDERCODE                                        \r";
                     SQL += "          where slipno = b.slipno                                               \r";
                     SQL += "            and seqno = 0 ) slipname                                            \r";
                     SQL += "      , b.OrderCode, ''                                                         \r";
@@ -1355,7 +1355,7 @@ namespace ComLibB
                     SQL += "      , B.Speccode,  B.GbDosage,  B.Slipno,      '' SPECNAME                    \r";
                     SQL += "      , B.GbImiv,    '' INPUTSEQ, B.SubRate,     SENDDEPT                       \r";
                     SQL += "      , '', '', B.CBUN                                                          \r";
-                    SQL += "      , KOSMOS_OCS.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
+                    SQL += "      , ADMIN.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
                     SQL += "   FROM " + ComNum.DB_MED + "OCS_OPARMDEF  A                                    \r";
                     SQL += "      , " + ComNum.DB_MED + "OCS_ORDERCODE B                                    \r";
                     SQL += "      , " + ComNum.DB_PMPA + "BAS_SUT      C                                    \r";
@@ -1467,7 +1467,7 @@ namespace ComLibB
                     SQL = "";
                     SQL += " SELECT ''                                                                      \r";
                     SQL += "      , (select ordername                                                       \r";
-                    SQL += "           from KOSMOS_OCS.OCS_ORDERCODE                                        \r";
+                    SQL += "           from ADMIN.OCS_ORDERCODE                                        \r";
                     SQL += "          where slipno = b.slipno                                               \r";
                     SQL += "            and seqno = 0 ) slipname                                            \r";
                     SQL += "      , b.OrderCode, ''                                                         \r";
@@ -1486,7 +1486,7 @@ namespace ComLibB
                     SQL += "      , B.Speccode,  B.GbDosage,  B.Slipno,      '' SPECNAME                    \r";
                     SQL += "      , B.GbImiv,    '' INPUTSEQ, B.SubRate,     SENDDEPT                       \r";
                     SQL += "      , '', '', B.CBUN                                                          \r";
-                    SQL += "      , KOSMOS_OCS.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
+                    SQL += "      , ADMIN.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
                     SQL += "   FROM " + ComNum.DB_MED + "OCS_OPARMDEF  A                                    \r";
                     SQL += "      , " + ComNum.DB_MED + "OCS_ORDERCODE B                                    \r";
                     SQL += "      , " + ComNum.DB_PMPA + "BAS_SUT      C                                    \r";
@@ -1849,7 +1849,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " INSERT INTO KOSMOS_OCS.OCS_OPARMDEF                \r";
+                SQL += " INSERT INTO ADMIN.OCS_OPARMDEF                \r";
                 SQL += "        (DEPTDR                                     \r";
                 SQL += "       , BUN                                        \r";
                 SQL += "       , ORDERCODE)                                 \r";
@@ -1885,7 +1885,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT ORDERCODE                               \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OPARMDEF                 \r";
+                SQL += "   FROM ADMIN.OCS_OPARMDEF                 \r";
                 SQL += "  WHERE DEPTDR = '" + argDeptDrCode + "'        \r";
                 SQL += "    AND ORDERCODE = '" + argOrderCode + "'      \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1966,7 +1966,7 @@ namespace ComLibB
                         strOrderCode = ssOrderCode_Sheet1.Cells[i, 2].Text.ToString().Trim();
 
                         SQL = "";
-                        SQL += " DELETE FROM KOSMOS_OCS.OCS_OPARMDEF                            \r";
+                        SQL += " DELETE FROM ADMIN.OCS_OPARMDEF                            \r";
                         SQL += "  WHERE 1 = 1                                                   \r";
                         if (cboSelect.SelectedIndex == 0)
                         {
@@ -2143,7 +2143,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " SELECT * FROM KOSMOS_OCS.OCS_ORDERCODE \r";
+                SQL += " SELECT * FROM ADMIN.OCS_ORDERCODE \r";
                 SQL += "  WHERE Slipno = '" + cSlipNo + "'      \r";
                 SQL += "    AND ( Seqno = 0 OR Bun > '  ' )     \r";
                 SQL += "  ORDER BY Seqno                        \r";
@@ -2231,7 +2231,7 @@ namespace ComLibB
                         SQL = "";
                         SQL += " SELECT '' chk                                                                  \r";
                         SQL += "      , (select ordername                                                       \r";
-                        SQL += "           from KOSMOS_OCS.OCS_ORDERCODE                                        \r";
+                        SQL += "           from ADMIN.OCS_ORDERCODE                                        \r";
                         SQL += "          where slipno = '" + clsOrdFunction.GstrSelSlipno + "'                 \r";
                         SQL += "            and seqno = 0 ) slipname                                            \r";
                         SQL += "      , a.ORDERCODE, '' blank                                                   \r";
@@ -2242,7 +2242,7 @@ namespace ComLibB
                         SQL += "      , B.Speccode,  B.GbDosage,  B.Slipno,      '' SPECNAME                    \r";
                         SQL += "      , B.GbImiv,    '' INPUTSEQ, B.SubRate,     B.SENDDEPT                     \r";
                         SQL += "      , '', '', B.CBUN                                                          \r";
-                        SQL += "      , KOSMOS_OCS.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
+                        SQL += "      , ADMIN.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
                         SQL += "   FROM " + ComNum.DB_MED + "OCS_ISO       A                                    \r";
                         SQL += "      , " + ComNum.DB_MED + "OCS_ORDERCODE B                                    \r";
                         if (cboSelect.SelectedIndex == 0)
@@ -2264,7 +2264,7 @@ namespace ComLibB
                         SQL = "";
                         SQL += " SELECT '' chk                                                                  \r";
                         SQL += "      , (select ordername                                                       \r";
-                        SQL += "           from KOSMOS_OCS.OCS_ORDERCODE                                        \r";
+                        SQL += "           from ADMIN.OCS_ORDERCODE                                        \r";
                         SQL += "          where slipno = '" + clsOrdFunction.GstrSelSlipno + "'                 \r";
                         SQL += "            and seqno = 0 ) slipname                                            \r";
                         SQL += "      , B.ORDERCODE, '' blank                                                   \r";
@@ -2275,7 +2275,7 @@ namespace ComLibB
                         SQL += "      , B.Speccode,  B.GbDosage,  B.Slipno,      '' SPECNAME                    \r";
                         SQL += "      , B.GbImiv,    '' INPUTSEQ, B.SubRate,     B.SENDDEPT                     \r";
                         SQL += "      , '', '', B.CBUN                                                          \r";
-                        SQL += "      , KOSMOS_OCS.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
+                        SQL += "      , ADMIN.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
                         SQL += "   FROM " + ComNum.DB_MED + "OCS_ORDERCODE B                                    \r";
                         SQL += "  WHERE 1=1                                                                     \r";
                         SQL += "    AND B.Seqno    <> 0                                                         \r";
@@ -2291,7 +2291,7 @@ namespace ComLibB
                         SQL = "";
                         SQL += " SELECT '' chk                                                                  \r";
                         SQL += "      , (select ordername                                                       \r";
-                        SQL += "           from KOSMOS_OCS.OCS_ORDERCODE                                        \r";
+                        SQL += "           from ADMIN.OCS_ORDERCODE                                        \r";
                         SQL += "          where slipno = '" + clsOrdFunction.GstrSelSlipno + "'                 \r";
                         SQL += "            and seqno = 0 ) slipname                                            \r";
                         SQL += "      , B.ORDERCODE, '' blank                                                   \r";
@@ -2327,7 +2327,7 @@ namespace ComLibB
                         SQL += "      , B.Speccode,  B.GbDosage,  B.Slipno,      '' SPECNAME                    \r";
                         SQL += "      , B.GbImiv,    '' INPUTSEQ, B.SubRate,     B.SENDDEPT                     \r";
                         SQL += "      , '', '', B.CBUN                                                          \r";
-                        SQL += "      , KOSMOS_OCS.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
+                        SQL += "      , ADMIN.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
                         SQL += "   FROM " + ComNum.DB_MED + "OCS_ORDERCODE B                                    \r";
                         SQL += "      , " + ComNum.DB_PMPA + "BAS_SUT      C                                    \r";
                         SQL += "      , " + ComNum.DB_PMPA + "BAS_SUN      D                                    \r";
@@ -2360,7 +2360,7 @@ namespace ComLibB
                         SQL = "";
                         SQL += " SELECT '' chk                                                                  \r";
                         SQL += "      , (select ordername                                                       \r";
-                        SQL += "           from KOSMOS_OCS.OCS_ORDERCODE                                        \r";
+                        SQL += "           from ADMIN.OCS_ORDERCODE                                        \r";
                         SQL += "          where slipno = '" + clsOrdFunction.GstrSelSlipno + "'                 \r";
                         SQL += "            and seqno = 0 ) slipname                                            \r";
                         SQL += "      , B.ORDERCODE, '' blank                                                   \r";
@@ -2396,7 +2396,7 @@ namespace ComLibB
                         SQL += "      , B.Speccode,  B.GbDosage,  B.Slipno,      '' SPECNAME                    \r";
                         SQL += "      , B.GbImiv,    '' INPUTSEQ, B.SubRate,     B.SENDDEPT                     \r";
                         SQL += "      , '', '', B.CBUN                                                          \r";
-                        SQL += "      , KOSMOS_OCS.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
+                        SQL += "      , ADMIN.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
                         SQL += "   FROM " + ComNum.DB_MED + "OCS_OPARMDEF  A                                    \r";
                         SQL += "      , " + ComNum.DB_MED + "OCS_ORDERCODE B                                    \r";
                         SQL += "      , " + ComNum.DB_PMPA + "BAS_SUT      C                                    \r";
@@ -2429,7 +2429,7 @@ namespace ComLibB
                         SQL = "";
                         SQL += " SELECT '' chk                                                                  \r";
                         SQL += "      , (select ordername                                                       \r";
-                        SQL += "           from KOSMOS_OCS.OCS_ORDERCODE                                        \r";
+                        SQL += "           from ADMIN.OCS_ORDERCODE                                        \r";
                         SQL += "          where slipno = '" + clsOrdFunction.GstrSelSlipno + "'                 \r";
                         SQL += "            and seqno = 0 ) slipname                                            \r";
                         SQL += "      , B.ORDERCODE, '' blank                                                   \r";
@@ -2465,7 +2465,7 @@ namespace ComLibB
                         SQL += "      , B.Speccode,  B.GbDosage,  B.Slipno,      '' SPECNAME                    \r";
                         SQL += "      , B.GbImiv,    '' INPUTSEQ, B.SubRate,     B.SENDDEPT                     \r";
                         SQL += "      , '', '', B.CBUN                                                          \r";
-                        SQL += "      , KOSMOS_OCS.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
+                        SQL += "      , ADMIN.FC_DRUG_OUTCHK(B.SUCODE, B.CBUN) DELOUTSTAT                  \r";
                         SQL += "   FROM " + ComNum.DB_MED + "OCS_OPARMDEF  A                                    \r";
                         SQL += "      , " + ComNum.DB_MED + "OCS_ORDERCODE B                                    \r";
                         SQL += "      , " + ComNum.DB_PMPA + "BAS_SUT      C                                    \r";

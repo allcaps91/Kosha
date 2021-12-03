@@ -178,7 +178,7 @@ namespace ComLibB
             try
             {
                 SQL = "SELECT BuildNo, RoadDetail, SNAME, JUSO, ZIPCODE1, ZIPCODE2, ZIPCODE3, HPHONE ";
-                SQL += ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_PATIENT";
+                SQL += ComNum.VBLF + "FROM ADMIN.BAS_PATIENT";
                 SQL += ComNum.VBLF + "WHERE PANO ='" + txtPtno.Text + "'";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

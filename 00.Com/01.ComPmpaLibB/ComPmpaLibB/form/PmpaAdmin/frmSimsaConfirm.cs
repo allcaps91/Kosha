@@ -1151,7 +1151,7 @@ namespace ComPmpaLibB
             string strRtn = "";
             SQL = "";
             SQL += ComNum.VBLF + " SELECT PANO, BDATE, SUCODE, SUM(QTY * NAL) CNT ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.IPD_NEW_SLIP ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.IPD_NEW_SLIP ";
             SQL += ComNum.VBLF + "  WHERE SUCODE IN('M6710012',  'M6750029', 'M6720066') ";
             SQL += ComNum.VBLF + "    AND TRSNO = " + clsPmpaType.TIT.Trsno;
             SQL += ComNum.VBLF + "  GROUP BY PANO, BDATE, SUCODE ";

@@ -24,9 +24,9 @@
             parameter.AppendSql("     , TO_CHAR(S.BDATE, 'YYYY-MM-DD') BDATE,   S.SPECNO                    ");
             parameter.AppendSql("     , S.SPECCODE,   R.RESULTWS, S.BI,       S.SNAME,   S.ANATNO           ");
             parameter.AppendSql("     , TO_CHAR(S.RECEIVEDATE, 'YYYY-MM-DD') RECEIVEDATE                    ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_SPECMST S                                           ");
-            parameter.AppendSql("     , KOSMOS_OCS.EXAM_ResultC R                                           ");
-            parameter.AppendSql("     , KOSMOS_OCS.EXAM_ANATMST A                                           ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_SPECMST S                                           ");
+            parameter.AppendSql("     , ADMIN.EXAM_ResultC R                                           ");
+            parameter.AppendSql("     , ADMIN.EXAM_ANATMST A                                           ");
             parameter.AppendSql(" WHERE S.RECEIVEDATE BETWEEN TO_DATE(:FRDATE, 'YYYY-MM-DD HH24:MI')        ");
             parameter.AppendSql("                         AND TO_DATE(:TODATE, 'YYYY-MM-DD HH24:MI')        ");
             parameter.AppendSql("   AND R.SPECNO     = S.SPECNO                                             ");

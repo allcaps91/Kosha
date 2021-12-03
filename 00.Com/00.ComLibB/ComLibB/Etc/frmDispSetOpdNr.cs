@@ -156,7 +156,7 @@ namespace ComLibB
                         if (strROWID != "")
                         {
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + " DELETE FROM KOSMOS_PMPA.OPD_DEPTJEPSU ";
+                            SQL = SQL + ComNum.VBLF + " DELETE FROM ADMIN.OPD_DEPTJEPSU ";
                             SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + strROWID + "' ";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                             if (SqlErr != "")
@@ -305,7 +305,7 @@ namespace ComLibB
 
 
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_PMPA.OPD_DEPTJEPSU ( ActDate,DeptCode,DrCode,Pano,SName,JepTime,Gubun,GUBUN2,RTime,Chojae,DeptJTime,Seq_RTime) VALUES ( ";
+                    SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.OPD_DEPTJEPSU ( ActDate,DeptCode,DrCode,Pano,SName,JepTime,Gubun,GUBUN2,RTime,Chojae,DeptJTime,Seq_RTime) VALUES ( ";
                     SQL = SQL + ComNum.VBLF + "  TRUNC(SYSDATE),'" + strDeptCode + "','" + StrDrCode + "','" + strPANO + "','" + strSname + "',";
                     SQL = SQL + ComNum.VBLF + "  SYSDATE,'" + strGuBun + "','" + strGUBUN2 + "','" + strRTime + "','3',SYSDATE,'" + strSRTime + "' ) ";
 
@@ -382,7 +382,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "SELECT A.PTNO, TO_CHAR(BDATE,'YYYY-MM-DD') BDATE, FRDEPTCODE, FRDRCODE, FRREMARK, TODEPTCODE, TODRCODE, TOREMARK, A.ROWID, ";
                 SQL = SQL + ComNum.VBLF + "  TO_CHAR(SDATE, 'YYYY-MM-DD HH24:MI') SDATE,  TO_CHAR(EDATE, 'YYYY-MM-DD HH24:MI') EDATE ,  A.GBCONFIRM, A.GBDEL, ";
                 SQL = SQL + ComNum.VBLF + "   B.SNAME, B.AGE, B.SEX, B.WARDCODE  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_ITRANSFER A, KOSMOS_PMPA.IPD_NEW_MASTER B ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_ITRANSFER A, ADMIN.IPD_NEW_MASTER B ";
                 SQL = SQL + ComNum.VBLF + "    WHERE SDATE >= TO_DATE('" + dtpDate.Value.AddDays(-15) + "','YYYY-MM-DD') ";
                 if (VB.Left(cboDept.Text, 2) != "**")
                 {
@@ -391,7 +391,7 @@ namespace ComLibB
                 }
                 else
                 {
-                    SQL = SQL + ComNum.VBLF + " AND TODEPTCODE IN (SELECT DrDept1 FROM KOSMOS_PMPA.BAS_DOCTOR WHERE DrCode IN (" + GstrEmrViewDoct + ") ) ";
+                    SQL = SQL + ComNum.VBLF + " AND TODEPTCODE IN (SELECT DrDept1 FROM ADMIN.BAS_DOCTOR WHERE DrCode IN (" + GstrEmrViewDoct + ") ) ";
                 }
 
                 if (chkCon.Checked == true)
@@ -436,7 +436,7 @@ namespace ComLibB
 
                         SQL = "";
                         SQL = SQL + ComNum.VBLF + "SELECT PANO ";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_DEPTJEPSU ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_DEPTJEPSU ";
                         SQL = SQL + ComNum.VBLF + "  WHERE ACTDATE =TRUNC(SYSDATE)";
                         SQL = SQL + ComNum.VBLF + "   AND PANO ='" + dt.Rows[i]["PtNo"].ToString().Trim() + "' ";
                         if (dt.Rows[i]["TODEPTCODE"].ToString().Trim() == "EN")
@@ -494,12 +494,12 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT '건진' Gubun,jepDate, PANO,PTNO,SNAME,WRTNO,'HR' DEPTCODE,'7101' DRCODE,SEX,AGE ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.Hic_JEPSU  ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.Hic_JEPSU  ";
                 SQL = SQL + ComNum.VBLF + "    WHERE jepDATE = " + ComFunc.ConvOraToDate(dtpDate.Value, "D");
                 SQL = SQL + ComNum.VBLF + "  AND GBSTS NOT IN ('D','0') ";
                 SQL = SQL + ComNum.VBLF + " UNION ALL ";
                 SQL = SQL + ComNum.VBLF + "  SELECT '종검' Gubun, sDate,PANO,PTNO,SNAME,WRTNO,'TO' DEPTCODE,'7102' DRCODE,SEX,AGE ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.HEA_JEPSU  ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.HEA_JEPSU  ";
                 SQL = SQL + ComNum.VBLF + "    WHERE SDATE = " + ComFunc.ConvOraToDate(dtpDate.Value, "D");
                 SQL = SQL + ComNum.VBLF + "  AND GBSTS NOT IN ('D','0') ";
                 SQL = SQL + ComNum.VBLF + "  ORDER BY 1, 2,5 ";
@@ -531,7 +531,7 @@ namespace ComLibB
 
                         SQL = "";
                         SQL = SQL + ComNum.VBLF + "SELECT PANO ";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_DEPTJEPSU ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_DEPTJEPSU ";
                         SQL = SQL + ComNum.VBLF + "  WHERE ACTDATE =TRUNC(SYSDATE)";
                         SQL = SQL + ComNum.VBLF + "   AND PANO ='" + dt.Rows[i]["PtNo"].ToString().Trim() + "' ";
                         SQL = SQL + ComNum.VBLF + "   AND GUBUN ='8' ";
@@ -582,7 +582,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "  SELECT '근전도' Gubun, Pano ,SName,DeptCode,DrCode,Age,Sex,IpdOpd ";
-                SQL = SQL + ComNum.VBLF + "   FROM  KOSMOS_PMPA.XRAY_DETAIL  ";
+                SQL = SQL + ComNum.VBLF + "   FROM  ADMIN.XRAY_DETAIL  ";
                 SQL = SQL + ComNum.VBLF + "  WHERE XJong = 'E' "; //'EMG
                 SQL = SQL + ComNum.VBLF + "    AND SeekDate >= " + ComFunc.ConvOraToDate(dtpDate.Value, "D");
                 SQL = SQL + ComNum.VBLF + "    AND SeekDate < " + ComFunc.ConvOraToDate(dtpDate.Value.AddDays(1), "D");
@@ -623,7 +623,7 @@ namespace ComLibB
 
                         SQL = "";
                         SQL = SQL + ComNum.VBLF + "SELECT PANO ";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_DEPTJEPSU ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_DEPTJEPSU ";
                         SQL = SQL + ComNum.VBLF + "  WHERE ACTDATE =TRUNC(SYSDATE)";
                         SQL = SQL + ComNum.VBLF + "   AND PANO ='" + dt.Rows[i]["PtNo"].ToString().Trim() + "' ";
                         SQL = SQL + ComNum.VBLF + "   AND GUBUN ='7' ";
@@ -675,7 +675,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT PaNO, TO_CHAR(INDATE,'YYYY-MM-DD') INDATE, DeptCode, DRCODE, ROWID, ";
                 SQL = SQL + ComNum.VBLF + "  TO_CHAR(INDATE, 'YYYY-MM-DD HH24:MI') SDATE, SNAME, AGE, SEX, WARDCODE  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_NEW_MASTER  ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_NEW_MASTER  ";
                 SQL = SQL + ComNum.VBLF + "    WHERE ActDate IS NULL ";
                 SQL = SQL + ComNum.VBLF + "     AND GbSts NOT IN ('7','9') ";
                 if (VB.Left(cboDept.Text, 2) != "**")
@@ -685,7 +685,7 @@ namespace ComLibB
                 }
                 else
                 {
-                    SQL = SQL + ComNum.VBLF + " AND DEPTCODE IN (SELECT DrDept1 FROM KOSMOS_PMPA.BAS_DOCTOR WHERE DrCode IN (" + GstrEmrViewDoct + ") ) ";
+                    SQL = SQL + ComNum.VBLF + " AND DEPTCODE IN (SELECT DrDept1 FROM ADMIN.BAS_DOCTOR WHERE DrCode IN (" + GstrEmrViewDoct + ") ) ";
                 }
                 SQL = SQL + ComNum.VBLF + "  ORDER BY  DEPTCODE, DRCODE, SNAME ";
 
@@ -716,7 +716,7 @@ namespace ComLibB
 
                         SQL = "";
                         SQL = SQL + ComNum.VBLF + "SELECT PANO ";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_DEPTJEPSU ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_DEPTJEPSU ";
                         SQL = SQL + ComNum.VBLF + "  WHERE ACTDATE =TRUNC(SYSDATE)";
                         SQL = SQL + ComNum.VBLF + "   AND PANO ='" + dt.Rows[i]["PtNo"].ToString().Trim() + "' ";
                         SQL = SQL + ComNum.VBLF + "   AND DRCODE ='" + dt.Rows[i]["DrCode"].ToString().Trim() + "' ";
@@ -769,7 +769,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT PANO,SNAME,DEPTCODE,DRCODE,GUBUN,SEQ_RTime,ROWID,Gb_Call,";
                 SQL = SQL + ComNum.VBLF + "TO_CHAR(DeptJTime,'HH24:MI') DeptJTime ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_DEPTJEPSU ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_DEPTJEPSU ";
                 SQL = SQL + ComNum.VBLF + " WHERE ACTDATE =TRUNC(SYSDATE) ";
 
                 if (optJob_2.Checked == true)
@@ -1056,7 +1056,7 @@ namespace ComLibB
                 try
                 {
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_PMPA.OPD_DEPTJEPSU SET ";
+                    SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.OPD_DEPTJEPSU SET ";
                     SQL = SQL + ComNum.VBLF + " SEQ_RTime ='" + strSRTime + "' ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + strROWID + "' ";
 
@@ -1159,7 +1159,7 @@ namespace ComLibB
             try
             {
                 if (ComQuery.IsJobAuth(this, "U", clsDB.DbCon) == false) return rtVal; ; //권한 확인
-                SQL = " UPDATE KOSMOS_PMPA.OPD_DEPTJEPSU SET ";
+                SQL = " UPDATE ADMIN.OPD_DEPTJEPSU SET ";
                 SQL = SQL + ComNum.VBLF + " Gb_Call ='Y' ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + FstrROWID2 + "' ";
 
@@ -1201,7 +1201,7 @@ namespace ComLibB
             try
             {
                 if (ComQuery.IsJobAuth(this, "U", clsDB.DbCon) == false) return rtVal; ; //권한 확인
-                SQL = " UPDATE KOSMOS_PMPA.OPD_DEPTJEPSU SET ";
+                SQL = " UPDATE ADMIN.OPD_DEPTJEPSU SET ";
                 SQL = SQL + ComNum.VBLF + " Gb_Call ='' ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + FstrROWID2 + "' ";
 

@@ -169,7 +169,7 @@ namespace ComLibB
 
             SQL = " SELECT TO_CHAR(INTIME, 'YYYY-MM-DD HH24:MI') INTIME, PANO, CHECK_ER_SABUN, ";
             SQL += ComNum.VBLF + "   CHECK_WARD1_SABUN, IPDNO, TO_CHAR(TODATE,'YYYY-MM-DD HH24:MI') TODATE, TOWARD ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.NUR_ER_CHECKLIST_TRANS ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.NUR_ER_CHECKLIST_TRANS ";
             SQL += ComNum.VBLF + "  WHERE INTIME >= TO_DATE('" + strSDate + " 00:00', 'YYYY-MM-DD HH24:MI') ";
             SQL += ComNum.VBLF + "    AND INTIME <= TO_DATE('" + strEDate + " 23:59', 'YYYY-MM-DD HH24:MI') ";
             SQL += ComNum.VBLF + "    AND (TOWARD IS NULL OR TOWARD = '" + fstrWard + "') ";
@@ -229,7 +229,7 @@ namespace ComLibB
             DataTable dt = null;
 
             SQL = " SELECT CHECKNAME, QTY, UNIT ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.NUR_ER_CHECKLIST_TRANS_SUB ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.NUR_ER_CHECKLIST_TRANS_SUB ";
             SQL += ComNum.VBLF + "  WHERE INTIME = TO_DATE('" + argINTIME + "', 'YYYY-MM-DD HH24:MI') ";
             SQL += ComNum.VBLF + "    AND PANO = '" + argPANO + "' ";
             SQL += ComNum.VBLF + "    AND CHECK_ER = 'Y' ";

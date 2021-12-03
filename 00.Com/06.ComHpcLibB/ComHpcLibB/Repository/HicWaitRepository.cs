@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SEQNO, SNAME, JUMIN2, JEPTIME               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT                        ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE                          ");
             parameter.AppendSql("   AND GBBUSE  = :GBBUSE                           "); 
             if (!bChk)
@@ -57,7 +57,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GBDISPLAY2, GBJOB, SEQNO, PCNO, SNAME   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_PC                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT_PC                 ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE                      ");
             parameter.AppendSql("   AND GBDISPLAY2 = :GBDISPLAY2                ");
             parameter.AppendSql("   AND PcNo <= 4                               "); //종합검진
@@ -72,7 +72,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_WAIT_PC     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_WAIT_PC     ");
             parameter.AppendSql("   SET GBDISPLAY2 =:GBDISPLAY2     ");
             parameter.AppendSql(" WHERE JOBDATE =:JOBDATE           ");
             parameter.AppendSql("   AND PCNO =:PCNO                 ");
@@ -88,7 +88,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_WAIT_PC    ");
+            parameter.AppendSql("DELETE ADMIN.HIC_WAIT_PC    ");
             parameter.AppendSql(" WHERE JOBDATE <=:JOBDATE       ");
 
             parameter.Add("JOBDATE", strDate);
@@ -105,10 +105,10 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , A.GBYEYAK, A.GBAUTOJEP, A.GJJONG, A.GBBUSE                          ");
             parameter.AppendSql("     , A.SECONDPRINT, A.SOYOTIME                                           ");
             parameter.AppendSql("     , (SELECT CASE WHEN COUNT('X') > 0 THEN '●' ELSE '' END IEMUNYN       ");
-            parameter.AppendSql("          FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW                               ");
+            parameter.AppendSql("          FROM ADMIN.HIC_IE_MUNJIN_NEW                               ");
             parameter.AppendSql("         WHERE PTNO = b.PTNO AND MUNDATE >= :MUNDATE) IEMUNYN              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT    a                                           ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_PATIENT b                                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT    a                                           ");
+            parameter.AppendSql("     , ADMIN.HIC_PATIENT b                                           ");
             parameter.AppendSql(" WHERE A.JOBDATE = :JOBDATE                                                ");
             parameter.AppendSql("   AND A.JUMIN2  = b.JUMIN2(+)                                             ");
             parameter.AppendSql("   AND A.GBJOB   = '1'                                                     ");
@@ -128,7 +128,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT COUNT(ROWID) AS CNT                             ");
             parameter.AppendSql("       ,SUM(DECODE(GbBuse,'1',1,0)) AS HEACNT          ");
             parameter.AppendSql("       ,SUM(DECODE(GBYEYAK,'1',1,'2',1,0)) AS YEYAKCNT ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT                            ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE                              ");
             parameter.AppendSql("   AND CALLTIME IS NULL                                ");
             parameter.AppendSql("   AND GBJOB = :GBJOB                                  ");
@@ -144,7 +144,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MAX(SEQNO) SEQNO                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT            ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE              ");
             if (argJob == "예약")
             {
@@ -164,7 +164,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_WAIT    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_WAIT    ");
             parameter.AppendSql("   SET ENDTIME =:ENDTIME       ");
             parameter.AppendSql("     , GBJOB = '3'             ");    //접수완료
             parameter.AppendSql(" WHERE JOBDATE =:JOBDATE       ");
@@ -182,7 +182,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SEQNO                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT    ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE      ");
             parameter.AppendSql("   AND JUMIN2 =:JUMIN2         ");
 
@@ -197,7 +197,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MAX(SEQNO) SEQNO        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT    ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE      ");
             parameter.AppendSql("   AND GBBUSE =:GBBUSE         ");
             if (argEndo =="OK")
@@ -222,7 +222,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_WAIT (                                         ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_WAIT (                                         ");
             parameter.AppendSql("       JOBDATE,SEQNO,JUMIN,JUMIN2,SNAME,GBJOB,GBYEYAK,GBAUTOJEP            ");
             parameter.AppendSql("       ,GJJONG,JEPTIME,CALLTIME,ENDTIME,GBBUSE                             ");
             parameter.AppendSql(" ) VALUES (                                                                ");
@@ -251,7 +251,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MAX(SEQNO) SEQNO        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT    ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE      ");
 
             //if (strGbYeyak == "1" && (strGBGFS == "Y" || strGBCT =="Y"))
@@ -316,7 +316,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID AS RID                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT        ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE          ");
             parameter.AppendSql("   AND JUMIN2 = :JUMIN2            "); 
 
@@ -330,7 +330,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_WAIT_PC (              ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_WAIT_PC (              ");
             parameter.AppendSql("       JOBDATE,PCNO,GBDISPLAY1,GBDISPLAY2,GBJOB    ");
             parameter.AppendSql(" ) VALUES (                                        ");
             parameter.AppendSql("       :JOBDATE,:PCNO, 'N', 'N', '0'  )            ");
@@ -346,7 +346,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID AS RID                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_PC       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT_PC       ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE            ");
             parameter.AppendSql("   AND PCNO = :PCNO                  "); //종합건진
             
@@ -360,7 +360,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_WAIT        ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_WAIT        ");
             parameter.AppendSql("   SET GBJOB    =:GBJOB            ");
             parameter.AppendSql("     , PCNO     =:PCNO             ");
             parameter.AppendSql("     , CALLTIME =:CALLTIME         ");
@@ -380,7 +380,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_WAIT_PC     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_WAIT_PC     ");
             parameter.AppendSql("   SET GBDISPLAY1 = 'N'            ");
             parameter.AppendSql("     , GBDISPLAY2 = 'N'            ");
             parameter.AppendSql("     , GBJOB    =:GBJOB            ");
@@ -406,7 +406,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_WAIT_PC     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_WAIT_PC     ");
             parameter.AppendSql("   SET GBDISPLAY1 = 'N'            ");
             parameter.AppendSql("     , GBDISPLAY2 = 'N'            ");
             parameter.AppendSql("     , GBJOB    =:GBJOB            ");
@@ -429,7 +429,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT(PCNO) CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT            ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE              ");
             parameter.AppendSql("   AND GBBUSE  = :GBBUSE               "); 
             parameter.AppendSql("   AND CallTime IS NULL                ");
@@ -449,7 +449,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , PCNO, JEPTIME, CALLTIME, ENDTIME    ");
             parameter.AppendSql("     , JUMIN2, GBYEYAK, GBAUTOJEP, GJJONG  ");
             parameter.AppendSql("     , GBBUSE, SECONDPRINT, SOYOTIME       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT                ");
             parameter.AppendSql(" WHERE JobDate =:JobDate                   ");
             parameter.AppendSql("   AND GbJob  = '1'                        ");
             parameter.AppendSql("   AND GbBuse = :GbBuse                    "); //일반건진
@@ -466,7 +466,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT(SNAME) CNT                        ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_WAIT                     ");
+            parameter.AppendSql(" FROM ADMIN.HIC_WAIT                     ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE                      ");
             parameter.AppendSql(" AND GBJOB = '1'                               ");
             parameter.AppendSql(" AND GBBUSE  = :GBBUSE                         "); //종합검진
@@ -481,7 +481,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_WAIT    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_WAIT    ");
             parameter.AppendSql("   SET SECONDPRINT = 'Y'       ");
             parameter.AppendSql(" WHERE ROWID       = :RID      ");
             
@@ -495,7 +495,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_WAIT                    ");
+            parameter.AppendSql("DELETE ADMIN.HIC_WAIT                    ");
             parameter.AppendSql(" WHERE 1=1                                     ");
             parameter.AppendSql(" AND JOBDATE = :JOBDATE                        ");
             parameter.AppendSql(" AND SEQNO = :SEQNO                            ");
@@ -511,7 +511,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID RID                               ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_WAIT                     ");
+            parameter.AppendSql(" FROM ADMIN.HIC_WAIT                     ");
             parameter.AppendSql(" WHERE JOBDATE = :JOBDATE                      ");
             parameter.AppendSql(" AND JUMIN2 = :JUMIN                           ");
 

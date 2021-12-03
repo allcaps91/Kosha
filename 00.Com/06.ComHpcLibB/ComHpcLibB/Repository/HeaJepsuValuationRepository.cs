@@ -25,9 +25,9 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT a.WRTNO, a.SNAME,TO_CHAR(a.JEPDATE,'YY-MM-DD') JEPDATE  ");
             parameter.AppendSql("     , a.GJJONG, a.SEX, a.AGE                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU     a                             ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_VALUATION b                             ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_PATIENT   c                             ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU     a                             ");
+            parameter.AppendSql("     , ADMIN.HEA_VALUATION b                             ");
+            parameter.AppendSql("     , ADMIN.HIC_PATIENT   c                             ");
             parameter.AppendSql(" WHERE a.SDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')               ");
             parameter.AppendSql("   AND a.SDATE <= TO_DATE(:TODATE, 'YYYY-MM-DD')               ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                       ");

@@ -67,7 +67,7 @@ namespace ComLibB
 
             #region 쿼리
             SQL = " SELECT TO_CHAR(A.BDATE, 'YYYY-MM-DD HH24:MI') BDATE, A.PANO, A.TO_PANO, B.SNAME ";
-            SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_PANO_HIS A, KOSMOS_PMPA.BAS_PATIENT B ";
+            SQL += ComNum.VBLF + " FROM ADMIN.ETC_PANO_HIS A, ADMIN.BAS_PATIENT B ";
             SQL += ComNum.VBLF + "  WHERE A.PANO = B.PANO(+) ";
             if ((TxtPano.Text).Trim() != "")
             {

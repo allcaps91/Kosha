@@ -240,12 +240,12 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("         , PANJENG                                                                                                     ");
             parameter.AppendSql("         , SOGEN                                                                                               ");
             parameter.AppendSql("         , PANJENGDRNO AS PANDRNO                                                                                      ");
-            parameter.AppendSql("      FROM KOSMOS_PMPA.HIC_RES_BOHUM1                                                                                   ");
+            parameter.AppendSql("      FROM ADMIN.HIC_RES_BOHUM1                                                                                   ");
             parameter.AppendSql("),                                                                                                                        ");
             parameter.AppendSql("BOHUM2 AS(                                                                                                                ");
             parameter.AppendSql("    SELECT ROWID                                                                                                          ");
             parameter.AppendSql("         , WRTNO                                                                                                          ");
-            parameter.AppendSql("      FROM KOSMOS_PMPA.HIC_RES_BOHUM2                                                                                     ");
+            parameter.AppendSql("      FROM ADMIN.HIC_RES_BOHUM2                                                                                     ");
             parameter.AppendSql(")                                                                                                                         ");
             parameter.AppendSql("SELECT DISTINCT                                                                                                                   ");
             parameter.AppendSql("       A.PANO                                                                                                             ");
@@ -358,7 +358,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("                                     , TO_CHAR(B.IPSADATE, 'YYYY-MM-DD') AS IPSADATE                                      ");
             parameter.AppendSql("                                     , B.AGE                                                                              ");
             parameter.AppendSql("                                     , TRIM(B.LTDCODE) AS LTDCODE                                                         ");
-            parameter.AppendSql("                                  FROM KOSMOS_PMPA.HIC_JEPSU B                                                            ");
+            parameter.AppendSql("                                  FROM ADMIN.HIC_JEPSU B                                                            ");
             parameter.AppendSql("                                 WHERE 1 = 1                                                                              ");
             parameter.AppendSql("                                   AND B.JEPDATE >= TO_DATE(:SDATE, 'YYYY-MM-DD')                                   ");
             parameter.AppendSql("                                   AND B.JEPDATE <= TO_DATE(:EDATE, 'YYYY-MM-DD')                                   ");
@@ -380,7 +380,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("                                     , TO_CHAR(B.IPSADATE, 'YYYY-MM-DD') AS IPSADATE                                      ");
             parameter.AppendSql("                                     , B.AGE                                                                              ");
             parameter.AppendSql("                                     , TRIM(B.LTDCODE) AS LTDCODE                                                         ");
-            parameter.AppendSql("                                  FROM KOSMOS_PMPA.HIC_JEPSU B                                                            ");
+            parameter.AppendSql("                                  FROM ADMIN.HIC_JEPSU B                                                            ");
             parameter.AppendSql("                                 WHERE 1 = 1                                                                              ");
             parameter.AppendSql("                                   AND B.JEPDATE >= TO_DATE(:SDATE, 'YYYY-MM-DD')                                   ");
             parameter.AppendSql("                                   AND B.JEPDATE <= TO_DATE(:EDATE, 'YYYY-MM-DD')                                   ");
@@ -395,7 +395,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("          ) B ON A.PANO = B.PANO                                                                                          ");
             parameter.AppendSql("             AND A.SITEID = B.LTDCODE                                                                                     ");
             parameter.AppendSql("        WHERE A.SITEID IN (:SITE_ID)                                                                                      ");
-            parameter.AppendSql("  ) A LEFT OUTER JOIN KOSMOS_PMPA.HIC_PATIENT AA                                                                          ");
+            parameter.AppendSql("  ) A LEFT OUTER JOIN ADMIN.HIC_PATIENT AA                                                                          ");
             parameter.AppendSql("                   ON A.PANO = AA.PANO                                                                                    ");
             parameter.AppendSql("      LEFT OUTER JOIN BOHUM1 B                                                                                            ");
             parameter.AppendSql("                   ON A.WRTNO = B.WRTNO                                                                                   ");

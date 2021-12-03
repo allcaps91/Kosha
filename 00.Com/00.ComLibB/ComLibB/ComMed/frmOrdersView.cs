@@ -93,8 +93,8 @@ namespace ComLibB
                 SQL = "";
                 SQL += " SELECT a.PANO, a.SNAME, TO_CHAR(a.InDate, 'YYYY-MM-DD') INDATE1    \r";
                 SQL += "      , a.DEPTCODE, b.DRNAME, a.SEX, a.AGE, a.WARDCODE, a.ROOMCODE  \r";
-                SQL += "   FROM KOSMOS_PMPA.IPD_NEW_MASTER a                                \r";
-                SQL += "      , KOSMOS_PMPA.BAS_DOCTOR     b                                \r";
+                SQL += "   FROM ADMIN.IPD_NEW_MASTER a                                \r";
+                SQL += "      , ADMIN.BAS_DOCTOR     b                                \r";
                 SQL += "  WHERE a.DrCode = b.DrCode(+)                                      \r";
                 SQL += "    AND a.PANO = '" + strPano + "'                                  \r";
                 SQL += "  ORDER BY a.InDate DESC                                            \r";
@@ -152,7 +152,7 @@ namespace ComLibB
                 SQL += "      , TO_CHAR(A.BDate, 'YYYY-MM-DD') BDate                                                                                            \r";
                 SQL += "      , case when gbstatus = 'D' then 'D/C'                                                                                             \r";
                 SQL += "             else decode(a.gborder, 'F', 'Pre', 'T', 'Post', 'M', 'Adm',                                                                \r";
-                SQL += "                         KOSMOS_OCS.FC_OCS_SLIP_GUBUN(a.slipno, substr(a.doscode, 1, 2), a.bun))  end gbstatus                          \r";
+                SQL += "                         ADMIN.FC_OCS_SLIP_GUBUN(a.slipno, substr(a.doscode, 1, 2), a.bun))  end gbstatus                          \r";
                 SQL += "      , a.ordercode                                                                                                                     \r";
                 SQL += "           , decode(a.gbprn, 'S', '(A)', 'A', '(선)', 'B', '(수)', '') ||                                                               \r";
                 SQL += "             decode(b.ordercode, '', '삭제된 코드입니다.. 변경요망', case when a.slipno >= 'A1' and a.slipno <= 'A4' then remark else   \r";
@@ -163,17 +163,17 @@ namespace ComLibB
                 SQL += "                                                         else case when b.dispheader != '' then b.dispheader || ' ' || ordername        \r";
                 SQL += "                                                         else ordername || ' ' || ordernames end                                        \r";
                 SQL += "                                                     end) end) ordname                                                                  \r";
-                SQL += "      , case when b.gbinfo = '1' then A.gbinfo else decode(b.gbdosage, '1', KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(a.doscode),                  \r";
-                SQL += "                                                           KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(a.doscode, a.slipno)) end gbinfo            \r";
+                SQL += "      , case when b.gbinfo = '1' then A.gbinfo else decode(b.gbdosage, '1', ADMIN.FC_OCS_ODOSAGE_NAME(a.doscode),                  \r";
+                SQL += "                                                           ADMIN.FC_OCS_OSPECIMAN_NAME(a.doscode, a.slipno)) end gbinfo            \r";
                 SQL += "      , a.contents                                                                                                                      \r";
                 SQL += "      , a.realqty                                                                                                                       \r";
                 SQL += "      , a.gbdiv                                                                                                                         \r";
                 SQL += "      , a.nal                                                                                                                           \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(a.staffid) || ' ' || substr(TO_CHAR(A.EntDate, 'YYYY-MM-DD HH24:Mi'), 9, 16) EntDate1           \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(a.staffid) || ' ' || substr(TO_CHAR(A.EntDate, 'YYYY-MM-DD HH24:Mi'), 9, 16) EntDate1           \r";
                 SQL += "      , case when a.bun >= '16' and a.bun <= '21' and a.gbngt <> '' then gbngt                                                          \r";
                 SQL += "             when a.bun >= '16' and a.bun <= '21' and gbgroup <> '' then a.gbgroup                                                      \r";
-                SQL += "             when a.bun >= '28' and a.bun <= '39' and(a.gbgroup = '' or KOSMOS_PMPA.is_number(a.gbgroup) = 1) then a.gbngt              \r";
-                SQL += "             when a.bun >= '28' and a.bun <= '39' and not (a.gbgroup = '' or KOSMOS_PMPA.is_number(a.gbgroup) = 1) then gbgroup         \r";
+                SQL += "             when a.bun >= '28' and a.bun <= '39' and(a.gbgroup = '' or ADMIN.is_number(a.gbgroup) = 1) then a.gbngt              \r";
+                SQL += "             when a.bun >= '28' and a.bun <= '39' and not (a.gbgroup = '' or ADMIN.is_number(a.gbgroup) = 1) then gbgroup         \r";
                 SQL += "        else gbgroup                                                                                                                    \r";
                 SQL += "         end gbngt                                                                                                                      \r";
                 SQL += "      , a.gber                                                                                                                          \r";
@@ -196,7 +196,7 @@ namespace ComLibB
                 SQL += "             when a.realqty = '2/5' then '0.4'                                                                                          \r";
                 SQL += "             when a.realqty = '3/5' then '0.6'                                                                                          \r";
                 SQL += "             when a.realqty = '4/5' then '0.8'                                                                                          \r";
-                SQL += "        else case when KOSMOS_PMPA.is_number(a.realqty) = 1 then a.realqty else '1' end                                                 \r";
+                SQL += "        else case when ADMIN.is_number(a.realqty) = 1 then a.realqty else '1' end                                                 \r";
                 SQL += "         end Rqty                                                                                                                       \r";
                 SQL += "      , a.doscode                                                                                                                       \r";
                 SQL += "      , a.gbboth                                                                                                                        \r";
@@ -212,12 +212,12 @@ namespace ComLibB
                 SQL += "      , a.orderno                                                                                                                       \r";
                 SQL += "      , '' col33                                                                                                                        \r";
                 SQL += "      , decode(a.gborder, 'F', '92', 'T', '93', 'M', '91',                                                                              \r";
-                SQL += "                          KOSMOS_OCS.FC_OCS_SLIP_GUBUN(a.slipno, substr(a.doscode, 1, 2), a.bun)) slipgubun                             \r";
+                SQL += "                          ADMIN.FC_OCS_SLIP_GUBUN(a.slipno, substr(a.doscode, 1, 2), a.bun)) slipgubun                             \r";
                 SQL += "      , decode(a.bcontents, 0, ' ', a.bcontents) bcontents                                                                              \r";
                 SQL += "      , '' col36                                                                                                                        \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(a.staffid) || ' ' || substr(TO_CHAR(A.EntDate, 'YYYY-MM-DD HH24:Mi'), 9, 16) drname             \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_IORDER    A                                                                                                      \r";
-                SQL += "      , KOSMOS_OCS.OCS_ORDERCODE B                                                                                                      \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(a.staffid) || ' ' || substr(TO_CHAR(A.EntDate, 'YYYY-MM-DD HH24:Mi'), 9, 16) drname             \r";
+                SQL += "   FROM ADMIN.OCS_IORDER    A                                                                                                      \r";
+                SQL += "      , ADMIN.OCS_ORDERCODE B                                                                                                      \r";
                 SQL += "  WHERE Ptno        = '" + strPano + "'                                                                                                 \r";
                 SQL += "    AND A.ORDERCODE = B.ORDERCODE                                                                                                       \r";
                 SQL += "    AND A.SLIPNO    = B.SLIPNO                                                                                                          \r";
@@ -289,7 +289,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " UPDATE KOSMOS_OCS.OCS_MSG          \r";
+                SQL += " UPDATE ADMIN.OCS_MSG          \r";
                 SQL += "    SET STATE = 'Y'                 \r";
                 SQL += "  WHERE ROWID ='" + strRowid + "'   \r";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -327,9 +327,9 @@ namespace ComLibB
                 SQL += " SELECT a.ROOMCODE, a.DEPTCODE, a.AGE, a.DRCODE     \r";
                 SQL += "      , TO_CHAR(a.INDATE,'YYYY-MM-DD') INDATE       \r";
                 SQL += "      , b.SNAME, b.SEX, b.JUMIN1                    \r";
-                //SQL += "      , KOSMOS_OCS.FC_OCS_ILLS(a.PANO, 'I', TO_CHAR(a.INDATE, 'YYYY-MM-DD'), a.DEPTCODE, '2')\r";
-                SQL += "   FROM KOSMOS_PMPA.IPD_NEW_MASTER a                \r";
-                SQL += "      , KOSMOS_PMPA.BAS_PATIENT    b                \r";
+                //SQL += "      , ADMIN.FC_OCS_ILLS(a.PANO, 'I', TO_CHAR(a.INDATE, 'YYYY-MM-DD'), a.DEPTCODE, '2')\r";
+                SQL += "   FROM ADMIN.IPD_NEW_MASTER a                \r";
+                SQL += "      , ADMIN.BAS_PATIENT    b                \r";
                 SQL += "  WHERE a.PANO = b.PANO                             \r"; 
                 SQL += "    AND a.ACTDATE IS NULL                           \r";
                 SQL += "    AND a.PANO = '" + strPano + "'                  \r";               
@@ -456,8 +456,8 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT a.RO, B.ILLCODE, nvl(B.ILLNAMEE, B.ILLNAMEK) ILLNAME    \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_IILLS a                                  \r";
-                SQL += "      , KOSMOS_PMPA.BAS_ILLS b                                  \r";
+                SQL += "   FROM ADMIN.OCS_IILLS a                                  \r";
+                SQL += "      , ADMIN.BAS_ILLS b                                  \r";
                 SQL += "  WHERE A.IllCode = B.IllCode                                   \r";
                 SQL += "    AND A.Ptno    = '" + strPano + "'                           \r";
                 SQL += "    AND BDate    >= TO_DATE('" + strInDate + "','YYYY-MM-DD')   \r";

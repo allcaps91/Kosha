@@ -258,7 +258,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT ITEM03, ITEM15                  \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ENVSETTING       \r";
+                SQL += "   FROM ADMIN.OCS_ENVSETTING       \r";
                 SQL += "  WHERE USERID = '" + sUserId + "'      \r";
                 clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")

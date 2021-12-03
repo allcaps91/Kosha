@@ -240,7 +240,7 @@ namespace ComHpcLibB.Dto
 		public string SUGBV { get; set; } 
 
         /// <summary>
-        /// 간호활동코드(kosmos_adm.abc_nurse_code)
+        /// 간호활동코드(ADMIN.abc_nurse_code)
         /// </summary>
 		public long NURCODE { get; set; } 
 

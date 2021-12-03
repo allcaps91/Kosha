@@ -56,7 +56,7 @@ namespace ComMedLibB
             {
                 SQL.Clear();
                 SQL.AppendLine("  SELECT *                                                          ");
-                SQL.AppendLine("  FROM KOSMOS_OCS.DUR_ALLERGY_SAYU                                  ");
+                SQL.AppendLine("  FROM ADMIN.DUR_ALLERGY_SAYU                                  ");
                 SQL.AppendLine($"  WHERE SABUN = '{clsType.User.Sabun}'                             ");
                 //SQL.AppendLine($"  AND BDATE = TO_DATE('{resultInfo.m_strDpPrscYYMMDD}','YYYYMMDD') ");
                 SQL.AppendLine($"  AND DEPTCODE = '{clsOrdFunction.Pat.DeptCode}'                   ");
@@ -105,7 +105,7 @@ namespace ComMedLibB
 
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT PANO, SNAME, CODE, TO_CHAR(ENTDATE, 'YYYY-MM-DD HH24:MI:SS') ENTDATE, REMARK, SABUN, DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.ETC_ALLERGY_MST";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.ETC_ALLERGY_MST";
             SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + lblPtno.Text + "' ";
             SQL = SQL + ComNum.VBLF + "AND CODE = '100' ";
             SQL = SQL + ComNum.VBLF + "ORDER BY ENTDATE DESC  ";
@@ -156,7 +156,7 @@ namespace ComMedLibB
             {
                 SQL.Clear();
                 SQL.AppendLine("  SELECT *                                                          ");
-                SQL.AppendLine("  FROM KOSMOS_OCS.DUR_ALLERGY_SAYU                                  ");
+                SQL.AppendLine("  FROM ADMIN.DUR_ALLERGY_SAYU                                  ");
                 SQL.AppendLine($"  WHERE SABUN = '{clsType.User.Sabun}'                             ");
                 //SQL.AppendLine($"  AND BDATE = TO_DATE('{resultInfo.m_strDpPrscYYMMDD}','YYYYMMDD') ");
                 SQL.AppendLine($"  AND DEPTCODE = '{clsOrdFunction.Pat.DeptCode}'                   ");
@@ -176,7 +176,7 @@ namespace ComMedLibB
                     clsDB.setBeginTran(clsDB.DbCon);
 
                     SQL.Clear();
-                    SQL.AppendLine(" INSERT INTO KOSMOS_OCS.DUR_ALLERGY_SAYU                        ");
+                    SQL.AppendLine(" INSERT INTO ADMIN.DUR_ALLERGY_SAYU                        ");
                     SQL.AppendLine(" (SABUN, PTNO, DEPTCODE, BDATE, GROUPID,                        ");
                     SQL.AppendLine(" ORDSEQ, LVDESC, ORDERDRUGCD, ORDDRUGNM, SCNMESSAGE,            ");
                     SQL.AppendLine(" SAYU, INPUTIP, INPUTDATETIME)                                  ");

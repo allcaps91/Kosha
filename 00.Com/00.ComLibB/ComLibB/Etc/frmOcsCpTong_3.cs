@@ -171,7 +171,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT WARDCODE, WARDNAME  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_WARD ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_WARD ";
                 SQL = SQL + ComNum.VBLF + "WHERE WARDCODE NOT IN ('IU','NP','2W','IQ','ER') ";
                 SQL = SQL + ComNum.VBLF + "     AND USED = 'Y'  ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY WARDCODE ";
@@ -237,8 +237,8 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT ";
-                SQL = SQL + ComNum.VBLF + "  (SELECT BASNAME  FROM KOSMOS_PMPA.BAS_BASCD WHERE GRPCDB = 'CP관리' AND GRPCD = 'CP코드관리' AND BASCD = A.CPCODE_T AND ROWNUM = 1) CPNAME,  ";
-                SQL = SQL + ComNum.VBLF + "  (SELECT vflag1 FROM KOSMOS_PMPA.BAS_BASCD WHERE GRPCDB = 'CP관리' AND GRPCD = 'CP코드관리' AND BASCD = A.CPCODE_T AND ROWNUM = 1) vflag1,  ";
+                SQL = SQL + ComNum.VBLF + "  (SELECT BASNAME  FROM ADMIN.BAS_BASCD WHERE GRPCDB = 'CP관리' AND GRPCD = 'CP코드관리' AND BASCD = A.CPCODE_T AND ROWNUM = 1) CPNAME,  ";
+                SQL = SQL + ComNum.VBLF + "  (SELECT vflag1 FROM ADMIN.BAS_BASCD WHERE GRPCDB = 'CP관리' AND GRPCD = 'CP코드관리' AND BASCD = A.CPCODE_T AND ROWNUM = 1) vflag1,  ";
                 SQL = SQL + ComNum.VBLF + "  CPCODE_T, TONG1, TONG2, TONG3, TONG6,TONG4, TONG5,  ";
                 SQL = SQL + ComNum.VBLF + "  case when  TONG2 > 0 then                               ";
                 SQL = SQL + ComNum.VBLF + " ROUND(((TONG2 / (TONG2 + TONG6 )) * 100), 1)  ";
@@ -253,7 +253,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "    SUM(CASE WHEN CP_STATUS IN('중단') THEN 1 ELSE 0 END) TONG4, ";  //--CP중단건수
                 SQL = SQL + ComNum.VBLF + "    SUM(CASE WHEN CP_STATUS IN('적용') THEN 1 ELSE 0 END) TONG5, ";  // --CP완결건수
                 SQL = SQL + ComNum.VBLF + "    SUM(CASE WHEN CP_STATUS IN('미적용') THEN 1 ELSE 0 END) TONG6 ";  // --CP완결건수
-                SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_OCS.OCS_CP_IPD_LIST2 A, IPD_NEW_MASTER B";
+                SQL = SQL + ComNum.VBLF + "     FROM ADMIN.OCS_CP_IPD_LIST2 A, IPD_NEW_MASTER B";
                 SQL = SQL + ComNum.VBLF + "    WHERE A.OUTDATE >= TO_DATE('" + strDate + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "      AND A.OUTDATE <= TO_DATE('" + strDate2 + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "      AND A.IPDNO=B.IPDNO ";
@@ -521,7 +521,7 @@ namespace ComLibB
             {
 
                 SQL = " SELECT CPCODE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_CP_IPD_LIST2 A ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.OCS_CP_IPD_LIST2 A ";
                 SQL += ComNum.VBLF + "  WHERE OUTDATE >= TO_DATE('" + strDate + "', 'YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + "    AND OUTDATE <= TO_DATE('" + strDate2 + "','YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + " GROUP BY CPCODE ";
@@ -572,7 +572,7 @@ namespace ComLibB
                     }
 
                     //SQL = "SELECT " + (rbtnYear.Checked == true ? "TO_CHAR(A.OUTDATE,'MM')" : "TO_CHAR(A.OUTDATE,'MMDD') ") + " DAY, SUM(1) CNT ";
-                    SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_CP_IPD_LIST2 A, KOSMOS_PMPA.IPD_NEW_MASTER B ";
+                    SQL += ComNum.VBLF + "  FROM ADMIN.OCS_CP_IPD_LIST2 A, ADMIN.IPD_NEW_MASTER B ";
                     SQL += ComNum.VBLF + " WHERE A.OUTDATE >= TO_DATE('" + strDate + "', 'YYYY-MM-DD') ";
                     SQL += ComNum.VBLF + "   AND A.OUTDATE <= TO_DATE('" + strDate2 + "','YYYY-MM-DD') ";
                     SQL += ComNum.VBLF + "   AND A.CPCODE_T = '" + strCPCODE + "' ";
@@ -673,7 +673,7 @@ namespace ComLibB
             try
             {
                 SQL = "  SELECT BASNAME ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_BASCD ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_BASCD ";
                 SQL += ComNum.VBLF + "  WHERE GRPCDB = 'CP관리' ";
                 SQL += ComNum.VBLF + "    AND GRPCD = '" + strGRPCD + "' ";
                 SQL += ComNum.VBLF + "    AND BASCD = '" + strBASCD + "' ";

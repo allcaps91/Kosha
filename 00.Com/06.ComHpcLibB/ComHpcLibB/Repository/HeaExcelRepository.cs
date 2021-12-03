@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         public int Update(HEA_EXCEL item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_PMPA.HEA_EXCEL SET     ");
+            parameter.AppendSql(" UPDATE ADMIN.HEA_EXCEL SET     ");
             parameter.AppendSql("        MEMO         = :MEMO          ");
             parameter.AppendSql("      , AES_JUMIN    = :AES_JUMIN     ");
             parameter.AppendSql("      , BIRTH        = :BIRTH         ");
@@ -63,7 +63,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MEMO                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXCEL   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXCEL   ");
             parameter.AppendSql(" WHERE ROWID = :RID            ");
 
             parameter.Add("RID", strROWID);
@@ -74,11 +74,11 @@ namespace ComHpcLibB.Repository
         public List<HEA_EXCEL> GetListByYear(string argYYMM)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT LTDCODE, KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE) LTDNAME ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXCEL                                ");
+            parameter.AppendSql("SELECT LTDCODE, ADMIN.FC_HIC_LTDNAME(LTDCODE) LTDNAME ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXCEL                                ");
             parameter.AppendSql(" WHERE YEAR = :YEAR                                         ");
-            parameter.AppendSql(" GROUP BY KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE), LTDCODE      ");
-            parameter.AppendSql(" ORDER BY KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE), LTDCODE      ");
+            parameter.AppendSql(" GROUP BY ADMIN.FC_HIC_LTDNAME(LTDCODE), LTDCODE      ");
+            parameter.AppendSql(" ORDER BY ADMIN.FC_HIC_LTDNAME(LTDCODE), LTDCODE      ");
 
             parameter.Add("YEAR", argYYMM, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
 
@@ -88,7 +88,7 @@ namespace ComHpcLibB.Repository
         public void UpDate(HEA_EXCEL item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_PMPA.HEA_EXCEL          ");
+            parameter.AppendSql(" UPDATE ADMIN.HEA_EXCEL          ");
             parameter.AppendSql("    SET LTDBUSE       = :LTDBUSE       ");
             parameter.AppendSql("      , JNAME         = :JNAME         ");
             parameter.AppendSql("      , REL           = :REL           ");
@@ -160,7 +160,7 @@ namespace ComHpcLibB.Repository
         public void UpdateExcel(HEA_EXCEL item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_PMPA.HEA_EXCEL          ");
+            parameter.AppendSql(" UPDATE ADMIN.HEA_EXCEL          ");
             parameter.AppendSql("    SET AES_JUMIN     =:AES_JUMIN      ");
             parameter.AppendSql("      , RDATE         =:RDATE          ");
             parameter.AppendSql("      , SDATE         =:SDATE          ");
@@ -195,7 +195,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , NHICINFO, ENTSABUN, ENTDATE, MEMO, LTDCODE2, PANO2                      ");
             parameter.AppendSql("     , TO_CHAR(UPDATETIME, 'YYYY-MM-DD HH24:MI:SS') UPDATETIME, MODIFIEDUSER   ");
             parameter.AppendSql("     , ROWID AS RID   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXCEL                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXCEL                                                   ");
             parameter.AppendSql(" WHERE AES_JUMIN = :JUMIN                                                      ");
             parameter.AppendSql("   AND YEAR = :YEAR                                                            ");
 
@@ -216,7 +216,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , NHICINFO, ENTSABUN, ENTDATE, MEMO, LTDCODE2, PANO2                      ");
             parameter.AppendSql("     , TO_CHAR(UPDATETIME, 'YYYY-MM-DD HH24:MI:SS') UPDATETIME, MODIFIEDUSER   ");
             parameter.AppendSql("     , ROWID AS RID   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXCEL                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXCEL                                                   ");
             parameter.AppendSql(" WHERE LTDSABUN = :LTDSABUN                                                      ");
             parameter.AppendSql("   AND YEAR = :YEAR                                                            ");
 
@@ -229,7 +229,7 @@ namespace ComHpcLibB.Repository
         public void Delete(HEA_EXCEL item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" DELETE KOSMOS_PMPA.HEA_EXCEL WHERE ROWID =:RID  ");
+            parameter.AppendSql(" DELETE ADMIN.HEA_EXCEL WHERE ROWID =:RID  ");
             parameter.Add("RID", item.RID);
             ExecuteNonQuery(parameter);
         }
@@ -238,7 +238,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql(" INSERT INTO KOSMOS_PMPA.HEA_EXCEL (                                                           ");
+            parameter.AppendSql(" INSERT INTO ADMIN.HEA_EXCEL (                                                           ");
             parameter.AppendSql("        YEAR,LTDCODE,LTDBUSE,LTDSABUN,JIKNAME,JNAME,REL,SNAME,PANO,AES_JUMIN                   ");
             parameter.AppendSql("       ,SEX,AGE,HPHONE,TEL,GJTYPE,GKIHO,IPSADATE,GBSAMU,GBNIGHT,GBNHIC,GBLTDADDEXAM            ");
             parameter.AppendSql("       ,LTDADDEXAM,BONINADDEXAM,JUSO,HDATE,AMPM,HOSPITAL,MCODES,REMARK,BIRTH,PTNO              ");
@@ -289,7 +289,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID AS RID                                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXCEL                               ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXCEL                               ");
             parameter.AppendSql(" WHERE YEAR = :YEAR                                        ");
 
             if (!item.BIRTH.IsNullOrEmpty()) { parameter.AppendSql("  AND BIRTH = :BIRTH               "); }
@@ -314,7 +314,7 @@ namespace ComHpcLibB.Repository
         public int Update_RDate(HEA_EXCEL item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_PMPA.HEA_EXCEL SET                      ");
+            parameter.AppendSql(" UPDATE ADMIN.HEA_EXCEL SET                      ");
             parameter.AppendSql("        RDATE        = TO_DATE(:RDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("      , SEX          = :SEX                            ");
             parameter.AppendSql("      , AGE          = :AGE                            ");
@@ -341,7 +341,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , HDATE, AMPM, RDATE, SDATE, REMARK, BIRTH, GBNHIC, GBJUMIN, PTNO         ");
             parameter.AppendSql("     , NHICINFO, ENTSABUN, ENTDATE, MEMO, LTDCODE2, PANO2                      ");
             parameter.AppendSql("     , TO_CHAR(UPDATETIME, 'YYYY-MM-DD HH24:MI:SS') UPDATETIME, MODIFIEDUSER   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXCEL                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXCEL                                                   ");
             parameter.AppendSql(" WHERE ROWID = :RID                                                            ");
 
             parameter.Add("RID", strROWID);
@@ -357,7 +357,7 @@ namespace ComHpcLibB.Repository
 
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID RID               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXCEL   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXCEL   ");
             parameter.AppendSql(" WHERE YEAR = :YEAR            ");
             if (VB.Left(strLtdCode, 5) != "*****")
             {
@@ -382,7 +382,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(ENTDATE, 'MM/DD') ENTDATE, MEMO, LTDCODE2, PANO2                ");
             parameter.AppendSql("     , TO_CHAR(UPDATETIME, 'YYYY-MM-DD HH24:MI:SS') UPDATETIME, MODIFIEDUSER   ");
             parameter.AppendSql("     , TO_CHAR(ENTDATE, 'YYYY-MM-DD HH24:MI:SS') ENTDATE1, ROWID AS RID        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXCEL                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXCEL                                                   ");
             parameter.AppendSql(" WHERE YEAR = :YEAR                                                            ");
             if (nLtd > 0)
             {

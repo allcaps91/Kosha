@@ -1356,7 +1356,7 @@ namespace ComLibB
                 SQL = SQL + "    TO_CHAR(JDATE3,'YYYY-MM-DD') VJDATE3,PRICE3 VPRICE3,";
                 SQL = SQL + "    TO_CHAR(JDATE4,'YYYY-MM-DD') VJDATE4,PRICE4 VPRICE4,";
                 SQL = SQL + "    TO_CHAR(JDATE5,'YYYY-MM-DD') VJDATE5,PRICE5 VPRICE5 ";
-                SQL = SQL + " FROM KOSMOS_PMPA.EDI_SUGA ";
+                SQL = SQL + " FROM ADMIN.EDI_SUGA ";
                 SQL = SQL + "WHERE CODE = '" + VB.Trim(ArgCode) + "' ";
                 //'표준코드 30050010이 산소,실구입재료 2개가 존재함
 

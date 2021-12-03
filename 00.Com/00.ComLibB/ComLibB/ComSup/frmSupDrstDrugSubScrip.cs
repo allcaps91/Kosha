@@ -1038,7 +1038,7 @@ namespace ComLibB
                     }                    
                 }
 
-                SQL = " UPDATE KOSMOS_ADM.DRUG_DC_SUBSCRIPT SET ";
+                SQL = " UPDATE ADMIN.DRUG_DC_SUBSCRIPT SET ";
                 SQL += ComNum.VBLF + "     D_UPDATE = SYSDATE, ";
                 SQL += ComNum.VBLF + "     D_SABUN = " + strWSABUN + ", ";
                 SQL += ComNum.VBLF + "     CERTI = '" + strCERTI + "', ";

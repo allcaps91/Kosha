@@ -216,7 +216,7 @@ namespace ComLibB
 
                 //'기존에 자료가 있으면 읽음
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " SELECT Memo,ROWID, MEMO2 FROM KOSMOS_OCS.OCS_MEMO ";
+                SQL = SQL + ComNum.VBLF + " SELECT Memo,ROWID, MEMO2 FROM ADMIN.OCS_MEMO ";
                 SQL = SQL + ComNum.VBLF + " WHERE PtNo='" + strPano + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND DeptCode='" + strDept + "' ";
 
@@ -270,7 +270,7 @@ namespace ComLibB
 
                 //'기존에 자료가 있으면 읽음
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " SELECT Memo,ROWID FROM KOSMOS_OCS.OCS_MEMO2 ";
+                SQL = SQL + ComNum.VBLF + " SELECT Memo,ROWID FROM ADMIN.OCS_MEMO2 ";
                 SQL = SQL + ComNum.VBLF + " WHERE PtNo='" + strPano + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND DeptCode='" + VB.Trim(cboDept2.Text) + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND DeptCode2='" + strDept + "' ";
@@ -341,14 +341,14 @@ namespace ComLibB
                 if (strRowId == "")
                 {
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_OCS.OCS_MEMO (Ptno,DeptCode,Memo, MEMO2) ";
+                    SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.OCS_MEMO (Ptno,DeptCode,Memo, MEMO2) ";
                     SQL = SQL + ComNum.VBLF + " VALUES ('" +strPano+ "','" +strDept+ "', ";
                     SQL = SQL + ComNum.VBLF + "' " + VB.Replace(VB.Trim(txtMemo.Text),"'","\"") + "' , '" + VB.Replace(VB.Trim(txtMemo2.Text),"'","\"") + "') ";
                 }
                 else
                 {
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_OCS.OCS_MEMO SET Memo='" + VB.Replace(VB.Trim(txtMemo.Text), "'", "\"") + "', ";
+                    SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.OCS_MEMO SET Memo='" + VB.Replace(VB.Trim(txtMemo.Text), "'", "\"") + "', ";
                     SQL = SQL + ComNum.VBLF + " Memo2='" + VB.Replace(VB.Trim(txtMemo2.Text), "'", "\"") + "' ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID='" +strRowId+ "' ";
                 }
@@ -415,7 +415,7 @@ namespace ComLibB
             {
                 //'기존에 자료가 있으면 읽음
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " SELECT Memo,ROWID FROM KOSMOS_OCS.OCS_MEMO2 ";
+                SQL = SQL + ComNum.VBLF + " SELECT Memo,ROWID FROM ADMIN.OCS_MEMO2 ";
                 SQL = SQL + ComNum.VBLF + "  WHERE PtNo='" + strPano + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND DeptCode='" + VB.Trim(cboDept2.Text) + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND DeptCode2='" + strDept + "' ";
@@ -432,14 +432,14 @@ namespace ComLibB
                 if (strRowId == "")
                 {
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_OCS.OCS_MEMO2 (Ptno,DeptCode,DeptCode2,Memo) ";
+                    SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.OCS_MEMO2 (Ptno,DeptCode,DeptCode2,Memo) ";
                     SQL = SQL + ComNum.VBLF + " VALUES ('" +strPano+ "','" + VB.Trim(cboDept2.Text) + "','" +strDept+ "',";
                     SQL = SQL + ComNum.VBLF + "'" + VB.Replace(VB.Trim(txtMemo3.Text), "'", "\"") + "' )  ";
                 }
                 else
                 {
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_OCS.OCS_MEMO2 SET Memo='" + VB.Replace(VB.Trim(txtMemo3.Text), "'", "\"") + "'  ";
+                    SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.OCS_MEMO2 SET Memo='" + VB.Replace(VB.Trim(txtMemo3.Text), "'", "\"") + "'  ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID='" + strRowId + "' ";
                 }
                 
@@ -491,7 +491,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " DELETE KOSMOS_OCS.OCS_MEMO WHERE ROWID='" + strRowId + "' ";
+                SQL = SQL + ComNum.VBLF + " DELETE ADMIN.OCS_MEMO WHERE ROWID='" + strRowId + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -541,7 +541,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " UPDATE KOSMOS_OCS.OCS_MEMO2 SET Memo =''  ";
+                SQL = SQL + ComNum.VBLF + " UPDATE ADMIN.OCS_MEMO2 SET Memo =''  ";
                 SQL = SQL + ComNum.VBLF + " WHERE PtNo='" + strPano + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND DeptCode='" + VB.Trim(cboDept2.Text) + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND DeptCode2='" + strDept + "' ";

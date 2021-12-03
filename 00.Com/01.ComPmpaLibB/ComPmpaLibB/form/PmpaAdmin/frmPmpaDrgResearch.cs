@@ -721,7 +721,7 @@ namespace ComPmpaLibB
                 {
                     FstrRowid2 = Dt.Rows[0]["ROWID"].ToString().Trim();
 
-                    SQL = " UPDATE KOSMOS_PMPA.DRG_CHART1 SET ";
+                    SQL = " UPDATE ADMIN.DRG_CHART1 SET ";
                     SQL += ComNum.VBLF + " TRSNO = '" + FstrTRSNO + "', ";
                     SQL += ComNum.VBLF + " IPDNO = '" + FstrIPDNO + "', ";
                     SQL += ComNum.VBLF + " PANO = '" + FstrPano + "', ";
@@ -754,7 +754,7 @@ namespace ComPmpaLibB
                 else
                 {
                     SQL = "";
-                    SQL += ComNum.VBLF + "  INSERT INTO KOSMOS_PMPA.DRG_CHART1 ( ";
+                    SQL += ComNum.VBLF + "  INSERT INTO ADMIN.DRG_CHART1 ( ";
                     SQL += ComNum.VBLF + "  TRSNO, IPDNO, PANO, PNAME, ";
                     SQL += ComNum.VBLF + "  OPT110, OPT110A, OPT211, OPT212, OPT213, OPT214, OPT214A, ";
                     SQL += ComNum.VBLF + "  OPT220, OPT230, OPT230A, OPT240, OPT310, OPT310A, OPT321, ";
@@ -836,7 +836,7 @@ namespace ComPmpaLibB
             try
             {
                 SQL = "";
-                SQL += ComNum.VBLF + " UPDATE KOSMOS_PMPA.DRG_CHART1 SET  ";
+                SQL += ComNum.VBLF + " UPDATE ADMIN.DRG_CHART1 SET  ";
                 SQL += ComNum.VBLF + " DelDate =SYSDATE ";
                 SQL += ComNum.VBLF + " WHERE TRSNO = '" + FstrTRSNO + "' ";
                 SQL += ComNum.VBLF + "   AND IPDNO = '" + FstrIPDNO + "' ";

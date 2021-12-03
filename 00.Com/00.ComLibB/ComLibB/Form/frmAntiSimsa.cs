@@ -80,7 +80,7 @@ namespace ComLibB
 
                     if (Convert.ToBoolean(ssView_Sheet1.Cells[i, 0].Value) == true && strROWID != "")
                     {
-                        SQL = " UPDATE KOSMOS_PMPA.BAS_ANTI_SIMSA SET";
+                        SQL = " UPDATE ADMIN.BAS_ANTI_SIMSA SET";
                         SQL = SQL + ComNum.VBLF + " DELDATE = SYSDATE ";
                         SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
 
@@ -150,7 +150,7 @@ namespace ComLibB
 
                     if (strSuCode != "" && strSunameK != "" && strROWID == "")
                     {
-                        SQL = " INSERT INTO KOSMOS_PMPA.BAS_ANTI_SIMSA(SUCODE, WRITEDATE, WRITESABUN, GBN1, GBN2) VALUES (";
+                        SQL = " INSERT INTO ADMIN.BAS_ANTI_SIMSA(SUCODE, WRITEDATE, WRITESABUN, GBN1, GBN2) VALUES (";
                         SQL = SQL + ComNum.VBLF + "'" + strSuCode + "', ";
                         SQL = SQL + ComNum.VBLF + " SYSDATE, " + clsType.User.Sabun + ", ";
                         SQL = SQL + ComNum.VBLF + "'" + strGBN1 + "','" + strGBN2 + "')";
@@ -168,7 +168,7 @@ namespace ComLibB
                     }
                     else if (strSuCode != "" && strSunameK != "" && strROWID != "")
                     {
-                        SQL = " UPDATE KOSMOS_PMPA.BAS_ANTI_SIMSA SET ";
+                        SQL = " UPDATE ADMIN.BAS_ANTI_SIMSA SET ";
                         SQL = SQL + ComNum.VBLF + " GBN1 = '" + strGBN1 + "', ";
                         SQL = SQL + ComNum.VBLF + " GBN2 = '" + strGBN2 + "' ";
                         SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
@@ -226,9 +226,9 @@ namespace ComLibB
 
             try
             {                                
-                SQL = " SELECT A.SUCODE, (SELECT SUNAMEK FROM KOSMOS_PMPA.BAS_SUN WHERE SUNEXT = A.SUCODE) SUNAMEK, GBN1, GBN2,";
+                SQL = " SELECT A.SUCODE, (SELECT SUNAMEK FROM ADMIN.BAS_SUN WHERE SUNEXT = A.SUCODE) SUNAMEK, GBN1, GBN2,";
                 SQL = SQL + ComNum.VBLF + "     TO_CHAR(WRITEDATE, 'YYYY-MM-DD') WDATE, TO_CHAR(DELDATE,'YYYY-MM-DD') DDATE, ROWID";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ANTI_SIMSA A";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ANTI_SIMSA A";
                 if (strValue == "1")
                 {
                     SQL = SQL + ComNum.VBLF + " WHERE DelDate Is Null";
@@ -291,7 +291,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT SUNAMEK ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SUN ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SUN ";
                 SQL = SQL + ComNum.VBLF + " WHERE SUNEXT = '" + strCODE + "' ";
                 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

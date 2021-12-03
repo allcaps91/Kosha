@@ -48,7 +48,7 @@
             parameter.AppendSql(" SELECT a.LtdCode,a.WRTNO,TO_CHAR(a.JepDate,'YYYY-MM-DD') JepDate,a.GjJong,a.GjChasu               ");
             parameter.AppendSql("      , a.SECOND_Flag,TO_CHAR(a.SECOND_Date,'YYYY-MM-DD') Second_Date, b.Tel,b.Hphone, b.Email     ");
             parameter.AppendSql("      , b.Jumin2, a.Kiho, a.Gkiho ,c.*                                                             ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_RES_DENTAL c           ");
+            parameter.AppendSql("   FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_RES_DENTAL c           ");
             parameter.AppendSql("  WHERE a.JEPDATE >= TO_DATE(:JEPDATE, 'YYYY-MM-DD')                                               ");
             parameter.AppendSql("    AND a.MIRNO2 = :MIRNO                                                                          ");
             parameter.AppendSql("    AND a.Pano = b.Pano                                                                            ");

@@ -22,8 +22,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT B.EXCODE                                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAPDTL  a                                         ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_GROUPEXAM b                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAPDTL  a                                         ");
+            parameter.AppendSql("     , ADMIN.HIC_GROUPEXAM b                                         ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                      ");
             parameter.AppendSql("   AND a.CODE = b.GROUPCODE(+)                                             ");
             parameter.AppendSql("   AND (a.UCode IS NOT NULL OR a.Code IN ('J224','1160','J231','K226'))    ");

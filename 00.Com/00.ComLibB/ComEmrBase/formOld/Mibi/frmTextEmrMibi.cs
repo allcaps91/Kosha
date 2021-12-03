@@ -66,7 +66,7 @@ namespace ComEmrBase
             {
                 SQL = " SELECT A.PTNO, B.SNAME AS PTNAME, A.MIBIINDATE, A.MIBIINTIME,";
                 SQL += ComNum.VBLF + "        A.MEDFRDATE, A.MEDENDDATE, A.MIBIGRP, A.MIBICD, A.MIBIRMK, A.ERGB ";
-                SQL += ComNum.VBLF + "    FROM KOSMOS_EMR.EMRMIBI A, KOSMOS_PMPA.BAS_PATIENT B ";
+                SQL += ComNum.VBLF + "    FROM ADMIN.EMRMIBI A, ADMIN.BAS_PATIENT B ";
                 if(clsType.User.DeptCode == "MD" || clsType.User.Sabun == "31606" || clsType.User.Sabun == "34241")
                 {
                     SQL += ComNum.VBLF + "    WHERE A.MEDDEPTCD IN ('MG','MP','MN','ME','MC','MR','MD','MI','MO') ";
@@ -246,7 +246,7 @@ namespace ComEmrBase
             try
             {
                 SQL = "SELECT MIBIGRP";
-                SQL += ComNum.VBLF + "FROM KOSMOS_EMR.EMRMIBI  ";
+                SQL += ComNum.VBLF + "FROM ADMIN.EMRMIBI  ";
                 SQL += ComNum.VBLF + "WHERE PTNO = '" + strPtNo + "'";
                 SQL += ComNum.VBLF + "  AND MEDENDDATE = '" + strMedEndDate + "'";
 

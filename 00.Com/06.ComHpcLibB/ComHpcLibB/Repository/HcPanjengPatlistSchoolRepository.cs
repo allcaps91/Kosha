@@ -29,11 +29,11 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(a.JEPDATE,'YYYY-MM-DD') JEPDATE, a.PANO, a.SNAME, a.SEX, a.AGE, a.WRTNO, a.LTDCODE, a.PTNO      ");
             parameter.AppendSql("     , a.CLASS, a.BAN, a.BUN, TO_CHAR(b.RDATE,'YYYY-MM-DD') RDATE, b.GBPAN, b.ROWID RID, a.SANGDAMDRNO         ");
             parameter.AppendSql("     , a.GJJONG                                                                                                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(a.LTDCODE) LTDNAME                                                           ");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_BAS_PATIENT_JUMINNO(a.PTNO) JUMIN                                                         ");
+            parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(a.LTDCODE) LTDNAME                                                           ");
+            parameter.AppendSql("     , ADMIN.FC_BAS_PATIENT_JUMINNO(a.PTNO) JUMIN                                                         ");
             parameter.AppendSql("     , a.GWRTNO                                                                                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU       a    --건강증진센타 접수 마스타                                             ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_SCHOOL_NEW  b    --2006년 학생신체검사 new 테이블                                       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU       a    --건강증진센타 접수 마스타                                             ");
+            parameter.AppendSql("     , ADMIN.HIC_SCHOOL_NEW  b    --2006년 학생신체검사 new 테이블                                       ");
             parameter.AppendSql(" WHERE a.JEPDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                                             ");
             parameter.AppendSql("   AND a.JEPDATE <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                                             ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                                                                       ");

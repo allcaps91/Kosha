@@ -118,7 +118,7 @@ namespace ComEmrBase
             {
 
                 SQL = "SELECT BIGO  ";
-                SQL += ComNum.VBLF + "KOSMOS_EMR.EMRFORM_BIGO";
+                SQL += ComNum.VBLF + "ADMIN.EMRFORM_BIGO";
                 SQL += ComNum.VBLF + "WHERE FORMNO = " + strFormNo;
 
                 string sqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -156,7 +156,7 @@ namespace ComEmrBase
             OracleDataReader reader = null;
 
             string SQL = "SELECT FORMNAME  ";
-            SQL += ComNum.VBLF + "FROM KOSMOS_EMR.EMRFORM";
+            SQL += ComNum.VBLF + "FROM ADMIN.EMRFORM";
             SQL += ComNum.VBLF + "WHERE FORMNO = " + GstrHelpCode;
 
             string sqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -205,7 +205,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRFORM_BIGO ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRFORM_BIGO ";
                 SQL = SQL + ComNum.VBLF + " WHERE FORMNO = " + GstrHelpCode;
 
                 string sqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -223,7 +223,7 @@ namespace ComEmrBase
 
                 if(strRowid.Length == 0)
                 {
-                    SQL = " INSERT INTO KOSMOS_EMR.EMRFORM_BIGO(FORMNO, BIGO, BDATE, SABUN) VALUES (";
+                    SQL = " INSERT INTO ADMIN.EMRFORM_BIGO(FORMNO, BIGO, BDATE, SABUN) VALUES (";
                     SQL += ComNum.VBLF + GstrHelpCode + ",";
                     SQL += ComNum.VBLF + "'" + txtBigo.Text.Trim().Replace("'", "`") + "',";
                     SQL += ComNum.VBLF + "TRUNC(SYSDATE), ";
@@ -232,7 +232,7 @@ namespace ComEmrBase
                 }
                 else
                 {
-                    SQL = " UPDATE KOSMOS_EMR.EMRFORM_BIGO SET ";
+                    SQL = " UPDATE ADMIN.EMRFORM_BIGO SET ";
                     SQL += ComNum.VBLF + " BIGO = '" + txtBigo.Text.Trim().Replace("'", "`") + "' ";
                     SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "' ";
                 }

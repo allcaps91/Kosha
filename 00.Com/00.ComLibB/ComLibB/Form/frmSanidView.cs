@@ -108,7 +108,7 @@ namespace ComLibB
                 //GBRESULT    CHAR(1)     결과: 1.치유 2.사망 3.전원 4.중지 5.계속
                 SQL = SQL + ComNum.VBLF + "  DECODE(B.GBRESULT, '1','치유', '2','사망','3','전원','4','중지','계속') GBRESULT,";
                 SQL = SQL + ComNum.VBLF + "  DECODE(B.JONG,'1','특진','2','후유','3','진폐','일반') JONG ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_MASTER A, KOSMOS_PMPA.BAS_SANID B ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OPD_MASTER A, ADMIN.BAS_SANID B ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.ACTDATE >= TO_DATE('" + dtpFdate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND A.ACTDATE >= TO_DATE('" + dtpTdate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + " AND A.BI ='31' ";

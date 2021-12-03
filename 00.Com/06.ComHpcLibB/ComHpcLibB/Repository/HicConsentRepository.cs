@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CONSENT                     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CONSENT                     ");
             parameter.AppendSql("   SET ASA      = :ASA                             ");
             parameter.AppendSql("     , ASASABUN = :ASASABUN                        ");
             parameter.AppendSql("     , ASATIME  = SYSDATE                          ");
@@ -43,7 +43,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CONSENT SET                 ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CONSENT SET                 ");
             parameter.AppendSql("       ASA      = :ASA                             ");
             parameter.AppendSql("     , ASASABUN = :ASASABUN                        ");
             parameter.AppendSql("     , ASATIME  = SYSDATE                          ");
@@ -85,7 +85,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CONSENT        ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CONSENT        ");
             parameter.AppendSql("   SET DELDATE = SYSDATE              ");
             parameter.AppendSql(" WHERE ROWID   = :RID               ");
 
@@ -99,7 +99,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CONSENT                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CONSENT                     ");
             parameter.AppendSql(" WHERE PTNO     = :PTNO                            ");
             parameter.AppendSql("   AND SDATE    = TO_DATE(:SDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND FORMCODE = :FORMCODE                        ");
@@ -116,7 +116,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CONSENT SET                 ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CONSENT SET                 ");
             parameter.AppendSql("       DRSABUN      = :DRSABUN                     ");
             parameter.AppendSql("     , DOCTSIGN     = SYSDATE                      ");
             parameter.AppendSql("     , CONSENT_TIME = SYSDATE                      ");
@@ -141,7 +141,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT FORMCODE                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CONSENT_FORM      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CONSENT_FORM      ");
             parameter.AppendSql(" WHERE FORMNO      = :FORMNO             ");
             parameter.AppendSql("   AND DELDATE IS NULL                   ");
 
@@ -155,11 +155,11 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT(C.ID) AS CNT                      ");
-            parameter.AppendSql("  FROM KOSMOS_EMR.AEMRFORM F                   ");
-            parameter.AppendSql(" INNER JOIN KOSMOS_EMR.AEASFORMCONTENT B       ");
+            parameter.AppendSql("  FROM ADMIN.AEMRFORM F                   ");
+            parameter.AppendSql(" INNER JOIN ADMIN.AEASFORMCONTENT B       ");
             parameter.AppendSql("    ON F.FORMNO = B.FORMNO                     ");
             parameter.AppendSql("   AND F.UPDATENO = B.UPDATENO                 ");
-            parameter.AppendSql(" INNER JOIN KOSMOS_EMR.AEASFORMDATA C          ");
+            parameter.AppendSql(" INNER JOIN ADMIN.AEASFORMDATA C          ");
             parameter.AppendSql("    ON B.ID = C.EASFORMCONTENT                 ");
             parameter.AppendSql(" WHERE C.PTNO      = :PTNO                     ");
             parameter.AppendSql("   AND F.FORMNO    = :FORMNO                   ");
@@ -180,7 +180,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CONSENT SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CONSENT SET     ");
             parameter.AppendSql("       PAGECNT = 3                     ");
             parameter.AppendSql("WHERE PTNO     = :PTNO                 ");
             parameter.AppendSql("  AND FORMCODE = 'D10'                 ");
@@ -197,7 +197,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CONSENT SET             ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CONSENT SET             ");
             parameter.AppendSql("       DRSABUN      = :DRSABUN                 ");
             parameter.AppendSql("     , DOCTSIGN     = SYSDATE                  ");
             parameter.AppendSql("     , CONSENT_TIME = SYSDATE                  ");
@@ -219,8 +219,8 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT b.WRTNO, b.SNAME, b.FORMCODE, b.PAGECNT, b.DRSABUN, b.PTNO, b.DEPTCODE      ");
             parameter.AppendSql("     , b.ROWID AS RID , TO_CHAR(b.BDATE,'YYYY-MM-DD') BDATE, b.ENTDATE, b.DOCTSIGN ");
-            parameter.AppendSql("     , b.DRSABUN, KOSMOS_OCS.FC_INSA_MST_KORNAME(b.DRSABUN) DRNAME, b.ASA, b.EMRNO ");
-            parameter.AppendSql("     , (SELECT FORMNAME FROM KOSMOS_PMPA.HIC_CONSENT_FORM                          ");
+            parameter.AppendSql("     , b.DRSABUN, ADMIN.FC_INSA_MST_KORNAME(b.DRSABUN) DRNAME, b.ASA, b.EMRNO ");
+            parameter.AppendSql("     , (SELECT FORMNAME FROM ADMIN.HIC_CONSENT_FORM                          ");
             parameter.AppendSql("       WHERE FORMCODE = b.FORMCODE) FORMNAME, TO_CHAR(b.CONSENT_TIME, 'YYYY-MM-DD HH24:MI') CONSENT_TIME ");
             if (argDept == "HEA")
             {
@@ -233,7 +233,7 @@ namespace ComHpcLibB.Repository
                     parameter.AppendSql("     , TO_CHAR(b.SDATE, 'YYYY-MM-DD') SDATE                        ");
                 }
 
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU a, KOSMOS_PMPA.HIC_CONSENT b              ");
+                parameter.AppendSql("  FROM ADMIN.HEA_JEPSU a, ADMIN.HIC_CONSENT b              ");
                 parameter.AppendSql(" WHERE b.SDate >= TO_DATE(:FDATE, 'YYYY-MM-DD')                        ");
                 parameter.AppendSql("   AND b.SDate <= TO_DATE(:TDATE, 'YYYY-MM-DD')                        ");
             }
@@ -248,7 +248,7 @@ namespace ComHpcLibB.Repository
                     parameter.AppendSql("     , TO_CHAR(b.SDATE, 'YYYY-MM-DD') SDATE                        ");
                 }
 
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_CONSENT b              ");
+                parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_CONSENT b              ");
                 parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FDATE, 'YYYY-MM-DD')                      ");
                 parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TDATE, 'YYYY-MM-DD')                      ");
             }
@@ -317,7 +317,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CONSENT                 ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CONSENT                 ");
             parameter.AppendSql("   SET DELDATE = ''                            ");
             parameter.AppendSql("      ,WRTNO =:WRTNO                           ");
             parameter.AppendSql("      ,SNAME =:SNAME                           ");
@@ -337,7 +337,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CONSENT         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CONSENT         ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                    ");
             parameter.AppendSql("   AND DEPTCODE = :DEPTCODE            ");
             parameter.AppendSql("   AND FORMCODE=:FORMCODE              ");
@@ -356,7 +356,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CONSENT         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CONSENT         ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                    ");
             parameter.AppendSql("   AND DEPTCODE = :DEPTCODE            ");
             parameter.AppendSql("   AND FORMCODE=:FORMCODE              ");
@@ -375,7 +375,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT DEPTCODE, FORMCODE, PAGECNT                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CONSENT                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CONSENT                     ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO                           ");
             if (nCol== 4)
             {
@@ -408,7 +408,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CONSENT                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CONSENT                     ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO                           ");
             parameter.AppendSql("   AND SDATE    = TO_DATE(:SDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND DEPTCODE = 'HR'                             ");
@@ -424,7 +424,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CONSENT                             ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CONSENT                             ");
             parameter.AppendSql("   SET DOCTSIGN = TO_DATE(:DOCTSIGN, 'YYYY-MM-DD HH24:MI') ");
             parameter.AppendSql(" WHERE ROWID    = :RID                                     ");
 
@@ -442,12 +442,12 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(BDate,'YYYY-MM-DD') BDate                                   ");
             parameter.AppendSql("     , TO_CHAR(EntDate,'YYYY-MM-DD') EntDate                               ");
             parameter.AppendSql("     , TO_CHAR(DoctSign,'YYYY-MM-DD HH24:MI') DoctSign                     ");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_INSA_MST_KORNAME(a.DRSABUN) DRNAME                    ");
+            parameter.AppendSql("     , ADMIN.FC_INSA_MST_KORNAME(a.DRSABUN) DRNAME                    ");
             parameter.AppendSql("     , ROWID                                                               ");
             parameter.AppendSql("     , (SELECT FORMNAME                                                    ");
-            parameter.AppendSql("          FROM KOSMOS_PMPA.HIC_CONSENT_FORM                                ");
+            parameter.AppendSql("          FROM ADMIN.HIC_CONSENT_FORM                                ");
             parameter.AppendSql("         WHERE FORMCODE = a.FORMCODE) FORMNAME                             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CONSENT a                                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CONSENT a                                           ");
             parameter.AppendSql(" WHERE 1=1                                                                 ");
             if (!idNumber.IsNullOrEmpty())
             {
@@ -483,7 +483,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT DOCTSIGN                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CONSENT                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CONSENT                 ");
             parameter.AppendSql(" WHERE 1 =1                                    ");
             parameter.AppendSql(" AND PTNO = :PTNO                              ");
             parameter.AppendSql(" AND SDATE = TO_DATE(:SDATE,'YYYY-MM-DD')      ");
@@ -503,7 +503,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT FILENAME1                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CONSENT                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CONSENT                 ");
             parameter.AppendSql(" WHERE 1 =1                                    ");
             parameter.AppendSql(" AND PTNO = :PTNO                              ");
             parameter.AppendSql(" AND FORMCODE = :FROMCODE                      ");
@@ -520,7 +520,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CONSENT                                 ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CONSENT                                 ");
             if (argGubun =="OK")
             {
                 parameter.AppendSql("   SET DRSABUN ='111'                                      ");
@@ -544,7 +544,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CONSENT                                 ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CONSENT                                 ");
             parameter.AppendSql("   SET SDATE =TO_DATE(:SDATE, 'YYYY-MM-DD')                    ");
             parameter.AppendSql(" , CONSENT_TIME = SYSDATE                                      ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                            ");

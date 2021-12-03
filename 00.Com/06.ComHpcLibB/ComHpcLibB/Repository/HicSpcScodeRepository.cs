@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {   
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_Spc_SCODE_NEW   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_Spc_SCODE_NEW   ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
             parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -36,11 +36,11 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT DECODE(PANJENG,'1','A','2','B','3','C1','4','C2','5','D1','6','D2','7','R','8','U') PANJENG ");
-            parameter.AppendSql("      ,PANJENG AS PANJENG2, DBUN,KOSMOS_PMPA.FC_HIC_CODE_NM('19', DBUN) AS DBUN_NM, NAME, CODE     ");
-            parameter.AppendSql("      ,MCODE, KOSMOS_PMPA.FC_HIC_MCODE_NM(MCODE) AS MCODE_NM, GCODE, SORT                          ");
+            parameter.AppendSql("      ,PANJENG AS PANJENG2, DBUN,ADMIN.FC_HIC_CODE_NM('19', DBUN) AS DBUN_NM, NAME, CODE     ");
+            parameter.AppendSql("      ,MCODE, ADMIN.FC_HIC_MCODE_NM(MCODE) AS MCODE_NM, GCODE, SORT                          ");
             parameter.AppendSql("      ,GBAUTOPAN,SOGENREMARK,JOCHIREMARK,WORKYN,SAHUCODE,REEXAM,AUTOPANGBN                         ");
             parameter.AppendSql("      ,TO_CHAR(DELDATE, 'YYYY-MM-DD') DELDATE, ROWID AS RID                                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_SCODE_NEW                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_SCODE_NEW                                   ");
             parameter.AppendSql(" WHERE CODE = :CODE                                                ");
 
             parameter.Add("CODE", argSogen, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -51,11 +51,11 @@ namespace ComHpcLibB.Repository
         public HIC_SPC_SCODE GetItemByMCodeSogen(string fstrCode, string fstrMCode)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT DBUN,KOSMOS_PMPA.FC_HIC_CODE_NM('19', DBUN) AS DBUN_NM, NAME, CODE  ");
-            parameter.AppendSql("      ,MCODE, KOSMOS_PMPA.FC_HIC_MCODE_NM(MCODE) AS MCODE_NM, GCODE, SORT  ");
+            parameter.AppendSql("SELECT DBUN,ADMIN.FC_HIC_CODE_NM('19', DBUN) AS DBUN_NM, NAME, CODE  ");
+            parameter.AppendSql("      ,MCODE, ADMIN.FC_HIC_MCODE_NM(MCODE) AS MCODE_NM, GCODE, SORT  ");
             parameter.AppendSql("      ,GBAUTOPAN,SOGENREMARK,JOCHIREMARK,WORKYN,SAHUCODE,REEXAM,AUTOPANGBN ");
             parameter.AppendSql("      ,TO_CHAR(DELDATE, 'YYYY-MM-DD') DELDATE, ROWID AS RID, PANJENG       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_SCODE_NEW                                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_SCODE_NEW                                           ");
             parameter.AppendSql(" WHERE MCODE = :MCODE                                                      ");
             parameter.AppendSql("   AND CODE = :CODE                                                        ");
             parameter.AppendSql("   AND AUTOPANGBN = '2'                                                    ");
@@ -70,11 +70,11 @@ namespace ComHpcLibB.Repository
         public HIC_SPC_SCODE GetItemByMCodePanjeng(string strPan, string fstrMCode)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT DBUN,KOSMOS_PMPA.FC_HIC_CODE_NM('19', DBUN) AS DBUN_NM, NAME, CODE  ");
-            parameter.AppendSql("      ,MCODE, KOSMOS_PMPA.FC_HIC_MCODE_NM(MCODE) AS MCODE_NM, GCODE, SORT  ");
+            parameter.AppendSql("SELECT DBUN,ADMIN.FC_HIC_CODE_NM('19', DBUN) AS DBUN_NM, NAME, CODE  ");
+            parameter.AppendSql("      ,MCODE, ADMIN.FC_HIC_MCODE_NM(MCODE) AS MCODE_NM, GCODE, SORT  ");
             parameter.AppendSql("      ,GBAUTOPAN,SOGENREMARK,JOCHIREMARK,WORKYN,SAHUCODE,REEXAM,AUTOPANGBN ");
             parameter.AppendSql("      ,TO_CHAR(DELDATE, 'YYYY-MM-DD') DELDATE, ROWID AS RID                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_SCODE_NEW                                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_SCODE_NEW                                           ");
             parameter.AppendSql(" WHERE MCODE = :MCODE                                                      ");
             parameter.AppendSql("   AND PANJENG = :PANJENG                                                  ");
             parameter.AppendSql("   AND AUTOPANGBN = '1'                                                    ");
@@ -90,7 +90,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_SCODE_NEW           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_SCODE_NEW           ");
             parameter.AppendSql(" WHERE 1 = 1                               ");
             if (!strRetValue.IsNullOrEmpty())
             {
@@ -121,7 +121,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_SCODE_NEW       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_SCODE_NEW       ");
             parameter.AppendSql("   SET DELDATE  = :DELDATE             ");
             parameter.AppendSql("      ,ENTSABUN =:ENTSABUN             ");
             parameter.AppendSql(" WHERE ROWID    =:RID                  ");
@@ -137,7 +137,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_SCODE_NEW  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_SCODE_NEW  ");
             parameter.AppendSql("   SET CODE        =:CODE         ");
             parameter.AppendSql("      ,PANJENG     =:PANJENG      ");
             parameter.AppendSql("      ,DBUN        =:DBUN         ");
@@ -180,7 +180,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SPC_SCODE_NEW (                                    ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SPC_SCODE_NEW (                                    ");
             parameter.AppendSql("   CODE,PANJENG,DBUN,NAME,MCODE,ENTDATE,ENTSABUN,GCODE,SOGENREMARK         ");
             parameter.AppendSql("  ,JOCHIREMARK, WORKYN, SAHUCODE, REEXAM, GBAUTOPAN, SORT,AUTOPANGBN       ");
             parameter.AppendSql(" ) VALUES (                                                                ");
@@ -210,12 +210,12 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT DECODE(PANJENG,'1','A','2','B','3','C1','4','C2','5','D1','6','D2','7','R','8','U','9','CN','A','DN') PANJENG ");
-            parameter.AppendSql("      ,DBUN,KOSMOS_PMPA.FC_HIC_CODE_NM('19', DBUN) AS DBUN_NM, NAME, CODE                          ");
-            parameter.AppendSql("      ,MCODE, KOSMOS_PMPA.FC_HIC_MCODE_NM(MCODE) AS MCODE_NM, GCODE, SORT                          ");
+            parameter.AppendSql("      ,DBUN,ADMIN.FC_HIC_CODE_NM('19', DBUN) AS DBUN_NM, NAME, CODE                          ");
+            parameter.AppendSql("      ,MCODE, ADMIN.FC_HIC_MCODE_NM(MCODE) AS MCODE_NM, GCODE, SORT                          ");
             parameter.AppendSql("      ,GBAUTOPAN,SOGENREMARK,JOCHIREMARK,WORKYN,SAHUCODE,REEXAM                                    ");
             parameter.AppendSql("      ,DECODE(AUTOPANGBN,'1','판정','2','소견','') AUTOPANGBN                                      ");
             parameter.AppendSql("      ,DELDATE, ROWID AS RID                                                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_SCODE_NEW                                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_SCODE_NEW                                                                   ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                       ");
             if (strPan != "*" && !strPan.IsNullOrEmpty())
             {
@@ -240,7 +240,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_SCODE_NEW   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_SCODE_NEW   ");
             parameter.AppendSql(" WHERE DELDATE IS NULL             ");
             parameter.AppendSql("   AND CODE IS NOT NULL            ");
             parameter.AppendSql("   AND NAME IS NOT NULL            ");

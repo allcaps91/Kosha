@@ -447,8 +447,8 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "   ,(";
                 SQL += ComNum.VBLF + "   SELECT";
                 SQL += ComNum.VBLF + "   S.ITEMVALUE || ' ' || S2.ITEMVALUE";
-                SQL += ComNum.VBLF + "       FROM KOSMOS_EMR.AEMRCHARTROW S";
-                SQL += ComNum.VBLF + "         INNER JOIN KOSMOS_EMR.AEMRCHARTROW S2";
+                SQL += ComNum.VBLF + "       FROM ADMIN.AEMRCHARTROW S";
+                SQL += ComNum.VBLF + "         INNER JOIN ADMIN.AEMRCHARTROW S2";
                 SQL += ComNum.VBLF + "            ON S2.EMRNO  = S.EMRNO";
                 SQL += ComNum.VBLF + "           AND S2.EMRNOHIS  = S.EMRNOHIS ";
                 SQL += ComNum.VBLF + "           AND S2.ITEMCD  = 'I0000037487'";
@@ -461,8 +461,8 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "   ,(";
                 SQL += ComNum.VBLF + "   SELECT";
                 SQL += ComNum.VBLF + "   E1.ITEMVALUE || ' ' || E2.ITEMVALUE";
-                SQL += ComNum.VBLF + "       FROM KOSMOS_EMR.AEMRCHARTROW E1";
-                SQL += ComNum.VBLF + "         INNER JOIN KOSMOS_EMR.AEMRCHARTROW E2";
+                SQL += ComNum.VBLF + "       FROM ADMIN.AEMRCHARTROW E1";
+                SQL += ComNum.VBLF + "         INNER JOIN ADMIN.AEMRCHARTROW E2";
                 SQL += ComNum.VBLF + "            ON E2.EMRNO  = E1.EMRNO";
                 SQL += ComNum.VBLF + "           AND E2.EMRNOHIS  = E1.EMRNOHIS ";
                 SQL += ComNum.VBLF + "           AND E2.ITEMCD  = 'I0000037491'";
@@ -471,16 +471,16 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "         AND E1.ITEMCD = 'I0000037490'";
                 SQL += ComNum.VBLF + "   )AS EDATE";
                 #endregion
-                SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_BLOODTRANS A";
-                SQL += ComNum.VBLF + "    INNER JOIN KOSMOS_OCS.EXAM_BLOOD_IO B";
+                SQL += ComNum.VBLF + "  FROM ADMIN.EXAM_BLOODTRANS A";
+                SQL += ComNum.VBLF + "    INNER JOIN ADMIN.EXAM_BLOOD_IO B";
                 SQL += ComNum.VBLF + "       ON A.PANO = B.PANO";
                 SQL += ComNum.VBLF + "      AND A.BLOODNO = B.BLOODNO";
                 
-                SQL += ComNum.VBLF + "    INNER JOIN KOSMOS_OCS.EXAM_BLOODCROSSM C";
+                SQL += ComNum.VBLF + "    INNER JOIN ADMIN.EXAM_BLOODCROSSM C";
                 SQL += ComNum.VBLF + "       ON A.PANO = C.PANO";
                 SQL += ComNum.VBLF + "      AND A.BLOODNO = C.BLOODNO";
                 SQL += ComNum.VBLF + "      AND C.GBSTATUS <> '3'";
-                SQL += ComNum.VBLF + "     LEFT OUTER JOIN KOSMOS_EMR.EMR_DATA_MAPPING E";
+                SQL += ComNum.VBLF + "     LEFT OUTER JOIN ADMIN.EMR_DATA_MAPPING E";
                 SQL += ComNum.VBLF + "       ON E.MAPPING1 = TRIM(A.BLOODNO) || TRIM(B.COMPONENT)";
                 SQL += ComNum.VBLF + "      AND E.FORMNO IN(1965, 3535)";
                 SQL += ComNum.VBLF + " WHERE A.PANO = '" + p.ptNo + "'";
@@ -675,8 +675,8 @@ namespace ComEmrBase
                 //SQL += ComNum.VBLF + "   ,(";
                 //SQL += ComNum.VBLF + "   SELECT";
                 //SQL += ComNum.VBLF + "   S.ITEMVALUE || ' ' || S2.ITEMVALUE";
-                //SQL += ComNum.VBLF + "       FROM KOSMOS_EMR.AEMRCHARTROW S";
-                //SQL += ComNum.VBLF + "         INNER JOIN KOSMOS_EMR.AEMRCHARTROW S2";
+                //SQL += ComNum.VBLF + "       FROM ADMIN.AEMRCHARTROW S";
+                //SQL += ComNum.VBLF + "         INNER JOIN ADMIN.AEMRCHARTROW S2";
                 //SQL += ComNum.VBLF + "            ON S2.EMRNO  = S.EMRNO";
                 //SQL += ComNum.VBLF + "           AND S2.EMRNOHIS  = S.EMRNOHIS ";
                 //SQL += ComNum.VBLF + "           AND S2.ITEMCD  = 'I0000037487'";
@@ -689,8 +689,8 @@ namespace ComEmrBase
                 //SQL += ComNum.VBLF + "   ,(";
                 //SQL += ComNum.VBLF + "   SELECT";
                 //SQL += ComNum.VBLF + "   E1.ITEMVALUE || ' ' || E2.ITEMVALUE";
-                //SQL += ComNum.VBLF + "       FROM KOSMOS_EMR.AEMRCHARTROW E1";
-                //SQL += ComNum.VBLF + "         INNER JOIN KOSMOS_EMR.AEMRCHARTROW E2";
+                //SQL += ComNum.VBLF + "       FROM ADMIN.AEMRCHARTROW E1";
+                //SQL += ComNum.VBLF + "         INNER JOIN ADMIN.AEMRCHARTROW E2";
                 //SQL += ComNum.VBLF + "            ON E2.EMRNO  = E1.EMRNO";
                 //SQL += ComNum.VBLF + "           AND E2.EMRNOHIS  = E1.EMRNOHIS ";
                 //SQL += ComNum.VBLF + "           AND E2.ITEMCD  = 'I0000037491'";
@@ -699,10 +699,10 @@ namespace ComEmrBase
                 //SQL += ComNum.VBLF + "         AND E1.ITEMCD = 'I0000037490'";
                 //SQL += ComNum.VBLF + "   )AS EDATE";
                 //#endregion
-                //SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_BLOODTRANS T";
-                //SQL += ComNum.VBLF + "    INNER JOIN KOSMOS_OCS.EXAM_BLOOD_IO B";
+                //SQL += ComNum.VBLF + "  FROM ADMIN.EXAM_BLOODTRANS T";
+                //SQL += ComNum.VBLF + "    INNER JOIN ADMIN.EXAM_BLOOD_IO B";
                 //SQL += ComNum.VBLF + "       ON T.BLOODNO = B.BLOODNO ";
-                //SQL += ComNum.VBLF + "     LEFT OUTER JOIN KOSMOS_EMR.EMR_DATA_MAPPING E";
+                //SQL += ComNum.VBLF + "     LEFT OUTER JOIN ADMIN.EMR_DATA_MAPPING E";
                 //SQL += ComNum.VBLF + "       ON E.MAPPING1 = TRIM(T.BLOODNO) || TRIM(B.COMPONENT)";
                 //SQL += ComNum.VBLF + "      AND E.FORMNO = 1965";
                 //SQL += ComNum.VBLF + "  WHERE T.PANO = '" + p.ptNo + "'  ";
@@ -987,7 +987,7 @@ namespace ComEmrBase
                 return rtnVal;
 
             SQL = "SELECT FORMNO, UPDATENO";
-            SQL += ComNum.VBLF + "FROM KOSMOS_EMR.AEMRCHARTMST";
+            SQL += ComNum.VBLF + "FROM ADMIN.AEMRCHARTMST";
             SQL += ComNum.VBLF + "WHERE EMRNO = " + EmrNo;
 
             SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);

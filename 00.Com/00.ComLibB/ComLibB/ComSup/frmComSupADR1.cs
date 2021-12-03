@@ -343,7 +343,7 @@ namespace ComLibB
                 dt = null;
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " SELECT TEMP FROM KOSMOS_ADM.DRUG_ADR2 ";
+                SQL = SQL + ComNum.VBLF + " SELECT TEMP FROM ADMIN.DRUG_ADR2 ";
                 SQL = SQL + ComNum.VBLF + "     WHERE SEQNO = " + strSEQNO;
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -367,7 +367,7 @@ namespace ComLibB
                 dt = null;
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " SELECT TEMP FROM KOSMOS_ADM.DRUG_ADR3 ";
+                SQL = SQL + ComNum.VBLF + " SELECT TEMP FROM ADMIN.DRUG_ADR3 ";
                 SQL = SQL + ComNum.VBLF + "     WHERE SEQNO = " + strSEQNO;
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -558,7 +558,7 @@ namespace ComLibB
                 {
                     case "O":
                         SQL = " SELECT PANO PTNO, SNAME, A.SEX AGESEX, '' ROOMCODE, A.DEPTCODE, C.ILLNAMEK DIAGNAME, '외래' patient_bun, '' IPDNO, D.DRNAME";
-                        SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_MASTER A, KOSMOS_OCS.OCS_OILLS B, KOSMOS_PMPA.BAS_ILLS C, KOSMOS_PMPA.BAS_DOCTOR D";
+                        SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OPD_MASTER A, ADMIN.OCS_OILLS B, ADMIN.BAS_ILLS C, ADMIN.BAS_DOCTOR D";
                         SQL = SQL + ComNum.VBLF + " WHERE A.PANO = '" + strPTNO + "'";
                         SQL = SQL + ComNum.VBLF + "    AND A.BDATE = TO_DATE('" + strOPTION + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "    AND A.DEPTCODE = '" + strDEPTCODE + "'";
@@ -570,7 +570,7 @@ namespace ComLibB
                         break;
                     case "I":
                         SQL = " SELECT PANO PTNO, SNAME, A.SEX AGESEX, ROOMCODE, A.DEPTCODE, C.ILLNAMEK DIAGNAME, '입원' patient_bun, A.IPDNO, D.DRNAME";
-                        SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_NEW_MASTER A, KOSMOS_OCS.OCS_IILLS B, KOSMOS_PMPA.BAS_ILLS C, KOSMOS_PMPA.BAS_DOCTOR D";
+                        SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_NEW_MASTER A, ADMIN.OCS_IILLS B, ADMIN.BAS_ILLS C, ADMIN.BAS_DOCTOR D";
                         SQL = SQL + ComNum.VBLF + " WHERE A.PANO = '" + strPTNO + "'";
                         SQL = SQL + ComNum.VBLF + "    AND A.IPDNO = " + strOPTION;
                         SQL = SQL + ComNum.VBLF + "    AND A.IPDNO = B.IPDNO(+)";
@@ -580,7 +580,7 @@ namespace ComLibB
                         break;
                     default:
                         SQL = " SELECT PANO PTNO, SNAME, SEX AGESEX, '' ROOMCODE, DEPTCODE, '' DIAGNAME, '' IPDNO, '' DRCODE";
-                        SQL = SQL + ComNum.VBLF + " From KOSMOS_PMPA.BAS_PATIENT";
+                        SQL = SQL + ComNum.VBLF + " From ADMIN.BAS_PATIENT";
                         SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + strPTNO + "' ";
                         break;
                 }
@@ -1778,7 +1778,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT";
                 SQL = SQL + ComNum.VBLF + "     A.SUNAMEK, B.EFFECT, B.BUNCODE, C.CLASSNAME ";
-                SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "BAS_SUN A, " + ComNum.DB_MED + "OCS_DRUGINFO_NEW B, KOSMOS_PMPA.BAS_CLASS C";
+                SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "BAS_SUN A, " + ComNum.DB_MED + "OCS_DRUGINFO_NEW B, ADMIN.BAS_CLASS C";
                 SQL = SQL + ComNum.VBLF + "     WHERE A.SUNEXT = B.SUNEXT";
                 SQL = SQL + ComNum.VBLF + "         AND B.BUNCODE = C.CLASSCODE";
                 SQL = SQL + ComNum.VBLF + "         AND A.SUNEXT = '" + ssDrug_Sheet1.Cells[ssDrug_Sheet1.ActiveRowIndex, 0].Text + "' ";

@@ -129,8 +129,8 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL += " SELECT b.REMARK1, b.REMARK2                        \r";  
-                    SQL += "   FROM KOSMOS_ADM.DRUG_MASTER4     a               \r";
-                    SQL += "      , KOSMOS_ADM.DRUG_MASTER4_PRN b               \r";
+                    SQL += "   FROM ADMIN.DRUG_MASTER4     a               \r";
+                    SQL += "      , ADMIN.DRUG_MASTER4_PRN b               \r";
                     SQL += "  WHERE a.JEPCODE = b.JEPCODE                       \r";
                     SQL += "    AND a.JepCode = '" + FstrSuCode + "'            \r";
                     SQL += "    AND a.INSULIN_SCALE = 'S'                       \r";
@@ -270,7 +270,7 @@ namespace ComLibB
                 SQL += "      , b.MaxQty_1Time_Qty                  \r";
                 SQL += "      , b.MaxQty_1Day_Qty                   \r";
                 SQL += "      , Insulin_Scale                       \r";
-                SQL += "   FROM KOSMOS_ADM.DRUG_MASTER4 b           \r";
+                SQL += "   FROM ADMIN.DRUG_MASTER4 b           \r";
                 SQL += "  WHERE b.JepCode = '" + sSuCode.Trim() + "'       \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")

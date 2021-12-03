@@ -783,7 +783,7 @@ namespace ComLibB
                 }
 
                 SQL = " SELECT DCODE, DNAME ";
-                SQL = SQL + "  FROM KOSMOS_PMPA.DRG_CODE_NEW ";
+                SQL = SQL + "  FROM ADMIN.DRG_CODE_NEW ";
                 SQL = SQL + " WHERE DCODE = '" + ArgCode + "' ";
 
 
@@ -840,7 +840,7 @@ namespace ComLibB
                     return ArgReturn;
                 }
 
-                SQL = "SELECT HANGNAME FROM KOSMOS_ADM.WON_HANG ";
+                SQL = "SELECT HANGNAME FROM ADMIN.WON_HANG ";
                 SQL = SQL + ComNum.VBLF + "WHERE HANG='" + VB.Trim(ArgCode) + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

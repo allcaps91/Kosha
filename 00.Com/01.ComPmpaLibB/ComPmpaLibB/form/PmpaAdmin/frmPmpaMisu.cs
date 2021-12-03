@@ -2615,7 +2615,7 @@ namespace ComPmpaLibB
             int intRowAffected = 0;
 
             SQL = "";
-            SQL += ComNum.VBLF + " INSERT INTO KOSMOS_PMPA.OPD_SUNAP_DEL( ";
+            SQL += ComNum.VBLF + " INSERT INTO ADMIN.OPD_SUNAP_DEL( ";
             SQL += ComNum.VBLF + "         ACTDATE, STIME, PANO, AMT, PART, ";
             SQL += ComNum.VBLF + "         SEQNO, REMARK, BIGO, TOTAMT, JANAMT, ";
             SQL += ComNum.VBLF + "         AMT1, AMT2, AMT3, AMT5, AMT4, ";
@@ -2637,7 +2637,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "         ENTDATE, BDATE, PTAMT, JINDTL2, AL200, ";
             SQL += ComNum.VBLF + "         PART2, AMT6, AMT7, TAXDAN, GBCAN, OPDNO, ";
             SQL += ComNum.VBLF + "         SYSDATE, '" + clsType.User.Sabun + "' ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.OPD_SUNAP ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.OPD_SUNAP ";
             SQL += ComNum.VBLF + "  WHERE ROWID = '" + strROWID + "' ";
             SQL += ComNum.VBLF + "    AND ACTDATE = TRUNC(SYSDATE) ";
             SQL += ComNum.VBLF + "    AND REMARK = '미수입금' ";
@@ -2650,7 +2650,7 @@ namespace ComPmpaLibB
                 return false;
             }
 
-            SQL = " DELETE KOSMOS_PMPA.OPD_SUNAP ";
+            SQL = " DELETE ADMIN.OPD_SUNAP ";
             SQL += ComNum.VBLF + "  WHERE ROWID = '" + strROWID + "' ";
             SQL += ComNum.VBLF + "    AND ACTDATE = TRUNC(SYSDATE) ";
             SQL += ComNum.VBLF + "    AND REMARK = '미수입금' ";

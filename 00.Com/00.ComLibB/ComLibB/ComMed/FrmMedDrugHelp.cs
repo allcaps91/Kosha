@@ -227,8 +227,8 @@ namespace ComLibB
 
 
         //    SQL = " SELECT A.ORDERCODE, A.ORDERNAMES, A.ORDERNAME, B.SUNEXT, A.SENDDEPT, "
-        //    SQL = SQL & vbCr & " (SELECT DELDATE FROM KOSMOS_PMPA.BAS_SUT WHERE B.SUNEXT = SUNEXT) DELDATE, A.BUN"
-        //    SQL = SQL & vbCr & " FROM KOSMOS_OCS.OCS_ORDERCODE A, KOSMOS_PMPA.BAS_SUN B"
+        //    SQL = SQL & vbCr & " (SELECT DELDATE FROM ADMIN.BAS_SUT WHERE B.SUNEXT = SUNEXT) DELDATE, A.BUN"
+        //    SQL = SQL & vbCr & " FROM ADMIN.OCS_ORDERCODE A, ADMIN.BAS_SUN B"
         //    SQL = SQL & vbCr & " WHERE A.SUCODE = B.SUNEXT"
         //    SQL = SQL & vbCr & "   AND (   UPPER(A.ORDERNAMES) LIKE '%" & UCase(ArgData) & "%' "
         //    SQL = SQL & vbCr & "        OR UPPER(A.ORDERNAME) LIKE '%" & UCase(ArgData) & "%' "

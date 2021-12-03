@@ -55,7 +55,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " FROM (";
                 SQL = SQL + ComNum.VBLF + "      SELECT PANO, DEPTCODE, SEX,";
                 SQL = SQL + ComNum.VBLF + "       INTIME, OUTTIME, HUSONGNAME HOSPITAL, HUSONGSAYU SAYU1, '' SAYU2, DISEASE DISE1, '' DISE2, '' DISE3, 'ER' GUBUN";
-                SQL = SQL + ComNum.VBLF + "      From KOSMOS_PMPA.NUR_ER_PATIENT";
+                SQL = SQL + ComNum.VBLF + "      From ADMIN.NUR_ER_PATIENT";
                 SQL = SQL + ComNum.VBLF + " WHERE OUTTIME >= TO_DATE('" + txtSDATE.Text + " 00:00','YYYY-MM-DD HH24:MI')";
                 SQL = SQL + ComNum.VBLF + "      AND OUTTIME <= TO_DATE('" + txtEDATE.Text + " 23:59','YYYY-MM-DD HH24:MI')";
                 SQL = SQL + ComNum.VBLF + "      AND OUTGBN = '6'";
@@ -81,7 +81,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "         WHEN SAYUHETC IS NOT NULL THEN '기타'";
                 SQL = SQL + ComNum.VBLF + "     END SAYU2,";
                 SQL = SQL + ComNum.VBLF + "  DIAG1, DIAG2, DIAG3, '입원' GUBUN";
-                SQL = SQL + ComNum.VBLF + "   From KOSMOS_PMPA.NUR_QI_TRANSFOR";
+                SQL = SQL + ComNum.VBLF + "   From ADMIN.NUR_QI_TRANSFOR";
                 SQL = SQL + ComNum.VBLF + " WHERE TDATE >= TO_DATE('" + txtSDATE + " 00:00','YYYY-MM-DD HH24:MI')";
                 SQL = SQL + ComNum.VBLF + "      AND TDATE <= TO_DATE('" + txtEDATE + " 23:59','YYYY-MM-DD HH24:MI')";
                 SQL = SQL + ComNum.VBLF + "      )";

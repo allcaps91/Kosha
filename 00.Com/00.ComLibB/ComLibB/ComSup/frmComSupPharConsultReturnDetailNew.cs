@@ -434,7 +434,7 @@ namespace ComLibB
                 #region 이전 쿼리
                 //SQL = "";                
                 //SQL = SQL + ComNum.VBLF + "SELECT PANO, SNAME, SEX, AGE, '' ROOMCODE, DEPTCODE, TO_CHAR(ACTDATE, 'YYYY-MM-DD') ACTDATE ";
-                //SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_MASTER                                                               ";
+                //SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OPD_MASTER                                                               ";
                 //SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + GstrPTNO + "'                                                            ";
                 //SQL = SQL + ComNum.VBLF + "   AND DEPTCODE = '" + GstrDeptCode + "'                                                    ";
                 //SQL = SQL + ComNum.VBLF + "   AND ACTDATE = TO_DATE('" + GstrBDATE + "', 'YYYY-MM-DD')                                 ";
@@ -472,10 +472,10 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "     ,   B.DRNAME                                        ";
                 SQL = SQL + ComNum.VBLF + "     ,   TO_CHAR(O.ACTDATE, 'YYYY-MM-DD') ACTDATE        ";
                 SQL = SQL + ComNum.VBLF + "     ,   TO_CHAR(O.BDATE, 'YYYY-MM-DD') BDATE            ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.EMR_TREATT A                           ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_OCS.OCS_DOCTOR B                      ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EMR_TREATT A                           ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.OCS_DOCTOR B                      ";
                 SQL = SQL + ComNum.VBLF + "    ON A.DOCCODE = TRIM(B.DOCCODE)                       ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_PMPA.OPD_MASTER O                     ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.OPD_MASTER O                     ";
                 SQL = SQL + ComNum.VBLF + "    ON B.DRCODE = O.DRCODE                               ";
                 SQL = SQL + ComNum.VBLF + "   AND A.PATID  = TRIM(O.PANO)                           ";
                 SQL = SQL + ComNum.VBLF + "   AND O.BDATE  = TO_DATE(A.INDATE, 'YYYYMMDD')          ";
@@ -510,7 +510,7 @@ namespace ComLibB
 
                 SQL = "";                                
                 SQL = SQL + ComNum.VBLF + "SELECT A.ILLCODE, B.ILLNAMEK                                 ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_OILLS A, KOSMOS_PMPA.BAS_ILLS B        ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_OILLS A, ADMIN.BAS_ILLS B        ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.ILLCODE = B.ILLCODE                                 ";
                 SQL = SQL + ComNum.VBLF + "   AND A.PTNO = '"+ GstrPTNO + "'                            ";
                 SQL = SQL + ComNum.VBLF + "   AND A.BDATE = TO_DATE('"+ GstrBDATE + "', 'YYYY-MM-DD')   ";
@@ -570,13 +570,13 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "      WRITESABUN, C.DRNAME, C.DEPTCODE,                      ";
                 SQL = SQL + ComNum.VBLF + "      TO_CHAR(WRITEDATE, 'YYYY-MM-DD') AS BDATE,             ";
                 SQL = SQL + ComNum.VBLF + "      TO_CHAR(WRITEDATE, 'YYYY-MM-DD HH24:MI') AS WRITEDATE  ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.DRUG_PCONSULT A                             ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.DRUG_PCONSULT A                             ";
                 SQL = SQL + ComNum.VBLF + "     ,(SELECT PART, JEPCODE, COMMENTS                        ";
-                SQL = SQL + ComNum.VBLF + "         FROM KOSMOS_ADM.DRUG_SETCODE                        ";
+                SQL = SQL + ComNum.VBLF + "         FROM ADMIN.DRUG_SETCODE                        ";
                 SQL = SQL + ComNum.VBLF + "        WHERE GUBUN = '11'                                   ";
                 SQL = SQL + ComNum.VBLF + "          AND JEPCODE <> '분류명칭'                            ";
                 SQL = SQL + ComNum.VBLF + "          AND DELDATE IS NULL) B                             ";
-                SQL = SQL + ComNum.VBLF + "     , KOSMOS_OCS.OCS_DOCTOR C                               ";
+                SQL = SQL + ComNum.VBLF + "     , ADMIN.OCS_DOCTOR C                               ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.ORDERCODE = B.JEPCODE                               ";
                 SQL = SQL + ComNum.VBLF + "   AND A.WRITESABUN = C.SABUN(+)                             ";
                 SQL = SQL + ComNum.VBLF + "   AND A.SEQNO = " + strSEQNO;
@@ -642,7 +642,7 @@ namespace ComLibB
                     if (GstrPART == "01")
                     {
                         SQL = "";
-                        SQL = SQL + ComNum.VBLF + "SELECT MAX(BDATE), DOSCODE FROM KOSMOS_OCS.OCS_IORDER ";
+                        SQL = SQL + ComNum.VBLF + "SELECT MAX(BDATE), DOSCODE FROM ADMIN.OCS_IORDER ";
                         SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + dt.Rows[0]["PANO"].ToString().Trim() + "' ";
                         SQL = SQL + ComNum.VBLF + "   AND BDATE <= TO_DATE('" + dt.Rows[0]["BDATE"].ToString().Trim() + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "   AND ORDERCODE = '" + dt.Rows[0]["ORDERCODE"].ToString().Trim() + "' ";
@@ -668,7 +668,7 @@ namespace ComLibB
 
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT * FROM KOSMOS_ADM.DRUG_PCONSULT_ROW ";
+                SQL = SQL + ComNum.VBLF + "SELECT * FROM ADMIN.DRUG_PCONSULT_ROW ";
                 SQL = SQL + ComNum.VBLF + "WHERE SEQNO = " + GstrSEQNO;
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -787,7 +787,7 @@ namespace ComLibB
             try
             {                
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT * FROM KOSMOS_ADM.DRUG_PCONSULT_ROW ";
+                SQL = SQL + ComNum.VBLF + "SELECT * FROM ADMIN.DRUG_PCONSULT_ROW ";
                 SQL = SQL + ComNum.VBLF + "WHERE SEQNO = " + GstrSEQNO;
                 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -940,7 +940,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_ADM.DRUG_PCONSULT_ROW (";
+                SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.DRUG_PCONSULT_ROW (";
                 SQL = SQL + ComNum.VBLF + "     SEQNO, ITEMCD, ITEMINDEX, ITEMTYPE, ITEMVALUE, ITEMVALUE1, DSPSEQ";
                 SQL = SQL + ComNum.VBLF + ") VALUES (";
                 SQL = SQL + ComNum.VBLF + "      " + strSEQNO + ",";
@@ -1006,7 +1006,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "DELETE FROM KOSMOS_ADM.DRUG_PCONSULT_ROW ";
+                SQL = SQL + ComNum.VBLF + "DELETE FROM ADMIN.DRUG_PCONSULT_ROW ";
                 SQL = SQL + ComNum.VBLF + "WHERE SEQNO = " + strSEQNO;
                 
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1043,7 +1043,7 @@ namespace ComLibB
             try
             {
                 SQL = "";                
-                SQL = SQL + ComNum.VBLF + "SELECT RTN_SPD FROM KOSMOS_ADM.DRUG_PCONSULT ";
+                SQL = SQL + ComNum.VBLF + "SELECT RTN_SPD FROM ADMIN.DRUG_PCONSULT ";
                 SQL = SQL + ComNum.VBLF + "WHERE SEQNO = " + GstrSEQNO;
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1098,7 +1098,7 @@ namespace ComLibB
                 {
                     // 삭제
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "SELECT BIGO FROM KOSMOS_ADM.DRUG_PCONSULT ";
+                    SQL = SQL + ComNum.VBLF + "SELECT BIGO FROM ADMIN.DRUG_PCONSULT ";
                     SQL = SQL + ComNum.VBLF + " WHERE SEQNO = '" + GstrSEQNO + "'        ";
 
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1115,7 +1115,7 @@ namespace ComLibB
                         if (dt.Rows[0]["BIGO"].ToString().Trim().IndexOf("자동발생") != -1)
                         {
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + "DELETE FROM KOSMOS_ADM.DRUG_PCONSULT ";
+                            SQL = SQL + ComNum.VBLF + "DELETE FROM ADMIN.DRUG_PCONSULT ";
                             SQL = SQL + ComNum.VBLF + " WHERE SEQNO = '" + GstrSEQNO + "'    ";
 
                             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1128,7 +1128,7 @@ namespace ComLibB
                         else
                         {
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_ADM.DRUG_PCONSULT SET ";
+                            SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.DRUG_PCONSULT SET ";
                             SQL = SQL + ComNum.VBLF + "     WRITEDATE = TO_DATE('" + strDate + "','YYYY-MM-DD'), ";
                             SQL = SQL + ComNum.VBLF + "     PROGRESS = '" + strValue + "'";
                             SQL = SQL + ComNum.VBLF + "WHERE SEQNO = '" + GstrSEQNO + "'";
@@ -1145,7 +1145,7 @@ namespace ComLibB
                 else
                 {
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_ADM.DRUG_PCONSULT SET ";
+                    SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.DRUG_PCONSULT SET ";
                     SQL = SQL + ComNum.VBLF + "     WRITEDATE = TO_DATE('" + strDate + "','YYYY-MM-DD'), ";
                     SQL = SQL + ComNum.VBLF + "     PROGRESS = '" + strValue + "'";
                     SQL = SQL + ComNum.VBLF + "WHERE SEQNO = '" + GstrSEQNO + "'";
@@ -1180,7 +1180,7 @@ namespace ComLibB
             {
                 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_ADM.DRUG_PCONSULT SET ";                
+                SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.DRUG_PCONSULT SET ";                
                 SQL = SQL + ComNum.VBLF + "     RTN_SPD = '" + GstrRTN_SPD + "'";
                 SQL = SQL + ComNum.VBLF + "WHERE SEQNO = '" + GstrSEQNO + "'";
 

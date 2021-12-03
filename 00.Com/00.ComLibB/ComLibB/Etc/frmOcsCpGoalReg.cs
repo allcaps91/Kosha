@@ -111,7 +111,7 @@ namespace ComLibB
 
             SQL = " SELECT ";
             SQL = SQL + ComNum.VBLF + "   BASCD, BASNAME ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_BASCD ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_BASCD ";
             SQL = SQL + ComNum.VBLF + "WHERE GRPCDB = 'CP관리'  ";
             SQL = SQL + ComNum.VBLF + "    AND GRPCD = 'CP코드관리' ";
             SQL = SQL + ComNum.VBLF + "    AND BASNAME1 = 'ER' ";
@@ -411,16 +411,16 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "    R.DEPTCODE, R.BI, R.CPCODE, R.AGE, R.SEX, ";
                 SQL = SQL + ComNum.VBLF + "    R.STARTSABUN, U.USERNAME, ";
                 SQL = SQL + ComNum.VBLF + "    B.BASNAME ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_CP_RECORD R ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_CP_RECORD R ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
                 SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
                 SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
                 SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_BASCD B ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_BASCD B ";
                 SQL = SQL + ComNum.VBLF + "    ON R.CPCODE = B.BASCD ";
                 SQL = SQL + ComNum.VBLF + "    AND B.GRPCDB = 'CP관리' ";
                 SQL = SQL + ComNum.VBLF + "    AND B.GRPCD = 'CP코드관리' ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_USER U";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_USER U";
                 SQL = SQL + ComNum.VBLF + "    ON R.STARTSABUN = U.IDNUMBER ";
                 SQL = SQL + ComNum.VBLF + "WHERE 1 = 1 ";
                 SQL = SQL + ComNum.VBLF + "    AND R.BDATE >= TO_DATE('" + strSDate + "','YYYY-MM-DD') ";
@@ -517,18 +517,18 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + "    R.DEPTCODE, R.BI, R.CPCODE, R.AGE, R.SEX,  ";
             SQL = SQL + ComNum.VBLF + "    R.STARTSABUN, U.USERNAME,  ";
             SQL = SQL + ComNum.VBLF + "    B.BASNAME AS CPNAME ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_CP_RECORD R  ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_PATIENT P ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_CP_RECORD R  ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_PATIENT P ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = P.PANO ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_BASCD B  ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_BASCD B  ";
             SQL = SQL + ComNum.VBLF + "    ON R.CPCODE = B.BASCD  ";
             SQL = SQL + ComNum.VBLF + "    AND B.GRPCDB = 'CP관리'  ";
             SQL = SQL + ComNum.VBLF + "    AND B.GRPCD = 'CP코드관리'  ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_USER U ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_USER U ";
             SQL = SQL + ComNum.VBLF + "    ON R.STARTSABUN = U.IDNUMBER  ";
             SQL = SQL + ComNum.VBLF + "WHERE R.CPNO = " + pCPNO;
 
@@ -632,7 +632,7 @@ namespace ComLibB
                     }
                 }
 
-                SQL = "UPDATE KOSMOS_OCS.OCS_CP_RECORD SET";
+                SQL = "UPDATE ADMIN.OCS_CP_RECORD SET";
                 SQL = SQL + ComNum.VBLF + "     EMS_CALL_DATE = '" + strDateCall + "', ";
                 SQL = SQL + ComNum.VBLF + "     EMS_CALL_TIME = '" + strTimeCall + "', ";
                 SQL = SQL + ComNum.VBLF + "     EMS_DATE = '" + strDate + "', ";
@@ -816,21 +816,21 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "    V.CPNO, V.CODE, V.SCODE, V.VALGB, V.CPSTIME, V.CPETIME, V.CPVALV, V.CPVALN, V.CPRSTN, V.IDNUMBER,  ";
                 SQL = SQL + ComNum.VBLF + "    B.TYPE, B.DSPSEQ, C.BASNAME AS CPNAME, B.CPVALUE, B.INPUTGBC, B.INPUTGBS, ";
                 SQL = SQL + ComNum.VBLF + "    C1.BASCD, C1.BASNAME AS SNAME, C1.VFLAG1 AS SVFLAG1 ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_CP_VALUE V  ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_OCS.OCS_CP_SUB B  ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_CP_VALUE V  ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.OCS_CP_SUB B  ";
                 SQL = SQL + ComNum.VBLF + "    ON V.CODE = B.CODE  ";
                 SQL = SQL + ComNum.VBLF + "    AND B.CPCODE = '" + pCPCODE + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND B.GUBUN = '06'   ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_OCS.OCS_CP_MAIN A  ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.OCS_CP_MAIN A  ";
                 SQL = SQL + ComNum.VBLF + "    ON B.CPCODE = A.CPCODE  ";
                 SQL = SQL + ComNum.VBLF + "    AND B.SDATE = A.SDATE  ";
-                SQL = SQL + ComNum.VBLF + "    AND A.SDATE = (SELECT MAX(A1.SDATE) FROM KOSMOS_OCS.OCS_CP_MAIN A1 ";
+                SQL = SQL + ComNum.VBLF + "    AND A.SDATE = (SELECT MAX(A1.SDATE) FROM ADMIN.OCS_CP_MAIN A1 ";
                 SQL = SQL + ComNum.VBLF + "                 WHERE A1.SDATE <= '" + mBDATE.Replace("-", "") + "') ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_BASCD C  ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_BASCD C  ";
                 SQL = SQL + ComNum.VBLF + "    ON V.CODE = C.BASCD  ";
                 SQL = SQL + ComNum.VBLF + "    AND C.GRPCDB = 'CP관리'  ";
                 SQL = SQL + ComNum.VBLF + "    AND C.GRPCD = 'CP지표'  ";
-                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_PMPA.BAS_BASCD C1  ";
+                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.BAS_BASCD C1  ";
                 SQL = SQL + ComNum.VBLF + "    ON V.SCODE = C1.BASCD  ";
                 SQL = SQL + ComNum.VBLF + "    AND C1.GRPCDB = 'CP관리'  ";
                 SQL = SQL + ComNum.VBLF + "    AND C1.GRPCD = 'CP지표참조' ";
@@ -937,21 +937,21 @@ namespace ComLibB
                 SQL = " SELECT  ";
                 SQL = SQL + ComNum.VBLF + "    A.CPCODE, A.SDATE, B.GUBUN, B.CODE, B.NAME, B.TYPE, B.SCODE, B.CPVALUE, B.INPUTGBC, B.INPUTGBS, B.DSPSEQ,  ";
                 SQL = SQL + ComNum.VBLF + "    C.NFLAG1 , C1.BASNAME AS SNAME, C1.VFLAG1 AS SVFLAG1 ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_CP_MAIN A  ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_OCS.OCS_CP_SUB B  ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_CP_MAIN A  ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.OCS_CP_SUB B  ";
                 SQL = SQL + ComNum.VBLF + "    ON A.CPCODE = B.CPCODE  ";
                 SQL = SQL + ComNum.VBLF + "    AND A.SDATE = B.SDATE  ";
                 SQL = SQL + ComNum.VBLF + "    AND B.GUBUN = '06'  ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_BASCD C  ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_BASCD C  ";
                 SQL = SQL + ComNum.VBLF + "    ON B.CODE = C.BASCD  ";
                 SQL = SQL + ComNum.VBLF + "    AND C.GRPCDB = 'CP관리'  ";
                 SQL = SQL + ComNum.VBLF + "    AND C.GRPCD = 'CP지표' ";
-                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_PMPA.BAS_BASCD C1  ";
+                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.BAS_BASCD C1  ";
                 SQL = SQL + ComNum.VBLF + "    ON B.SCODE = C1.BASCD  ";
                 SQL = SQL + ComNum.VBLF + "    AND C1.GRPCDB = 'CP관리'  ";
                 SQL = SQL + ComNum.VBLF + "    AND C1.GRPCD = 'CP지표참조'   ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.CPCODE = '" + mCPCODE + "' ";
-                SQL = SQL + ComNum.VBLF + "    AND A.SDATE = (SELECT MAX(A1.SDATE) FROM KOSMOS_OCS.OCS_CP_MAIN A1 ";
+                SQL = SQL + ComNum.VBLF + "    AND A.SDATE = (SELECT MAX(A1.SDATE) FROM ADMIN.OCS_CP_MAIN A1 ";
                 SQL = SQL + ComNum.VBLF + "                 WHERE A1.SDATE <= '" + mBDATE.Replace("-", "") + "') ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY B.DSPSEQ  "; //NFLAG4
 
@@ -1057,7 +1057,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " PTMIKTID, PTMIKPR, PTMIKTS, PTMIKTDT, PTMIKTTM, ";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(TO_DATE( PTMIKTDT||PTMIKTTM,'yyyy-mm-dd hh24:mi'),'yyyy-mm-dd hh24:mi') CONDATE,  ";
                 SQL = SQL + ComNum.VBLF + " PTMIKJOB, PTMIKIDN, WRITESABUN, SEQNO, SEND, ROWID, WRITESABUN, REALSABUN ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_ER_KTAS ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_ER_KTAS ";
                 SQL = SQL + ComNum.VBLF + " WHERE PTMIIDNO = '" + pPTNO + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND PTMIINDT = '" + pINDATE + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND PTMIINTM = '" + pINTIME + "' ";
@@ -1406,7 +1406,7 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    SUBSTR(STARTDATE, 1, 4) || '-' || SUBSTR(STARTDATE,5,2) || '-' || SUBSTR(STARTDATE,7,2) ";
             SQL = SQL + ComNum.VBLF + "    || ' ' || SUBSTR(STARTTIME, 1, 2) || ':' || SUBSTR(STARTTIME,3,2) AS CPDATE";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD";
             SQL = SQL + ComNum.VBLF + "WHERE  CPNO = " + mCPNO;
             return SQL;
         }
@@ -1440,8 +1440,8 @@ namespace ComLibB
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(N.HODATE1, 'YYYY-MM-DD HH24:MI') AS CPDATE ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
@@ -1464,14 +1464,14 @@ namespace ComLibB
         //IVT(actylass) time : TODO
         string CpQuery_CPPLN0005()
         {
-            //KOSMOS_OCS.OCS_IORDER_ACT_ER
+            //ADMIN.OCS_IORDER_ACT_ER
             string SQL = "";    //Query문
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    SUBSTR(N.CHARTDATE, 1, 4) || '-' || SUBSTR(N.CHARTDATE, 5, 2) || '-' || SUBSTR(N.CHARTDATE, 7, 2) || ' ' ||          ";
             SQL = SQL + ComNum.VBLF + "    SUBSTR(N.CHARTTIME, 1, 2) || ':' || SUBSTR(N.CHARTTIME, 3, 2) AS CPDATE                                          ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.EMRXML_TUYAK N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.EMRXML_TUYAK N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PTNO ";
             SQL = SQL + ComNum.VBLF + "     AND TO_CHAR(R.BDATE, 'YYYYMMDD') = N.MEDFRDATE ";
             SQL = SQL + ComNum.VBLF + "     AND N.MEDDEPTCD = 'ER' ";
@@ -1482,12 +1482,12 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    SUBSTR(N.CHARTDATE, 1, 4) || '-' || SUBSTR(N.CHARTDATE, 5, 2) || '-' || SUBSTR(N.CHARTDATE, 7, 2) || ' ' ||          ";
             SQL = SQL + ComNum.VBLF + "    SUBSTR(N.CHARTTIME, 1, 2) || ':' || SUBSTR(N.CHARTTIME, 3, 2) AS CPDATE                                          ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.AEMRCHARTMST N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.AEMRCHARTMST N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PTNO ";
             SQL = SQL + ComNum.VBLF + "     AND TO_CHAR(R.BDATE, 'YYYYMMDD') = N.MEDFRDATE ";
             SQL = SQL + ComNum.VBLF + "     AND N.MEDDEPTCD = 'ER' ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.AEMRCHARTROW CR ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.AEMRCHARTROW CR ";
             SQL = SQL + ComNum.VBLF + "     ON CR.EMRNO = N.EMRNO";
             SQL = SQL + ComNum.VBLF + "     AND CR.EMRNOHIS = N.EMRNOHIS";
             SQL = SQL + ComNum.VBLF + "     AND CR.ITEMNO = 'I0000037685'";
@@ -1503,8 +1503,8 @@ namespace ComLibB
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(N.OUTTIME, 'YYYY-MM-DD HH24:MI') AS CPDATE ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
@@ -1526,8 +1526,8 @@ namespace ComLibB
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(N.OUTTIME, 'YYYY-MM-DD HH24:MI') AS CPDATE ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
@@ -1547,8 +1547,8 @@ namespace ComLibB
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(N.HOTIME1, 'YYYY-MM-DD HH24:MI') AS CPDATE ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
@@ -1611,8 +1611,8 @@ namespace ComLibB
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(N.OUTTIME, 'YYYY-MM-DD HH24:MI') AS CPDATE ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
@@ -1634,8 +1634,8 @@ namespace ComLibB
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(N.OUTTIME, 'YYYY-MM-DD HH24:MI') AS CPDATE ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
@@ -1662,8 +1662,8 @@ namespace ComLibB
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(N.INTIME, 'YYYY-MM-DD HH24:MI') AS REFDATE ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
@@ -1678,8 +1678,8 @@ namespace ComLibB
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(N.HOTIME1, 'YYYY-MM-DD HH24:MI') AS REFDATE ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
@@ -1695,7 +1695,7 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    SUBSTR(STARTDATE, 1, 4) || '-' || SUBSTR(STARTDATE,5,2) || '-' || SUBSTR(STARTDATE,7,2) ";
             SQL = SQL + ComNum.VBLF + "    || ' ' || SUBSTR(STARTTIME, 1, 2) || ':' || SUBSTR(STARTTIME,3,2) AS REFDATE";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD";
             SQL = SQL + ComNum.VBLF + "WHERE  CPNO = " + mCPNO;
             return SQL;
         }
@@ -1712,12 +1712,12 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + "(                                                                                                                  ";
             SQL = SQL + ComNum.VBLF + "    SELECT                                                                                                         ";
             SQL = SQL + ComNum.VBLF + "        MIN(PTMIKTDT || PTMIKTTM) AS REFDATE                                                                       ";
-            SQL = SQL + ComNum.VBLF + "    FROM  KOSMOS_OCS.OCS_CP_RECORD R                                                                               ";
-            SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N                                                                        ";
+            SQL = SQL + ComNum.VBLF + "    FROM  ADMIN.OCS_CP_RECORD R                                                                               ";
+            SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.NUR_ER_PATIENT N                                                                        ";
             SQL = SQL + ComNum.VBLF + "         ON R.PTNO = N.PANO                                                                                        ";
             SQL = SQL + ComNum.VBLF + "         AND R.BDATE = N.JDATE                                                                                     ";
             SQL = SQL + ComNum.VBLF + "         AND R.INTIME = N.INTIME                                                                                   ";
-            SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_PMPA.NUR_ER_KTAS K                                                                           ";
+            SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.NUR_ER_KTAS K                                                                           ";
             SQL = SQL + ComNum.VBLF + "         ON N.PANO = K.PTMIIDNO                                                                                    ";
             SQL = SQL + ComNum.VBLF + "         AND TO_CHAR(R.INTIME, 'YYYYMMDD') = K.PTMIINDT                                                            ";
             SQL = SQL + ComNum.VBLF + "         AND TO_CHAR(R.INTIME, 'HH24MI') = K.PTMIINTM                                                              ";
@@ -1734,8 +1734,8 @@ namespace ComLibB
             //SQL = SQL + ComNum.VBLF + "SELECT ";
             //SQL = SQL + ComNum.VBLF + "    SUBSTR(R.SMSDATE, 1, 4) || '-' || SUBSTR(R.SMSDATE, 5, 2) || '-' || SUBSTR(R.SMSDATE, 7, 2) || ' '  || ";
             //SQL = SQL + ComNum.VBLF + "    SUBSTR(R.SMSTIME, 1, 2) || ':' || SUBSTR(R.SMSDATE, 3, 2) AS REFDATE ";
-            //SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            //SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            //SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            //SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             //SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             //SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             //SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
@@ -1744,8 +1744,8 @@ namespace ComLibB
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(N.HOTIME1, 'YYYY-MM-DD HH24:MI') AS REFDATE ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
@@ -1768,8 +1768,8 @@ namespace ComLibB
             
             SQL = " SELECT  "                                                                  ;
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(HOTIME1,'YYYY-MM-DD HH24:MI') REFDATE "                    ;
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R "                                    ;
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N  "                            ;
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R "                                    ;
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N  "                            ;
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO  "                                            ;
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE  "                                         ;
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME  "                                       ;
@@ -1778,8 +1778,8 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + "UNION "                                                               ;
             SQL = SQL + ComNum.VBLF + "SELECT  "                                                             ;
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(HOTIME2,'YYYY-MM-DD HH24:MI') REFDATE "                    ;
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R "                                    ;
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N  "                            ;
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R "                                    ;
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N  "                            ;
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO  "                                            ;
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE  "                                         ;
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME  "                                       ;
@@ -1788,8 +1788,8 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + "UNION "                                                               ;
             SQL = SQL + ComNum.VBLF + "SELECT  "                                                             ;
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(HOTIME3,'YYYY-MM-DD HH24:MI') REFDATE "                    ;
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R "                                    ;
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N  "                            ;
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R "                                    ;
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N  "                            ;
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO  "                                            ;
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE  "                                         ;
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME  "                                       ;
@@ -1798,8 +1798,8 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + "UNION "                                                               ;
             SQL = SQL + ComNum.VBLF + "SELECT  "                                                             ;
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(HOTIME4,'YYYY-MM-DD HH24:MI') REFDATE "                    ;
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R "                                    ;
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N  "                            ;
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R "                                    ;
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N  "                            ;
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO  "                                            ;
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE  "                                         ;
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME  "                                       ;
@@ -1808,8 +1808,8 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + "UNION "                                                               ;
             SQL = SQL + ComNum.VBLF + "SELECT  "                                                             ;
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(HOTIME5,'YYYY-MM-DD HH24:MI') REFDATE "                    ;
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R "                                    ;
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N  "                            ;
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R "                                    ;
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N  "                            ;
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO  "                                            ;
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE  "                                         ;
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME  "                                       ;
@@ -1840,8 +1840,8 @@ namespace ComLibB
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    TO_CHAR(N.HOJINDATE1,'YYYY-MM-DD HH24:MI')  AS REFDATE ";
-            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.OCS_CP_RECORD R";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.OCS_CP_RECORD R";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
@@ -1871,7 +1871,7 @@ namespace ComLibB
             {
                 SQL = "SELECT ";
                 SQL = SQL + ComNum.VBLF + "     TO_CHAR(TO_DATE( PTMIKTDT||PTMIKTTM,'yyyy-mm-dd hh24:mi'),'yyyy-mm-dd hh24:mi') CONDATE ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.NUR_ER_KTAS ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.NUR_ER_KTAS ";
                 SQL = SQL + ComNum.VBLF + "WHERE PTMIIDNO ='" + strPTNO + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND PTMIINDT ='" + strINDATE + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND PTMIINTM ='" + strINTIME + "' ";
@@ -1919,7 +1919,7 @@ namespace ComLibB
             {
                 SQL = "SELECT ";
                 SQL = SQL + ComNum.VBLF + "     PTMIKTS ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.NUR_ER_KTAS ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.NUR_ER_KTAS ";
                 SQL = SQL + ComNum.VBLF + "WHERE PTMIIDNO ='" + strPTNO + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND PTMIINDT ='" + strINDATE + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND PTMIINTM ='" + strINTIME + "' ";
@@ -1995,21 +1995,21 @@ namespace ComLibB
                 SQL = " SELECT  ";
                 SQL = SQL + ComNum.VBLF + "    A.CPCODE, A.SDATE, B.GUBUN, B.CODE, B.NAME, B.TYPE, B.SCODE, B.CPVALUE, B.INPUTGBC, B.INPUTGBS, B.DSPSEQ,  ";
                 SQL = SQL + ComNum.VBLF + "    C.NFLAG1 , C1.BASNAME AS SNAME, C1.VFLAG1 AS SVFLAG1 ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_CP_MAIN A  ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_OCS.OCS_CP_SUB B  ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_CP_MAIN A  ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.OCS_CP_SUB B  ";
                 SQL = SQL + ComNum.VBLF + "    ON A.CPCODE = B.CPCODE  ";
                 SQL = SQL + ComNum.VBLF + "    AND A.SDATE = B.SDATE  ";
                 SQL = SQL + ComNum.VBLF + "    AND B.GUBUN = '06'  ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_BASCD C  ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_BASCD C  ";
                 SQL = SQL + ComNum.VBLF + "    ON B.CODE = C.BASCD  ";
                 SQL = SQL + ComNum.VBLF + "    AND C.GRPCDB = 'CP관리'  ";
                 SQL = SQL + ComNum.VBLF + "    AND C.GRPCD = 'CP지표' ";
-                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_PMPA.BAS_BASCD C1  ";
+                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.BAS_BASCD C1  ";
                 SQL = SQL + ComNum.VBLF + "    ON B.SCODE = C1.BASCD  ";
                 SQL = SQL + ComNum.VBLF + "    AND C1.GRPCDB = 'CP관리'  ";
                 SQL = SQL + ComNum.VBLF + "    AND C1.GRPCD = 'CP지표참조'   ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.CPCODE = '" + pCPCODE + "' ";
-                SQL = SQL + ComNum.VBLF + "    AND A.SDATE = (SELECT MAX(A1.SDATE) FROM KOSMOS_OCS.OCS_CP_MAIN A1 ";
+                SQL = SQL + ComNum.VBLF + "    AND A.SDATE = (SELECT MAX(A1.SDATE) FROM ADMIN.OCS_CP_MAIN A1 ";
                 SQL = SQL + ComNum.VBLF + "                 WHERE A1.SDATE <= '" + strCurDate + "') ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY B.DSPSEQ  "; //NFLAG4
 
@@ -2214,7 +2214,7 @@ namespace ComLibB
 
             try
             {
-                SQL = "UPDATE KOSMOS_OCS.OCS_CP_RECORD SET";
+                SQL = "UPDATE ADMIN.OCS_CP_RECORD SET";
                 SQL = SQL + ComNum.VBLF + "     EMS_CALL_DATE = '" + strDateCall + "', ";
                 SQL = SQL + ComNum.VBLF + "     EMS_CALL_TIME = '" + strTimeCall + "', ";
                 SQL = SQL + ComNum.VBLF + "     EMS_DATE = '" + strDate + "', ";
@@ -2274,20 +2274,20 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + "    R.STARTSABUN, U.USERNAME,  ";
             SQL = SQL + ComNum.VBLF + "    B.BASNAME AS CPNAME, ";
             SQL = SQL + ComNum.VBLF + "    D.DRCODE ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_CP_RECORD R  ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_PATIENT P ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_CP_RECORD R  ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_PATIENT P ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = P.PANO ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N ";
             SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO ";
             SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE ";
             SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_BASCD B  ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_BASCD B  ";
             SQL = SQL + ComNum.VBLF + "    ON R.CPCODE = B.BASCD  ";
             SQL = SQL + ComNum.VBLF + "    AND B.GRPCDB = 'CP관리'  ";
             SQL = SQL + ComNum.VBLF + "    AND B.GRPCD = 'CP코드관리'  ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_USER U ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_USER U ";
             SQL = SQL + ComNum.VBLF + "    ON R.STARTSABUN = U.IDNUMBER  ";
-            SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_OCS.OCS_DOCTOR D ";
+            SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.OCS_DOCTOR D ";
             SQL = SQL + ComNum.VBLF + "    ON D.SABUN = U.SABUN  ";
             SQL = SQL + ComNum.VBLF + "WHERE R.CPNO = " + mCPNO;
 

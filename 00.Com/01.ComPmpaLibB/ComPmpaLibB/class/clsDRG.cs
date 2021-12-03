@@ -11,7 +11,7 @@ namespace ComPmpaLibB
         #region DRG 공용변수 선언부
         public static long GnDRG_Amt1           = 0;                //DRG 점수별 금액
         public static long GnDRG_Amt2           = 0;                //DRG 점수별 금액*단가
-        public static long GnDRG_OGAddAmt       = 0;                //DRG OG가산 금액(총금액=GnDRG_TAMT) ... 계산없이 금액을 바로 산정(KOSMOS_PMPA.DRG_DAY_COST_NEW)
+        public static long GnDRG_OGAddAmt       = 0;                //DRG OG가산 금액(총금액=GnDRG_TAMT) ... 계산없이 금액을 바로 산정(ADMIN.DRG_DAY_COST_NEW)
         public static long GnDRG_TAmt           = 0;                //DRG 총액
         public static long GnDRG_TBonAmt        = 0;                //DRG 본인부담계산을 위한 총액
         public static long GnDRG_WBonAmt        = 0;                //DRG 본인부담계산을 위한 원금액
@@ -2622,7 +2622,7 @@ namespace ComPmpaLibB
         /// <summary>
         /// ER응급가산 수가를 읽기 위함
         /// SG 공용변수 사용함
-        /// KOSMOS_PMPA.DRG_CODE_ER 테이블 참조함
+        /// ADMIN.DRG_CODE_ER 테이블 참조함
         /// author : 김민철
         /// Create Date : 2018-01-23
         /// <seealso cref="DRG.bas : Read_DRG_ER_Amt"/>

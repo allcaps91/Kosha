@@ -79,7 +79,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT SUCODE                                          \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE                        \r";
+                SQL += "   FROM ADMIN.OCS_ORDERCODE                        \r";
                 SQL += "  WHERE ORDERCODE = '" + txtOrdCode.Text.Trim() + "'    \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);;
 

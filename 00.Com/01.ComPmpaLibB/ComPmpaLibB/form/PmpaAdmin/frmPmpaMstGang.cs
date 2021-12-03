@@ -320,7 +320,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "        SABUN, ROWID, ";
             SQL += ComNum.VBLF + "        TO_CHAR(HDATE,'YYYY-MM-DD') HDATE, ";
             SQL += ComNum.VBLF + "        TO_CHAR(DELDATE,'YYYY-MM-DD') DELDATE, ";
-            SQL += ComNum.VBLF + "        (SELECT NAME FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN = '환자장애등급' AND CODE = A.GANGBUN AND ROWNUM = 1) GANGNAME ";
+            SQL += ComNum.VBLF + "        (SELECT NAME FROM ADMIN.BAS_BCODE WHERE GUBUN = '환자장애등급' AND CODE = A.GANGBUN AND ROWNUM = 1) GANGNAME ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "BAS_GANGMST A ";
             SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
 

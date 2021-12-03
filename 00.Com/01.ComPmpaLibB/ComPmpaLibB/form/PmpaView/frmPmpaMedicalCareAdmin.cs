@@ -96,7 +96,7 @@ namespace ComPmpaLibB
                     if(rdoJob1.Checked)
                     {
                         SQL = " SELECT SuCode";
-                        SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_OORDER";
+                        SQL += ComNum.VBLF + " FROM ADMIN.OCS_OORDER";
                         SQL += ComNum.VBLF + "  WHERE PTNO ='" + dt.Rows[i]["PANO"].ToString().Trim() + "' ";
                         SQL += ComNum.VBLF + "   AND DEPTCODE ='" + dt.Rows[i]["DEPTCODE"].ToString().Trim() + "' ";
                         SQL += ComNum.VBLF + "   AND BDATE = TO_DATE('" + dtpBDate.Text + "','YYYY-MM-DD')  ";

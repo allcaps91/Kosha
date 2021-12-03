@@ -104,8 +104,8 @@
             parameter.AppendSql("    SELECT COUNT(AA.WRTNO) AS TOTALCOUNT                                       ");
             parameter.AppendSql("         , AA.LTDCODE                                                          ");
             parameter.AppendSql("         , AA.GJYEAR                                                           ");
-            parameter.AppendSql("      FROM KOSMOS_PMPA.HIC_JEPSU AA                                            ");
-            parameter.AppendSql("      LEFT OUTER JOIN KOSMOS_PMPA.HIC_RES_SPECIAL BB                           ");
+            parameter.AppendSql("      FROM ADMIN.HIC_JEPSU AA                                            ");
+            parameter.AppendSql("      LEFT OUTER JOIN ADMIN.HIC_RES_SPECIAL BB                           ");
             parameter.AppendSql("                   ON AA.WRTNO = BB.WRTNO                                      ");
             parameter.AppendSql("     WHERE 1 = 1                                                               ");
             parameter.AppendSql("       AND AA.JEPDATE >= TO_DATE(:START_DATE, 'YYYY-MM-DD')                    ");
@@ -152,8 +152,8 @@
             parameter.AppendSql("                        SELECT A.LTDCODE                                       ");
             parameter.AppendSql("                             , A.WRTNO                                         ");
             parameter.AppendSql("                             , TO_CHAR(A.JEPDATE, 'YYYY') AS YEAR              ");
-            parameter.AppendSql("                          FROM KOSMOS_PMPA.HIC_JEPSU A                         ");
-            parameter.AppendSql("                          LEFT OUTER JOIN KOSMOS_PMPA.HIC_RES_SPECIAL B        ");
+            parameter.AppendSql("                          FROM ADMIN.HIC_JEPSU A                         ");
+            parameter.AppendSql("                          LEFT OUTER JOIN ADMIN.HIC_RES_SPECIAL B        ");
             parameter.AppendSql("                                       ON A.WRTNO = B.WRTNO                    ");
             parameter.AppendSql("                         WHERE 1 = 1                                           ");
             parameter.AppendSql("                           AND A.JEPDATE >= TO_DATE(:START_DATE, 'YYYY-MM-DD') ");
@@ -166,7 +166,7 @@
             parameter.AppendSql("                           AND A.GJJONG IN ('11','12','14','23','41','42')     ");
             parameter.AppendSql("                           AND B.PANJENGDRNO IS NOT NULL                       ");
             parameter.AppendSql("                         ORDER BY A.WRTNO                                      ");
-            parameter.AppendSql("                  ) A LEFT OUTER JOIN KOSMOS_PMPA.HIC_SPC_PANJENG B            ");
+            parameter.AppendSql("                  ) A LEFT OUTER JOIN ADMIN.HIC_SPC_PANJENG B            ");
             parameter.AppendSql("                                 ON A.LTDCODE = B.LTDCODE                      ");
             parameter.AppendSql("                               AND A.WRTNO   = B.WRTNO                         ");
             parameter.AppendSql("                               AND B.PANJENG IN ('3','4','5','6','9','A')      ");

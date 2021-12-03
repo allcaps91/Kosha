@@ -22,8 +22,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.GWRTNO, A.WRTNO, A.GROUPCODE, A.EXCODE AS EXCODE  ");
             parameter.AppendSql("     , B.HNAME AS EXNAME, B.AMT2 AMT                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXAM_LIST A,                        ");
-            parameter.AppendSql("       KOSMOS_PMPA.HIC_EXCODE B                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXAM_LIST A,                        ");
+            parameter.AppendSql("       ADMIN.HIC_EXCODE B                            ");
             parameter.AppendSql(" WHERE 1 = 1                                               ");
             parameter.AppendSql("   AND A.EXCODE = B.CODE                                   ");
             parameter.AppendSql("   AND A.GWRTNO  =:GWRTNO                                  ");
@@ -48,7 +48,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT EXCODE                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_GROUPEXAM               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_GROUPEXAM               ");
             parameter.AppendSql(" WHERE GROUPCODE IN (:GROUPCODES)              ");
             parameter.AppendSql(" GROUP By EXCODE                               ");
 
@@ -62,10 +62,10 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT '' AS GROUPCODE, A.EXCODE AS EXCODE, B.HNAME AS EXNAME, B.RESCODE, B.PART, B.HEAPART        ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.FC_HEA_CODE_NM('13', A.EXCODE) AS ETCEXAM                                       ");
+            parameter.AppendSql("      ,ADMIN.FC_HEA_CODE_NM('13', A.EXCODE) AS ETCEXAM                                       ");
             parameter.AppendSql("      ,DECODE(a.ExCode,'TX20','0','TX22','0','TX23','0','TX32','0','TX41','0','TX64','0','1') GUBUN");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPEXAM A                                                                 ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_EXCODE B                                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPEXAM A                                                                 ");
+            parameter.AppendSql("      ,ADMIN.HIC_EXCODE B                                                                    ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                       ");
             parameter.AppendSql("   AND A.GROUPCODE =:GROUPCODE                                                                     ");
             parameter.AppendSql("   AND A.EXCODE = B.CODE(+)                                                                        ");
@@ -83,7 +83,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT EXCODE                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPEXAM               ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPEXAM               ");
             parameter.AppendSql(" WHERE GROUPCODE IN (:GROUPCODES)              ");
             parameter.AppendSql(" GROUP By EXCODE                               ");
 
@@ -96,10 +96,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.GROUPCODE, A.EXCODE, B.HNAME AS EXNAME, B.AMT2 AMT                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_GROUPCODE_NAME (A.GROUPCODE)  AS GROUPCODENAME   ");
+            parameter.AppendSql("     , ADMIN.FC_HIC_GROUPCODE_NAME (A.GROUPCODE)  AS GROUPCODENAME   ");
             parameter.AppendSql("     , B.ENTPART, B.RESCODE, B.PART                                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_GROUPEXAM A                                         ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_EXCODE B                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_GROUPEXAM A                                         ");
+            parameter.AppendSql("      ,ADMIN.HIC_EXCODE B                                            ");
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
             parameter.AppendSql("   AND A.GROUPCODE IN (                                                    ");
             parameter.AppendSql("       SELECT CODE FROM HIC_SUNAPDTL WHERE WRTNO =:WRTNO )                 ");
@@ -117,10 +117,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT '' AS GROUPCODE, A.EXCODE AS EXCODE, B.HNAME AS EXNAME, B.RESCODE, B.PART, B.HEAPART        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HEA_CODE_NM('13', A.EXCODE) AS ETCEXAM                                       ");
+            parameter.AppendSql("     , ADMIN.FC_HEA_CODE_NM('13', A.EXCODE) AS ETCEXAM                                       ");
             parameter.AppendSql("     ,DECODE(a.ExCode,'TX20','0','TX22','0','TX23','0','TX32','0','TX41','0','TX64','0','1') GUBUN ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPEXAM A                                                                 ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_EXCODE B                                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPEXAM A                                                                 ");
+            parameter.AppendSql("      ,ADMIN.HIC_EXCODE B                                                                    ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                       ");
             parameter.AppendSql("   AND A.GROUPCODE IN (:GROUPCODE)                                                                 ");
             parameter.AppendSql("   AND A.EXCODE = B.CODE(+)                                                                        ");
@@ -136,9 +136,9 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.GROUPCODE, A.EXCODE, B.HNAME AS EXNAME, B.AMT2 AMT                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_GROUPCODE_NAME (A.GROUPCODE)  AS GROUPCODENAME   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_GROUPEXAM A                                         ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_EXCODE B                                            ");
+            parameter.AppendSql("     , ADMIN.FC_HIC_GROUPCODE_NAME (A.GROUPCODE)  AS GROUPCODENAME   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_GROUPEXAM A                                         ");
+            parameter.AppendSql("      ,ADMIN.HIC_EXCODE B                                            ");
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
             parameter.AppendSql("   AND A.GROUPCODE IN (:GROUPCODE)                                         ");
             parameter.AppendSql("   AND A.EXCODE = B.CODE(+)                                                ");
@@ -155,9 +155,9 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.WRTNO, '' AS GROUPCODE, A.EXCODE AS EXCODE            ");
             parameter.AppendSql("     , B.HNAME AS EXNAME, B.RESCODE, B.PART, B.HEAPART         ");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HEA_CODE_NM('13', A.EXCODE) AS ETCEXAM   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT A,                               ");
-            parameter.AppendSql("       KOSMOS_PMPA.HIC_EXCODE B                                ");
+            parameter.AppendSql("     , ADMIN.FC_HEA_CODE_NM('13', A.EXCODE) AS ETCEXAM   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT A,                               ");
+            parameter.AppendSql("       ADMIN.HIC_EXCODE B                                ");
             parameter.AppendSql(" WHERE 1 = 1                                                   ");
             parameter.AppendSql("   AND A.WRTNO  =:WRTNO                                        ");
             parameter.AppendSql("   AND A.EXCODE = B.CODE(+)                                    ");
@@ -173,9 +173,9 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.WRTNO, A.GROUPCODE, A.EXCODE AS EXCODE                            ");
             parameter.AppendSql("     , B.HNAME AS EXNAME, B.AMT2 AMT                                       ");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_GROUPCODE_NAME (A.GROUPCODE)  AS GROUPCODENAME   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT A,                                           ");
-            parameter.AppendSql("       KOSMOS_PMPA.HIC_EXCODE B                                            ");
+            parameter.AppendSql("     , ADMIN.FC_HIC_GROUPCODE_NAME (A.GROUPCODE)  AS GROUPCODENAME   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT A,                                           ");
+            parameter.AppendSql("       ADMIN.HIC_EXCODE B                                            ");
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
             parameter.AppendSql("   AND A.EXCODE = B.CODE                                                   ");
             parameter.AppendSql("   AND A.WRTNO  =:WRTNO                                                    ");

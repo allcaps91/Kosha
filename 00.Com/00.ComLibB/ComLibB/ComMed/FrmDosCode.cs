@@ -150,7 +150,7 @@ namespace ComLibB
                 if (strCallFormName != "Order")
                 {
                     SQL += " SELECT DosFullCode, DosName, to_char(DosCode, 'FM000000') DOSCODE, GBDIV \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE                              \r";
+                    SQL += "   FROM ADMIN.OCS_ODOSAGE                              \r";
                     SQL += "  WHERE Bun   = '" + VB.Left(cboBun.Text, 2) + "'           \r";
                     if (rdoIpd.Checked == true)
                     {
@@ -171,7 +171,7 @@ namespace ComLibB
                     //if (clsPublic.GstrPRNChk == "OK")    //PRN 처방
                     {
                         SQL += " SELECT DosFullCode, DosName, to_char(DosCode, 'FM000000') DOSCODE, GBDIV \r";
-                        SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE                              \r";
+                        SQL += "   FROM ADMIN.OCS_ODOSAGE                              \r";
                         SQL += "  WHERE Bun   = '" + cBun + "'                              \r";
                         if (strGBIO == "I")
                         {
@@ -193,7 +193,7 @@ namespace ComLibB
                             (cBun == "11" || cBun == "12" || cBun == "20"))
                         {
                             SQL += " SELECT DosFullCode, DosName, to_char(DosCode, 'FM000000') DOSCODE, GBDIV \r";
-                            SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE          \r";
+                            SQL += "   FROM ADMIN.OCS_ODOSAGE          \r";
                             SQL += "  WHERE Bun   = '" + cBun + "'          \r";
                             SQL += "    AND GbDiv ='1'                      \r";
                             SQL += "    AND Substr(DosCode,3,4) = '0000'    \r";
@@ -211,7 +211,7 @@ namespace ComLibB
                         else
                         {
                             SQL += " SELECT DosFullCode, DosName, to_char(DosCode, 'FM000000') DOSCODE, GBDIV \r";
-                            SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE          \r";
+                            SQL += "   FROM ADMIN.OCS_ODOSAGE          \r";
                             SQL += "  WHERE Bun   = '" + cBun + "'          \r";
                             SQL += "    AND Substr(DosCode,3,4) = '0000'    \r";
                             if (strGBIO == "I")
@@ -376,7 +376,7 @@ namespace ComLibB
                 if (strCallFormName != "Order")
                 {   
                     SQL += " SELECT DosFullCode, DOSNAME, GbDiv, DosCode        \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE                      \r";
+                    SQL += "   FROM ADMIN.OCS_ODOSAGE                      \r";
                     SQL += "  WHERE Bun   = '" + cBun + "'                      \r";
                     SQL += "    AND Substr(DosCode,1,2) = '" + cGbDiv + "'      \r";
                     SQL += "    AND Substr(DosCode,3,2)<> '00'                  \r";
@@ -397,7 +397,7 @@ namespace ComLibB
                     if (strGbPrn == "P")    //PRN 처방
                     {
                         SQL += " SELECT DosFullCode, DOSNAME, GbDiv, DosCode    \r";
-                        SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE                  \r";
+                        SQL += "   FROM ADMIN.OCS_ODOSAGE                  \r";
                         SQL += "  WHERE Bun   = '" + cBun + "'                  \r";
                         SQL += "    AND DosCode = '" + cGbDiv + "'              \r";
                         if (strGBIO == "I")
@@ -416,13 +416,13 @@ namespace ComLibB
                         if (clsPublic.GstrPRNChk == "OK")
                         {
                             SQL += " SELECT DosFullCode, DOSNAME, GbDiv, DosCode                                            \r";
-                            SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE                                                          \r";
+                            SQL += "   FROM ADMIN.OCS_ODOSAGE                                                          \r";
                             SQL += "  WHERE Bun   = '" + cBun + "'                                                          \r";
                             SQL += "    AND Substr(DosCode,1,2) = '" + cGbDiv + "'                                          \r";
                             SQL += "    AND Substr(DosCode,3,2)<> '00'                                                      \r";
                             SQL += "    AND Substr(DosCode,5,2) = '00'                                                      \r";
                             SQL += "    AND DosCode NOT IN ( SELECT TRIM(DOSCODE)                                           \r";
-                            SQL += "                           FROM KOSMOS_OCS.OCS_ODOSAGE                                  \r";
+                            SQL += "                           FROM ADMIN.OCS_ODOSAGE                                  \r";
                             SQL += "                          WHERE (dosfullcode LIKE '%PRN%' OR dosname  LIKE '%PRN%') )   \r";
                             if (strGBIO == "I")
                             {
@@ -438,7 +438,7 @@ namespace ComLibB
                         else
                         {
                             SQL += " SELECT DosFullCode, DOSNAME, GbDiv, DosCode    \r";
-                            SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE                  \r";
+                            SQL += "   FROM ADMIN.OCS_ODOSAGE                  \r";
                             SQL += "  WHERE Bun   = '" + cBun + "'                  \r";
                             SQL += "    AND Substr(DosCode,1,2) = '" + cGbDiv + "'  \r";
                             SQL += "    AND Substr(DosCode,3,2)<> '00'              \r";
@@ -573,7 +573,7 @@ namespace ComLibB
                 if (strCallFormName != "Order")
                 {
                     SQL += " SELECT DosFullCode, DOSNAME, GbDiv, DosCode                                            \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE                                                          \r";
+                    SQL += "   FROM ADMIN.OCS_ODOSAGE                                                          \r";
                     SQL += "  WHERE Bun   = '" + VB.Left(cboBun.Text, 2) + "'                                       \r";
                     SQL += "    AND Substr(DosCode,1,4) = '" + cGbDiv + "'                                          \r";
                     SQL += "    AND Substr(DosCode,5,2) <> '00'                                                     \r";
@@ -600,7 +600,7 @@ namespace ComLibB
                     if (strGbPrn == "P")    //PRN 처방
                     {
                         SQL += " SELECT DosFullCode, DOSNAME, GbDiv, DosCode                                            \r";
-                        SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE                                                          \r";
+                        SQL += "   FROM ADMIN.OCS_ODOSAGE                                                          \r";
                         SQL += "  WHERE Bun   = '" + cBun + "'                                                          \r";
                         SQL += "    AND Substr(DosCode,1,4) = '" + cGbDiv + "'                                          \r";
                         SQL += "    AND Substr(DosCode,5,2) = '20'                                                      \r";
@@ -618,7 +618,7 @@ namespace ComLibB
                     else
                     {
                         SQL += " SELECT DosFullCode, DOSNAME, GbDiv, DosCode                                            \r";
-                        SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE                                                          \r";
+                        SQL += "   FROM ADMIN.OCS_ODOSAGE                                                          \r";
                         SQL += "  WHERE Bun   = '" + cBun + "'                                                          \r";
                         SQL += "    AND Substr(DosCode,1,4) = '" + cGbDiv + "'                                          \r";
                         SQL += "    AND Substr(DosCode,5,2)<> '00'                                                      \r";

@@ -521,7 +521,7 @@ namespace ComPmpaLibB
                         if (strROWID[i] != "")
                         {
                             SQL = " INSERT INTO " + ComNum.DB_PMPA + "IPD_TRANSFOR_DEL ";
-                            SQL = SQL + ComNum.VBLF + " SELECT * FROM KOSMOS_PMPA.IPD_TRANSFOR ";
+                            SQL = SQL + ComNum.VBLF + " SELECT * FROM ADMIN.IPD_TRANSFOR ";
                             SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID[i] + "' ";
 
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

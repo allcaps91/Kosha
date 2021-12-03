@@ -217,7 +217,7 @@ namespace ComLibB
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = "SELECT * FROM KOSMOS_PMPA.BAS_ICDCODE";
+                SQL = "SELECT * FROM ADMIN.BAS_ICDCODE";
                 if(strICode != "")
                 {
                     SQL += ComNum.VBLF + " WHERE ICDCODE ='" + strICode + "'";

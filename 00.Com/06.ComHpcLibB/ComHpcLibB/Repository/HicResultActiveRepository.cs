@@ -24,8 +24,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Result                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT A        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE B        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT A        ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE B        ");
             parameter.AppendSql(" WHERE 1 = 1                           ");
             parameter.AppendSql("   AND WRTNO    = :WRTNO               ");
             parameter.AppendSql("   AND A.Part   = '5'                  "); //ACT코드만
@@ -44,13 +44,13 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT a.Active, a.EXCODE                  ");
             if (strBuse == "1") //종검
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT A        ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT A        ");
             }
             else if (strBuse == "2")    //일반검진
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT A        ");
+                parameter.AppendSql("  FROM ADMIN.HIC_RESULT A        ");
             }
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE B            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE B            ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                    ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE                   ");
             parameter.AppendSql("   AND b.Part = '1'                        "); //신체계측구분
@@ -64,10 +64,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.ACTIVE                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                    ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                    ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                    ");
             parameter.AppendSql(" WHERE a.WRTNO IN (                                ");
-            parameter.AppendSql("       SELECT WRTNO FROM KOSMOS_PMPA.HIC_JEPSU     ");
+            parameter.AppendSql("       SELECT WRTNO FROM ADMIN.HIC_JEPSU     ");
             parameter.AppendSql("              WHERE PANO = :PANO                   ");
             parameter.AppendSql("                AND JEPDATE = TRUNC(SYSDATE)       ");
             parameter.AppendSql("                AND DELDATE IS NULL )              ");
@@ -85,8 +85,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ACTIVE                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT A                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE B                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT A                ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE B                ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql("   AND WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND A.EXCODE NOT IN ('A101','A102','A103')  "); //ACT코드만
@@ -111,11 +111,11 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ACTIVE                                                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT A                                            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE B                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT A                                            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE B                                            ");
             if (strJong == "Y")
             {
-                parameter.AppendSql(" WHERE A.WRTNO IN (SELECT WRTNO FROM KOSMOS_PMPA.HIC_JEPSU             ");
+                parameter.AppendSql(" WHERE A.WRTNO IN (SELECT WRTNO FROM ADMIN.HIC_JEPSU             ");
                 parameter.AppendSql("                    WHERE PANO = :PANO                                 ");
                 parameter.AppendSql("                      AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')    ");
                 parameter.AppendSql("                      AND deldate IS NULL                              ");
@@ -153,8 +153,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Result                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT A                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE B                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT A                ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE B                ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql("   AND WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND A.Result IS NULL                        "); //ACT코드만

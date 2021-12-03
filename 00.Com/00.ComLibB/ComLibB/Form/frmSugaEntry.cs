@@ -501,7 +501,7 @@ namespace ComLibB
 
                 SQL = " SELECT CERT, CONTENTS, BUN, LTDNAME, BCODE, JEPCODE, JEPNAME, UNIT1, UNIT2, UNIT3, UNIT4, PART_J,";
                 SQL = SQL + ComNum.VBLF + "    PART_F, PART_U, PART_O, SDATE, BIGO, PRICE, JEPENAME, SUNGBUN, DOSCODE, JEHYUNG ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.DRUG_JEP_REQ_DETAIL ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.DRUG_JEP_REQ_DETAIL ";
                 SQL = SQL + ComNum.VBLF + " WHERE JEPCODE = '" + argSUNEXT + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -674,7 +674,7 @@ namespace ComLibB
 
             try
             {
-                SQL = "SELECT BAMT, TAMT, IAMT, ROWID FROM KOSMOS_PMPA.BAS_SUGA_AMT ";
+                SQL = "SELECT BAMT, TAMT, IAMT, ROWID FROM ADMIN.BAS_SUGA_AMT ";
                 SQL = SQL + ComNum.VBLF + " WHERE SUCODE = '" + ArgSuCode + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND SUNEXT = '" + argSUNEXT + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND SUDATE = TO_DATE('" + ArgDate + "' ,'YYYY-MM-DD') ";
@@ -692,7 +692,7 @@ namespace ComLibB
                 if (dt.Rows.Count == 0)
                 {
                     // '등록                      
-                    SQL = " INSERT INTO  KOSMOS_PMPA.BAS_SUGA_AMT ( SUCODE, SUNEXT , SUDATE, BAMT, TAMT, IAMT) VALUES ( ";
+                    SQL = " INSERT INTO  ADMIN.BAS_SUGA_AMT ( SUCODE, SUNEXT , SUDATE, BAMT, TAMT, IAMT) VALUES ( ";
                     SQL = SQL + ComNum.VBLF + " '" + ArgSuCode + "','" + argSUNEXT + "' , TO_DATE('" + ArgDate + "','YYYY-MM-DD') , ";
                     SQL = SQL + ComNum.VBLF + " '" + ArgBAmt + "', '" + ArgTAmt + "',  '" + ArgIAmt + "'  )  ";
 
@@ -711,7 +711,7 @@ namespace ComLibB
                     //'수정 금액비교  
                     string strROWID = dt.Rows[0]["ROWID"].ToString().Trim();
 
-                    SQL = "UPDATE KOSMOS_PMPA.BAS_SUGA_AMT SET ";
+                    SQL = "UPDATE ADMIN.BAS_SUGA_AMT SET ";
                     SQL = SQL + ComNum.VBLF + "  SUDATE  = TO_DATE('" + ArgDate + "','YYYY-MM-DD') ,";
                     SQL = SQL + ComNum.VBLF + "  BAMT = '" + ArgBAmt + "', ";
                     SQL = SQL + ComNum.VBLF + "  TAMT = '" + ArgTAmt + "', ";
@@ -766,7 +766,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return; //권한 확인
 
                 SQL = "SELECT SUDATE, IAMT, BAMT , TAMT,  SAMT, SELAMT, ROWID  ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SUGA_AMT ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SUGA_AMT ";
                 SQL = SQL + ComNum.VBLF + " WHERE SUCODE = '" + ArgSuCode + "'";
                 SQL = SQL + ComNum.VBLF + "   AND SUNEXT = '" + argSUNEXT + "'";
                 SQL = SQL + ComNum.VBLF + "   AND DELDATE IS NULL ";
@@ -832,7 +832,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return; //권한 확인
 
                 SQL = "SELECT SUDATE, JUAMT, BUAMT , DUAMT,  ROWID  ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SUGA_DRGADD ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SUGA_DRGADD ";
                 SQL = SQL + ComNum.VBLF + " WHERE SUCODE = '" + ArgSuCode + "'";
                 SQL = SQL + ComNum.VBLF + "   AND SUNEXT = '" + argSUNEXT + "'";
                 SQL = SQL + ComNum.VBLF + "   AND DELDATE IS NULL ";
@@ -896,7 +896,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return; //권한 확인
 
                 SQL = "SELECT TO_CHAR(SUDATE,'YYYY-MM-DD') SUDATE, DRGF, DRG100 , ROWID  ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SUGA_DRGADD_NEW ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SUGA_DRGADD_NEW ";
                 SQL = SQL + ComNum.VBLF + " WHERE SUNEXT = '" + argSUNEXT + "'";
                 SQL = SQL + ComNum.VBLF + " ORDER BY SUDATE DESC ";
 
@@ -1546,7 +1546,7 @@ namespace ComLibB
 
                 //'외래 제한상항 display
                 SQL = "SELECT SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, TO_CHAR(ENTDATE,'YYYY-MM-DD') ENTDATE, ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_MSELF ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_MSELF ";
                 SQL = SQL + ComNum.VBLF + " WHERE SUCODE = '" + txtCode.Text + "'  ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -2051,7 +2051,7 @@ namespace ComLibB
                     else if(dtSUDATE == strSUDATE1 && (dtDRGF != strDRGF || dtDRG100 != strDRG100 || dtDRGOT != strDRGOT))
                     {
                         //UPDATE
-                        SQL = "UPDATE KOSMOS_PMPA.BAS_SUGA_DRGADD_NEW SET DRGF = '" + strDRGF + "', DRG100 = '" + strDRG100 + "', DRGOT = '" + strDRGOT + "'";
+                        SQL = "UPDATE ADMIN.BAS_SUGA_DRGADD_NEW SET DRGF = '" + strDRGF + "', DRG100 = '" + strDRG100 + "', DRGOT = '" + strDRGOT + "'";
                         SQL = SQL + ComNum.VBLF + "WHERE ROWID = '" + strROWID + "'";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -2401,7 +2401,7 @@ namespace ComLibB
                 {
                     if (strROWID != "")  //'삭제
                     {
-                        SQL = "UPDATE  KOSMOS_PMPA.BAS_SUGA_DRGADD SET DELDATE = SYSDATE , DELSABUN = '" + clsType.User.Sabun + "'  WHERE ROWID = '" + strROWID + "' ";
+                        SQL = "UPDATE  ADMIN.BAS_SUGA_DRGADD SET DELDATE = SYSDATE , DELSABUN = '" + clsType.User.Sabun + "'  WHERE ROWID = '" + strROWID + "' ";
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                         if (SqlErr != "")
                         {
@@ -2417,7 +2417,7 @@ namespace ComLibB
                 {
                     if (strSuDate != "")
                     {
-                        SQL = " INSERT INTO  KOSMOS_PMPA.BAS_SUGA_DRGADD ( SUCODE, SUNEXT , SUDATE, JUAMT, BUAMT, DUAMT  ) VALUES ( ";
+                        SQL = " INSERT INTO  ADMIN.BAS_SUGA_DRGADD ( SUCODE, SUNEXT , SUDATE, JUAMT, BUAMT, DUAMT  ) VALUES ( ";
                         SQL = SQL + ComNum.VBLF + " '" + txtCode.Text + "','" + txtSuNext.Text + "' , TO_DATE('" + strSuDate + "','YYYY-MM-DD') , ";
                         SQL = SQL + ComNum.VBLF + " '" + nJuAmt + "', '" + nBuAmt + "' ,'" + nDuAmt + "'  )  ";
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -2433,7 +2433,7 @@ namespace ComLibB
                 }
                 else    //'갱신
                 {
-                    SQL = "UPDATE KOSMOS_PMPA.BAS_SUGA_DRGADD SET SUDATE  = TO_DATE('" + strSuDate + "','YYYY-MM-DD') ,";
+                    SQL = "UPDATE ADMIN.BAS_SUGA_DRGADD SET SUDATE  = TO_DATE('" + strSuDate + "','YYYY-MM-DD') ,";
                     SQL = SQL + ComNum.VBLF + " JUAMT = '" + nJuAmt + "', ";
                     SQL = SQL + ComNum.VBLF + " BUAMT = '" + nBuAmt + "' , ";
                     SQL = SQL + ComNum.VBLF + " DUAMT = '" + nDuAmt + "'  ";
@@ -2477,7 +2477,7 @@ namespace ComLibB
                 ComFunc.MsgBox("비급여 고지 항목이며 별도 신고 확인 바랍니다.", "비급여 고지 항목 알림[0]"); 
             }
 
-            SQL = "SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN = 'ETC_비급여고지수가목록' ";
+            SQL = "SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN = 'ETC_비급여고지수가목록' ";
             SQL = SQL + "AND CODE = '" + txtCode.Text.Trim() + "'";
 
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -2490,7 +2490,7 @@ namespace ComLibB
             dt.Dispose();
             dt = null;
 
-            SQL = "SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN = 'ETC_비급여고지수가목록' ";
+            SQL = "SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN = 'ETC_비급여고지수가목록' ";
             SQL = SQL + "AND CODE = '" + ss3_Sheet1.Cells[2, 0].Text.Trim() + "'";
 
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -2613,7 +2613,7 @@ namespace ComLibB
             int intRowAffected = 0;
 
             // '오더판넬 분류기호 변경
-            SQL = "UPDATE KOSMOS_OCS.OCS_ORDERCODE SET BUN='" + txtBun.Text + "' ";
+            SQL = "UPDATE ADMIN.OCS_ORDERCODE SET BUN='" + txtBun.Text + "' ";
             SQL = SQL + ComNum.VBLF + "WHERE SuCode='" + txtCode.Text.Trim() + "' ";
             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
             if (SqlErr != "")
@@ -2626,7 +2626,7 @@ namespace ComLibB
             }
 
             // '약속처방 분류기호 변경
-            SQL = "UPDATE KOSMOS_OCS.OCS_OPRM SET BUN='" + txtBun.Text + "' ";
+            SQL = "UPDATE ADMIN.OCS_OPRM SET BUN='" + txtBun.Text + "' ";
             SQL = SQL + "WHERE SUCODE='" + txtCode.Text.Trim() + "' ";
             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
             if (SqlErr != "")
@@ -3414,7 +3414,7 @@ namespace ComLibB
             }
 
 
-            SQL = " UPDATE KOSMOS_OCS.OCS_DRUGINFO_NEW SET";
+            SQL = " UPDATE ADMIN.OCS_DRUGINFO_NEW SET";
             SQL = SQL + ComNum.VBLF + " BUNCODE = '" + txtDaiCode.Text.Trim() + "' ";
             SQL = SQL + ComNum.VBLF + " WHERE SUNEXT = '" + txtSuNext.Text.Trim() + "' ";
             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -3581,7 +3581,7 @@ namespace ComLibB
                 {
                     if (strROWID != "")  //'삭제
                     {
-                        SQL = "UPDATE  KOSMOS_PMPA.BAS_SUGA_AMT SET DELDATE = SYSDATE , DELSABUN = '" + clsType.User.Sabun + "'  WHERE ROWID = '" + strROWID + "' ";
+                        SQL = "UPDATE  ADMIN.BAS_SUGA_AMT SET DELDATE = SYSDATE , DELSABUN = '" + clsType.User.Sabun + "'  WHERE ROWID = '" + strROWID + "' ";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                         if (SqlErr != "")
@@ -3598,7 +3598,7 @@ namespace ComLibB
                 {
                     if (strSuDate != "")
                     {
-                        SQL = " INSERT INTO  KOSMOS_PMPA.BAS_SUGA_AMT ( SUCODE, SUNEXT , SUDATE, BAMT, TAMT, IAMT, SAMT, SelAmt ) VALUES ( ";
+                        SQL = " INSERT INTO  ADMIN.BAS_SUGA_AMT ( SUCODE, SUNEXT , SUDATE, BAMT, TAMT, IAMT, SAMT, SelAmt ) VALUES ( ";
                         SQL = SQL + " '" + txtCode.Text + "','" + txtSuNext.Text + "' , TO_DATE('" + strSuDate + "','YYYY-MM-DD') , ";
                         SQL = SQL + " '" + nBAmt + "', '" + nTAmt + "',  '" + nIAmt + "' , '" + nSAmt + "', '" + nSelAmt + "' )  ";
 
@@ -3615,7 +3615,7 @@ namespace ComLibB
                 }
                 else  // '갱신
                 {
-                    SQL = "UPDATE KOSMOS_PMPA.BAS_SUGA_AMT SET SUDATE  = TO_DATE('" + strSuDate + "','YYYY-MM-DD') ,";
+                    SQL = "UPDATE ADMIN.BAS_SUGA_AMT SET SUDATE  = TO_DATE('" + strSuDate + "','YYYY-MM-DD') ,";
                     SQL = SQL + "  BAMT = '" + nBAmt + "', ";
                     SQL = SQL + "  TAMT = '" + nTAmt + "', ";
                     SQL = SQL + "  IAMT = '" + nIAmt + "', ";
@@ -4313,7 +4313,7 @@ namespace ComLibB
             string SQL = "";
             string SqlErr = ""; //에러문 받는 변수
 
-            SQL = "SELECT JEPCODE FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE='" + txtCode.Text.Trim().ToUpper() + "' ";
+            SQL = "SELECT JEPCODE FROM ADMIN.DRUG_JEP WHERE JEPCODE='" + txtCode.Text.Trim().ToUpper() + "' ";
 
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -4391,21 +4391,21 @@ namespace ComLibB
                     {
                         if (strROWID != "")  //'삭제
                         {
-                            SQL = "UPDATE  KOSMOS_PMPA.BAS_SUGA_AMT SET DELDATE = SYSDATE , DELSABUN = '" + clsType.User.Sabun + "'  WHERE ROWID = '" + strROWID + "' ";
+                            SQL = "UPDATE  ADMIN.BAS_SUGA_AMT SET DELDATE = SYSDATE , DELSABUN = '" + clsType.User.Sabun + "'  WHERE ROWID = '" + strROWID + "' ";
                         }
                     }
                     else if (strROWID == "")    //'등록
                     {
                         if (strSuDate != "")
                         {
-                            SQL = " INSERT INTO  KOSMOS_PMPA.BAS_SUGA_AMT ( SUCODE, SUNEXT , SUDATE, BAMT, TAMT, IAMT, SAMT, SELAMT ) VALUES ( ";
+                            SQL = " INSERT INTO  ADMIN.BAS_SUGA_AMT ( SUCODE, SUNEXT , SUDATE, BAMT, TAMT, IAMT, SAMT, SELAMT ) VALUES ( ";
                             SQL = SQL + " '" + txtSCode_H.Text + "','" + txtSNext_H.Text + "' , TO_DATE('" + strSuDate + "','YYYY-MM-DD') , ";
                             SQL = SQL + " '" + nBAmt.ToString() + "', '" + nTAmt.ToString() + "',  '" + nIAmt.ToString() + "' , '" + nSAmt.ToString() + "' , '" + nSelAmt.ToString() + "' )  ";
                         }
                     }
                     else// '갱신                
                     {
-                        SQL = "UPDATE KOSMOS_PMPA.BAS_SUGA_AMT SET SUDATE  = TO_DATE('" + strSuDate + "','YYYY-MM-DD') ,";
+                        SQL = "UPDATE ADMIN.BAS_SUGA_AMT SET SUDATE  = TO_DATE('" + strSuDate + "','YYYY-MM-DD') ,";
                         SQL = SQL + "  BAMT = '" + nBAmt + "', ";
                         SQL = SQL + "  TAMT = '" + nTAmt + "', ";
                         SQL = SQL + "  IAMT = '" + nIAmt + "', ";
@@ -5072,7 +5072,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return rtVal; //권한 확인
 
                 SQL = " SELECT NAME";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_BCODE";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_BCODE";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN = 'DRUG_DIF_교체'";
                 SQL = SQL + ComNum.VBLF + "   AND CODE = 'USE'";
                 SQL = SQL + ComNum.VBLF + "   AND NAME = 'Y'";
@@ -5286,7 +5286,7 @@ namespace ComLibB
                     return ArgReturn;
                 }
 
-                SQL = "SELECT HANGNAME FROM KOSMOS_ADM.WON_HANG ";
+                SQL = "SELECT HANGNAME FROM ADMIN.WON_HANG ";
                 SQL = SQL + ComNum.VBLF + "WHERE HANG='" + VB.Trim(ArgCode) + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -6420,7 +6420,7 @@ namespace ComLibB
                     strData = ss2_Sheet1.Cells[e.Row, e.Column].Text.Trim().ToUpper();
 
                     SQL = " SELECT A.SUCODE, B.SUNAMEK , C.SUNAMEK NAME ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_SUH A ,KOSMOS_PMPA.BAS_SUN B , KOSMOS_PMPA.BAS_SUN C ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_SUH A ,ADMIN.BAS_SUN B , ADMIN.BAS_SUN C ";
                     SQL = SQL + ComNum.VBLF + " WHERE A.SUNEXT ='" + strData + "' ";
                     SQL = SQL + ComNum.VBLF + "   AND A.SUCODE = B.SUNEXT ";
                     SQL = SQL + ComNum.VBLF + "   AND A.SUNEXT = C.SUNEXT ";
@@ -7168,7 +7168,7 @@ namespace ComLibB
                 SQL = SQL + "    TO_CHAR(JDATE3,'YYYY-MM-DD') VJDATE3,PRICE3 VPRICE3,";
                 SQL = SQL + "    TO_CHAR(JDATE4,'YYYY-MM-DD') VJDATE4,PRICE4 VPRICE4,";
                 SQL = SQL + "    TO_CHAR(JDATE5,'YYYY-MM-DD') VJDATE5,PRICE5 VPRICE5 ";
-                SQL = SQL + " FROM KOSMOS_PMPA.EDI_SUGA ";
+                SQL = SQL + " FROM ADMIN.EDI_SUGA ";
                 SQL = SQL + "WHERE CODE = '" + VB.Trim(ArgCode) + "' ";
                 //'표준코드 30050010이 산소,실구입재료 2개가 존재함
 
@@ -7605,7 +7605,7 @@ namespace ComLibB
             }
 
 
-            //'SQL = " SELECT SUDATE, BAMT, TAMT, IAMT, SAMT, ROWID  FROM KOSMOS_PMPA.BAS_SUGA_AMT "
+            //'SQL = " SELECT SUDATE, BAMT, TAMT, IAMT, SAMT, ROWID  FROM ADMIN.BAS_SUGA_AMT "
             //'SQL = SQL & " WHERE SUCODE = '" & TxtCode.Text & "' "
             //'SQL = SQL & "   AND SUNEXT = '" & strData & "' "
             //'SQL = SQL & "  ORDER BY SUDATE DESC "
@@ -7832,7 +7832,7 @@ namespace ComLibB
                     return ArgReturn;
                 }
 
-                SQL = "SELECT GUBUN1 || '-' || GUBUN2 GUBUN FROM KOSMOS_ADM.ABC_NURSE_CODE ";
+                SQL = "SELECT GUBUN1 || '-' || GUBUN2 GUBUN FROM ADMIN.ABC_NURSE_CODE ";
                 SQL = SQL + ComNum.VBLF + "WHERE Code=" + ArgCode + " ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -8461,7 +8461,7 @@ namespace ComLibB
                 }
 
                 SQL = " SELECT DCODE, DNAME ";
-                SQL = SQL + "  FROM KOSMOS_PMPA.DRG_CODE_NEW ";
+                SQL = SQL + "  FROM ADMIN.DRG_CODE_NEW ";
                 SQL = SQL + " WHERE DCODE = '" + ArgCode + "' ";
 
 

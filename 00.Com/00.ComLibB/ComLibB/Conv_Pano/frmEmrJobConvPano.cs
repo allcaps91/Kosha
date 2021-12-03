@@ -330,7 +330,7 @@ namespace ComLibB
                 strTables = (strTables).ToUpper();
                 strPanoGbn = (strPanoGbn).ToUpper();
 
-                if (strTableOK.Equals("KOSMOS_OCS.EXAM_SPECMST"))
+                if (strTableOK.Equals("ADMIN.EXAM_SPECMST"))
                 {
                     #region 서브쿼리 1
                     SQL = " SELECT '" + strTableOK + "' AS Tables, " + strPanoGbn + " AS Pano, ROWID ";
@@ -361,9 +361,9 @@ namespace ComLibB
                     #endregion
 
                     #region 서브쿼리 2
-                    SQL = " SELECT 'KOSMOS_OCS.EXAM_RESULTC' AS Tables, " + strPanoGbn + " AS Pano, ROWID ";
-                    SQL += ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_RESULTC ";
-                    SQL += ComNum.VBLF + "  WHERE SPECNO IN (SELECT SPECNO FROM KOSMOS_OCS.EXAM_SPECMST ";
+                    SQL = " SELECT 'ADMIN.EXAM_RESULTC' AS Tables, " + strPanoGbn + " AS Pano, ROWID ";
+                    SQL += ComNum.VBLF + " FROM ADMIN.EXAM_RESULTC ";
+                    SQL += ComNum.VBLF + "  WHERE SPECNO IN (SELECT SPECNO FROM ADMIN.EXAM_SPECMST ";
                     SQL += ComNum.VBLF + "                      WHERE PANO = '" + strPano + "' )";
 
                     SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -379,10 +379,10 @@ namespace ComLibB
                         {
                             SS1_Sheet1.RowCount += 1;
                             SS1_Sheet1.Cells[SS1_Sheet1.RowCount - 1, 0].Text = reader.GetValue(1).ToString().Trim();
-                            SS1_Sheet1.Cells[SS1_Sheet1.RowCount - 1, 1].Text = "KOSMOS_OCS.EXAM_RESULTC";
+                            SS1_Sheet1.Cells[SS1_Sheet1.RowCount - 1, 1].Text = "ADMIN.EXAM_RESULTC";
                             SS1_Sheet1.Cells[SS1_Sheet1.RowCount - 1, 2].Text = "PANO";
                             SS1_Sheet1.Cells[SS1_Sheet1.RowCount - 1, 3].Text = reader.GetValue(2).ToString().Trim();
-                            SS1_Sheet1.Cells[SS1_Sheet1.RowCount - 1, 4].Text = "SELECT * FROM KOSMOS_OCS.EXAM_RESULTC WHERE " + strPanoGbn + " in  ('06691239','06063545')";
+                            SS1_Sheet1.Cells[SS1_Sheet1.RowCount - 1, 4].Text = "SELECT * FROM ADMIN.EXAM_RESULTC WHERE " + strPanoGbn + " in  ('06691239','06063545')";
                         }
                     }
 
@@ -426,7 +426,7 @@ namespace ComLibB
 
 
             #region 방사선과
-            SQL = " SELECT PANO FROM KOSMOS_PMPA.XRAY_DETAIL ";
+            SQL = " SELECT PANO FROM ADMIN.XRAY_DETAIL ";
             SQL += ComNum.VBLF + " WHERE PANO = '" + TxtPano.Text + "' ";
 
             SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -445,7 +445,7 @@ namespace ComLibB
             #endregion
 
             #region 내시경건
-            SQL = " SELECT PTNO FROM KOSMOS_OCS.ENDO_JUPMST ";
+            SQL = " SELECT PTNO FROM ADMIN.ENDO_JUPMST ";
             SQL += ComNum.VBLF + " WHERE PTNO = '" + TxtPano.Text + "' ";
 
             SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -464,7 +464,7 @@ namespace ComLibB
             #endregion
 
             #region ECHO
-            SQL = " SELECT PTNO FROM KOSMOS_OCS.ETC_JUPMST ";
+            SQL = " SELECT PTNO FROM ADMIN.ETC_JUPMST ";
             SQL += ComNum.VBLF + " WHERE PTNO = '" + TxtPano.Text + "' ";
             SQL += ComNum.VBLF + "   AND GBJOB = '3'";
             SQL += ComNum.VBLF + "   AND GUBUN IN ('3','9','10','11','22') ";
@@ -486,7 +486,7 @@ namespace ComLibB
 
 
             #region HR chest건
-            SQL = " SELECT PTNO FROM KOSMOS_PMPA.HIC_XRAY_RESULT";
+            SQL = " SELECT PTNO FROM ADMIN.HIC_XRAY_RESULT";
             SQL += ComNum.VBLF + " WHERE PTNO = '" + TxtPano.Text + "' ";
 
             SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -559,7 +559,7 @@ namespace ComLibB
                     string strColumn = SS1_Sheet1.Cells[i, 2].Text.Trim();
                     string strROWID = SS1_Sheet1.Cells[i, 3].Text.Trim();
 
-                    if (VB.Left(strTable.ToUpper(), 23).Equals("KOSMOS_PMPA.NUR_ER_EMIH"))
+                    if (VB.Left(strTable.ToUpper(), 23).Equals("ADMIN.NUR_ER_EMIH"))
                     {
                         //20-04-10 전산실 한기호 선생님 요청으로 주석처리
                         //#region insert
@@ -591,13 +591,13 @@ namespace ComLibB
                         //}
                         //#endregion
 
-                        //if (strTable.Trim().ToUpper().Equals("KOSMOS_PMPA.NUR_ER_EMIHPTMI"))
+                        //if (strTable.Trim().ToUpper().Equals("ADMIN.NUR_ER_EMIHPTMI"))
                         //{
                         //    string strINDT = string.Empty;
                         //    string strINTM = string.Empty;
 
                         //    SQL = " SELECT PTMIINDT, PTMIINTM ";
-                        //    SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_ER_EMIHPTMI ";
+                        //    SQL += ComNum.VBLF + " FROM ADMIN.NUR_ER_EMIHPTMI ";
                         //    SQL += ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
 
                         //    SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -617,7 +617,7 @@ namespace ComLibB
                         //    reader.Dispose();
 
 
-                        //    SQL = " UPDATE KOSMOS_PMPA.NUR_ER_EMIHPTMI SET ";
+                        //    SQL = " UPDATE ADMIN.NUR_ER_EMIHPTMI SET ";
                         //    SQL += ComNum.VBLF + " PTMISTAT = 'D',";
                         //    SQL += ComNum.VBLF + " GBSEND = NULL ";
                         //    SQL += ComNum.VBLF + " WHERE PTMIIDNO = '" + TxtPano.Text.Trim() + "' ";

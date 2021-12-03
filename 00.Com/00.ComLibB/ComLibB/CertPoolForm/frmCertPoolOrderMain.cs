@@ -144,7 +144,7 @@ namespace ComLibB
                 SQL += "      VERBC,PRN_INS_GBN,PRN_INS_UNIT, TO_CHAR(PRN_INS_SDATE,'YYYY-MM-DD') PRN_INS_SDATE,TO_CHAR(PRN_INS_EDATE,'YYYY-MM-DD') PRN_INS_EDATE ,  \r";
                 SQL += "      POWDER_SAYU,PRN_INS_MAX,ASA , ROWID                                                                                                    \r";
                 SQL += "      , TUYEOPOINT, TUYEOTIME                                                                                                                \r";
-                SQL += " FROM KOSMOS_OCS.OCS_IORDER                                                                                                                  \r";
+                SQL += " FROM ADMIN.OCS_IORDER                                                                                                                  \r";
                 SQL += "WHERE ENTDATE BETWEEN TRUNC(SYSDATE - 30) AND TRUNC(SYSDATE + 1)                                                                             \r";
                 //SQL += "WHERE ENTDATE BETWEEN TO_DATE('2019-02-01','YYYY-MM-DD') AND TO_DATE('2019-02-10','YYYY-MM-DD') \r"; //'김해수 19년 1월부터 테스트
                 SQL += "  AND (CERTNO IS NULL OR CERTNO = 0 )                                                                                                        \r";
@@ -337,7 +337,7 @@ namespace ComLibB
                 SQL += "      , VERBC,PRN_INS_GBN,PRN_INS_UNIT, TO_CHAR(PRN_INS_SDATE,'YYYY-MM-DD') PRN_INS_SDATE               \r";
                 SQL += "      , TO_CHAR(PRN_INS_EDATE,'YYYY-MM-DD') PRN_INS_EDATE                                               \r";
                 SQL += "      , POWDER_SAYU,PRN_INS_MAX,ASA ,DRORDERVIEW, ROWID                                                 \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_IORDER                                                                           \r";
+                SQL += "   FROM ADMIN.OCS_IORDER                                                                           \r";
                 SQL += "  WHERE ENTDATE BETWEEN TRUNC(SYSDATE - 30) AND TRUNC(SYSDATE + 1)                                      \r";                
                 SQL += "    AND CERTNO2 IS NULL                                                                                 \r";
                 SQL += "    AND VerbC ='C'                                                                                      \r";
@@ -532,7 +532,7 @@ namespace ComLibB
                 SQL += "        GBINFO,GBER,GBSELF,GBSPC,BI,DRCODE,REMARK, TO_CHAR(ENTDATE,'YYYY-MM-DD HH24:MI') ENTDATE ,GBSUNAP,TUYAKNO,ORDERNO,MULTI,MULTIREMARK,DUR,RESV, ";
                 SQL += "        SCODESAYU,SCODEREMARK,GBSEND,AUTO_SEND,RES ,GBSPC_NO,WRTNO,ROWID ";
                 SQL += "        , TUYEOPOINT, TUYEOTIME ";
-                SQL += "   FROM KOSMOS_OCS.OCS_OORDER  ";
+                SQL += "   FROM ADMIN.OCS_OORDER  ";
                 SQL += "  WHERE BDATE >= TRUNC(SYSDATE - 100) ";
                 //SQL += "    AND ENTDATE BETWEEN TO_DATE('2019-02-01','YYYY-MM-DD') AND TO_DATE('2019-02-10','YYYY-MM-DD')";     //'김해수 19년 1월부터 테스트
                 SQL += "    AND ENTDATE BETWEEN TRUNC(SYSDATE - 100) AND TRUNC(SYSDATE + 1) "; //2021-08-28 김해수 100일로 수정 작업

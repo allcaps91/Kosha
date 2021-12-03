@@ -1343,7 +1343,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "      AND SUCODE LIKE 'ZA%' ) OR                                                                          ";
             SQL += ComNum.VBLF + "          SUNEXT ='AA333A'  OR  SUNEXT ='Y75' )                                                           ";
             SQL += ComNum.VBLF + "      AND ROWID NOT IN (                                                                                  ";
-            SQL += ComNum.VBLF + "          SELECT TableROWID FROM KOSMOS_PMPA.OPD_SLIP_JDEL                                                ";
+            SQL += ComNum.VBLF + "          SELECT TableROWID FROM ADMIN.OPD_SLIP_JDEL                                                ";
             SQL += ComNum.VBLF + "          WHERE ACTDATE >= TO_DATE('" + ArgDate + "','YYYY-MM-DD') )                                      ";
             SQL += ComNum.VBLF + "GROUP BY SUNEXT                                                                                           ";            
 

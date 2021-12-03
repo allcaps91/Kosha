@@ -144,9 +144,9 @@ namespace ComMedLibB
                 SQL += "      , B.GbBoth,    B.Slipno,   A.DosCode, A.GbBoth JUSA, A.ROWID,A.Slipno,A.SUCODE    \r";
                 //2021-01-11 안정수 추가
                 SQL += "      , A.CONTENTS, A.TUYEOPOINT, A.TUYEOTIME                                           \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OORDER    A                                                      \r";
-                SQL += "      , KOSMOS_OCS.OCS_ORDERCODE B                                                      \r";
-                SQL += "      , KOSMOS_OCS.OCS_ODOSAGE   C                                                      \r";
+                SQL += "   FROM ADMIN.OCS_OORDER    A                                                      \r";
+                SQL += "      , ADMIN.OCS_ORDERCODE B                                                      \r";
+                SQL += "      , ADMIN.OCS_ODOSAGE   C                                                      \r";
                 SQL += "  WHERE Ptno        = '" + txtPano.Text + "'                                            \r";
                 SQL += "    AND BDate       = TO_DATE('" + FstrBDate + "','YYYY-MM-DD')                         \r";
                 SQL += "    AND A.Seqno     >  0                                                                \r";
@@ -215,7 +215,7 @@ namespace ComMedLibB
                                 {
                                     SQL = "";
                                     SQL += " SELECT SpecName                                                    \r";
-                                    SQL += "   FROM KOSMOS_OCS.OCS_OSPECIMAN                                    \r";
+                                    SQL += "   FROM ADMIN.OCS_OSPECIMAN                                    \r";
                                     SQL += "  WHERE Slipno   = '" + dt.Rows[i]["SLIPNO"].ToString() + "'        \r";
                                     SQL += "    AND SpecCode = '" + dt.Rows[i]["DOSCODE"].ToString() + "'       \r";
                                     SQL += "    AND ROWNUM   = 1                                                \r";
@@ -324,8 +324,8 @@ namespace ComMedLibB
                 SQL += "           WHEN B.GbV352 = '*' THEN '*'                                    \r";
                 SQL += "           ELSE ''                                    \r";
                 SQL += "        END GbV252                                    \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OILLS A                                          \r";
-                SQL += "      , KOSMOS_PMPA.BAS_ILLS B                                          \r";
+                SQL += "   FROM ADMIN.OCS_OILLS A                                          \r";
+                SQL += "      , ADMIN.BAS_ILLS B                                          \r";
                 SQL += "  WHERE A.Ptno      = '" + txtPano.Text + "'                            \r";
                 SQL += "    AND A.BDate     = TO_DATE('" + FstrBDate + "','YYYY-MM-DD')         \r";
                 SQL += "    AND A.DeptCode  = '" + FstrDeptCode + "'                            \r";
@@ -375,8 +375,8 @@ namespace ComMedLibB
                 //OPD_READ
                 SQL = "";
                 SQL += " SELECT DISTINCT TO_CHAR(Bdate,'YYYY-MM-DD') Bdate, DeptCode, DrName, a.DrCode  \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OORDER  A                                                \r";
-                SQL += "      , KOSMOS_PMPA.BAS_DOCTOR B                                                \r";
+                SQL += "   FROM ADMIN.OCS_OORDER  A                                                \r";
+                SQL += "      , ADMIN.BAS_DOCTOR B                                                \r";
                 SQL += "  WHERE Ptno    = '" + txtPano.Text + "'                                        \r";
                 SQL += "    AND Seqno   > 0                                                             \r";
                 SQL += "    AND A.DrCode = B.DrCode                                                     \r";
@@ -416,8 +416,8 @@ namespace ComMedLibB
                 SQL = "";
                 SQL += " SELECT TO_CHAR(SysDate,'YYYY-MM-DD') BDate, BI, A.IPDNO        \r";
                 SQL += "      , DeptCode, DrName, TO_CHAR(InDate,'YYYY-MM-DD') InDate1  \r";
-                SQL += "   FROM KOSMOS_PMPA.IPD_NEW_MASTER A                            \r";
-                SQL += "      , KOSMOS_PMPA.BAS_DOCTOR     B                            \r";
+                SQL += "   FROM ADMIN.IPD_NEW_MASTER A                            \r";
+                SQL += "      , ADMIN.BAS_DOCTOR     B                            \r";
                 SQL += "  WHERE Pano     = '" + txtPano.Text + "'                       \r";
                 SQL += "    AND A.DrCode = B.DrCode                                     \r";
                 SQL += "    AND A.GBSTS IN ('0','2')                                    \r";
@@ -433,7 +433,7 @@ namespace ComMedLibB
                 {   
                     SQL = "";
                     SQL += " SELECT GbHost                                              \r";
-                    SQL += "   FROM KOSMOS_PMPA.IPD_NEW_SLIP                            \r";   
+                    SQL += "   FROM ADMIN.IPD_NEW_SLIP                            \r";   
                     SQL += "  WHERE Pano   = '" + txtPano.Text + "'                     \r";
                     SQL += "    AND GbSlip = 'T'                                        \r";
                     SQL += "    AND Bun    IN ('11','12')                               \r";
@@ -480,8 +480,8 @@ namespace ComMedLibB
                 SQL += " SELECT TO_CHAR(A.OUTDate,'YYYY-MM-DD') BDate, A.LASTTRS, A.IPDNO   \r";        //'2005-08-20 윤종필 변경함.
                 SQL += "      , TO_CHAR(A.OutDate,'YYYY-MM-DD') BDate1                      \r";
                 SQL += "      , BI, DeptCode, DrName, TO_CHAR(InDate,'YYYY-MM-DD') InDate1  \r";
-                SQL += "   FROM KOSMOS_PMPA.IPD_NEW_MASTER A                                \r";
-                SQL += "      , KOSMOS_PMPA.BAS_DOCTOR     B                                \r";
+                SQL += "   FROM ADMIN.IPD_NEW_MASTER A                                \r";
+                SQL += "      , ADMIN.BAS_DOCTOR     B                                \r";
                 SQL += "  WHERE Pano     = '" + txtPano.Text + "'                           \r";
                 SQL += "    AND A.DrCode = B.DrCode                                         \r";
                 SQL += "    AND A.OUTDATE IS NOT NULL                                       \r";
@@ -580,7 +580,7 @@ namespace ComMedLibB
                 {
                     SQL = "";
                     SQL += " SELECT count('X') sunapOrdCnt                                  \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_OORDER                                   \r";
+                    SQL += "   FROM ADMIN.OCS_OORDER                                   \r";
                     SQL += "  WHERE Ptno        = '" + txtPano.Text + "'                    \r";
                     SQL += "    AND BDate       = TO_DATE('" + sBDate + "','YYYY-MM-DD')    \r";
                     SQL += "    AND DeptCode    = '" + sDeptCode.Trim() + "'                \r";
@@ -593,7 +593,7 @@ namespace ComMedLibB
                 {
                     SQL = "";
                     SQL += " SELECT count('X') sunapOrdCnt                                  \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_IORDER                                   \r";
+                    SQL += "   FROM ADMIN.OCS_IORDER                                   \r";
                     SQL += "  WHERE PTNO = '" + txtPano.Text + "'                           \r";
                     SQL += "    AND BDATE =  TO_DATE('" + sBDate + "','YYYY-MM-DD')         \r";
                     SQL += "    AND Bun IN ('11','12','20')                                 \r";
@@ -648,12 +648,12 @@ namespace ComMedLibB
                 SQL += "      , a.SuCode,    a.BUN,      a.GBSELF, a.CONTENTS, a.BCONTENTS, a.GBGROUP           \r";
                 //2021-01-11 안정수 추가, TUYEOPOINT, TUYEOTIME 
                 SQL += "      , a.TUYEOPOINT,    a.TUYEOTIME                                                    \r";
-                SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(A.DOSCODE) DOSNAME1                              \r";
-                SQL += "      , KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(A.DOSCODE, A.SLIPNO) SPECNAME                  \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OORDER    A                                                      \r";
-                SQL += "      , KOSMOS_OCS.OCS_ORDERCODE B                                                      \r";
-                SQL += "      , KOSMOS_OCS.OCS_ODOSAGE   C                                                      \r";
-                SQL += "      , KOSMOS_OCS.ETC_JUSAMST   D                                                      \r";
+                SQL += "      , ADMIN.FC_OCS_ODOSAGE_NAME(A.DOSCODE) DOSNAME1                              \r";
+                SQL += "      , ADMIN.FC_OCS_OSPECIMAN_NAME(A.DOSCODE, A.SLIPNO) SPECNAME                  \r";
+                SQL += "   FROM ADMIN.OCS_OORDER    A                                                      \r";
+                SQL += "      , ADMIN.OCS_ORDERCODE B                                                      \r";
+                SQL += "      , ADMIN.OCS_ODOSAGE   C                                                      \r";
+                SQL += "      , ADMIN.ETC_JUSAMST   D                                                      \r";
                 SQL += "  WHERE A.Ptno        = '" + txtPano.Text + "'                                          \r";
                 SQL += "    AND A.BDate       = TO_DATE('" + sBDate + "','YYYY-MM-DD')                          \r";
                 SQL += "    AND A.DeptCode    = '" + strDept.Trim() + "'                                        \r";
@@ -730,7 +730,7 @@ namespace ComMedLibB
                         //    {
                         //        SQL = "";
                         //        SQL += " SELECT SpecName                                                    \r";
-                        //        SQL += "   FROM KOSMOS_OCS.OCS_OSPECIMAN                                    \r";
+                        //        SQL += "   FROM ADMIN.OCS_OSPECIMAN                                    \r";
                         //        SQL += "  WHERE Slipno   = '" + dt.Rows[i]["SLIPNO"].ToString() + "'        \r";
                         //        SQL += "    AND SpecCode = '" + dt.Rows[i]["DOSCODE"].ToString() + "'       \r";
                         //        SQL += "    AND ROWNUM   = 1                                                \r";
@@ -866,8 +866,8 @@ namespace ComMedLibB
                         SQL += "           WHEN B.GbV352 = '*' THEN '*'                                    \r";
                         SQL += "           ELSE ''                                    \r";
                         SQL += "        END GbV252                                    \r";
-                        SQL += "   FROM KOSMOS_OCS.OCS_OILLS A                                          \r";
-                        SQL += "      , KOSMOS_PMPA.BAS_ILLS B                                          \r";
+                        SQL += "   FROM ADMIN.OCS_OILLS A                                          \r";
+                        SQL += "      , ADMIN.BAS_ILLS B                                          \r";
                         SQL += "  WHERE A.Ptno      = '" + txtPano.Text + "'                            \r";
                         SQL += "    AND A.BDate     = TO_DATE('" + sBDate + "','YYYY-MM-DD')            \r";
                         SQL += "    AND A.DeptCode  = '" + strDept.Trim() + "'                          \r";
@@ -968,8 +968,8 @@ namespace ComMedLibB
 
                 SQL = "";
                 SQL += " SELECT A.IllCode, B.ILLNAMEK                                   \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_IILLS A                                  \r";
-                SQL += "      , KOSMOS_PMPA.BAS_ILLS B                                  \r";
+                SQL += "   FROM ADMIN.OCS_IILLS A                                  \r";
+                SQL += "      , ADMIN.BAS_ILLS B                                  \r";
                 SQL += " WHERE A.PTno      = '" + txtPano.Text + "'                     \r";
                 SQL += "   AND A.ENTDate   = TO_DATE('" + strInDate + "','YYYY-MM-DD')  \r";
                 SQL += "   AND A.ILLCODE = B.ILLCODE(+)                                 \r";
@@ -1020,10 +1020,10 @@ namespace ComMedLibB
                 //SQL += "      , B.Slipno,    B.SpecCode,   B.SendDept,   A.GbDiv                \r";
                 SQL += "      , B.Slipno,    A.DOSCODE,   B.SendDept,   A.GbDiv                 \r";
                 SQL += "      , A.REMARK,    A.ROWID,      A.BUN,        A.STAFFID              \r";
-                //SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(A.DOSCODE) DOSNAME               \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_IORDER    A                                      \r";
-                SQL += "      , KOSMOS_OCS.OCS_ORDERCODE B                                      \r";
-                SQL += "      , KOSMOS_OCS.OCS_ODOSAGE   C                                      \r";
+                //SQL += "      , ADMIN.FC_OCS_ODOSAGE_NAME(A.DOSCODE) DOSNAME               \r";
+                SQL += "   FROM ADMIN.OCS_IORDER    A                                      \r";
+                SQL += "      , ADMIN.OCS_ORDERCODE B                                      \r";
+                SQL += "      , ADMIN.OCS_ODOSAGE   C                                      \r";
                 SQL += "  WHERE A.PTNO = '" + txtPano.Text + "'                                 \r";
                 SQL += "    AND A.BDATE =  TO_DATE('" + strBDate + "','YYYY-MM-DD')             \r";
                 SQL += "    AND A.Bun IN ('11','12')                                            \r";
@@ -1071,8 +1071,8 @@ namespace ComMedLibB
                         {
                             SQL = "";
                             SQL += " SELECT a.OrderCode,a.DosCode,b.DosName,b.GbDiv                                 \r";
-                            SQL += "   FROM KOSMOS_OCS.OCS_IORDER  a                                                \r";
-                            SQL += "      , KOSMOS_OCS.OCS_ODOSAGE b                                                \r";
+                            SQL += "   FROM ADMIN.OCS_IORDER  a                                                \r";
+                            SQL += "      , ADMIN.OCS_ODOSAGE b                                                \r";
                             SQL += "  WHERE a.PtNo      = '" + txtPano.Text + "'                                    \r";
                             SQL += "    AND a.BDate     = TO_DATE('" + DateTime.Parse(dt.Rows[i]["BDate"].ToString()).ToShortDateString() + "','YYYY-MM-DD') \r";
                             SQL += "    AND a.OrderCode = '" + dt.Rows[i]["OrderCode"].ToString().Trim() + "'       \r";
@@ -1108,7 +1108,7 @@ namespace ComMedLibB
                             if (dt.Rows[i]["SPECCODE"].ToString() != "")
                             {
                                 SQL = "";
-                                SQL += " SELECT SPECNAME FROM KOSMOS_OCS.OCS_OSPECIMAN                          \r";
+                                SQL += " SELECT SPECNAME FROM ADMIN.OCS_OSPECIMAN                          \r";
                                 SQL += "  WHERE SpecCode = '" + dt.Rows[i]["SpecCode"].ToString().Trim() + "'   \r";
                                 SQL += "    AND ROWNUM = 1                                                      \r";
                                 SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
@@ -1367,7 +1367,7 @@ namespace ComMedLibB
 
                 btnSearch.Focus();
                 SQL = "";
-                SQL += " SELECT Sname, BI FROM KOSMOS_PMPA.BAS_PATIENT  \r";
+                SQL += " SELECT Sname, BI FROM ADMIN.BAS_PATIENT  \r";
                 SQL += "  WHERE Pano = '" + txtPano.Text + "'           \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")

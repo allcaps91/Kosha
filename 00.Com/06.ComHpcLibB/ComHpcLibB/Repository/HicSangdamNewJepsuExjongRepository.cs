@@ -25,9 +25,9 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT COUNT(DECODE(a.SANGDAMDRNO, :LICENSE, 1)) CNT       ");
             parameter.AppendSql("     , COUNT(DECODE(a.SANGDAMDRNO,'', 1)) CNT2             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_NEW a                       ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU       b                       ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXJONG      c                       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_NEW a                       ");
+            parameter.AppendSql("     , ADMIN.HIC_JEPSU       b                       ");
+            parameter.AppendSql("     , ADMIN.HIC_EXJONG      c                       ");
             parameter.AppendSql(" WHERE b.WRTNO = a.WRTNO(+)                                ");
             parameter.AppendSql("   AND b.DELDATE IS NULL                                   ");
             parameter.AppendSql("   AND b.DELDATE IS NULL                                   ");

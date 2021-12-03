@@ -111,7 +111,7 @@ namespace ComLibB
             //{
             //    SQL = "";
             //    SQL = " SELECT PASSWORD, PassHash, passhash256 ";
-            //    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PASSWORD ";
+            //    SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PASSWORD ";
             //    SQL = SQL + ComNum.VBLF + " WHERE ID = " + clsType.User.IdNumber;
             //    SQL = SQL + ComNum.VBLF + "   AND EDATE IS NULL ";
 
@@ -302,8 +302,8 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL = " SELECT A.WARDCODE, B.SNAME";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER A,";
-                    SQL = SQL + ComNum.VBLF + "  KOSMOS_PMPA.BAS_PATIENT B";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER A,";
+                    SQL = SQL + ComNum.VBLF + "  ADMIN.BAS_PATIENT B";
                     SQL = SQL + ComNum.VBLF + "  WHERE A.PANO = B.PANO";
                     SQL = SQL + ComNum.VBLF + "  AND TO_CHAR(A.INDATE,'YYYYMMDD') = '" + GstrMedFrDate + "'";
                     SQL = SQL + ComNum.VBLF + "  AND A.DEPTCODE = '" + GstrMedDeptCd + "'";
@@ -313,8 +313,8 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL = " SELECT '' AS WARDCODE, B.SNAME";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_MASTER A,";
-                    SQL = SQL + ComNum.VBLF + "  KOSMOS_PMPA.BAS_PATIENT B";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_MASTER A,";
+                    SQL = SQL + ComNum.VBLF + "  ADMIN.BAS_PATIENT B";
                     SQL = SQL + ComNum.VBLF + "  WHERE A.PANO = B.PANO";
                     SQL = SQL + ComNum.VBLF + "  AND TO_CHAR(A.BDATE,'YYYYMMDD') = '" + GstrMedFrDate + "'";
                     SQL = SQL + ComNum.VBLF + "  AND A.DEPTCODE = '" + GstrMedDeptCd + "'";
@@ -340,7 +340,7 @@ namespace ComLibB
 
 
                 SQL = "";
-                SQL = " INSERT INTO KOSMOS_EMR.EMROCRPRTHIS";
+                SQL = " INSERT INTO ADMIN.EMROCRPRTHIS";
                 SQL = SQL + ComNum.VBLF + " (OCRDATE,OCRTIME,PTNO,PTNAME,INOUTCLS,";
                 SQL = SQL + ComNum.VBLF + "  MEDFRDATE,MEDDEPTCD,WARDCODE,";
                 SQL = SQL + ComNum.VBLF + "  FORMNO,USEID,DEPTCD,DEPTCD1)";
@@ -369,7 +369,7 @@ namespace ComLibB
                 }
                 
                 SQL = "";
-                SQL = " INSERT INTO KOSMOS_EMR.EMR_AGREE_PRINT(";
+                SQL = " INSERT INTO ADMIN.EMR_AGREE_PRINT(";
                 SQL = SQL + ComNum.VBLF + " PRTDATE, PRTSABUN, PRTINFO, PTNO, ";
                 SQL = SQL + ComNum.VBLF + " INOUTCLS, MEDFRDATE, MEDDEPTCD, MEDDRCD, ";
                 SQL = SQL + ComNum.VBLF + " FORMNO ) VALUES ( ";

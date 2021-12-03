@@ -86,7 +86,7 @@ namespace ComPmpaLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT DEPT_INF  FROM KOSMOS_PMPA.BAS_CLINICDEPT ";
+                SQL = SQL + ComNum.VBLF + "SELECT DEPT_INF  FROM ADMIN.BAS_CLINICDEPT ";
                 SQL = SQL + ComNum.VBLF + " WHERE DEPTCODE = '" + strDeptCode.Trim() + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref DtQ, SQL, pDbCon);

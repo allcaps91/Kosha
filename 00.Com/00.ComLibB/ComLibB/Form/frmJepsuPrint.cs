@@ -1725,7 +1725,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "     MAX(CHARTDate), extractValue(chartxml, '//it3') AS it3 , extractValue(chartxml, '//it4') AS it4  ";
                 SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_EMR + "EMRXML  ";
                 SQL = SQL + ComNum.VBLF + "     WHERE EMRNO IN (";
-                SQL = SQL + ComNum.VBLF + "             SELECT EMRNO FROM KOSMOS_EMR.EMRXMLMST ";
+                SQL = SQL + ComNum.VBLF + "             SELECT EMRNO FROM ADMIN.EMRXMLMST ";
                 SQL = SQL + ComNum.VBLF + "                 WHERE FORMNO = 1562 ";
                 SQL = SQL + ComNum.VBLF + "                     AND PTNO = '" + strPano + "'  ";
                 SQL = SQL + ComNum.VBLF + "                     AND CHARTDATE <= '" + ComQuery.CurrentDateTime(clsDB.DbCon, "D") + "') ";
@@ -2398,7 +2398,7 @@ namespace ComLibB
 
                 // 입원일
                 SQL = " SELECT TO_CHAR(REDATE,'YYYY-MM-DD') RDATE  ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_RESERVED ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_RESERVED ";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO ='" + GstrPANO + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND DeptCode ='" + GstrDeptCode + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND SDate =TO_DATE('" + clsPublic.GstrSysDate + "','YYYY-MM-DD') ";
@@ -2421,7 +2421,7 @@ namespace ComLibB
 
                 // 60병동 체크 ==> 40병동 체크 2018-12-22
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " SELECT GbWard FROM KOSMOS_PMPA.IPD_RESERVED ";
+                SQL = SQL + ComNum.VBLF + " SELECT GbWard FROM ADMIN.IPD_RESERVED ";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + GstrPANO + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND REDATE = TO_DATE('" + GstrRDate + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "    AND DEPTCODE = '" + GstrDeptCode + "' ";
@@ -2446,7 +2446,7 @@ namespace ComLibB
 
                 //'DRG CHK
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " SELECT SUCODE FROM KOSMOS_OCS.OCS_OORDER ";
+                SQL = SQL + ComNum.VBLF + " SELECT SUCODE FROM ADMIN.OCS_OORDER ";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + GstrPANO + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND DEPTCODE = '" + GstrDeptCode + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND BDATE = " + ComFunc.ConvOraToDate(GstrDate, "D");
@@ -3132,10 +3132,10 @@ namespace ComLibB
                     // 2018-11-20 의료정보팀 당일대리접수조회
                     SQL = "";
                     SQL = SQL + ComNum.VBLF + " SELECT Pano, DeptCode, DrCode, ";
-                    SQL = SQL + ComNum.VBLF + "        (SELECT '1' FROM KOSMOS_PMPA.BAS_USER B ";
+                    SQL = SQL + ComNum.VBLF + "        (SELECT '1' FROM ADMIN.BAS_USER B ";
                     SQL = SQL + ComNum.VBLF + "                   WHERE A.ENTSABUN = B.SABUN ";
                     SQL = SQL + ComNum.VBLF + "                     AND B.JOBGROUP IN('JOB015001', 'JOB015002', 'JOB015003')) GBTODAY ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_TELRESV A ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OPD_TELRESV A ";
                     SQL = SQL + ComNum.VBLF + " WHERE 1 = 1 ";
                     SQL = SQL + ComNum.VBLF + "   AND RDATE = TO_DATE('" + strBDATE + "', 'YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "   AND GBFLAG = 'Y' ";
@@ -3333,7 +3333,7 @@ namespace ComLibB
                         #region // 2018-03-07 유진호 원무팀에서 현재 원거리 고객 전용창구 운영안함으로 제외요청
                         //SQL = "";
                         //SQL = SQL + ComNum.VBLF + "SELECT JINAME ";
-                        //SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT A, KOSMOS_PMPA.BAS_AREA B ";
+                        //SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PATIENT A, ADMIN.BAS_AREA B ";
                         //SQL = SQL + ComNum.VBLF + " WHERE A.PANO = '" + strPano + "' ";
                         //SQL = SQL + ComNum.VBLF + "   AND A.JICODE = B.JICODE ";
                         //SQL = SQL + ComNum.VBLF + "   AND (A.JICODE = '63' OR A.JICODE >='77') ";
@@ -3670,7 +3670,7 @@ namespace ComLibB
                 SQL += ComNum.VBLF + " WHEN '9' THEN '18'";
                 SQL += ComNum.VBLF + " WHEN '0' THEN '18'";
                 SQL += ComNum.VBLF + " END NYEAR, JUMIN1, JUMIN2, BIRTH ";
-                SQL += ComNum.VBLF + " From KOSMOS_PMPA.BAS_PATIENT";
+                SQL += ComNum.VBLF + " From ADMIN.BAS_PATIENT";
                 SQL += ComNum.VBLF + " WHERE PANO = '" + argPTNO + "')";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -3734,7 +3734,7 @@ namespace ComLibB
 
             try
             {
-                SQL = "  UPDATE KOSMOS_PMPA.OPD_DEPTJEPSU SET ";
+                SQL = "  UPDATE ADMIN.OPD_DEPTJEPSU SET ";
                 SQL += ComNum.VBLF + "   IPD_PRT ='Y' ";
                 SQL += ComNum.VBLF + " WHERE PANO = '" + strPano + "' ";
                 SQL += ComNum.VBLF + "   AND DEPTCODE = '" + strDeptCode + "' ";

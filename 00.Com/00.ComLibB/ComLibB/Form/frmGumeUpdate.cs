@@ -113,7 +113,7 @@ namespace ComLibB
 
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return; //권한 확인
 
-                SQL = "SELECT CODE,NAME FROM KOSMOS_PMPA.BAS_BUN ";
+                SQL = "SELECT CODE,NAME FROM ADMIN.BAS_BUN ";
                 SQL = SQL + ComNum.VBLF + "WHERE JONG='1' ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY CODE ";
 
@@ -206,7 +206,7 @@ namespace ComLibB
                 SQL = "SELECT JEPNAME,COVQTY,COVUNIT,GELCODE,SUCODE,BCODE,BGESU,GEACODE,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(DELDATE,'YYYY-MM-DD') DELDATE,GBSUNAP,BUSE_UNIT,";
                 SQL = SQL + ComNum.VBLF + " GBREUSE,BUSE_GESU,ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.ORD_JEP ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ORD_JEP ";
                 SQL = SQL + ComNum.VBLF + "WHERE JEPCODE='" + VB.Trim(ArgCode) + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -309,7 +309,7 @@ namespace ComLibB
                 dt = null;
 
                 //'물품의 최종 구매단가를 READ
-                SQL = "SELECT COVQTY,PRICE FROM KOSMOS_ADM.ORD_HIS ";
+                SQL = "SELECT COVQTY,PRICE FROM ADMIN.ORD_HIS ";
                 SQL = SQL + ComNum.VBLF + "WHERE JEPCODE='" + ArgCode + "' ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY LASTDATE DESC ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -403,7 +403,7 @@ namespace ComLibB
                 SQL = SQL + "    TO_CHAR(JDATE3,'YYYY-MM-DD') VJDATE3,PRICE3 VPRICE3,";
                 SQL = SQL + "    TO_CHAR(JDATE4,'YYYY-MM-DD') VJDATE4,PRICE4 VPRICE4,";
                 SQL = SQL + "    TO_CHAR(JDATE5,'YYYY-MM-DD') VJDATE5,PRICE5 VPRICE5 ";
-                SQL = SQL + " FROM KOSMOS_PMPA.EDI_SUGA ";
+                SQL = SQL + " FROM ADMIN.EDI_SUGA ";
                 SQL = SQL + "WHERE CODE = '" + VB.Trim(ArgCode) + "' ";
                 //'표준코드 30050010이 산소,실구입재료 2개가 존재함
 
@@ -521,7 +521,7 @@ namespace ComLibB
 
 
             SQL = "";
-            SQL += ComNum.VBLF + "SELECT Name FROM KOSMOS_ADM.AIS_LTD ";
+            SQL += ComNum.VBLF + "SELECT Name FROM ADMIN.AIS_LTD ";
             SQL += ComNum.VBLF + "WHERE LtdCode='" + argCode.Trim() + "' ";
             try
             {
@@ -574,7 +574,7 @@ namespace ComLibB
             {
                 SQL = "SELECT TO_CHAR(A.DELDATE,'YYYY-MM-DD') DELDATE,A.BAMT,B.SUNAMEK,B.BCODE,";
                 SQL = SQL + ComNum.VBLF + " A.SUGBF,B.SUGBN ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SUT A,KOSMOS_PMPA.BAS_SUN B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SUT A,ADMIN.BAS_SUN B ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.SUCODE='" + VB.Trim(ArgCode) + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.SUNEXT=B.SUNEXT(+) ";
 
@@ -651,7 +651,7 @@ namespace ComLibB
                 txtViewJep.Text = VB.Trim(txtViewJep.Text);
 
                 //'자료를 SELECT
-                SQL = "SELECT JepCode,JepName FROM KOSMOS_ADM.ORD_JEP ";
+                SQL = "SELECT JepCode,JepName FROM ADMIN.ORD_JEP ";
                 if (strBun == "**")
                 {
                     SQL = SQL + ComNum.VBLF + "WHERE GEACODE IN ('11','12','13','14','16','17','18','19','1A','1B') ";
@@ -664,7 +664,7 @@ namespace ComLibB
                 if (txtViewJep.Text != "") SQL = SQL + ComNum.VBLF + " AND JEPNAME LIKE '%" + txtViewJep.Text + "%' ";
                 if (chkGbJinUse.Checked == true)
                 {
-                    SQL = SQL + ComNum.VBLF + " AND JEPCODE IN (SELECT JEPCODE FROM KOSMOS_PMPA.OPR_BUSEJEPUM ";
+                    SQL = SQL + ComNum.VBLF + " AND JEPCODE IN (SELECT JEPCODE FROM ADMIN.OPR_BUSEJEPUM ";
                     SQL = SQL + ComNum.VBLF + "     WHERE CODEGBN='2' ";  //'관리과물품
                     SQL = SQL + ComNum.VBLF + "     GROUP BY JEPCODE) ";
                 }
@@ -763,7 +763,7 @@ namespace ComLibB
 
                 //'해당 자료를 SELECT
                 SQL = "SELECT A.SUCODE,B.SUNAMEK ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SUT A,KOSMOS_PMPA.BAS_SUN B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SUT A,ADMIN.BAS_SUN B ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.SUNEXT=B.SUNEXT(+) ";
                 if (strBun != "**") SQL = SQL + ComNum.VBLF + " AND A.BUN='" + strBun + "' ";
                 if (strData != "") SQL = SQL + ComNum.VBLF + "  AND UPPER(B.SUNAMEK) LIKE '%" + VB.UCase(strData) + "%' ";
@@ -905,7 +905,7 @@ namespace ComLibB
 
                 ORD_JEP_HIS_INSERT("2", VB.Trim(txtJepCode.Text)); //'변경전
 
-                SQL = "UPDATE KOSMOS_ADM.ORD_JEP SET ";
+                SQL = "UPDATE ADMIN.ORD_JEP SET ";
                 SQL = SQL + ComNum.VBLF + " SUCODE='" + VB.Trim(VB.UCase(txtSuCode.Text)) + "',";
                 SQL = SQL + ComNum.VBLF + " GBSUNAP='" + strGbSunap + "',";
                 SQL = SQL + ComNum.VBLF + " GBREUSE='" + strGbReUse + "',";
@@ -971,7 +971,7 @@ namespace ComLibB
                 //'자료를 SELECT
                 SQL = "SELECT JEPCODE,JEPNAME,BUSE_UNIT,BUSE_GESU,TO_CHAR(DELDATE,'YYYY-MM-DD') DELDATE,";
                 SQL = SQL + ComNum.VBLF + " GBSUNAP,PRICE,SUCODE,BCODE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.ORD_JEP ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ORD_JEP ";
                 SQL = SQL + ComNum.VBLF + "WHERE JEPCODE='" + ArgCode +"' ";
                 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -992,7 +992,7 @@ namespace ComLibB
 
                     //'최종 구매단가를 READ
                     SQL = "SELECT LASTDATE,PRICE,COVQTY ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.ORD_HIS ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.ORD_HIS ";
                     SQL = SQL + ComNum.VBLF + "WHERE JEPCODE='" + dt.Rows[0]["JEPCODE"].ToString().Trim() + "' ";
                     SQL = SQL + ComNum.VBLF + "ORDER BY LASTDATE DESC ";
 
@@ -1030,7 +1030,7 @@ namespace ComLibB
                     if (strSuCode != "")
                     {
                         SQL = "SELECT A.BAMT,TO_CHAR(A.DELDATE,'YYYY-MM-DD') DELDATE,B.BCODE,B.SUGBN,A.SUGBF ";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SUT A,KOSMOS_PMPA.BAS_SUN B ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SUT A,ADMIN.BAS_SUN B ";
                         SQL = SQL + ComNum.VBLF + "WHERE A.SUCODE='" + strSuCode + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND A.SUNEXT=B.SUNEXT(+) ";
 
@@ -1137,7 +1137,7 @@ namespace ComLibB
             {
                 if (ComQuery.IsJobAuth(this, "U", clsDB.DbCon) == false) return rtVal; ; //권한 확인
 
-                SQL = "INSERT INTO KOSMOS_ADM.ORD_JEP_HIS (";
+                SQL = "INSERT INTO ADMIN.ORD_JEP_HIS (";
                 SQL = SQL + ComNum.VBLF + "JOBDATE,JOBSABUN,JOBGBN,JEPCODE,BUN,JEPNAME,COVQTY,COVUNIT,JQTY1,JQTY2,";
                 SQL = SQL + ComNum.VBLF + "GELCODE,PRICE,SUCODE,GEACODE,GBSUBUL,GBGUME,GBJAJE,GBSUSUL,GBEXCHANGE,GBREMARK,";
                 SQL = SQL + ComNum.VBLF + "GBAUTOCHULGO,GBBAL,GIBONBAL,IPGOILSU,USEBUSE1,USEBUSE2,PAPERCODE,PAPERSOMO,";
@@ -1148,7 +1148,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "       GBAUTOCHULGO,GBBAL,GIBONBAL,IPGOILSU,USEBUSE1,USEBUSE2,PAPERCODE,PAPERSOMO,";
                 SQL = SQL + ComNum.VBLF + "       LAP,DELDATE,UNIT,GEABUN,GBSUNAP,DEPTCODE,GYU,PICFILE,CATNO,REMARK,GBCSR,CSRNAME,";
                 SQL = SQL + ComNum.VBLF + "       BCODE,BGESU,CSRRATE,GBJINUSE ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.ORD_JEP ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.ORD_JEP ";
                 SQL = SQL + ComNum.VBLF + " WHERE JEPCODE='" + strJEPCODE +"' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

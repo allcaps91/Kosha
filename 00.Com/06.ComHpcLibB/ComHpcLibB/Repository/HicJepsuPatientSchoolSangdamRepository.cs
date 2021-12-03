@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(a.JepDate,'YYYY-MM-DD') JepDate,a.Pano,a.SName,a.Sex,a.Age,a.WRTNO,a.LtdCode,a.PTNO                     ");
             parameter.AppendSql("     , b.Jumin2,c.Class,c.Ban,c.Bun,TO_CHAR(c.RDate,'YYYY-MM-DD') RDate,c.GbPan,c.ROWID,d.SangDamDrno                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_SCHOOL_NEW c, KOSMOS_PMPA.HIC_SANGDAM_NEW d ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_SCHOOL_NEW c, ADMIN.HIC_SANGDAM_NEW d ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                                                     ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                                                     ");
             parameter.AppendSql("   AND a.WRTNO = d.WRTNO                                                                                               ");

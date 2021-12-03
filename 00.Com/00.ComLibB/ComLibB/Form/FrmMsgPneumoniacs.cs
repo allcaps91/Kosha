@@ -38,7 +38,7 @@ namespace ComLibB
             try
             {   
                 SQL = "";
-                SQL += " UPDATE KOSMOS_PMPA.IPD_NEW_MASTER SET                  \r";
+                SQL += " UPDATE ADMIN.IPD_NEW_MASTER SET                  \r";
                 SQL += "        PNEUMONIA = 'N'                                 \r";
                 SQL += "  WHERE PANO = '" + clsOrdFunction.Pat.PtNo + "'        \r";
                 SQL += "    AND IPDNO = " + clsOrdFunction.Pat.IPDNO + "        \r";

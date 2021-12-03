@@ -518,7 +518,7 @@ namespace ComPmpaLibB
             SQL = SQL + ComNum.VBLF + "       b.MiIlsu, TO_CHAR(b.MiArcDate,'YYYY-MM-DD') MiArcDate,                              ";
             SQL = SQL + ComNum.VBLF + "       TO_CHAR(A.JSIM_LDATE,'YYYY-MM-DD') JSIM_LDATE  , A.JSIM_SABUN , A.JSIM_SET, A.JSIM_OK, ";
             SQL = SQL + ComNum.VBLF + "       a.Amt67,a.GbTax, a.FCODE,b.KTASLEVL, b.T_CARE ,a.GBHU ";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_TRANS a,KOSMOS_PMPA.IPD_NEW_MASTER b ";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_TRANS a,ADMIN.IPD_NEW_MASTER b ";
             SQL = SQL + ComNum.VBLF + " WHERE a.TRSNO = " + ArgTRSNO + " ";
             if (ArgIPDNO > 0)
             {
@@ -8925,7 +8925,7 @@ namespace ComPmpaLibB
                 }
                 SQL = SQL + ComNum.VBLF + " A.AMT49) BIAMT, ";
                 SQL = SQL + ComNum.VBLF + " SUM(AMT51+AMT57) AMT, SUM(AMT50) AMT50, SUM(AMT53) AMT53 ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_TRANS A ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_TRANS A ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.INDATE >= TO_DATE('" + SangFDate[i] + "','YYYY-MM-DD')  ";
                 SQL = SQL + ComNum.VBLF + "   AND A.OUTDATE <= TO_DATE('" + SangTDate[i] + "','YYYY-MM-DD')  ";
                 SQL = SQL + ComNum.VBLF + "   AND A.ACTDATE IS NOT NULL " ;

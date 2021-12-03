@@ -31,9 +31,9 @@ namespace ComBase
                 SQL += " SELECT '' CHK, B.PANO,B.SNAME, B.ROOMCODE, C.EXAMFNAME         \r";
                 SQL += "      , TO_CHAR(A.RESULTDATE, 'MM/DD HH24:MI') RESULTDATE       \r";
                 SQL += "      , A.RESULT, A.UNIT, A.ROWID                               \r";
-                SQL += "   FROM KOSMOS_PMPA.IPD_NEW_MASTER B                            \r";
-                SQL += "      , KOSMOS_OCS.EXAM_RESULTC_CV A                            \r";
-                SQL += "      , KOSMOS_OCS.EXAM_MASTER     C                            \r";
+                SQL += "   FROM ADMIN.IPD_NEW_MASTER B                            \r";
+                SQL += "      , ADMIN.EXAM_RESULTC_CV A                            \r";
+                SQL += "      , ADMIN.EXAM_MASTER     C                            \r";
                 SQL += "   WHERE B.JDate = TO_DATE('1900-01-01', 'YYYY-MM-DD')          \r";
                 SQL += "     AND B.GBSTS IN ('0', '2', '3', '4', '5', '6')              \r";
                 SQL += "     and a.pano = b.pano                                        \r";
@@ -113,7 +113,7 @@ namespace ComBase
                 SQL = "";
                 SQL += " SELECT '' CHK, PTNO, SNAME, ROOMCODE                           \r";
                 SQL += "      , TO_CHAR(ENTDATE,'YYYY-MM-DD HH24:MI') ENTDATE, ROWID    \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_MSG                                      \r";
+                SQL += "   FROM ADMIN.OCS_MSG                                      \r";
                 SQL += "  WHERE ACTDATE =TRUNC(SYSDATE)                                 \r";
 
                 switch (clsPublic.GstrWardCode)
@@ -204,10 +204,10 @@ namespace ComBase
                 SQL += "      , TO_CHAR(A.EDATE,'YYYY-MM-DD HH24:MI')  EDATE            \r";
                 SQL += "      , A.TOREMARK                                              \r";
                 SQL += "      , a.ROWID                                                 \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_ITRANSFER   A                             \r";
-                SQL += "     , KOSMOS_PMPA.BAS_PATIENT    B                             \r";
-                SQL += "     , KOSMOS_PMPA.BAS_DOCTOR     C                             \r";
-                SQL += "     , KOSMOS_PMPA.BAS_DOCTOR     D                             \r";
+                SQL += "  FROM ADMIN.OCS_ITRANSFER   A                             \r";
+                SQL += "     , ADMIN.BAS_PATIENT    B                             \r";
+                SQL += "     , ADMIN.BAS_DOCTOR     C                             \r";
+                SQL += "     , ADMIN.BAS_DOCTOR     D                             \r";
                 SQL += " WHERE A.EDATE IS NOT NULL                                      \r";
                 SQL += "   AND A.BDATE >=TRUNC(SYSDATE -100)                            \r";
 

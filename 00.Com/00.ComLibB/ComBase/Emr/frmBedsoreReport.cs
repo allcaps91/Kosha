@@ -753,8 +753,8 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = " INSERT INTO KOSMOS_PMPA.NUR_PRESSURE_SORE_HIS";
-                SQL += ComNum.VBLF + " SELECT * FROM KOSMOS_PMPA.NUR_PRESSURE_SORE";
+                SQL = " INSERT INTO ADMIN.NUR_PRESSURE_SORE_HIS";
+                SQL += ComNum.VBLF + " SELECT * FROM ADMIN.NUR_PRESSURE_SORE";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + FstrROWID + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -769,7 +769,7 @@ namespace ComBase
                 }
 
                 SQL = "";
-                SQL = " DELETE KOSMOS_PMPA.NUR_PRESSURE_SORE";
+                SQL = " DELETE ADMIN.NUR_PRESSURE_SORE";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + FstrROWID + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1333,8 +1333,8 @@ namespace ComBase
                 if (FstrROWID != "")
                 {
                     SQL = "";
-                    SQL = "INSERT INTO KOSMOS_PMPA.NUR_PRESSURE_SORE_HIS  ";
-                    SQL += ComNum.VBLF + " SELECT * FROM KOSMOS_PMPA.NUR_PRESSURE_SORE ";
+                    SQL = "INSERT INTO ADMIN.NUR_PRESSURE_SORE_HIS  ";
+                    SQL += ComNum.VBLF + " SELECT * FROM ADMIN.NUR_PRESSURE_SORE ";
                     SQL += ComNum.VBLF + " WHERE ROWID = '" + FstrROWID + "' ";
 
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1349,7 +1349,7 @@ namespace ComBase
                     }
 
                     SQL = "";
-                    SQL = "DELETE KOSMOS_PMPA.NUR_PRESSURE_SORE ";
+                    SQL = "DELETE ADMIN.NUR_PRESSURE_SORE ";
                     SQL += ComNum.VBLF + " WHERE ROWID = '" + FstrROWID + "' ";
 
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1366,7 +1366,7 @@ namespace ComBase
                 }
 
                 SQL = "";
-                SQL = "INSERT INTO KOSMOS_PMPA.NUR_PRESSURE_SORE ( ";
+                SQL = "INSERT INTO ADMIN.NUR_PRESSURE_SORE ( ";
                 SQL += ComNum.VBLF + " PANO,SNAME,SEX,AGE,ACTDATE,INDATE,DIAGNOSYS,DeptCode,RoomCode,Grade,Total, ";
                 SQL += ComNum.VBLF + " P_Balbui,P_BalBui_etc,P_Step,P_Hapbung,P_Progress,P_Yoin,P_Pre,Ipdno,WardCode, ";
                 SQL += ComNum.VBLF + "  ENTDATE, ENTSABUN, ";
@@ -1577,7 +1577,7 @@ namespace ComBase
                     SQL = "";
                     SQL = " SELECT 0 IPDNO, PANO, SNAME, SEX, AGE, DEPTCODE, DRCODE, 1 ILSU, BI,  0 ReliGion, GBSPC, 0 WARDCODE, 0 ROOMCODE, TO_CHAR(BDATE,'YYYY-MM-DD') INDATE,";
                     SQL += ComNum.VBLF + " BDATE ACTDATE, BDATE OUTDATE, '' JIYUK, 0";
-                    SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_MASTER";
+                    SQL += ComNum.VBLF + "  FROM ADMIN.OPD_MASTER";
                     SQL += ComNum.VBLF + " WHERE BDate >= TO_DATE('" + TxtDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                     SQL += ComNum.VBLF + "   AND BDate <= TO_DATE('" + TxtEDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                     SQL += ComNum.VBLF + "   AND DEPTCODE = 'ER'";
@@ -1937,7 +1937,7 @@ namespace ComBase
                         SQL = "";
                         SQL = "  SELECT PANO,IPDNO,TO_CHAR(ActDate,'YYYY-MM-DD') AS ActDate,TO_CHAR(InDate,'YYYY-MM-DD') AS InDate,  ";
                         SQL += ComNum.VBLF + " SNAME, ROOMCODE,DEPTCODE,TO_CHAR(ENTDATE,'YYYY-MM-DD') AS ENTDATE,WardCode,ROWID, PRTYN ";
-                        SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_PRESSURE_SORE ";
+                        SQL += ComNum.VBLF + " FROM ADMIN.NUR_PRESSURE_SORE ";
                         SQL += ComNum.VBLF + " WHERE PANO = '" + strPano + "' ";
 
                         SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -2001,7 +2001,7 @@ namespace ComBase
                         SQL = "";
                         SQL = "  SELECT PANO,IPDNO,TO_CHAR(ActDate,'YYYY-MM-DD') ActDate,TO_CHAR(InDate,'YYYY-MM-DD')InDate,  ";
                         SQL += ComNum.VBLF + " SNAME, ROOMCODE,DEPTCODE,ENTDATE,WardCode,ROWID, PRTYN ";
-                        SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_PRESSURE_SORE ";
+                        SQL += ComNum.VBLF + " FROM ADMIN.NUR_PRESSURE_SORE ";
                         SQL += ComNum.VBLF + " WHERE PANO = '" + strPano + "' ";
 
                         SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

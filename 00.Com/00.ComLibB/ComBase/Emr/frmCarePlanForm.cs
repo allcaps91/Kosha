@@ -270,7 +270,7 @@ namespace ComBase
                         if (strROWID != "")
                         {
                             SQL = "";
-                            SQL = " DELETE KOSMOS_EMR.EMR_CAREPLAN_CHART ";
+                            SQL = " DELETE ADMIN.EMR_CAREPLAN_CHART ";
                             SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
 
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

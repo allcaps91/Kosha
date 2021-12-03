@@ -52,7 +52,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   SELECT          SYSDATE, :GNJOBSABUN,'4',WRTNO,BDATE,LTDCODE    ");
             parameter.AppendSql("                   ,GEACODE,SLIPAMT,REMARK,ENTDATE,ENTSABUN        ");
 
-            parameter.AppendSql("   FROM            KOSMOS_PMPA.HIC_MISU_SLIP                       ");
+            parameter.AppendSql("   FROM            ADMIN.HIC_MISU_SLIP                       ");
 
             parameter.AppendSql("   WHERE           ROWID= :STRROWID                                ");
             parameter.AppendSql("   ORDER BY        BDATE DESC                                      ");
@@ -72,7 +72,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   SELECT              SYSDATE, :GNJOBSABUN,'3',WRTNO,BDATE,LTDCODE                    ");
             parameter.AppendSql("                       ,GEACODE,SLIPAMT,REMARK,ENTDATE,ENTSABUN                        ");
 
-            parameter.AppendSql("   FROM                KOSMOS_PMPA.HIC_MISU_SLIP                                       ");
+            parameter.AppendSql("   FROM                ADMIN.HIC_MISU_SLIP                                       ");
 
             parameter.AppendSql("   WHERE               ROWID= :STRROWID                                                ");
 
@@ -99,10 +99,10 @@ namespace ComHpcLibB.Repository
             
             parameter.AppendSql("   SELECT              WRTNO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,LTDCODE,GJONG,SUM(GAMAMT+SAKAMT+BANAMT) DAMT                  ");
             parameter.AppendSql("                     , MISUAMT,IPGUMAMT,GAMAMT,SAKAMT,BANAMT,JANAMT,GIRONO,DAMNAME,REMARK      ");
-            parameter.AppendSql("                     , KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE) LTDNAME                             ");
-            parameter.AppendSql("                     , KOSMOS_PMPA.FC_HIC_GJJONG_NAME(GJONG, '') GJNAME                        ");
+            parameter.AppendSql("                     , ADMIN.FC_HIC_LTDNAME(LTDCODE) LTDNAME                             ");
+            parameter.AppendSql("                     , ADMIN.FC_HIC_GJJONG_NAME(GJONG, '') GJNAME                        ");
 
-            parameter.AppendSql("   FROM                KOSMOS_PMPA.HIC_MISU_MST                                                ");
+            parameter.AppendSql("   FROM                ADMIN.HIC_MISU_MST                                                ");
 
             if (strFdate == "")
             {
@@ -312,7 +312,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT                     WRTNO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,ROWID           ");
-            parameter.AppendSql("FROM                       KOSMOS_PMPA.HIC_MISU_MST                                ");
+            parameter.AppendSql("FROM                       ADMIN.HIC_MISU_MST                                ");
             parameter.AppendSql("WHERE                      LTDCODE = :LTDCODE                                      ");
             parameter.AppendSql("    AND                    MISUJONG='1'                                            "); // 회사미수
 
@@ -357,7 +357,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT                 SYSDATE, :JOBSABUN, '1', WRTNO, BDATE, LTDCODE                  ");
             parameter.AppendSql("                     , GEACODE,SLIPAMT,REMARK,ENTDATE,ENTSABUN                         ");
 
-            parameter.AppendSql("FROM                   KOSMOS_PMPA.HIC_MISU_SLIP                                       ");
+            parameter.AppendSql("FROM                   ADMIN.HIC_MISU_SLIP                                       ");
 
             parameter.AppendSql("WHERE                  WRTNO = :WRTNO                                                  ");
             
@@ -377,7 +377,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT                 SYSDATE, :JOBSABUN, '1', WRTNO, BDATE, LTDCODE                  ");
             parameter.AppendSql("                     , GEACODE,SLIPAMT,REMARK,ENTDATE,ENTSABUN                         ");
 
-            parameter.AppendSql("FROM                   KOSMOS_PMPA.HIC_MISU_SLIP                                       ");
+            parameter.AppendSql("FROM                   ADMIN.HIC_MISU_SLIP                                       ");
 
             parameter.AppendSql("WHERE                  WRTNO = :WRTNO                                                  ");
 
@@ -459,12 +459,12 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("       SELECT               WRTNO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,JISA,KIHO,GJONG,SUM(GAMAMT+SAKAMT+BANAMT) DAMT                ");
             parameter.AppendSql("                          , MISUAMT,IPGUMAMT,GAMAMT,SAKAMT,BANAMT,JANAMT,GIRONO,REMARK             ");
-            parameter.AppendSql("                          , KOSMOS_PMPA.FC_HIC_GJJONG_NAME(GJONG, '') GJNAME                       ");
-            parameter.AppendSql("                          , KOSMOS_PMPA.FC_HIC_CODE_NM('21', JISA) JISACODE                        ");
-            parameter.AppendSql("                          , KOSMOS_PMPA.FC_HIC_CODE_NM('18', KIHO) KIHOCODE                        ");
+            parameter.AppendSql("                          , ADMIN.FC_HIC_GJJONG_NAME(GJONG, '') GJNAME                       ");
+            parameter.AppendSql("                          , ADMIN.FC_HIC_CODE_NM('21', JISA) JISACODE                        ");
+            parameter.AppendSql("                          , ADMIN.FC_HIC_CODE_NM('18', KIHO) KIHOCODE                        ");
 
 
-            parameter.AppendSql("       FROM                KOSMOS_PMPA.HIC_MISU_MST                                                ");
+            parameter.AppendSql("       FROM                ADMIN.HIC_MISU_MST                                                ");
 
             if (strFdate == "")
             {
@@ -551,7 +551,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("   SELECT                  WRTNO                           ");
 
-            parameter.AppendSql("   FROM                    KOSMOS_PMPA.HIC_MISU_MST        ");
+            parameter.AppendSql("   FROM                    ADMIN.HIC_MISU_MST        ");
 
             parameter.AppendSql("   WHERE                   GIRONO=:GIRONO                  ");
 
@@ -569,7 +569,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   SELECT              SYSDATE, :GNJOBSABUN,'1',WRTNO,BDATE,LTDCODE                    ");
             parameter.AppendSql("                       ,GEACODE,SLIPAMT,REMARK,ENTDATE,ENTSABUN                        ");
 
-            parameter.AppendSql("   FROM                KOSMOS_PMPA.HIC_MISU_SLIP                                       ");
+            parameter.AppendSql("   FROM                ADMIN.HIC_MISU_SLIP                                       ");
 
             parameter.AppendSql("   WHERE               WRTNO= :WRTNO ");
             parameter.AppendSql("                       AND BDATE <= TO_DATE(:BDATE,'YYYY-MM-DD')                       ");
@@ -971,7 +971,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   SELECT              SYSDATE, :GNJOBSABUN,'2',WRTNO,BDATE,LTDCODE                    ");
             parameter.AppendSql("                       ,GEACODE,SLIPAMT,REMARK,ENTDATE,ENTSABUN                        ");
                 
-            parameter.AppendSql("   FROM                KOSMOS_PMPA.HIC_MISU_SLIP                                       ");
+            parameter.AppendSql("   FROM                ADMIN.HIC_MISU_SLIP                                       ");
 
             parameter.AppendSql("   WHERE               ROWID= :STRROWID                                                ");
 

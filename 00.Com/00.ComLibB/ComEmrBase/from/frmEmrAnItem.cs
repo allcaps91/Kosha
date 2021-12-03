@@ -45,12 +45,12 @@ namespace ComEmrBase
                 {
                     SQL = "";
                     SQL = SQL + ComNum.VBLF + "SELECT BASCD, BASNAME, BASEXNAME, 'A' DISPSTR, DISSEQNO  ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRBASCD a                            ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRBASCD a                            ";
                     SQL = SQL + ComNum.VBLF + " WHERE BSNSCLS = '기록지관리'                            ";
                     SQL = SQL + ComNum.VBLF + "   AND UNITCLS = '마취기록지기본항목'                    ";
                     SQL = SQL + ComNum.VBLF + "UNION ALL                                                ";
                     SQL = SQL + ComNum.VBLF + "SELECT BASCD, BASNAME, BASEXNAME, 'B' DISPSTR, DISSEQNO  ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRBASCD a                            ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRBASCD a                            ";
                     SQL = SQL + ComNum.VBLF + " WHERE BSNSCLS = '기록지관리'                            ";
                     SQL = SQL + ComNum.VBLF + "   AND UNITCLS = '마취기록지항목'                        ";
                     SQL = SQL + ComNum.VBLF + "ORDER BY DISPSTR, DISSEQNO                               ";
@@ -339,7 +339,7 @@ namespace ComEmrBase
                 {
                     SQL = "";
                     SQL = SQL + ComNum.VBLF + "SELECT BASCD, BASNAME, BASEXNAME, DISSEQNO   ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRBASCD a                ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRBASCD a                ";
                     SQL = SQL + ComNum.VBLF + " WHERE BSNSCLS = '기록지관리'                ";
                     SQL = SQL + ComNum.VBLF + "   AND UNITCLS = '마취기록지항목'            ";
                     SQL = SQL + ComNum.VBLF + "ORDER BY DISSEQNO                            ";

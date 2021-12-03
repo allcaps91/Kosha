@@ -45,10 +45,10 @@ namespace ComEmrBase
             {
                 SQL = "SELECT B.NURSE_ID, MEASURE_DT, B.VALUE, S.SPECNO, S.PANO, TO_CHAR(I.INDATE, 'YYYYMMDD') MEDFRDATE, I.DEPTCODE, TO_CHAR(B.EMR, 'YYYY-MM-DD') EMR, I.WARDCODE";
                 SQL = SQL + ComNum.VBLF + " , (SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL) SYSDATE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_INTERFACE_BST B  ";
-                //SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_OCS.EXAM_SPECMST S ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_INTERFACE_BST B  ";
+                //SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.EXAM_SPECMST S ";
                 //SQL = SQL + ComNum.VBLF + "      ON S.SPECNO = B.PATIENT_ID";
-                SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER I ";
+                SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.IPD_NEW_MASTER I ";
                 SQL = SQL + ComNum.VBLF + "      ON (I.JDATE = TO_DATE('1900-01-01', 'YYYY-MM-DD') OR I.JDATE = TRUNC(SYSDATE))";
                 SQL = SQL + ComNum.VBLF + "     AND I.GBSTS <> '7'";
                 SQL = SQL + ComNum.VBLF + "     AND I.PANO = B.PANO";

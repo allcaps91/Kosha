@@ -227,7 +227,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT SYSMPGB, SYSMPINDEX, SYSMPKEY, SYSMPNAME";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRSYSMP";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMRSYSMP";
                 SQL += ComNum.VBLF + "          WHERE SYSMPGB = '" + mSYSMPGB + "'";
                 SQL += ComNum.VBLF + "          AND SYSMPRMK IS NOT NULL";
                 SQL += ComNum.VBLF + "      ORDER BY SYSMPNAME";
@@ -349,7 +349,7 @@ namespace ComEmrBase
         {
             try
             {
-                string sKey = GetNextKey() + GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+                string sKey = GetNextKey() + GetSequencesNo("ADMIN.GETSYMPSEQ");
                 treeJobGroup.Nodes.Insert(0, sKey, txtGrpName.Text.Trim(), 0, 1);
                 SaveAddNode(sKey);
             }
@@ -363,7 +363,7 @@ namespace ComEmrBase
             //{
             //    string sPKey = "0_";
 
-            //    string strRtnNo = GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+            //    string strRtnNo = GetSequencesNo("ADMIN.GETSYMPSEQ");
             //    string sKey = GetNextKey() + strRtnNo;
 
             //    oNodex = treeJobGroup.Nodes.Add(sKey, txtGrpName.Text.Trim(), 0, 1);
@@ -381,7 +381,7 @@ namespace ComEmrBase
             string strKey = "";
             //try
             //{
-                strKey = GetNextKey() + GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+                strKey = GetNextKey() + GetSequencesNo("ADMIN.GETSYMPSEQ");
 
                 treeJobGroup.Nodes.Insert(treeJobGroup.Nodes.Count, strKey, txtGrpName.Text.Trim(), 0, 1);
                 //TODO
@@ -390,7 +390,7 @@ namespace ComEmrBase
             //}
             //catch
             //{
-            //    strKey = GetNextKey() + GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+            //    strKey = GetNextKey() + GetSequencesNo("ADMIN.GETSYMPSEQ");
 
             //    treeJobGroup.Nodes.Insert(treeJobGroup.Nodes.Count, strKey, txtGrpName.Text.Trim(), 0, 1);
             //    SaveAddNode(strKey);
@@ -488,7 +488,7 @@ namespace ComEmrBase
                     strParentName = treeNode.Parent.Name;
                 }
 
-                SQL = "INSERT INTO KOSMOS_EMR.EMRSYSMP ";
+                SQL = "INSERT INTO ADMIN.EMRSYSMP ";
                 SQL += ComNum.VBLF + "      (SYSMPGB, SYSMPINDEX,SYSMPKEY,";
                 SQL += ComNum.VBLF + "      SYSMPPARENT,SYSMPNAME,SYSMPKEYV,SYSMPPARENTV)";
                 SQL += ComNum.VBLF + "  VALUES (";
@@ -519,7 +519,7 @@ namespace ComEmrBase
 
                 //while (intNode != treeNode.Nodes[intNode].LastNode.Index)
                 //{
-                //    SQL =  "UPDATE KOSMOS_EMR.EMRSYSMP ";
+                //    SQL =  "UPDATE ADMIN.EMRSYSMP ";
                 //    SQL += ComNum.VBLF + "  SET SYSDSPINDEX = " + i;
                 //    //TODO
                 //    //strSql = strSql & vbLf & "  WHERE SYSMPINDEX = " & Val(SptChar(trvSYMPGrp.Nodes(intNode).key, 1, "_"))
@@ -540,7 +540,7 @@ namespace ComEmrBase
                 //    intNode = treeNode.Nodes[intNode].NextNode.Index;
                 //}
 
-                //SQL = "UPDATE KOSMOS_EMR.EMRSYSMP ";
+                //SQL = "UPDATE ADMIN.EMRSYSMP ";
                 //SQL += ComNum.VBLF + "  SET SYSDSPINDEX = " + i;
                 ////TODO
                 ////strSql = strSql & vbLf & "  WHERE SYSMPINDEX = " & Val(SptChar(trvSYMPGrp.Nodes(intLast).key, 1, "_"))
@@ -667,7 +667,7 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL = " SELECT SYSMPRMK";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRSYSMP";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMRSYSMP";
                 SQL += ComNum.VBLF + "      WHERE SYSMPINDEX = " + VB.Val(strSYSMPINDEX);
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -718,7 +718,7 @@ namespace ComEmrBase
             //TODO
             try
             {
-                string sKey = GetNextKey() + GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+                string sKey = GetNextKey() + GetSequencesNo("ADMIN.GETSYMPSEQ");
 
                 //trvSYMPGrp.Nodes.Add iIndex, tvwNext, sKey, Trim(txtGrpName.Text), 2, 3
                 treeJobGroup.Nodes.Insert(treeJobGroup.SelectedNode.Index + 1, sKey, txtGrpName.Text.Trim(), 0, 1);
@@ -755,7 +755,7 @@ namespace ComEmrBase
                     return;
                 }
 
-                string sKey = GetNextKey() + GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+                string sKey = GetNextKey() + GetSequencesNo("ADMIN.GETSYMPSEQ");
 
                 TreeNode TN = treeJobGroup.SelectedNode.Nodes.Add(sKey, txtGrpName.Text.Trim(), 0, 1);
                 //TODO Set oNodex = trvSYMPGrp.Nodes.Add(iIndex, tvwChild, sKey, Trim(txtGrpName.Text), 2, 3)
@@ -778,7 +778,7 @@ namespace ComEmrBase
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = "    SELECT * FROM KOSMOS_EMR.EMRSYSMP";
+                SQL = "    SELECT * FROM ADMIN.EMRSYSMP";
                 SQL += ComNum.VBLF + "          WHERE SYSMPGB = '" + mSYSMPGB + "'";
                 SQL += ComNum.VBLF + "              AND SYSMPINDEX = " + VB.Val(SptChar(treeJobGroup.SelectedNode.Name, 1, "_"));
                 //TODO
@@ -857,7 +857,7 @@ namespace ComEmrBase
 
             try
             {
-                SQL = "    UPDATE KOSMOS_EMR.EMRSYSMP SET SYSMPNAME = '" + strSYMPNAME + "'";
+                SQL = "    UPDATE ADMIN.EMRSYSMP SET SYSMPNAME = '" + strSYMPNAME + "'";
                 SQL += ComNum.VBLF + "          WHERE SYSMPGB = '" + mSYSMPGB + "'";
                 SQL += ComNum.VBLF + "              AND SYSMPINDEX = " + lngSYMPINDEX;
 
@@ -915,7 +915,7 @@ namespace ComEmrBase
         {
             try
             {
-                string sKey = GetNextKey() + GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+                string sKey = GetNextKey() + GetSequencesNo("ADMIN.GETSYMPSEQ");
                 //TODO
                 //trvSYMPGrp.Nodes.Add iIndex, tvwPrevious, sKey, Trim(txtGrpName.Text), 2, 3
                 treeJobGroup.Nodes.Insert(treeJobGroup.SelectedNode.Index - 1, sKey, txtGrpName.Text.Trim(), 0, 1);
@@ -991,7 +991,7 @@ namespace ComEmrBase
             try
             {
                 SQL = "";
-                SQL = "    DELETE FROM KOSMOS_EMR.EMRSYSMP";
+                SQL = "    DELETE FROM ADMIN.EMRSYSMP";
                 SQL += ComNum.VBLF + "          WHERE SYSMPGB = '" + mSYSMPGB + "'";
                 SQL += ComNum.VBLF + "              AND SYSMPINDEX = " + lngSYMPINDEX;
 
@@ -1070,7 +1070,7 @@ namespace ComEmrBase
             try
             {
                 SQL = "";
-                SQL += ComNum.VBLF + "    UPDATE KOSMOS_EMR.EMRSYSMP SET SYSMPRMK = '" + strSYMPNAME + "'";
+                SQL += ComNum.VBLF + "    UPDATE ADMIN.EMRSYSMP SET SYSMPRMK = '" + strSYMPNAME + "'";
                 SQL += ComNum.VBLF + "          WHERE SYSMPGB = '" + mSYSMPGB + "'";
                 SQL += ComNum.VBLF + "              AND SYSMPINDEX = " + lngSYMPINDEX;
 
@@ -1153,7 +1153,7 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL = " SELECT SYSMPRMK";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRSYSMP";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMRSYSMP";
                 SQL += ComNum.VBLF + "      WHERE SYSMPINDEX = " + VB.Val(strSYSMPINDEX);
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -1335,7 +1335,7 @@ namespace ComEmrBase
             {
                 //'먼저 지우고 시작한다
                 SQL = "";
-                SQL = "    DELETE FROM KOSMOS_EMR.EMRSYSMPTRMK";
+                SQL = "    DELETE FROM ADMIN.EMRSYSMPTRMK";
                 SQL += ComNum.VBLF + "          WHERE SYSMPGB = '" + mSYSMPGB + "'";
                 SQL += ComNum.VBLF + "          AND SYSMPINDEX = " + lngSYMPINDEX;
 
@@ -1354,7 +1354,7 @@ namespace ComEmrBase
                     if(ssTmp_Sheet1.Cells[i, 1].Text.Trim() != "")
                     {
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_EMR.EMRSYSMPTRMK ";
+                        SQL = " INSERT INTO ADMIN.EMRSYSMPTRMK ";
                         SQL += ComNum.VBLF + "  (SYSMPGB,SYSMPINDEX,SYSMPKEY,SYSMPDSP,";
                         SQL += ComNum.VBLF + "  SYSMPRMK) VALUES (";
                         SQL += ComNum.VBLF + "  '" + mSYSMPGB + "',";
@@ -1522,7 +1522,7 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL = "    SELECT A.SYSMPGB, A.SYSMPINDEX, A.SYSMPKEY, A.SYSMPPARENT, A.SYSMPNAME, A.SYSMPRMK";
-                SQL += ComNum.VBLF + "           FROM KOSMOS_EMR.EMRSYSMP A";
+                SQL += ComNum.VBLF + "           FROM ADMIN.EMRSYSMP A";
                 SQL += ComNum.VBLF + "          WHERE A.SYSMPGB = '" + mSYSMPGB + "'";
                 //'    strSql = strSql & vbLf & "          ORDER BY A.SYSMPPARENTV, A.SYSMPKEYV"
                 SQL += ComNum.VBLF + "          ORDER BY A.SYSMPPARENTV, A.SYSDSPINDEX";
@@ -1639,7 +1639,7 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL = "    SELECT A.SYSMPGB, A.SYSMPINDEX, A.SYSMPKEY, A.SYSMPPARENT, A.SYSMPNAME, A.SYSMPRMK";
-                SQL += ComNum.VBLF + "           FROM KOSMOS_EMR.EMRSYSMPT A";
+                SQL += ComNum.VBLF + "           FROM ADMIN.EMRSYSMPT A";
                 SQL += ComNum.VBLF + "          WHERE A.SYSMPGB = '" + mSYSMPGB + "'";
                 //'    strSql = strSql & vbLf & "          ORDER BY A.SYSMPPARENTV, A.SYSMPKEYV"
                 //'    strSql = strSql & vbLf & "          ORDER BY A.SYSMPPARENTV, A.SYSDSPINDEX"
@@ -1758,7 +1758,7 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL = " SELECT SYSMPGB, SYSMPINDEX, SYSMPKEY, SYSMPDSP, SYSMPRMK";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRSYSMPTRMK";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMRSYSMPTRMK";
                 SQL += ComNum.VBLF + "      WHERE SYSMPINDEX = " + VB.Val(strSYSMPINDEX);
                 SQL += ComNum.VBLF + "      ORDER BY SYSMPDSP";
 
@@ -1944,7 +1944,7 @@ namespace ComEmrBase
         {
             try
             {
-                string sKey = GetNextKeyTmp() + GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+                string sKey = GetNextKeyTmp() + GetSequencesNo("ADMIN.GETSYMPSEQ");
 
                 treeTmpGrp.Nodes.Insert(0, sKey, txtTmpName.Text.Trim(), 0, 1);
                 SaveAddNodeTmp(sKey);
@@ -1986,7 +1986,7 @@ namespace ComEmrBase
                 {
                     strParentName = treeNode.Parent.Name;
                 }
-                SQL = "INSERT INTO KOSMOS_EMR.EMRSYSMPT ";
+                SQL = "INSERT INTO ADMIN.EMRSYSMPT ";
                 SQL += ComNum.VBLF + "      (SYSMPGB, SYSMPINDEX,SYSMPKEY,";
                 SQL += ComNum.VBLF + "      SYSMPPARENT,SYSMPNAME,SYSMPKEYV,SYSMPPARENTV)";
                 SQL += ComNum.VBLF + "  VALUES (";
@@ -2019,7 +2019,7 @@ namespace ComEmrBase
 
                 //while (intNode != treeNode.LastNode.Index)
                 //{
-                //    SQL = "UPDATE KOSMOS_EMR.EMRSYSMPT ";
+                //    SQL = "UPDATE ADMIN.EMRSYSMPT ";
                 //    SQL += ComNum.VBLF + "  SET SYSDSPINDEX = " + i;
                 //    SQL += ComNum.VBLF + "  WHERE SYSMPINDEX = " + VB.Val(SptChar(treeNode.Nodes[intNode].Name, 1, "_"));
 
@@ -2038,7 +2038,7 @@ namespace ComEmrBase
                 //    intNode = treeNode.Nodes[intNode].LastNode.Index;
                 //}
 
-                //SQL = "UPDATE KOSMOS_EMR.EMRSYSMPT ";
+                //SQL = "UPDATE ADMIN.EMRSYSMPT ";
                 //SQL += ComNum.VBLF + "  SET SYSDSPINDEX = " + i;
                 ////TODO
                 ////strSql = strSql & vbLf & "  WHERE SYSMPINDEX = " & Val(SptChar(trvSYMPGrp.Nodes(intLast).key, 1, "_"))
@@ -2112,7 +2112,7 @@ namespace ComEmrBase
             try
             {
 
-                string sKey = GetNextKeyTmp() + GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+                string sKey = GetNextKeyTmp() + GetSequencesNo("ADMIN.GETSYMPSEQ");
 
                 treeTmpGrp.Nodes.Insert(treeTmpGrp.SelectedNode.NextNode.Index, sKey, txtTmpName.Text.Trim(), 0, 1);
                 SaveAddNodeTmp(sKey);
@@ -2149,7 +2149,7 @@ namespace ComEmrBase
                     return;
                 }
 
-                string sKey = GetNextKey() + GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+                string sKey = GetNextKey() + GetSequencesNo("ADMIN.GETSYMPSEQ");
 
                 treeTmpGrp.SelectedNode.Nodes.Add(sKey, txtTmpName.Text.Trim(), 0, 1);
                 SaveAddNodeTmp(sKey);
@@ -2172,7 +2172,7 @@ namespace ComEmrBase
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = "    SELECT * FROM KOSMOS_EMR.EMRSYSMPT";
+                SQL = "    SELECT * FROM ADMIN.EMRSYSMPT";
                 SQL += ComNum.VBLF + "          WHERE SYSMPGB = '" + mSYSMPGB + "'";
                 SQL += ComNum.VBLF + "              AND SYSMPINDEX = " + VB.Val(SptChar(treeTmpGrp.SelectedNode.Name, 1, "_"));
                 SQL += ComNum.VBLF + "              AND SYSMPRMK IS NOT NULL";
@@ -2246,7 +2246,7 @@ namespace ComEmrBase
 
             try
             {
-                SQL = "    UPDATE KOSMOS_EMR.EMRSYSMT SET SYSMPNAME = '" + strSYMPNAME + "'";
+                SQL = "    UPDATE ADMIN.EMRSYSMT SET SYSMPNAME = '" + strSYMPNAME + "'";
                 SQL += ComNum.VBLF + "          WHERE SYSMPGB = '" + mSYSMPGB + "'";
                 SQL += ComNum.VBLF + "              AND SYSMPINDEX = " + lngSYMPINDEX;
 
@@ -2291,7 +2291,7 @@ namespace ComEmrBase
 
         void AddLastSiblingTmp()
         {
-            string sKey = GetNextKey() + GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+            string sKey = GetNextKey() + GetSequencesNo("ADMIN.GETSYMPSEQ");
 
             try
             {
@@ -2325,7 +2325,7 @@ namespace ComEmrBase
             try
             {
 
-                string sKey = GetNextKeyTmp() + GetSequencesNo("KOSMOS_EMR.GETSYMPSEQ");
+                string sKey = GetNextKeyTmp() + GetSequencesNo("ADMIN.GETSYMPSEQ");
 
                 treeTmpGrp.Nodes.Insert(treeTmpGrp.SelectedNode.PrevNode.Index, sKey, txtTmpName.Text.Trim(), 0, 1);
                 SaveAddNodeTmp(sKey);
@@ -2401,7 +2401,7 @@ namespace ComEmrBase
             try
             {
                 SQL = "";
-                SQL = "    DELETE FROM KOSMOS_EMR.EMRSYSMPT";
+                SQL = "    DELETE FROM ADMIN.EMRSYSMPT";
                 SQL += ComNum.VBLF + "          WHERE SYSMPGB = '" + mSYSMPGB + "'";
                 SQL += ComNum.VBLF + "              AND SYSMPINDEX = " + lngSYMPINDEX;
 

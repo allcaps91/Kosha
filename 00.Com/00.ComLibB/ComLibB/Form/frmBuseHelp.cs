@@ -97,7 +97,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "SELECT";
                 SQL = SQL + ComNum.VBLF + "BuCode,Name";
                 SQL = SQL + ComNum.VBLF + "FROM";
-                SQL = SQL + ComNum.VBLF + "KOSMOS_PMPA.BAS_BUSE";
+                SQL = SQL + ComNum.VBLF + "ADMIN.BAS_BUSE";
 
                 if (mstrViewBun == "ACC")
                 {

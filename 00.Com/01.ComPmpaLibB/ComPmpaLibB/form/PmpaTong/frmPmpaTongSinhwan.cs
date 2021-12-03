@@ -101,7 +101,7 @@ namespace ComPmpaLibB
             ssList1_Sheet1.Rows.Count = 1;
 
             SQL = " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE, SUM(1) CNT ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.OPD_MASTER ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.OPD_MASTER ";
             SQL += ComNum.VBLF + " WHERE SINGU = '1' ";
             SQL += ComNum.VBLF + "   AND BDATE >= TO_DATE('" + dtpFDate.Text + "', 'YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "   AND BDATE <= TO_DATE('" + dtpTDate.Text + "', 'YYYY-MM-DD') ";
@@ -172,7 +172,7 @@ namespace ComPmpaLibB
             //외래통계 자료 구함
             SQL = "";
             SQL += ComNum.VBLF + " SELECT DEPTCODE ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_CLINICDEPT ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.BAS_CLINICDEPT ";
             SQL += ComNum.VBLF + "  WHERE GBJUPSU = '1' ";
             SQL += ComNum.VBLF + "  ORDER BY PRINTRANKING ASC ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -206,7 +206,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT TO_CHAR(JOBDATE,'YYYY-MM-DD') JOBDATE ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_JOB ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.BAS_JOB ";
             SQL += ComNum.VBLF + "  WHERE JOBDATE >= TO_DATE('" + dtpFDate.Text + "', 'YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "    AND JOBDATE <= TO_DATE('" + dtpTDate.Text + "', 'YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "  ORDER BY JOBDATE ASC ";
@@ -238,7 +238,7 @@ namespace ComPmpaLibB
 
 
             SQL = " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE, DEPTCODE, SUM(1) CNT ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.OPD_MASTER ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.OPD_MASTER ";
             SQL += ComNum.VBLF + " WHERE SINGU = '1' ";
             SQL += ComNum.VBLF + "   AND BDATE >= TO_DATE('" + dtpFDate.Text + "', 'YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "   AND BDATE <= TO_DATE('" + dtpTDate.Text + "', 'YYYY-MM-DD') ";
@@ -321,9 +321,9 @@ namespace ComPmpaLibB
 
             //외래통계 자료구함
             SQL = "";
-            SQL += ComNum.VBLF + " SELECT TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, A.DEPTCODE, (SELECT DRNAME FROM KOSMOS_PMPA.BAS_DOCTOR WHERE DRCODE = A.DRCODE AND ROWNUM = 1) DRNAME,  ";
+            SQL += ComNum.VBLF + " SELECT TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, A.DEPTCODE, (SELECT DRNAME FROM ADMIN.BAS_DOCTOR WHERE DRCODE = A.DRCODE AND ROWNUM = 1) DRNAME,  ";
             SQL += ComNum.VBLF + " A.PANO, A.SNAME, A.SEX, A.AGE, A.BI ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.OPD_MASTER A ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.OPD_MASTER A ";
             SQL += ComNum.VBLF + "  WHERE SINGU = '1' ";
             SQL += ComNum.VBLF + "   AND BDATE >= TO_DATE('" + dtpFDate.Text + "', 'YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "   AND BDATE <= TO_DATE('" + dtpTDate.Text + "', 'YYYY-MM-DD') ";

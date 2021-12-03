@@ -84,8 +84,8 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.GBEST");
             parameter.AppendSql("     , A.EST_DATE");
             parameter.AppendSql("     , A.EST_SABUN");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_INSA_MST_KORNAME(A.EST_SABUN) EST_JOBNAME");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(A.LTDCODE) LTDNAME");
+            parameter.AppendSql("     , ADMIN.FC_INSA_MST_KORNAME(A.EST_SABUN) EST_JOBNAME");
+            parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(A.LTDCODE) LTDNAME");
             parameter.AppendSql("     , A.GBTEMP");
             parameter.AppendSql("     , A.LTDSEQNO");
             parameter.AppendSql("     , A.LTDGONGNAME");
@@ -97,7 +97,7 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.CYCLE_FUTR_WEM_CYCLE");
             parameter.AppendSql("     , A.CYCLE_FUTR_WEM_PLAN_DATE");
             parameter.AppendSql("     , A.ROWID AS RID");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHUKMST_NEW A");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHUKMST_NEW A");
             parameter.AppendSql(" WHERE A.WRTNO =:WRTNO ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -108,7 +108,7 @@ namespace HC_Measurement.Repository
         public int GetChkCountByLtdCode(long lTDCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT COUNT(A.LTDCODE) FROM KOSMOS_PMPA.HIC_CHUKMST_NEW A");
+            parameter.AppendSql("SELECT COUNT(A.LTDCODE) FROM ADMIN.HIC_CHUKMST_NEW A");
             parameter.AppendSql(" WHERE A.LTDCODE =:LTDCODE ");
             parameter.AppendSql("   AND A.DELDATE IS NULL ");
             
@@ -121,7 +121,7 @@ namespace HC_Measurement.Repository
         {
             //국고누적
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT COUNT(A.LTDCODE) FROM KOSMOS_PMPA.HIC_CHUKMST_NEW A");
+            parameter.AppendSql("SELECT COUNT(A.LTDCODE) FROM ADMIN.HIC_CHUKMST_NEW A");
             parameter.AppendSql(" WHERE A.BANGI =:BANGI ");
             parameter.AppendSql("   AND A.CHKYEAR =:CHKYEAR ");
             parameter.AppendSql("   AND A.GBSUPPORT ='1' ");
@@ -137,7 +137,7 @@ namespace HC_Measurement.Repository
         {
             //5인이상 누적
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT COUNT(A.LTDCODE) FROM KOSMOS_PMPA.HIC_CHUKMST_NEW A");
+            parameter.AppendSql("SELECT COUNT(A.LTDCODE) FROM ADMIN.HIC_CHUKMST_NEW A");
             parameter.AppendSql(" WHERE A.BANGI =:BANGI ");
             parameter.AppendSql("   AND A.CHKYEAR =:CHKYEAR ");
             parameter.AppendSql("   AND A.INWON >= 5 ");
@@ -153,7 +153,7 @@ namespace HC_Measurement.Repository
         {
             //총누적
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT COUNT(A.LTDCODE) FROM KOSMOS_PMPA.HIC_CHUKMST_NEW A");
+            parameter.AppendSql("SELECT COUNT(A.LTDCODE) FROM ADMIN.HIC_CHUKMST_NEW A");
             parameter.AppendSql(" WHERE A.BANGI =:BANGI ");
             parameter.AppendSql("   AND A.CHKYEAR =:CHKYEAR ");
             if (bDel) { parameter.AppendSql("   AND A.DELDATE IS NULL "); }
@@ -167,7 +167,7 @@ namespace HC_Measurement.Repository
         public long GetMaxLtdSeqNoByLtdCode(long lTDCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT MAX(A.LTDSEQNO) FROM KOSMOS_PMPA.HIC_CHUKMST_NEW A");
+            parameter.AppendSql("SELECT MAX(A.LTDSEQNO) FROM ADMIN.HIC_CHUKMST_NEW A");
             parameter.AppendSql(" WHERE A.LTDCODE =:LTDCODE ");
 
             parameter.Add("LTDCODE", lTDCODE);
@@ -178,7 +178,7 @@ namespace HC_Measurement.Repository
         public void UpDateEstInfoDel(long fnWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKMST_NEW");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKMST_NEW");
             parameter.AppendSql("   SET EST_DATE = '' ");
             parameter.AppendSql("     , GBEST = 'N'");
             parameter.AppendSql("     , EST_SABUN = ''");
@@ -209,16 +209,16 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.DELDATE");
             parameter.AppendSql("     , A.DELSABUN");
             parameter.AppendSql("     , A.BDATE");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(A.LTDCODE) LTDNAME");
+            parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(A.LTDCODE) LTDNAME");
             parameter.AppendSql("     , A.ROWID AS RID");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHUKMST_NEW A");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHUKMST_NEW A");
             parameter.AppendSql(" WHERE 1 = 1 ");
             parameter.AppendSql("   AND A.SDATE >=TO_DATE(:SDATE, 'YYYY-MM-DD') AND A.EDATE <=TO_DATE(:EDATE, 'YYYY-MM-DD') ");
             parameter.AppendSql("   AND A.DELDATE IS NULL ");
             
             if (!strKeyward.IsNullOrEmpty())
             {
-                parameter.AppendSql("   AND KOSMOS_PMPA.FC_HIC_LTDNAME(A.LTDCODE) LIKE :LTDNAME ");
+                parameter.AppendSql("   AND ADMIN.FC_HIC_LTDNAME(A.LTDCODE) LIKE :LTDNAME ");
             }
 
             parameter.Add("SDATE", strFDate);
@@ -236,7 +236,7 @@ namespace HC_Measurement.Repository
         public void UpDateEstInfo(long nWRTNO, long nSabun)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKMST_NEW");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKMST_NEW");
             parameter.AppendSql("   SET EST_DATE = SYSDATE");
             parameter.AppendSql("     , GBEST = 'Y'");
             parameter.AppendSql("     , EST_SABUN = :EST_SABUN");
@@ -251,7 +251,7 @@ namespace HC_Measurement.Repository
         public long GetInWonByWrtno(long nWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.INWON FROM KOSMOS_PMPA.HIC_CHUKMST_NEW A");
+            parameter.AppendSql("SELECT A.INWON FROM ADMIN.HIC_CHUKMST_NEW A");
             parameter.AppendSql(" WHERE A.WRTNO =:WRTNO ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -324,20 +324,20 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.GBEST");
             parameter.AppendSql("     , A.EST_DATE");
             parameter.AppendSql("     , A.EST_SABUN");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_INSA_MST_KORNAME(A.EST_SABUN) EST_JOBNAME");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(A.LTDCODE) LTDNAME");
+            parameter.AppendSql("     , ADMIN.FC_INSA_MST_KORNAME(A.EST_SABUN) EST_JOBNAME");
+            parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(A.LTDCODE) LTDNAME");
             parameter.AppendSql("     , A.GBTEMP");
             parameter.AppendSql("     , A.LTDSEQNO");
             parameter.AppendSql("     , A.LTDGONGNAME");
             parameter.AppendSql("     , A.ROWID AS RID");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHUKMST_NEW A");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHUKMST_NEW A");
             parameter.AppendSql(" WHERE 1 = 1 ");
             parameter.AppendSql("   AND A.BDATE >=TO_DATE(:SDATE, 'YYYY-MM-DD') AND A.BDATE <=TO_DATE(:EDATE, 'YYYY-MM-DD') ");
             parameter.AppendSql("   AND A.DELDATE IS NULL ");
             parameter.AppendSql("   AND A.GBEST =:GBEST ");
             if (!strKeyward.IsNullOrEmpty())
             {
-                parameter.AppendSql("   AND KOSMOS_PMPA.FC_HIC_LTDNAME(A.LTDCODE) LIKE :LTDNAME ");
+                parameter.AppendSql("   AND ADMIN.FC_HIC_LTDNAME(A.LTDCODE) LIKE :LTDNAME ");
             }
 
             parameter.Add("SDATE", strFDate);
@@ -415,16 +415,16 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.GBUCODE6");
             parameter.AppendSql("     , A.REMARK");
             parameter.AppendSql("     , A.GBCHROMIUM");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(A.LTDCODE) LTDNAME");
+            parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(A.LTDCODE) LTDNAME");
             parameter.AppendSql("     , A.GBEST");
             parameter.AppendSql("     , A.EST_DATE");
             parameter.AppendSql("     , A.EST_SABUN");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_INSA_MST_KORNAME(A.EST_SABUN) EST_JOBNAME");
+            parameter.AppendSql("     , ADMIN.FC_INSA_MST_KORNAME(A.EST_SABUN) EST_JOBNAME");
             parameter.AppendSql("     , A.GBTEMP");
             parameter.AppendSql("     , A.LTDSEQNO");
             parameter.AppendSql("     , A.LTDGONGNAME");
             parameter.AppendSql("     , A.ROWID AS RID");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHUKMST_NEW A");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHUKMST_NEW A");
             parameter.AppendSql(" WHERE 1 = 1 ");
             if (argGubun == "1")
             {
@@ -458,12 +458,12 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , DECODE(A.GBSTS, '0', '예비조사대상', '2', '예비조사완료', '3', '환경측정중', '5','환경측정완료', 'D', '삭제', '') GBSTSNAME");
             parameter.AppendSql("     , DECODE(A.BANGI, '1', '상반기', '2', '하반기', '') BANGI");
             parameter.AppendSql("     , A.LTDCODE");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(A.LTDCODE) LTDNAME"); 
+            parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(A.LTDCODE) LTDNAME"); 
             parameter.AppendSql("     , A.SDATE ");
             parameter.AppendSql("     , A.EDATE ");
             parameter.AppendSql("     , A.ENTDATE");
             parameter.AppendSql("     , A.ENTSABUN");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_INSA_MST_KORNAME(A.ENTSABUN) ENTNAME");
+            parameter.AppendSql("     , ADMIN.FC_INSA_MST_KORNAME(A.ENTSABUN) ENTNAME");
             parameter.AppendSql("     , A.T_LIMIT");
             parameter.AppendSql("     , A.T5_LIMIT");
             parameter.AppendSql("     , A.TO_ACCUM");
@@ -479,13 +479,13 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.GBEST");
             parameter.AppendSql("     , A.EST_DATE");
             parameter.AppendSql("     , A.EST_SABUN");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_INSA_MST_KORNAME(A.EST_SABUN) EST_JOBNAME");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_INSA_MST_KORNAME(A.DELSABUN) DELNAME");
+            parameter.AppendSql("     , ADMIN.FC_INSA_MST_KORNAME(A.EST_SABUN) EST_JOBNAME");
+            parameter.AppendSql("     , ADMIN.FC_INSA_MST_KORNAME(A.DELSABUN) DELNAME");
             parameter.AppendSql("     , A.GBTEMP");
             parameter.AppendSql("     , A.LTDSEQNO");
             parameter.AppendSql("     , A.LTDGONGNAME");
             parameter.AppendSql("     , A.ROWID AS RID");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHUKMST_NEW A");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHUKMST_NEW A");
             parameter.AppendSql(" WHERE 1 = 1 ");
             if (!bDel) { parameter.AppendSql("   AND DELDATE IS NULL"); }
             if (!strBangi.IsNullOrEmpty())
@@ -510,11 +510,11 @@ namespace HC_Measurement.Repository
 
         public void InSert(HIC_CHUKMST_NEW dto)
         {
-            long id =  GetSequenceNextVal("KOSMOS_PMPA.HIC_WEM_ID_SITE_MANAGER_SEQ");
+            long id =  GetSequenceNextVal("ADMIN.HIC_WEM_ID_SITE_MANAGER_SEQ");
             dto.WRTNO = id;
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHUKMST_NEW ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHUKMST_NEW ");
             parameter.AppendSql("(");
             parameter.AppendSql("    WRTNO");
             parameter.AppendSql("  , CHKYEAR");
@@ -730,7 +730,7 @@ namespace HC_Measurement.Repository
         public void UpDate(HIC_CHUKMST_NEW dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKMST_NEW");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKMST_NEW");
             parameter.AppendSql("   SET CHKYEAR = :CHKYEAR");
             parameter.AppendSql("     , BANGI = :BANGI");
             parameter.AppendSql("     , LTDCODE = :LTDCODE");
@@ -873,7 +873,7 @@ namespace HC_Measurement.Repository
         public void Delete(HIC_CHUKMST_NEW dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKMST_NEW");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKMST_NEW");
             parameter.AppendSql("   SET DELDATE = SYSDATE");
             parameter.AppendSql("     , DELSABUN = :DELSABUN");
             parameter.AppendSql(" WHERE ROWID = :RID ");

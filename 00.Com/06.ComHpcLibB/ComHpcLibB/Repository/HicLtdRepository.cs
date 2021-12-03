@@ -33,7 +33,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,TO_CHAR(DELDATE,'YYYY-MM-DD') DELDATE,JEPUMLIST,REMARK,GBSCHOOL,SPCHUNGGU,HEMSNO,HTEL,HEAGAJEPSU1   ");
             parameter.AppendSql("      ,HEAGAJEPSU2,HEAGAJEPSU3,HEAGAJEPSU4,TAX_REMARK,BUILDNO,TAX_MAILCODE,TAX_JUSO,TAX_JUSODETAIL 		");
             parameter.AppendSql("      ,DLTD,CHULNOTSAYU,CHREMARK,BOREMARK,ROWID AS RID 													");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD                                                                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD                                                                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                               ");
 
             if (!searchOption.IsNullOrEmpty())
@@ -87,7 +87,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT             CODE,NAME,SAUPNO,DAEPYO,UPTAE,JONGMOK,TEL,FAX,BONAME,JISA,KIHO              ");
             parameter.AppendSql("                 , TO_CHAR(GYEDATE,'YYYY-MM-DD') GYEDATE                                       ");
 
-            parameter.AppendSql("FROM               KOSMOS_PMPA.HIC_LTD                                                         ");
+            parameter.AppendSql("FROM               ADMIN.HIC_LTD                                                         ");
             parameter.AppendSql("WHERE              DELDATE IS NULL                                                             ");
             parameter.AppendSql("   AND             CODE = :CODE                                                                ");
 
@@ -100,7 +100,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT             CODE,NAME,SAUPNO,DAEPYO,UPTAE,JONGMOK,TEL,FAX,BONAME,JISA,KIHO,             ");
             parameter.AppendSql("                   TO_CHAR(GYEDATE,'YYYY-MM-DD') GYEDATE                                       ");
 
-            parameter.AppendSql("FROM               KOSMOS_PMPA.HIC_LTD                                                         ");
+            parameter.AppendSql("FROM               ADMIN.HIC_LTD                                                         ");
             parameter.AppendSql("WHERE              DELDATE IS NULL                                                             ");
 
             if(rdoSort3 == true && txtViewCode != "")
@@ -159,8 +159,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , A.JUSODETAIL");
             parameter.AppendSql("     , B.LTDSEQNO");
             parameter.AppendSql("     , B.LTDGONGNAME");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD A");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_CHUKMST_NEW B");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD A");
+            parameter.AppendSql("     , ADMIN.HIC_CHUKMST_NEW B");
             parameter.AppendSql(" WHERE 1 = 1");
             parameter.AppendSql("   AND A.CODE = B.LTDCODE(+)");
             parameter.AppendSql("   AND A.DELDATE IS NULL");
@@ -236,7 +236,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT                     CODE, NAME                  ");
-            parameter.AppendSql("FROM                       KOSMOS_PMPA.HIC_LTD         ");
+            parameter.AppendSql("FROM                       ADMIN.HIC_LTD         ");
             parameter.AppendSql("WHERE                      KIHO = :BOGENSO             ");
 
             parameter.Add("BOGENSO", strBogenso, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -248,7 +248,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SPC_REMARK              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD     ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", strLtdCode);
@@ -261,7 +261,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, SANGHO            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD     ");
             parameter.AppendSql(" WHERE 1 = 1                   ");
             parameter.AppendSql("   AND GBGARESV = 'Y'          ");
             parameter.AppendSql("   AND DELDATE IS NULL         ");
@@ -276,7 +276,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT         JUSO, JUSODETAIL, SANGHO, DAEPYO, UPTAE, JONGMOK, SAUPNO, MAILCODE, TAX_JUSO, TAX_JUSODETAIL, JSAUPNO   ");
-            parameter.AppendSql("  FROM         KOSMOS_PMPA.HIC_LTD                                                                                     ");
+            parameter.AppendSql("  FROM         ADMIN.HIC_LTD                                                                                     ");
             parameter.AppendSql(" WHERE         CODE = :CODE                                                                                            ");
 
             parameter.Add("CODE", txtLtdCode);
@@ -288,7 +288,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CHULNOTSAYU              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD      ");
             parameter.AppendSql(" WHERE CODE = :CODE             ");
 
             parameter.Add("CODE", nLtdCode);
@@ -300,7 +300,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT                     JUSO,JUSODETAIL,SANGHO,DAEPYO,UPTAE,JONGMOK,SAUPNO,MAILCODE             ");
-            parameter.AppendSql("  FROM                     KOSMOS_PMPA.HIC_LTD                                                     ");
+            parameter.AppendSql("  FROM                     ADMIN.HIC_LTD                                                     ");
             parameter.AppendSql(" WHERE                     CODE = :CODE                                                            ");
 
             parameter.Add("CODE",       txtLtdCode                  );
@@ -312,7 +312,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT HTEL                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD     ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", nLtdCode);
@@ -324,7 +324,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_LTD         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_LTD         ");
             parameter.AppendSql("   SET SPC_REMARK =:SPC_REMARK     ");
             parameter.AppendSql(" WHERE CODE  =:CODE                ");
 
@@ -339,7 +339,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MAILCODE, JUSO, JUSODETAIL, DAEPYO, TEL, NAME ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD                     ");
             parameter.AppendSql(" WHERE CODE = :CODE                            ");
 
             parameter.Add("CODE", strLtdCode);
@@ -352,7 +352,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT JUSO || ' ' || JUSODETAIL AS JUSO                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD     ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", nLtdCode);
@@ -365,7 +365,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GBGARESV                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD     ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", nLtdCode);
@@ -378,7 +378,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT NAME                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD ");
             parameter.AppendSql(" WHERE CODE = :CODE        ");
 
             parameter.Add("CODE", argCode);
@@ -390,7 +390,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT FAX                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD     ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", nLtdCode);
@@ -404,7 +404,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT NAME, JISA, KIHO, SANGHO, SAUPNO, SANKIHO, JUSO, JUSODETAIL ");
             parameter.AppendSql("      , TEL, JONGMOK, JEPUMLIST, DAEPYO, UPJONG, GWANSE, HEMSNO    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD                                         ");
             parameter.AppendSql(" WHERE CODE = :CODE                                                ");
 
             parameter.Add("CODE", fstrLtdCode);
@@ -438,7 +438,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TAX_MAILCODE, TAX_JUSO, TAX_JUSODETAIL      ");
             parameter.AppendSql("     , DLTD, CODE2, DLTD2                          ");
             parameter.AppendSql("     , CHULNOTSAYU, CHREMARK, BOREMARK             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD                         ");
             parameter.AppendSql(" WHERE CODE = :CODE                                ");
 
             parameter.Add("CODE", fstrLtdCode);
@@ -452,7 +452,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT Sangho,DaePyo,BoName,BoJik,Juso,JusoDetail,JepumList,Tel,Fax,HTel,Remark,NAME   ");
             parameter.AppendSql(" , CODE, Jongmok                                                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD                                                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD                                                             ");
             parameter.AppendSql(" WHERE CODE = :CODE                                                                    ");
 
             parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -464,7 +464,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_LTD     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_LTD     ");
             parameter.AppendSql("   SET GBGARESV = 'N'          ");
             parameter.AppendSql(" WHERE CODE  =:LTDCODE      ");
 
@@ -477,7 +477,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD     ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", strLtdCode);
@@ -489,7 +489,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT HAREMARK                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD     ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", v);
@@ -501,7 +501,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT REMARK                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD     ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", v);
@@ -513,14 +513,14 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_OSHA_SITE (                                                              ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_OSHA_SITE (                                                              ");
         }
 
         public int Update(HIC_LTD item)
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_LTD                     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_LTD                     ");
             parameter.AppendSql("   SET SANGHO          =:SANGHO                ");
             parameter.AppendSql("      ,NAME            =:NAME                  ");
             parameter.AppendSql("      ,TEL             =:TEL                   ");
@@ -657,7 +657,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_LTD (                                                              ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_LTD (                                                              ");
             parameter.AppendSql("       CODE,SANGHO,Name,TEL,FAX,EMAIL,MAILCODE,JUSO,jusodetail,SAUPNO,UPTAE                    ");
             parameter.AppendSql("     , JONGMOK,DAEPYO,JUMIN,Jisa,KIHO,UPJONG,SANKIHO,GWANSE,JIDOWON,BONAME,BOJIK               ");
             parameter.AppendSql("     , GYUMOGBN,SELDATE,GYEDATE,GesiNo,JEPUM1,JEPUM2,JEPUM3,JEPUM4,JEPUM5                      ");
@@ -748,7 +748,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(*) as CNT                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU           ");
             parameter.AppendSql(" WHERE 1 = 1                           ");
             parameter.AppendSql("   AND LTDCODE =:LTDCODE              ");
             #region Query 변수대입
@@ -761,7 +761,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(*) as CNT                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU           ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU           ");
             parameter.AppendSql(" WHERE 1 = 1                           ");
             parameter.AppendSql("   AND LTDCODE =:LTDCODE              ");
             #region Query 변수대입
@@ -774,7 +774,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(*) as CNT                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MISU_MST        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MISU_MST        ");
             parameter.AppendSql(" WHERE 1 = 1                           ");
             parameter.AppendSql("   AND LTDCODE =:LTDCODE              ");
             #region Query 변수대입
@@ -787,7 +787,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_LTD_TAX      ");
+            parameter.AppendSql("DELETE ADMIN.HIC_LTD_TAX      ");
             parameter.AppendSql(" WHERE LTDCODE       =:LTDCODE          ");
 
             #region Query 변수대입
@@ -801,7 +801,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT(*) CNT                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MISU_MST        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MISU_MST        ");
             parameter.AppendSql(" WHERE 1 = 1                           ");
             parameter.AppendSql("   AND LTDCODE =:LTDCODE              ");
 
@@ -816,7 +816,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT(*) CNT                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU           ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU           ");
             parameter.AppendSql(" WHERE 1 = 1                           ");
             parameter.AppendSql("   AND LTDCODE =:LTDCODE              ");
 
@@ -831,7 +831,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT(*) CNT                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU               ");
             parameter.AppendSql(" WHERE 1 = 1                               ");
             parameter.AppendSql("   AND LTDCODE =:LTDCODE                  ");
 
@@ -845,7 +845,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_LTD      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_LTD      ");
             parameter.AppendSql("   SET DelDate     = :DelDate        ");
             parameter.AppendSql(" WHERE ROWID       = :RID          ");
 
@@ -867,7 +867,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,DELDATE,JEPUMLIST,REMARK,GBSCHOOL,SPCHUNGGU,HEMSNO,HTEL,HEAGAJEPSU1                                 ");
             parameter.AppendSql("      ,HEAGAJEPSU2,HEAGAJEPSU3,HEAGAJEPSU4,TAX_REMARK,BUILDNO,TAX_MAILCODE,TAX_JUSO,TAX_JUSODETAIL 		");
             parameter.AppendSql("      ,DLTD,CHULNOTSAYU,CHREMARK,BOREMARK, NAME AS DNAME, ROWID AS RID	");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD                                                                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD                                                                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                               ");
             parameter.AppendSql("  AND Code  =:Code                                                                                         ");
 
@@ -880,7 +880,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD         ");
             parameter.AppendSql(" WHERE Name LIKE :NAME             ");
             parameter.AppendSql(" ORDER BY NAME, CODE               ");
 
@@ -894,7 +894,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD ");
             parameter.AppendSql(" WHERE CODE = :CODE        ");
             #region Query 변수대입
             parameter.Add("CODE", CODE);

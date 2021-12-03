@@ -25,9 +25,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT a.WRTNO,a.SName,a.Age,a.Sex,a.LtdCode                                           ");
             parameter.AppendSql("     , TO_CHAR(a.SDate,'YYYY-MM-DD') SDate                                             ");
             parameter.AppendSql("     , b.HPhone,b.VipRemark,SUM(c.TotAmt) TotAmt                                       ");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(a.LTDCODE) LTDNAME                                   ");
+            parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(a.LTDCODE) LTDNAME                                   ");
             parameter.AppendSql("     , b.PTNO                                                                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HEA_SUNAP c     ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HEA_SUNAP c     ");
             parameter.AppendSql(" WHERE a.SDate >= TO_DATE(:FRDATE,'YYYY-MM-DD')                                        ");
             parameter.AppendSql("   AND a.SDate <= TO_DATE(:TODATE,'YYYY-MM-DD')                                        ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                               ");
@@ -53,9 +53,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT b.SOSOK, a.SNAME, b.JUMIN2, SUM(c.TOTAMT) AS TOTAMT     ");
             parameter.AppendSql("      ,SUM(c.BONINAMT) AS BONINAMT                             ");
             parameter.AppendSql("      ,TO_CHAR(a.SDATE,'YYYY-MM-DD') AS SDATE                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU a                                 ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_PATIENT b                               ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HEA_SUNAP c                                 ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU a                                 ");
+            parameter.AppendSql("      ,ADMIN.HIC_PATIENT b                               ");
+            parameter.AppendSql("      ,ADMIN.HEA_SUNAP c                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                                   ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                        ");
             parameter.AppendSql("   AND a.PANO = b.PANO(+)                                      ");
@@ -69,15 +69,15 @@ namespace ComHpcLibB.Repository
 
         public HEA_JEPSU_PATIENT_SUNAP GetGroupByLtdCodebyWrtno(long argWRTNO)
         {
-            //KOSMOS_PMPA.FC_HIC_LTDNAME(a.LTDCODE) LTDNAME
+            //ADMIN.FC_HIC_LTDNAME(a.LTDCODE) LTDNAME
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.LTDCODE, a.SNAME, b.JUMIN2, SUM(c.TOTAMT) AS TOTAMT   ");
             parameter.AppendSql("      ,SUM(c.BONINAMT) AS BONINAMT                             ");
             parameter.AppendSql("      ,TO_CHAR(a.SDATE,'YYYY-MM-DD') AS SDATE                  ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.FC_HIC_LTDNAME(a.LTDCODE) AS LTDNAME        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU a                                 ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_PATIENT b                               ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HEA_SUNAP c                                 ");
+            parameter.AppendSql("      ,ADMIN.FC_HIC_LTDNAME(a.LTDCODE) AS LTDNAME        ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU a                                 ");
+            parameter.AppendSql("      ,ADMIN.HIC_PATIENT b                               ");
+            parameter.AppendSql("      ,ADMIN.HEA_SUNAP c                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                                   ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                        ");
             parameter.AppendSql("   AND a.PANO = b.PANO(+)                                      ");

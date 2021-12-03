@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT b.WRTNO,TO_CHAR(a.JepDate,'YYYY-MM-DD') JepDate             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_RES_BOHUM2 b       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_RES_BOHUM2 b       ");
             parameter.AppendSql(" WHERE a.PANO = :PANO                                              ");
             parameter.AppendSql("   AND a.JEPDATE > TO_DATE(:JEPDATE, 'YYYY-MM-DD')                 ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                           ");

@@ -50,11 +50,11 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL = " SELECT ENTDATE, ENTSABUN, HPHONE, SENDTIME, SENDMSG ";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.ETC_SMS";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.ETC_SMS";
                     SQL = SQL + ComNum.VBLF + " WHERE GUBUN IN ( '21') ";
-                    SQL = SQL + ComNum.VBLF + " AND ENTSABUN IN (SELECT SABUN FROM KOSMOS_ADM.INSA_MST";
+                    SQL = SQL + ComNum.VBLF + " AND ENTSABUN IN (SELECT SABUN FROM ADMIN.INSA_MST";
                     SQL = SQL + ComNum.VBLF + " WHERE BUSE = (";
-                    SQL = SQL + ComNum.VBLF + " SELECT BUSE FROM KOSMOS_ADM.INSA_MST";
+                    SQL = SQL + ComNum.VBLF + " SELECT BUSE FROM ADMIN.INSA_MST";
                     SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + clsType.User.Sabun + "'))";
                     SQL = SQL + ComNum.VBLF + " AND JOBDATE >= TRUNC(SYSDATE-10)";
                     SQL = SQL + ComNum.VBLF + " ORDER BY ENTDATE";
@@ -89,7 +89,7 @@ namespace ComLibB
 
                     SQL = "";
                     SQL = " SELECT ENTDATE, ENTSABUN, HPHONE, SENDTIME, SENDMSG ";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.ETC_SMS";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.ETC_SMS";
                     SQL = SQL + ComNum.VBLF + " WHERE RETTEL =  '010-9684-0579'";
                     SQL = SQL + ComNum.VBLF + " AND JOBDATE >= TRUNC(SYSDATE-30)";
                     SQL = SQL + ComNum.VBLF + " ORDER BY ENTDATE DESC";

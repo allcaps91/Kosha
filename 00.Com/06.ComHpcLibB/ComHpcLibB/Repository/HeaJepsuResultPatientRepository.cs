@@ -26,7 +26,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" SELECT A.SNAME,A.PTNO,A.PANREMARK,A.DRNAME,A.AGE,A.SEX,B.JUMIN,C.RESULT               ");
             parameter.AppendSql(" ,TO_CHAR(A.SDATE,'YYYY-MM-DD') SDATE,A.WRTNO                                          ");
             parameter.AppendSql(" ,TO_CHAR(A.PANDATE,'YYYY-MM-DD') PANDATE                                              ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HEA_JEPSU A, KOSMOS_PMPA.HIC_PATIENT B, KOSMOS_PMPA.HEA_RESULT C     ");
+            parameter.AppendSql(" FROM ADMIN.HEA_JEPSU A, ADMIN.HIC_PATIENT B, ADMIN.HEA_RESULT C     ");
             parameter.AppendSql(" WHERE A.SDATE >= TO_DATE(:FDATE,'YYYY-MM-DD')                                         ");
             parameter.AppendSql(" AND A.SDATE <= TO_DATE(:TDATE,'YYYY-MM-DD')                                           ");
             parameter.AppendSql(" AND A.DELDATE IS NULL                                                                 ");
@@ -50,7 +50,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT A.PANREMARK,A.DRNAME,C.RESULT,C.EXCODE                                         ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HEA_JEPSU A, KOSMOS_PMPA.HIC_PATIENT B, KOSMOS_PMPA.HEA_RESULT C     ");
+            parameter.AppendSql(" FROM ADMIN.HEA_JEPSU A, ADMIN.HIC_PATIENT B, ADMIN.HEA_RESULT C     ");
             parameter.AppendSql(" WHERE A.SDATE >= TO_DATE(:FDATE,'YYYY-MM-DD')                                         ");
             parameter.AppendSql(" AND A.SDATE <= TO_DATE(:TDATE,'YYYY-MM-DD')                                           ");
             parameter.AppendSql(" AND A.DELDATE IS NULL                                                                 ");

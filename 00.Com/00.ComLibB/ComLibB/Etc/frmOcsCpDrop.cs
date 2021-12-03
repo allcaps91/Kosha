@@ -66,7 +66,7 @@ namespace ComLibB
                 {
                     SQL = SQL + ComNum.VBLF + "  AND B.REMARK  = '간호사' --타병원 전원";
                 }
-                SQL = SQL + ComNum.VBLF + "WHERE A.SDATE  = (SELECT MAX(SDATE) FROM KOSMOS_OCS.OCS_CP_MAIN WHERE CPCODE = A.CPCODE)  ";
+                SQL = SQL + ComNum.VBLF + "WHERE A.SDATE  = (SELECT MAX(SDATE) FROM ADMIN.OCS_CP_MAIN WHERE CPCODE = A.CPCODE)  ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY B.DSPSEQ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

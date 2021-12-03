@@ -76,7 +76,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT NAME, DEPTCODE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BUSE ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BUSE ";
                 SQL = SQL + ComNum.VBLF + " WHERE BUSEBUN  = '2' ";
                 SQL = SQL + ComNum.VBLF + "   AND ORDFLAG= 'Y' ";
                 SQL = SQL + ComNum.VBLF + "   AND DEPTCODE IS NOT NULL ";
@@ -137,7 +137,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return rtVal; //권한 확인
 
                 SQL = "";
-                SQL = " SELECT SUNAMEK FROM KOSMOS_PMPA.BAS_SUN ";
+                SQL = " SELECT SUNAMEK FROM ADMIN.BAS_SUN ";
                 SQL = SQL + ComNum.VBLF + " WHERE SUNEXT = '" + ArgJep + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -188,7 +188,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return rtVal; //권한 확인
 
                 SQL = "";
-                SQL = " SELECT DAYQTY FROM KOSMOS_PMPA.JSIM_GIJUN ";
+                SQL = " SELECT DAYQTY FROM ADMIN.JSIM_GIJUN ";
                 SQL = SQL + ComNum.VBLF + " WHERE SUCODE  = '" + ArgJep + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -240,7 +240,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return rtVal; //권한 확인
 
                 SQL = "";
-                SQL = " SELECT SNAME FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = " SELECT SNAME FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + ArgData + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -292,7 +292,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return rtVal; //권한 확인
 
                 SQL = "";
-                SQL = " SELECT DRNAME FROM KOSMOS_PMPA.BAS_DOCTOR ";
+                SQL = " SELECT DRNAME FROM ADMIN.BAS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + " WHERE DRCODE = '" + ArgData + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -383,7 +383,7 @@ namespace ComLibB
                 if (optGubun_0.Checked == true)
                 {
                     SQL = " SELECT SUNEXT, PANO, SUM(NAL) QTY, A.DEPTCODE, A.DRCODE, A.BUN, B.DAYS, C.DRNAME  ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_SLIP A, KOSMOS_ADM.DRUG_JEPDAY B, KOSMOS_PMPA.BAS_DOCTOR C ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_SLIP A, ADMIN.DRUG_JEPDAY B, ADMIN.BAS_DOCTOR C ";
                     SQL = SQL + ComNum.VBLF + " WHERE BDATE >= TO_DATE('" + strFDate + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "   AND BDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "   AND BUN IN ('11','12','20','21') ";
@@ -407,7 +407,7 @@ namespace ComLibB
                 else
                 {
                     SQL = " SELECT A.SUNEXT, A.PANO, SUM(A.NAL) QTY, C.DEPTCODE, C.DRCODE, A.BUN, C.WARDCODE, B.DAYS, D.DRNAME ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_SLIP A, KOSMOS_ADM.DRUG_JEPDAY B, KOSMOS_PMPA.IPD_NEW_MASTER C, KOSMOS_PMPA.BAS_DOCTOR D ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_SLIP A, ADMIN.DRUG_JEPDAY B, ADMIN.IPD_NEW_MASTER C, ADMIN.BAS_DOCTOR D ";
                     SQL = SQL + ComNum.VBLF + " WHERE A.BDATE >= TO_DATE('" + strFDate + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "   AND A.BDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "   AND BUN IN ('11','12','20','21') ";
@@ -740,7 +740,7 @@ namespace ComLibB
                     if (strIO == "O") //'외래
                     {
                         SQL = " SELECT TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, A.PANO, A.SUNEXT, A.NAL, A.DEPTCODE, B.DRNAME ";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_SLIP A, KOSMOS_PMPA.BAS_DOCTOR B ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_SLIP A, ADMIN.BAS_DOCTOR B ";
                         SQL = SQL + ComNum.VBLF + " WHERE A.BDATE >= TO_DATE('" + strFDate + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "   AND A.BDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "   AND A.PANO  = '" + strPano + "' ";
@@ -751,7 +751,7 @@ namespace ComLibB
                     else
                     {
                         SQL = " SELECT TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, A.PANO, A.SUNEXT, A.NAL, A.DEPTCODE, B.DRNAME ";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_SLIP A, KOSMOS_PMPA.BAS_DOCTOR B , KOSMOS_PMPA.IPD_NEW_MASTER C "; //'＃
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_SLIP A, ADMIN.BAS_DOCTOR B , ADMIN.IPD_NEW_MASTER C "; //'＃
                         SQL = SQL + ComNum.VBLF + " WHERE A.BDATE >= TO_DATE('" + strFDate + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "   AND A.BDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "   AND A.PANO  = '" + strPano + "' ";
@@ -875,7 +875,7 @@ namespace ComLibB
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = " SELECT DRNAME , DRCODE FROM KOSMOS_PMPA.BAS_DOCTOR ";
+                SQL = " SELECT DRNAME , DRCODE FROM ADMIN.BAS_DOCTOR ";
                 SQL += ComNum.VBLF + " WHERE TOUR  = 'N' ";
                 if(SQL != "**") SQL += ComNum.VBLF + "   AND DRDEPT1  = '" + strDept + "' ";
                 SQL += ComNum.VBLF + " ORDER BY DRCODE, PRINTRANKING ";

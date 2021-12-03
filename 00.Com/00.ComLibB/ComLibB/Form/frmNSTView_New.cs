@@ -575,7 +575,7 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL = " SELECT ROWID ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.DIET_NST_LAB_PATIENT ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.DIET_NST_LAB_PATIENT ";
                     SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + clsPat.PATi.Pano + "' ";
                     SQL = SQL + ComNum.VBLF + "   AND INDATE = TO_DATE('" + clsPat.PATi.InDate + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "   AND SUBCODE = '" + strCode + "' ";
@@ -2661,7 +2661,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.DIET_NST ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.DIET_NST ";
                 SQL = SQL + ComNum.VBLF + " WHERE WRTNO = " + argWRTNO;
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -4717,7 +4717,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT B.ILLNAMEK";
-                SQL = SQL + ComNum.VBLF + " FROM " + ComNum.DB_MED + "OCS_IILLS A, KOSMOS_PMPA.BAS_ILLS B";
+                SQL = SQL + ComNum.VBLF + " FROM " + ComNum.DB_MED + "OCS_IILLS A, ADMIN.BAS_ILLS B";
                 SQL = SQL + ComNum.VBLF + " WHERE A.ILLCODE = B.ILLCODE ";
                 SQL = SQL + ComNum.VBLF + "   AND IPDNO = " + argIPDNO;
                 SQL = SQL + ComNum.VBLF + "   AND B.ILLCLASS = '1'";

@@ -936,7 +936,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT USERPASS FROM KOSMOS_PMPA.BAS_ACCOUNT_SERVER      ";
+                SQL = "SELECT USERPASS FROM ADMIN.BAS_ACCOUNT_SERVER      ";
                 SQL = SQL + ComNum.VBLF + "WHERE IP = '"+ strIP + "'      ";
                 SQL = SQL + ComNum.VBLF + "    AND USERID = '"+ strUser + "'        ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY SDATE DESC      ";

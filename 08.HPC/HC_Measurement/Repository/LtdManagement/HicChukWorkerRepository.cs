@@ -23,14 +23,14 @@ namespace HC_Measurement.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.WRTNO");
             parameter.AppendSql("     , A.WORKER_SABUN");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_INSA_MST_KORNAME(A.WORKER_SABUN) WORKER_NAME");
+            parameter.AppendSql("     , ADMIN.FC_INSA_MST_KORNAME(A.WORKER_SABUN) WORKER_NAME");
             parameter.AppendSql("     , A.ENTDATE");
             parameter.AppendSql("     , A.ENTSABUN");
             parameter.AppendSql("     , B.ROLE");
             parameter.AppendSql("     , A.BIGO");
             parameter.AppendSql("     , A.ROWID AS RID");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHUK_WORKER A ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_USERS B ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHUK_WORKER A ");
+            parameter.AppendSql("     , ADMIN.HIC_USERS B ");
             parameter.AppendSql(" WHERE A.WRTNO = :WRTNO ");
             parameter.AppendSql("   AND A.WORKER_SABUN = B.USERID ");
 
@@ -42,7 +42,7 @@ namespace HC_Measurement.Repository
         public void Insert(HIC_CHUK_WORKER dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHUK_WORKER");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHUK_WORKER");
             parameter.AppendSql("(");
             parameter.AppendSql("    WRTNO");
             parameter.AppendSql("  , WORKER_SABUN");
@@ -68,7 +68,7 @@ namespace HC_Measurement.Repository
         public void DeleteAll(long nWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_CHUK_WORKER");
+            parameter.AppendSql("DELETE ADMIN.HIC_CHUK_WORKER");
             parameter.AppendSql(" WHERE WRTNO =:WRTNO ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -79,7 +79,7 @@ namespace HC_Measurement.Repository
         public void Delete(HIC_CHUK_WORKER code)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_CHUK_WORKER");
+            parameter.AppendSql("DELETE ADMIN.HIC_CHUK_WORKER");
             parameter.AppendSql(" WHERE ROWID =:RID ");
             
             parameter.Add("RID", code.RID);

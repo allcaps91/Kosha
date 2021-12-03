@@ -65,7 +65,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT ACTDATE, EXECODE, JOBSABUN, IP, GUBUN, SQL, ENTDATE ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_SQLLOG_" + dtpFDate.Value.ToString("yyyyMMdd");
+                SQL += ComNum.VBLF + " FROM ADMIN.ETC_SQLLOG_" + dtpFDate.Value.ToString("yyyyMMdd");
                 SQL += ComNum.VBLF + "  WHERE  rownum < 100 ";
                 if (txtIP.Text != "")
                 {
@@ -76,7 +76,7 @@ namespace ComLibB
                     SQL += ComNum.VBLF + "    AND EXECODE = '" + txtExeCode.Text + "'  ";
                 }
                 SQL += ComNum.VBLF + "   AND JOBSABUN IN  ( ";
-                SQL += ComNum.VBLF + "                       SELECT SABUN FROM KOSMOS_ADM.INSA_MST ";
+                SQL += ComNum.VBLF + "                       SELECT SABUN FROM ADMIN.INSA_MST ";
                 SQL += ComNum.VBLF + "                        WHERE (TOIDAY IS NOT NULL  or TOIDAY <= TO_DATE('" + dtpFDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ) ";
                 SQL += ComNum.VBLF + "                          AND JOBSABUN NOT IN ('18319') ) ";
 

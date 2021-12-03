@@ -2393,12 +2393,12 @@ namespace ComHpcLibB
 
             strTempSql2 = "";
             strTempSql2 = " SELECT WRTNO " + "\r\n";
-            strTempSql2 += " FROM KOSMOS_PMPA.HIC_SUNAPDTL " + "\r\n";
+            strTempSql2 += " FROM ADMIN.HIC_SUNAPDTL " + "\r\n";
             strTempSql2 += "   WHERE WRTNO IN (" + strTempSQL + " ) " + "\r\n";
             switch (ArgGubun)
             {
                 case "1":   //구강
-                    strTempSql2 += "    AND Code IN ( SELECT Code FROM KOSMOS_PMPA.HIC_CODE WHERE GUBUN ='M1' AND GCODE ='001' ) " + "\r\n";
+                    strTempSql2 += "    AND Code IN ( SELECT Code FROM ADMIN.HIC_CODE WHERE GUBUN ='M1' AND GCODE ='001' ) " + "\r\n";
                     break;
                 default:
                     break;

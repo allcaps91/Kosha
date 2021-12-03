@@ -124,7 +124,7 @@ namespace ComLibB
                             if (nRow > ss1_Sheet1.RowCount) ss1_Sheet1.RowCount = ss1_Sheet1.RowCount + 10;
 
                             //2021-01-06 비급여고지조회-------------
-                            SQL = " SELECT GBSELFHANG FROM KOSMOS_PMPA.BAS_SUN ";
+                            SQL = " SELECT GBSELFHANG FROM ADMIN.BAS_SUN ";
                             SQL = SQL + " WHERE SUNEXT = '" + dt.Rows[i]["SuNext"].ToString().Trim() + "'";
 
                             SqlErr = clsDB.GetDataTableEx(ref dt2, SQL, clsDB.DbCon);
@@ -166,7 +166,7 @@ namespace ComLibB
 
 
 
-                            SQL = " SELECT SUNEXT, RGB FROM KOSMOS_PMPA.MIR_COLOR_SET ";
+                            SQL = " SELECT SUNEXT, RGB FROM ADMIN.MIR_COLOR_SET ";
                             SQL = SQL + "  WHERE SABUN = '" + clsType.User.Sabun + "' ";
                             SQL = SQL + "      AND SUNEXT = '" + dt.Rows[i]["SuNext"].ToString().Trim() + "' ";
                             SqlErr = clsDB.GetDataTableEx(ref dt2, SQL, clsDB.DbCon);

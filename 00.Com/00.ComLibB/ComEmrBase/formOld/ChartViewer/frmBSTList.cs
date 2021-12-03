@@ -90,9 +90,9 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "         WHEN TRIM(UPPER(EXTRACTVALUE(CHARTXML,'//ta4'))) IS NOT NULL THEN 1";
                 SQL += ComNum.VBLF + "         ELSE 0";
                 SQL += ComNum.VBLF + "     END SC";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMRXML";
                 SQL += ComNum.VBLF + "  WHERE EMRNO IN (";
-                SQL += ComNum.VBLF + "   SELECT EMRNO FROM KOSMOS_EMR.EMRXMLMST";
+                SQL += ComNum.VBLF + "   SELECT EMRNO FROM ADMIN.EMRXMLMST";
                 SQL += ComNum.VBLF + "    WHERE FORMNO = '1572'";
                 SQL += ComNum.VBLF + "     AND PTNO = '" + argPTNO + "' ";
                 SQL += ComNum.VBLF + "     AND INOUTCLS = 'I' )";

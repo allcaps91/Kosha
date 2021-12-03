@@ -26,7 +26,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT PTNO, ORDERCODE, GBIO, SPECNO, ANATNO, DEPTCODE, ORDERNO    ");
             parameter.AppendSql("     , DRCODE, TO_CHAR(BDATE, 'YYYY-MM-DD') BDATE                  ");
             parameter.AppendSql("     , REMARK1, REMARK2, REMARK3, REMARK4                          ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_ANATMST                                     ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_ANATMST                                     ");
             parameter.AppendSql(" WHERE ROWID = :RID                                                ");
 
             parameter.Add("RID", argRowId);
@@ -39,7 +39,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                                   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_ANATMST                 ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_ANATMST                 ");
             parameter.AppendSql(" WHERE BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND PTNO  = :PTNO                           ");
 
@@ -54,7 +54,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TO_CHAR(BDate,'YYYY-MM-DD') BDate,Ptno,OrderCode,Result1,Result2,Remark5    ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_ANATMST                                                     ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_ANATMST                                                     ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                                                ");
             parameter.AppendSql("   AND TRUNC(BDATE) = TO_DATE(:BDATE, 'YYYY-MM-DD')                                ");
             parameter.AppendSql("   AND DeptCode IN ('HR','TO')                                                     ");
@@ -74,7 +74,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT PTNO, RESULTSABUN, HRREMARK5                                                ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_ANATMST                                                     ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_ANATMST                                                     ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                                                ");
             parameter.AppendSql("   AND TRUNC(BDATE) = TO_DATE(:BDATE, 'YYYY-MM-DD')                                ");
             parameter.AppendSql("   AND DeptCode IN ('HR','TO')                                                     ");
@@ -97,7 +97,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ORDERCODE, MASTERCODE, HRREMARK1, RESULT1   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_ANATMST                     ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_ANATMST                     ");
             parameter.AppendSql(" WHERE SPECNO = :SPECNO                            ");
             parameter.AppendSql("   AND ANATNO  = :ANATNO                           ");
             parameter.AppendSql("   AND GBJOB ='V'                                  ");
@@ -113,7 +113,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE, PTNO, RESULT1, RESULT2   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_ANATMST                                     ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_ANATMST                                     ");
             parameter.AppendSql(" WHERE BDATE >= TRUNC(SYSDATE - 7)                                 "); 
             parameter.AppendSql("   AND BDATE <= TRUNC(SYSDATE)                                     ");
             parameter.AppendSql("   AND ORDERCODE IN ('R2003','R2007','R2010','R371002')   ");
@@ -130,7 +130,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE, PTNO, RESULT1, RESULT2   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_ANATMST                                     ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_ANATMST                                     ");
             parameter.AppendSql(" WHERE BDate >= TRUNC(SYSDATE - 7)                                 ");
             parameter.AppendSql("   AND BDate <= TRUNC(SYSDATE)                                     ");
             parameter.AppendSql("   AND ORDERCODE IN ('R2001','R2008','R2009','R45001')    ");
@@ -146,7 +146,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_OCS.EXAM_ANATMST                    ");
+            parameter.AppendSql("INSERT INTO ADMIN.EXAM_ANATMST                    ");
             parameter.AppendSql("       (PTNO, BDATE, ORDERCODE, GBIO, REMARK1, REMARK2 ");
             parameter.AppendSql("     , REMARK3, REMARK4, DEPTCODE, DRCODE)             ");
             parameter.AppendSql("VALUES                                                 ");
@@ -172,7 +172,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.EXAM_ANATMST ");
+            parameter.AppendSql("UPDATE ADMIN.EXAM_ANATMST ");
             parameter.AppendSql("   SET REMARK1 = :REMARK1      ");
             parameter.AppendSql("     , REMARK2 = :REMARK2      ");
             parameter.AppendSql("     , REMARK3 = :REMARK3      ");

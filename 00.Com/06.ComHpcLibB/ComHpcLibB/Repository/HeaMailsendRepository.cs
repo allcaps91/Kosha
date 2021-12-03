@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT WRTNO, MAILCODE, JUSO, SNAME                ");
             parameter.AppendSql("     , TO_CHAR(SENDDATE,'YYYY-MM-DD') SendDate     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_MAILSEND                    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_MAILSEND                    ");
             parameter.AppendSql(" WHERE SENDDATE = TO_DATE(:SENDDATE,'YYYY-MM-DD')  ");
             parameter.AppendSql(" ORDER BY SEQ                                      ");
 
@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_MAILSEND                               ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_MAILSEND                               ");
             parameter.AppendSql("       (MAILCODE, JUSO, SNAME, SENDDATE, WRTNO, ENTSABUN )         ");
             parameter.AppendSql(" VALUES                                                            ");
             parameter.AppendSql("       (:MAILCODE, :JUSO, :SNAME, TO_DATE(:SENDDATE, 'YYYY-MM-DD') ");
@@ -59,7 +59,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_MAILSEND                    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_MAILSEND                    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                              ");
             parameter.AppendSql("   AND SENDDATE = TO_DATE(:SENDDATE,'YYYY-MM-DD')  ");
 

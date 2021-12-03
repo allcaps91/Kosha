@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID RID                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM               ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM               ");
             parameter.AppendSql(" WHERE SDATE = TO_DATE(:SDATE, 'yyyy-MM-dd')   ");
             parameter.AppendSql("   AND PANO   = :PANO                          ");
             parameter.AppendSql("   AND EXCODE = :EXCODE                        ");
@@ -42,7 +42,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                   ");
             parameter.AppendSql(" WHERE RTIME >= TO_DATE(:FRDATE, 'YYYY-MM-DD')     ");
             parameter.AppendSql("   AND RTIME <  TO_DATE(:TODATE, 'YYYY-MM-DD')     ");
             if (nPano > 0)
@@ -69,7 +69,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(RTime,'YYYY-MM-DD') RDate,Pano,GbExam   ");
             parameter.AppendSql("     , TO_CHAR(SDate,'YYYY-MM-DD') SDate               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                       ");
             parameter.AppendSql(" WHERE RTime >= TRUNC(SYSDATE)                         ");
             parameter.AppendSql("   AND RTime <= TRUNC(SYSDATE+1)                       ");
             parameter.AppendSql("   AND SDate < TRUNC(SYSDATE)                          "); 
@@ -84,7 +84,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                       ");
             parameter.AppendSql(" WHERE PANO = :PANO                                    ");
             parameter.AppendSql("   AND GBEXAM IN ('01','02')                           ");
             parameter.AppendSql("   AND RTIME >= TRUNC(SYSDATE)                         ");
@@ -100,7 +100,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_RESV_EXAM (                        ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_RESV_EXAM (                        ");
             parameter.AppendSql("       RTIME,PANO,SNAME,GBEXAM,EXAMNAME,SDATE                  ");
             parameter.AppendSql("      ,ENTSABUN,ENTTIME,EXCODE,AMPM                            ");
             parameter.AppendSql(" ) VALUES (                                                    ");
@@ -127,8 +127,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TO_CHAR(a.RTIME,'YYYY-MM-DD HH24:MI') RTIME             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM a                             ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_CODE b                                  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM a                             ");
+            parameter.AppendSql("     , ADMIN.HEA_CODE b                                  ");
             parameter.AppendSql(" WHERE a.PANO = :PANO                                          ");
             parameter.AppendSql("   AND a.SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')                 ");
             parameter.AppendSql("   AND b.GUBUN = '13'                                          ");
@@ -147,7 +147,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESV_EXAM               ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESV_EXAM               ");
             parameter.AppendSql("   SET DELDATE = SYSDATE                       ");
             parameter.AppendSql(" WHERE PANO =:PANO                             ");
             parameter.AppendSql("   AND SDATE != TO_DATE(:SDATE, 'YYYY-MM-DD')  ");
@@ -163,8 +163,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.PTNO, TO_CHAR(b.RTIME,'HH24:MI') RTIME, a.PANO, a.SNAME, b.GBEXAM   ");
             parameter.AppendSql("     , b.EXCODE, a.SDATE, a.WRTNO, b.EXAMNAME, TO_CHAR(a.JEPDATE, 'YYYY-MM-DD') BDATE ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU a                             ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_RESV_EXAM b                         ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU a                             ");
+            parameter.AppendSql("     , ADMIN.HEA_RESV_EXAM b                         ");
             parameter.AppendSql(" WHERE b.RTIME >= TO_DATE(:RTIME, 'YYYY-MM-DD')            ");
             parameter.AppendSql("   AND b.RTIME <  TO_DATE(:RTIME, 'YYYY-MM-DD') + 0.999999 ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                   ");
@@ -185,7 +185,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                                   ");
             parameter.AppendSql(" WHERE PANO = :PANO                                                ");
             parameter.AppendSql("   AND RTIME >= TO_DATE(:FDATE, 'YYYY-MM-DD')                      ");
             parameter.AppendSql("   AND RTIME <  TO_DATE(:TDATE, 'YYYY-MM-DD')                      ");
@@ -204,7 +204,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESV_EXAM               ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESV_EXAM               ");
             parameter.AppendSql("   SET DELDATE = SYSDATE                       ");
             parameter.AppendSql(" WHERE PANO =:PANO                             ");
             parameter.AppendSql("   AND EXCODE NOT IN (:EXCODE)                 ");
@@ -221,7 +221,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(RTIME,'YYYY-MM-DD HH24:MI') RTIME, PANO, SNAME, GBEXAM, EXAMNAME    ");
             parameter.AppendSql("     , TO_CHAR(RTIME,'YYYY-MM-DD') RDATE, TO_CHAR(RTIME,'HH24:MI') STIME           ");
             parameter.AppendSql("     , TO_CHAR(SDATE,'YYYY-MM-DD') SDATE, EXCODE, AMPM, ROWID AS RID               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                                                   ");
             parameter.AppendSql(" WHERE SDATE >= TO_DATE(:SDATE, 'YYYY-MM-DD')                                      ");
             parameter.AppendSql("   AND PANO =:PANO                                                                 ");
             parameter.AppendSql("   AND DELDATE IS NULL                                                             ");
@@ -239,7 +239,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(RTIME,'YYYY-MM-DD HH24:MI') RTIME, PANO, SNAME, GBEXAM, EXAMNAME    ");
             parameter.AppendSql("     , TO_CHAR(RTIME,'YYYY-MM-DD') RDATE, TO_CHAR(RTIME,'HH24:MI') STIME           ");
             parameter.AppendSql("     , TO_CHAR(SDATE,'YYYY-MM-DD') SDATE, EXCODE, AMPM, ROWID AS RID               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                                                   ");
             parameter.AppendSql(" WHERE SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')                                       ");
             parameter.AppendSql("   AND PANO =:PANO                                                                 ");
             parameter.AppendSql("   AND DELDATE IS NULL                                                             ");
@@ -255,7 +255,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                                   ");
             parameter.AppendSql(" WHERE PANO = :PANO                                                ");
             parameter.AppendSql("   AND SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')                       ");
             parameter.AppendSql("   AND TO_DATE(RTIME,'YYYY-MM-DD') != TO_DATE(SDATE,'YYYY-MM-DD')  ");
@@ -272,7 +272,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESV_EXAM               ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESV_EXAM               ");
             parameter.AppendSql("   SET DELDATE = SYSDATE                       ");
             parameter.AppendSql(" WHERE PANO =:PANO                             ");
             parameter.AppendSql("   AND SDATE =TO_DATE(:SDATE, 'YYYY-MM-DD')    ");
@@ -295,7 +295,7 @@ namespace ComHpcLibB.Repository
             {
                 parameter.AppendSql("SELECT TO_CHAR(RTIME,'YYYY-MM-DD') RTIME            ");
             }
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                       ");
             parameter.AppendSql(" WHERE PANO = :PANO                                    ");
             parameter.AppendSql("   AND EXCODE = :EXCODE                                ");
             parameter.AppendSql("   AND SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')           ");
@@ -312,7 +312,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(RTIME, 'YYYY-MM-DD HH24:MI') RTIME      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                       ");
             parameter.AppendSql(" WHERE PANO = :PANO                                    ");
             parameter.AppendSql("   AND SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')           ");
             parameter.AppendSql("   AND GBEXAM = :GBEXAM                                "); //µ¿¸Æ°æÈ­ÇùÂø°Ë»ç
@@ -330,8 +330,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT(a.PANO) CNT                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM a                     ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_PATIENT b                       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM a                     ");
+            parameter.AppendSql("     , ADMIN.HIC_PATIENT b                       ");
             parameter.AppendSql(" WHERE 1 = 1                                           ");
             parameter.AppendSql("   AND a.RTIME >= TO_DATE(:FTIME, 'YYYY-MM-DD')        ");
             parameter.AppendSql("   AND a.RTIME <  TO_DATE(:TTIME, 'YYYY-MM-DD')        ");
@@ -364,7 +364,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(SDATE,'YYYY-MM-DD') SDATE               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                       ");
             parameter.AppendSql(" WHERE PANO = :PANO                                    ");
             parameter.AppendSql("   AND RTIME >= TO_DATE(:FSDATE, 'YYYY-MM-DD')         ");
             parameter.AppendSql("   AND RTIME <  TO_DATE(:TSDATE, 'YYYY-MM-DD')         ");
@@ -384,7 +384,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(RTime,'YYYY-MM-DD HH24:MI') RTIME, GBEXAM   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                           ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                           ");
             parameter.AppendSql(" WHERE 1 = 1                                               ");
             parameter.AppendSql("   AND PANO = :PANO                                        ");
             parameter.AppendSql("   AND SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')               ");
@@ -404,7 +404,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT PANO, SNAME, EXCODE, AMPM                       ");
             parameter.AppendSql("      ,TO_CHAR(SDATE,'YYYY-MM-DD') SDATE               ");
             parameter.AppendSql("      ,TO_CHAR(RTIME,'YYYY-MM-DD') RTIME               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                       ");
             parameter.AppendSql(" WHERE PANO =:PANO                                     ");
             parameter.AppendSql("   AND TRUNC(RTIME) = TO_DATE(:RTIME, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND DELDATE IS NULL                                 ");
@@ -419,7 +419,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID AS RID                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                       ");
             parameter.AppendSql(" WHERE TRUNC(RTIME) = TO_DATE(:RTIME, 'YYYY-MM-DD')    ");
             if (!argExcode.IsNullOrEmpty())
             {
@@ -441,7 +441,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESV_EXAM SET                   ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESV_EXAM SET                   ");
             
             if (!code.TONGBODATE.IsNullOrEmpty() || code.CONFIRM == "Y")
             {
@@ -488,7 +488,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                       ");
             parameter.AppendSql(" WHERE PANO = :PANO                                    ");
             parameter.AppendSql("   AND GBEXAM IN ('01')                                ");
             parameter.AppendSql("   AND SDATE = TO_DATE(:SDATE,'YYYY-MM-DD')            ");
@@ -503,7 +503,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(PANO) AS CNT, AMPM                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM               ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM               ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql("   AND RTIME >= TO_DATE(:RFTIME, 'YYYY-MM-DD') ");
             parameter.AppendSql("   AND RTIME <  TO_DATE(:RTTIME, 'YYYY-MM-DD') ");
@@ -523,7 +523,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SUM(DECODE(AMPM,'A',1,0)) AMCNT         ");
             parameter.AppendSql("      ,SUM(DECODE(AMPM,'A',0,1)) PMCNT         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM               ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM               ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql("   AND RTIME >= TO_DATE(:RFTIME, 'YYYY-MM-DD') ");
             parameter.AppendSql("   AND RTIME <  TO_DATE(:RTTIME, 'YYYY-MM-DD') ");
@@ -542,7 +542,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO, SNAME, TO_CHAR(RTIME, 'HH24:MI') RTIME     ");
             parameter.AppendSql("     , TO_CHAR(SDATE,'YYYY-MM-DD') SDATE                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                                   ");
             parameter.AppendSql(" WHERE RTIME >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                     ");
             parameter.AppendSql("   AND RTIME <  TO_DATE(:TODATE, 'YYYY-MM-DD')                     ");
             parameter.AppendSql("   AND GBEXAM = :GBEXAM                                            ");
@@ -561,7 +561,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO, GBEXAM, AMPM                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM               ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM               ");
             parameter.AppendSql(" WHERE PANO   = :PANO                          ");
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)                     ");
             parameter.AppendSql("   AND DELDATE IS NULL                         ");
@@ -576,7 +576,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO, GBEXAM, AMPM                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM               ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM               ");
             parameter.AppendSql(" WHERE PANO   = :PANO                          ");
             parameter.AppendSql("   AND GBEXAM = :GBEXAM                        ");
             parameter.AppendSql("   AND DELDATE IS NULL                         ");
@@ -595,7 +595,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(RTIME,'YYYY-MM-DD HH24:MI') RTIME               ");                                     
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM                               ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM                               ");
             parameter.AppendSql(" WHERE PANO = :PANO                                            ");
             parameter.AppendSql("   AND SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')                   ");
             parameter.AppendSql("   AND DELDATE IS NULL                                         ");
@@ -616,7 +616,7 @@ namespace ComHpcLibB.Repository
 
             MParameter parameter = CreateParameter();
             parameter.AppendSql(" SELECT  COUNT('X') CNT                                    ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HEA_JEPSU A, KOSMOS_PMPA.HEA_RESV_EXAM B ");
+            parameter.AppendSql(" FROM ADMIN.HEA_JEPSU A, ADMIN.HEA_RESV_EXAM B ");
             parameter.AppendSql(" WHERE A.PANO = B.PANO                                     ");
             parameter.AppendSql("  AND A.SDATE = B.SDATE                                    ");
             parameter.AppendSql("  AND A.SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')              ");

@@ -60,7 +60,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = " SELECT ROWID FROM KOSMOS_PMPA.BAS_OCSMEMO_O2";
+                SQL = " SELECT ROWID FROM ADMIN.BAS_OCSMEMO_O2";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + ArgPano + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND DDATE IS NULL ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY SDATE DESC ";
@@ -95,7 +95,7 @@ namespace ComLibB
                 if (strROWID == "")
                 {
                     SQL = "";
-                    SQL = " SELECT MAX(WRTNO) MWRTNO FROM KOSMOS_PMPA.BAS_OCSMEMO_O2 ";
+                    SQL = " SELECT MAX(WRTNO) MWRTNO FROM ADMIN.BAS_OCSMEMO_O2 ";
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                     if (SqlErr != "")
                     {
@@ -109,7 +109,7 @@ namespace ComLibB
                     dt = null;
 
                     SQL = "";
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_OCSMEMO_O2 (  PANO, SNAME, MEMO, SDATE, DDATE, WRTNO, GBJOB ) VALUES (";
+                    SQL = " INSERT INTO ADMIN.BAS_OCSMEMO_O2 (  PANO, SNAME, MEMO, SDATE, DDATE, WRTNO, GBJOB ) VALUES (";
                     SQL = SQL + ComNum.VBLF + " '" + ArgPano + "', '" + ArgSName + "', :1, trunc(sysdate), '' , '" + nWRTNO + "', ";
                     SQL = SQL + ComNum.VBLF + "    '2'  ";
                     SQL = SQL + ComNum.VBLF + " ) ";
@@ -126,7 +126,7 @@ namespace ComLibB
                 else
                 {
                     SQL = "";
-                    SQL = " UPDATE KOSMOS_PMPA.BAS_OCSMEMO_O2 SET MEMO = :1 ";
+                    SQL = " UPDATE ADMIN.BAS_OCSMEMO_O2 SET MEMO = :1 ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
                     SqlErr = clsDB.ExecuteLongQuery(SQL, strData, ref intRowAffected, clsDB.DbCon);
                     if (SqlErr != "")
@@ -188,7 +188,7 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "     AND A.DATE1 = B.ACTDATE ";
                     SQL = SQL + ComNum.VBLF + "     AND A.DEPTCODE = B.DEPTCODE";
                     SQL = SQL + ComNum.VBLF + "     AND A.DRCODE = C.DRCODE";
-                    SQL = SQL + ComNum.VBLF + "     AND B.SUNEXT IN ( SELECT SUNEXT FROM KOSMOS_PMPA.BAS_SUN WHERE GBGOJI ='Y' ) ";
+                    SQL = SQL + ComNum.VBLF + "     AND B.SUNEXT IN ( SELECT SUNEXT FROM ADMIN.BAS_SUN WHERE GBGOJI ='Y' ) ";
                     SQL = SQL + ComNum.VBLF + "   GROUP BY TRUNC(DATE3), A.PANO, A.SNAME,  A.DRCODE, C.DRNAME , A.DEPTCODE";
                     SQL = SQL + ComNum.VBLF + "  HAVING SUM(B.QTY * B.NAL) > 0";
                     SQL = SQL + ComNum.VBLF + "   ORDER BY 4";
@@ -204,7 +204,7 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "     AND A.ACTDATE = B.ACTDATE ";
                     SQL = SQL + ComNum.VBLF + "     AND A.DEPTCODE = B.DEPTCODE";
                     SQL = SQL + ComNum.VBLF + "     AND A.DRCODE = C.DRCODE";
-                    SQL = SQL + ComNum.VBLF + "     AND B.SUNEXT IN ( SELECT SUNEXT FROM KOSMOS_PMPA.BAS_SUN WHERE GBGOJI ='Y' ) ";
+                    SQL = SQL + ComNum.VBLF + "     AND B.SUNEXT IN ( SELECT SUNEXT FROM ADMIN.BAS_SUN WHERE GBGOJI ='Y' ) ";
                     SQL = SQL + ComNum.VBLF + "   GROUP BY TRUNC(B.ACTDATE), A.PANO, A.SNAME,  A.DRCODE, C.DRNAME , A.DEPTCODE";
                     SQL = SQL + ComNum.VBLF + "   HAVING SUM(B.QTY * B.NAL) > 0";
                     SQL = SQL + ComNum.VBLF + "   ORDER BY 4";
@@ -234,7 +234,7 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL = "   SELECT TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE , B.MASTERCODE, B.RESULT ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_SPECMST A, KOSMOS_OCS.EXAM_RESULTC B";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EXAM_SPECMST A, ADMIN.EXAM_RESULTC B";
                     SQL = SQL + ComNum.VBLF + " WHERE A.BDATE >=TO_DATE('" + strExamDate + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "   AND B.MASTERCODE IN ( 'CR40','CR39')";
                     SQL = SQL + ComNum.VBLF + "   AND A.SPECNO = B.SPECNO";

@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT YNAME                           ");
             parameter.AppendSql("     , ROWID RID                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPCODE       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPCODE       ");
             parameter.AppendSql(" WHERE CODE IN (                       ");
             parameter.AppendSql("                SELECT CODE            ");
             parameter.AppendSql("                  FROM HEA_SUNAPDTL    ");
@@ -42,7 +42,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO, CODE, CODENAME, AMT, GBSELF, GBHALIN ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAPDTL       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAPDTL       ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -54,7 +54,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAPDTL           ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAPDTL           ");
             parameter.AppendSql(" WHERE 1 = 1                              ");
             parameter.AppendSql("   AND WRTNO = :WRTNO                     ");
             parameter.AppendSql("   AND CODE IN (:CODE)                    ");
@@ -69,8 +69,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.CODENAME                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAPDTL a      ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_GROUPCODE b     ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAPDTL a      ");
+            parameter.AppendSql("     , ADMIN.HEA_GROUPCODE b     ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                ");
             parameter.AppendSql("   AND a.CODE = b.CODE                 ");
             parameter.AppendSql("   AND b.GBSELECT = 'N'                ");
@@ -84,7 +84,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_SUNAPDTL_HIS                                   ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_SUNAPDTL_HIS                                   ");
             parameter.AppendSql("     ( GBDEL,WRTNO,CODE,AMT,GBSELF,GBHALIN,CODENAME,ENTSABUN,ENTTIME, BONINAMT, LTDAMT )     ");
             parameter.AppendSql(" VALUES                                                                    ");
             parameter.AppendSql("     ( :GBDEL,:WRTNO,:CODE,:AMT,:GBSELF,:GBHALIN,:CODENAME,:ENTSABUN,SYSDATE,:BONINAMT,:LTDAMT )    ");
@@ -107,7 +107,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_SUNAPDTL       ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_SUNAPDTL       ");
             parameter.AppendSql("     ( WRTNO,CODE,AMT,GBSELF,GBHALIN,CODENAME, BONINAMT, LTDAMT )       ");
             parameter.AppendSql(" VALUES                                    ");
             parameter.AppendSql("     ( :WRTNO,:CODE,:AMT,:GBSELF,:GBHALIN,:CODENAME,:BONINAMT,:LTDAMT )  ");
@@ -128,7 +128,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HEA_SUNAPDTL    ");
+            parameter.AppendSql("DELETE ADMIN.HEA_SUNAPDTL    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO              ");
 
             parameter.Add("WRTNO", argWrtno);
@@ -141,7 +141,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAPDTL    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAPDTL    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO              ");
 
             parameter.Add("WRTNO", argWrtno);
@@ -153,8 +153,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.TYPE                                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAPDTL a                          ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_GROUPCODE b                         ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAPDTL a                          ");
+            parameter.AppendSql("     , ADMIN.HEA_GROUPCODE b                         ");
             parameter.AppendSql(" WHERE 1 = 1                                               ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                    ");
             parameter.AppendSql("   AND a.CODE = b.CODE(+)                                  ");
@@ -170,8 +170,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.CODE,b.Amt,a.GbSelf,b.Name GrName,a.GbHalin       ");
             parameter.AppendSql("     , a.CodeName as GamName,a.Amt as GamAmt, b.BuRate     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAPDTL a                          ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_GROUPCODE b                         ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAPDTL a                          ");
+            parameter.AppendSql("     , ADMIN.HEA_GROUPCODE b                         ");
             parameter.AppendSql(" WHERE 1 = 1                                               ");
             parameter.AppendSql("   AND a.WRTNO = :WRTNO                                    ");
             parameter.AppendSql("   AND a.CODE = b.CODE(+)                                  ");
@@ -185,7 +185,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SUM(AMT) AMT                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAPDTL         ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAPDTL         ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                   ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -197,7 +197,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODENAME                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAPDTL                                    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAPDTL                                    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                              ");
             parameter.AppendSql("   AND (CODENAME LIKE '%골드검진%' OR CODENAME LIKE '%VIP검진%' )  ");
 
@@ -210,8 +210,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.CODE, b.YNAME                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAPDTL  a     ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_GROUPCODE b     ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAPDTL  a     ");
+            parameter.AppendSql("     , ADMIN.HEA_GROUPCODE b     ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND a.CODE >= 'Z0000'               ");
             parameter.AppendSql("   AND a.CODE = b.CODE(+)              ");

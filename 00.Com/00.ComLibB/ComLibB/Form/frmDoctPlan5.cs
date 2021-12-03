@@ -476,7 +476,7 @@ namespace ComLibB
                         // '주40시간에 관련한  OFF
                         SQL = "";
                         SQL = " SELECT B.SCHEDULE ";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_DOCTOR A, KOSMOS_PMPA.NUR_SCHEDULE1 B";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_DOCTOR A, ADMIN.NUR_SCHEDULE1 B";
                         SQL = SQL + ComNum.VBLF + " WHERE A.DRCODE = '" + strDrCode + "'";
                         SQL = SQL + ComNum.VBLF + "   AND A.SABUN = B.SABUN";
                         SQL = SQL + ComNum.VBLF + "   AND B.YYMM = '" + strYYMM + "' ";

@@ -34,13 +34,13 @@ namespace ComLibB
             //SQL = " SELECT  ";
             //SQL = SQL + ComNum.VBLF + "  XX.INOUTCLS, XX.PTNO, XX.PTNAME, XX.SEX, XX.AGE, ";
             //SQL = SQL + ComNum.VBLF + "  XX.MEDDEPTCD, XX.MEDDRCD, XX.MEDFRDATE, XX.MEDFRTIME, XX.MEDENDDATE, XX.MEDENDTIME, ";
-            //SQL = SQL + ComNum.VBLF + "  (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = XX.MEDDEPTCD) AS DEPTKORNAME,  ";
+            //SQL = SQL + ComNum.VBLF + "  (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = XX.MEDDEPTCD) AS DEPTKORNAME,  ";
             //SQL = SQL + ComNum.VBLF + "  XX.DRNAME AS DRUSENAME, XX.GBSPC  , XX.GBSTS  ";
             //SQL = SQL + ComNum.VBLF + "FROM ( ";
             //SQL = SQL + ComNum.VBLF + " SELECT 'O' AS INOUTCLS, A.Pano AS PTNO,A.SName AS PTNAME, A.Sex, A.Age, A.DeptCode AS MEDDEPTCD, A.DrCode AS MEDDRCD, ";
             //SQL = SQL + ComNum.VBLF + "    TO_CHAR(A.BDATE,'YYYYMMDD') AS MEDFRDATE, TO_CHAR(A.JTime,'HH24MI') || '00' AS MEDFRTIME, ";
             //SQL = SQL + ComNum.VBLF + "    TO_CHAR(A.BDATE,'YYYYMMDD') AS MEDENDDATE, TO_CHAR(A.JTime,'HH24MI') || '00' AS MEDENDTIME, D.DRNAME, A.GBSPC , '0' GBSTS  ";
-            //SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.OPD_MASTER A, KOSMOS_PMPA.BAS_LASTEXAM B , KOSMOS_OCS.EXAM_INFECTMASTER C , KOSMOS_PMPA.BAS_DOCTOR D ";
+            //SQL = SQL + ComNum.VBLF + "FROM ADMIN.OPD_MASTER A, ADMIN.BAS_LASTEXAM B , ADMIN.EXAM_INFECTMASTER C , ADMIN.BAS_DOCTOR D ";
             //SQL = SQL + ComNum.VBLF + "WHERE A.PANO = '" + strPtNo + "' ";
             //SQL = SQL + ComNum.VBLF + "    AND A.PANO = B.PANO(+)  ";
             //SQL = SQL + ComNum.VBLF + "   AND A.BDATE = B.LASTDATE(+) ";
@@ -53,7 +53,7 @@ namespace ComLibB
             //SQL = SQL + ComNum.VBLF + "    A.DeptCode AS MEDDEPTCD, A.DrCode AS MEDDRCD, ";
             //SQL = SQL + ComNum.VBLF + "    TO_CHAR(A.InDate,'YYYYMMDD') AS MEDFRDATE, '120000' AS MEDFRTIME, ";
             //SQL = SQL + ComNum.VBLF + "    TO_CHAR(A.OutDate,'YYYYMMDD') AS MEDENDDATE, '120000' AS MEDENDTIME, D.DRNAME, A.GBSPC , A.GBSTS  ";
-            //SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.IPD_NEW_MASTER A , KOSMOS_PMPA.BAS_DOCTOR D ";
+            //SQL = SQL + ComNum.VBLF + "FROM ADMIN.IPD_NEW_MASTER A , ADMIN.BAS_DOCTOR D ";
             //SQL = SQL + ComNum.VBLF + "WHERE A.PANO = '" + strPtNo + "'  ";
             //SQL = SQL + ComNum.VBLF + "   AND A.DRCODE = D.DRCODE   ";
             //SQL = SQL + ComNum.VBLF + " GROUP BY 'I', A.PANO, A.SNAME, A.SEX, A.AGE, A.DEPTCODE, A.DRCODE, TO_CHAR(A.InDate,'YYYYMMDD'), '120000', TO_CHAR(A.OutDate,'YYYYMMDD'), '120000', D.DRNAME, A.GBSPC, A.GBSTS) ";
@@ -772,7 +772,7 @@ namespace ComLibB
             strSql = strSql + ComNum.VBLF + "    AND PROBLEMNO = ";
             strSql = strSql + ComNum.VBLF + "    ( ";
             strSql = strSql + ComNum.VBLF + "     SELECT MAX(PROBLEMNO) ";
-            strSql = strSql + ComNum.VBLF + "     FROM KOSMOS_EMR.AEMRPROBLEMLIST";
+            strSql = strSql + ComNum.VBLF + "     FROM ADMIN.AEMRPROBLEMLIST";
             strSql = strSql + ComNum.VBLF + "     WHERE PTNO  = '" + AcpEmr.ptNo + "'";
             strSql = strSql + ComNum.VBLF + "       AND USEID = '" + clsType.User.IdNumber + "'";
             strSql = strSql + ComNum.VBLF + "       AND DELYN = '0'";
@@ -809,8 +809,8 @@ namespace ComLibB
             OracleDataReader reader = null;
 
             strSql = " SELECT COUNT(A.PTNO) AS CNT";
-            strSql = strSql + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRMIBI A";
-            strSql = strSql + ComNum.VBLF + "      INNER JOIN KOSMOS_PMPA.BAS_PATIENT B";
+            strSql = strSql + ComNum.VBLF + "    FROM ADMIN.EMRMIBI A";
+            strSql = strSql + ComNum.VBLF + "      INNER JOIN ADMIN.BAS_PATIENT B";
             strSql = strSql + ComNum.VBLF + "         ON B.PANO = A.PTNO";
 
             if (clsType.User.DeptCode == "MD" || clsType.User.Sabun == "31606" || clsType.User.Sabun == "34241")
@@ -874,7 +874,7 @@ namespace ComLibB
             DateTime dtp = Convert.ToDateTime(ComQuery.CurrentDateTime(clsDB.DbCon, "S"));
 
             strSql = "  SELECT COUNT(EMRNO) AS CNT";
-            strSql = strSql + ComNum.VBLF + "  FROM KOSMOS_EMR.EMRXMLMST A, KOSMOS_PMPA.IPD_NEW_MASTER B";
+            strSql = strSql + ComNum.VBLF + "  FROM ADMIN.EMRXMLMST A, ADMIN.IPD_NEW_MASTER B";
             strSql = strSql + ComNum.VBLF + "   WHERE B.INDATE >= TO_DATE('2017-06-01 00:00','YYYY-MM-DD HH24:MI')";
             strSql = strSql + ComNum.VBLF + "     AND B.OUTDATE >= TO_DATE('" + dtp.AddDays(-7).ToShortDateString() + "','YYYY-MM-DD')";
             strSql = strSql + ComNum.VBLF + "     AND B.OUTDATE <= TO_DATE('" + dtp.ToShortDateString() + "','YYYY-MM-DD')";
@@ -882,7 +882,7 @@ namespace ComLibB
             strSql = strSql + ComNum.VBLF + "     AND A.MEDFRDATE = TO_CHAR(B.INDATE,'YYYYMMDD')";
             strSql = strSql + ComNum.VBLF + "   AND A.USEID IN (";
             strSql = strSql + ComNum.VBLF + "                   SELECT TO_CHAR(SABUN3)";
-            strSql = strSql + ComNum.VBLF + "                     FROM KOSMOS_ADM.INSA_MST";
+            strSql = strSql + ComNum.VBLF + "                     FROM ADMIN.INSA_MST";
             //'('022101','022105','022150','022160')    --내과, 정형외과, 인턴, 일반의
             switch (VB.Left(clsType.User.DrCode, 2))
 
@@ -908,7 +908,7 @@ namespace ComLibB
             strSql = strSql + ComNum.VBLF + "     AND B.DRCODE = '0301'";
             strSql = strSql + ComNum.VBLF + "     AND B.DRCODE = '" + clsType.User.DrCode + "'";
             strSql = strSql + ComNum.VBLF + "     AND NOT EXISTS";
-            strSql = strSql + ComNum.VBLF + "   ( SELECT * FROM KOSMOS_EMR.EMRXML_DUALSIGN SUB";
+            strSql = strSql + ComNum.VBLF + "   ( SELECT * FROM ADMIN.EMRXML_DUALSIGN SUB";
             strSql = strSql + ComNum.VBLF + "       WHERE SUB.EMRNO = A.EMRNO)";
 
             string sqlErr = clsDB.GetAdoRs(ref reader, strSql, clsDB.DbCon);
@@ -1513,10 +1513,10 @@ namespace ComLibB
             SQL = "";
             SQL = " SELECT  ";
             SQL = SQL + ComNum.VBLF + "    A.PTNO, A.INOUTCLS, A.MEDFRDATE, A.MEDDEPTCD ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.AVIEWACP A ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.AVIEWACP A ";
             SQL = SQL + ComNum.VBLF + "WHERE A.PTNO = '" + txtPtNo.Text.Trim() + "' ";
             SQL = SQL + ComNum.VBLF + "AND A.ACPNO = (SELECT MAX(A1.ACPNO)  ";
-            SQL = SQL + ComNum.VBLF + "                FROM KOSMOS_EMR.AVIEWACP A1 ";
+            SQL = SQL + ComNum.VBLF + "                FROM ADMIN.AVIEWACP A1 ";
             SQL = SQL + ComNum.VBLF + "                WHERE A1.PTNO = '" + txtPtNo.Text.Trim() + "') ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 

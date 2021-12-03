@@ -25,8 +25,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(a.SDATE,'YYYY-MM-DD') SDATE, a.PANO, a.SNAME, b.SEX                     ");
             parameter.AppendSql("     , b.PTNO, b.JUSO1 || b.JUSO2 JUSO                                                 ");
             parameter.AppendSql("     , b.JUMIN2, DECODE(a.AMPM, 'A', '1', 'P', '2', '1') as AMPM2                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM a                                                     ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_PATIENT   b                                                     ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM a                                                     ");
+            parameter.AppendSql("     , ADMIN.HIC_PATIENT   b                                                     ");
             parameter.AppendSql(" WHERE a.RTIME >= TO_DATE(:SDATEFR, 'YYYY-MM-DD')                                      ");
             parameter.AppendSql("   AND a.RTIME <  TO_DATE(:SDATETO, 'YYYY-MM-DD')                                      ");
             parameter.AppendSql("   AND a.EXCODE IN('TX20', 'TX32', 'TX41', 'TX64')                                     ");
@@ -51,8 +51,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT b.LTDCODE, TO_CHAR(a.RTIME,'YYYY-MM-DD') SDATE, GBEXAM  ");
             parameter.AppendSql("     , SUM(DECODE(a.AMPM, 'A', 1, 1)) AS AMCNT                 ");
             parameter.AppendSql("     , SUM(DECODE(a.AMPM, 'A', 0, 1)) AS PMCNT                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM a                             ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_PATIENT   b                             ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM a                             ");
+            parameter.AppendSql("     , ADMIN.HIC_PATIENT   b                             ");
             parameter.AppendSql(" WHERE a.RTIME >= TRUNC(SYSDATE)                               ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                       ");
             parameter.AppendSql("   AND a.PANO = b.PANO(+)                                      ");
@@ -68,8 +68,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT *    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESV_EXAM A,        ");
-            parameter.AppendSql(" KOSMOS_PMPA.HIC_PATIENT B                 ");                     
+            parameter.AppendSql("  FROM ADMIN.HEA_RESV_EXAM A,        ");
+            parameter.AppendSql(" ADMIN.HIC_PATIENT B                 ");                     
             parameter.AppendSql(" WHERE A.PANO = B.PANO                     ");
             parameter.AppendSql(" AND B.Ptno= :PTNO                         ");
             parameter.AppendSql(" AND A.RTIME >=TRUNC(SYSDATE)              ");

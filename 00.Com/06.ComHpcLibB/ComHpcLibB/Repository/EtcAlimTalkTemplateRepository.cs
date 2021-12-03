@@ -22,7 +22,7 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SENDGAP, SENDDAY, SENDBF, SENDTIME  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.ETC_ALIMTALK_TEMPLATE   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_ALIMTALK_TEMPLATE   ");
             parameter.AppendSql(" WHERE TEMPCD = :TEMPCD                    ");
 
             parameter.Add("TEMPCD", argTempCD);
@@ -35,7 +35,7 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TITLE                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.ETC_ALIMTALK_TEMPLATE   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_ALIMTALK_TEMPLATE   ");
             parameter.AppendSql(" WHERE TEMPCD = :TEMPCD                    ");
 
             parameter.Add("TEMPCD", argCode);
@@ -48,7 +48,7 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TEMPCD, TITLE, ROWID                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.ETC_ALIMTALK_TEMPLATE   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_ALIMTALK_TEMPLATE   ");
             parameter.AppendSql(" WHERE GBSTS = '3'                         ");
             parameter.AppendSql("   AND DELDATE IS NULL                     ");
             parameter.AppendSql(" ORDER BY TITLE                            ");
@@ -61,7 +61,7 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SENDSMS                             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.ETC_ALIMTALK_TEMPLATE   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_ALIMTALK_TEMPLATE   ");
             parameter.AppendSql(" WHERE TEMPCD = :TEMPCD                    ");
 
             parameter.Add("TEMPCD", argCode);
@@ -74,7 +74,7 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MESSAGE                             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.ETC_ALIMTALK_TEMPLATE   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_ALIMTALK_TEMPLATE   ");
             parameter.AppendSql(" WHERE TEMPCD = :TEMPCD                    ");
 
             parameter.Add("TEMPCD", argCode);

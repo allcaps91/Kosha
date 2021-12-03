@@ -509,8 +509,8 @@ namespace ComEmrBase
                             SQL += ComNum.VBLF + "WHERE EXISTS";
                             SQL += ComNum.VBLF + "(";
                             SQL += ComNum.VBLF + "  SELECT 1 AS CNT";
-                            SQL += ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRCHARTMST A";
-                            SQL += ComNum.VBLF + "      INNER JOIN KOSMOS_EMR.AEMRCHARTDRAW B";
+                            SQL += ComNum.VBLF + "    FROM ADMIN.AEMRCHARTMST A";
+                            SQL += ComNum.VBLF + "      INNER JOIN ADMIN.AEMRCHARTDRAW B";
                             SQL += ComNum.VBLF + "         ON A.EMRNO    = B.EMRNO                ";
                             SQL += ComNum.VBLF + "        AND A.EMRNOHIS = B.EMRNOHIS             ";
                             SQL += ComNum.VBLF + "        AND B.ITEMNAME = '" + mstrItemName +    "'";

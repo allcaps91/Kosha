@@ -930,7 +930,7 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL += " SELECT ILLCODE, ILLNAMEE, ILLNAMEK                 \r";
-                    SQL += "   FROM kOSMOS_PMPA.BAS_ILLS                        \r";
+                    SQL += "   FROM ADMIN.BAS_ILLS                        \r";
                     SQL += "  WHERE ILLCODE  LIKE '" + strillCode.Trim() + "%'  \r";
                     SQL += "    AND LENGTH(ILLCODE) <= 6                        \r";
                     SQL += "    AND (NOUSE <>'N' OR NOUSE IS NULL)              \r";
@@ -985,7 +985,7 @@ namespace ComLibB
                     {
                         SQL = "";
                         SQL += " SELECT ILLCODE, ILLNAMEE, ILLNAMEK                 \r";
-                        SQL += "   FROM kOSMOS_PMPA.BAS_ILLS                        \r";
+                        SQL += "   FROM ADMIN.BAS_ILLS                        \r";
                         SQL += "  WHERE ILLCODE  LIKE '" + VB.Left(strillCode.Trim(), VB.Len(strillCode.Trim()) - 1) + "%'  \r";
                         SQL += "    AND LENGTH(ILLCODE) <= 6                        \r";
                         SQL += "    AND (NOUSE <>'N' OR NOUSE IS NULL)              \r";
@@ -1132,7 +1132,7 @@ namespace ComLibB
                     try
                     {
                         SQL = "";
-                        SQL += " DELETE FROM KOSMOS_OCS.OCS_OILLDEF                         \r";
+                        SQL += " DELETE FROM ADMIN.OCS_OILLDEF                         \r";
                         if (nSelect == 1)   //개인
                         {
                             SQL += "  WHERE DEPTDR = '" + clsOrdFunction.GstrDrCode + "'             \r";
@@ -1209,7 +1209,7 @@ namespace ComLibB
                 SQL += "        END GbV252 ,                                   \r";
                 SQL += "        GBVCODE, DDATE, IllNameE ILLNAMEE1, GBER          \r";
                 SQL += "        ,KCD8          \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_ILLS                                                        \r";
+                SQL += "   FROM ADMIN.BAS_ILLS                                                        \r";
                 SQL += "  WHERE 1 = 1                                                                       \r";
                 SQL += "    AND (NOUSE <> 'N' OR NOUSE IS NULL)             \r";
                 SQL += "    AND DDATE IS NULL                               \r";
@@ -1339,7 +1339,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT ILLCODE                             \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OILLDEF              \r";
+                SQL += "   FROM ADMIN.OCS_OILLDEF              \r";
                 SQL += "  WHERE DEPTDR = '" + strDeptDrCode + "'    \r";
                 SQL += "    AND ILLCODE = '" + strillCode + "'      \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1387,7 +1387,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " INSERT INTO KOSMOS_OCS.OCS_OILLDEF              \r";
+                SQL += " INSERT INTO ADMIN.OCS_OILLDEF              \r";
                 SQL += "        (DEPTDR, ILLCODE)                        \r";
                 SQL += " VALUES ('" + strDeptDrCode + "'                 \r";
                 SQL += "       , '" + strillCode.ToString().Trim() + "') \r";
@@ -1670,8 +1670,8 @@ namespace ComLibB
                         SQL += "           ELSE ''                                    \r";
                         SQL += "        END GbV252 ,                                   \r";
                         SQL += "        B.GBVCODE, B.DDATE, B.IllNameE ILLNAMEE1, GBER          \r";
-                        SQL += "   FROM KOSMOS_OCS.OCS_OILLDEF A                                                    \r";
-                        SQL += "      , KOSMOS_PMPA.BAS_ILLS   B                                                    \r";
+                        SQL += "   FROM ADMIN.OCS_OILLDEF A                                                    \r";
+                        SQL += "      , ADMIN.BAS_ILLS   B                                                    \r";
                         if (nSelect == 1)
                         {
                             SQL += "  WHERE (A.DeptDr   = '" + clsType.User.Sabun + "'                              \r";
@@ -1941,7 +1941,7 @@ namespace ComLibB
                 clsDB.setBeginTran(clsDB.DbCon);
 
                 SQL = "";
-                SQL += " DELETE FROM KOSMOS_OCS.OCS_OILLDEF                       \r";
+                SQL += " DELETE FROM ADMIN.OCS_OILLDEF                       \r";
                 SQL += "  WHERE (DeptDr   = '" + clsType.User.Sabun + "'          \r";
                 SQL += "     OR  DeptDr   = '" + clsOrdFunction.GstrDrCode + "')  \r";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

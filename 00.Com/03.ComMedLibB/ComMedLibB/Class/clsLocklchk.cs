@@ -34,7 +34,7 @@ namespace ComMedLibB
             try
             {
                 SQL = "";
-                SQL += " DELETE FROM KOSMOS_PMPA.IPD_LOCK                   \r";
+                SQL += " DELETE FROM ADMIN.IPD_LOCK                   \r";
                 SQL += "  WHERE Pano = '" + VB.UCase(GstrLockPtno) + "'     \r";
                 SQL += "    AND Seq  = 0                                    \r";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -68,7 +68,7 @@ namespace ComMedLibB
             try
             {
                 SQL = "";
-                SQL += " DELETE KOSMOS_OCS.OCS_OLOCK                        \r";
+                SQL += " DELETE ADMIN.OCS_OLOCK                        \r";
                 SQL += "  WHERE Ptno   = '" + GstrLockPtno + "'             \r";
                 if (GstrPart != "" && GstrPart != null)
                 {
@@ -124,7 +124,7 @@ namespace ComMedLibB
             try
             {
                 SQL = "";
-                SQL += " SELECT * FROM KOSMOS_PMPA.IPD_LOCK     \r";
+                SQL += " SELECT * FROM ADMIN.IPD_LOCK     \r";
                 SQL += " WHERE Pano   = '" + GstrLockPtno + "'  \r";
                 clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -167,7 +167,7 @@ namespace ComMedLibB
             try
             {
                 SQL = "";
-                SQL += " INSERT INTO KOSMOS_PMPA.IPD_LOCK                           \r";
+                SQL += " INSERT INTO ADMIN.IPD_LOCK                           \r";
                 SQL += "        (Pano,Seq,UserName,JobComment,WrtTime)              \r";
                 SQL += " VALUES                                                     \r";
                 SQL += "        ('" + GstrLockPtno + "',0, '" + strPassname + "',   \r";
@@ -203,7 +203,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += "SELECT UserName, JobComment, TO_CHAR(WrtTime, 'yy-mm-dd hh24:mi') Jtime \r";
-                SQL += "  FROM KOSMOS_PMPA.IPD_LOCK                                             \r";
+                SQL += "  FROM ADMIN.IPD_LOCK                                             \r";
                 SQL += " WHERE Pano   = '" + VB.UCase(GstrLockPtno.Trim()) + "'                 \r";
                 clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -249,7 +249,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT Remark, TO_CHAR(EntDate,'YY-MM-DD HH24:MI') EntTime, PART, SABUN, IP, EXENAME   \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OLOCK                                                            \r";
+                SQL += "   FROM ADMIN.OCS_OLOCK                                                            \r";
                 SQL += "  WHERE Ptno   = '" + GstrLockPtno + "'                                                 \r";
                 SQL += "    AND ROWNUM = 1                                                                      \r";
                 clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -309,8 +309,8 @@ namespace ComMedLibB
                 SQL = "";
                 SQL += " SELECT A.IPADDR,  A.USE,  A.USENAME, A.BUCODE, B.NAME          \r";
                 SQL += "      , SUBSTR(JACODE, 1,4) || '-' || SUBSTR(JACODE,5) JACODE   \r";
-                SQL += "   FROM KOSMOS_ADM.JAS_MASTER A                                 \r";
-                SQL += "      , KOSMOS_PMPA.BAS_BUSE  B                                 \r";
+                SQL += "   FROM ADMIN.JAS_MASTER A                                 \r";
+                SQL += "      , ADMIN.BAS_BUSE  B                                 \r";
                 SQL += "  WHERE IPADDR ='" + strIP + "'                                 \r";
                 SQL += "    AND A.BUCODE = B.BUCODE                                     \r";
                 clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -333,7 +333,7 @@ namespace ComMedLibB
                 }
                 else
                 {   
-                    SQL = " SELECT A.REMARK FROM KOSMOS_ADM.JAS_ETCIPADDR A \r";
+                    SQL = " SELECT A.REMARK FROM ADMIN.JAS_ETCIPADDR A \r";
                     SQL += " WHERE IPADDR = '" + strIP + "'                 \r";
                     SqlErr = clsDB.GetDataTable(ref dt2, SQL, clsDB.DbCon);
 
@@ -385,7 +385,7 @@ namespace ComMedLibB
 
             try
             {
-                SQL = " INSERT INTO KOSMOS_OCS.OCS_OLOCK                            \r";
+                SQL = " INSERT INTO ADMIN.OCS_OLOCK                            \r";
                 SQL += "      (Ptno,Remark,EntDate, SABUN,  part, EXENAME, ip )     \r";
                 SQL += "VALUES                                                      \r";
                 SQL += "       ('" + GstrLockPtno + "', '" + GstrLockRemark + "'    \r";

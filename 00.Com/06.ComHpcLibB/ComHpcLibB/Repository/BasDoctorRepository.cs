@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT DRNAME                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_DOCTOR                      ");
+            parameter.AppendSql("  FROM ADMIN.BAS_DOCTOR                      ");
             parameter.AppendSql(" WHERE DRCODE = :DRCODE                            ");
 
             parameter.Add("DRCODE", strDrCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -35,7 +35,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT DRDEPT1, DRCODE, DRNAME                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_DOCTOR                      ");
+            parameter.AppendSql("  FROM ADMIN.BAS_DOCTOR                      ");
             parameter.AppendSql(" WHERE 1=1                                         ");
             parameter.AppendSql(" AND DRCODE IN (:DRCODE)                           ");
 
@@ -48,7 +48,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT DRCODE,DRDEPT1,DRNAME,TELNO,ROWID           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_DOCTOR                      ");
+            parameter.AppendSql("  FROM ADMIN.BAS_DOCTOR                      ");
             parameter.AppendSql(" WHERE TOUR = 'N'                                  ");
             parameter.AppendSql("   AND TELNO IS NOT NULL                           ");
             parameter.AppendSql("   AND DRDEPT1 = :DRDEPT                           ");

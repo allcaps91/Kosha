@@ -43,8 +43,8 @@ namespace ComEmrBase
 
 
                 SQL = "SELECT S.SPECNO, S.PANO, S.SNAME, S.AGE, S.SEX, B.MEASURE_DT, B.VALUE,  TO_CHAR(B.EMR, 'YYYY-MM-DD') EMR";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_SPECMST  S  ";
-                SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_OCS.EXAM_INTERFACE_BST B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_SPECMST  S  ";
+                SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.EXAM_INTERFACE_BST B";
                 SQL = SQL + ComNum.VBLF + "      ON S.SPECNO = B.PATIENT_ID";                
                 SQL = SQL + ComNum.VBLF + " WHERE S.BDATE = TO_DATE('" + dtpExamDate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD')";
                 SQL = SQL + ComNum.VBLF + "     AND MEASURE_DT >= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "000000'";
@@ -111,7 +111,7 @@ namespace ComEmrBase
             
                 //SQL = "SELECT MEASURE_DT, B.VALUE, S.SPECNO, TO_CHAR(B.EMR, 'YYYY-MM-DD') EMR";
                 SQL = "SELECT 1";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_INTERFACE_BST B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_INTERFACE_BST B";
                 SQL = SQL + ComNum.VBLF + "WHERE MEASURE_DT >= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "000000'";
                 SQL = SQL + ComNum.VBLF + "  AND MEASURE_DT <= '" + dtpExamDate.Value.ToString("yyyyMMdd") + "235959'";
                 SQL = SQL + ComNum.VBLF + "  AND B.WARD LIKE '%HD%'";
@@ -188,7 +188,7 @@ namespace ComEmrBase
 
                         #region 해당 날짜/시간에 작성된 기록지 있는지 확인
                         //SQL = "SELECT 1 ";
-                        //SQL += ComNum.VBLF + "FROM KOSMOS_EMR.AEMRCHARTMST";
+                        //SQL += ComNum.VBLF + "FROM ADMIN.AEMRCHARTMST";
                         //SQL += ComNum.VBLF + "WHERE MEDFRDATE = '" + AcpEmr.medFrDate + "'";
                         //SQL += ComNum.VBLF + "  AND FORMNO = 1572";
                         //SQL += ComNum.VBLF + "  AND CHARTDATE = '" + strChartDate + "'";

@@ -93,7 +93,7 @@ namespace ComLibB
                     SQL += " SELECT OrderCode, OrderName, OrderNameS, GbInput,    DispSpace \r";
                     SQL += "      , GbInfo,    GbBoth,    Bun,        NextCode,   SuCode    \r";
                     SQL += "      , GbDosage,  SpecCode,  Slipno,     GbImiv                \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE                                \r";
+                    SQL += "   FROM ADMIN.OCS_ORDERCODE                                \r";
                     SQL += "  WHERE Slipno    = '" + strSlipNo + "'                         \r";
                     SQL += "    AND Seqno    <> 0                                           \r";
                     SQL += "    AND SendDept <> 'N'                                         \r"; //사용하지않는 코드
@@ -107,7 +107,7 @@ namespace ComLibB
                     SQL += " SELECT OrderCode, OrderName, OrderNameS, GbInput,    DispSpace     \r";
                     SQL += "      , GbInfo,    GbBoth,    Bun,        NextCode,   SuCode        \r";
                     SQL += "      , GbDosage,  SpecCode,  Slipno,     GbImiv                    \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE                                    \r";
+                    SQL += "   FROM ADMIN.OCS_ORDERCODE                                    \r";
                     SQL += "  WHERE Slipno    = '" + strSlipNo + "'                             \r";
                     SQL += "    AND Seqno    <> 0                                               \r";
                     SQL += "    AND SendDept <> 'N'                                             \r"; //사용하지않는 코드
@@ -198,7 +198,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " SELECT * FROM KOSMOS_OCS.OCS_ORDERCODE     \r";
+                SQL += " SELECT * FROM ADMIN.OCS_ORDERCODE     \r";
                 SQL += "  WHERE Slipno = '" + strSlipNo + "'        \r";
                 SQL += "    AND ( Seqno = 0 OR Bun > '  ' )         \r";
                 SQL += "  ORDER BY Seqno                            \r";

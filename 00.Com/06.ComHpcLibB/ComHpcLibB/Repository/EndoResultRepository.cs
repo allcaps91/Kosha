@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT SEQNO,REMARK1,REMARK2,REMARK3,REMARK4,REMARK5,PICXY ");
             parameter.AppendSql("      ,REMARK6,REMARK6_2,REMARK6_3,REMARK                  ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_RESULT                              ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_RESULT                              ");
             parameter.AppendSql(" WHERE SEQNO = :SEQNO                                      ");
 
             parameter.Add("SEQNO", nSEQNO);

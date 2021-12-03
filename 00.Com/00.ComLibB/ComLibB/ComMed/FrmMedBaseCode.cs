@@ -82,7 +82,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += "SELECT DEPTCODE, SNAME, SEX, AGE ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.ORAN_MASTER ";
+                SQL += ComNum.VBLF + " FROM ADMIN.ORAN_MASTER ";
                 SQL += ComNum.VBLF + "WHERE OpDate = TO_DATE('" + argOpDate + "','YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + "  AND PANO = '" + argPano + "' ";                
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon); 
@@ -240,7 +240,7 @@ namespace ComLibB
                 if(ssList.ActiveSheet.Cells[i, 0].Text == "True")
                 {
                     SQL = "";
-                    SQL += ComNum.VBLF + "UPDATE KOSMOS_PMPA.BAS_BCODE";
+                    SQL += ComNum.VBLF + "UPDATE ADMIN.BAS_BCODE";
                     SQL += ComNum.VBLF + "SET DELDATE = TRUNC(SYSDATE)";
                     SQL += ComNum.VBLF + "WHERE 1=1";
                     SQL += ComNum.VBLF + "  AND GUBUN = 'C#_수술실_바코드상용구'";
@@ -262,7 +262,7 @@ namespace ComLibB
                         if (dt.Rows.Count > 0)
                         {
                             SQL = "";
-                            SQL += ComNum.VBLF + "UPDATE KOSMOS_PMPA.BAS_BCODE";
+                            SQL += ComNum.VBLF + "UPDATE ADMIN.BAS_BCODE";
                             SQL += ComNum.VBLF + "SET NAME = '" + ssList.ActiveSheet.Cells[i, 2].Text.Trim() + "' ";
                             //SQL += ComNum.VBLF + "   ,GUBUN2 = '" + (ssList.ActiveSheet.Cells[i, 1].Text == "True" ? "1" : "") + "'";
                             SQL += ComNum.VBLF + "WHERE 1=1";
@@ -274,7 +274,7 @@ namespace ComLibB
                         {
                             strCode = READ_MAXCODE();
                             SQL = "";
-                            SQL += ComNum.VBLF + "INSERT INTO KOSMOS_PMPA.BAS_BCODE";
+                            SQL += ComNum.VBLF + "INSERT INTO ADMIN.BAS_BCODE";
                             SQL += ComNum.VBLF + "(GUBUN, CODE, NAME, ENTSABUN, ENTDATE, SORT, CNT, GUNUM1, GUNUM2, GUNUM3)";
                             SQL += ComNum.VBLF + "VALUES";
                             SQL += ComNum.VBLF + "(";

@@ -134,7 +134,7 @@ namespace ComLibB
                     dt = null;
 
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "SELECT KORNAME , BUSE FROM KOSMOS_ADM.INSA_MST ";
+                    SQL = SQL + ComNum.VBLF + "SELECT KORNAME , BUSE FROM ADMIN.INSA_MST ";
                     SQL = SQL + ComNum.VBLF + "   WHERE SABUN = '" + clsType.User.Sabun + "' ";
                     SQL = SQL + ComNum.VBLF + "   AND ( TOIDAY IS NULL OR TOIDAY < TRUNC(SYSDATE) )";
 
@@ -216,7 +216,7 @@ namespace ComLibB
                 SQL = "";
 
                 SQL += " SELECT ILLNAMEK                                                           \r\n";
-                SQL += "  FROM KOSMOS_PMPA.BAS_ILLS                                                \r\n";
+                SQL += "  FROM ADMIN.BAS_ILLS                                                \r\n";
                 SQL += "   WHERE 1 = 1                                                             \r\n";
                 SQL += "    AND ILLCODE = '" + GstrIllcode + "'                                    \r\n";
 
@@ -1016,7 +1016,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "     A.SEFFECT09, A.SEFFECT10, A.SEFFECT11, A.SEFFECT12, A.SEFFECT13, A.SEFFECT14, A.GDATE, A.EDUSUJECT, A.EDUSUJECT1, A.EDUSUJECT2, A.EDUSUJECT3, ";
                 SQL = SQL + ComNum.VBLF + "     A.EDUCONTENTS01, A.EDUCONTENTS02, A.EDUCONTENTS03, A.EDUCONTENTS04, A.EDUCONTENTS05, A.EDUCONTENTS06, A.EDUCONTENTS07, A.EDUCONTENTS08, ";
                 SQL = SQL + ComNum.VBLF + "     A.EDUCONTENTS09, A.EDUCONTENTS10, A.EDUCONTENTS11, A.EDUCONTENTS12, A.EDUEVENDE, A.BIGO1, ";
-                SQL = SQL + ComNum.VBLF + "     (SELECT ILLNAMEE FROM KOSMOS_PMPA.BAS_ILLS WHERE ILLCODE = A.ILLCODE) AS ILLNAME ";
+                SQL = SQL + ComNum.VBLF + "     (SELECT ILLNAMEE FROM ADMIN.BAS_ILLS WHERE ILLCODE = A.ILLCODE) AS ILLNAME ";
                 SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "NUR_STD_INFECT12 A  ";
                 SQL = SQL + ComNum.VBLF + "     WHERE ROWID = '" + GstrROWID + "' ";
 

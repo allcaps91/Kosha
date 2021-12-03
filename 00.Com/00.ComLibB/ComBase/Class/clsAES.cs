@@ -550,7 +550,7 @@ namespace ComBase
             {
                 if (ArgGb == "" || ArgGb == "1") //환자 마스트 read
                 {
-                    SQL = " SELECT JUMIN1, JUMIN2, JUMIN3 FROM KOSMOS_PMPA.BAS_PATIENT ";
+                    SQL = " SELECT JUMIN1, JUMIN2, JUMIN3 FROM ADMIN.BAS_PATIENT ";
                     SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + ArgString + "' ";
 
                     SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -586,7 +586,7 @@ namespace ComBase
                 }
                 else if (ArgGb == "2") //인사 read
                 {
-                    SQL = " SELECT JUMIN, JUMIN3 FROM KOSMOS_ADM.INSA_MST ";
+                    SQL = " SELECT JUMIN, JUMIN3 FROM ADMIN.INSA_MST ";
                     SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + ArgString.Trim() + "' ";
                     SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
 
@@ -615,7 +615,7 @@ namespace ComBase
                 }
                 else if (ArgGb == "3") //건강보험 청구내역
                 {
-                    SQL = " SELECT JUMIN1, JUMIN2, JUMIN3 FROM KOSMOS_PMPA.MIR_INSID";
+                    SQL = " SELECT JUMIN1, JUMIN2, JUMIN3 FROM ADMIN.MIR_INSID";
                     SQL = SQL + ComNum.VBLF + " WHERE WRTNO = '" + ArgString + "' ";
                     SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
 
@@ -644,7 +644,7 @@ namespace ComBase
                 }
                 else if (ArgGb == "4") //산재
                 {
-                    SQL = " SELECT JUMIN1, JUMIN2, JUMIN3 FROM KOSMOS_PMPA.MIR_SANID";
+                    SQL = " SELECT JUMIN1, JUMIN2, JUMIN3 FROM ADMIN.MIR_SANID";
                     SQL = SQL + ComNum.VBLF + " WHERE WRTNO = '" + ArgString + "' ";
                     SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
 
@@ -673,7 +673,7 @@ namespace ComBase
                 }
                 else if (ArgGb == "5") //자보
                 {
-                    SQL = " SELECT JUMIN1, JUMIN2, JUMIN3 FROM KOSMOS_PMPA.MIR_TAID";
+                    SQL = " SELECT JUMIN1, JUMIN2, JUMIN3 FROM ADMIN.MIR_TAID";
                     SQL = SQL + ComNum.VBLF + " WHERE WRTNO = '" + ArgString.Trim() + "' ";
                     SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
 
@@ -702,7 +702,7 @@ namespace ComBase
                 }
                 else if (ArgGb == "6") //계약처 청구
                 {
-                    SQL = " SELECT JUMIN1, JUMIN2, JUMIN3 FROM KOSMOS_PMPA.MIR_POID";
+                    SQL = " SELECT JUMIN1, JUMIN2, JUMIN3 FROM ADMIN.MIR_POID";
                     SQL = SQL + ComNum.VBLF + " WHERE WRTNO = '" + ArgString.Trim() + "' ";
                     SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
 

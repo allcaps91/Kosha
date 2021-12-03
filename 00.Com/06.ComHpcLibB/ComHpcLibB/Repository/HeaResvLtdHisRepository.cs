@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_RESV_LTD_HIS (                             ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_RESV_LTD_HIS (                             ");
             parameter.AppendSql("       JOBTIME,JOBSABUN,GBJOB,LTDCODE,ENTSABUN,ENTTIME,SDATE           ");
             parameter.AppendSql(") VALUES (                                                             ");
             parameter.AppendSql("      SYSDATE, :JOBSABUN, :GBJOB, :LTDCODE, :ENTSABUN, SYSDATE, :SDATE ");

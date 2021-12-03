@@ -68,59 +68,59 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT 'IO' AS IO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,DEPTCODE,'항혈전' AS Gbn_1     \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_PATIENT_ANTITHROMBOTIC                                      \r";
+                SQL += "   FROM ADMIN.BAS_PATIENT_ANTITHROMBOTIC                                      \r";
                 SQL += "  WHERE PANO = '" + sPano + "'                                                      \r";
                 SQL += "    AND BDATE >= TO_DATE('" + DateTime.Parse(clsPublic.GstrSysDate).AddDays(nNal).ToShortDateString() + "','YYYY-MM-DD') \r";
                 SQL += "    AND Gubun = '01'                                                                \r";  //항혈전
                 SQL += "  GROUP BY TO_CHAR(BDATE,'YYYY-MM-DD'),DEPTCODE                                     \r";
                 SQL += "  UNION ALL                                                                         \r";
                 SQL += " SELECT 'IO' AS IO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,DEPTCODE,'항혈전' AS Gbn_1     \r";
-                SQL += "   FROM KOSMOS_PMPA.OPD_SLIP                                                        \r";
+                SQL += "   FROM ADMIN.OPD_SLIP                                                        \r";
                 SQL += "  WHERE PANO = '" + sPano + "'                                                      \r";
                 SQL += "    AND ACTDATE =TRUNC(SYSDATE)                                                     \r";  //위의자료 형성 하루지난다음날 발생때문
                 SQL += "    AND TRIM(SUNEXT) IN ( SELECT TRIM(JEPCODE)                                      \r";
-                SQL += "                            FROM KOSMOS_ADM.DRUG_SETCODE                            \r";
+                SQL += "                            FROM ADMIN.DRUG_SETCODE                            \r";
                 SQL += "                           WHERE (DELDATE IS NULL or DelDate ='')                   \r";
                 SQL += "                             AND GUBUN = '13' )                                     \r";
                 SQL += "  GROUP BY TO_CHAR(BDATE,'YYYY-MM-DD'), DEPTCODE                                    \r";
                 SQL += "  UNION ALL                                                                         \r";
                 SQL += " SELECT 'IO' AS IO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,DEPTCODE,'항혈전' AS Gbn_1     \r";
-                SQL += "   FROM KOSMOS_PMPA.IPD_NEW_SLIP                                                    \r";
+                SQL += "   FROM ADMIN.IPD_NEW_SLIP                                                    \r";
                 SQL += "  WHERE PANO = '" + sPano + "'                                                      \r";
                 SQL += "    AND ACTDATE = TRUNC(SYSDATE)                                                    \r";  //위의자료 형성 하루지난다음날 발생때문
                 SQL += "    AND TRIM(SUNEXT) IN ( SELECT TRIM(JEPCODE)                                      \r";
-                SQL += "                            FROM KOSMOS_ADM.DRUG_SETCODE                            \r";
+                SQL += "                            FROM ADMIN.DRUG_SETCODE                            \r";
                 SQL += "                           WHERE (DELDATE IS NULL or DelDate ='')                   \r";
                 SQL += "                             AND GUBUN = '13' )                                     \r";
                 SQL += "  GROUP BY TO_CHAR(BDATE,'YYYY-MM-DD'),DEPTCODE                                     \r";
                 SQL += "  UNION ALL                                                                         \r";
                 SQL += " SELECT '자가' AS IO, TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,'XX' as DEPTCODE ,'항혈전' AS Gbn_1    \r";
-                SQL += "   FROM KOSMOS_ADM.DRUG_HOISLIP                                                     \r";
+                SQL += "   FROM ADMIN.DRUG_HOISLIP                                                     \r";
                 SQL += "  WHERE PANO ='" + sPano + "'                                                       \r";
                 SQL += "    AND TRUNC(BDATE) >= TO_DATE('" + DateTime.Parse(clsPublic.GstrSysDate).AddDays(nNal).ToShortDateString() + "','YYYY-MM-DD')\r";
                 SQL += "    AND BLOOD = '1'                                                                 \r";
                 SQL += "  GROUP BY TO_CHAR(BDATE,'YYYY-MM-DD')                                              \r";
                 SQL += "  UNION ALL                                                                         \r";
                 SQL += " SELECT 'IO' AS IO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,DEPTCODE,'면역억제' AS Gbn_1   \r";
-                SQL += "   FROM  KOSMOS_PMPA.BAS_PATIENT_ANTITHROMBOTIC                                     \r";
+                SQL += "   FROM  ADMIN.BAS_PATIENT_ANTITHROMBOTIC                                     \r";
                 SQL += "  WHERE PANO = '" + sPano + "'                                                      \r";
                 SQL += "    AND BDATE >= TO_DATE('" + DateTime.Parse(clsPublic.GstrSysDate).AddDays(nNal).ToShortDateString() + "','YYYY-MM-DD') \r";
                 SQL += "    AND Gubun = '02'                                                                \r";  //항혈전
                 SQL += "  GROUP BY TO_CHAR(BDATE,'YYYY-MM-DD'),DEPTCODE                                     \r";
                 SQL += "  UNION ALL                                                                         \r";
                 SQL += " SELECT 'IO' AS IO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,DEPTCODE,'면역억제' AS Gbn_1   \r";
-                SQL += "   FROM KOSMOS_PMPA.OPD_SLIP                                                        \r";
+                SQL += "   FROM ADMIN.OPD_SLIP                                                        \r";
                 SQL += "  WHERE PANO = '" + sPano + "'                                                      \r";
                 SQL += "    AND ACTDATE = TRUNC(SYSDATE)                                                    \r";  //위의자료 형성 하루지난다음날 발생때문
-                SQL += "    AND TRIM(SUNEXT) IN ( SELECT TRIM(JEPCODE)  FROM KOSMOS_ADM.DRUG_SPECIAL_JEPCODE  WHERE SEQNO = 7 )  \r";
+                SQL += "    AND TRIM(SUNEXT) IN ( SELECT TRIM(JEPCODE)  FROM ADMIN.DRUG_SPECIAL_JEPCODE  WHERE SEQNO = 7 )  \r";
                 SQL += "  GROUP BY TO_CHAR(BDATE,'YYYY-MM-DD'),DEPTCODE                                     \r";
                 SQL += "  UNION ALL                                                                         \r";
                 SQL += " SELECT 'IO' AS IO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,DEPTCODE,'면역억제' AS Gbn_1   \r";
-                SQL += "   FROM KOSMOS_PMPA.IPD_NEW_SLIP                                                    \r";
+                SQL += "   FROM ADMIN.IPD_NEW_SLIP                                                    \r";
                 SQL += "  WHERE PANO = '" + sPano + "'                                                      \r";
                 SQL += "    AND ACTDATE = TRUNC(SYSDATE)                                                    \r";  //위의자료 형성 하루지난다음날 발생때문
                 SQL += "    AND TRIM(SUNEXT) IN ( SELECT TRIM(JEPCODE)                                      \r";
-                SQL += "                            FROM KOSMOS_ADM.DRUG_SPECIAL_JEPCODE                    \r";
+                SQL += "                            FROM ADMIN.DRUG_SPECIAL_JEPCODE                    \r";
                 SQL += "                           WHERE SEQNO = 7 )                                        \r";
                 SQL += "  GROUP BY TO_CHAR(BDATE,'YYYY-MM-DD'),DEPTCODE                                     \r";
                 SQL += "  ORDER BY BDATE DESC                                                               \r";
@@ -165,7 +165,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT SName,Jumin1,Jumin2,Jumin3      \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_PATIENT         \r";
+                SQL += "   FROM ADMIN.BAS_PATIENT         \r";
                 SQL += "  WHERE Pano = '" + sPano + "'          \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -267,16 +267,16 @@ namespace ComLibB
                     {   
                         SQL  = " SELECT '외래약' AS IO, TO_CHAR(a.BDATE,'YYYY-MM-DD') BDATE,a.SuCode,a.DEPTCODE,b.SuNamek   \r";
                         SQL += "      , a.Qty,a.Nal,a.Div,a.DosCode                                                         \r";
-                        SQL += "      , (SELECT DOSNAME FROM KOSMOS_OCS.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) DOSNAME \r";
-                        SQL += "      , (SELECT GBDIV FROM KOSMOS_OCS.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) GBDIV \r";
-                        SQL += "   FROM KOSMOS_PMPA.OPD_SLIP a                                                              \r";
-                        SQL += "      , KOSMOS_PMPA.BAS_SUN  b                                                              \r";
+                        SQL += "      , (SELECT DOSNAME FROM ADMIN.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) DOSNAME \r";
+                        SQL += "      , (SELECT GBDIV FROM ADMIN.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) GBDIV \r";
+                        SQL += "   FROM ADMIN.OPD_SLIP a                                                              \r";
+                        SQL += "      , ADMIN.BAS_SUN  b                                                              \r";
                         SQL += "  WHERE a.SuCode=b.SuNext(+)                                                                \r";
                         SQL += "    AND a.PANO = '" + ArgPano + "'                                                          \r";
                         SQL += "    AND a.BDATE =TO_DATE('" + ArgBDate + "' ,'YYYY-MM-DD')                                  \r";
                         SQL += "    AND a.DEPTCODE ='" + ArgDeptCode + "'                                                   \r";
                         SQL += "    AND TRIM(a.SUCODE) IN ( SELECT TRIM(JEPCODE)                                            \r";
-                        SQL += "                              FROM KOSMOS_ADM.DRUG_SETCODE                                  \r";
+                        SQL += "                              FROM ADMIN.DRUG_SETCODE                                  \r";
                         SQL += "                             WHERE (DELDATE IS NULL or DelDate ='')                         \r";
                         SQL += "                               AND GUBUN = '13' )                                           \r";
                         SQL += "  UNION ALL                                                                                 \r";
@@ -284,14 +284,14 @@ namespace ComLibB
                         SQL += "      , a.Qty,a.Nal,a.Div, '' AS DosCode                                                    \r";
                         SQL += "      , '' DOSNAME                                                                          \r";
                         SQL += "      , '' GBDIV                                                                            \r";
-                        SQL += "   FROM KOSMOS_PMPA.IPD_NEW_SLIP a                                                          \r";
-                        SQL += "      , KOSMOS_PMPA.BAS_SUN      b                                                          \r";
+                        SQL += "   FROM ADMIN.IPD_NEW_SLIP a                                                          \r";
+                        SQL += "      , ADMIN.BAS_SUN      b                                                          \r";
                         SQL += "  WHERE a.SuCode = b.SuNext(+)                                                              \r";
                         SQL += "    AND a.PANO = '" + ArgPano + "'                                                          \r";
                         SQL += "    AND a.BDATE = TO_DATE('" + ArgBDate + "' ,'YYYY-MM-DD')                                 \r";
                         SQL += "    AND a.DEPTCODE = '" + ArgDeptCode + "'                                                  \r";
                         SQL += "    AND TRIM(a.SUCODE) IN ( SELECT TRIM(JEPCODE)                                            \r";
-                        SQL += "                              FROM KOSMOS_ADM.DRUG_SETCODE                                  \r";
+                        SQL += "                              FROM ADMIN.DRUG_SETCODE                                  \r";
                         SQL += "                             WHERE (DELDATE IS NULL or DelDate ='')                         \r";
                         SQL += "                               AND GUBUN = '13' )                                           \r";
                         SQL += "  ORDER BY 1 DESC                                                                           \r";
@@ -302,7 +302,7 @@ namespace ComLibB
                         SQL += "      , '' AS Qty, '' AS Nal, '' AS DeptCode ,'' as DosCode                                 \r";
                         SQL += "      , '' DOSNAME                                                                          \r";
                         SQL += "      , '' GBDIV                                                                            \r";
-                        SQL += "   FROM KOSMOS_ADM.DRUG_HOISLIP                                                             \r";
+                        SQL += "   FROM ADMIN.DRUG_HOISLIP                                                             \r";
                         SQL += "  WHERE PANO = '" + ArgPano + "'                                                            \r";
                         SQL += "    AND TRUNC(BDATE) =TO_DATE('" + ArgBDate + "' ,'YYYY-MM-DD')                             \r";
                         SQL += "    AND BLOOD = '1'                                                                         \r";
@@ -312,15 +312,15 @@ namespace ComLibB
                     {
                         SQL =  " SELECT '외래약' AS IO, TO_CHAR(a.BDATE,'YYYY-MM-DD') BDATE,a.SuCode,a.DEPTCODE,b.SuNamek   \r";
                         SQL += "      , a.Qty,a.Nal,a.Div,a.DosCode                                                         \r";
-                        SQL += "      , (SELECT DOSNAME FROM KOSMOS_OCS.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) DOSNAME \r";
-                        SQL += "      , (SELECT GBDIV FROM KOSMOS_OCS.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) GBDIV \r";
-                        SQL += "  FROM KOSMOS_PMPA.OPD_SLIP a                                                               \r";
-                        SQL += "     , KOSMOS_PMPA.BAS_SUN  b                                                               \r";
+                        SQL += "      , (SELECT DOSNAME FROM ADMIN.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) DOSNAME \r";
+                        SQL += "      , (SELECT GBDIV FROM ADMIN.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) GBDIV \r";
+                        SQL += "  FROM ADMIN.OPD_SLIP a                                                               \r";
+                        SQL += "     , ADMIN.BAS_SUN  b                                                               \r";
                         SQL += "   WHERE a.SuCode = b.SuNext(+)                                                             \r";
                         SQL += "    AND a.PANO = '" + ArgPano + "'                                                          \r";
                         SQL += "    AND a.BDATE >=TO_DATE('" + DateTime.Parse(clsPublic.GstrSysDate).AddDays(-100).ToShortDateString() + "' ,'YYYY-MM-DD') \r";
                         SQL += "    AND TRIM(a.SUCODE) IN ( SELECT TRIM(JEPCODE)                                            \r";
-                        SQL += "                              FROM KOSMOS_ADM.DRUG_SETCODE                                  \r";
+                        SQL += "                              FROM ADMIN.DRUG_SETCODE                                  \r";
                         SQL += "                             WHERE (DELDATE IS NULL or DelDate ='')                         \r";
                         SQL += "                               AND GUBUN = '13' )                                           \r";
                         SQL += "  UNION ALL                                                                                 \r";
@@ -328,18 +328,18 @@ namespace ComLibB
                         SQL += "      , a.Qty,a.Nal,a.Div, '' AS DosCode                                                    \r";
                         SQL += "      , '' DOSNAME                                                                          \r";
                         SQL += "      , '' GBDIV                                                                            \r";
-                        SQL += "  FROM KOSMOS_PMPA.IPD_NEW_SLIP a                                                           \r";
-                        SQL += "     , KOSMOS_PMPA.BAS_SUN      b                                                           \r";
+                        SQL += "  FROM ADMIN.IPD_NEW_SLIP a                                                           \r";
+                        SQL += "     , ADMIN.BAS_SUN      b                                                           \r";
                         SQL += "   WHERE a.SuCode = b.SuNext(+)                                                             \r";
                         SQL += "    AND a.PANO = '" + ArgPano + "'                                                          \r";
                         SQL += "    AND a.BDATE >= TO_DATE('" + DateTime.Parse(clsPublic.GstrSysDate).AddDays(-100).ToShortDateString() + "' ,'YYYY-MM-DD') \r";
-                        SQL += "    AND TRIM(a.SUCODE) IN ( SELECT TRIM(JEPCODE)  FROM KOSMOS_ADM.DRUG_SETCODE  WHERE (DELDATE IS NULL or DelDate ='')   AND GUBUN = '13' ) \r";
+                        SQL += "    AND TRIM(a.SUCODE) IN ( SELECT TRIM(JEPCODE)  FROM ADMIN.DRUG_SETCODE  WHERE (DELDATE IS NULL or DelDate ='')   AND GUBUN = '13' ) \r";
                         SQL += "   UNION ALL                                                                                \r";
                         SQL += "  SELECT '자가약' AS IO, TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,Remark2 SuCode, '' AS DeptCode   \r";
                         SQL += "       , Remark1 SuNamek ,0 AS Qty, 0 AS Nal, 0 AS Div, '' AS DosCode                       \r";
                         SQL += "      , '' DOSNAME                                                                          \r";
                         SQL += "      , '' GBDIV                                                                            \r";
-                        SQL += "    FROM KOSMOS_ADM.DRUG_HOISLIP                                                            \r";
+                        SQL += "    FROM ADMIN.DRUG_HOISLIP                                                            \r";
                         SQL += "   WHERE PANO ='" + ArgPano + "'                                                            \r";
                         SQL += "     AND TRUNC(BDATE) >= TO_DATE('" + DateTime.Parse(clsPublic.GstrSysDate).AddDays(-100).ToShortDateString() + "' ,'YYYY-MM-DD') \r";
                         SQL += "     AND BLOOD = '1'                                                                        \r";
@@ -352,57 +352,57 @@ namespace ComLibB
                     {
                         SQL =  " SELECT '외래약' AS IO, TO_CHAR(a.BDATE,'YYYY-MM-DD') BDATE,a.SuCode,a.DEPTCODE,b.SuNamek   \r";
                         SQL += "      , a.Qty,a.Nal,a.Div,a.DosCode                                                         \r";
-                        SQL += "      , (SELECT DOSNAME FROM KOSMOS_OCS.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) DOSNAME \r";
-                        SQL += "      , (SELECT GBDIV FROM KOSMOS_OCS.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) GBDIV \r";
-                        SQL += "   FROM KOSMOS_PMPA.OPD_SLIP a                                                              \r";
-                        SQL += "      , KOSMOS_PMPA.BAS_SUN  b                                                              \r";
+                        SQL += "      , (SELECT DOSNAME FROM ADMIN.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) DOSNAME \r";
+                        SQL += "      , (SELECT GBDIV FROM ADMIN.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) GBDIV \r";
+                        SQL += "   FROM ADMIN.OPD_SLIP a                                                              \r";
+                        SQL += "      , ADMIN.BAS_SUN  b                                                              \r";
                         SQL += "  WHERE a.SuCode=b.SuNext(+)                                                                \r";
                         SQL += "    AND a.PANO = '" + ArgPano + "'                                                          \r";
                         SQL += "    AND a.BDATE = TO_DATE('" + ArgBDate + "' ,'YYYY-MM-DD')                                 \r";
                         SQL += "    AND a.DEPTCODE ='" + ArgDeptCode + "'                                                   \r";
                         SQL += "    AND TRIM(a.SUCODE) IN ( SELECT TRIM(JEPCODE)                                            \r";
-                        SQL += "                              FROM KOSMOS_ADM.DRUG_SPECIAL_JEPCODE                          \r";
+                        SQL += "                              FROM ADMIN.DRUG_SPECIAL_JEPCODE                          \r";
                         SQL += "                             WHERE SEQNO = 7  )                                             \r";
                         SQL += "  UNION ALL                                                                                 \r";
                         SQL += " SELECT '입원약' AS IO, TO_CHAR(a.BDATE,'YYYY-MM-DD') BDATE,a.SuCode,a.DEPTCODE,b.SuNamek   \r";
                         SQL += "      , a.Qty,a.Nal,a.Div, '' AS DosCode                                                    \r";
                         SQL += "      , '' DOSNAME                                                                          \r";
                         SQL += "      , '' GBDIV                                                                            \r";
-                        SQL += "   FROM KOSMOS_PMPA.IPD_NEW_SLIP a                                                          \r";
-                        SQL += "      , KOSMOS_PMPA.BAS_SUN      b                                                          \r";
+                        SQL += "   FROM ADMIN.IPD_NEW_SLIP a                                                          \r";
+                        SQL += "      , ADMIN.BAS_SUN      b                                                          \r";
                         SQL += "  WHERE a.SuCode = b.SuNext(+)                                                              \r";
                         SQL += "    AND a.PANO ='" + ArgPano + "'                                                           \r";
                         SQL += "    AND a.BDATE = TO_DATE('" + ArgBDate + "' ,'YYYY-MM-DD')                                 \r";
                         SQL += "    AND a.DEPTCODE = '" + ArgDeptCode + "'                                                  \r";
-                        SQL += "    AND TRIM(a.SUCODE) IN ( SELECT TRIM(JEPCODE)  FROM KOSMOS_ADM.DRUG_SPECIAL_JEPCODE  WHERE SEQNO = 7) \r";
+                        SQL += "    AND TRIM(a.SUCODE) IN ( SELECT TRIM(JEPCODE)  FROM ADMIN.DRUG_SPECIAL_JEPCODE  WHERE SEQNO = 7) \r";
                         SQL += "  ORDER BY 1 DESC \r";
                     }
                     else if (ArgGubun == "전체")
                     {
                         SQL =  " SELECT '외래약' AS IO, TO_CHAR(a.BDATE,'YYYY-MM-DD') BDATE,a.SuCode,a.DEPTCODE,b.SuNamek   \r";
                         SQL += "      , a.Qty,a.Nal,a.Div,a.DosCode                                                         \r";
-                        SQL += "      , (SELECT DOSNAME FROM KOSMOS_OCS.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) DOSNAME \r";
-                        SQL += "      , (SELECT GBDIV FROM KOSMOS_OCS.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) GBDIV \r";
-                        SQL += "   FROM KOSMOS_PMPA.OPD_SLIP a                                                              \r";
-                        SQL += "      , KOSMOS_PMPA.BAS_SUN  b                                                              \r";
+                        SQL += "      , (SELECT DOSNAME FROM ADMIN.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) DOSNAME \r";
+                        SQL += "      , (SELECT GBDIV FROM ADMIN.OCS_ODOSAGE WHERE DOSCODE = a.DOSCODE AND ROWNUM = 1) GBDIV \r";
+                        SQL += "   FROM ADMIN.OPD_SLIP a                                                              \r";
+                        SQL += "      , ADMIN.BAS_SUN  b                                                              \r";
                         SQL += "   WHERE a.SuCode = b.SuNext(+)                                                             \r";
                         SQL += "    AND a.PANO = '" + ArgPano + "'                                                          \r";
                         SQL += "    AND a.BDATE >= TO_DATE('" + DateTime.Parse(clsPublic.GstrSysDate).AddDays(-100).ToShortDateString() + "' ,'YYYY-MM-DD') \r";
                         SQL += "    AND TRIM(a.SUCODE) IN ( SELECT TRIM(JEPCODE)                                            \r";
-                        SQL += "                              FROM KOSMOS_ADM.DRUG_SPECIAL_JEPCODE                          \r";
+                        SQL += "                              FROM ADMIN.DRUG_SPECIAL_JEPCODE                          \r";
                         SQL += "                             WHERE SEQNO = 7  )                                             \r";
                         SQL += "  UNION ALL                                                                                 \r";
                         SQL += " SELECT '입원약' AS IO, TO_CHAR(a.BDATE,'YYYY-MM-DD') BDATE,a.SuCode,a.DEPTCODE,b.SuNamek   \r";
                         SQL += "      , a.Qty,a.Nal,a.Div, '' AS DosCode                                                    \r";
                         SQL += "      , '' DOSNAME                                                                          \r";
                         SQL += "      , '' GBDIV                                                                            \r";
-                        SQL += "   FROM KOSMOS_PMPA.IPD_NEW_SLIP a                                                          \r";
-                        SQL += "      , KOSMOS_PMPA.BAS_SUN      b                                                          \r";
+                        SQL += "   FROM ADMIN.IPD_NEW_SLIP a                                                          \r";
+                        SQL += "      , ADMIN.BAS_SUN      b                                                          \r";
                         SQL += "  WHERE a.SuCode=b.SuNext(+)                                                                \r";
                         SQL += "    AND a.PANO = '" + ArgPano + "'                                                          \r";
                         SQL += "    AND a.BDATE >= TO_DATE('" + DateTime.Parse(clsPublic.GstrSysDate).AddDays(-100).ToShortDateString() + "' ,'YYYY-MM-DD') \r";
                         SQL += "    AND TRIM(a.SUCODE) IN ( SELECT TRIM(JEPCODE)                                            \r";
-                        SQL += "                              FROM KOSMOS_ADM.DRUG_SPECIAL_JEPCODE                          \r";
+                        SQL += "                              FROM ADMIN.DRUG_SPECIAL_JEPCODE                          \r";
                         SQL += "                             WHERE SEQNO = 7  )                                             \r";
                         SQL += "  ORDER BY 2 DESC                                                                           \r";
                     }
@@ -503,7 +503,7 @@ namespace ComLibB
                 SQL += "      , Image_YN, ROWID, DRBUN                                                      \r";
                 SQL += "      , TO_CHAR(ENTDATE,'YYYY-MM-DD') ENTDATE, TO_CHAR(SDATE,'YYYY-MM-DD') SDATE    \r";
                 SQL += "      , POWDER, PCLSCODE, CAUTION, CAUTION_STRING, METFORMIN                        \r";
-                SQL += "  FROM KOSMOS_OCS.OCS_DRUGINFO_NEW                                                  \r";
+                SQL += "  FROM ADMIN.OCS_DRUGINFO_NEW                                                  \r";
                 SQL += " WHERE SuNext = '" + strSucode.Trim() + "'                                          \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")

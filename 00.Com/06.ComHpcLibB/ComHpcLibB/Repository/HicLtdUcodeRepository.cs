@@ -28,7 +28,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("                     ELSE UCODES END AS VUCODE                                         ");
             parameter.AppendSql("      ,JONG, DECODE(JONG, '1','배치','2','특수','3','일특','9','기타','') AS JONG_NM   ");
             parameter.AppendSql("      ,JIKJONG,GONGJENG,ROWID AS RID                                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD_UCODE                                                       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_UCODE                                                       ");
             parameter.AppendSql(" WHERE 1 = 1                                                                           ");
             parameter.AppendSql("   AND LTDCODE=:LTDCODE                                                                ");
             if (!argJong.IsNullOrEmpty() && argJong != "*")
@@ -55,7 +55,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT JOBNAME,UCODES, SCODES, ROWID AS RID                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD_UCODE                                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_UCODE                                               ");
             parameter.AppendSql(" WHERE 1 = 1                                                                   ");
             parameter.AppendSql("   AND LTDCODE=:LTDCODE                                                        ");
             parameter.AppendSql("   AND JONG=:JONG                                                              ");
@@ -72,7 +72,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_LTD_UCODE   ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_LTD_UCODE   ");
             parameter.AppendSql("   SET JOBNAME  = :JOBNAME         ");
             parameter.AppendSql("      ,JONG     = :JONG            ");
             parameter.AppendSql("      ,UCODES   = :UCODES          ");
@@ -99,7 +99,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_LTD_UCODE   ");
+            parameter.AppendSql("DELETE ADMIN.HIC_LTD_UCODE   ");
             parameter.AppendSql(" WHERE ROWID = :RID                ");
             
             parameter.Add("RID", fstrROWID);
@@ -111,7 +111,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT KOSMOS_PMPA.HIC_LTD_UCODE (                                         ");
+            parameter.AppendSql("INSERT ADMIN.HIC_LTD_UCODE (                                         ");
             parameter.AppendSql("   LTDCODE,JONG,JOBNAME,UCODES,JIKJONG,GONGJENG,JOBSABUN,ENTTIME )         ");
             parameter.AppendSql(" VALUES (                                                                  ");
             parameter.AppendSql("  :LTDCODE,:JONG,:JOBNAME,:UCODES,:JIKJONG,:GONGJENG,:JOBSABUN,SYSDATE )   ");
@@ -132,7 +132,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MAX(JOBNAME) AS JOBNAME     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD_UCODE   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_UCODE   ");
             parameter.AppendSql(" WHERE 1 = 1                       ");
             parameter.AppendSql("   AND LTDCODE=:LTDCODE            ");
             parameter.AppendSql("   AND JOBNAME LIKE :JOBNAME       ");
@@ -148,7 +148,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT JOBNAME,UCODES              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD_UCODE   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_UCODE   ");
             parameter.AppendSql(" WHERE 1 = 1                       ");
             parameter.AppendSql("   AND LTDCODE=:LTDCODE            ");
             parameter.AppendSql("   AND JOBNAME LIKE :JOBNAME       ");
@@ -167,7 +167,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT LTDCODE,JONG,JOBNAME,UCODES,JIKJONG,GONGJENG,JOBSABUN,ENTTIME,SCODES ");
             parameter.AppendSql("      ,LTDCODE1, LTDCODE2, ROWID AS RID                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD_UCODE                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_UCODE                                            ");
             parameter.AppendSql(" WHERE 1 = 1                                                                ");
             parameter.AppendSql("   AND LTDCODE=:LTDCODE                                                     ");
             if (!strJobName.IsNullOrEmpty())
@@ -190,7 +190,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT LTDCODE,JONG,JOBNAME,UCODES,JIKJONG,GONGJENG,JOBSABUN,ENTTIME,SCODES ");
             parameter.AppendSql("      ,LTDCODE1, LTDCODE2, ROWID AS RID                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD_UCODE                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_UCODE                                            ");
             parameter.AppendSql(" WHERE 1 = 1                                                                ");
             parameter.AppendSql("   AND ROWID=:RID                                                           ");
             

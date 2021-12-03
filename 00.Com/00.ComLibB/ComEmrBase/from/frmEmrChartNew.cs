@@ -1720,7 +1720,7 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT SYSMPNAME, SYSMPRMK";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRSYSMP";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRSYSMP";
                 SQL = SQL + ComNum.VBLF + " WHERE SYSMPNAME = '" + SYSMPNAME.Replace("'", "`") + "'";
                 SQL = SQL + ComNum.VBLF + "   AND SYSMPGB = '" + clsType.User.DrCode + "'";
 
@@ -4227,7 +4227,7 @@ namespace ComEmrBase
                     OracleDataReader reader = null;
 
                     SQL = " SELECT * ";
-                    SQL += ComNum.VBLF + "FROM KOSMOS_EMR.EMRMIBI";
+                    SQL += ComNum.VBLF + "FROM ADMIN.EMRMIBI";
                     SQL += ComNum.VBLF + "WHERE 1=1";
                     //SQL += ComNum.VBLF + "  AND MEDDEPTCD = '" + pAcp.medDeptCd + "'";
                     SQL += ComNum.VBLF + "  AND MEDfrdate = '" + pAcp.medFrDate + "'";
@@ -4266,7 +4266,7 @@ namespace ComEmrBase
 
                     #region INSERT
 
-                    SQL = "INSERT INTO KOSMOS_EMR.EMRXML_COMPLETE";
+                    SQL = "INSERT INTO ADMIN.EMRXML_COMPLETE";
                     //SQL += ComNum.VBLF + " EMRNO, EMRNOHIS, CDATE, CSABUN, PTNO, MEDFRDATE, INDATE) VALUES (";
                     SQL += ComNum.VBLF + "( EMRNO, EMRNOHIS, CDATE, CSABUN, PTNO, MEDFRDATE, INDATE)";
                     SQL += ComNum.VBLF + "SELECT ";
@@ -4277,7 +4277,7 @@ namespace ComEmrBase
                     SQL += ComNum.VBLF + " , PTNO";
                     SQL += ComNum.VBLF + " , MEDFRDATE";
                     SQL += ComNum.VBLF + " , TO_DATE('" + DateTime.ParseExact(pAcp.medFrDate, "yyyyMMdd", null).ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD')";
-                    SQL += ComNum.VBLF + "FROM KOSMOS_EMR.AEMRCHARTMST";
+                    SQL += ComNum.VBLF + "FROM ADMIN.AEMRCHARTMST";
                     SQL += ComNum.VBLF + "WHERE FORMNO = 1647";
                     SQL += ComNum.VBLF + "  AND MEDFRDATE = '" + pAcp.medFrDate + "'";
                     SQL += ComNum.VBLF + "  AND PTNO = '" + pAcp.ptNo + "'";
@@ -4291,7 +4291,7 @@ namespace ComEmrBase
                     SQL += ComNum.VBLF + " , PTNO";
                     SQL += ComNum.VBLF + " , MEDFRDATE";
                     SQL += ComNum.VBLF + " , TO_DATE('" + DateTime.ParseExact(pAcp.medFrDate, "yyyyMMdd", null).ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD')";
-                    SQL += ComNum.VBLF + "FROM KOSMOS_EMR.EMRXMLMST";
+                    SQL += ComNum.VBLF + "FROM ADMIN.EMRXMLMST";
                     SQL += ComNum.VBLF + "WHERE FORMNO = 1647";
                     SQL += ComNum.VBLF + "  AND MEDFRDATE = '" + pAcp.medFrDate + "'";
                     SQL += ComNum.VBLF + "  AND PTNO = '" + pAcp.ptNo + "'";
@@ -4319,10 +4319,10 @@ namespace ComEmrBase
                     }
 
                     #region INSERT, DELETE
-                    SQL = "INSERT INTO KOSMOS_EMR.EMRXML_COMPLETE_HISTORY(";
+                    SQL = "INSERT INTO ADMIN.EMRXML_COMPLETE_HISTORY(";
                     SQL += ComNum.VBLF + " EMRNO, CDATE, CSABUN, DELDATE, DELSABUN, MEDFRDATE, PTNO, INDATE) ";
                     SQL += ComNum.VBLF + " SELECT EMRNO, CDATE, CSABUN, SYSDATE, " + clsType.User.IdNumber + ", MEDFRDATE, PTNO, INDATE";
-                    SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML_COMPLETE ";
+                    SQL += ComNum.VBLF + " FROM ADMIN.EMRXML_COMPLETE ";
                     SQL += ComNum.VBLF + "  WHERE EMRNO = " + mstrEmrNo;
 
                     sqlErr = clsDB.ExecuteNonQuery(SQL, ref RowAffected, clsDB.DbCon);
@@ -4333,7 +4333,7 @@ namespace ComEmrBase
                         return;
                     }
 
-                    SQL = " DELETE KOSMOS_EMR.EMRXML_COMPLETE ";
+                    SQL = " DELETE ADMIN.EMRXML_COMPLETE ";
                     SQL += ComNum.VBLF + "  WHERE PTNO = '" + pAcp.ptNo + "'";
                     SQL += ComNum.VBLF + "    AND MEDFRDATE = '" + pAcp.medFrDate + "'";
 
@@ -7519,13 +7519,13 @@ namespace ComEmrBase
                 SQL += "SELECT EMRNOHIS                             \r\n";
                 if (mstrMode == "H")
                 {
-                    SQL += "  FROM KOSMOS_EMR.AEMRCHARTMSTHIS       \r\n";
+                    SQL += "  FROM ADMIN.AEMRCHARTMSTHIS       \r\n";
                     SQL += " WHERE EMRNO > 0                        \r\n";
                     SQL += "   AND EMRNOHIS =  " + mstrEmrNo + "\r\n";
                 }
                 else
                 {
-                    SQL += "  FROM KOSMOS_EMR.AEMRCHARTMST          \r\n";
+                    SQL += "  FROM ADMIN.AEMRCHARTMST          \r\n";
                     SQL += " WHERE EMRNO = " + mstrEmrNo + "        \r\n";
                 }
 
@@ -7561,13 +7561,13 @@ namespace ComEmrBase
 
                         if (mstrMode == "H")
                         {
-                            SQL += "  FROM KOSMOS_EMR.AEMRCHARTDRAWHIS          \r\n";
+                            SQL += "  FROM ADMIN.AEMRCHARTDRAWHIS          \r\n";
                             SQL += " WHERE EMRNO    > 0  \r\n";
                             SQL += "   AND EMRNOHIS = " + emrNohis + "    \r\n";
                         }
                         else
                         {
-                            SQL += "  FROM KOSMOS_EMR.AEMRCHARTDRAW          \r\n";
+                            SQL += "  FROM ADMIN.AEMRCHARTDRAW          \r\n";
                             SQL += " WHERE EMRNO    = " + mstrEmrNo + "   \r\n";
                             SQL += "   AND EMRNOHIS = " + emrNohis + "    \r\n";
                         }
@@ -7662,13 +7662,13 @@ namespace ComEmrBase
                         SQL += "     , ITEMNAME                                 \r\n";
                         if (mstrMode == "H")
                         {
-                            SQL += "  FROM KOSMOS_EMR.AEMRCHARTDRAWHIS          \r\n";
+                            SQL += "  FROM ADMIN.AEMRCHARTDRAWHIS          \r\n";
                             SQL += " WHERE EMRNO    > 0                         \r\n";
                             SQL += "   AND EMRNOHIS = " + emrNohis + "          \r\n";
                         }
                         else
                         {
-                            SQL += "  FROM KOSMOS_EMR.AEMRCHARTDRAW             \r\n";
+                            SQL += "  FROM ADMIN.AEMRCHARTDRAW             \r\n";
                             SQL += " WHERE EMRNO    = " + mstrEmrNo + "         \r\n";
                             SQL += "   AND EMRNOHIS = " + emrNohis + "          \r\n";
                         }

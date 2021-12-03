@@ -133,7 +133,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT CODE";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_BCODE";
+            SQL += ComNum.VBLF + "   FROM ADMIN.BAS_BCODE";
             SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
             SQL += ComNum.VBLF + "    AND GUBUN  = '원무접수제한자'";
             SQL += ComNum.VBLF + "    AND CODE   = '" + strSabun + "'";
@@ -424,7 +424,7 @@ namespace ComPmpaLibB
 
                     case "심사취소":
                         SQL = "";
-                        SQL += ComNum.VBLF + " INSERT INTO  KOSMOS_PMPA.IPD_SIMSA_HIS ( IPDNO,TRSNO,PANO,BI,INDATE,OUTDATE,SNAME,GbSTS,Flag,";
+                        SQL += ComNum.VBLF + " INSERT INTO  ADMIN.IPD_SIMSA_HIS ( IPDNO,TRSNO,PANO,BI,INDATE,OUTDATE,SNAME,GbSTS,Flag,";
                         SQL += ComNum.VBLF + "  SIMSA_NO,SIMSA_SNAME,SIMSA_SABUN,ENTDATE,ArcDate,VCODE,OGPDBUN,OGPDBUN2,OGPDBUNDTL,";
                         SQL += ComNum.VBLF + "  AMT50,AMT51,AMT53,AMT54,AMT55 ) VALUES (      ";
                         SQL += ComNum.VBLF + "  " + ArgIpdNo + "," + ArgTRSNO + ",'" + ArgPano + "','" + ArgBi + "',     ";
@@ -1048,7 +1048,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT DeptCode RDept, RTime, DrCode,            --진료과,예약시간,의사코드";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
             SQL += ComNum.VBLF + "        GbFlag                                    --외래스테이션용-접수(Y)";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "OPD_TELRESV         --전화예약접수마스터";
             SQL += ComNum.VBLF + "  WHERE 1     = 1 ";
@@ -1088,7 +1088,7 @@ namespace ComPmpaLibB
 
                     SQL = "";
                     SQL += ComNum.VBLF + " SELECT DEPTCODE, DRCODE, NVL(COUNT(*), 0) CNT, ";
-                    SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME ";
+                    SQL += ComNum.VBLF + "        ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME ";
                     SQL += ComNum.VBLF + "   FROM " + ComNum.DB_MED + "OCS_OORDER ";
                     SQL += ComNum.VBLF + "  WHERE 1         = 1 ";
                     SQL += ComNum.VBLF + "    AND PTNO      = '" + ArgPtno + "' ";
@@ -1097,7 +1097,7 @@ namespace ComPmpaLibB
                     SQL += ComNum.VBLF + "    AND DrCode IS NOT NULL ";
                     SQL += ComNum.VBLF + "  GROUP BY DEPTCODE,DRCODE ";
                     SQL += ComNum.VBLF + " union all SELECT DEPTCODE, DRCODE, NVL(COUNT(*), 0) CNT, ";
-                    SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME ";
+                    SQL += ComNum.VBLF + "        ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME ";
                     SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "ORAN_SLIP ";
                     SQL += ComNum.VBLF + "  WHERE 1         = 1 ";
                     SQL += ComNum.VBLF + "    AND PANO      = '" + ArgPtno + "' ";
@@ -1418,7 +1418,7 @@ namespace ComPmpaLibB
             string strMsg = string.Empty;
 
             SQL = "";
-            SQL += ComNum.VBLF + " SELECT KOSMOS_OCS.FC_EXAM_INFECT_MASTER_IMG_EX(PANO, TRUNC(SYSDATE)) INFECT,";
+            SQL += ComNum.VBLF + " SELECT ADMIN.FC_EXAM_INFECT_MASTER_IMG_EX(PANO, TRUNC(SYSDATE)) INFECT,";
             SQL += ComNum.VBLF + "        ROWID ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_MED + "EXAM_INFECT_MASTER ";
             SQL += ComNum.VBLF + " WHERE 1      = 1 ";
@@ -2008,7 +2008,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT a.Pano, a.DeptCode, a.DrCode, ";
-            SQL += ComNum.VBLF + "        b.SName, b.HPhone, KOSMOS_OCS.FC_BAS_CLINICDEPT_DEPTNAMEK(a.DeptCode) DEPTNAMEK ";
+            SQL += ComNum.VBLF + "        b.SName, b.HPhone, ADMIN.FC_BAS_CLINICDEPT_DEPTNAMEK(a.DeptCode) DEPTNAMEK ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "OPD_REFUND a, ";
             SQL += ComNum.VBLF + "        " + ComNum.DB_PMPA + "BAS_PATIENT b ";
             SQL += ComNum.VBLF + "  WHERE 1         = 1 ";
@@ -2993,7 +2993,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "         SYSDATE, ";
             SQL += ComNum.VBLF + "         '0', ";
             SQL += ComNum.VBLF + "         '0', ";
-            SQL += ComNum.VBLF + "         KOSMOS_OCS.SEQ_ORDERNO.NEXTVAL, ";
+            SQL += ComNum.VBLF + "         ADMIN.SEQ_ORDERNO.NEXTVAL, ";
             SQL += ComNum.VBLF + "         '', ";
             SQL += ComNum.VBLF + "         '', ";
             SQL += ComNum.VBLF + "         '', ";
@@ -3087,7 +3087,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "         SYSDATE, ";
             SQL += ComNum.VBLF + "         '0', ";
             SQL += ComNum.VBLF + "         '0', ";
-            SQL += ComNum.VBLF + "         KOSMOS_OCS.SEQ_ORDERNO.NEXTVAL, ";
+            SQL += ComNum.VBLF + "         ADMIN.SEQ_ORDERNO.NEXTVAL, ";
             SQL += ComNum.VBLF + "         '', ";
             SQL += ComNum.VBLF + "         '', ";
             SQL += ComNum.VBLF + "         '', ";

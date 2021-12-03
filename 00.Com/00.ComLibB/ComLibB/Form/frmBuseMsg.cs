@@ -93,7 +93,7 @@ namespace ComLibB
             try
             {
                 SQL = "SELECT NAME, BUCODE ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_BUSE ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_BUSE ";
                 SQL = SQL + ComNum.VBLF + " WHERE BUCODE IN ('044201','055101')"; //이후 부서 추가 시 코드화 예정 현재는 의료정보팀,영상의학과만 적용
                 //SQL = SQL + ComNum.VBLF + "   AND BUCODE <> '" + clsType.User.BuseCode + "' ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY NAME ASC ";
@@ -170,9 +170,9 @@ namespace ComLibB
                 if (optGuBunTo.Checked == true || optGuBunAll.Checked == true)
                 {
                     SQL = SQL + ComNum.VBLF + "SELECT '전송' AS GUBUN, TODATE, TOTIME, TOSABUN, TOBUSE, TOMEMO, SENDBUSE, SENDDATE, SENDTIME, SENDSABUN, SENDMEMO, CHK, ROWID,     ";
-                    SQL = SQL + ComNum.VBLF + " (SELECT NAME FROM KOSMOS_PMPA.BAS_BUSE S WHERE S.BUCODE = A.TOBUSE AND ROWNUM = 1) TOBUSENAME, ";
-                    SQL = SQL + ComNum.VBLF + " (SELECT NAME FROM KOSMOS_PMPA.BAS_BUSE S WHERE S.BUCODE = A.SENDBUSE AND ROWNUM = 1) SENDBUSENAME ";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.ETC_MSG_BUSE A       ";
+                    SQL = SQL + ComNum.VBLF + " (SELECT NAME FROM ADMIN.BAS_BUSE S WHERE S.BUCODE = A.TOBUSE AND ROWNUM = 1) TOBUSENAME, ";
+                    SQL = SQL + ComNum.VBLF + " (SELECT NAME FROM ADMIN.BAS_BUSE S WHERE S.BUCODE = A.SENDBUSE AND ROWNUM = 1) SENDBUSENAME ";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.ETC_MSG_BUSE A       ";
                     SQL = SQL + ComNum.VBLF + "WHERE TOBUSE = '" + clsType.User.BuseCode + "'        ";
                     SQL = SQL + ComNum.VBLF + "    AND TODATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "'        ";
                     SQL = SQL + ComNum.VBLF + "    AND TODATE <= '" + dtpEDate.Value.ToString("yyyyMMdd") + "'        ";
@@ -187,9 +187,9 @@ namespace ComLibB
                 {
                     //clsType.User.BuseCode = "055101";
                     SQL = SQL + ComNum.VBLF + "SELECT '회신' AS GUBUN, TODATE, TOTIME, TOSABUN, TOBUSE, TOMEMO, SENDBUSE, SENDDATE, SENDTIME, SENDSABUN, SENDMEMO, CHK, ROWID,     ";
-                    SQL = SQL + ComNum.VBLF + " (SELECT NAME FROM KOSMOS_PMPA.BAS_BUSE S WHERE S.BUCODE = A.TOBUSE AND ROWNUM = 1) TOBUSENAME, ";
-                    SQL = SQL + ComNum.VBLF + " (SELECT NAME FROM KOSMOS_PMPA.BAS_BUSE S WHERE S.BUCODE = A.SENDBUSE AND ROWNUM = 1) SENDBUSENAME ";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.ETC_MSG_BUSE A       ";
+                    SQL = SQL + ComNum.VBLF + " (SELECT NAME FROM ADMIN.BAS_BUSE S WHERE S.BUCODE = A.TOBUSE AND ROWNUM = 1) TOBUSENAME, ";
+                    SQL = SQL + ComNum.VBLF + " (SELECT NAME FROM ADMIN.BAS_BUSE S WHERE S.BUCODE = A.SENDBUSE AND ROWNUM = 1) SENDBUSENAME ";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.ETC_MSG_BUSE A       ";
                     SQL = SQL + ComNum.VBLF + "WHERE SENDBUSE = '" + clsType.User.BuseCode + "'      ";
                     SQL = SQL + ComNum.VBLF + "    AND TODATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "'     ";
                     SQL = SQL + ComNum.VBLF + "    AND TODATE <= '" + dtpEDate.Value.ToString("yyyyMMdd") + "'     ";
@@ -339,7 +339,7 @@ namespace ComLibB
                 try
                 {
                     SQL = "";
-                    SQL = " UPDATE KOSMOS_PMPA.ETC_MSG_BUSE SET ";
+                    SQL = " UPDATE ADMIN.ETC_MSG_BUSE SET ";
                     SQL += ComNum.VBLF + "   CHK = '" + strCHECK + "', ";
                     SQL += ComNum.VBLF + "   CHKDATE = SYSDATE, ";
                     SQL += ComNum.VBLF + "   CHKSABUN = " + clsType.User.Sabun;
@@ -442,7 +442,7 @@ namespace ComLibB
                 if (mstrTODATE == "" && mstrTOTIME == "" && mstrTOSABUN == "")
                 {
                     SQL = "";
-                    SQL = "INSERT INTO KOSMOS_PMPA.ETC_MSG_BUSE     ";
+                    SQL = "INSERT INTO ADMIN.ETC_MSG_BUSE     ";
                     SQL = SQL + ComNum.VBLF + "(     ";
                     SQL = SQL + ComNum.VBLF + "   TODATE, TOTIME, TOSABUN,     ";
                     SQL = SQL + ComNum.VBLF + "   TOBUSE, TOMEMO, SENDBUSE     ";
@@ -475,7 +475,7 @@ namespace ComLibB
                     }
 
                     SQL = "";
-                    SQL = "UPDATE KOSMOS_PMPA.ETC_MSG_BUSE      ";
+                    SQL = "UPDATE ADMIN.ETC_MSG_BUSE      ";
                     SQL = SQL + ComNum.VBLF + "SET    TODATE = TO_CHAR(SYSDATE,'YYYYMMDD'),      ";
                     SQL = SQL + ComNum.VBLF + "       TOTIME = TO_CHAR(SYSDATE,'HH24MISS'),      ";
                     SQL = SQL + ComNum.VBLF + "       TOMEMO = '" + txtTOMEMO.Text + "'      ";
@@ -520,7 +520,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT SENDMEMO         ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.ETC_MSG_BUSE        ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.ETC_MSG_BUSE        ";
                 SQL = SQL + ComNum.VBLF + "WHERE  TODATE = '" + mstrTODATE.Replace("-", "") + "'        ";
                 SQL = SQL + ComNum.VBLF + "     AND TOTIME = '" + mstrTOTIME.Replace(":", "") + "'        ";
                 SQL = SQL + ComNum.VBLF + "     AND TOSABUN = " + mstrTOSABUN + "        ";
@@ -591,7 +591,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "UPDATE KOSMOS_PMPA.ETC_MSG_BUSE      ";
+                SQL = "UPDATE ADMIN.ETC_MSG_BUSE      ";
                 SQL = SQL + ComNum.VBLF + "SET    SENDDATE = TO_CHAR(SYSDATE,'YYYYMMDD'),      ";
                 SQL = SQL + ComNum.VBLF + "       SENDTIME = TO_CHAR(SYSDATE,'HH24MISS'),      ";
                 SQL = SQL + ComNum.VBLF + "       SENDSABUN = " + clsType.User.Sabun + ",      ";
@@ -656,7 +656,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "DELETE KOSMOS_PMPA.ETC_MSG_BUSE      ";
+                SQL = "DELETE ADMIN.ETC_MSG_BUSE      ";
                 SQL = SQL + ComNum.VBLF + "WHERE  TODATE = '" + mstrTODATE.Replace("-", "") + "'      ";
                 SQL = SQL + ComNum.VBLF + "     AND    TOTIME = '" + mstrTOTIME.Replace(":", "") + "'      ";
                 SQL = SQL + ComNum.VBLF + "     AND    TOSABUN = " + mstrTOSABUN + "      ";

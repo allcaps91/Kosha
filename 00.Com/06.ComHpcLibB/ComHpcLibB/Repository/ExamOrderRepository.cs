@@ -22,7 +22,7 @@ namespace ComHpcLibB.Repository
         public int UpDate(EXAM_ORDER itemSub01, string strSuCode)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_OCS.EXAM_ORDER                      ");
+            parameter.AppendSql(" UPDATE ADMIN.EXAM_ORDER                      ");
             parameter.AppendSql("    SET SPECCODE  = :SPECCODE                      ");
             parameter.AppendSql("       ,STRT      = :STRT                          ");
             parameter.AppendSql("       ,DRCOMMENT = :DRCOMMENT                     ");
@@ -55,7 +55,7 @@ namespace ComHpcLibB.Repository
         public void Insert(EXAM_ORDER item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_OCS.EXAM_ORDER (                           ");
+            parameter.AppendSql(" INSERT INTO ADMIN.EXAM_ORDER (                           ");
             parameter.AppendSql("        IPDOPD, BDATE , ACTDATE,PANO ,BI , SNAME, AGE, SEX     ");
             parameter.AppendSql("       ,DEPTCODE,MASTERCODE, SPECCODE,DRCODE,QTY, STRT         ");
             parameter.AppendSql(" ) VALUES (                                                    ");
@@ -88,7 +88,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                                          ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_ORDER                          ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_ORDER                          ");
             parameter.AppendSql(" WHERE PANO = :PANO                                   ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')          ");
             parameter.AppendSql("   AND BI =:BI                                        ");

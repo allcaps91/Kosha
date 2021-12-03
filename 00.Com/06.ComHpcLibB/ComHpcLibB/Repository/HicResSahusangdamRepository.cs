@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_SAHUSANGDAM ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_SAHUSANGDAM ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", wRTNO);
@@ -35,7 +35,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_RES_SAHUSANGDAM    ");
+            parameter.AppendSql("DELETE ADMIN.HIC_RES_SAHUSANGDAM    ");
             parameter.AppendSql("  WHERE ROWID = :RID                       ");
 
             parameter.Add("RID", fstrROWID);
@@ -47,7 +47,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_RES_SAHUSANGDAM                            ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_RES_SAHUSANGDAM                            ");
             parameter.AppendSql("       (WRTNO, JEPDATE, SDATE, SABUN, SOGEN, PANJENGGBN, GBN, REMARK)  ");
             parameter.AppendSql("VALUES                                                                 ");
             parameter.AppendSql("       (:WRTNO                                                         ");
@@ -70,7 +70,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_SAHUSANGDAM     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_SAHUSANGDAM     ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                      ");
 
             parameter.Add("WRTNO", nWrtNo);
@@ -82,7 +82,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(SDATE,'YYYY-MM-DD') SDATE, SABUN, SOGEN, GBN, REMARK, ROWID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_SAHUSANGDAM                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_SAHUSANGDAM                                     ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                      ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -94,7 +94,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_SAHUSANGDAM SET             ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_SAHUSANGDAM SET             ");
             parameter.AppendSql("       JEPDATE    = TO_DATE(:JEPDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("     , SDATE      = TO_DATE(:SDATE, 'YYYY-MM-DD')      ");
             parameter.AppendSql("     , SOGEN      = :SOGEN                             ");

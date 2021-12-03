@@ -486,7 +486,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT PANO , SNAME, TEL, HPHONE, SEX , JUMIN1, JUMIN2, JUMIN3  ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + txtPano.Text + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

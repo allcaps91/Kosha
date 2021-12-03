@@ -39,7 +39,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(FrDate,'YYYY-MM-DD') FrDate                                                     ");
             parameter.AppendSql("     , TO_CHAR(ToDate,'YYYY-MM-DD') ToDate                                                     ");
             parameter.AppendSql("     , TO_CHAR(BuildDate,'YYYY-MM-DD') BuildDate                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MIR_BOHUM                                                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MIR_BOHUM                                                               ");
             parameter.AppendSql(" WHERE MIRNO = :MIRNO                                                                          ");
 
             parameter.Add("MIRNO", argMirno);
@@ -51,7 +51,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_MIR_BOHUM SET               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_MIR_BOHUM SET               ");
             parameter.AppendSql("       MIRNO = 0                                   ");
             parameter.AppendSql("     , OLDMIRNO = :MIRNO                           ");
             parameter.AppendSql(" WHERE MIRNO    = :MIRNO                           ");
@@ -65,7 +65,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_MIR_BOHUM SET               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_MIR_BOHUM SET               ");
             parameter.AppendSql("       ONE_INWON011 = :ONE_INWON011                ");
             parameter.AppendSql("     , ONE_INWON012 = :ONE_INWON012                ");
             parameter.AppendSql("     , ONE_INWON021 = :ONE_INWON021                ");
@@ -151,7 +151,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_MIR_BOHUM SET               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_MIR_BOHUM SET               ");
             parameter.AppendSql("       JEPNO    = :JEPNO                           ");
             parameter.AppendSql("     , FILENAME = :FILENAME                        ");
             parameter.AppendSql("     , JEPDATE  = TRUNC(SYSDATE)                   ");
@@ -168,7 +168,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_MIR_BOHUM                                                          ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_MIR_BOHUM                                                          ");
             parameter.AppendSql("       (MIRNO, YEAR, GUBUN, JOHAP, GBJOHAP, FRDATE, TODATE                                     ");
             parameter.AppendSql("     , KIHO,JEPQTY,ONE_QTY,TWO_QTY,BUILDCNT,BUILDDATE,CHASU,BUILDSABUN,MIRGBN,LIFE_GBN)        ");
             parameter.AppendSql("VALUES                                                                                         ");
@@ -220,7 +220,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_MIR_BOHUM SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_MIR_BOHUM SET       ");
             parameter.AppendSql("       TAMT     = :TAMT                    ");
             parameter.AppendSql("     , ONE_TAMT = :ONE_TAMT                ");
             parameter.AppendSql("     , TWO_TAMT = :TWO_TAMT                ");
@@ -238,7 +238,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TAMT                                                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MIR_BOHUM                                                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MIR_BOHUM                                                               ");
             parameter.AppendSql(" WHERE MIRNO = :MIRNO                                                                          ");
 
             parameter.Add("MIRNO", strMirNo);
@@ -260,7 +260,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , BuildSabun , BuildCnt, GbErrChk, FileName, CHASU, MIRGBN                        ");
             parameter.AppendSql("     , BUILDDATE, FileName                                                             ");
             parameter.AppendSql("     , TO_CHAR(FRDATE,'YYYY.MM.DD') FRDATE,TO_CHAR(TODATE,'YYYY.MM.DD') TODATE         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MIR_BOHUM                                                       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MIR_BOHUM                                                       ");
             parameter.AppendSql(" WHERE 1 = 1                                                                           ");
             parameter.AppendSql("   AND Johap NOT IN ('J')                                                              ");
             if (!argMirNo.IsNullOrEmpty() && argMirNo != 0)
@@ -282,7 +282,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT JEPNO                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_MIR_BOHUM       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_MIR_BOHUM       ");
             parameter.AppendSql(" WHERE MIRNO = :MIRNO                  ");
 
             parameter.Add("MIRNO", nMirNo);

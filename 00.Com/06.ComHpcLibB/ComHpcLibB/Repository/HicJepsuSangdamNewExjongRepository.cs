@@ -27,11 +27,11 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT b.WRTNO, a.SNAME, TO_CHAR(a.JEPDATE,'YYYY-MM-DD') JEPDATE, b.GjJong,a.UCodes,a.SangDamDrno  ");
             if (fnTab == 4)
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_SANGDAM_NEW b, KOSMOS_PMPA.HIC_EXJONG c        ");
+                parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_SANGDAM_NEW b, ADMIN.HIC_EXJONG c        ");
             }
             else
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_SANGDAM_WAIT b, KOSMOS_PMPA.HIC_EXJONG c       ");
+                parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_SANGDAM_WAIT b, ADMIN.HIC_EXJONG c       ");
             }
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'yyyy-mm-dd')                                                 ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'yyyy-mm-dd')                                                 ");
@@ -103,11 +103,11 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(a.JEPDATE,'YYYY-MM-DD') JEPDATE, GJYear                                             ");
             if (strRoom == "4" || strJob == "1")
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_SANGDAM_NEW b, KOSMOS_PMPA.HIC_EXJONG c        ");
+                parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_SANGDAM_NEW b, ADMIN.HIC_EXJONG c        ");
             }
             else
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_SANGDAM_WAIT b, KOSMOS_PMPA.HIC_EXJONG c       ");
+                parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_SANGDAM_WAIT b, ADMIN.HIC_EXJONG c       ");
             }
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'yyyy-mm-dd')                                                 ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'yyyy-mm-dd')                                                 ");

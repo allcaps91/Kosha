@@ -2100,7 +2100,7 @@ namespace ComBase
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO ='" + strPano + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND BDATE =TO_DATE('" + strActDate + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND DEPTCODE ='" + strDeptCode + "' ";
-                SQL = SQL + ComNum.VBLF + "   AND TRIM(SUCODE) IN ( SELECT trim(SUNEXT) FROM KOSMOS_PMPA.BAS_SUN WHERE DTLBUN ='4004')  ";  //틀니수가
+                SQL = SQL + ComNum.VBLF + "   AND TRIM(SUCODE) IN ( SELECT trim(SUNEXT) FROM ADMIN.BAS_SUN WHERE DTLBUN ='4004')  ";  //틀니수가
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -2777,7 +2777,7 @@ namespace ComBase
                 dt = null;
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " SELECT SUM(QTY*NAL) CNT FROM KOSMOS_PMPA.OPD_SLIP ";
+                SQL = SQL + ComNum.VBLF + " SELECT SUM(QTY*NAL) CNT FROM ADMIN.OPD_SLIP ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + argPano + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND DEPTCODE  = '" + argDept + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND BDATE = TO_DATE('" + argBDate + "','YYYY-MM-DD') ";
@@ -3709,7 +3709,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL += " INSERT INTO KOSMOS_PMPA.ETC_SUNAP_AHIS                                                                                                                        \r";
+                SQL += " INSERT INTO ADMIN.ETC_SUNAP_AHIS                                                                                                                        \r";
                 SQL += "            (BDATE,PANO,GUBUN,DEPTCODE,DRCODE,JIN,BI,MCODE,VCODE,MSG,ENTSABUN,ENTDATE )                                         \r";
                 SQL += " VALUES                                                                                                                                                                                \r";
                 SQL += "            (TRUNC(SYSDATE),'" + ArgPano + "','" + ArgGubun + "','" + ArgDept + "','" + ArgDrCode + "','" + ArgJin + "','" + ArgBi + "'    \r"; 

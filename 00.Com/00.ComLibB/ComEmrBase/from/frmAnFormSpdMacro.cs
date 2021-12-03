@@ -334,12 +334,12 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "SELECT                                       ";
                 SQL = SQL + ComNum.VBLF + "       A.JEPCODE, A.CODEGBN, A.NAME          ";
                 SQL = SQL + ComNum.VBLF + "     , C.UNIT, D.BUSE_UNIT                   ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.OPR_BUSEJEPUM A           ";
-                SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN KOSMOS_PMPA.BAS_SUT B      ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OPR_BUSEJEPUM A           ";
+                SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN ADMIN.BAS_SUT B      ";
                 SQL = SQL + ComNum.VBLF + "               ON A.JEPCODE = B.SUNEXT       ";
-                SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN KOSMOS_PMPA.BAS_SUN C      ";
+                SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN ADMIN.BAS_SUN C      ";
                 SQL = SQL + ComNum.VBLF + "               ON B.SUNEXT = C.SUNEXT        ";
-                SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN KOSMOS_ADM.ORD_JEP D       ";
+                SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN ADMIN.ORD_JEP D       ";
                 SQL = SQL + ComNum.VBLF + "               ON A.JEPCODE = D.JEPCODE      ";                
                 SQL = SQL + ComNum.VBLF + "WHERE A.BUCODE = '033103' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.BUN = '" + strBun + "' ";
@@ -499,7 +499,7 @@ namespace ComEmrBase
 
                 //'해당 약속코드를 읽음;
                 SQL = "SELECT A.SEQNO,A.JEPCODE,B.NAME, C.UNIT ";
-                SQL = SQL + ComNum.VBLF + " FROM OPR_GROUPDTL A, OPR_BUSEJEPUM B, KOSMOS_PMPA.BAS_SUN C ";
+                SQL = SQL + ComNum.VBLF + " FROM OPR_GROUPDTL A, OPR_BUSEJEPUM B, ADMIN.BAS_SUN C ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.WRTNO = " + nWrtno + " ";
                 SQL = SQL + ComNum.VBLF + "  AND A.CODEGBN = B.CODEGBN(+) ";
                 SQL = SQL + ComNum.VBLF + "  AND A.JEPCODE = B.JEPCODE(+) ";

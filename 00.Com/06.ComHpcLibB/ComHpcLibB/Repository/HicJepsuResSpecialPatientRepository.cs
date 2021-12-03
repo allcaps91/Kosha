@@ -27,7 +27,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.WRTNO,A.SNAME,TO_CHAR(A.JEPDATE,'YYYY-MM-DD') JEPDATE, A.LTDCODE, A.TEL           ");
             parameter.AppendSql(" , B.HNAME, B.GbSPC, C.JUMIN, A.SEXAMS                                                     ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_JEPSU A, KOSMOS_PMPA.HIC_RES_SPECIAL B, KOSMOS_PMPA.HIC_PATIENT C    ");
+            parameter.AppendSql(" FROM ADMIN.HIC_JEPSU A, ADMIN.HIC_RES_SPECIAL B, ADMIN.HIC_PATIENT C    ");
             parameter.AppendSql(" WHERE  1 = 1                                                                              ");
             parameter.AppendSql(" AND A.WRTNO = B.WRTNO                                                                     ");
             parameter.AppendSql(" AND A.PANO = C.PANO                                                                       ");
@@ -47,7 +47,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql(" SELECT A.WRTNO,A.SNAME,TO_CHAR(A.JEPDATE,'YYYY-MM-DD') JEPDATE,b.HNAME,B.GbSpc,C.JUMIN    ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_JEPSU A, KOSMOS_PMPA.HIC_RES_SPECIAL B, KOSMOS_PMPA.HIC_PATIENT C    ");
+            parameter.AppendSql(" FROM ADMIN.HIC_JEPSU A, ADMIN.HIC_RES_SPECIAL B, ADMIN.HIC_PATIENT C    ");
             parameter.AppendSql(" WHERE  1 = 1                                                                              ");
             parameter.AppendSql(" AND A.WRTNO = B.WRTNO                                                                     ");
             parameter.AppendSql(" AND A.PANO = C.PANO                                                                       ");

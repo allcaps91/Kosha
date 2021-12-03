@@ -62,7 +62,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT PART, COMMENTS            ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.DRUG_SETCODE   ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.DRUG_SETCODE   ";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN = '11'              ";
                 SQL = SQL + ComNum.VBLF + "   AND JEPCODE = '분류명칭'      ";
                 SQL = SQL + ComNum.VBLF + "   AND DELDATE IS NULL           ";
@@ -115,24 +115,24 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "SELECT                                           ";
                 SQL = SQL + ComNum.VBLF + "     A.PART, B.JEPCODE, C.SNAME, B.COMMENTS      ";
                 SQL = SQL + ComNum.VBLF + " FROM                                            ";
-                SQL = SQL + ComNum.VBLF + "     (SELECT * FROM KOSMOS_ADM.DRUG_SETCODE      ";
+                SQL = SQL + ComNum.VBLF + "     (SELECT * FROM ADMIN.DRUG_SETCODE      ";
                 SQL = SQL + ComNum.VBLF + "         WHERE GUBUN = '11'                      ";
                 SQL = SQL + ComNum.VBLF + "             AND JEPCODE = '분류명칭'            ";
                 SQL = SQL + ComNum.VBLF + "             AND DELDATE IS NULL                 ";
                 SQL = SQL + ComNum.VBLF + "     ORDER BY PART) A,                           ";
-                SQL = SQL + ComNum.VBLF + "     (SELECT * FROM KOSMOS_ADM.DRUG_SETCODE      ";
+                SQL = SQL + ComNum.VBLF + "     (SELECT * FROM ADMIN.DRUG_SETCODE      ";
                 SQL = SQL + ComNum.VBLF + "         WHERE GUBUN = '11'                      ";
                 SQL = SQL + ComNum.VBLF + "             AND JEPCODE <> '분류명칭'           ";
                 SQL = SQL + ComNum.VBLF + "             AND DELDATE IS NULL                 ";
                 SQL = SQL + ComNum.VBLF + "     ORDER BY JEPCODE) B,                        ";
-                SQL = SQL + ComNum.VBLF + "     KOSMOS_OCS.OCS_DRUGINFO_NEW C               ";
+                SQL = SQL + ComNum.VBLF + "     ADMIN.OCS_DRUGINFO_NEW C               ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PART = B.PART                           ";
                 SQL = SQL + ComNum.VBLF + "   AND B.JEPCODE = C.SUNEXT                      ";
 
                 //2021-02-10 추가, 삭제된 코드 안보이도록
                 SQL = SQL + ComNum.VBLF + "   AND C.SUNEXT NOT IN (                             ";
                 SQL = SQL + ComNum.VBLF + "                           SELECT SUCODE             ";
-                SQL = SQL + ComNum.VBLF + "                           FROM KOSMOS_PMPA.BAS_SUT  ";
+                SQL = SQL + ComNum.VBLF + "                           FROM ADMIN.BAS_SUT  ";
                 SQL = SQL + ComNum.VBLF + "                           WHERE 1=1                 ";
                 SQL = SQL + ComNum.VBLF + "                             AND DELDATE IS NOT NULL "; 
                 SQL = SQL + ComNum.VBLF + "                       )                             ";

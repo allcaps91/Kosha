@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , InstPeriod InstPeriod                                                                                           ");
             parameter.AppendSql("     , TradeAmt TradeAmt                                                                                               ");
             parameter.AppendSql("     , OriginNo OriginNo                                                                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.CARD_APPROV_CENTER A                                                                                ");
+            parameter.AppendSql("  FROM ADMIN.CARD_APPROV_CENTER A                                                                                ");
             if (strGubun == "0")
             {
                 parameter.AppendSql(" WHERE ACTDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                                                   ");
@@ -147,7 +147,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.CARD_APPROV_CENTER  ");
+            parameter.AppendSql("UPDATE ADMIN.CARD_APPROV_CENTER  ");
             parameter.AppendSql("   SET HWRTNO = :HWRTNO                ");
             parameter.AppendSql(" WHERE PANO = :PANO                    ");
             parameter.AppendSql("   AND HWRTNO = :IDX                   ");
@@ -164,7 +164,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.CARD_APPROV_CENTER  ");
+            parameter.AppendSql("UPDATE ADMIN.CARD_APPROV_CENTER  ");
             parameter.AppendSql("   SET HWRTNO = :HWRTNO                ");
             parameter.AppendSql(" WHERE PANO = :PANO                    ");
             if (argCardSeqno > 0)
@@ -195,7 +195,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("       ,TO_CHAR(APPROVDATE,'YYYY-MM-DD HH24:MI') APPROVDATE, SNAME ");
             parameter.AppendSql("       ,PANO,ACCEPTERNAME, TRANHEADER, CARDNO, GUBUN1              ");
             parameter.AppendSql("       ,HPANO,HWRTNO                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.CARD_APPROV_CENTER                              ");
+            parameter.AppendSql("  FROM ADMIN.CARD_APPROV_CENTER                              ");
             parameter.AppendSql(" WHERE PANO =:PANO                                                 ");
             parameter.AppendSql("   AND ORIGINNO =:ORIGINNO                                         ");
 
@@ -212,7 +212,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("          SUM(CASE WHEN TRANHEADER ='11' OR TRANHEADER = '1' THEN TRADEAMT ");
             parameter.AppendSql("          WHEN TRANHEADER ='22' OR TRANHEADER = '2' THEN  (-1) * TRADEAMT END) TAMT ");
 
-            parameter.AppendSql("   FROM  KOSMOS_PMPA.CARD_APPROV_CENTER");
+            parameter.AppendSql("   FROM  ADMIN.CARD_APPROV_CENTER");
 
             parameter.AppendSql("   WHERE ACTDATE = TO_DATE(:TDATE,'YYYY-MM-DD')  ");
             parameter.AppendSql("          AND TRANHEADER IN ('11','22','1','2')  ");

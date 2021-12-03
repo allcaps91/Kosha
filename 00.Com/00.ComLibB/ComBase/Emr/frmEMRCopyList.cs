@@ -515,19 +515,19 @@ namespace ComBase
                 SQL.AppendLine("    C.SECURITY, P.FILESIZE, P.CDATE, ");
                 SQL.AppendLine("    C.FORMCODE, C.UNREADY, C.CDNO, T.CLASS , ");
                 SQL.AppendLine("    (SELECT C1.NAME  ");
-                SQL.AppendLine("        FROM KOSMOS_EMR.EMR_CLINICT C1  ");
+                SQL.AppendLine("        FROM ADMIN.EMR_CLINICT C1  ");
                 SQL.AppendLine("        WHERE C1.CLINCODE = T.CLINCODE) AS LOCATIONNM,  ");
                 SQL.AppendLine("    T.INDATE, P.LOCATION, ");
                 SQL.AppendLine("    S.IPADDRESS, S.FTPUSER, S.FTPPASSWD, S.LOCALPATH, ");
                 SQL.AppendLine("    ( S.LOCALPATH || '/' || P.LOCATION ) AS SVRFILEPATH  ");
-                SQL.AppendLine("FROM KOSMOS_EMR.EMR_PAGET P  ");
-                SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_CHARTPAGET C ");
+                SQL.AppendLine("FROM ADMIN.EMR_PAGET P  ");
+                SQL.AppendLine("INNER JOIN ADMIN.EMR_CHARTPAGET C ");
                 SQL.AppendLine("   ON P.PAGENO = C.PAGENO ");
                 SQL.AppendLine("  AND C.PAGENO = " + VB.Val(strPageNo));
                 SQL.AppendLine("  AND C.PAGE > 0 ");
-                SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_TREATT T ");
+                SQL.AppendLine("INNER JOIN ADMIN.EMR_TREATT T ");
                 SQL.AppendLine("   ON C.TREATNO = T.TREATNO ");
-                SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_PATHT S ");
+                SQL.AppendLine("INNER JOIN ADMIN.EMR_PATHT S ");
                 SQL.AppendLine("   ON P.PATHID = S.PATHID ");
                 #endregion
 
@@ -542,19 +542,19 @@ namespace ComBase
                 SQL.AppendLine("    '' AS SECURITY, P.FILESIZE, P.CDATE, ");
                 SQL.AppendLine("    C.FORMCODE, '' AS UNREADY, '' AS CDNO, T.CLASS , ");
                 SQL.AppendLine("    (SELECT C1.NAME  ");
-                SQL.AppendLine("        FROM KOSMOS_EMR.EMR_CLINICT C1  ");
+                SQL.AppendLine("        FROM ADMIN.EMR_CLINICT C1  ");
                 SQL.AppendLine("        WHERE C1.CLINCODE = T.CLINCODE) AS LOCATIONNM,  ");
                 SQL.AppendLine("    T.INDATE, P.LOCATION, ");
                 SQL.AppendLine("    S.IPADDRESS, S.FTPUSER, S.FTPPASSWD, S.LOCALPATH, ");
                 SQL.AppendLine("    ( S.LOCALPATH || '/' || P.LOCATION ) AS SVRFILEPATH  ");
-                SQL.AppendLine("FROM KOSMOS_EMR.EMR_PAGET P  ");
-                SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_DELETEPAGET C ");
+                SQL.AppendLine("FROM ADMIN.EMR_PAGET P  ");
+                SQL.AppendLine("INNER JOIN ADMIN.EMR_DELETEPAGET C ");
                 SQL.AppendLine("   ON P.PAGENO = C.PAGENO ");
                 SQL.AppendLine("  AND C.PAGENO = " + VB.Val(strPageNo));
                 SQL.AppendLine("  AND C.PAGE > 0 ");
-                SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_TREATT T ");
+                SQL.AppendLine("INNER JOIN ADMIN.EMR_TREATT T ");
                 SQL.AppendLine("   ON C.TREATNO = T.TREATNO ");
-                SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_PATHT S ");
+                SQL.AppendLine("INNER JOIN ADMIN.EMR_PATHT S ");
                 SQL.AppendLine("   ON P.PATHID = S.PATHID ");
                 #endregion
 

@@ -202,7 +202,7 @@ namespace ComEmrBase
                     SQL.AppendLine("     , EXTRACT(chartxml, '//ta1') AS ITEMVALUE");
                     SQL.AppendLine("     , '' AS ITEMVALUE1");
                     SQL.AppendLine("     , '' AS ITEMVALUE2");
-                    SQL.AppendLine("     ,(SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = LTRIM(C.USEID, '0')) AS NAME");
+                    SQL.AppendLine("     ,(SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = LTRIM(C.USEID, '0')) AS NAME");
                 }
                 else
                 {
@@ -210,21 +210,21 @@ namespace ComEmrBase
                     SQL.AppendLine("     , C2.ITEMVALUE");
                     SQL.AppendLine("     , C2.ITEMVALUE1");
                     SQL.AppendLine("     , C2.ITEMVALUE2");
-                    SQL.AppendLine("     ,(SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = C.CHARTUSEID) AS NAME");
+                    SQL.AppendLine("     ,(SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = C.CHARTUSEID) AS NAME");
                 }
                 if (pForm.FmOLDGB == 1)
                 {
-                    SQL.AppendLine("FROM KOSMOS_EMR.EMRXML C ");
+                    SQL.AppendLine("FROM ADMIN.EMRXML C ");
                 }
                 else
                 {
-                    SQL.AppendLine("FROM KOSMOS_EMR.AEMRCHARTMST C ");
-                    SQL.AppendLine("  INNER JOIN KOSMOS_EMR.AEMRCHARTROW C2");
+                    SQL.AppendLine("FROM ADMIN.AEMRCHARTMST C ");
+                    SQL.AppendLine("  INNER JOIN ADMIN.AEMRCHARTROW C2");
                     SQL.AppendLine("     ON C.EMRNO = C2.EMRNO");
                     SQL.AppendLine("    AND C.EMRNOHIS = C2.EMRNOHIS");
                     SQL.AppendLine("    AND C2.ITEMCD = 'I0000000981'");
                 }
-                SQL.AppendLine("  INNER JOIN KOSMOS_EMR.EMRPRTREQ E");
+                SQL.AppendLine("  INNER JOIN ADMIN.EMRPRTREQ E");
                 SQL.AppendLine("     ON C.EMRNO = E.EMRNO");
                 SQL.AppendLine("    AND E.PRTREQNO = " + CopyReqNo);
                 SQL.AppendLine("    AND E.SCANYN = 'T'");
@@ -256,9 +256,9 @@ namespace ComEmrBase
                 SQL.AppendLine("     , EXTRACT(C.CHARTXML, '//ta1').GETCLOBVAL() AS ITEMVALUE");
                 SQL.AppendLine("     , '' AS ITEMVALUE1");
                 SQL.AppendLine("     , '' AS ITEMVALUE2");
-                SQL.AppendLine("     , (SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = LTRIM(C.USEID, '0')) AS NAME");
-                SQL.AppendLine("  FROM KOSMOS_EMR.EMRXML C ");
-                SQL.AppendLine("    INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("     , (SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = LTRIM(C.USEID, '0')) AS NAME");
+                SQL.AppendLine("  FROM ADMIN.EMRXML C ");
+                SQL.AppendLine("    INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("       ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine(" WHERE C.PTNO       = '" + AcpEmr.ptNo + "' ");
                 SQL.AppendLine("   AND C.FORMNO     IN(963) --경과기록지");
@@ -317,13 +317,13 @@ namespace ComEmrBase
                 SQL.AppendLine("     , TO_CLOB(C2.ITEMVALUE) AS ITEMVALUE");
                 SQL.AppendLine("     , C2.ITEMVALUE1");
                 SQL.AppendLine("     , C2.ITEMVALUE2");
-                SQL.AppendLine("     , (SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = C.CHARTUSEID) AS NAME");
-                SQL.AppendLine(" FROM KOSMOS_EMR.AEMRCHARTMST C ");
-                SQL.AppendLine("   INNER JOIN KOSMOS_EMR.AEMRCHARTROW C2");
+                SQL.AppendLine("     , (SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = C.CHARTUSEID) AS NAME");
+                SQL.AppendLine(" FROM ADMIN.AEMRCHARTMST C ");
+                SQL.AppendLine("   INNER JOIN ADMIN.AEMRCHARTROW C2");
                 SQL.AppendLine("      ON C.EMRNO = C2.EMRNO");
                 SQL.AppendLine("     AND C.EMRNOHIS = C2.EMRNOHIS");
                 SQL.AppendLine("     AND C2.ITEMCD IN ('I0000000981')");
-                SQL.AppendLine("   INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("   INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("     ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine(" WHERE C.PTNO       = '" + AcpEmr.ptNo + "' ");
                 SQL.AppendLine("   AND C.FORMNO     IN(963) --경과기록지");

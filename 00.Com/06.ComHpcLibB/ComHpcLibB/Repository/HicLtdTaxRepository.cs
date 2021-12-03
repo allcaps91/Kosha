@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT LTDCODE,BUSE,DAMNAME,DAMJIK,TEL,HPHONE,EMAIL,REMARK,ROWID AS RID  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_LTD_TAX                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_TAX                                     ");
             parameter.AppendSql(" WHERE 1 = 1                                                       ");
             parameter.AppendSql("  AND LTDCODE  =:LTDCODE                                           ");
 
@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_LTD_TAX    ");
+            parameter.AppendSql("DELETE ADMIN.HIC_LTD_TAX    ");
             parameter.AppendSql(" WHERE ROWID =:RID                ");
 
             #region Query 변수대입
@@ -52,7 +52,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT         DAMNAME,TEL,HPHONE,EMAIL   ");
-            parameter.AppendSql("  FROM         KOSMOS_PMPA.HIC_LTD_TAX    ");
+            parameter.AppendSql("  FROM         ADMIN.HIC_LTD_TAX    ");
             parameter.AppendSql(" WHERE         LTDCODE = :LTDCODE         ");
 
             if (gJONG == "83")
@@ -82,7 +82,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT            DAMNAME,TEL,HPHONE,EMAIL         ");
-            parameter.AppendSql("FROM              KOSMOS_PMPA.HIC_LTD_TAX          ");
+            parameter.AppendSql("FROM              ADMIN.HIC_LTD_TAX          ");
             
             if(DLTD > 0)
             {
@@ -127,7 +127,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_LTD_TAX     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_LTD_TAX     ");
             parameter.AppendSql("   SET BUSE    = :BUSE             ");
             parameter.AppendSql("      ,DAMNAME = :DAMNAME          ");
             parameter.AppendSql("      ,DAMJIK  = :DAMJIK           ");
@@ -157,7 +157,7 @@ namespace ComHpcLibB.Repository
         public int Insert(HIC_LTD_TAX item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_PMPA.HIC_LTD_TAX (                                                 ");
+            parameter.AppendSql(" INSERT INTO ADMIN.HIC_LTD_TAX (                                                 ");
             parameter.AppendSql("        LTDCODE,BUSE,DAMNAME,DAMJIK,TEL,HPHONE,EMAIL,REMARK,JOBSABUN,ENTTIME           ");
             parameter.AppendSql(") VALUES (                                                                             ");
             parameter.AppendSql("       :LTDCODE,:BUSE,:DAMNAME,:DAMJIK,:TEL,:HPHONE,:EMAIL,:REMARK,:JOBSABUN,SYSDATE  )");

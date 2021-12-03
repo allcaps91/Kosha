@@ -26,7 +26,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,BIGO, SENDMSG, ROWID AS RID                         ");
             parameter.AppendSql("      ,CASE SENDTIME WHEN NULL THEN ''                     ");
             parameter.AppendSql("                     ELSE '¡Û' END ISSEND                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.ETC_SMS                                 ");
+            parameter.AppendSql("  FROM ADMIN.ETC_SMS                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                               ");
             parameter.AppendSql("   AND BIGO =:BIGO                                         ");
             parameter.AppendSql("   AND GUBUN =:GUBUN                                       ");
@@ -41,7 +41,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.ETC_SMS (                                                          ");
+            parameter.AppendSql("INSERT INTO ADMIN.ETC_SMS (                                                          ");
             parameter.AppendSql("       (JOBDATE, PANO, SNAME, HPHONE, GUBUN                                                ");
             parameter.AppendSql("      , DEPTCODE, DRCODE, RTIME, RETTEL, SENDTIME, SENDMSG)                                ");
             parameter.AppendSql("VALUES                                                                                     ");
@@ -83,7 +83,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.ETC_SMS (                                                  ");
+            parameter.AppendSql("INSERT INTO ADMIN.ETC_SMS (                                                  ");
             parameter.AppendSql("       JOBDATE, HPHONE, GUBUN, RETTEL, SENDMSG, ENTSABUN, ENTDATE, BIGO            ");
             parameter.AppendSql(" ) VALUES (                                                                        ");
             parameter.AppendSql("      :JOBDATE, :HPHONE, :GUBUN, :RETTEL, :SENDMSG, :ENTSABUN, SYSDATE, :BIGO )    ");

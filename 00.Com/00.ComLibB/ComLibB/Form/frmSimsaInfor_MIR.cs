@@ -84,7 +84,7 @@ namespace ComLibB
 
                 if (FGstrRowid == "")
                 {                    
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_SIMSAINFOR_MIR ( SUNEXT, REMARK, DEPTCODE ) VALUES (";
+                    SQL = " INSERT INTO ADMIN.BAS_SIMSAINFOR_MIR ( SUNEXT, REMARK, DEPTCODE ) VALUES (";
                     SQL = SQL + ComNum.VBLF + " '" + txtSuNext.Text + "',  :REMARK, '" + VB.Left(cboDept.Text, 2) + "' )  ";
 
                     SqlErr = clsDB.ExecuteClobQuery(SQL, strData, ref intRowAffected, clsDB.DbCon);
@@ -99,7 +99,7 @@ namespace ComLibB
                 }
                 else
                 {                    
-                    SQL = " UPDATE KOSMOS_PMPA.BAS_SIMSAINFOR_MIR SET REMARK = '" + strData + "', DEPTCODE = '" + VB.Left(cboDept.Text, 2) + "'  ";
+                    SQL = " UPDATE ADMIN.BAS_SIMSAINFOR_MIR SET REMARK = '" + strData + "', DEPTCODE = '" + VB.Left(cboDept.Text, 2) + "'  ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + FGstrRowid + "' ";
 
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -164,7 +164,7 @@ namespace ComLibB
             {
                 if (ComQuery.IsJobAuth(this, "U", clsDB.DbCon) == false) return; ; //권한 확인
 
-                SQL = " DELETE KOSMOS_PMPA.BAS_SIMSAINFOR_MIR WHERE ROWID = '" + FGstrRowid + "' ";
+                SQL = " DELETE ADMIN.BAS_SIMSAINFOR_MIR WHERE ROWID = '" + FGstrRowid + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -247,7 +247,7 @@ namespace ComLibB
                 //'수가READ;
                 SQL = " SELECT A.SUNAMEK, A.SUNAMEE, B.BUN, A.WONCODE, A.BCODE, B.BAMT, ";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(B.DELDATE,'YYYY-MM-DD') DELDATE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SUN A, KOSMOS_PMPA.BAS_SUT B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SUN A, ADMIN.BAS_SUT B ";
                 SQL = SQL + ComNum.VBLF + "   WHERE A.SUNEXT = B.SUNEXT ";
                 SQL = SQL + ComNum.VBLF + "   AND A.SUNEXT = '" + txtSuNext.Text + "'";
 
@@ -282,7 +282,7 @@ namespace ComLibB
 
                 //'심사기준 READ
                 SQL = " SELECT  REMARK, DEPTCODE, ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SIMSAINFOR_MIR ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SIMSAINFOR_MIR ";
                 SQL = SQL + ComNum.VBLF + " WHERE SUNEXT = '" + txtSuNext.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND DEPTCODE = '" + VB.Left(cboDept.Text, 2) + "' ";
 
@@ -367,7 +367,7 @@ namespace ComLibB
                 SCREEN_CLEAR();
                 
                 SQL = "SELECT A.SUNEXT, B.SUNAMEK , A.ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SIMSAINFOR_MIR A, KOSMOS_PMPA.BAS_SUN B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SIMSAINFOR_MIR A, ADMIN.BAS_SUN B";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.DEPTCODE = '" + VB.Left(cboDept.Text, 2) + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND  A.SUNEXT =B.SUNEXT ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY A.SUNEXT ";

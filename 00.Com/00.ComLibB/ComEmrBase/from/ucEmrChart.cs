@@ -398,7 +398,7 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "     , STARTY, STARTX, ENDY, ENDX";
             SQL = SQL + ComNum.VBLF + "     , HEIGHT, BACKCOLOR";
             SQL = SQL + ComNum.VBLF + "     , COMMENTDATE, COMMENTTIME, IDNUMBER";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRCHARTCOMMENT";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRCHARTCOMMENT";
             SQL = SQL + ComNum.VBLF + " WHERE EMRNO         = '" + ChartInfo["EMRNO"] + "'";
             SQL = SQL + ComNum.VBLF + "   AND EMRNOHIS      = '" + ChartInfo["EMRNOHIS"] + "'";
             SQL = SQL + ComNum.VBLF + "   AND IDNUMBER = '" + clsType.User.IdNumber + "'";
@@ -848,15 +848,15 @@ namespace ComEmrBase
 
                 if (ChartInfo["MEDDEPTCD"].ToString().Equals("ER"))
                 {
-                    SQL = string.Format(SQL, "KOSMOS_OCS.OCS_EILLS", ComNum.DB_PMPA);
+                    SQL = string.Format(SQL, "ADMIN.OCS_EILLS", ComNum.DB_PMPA);
                 }
                 else if (ChartInfo["INOUTCLS"].ToString().Equals("O"))
                 {
-                    SQL = string.Format(SQL, "KOSMOS_OCS.OCS_OILLS", ComNum.DB_PMPA);
+                    SQL = string.Format(SQL, "ADMIN.OCS_OILLS", ComNum.DB_PMPA);
                 }
                 else
                 {
-                    SQL = string.Format(SQL, "KOSMOS_OCS.OCS_IILLS", ComNum.DB_PMPA);
+                    SQL = string.Format(SQL, "ADMIN.OCS_IILLS", ComNum.DB_PMPA);
                 }
 
                 return SQL;
@@ -877,12 +877,12 @@ namespace ComEmrBase
             {
                 SQL = string.Empty;
                 SQL = SQL + ComNum.VBLF + "SELECT INDATE, OUTDATE";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_NEW_MASTER ";
                 SQL = SQL + ComNum.VBLF + " WHERE TO_DATE('" + ChartInfo["CHARTDATE"].ToString() + "', 'YYYY-MM-DD') BETWEEN INDATE AND OUTDATE";
                 SQL = SQL + ComNum.VBLF + "   AND PANO = '" + PtNo + "'";
                 SQL = SQL + ComNum.VBLF + "UNION ALL";
                 SQL = SQL + ComNum.VBLF + "SELECT INDATE, OUTDATE";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_NEW_MASTER ";
                 SQL = SQL + ComNum.VBLF + " WHERE TO_DATE(INDATE, 'YYYY-MM-DD') <= TO_DATE('" + ChartInfo["CHARTDATE"].ToString() + "', 'YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND OUTDATE IS NULL";
                 SQL = SQL + ComNum.VBLF + "   AND PANO = '" + PtNo + "' ";
@@ -913,8 +913,8 @@ namespace ComEmrBase
 
                 SQL = string.Empty;
                 SQL = SQL + ComNum.VBLF + "SELECT A.ILLCODE, B.ILLNAMEK, B.ILLNAMEE";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_IILLS A";
-                SQL = SQL + ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_ILLS B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_IILLS A";
+                SQL = SQL + ComNum.VBLF + "  INNER JOIN ADMIN.BAS_ILLS B";
                 SQL = SQL + ComNum.VBLF + "          ON A.ILLCODE = B.ILLCODE";
                 SQL = SQL + ComNum.VBLF + "WHERE PTNO = '" + PtNo + "'";
                 SQL = SQL + ComNum.VBLF + "   AND BDATE >= TO_DATE('" + frDate.Value.ToString("yyyyMMdd") + "', 'YYYY-MM-DD')";

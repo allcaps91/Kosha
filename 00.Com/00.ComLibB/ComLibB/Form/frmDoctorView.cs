@@ -68,7 +68,7 @@ namespace ComLibB
             try
             {
                 SQL = "   SELECT A.DEPTCODE, B.DeptNamek, A.SABUN, A.DRNAME, A.DRBUNHO";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_DOCTOR A, KOSMOS_PMPA.BAS_CLINICDEPT B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_DOCTOR A, ADMIN.BAS_CLINICDEPT B";
                 SQL = SQL + ComNum.VBLF + " WHERE A.GBOUT ='N'";
 
                 if (VB.Left(cboDept.SelectedItem.ToString(), 2) != "**")

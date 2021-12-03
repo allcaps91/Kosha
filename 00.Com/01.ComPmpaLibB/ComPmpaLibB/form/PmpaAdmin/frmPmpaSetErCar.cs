@@ -60,7 +60,7 @@ namespace ComPmpaLibB
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT CODE, NAME, TO_CHAR(ENTDATE,'YYYY-MM-DD') ENTDATE,";
                 SQL += ComNum.VBLF + "        TO_CHAR(DELDATE,'YYYY-MM-DD') DELDATE, ROWID,NCODE";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.ETC_ER_CAR";
+                SQL += ComNum.VBLF + "   FROM ADMIN.ETC_ER_CAR";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1";
                 SQL += ComNum.VBLF + "  ORDER BY CODE ";
                 SqlErr = clsDB.GetDataTable(ref Dt, SQL, clsDB.DbCon);
@@ -231,7 +231,7 @@ namespace ComPmpaLibB
                         if (strRowid == "" && strDel == "")
                         {
                             SQL = "";
-                            SQL += ComNum.VBLF + " INSERT INTO KOSMOS_PMPA.ETC_ER_CAR";
+                            SQL += ComNum.VBLF + " INSERT INTO ADMIN.ETC_ER_CAR";
                             SQL += ComNum.VBLF + "        (CODE, NAME,NCODE, ENTDATE)";
                             SQL += ComNum.VBLF + " VALUES ('" + strCode + "',";
                             SQL += ComNum.VBLF + "         '" + strName + "',";
@@ -244,7 +244,7 @@ namespace ComPmpaLibB
                             if (strDel != "")
                             {
                                 SQL = "";
-                                SQL += ComNum.VBLF + " UPDATE KOSMOS_PMPA.ETC_ER_CAR";
+                                SQL += ComNum.VBLF + " UPDATE ADMIN.ETC_ER_CAR";
                                 SQL += ComNum.VBLF + "    SET DELDATE = TRUNC(SYSDATE)";
                                 SQL += ComNum.VBLF + "  WHERE ROWID = '" + strRowid + "' ";
                                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowCnt, clsDB.DbCon);
@@ -252,7 +252,7 @@ namespace ComPmpaLibB
                             else if (strChange == "Y")
                             {
                                 SQL = "";
-                                SQL += ComNum.VBLF + " UPDATE KOSMOS_PMPA.ETC_ER_CAR";
+                                SQL += ComNum.VBLF + " UPDATE ADMIN.ETC_ER_CAR";
                                 SQL += ComNum.VBLF + "    SET Code = '" + strCode + "',";
                                 SQL += ComNum.VBLF + "        NCODE = '" + strNCode + "',";
                                 SQL += ComNum.VBLF + "        Name = '" + strName + "'";

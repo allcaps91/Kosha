@@ -125,7 +125,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "SELECT TO_CHAR(A.RDATE, 'YYYY-MM-DD') RDATE, a.Rtime,a.Pano,a.Sname,a.DeptCode,a.DrCode,a.EntSabun,";
                 SQL = SQL + ComNum.VBLF + "       b.Name,a.ROWID ROWID1 ,TO_CHAR(a.EntDate,'YYYY-MM-DD HH24:MI') EntDate, ";
                 SQL = SQL + ComNum.VBLF + "       GBINTERNET, GBDRUG, c.DeptNameK, d.DRNAME, a.GbChk, A.ETCJIN, DECODE(ENTSABUN, '999999', '모바일예약','전화예약') GUBUN,  ";
-                SQL = SQL + ComNum.VBLF + "  (SELECT JUMIN1 FROM KOSMOS_PMPA.BAS_PATIENT SUB WHERE PANO = A.PANO AND ROWNUM = 1) BIRTH ";
+                SQL = SQL + ComNum.VBLF + "  (SELECT JUMIN1 FROM ADMIN.BAS_PATIENT SUB WHERE PANO = A.PANO AND ROWNUM = 1) BIRTH ";
                 if (optJep0.Checked == true)
                 {
                     SQL = SQL + ComNum.VBLF + "  FROM OPD_TELRESV     a, ";
@@ -169,7 +169,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " SELECT TO_CHAR(A.DATE3,'YYYY-MM-DD') RDATE, TO_CHAR(A.DATE3,'HH24:MI') RTIME, A.PANO, A.SNAME, A.DEPTCODE, A.DRCODE, A.PART, ";
                 SQL = SQL + ComNum.VBLF + "    B.NAME, A.ROWID ROWID1, TO_CHAR(DATE1, 'YYYY-MM-DD') ENTDATE,  ";
                 SQL = SQL + ComNum.VBLF + "    'N' GBINTERNET, 'N' GBDRUG, C.DEPTNAMEK, D.DRNAME, '' GBCHK, '0' ETCJIN, 'OCS예약' GUBUN, ";
-                SQL = SQL + ComNum.VBLF + "  (SELECT JUMIN1 FROM KOSMOS_PMPA.BAS_PATIENT SUB WHERE PANO = A.PANO AND ROWNUM = 1) BIRTH ";
+                SQL = SQL + ComNum.VBLF + "  (SELECT JUMIN1 FROM ADMIN.BAS_PATIENT SUB WHERE PANO = A.PANO AND ROWNUM = 1) BIRTH ";
                 if (optJep0.Checked == true)
                 {
                     SQL = SQL + ComNum.VBLF + "  ";
@@ -244,20 +244,20 @@ namespace ComLibB
                     if (rbtnPart1.Checked == true)
                     {
                         SQL = SQL + ComNum.VBLF + "          SELECT SABUN ";
-                        SQL = SQL + ComNum.VBLF + "            FROM KOSMOS_ADM.INSA_MST ";
-                        SQL = SQL + ComNum.VBLF + "           WHERE BUSE IN (SELECT BUCODE FROM KOSMOS_PMPA.BAS_BUSE WHERE NAME LIKE '%의료정보%') ";
+                        SQL = SQL + ComNum.VBLF + "            FROM ADMIN.INSA_MST ";
+                        SQL = SQL + ComNum.VBLF + "           WHERE BUSE IN (SELECT BUCODE FROM ADMIN.BAS_BUSE WHERE NAME LIKE '%의료정보%') ";
                     }
                     else if (rbtnPart2.Checked == true)
                     {
                         SQL = SQL + ComNum.VBLF + "          SELECT SABUN ";
-                        SQL = SQL + ComNum.VBLF + "            FROM KOSMOS_ADM.INSA_MST ";
-                        SQL = SQL + ComNum.VBLF + "           WHERE BUSE IN (SELECT MATCH_CODE FROM KOSMOS_PMPA.NUR_CODE WHERE GUBUN = '2')";
+                        SQL = SQL + ComNum.VBLF + "            FROM ADMIN.INSA_MST ";
+                        SQL = SQL + ComNum.VBLF + "           WHERE BUSE IN (SELECT MATCH_CODE FROM ADMIN.NUR_CODE WHERE GUBUN = '2')";
                     }
                     else if (rbtnPart3.Checked == true)
                     {
                         SQL = SQL + ComNum.VBLF + "          SELECT SABUN ";
-                        SQL = SQL + ComNum.VBLF + "            FROM KOSMOS_ADM.INSA_MST ";
-                        SQL = SQL + ComNum.VBLF + "           WHERE BUSE IN (SELECT BUCODE FROM KOSMOS_PMPA.BAS_BUSE WHERE NAME LIKE '%원무%') ";
+                        SQL = SQL + ComNum.VBLF + "            FROM ADMIN.INSA_MST ";
+                        SQL = SQL + ComNum.VBLF + "           WHERE BUSE IN (SELECT BUCODE FROM ADMIN.BAS_BUSE WHERE NAME LIKE '%원무%') ";
                     }
                     else if (rbtnPart4.Checked == true)
                     {
@@ -492,7 +492,7 @@ namespace ComLibB
                         {
 
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_PMPA.OPD_RESERVED_NEW SET  ";
+                            SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.OPD_RESERVED_NEW SET  ";
                             SQL = SQL + ComNum.VBLF + " RETDATE = SYSDATE, ";
                             SQL = SQL + ComNum.VBLF + " RETAMT = 0, ";
                             SQL = SQL + ComNum.VBLF + " RETPART = '" + clsType.User.Sabun + "'";
@@ -620,7 +620,7 @@ namespace ComLibB
 
 
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + "UPDATE KOSMOS_EMR.EMR_TREATT SET DELDATE = '" + strRDate.Replace("-", "") + "' ";
+                            SQL = SQL + ComNum.VBLF + "UPDATE ADMIN.EMR_TREATT SET DELDATE = '" + strRDate.Replace("-", "") + "' ";
                             SQL = SQL + ComNum.VBLF + "  WHERE PATID = '" + strPano + "' ";
                             SQL = SQL + ComNum.VBLF + "    AND INDATE = '" + strRDate + "' ";
                             SQL = SQL + ComNum.VBLF + "    AND CLINCODE = '" + strDept + "' ";
@@ -673,12 +673,12 @@ namespace ComLibB
             //}
 
             SQL = "";//2019-01-17 오더는 제외
-            //SQL = " SELECT PTNO FROM KOSMOS_OCS.OCS_OORDER ";
+            //SQL = " SELECT PTNO FROM ADMIN.OCS_OORDER ";
             //SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + argPANO + "' ";
             //SQL = SQL + ComNum.VBLF + "   AND DEPTCODE = '" + argDEPT + "' ";
             //SQL = SQL + ComNum.VBLF + "   AND BDATE = TRUNC(SYSDATE) ";
             //SQL = SQL + ComNum.VBLF + " UNION ALL ";
-            SQL = SQL + ComNum.VBLF + " SELECT PANO FROM KOSMOS_PMPA.OPD_SLIP ";
+            SQL = SQL + ComNum.VBLF + " SELECT PANO FROM ADMIN.OPD_SLIP ";
             SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + argPANO + "' ";
             SQL = SQL + ComNum.VBLF + "   AND DEPTCODE = '" + argDEPT + "' ";
             //SQL = SQL + ComNum.VBLF + "   AND BDATE = TRUNC(SYSDATE) ";

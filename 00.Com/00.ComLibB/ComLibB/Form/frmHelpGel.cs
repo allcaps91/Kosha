@@ -68,7 +68,7 @@ namespace ComLibB
                 }
 
                 SQL = "";
-                SQL += ComNum.VBLF + " SELECT LtdCode, Name, TaxNo FROM KOSMOS_ADM.AIS_LTD  ";
+                SQL += ComNum.VBLF + " SELECT LtdCode, Name, TaxNo FROM ADMIN.AIS_LTD  ";
                 switch (optCho0.Checked)
                 {
                     case true:

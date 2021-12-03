@@ -731,7 +731,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT Sort,Code,Name FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = SQL + ComNum.VBLF + "SELECT Sort,Code,Name FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + " WHERE Gubun='" + ArgGubun + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND (DelDate IS NULL OR DelDate > TRUNC(SYSDATE)) ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY Sort,Code ";

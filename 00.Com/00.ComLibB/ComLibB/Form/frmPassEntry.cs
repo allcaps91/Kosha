@@ -76,7 +76,7 @@ namespace ComLibB
             DataTable dt = null;
 
             //업무권한별 목록 SELECT
-            SQL = "SELECT ProgramID,Name FROM KOSMOS_PMPA.BAS_PASS ";
+            SQL = "SELECT ProgramID,Name FROM ADMIN.BAS_PASS ";
             SQL = SQL + ComNum.VBLF + "WHERE ProgramID > ' '";
             SQL = SQL + ComNum.VBLF + "  AND IdNumber = 0 ";
             SQL = SQL + ComNum.VBLF + "ORDER BY ProgramID ";
@@ -134,7 +134,7 @@ namespace ComLibB
             btnRoll.Enabled = false;
 
             //BAS_PASS READ
-            SQL = "SELECT * FROM KOSMOS_PMPA.BAS_PASS ";
+            SQL = "SELECT * FROM ADMIN.BAS_PASS ";
             SQL = SQL + ComNum.VBLF + "WHERE ProgramID = ' ' ";
             SQL = SQL + ComNum.VBLF + "  AND IdNumber = " + nSabun + " ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -179,7 +179,7 @@ namespace ComLibB
             ss1_Sheet1.Cells[4, 1].Text = FstrJikName;
 
             //업무권한별 가능여부 SET
-            SQL = "SELECT ProgramID, privilege1, privilege2, privilege3, privilege4, rowid  FROM KOSMOS_PMPA.BAS_PASS ";
+            SQL = "SELECT ProgramID, privilege1, privilege2, privilege3, privilege4, rowid  FROM ADMIN.BAS_PASS ";
             SQL = SQL + ComNum.VBLF + "WHERE IdNumber = " + nSabun + " ";
             SQL = SQL + ComNum.VBLF + "  AND ProgramID > ' ' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -267,7 +267,7 @@ namespace ComLibB
             SQL = "SELECT KorName,Buse,Jik,TO_CHAR(IpsaDay,'YYYY-MM-DD') IpsaDay,";
             SQL = SQL + ComNum.VBLF + "TO_CHAR(BalDay,'YYYY-MM-DD') BalDay,";
             SQL = SQL + ComNum.VBLF + "TO_CHAR(ToiDay,'YYYY-MM-DD') ToiDay ";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.INSA_MST ";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.INSA_MST ";
             SQL = SQL + ComNum.VBLF + "WHERE Sabun = '" + string.Format("{0:00000}",argSabun) + "' ";
 
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -285,7 +285,7 @@ namespace ComLibB
             dt = null;
 
             //부서명 READ
-            SQL = "SELECT Name FROM KOSMOS_PMPA.BAS_BUSE ";
+            SQL = "SELECT Name FROM ADMIN.BAS_BUSE ";
             SQL = SQL + ComNum.VBLF + "WHERE BuCode = '" + strBuseCode + "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
             if (dt.Rows.Count > 0)  { FstrBuseName = dt.Rows[0]["Name"].ToString().Trim() as string; }
@@ -293,7 +293,7 @@ namespace ComLibB
             dt = null;
 
             //직책명 READ
-            SQL = "SELECT Name FROM KOSMOS_ADM.INSA_CODE ";
+            SQL = "SELECT Name FROM ADMIN.INSA_CODE ";
             SQL = SQL + ComNum.VBLF + "WHERE Gubun = '2' ";
             SQL = SQL + ComNum.VBLF + "  AND Code = '" + strJikCode + "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -541,7 +541,7 @@ namespace ComLibB
             if(txtPart.Text.Trim() == "") { goto Return; }
 
             //작업조 다른사람이 사용여부 체크
-            SQL = "SELECT IdNumber,Name FROM KOSMOS_PMPA.BAS_PASS ";
+            SQL = "SELECT IdNumber,Name FROM ADMIN.BAS_PASS ";
             SQL = SQL + ComNum.VBLF + "WHERE ProgramID = ' ' ";
             SQL = SQL + ComNum.VBLF + "  AND IdNumber <> " + nSabun + " ";
             SQL = SQL + ComNum.VBLF + "  AND Part = '" + txtPart.Text + "' ";
@@ -584,7 +584,7 @@ namespace ComLibB
             try
             {
                 //INSERT,UPDATE여부
-                SQL = "SELECT ROWID FROM KOSMOS_PMPA.BAS_PASS ";
+                SQL = "SELECT ROWID FROM ADMIN.BAS_PASS ";
                 SQL = SQL + ComNum.VBLF + "WHERE ProgramID = ' ' ";
                 SQL = SQL + ComNum.VBLF + "  AND IdNumber = " + nSabun + " ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -716,7 +716,7 @@ namespace ComLibB
                     strSabun = String.Format("{0:000000}", nSabun);
                 }
                 //WEB 서버로 전송하기 위하여 INSA_MST에 업데이트
-                SQL = " UPDATE KOSMOS_ADM.INSA_MST SET WebSend='*' ";
+                SQL = " UPDATE ADMIN.INSA_MST SET WebSend='*' ";
                 SQL = SQL + ComNum.VBLF + " WHERE Sabun='" + strSabun + "' ";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
 
@@ -775,7 +775,7 @@ namespace ComLibB
             ss3_Sheet1.ClearRange(0, 0, ss3_Sheet1.Rows.Count, ss3_Sheet1.Columns.Count, true);
 
             //BAS_PASS를 READ
-            SQL = "SELECT * FROM KOSMOS_PMPA.BAS_PASS ";
+            SQL = "SELECT * FROM ADMIN.BAS_PASS ";
             SQL = SQL + ComNum.VBLF + "WHERE ProgramID = ' ' ";
             if (txtViewData.Text != "")
             {
@@ -868,7 +868,7 @@ namespace ComLibB
             ss3_Sheet1.Rows.Count = 20;
             ss3_Sheet1.ClearRange(0, 0, ss3_Sheet1.Rows.Count, ss3_Sheet1.Columns.Count, true);
 
-            SQL = "SELECT * FROM KOSMOS_PMPA.BAS_PASS ";
+            SQL = "SELECT * FROM ADMIN.BAS_PASS ";
             SQL = SQL + ComNum.VBLF + "WHERE ProgramID = ' ' ";
             SQL = SQL + ComNum.VBLF + "  AND Part > ' ' ";
             SQL = SQL + ComNum.VBLF + "ORDER BY Part,IdNumber ";
@@ -929,9 +929,9 @@ namespace ComLibB
             ss3_Sheet1.Rows.Count = 30;
             ss3_Sheet1.ClearRange(0, 0, ss3_Sheet1.Rows.Count, ss3_Sheet1.Columns.Count, true);
 
-            SQL = "SELECT * FROM KOSMOS_PMPA.BAS_PASS ";
+            SQL = "SELECT * FROM ADMIN.BAS_PASS ";
             SQL = SQL + ComNum.VBLF + "WHERE ProgramID = ' ' ";
-            SQL = SQL + ComNum.VBLF + "  AND IDNUMBER IN ( SELECT SABUN FROM KOSMOS_ADM.INSA_MST WHERE TOIDAY IS NOT NULL )";
+            SQL = SQL + ComNum.VBLF + "  AND IDNUMBER IN ( SELECT SABUN FROM ADMIN.INSA_MST WHERE TOIDAY IS NOT NULL )";
             SQL = SQL + ComNum.VBLF + "ORDER BY Name ";
 
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -957,7 +957,7 @@ namespace ComLibB
                     strOK = "NO";
                     nSabun = long.Parse(dt.Rows[i]["IdNumber"].ToString());
 
-                    SQL = "SELECT * FROM KOSMOS_PMPA.BAS_PASS ";
+                    SQL = "SELECT * FROM ADMIN.BAS_PASS ";
                     SQL = SQL + ComNum.VBLF + "WHERE ProgramID = ' ' ";
                     SQL = SQL + ComNum.VBLF + "  AND IDNUMBER ='" + nSabun + "' ";
                     SQL = SQL + ComNum.VBLF + "   AND (PRIVIlEGE1 ='Y' OR PRIVIlEGE2 ='Y' OR PRIVIlEGE3 ='Y' OR PRIVIlEGE4 ='Y'  ) ";

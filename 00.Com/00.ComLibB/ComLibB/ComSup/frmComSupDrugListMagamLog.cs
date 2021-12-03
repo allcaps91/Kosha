@@ -44,8 +44,8 @@ namespace ComLibB
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT ";
                 SQL = SQL + ComNum.VBLF + "    BDATE, WARDCODE, CHASU, BUILD, A.SABUN, B.USERNAME ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_DRUG_MAGAMLOG A ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_USER B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_DRUG_MAGAMLOG A ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_USER B ";
                 SQL = SQL + ComNum.VBLF + "    ON A.SABUN = B.IDNUMBER ";
                 SQL = SQL + ComNum.VBLF + "WHERE BDATE = '"+ mstrBDate.Replace("-","") + "' ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY BUILD ";

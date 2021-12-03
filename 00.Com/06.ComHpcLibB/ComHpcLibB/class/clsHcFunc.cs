@@ -1534,7 +1534,7 @@ namespace ComHpcLibB
             }
 
             BAS_PCCONFIG Config_PftSNlst = basPcconfigService.GetConfig_PFTSN(clsCompuInfo.gstrCOMIP);
-            //select* FROM KOSMOS_PMPA.BAS_PCCONFIG
+            //select* FROM ADMIN.BAS_PCCONFIG
             // WHERE GUBUN = '폐활량장비S/N'
 
             if (!Config_PftSNlst.IsNullOrEmpty())
@@ -1759,7 +1759,7 @@ namespace ComHpcLibB
                 //'2014-11-18 FTP저장체크
 
                 SQL = " SELECT ROWID,TO_CHAR(RDATE,'YYYYMMDD') AS RDATE, TO_CHAR(BDATE,'YYYYMMDD') AS BDATE,  GUBUN,FILEPATH       ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.ETC_JUPMST ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_JUPMST ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + strROWID + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND GBFTP ='Y' ";
 
@@ -1798,7 +1798,7 @@ namespace ComHpcLibB
                     dt = null;
 
                     SQL = "";
-                    SQL = "SELECT IMAGE FROM KOSMOS_OCS.ETC_JUPMST  WHERE ROWID = '" + strROWID + "' ";
+                    SQL = "SELECT IMAGE FROM ADMIN.ETC_JUPMST  WHERE ROWID = '" + strROWID + "' ";
 
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -1894,7 +1894,7 @@ namespace ComHpcLibB
             try
             {   
                 //'2014-11-18 FTP저장체크
-                SQL = " SELECT ROWID,TO_CHAR(RDATE,'YYYYMMDD') AS RDATE, FILEPATH FROM KOSMOS_OCS.ETC_JUPMST ";
+                SQL = " SELECT ROWID,TO_CHAR(RDATE,'YYYYMMDD') AS RDATE, FILEPATH FROM ADMIN.ETC_JUPMST ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + strROWID + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND GbFTP ='Y' ";
 
@@ -1930,7 +1930,7 @@ namespace ComHpcLibB
 
                     SQL = "";
                     SQL = "SELECT IMAGE ";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.ETC_JUPMST ";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.ETC_JUPMST ";
                     SQL = SQL + ComNum.VBLF + "WHERE ROWID = '" + strROWID + "' ";
 
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

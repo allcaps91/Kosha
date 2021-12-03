@@ -23,8 +23,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.BuCode,b.Name                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_ExJong a,       ");
-            parameter.AppendSql("       KOSMOS_PMPA.BAS_BUSE b          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_ExJong a,       ");
+            parameter.AppendSql("       ADMIN.BAS_BUSE b          ");
             parameter.AppendSql(" WHERE a.BuCode=b.AbcBuCode            ");
             parameter.AppendSql(" GROUP BY  a.BuCode,b.Name             ");
 

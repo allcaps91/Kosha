@@ -451,7 +451,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "                     WHEN M.GBSTS = 9 THEN '03.취소'                                                       ";
                 SQL = SQL + ComNum.VBLF + "                     ELSE '02.퇴원'                                                                        ";
                 SQL = SQL + ComNum.VBLF + "                END AS GBSTS, IPDNO                                                                        ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER M                                                                         ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER M                                                                         ";
 
                 switch (cboWard.Text.Trim())
                 {
@@ -472,16 +472,16 @@ namespace ComLibB
                         SQL = SQL + ComNum.VBLF + " WHERE M.PANO IN ( SELECT PANO FROM  TONG_HD_DAILY WHERE TDATE = TO_DATE('" + strToDate + "','YYYY-MM-DD') )";
                         break;
                     case "OP":
-                        SQL = SQL + ComNum.VBLF + " WHERE M.PANO IN ( SELECT PANO FROM KOSMOS_PMPA.ORAN_MASTER WHERE OPDATE =TO_DATE('" + strToDate + "','YYYY-MM-DD') ) ";
+                        SQL = SQL + ComNum.VBLF + " WHERE M.PANO IN ( SELECT PANO FROM ADMIN.ORAN_MASTER WHERE OPDATE =TO_DATE('" + strToDate + "','YYYY-MM-DD') ) ";
                         break;
                     case "ENDO":
-                        SQL = SQL + ComNum.VBLF + " WHERE M.PANO IN ( SELECT PTNO FROM KOSMOS_OCS.ENDO_JUPMST WHERE TRUNC(RDATE) =TO_DATE('" + strToDate + "','YYYY-MM-DD') ) ";
+                        SQL = SQL + ComNum.VBLF + " WHERE M.PANO IN ( SELECT PTNO FROM ADMIN.ENDO_JUPMST WHERE TRUNC(RDATE) =TO_DATE('" + strToDate + "','YYYY-MM-DD') ) ";
                         break;
                     case "ER":
-                        SQL = SQL + ComNum.VBLF + " WHERE M.PANO IN ( SELECT PANO FROM KOSMOS_PMPA.OPD_MASTER  WHERE BDATE =TO_DATE('" + strToDate + "','YYYY-MM-DD') AND DEPTCODE ='ER' ) ";
+                        SQL = SQL + ComNum.VBLF + " WHERE M.PANO IN ( SELECT PANO FROM ADMIN.OPD_MASTER  WHERE BDATE =TO_DATE('" + strToDate + "','YYYY-MM-DD') AND DEPTCODE ='ER' ) ";
                         break;
                     case "RA":
-                        SQL = SQL + ComNum.VBLF + " WHERE  M.PANO IN ( SELECT PTNO   FROM KOSMOS_OCS.OCS_ITRANSFER  WHERE TODRCODE ='1107' AND GBDEL <>'*'  AND TRUNC(EDATE) =TO_DATE('" + strToDate + "','YYYY-MM-DD' ))  ";
+                        SQL = SQL + ComNum.VBLF + " WHERE  M.PANO IN ( SELECT PTNO   FROM ADMIN.OCS_ITRANSFER  WHERE TODRCODE ='1107' AND GBDEL <>'*'  AND TRUNC(EDATE) =TO_DATE('" + strToDate + "','YYYY-MM-DD' ))  ";
                         break;
                     default:
                         SQL = SQL + ComNum.VBLF + " WHERE M.WardCode='" + cboWard.Text.Trim() + "' ";
@@ -499,11 +499,11 @@ namespace ComLibB
 
                 SQL = SQL + ComNum.VBLF + " AND EXISTS (                                                            ";
                 SQL = SQL + ComNum.VBLF + "             SELECT 1                                                    ";
-                SQL = SQL + ComNum.VBLF + "                 FROM KOSMOS_PMPA.IPD_NEW_SLIP  SUB                      ";
+                SQL = SQL + ComNum.VBLF + "                 FROM ADMIN.IPD_NEW_SLIP  SUB                      ";
                 SQL = SQL + ComNum.VBLF + "             WHERE(PANO, BDATE, ORDERNO) IN                              ";
                 SQL = SQL + ComNum.VBLF + "                 (                                                       ";
                 SQL = SQL + ComNum.VBLF + "                 SELECT PTNO, BDATE, ORDERNO                             ";
-                SQL = SQL + ComNum.VBLF + "                     FROM KOSMOS_OCS.OCS_IORDER                          ";
+                SQL = SQL + ComNum.VBLF + "                     FROM ADMIN.OCS_IORDER                          ";
                 SQL = SQL + ComNum.VBLF + "                 WHERE GbStatus IN(' ', 'D', 'D+')                       ";
                 SQL = SQL + ComNum.VBLF + "                     AND BDate >= TO_DATE('" + dtpSDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD')";
                 SQL = SQL + ComNum.VBLF + "                     AND BDate <= TO_DATE('" + dtpEDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD')";
@@ -1046,7 +1046,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT COUNT(GRPNAME) CNT ";
                 SQL = SQL + ComNum.VBLF + " FROM " + ComNum.DB_MED + "OCS_DRUGINFO_COMPONENT ";
-                SQL = SQL + ComNum.VBLF + "  WHERE TRIM(GRPNAME) in (SELECT TRIM(GRPNAME) FROM KOSMOS_OCS.OCS_DRUGINFO_COMPONENT WHERE TRIM(SUNEXT) ='" + argSuCode + "') ";
+                SQL = SQL + ComNum.VBLF + "  WHERE TRIM(GRPNAME) in (SELECT TRIM(GRPNAME) FROM ADMIN.OCS_DRUGINFO_COMPONENT WHERE TRIM(SUNEXT) ='" + argSuCode + "') ";
                 SQL = SQL + ComNum.VBLF + " HAVING COUNT(GRPNAME) > 0";  //2건이상인것  - 일단풀어줌 2012-12-12
                 SQL = SQL + ComNum.VBLF + "";
 
@@ -1185,35 +1185,35 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "                ELSE '퇴원'                                                                         ";
                 SQL = SQL + ComNum.VBLF + "        END AS GBSTS, D.IPDNO,                                                                     ";
                 SQL = SQL + ComNum.VBLF + "        A.DRCODE,                                                                                  ";
-                SQL = SQL + ComNum.VBLF + "        (SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR                                                  ";
+                SQL = SQL + ComNum.VBLF + "        (SELECT DRNAME FROM ADMIN.OCS_DOCTOR                                                  ";
                 SQL = SQL + ComNum.VBLF + "            WHERE SABUN = A.DRCODE                                                                 ";
                 SQL = SQL + ComNum.VBLF + "        ) AS DRNAME,                                                                               ";
                 SQL = SQL + ComNum.VBLF + "        A.PTNO, A.BDATE, A.BUN, A.ORDERCODE, A.DOSCODE,                                            ";
                 SQL = SQL + ComNum.VBLF + "        (SELECT DOSNAME                                                                            ";
-                SQL = SQL + ComNum.VBLF + "            FROM KOSMOS_OCS.OCS_ODOSAGE                                                            ";
+                SQL = SQL + ComNum.VBLF + "            FROM ADMIN.OCS_ODOSAGE                                                            ";
                 SQL = SQL + ComNum.VBLF + "            WHERE DOSCODE = A.DOSCODE                                                              ";
                 SQL = SQL + ComNum.VBLF + "        ) AS DOSNAME,                                                                              ";
                 SQL = SQL + ComNum.VBLF + "        A.CONTENTS, A.REALQTY, A.GBDIV, A.NAL,                                                     ";
                 SQL = SQL + ComNum.VBLF + "        TO_CHAR(A.ENTDATE, 'YYYY-MM-DD HH24:MI') ENTDATE, A.NURSEID, A.V_ORDERNO, A.ORDERNO,       ";
                 SQL = SQL + ComNum.VBLF + "        A.SLIPNO, A.SUCODE, A.GBVERB, TO_CHAR(B.WRITEDATE, 'YYYY-MM-DD HH24:MI') WDATE,            ";
                 SQL = SQL + ComNum.VBLF + "        B.WRITESABUN,                                                                              ";
-                SQL = SQL + ComNum.VBLF + "        (SELECT KORNAME FROM KOSMOS_ADM.INSA_MST                                                   ";
+                SQL = SQL + ComNum.VBLF + "        (SELECT KORNAME FROM ADMIN.INSA_MST                                                   ";
                 SQL = SQL + ComNum.VBLF + "            WHERE SABUN = B.WRITESABUN                                                             ";
                 SQL = SQL + ComNum.VBLF + "                AND(TOIDAY IS NULL OR TOIDAY < TRUNC(SYSDATE))                                     ";
                 SQL = SQL + ComNum.VBLF + "        ) AS WRITENAME,                                                                            ";
                 SQL = SQL + ComNum.VBLF + "        TO_CHAR(A.DRORDERVIEW, 'YYYY-MM-DD HH24:MI') DRORDERVIEW                                   ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_IORDER A                                                                     ";                
-                SQL = SQL + ComNum.VBLF + " LEFT OUTER JOIN KOSMOS_PMPA.NUR_VERBAL_ORDER_CONFIRM B                                              ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_IORDER A                                                                     ";                
+                SQL = SQL + ComNum.VBLF + " LEFT OUTER JOIN ADMIN.NUR_VERBAL_ORDER_CONFIRM B                                              ";
                 SQL = SQL + ComNum.VBLF + "    ON A.PTNO = B.PTNO                                                                               ";
                 SQL = SQL + ComNum.VBLF + "   AND A.ORDERNO = B.ORDERNO                                                                         ";
                 SQL = SQL + ComNum.VBLF + "   AND A.ENTDATE = B.ENTDATE                                                                         ";
      
                 #region 입원 정보 조건
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER D                                                             ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.IPD_NEW_MASTER D                                                             ";
                 SQL = SQL + ComNum.VBLF + "    ON A.PTNO = D.PANO";
                 SQL = SQL + ComNum.VBLF + "   AND EXISTS (                                                            ";
                 SQL = SQL + ComNum.VBLF + "             SELECT 1                                                    ";
-                SQL = SQL + ComNum.VBLF + "                 FROM KOSMOS_PMPA.IPD_NEW_SLIP  SUB                      ";
+                SQL = SQL + ComNum.VBLF + "                 FROM ADMIN.IPD_NEW_SLIP  SUB                      ";
                 SQL = SQL + ComNum.VBLF + "             WHERE SUB.BDATE >= A.BDATE                              ";
                 SQL = SQL + ComNum.VBLF + "               AND SUB.BDATE <= A.BDATE                    ";
                 SQL = SQL + ComNum.VBLF + "               AND D.IPDNO  = SUB.IPDNO                    ";
@@ -1239,16 +1239,16 @@ namespace ComLibB
                         SQL = SQL + ComNum.VBLF + "   AND D.PANO IN ( SELECT PANO FROM  TONG_HD_DAILY WHERE TDATE = TO_DATE('" + strToDate + "','YYYY-MM-DD') )";
                         break;
                     case "OP":
-                        SQL = SQL + ComNum.VBLF + "   AND D.PANO IN ( SELECT PANO FROM KOSMOS_PMPA.ORAN_MASTER WHERE OPDATE =TO_DATE('" + strToDate + "','YYYY-MM-DD') ) ";
+                        SQL = SQL + ComNum.VBLF + "   AND D.PANO IN ( SELECT PANO FROM ADMIN.ORAN_MASTER WHERE OPDATE =TO_DATE('" + strToDate + "','YYYY-MM-DD') ) ";
                         break;
                     case "ENDO":
-                        SQL = SQL + ComNum.VBLF + "   AND D.PANO IN ( SELECT PTNO FROM KOSMOS_OCS.ENDO_JUPMST WHERE TRUNC(RDATE) =TO_DATE('" + strToDate + "','YYYY-MM-DD') ) ";
+                        SQL = SQL + ComNum.VBLF + "   AND D.PANO IN ( SELECT PTNO FROM ADMIN.ENDO_JUPMST WHERE TRUNC(RDATE) =TO_DATE('" + strToDate + "','YYYY-MM-DD') ) ";
                         break;
                     case "ER":
-                        SQL = SQL + ComNum.VBLF + "   AND D.PANO IN ( SELECT PANO FROM KOSMOS_PMPA.OPD_MASTER  WHERE BDATE =TO_DATE('" + strToDate + "','YYYY-MM-DD') AND DEPTCODE ='ER' ) ";
+                        SQL = SQL + ComNum.VBLF + "   AND D.PANO IN ( SELECT PANO FROM ADMIN.OPD_MASTER  WHERE BDATE =TO_DATE('" + strToDate + "','YYYY-MM-DD') AND DEPTCODE ='ER' ) ";
                         break;
                     case "RA":
-                        SQL = SQL + ComNum.VBLF + "   AND D.PANO IN ( SELECT PTNO   FROM KOSMOS_OCS.OCS_ITRANSFER  WHERE TODRCODE ='1107' AND GBDEL <>'*'  AND TRUNC(EDATE) =TO_DATE('" + strToDate + "','YYYY-MM-DD' ))  ";
+                        SQL = SQL + ComNum.VBLF + "   AND D.PANO IN ( SELECT PTNO   FROM ADMIN.OCS_ITRANSFER  WHERE TODRCODE ='1107' AND GBDEL <>'*'  AND TRUNC(EDATE) =TO_DATE('" + strToDate + "','YYYY-MM-DD' ))  ";
                         break;
                     default:
                         SQL = SQL + ComNum.VBLF + "   AND D.WardCode='" + cboWard.Text.Trim() + "' ";

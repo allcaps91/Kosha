@@ -23,7 +23,7 @@
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_WEBPRT_LOG                                                         ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_WEBPRT_LOG                                                         ");
             parameter.AppendSql("       (REQDATE, WRTNO, SNAME, GJJONG, ENTSABUN)          ");
             parameter.AppendSql("VALUES                                                                                         ");
             parameter.AppendSql("       (:REQDATE, :WRTNO, :SNAME, :GJJONG, :ENTSABUN)   ");
@@ -41,7 +41,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO, GJJONG                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_WEBPRT_LOG                      ");
+            parameter.AppendSql("  FROM ADMIN.HEA_WEBPRT_LOG                      ");
             parameter.AppendSql(" WHERE 1=1                                             ");                        
             parameter.AppendSql(" AND WRTNO = :WRTNO                                    ");
             parameter.AppendSql(" AND GJJONG = :GJJONG                                  ");

@@ -37,7 +37,7 @@ namespace ComEmrBase
             OracleDataReader dataReader = null;
 
             string SQL = "SELECT KORNAME";
-            SQL += ComNum.VBLF + "FROM KOSMOS_ADM.INSA_MST";
+            SQL += ComNum.VBLF + "FROM ADMIN.INSA_MST";
             SQL += ComNum.VBLF + "WHERE SABUN = '" + clsType.User.Sabun + "'";
             SQL += ComNum.VBLF + "  AND JIK IN ('04', '13')";
 
@@ -77,10 +77,10 @@ namespace ComEmrBase
             OracleDataReader dataReader = null;
 
             string SQL = "SELECT BASCD, B.KORNAME, C.NAME";
-            SQL += ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_BASCD A";
-            SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_ADM.INSA_MST B";
+            SQL += ComNum.VBLF + "FROM ADMIN.BAS_BASCD A";
+            SQL += ComNum.VBLF + "  INNER JOIN ADMIN.INSA_MST B";
             SQL += ComNum.VBLF + "     ON A.BASCD = TRIM(B.SABUN)";
-            SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_BUSE C";
+            SQL += ComNum.VBLF + "  INNER JOIN ADMIN.BAS_BUSE C";
             SQL += ComNum.VBLF + "     ON B.BUSE = C.BUCODE";
             SQL += ComNum.VBLF + "WHERE GRPCD = '예외 사번'";
             SQL += ComNum.VBLF + "  AND USECLS = '1'";
@@ -138,7 +138,7 @@ namespace ComEmrBase
                     bool bNew = false;
 
                     SQL = "SELECT BASCD";
-                    SQL += ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_BASCD";
+                    SQL += ComNum.VBLF + "FROM ADMIN.BAS_BASCD";
                     SQL += ComNum.VBLF + "WHERE GRPCDB = '간호EMR 관리'";
                     SQL += ComNum.VBLF + "  AND GRPCD  = '예외 사번'";
                     SQL += ComNum.VBLF + "  AND BASCD  = '" + ssView_Sheet1.Cells[i, 1].Text.Trim() + "'";
@@ -161,7 +161,7 @@ namespace ComEmrBase
                     if (bNew)
                         continue;
 
-                    SQL = "INSERT INTO KOSMOS_PMPA.BAS_BASCD";
+                    SQL = "INSERT INTO ADMIN.BAS_BASCD";
                     SQL += ComNum.VBLF + "(";
                     SQL += ComNum.VBLF + "GRPCDB, GRPCD, BASCD, APLFRDATE, APLENDDATE";
                     SQL += ComNum.VBLF + ",INPDATE, INPTIME";
@@ -214,7 +214,7 @@ namespace ComEmrBase
                     if (ssView_Sheet1.Cells[i, 0].Text.Trim().Equals("False"))
                         continue;
 
-                    SQL = "DELETE KOSMOS_PMPA.BAS_BASCD";
+                    SQL = "DELETE ADMIN.BAS_BASCD";
                     SQL += ComNum.VBLF + "WHERE BASCD = '" + ssView_Sheet1.Cells[i, 1].Text.Trim() + "'";
 
                     string sqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);

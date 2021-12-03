@@ -231,7 +231,7 @@ namespace ComLibB
                 }
 
                 SQL = "";
-                SQL = SQL + "SELECT Sname FROM KOSMOS_PMPA.BAS_BUSE ";
+                SQL = SQL + "SELECT Sname FROM ADMIN.BAS_BUSE ";
                 SQL = SQL + ComNum.VBLF + "WHERE BuCode = '" + VB.Format(strCode, "000000") + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 

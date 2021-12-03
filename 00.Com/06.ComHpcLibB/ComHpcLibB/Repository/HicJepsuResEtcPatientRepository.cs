@@ -28,9 +28,9 @@
             parameter.AppendSql(" ,B.GJJONG, B.LTDCODE, TO_CHAR(B.JEPDATE,'YYYY-MM-DD') JEPDATE , B.AGE, B.SEX , B.WRTNO            ");
             parameter.AppendSql(" ,TO_CHAR(A.PANJENGDATE,'YYYY-MM-DD') PANJENGDATE, TO_CHAR(A.TONGBODATE,'YYYY-MM-DD') TONGBODATE   ");
             parameter.AppendSql(" ,B.PTNO, B.WEBPRINTREQ                                                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_ETC a                                                                   ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU b                                                                     ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_PATIENT c                                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_ETC a                                                                   ");
+            parameter.AppendSql("     , ADMIN.HIC_JEPSU b                                                                     ");
+            parameter.AppendSql("     , ADMIN.HIC_PATIENT c                                                                   ");
             parameter.AppendSql(" WHERE 1=1                                                                                         ");
             parameter.AppendSql(" AND B.JEPDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                                   ");
             parameter.AppendSql(" AND B.JEPDATE <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                                   ");

@@ -176,7 +176,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT a.SuCode,a.FieldA,a.FieldB,TO_CHAR(a.EntDate,'YYYY-MM-DD') EntDate,";
                 SQL = SQL + ComNum.VBLF + "      a.ROWID,b.SuNameK ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_MSELF_I a,KOSMOS_PMPA.BAS_SUN b ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_MSELF_I a,ADMIN.BAS_SUN b ";
                 SQL = SQL + ComNum.VBLF + "WHERE a.GubunA = '" + strGubunA + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND a.GubunB = '" + strGubunB + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND a.SuCode = b.SuNext(+) ";
@@ -213,7 +213,7 @@ namespace ComLibB
                        VB.Left(cboJob.Text, 2) == "82" || VB.Left(cboJob.Text, 2) == "89")
                     {
                         SQL = "";
-                        SQL = "SELECT SuNameK FROM KOSMOS_PMPA.BAS_SUN ";
+                        SQL = "SELECT SuNameK FROM ADMIN.BAS_SUN ";
                         SQL = SQL + ComNum.VBLF + "WHERE SuNext = '" + dt.Rows[i]["FieldA"].ToString().Trim() + "' ";
                         SqlErr = clsDB.GetDataTable(ref dt2, SQL, clsDB.DbCon);
 
@@ -487,7 +487,7 @@ namespace ComLibB
                                 SQL = " INSERT INTO " + ComNum.DB_PMPA + "BAS_MSELF_I_HISTORY(";
                                 SQL = SQL + ComNum.VBLF + " SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE, GUBUN, HDATE)  ";
                                 SQL = SQL + ComNum.VBLF + "SELECT SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE, '" + strGubun + "', SYSDATE";
-                                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_MSELF_I";
+                                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_MSELF_I";
                                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
 
                                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

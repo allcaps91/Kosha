@@ -261,7 +261,7 @@ namespace ComEmrBase
             {
 
                 SQL.AppendLine(" SELECT USERID, NAME");
-                SQL.AppendLine(" FROM KOSMOS_EMR.EMR_USERT ");
+                SQL.AppendLine(" FROM ADMIN.EMR_USERT ");
                 SQL.AppendLine(" WHERE (EDATE >= TO_CHAR(SYSDATE, 'YYYYMMDD') or EDATE = '' OR EDATE IS NULL )  ");
                 SQL.AppendLine(" AND AUTH >= '" + strAuth + "'  ");
                 SQL.AppendLine(" ORDER BY NAME ");
@@ -311,7 +311,7 @@ namespace ComEmrBase
             {
 
                 SQL.AppendLine(" SELECT CODE, NAME, ACTIVE, AUTH");
-                SQL.AppendLine(" FROM KOSMOS_EMR.EMR_PRINTCODET");
+                SQL.AppendLine(" FROM ADMIN.EMR_PRINTCODET");
                 SQL.AppendLine(" WHERE ACTIVE = '1' ");
 
                 string sqlErr = clsDB.GetDataTableREx(ref dt, SQL.ToString(), clsDB.DbCon);
@@ -386,26 +386,26 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "    C.SECURITY, P.FILESIZE, P.CDATE, F.NAME,  ";
                 SQL = SQL + ComNum.VBLF + "    C.FORMCODE, C.UNREADY, C.CDNO, F.NAME ,T.CLASS , ";
                 SQL = SQL + ComNum.VBLF + "    (SELECT C1.NAME  ";
-                SQL = SQL + ComNum.VBLF + "        FROM KOSMOS_EMR.EMR_CLINICT C1  ";
+                SQL = SQL + ComNum.VBLF + "        FROM ADMIN.EMR_CLINICT C1  ";
                 SQL = SQL + ComNum.VBLF + "        WHERE C1.CLINCODE = T.CLINCODE) AS LOCATIONNM,  ";
                 SQL = SQL + ComNum.VBLF + "    T.INDATE, P.LOCATION, ";
                 SQL = SQL + ComNum.VBLF + "    S.IPADDRESS, S.FTPUSER, S.FTPPASSWD, S.LOCALPATH, ";
                 //SQL = SQL + ComNum.VBLF + "    ( REPLACE(S.LOCALPATH, '\', '/') || '/' || REPLACE(P.LOCATION, '\', '/') ) AS SVRFILEPATH  ";
                 SQL = SQL + ComNum.VBLF + "    ( S.LOCALPATH || '/' || P.LOCATION ) AS SVRFILEPATH  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.EMR_PAGET P  ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.EMR_CHARTPAGET C ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.EMR_PAGET P  ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.EMR_CHARTPAGET C ";
                 SQL = SQL + ComNum.VBLF + "    ON P.PAGENO = C.PAGENO ";
                 SQL = SQL + ComNum.VBLF + "    AND C.TREATNO = " + VB.Val(mstrACPNO);
                 SQL = SQL + ComNum.VBLF + "    AND C.PAGE > 0 ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.EMR_FORMT F ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.EMR_FORMT F ";
                 SQL = SQL + ComNum.VBLF + "    ON C.FORMCODE = F.FORMCODE ";
                 if (VB.Val(mstrFORMCODE) > 0)
                 {
                     SQL = SQL + ComNum.VBLF + "    AND F.FORMCODE = '" + mstrFORMCODE + "' ";
                 }
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.EMR_TREATT T ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.EMR_TREATT T ";
                 SQL = SQL + ComNum.VBLF + "    ON C.TREATNO = T.TREATNO ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.EMR_PATHT S ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.EMR_PATHT S ";
                 SQL = SQL + ComNum.VBLF + "    ON P.PATHID = S.PATHID ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY F.ORDERBY, C.FORMCODE, C.PAGE ";
                 //SQL = SQL + ComNum.VBLF + "ORDER BY F.ORDERBY, C.FORMCODE ASC , C.PAGE DESC ";
@@ -500,23 +500,23 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "    C.SECURITY, P.FILESIZE, P.CDATE, F.NAME,  ";
                 SQL = SQL + ComNum.VBLF + "    C.FORMCODE, C.UNREADY, C.CDNO, F.NAME ,T.CLASS , ";
                 SQL = SQL + ComNum.VBLF + "    (SELECT C1.NAME  ";
-                SQL = SQL + ComNum.VBLF + "        FROM KOSMOS_EMR.EMR_CLINICT C1  ";
+                SQL = SQL + ComNum.VBLF + "        FROM ADMIN.EMR_CLINICT C1  ";
                 SQL = SQL + ComNum.VBLF + "        WHERE C1.CLINCODE = T.CLINCODE) AS LOCATIONNM,  ";
                 SQL = SQL + ComNum.VBLF + "    T.INDATE, P.LOCATION, ";
                 SQL = SQL + ComNum.VBLF + "    S.IPADDRESS, S.FTPUSER, S.FTPPASSWD, S.LOCALPATH, ";
                 SQL = SQL + ComNum.VBLF + "    ( S.LOCALPATH || '/' || P.LOCATION ) AS SVRFILEPATH  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.EMR_PAGET P  ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.EMR_CHARTPAGET C ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.EMR_PAGET P  ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.EMR_CHARTPAGET C ";
                 SQL = SQL + ComNum.VBLF + "    ON P.PAGENO = C.PAGENO ";
                 SQL = SQL + ComNum.VBLF + "    AND C.PAGE > 0 ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.EMR_FORMT F ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.EMR_FORMT F ";
                 SQL = SQL + ComNum.VBLF + "    ON C.FORMCODE = F.FORMCODE ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.EMR_TREATT T ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.EMR_TREATT T ";
                 SQL = SQL + ComNum.VBLF + "    ON C.TREATNO = T.TREATNO ";
                 SQL = SQL + ComNum.VBLF + "    AND T.PATID = '" + mstrPtno + "'";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.EMR_PATHT S ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.EMR_PATHT S ";
                 SQL = SQL + ComNum.VBLF + "    ON P.PATHID = S.PATHID ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.EMR_PRINTNEEDT D";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.EMR_PRINTNEEDT D";
                 SQL = SQL + ComNum.VBLF + "    ON  D.CDATE = '" + mstrPrtDate  + "'";
                 SQL = SQL + ComNum.VBLF + "    AND D.CUSERID = '" + mstrUseId  + "'";
                 SQL = SQL + ComNum.VBLF + "    AND D.PAGENO = C.PAGENO";
@@ -1440,8 +1440,8 @@ namespace ComEmrBase
             {
 
                 SQL = "SELECT COUNT(*) CNT";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_PRINTNEEDT N, KOSMOS_EMR.EMR_CHARTPAGET C,";
-                SQL += ComNum.VBLF + "      KOSMOS_EMR.EMR_TREATT T";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMR_PRINTNEEDT N, ADMIN.EMR_CHARTPAGET C,";
+                SQL += ComNum.VBLF + "      ADMIN.EMR_TREATT T";
                 SQL += ComNum.VBLF + " WHERE N.CDATE = '" + strDate + "' ";
                 SQL += ComNum.VBLF + " AND N.PAGENO  = '" + strPageNo + "' ";
                 SQL += ComNum.VBLF + " AND N.CUSERID = '" + strUseId + "' ";
@@ -1496,7 +1496,7 @@ namespace ComEmrBase
                     string strPageNo  = spScan_Sheet1.Cells[lstRow[i], Convert.ToInt32(clsScanPublic.ScanSp.sSCANNO)].Text;
                     string strTreatNo = spScan_Sheet1.Cells[lstRow[i], Convert.ToInt32(clsScanPublic.ScanSp.sACPNO)].Text;
 
-                    SQL = "INSERT INTO KOSMOS_EMR.EMR_PRINTNEEDT(";
+                    SQL = "INSERT INTO ADMIN.EMR_PRINTNEEDT(";
                     SQL += ComNum.VBLF + "TREATNO, PAGENO, CUSERID, PRINTCODE,";
                     SQL += ComNum.VBLF + "CDATE, NEEDGUBUN, NEEDCNT";
                     SQL += ComNum.VBLF + ")";
@@ -1553,7 +1553,7 @@ namespace ComEmrBase
 
             try
             {
-                SQL = "INSERT INTO KOSMOS_EMR.EMR_PAGEPRINTLOGT(";
+                SQL = "INSERT INTO ADMIN.EMR_PAGEPRINTLOGT(";
                 SQL += ComNum.VBLF + "PAGENO, PRINTCODE, CUSERID, NEEDUSER, CDATE, CTIME";
                 SQL += ComNum.VBLF + ")";
                 SQL += ComNum.VBLF + "VALUES(";
@@ -1575,7 +1575,7 @@ namespace ComEmrBase
                 }
 
 
-                SQL = "UPDATE KOSMOS_EMR.EMR_PRINTNEEDT";
+                SQL = "UPDATE ADMIN.EMR_PRINTNEEDT";
                 SQL += ComNum.VBLF + " SET PRINTED = 'Y'";
                 SQL += ComNum.VBLF + " WHERE PAGENO = " + strPageNo;
                 SQL += ComNum.VBLF + " AND CDATE ='" + mstrPrtDate + "' ";

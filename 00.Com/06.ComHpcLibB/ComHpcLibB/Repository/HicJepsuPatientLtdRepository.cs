@@ -21,7 +21,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT B.SNAME, B.JUMIN, C.SANGHO, B.HPHONE,a.LtdCode, b.ENAME                        ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_JEPSU A, KOSMOS_PMPA.HIC_PATIENT B, KOSMOS_PMPA.HIC_LTD C        ");
+            parameter.AppendSql(" FROM ADMIN.HIC_JEPSU A, ADMIN.HIC_PATIENT B, ADMIN.HIC_LTD C        ");
             parameter.AppendSql(" WHERE A.PANO = B.PANO                                                                 ");
             parameter.AppendSql(" AND A.WRTNO = :WRTNO                                                                  ");
             parameter.AppendSql(" AND a.LTDCODE = C.CODE(+)                                                             ");

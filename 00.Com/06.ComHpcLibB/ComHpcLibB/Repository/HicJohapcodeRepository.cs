@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Name                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JOHAPCODE   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JOHAPCODE   ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
             parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);

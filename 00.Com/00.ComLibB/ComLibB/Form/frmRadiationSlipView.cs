@@ -44,7 +44,7 @@ namespace ComLibB
             DataTable dt = null;
 
             SQL = "";
-            SQL = SQL + ComNum.VBLF + "SELECT DrName FROM KOSMOS_PMPA.BAS_DOCTOR ";
+            SQL = SQL + ComNum.VBLF + "SELECT DrName FROM ADMIN.BAS_DOCTOR ";
             SQL = SQL + ComNum.VBLF + "WHERE DrCode='" + ArgCode + "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 

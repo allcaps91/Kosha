@@ -253,12 +253,12 @@ namespace ComPmpaLibB
                 lblFDate.Text = clsPublic.GstrSysDate + " " + clsPublic.GstrSysTime;
 
                 SQL = " SELECT IPDNO, TRSNO, ROutDate, GBSTS, VCODE, DRGCODE, FCODE ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.IPD_TRANS  ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.IPD_TRANS  ";
 
                 if(FstrRout =="Y")
                 {
                     SQL = SQL + ComNum.VBLF + " WHERE PANO IN (  ";
-                    SQL = SQL + ComNum.VBLF + "     SELECT PANO  FROM KOSMOS_PMPA.NUR_MASTER  ";
+                    SQL = SQL + ComNum.VBLF + "     SELECT PANO  FROM ADMIN.NUR_MASTER  ";
                     SQL = SQL + ComNum.VBLF + "     WHERE ROUTDATE = TO_DATE('" + TxtRDate.Text + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "      ) ";
                     SQL = SQL + ComNum.VBLF + "     AND GbCheckList IS NULL ";
@@ -604,7 +604,7 @@ namespace ComPmpaLibB
 
             SQL = " SELECT TO_CHAR(MIN(OUTDATE),'YYYY-MM-DD') OutDate, ";
             SQL = SQL + ComNum.VBLF + "   TO_CHAR(MAX(INDATE),'YYYY-MM-DD') InDate, COUNT(*) Cnt ";
-            SQL = SQL + ComNum.VBLF + "   FROM  KOSMOS_PMPA.GUN_OPDINOUT  ";
+            SQL = SQL + ComNum.VBLF + "   FROM  ADMIN.GUN_OPDINOUT  ";
             SQL = SQL + ComNum.VBLF + "  WHERE  Pano = '" + ArgPtno + "' ";
             SQL = SQL + ComNum.VBLF + "     AND  OUTDATE >= to_date('" + ArgInDate + "','YYYY-MM-DD') ) ";
             SQL = SQL + ComNum.VBLF + "     AND  INDATE <=  to_date('" + ArgOutDate + "','YYYY-MM-DD') ) ";
@@ -735,7 +735,7 @@ namespace ComPmpaLibB
                         if (strBi[3] == "" && strWard[3] == "" && strRoom[3] == "" && strDept[3] == "") { strOK4 = ""; }
 
                         SQL = "";
-                        SQL += ComNum.VBLF + " SELECT /*+ INDEX_DESC(kosmos_ocs.ipd_trans INDEX_IPDTRS0) */ ";
+                        SQL += ComNum.VBLF + " SELECT /*+ INDEX_DESC(ADMIN.ipd_trans INDEX_IPDTRS0) */ ";
                         SQL += ComNum.VBLF + "        A.IPDNO, A.TRSNO, A.GBSTS, ";
                         SQL += ComNum.VBLF + "        A.Pano, A.GBIPD, B.SName, ";
                         SQL += ComNum.VBLF + "        B.WARDCODE, B.RoomCode, B.ILLCODE1, ";

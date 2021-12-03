@@ -27,10 +27,10 @@ namespace ComHpcLibB.Repository
             {
                 parameter.AppendSql("SELECT max(E.HaRoom) HaRoom, E.HeaPART, b.NAME                         ");
                 parameter.AppendSql("     , NVL(TO_NUMBER(b.SORT), 999) SORT                                ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                        ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HEA_CODE   b                                        ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HEA_JEPSU  c                                        ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE E                                        ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                        ");
+                parameter.AppendSql("     , ADMIN.HEA_CODE   b                                        ");
+                parameter.AppendSql("     , ADMIN.HEA_JEPSU  c                                        ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE E                                        ");
                 parameter.AppendSql(" WHERE E.HeaPART = b.CODE                                              ");
                 parameter.AppendSql("   AND A.EXCODE NOT IN ('A101','A102','A103','TX87')                   ");
                 parameter.AppendSql("   AND a.WRTNO = C.WRTNO                                               ");
@@ -52,9 +52,9 @@ namespace ComHpcLibB.Repository
                 //당일 암검진이 있으면 같이 표시
                 parameter.AppendSql("SELECT max(E.HaRoom) HaRoom , E.HeaPART, b.NAME                        ");
                 parameter.AppendSql("     , NVL(TO_NUMBER(b.SORT), 999) SORT                                ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                        ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HEA_CODE   b                                        ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE E                                        ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                        ");
+                parameter.AppendSql("     , ADMIN.HEA_CODE   b                                        ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE E                                        ");
                 parameter.AppendSql(" WHERE E.HeaPART = b.CODE                                              ");
                 parameter.AppendSql("   AND b.GUBUN = 'A9'                                                  ");
                 parameter.AppendSql("   AND A.WRTNO = :WRTNO                                                ");
@@ -79,10 +79,10 @@ namespace ComHpcLibB.Repository
             {
                 parameter.AppendSql("SELECT max(E.HaRoom) HaRoom, E.HeaPART, b.NAME                         ");
                 parameter.AppendSql("     , NVL(TO_NUMBER(b.SORT), 999) SORT                                ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                        ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HEA_CODE   b                                        ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HEA_JEPSU  c                                        ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE e                                        ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                        ");
+                parameter.AppendSql("     , ADMIN.HEA_CODE   b                                        ");
+                parameter.AppendSql("     , ADMIN.HEA_JEPSU  c                                        ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE e                                        ");
                 parameter.AppendSql(" WHERE e.HeaPART = b.CODE                                              ");
                 parameter.AppendSql("   AND a.EXCODE NOT IN ('A101','A102','A103','TX87')                   ");
                 parameter.AppendSql("   AND a.WRTNO = c.WRTNO                                               ");
@@ -104,9 +104,9 @@ namespace ComHpcLibB.Repository
                 //당일 암검진이 있으면 같이 표시
                 parameter.AppendSql("SELECT max(E.HaRoom) HaRoom, E.HeaPART, b.NAME                         ");
                 parameter.AppendSql("     , NVL(TO_NUMBER(b.SORT), 999) SORT                                ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                        ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HEA_CODE   b                                        ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE e                                        ");
+                parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                        ");
+                parameter.AppendSql("     , ADMIN.HEA_CODE   b                                        ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE e                                        ");
                 parameter.AppendSql(" WHERE e.HeaPART = b.CODE                                              ");
                 parameter.AppendSql("   AND b.GUBUN = '11'                                                  ");
                 parameter.AppendSql("   AND a.WRTNO = :WRTNO                                                ");
@@ -131,13 +131,13 @@ namespace ComHpcLibB.Repository
             //당일 암검진이 있으면 같이 표시
             parameter.AppendSql("SELECT /*+rule*/ E.ENTPART, b.NAME                                     ");
             parameter.AppendSql("     , NVL(TO_NUMBER(b.SORT), 999) SORT                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_CODE   b                                        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE e                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                        ");
+            parameter.AppendSql("     , ADMIN.HIC_CODE   b                                        ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE e                                        ");
             parameter.AppendSql(" WHERE e.ENTPART = b.CODE                                              ");
             parameter.AppendSql("   AND b.GUBUN   = '72'                                                ");
             parameter.AppendSql("   AND a.WRTNO IN (SELECT WRTNO                                        ");
-            parameter.AppendSql("                     FROM KOSMOS_PMPA.HIC_JEPSU                        ");
+            parameter.AppendSql("                     FROM ADMIN.HIC_JEPSU                        ");
             parameter.AppendSql("                    WHERE PANO = :PANO                                 ");
             parameter.AppendSql("                      AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("                      AND (DELDATE IS NULL OR GJJONG IN ('31'))        ");
@@ -161,10 +161,10 @@ namespace ComHpcLibB.Repository
             {
                 parameter.AppendSql("SELECT /*+rule*/ e.HCROOM, e.ENTPART, b.NAME               ");
                 parameter.AppendSql("     , NVL(TO_NUMBER(b.SORT), 999) SORT                    ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                            ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_CODE   b                            ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU  c                            ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE e                            ");
+                parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                            ");
+                parameter.AppendSql("     , ADMIN.HIC_CODE   b                            ");
+                parameter.AppendSql("     , ADMIN.HIC_JEPSU  c                            ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE e                            ");
                 parameter.AppendSql(" WHERE e.ENTPART = b.CODE                                  ");
                 parameter.AppendSql("   AND a.WRTNO   = c.WRTNO                                 ");
                 parameter.AppendSql("   AND b.GUBUN   = '72'                                    ");
@@ -181,16 +181,16 @@ namespace ComHpcLibB.Repository
                 //당일 암검진이 있으면 같이 표시
                 parameter.AppendSql("SELECT /*+rule*/ e.HCROOM, e.ENTPART, b.NAME                               ");
                 parameter.AppendSql("     , NVL(TO_NUMBER(b.SORT), 999) SORT                                    ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                            ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_CODE   b                                            ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU  c                                            ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE e                                            ");
+                parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                            ");
+                parameter.AppendSql("     , ADMIN.HIC_CODE   b                                            ");
+                parameter.AppendSql("     , ADMIN.HIC_JEPSU  c                                            ");
+                parameter.AppendSql("     , ADMIN.HIC_EXCODE e                                            ");
                 parameter.AppendSql(" WHERE e.ENTPART = b.CODE                                                  ");
                 parameter.AppendSql("   AND a.WRTNO   = c.WRTNO                                                 ");
                 parameter.AppendSql("   AND b.GUBUN   = '72'                                                    ");
                 if (strJong == "Y")
                 {  
-                    parameter.AppendSql("   AND a.WRTNO IN (SELECT WRTNO FROM KOSMOS_PMPA.HIC_JEPSU             ");
+                    parameter.AppendSql("   AND a.WRTNO IN (SELECT WRTNO FROM ADMIN.HIC_JEPSU             ");
                     parameter.AppendSql("                    WHERE PANO = :PANO                                 ");
                     parameter.AppendSql("                      AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')    ");
                     parameter.AppendSql("                      AND DELDATE IS NULL                              ");
@@ -229,8 +229,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT a.EXCODE, a.RESULT, a.ACTIVE, b.HNAME   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT_NEW a            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE     b            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT_NEW a            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE     b            ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql("   AND a.PART = '5'                            ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                    ");
@@ -247,10 +247,10 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT /*+rule*/ E.ENTPART, b.NAME                                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_CODE   b                                            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU  c                                            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE E                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                            ");
+            parameter.AppendSql("     , ADMIN.HIC_CODE   b                                            ");
+            parameter.AppendSql("     , ADMIN.HIC_JEPSU  c                                            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE E                                            ");
             parameter.AppendSql(" WHERE E.ENTPART = b.CODE                                                  ");
             parameter.AppendSql("   AND a.WRTNO   = C.WRTNO                                                 ");
             parameter.AppendSql("   AND b.GUBUN   = '72'                                                    ");
@@ -260,7 +260,7 @@ namespace ComHpcLibB.Repository
             }
             else
             {
-                parameter.AppendSql("   AND A.WRTNO IN (SELECT WRTNO FROM KOSMOS_PMPA.HIC_JEPSU             ");
+                parameter.AppendSql("   AND A.WRTNO IN (SELECT WRTNO FROM ADMIN.HIC_JEPSU             ");
                 parameter.AppendSql("                    WHERE PANO = :PANO                                 ");
                 parameter.AppendSql("                      AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')    ");
                 parameter.AppendSql("                      AND DELDATE IS NULL)                             ");
@@ -288,7 +288,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             
             parameter.AppendSql("SELECT CODE                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAPDTL    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAPDTL    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO              ");
 
             parameter.Add("WRTNO", argWRTNO);            

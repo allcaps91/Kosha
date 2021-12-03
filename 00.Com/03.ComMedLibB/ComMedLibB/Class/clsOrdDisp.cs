@@ -51,7 +51,7 @@ namespace ComMedLibB
             {
                 #region 삭제백업---------------------
                 MParameter parameter = new MParameter();
-                parameter.AppendSql(" INSERT INTO KOSMOS_OCS.OCS_IORDER_DEL ( PTNO,BDATE,SEQNO,DEPTCODE,DRCODE,STAFFID,SLIPNO,ORDERCODE,SUCODE,BUN   ");
+                parameter.AppendSql(" INSERT INTO ADMIN.OCS_IORDER_DEL ( PTNO,BDATE,SEQNO,DEPTCODE,DRCODE,STAFFID,SLIPNO,ORDERCODE,SUCODE,BUN   ");
                 parameter.AppendSql("      , GBORDER,CONTENTS,BCONTENTS,REALQTY,QTY,REALNAL,NAL,DOSCODE,GBINFO,GBSELF,GBSPC                          ");
                 parameter.AppendSql("      , GBNGT,GBER,GBPRN,GBDIV,GBBOTH,GBACT,GBTFLAG,GBSEND,GBPOSITION,GBSTATUS,NURSEID                          ");
                 parameter.AppendSql("      , ENTDATE,WARDCODE,ROOMCODE,BI,ORDERNO,REMARK,ACTDATE,GBGROUP,GBPORT,ORDERSITE                            ");
@@ -67,11 +67,11 @@ namespace ComMedLibB
                 parameter.AppendSql("      , PICKUPDATE,EMRSET,GBIOE,MAYAK,POWDER,SEDATION,DCDIV,DIVQTY,NURREMARK,DRORDERVIEW,CERTNO                 ");
                 parameter.AppendSql("      , CONSULT , MAYAKREMARK, VER, '" + clsCompuInfo.gstrCOMIP + "', AUTO_SEND, GBSPC_NO,SYSDATE,'9',ENTDATE2,GbTax,VerbC,GbVerb,Verbal      ");
                 parameter.AppendSql("      , V_ORDERNO,PRN_REMARK,ASA, ER24, GSADD,TUYEOPOINT, TUYEOTIME                                             ");
-                parameter.AppendSql("   FROM KOSMOS_OCS.OCS_IORDER A                                                                                 ");
+                parameter.AppendSql("   FROM ADMIN.OCS_IORDER A                                                                                 ");
                 parameter.AppendSql(" WHERE EXISTS                                                                                                   ");
                 parameter.AppendSql(" (                                                                                                              ");
                 parameter.AppendSql("      SELECT 1                                                                                                  ");
-                parameter.AppendSql("        FROM KOSMOS_OCS.OCS_CP_RECORD                                                                           ");
+                parameter.AppendSql("        FROM ADMIN.OCS_CP_RECORD                                                                           ");
                 parameter.AppendSql("       WHERE CPNO = :CPNO                                                                                       ");
                 parameter.AppendSql("         AND PTNO = A.PTNO                                                                                      ");
                 parameter.AppendSql(" 	      AND CASE WHEN :GBN = 'CP 처방중단' AND A.BDATE >= TO_DATE(CANCERDATE, 'YYYYMMDD')  + 1 THEN 1            ");
@@ -89,11 +89,11 @@ namespace ComMedLibB
                 #endregion
 
                 parameter = new MParameter();
-                parameter.AppendSql("DELETE KOSMOS_OCS.OCS_IORDER  A                                                                                ");
+                parameter.AppendSql("DELETE ADMIN.OCS_IORDER  A                                                                                ");
                 parameter.AppendSql(" WHERE EXISTS                                                                                                  ");
                 parameter.AppendSql(" (                                                                                                             ");
                 parameter.AppendSql("      SELECT 1                                                                                                 ");
-                parameter.AppendSql("        FROM KOSMOS_OCS.OCS_CP_RECORD                                                                          ");
+                parameter.AppendSql("        FROM ADMIN.OCS_CP_RECORD                                                                          ");
                 parameter.AppendSql("       WHERE CPNO = :CPNO                                                                                      ");
                 parameter.AppendSql("         AND PTNO = A.PTNO                                                                                     ");
                 parameter.AppendSql(" 	      AND CASE WHEN :GBN = 'CP 처방중단'  AND A.BDATE >= TO_DATE(CANCERDATE, 'YYYYMMDD')  + 1 THEN 1          ");
@@ -134,7 +134,7 @@ namespace ComMedLibB
                 parameter.AppendSql(" WHERE EXISTS                                     ");
                 parameter.AppendSql(" (                                                ");
                 parameter.AppendSql("      SELECT 1                                    ");
-                parameter.AppendSql("        FROM KOSMOS_PMPA.BAS_BCODE                ");
+                parameter.AppendSql("        FROM ADMIN.BAS_BCODE                ");
                 parameter.AppendSql("       WHERE GUBUN = 'SUNAP_수가매핑시행여부'        ");
                 parameter.AppendSql("         AND NAME  = 'Y'                          ");
                 parameter.AppendSql(" )                                                ");
@@ -169,7 +169,7 @@ namespace ComMedLibB
                 parameter.AppendSql(" WHERE EXISTS                                     ");
                 parameter.AppendSql(" (                                                ");
                 parameter.AppendSql("      SELECT 1                                    ");
-                parameter.AppendSql("        FROM KOSMOS_PMPA.BAS_BCODE                ");
+                parameter.AppendSql("        FROM ADMIN.BAS_BCODE                ");
                 parameter.AppendSql("       WHERE GUBUN = 'CP_시행'                     ");
                 parameter.AppendSql("         AND CODE  = :CODE                        ");
                 parameter.AppendSql("         AND NAME  = 'Y'                          ");
@@ -240,8 +240,8 @@ namespace ComMedLibB
                 SQL += "      , a.SuCode SuCode1, SuBun SuBun1, Qty Qty1, GbSelf GbSelf1, a.GbSusul GbSusul1, GbNgt                 \r";
                 SQL += "      , a.GbSunap GbSunap1, OpRoom, TO_CHAR(OpDate,'YYYY-MM-DD') OpDate, IpdOpd, CodeGbn CodeGbn1           \r";
                 SQL += "      , GuBun GuBun1, '', a.bucode                                                                          \r";
-                SQL += "   FROM KOSMOS_PMPA.ORAN_SLIP a                                                                             \r";
-                SQL += "      , KOSMOS_ADM.ORD_JEP    b                                                                             \r";
+                SQL += "   FROM ADMIN.ORAN_SLIP a                                                                             \r";
+                SQL += "      , ADMIN.ORD_JEP    b                                                                             \r";
                 SQL += "  WHERE a.WRTNO  = '" + WrtNo + "'                                                                          \r";
                 SQL += "    AND a.jepcode = b.jepcode                                                                               \r";
                 //SQL += "    AND a.BuCode = '" + strBuCode + "'                                                                    \r";
@@ -307,7 +307,7 @@ namespace ComMedLibB
                     try
                     {
                         SQL = "";
-                        SQL += " SELECT * FROM KOSMOS_OCS.OCS_OORDER                            \r";      //'당일 예약 Order Search
+                        SQL += " SELECT * FROM ADMIN.OCS_OORDER                            \r";      //'당일 예약 Order Search
                         SQL += "  WHERE Ptno     = '" + strPano + "'                            \r";
                         SQL += "    AND BDate    = TO_DATE('" + clsOrdFunction.GstrBDate + "' ,'YYYY-MM-DD')   \r";
                         SQL += "    AND DeptCode = '" + strDeptCode + "'                        \r";
@@ -365,8 +365,8 @@ namespace ComMedLibB
                     SQL += "      , d.GbBoth,    d.Gbinfo,  d.OrderNo,    d.DRCode,      d.MultiRemark              \r";
                     SQL += "      , d.DUR,       d.Resv,    d.GbTax,      d.ScodeRemark, d.GBSPC_NO, d.ScodeSayu    \r";
                     SQL += "      , d.GbFM,      d.Sabun,   d.OCSDRUG,    d.ASA,         d.PCHASU,   d.SUBUL_WARD   \r";
-                    SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                               \r";
-                    SQL += "      , KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                  \r";
+                    SQL += "      , ADMIN.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                               \r";
+                    SQL += "      , ADMIN.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                  \r";
                     SQL += "      , '' CBUN, d.ROWID                                                                \r";
                     SQL += "      , d.BURNADD, d.OPGUBUN                                                            \r";
                     SQL += "      , d.seqno seqno                                                                   \r";
@@ -378,7 +378,7 @@ namespace ComMedLibB
                     SQL += "      , d.CONTENTS, d.BCONTENTS, d.GBGROUP                                              \r";
                     //2021-01-08
                     SQL += "      , d.TUYEOPOINT, d.TUYEOTIME                                                       \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_OORDER d                                                         \r";
+                    SQL += "   FROM ADMIN.OCS_OORDER d                                                         \r";
                     SQL += "  WHERE d.Ptno = '" + clsOrdFunction.Pat.PtNo + "'                                      \r";
                     SQL += "    AND d.BDate = TO_DATE('" + clsOrdFunction.GstrBDate + "', 'YYYY-MM-DD')             \r";
                     SQL += "    AND d.DeptCode  = '" + clsOrdFunction.Pat.DeptCode.Trim() + "'                      \r";
@@ -404,8 +404,8 @@ namespace ComMedLibB
                     SQL += "      , d.GbBoth,    d.Gbinfo,  d.OrderNo,    d.DRCode,      d.MultiRemark              \r";
                     SQL += "      , d.DUR,       d.Resv,    d.GbTax,      d.ScodeRemark, d.GBSPC_NO, d.ScodeSayu    \r";
                     SQL += "      , d.GbFM,      d.Sabun,   d.OCSDRUG,    d.ASA,         d.PCHASU,   d.SUBUL_WARD   \r";
-                    SQL += "      , DECODE(A.GBDOSAGE, '0', '', KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(d.DOSCODE)) DOSNAME  \r";
-                    SQL += "      , KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                  \r";
+                    SQL += "      , DECODE(A.GBDOSAGE, '0', '', ADMIN.FC_OCS_ODOSAGE_NAME(d.DOSCODE)) DOSNAME  \r";
+                    SQL += "      , ADMIN.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                  \r";
                     SQL += "      , a.CBUN, d.ROWID                                                                 \r";
                     SQL += "      , d.BURNADD, d.OPGUBUN                                                            \r";
                     SQL += "      , d.seqno seqno                                                                   \r";
@@ -417,10 +417,10 @@ namespace ComMedLibB
                     SQL += "      , d.CONTENTS, d.BCONTENTS, d.GBGROUP                                              \r";
                     //2021-01-08
                     SQL += "      , d.TUYEOPOINT, d.TUYEOTIME                                                       \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE a                                                      \r";
-                    SQL += "      , KOSMOS_PMPA.BAS_SUT      b                                                      \r";
-                    SQL += "      , KOSMOS_PMPA.BAS_SUN      c                                                      \r";
-                    SQL += "      , KOSMOS_OCS.OCS_OORDER    d                                                      \r";
+                    SQL += "   FROM ADMIN.OCS_ORDERCODE a                                                      \r";
+                    SQL += "      , ADMIN.BAS_SUT      b                                                      \r";
+                    SQL += "      , ADMIN.BAS_SUN      c                                                      \r";
+                    SQL += "      , ADMIN.OCS_OORDER    d                                                      \r";
                     SQL += "  WHERE a.SuCode    = b.SuCode(+)                                                       \r";
                     SQL += "    AND a.SuCode    = C.SUNEXT(+)                                                       \r";
                     SQL += "    AND a.ORDERCODE = d.ORDERCODE(+)                                                    \r";
@@ -488,7 +488,7 @@ namespace ComMedLibB
 
                         SQL = "";
                         SQL += " SELECT TO_CHAR(MAX(BDate),'YYYY-MM-DD') MAXBDATE                                                               \r"; //전회 처방 일자 Search
-                        SQL += "   FROM KOSMOS_OCS.OCS_IORDER                                                                                   \r";
+                        SQL += "   FROM ADMIN.OCS_IORDER                                                                                   \r";
                         SQL += "  WHERE PTNO   =  '" + clsOrdFunction.Pat.PtNo + "'                                                             \r";
                         SQL += "    AND BDate <= TO_DATE('" + clsOrdFunction.GstrBDate + "','YYYY-MM-DD')                                       \r";
                         SQL += "    AND BDate >= TO_DATE('" + DateTime.Parse(clsOrdFunction.Pat.EntDate).ToShortDateString() + "','YYYY-MM-DD') \r";
@@ -556,12 +556,12 @@ namespace ComMedLibB
                     SQL += "      , '' cGbBoth, '' cGbInfo, '' cDrugName                                                \r";
                     SQL += "      , '' cGbQty, '' cGbDosage, '' cNextCode, '' DAICODE                                   \r";
                     SQL += "      , '' cOrderNameS, '' cGbImiv, '' SuGbF, '' BunSu                                      \r";
-                    SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                                   \r";
-                    SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_DIV(d.DOSCODE) DIV                                        \r";
-                    SQL += "      , KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                      \r";
+                    SQL += "      , ADMIN.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                                   \r";
+                    SQL += "      , ADMIN.FC_OCS_ODOSAGE_DIV(d.DOSCODE) DIV                                        \r";
+                    SQL += "      , ADMIN.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                      \r";
                     SQL += "      , d.ROWID                                                                             \r";
                     SQL += "      , d.SEDATION                                                                   \r";
-                    SQL += "   FROM  KOSMOS_OCS.OCS_IORDER    d                                                         \r";
+                    SQL += "   FROM  ADMIN.OCS_IORDER    d                                                         \r";
                     SQL += "  WHERE d.Ptno      = '" + clsOrdFunction.Pat.PtNo + "'                                     \r";
                     SQL += "    AND d.GbStatus  IN  (' ','D+','D')                                                      \r";
                     SQL += "    AND d.BDate     >= TO_DATE('" + DateTime.Parse(clsOrdFunction.Pat.InDate).ToShortDateString() + "', 'YYYY-MM-DD')           \r";
@@ -599,15 +599,15 @@ namespace ComMedLibB
                     SQL += "      , a.GbBoth cGbBoth, a.GbInfo cGbInfo,a.DrugName cDrugName                             \r";
                     SQL += "      , a.GbQty cGbQty, a.GbDosage cGbDosage, a.NextCode cNextCode, c.DAICODE               \r";
                     SQL += "      , a.OrderNameS cOrderNameS, a.GbImiv cGbImiv, b.SuGbF, b.Bun BunSu                    \r";
-                    SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                                   \r";
-                    SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_DIV(d.DOSCODE) DIV                                        \r";
-                    SQL += "      , KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                      \r"; 
+                    SQL += "      , ADMIN.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                                   \r";
+                    SQL += "      , ADMIN.FC_OCS_ODOSAGE_DIV(d.DOSCODE) DIV                                        \r";
+                    SQL += "      , ADMIN.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                      \r"; 
                     SQL += "      , d.ROWID                                                                             \r";
                     SQL += "      , d.SEDATION                                                                   \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE a                                                          \r";
-                    SQL += "      , KOSMOS_PMPA.BAS_SUT      b                                                          \r";
-                    SQL += "      , KOSMOS_PMPA.BAS_SUN      c                                                          \r";
-                    SQL += "      , KOSMOS_OCS.OCS_IORDER    d                                                          \r";
+                    SQL += "   FROM ADMIN.OCS_ORDERCODE a                                                          \r";
+                    SQL += "      , ADMIN.BAS_SUT      b                                                          \r";
+                    SQL += "      , ADMIN.BAS_SUN      c                                                          \r";
+                    SQL += "      , ADMIN.OCS_IORDER    d                                                          \r";
                     SQL += "  WHERE a.SuCode    = b.SuCode(+)                                                           \r";
                     SQL += "    AND a.SuCode    = C.SUNEXT(+)                                                           \r";
                     SQL += "    AND a.ORDERCODE = d.ORDERCODE(+)                                                        \r";
@@ -668,7 +668,7 @@ namespace ComMedLibB
                     {
                         SQL = "";
                         SQL += " SELECT TO_CHAR(MAX(BDATE),'YYYY-MM-DD') MAXBDATE                               \r";  //전회 처방 일자 Search
-                        SQL += "   FROM KOSMOS_OCS.OCS_IORDER                                                   \r";
+                        SQL += "   FROM ADMIN.OCS_IORDER                                                   \r";
                         SQL += "  WHERE PTNO   =  '" + clsOrdFunction.Pat.PtNo + "'                             \r";
                         SQL += "    AND BDATE <= TO_DATE('" + clsOrdFunction.GstrBDate + "','YYYY-MM-DD')       \r";
                         SQL += "    AND BDATE >= TO_DATE('" + clsOrdFunction.Pat.EntDate + "','YYYY-MM-DD')     \r";
@@ -725,7 +725,7 @@ namespace ComMedLibB
                         SQL += "  WHERE EXISTS                                                                     \r";
                         SQL += "  (                                                                                \r";
                         SQL += "    SELECT 1                                                                       \r";  //CP오더 제외 추가처방 있는지
-                        SQL += "      FROM KOSMOS_OCS.OCS_CP_RECORD                                                \r";
+                        SQL += "      FROM ADMIN.OCS_CP_RECORD                                                \r";
                         SQL += "     WHERE IPDNO   =  " + clsOrdFunction.Pat.IPDNO + "                             \r";
                         SQL += "       AND CANCERSABUN IS NULL                                                     \r";
                         SQL += "       AND DROPSABUN IS NULL                                                       \r";
@@ -733,7 +733,7 @@ namespace ComMedLibB
                         SQL += "    AND NOT EXISTS                                                                 \r";
                         SQL += "    (                                                                              \r";
                         SQL += "      SELECT 1                                                                     \r";  //전회 처방 일자 Search
-                        SQL += "        FROM KOSMOS_OCS.OCS_IORDER                                                 \r";
+                        SQL += "        FROM ADMIN.OCS_IORDER                                                 \r";
                         SQL += "       WHERE PTNO   =  '" + clsOrdFunction.Pat.PtNo + "'                           \r";
                         SQL += "         AND BDATE  = TO_DATE('" + clsOrdFunction.GstrBDate + "','YYYY-MM-DD')     \r";
                         SQL += "         AND GBSTATUS IN  (' ')                                                    \r";
@@ -852,18 +852,18 @@ namespace ComMedLibB
                     SQL += "    ,   a.GbBoth cGbBoth, a.GbInfo cGbInfo, a.DrugName cDrugName                                \r";
                     SQL += "    ,   a.GbQty cGbQty, a.GbDosage cGbDosage, a.NextCode cNextCode, c.DAICODE                   \r";
                     SQL += "    ,   a.OrderNameS cOrderNameS, a.GbImiv cGbImiv, b.SuGbF, b.Bun BunSu                        \r";
-                    SQL += "    ,   KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                                       \r";
-                    SQL += "    ,   KOSMOS_OCS.FC_OCS_ODOSAGE_DIV(d.DOSCODE) DIV                                            \r";
-                    SQL += "    ,   KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                          \r";
+                    SQL += "    ,   ADMIN.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                                       \r";
+                    SQL += "    ,   ADMIN.FC_OCS_ODOSAGE_DIV(d.DOSCODE) DIV                                            \r";
+                    SQL += "    ,   ADMIN.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                          \r";
                     SQL += "    ,   a.CBUN                                                                                  \r";
                     SQL += "    ,   decode(trim(A.ORDERCODE), '', 'DEL', '') GBDEL                                          \r";
                     SQL += "    ,   a.DISPHEADER                                                                            \r";
                     SQL += "    ,   a.NEXTCODE                                                                              \r";
 
-                    SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE a                                                              \r";
-                    SQL += "      , KOSMOS_PMPA.BAS_SUT      b                                                              \r";
-                    SQL += "      , KOSMOS_PMPA.BAS_SUN      c                                                              \r";
-                    SQL += "      , KOSMOS_OCS.OCS_IORDER    d                                                              \r";
+                    SQL += "   FROM ADMIN.OCS_ORDERCODE a                                                              \r";
+                    SQL += "      , ADMIN.BAS_SUT      b                                                              \r";
+                    SQL += "      , ADMIN.BAS_SUN      c                                                              \r";
+                    SQL += "      , ADMIN.OCS_IORDER    d                                                              \r";
                     SQL += "  WHERE a.SuCode    = b.SuCode(+)                                                               \r";
                     SQL += "    AND a.SuCode    = C.SUNEXT(+)                                                               \r";
                     SQL += "    AND d.ORDERCODE = a.ORDERCODE(+)                                                            \r";
@@ -921,7 +921,7 @@ namespace ComMedLibB
                         SQL += "    AND (d.SuCode IS NULL                                                                                        \r";
                         SQL += "     OR (TRIM(d.SuCode) NOT IN (                                                                                 \r";
                         SQL += "                                SELECT SUCODE                                                                    \r";
-                        SQL += "                                  FROM KOSMOS_PMPA.BAS_SUT                                                       \r";
+                        SQL += "                                  FROM ADMIN.BAS_SUT                                                       \r";
                         SQL += "                                 WHERE DelDate <TRUNC(SYSDATE)                                                   \r";
                         SQL += "                                   AND DelDate >= TRUNC(SYSDATE-365)                                             \r";
                         SQL += "                                   AND BUN IN ('11','12','20')  )  )  )                                          \r"; //2013-05-25 삭제약 제외
@@ -989,7 +989,7 @@ namespace ComMedLibB
                         SQL += "    AND NOT EXISTS                                                                                                   \r";
                         SQL += "    (                                                                                                                \r";
                         SQL += "      SELECT 1                                                                                                       \r";  //D/C 전회 처방 미표시
-                        SQL += "        FROM KOSMOS_OCS.OCS_LASTORDER_MAPPING                                                                        \r";
+                        SQL += "        FROM ADMIN.OCS_LASTORDER_MAPPING                                                                        \r";
                         SQL += "       WHERE PTNO     = D.PTNO                                                                                       \r";
                         SQL += "         AND ORDERNO  = D.ORDERNO                                                                                    \r";
                         SQL += "    )                                                                                                                \r";
@@ -1182,17 +1182,17 @@ namespace ComMedLibB
                         SQL += "    ,   A.GBBOTH CGBBOTH, A.GBINFO CGBINFO, A.DRUGNAME CDRUGNAME                                                 \r";
                         SQL += "    ,   A.GBQTY CGBQTY, A.GBDOSAGE CGBDOSAGE, A.NEXTCODE CNEXTCODE, C.DAICODE                                    \r";
                         SQL += "    ,   A.ORDERNAMES CORDERNAMES, A.GBIMIV CGBIMIV, B.SUGBF, B.BUN BUNSU                                         \r";
-                        SQL += "    ,   KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(D.DOSCODE) DOSNAME                                                        \r";
-                        SQL += "    ,   KOSMOS_OCS.FC_OCS_ODOSAGE_DIV(D.DOSCODE) DIV                                                             \r";
-                        SQL += "    ,   KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(D.DOSCODE, D.SLIPNO) SPECNAME                                           \r";
+                        SQL += "    ,   ADMIN.FC_OCS_ODOSAGE_NAME(D.DOSCODE) DOSNAME                                                        \r";
+                        SQL += "    ,   ADMIN.FC_OCS_ODOSAGE_DIV(D.DOSCODE) DIV                                                             \r";
+                        SQL += "    ,   ADMIN.FC_OCS_OSPECIMAN_NAME(D.DOSCODE, D.SLIPNO) SPECNAME                                           \r";
                         SQL += "    ,   A.CBUN                                                                                                   \r";
                         SQL += "    ,   DECODE(TRIM(A.ORDERCODE), '', 'DEL', '') GBDEL                                                           \r";
                         SQL += "    ,   A.DISPHEADER                                                                                             \r";
                         SQL += "    ,   A.NEXTCODE                                                                                               \r";
-                        SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE A                                                                               \r";
-                        SQL += "      , KOSMOS_PMPA.BAS_SUT      B                                                                               \r";
-                        SQL += "      , KOSMOS_PMPA.BAS_SUN      C                                                                               \r";
-                        SQL += "      , KOSMOS_OCS.OCS_IORDER    D                                                                               \r";
+                        SQL += "   FROM ADMIN.OCS_ORDERCODE A                                                                               \r";
+                        SQL += "      , ADMIN.BAS_SUT      B                                                                               \r";
+                        SQL += "      , ADMIN.BAS_SUN      C                                                                               \r";
+                        SQL += "      , ADMIN.OCS_IORDER    D                                                                               \r";
                         SQL += "  WHERE A.SUCODE    = B.SUCODE(+)                                                                                \r";
                         SQL += "    AND A.SUCODE    = C.SUNEXT(+)                                                                                \r";
                         SQL += "    AND D.ORDERCODE = A.ORDERCODE(+)                                                                             \r";
@@ -1231,7 +1231,7 @@ namespace ComMedLibB
                         SQL += "    AND (D.SUCODE IS NULL                                                                                        \r";
                         SQL += "     OR (TRIM(D.SUCODE) NOT IN (                                                                                 \r";
                         SQL += "                                SELECT SUCODE                                                                    \r";
-                        SQL += "                                  FROM KOSMOS_PMPA.BAS_SUT                                                       \r";
+                        SQL += "                                  FROM ADMIN.BAS_SUT                                                       \r";
                         SQL += "                                 WHERE DELDATE <TRUNC(SYSDATE)                                                   \r";
                         SQL += "                                   AND DELDATE >= TRUNC(SYSDATE-365)                                             \r";
                         SQL += "                                   AND BUN IN ('11','12','20')  )  )  )                                          \r"; //2013-05-25 삭제약 제외
@@ -1246,7 +1246,7 @@ namespace ComMedLibB
                         SQL += "    AND NOT EXISTS                                                                                               \r";
                         SQL += "    (                                                                                                            \r";
                         SQL += "      SELECT 1                                                                                                   \r";  
-                        SQL += "        FROM KOSMOS_OCS.OCS_LASTORDER_MAPPING                                                                    \r";
+                        SQL += "        FROM ADMIN.OCS_LASTORDER_MAPPING                                                                    \r";
                         SQL += "       WHERE PTNO     = D.PTNO                                                                                   \r";
                         SQL += "         AND BDATE    = D.BDATE                                                                                  \r";
                         SQL += "         AND ORDERNO  = D.ORDERNO                                                                                \r";
@@ -1327,9 +1327,9 @@ namespace ComMedLibB
             SQL = SQL & vbLf & "             extractValue(chartxml, '//it274') AS it274, "
             SQL = SQL & vbLf & "             extractValue(chartxml, '//it274') AS it274, "
             SQL = SQL & vbLf & "             extractValue(chartxml, '//it14') AS it14 "
-            SQL = SQL & vbLf & "   FROM KOSMOS_EMR.EMRXML  "
+            SQL = SQL & vbLf & "   FROM ADMIN.EMRXML  "
             SQL = SQL & vbCr & " WHERE EMRNO IN ("
-            SQL = SQL & vbCr & " SELECT EMRNO FROM KOSMOS_EMR.EMRXMLMST "
+            SQL = SQL & vbCr & " SELECT EMRNO FROM ADMIN.EMRXMLMST "
             SQL = SQL & vbLf & "  WHERE FORMNO = 1562 "
             SQL = SQL & vbLf & "    AND PTNO = '" & Pat.PtNo & "'  "
             SQL = SQL & vbLf & "    AND CHARTDATE = '" & CurrentDateTime("D") & "') "
@@ -1399,13 +1399,13 @@ namespace ComMedLibB
                 SQL += "      , '' GbBoth,   '' Gbinfo, '' OrderNo,  '' GbSunap,     '' DRCode,   '' MultiRemark\r";
                 SQL += "      , '' DUR,      '' Resv,   '' GbTax,    '' ScodeRemark, '' GBSPC_NO, '' ScodeSayu  \r";
                 SQL += "      , '' GbFM,     '' Sabun,  '' OCSDRUG,  '' ASA,         '' PCHASU,   '' SUBUL_WARD \r";
-                SQL += "      , DECODE(A.GBDOSAGE, '0', '', KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(a.SPECCODE)) DOSNAME \r";
-                SQL += "      , DECODE(A.GBDOSAGE, '0', '', KOSMOS_OCS.FC_OCS_ODOSAGE_DIV(a.SPECCODE)) DIV      \r";
-                SQL += "      , KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(a.SPECCODE, A.SLIPNO) SPECNAME                 \r";
-                SQL += "      , DECODE(a.GbImiv, '4', KOSMOS_OCS.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', a.ORDERCODE) \r";
-                SQL += "                       , '5', KOSMOS_OCS.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', a.ORDERCODE) \r";
-                SQL += "                       , '6', KOSMOS_OCS.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', a.ORDERCODE) \r";
-                SQL += "                       , '8', KOSMOS_OCS.FC_OCS_EXAM_ANATMST('" + clsOrdFunction.Pat.PtNo + "', a.ORDERCODE, 'I', '" + clsOrdFunction.Pat.DeptCode + "'), '') OPINION_YN    \r";
+                SQL += "      , DECODE(A.GBDOSAGE, '0', '', ADMIN.FC_OCS_ODOSAGE_NAME(a.SPECCODE)) DOSNAME \r";
+                SQL += "      , DECODE(A.GBDOSAGE, '0', '', ADMIN.FC_OCS_ODOSAGE_DIV(a.SPECCODE)) DIV      \r";
+                SQL += "      , ADMIN.FC_OCS_OSPECIMAN_NAME(a.SPECCODE, A.SLIPNO) SPECNAME                 \r";
+                SQL += "      , DECODE(a.GbImiv, '4', ADMIN.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', a.ORDERCODE) \r";
+                SQL += "                       , '5', ADMIN.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', a.ORDERCODE) \r";
+                SQL += "                       , '6', ADMIN.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', a.ORDERCODE) \r";
+                SQL += "                       , '8', ADMIN.FC_OCS_EXAM_ANATMST('" + clsOrdFunction.Pat.PtNo + "', a.ORDERCODE, 'I', '" + clsOrdFunction.Pat.DeptCode + "'), '') OPINION_YN    \r";
                 SQL += "      , a.SPECCODE                                                                      \r";
                 SQL += "      , a.CBUN                                                                          \r";
                 SQL += "      , a.SUBRATE                                                                       \r";
@@ -1420,7 +1420,7 @@ namespace ComMedLibB
                 {
                     SQL += "      , CASE WHEN EXISTS (                                                              \r";
                     SQL += "                              SELECT 1                                                  \r";
-                    SQL += "                                FROM KOSMOS_OCS.ETC_JUPMST                              \r";
+                    SQL += "                                FROM ADMIN.ETC_JUPMST                              \r";
                     SQL += "                               WHERE GUBUN4 = '2'                                       \r";
                     SQL += "                                 AND PTNO = '" + clsOrdFunction.Pat.PtNo + "'           \r";
                     SQL += "                                 AND ORDERCODE  = A.ORDERCODE                           \r";
@@ -1429,7 +1429,7 @@ namespace ComMedLibB
                     SQL += "      						     AND EXISTS                                             \r";
                     SQL += "      						     (                                                      \r";
                     SQL += "      						     		SELECT 1                                        \r";
-                    SQL += "      						     		  FROM KOSMOS_PMPA.BAS_BCODE                    \r";
+                    SQL += "      						     		  FROM ADMIN.BAS_BCODE                    \r";
                     SQL += "      	                               WHERE GUBUN = '외래_생리기능검사'                   \r";
                     SQL += "                                           AND CODE  = TRIM(A.ORDERCODE)                \r";
                     SQL += "      						     )                                                      \r";
@@ -1439,9 +1439,9 @@ namespace ComMedLibB
 
 
                 SQL += "      , B.DELDATE                                                                           \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE a                                                          \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUT      b                                                          \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUN      c                                                          \r";
+                SQL += "   FROM ADMIN.OCS_ORDERCODE a                                                          \r";
+                SQL += "      , ADMIN.BAS_SUT      b                                                          \r";
+                SQL += "      , ADMIN.BAS_SUN      c                                                          \r";
                 SQL += "  WHERE ORDERCODE = '" + ArgOrderCode.Trim() + "'                                           \r";
                 SQL += "    AND SLIPNO    = '" + ArgSlipNo + "'                                                     \r";
                 SQL += "    AND A.SUCODE    = B.SUCODE(+)                                                           \r";
@@ -1517,40 +1517,40 @@ namespace ComMedLibB
                 SQL += "      , A.GBQTY CGBQTY, A.GBDOSAGE CGBDOSAGE, A.NEXTCODE CNEXTCODE, C.DAICODE                                                                                               \r";
                 SQL += "      , A.ORDERNAMES CORDERNAMES, A.GBIMIV CGBIMIV, B.SUGBF, C.SUGBN, B.BUN BUNSU                                                                                           \r";
                 SQL += "      , '' GBCOPY,    '' GBSUNAP, '' GBAUTOSEND, '' GBAUTOSEND2, A.BUN,      '' TUYAKNO                                                                                     \r";
-                SQL += "      , A.ORDERCODE, 1 REALQTY,   KOSMOS_OCS.FC_OCS_ODOSAGE_DIV(A.SPECCODE) GBDIV                                                                                           \r";
+                SQL += "      , A.ORDERCODE, 1 REALQTY,   ADMIN.FC_OCS_ODOSAGE_DIV(A.SPECCODE) GBDIV                                                                                           \r";
                 SQL += "      , '' NAL,         '' GBER,     '' GBSELF                                                                                                                              \r";
                 //SQL += "      , '' REMARK,   '' RES,    '' MULTI,    A.SUCODE,       A.SLIPNO,    '' DOSCODE    \R";
                 SQL += "      , '' REMARK,   '' RES,    '' MULTI,    A.SUCODE,       A.SLIPNO,    A.SPECCODE CDOSCODE                                                                               \r";
                 SQL += "      , '' GBBOTH,   '' GBINFO, '' ORDERNO,  '' GBSUNAP,     '' DRCODE,   '' MULTIREMARK                                                                                    \r";
                 SQL += "      , '' DUR,      '' RESV,   '' GBTAX,    '' SCODEREMARK, '' GBSPC_NO, '' SCODESAYU                                                                                      \r";
                 SQL += "      , '' GBFM,     '' SABUN,  '' OCSDRUG,  '' ASA,         '' PCHASU,   '' SUBUL_WARD                                                                                     \r";
-                //SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(A.SPECCODE) DOSNAME                              \R";
-                //SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_DIV(A.SPECCODE) DIV                                   \R";
+                //SQL += "      , ADMIN.FC_OCS_ODOSAGE_NAME(A.SPECCODE) DOSNAME                              \R";
+                //SQL += "      , ADMIN.FC_OCS_ODOSAGE_DIV(A.SPECCODE) DIV                                   \R";
                 SQL += "      , CASE WHEN (A.BUN = '11' OR A.BUN = '12') AND A.SUCODE <> 'NIG06' THEN '010501'                                                                                      \r";
                 SQL += "             WHEN(A.BUN = '11' OR A.BUN = '12') AND A.SUCODE = 'NIG06' THEN '490301'                                                                                        \r";
                 SQL += "             WHEN A.BUN = '20' AND(A.SUCODE = 'NSB' OR A.SUCODE = 'PACETA') THEN '930120'                                                                                   \r";
                 SQL += "             WHEN A.BUN = '20' AND(A.SUCODE = 'MIN2') THEN '910120'                                                                                                         \r";
                 SQL += "             WHEN A.BUN = '20' AND A.SUCODE NOT IN('NSB', 'PACETA', 'MIN2') THEN '920120' END DOSCODE                                                                       \r";
-                SQL += "      , CASE WHEN (A.BUN = '11' OR A.BUN = '12') AND A.SUCODE <> 'NIG06' THEN KOSMOS_OCS.FC_OCS_ODOSAGE_NAME('010501')                                                      \r";
+                SQL += "      , CASE WHEN (A.BUN = '11' OR A.BUN = '12') AND A.SUCODE <> 'NIG06' THEN ADMIN.FC_OCS_ODOSAGE_NAME('010501')                                                      \r";
                 SQL += "             WHEN (A.BUN = '11' OR A.BUN = '12') AND A.SUCODE = 'NIG06' THEN ''                                                                                             \r";
-                SQL += "             WHEN A.BUN = '20' AND (A.SUCODE = 'NSB' OR A.SUCODE = 'PACETA') THEN KOSMOS_OCS.FC_OCS_ODOSAGE_NAME('930120')                                                  \r";
-                SQL += "             WHEN A.BUN = '20' AND (A.SUCODE = 'MIN2') THEN KOSMOS_OCS.FC_OCS_ODOSAGE_NAME('910120')                                                                        \r";
-                SQL += "             WHEN A.BUN = '20' AND A.SUCODE NOT IN('NSB', 'PACETA', 'MIN2') THEN KOSMOS_OCS.FC_OCS_ODOSAGE_NAME('920120') END DOSNAME                                       \r";
-                SQL += "      , CASE WHEN (A.BUN = '11' OR A.BUN = '12') AND A.SUCODE <> 'NIG06' THEN KOSMOS_OCS.FC_OCS_ODOSAGE_DIV('010501')                                                       \r";
+                SQL += "             WHEN A.BUN = '20' AND (A.SUCODE = 'NSB' OR A.SUCODE = 'PACETA') THEN ADMIN.FC_OCS_ODOSAGE_NAME('930120')                                                  \r";
+                SQL += "             WHEN A.BUN = '20' AND (A.SUCODE = 'MIN2') THEN ADMIN.FC_OCS_ODOSAGE_NAME('910120')                                                                        \r";
+                SQL += "             WHEN A.BUN = '20' AND A.SUCODE NOT IN('NSB', 'PACETA', 'MIN2') THEN ADMIN.FC_OCS_ODOSAGE_NAME('920120') END DOSNAME                                       \r";
+                SQL += "      , CASE WHEN (A.BUN = '11' OR A.BUN = '12') AND A.SUCODE <> 'NIG06' THEN ADMIN.FC_OCS_ODOSAGE_DIV('010501')                                                       \r";
                 SQL += "             WHEN (A.BUN = '11' OR A.BUN = '12') AND A.SUCODE = 'NIG06' THEN ''                                                                                             \r";
-                SQL += "             WHEN A.BUN = '20' AND (A.SUCODE = 'NSB' OR A.SUCODE = 'PACETA') THEN KOSMOS_OCS.FC_OCS_ODOSAGE_DIV('930120')                                                   \r";
-                SQL += "             WHEN A.BUN = '20' AND (A.SUCODE = 'MIN2') THEN KOSMOS_OCS.FC_OCS_ODOSAGE_DIV('910120')                                                                         \r";
-                SQL += "             WHEN A.BUN = '20' AND A.SUCODE NOT IN('NSB', 'PACETA', 'MIN2') THEN KOSMOS_OCS.FC_OCS_ODOSAGE_DIV('920120') END DIV                                            \r";
-                SQL += "      , KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(A.SPECCODE, A.SLIPNO) SPECNAME                                                                                                     \r";
-                SQL += "      , DECODE(A.GBIMIV, '4', KOSMOS_OCS.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', A.ORDERCODE)                                                                 \r";
-                SQL += "                       , '5', KOSMOS_OCS.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', A.ORDERCODE)                                                                 \r";
-                SQL += "                       , '6', KOSMOS_OCS.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', A.ORDERCODE)                                                                 \r";
-                SQL += "                       , '8', KOSMOS_OCS.FC_OCS_EXAM_ANATMST('" + clsOrdFunction.Pat.PtNo + "', A.ORDERCODE, 'I', '" + clsOrdFunction.Pat.DeptCode + "'), '') OPINION_YN    \r";
+                SQL += "             WHEN A.BUN = '20' AND (A.SUCODE = 'NSB' OR A.SUCODE = 'PACETA') THEN ADMIN.FC_OCS_ODOSAGE_DIV('930120')                                                   \r";
+                SQL += "             WHEN A.BUN = '20' AND (A.SUCODE = 'MIN2') THEN ADMIN.FC_OCS_ODOSAGE_DIV('910120')                                                                         \r";
+                SQL += "             WHEN A.BUN = '20' AND A.SUCODE NOT IN('NSB', 'PACETA', 'MIN2') THEN ADMIN.FC_OCS_ODOSAGE_DIV('920120') END DIV                                            \r";
+                SQL += "      , ADMIN.FC_OCS_OSPECIMAN_NAME(A.SPECCODE, A.SLIPNO) SPECNAME                                                                                                     \r";
+                SQL += "      , DECODE(A.GBIMIV, '4', ADMIN.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', A.ORDERCODE)                                                                 \r";
+                SQL += "                       , '5', ADMIN.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', A.ORDERCODE)                                                                 \r";
+                SQL += "                       , '6', ADMIN.FC_OCS_ENDO_REMARK('" + clsOrdFunction.Pat.PtNo + "', A.ORDERCODE)                                                                 \r";
+                SQL += "                       , '8', ADMIN.FC_OCS_EXAM_ANATMST('" + clsOrdFunction.Pat.PtNo + "', A.ORDERCODE, 'I', '" + clsOrdFunction.Pat.DeptCode + "'), '') OPINION_YN    \r";
                 SQL += "      , A.SPECCODE                                                                                                                                                          \r";
                 SQL += "      , A.CBUN                                                                                                                                                              \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE A                                                                                                                                          \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUT      B                                                                                                                                          \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUN      C                                                                                                                                          \r";
+                SQL += "   FROM ADMIN.OCS_ORDERCODE A                                                                                                                                          \r";
+                SQL += "      , ADMIN.BAS_SUT      B                                                                                                                                          \r";
+                SQL += "      , ADMIN.BAS_SUN      C                                                                                                                                          \r";
                 SQL += "  WHERE ORDERCODE   = '" + ArgOrderCode.Trim() + "'                                                                                                                         \r";
                 SQL += "    AND SLIPNO      = '" + ArgSlipNo + "'                                                                                                                                   \r";
                 SQL += "    AND A.SUCODE    = B.SUCODE(+)                                                                                                                                           \r";
@@ -1644,8 +1644,8 @@ namespace ComMedLibB
                 SQL += "      , '' GBPORT                                                                               \r";
                 //2021-01-11 추가
                 SQL += "      , D.BCONTENTS, D.CONTENTS, D.TUYEOPOINT, D.TUYEOTIME                                      \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OPRM      D                                                              \r";
-                SQL += "      , KOSMOS_OCS.OCS_ORDERCODE B                                                              \r";
+                SQL += "   FROM ADMIN.OCS_OPRM      D                                                              \r";
+                SQL += "      , ADMIN.OCS_ORDERCODE B                                                              \r";
                 SQL += "  WHERE D.ROWID = '" + sRowId.Trim() + "'                                                       \r";
                 SQL += "    AND D.ORDERCODE = B.ORDERCODE(+)                                                            \r";
                 SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
@@ -1699,7 +1699,7 @@ namespace ComMedLibB
                 SQL = "";
                 SQL += " SELECT                                                                                 \r";
                 SQL += "      *                                                                                 \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OPRM                                                             \r";
+                SQL += "   FROM ADMIN.OCS_OPRM                                                             \r";
                 SQL += "  WHERE ROWID = '" + sRowId.Trim() + "'                                                 \r";
                 SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -1758,11 +1758,11 @@ namespace ComMedLibB
                 SQL += "      , '' DUR,      '' Resv,   '' GbTax,    '' ScodeRemark, '' GBSPC_NO, '' ScodeSayu  \r";
                 SQL += "      , '' GbFM,     '' Sabun,  '' OCSDRUG,  '' ASA,         '' PCHASU,   '' SUBUL_WARD \r";
                 SQL += "      , d.GBPRN,     c.SUGBN                                                            \r";
-                //SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                               \r";
-                //SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_DIV(d.DOSCODE) DIV                                    \r";
-                SQL += "      , (SELECT DOSNAME FROM KOSMOS_OCS.OCS_ODOSAGE WHERE DOSCODE = d.doscode) DOSNAME  \r";
-                SQL += "      , (SELECT GBDIV FROM KOSMOS_OCS.OCS_ODOSAGE WHERE DOSCODE = d.doscode) DIV        \r";
-                SQL += "      , KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(D.DOSCODE, A.SLIPNO) SPECNAME                  \r";
+                //SQL += "      , ADMIN.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                               \r";
+                //SQL += "      , ADMIN.FC_OCS_ODOSAGE_DIV(d.DOSCODE) DIV                                    \r";
+                SQL += "      , (SELECT DOSNAME FROM ADMIN.OCS_ODOSAGE WHERE DOSCODE = d.doscode) DOSNAME  \r";
+                SQL += "      , (SELECT GBDIV FROM ADMIN.OCS_ODOSAGE WHERE DOSCODE = d.doscode) DIV        \r";
+                SQL += "      , ADMIN.FC_OCS_OSPECIMAN_NAME(D.DOSCODE, A.SLIPNO) SPECNAME                  \r";
                 SQL += "      , a.CBUN, d.PRN_REMARK, d.PRN_INS_UNIT, d.PRN_DOSCODE, d.PRN_INS_GBN              \r";
                 SQL += "      , d.PRN_TERM, d.PRN_NOTIFY, d.PRN_INS_SDATE, d.PRN_INS_EDATE, PRN_INS_MAX         \r";
                 SQL += "      , d.GBTFLAG, d.GBGROUP, a.SENDDEPT, b.SUGBJ SUSUGBJ                               \r";
@@ -1774,7 +1774,7 @@ namespace ComMedLibB
                 SQL += "      , CASE WHEN d.GBINFO IS NOT NULL AND EXISTS                                       \r";
                 SQL += "      	(                                                                               \r";
                 SQL += "      		SELECT 1                                                                    \r";
-                SQL += "      		  FROM KOSMOS_OCS.OCS_SUBCODE SUB                                           \r";
+                SQL += "      		  FROM ADMIN.OCS_SUBCODE SUB                                           \r";
                 SQL += "      		 WHERE SUB.ORDERCODE = D.ORDERCODE                                          \r";
                 SQL += "      		   AND SUB.SUCODE = D.SUCODE                                                \r";
                 SQL += "      		   AND SUB.SUBNAME = D.GBINFO                                               \r";
@@ -1782,10 +1782,10 @@ namespace ComMedLibB
                 SQL += "      	) THEN '1'                                                                      \r";
                 SQL += "      	END IS_SUBCODE_ERROR                                                            \r";
                 SQL += "      , CASE WHEN B.DELDATE <= TRUNC(SYSDATE) THEN '1' END IS_DELSUGA                   \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE a                                                      \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUT      b                                                      \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUN      c                                                      \r";
-                SQL += "      , KOSMOS_OCS.OCS_OPRM      d                                                      \r";
+                SQL += "   FROM ADMIN.OCS_ORDERCODE a                                                      \r";
+                SQL += "      , ADMIN.BAS_SUT      b                                                      \r";
+                SQL += "      , ADMIN.BAS_SUN      c                                                      \r";
+                SQL += "      , ADMIN.OCS_OPRM      d                                                      \r";
                 SQL += "  WHERE d.OrderCode = '" + sOrderCode.Trim() + "'                                       \r";
                 if (sDeptDr.Trim() == "MG" || sDeptDr.Trim() == "MC" || sDeptDr.Trim() == "MP" ||
                     sDeptDr.Trim() == "ME" || sDeptDr.Trim() == "MN" || sDeptDr.Trim() == "MR" || sDeptDr.Trim() == "MI")
@@ -1903,9 +1903,9 @@ namespace ComMedLibB
                 SQL += "      , GBVCODE, GBVCODE1, GBVCODE2, KCD7                                                                                               \r";
                 SQL += "      , ILLNAMEK_OLD, ILLNAMEE_OLD, GBCHK                                                                                               \r";
                 SQL += "      , KCDOLD, IPDETC, REPCODE                                                                                                         \r";
-                SQL += "      ,  (SELECT NVL(ILLNAMEE,ILLNAMEK)  FROM KOSMOS_PMPA.BAS_ILLS WHERE ILLCODE = A.REPCODE AND ROWNUM = 1) AS REPNAME                 \r";
-                SQL += "      ,  CASE WHEN EXISTS(SELECT 1 FROM KOSMOS_PMPA.VIEW_MID_CHECK_POA_ILLS WHERE ILLCODE = A.ILLCODE) THEN 'E' ELSE 'Y' END POA        \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_ILLS A                                                                                                          \r";
+                SQL += "      ,  (SELECT NVL(ILLNAMEE,ILLNAMEK)  FROM ADMIN.BAS_ILLS WHERE ILLCODE = A.REPCODE AND ROWNUM = 1) AS REPNAME                 \r";
+                SQL += "      ,  CASE WHEN EXISTS(SELECT 1 FROM ADMIN.VIEW_MID_CHECK_POA_ILLS WHERE ILLCODE = A.ILLCODE) THEN 'E' ELSE 'Y' END POA        \r";
+                SQL += "   FROM ADMIN.BAS_ILLS A                                                                                                          \r";
                 SQL += "  WHERE ILLCODE = '" + sillCode + "'                                                                                                    \r";
                 
 
@@ -1959,7 +1959,7 @@ namespace ComMedLibB
                 SQL = "";
                 SQL += " SELECT BOSELF, BHSELF, TASELF, SNSELF, ILSELF, GISELF, GBPX,   \r";
                 SQL += "        GBSPC, BOPRICE, BUN, GBHOSP, CBUN                       \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_SUT                                     \r";
+                SQL += "   FROM ADMIN.BAS_SUT                                     \r";
                 SQL += "  WHERE SUCODE = '" + ArgSuCode.Trim() + "'                     \r";
                 SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -2744,7 +2744,7 @@ namespace ComMedLibB
                         try
                         {
                             SQL = "";
-                            SQL += " SELECT * FROM KOSMOS_OCS.ENDO_REMARK                                   \r";
+                            SQL += " SELECT * FROM ADMIN.ENDO_REMARK                                   \r";
                             SQL += "  WHERE Ptno  = '" + clsOrdFunction.Pat.PtNo + "'                       \r";
                             SQL += "    AND JDate = TO_DATE('" + clsPublic.GstrSysDate + "','YYYY-MM-DD')   \r";
                             SQL += "    AND OrderCode = '" + dt.Rows[0]["OrderCode"].ToString().Trim() + "' \r";
@@ -2774,7 +2774,7 @@ namespace ComMedLibB
                         {
                             SQL = "";
                             SQL += " SELECT ROWID                                                               \r";
-                            SQL += "   FROM KOSMOS_OCS.EXAM_ANATMST                                             \r"; //Cytology
+                            SQL += "   FROM ADMIN.EXAM_ANATMST                                             \r"; //Cytology
                             SQL += "  WHERE Ptno      = '" + clsOrdFunction.Pat.PtNo + "'                       \r";
                             SQL += "    AND BDate     = TO_DATE('" + clsPublic.GstrSysDate + "','YYYY-MM-DD')   \r";
                             SQL += "    AND OrderCode = '" + dt.Rows[0]["OrderCode"].ToString() + "'            \r";
@@ -4243,7 +4243,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT DOSNAME                                 \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE                  \r";
+                SQL += "   FROM ADMIN.OCS_ODOSAGE                  \r";
                 SQL += "  WHERE DOSCODE = '" + strDosCode.Trim() + "'   \r";
 
                 SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -4546,7 +4546,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT SuGbN                                                       \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_SUN                                         \r";
+                SQL += "   FROM ADMIN.BAS_SUN                                         \r";
                 SQL += "  WHERE SuNext = '" + dt.Rows[0]["SuCode"].ToString().Trim() + "'   \r";
                 SQL += "    AND SuGbN  = '1'                                                \r";
 
@@ -4581,7 +4581,7 @@ namespace ComMedLibB
                     try
                     {
                         SQL = "";
-                        SQL += " SELECT 1 FROM KOSMOS_OCS.ENDO_REMARK                                   \r";
+                        SQL += " SELECT 1 FROM ADMIN.ENDO_REMARK                                   \r";
                         SQL += "  WHERE Ptno  = '" + clsOrdFunction.Pat.PtNo + "'                       \r";
                         SQL += "    AND JDate = TO_DATE('" + clsPublic.GstrSysDate + "','YYYY-MM-DD')   \r";
                         SQL += "    AND OrderCode = '" + dt.Rows[0]["OrderCode"].ToString() + "'        \r";
@@ -4610,7 +4610,7 @@ namespace ComMedLibB
                     try
                     {
                         SQL = "";
-                        SQL += " SELECT ROWID FROM  KOSMOS_OCS.EXAM_ANATMST                                 \r"; //Cytology
+                        SQL += " SELECT ROWID FROM  ADMIN.EXAM_ANATMST                                 \r"; //Cytology
                         SQL += "  WHERE Ptno      = '" + clsOrdFunction.Pat.PtNo + "'                       \r";
                         SQL += "    AND BDate     = TO_DATE('" + clsPublic.GstrSysDate + "','YYYY-MM-DD')   \r";
                         SQL += "    AND OrderCode = '" + dt.Rows[0]["OrderCode"].ToString().Trim() + "'     \r";
@@ -4658,7 +4658,7 @@ namespace ComMedLibB
             }
 
             SQL = "";
-            SQL += " SELECT DosName, GbDiv  cGbDiv FROM KOSMOS_OCS.OCS_ODOSAGE   \r";
+            SQL += " SELECT DosName, GbDiv  cGbDiv FROM ADMIN.OCS_ODOSAGE   \r";
             SQL += "  WHERE DosCode = '" + cDosCode + "'                         \r";
             SqlErr = clsDB.GetDataTable(ref dt2, SQL, clsDB.DbCon);
 
@@ -4804,7 +4804,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT NAME                            \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_BCODE           \r";
+                SQL += "   FROM ADMIN.BAS_BCODE           \r";
                 SQL += "  WHERE GUBUN = 'OCS_1time_용법'        \r";
                 SQL += "    AND CODE = '" + strDosCode + "'     \r";
                 SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -6107,7 +6107,7 @@ namespace ComMedLibB
                     }
 
                     DataTable dtDoge = null;
-                    SQL = " SELECT DosName,GbDiv FROM KOSMOS_OCS.OCS_ODOSAGE ";
+                    SQL = " SELECT DosName,GbDiv FROM ADMIN.OCS_ODOSAGE ";
                     SQL = SQL + ComNum.VBLF + "WHERE DosCode = '" + strDOSCODE + "' ";
                     SqlErr = clsDB.GetDataTableREx(ref dtDoge, SQL, clsDB.DbCon);
 
@@ -6150,7 +6150,7 @@ namespace ComMedLibB
                 {
                     #region //Read_Specman
                     DataTable dtDoge = null;
-                    SQL = " SELECT Specname FROM KOSMOS_OCS.OCS_OSPECIMAN ";
+                    SQL = " SELECT Specname FROM ADMIN.OCS_OSPECIMAN ";
                     SQL = SQL + ComNum.VBLF + "WHERE SpecCode = '" + dt.Rows[0]["DOSCODE"].ToString().Trim() + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND Slipno   = '" + dt.Rows[0]["SLIPNO"].ToString().Trim() + "'   ";
                     SqlErr = clsDB.GetDataTableREx(ref dtDoge, SQL, clsDB.DbCon);
@@ -6723,7 +6723,7 @@ namespace ComMedLibB
                                 {
                                     SQL = "";
                                     SQL += " SELECT DosName,GbDiv                       \r";
-                                    SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE              \r";
+                                    SQL += "   FROM ADMIN.OCS_ODOSAGE              \r";
                                     SQL += "  WHERE DOSCODE = '" + strDosCode_Nr + "'   \r";
                                     SqlErr = clsDB.GetDataTable(ref dtDos, SQL, clsDB.DbCon);
 
@@ -7992,7 +7992,7 @@ namespace ComMedLibB
 
                             SQL = "";
                             SQL += " SELECT DosName,GbDiv                       \r";
-                            SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE              \r";
+                            SQL += "   FROM ADMIN.OCS_ODOSAGE              \r";
                             SQL += "  WHERE DOSCODE = '" + strDosCode_ER + "'   \r";
                             SqlErr = clsDB.GetDataTable(ref dtDos, SQL, clsDB.DbCon);
 
@@ -8042,7 +8042,7 @@ namespace ComMedLibB
                     {
                         //위에서 무조건 선택화면이 뜸으로 주석처리함
                         //DataTable dtDos = null;
-                        //SQL = " SELECT Specname FROM KOSMOS_OCS.OCS_OSPECIMAN ";
+                        //SQL = " SELECT Specname FROM ADMIN.OCS_OSPECIMAN ";
                         //SQL = SQL + ComNum.VBLF + "WHERE SpecCode = '" + dt.Rows[0]["DOSCODE"].ToString().Trim() + "' ";
                         //SQL = SQL + ComNum.VBLF + "  AND Slipno   = '" + dt.Rows[0]["SLIPNO"].ToString().Trim() + "'   ";
                         //SqlErr = clsDB.GetDataTable(ref dtDos, SQL, clsDB.DbCon);
@@ -8444,7 +8444,7 @@ namespace ComMedLibB
             {   
                 SQL = "";
                 SQL += " SELECT DOSCODE || '  ' || DOSNAME DOSCODE              \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE                          \r";
+                SQL += "   FROM ADMIN.OCS_ODOSAGE                          \r";
                 SQL += "  WHERE SUBSTR(DOSCODE, 1, 2) = '" + strFirstDos + "'   \r";
                 SQL += "    AND SUBSTR(DOSCODE, 3, 2) = '" + strSecondDos + "'  \r";
                 SQL += "    AND SUBSTR(DOSCODE, 5, 2) = '" + strLastDos + "'    \r";
@@ -8520,7 +8520,7 @@ namespace ComMedLibB
                 #region 미사용 주석
                 //SQL = "";
                 //SQL += " SELECT DosName,GbDiv                       \r";
-                //SQL += "   FROM KOSMOS_OCS.OCS_ODOSAGE              \r";
+                //SQL += "   FROM ADMIN.OCS_ODOSAGE              \r";
                 //SQL += "  WHERE DOSCODE = '" + strDosCode + "'      \r";                
                 //SqlErr = clsDB.GetDataTable(ref dtDos, SQL, clsDB.DbCon);
 
@@ -8623,8 +8623,8 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT a.ORDERCODE, B.ORDERNAME || '  ' || B.ORDERNAMES ORDERNAME1         \r";
-                SQL += "      , case when a.bun < '30' then KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(a.DOSCODE) \r";
-                SQL += "             else KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(a.DOSCODE, a.SLIPNO) end DOSNAME      \r";
+                SQL += "      , case when a.bun < '30' then ADMIN.FC_OCS_ODOSAGE_NAME(a.DOSCODE) \r";
+                SQL += "             else ADMIN.FC_OCS_OSPECIMAN_NAME(a.DOSCODE, a.SLIPNO) end DOSNAME      \r";
                 SQL += "      , a.CONTENTS, a.QTY, a.GBDIV, a.NAL, a.GBSELF, a.GBER, a.GBPORT       \r";
                 SQL += "      , a.GBGROUP, a.REMARK, a.SUCODE, b.GBINPUT, a.PRN_REMARK              \r";
                 SQL += "      , a.PRN_INS_GBN, a.PRN_INS_UNIT, a.PRN_INS_SDATE, a.PRN_INS_EDATE     \r";
@@ -8640,7 +8640,7 @@ namespace ComMedLibB
                 SQL += "      , CASE WHEN A.GBINFO IS NOT NULL AND EXISTS                                       \r";
                 SQL += "      	(                                                                               \r";
                 SQL += "      		SELECT 1                                                                    \r";
-                SQL += "      		  FROM KOSMOS_OCS.OCS_SUBCODE SUB                                           \r";
+                SQL += "      		  FROM ADMIN.OCS_SUBCODE SUB                                           \r";
                 SQL += "      		 WHERE SUB.ORDERCODE = A.ORDERCODE                                          \r";
                 SQL += "      		   AND SUB.SUCODE    = A.SUCODE                                                \r";
                 SQL += "      		   AND SUB.SUBNAME   = A.GBINFO                                               \r";
@@ -8652,15 +8652,15 @@ namespace ComMedLibB
                 SQL += "      , CASE WHEN EXISTS                                                                \r";
                 SQL += "      	(                                                                               \r";
                 SQL += "      		SELECT 1                                                                    \r";
-                SQL += "      		  FROM KOSMOS_PMPA.BAS_SUT SUB                                              \r";
+                SQL += "      		  FROM ADMIN.BAS_SUT SUB                                              \r";
                 SQL += "      		 WHERE SUB.SUCODE = A.SUCODE                                                \r";
                 SQL += "      		   AND SUB.DELDATE <= TRUNC(SYSDATE)                                        \r";
                 SQL += "      	) THEN '1'                                                                      \r";
                 SQL += "      	END IS_SUGA_DEL                                                                 \r";
 
 
-                SQL += "   FROM KOSMOS_OCS.OCS_OPRM      a                                          \r";
-                SQL += "      , KOSMOS_OCS.OCS_ORDERCODE b                                          \r";
+                SQL += "   FROM ADMIN.OCS_OPRM      a                                          \r";
+                SQL += "      , ADMIN.OCS_ORDERCODE b                                          \r";
                 if (strDeptDr.Trim() == "MG" || strDeptDr.Trim() == "MC" || strDeptDr.Trim() == "MP" ||
                     strDeptDr.Trim() == "ME" || strDeptDr.Trim() == "MN" || strDeptDr.Trim() == "MR" || strDeptDr.Trim() == "MI")
                 {
@@ -8922,7 +8922,7 @@ namespace ComMedLibB
                 SQL = "";
                 SQL += " SELECT ordercode CORDERCODE, OrderName CORDERNAME, OrderNameS CORDERNAMES          \r";
                 SQL += "      , GBBOTH CGBBOTH, DISPHEADER CDISPHEADER, GBINFO CGBINFO                      \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE                                                    \r";
+                SQL += "   FROM ADMIN.OCS_ORDERCODE                                                    \r";
                 SQL += "  WHERE (ORDERCODE LIKE '%'|| '" + ArgOrderCode + "' || '%'                         \r";
                 SQL += "     or UPPER(ORDERNAME) LIKE '%'|| '" + ArgOrderCode + "' || '%'                   \r";
                 SQL += "     or UPPER(ORDERNAMES) LIKE '%'|| '" + ArgOrderCode + "' || '%')                 \r";
@@ -9017,13 +9017,13 @@ namespace ComMedLibB
                 SQL += "      , a.GbBoth cGbBoth, a.GbInfo cGbInfo,a.DrugName cDrugName                             \r";
                 SQL += "      , a.GbQty cGbQty, a.GbDosage cGbDosage, a.NextCode cNextCode, c.DAICODE               \r";
                 SQL += "      , a.OrderNameS cOrderNameS, a.GbImiv cGbImiv, b.SuGbF, b.Bun BunSu                    \r";
-                SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                                   \r";
-                SQL += "      , KOSMOS_OCS.FC_OCS_ODOSAGE_DIV(d.DOSCODE) DIV                                        \r";
-                SQL += "      , KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                      \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE a                                                          \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUT      b                                                          \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUN      c                                                          \r";
-                SQL += "      , KOSMOS_OCS.OCS_IORDER    d                                                          \r";
+                SQL += "      , ADMIN.FC_OCS_ODOSAGE_NAME(d.DOSCODE) DOSNAME                                   \r";
+                SQL += "      , ADMIN.FC_OCS_ODOSAGE_DIV(d.DOSCODE) DIV                                        \r";
+                SQL += "      , ADMIN.FC_OCS_OSPECIMAN_NAME(d.DOSCODE, d.SLIPNO) SPECNAME                      \r";
+                SQL += "   FROM ADMIN.OCS_ORDERCODE a                                                          \r";
+                SQL += "      , ADMIN.BAS_SUT      b                                                          \r";
+                SQL += "      , ADMIN.BAS_SUN      c                                                          \r";
+                SQL += "      , ADMIN.OCS_IORDER    d                                                          \r";
                 SQL += "  WHERE a.SuCode    = b.SuCode(+)                                                           \r";
                 SQL += "    AND a.SuCode    = C.SUNEXT(+)                                                           \r";
                 SQL += "    AND a.ORDERCODE = d.ORDERCODE(+)                                                        \r";
@@ -9073,7 +9073,7 @@ namespace ComMedLibB
                 {
                     SQL = "";
                     SQL += " SELECT count('X') OrdCnt                                       \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_OORDER                                   \r";
+                    SQL += "   FROM ADMIN.OCS_OORDER                                   \r";
                     SQL += "  WHERE Ptno      = '" + strPaNo + "'                           \r";
                     SQL += "    AND BDate     = TO_DATE('" + sBDate + "', 'YYYY-MM-DD')     \r";
                     SQL += "    AND DeptCode  = '" + sDeptCode + "'                         \r";
@@ -9097,7 +9097,7 @@ namespace ComMedLibB
                 {
                     SQL = "";
                     SQL += " SELECT count('X') OrdCnt                                       \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_IORDER                                   \r";
+                    SQL += "   FROM ADMIN.OCS_IORDER                                   \r";
                     SQL += "  WHERE Ptno      = '" + strPaNo + "'                           \r";
                     SQL += "    AND GbStatus  IN  (' ','D+','D')                            \r";
                     SQL += "    AND BDate     >= TO_DATE('" + sBDate + "', 'YYYY-MM-DD')    \r";
@@ -9113,10 +9113,10 @@ namespace ComMedLibB
                 {
                     SQL = "";
                     SQL += " SELECT count('X') OrdCnt                                                                       \r";
-                    SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE a                                                              \r";
-                    SQL += "      , KOSMOS_PMPA.BAS_SUT      b                                                              \r";
-                    SQL += "      , KOSMOS_PMPA.BAS_SUN      c                                                              \r";
-                    SQL += "      , KOSMOS_OCS.OCS_IORDER    d                                                              \r";
+                    SQL += "   FROM ADMIN.OCS_ORDERCODE a                                                              \r";
+                    SQL += "      , ADMIN.BAS_SUT      b                                                              \r";
+                    SQL += "      , ADMIN.BAS_SUN      c                                                              \r";
+                    SQL += "      , ADMIN.OCS_IORDER    d                                                              \r";
                     SQL += "  WHERE a.SuCode    = b.SuCode(+)                                                               \r";
                     SQL += "    AND a.SuCode    = C.SUNEXT(+)                                                               \r";
                     SQL += "    AND d.ORDERCODE = a.ORDERCODE(+)                                                            \r";
@@ -9265,7 +9265,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT ORDERCODE                                                           \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OORDER                                               \r";
+                SQL += "   FROM ADMIN.OCS_OORDER                                               \r";
                 SQL += "  WHERE ORDERCODE = '" + sOrdCode + "'                                      \r";
                 SQL += "    AND PTNO = '" + clsOrdFunction.Pat.PtNo + "'                            \r";
                 SQL += "    AND BDATE = TO_DATE('" + clsOrdFunction.GstrBDate + "', 'YYYY-MM-DD')   \r";
@@ -9277,7 +9277,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT ORDERCODE                                                           \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_IORDER                                               \r";
+                SQL += "   FROM ADMIN.OCS_IORDER                                               \r";
                 SQL += "  WHERE ORDERCODE = '" + sOrdCode + "'                                      \r";
                 SQL += "    AND PTNO = '" + clsOrdFunction.Pat.PtNo + "'                            \r";
                 SQL += "    AND BDATE = TO_DATE('" + clsOrdFunction.GstrBDate + "', 'YYYY-MM-DD')   \r";
@@ -9364,7 +9364,7 @@ namespace ComMedLibB
             DataTable dt = null;
 
             SQL = "";
-            SQL += "SELECT a.ROWID, a.* FROM KOSMOS_OCS.OCS_OPRM a  \r";
+            SQL += "SELECT a.ROWID, a.* FROM ADMIN.OCS_OPRM a  \r";
             SQL += " WHERE DEPTDR = '" + strDEPTDR + "'             \r";
             SQL += "   AND PRMNAME = '" + strPRMNAME + "'           \r";
 

@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.SNAME,a.JUMINNO2,a.LTDCODE,a.pano,a.gjjong,to_char(a.jepdate,'yyyy-mm-dd') jepdate, a.gjyear  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU_WORK A, KOSMOS_PMPA.HIC_PATIENT B, KOSMOS_PMPA.HEA_JEPSU C                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU_WORK A, ADMIN.HIC_PATIENT B, ADMIN.HEA_JEPSU C                ");
             parameter.AppendSql(" WHERE (A.AGE = '40' OR A.AGE = '50' OR A.AGE = '60' OR A.AGE = '70')                                  ");
             parameter.AppendSql("   AND (A.SEXAMS NOT LIKE '%1164%' OR A.SEXAMS IS NULL)                                                ");
             parameter.AppendSql("   AND A.GJJONG = :GJJONG                                                                              ");
@@ -43,7 +43,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU_WORK A, KOSMOS_PMPA.HIC_PATIENT B     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU_WORK A, ADMIN.HIC_PATIENT B     ");
             parameter.AppendSql(" WHERE a.PANO = b.Pano                                             ");
             parameter.AppendSql("   AND b.JUMIN2 = :JUMIN2                                          ");
             parameter.AppendSql("   AND a.GJYEAR = :GJYEAR                                          ");
@@ -87,7 +87,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU_WORK A, KOSMOS_PMPA.HIC_PATIENT B     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU_WORK A, ADMIN.HIC_PATIENT B     ");
             parameter.AppendSql(" WHERE a.PANO = b.Pano                                             ");
             parameter.AppendSql("   AND b.JUMIN2 = :JUMIN2                                          ");
             parameter.AppendSql("   AND a.GJYEAR = :GJYEAR                                          ");
@@ -102,8 +102,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.SNAME,a.JUMINNO,a.LTDCODE,a.PANO,a.GJJONG,TO_CHAR(a.JEPDATE,'YYYY-MM-DD') JEPDATE, a.GJYEAR, a.PTNO  ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.FC_HIC_LTDNAME(a.LTDCODE) AS LTDNAME                                                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU_WORK a, KOSMOS_PMPA.HIC_PATIENT b                                         ");
+            parameter.AppendSql("      ,ADMIN.FC_HIC_LTDNAME(a.LTDCODE) AS LTDNAME                                                          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU_WORK a, ADMIN.HIC_PATIENT b                                         ");
             if (!strLtdCode.IsNullOrEmpty() && !strSname.IsNullOrEmpty())
             {
                 parameter.AppendSql(" WHERE a.LTDCODE = :LTDCODE                                                                        ");

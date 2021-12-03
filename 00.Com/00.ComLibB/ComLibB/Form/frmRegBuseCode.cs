@@ -793,7 +793,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " ACC,GbABC,INSA,PAY,OrdFlag,GbDrug,JAS,CSR,GbPayTime,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(DelDate,'YYYY-MM-DD') DelDate,BuseBun,Ranking,";
                 SQL = SQL + ComNum.VBLF + " GbJego,Buse1,Buse2, Buse3, ABCBUCODE, ROWID, DEPT_ID_UP, DEPT_SORT, Remark, abcyname ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BUSE ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BUSE ";
                 SQL = SQL + ComNum.VBLF + "WHERE BuCode='" + txtBuCode.Text + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -924,7 +924,7 @@ namespace ComLibB
 
 
             SQL = "";
-            SQL = SQL + "SELECT Name,SName FROM KOSMOS_PMPA.BAS_BUSE ";
+            SQL = SQL + "SELECT Name,SName FROM ADMIN.BAS_BUSE ";
             SQL = SQL + ComNum.VBLF + " WHERE BuCode='" + strBucode + "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -1332,7 +1332,7 @@ namespace ComLibB
             
             try
             {
-                SQL = " UPDATE KOSMOS_PMPA.BAS_BUSE SET ";
+                SQL = " UPDATE ADMIN.BAS_BUSE SET ";
                 SQL = SQL + ComNum.VBLF + " DEPT_ID_UP = '" + VB.Val(strNewDest.Replace("NODE", "")) + "', ";
                 SQL = SQL + ComNum.VBLF + " DEPT_LEVEL = '" + nLevel + "' ";
                 SQL = SQL + ComNum.VBLF + "  WHERE DEPT_ID = '" + VB.Val(strOldDest.Replace("NODE", "")) + "'";

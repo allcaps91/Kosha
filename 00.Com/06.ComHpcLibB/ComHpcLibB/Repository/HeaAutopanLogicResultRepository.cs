@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.EXCODE, A.GUBUN, A.SEX, B.RESULT, LOGIC, RESULTVALUE              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC A, KOSMOS_PMPA.HIC_RESULT  B          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN_LOGIC A, ADMIN.HIC_RESULT  B          ");
             parameter.AppendSql(" WHERE b.WRTNO = :JEPNO                                                    ");
             parameter.AppendSql("   AND A.EXCODE = B.EXCODE                                                 ");
             parameter.AppendSql("   AND A.WRTNO = :WRTNO                                                    ");
@@ -32,7 +32,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND B.RESULT NOT IN ('.','0')                                           ");
             parameter.AppendSql("   AND A.EXCODE IN (                                                       ");
             parameter.AppendSql("                     SELECT EXCODE                                         ");
-            parameter.AppendSql("                       FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC                  ");
+            parameter.AppendSql("                       FROM ADMIN.HEA_AUTOPAN_LOGIC                  ");
             parameter.AppendSql("                      WHERE WRTNO = :WRTNO                                 ");
             parameter.AppendSql("                        AND SEQNO = :SEQNO                                 ");
             parameter.AppendSql("                      GROUP BY EXCODE                                      ");
@@ -50,9 +50,9 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.SEX, A.EXCODE1, A.EXCODE2, B.RETVAL1, A.CALC, C.RETVAL2, A.LOGIC, A.RESULTVALUE   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC_CALC A                                                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN_LOGIC_CALC A                                                ");
             parameter.AppendSql("     , (SELECT EXCODE1, RESULTVALUE RETVAL1                                                ");
-            parameter.AppendSql("          FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC_CALC A, KOSMOS_PMPA.HIC_RESULT  B             ");
+            parameter.AppendSql("          FROM ADMIN.HEA_AUTOPAN_LOGIC_CALC A, ADMIN.HIC_RESULT  B             ");
             parameter.AppendSql("         WHERE a.EXCODE1 = b.EXCODE                                                        ");
             parameter.AppendSql("           AND B.WRTNO = :JEPNO                                                            ");
             parameter.AppendSql("           AND A.SEQNO = :SEQNO                                                            ");
@@ -60,7 +60,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("           AND A.WRTNO = :WRTNO                                                            ");
             parameter.AppendSql("       ) B                                                                                 ");
             parameter.AppendSql("     , (SELECT EXCODE2, RESULTVALUE RETVAL2                                                ");
-            parameter.AppendSql("          FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC_CALC A, KOSMOS_PMPA.HIC_RESULT  B             ");
+            parameter.AppendSql("          FROM ADMIN.HEA_AUTOPAN_LOGIC_CALC A, ADMIN.HIC_RESULT  B             ");
             parameter.AppendSql("         WHERE a.EXCODE2 = b.EXCODE                                                        ");
             parameter.AppendSql("           AND B.WRTNO = :JEPNO                                                            ");
             parameter.AppendSql("           AND A.SEQNO = :SEQNO                                                            ");
@@ -83,7 +83,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.EXCODE, A.GUBUN, A.SEX, B.RESULT, LOGIC, RESULTVALUE              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC A, KOSMOS_PMPA.HIC_RESULT  B          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN_LOGIC A, ADMIN.HIC_RESULT  B          ");
             parameter.AppendSql(" WHERE b.WRTNO = :JEPNO                                                    ");
             parameter.AppendSql("   AND A.EXCODE = B.EXCODE                                                 ");
             parameter.AppendSql("   AND A.SEQNO = :SEQNO                                                    ");
@@ -102,7 +102,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.EXCODE, A.GUBUN, A.SEX, B.RESULT, LOGIC, RESULTVALUE              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC A, KOSMOS_PMPA.HIC_RESULT  B          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN_LOGIC A, ADMIN.HIC_RESULT  B          ");
             parameter.AppendSql(" WHERE b.WRTNO = :JEPNO                                                    ");
             parameter.AppendSql("   AND A.EXCODE = B.EXCODE                                                 ");
             parameter.AppendSql("   AND A.WRTNO = :WRTNO                                                    ");
@@ -111,7 +111,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   AND B.RESULT NOT IN ('.','0')                                           ");
             parameter.AppendSql("   AND A.EXCODE IN (                                                       ");
             parameter.AppendSql("                     SELECT EXCODE                                         ");
-            parameter.AppendSql("                       FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC                  ");
+            parameter.AppendSql("                       FROM ADMIN.HEA_AUTOPAN_LOGIC                  ");
             parameter.AppendSql("                      WHERE WRTNO = :WRTNO                                 ");
             parameter.AppendSql("                        AND SEQNO = :SEQNO                                 ");
             parameter.AppendSql("                      GROUP BY EXCODE                                      ");

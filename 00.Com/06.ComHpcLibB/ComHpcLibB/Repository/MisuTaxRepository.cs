@@ -41,10 +41,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("CREATE OR REPLACE VIEW         KOSMOS_ADM.VIEW_TAXCASH_VIEW (BUNAME, LTD, NAME, UPTAE, JONGMOK, GBTRB, GAMT, GBN, BDATE, LTDCODE, NAME2, LTDCODE2, LTD2, UPTAE2, JONGMOK2, WRTNO, TRBNO) AS");
+            parameter.AppendSql("CREATE OR REPLACE VIEW         ADMIN.VIEW_TAXCASH_VIEW (BUNAME, LTD, NAME, UPTAE, JONGMOK, GBTRB, GAMT, GBN, BDATE, LTDCODE, NAME2, LTDCODE2, LTD2, UPTAE2, JONGMOK2, WRTNO, TRBNO) AS");
             // 건진센터 계산서
             parameter.AppendSql("SELECT                         '건진센터',A.LTDNO, A.LTDNAME, A.UPTAE, A.JONGMOK,A.GBTRB, AMT, '2', BDATE, A.LTDCODE, A.LTDNAME2, A.LTDCODE2, A.LTDNO2 , A.UPTAE2, A.JONGMOK2, A.WRTNO,A.TRBNO ");
-            parameter.AppendSql("FROM                            KOSMOS_PMPA.MISU_TAX A                                                                                                                                         ");
+            parameter.AppendSql("FROM                            ADMIN.MISU_TAX A                                                                                                                                         ");
             parameter.AppendSql("WHERE                           A.BDate >= TO_DATE('" + dtpFDate + "', 'YYYY-MM-DD')                                                                                                           ");
             parameter.AppendSql("   AND                          A.BDate <= TO_DATE('" + dtpTDate + "', 'YYYY-MM-DD')                                                                                                           ");
             parameter.AppendSql("   AND                         (A.DELDATE IS NULL OR A.DELDATE  = '')                                                                                                                          ");
@@ -63,7 +63,7 @@ namespace ComHpcLibB.Repository
             // 건진센터 계산서 국세청전송(+)
 
             parameter.AppendSql("SELECT                         '건진센터',A.LTDNO, A.LTDNAME, A.UPTAE, A.JONGMOK,A.GBTRB, AMT, '2', BDATE, A.LTDCODE, A.LTDNAME2, A.LTDCODE2, A.LTDNO2, A.UPTAE2, A.JONGMOK2, A.WRTNO, A.TRBNO ");
-            parameter.AppendSql("FROM                            KOSMOS_PMPA.MISU_TAX A                                                                                                                                         ");
+            parameter.AppendSql("FROM                            ADMIN.MISU_TAX A                                                                                                                                         ");
             parameter.AppendSql("WHERE                           A.BDate >= TO_DATE('" + dtpFDate + "', 'YYYY-MM-DD')                                                                                                           ");
             parameter.AppendSql("   AND                          A.BDate <= TO_DATE('" + dtpTDate + "', 'YYYY-MM-DD')                                                                                                           ");
             parameter.AppendSql("   AND                          A.DELDATE IS NOT NULL                                                                                                                                          ");
@@ -83,7 +83,7 @@ namespace ComHpcLibB.Repository
             // 건진센터 계산서 국세청전송(-)
 
             parameter.AppendSql("SELECT                         '건진센터',A.LTDNO, A.LTDNAME, A.UPTAE, A.JONGMOK,A.GBTRB,(AMT * -1), '2', BMDATE, A.LTDCODE, A.LTDNAME2, A.LTDCODE2, A.LTDNO2, A.UPTAE2, A.JONGMOK2, A.WRTNO, A.TRBNO ");
-            parameter.AppendSql("FROM                            KOSMOS_PMPA.MISU_TAX A                                                                                                                                         ");
+            parameter.AppendSql("FROM                            ADMIN.MISU_TAX A                                                                                                                                         ");
             parameter.AppendSql("WHERE                           A.BDate >= TO_DATE('" + dtpFDate + "', 'YYYY-MM-DD')                                                                                                           ");
             parameter.AppendSql("   AND                          A.BDate <= TO_DATE('" + dtpTDate + "', 'YYYY-MM-DD')                                                                                                           ");
             parameter.AppendSql("   AND                          A.DELDATE IS NOT NULL                                                                                                                                          ");
@@ -180,7 +180,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT             RESSEQ, LOADSTATUS         ");
-            parameter.AppendSql("FROM               KOSMOS_ADM.TRB_SALEEBILL   ");
+            parameter.AppendSql("FROM               ADMIN.TRB_SALEEBILL   ");
             parameter.AppendSql("WHERE              RESSEQ = :VAL              ");
             parameter.AppendSql("   AND             LOADSTATUS <> '1'          ");
 
@@ -193,7 +193,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DROP VIEW KOSMOS_ADM.VIEW_TAXCASH_VIEW   ");
+            parameter.AppendSql("DROP VIEW ADMIN.VIEW_TAXCASH_VIEW   ");
 
             ExecuteNonQuery(parameter);
         }
@@ -204,7 +204,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT                          LTD, NAME, UPTAE, JONGMOK,GBTRB, GAMT,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE, LTDCODE, NAME2, LTDCODE2, LTD2, UPTAE2, JONGMOK2, WRTNO, TRBNO    ");
 
-            parameter.AppendSql("FROM                            KOSMOS_ADM.VIEW_TAXCASH_VIEW                                                                                                               ");
+            parameter.AppendSql("FROM                            ADMIN.VIEW_TAXCASH_VIEW                                                                                                               ");
                                                                  
             if (rdoSort1 == true)
             {

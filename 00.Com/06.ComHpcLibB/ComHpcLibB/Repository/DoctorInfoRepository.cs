@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(a.ReDay, 'YYYY-MM-DD') ReDay                            ");
             parameter.AppendSql("     , TO_CHAR(b.ToiDay, 'YYYY-MM-DD') ToiDay, Room, Pan, GbDent       ");
             parameter.AppendSql("  FROM HIC_Doctor          a                                           ");
-            parameter.AppendSql("     , KOSMOS_ADM.INSA_MST b                                           ");
+            parameter.AppendSql("     , ADMIN.INSA_MST b                                           ");
             parameter.AppendSql(" WHERE a.Sabun = :SABUN                                                ");
             parameter.AppendSql("   AND b.Sabun = :LSABUN                                               ");
 

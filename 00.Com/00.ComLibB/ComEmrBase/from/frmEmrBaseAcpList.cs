@@ -172,7 +172,7 @@ namespace ComEmrBase
         }
 
         /// <summary>
-        /// KOSMOS_OCS.ETC_JUPMST  <=> KOSMOS_EMR.EMR_TREATT 매핑
+        /// ADMIN.ETC_JUPMST  <=> ADMIN.EMR_TREATT 매핑
         /// </summary>
         /// <param name="ROWID"></param>
         public void SetEkg(string ROWID)
@@ -192,8 +192,8 @@ namespace ComEmrBase
             SQL += ComNum.VBLF + "	,	T.INDATE                                                    ";
             SQL += ComNum.VBLF + "	,	T.CLINCODE                                                  ";
             SQL += ComNum.VBLF + "	,	T.CLASS                                                     ";
-            SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST A                                    ";
-            SQL += ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.EMR_TREATT T                            ";
+            SQL += ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST A                                    ";
+            SQL += ComNum.VBLF + "    INNER JOIN ADMIN.EMR_TREATT T                            ";
             SQL += ComNum.VBLF + "       ON T.PATID = A.PTNO                                        ";
             SQL += ComNum.VBLF + "      AND T.CLASS = A.GBIO                                        ";
             SQL += ComNum.VBLF + "      AND T.CLINCODE = A.DEPTCODE                                 ";
@@ -451,16 +451,16 @@ namespace ComEmrBase
             SQL.AppendLine("SELECT ");
             SQL.AppendLine("  XX.INOUTCLS, XX.PTNO, XX.PTNAME, XX.SEX, XX.AGE,");
             SQL.AppendLine("  XX.MEDDEPTCD, XX.MEDDRCD, XX.MEDFRDATE, XX.MEDFRTIME, XX.MEDENDDATE, XX.MEDENDTIME, XX.DRNAME, XX.GBSPC, XX.GBSTS,  ");
-            SQL.AppendLine("  (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = XX.MEDDEPTCD) AS DEPTKORNAME ");
+            SQL.AppendLine("  (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = XX.MEDDEPTCD) AS DEPTKORNAME ");
             SQL.AppendLine("  , CASE WHEN XX.JINDTL = '28' THEN '사본발급' END COPYSTR");
 
-            SQL.AppendLine("  , CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_OCS.OCS_MCCERTIFI_WONMU_REPRINT WHERE PANO = XX.PTNO AND BDATE = TO_DATE(XX.MEDFRDATE, 'YYYYMMDD') AND DEPTCODE = XX.MEDDEPTCD) THEN 1 END READ_DOCREPRINT");
-            SQL.AppendLine("  , CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_PMPA.OPD_TELRESV WHERE PANO = XX.PTNO AND RDATE = TO_DATE(XX.MEDFRDATE, 'YYYYMMDD') AND DEPTCODE = XX.MEDDEPTCD AND GBCOPY = 'Y' ) THEN 1 END READ_CHARTCOPY");
+            SQL.AppendLine("  , CASE WHEN EXISTS (SELECT 1 FROM ADMIN.OCS_MCCERTIFI_WONMU_REPRINT WHERE PANO = XX.PTNO AND BDATE = TO_DATE(XX.MEDFRDATE, 'YYYYMMDD') AND DEPTCODE = XX.MEDDEPTCD) THEN 1 END READ_DOCREPRINT");
+            SQL.AppendLine("  , CASE WHEN EXISTS (SELECT 1 FROM ADMIN.OPD_TELRESV WHERE PANO = XX.PTNO AND RDATE = TO_DATE(XX.MEDFRDATE, 'YYYYMMDD') AND DEPTCODE = XX.MEDDEPTCD AND GBCOPY = 'Y' ) THEN 1 END READ_CHARTCOPY");
 
             SQL.AppendLine("  , CASE WHEN XX.INOUTCLS = 'I' AND EXISTS ");
             SQL.AppendLine("  ( ");
             SQL.AppendLine("    SELECT 1                                                       	    ");
-            SQL.AppendLine("    FROM KOSMOS_PMPA.IPD_NEW_MASTER                                     ");
+            SQL.AppendLine("    FROM ADMIN.IPD_NEW_MASTER                                     ");
             SQL.AppendLine("    WHERE PANO = XX.PTNO                                                ");
             SQL.AppendLine("      AND INDATE >= TO_DATE(XX.MEDFRDATE || ' 000000','YYYYMMDD HH24MISS')     				");
             SQL.AppendLine("      AND INDATE <= TO_DATE(XX.MEDFRDATE || ' 235959','YYYYMMDD HH24MISS')     				");
@@ -583,7 +583,7 @@ namespace ComEmrBase
                     SQL.AppendLine("    MAX(A.MEDFRDATE) AS MEDFRDATE, MAX(A.MEDFRTIME) AS MEDFRTIME, ");
                     SQL.AppendLine("    MAX(TO_CHAR(B.OUTDATE,'YYYYMMDD')) AS MEDENDDATE, '' AS MEDENDTIME, '' AS DRNAME , '' AS GBSPC, '' AS GBSTS ");
                     SQL.AppendLine("    , '' AS JINDTL");
-                    SQL.AppendLine("FROM KOSMOS_EMR.EMRXMLMST A, ");
+                    SQL.AppendLine("FROM ADMIN.EMRXMLMST A, ");
                     SQL.AppendLine("    " + ComNum.DB_PMPA + "IPD_NEW_MASTER B");//, " + ComNum.DB_PMPA + "BAS_DOCTOR C ");
                     SQL.AppendLine("WHERE A.PTNO =  '" + mPTNO + "' ");
                     SQL.AppendLine("AND A.INOUTCLS = 'I' ");
@@ -603,7 +603,7 @@ namespace ComEmrBase
                     SQL.AppendLine("    MAX(A.MEDFRDATE) AS MEDFRDATE, MAX(A.MEDFRTIME) AS MEDFRTIME, ");
                     SQL.AppendLine("    MAX(TO_CHAR(B.OUTDATE,'YYYYMMDD')) AS MEDENDDATE, '' AS MEDENDTIME, '' AS DRNAME , '' AS GBSPC, '' AS GBSTS   ");
                     SQL.AppendLine("    , '' AS JINDTL");
-                    SQL.AppendLine("FROM KOSMOS_EMR.AEMRCHARTMST A, ");
+                    SQL.AppendLine("FROM ADMIN.AEMRCHARTMST A, ");
                     SQL.AppendLine("    " + ComNum.DB_PMPA + "IPD_NEW_MASTER B");//, " + ComNum.DB_PMPA + "BAS_DOCTOR C ");
                     SQL.AppendLine("WHERE A.PTNO =  '" + mPTNO + "' ");
                     SQL.AppendLine("AND A.INOUTCLS = 'I' ");
@@ -646,7 +646,7 @@ namespace ComEmrBase
             SQL.AppendLine("    A.INDATE AS MEDFRDATE, '120000' AS MEDFRTIME, ");
             SQL.AppendLine("    A.OUTDATE AS MEDENDDATE, '120000' AS MEDENDTIME, C.DRNAME , '' GBSPC, '0' GBSTS   ");
             SQL.AppendLine("    , '' AS JINDTL");
-            SQL.AppendLine("FROM KOSMOS_EMR.EMR_TREATT A, KOSMOS_EMR.EMR_PATIENTT B, " + ComNum.DB_MED + "OCS_DOCTOR C ");
+            SQL.AppendLine("FROM ADMIN.EMR_TREATT A, ADMIN.EMR_PATIENTT B, " + ComNum.DB_MED + "OCS_DOCTOR C ");
             SQL.AppendLine("WHERE A.PATID = '" + mPTNO + "' ");
             SQL.AppendLine("  AND A.DOCCODE = C.DOCCODE(+) ");
             SQL.AppendLine("AND A.DELDATE IS NULL");
@@ -1166,7 +1166,7 @@ namespace ComEmrBase
             ssViewEmrAcpDeptChartList_Sheet1.RowCount = 0;
 
             SQL.AppendLine(" SELECT INOUTCLS, A.GRPFORMNO, FORMNO, FORMNAME, SCANYN, SUM(PCNT) AS PCNT, SUM(CNT) AS CNT, FORMCODE, TREATNO, RANKING, COLOR , MAX(EMRNO) AS EMRNO, UPDATENO, FORMBOLD, SUM(NOTCERT) NOTCERT");
-            SQL.AppendLine(", CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN = 'EMR_ER_대면기록지' AND CODE = A.FORMNO || '' AND DELDATE IS NULL) THEN 1 END READ_FORM_BOLD_RED ");
+            SQL.AppendLine(", CASE WHEN EXISTS (SELECT 1 FROM ADMIN.BAS_BCODE WHERE GUBUN = 'EMR_ER_대면기록지' AND CODE = A.FORMNO || '' AND DELDATE IS NULL) THEN 1 END READ_FORM_BOLD_RED ");
 
             SQL.AppendLine("FROM (");
             //=========================== 스캔내역 불러오기 ==================================
@@ -1175,18 +1175,18 @@ namespace ComEmrBase
             SQL.AppendLine("        T.OUTDATE AS MEDENDDATE, '120000' AS MEDENDTIME, T.CLINCODE AS MEDDEPTCD, T.DOCCODE AS MEDDRCD,");
             SQL.AppendLine("        NVL(F2.NAME, F.FORMNAME) AS FORMNAME,  F.GRPFORMNO, G.GRPFORMNAME AS GRPFORMNAME, C.NAME AS DEPTKORNAME,");
             SQL.AppendLine("        T.TREATNO, P.FORMCODE,  'S' AS SCANYN,");
-            //SQL.AppendLine("        CASE WHEN G.GROUPPARENT > 0 THEN  (SELECT DISPSEQ FROM kosmos_emr.AEMRGRPFORM WHERE grpformno = G.GROUPPARENT ) * 10 + G.DISPSEQ ELSE G.DISPSEQ END DISPSEQ,  1 PCNT, 0 CNT, S.RANKING,");
+            //SQL.AppendLine("        CASE WHEN G.GROUPPARENT > 0 THEN  (SELECT DISPSEQ FROM ADMIN.AEMRGRPFORM WHERE grpformno = G.GROUPPARENT ) * 10 + G.DISPSEQ ELSE G.DISPSEQ END DISPSEQ,  1 PCNT, 0 CNT, S.RANKING,");
             SQL.AppendLine("        1 PCNT, 0 CNT, S.RANKING,");
             SQL.AppendLine("        Case WHEN S.COLOR IS NULL THEN F.FORMCOLOR ELSE S.COLOR END COLOR, 1 AS UPDATENO, F.FORMBOLD");
             SQL.AppendLine("        , 0 AS NOTCERT");
-            SQL.AppendLine("     FROM KOSMOS_EMR.EMR_TREATT T,");
-            SQL.AppendLine("          KOSMOS_EMR.AEMRFORM F,");
-            SQL.AppendLine("          KOSMOS_EMR.EMRMAPPING M,");
-            SQL.AppendLine("          KOSMOS_EMR.AEMRGRPFORM G,");
-            SQL.AppendLine("          KOSMOS_EMR.EMR_CLINICT C,");
-            SQL.AppendLine("          KOSMOS_EMR.EMR_CHARTPAGET P,");
-            SQL.AppendLine("          KOSMOS_EMR.EMRFORM_SET S,");
-            SQL.AppendLine("          KOSMOS_EMR.EMR_FORMT F2");
+            SQL.AppendLine("     FROM ADMIN.EMR_TREATT T,");
+            SQL.AppendLine("          ADMIN.AEMRFORM F,");
+            SQL.AppendLine("          ADMIN.EMRMAPPING M,");
+            SQL.AppendLine("          ADMIN.AEMRGRPFORM G,");
+            SQL.AppendLine("          ADMIN.EMR_CLINICT C,");
+            SQL.AppendLine("          ADMIN.EMR_CHARTPAGET P,");
+            SQL.AppendLine("          ADMIN.EMRFORM_SET S,");
+            SQL.AppendLine("          ADMIN.EMR_FORMT F2");
             SQL.AppendLine("     WHERE T.PATID = '" + mPTNO + "' ");
        
             if (strREP == "#")
@@ -1260,7 +1260,7 @@ namespace ComEmrBase
             SQL.AppendLine("        CASE WHEN  A.FORMNO = 965 OR A.FORMNO = 2137 OR A.FORMNO = 2049 OR A.FORMNO = 963 THEN B.FORMNAME || '(신규)' ELSE B.FORMNAME END FORMNAME,");
             SQL.AppendLine("        B.GRPFORMNO, C.GRPFORMNAME,");
             SQL.AppendLine("        D.NAME AS DEPTKORNAME,   0 AS TREATNO, '000' AS FORMCODE,  'T' AS SCANYN,");
-            //SQL.AppendLine("      CASE WHEN C.GROUPPARENT > 0 THEN  (SELECT DISPSEQ FROM kosmos_emr.AEMRGRPFORM WHERE grpformno = C.GROUPPARENT ) * 10 + C.DISPSEQ ELSE C.DISPSEQ END DISPSEQ,  0 PCNT, 1 CNT, S.RANKING,");
+            //SQL.AppendLine("      CASE WHEN C.GROUPPARENT > 0 THEN  (SELECT DISPSEQ FROM ADMIN.AEMRGRPFORM WHERE grpformno = C.GROUPPARENT ) * 10 + C.DISPSEQ ELSE C.DISPSEQ END DISPSEQ,  0 PCNT, 1 CNT, S.RANKING,");
             SQL.AppendLine("        0 PCNT, 1 CNT, S.RANKING,");
             SQL.AppendLine("        CASE WHEN  S.COLOR IS NULL THEN B.FORMCOLOR ELSE S.COLOR END COLOR,");
             SQL.AppendLine("        CASE WHEN  A.FORMNO = 965 OR A.FORMNO = 2137 OR A.FORMNO = 2049 THEN 3");
@@ -1269,11 +1269,11 @@ namespace ComEmrBase
             SQL.AppendLine("        END UPDATENO,");
             SQL.AppendLine("        B.FORMBOLD");
             SQL.AppendLine("        , 0 AS NOTCERT");
-            SQL.AppendLine("     FROM KOSMOS_EMR.EMRXMLMST A, ");
-            SQL.AppendLine("          KOSMOS_EMR.AEMRFORM B, ");
-            SQL.AppendLine("          KOSMOS_EMR.AEMRGRPFORM C, ");
-            SQL.AppendLine("          KOSMOS_EMR.EMR_CLINICT D, ");
-            SQL.AppendLine("          KOSMOS_EMR.EMRFORM_SET S");
+            SQL.AppendLine("     FROM ADMIN.EMRXMLMST A, ");
+            SQL.AppendLine("          ADMIN.AEMRFORM B, ");
+            SQL.AppendLine("          ADMIN.AEMRGRPFORM C, ");
+            SQL.AppendLine("          ADMIN.EMR_CLINICT D, ");
+            SQL.AppendLine("          ADMIN.EMRFORM_SET S");
             SQL.AppendLine("     WHERE A.PTNO = '" + mPTNO + "'");
             SQL.AppendLine("       AND A.MEDFRDATE = '" + strMedFrDate + "'");
             SQL.AppendLine("       AND A.USEID IS NOT NULL");
@@ -1338,12 +1338,12 @@ namespace ComEmrBase
             SQL.AppendLine("        0 PCNT, 1 CNT, S2.RANKING,");
             SQL.AppendLine("        CASE WHEN  S2.COLOR IS NULL THEN B2.FORMCOLOR ELSE S2.COLOR END COLOR, ");
             SQL.AppendLine("        B2.UPDATENO, B2.FORMBOLD");
-            SQL.AppendLine("        , CASE WHEN A2.SAVECERT = '0'  AND EXISTS (SELECT 1 FROM KOSMOS_ERP.HR_EMP_BASIS WHERE EMP_ID = A2.CHARTUSEID AND JOBKIND_CD = '41') THEN 1 ELSE 0 END NOTCERT");
-            SQL.AppendLine("     FROM KOSMOS_EMR.AEMRCHARTMST A2, ");
-            SQL.AppendLine("          KOSMOS_EMR.AEMRFORM B2, ");
-            SQL.AppendLine("          KOSMOS_EMR.AEMRGRPFORM C2, ");
-            SQL.AppendLine("          KOSMOS_EMR.EMR_CLINICT D2, ");
-            SQL.AppendLine("          KOSMOS_EMR.EMRFORM_SET S2");
+            SQL.AppendLine("        , CASE WHEN A2.SAVECERT = '0'  AND EXISTS (SELECT 1 FROM ADMIN.HR_EMP_BASIS WHERE EMP_ID = A2.CHARTUSEID AND JOBKIND_CD = '41') THEN 1 ELSE 0 END NOTCERT");
+            SQL.AppendLine("     FROM ADMIN.AEMRCHARTMST A2, ");
+            SQL.AppendLine("          ADMIN.AEMRFORM B2, ");
+            SQL.AppendLine("          ADMIN.AEMRGRPFORM C2, ");
+            SQL.AppendLine("          ADMIN.EMR_CLINICT D2, ");
+            SQL.AppendLine("          ADMIN.EMRFORM_SET S2");
             SQL.AppendLine("     WHERE A2.PTNO = '" + mPTNO + "'");
             SQL.AppendLine("       AND A2.MEDFRDATE = '" + strMedFrDate + "'");
             if (strMedDeptCd != "HD")
@@ -1400,13 +1400,13 @@ namespace ComEmrBase
             SQL.AppendLine("         A.MEDFRTIME,  A.MEDENDDATE, A.MEDENDTIME, A.MEDDEPTCD,");
             SQL.AppendLine("         A.MEDDRCD,  '투약기록지' FORMNAME , B.GRPFORMNO, '간호기록' GRPFORMNAME,");
             SQL.AppendLine("           D.NAME AS DEPTKORNAME,   0 AS TREATNO, '000' AS FORMCODE,  'T' AS SCANYN,");
-            //SQL.AppendLine("           CASE WHEN C.GROUPPARENT > 0 THEN  (SELECT DISPSEQ FROM kosmos_emr.AEMRGRPFORM WHERE grpformno = C.GROUPPARENT ) * 10  + C.DISPSEQ ELSE C.DISPSEQ END DISPSEQ,  0 PCNT, 1 CNT, '' RANKING, B.FORMCOLOR COLOR, 1 UPDATENO, B.FORMBOLD");
+            //SQL.AppendLine("           CASE WHEN C.GROUPPARENT > 0 THEN  (SELECT DISPSEQ FROM ADMIN.AEMRGRPFORM WHERE grpformno = C.GROUPPARENT ) * 10  + C.DISPSEQ ELSE C.DISPSEQ END DISPSEQ,  0 PCNT, 1 CNT, '' RANKING, B.FORMCOLOR COLOR, 1 UPDATENO, B.FORMBOLD");
             SQL.AppendLine("           0 PCNT, 1 CNT, '' RANKING, B.FORMCOLOR COLOR, 1 UPDATENO, B.FORMBOLD");
             SQL.AppendLine("         , 0 AS NOTCERT");
-            SQL.AppendLine("      FROM KOSMOS_EMR.EMRXML_TUYAK A,");
-            SQL.AppendLine("           KOSMOS_EMR.EMR_CLINICT d,");
-            SQL.AppendLine("           KOSMOS_EMR.AEMRFORM B,");
-            SQL.AppendLine("           KOSMOS_EMR.AEMRGRPFORM C");
+            SQL.AppendLine("      FROM ADMIN.EMRXML_TUYAK A,");
+            SQL.AppendLine("           ADMIN.EMR_CLINICT d,");
+            SQL.AppendLine("           ADMIN.AEMRFORM B,");
+            SQL.AppendLine("           ADMIN.AEMRGRPFORM C");
             SQL.AppendLine("     WHERE A.PTNO = '" + mPTNO + "'");
             if (clsEmrQueryPohangS.START_TUYAK(clsDB.DbCon) == true)
             {
@@ -1467,19 +1467,19 @@ namespace ComEmrBase
             SQL.AppendLine("     0 AS ACPNO, C.PTNO, C.INOUTCLS, C.MEDFRDATE, C.MEDFRTIME, '' AS MEDENDDATE, '' AS MEDENDTIME, C.MEDDEPTCD, C.MEDDRCD,      ");
             SQL.AppendLine("     A.FORMNAME, A.GRPFORMNO,       ");
             SQL.AppendLine("     D.GRPFORMNAME,      ");
-            SQL.AppendLine("     (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME, ");
+            SQL.AppendLine("     (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME, ");
             SQL.AppendLine("     0 AS TREATNO, '000' AS FORMCODE,  'E' AS SCANYN, 0 PCNT, 1 CNT, S.RANKING, ");
             SQL.AppendLine("          Case WHEN S.COLOR IS NULL THEN A.FORMCOLOR ELSE S.COLOR END COLOR, A.UPDATENO, A.FORMBOLD");
             SQL.AppendLine("     , 0 AS NOTCERT");
-            SQL.AppendLine("     FROM KOSMOS_EMR.AEMRFORM A ");
-            SQL.AppendLine("     INNER JOIN KOSMOS_EMR.AEASFORMCONTENT B ");
+            SQL.AppendLine("     FROM ADMIN.AEMRFORM A ");
+            SQL.AppendLine("     INNER JOIN ADMIN.AEASFORMCONTENT B ");
             SQL.AppendLine("     ON A.FORMNO = B.FORMNO ");
             SQL.AppendLine("     AND A.UPDATENO = B.UPDATENO ");
-            SQL.AppendLine("     INNER JOIN KOSMOS_EMR.AEASFORMDATA C ");
+            SQL.AppendLine("     INNER JOIN ADMIN.AEASFORMDATA C ");
             SQL.AppendLine("     ON B.ID = C.EASFORMCONTENT ");
-            SQL.AppendLine("     INNER JOIN KOSMOS_EMR.AEMRGRPFORM D ");
+            SQL.AppendLine("     INNER JOIN ADMIN.AEMRGRPFORM D ");
             SQL.AppendLine("     ON A.GRPFORMNO = D.GRPFORMNO ");
-            SQL.AppendLine("     LEFT OUTER JOIN KOSMOS_EMR.EMRFORM_SET S ");
+            SQL.AppendLine("     LEFT OUTER JOIN ADMIN.EMRFORM_SET S ");
             SQL.AppendLine("     ON S.SABUN = " + clsType.User.IdNumber);
             SQL.AppendLine("     AND A.FORMNO = S.FORMNO ");
             SQL.AppendLine("     WHERE C.PTNO = '" + mPTNO + "' ");
@@ -1487,9 +1487,9 @@ namespace ComEmrBase
             SQL.AppendLine("     AND C.MEDFRDATE = '" + strMedFrDate + "' ");
             SQL.AppendLine("     AND C.ISDELETED = 'N' ");
             SQL.AppendLine("     ) A");
-            SQL.AppendLine("     INNER JOIN KOSMOS_EMR.AEMRGRPFORM B");
-            SQL.AppendLine("        ON B.GRPFORMNO  = (SELECT GROUPPARENT FROM KOSMOS_EMR.AEMRGRPFORM WHERE GRPFORMNO  = A.GRPFORMNO)");
-            SQL.AppendLine("     INNER JOIN KOSMOS_EMR.AEMRGRPFORM B2");
+            SQL.AppendLine("     INNER JOIN ADMIN.AEMRGRPFORM B");
+            SQL.AppendLine("        ON B.GRPFORMNO  = (SELECT GROUPPARENT FROM ADMIN.AEMRGRPFORM WHERE GRPFORMNO  = A.GRPFORMNO)");
+            SQL.AppendLine("     INNER JOIN ADMIN.AEMRGRPFORM B2");
             SQL.AppendLine("        ON B2.GRPFORMNO  = A.GRPFORMNO");
             if (clsType.User.AuAIMAGE.Equals("1")) //|| clsEmrPublic.gUserGrade.Equals("XRAY"))
             {
@@ -1632,7 +1632,7 @@ namespace ComEmrBase
 
             SQL.Clear();
             SQL.AppendLine("  SELECT COUNT(*) CNT");
-            SQL.AppendLine("    FROM KOSMOS_EMR.EMRXMLMST A");
+            SQL.AppendLine("    FROM ADMIN.EMRXMLMST A");
             SQL.AppendLine("      WHERE A.PTNO = '" + mPTNO + "' ");
             SQL.AppendLine("        AND A.INOUTCLS = '" + strInOutCls + "'");
             SQL.AppendLine("        AND A.CHARTDATE >= '" + strMedFrDate + "' ");
@@ -1748,14 +1748,14 @@ namespace ComEmrBase
         //    SQL = SQL + ComNum.VBLF + "        F.FORMNAME,  F.GRPFORMNO, G.GRPFORMNAME AS GRPFORMNAME, C.NAME AS DEPTKORNAME,";
         //    SQL = SQL + ComNum.VBLF + "        T.TREATNO, P.FORMCODE,  'S' AS SCANYN, G.DISPSEQ, 1 PCNT, 0 CNT, S.RANKING,";
         //    SQL = SQL + ComNum.VBLF + "        Case WHEN  S.COLOR IS NULL THEN F.FORMCOLOR ELSE S.COLOR END COLOR, 1 AS UPDATENO";
-        //    SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_EMR.EMR_TREATT T,";
-        //    SQL = SQL + ComNum.VBLF + "         KOSMOS_EMR.AEMRFORM F,";
-        //    SQL = SQL + ComNum.VBLF + "         KOSMOS_EMR.EMRMAPPING M,";
-        //    SQL = SQL + ComNum.VBLF + "         KOSMOS_EMR.EMRGRPFORM G,";
-        //    SQL = SQL + ComNum.VBLF + "         KOSMOS_EMR.EMR_CLINICT C,";
-        //    SQL = SQL + ComNum.VBLF + "         KOSMOS_EMR.EMR_CHARTPAGET P,";
-        //    SQL = SQL + ComNum.VBLF + "         KOSMOS_EMR.EMRFORM_SET S,";
-        //    SQL = SQL + ComNum.VBLF + "         KOSMOS_EMR.EMR_LIKERECORD L";
+        //    SQL = SQL + ComNum.VBLF + "     FROM ADMIN.EMR_TREATT T,";
+        //    SQL = SQL + ComNum.VBLF + "         ADMIN.AEMRFORM F,";
+        //    SQL = SQL + ComNum.VBLF + "         ADMIN.EMRMAPPING M,";
+        //    SQL = SQL + ComNum.VBLF + "         ADMIN.EMRGRPFORM G,";
+        //    SQL = SQL + ComNum.VBLF + "         ADMIN.EMR_CLINICT C,";
+        //    SQL = SQL + ComNum.VBLF + "         ADMIN.EMR_CHARTPAGET P,";
+        //    SQL = SQL + ComNum.VBLF + "         ADMIN.EMRFORM_SET S,";
+        //    SQL = SQL + ComNum.VBLF + "         ADMIN.EMR_LIKERECORD L";
         //    SQL = SQL + ComNum.VBLF + "     WHERE T.PATID = '" + mPTNO + "' ";
         //    SQL = SQL + ComNum.VBLF + "       AND T.INDATE = '" + strMedFrDate + "'";
         //    SQL = SQL + ComNum.VBLF + "       AND T.CLASS = '" + strInOutCls + "'";
@@ -1800,12 +1800,12 @@ namespace ComEmrBase
         //    SQL = SQL + ComNum.VBLF + "        A.MEDDRCD,  B.FORMNAME,  B.GRPFORMNO, C.GRPFORMNAME,";
         //    SQL = SQL + ComNum.VBLF + "          D.NAME AS DEPTKORNAME,   0 AS TREATNO, '000' AS FORMCODE,  'T' AS SCANYN, C.DISPSEQ, 0 PCNT, 1 CNT, S.RANKING,";
         //    SQL = SQL + ComNum.VBLF + "        Case WHEN  S.COLOR IS NULL THEN B.FORMCOLOR ELSE S.COLOR END COLOR, 1 AS UPDATENO, B.FORMBOLD";
-        //    SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_EMR.EMRXMLMST A, ";
-        //    SQL = SQL + ComNum.VBLF + " KOSMOS_EMR.AEMRFORM B, ";
-        //    SQL = SQL + ComNum.VBLF + " KOSMOS_EMR.EMRGRPFORM C, ";
-        //    SQL = SQL + ComNum.VBLF + " KOSMOS_EMR.EMR_CLINICT D, ";
-        //    SQL = SQL + ComNum.VBLF + " KOSMOS_EMR.EMRFORM_SET S,";
-        //    SQL = SQL + ComNum.VBLF + " KOSMOS_EMR.EMR_LIKERECORD L";
+        //    SQL = SQL + ComNum.VBLF + "     FROM ADMIN.EMRXMLMST A, ";
+        //    SQL = SQL + ComNum.VBLF + " ADMIN.AEMRFORM B, ";
+        //    SQL = SQL + ComNum.VBLF + " ADMIN.EMRGRPFORM C, ";
+        //    SQL = SQL + ComNum.VBLF + " ADMIN.EMR_CLINICT D, ";
+        //    SQL = SQL + ComNum.VBLF + " ADMIN.EMRFORM_SET S,";
+        //    SQL = SQL + ComNum.VBLF + " ADMIN.EMR_LIKERECORD L";
         //    SQL = SQL + ComNum.VBLF + "     WHERE A.PTNO = '" + mPTNO + "'";
         //    SQL = SQL + ComNum.VBLF + "       AND A.MEDFRDATE = '" + strMedFrDate + "'";
         //    if (strMedDeptCd != "HD")
@@ -1863,12 +1863,12 @@ namespace ComEmrBase
         //    SQL = SQL + ComNum.VBLF + "        A2.MEDDRCD,  B2.FORMNAME,  B2.GRPFORMNO, C2.GRPFORMNAME,";
         //    SQL = SQL + ComNum.VBLF + "          D2.NAME AS DEPTKORNAME,   0 AS TREATNO, '000' AS FORMCODE,  'T' AS SCANYN, C2.DISPSEQ, 0 PCNT, 1 CNT, S2.RANKING,";
         //    SQL = SQL + ComNum.VBLF + "          Case WHEN  S2.COLOR IS NULL THEN B2.FORMCOLOR ELSE S2.COLOR END COLOR, B2.FORMBOLD";
-        //    SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_EMR.AEMRCHARTMST A2, ";
-        //    SQL = SQL + ComNum.VBLF + " KOSMOS_EMR.AEMRFORM B2, ";
-        //    SQL = SQL + ComNum.VBLF + " KOSMOS_EMR.AEMRGRPFORM C2, ";
-        //    SQL = SQL + ComNum.VBLF + " KOSMOS_EMR.EMR_CLINICT D2, ";
-        //    SQL = SQL + ComNum.VBLF + " KOSMOS_EMR.EMRFORM_SET S2,";
-        //    SQL = SQL + ComNum.VBLF + " KOSMOS_EMR.EMR_LIKERECORD L";
+        //    SQL = SQL + ComNum.VBLF + "     FROM ADMIN.AEMRCHARTMST A2, ";
+        //    SQL = SQL + ComNum.VBLF + " ADMIN.AEMRFORM B2, ";
+        //    SQL = SQL + ComNum.VBLF + " ADMIN.AEMRGRPFORM C2, ";
+        //    SQL = SQL + ComNum.VBLF + " ADMIN.EMR_CLINICT D2, ";
+        //    SQL = SQL + ComNum.VBLF + " ADMIN.EMRFORM_SET S2,";
+        //    SQL = SQL + ComNum.VBLF + " ADMIN.EMR_LIKERECORD L";
         //    SQL = SQL + ComNum.VBLF + "     WHERE A2.PTNO = '" + mPTNO + "'";
         //    SQL = SQL + ComNum.VBLF + "       AND A2.MEDFRDATE = '" + strMedFrDate + "'";
         //    if (strMedDeptCd != "HD")
@@ -1926,9 +1926,9 @@ namespace ComEmrBase
         //    SQL = SQL + ComNum.VBLF + "         A.MEDFRTIME,  A.MEDENDDATE, A.MEDENDTIME, A.MEDDEPTCD,";
         //    SQL = SQL + ComNum.VBLF + "         A.MEDDRCD,  '투약기록지' FORMNAME , 3 GRPFORMNO, '간호기록' GRPFORMNAME,";
         //    SQL = SQL + ComNum.VBLF + "           D.NAME AS DEPTKORNAME,   0 AS TREATNO, '000' AS FORMCODE,  'T' AS SCANYN, 0 DISPSEQ, 0 PCNT, 1 CNT, '' RANKING, '' COLOR, 1 UPDATENO";
-        //    SQL = SQL + ComNum.VBLF + "      FROM KOSMOS_EMR.EMRXML_TUYAK A,";
-        //    SQL = SQL + ComNum.VBLF + "           KOSMOS_EMR.EMR_CLINICT d,";
-        //    SQL = SQL + ComNum.VBLF + "           KOSMOS_EMR.EMR_LIKERECORD L";
+        //    SQL = SQL + ComNum.VBLF + "      FROM ADMIN.EMRXML_TUYAK A,";
+        //    SQL = SQL + ComNum.VBLF + "           ADMIN.EMR_CLINICT d,";
+        //    SQL = SQL + ComNum.VBLF + "           ADMIN.EMR_LIKERECORD L";
         //    SQL = SQL + ComNum.VBLF + "     WHERE A.PTNO = '" + mPTNO + "'";
         //    if (clsEmrQueryPohangS.START_TUYAK(clsDB.DbCon) == true)
         //    {
@@ -1982,18 +1982,18 @@ namespace ComEmrBase
         //    SQL = SQL + ComNum.VBLF + "     0 AS ACPNO, C.PTNO, C.INOUTCLS, C.MEDFRDATE, C.MEDFRTIME, '' AS MEDENDDATE, '' AS MEDENDTIME, C.MEDDEPTCD, C.MEDDRCD,      ";
         //    SQL = SQL + ComNum.VBLF + "     A.FORMNAME, A.GRPFORMNO,       ";
         //    SQL = SQL + ComNum.VBLF + "     D.GRPFORMNAME,      ";
-        //    SQL = SQL + ComNum.VBLF + "     (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME, ";
+        //    SQL = SQL + ComNum.VBLF + "     (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME, ";
         //    SQL = SQL + ComNum.VBLF + "     0 AS TREATNO, '000' AS FORMCODE,  'E' AS SCANYN, D.DISPSEQ, 0 PCNT, 1 CNT, S.RANKING, ";
         //    SQL = SQL + ComNum.VBLF + "          Case WHEN S.COLOR IS NULL THEN A.FORMCOLOR ELSE S.COLOR END COLOR, A.UPDATENO";
-        //    SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_EMR.AEMRFORM A ";
-        //    SQL = SQL + ComNum.VBLF + "     INNER JOIN KOSMOS_EMR.AEASFORMCONTENT B ";
+        //    SQL = SQL + ComNum.VBLF + "     FROM ADMIN.AEMRFORM A ";
+        //    SQL = SQL + ComNum.VBLF + "     INNER JOIN ADMIN.AEASFORMCONTENT B ";
         //    SQL = SQL + ComNum.VBLF + "     ON A.FORMNO = B.FORMNO ";
         //    SQL = SQL + ComNum.VBLF + "     AND A.UPDATENO = B.UPDATENO ";
-        //    SQL = SQL + ComNum.VBLF + "     INNER JOIN KOSMOS_EMR.AEASFORMDATA C ";
+        //    SQL = SQL + ComNum.VBLF + "     INNER JOIN ADMIN.AEASFORMDATA C ";
         //    SQL = SQL + ComNum.VBLF + "     ON B.ID = C.EASFORMCONTENT ";
-        //    SQL = SQL + ComNum.VBLF + "     INNER JOIN KOSMOS_EMR.AEMRGRPFORM D ";
+        //    SQL = SQL + ComNum.VBLF + "     INNER JOIN ADMIN.AEMRGRPFORM D ";
         //    SQL = SQL + ComNum.VBLF + "     ON A.GRPFORMNO = D.GRPFORMNO ";
-        //    SQL = SQL + ComNum.VBLF + "     LEFT OUTER JOIN KOSMOS_EMR.EMRFORM_SET S ";
+        //    SQL = SQL + ComNum.VBLF + "     LEFT OUTER JOIN ADMIN.EMRFORM_SET S ";
         //    SQL = SQL + ComNum.VBLF + "     ON A.FORMNO = S.FORMNO ";
         //    SQL = SQL + ComNum.VBLF + "     AND S.SABUN = " + clsType.User.IdNumber;
         //    SQL = SQL + ComNum.VBLF + "     WHERE C.PTNO = '" + mPTNO + "' ";
@@ -2110,8 +2110,8 @@ namespace ComEmrBase
         //    string strCurDate = ComQuery.CurrentDateTime(clsDB.DbCon, "D");
 
         //    SQL = "  SELECT COUNT(*) CNT ";
-        //    SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRXMLMST A,";
-        //    SQL = SQL + ComNum.VBLF + "         KOSMOS_EMR.EMR_LIKERECORD L";
+        //    SQL = SQL + ComNum.VBLF + "    FROM ADMIN.EMRXMLMST A,";
+        //    SQL = SQL + ComNum.VBLF + "         ADMIN.EMR_LIKERECORD L";
 
         //    SQL = SQL + ComNum.VBLF + "      WHERE A.PTNO = '" + mPTNO + "' ";
         //    SQL = SQL + ComNum.VBLF + "        AND A.INOUTCLS = '" + strInOutCls + "'";
@@ -2358,20 +2358,20 @@ namespace ComEmrBase
             SQL.AppendLine( "            0 AS ACPNO, T.PATID AS PTNO, T.CLASS AS INOUTCLS,  T.INDATE AS MEDFRDATE, '120000' AS MEDFRTIME,  ");
             SQL.AppendLine( "            T.OUTDATE AS MEDENDDATE, '120000' AS MEDENDTIME, T.CLINCODE AS MEDDEPTCD, T.DOCCODE AS MEDDRCD,   ");
             SQL.AppendLine("             NVL(F2.NAME, F.FORMNAME) AS FORMNAME,  F.GRPFORMNO,  ");
-            SQL.AppendLine( "            (SELECT GRPFORMNAME FROM KOSMOS_EMR.AEMRGRPFORM WHERE GRPFORMNO = F.GRPFORMNO) AS GRPFORMNAME,  ");
-            SQL.AppendLine( "            (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = T.CLINCODE) AS DEPTKORNAME,  ");
+            SQL.AppendLine( "            (SELECT GRPFORMNAME FROM ADMIN.AEMRGRPFORM WHERE GRPFORMNO = F.GRPFORMNO) AS GRPFORMNAME,  ");
+            SQL.AppendLine( "            (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = T.CLINCODE) AS DEPTKORNAME,  ");
             SQL.AppendLine( "            T.TREATNO, SS.FORMCODE,  SS.PCNT, 'S' AS SCANYN, 1 AS UPDATENO  ");
-            SQL.AppendLine( "    FROM KOSMOS_EMR.EMR_TREATT T,  ");
+            SQL.AppendLine( "    FROM ADMIN.EMR_TREATT T,  ");
             SQL.AppendLine( "        (SELECT P.TREATNO, P.FORMCODE, COUNT(P.PAGENO) AS PCNT,  ");
             SQL.AppendLine( "                TO_CHAR(P.TREATNO) AS EMRNO1  ");
-            SQL.AppendLine( "            FROM KOSMOS_EMR.EMR_CHARTPAGET P,  ");
-            SQL.AppendLine( "                KOSMOS_EMR.EMR_TREATT X  ");
+            SQL.AppendLine( "            FROM ADMIN.EMR_CHARTPAGET P,  ");
+            SQL.AppendLine( "                ADMIN.EMR_TREATT X  ");
             SQL.AppendLine( "            WHERE X.PATID = '" + mPTNO + "' ");
             SQL.AppendLine( "                AND P.TREATNO = X.TREATNO  ");
             SQL.AppendLine( "            GROUP BY P.TREATNO, P.FORMCODE) SS,  ");
-            SQL.AppendLine( "        KOSMOS_EMR.AEMRFORM F, ");
-            SQL.AppendLine( "        KOSMOS_EMR.EMRMAPPING M, ");
-            SQL.AppendLine("         KOSMOS_EMR.EMR_FORMT F2");
+            SQL.AppendLine( "        ADMIN.AEMRFORM F, ");
+            SQL.AppendLine( "        ADMIN.EMRMAPPING M, ");
+            SQL.AppendLine("         ADMIN.EMR_FORMT F2");
 
 
             SQL.AppendLine("    WHERE T.PATID = '" + mPTNO + "' ");
@@ -2404,11 +2404,11 @@ namespace ComEmrBase
                 SQL.AppendLine( "      0 ACPNO, A.PTNO, A.INOUTCLS, A.MEDFRDATE, A.MEDFRTIME,   ");
                 SQL.AppendLine( "      A.MEDENDDATE, A.MEDENDTIME, A.MEDDEPTCD, A.MEDDRCD,  ");
                 SQL.AppendLine( "      B.FORMNAME,  B.GRPFORMNO,  ");
-                SQL.AppendLine( "      (SELECT GRPFORMNAME FROM KOSMOS_EMR.AEMRGRPFORM WHERE GRPFORMNO = B.GRPFORMNO) AS GRPFORMNAME,  ");
-                SQL.AppendLine( "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME,  ");
+                SQL.AppendLine( "      (SELECT GRPFORMNAME FROM ADMIN.AEMRGRPFORM WHERE GRPFORMNO = B.GRPFORMNO) AS GRPFORMNAME,  ");
+                SQL.AppendLine( "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME,  ");
                 SQL.AppendLine( "      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'T' AS SCANYN,  1 AS UPDATENO  ");
-                SQL.AppendLine( "    FROM KOSMOS_EMR.EMRXMLMST A");
-                SQL.AppendLine( "      INNER JOIN KOSMOS_EMR.AEMRFORM B  ");
+                SQL.AppendLine( "    FROM ADMIN.EMRXMLMST A");
+                SQL.AppendLine( "      INNER JOIN ADMIN.AEMRFORM B  ");
                 SQL.AppendLine( "          ON A.FORMNO = B.FORMNO  ");
                 SQL.AppendLine( "          AND B.UPDATENO = 1");
                 SQL.AppendLine("      WHERE A.PTNO = '" + mPTNO + "' ");
@@ -2426,11 +2426,11 @@ namespace ComEmrBase
                 SQL.AppendLine( "      0 ACPNO, A2.PTNO, A2.INOUTCLS, A2.MEDFRDATE, A2.MEDFRTIME,   ");
                 SQL.AppendLine( "      A2.MEDENDDATE, A2.MEDENDTIME, A2.MEDDEPTCD, A2.MEDDRCD,  ");
                 SQL.AppendLine( "      B2.FORMNAME,  B2.GRPFORMNO,  ");
-                SQL.AppendLine( "      (SELECT GRPFORMNAME FROM KOSMOS_EMR.AEMRGRPFORM WHERE GRPFORMNO = B2.GRPFORMNO) AS GRPFORMNAME,  ");
-                SQL.AppendLine( "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = A2.MEDDEPTCD) AS DEPTKORNAME,  ");
+                SQL.AppendLine( "      (SELECT GRPFORMNAME FROM ADMIN.AEMRGRPFORM WHERE GRPFORMNO = B2.GRPFORMNO) AS GRPFORMNAME,  ");
+                SQL.AppendLine( "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = A2.MEDDEPTCD) AS DEPTKORNAME,  ");
                 SQL.AppendLine( "      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'T' AS SCANYN, B2.UPDATENO  ");
-                SQL.AppendLine( "    FROM KOSMOS_EMR.AEMRCHARTMST A2");
-                SQL.AppendLine( "      INNER JOIN KOSMOS_EMR.AEMRFORM B2  ");
+                SQL.AppendLine( "    FROM ADMIN.AEMRCHARTMST A2");
+                SQL.AppendLine( "      INNER JOIN ADMIN.AEMRFORM B2  ");
                 SQL.AppendLine( "         ON  A2.FORMNO = B2.FORMNO  ");
                 SQL.AppendLine( "        AND A2.UPDATENO = B2.UPDATENO  ");
                 SQL.AppendLine("      WHERE A2.PTNO = '" + mPTNO + "' ");
@@ -2448,15 +2448,15 @@ namespace ComEmrBase
                 SQL.AppendLine("           SELECT C.ID AS EMRNO, A.FORMNO,  TO_CHAR(C.CREATED, 'YYYYMMDD') AS CHARTDATE, TO_CHAR(C.CREATED, 'HHMMSS') AS CHARTTIME,             ");
                 SQL.AppendLine("         0 AS ACPNO, C.PTNO, C.INOUTCLS, C.MEDFRDATE, C.MEDFRTIME, '' AS MEDENDDATE, '' AS MEDENDTIME, C.MEDDEPTCD, C.MEDDRCD,                  ");
                 SQL.AppendLine("     A.FORMNAME, A.GRPFORMNO, D.GRPFORMNAME,                                                                                                    ");
-                SQL.AppendLine("     (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME,                                            ");
+                SQL.AppendLine("     (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME,                                            ");
                 SQL.AppendLine("     0 AS TREATNO, '000' AS FORMCODE,  0 as PCNT, 'E' AS SCANYN, A.updateNo                                                                     ");
-                SQL.AppendLine("     FROM KOSMOS_EMR.AEMRFORM A                  ");
-                SQL.AppendLine("     INNER JOIN KOSMOS_EMR.AEASFORMCONTENT B     ");
+                SQL.AppendLine("     FROM ADMIN.AEMRFORM A                  ");
+                SQL.AppendLine("     INNER JOIN ADMIN.AEASFORMCONTENT B     ");
                 SQL.AppendLine("     ON A.FORMNO = B.FORMNO                      ");
                 SQL.AppendLine("     AND A.UPDATENO = B.UPDATENO                 ");
-                SQL.AppendLine("     INNER JOIN KOSMOS_EMR.AEASFORMDATA C        ");
+                SQL.AppendLine("     INNER JOIN ADMIN.AEASFORMDATA C        ");
                 SQL.AppendLine("     ON B.ID = C.EASFORMCONTENT                  ");
-                SQL.AppendLine("     INNER JOIN KOSMOS_EMR.AEMRGRPFORM D         ");
+                SQL.AppendLine("     INNER JOIN ADMIN.AEMRGRPFORM D         ");
                 SQL.AppendLine("     ON A.GRPFORMNO = D.GRPFORMNO                ");
                 SQL.AppendLine("      WHERE  C.ISDELETED ='N' AND  C.PTNO = '" + mPTNO + "' ");
                 if (optEmrInOutFormO.Checked == true)
@@ -2478,11 +2478,11 @@ namespace ComEmrBase
                     SQL.AppendLine( "      0 ACPNO, A.PTNO, A.INOUTCLS, A.MEDFRDATE, A.MEDFRTIME,  ");
                     SQL.AppendLine( "      A.MEDENDDATE, A.MEDENDTIME, A.MEDDEPTCD, A.MEDDRCD, ");
                     SQL.AppendLine( "      C.FORMNAME,  C.GRPFORMNO, ");
-                    SQL.AppendLine( "      (SELECT GRPFORMNAME FROM KOSMOS_EMR.AEMRGRPFORM WHERE GRPFORMNO = C.GRPFORMNO) AS GRPFORMNAME, ");
-                    SQL.AppendLine( "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME, ");
+                    SQL.AppendLine( "      (SELECT GRPFORMNAME FROM ADMIN.AEMRGRPFORM WHERE GRPFORMNO = C.GRPFORMNO) AS GRPFORMNAME, ");
+                    SQL.AppendLine( "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME, ");
                     SQL.AppendLine( "      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'T' AS SCANYN, 1 AS UPDATENO ");
-                    SQL.AppendLine( "    FROM KOSMOS_EMR.EMRXML_TUYAK A ");
-                    SQL.AppendLine( "      INNER JOIN KOSMOS_EMR.AEMRFORM C ");
+                    SQL.AppendLine( "    FROM ADMIN.EMRXML_TUYAK A ");
+                    SQL.AppendLine( "      INNER JOIN ADMIN.AEMRFORM C ");
                     SQL.AppendLine( "         ON A.FORMNO = C.FORMNO ");
                     SQL.AppendLine( "        AND C.UPDATENO = 1");
                     SQL.AppendLine("      WHERE A.PTNO = '" + mPTNO + "' ");
@@ -2522,7 +2522,7 @@ namespace ComEmrBase
                     //SQL = SQL + ComNum.VBLF + "      16 AS GRPFORMNO,  ";
                     SQL.AppendLine( "      1012 AS GRPFORMNO,  ");
                     SQL.AppendLine( "      '의사지시기록' AS GRPFORMNAME,  ");
-                    SQL.AppendLine( "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ");
+                    SQL.AppendLine( "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ");
                     SQL.AppendLine( "      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'O' AS SCANYN, 1 AS UPDATENO  ");
                     SQL.AppendLine( "    FROM " + ComNum.DB_MED + "OCS_OORDER O, ");
                     SQL.AppendLine( "          " + ComNum.DB_MED + "OCS_ORDERCODE C, ");
@@ -2561,7 +2561,7 @@ namespace ComEmrBase
                     //SQL = SQL + ComNum.VBLF + "      16 AS GRPFORMNO,  ";
                     SQL.AppendLine( "      1012 AS GRPFORMNO,  ");
                     SQL.AppendLine( "      'ER 의사지시기록' AS GRPFORMNAME,  ");
-                    SQL.AppendLine( "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = 'ER') AS DEPTKORNAME,  ");
+                    SQL.AppendLine( "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = 'ER') AS DEPTKORNAME,  ");
                     SQL.AppendLine( "      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'O' AS SCANYN, 1 AS UPDATENO  ");
                     SQL.AppendLine( "    FROM " + ComNum.DB_MED + "OCS_IORDER O, ");
                     SQL.AppendLine( "          " + ComNum.DB_MED + "OCS_ORDERCODE C, ");
@@ -2594,7 +2594,7 @@ namespace ComEmrBase
                 //    SQL = SQL + ComNum.VBLF + "      16 AS GRPFORMNO,  ";
                 //    SQL.AppendLine("      1012 AS GRPFORMNO,  ");
                 //    SQL.AppendLine("      '의사지시기록' AS GRPFORMNAME,  ");
-                //    SQL.AppendLine("      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ");
+                //    SQL.AppendLine("      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ");
                 //    SQL.AppendLine("      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'O' AS SCANYN, 1 AS UPDATENO  ");
                 //    SQL.AppendLine("    FROM " + ComNum.DB_MED + "OCS_IORDER O, ");
                 //    SQL.AppendLine("          " + ComNum.DB_MED + "OCS_ORDERCODE C, ");
@@ -2629,7 +2629,7 @@ namespace ComEmrBase
 
             #region 기존 19-05-23
             //SQL = SQL + ComNum.VBLF + "    ) ET, ";
-            //SQL = SQL + ComNum.VBLF + "   KOSMOS_EMR.EMRGRPFORM GP";
+            //SQL = SQL + ComNum.VBLF + "   ADMIN.EMRGRPFORM GP";
             //SQL = SQL + ComNum.VBLF + "   WHERE ET.GRPFORMNO = GP.GRPFORMNO";
             //SQL = SQL + ComNum.VBLF + "GROUP BY GP.DISPSEQ, ET.GRPFORMNO,  ET.FORMNO, ET.FORMCODE";
             //SQL = SQL + ComNum.VBLF + "ORDER BY GP.DISPSEQ, ET.FORMNO";
@@ -2637,9 +2637,9 @@ namespace ComEmrBase
 
             #region 19-05-23 신규
             SQL.AppendLine( "    ) ET ");
-            SQL.AppendLine( "   INNER JOIN KOSMOS_EMR.AEMRGRPFORM GR");
-            SQL.AppendLine( "      ON GR.GRPFORMNO = (SELECT GROUPPARENT FROM KOSMOS_EMR.AEMRGRPFORM WHERE GRPFORMNO = ET.GRPFORMNO)");
-            SQL.AppendLine( "   INNER JOIN KOSMOS_EMR.AEMRGRPFORM GR2");
+            SQL.AppendLine( "   INNER JOIN ADMIN.AEMRGRPFORM GR");
+            SQL.AppendLine( "      ON GR.GRPFORMNO = (SELECT GROUPPARENT FROM ADMIN.AEMRGRPFORM WHERE GRPFORMNO = ET.GRPFORMNO)");
+            SQL.AppendLine( "   INNER JOIN ADMIN.AEMRGRPFORM GR2");
             SQL.AppendLine( "      ON GR2.GRPFORMNO = ET.GRPFORMNO");
             SQL.AppendLine( "GROUP BY GR.DEPTH, GR.DISPSEQ, GR2.DISPSEQ, ET.GRPFORMNO, ET.FORMNO, ET.FORMNAME, ET.FORMCODE, ET.UPDATENO");
             SQL.AppendLine("ORDER BY GR.DEPTH, GR.DISPSEQ, GR2.DISPSEQ, ET.FORMNAME");
@@ -2732,7 +2732,7 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "    ET.ACPNO, ET.PTNO, ET.INOUTCLS, ET.MEDFRDATE, ET.MEDFRTIME, ";
                 SQL = SQL + ComNum.VBLF + "    CASE WHEN INOUTCLS = 'I' THEN  ";
                 SQL = SQL + ComNum.VBLF + "        	(SELECT TO_CHAR(OUTDATE, 'YYYYMMDD')  ";
-                SQL = SQL + ComNum.VBLF + "            FROM KOSMOS_PMPA.IPD_NEW_MASTER";
+                SQL = SQL + ComNum.VBLF + "            FROM ADMIN.IPD_NEW_MASTER";
                 SQL = SQL + ComNum.VBLF + "           WHERE INDATE >= TO_DATE(ET.MEDFRDATE || '00:00', 'YYYYMMDDHH24:MI')";
                 SQL = SQL + ComNum.VBLF + "             AND INDATE <= TO_DATE(ET.MEDFRDATE || '23:59', 'YYYYMMDDHH24:MI')";
                 SQL = SQL + ComNum.VBLF + "             AND PANO  = ET.PTNO";
@@ -2747,13 +2747,13 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "            0 AS ACPNO, T.PATID AS PTNO, T.CLASS AS INOUTCLS,  T.INDATE AS MEDFRDATE, '120000' AS MEDFRTIME, ";
                 SQL = SQL + ComNum.VBLF + "            T.OUTDATE AS MEDENDDATE, '120000' AS MEDENDTIME, T.CLINCODE AS MEDDEPTCD, T.DOCCODE AS MEDDRCD,  ";
                 SQL = SQL + ComNum.VBLF + "            F.FORMNAME,  F.GRPFORMNO, F.FORMNAME AS GRPFORMNAME,";
-                SQL = SQL + ComNum.VBLF + "            (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = T.CLINCODE) AS DEPTKORNAME, ";
+                SQL = SQL + ComNum.VBLF + "            (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = T.CLINCODE) AS DEPTKORNAME, ";
                 SQL = SQL + ComNum.VBLF + "            T.TREATNO, SS.FORMCODE,  SS.PCNT, 'S' AS SCANYN, 1 UPDATENO ";
-                SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.EMR_TREATT T, ";
+                SQL = SQL + ComNum.VBLF + "    FROM ADMIN.EMR_TREATT T, ";
                 SQL = SQL + ComNum.VBLF + "        (SELECT P.TREATNO, P.FORMCODE, COUNT(P.PAGENO) AS PCNT, ";
                 SQL = SQL + ComNum.VBLF + "                TO_CHAR(P.TREATNO) AS EMRNO1 ";
-                SQL = SQL + ComNum.VBLF + "            FROM KOSMOS_EMR.EMR_CHARTPAGET P, ";
-                SQL = SQL + ComNum.VBLF + "                KOSMOS_EMR.EMR_TREATT X ";
+                SQL = SQL + ComNum.VBLF + "            FROM ADMIN.EMR_CHARTPAGET P, ";
+                SQL = SQL + ComNum.VBLF + "                ADMIN.EMR_TREATT X ";
                 SQL = SQL + ComNum.VBLF + "            WHERE X.PATID = '" + mPTNO + "' ";
                 if (mViewNpChart == false)
                 {
@@ -2766,8 +2766,8 @@ namespace ComEmrBase
 
                 SQL = SQL + ComNum.VBLF + "                AND P.TREATNO = X.TREATNO ";
                 SQL = SQL + ComNum.VBLF + "            GROUP BY P.TREATNO, P.FORMCODE) SS, ";
-                SQL = SQL + ComNum.VBLF + "        KOSMOS_EMR.AEMRFORM F, ";
-                SQL = SQL + ComNum.VBLF + "        KOSMOS_EMR.EMRMAPPING M ";
+                SQL = SQL + ComNum.VBLF + "        ADMIN.AEMRFORM F, ";
+                SQL = SQL + ComNum.VBLF + "        ADMIN.EMRMAPPING M ";
                 SQL = SQL + ComNum.VBLF + "    WHERE T.PATID = '" + mPTNO + "' ";
                 if (optEmrInOutFormO.Checked == true)
                 {
@@ -2787,10 +2787,10 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "      0 ACPNO, A.PTNO, A.INOUTCLS, A.MEDFRDATE, A.MEDFRTIME,  ";
                 SQL = SQL + ComNum.VBLF + "      A.MEDENDDATE, A.MEDENDTIME, A.MEDDEPTCD, A.MEDDRCD, ";
                 SQL = SQL + ComNum.VBLF + "      B.FORMNAME,  B.GRPFORMNO, B.FORMNAME  AS GRPFORMNAME, ";
-                SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME, ";
+                SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME, ";
                 SQL = SQL + ComNum.VBLF + "      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'T' AS SCANYN, 1 UPDATENO ";
-                SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRXMLMST A ";
-                SQL = SQL + ComNum.VBLF + "      INNER JOIN KOSMOS_EMR.AEMRFORM B ";
+                SQL = SQL + ComNum.VBLF + "    FROM ADMIN.EMRXMLMST A ";
+                SQL = SQL + ComNum.VBLF + "      INNER JOIN ADMIN.AEMRFORM B ";
                 SQL = SQL + ComNum.VBLF + "         ON A.FORMNO = B.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "         AND B.UPDATENO = 1";
                 SQL = SQL + ComNum.VBLF + "      WHERE A.PTNO = '" + mPTNO + "' ";
@@ -2818,10 +2818,10 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "      0 ACPNO, A2.PTNO, A2.INOUTCLS, A2.MEDFRDATE, A2.MEDFRTIME,  ";
                 SQL = SQL + ComNum.VBLF + "      A2.MEDENDDATE, A2.MEDENDTIME, A2.MEDDEPTCD, A2.MEDDRCD, ";
                 SQL = SQL + ComNum.VBLF + "      B2.FORMNAME,  B2.GRPFORMNO,  B2.FORMNAME  AS GRPFORMNAME, ";
-                SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = A2.MEDDEPTCD) AS DEPTKORNAME, ";
+                SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = A2.MEDDEPTCD) AS DEPTKORNAME, ";
                 SQL = SQL + ComNum.VBLF + "      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'T' AS SCANYN, B2.UPDATENO ";
-                SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRCHARTMST A2 ";
-                SQL = SQL + ComNum.VBLF + "      INNER JOIN KOSMOS_EMR.AEMRFORM B2 ";
+                SQL = SQL + ComNum.VBLF + "    FROM ADMIN.AEMRCHARTMST A2 ";
+                SQL = SQL + ComNum.VBLF + "      INNER JOIN ADMIN.AEMRFORM B2 ";
                 SQL = SQL + ComNum.VBLF + "         ON A2.FORMNO = B2.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "        AND A2.UPDATENO = B2.UPDATENO";
                 SQL = SQL + ComNum.VBLF + "      WHERE A2.PTNO = '" + mPTNO + "' ";
@@ -2849,15 +2849,15 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "       SELECT C.ID AS EMRNO, A.FORMNO,  TO_CHAR(C.CREATED, 'YYYYMMDD') AS CHARTDATE, TO_CHAR(C.CREATED, 'HHMMSS') AS CHARTTIME,  ";
                 SQL = SQL + ComNum.VBLF + " 0 AS ACPNO, C.PTNO, C.INOUTCLS, C.MEDFRDATE, C.MEDFRTIME, '' AS MEDENDDATE, '' AS MEDENDTIME, C.MEDDEPTCD, C.MEDDRCD,        ";
                 SQL = SQL + ComNum.VBLF + " A.FORMNAME, A.GRPFORMNO, D.GRPFORMNAME,        ";
-                SQL = SQL + ComNum.VBLF + " (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME,  ";
+                SQL = SQL + ComNum.VBLF + " (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME,  ";
                 SQL = SQL + ComNum.VBLF + " 0 AS TREATNO, '000' AS FORMCODE,  0 as PCNT, 'E' AS SCANYN, A.updateNo  ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.AEMRFORM A  ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_EMR.AEASFORMCONTENT B  ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.AEMRFORM A  ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.AEASFORMCONTENT B  ";
                 SQL = SQL + ComNum.VBLF + " ON A.FORMNO = B.FORMNO  ";
                 SQL = SQL + ComNum.VBLF + " AND A.UPDATENO = B.UPDATENO  ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_EMR.AEASFORMDATA C  ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.AEASFORMDATA C  ";
                 SQL = SQL + ComNum.VBLF + " ON B.ID = C.EASFORMCONTENT  ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_EMR.AEMRGRPFORM D  ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.AEMRGRPFORM D  ";
                 SQL = SQL + ComNum.VBLF + " ON A.GRPFORMNO = D.GRPFORMNO  ";
       
                 SQL = SQL + ComNum.VBLF + "      WHERE C.ISDELETED ='N' AND C.PTNO = '" + mPTNO + "' ";
@@ -2889,9 +2889,9 @@ namespace ComEmrBase
                     SQL = SQL + ComNum.VBLF + "      0 ACPNO, A.PTNO, A.INOUTCLS, A.MEDFRDATE, A.MEDFRTIME,  ";
                     SQL = SQL + ComNum.VBLF + "      A.MEDENDDATE, A.MEDENDTIME, A.MEDDEPTCD, A.MEDDRCD, ";
                     SQL = SQL + ComNum.VBLF + "      B.FORMNAME,  B.GRPFORMNO, B.FORMNAME AS GRPFORMNAME, ";
-                    SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME, ";
+                    SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME, ";
                     SQL = SQL + ComNum.VBLF + "      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'T' AS SCANYN, 1 AS UPDATENO ";
-                    SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRXML_TUYAK A INNER JOIN KOSMOS_EMR.AEMRFORM B ";
+                    SQL = SQL + ComNum.VBLF + "    FROM ADMIN.EMRXML_TUYAK A INNER JOIN ADMIN.AEMRFORM B ";
                     SQL = SQL + ComNum.VBLF + "          ON A.FORMNO = B.FORMNO ";
                     SQL = SQL + ComNum.VBLF + "          AND B.UPDATENO = 1";
                     SQL = SQL + ComNum.VBLF + "      WHERE A.PTNO = '" + mPTNO + "' ";
@@ -2931,7 +2931,7 @@ namespace ComEmrBase
                     //SQL = SQL + ComNum.VBLF + "      16 AS GRPFORMNO,  ";
                     SQL = SQL + ComNum.VBLF + "      1012 AS GRPFORMNO,  ";
                     SQL = SQL + ComNum.VBLF + "      '의사지시기록' AS GRPFORMNAME,  ";
-                    SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ";
+                    SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ";
                     SQL = SQL + ComNum.VBLF + "      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'O' AS SCANYN, 1 AS UPDATENO  ";
                     SQL = SQL + ComNum.VBLF + "    FROM " + ComNum.DB_MED + "OCS_OORDER O, ";
                     SQL = SQL + ComNum.VBLF + "          " + ComNum.DB_MED + "OCS_ORDERCODE C, ";
@@ -2970,7 +2970,7 @@ namespace ComEmrBase
                     //SQL = SQL + ComNum.VBLF + "      16 AS GRPFORMNO,  ";
                     SQL = SQL + ComNum.VBLF + "      1012 AS GRPFORMNO,  ";
                     SQL = SQL + ComNum.VBLF + "      'ER 의사지시기록' AS GRPFORMNAME,  ";
-                    SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = 'ER') AS DEPTKORNAME,  ";
+                    SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = 'ER') AS DEPTKORNAME,  ";
                     SQL = SQL + ComNum.VBLF + "      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'O' AS SCANYN, 1 AS UPDATENO  ";
                     SQL = SQL + ComNum.VBLF + "    FROM " + ComNum.DB_MED + "OCS_IORDER O, ";
                     SQL = SQL + ComNum.VBLF + "          " + ComNum.DB_MED + "OCS_ORDERCODE C, ";
@@ -3003,7 +3003,7 @@ namespace ComEmrBase
                     //SQL = SQL + ComNum.VBLF + "      16 AS GRPFORMNO,  ";
                     SQL = SQL + ComNum.VBLF + "      1012 AS GRPFORMNO,  ";
                     SQL = SQL + ComNum.VBLF + "      '의사지시기록' AS GRPFORMNAME,  ";
-                    SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ";
+                    SQL = SQL + ComNum.VBLF + "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ";
                     SQL = SQL + ComNum.VBLF + "      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'O' AS SCANYN, 1 AS UPDATENO  ";
                     SQL = SQL + ComNum.VBLF + "    FROM " + ComNum.DB_MED + "OCS_IORDER O, ";
                     SQL = SQL + ComNum.VBLF + "          " + ComNum.DB_MED + "OCS_ORDERCODE C, ";
@@ -3448,7 +3448,7 @@ namespace ComEmrBase
             SQL.AppendLine("  , CASE WHEN ET.INOUTCLS = 'I' AND EXISTS ");
             SQL.AppendLine("  ( ");
             SQL.AppendLine("    SELECT 1                                                       	    ");
-            SQL.AppendLine("    FROM KOSMOS_PMPA.IPD_NEW_MASTER                                     ");
+            SQL.AppendLine("    FROM ADMIN.IPD_NEW_MASTER                                     ");
             SQL.AppendLine("    WHERE PANO = ET.PTNO                                                ");
             SQL.AppendLine("      AND INDATE >= TO_DATE(ET.MEDFRDATE || ' 000000','YYYYMMDD HH24MISS')     				");
             SQL.AppendLine("      AND INDATE <= TO_DATE(ET.MEDFRDATE || ' 235959','YYYYMMDD HH24MISS')     				");
@@ -3461,20 +3461,20 @@ namespace ComEmrBase
             SQL.AppendLine( "            0 AS ACPNO, T.PATID AS PTNO, T.CLASS AS INOUTCLS,  T.INDATE AS MEDFRDATE, '120000' AS MEDFRTIME, ");
             SQL.AppendLine( "            T.OUTDATE AS MEDENDDATE, '120000' AS MEDENDTIME, T.CLINCODE AS MEDDEPTCD, T.DOCCODE AS MEDDRCD,  ");
             SQL.AppendLine("             NVL(F2.NAME, F.FORMNAME) AS FORMNAME,  F.GRPFORMNO, ");
-            SQL.AppendLine( "            (SELECT GRPFORMNAME FROM KOSMOS_EMR.AEMRGRPFORM WHERE GRPFORMNO = F.GRPFORMNO) AS GRPFORMNAME, ");
-            SQL.AppendLine( "            (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = T.CLINCODE) AS DEPTKORNAME, ");
+            SQL.AppendLine( "            (SELECT GRPFORMNAME FROM ADMIN.AEMRGRPFORM WHERE GRPFORMNO = F.GRPFORMNO) AS GRPFORMNAME, ");
+            SQL.AppendLine( "            (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = T.CLINCODE) AS DEPTKORNAME, ");
             SQL.AppendLine("            T.TREATNO, SS.FORMCODE,  SS.PCNT, 'S' AS SCANYN, 0 AS EMRNOHIS ");
-            SQL.AppendLine( "    FROM KOSMOS_EMR.EMR_TREATT T, ");
+            SQL.AppendLine( "    FROM ADMIN.EMR_TREATT T, ");
             SQL.AppendLine( "        (SELECT P.TREATNO, P.FORMCODE, COUNT(P.PAGENO) AS PCNT, ");
             SQL.AppendLine( "                TO_CHAR(P.TREATNO) AS EMRNO1 ");
-            SQL.AppendLine( "            FROM KOSMOS_EMR.EMR_CHARTPAGET P, ");
-            SQL.AppendLine( "                KOSMOS_EMR.EMR_TREATT X ");
+            SQL.AppendLine( "            FROM ADMIN.EMR_CHARTPAGET P, ");
+            SQL.AppendLine( "                ADMIN.EMR_TREATT X ");
             SQL.AppendLine( "            WHERE X.PATID = '" + mPTNO + "' ");
             SQL.AppendLine( "                AND P.TREATNO = X.TREATNO ");
             SQL.AppendLine( "            GROUP BY P.TREATNO, P.FORMCODE) SS, ");
-            SQL.AppendLine( "        KOSMOS_EMR.AEMRFORM F, ");
-            SQL.AppendLine( "        KOSMOS_EMR.EMRMAPPING M, ");
-            SQL.AppendLine("         KOSMOS_EMR.EMR_FORMT F2");
+            SQL.AppendLine( "        ADMIN.AEMRFORM F, ");
+            SQL.AppendLine( "        ADMIN.EMRMAPPING M, ");
+            SQL.AppendLine("         ADMIN.EMR_FORMT F2");
 
             SQL.AppendLine( "    WHERE T.PATID = '" + mPTNO + "' ");
             SQL.AppendLine( "        AND T.TREATNO = SS.TREATNO  ");
@@ -3521,10 +3521,10 @@ namespace ComEmrBase
             SQL.AppendLine( "      0 ACPNO, A.PTNO, A.INOUTCLS, A.MEDFRDATE, A.MEDFRTIME,  ");
             SQL.AppendLine( "      A.MEDENDDATE, A.MEDENDTIME, A.MEDDEPTCD, A.MEDDRCD, ");
             SQL.AppendLine( "      B.FORMNAME,  B.GRPFORMNO, ");
-            SQL.AppendLine( "      (SELECT GRPFORMNAME FROM KOSMOS_EMR.EMRGRPFORM WHERE GRPFORMNO = B.GRPFORMNO) AS GRPFORMNAME, ");
-            SQL.AppendLine( "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME, ");
+            SQL.AppendLine( "      (SELECT GRPFORMNAME FROM ADMIN.EMRGRPFORM WHERE GRPFORMNO = B.GRPFORMNO) AS GRPFORMNAME, ");
+            SQL.AppendLine( "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME, ");
             SQL.AppendLine("      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'T' AS SCANYN, 0 AS EMRNOHIS ");
-            SQL.AppendLine("     FROM KOSMOS_EMR.EMRXMLMST A INNER JOIN KOSMOS_EMR.AEMRFORM B ");
+            SQL.AppendLine("     FROM ADMIN.EMRXMLMST A INNER JOIN ADMIN.AEMRFORM B ");
             SQL.AppendLine( "          ON A.FORMNO = B.FORMNO ");
             SQL.AppendLine( "          AND B.UPDATENO = 1");
             SQL.AppendLine("      WHERE A.PTNO = '" + mPTNO + "' ");
@@ -3573,11 +3573,11 @@ namespace ComEmrBase
             SQL.AppendLine( "          C.ACPNO, C.PTNO, C.INOUTCLS, C.MEDFRDATE, C.MEDFRTIME,  ");
             SQL.AppendLine( "          C.MEDENDDATE, C.MEDENDTIME, C.MEDDEPTCD, C.MEDDRCD,  ");
             SQL.AppendLine( "          F.FORMNAME AS FORMNAME,  F.GRPFORMNO,  ");
-            SQL.AppendLine( "          (SELECT GRPFORMNAME FROM KOSMOS_EMR.AEMRGRPFORM WHERE GRPFORMNO = F.GRPFORMNO) AS GRPFORMNAME,  ");
-            SQL.AppendLine( "          (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME,  ");
+            SQL.AppendLine( "          (SELECT GRPFORMNAME FROM ADMIN.AEMRGRPFORM WHERE GRPFORMNO = F.GRPFORMNO) AS GRPFORMNAME,  ");
+            SQL.AppendLine( "          (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME,  ");
             SQL.AppendLine("          0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'T' AS SCANYN, C.EMRNOHIS  ");
-            SQL.AppendLine( "        FROM KOSMOS_EMR.AEMRCHARTMST C  ");
-            SQL.AppendLine( "          INNER JOIN KOSMOS_EMR.AEMRFORM F  ");
+            SQL.AppendLine( "        FROM ADMIN.AEMRCHARTMST C  ");
+            SQL.AppendLine( "          INNER JOIN ADMIN.AEMRFORM F  ");
             SQL.AppendLine( "             ON C.FORMNO = F.FORMNO ");
             SQL.AppendLine( "             AND C.UPDATENO = F.UPDATENO ");
             SQL.AppendLine( "      WHERE C.PTNO = '" + mPTNO + "' ");
@@ -3624,10 +3624,10 @@ namespace ComEmrBase
                 SQL.AppendLine( "      0 ACPNO, A.PTNO, A.INOUTCLS, A.MEDFRDATE, A.MEDFRTIME,  ");
                 SQL.AppendLine( "      A.MEDENDDATE, A.MEDENDTIME, A.MEDDEPTCD, A.MEDDRCD, ");
                 SQL.AppendLine( "      B.FORMNAME,  B.GRPFORMNO,");
-                SQL.AppendLine("       (SELECT GRPFORMNAME FROM KOSMOS_EMR.AEMRGRPFORM WHERE GRPFORMNO = B.GRPFORMNO) AS GRPFORMNAME, ");
-                SQL.AppendLine("      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME, ");
+                SQL.AppendLine("       (SELECT GRPFORMNAME FROM ADMIN.AEMRGRPFORM WHERE GRPFORMNO = B.GRPFORMNO) AS GRPFORMNAME, ");
+                SQL.AppendLine("      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = A.MEDDEPTCD) AS DEPTKORNAME, ");
                 SQL.AppendLine("      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'T' AS SCANYN, 0 AS EMRNOHIS  ");
-                SQL.AppendLine( "    FROM KOSMOS_EMR.EMRXML_TUYAK A INNER JOIN KOSMOS_EMR.AEMRFORM B ");
+                SQL.AppendLine( "    FROM ADMIN.EMRXML_TUYAK A INNER JOIN ADMIN.AEMRFORM B ");
                 SQL.AppendLine( "          ON A.FORMNO = B.FORMNO ");
                 SQL.AppendLine( "          AND B.UPDATENO = 1 ");
                 SQL.AppendLine( "      WHERE A.PTNO = '" + mPTNO + "' ");
@@ -3700,7 +3700,7 @@ namespace ComEmrBase
                     }
                     else
                     {
-                        SQL.AppendLine( "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ");
+                        SQL.AppendLine( "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ");
                     }
                     SQL.AppendLine("      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'O' AS SCANYN, 0 AS EMRNOHIS   ");
                     SQL.AppendLine( "    FROM " + ComNum.DB_MED + "OCS_OORDER O, ");
@@ -3762,7 +3762,7 @@ namespace ComEmrBase
                     SQL.AppendLine( "      'Dr ORDER(ER)' AS FORMNAME ,  ");
                     SQL.AppendLine( "      1012 AS GRPFORMNO,  ");
                     SQL.AppendLine( "      'ER 의사지시기록' AS GRPFORMNAME,  ");
-                    SQL.AppendLine( "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = 'ER') AS DEPTKORNAME,  ");
+                    SQL.AppendLine( "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = 'ER') AS DEPTKORNAME,  ");
                     SQL.AppendLine("      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'O' AS SCANYN, 0 AS EMRNOHIS  ");
                     SQL.AppendLine( "    FROM " + ComNum.DB_MED + "OCS_IORDER O, ");
                     SQL.AppendLine( "          " + ComNum.DB_MED + "OCS_ORDERCODE C, ");
@@ -3837,7 +3837,7 @@ namespace ComEmrBase
                     SQL.AppendLine( "      'Dr ORDER' AS FORMNAME ,  ");
                     SQL.AppendLine( "      1012 AS GRPFORMNO,  ");
                     SQL.AppendLine( "      '의사지시기록' AS GRPFORMNAME,  ");
-                    SQL.AppendLine( "      (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ");
+                    SQL.AppendLine( "      (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = O.DEPTCODE) AS DEPTKORNAME,  ");
                     SQL.AppendLine("      0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'O' AS SCANYN, 0 AS EMRNOHIS  ");
                     SQL.AppendLine( "    FROM " + ComNum.DB_MED + "OCS_IORDER O, ");
                     SQL.AppendLine( "          " + ComNum.DB_MED + "OCS_ORDERCODE C, ");
@@ -3899,25 +3899,25 @@ namespace ComEmrBase
             SQL.AppendLine( "          SELECT C.ID AS EMRNO, A.FORMNO, A.UPDATENO, TO_CHAR(C.CREATED, 'YYYYMMDD') AS CHARTDATE, TO_CHAR(C.CREATED, 'HHMMSS') AS CHARTTIME,     ");
             SQL.AppendLine( "          0 AS ACPNO, C.PTNO, C.INOUTCLS, C.MEDFRDATE, C.MEDFRTIME, '' AS MEDENDDATE, '' AS MEDENDTIME, C.MEDDEPTCD, C.MEDDRCD,     ");
             SQL.AppendLine( "          A.FORMNAME,  A.GRPFORMNO,     ");
-            SQL.AppendLine( "          (SELECT GRPFORMNAME FROM KOSMOS_EMR.AEMRGRPFORM WHERE GRPFORMNO = A.GRPFORMNO) AS GRPFORMNAME,     ");
-            SQL.AppendLine( "          (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME,     ");
+            SQL.AppendLine( "          (SELECT GRPFORMNAME FROM ADMIN.AEMRGRPFORM WHERE GRPFORMNO = A.GRPFORMNO) AS GRPFORMNAME,     ");
+            SQL.AppendLine( "          (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = C.MEDDEPTCD) AS DEPTKORNAME,     ");
             SQL.AppendLine("          0 AS TREATNO, '000' AS FORMCODE,  0 AS PCNT, 'E' AS SCANYN, 0 AS EMRNOHIS     ");
-            SQL.AppendLine( "          FROM KOSMOS_EMR.AEMRFORM A     ");
-            SQL.AppendLine( "          INNER JOIN KOSMOS_EMR.AEASFORMCONTENT B     ");
+            SQL.AppendLine( "          FROM ADMIN.AEMRFORM A     ");
+            SQL.AppendLine( "          INNER JOIN ADMIN.AEASFORMCONTENT B     ");
             SQL.AppendLine( "          ON A.FORMNO = B.FORMNO     ");
             SQL.AppendLine( "          AND A.UPDATENO = B.UPDATENO     ");
-            SQL.AppendLine( "          INNER JOIN KOSMOS_EMR.AEASFORMDATA C     ");
+            SQL.AppendLine( "          INNER JOIN ADMIN.AEASFORMDATA C     ");
             SQL.AppendLine( "          ON B.ID = C.EASFORMCONTENT     ");
             SQL.AppendLine( "          WHERE C.ISDELETED = 'N' AND C.PTNO = '" + mPTNO + "'     ");
             SQL.AppendLine( "          AND C.INOUTCLS = '" + strInOutCls + "'     ");
             SQL.AppendLine( "          AND C.MEDFRDATE = '" + strMedFrDate + "'     ");
 
             SQL.AppendLine("    ) ET ");
-            SQL.AppendLine("    INNER JOIN KOSMOS_EMR.AEMRGRPFORM GR");
-            SQL.AppendLine("       ON GR.GRPFORMNO = (SELECT GROUPPARENT FROM KOSMOS_EMR.AEMRGRPFORM WHERE GRPFORMNO = ET.GRPFORMNO)");
-            SQL.AppendLine("    INNER JOIN KOSMOS_EMR.AEMRGRPFORM GR2");
+            SQL.AppendLine("    INNER JOIN ADMIN.AEMRGRPFORM GR");
+            SQL.AppendLine("       ON GR.GRPFORMNO = (SELECT GROUPPARENT FROM ADMIN.AEMRGRPFORM WHERE GRPFORMNO = ET.GRPFORMNO)");
+            SQL.AppendLine("    INNER JOIN ADMIN.AEMRGRPFORM GR2");
             SQL.AppendLine("       ON GR2.GRPFORMNO = ET.GRPFORMNO");
-            SQL.AppendLine("     LEFT OUTER JOIN KOSMOS_PMPA.BAS_CLINICDEPT CD");
+            SQL.AppendLine("     LEFT OUTER JOIN ADMIN.BAS_CLINICDEPT CD");
             SQL.AppendLine("       ON CD.DEPTCODE = ET.MEDDEPTCD");
 
             if (cboDept.SelectedIndex != 0)
@@ -4266,11 +4266,11 @@ namespace ComEmrBase
             SQL.AppendLine("SELECT ");
             SQL.AppendLine( "  XX.INOUTCLS, XX.PTNO, XX.PTNAME, XX.SEX, XX.AGE,");
             SQL.AppendLine( "  XX.MEDDEPTCD, XX.MEDDRCD, XX.MEDFRDATE, XX.MEDFRTIME, XX.MEDENDDATE, XX.MEDENDTIME,");
-            SQL.AppendLine( "  (SELECT DEPTKORNAME FROM KOSMOS_EMR.VIEWBMEDDEPT WHERE MEDDEPTCD = XX.MEDDEPTCD) AS DEPTKORNAME, DD.DRNAME");
+            SQL.AppendLine( "  (SELECT DEPTKORNAME FROM ADMIN.VIEWBMEDDEPT WHERE MEDDEPTCD = XX.MEDDEPTCD) AS DEPTKORNAME, DD.DRNAME");
             SQL.AppendLine("  , CASE WHEN XX.INOUTCLS = 'I' AND EXISTS ");
             SQL.AppendLine( "  ( ");
             SQL.AppendLine("    SELECT 1                                                       	    ");
-            SQL.AppendLine("    FROM KOSMOS_PMPA.IPD_NEW_MASTER                                     ");
+            SQL.AppendLine("    FROM ADMIN.IPD_NEW_MASTER                                     ");
             SQL.AppendLine("    WHERE PANO = XX.PTNO                                                ");
             SQL.AppendLine("      AND INDATE >= TO_DATE(XX.MEDFRDATE,'YYYYMMDD')     				");
             SQL.AppendLine("      AND INDATE <= TO_DATE(XX.MEDFRDATE,'YYYYMMDD')     				");
@@ -4282,7 +4282,7 @@ namespace ComEmrBase
             SQL.AppendLine("  , CASE WHEN EXISTS ");
             SQL.AppendLine("  ( ");
             SQL.AppendLine("    SELECT 1                                                       	    ");
-            SQL.AppendLine("    FROM KOSMOS_OCS.OCS_MCCERTIFI_WONMU_REPRINT                         ");
+            SQL.AppendLine("    FROM ADMIN.OCS_MCCERTIFI_WONMU_REPRINT                         ");
             SQL.AppendLine("    WHERE PANO = XX.PTNO                                                ");
             SQL.AppendLine("      AND BDATE = TO_DATE(XX.MEDFRDATE,'YYYYMMDD')     				    ");
             SQL.AppendLine("      AND DEPTCODE = XX.MEDDEPTCD                                       ");
@@ -4291,7 +4291,7 @@ namespace ComEmrBase
             SQL.AppendLine("  , CASE WHEN XX.INOUTCLS = 'I' AND EXISTS ");
             SQL.AppendLine("  ( ");
             SQL.AppendLine("    SELECT 1                                                       	    ");
-            SQL.AppendLine("    FROM KOSMOS_PMPA.IPD_NEW_MASTER                                     ");
+            SQL.AppendLine("    FROM ADMIN.IPD_NEW_MASTER                                     ");
             SQL.AppendLine("    WHERE PANO = XX.PTNO                                                ");
             SQL.AppendLine("      AND INDATE >= TO_DATE(XX.MEDFRDATE || ' 000000','YYYYMMDD HH24MISS')     				");
             SQL.AppendLine("      AND INDATE <= TO_DATE(XX.MEDFRDATE || ' 235959','YYYYMMDD HH24MISS')     				");
@@ -4308,7 +4308,7 @@ namespace ComEmrBase
                 SQL.AppendLine( "    A.DeptCode AS MEDDEPTCD, A.DrCode AS MEDDRCD,");
                 SQL.AppendLine( "     NVL(TO_CHAR(A.BDATE,'YYYYMMDD'),  TO_CHAR(A.ACTDATE,'YYYYMMDD')) AS MEDFRDATE, TO_CHAR(A.JTime,'HH24MI') || '00' AS MEDFRTIME,");
                 SQL.AppendLine( "    '' AS MEDENDDATE, '' AS MEDENDTIME");
-                SQL.AppendLine( "FROM KOSMOS_PMPA.OPD_MASTER A");
+                SQL.AppendLine( "FROM ADMIN.OPD_MASTER A");
                 SQL.AppendLine( "WHERE A.PANO = '" + mPTNO + "' ");
                 if (gJinGubun == "" || gJinGubun == "2")
                 {
@@ -4335,7 +4335,7 @@ namespace ComEmrBase
                 SQL.AppendLine( "    A.DeptCode AS MEDDEPTCD, A.DrCode AS MEDDRCD,");
                 SQL.AppendLine( "    TO_CHAR(A.InDate,'YYYYMMDD') AS MEDFRDATE, '120000' AS MEDFRTIME,");
                 SQL.AppendLine( "    TO_CHAR(A.OutDate,'YYYYMMDD') AS MEDENDDATE, '120000' AS MEDENDTIME");
-                SQL.AppendLine( "FROM KOSMOS_PMPA.IPD_NEW_MASTER A ");
+                SQL.AppendLine( "FROM ADMIN.IPD_NEW_MASTER A ");
                 SQL.AppendLine( "WHERE A.PANO = '" + mPTNO + "' ");
                 SQL.AppendLine( "  AND A.GBSTS <> '9'");
                 SQL.AppendLine( "UNION ALL");
@@ -4345,8 +4345,8 @@ namespace ComEmrBase
                     SQL.AppendLine( "    MAX(A.MEDDEPTCD) AS MEDDEPTCD, MAX(A.MEDDRCD) AS MEDDRCD, ");
                     SQL.AppendLine( "    MAX(A.MEDFRDATE) AS MEDFRDATE, MAX(A.MEDFRTIME) AS MEDFRTIME, ");
                     SQL.AppendLine( "    MAX(TO_CHAR(B.OUTDATE,'YYYYMMDD')) AS MEDENDDATE, '' AS MEDENDTIME ");
-                    SQL.AppendLine( "FROM KOSMOS_EMR.EMRXMLMST A, ");
-                    SQL.AppendLine( "    KOSMOS_PMPA.IPD_NEW_MASTER B ");
+                    SQL.AppendLine( "FROM ADMIN.EMRXMLMST A, ");
+                    SQL.AppendLine( "    ADMIN.IPD_NEW_MASTER B ");
                     SQL.AppendLine( "WHERE A.PTNO =  '" + mPTNO + "' ");
                     SQL.AppendLine( "  AND A.INOUTCLS = 'I' ");
                     SQL.AppendLine( "  AND B.GBSTS = '9' ");
@@ -4358,8 +4358,8 @@ namespace ComEmrBase
                     SQL.AppendLine( "    MAX(A.MEDDEPTCD) AS MEDDEPTCD, MAX(A.MEDDRCD) AS MEDDRCD, ");
                     SQL.AppendLine( "    MAX(A.MEDFRDATE) AS MEDFRDATE, MAX(A.MEDFRTIME) AS MEDFRTIME, ");
                     SQL.AppendLine( "    MAX(TO_CHAR(B.OUTDATE,'YYYYMMDD')) AS MEDENDDATE, '' AS MEDENDTIME ");
-                    SQL.AppendLine( "FROM KOSMOS_EMR.AEMRCHARTMST A, ");
-                    SQL.AppendLine( "    KOSMOS_PMPA.IPD_NEW_MASTER B ");
+                    SQL.AppendLine( "FROM ADMIN.AEMRCHARTMST A, ");
+                    SQL.AppendLine( "    ADMIN.IPD_NEW_MASTER B ");
                     SQL.AppendLine( "WHERE A.PTNO =  '" + mPTNO + "' ");
                     SQL.AppendLine( "  AND A.INOUTCLS = 'I' ");
                     SQL.AppendLine( "  AND B.GBSTS = '9' ");
@@ -4373,7 +4373,7 @@ namespace ComEmrBase
                     SQL.AppendLine( "    DEPTCODE AS MEDDEPTCD, DRCODE AS MEDDRCD,");
                     SQL.AppendLine( "    TO_CHAR(INDATE,'YYYYMMDD') AS MEDFRDATE, TO_CHAR(INDATE, 'HH24MI') AS MEDFRTIME,");
                     SQL.AppendLine( "    TO_CHAR(OUTDATE,'YYYYMMDD') AS MEDENDDATE, '' AS MEDENDTIME");
-                    SQL.AppendLine( "    From KOSMOS_PMPA.IPD_NEW_MASTER");
+                    SQL.AppendLine( "    From ADMIN.IPD_NEW_MASTER");
                     SQL.AppendLine( "   WHERE PANO =  '" + mPTNO + "'");
                     SQL.AppendLine( "     AND GBSTS = '9'");
                 }
@@ -4385,7 +4385,7 @@ namespace ComEmrBase
             SQL.AppendLine( "    A.CLINCODE AS MEDDEPTCD, A.DOCCODE AS MEDDRCD, ");
             SQL.AppendLine( "    A.INDATE AS MEDFRDATE, '120000' AS MEDFRTIME, ");
             SQL.AppendLine( "    A.OUTDATE AS MEDENDDATE, '120000' AS MEDENDTIME ");
-            SQL.AppendLine( "FROM KOSMOS_EMR.EMR_TREATT A, KOSMOS_EMR.EMR_PATIENTT B   ");
+            SQL.AppendLine( "FROM ADMIN.EMR_TREATT A, ADMIN.EMR_PATIENTT B   ");
             SQL.AppendLine( "WHERE A.PATID = '" + mPTNO + "' ");
             SQL.AppendLine( "  AND A.DELDATE IS NULL");
             SQL.AppendLine( "  AND A.PATID = B.PATID    ");
@@ -4402,7 +4402,7 @@ namespace ComEmrBase
             SQL.AppendLine( "            FROM ");
             SQL.AppendLine( "            (SELECT 'O' AS INOUTCLS, NVL(TO_CHAR(A1.BDATE,'YYYYMMDD'),  TO_CHAR(A1.ACTDATE,'YYYYMMDD') ) AS MEDFRDATE, ");
             SQL.AppendLine( "            DECODE(A1.DRCODE,'1107','RA','1125','RA',A1.DeptCode) AS MEDDEPTCD");
-            SQL.AppendLine( "            FROM KOSMOS_PMPA.OPD_MASTER A1");
+            SQL.AppendLine( "            FROM ADMIN.OPD_MASTER A1");
             SQL.AppendLine( "            WHERE A1.PANO = '" + mPTNO + "' ");
             
             if (gJinGubun == "" || gJinGubun == "2")
@@ -4421,12 +4421,12 @@ namespace ComEmrBase
 
             SQL.AppendLine( "            UNION ALL ");
             SQL.AppendLine( "             SELECT 'I' AS INOUTCLS, TO_CHAR(A2.InDate,'YYYYMMDD') AS MEDFRDATE, A2.DeptCode AS MEDDEPTCD ");
-            SQL.AppendLine( "            FROM KOSMOS_PMPA.IPD_NEW_MASTER A2  ");
+            SQL.AppendLine( "            FROM ADMIN.IPD_NEW_MASTER A2  ");
             SQL.AppendLine( "            WHERE A2.PANO = '" + mPTNO + "' ");
             SQL.AppendLine("               AND A2.GBSTS <> '9') ");
             SQL.AppendLine( "    )  ");
 
-            SQL.AppendLine( ") XX, KOSMOS_PMPA.BAS_DOCTOR DD ");
+            SQL.AppendLine( ") XX, ADMIN.BAS_DOCTOR DD ");
             SQL.AppendLine( "  WHERE XX.MEDDRCD = DD.DRCODE(+)");
             SQL.AppendLine( "  AND XX.INOUTCLS IS NOT NULL");
             if (strDept.Length > 0)
@@ -5063,7 +5063,7 @@ namespace ComEmrBase
             try
             {
                 SQL.Clear();
-                SQL.AppendLine("INSERT INTO KOSMOS_EMR.EMR_PRINTNEEDT(");
+                SQL.AppendLine("INSERT INTO ADMIN.EMR_PRINTNEEDT(");
                 SQL.AppendLine("TREATNO, PAGENO, CUSERID, PRINTCODE,");
                 SQL.AppendLine("CDATE, NEEDGUBUN, NEEDCNT");
                 SQL.AppendLine(")");
@@ -5074,18 +5074,18 @@ namespace ComEmrBase
                 SQL.AppendLine("TO_CHAR(SYSDATE, 'YYYYMMDD'), ");//서버날짜
                 SQL.AppendLine("'1', ");//NEEDGUBUN
                 SQL.AppendLine(VB.Val(PrtCnt).ToString());//요청 갯수
-                SQL.AppendLine("FROM KOSMOS_EMR.EMR_PAGET P  ");
-                SQL.AppendLine("  INNER JOIN KOSMOS_EMR.EMR_CHARTPAGET C ");
+                SQL.AppendLine("FROM ADMIN.EMR_PAGET P  ");
+                SQL.AppendLine("  INNER JOIN ADMIN.EMR_CHARTPAGET C ");
                 SQL.AppendLine("     ON P.PAGENO = C.PAGENO");
                 SQL.AppendLine("     AND C.TREATNO = " + strTreatNo);
                 SQL.AppendLine("     AND C.PAGE > 0");
-                SQL.AppendLine("  INNER JOIN KOSMOS_EMR.EMR_FORMT F ");
+                SQL.AppendLine("  INNER JOIN ADMIN.EMR_FORMT F ");
                 SQL.AppendLine("     ON C.FORMCODE = F.FORMCODE ");
                 SQL.AppendLine("     AND F.FORMCODE = '" + FormCode + "'");
                 SQL.AppendLine("WHERE NOT EXISTS");
                 SQL.AppendLine("(");
                 SQL.AppendLine("SELECT 1");
-                SQL.AppendLine("FROM KOSMOS_EMR.EMR_PRINTNEEDT");
+                SQL.AppendLine("FROM ADMIN.EMR_PRINTNEEDT");
                 SQL.AppendLine("WHERE CDATE = TO_CHAR(SYSDATE, 'YYYYMMDD')");
                 SQL.AppendLine("  AND PAGENO  = C.PAGENO");
                 SQL.AppendLine("  AND TREATNO = C.TREATNO");

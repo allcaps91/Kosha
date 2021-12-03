@@ -107,7 +107,7 @@ namespace ComLibB
                         //Delete
                         if (strRowid != "")
                         {
-                            SQL = "DELETE KOSMOS_PMPA.BAS_BCODE ";
+                            SQL = "DELETE ADMIN.BAS_BCODE ";
                             SQL = SQL + ComNum.VBLF + "WHERE ROWID = '" + strRowid + "' ";
                         }
                         else if (strChange == "Y")
@@ -115,7 +115,7 @@ namespace ComLibB
                             if (strRowid == "")
                             {
                                 //INSERT
-                                SQL = "INSERT INTO KOSMOS_PMPA.BAS_BCODE (Gubun,Code,Name,JDate,DelDate,EntSabun,EntDate) ";
+                                SQL = "INSERT INTO ADMIN.BAS_BCODE (Gubun,Code,Name,JDate,DelDate,EntSabun,EntDate) ";
                                 SQL = SQL + ComNum.VBLF + "VALUES ('" + strGubun + "','" + strCode + "','" + strName + "',";
                                 SQL = SQL + ComNum.VBLF + "TO_DATE('" + strJDate + "','YYYY-MM-DD'),";
                                 SQL = SQL + ComNum.VBLF + "TO_DATE('" + strDeldate + "','YYYY-MM-DD'),";
@@ -124,7 +124,7 @@ namespace ComLibB
                             else if (strRowid != "")
                             {
                                 //UPDATE
-                                SQL = "UPDATE KOSMOS_PMPA.BAS_BCODE SET Code='" + strCode + "',";
+                                SQL = "UPDATE ADMIN.BAS_BCODE SET Code='" + strCode + "',";
                                 SQL = SQL + ComNum.VBLF + "      Name='" + strName + "',";
                                 SQL = SQL + ComNum.VBLF + "      JDate=TO_DATE('" + strJDate + "','YYYY-MM-DD'),";
                                 SQL = SQL + ComNum.VBLF + "      DelDate=TO_DATE('" + strDeldate + "','YYYY-MM-DD'),";
@@ -199,7 +199,7 @@ namespace ComLibB
             {
                 SQL = "SELECT Code,Name,TO_CHAR(JDate,'YYYY-MM-DD') JDate,  ";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(DelDate,'YYYY-MM-DD') DelDate,ROWID   ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE                    ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE                    ";
                 SQL = SQL + ComNum.VBLF + "WHERE Gubun='" + strGubun + "'                 ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY Code                                  ";
 

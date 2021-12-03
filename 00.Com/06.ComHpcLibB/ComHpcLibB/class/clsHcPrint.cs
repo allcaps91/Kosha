@@ -1488,7 +1488,7 @@ namespace ComHpcLibB
                     byte[] bytes = File.ReadAllBytes(@"c:\temp\" + strFileName);
 
                     int RowAffected = 0;
-                    string SQL = "UPDATE KOSMOS_PMPA.HIC_EMR_RESULT_WORK ";
+                    string SQL = "UPDATE ADMIN.HIC_EMR_RESULT_WORK ";
                     SQL += ComNum.VBLF + "SET ";
                     SQL += ComNum.VBLF + "PRTRESULT = :PRTRESULT";
                     SQL += ComNum.VBLF + "WHERE WRTNO = " + argWrtno;

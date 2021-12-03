@@ -120,7 +120,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT NOT_POWDER_SUB, NOT_POWDER_ETC, NOT_POWDER_NEVER  \r";
-                SQL += "   FROM KOSMOS_ADM.DRUG_MASTER4                           \r";
+                SQL += "   FROM ADMIN.DRUG_MASTER4                           \r";
                 SQL += "  WHERE JEPCODE = '" + strSucode + "'                     \r"; 
                 SQL += "    AND NOT_POWDER = '1'                                  \r";
 
@@ -158,7 +158,7 @@ namespace ComMedLibB
             {
                 //SQL = "";
                 //SQL += " SELECT R_JepCode                           \r";
-                //SQL += "   FROM KOSMOS_ADM.DRUG_MASTER4_REPLACE     \r";
+                //SQL += "   FROM ADMIN.DRUG_MASTER4_REPLACE     \r";
                 //SQL += "  WHERE JepCode = '" + strSucode + "'       \r";
                 //SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
                 //if (SqlErr != "")
@@ -183,11 +183,11 @@ namespace ComMedLibB
                 SQL += "      , B.DispSpace, B.GbInfo,    B.GbBoth,     B.Bun       \r";
                 SQL += "      , B.NextCode,  B.SuCode,    B.GbDosage,   B.SpecCode  \r";
                 SQL += "      , B.Slipno,    B.GbImiv,    B.DispHeader, T.SugbJ     \r";
-                SQL += "      , decode(b.GBDOSAGE, '1', KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(B.SPECCODE), '') DOSNAME    \r";
-                SQL += "      , decode(b.GBDOSAGE, '1', KOSMOS_OCS.FC_OCS_ODOSAGE_DIV(B.SPECCODE), '') CGBDIV    \r";
-                SQL += "   FROM KOSMOS_ADM.DRUG_MASTER4_REPLACE A                   \r";
-                SQL += "      , KOSMOS_OCS.OCS_ORDERCODE        B                   \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUT             T                   \r";
+                SQL += "      , decode(b.GBDOSAGE, '1', ADMIN.FC_OCS_ODOSAGE_NAME(B.SPECCODE), '') DOSNAME    \r";
+                SQL += "      , decode(b.GBDOSAGE, '1', ADMIN.FC_OCS_ODOSAGE_DIV(B.SPECCODE), '') CGBDIV    \r";
+                SQL += "   FROM ADMIN.DRUG_MASTER4_REPLACE A                   \r";
+                SQL += "      , ADMIN.OCS_ORDERCODE        B                   \r";
+                SQL += "      , ADMIN.BAS_SUT             T                   \r";
                 SQL += "  WHERE JepCode = '" + strSucode + "'                       \r";
                 SQL += "    AND B.Slipno      IN ('0003','0004','0005')             \r";
                 SQL += "    AND B.Seqno      <> 0                                   \r";

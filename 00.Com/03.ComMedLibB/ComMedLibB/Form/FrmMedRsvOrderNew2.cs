@@ -997,9 +997,9 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT b.SName,b.Pano,a.DeptCode,a.DrCode,a.Ordercode RDate,a.SuCode RTime     \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(a.DrCode) DRNAME                        \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OORDER   a                                               \r";
-                SQL += "      , KOSMOS_PMPA.BAS_PATIENT b                                               \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(a.DrCode) DRNAME                        \r";
+                SQL += "   FROM ADMIN.OCS_OORDER   a                                               \r";
+                SQL += "      , ADMIN.BAS_PATIENT b                                               \r";
                 SQL += "  WHERE a.Ptno    = b.Pano(+)                                                   \r";
                 SQL += "    AND a.Ptno    = '" + txtPanoR.Text + "'                                     \r";
                 SQL += "    AND a.BDate   = TO_DATE('" + clsPublic.GstrSysDate + "','YYYY-MM-DD')       \r";
@@ -1032,8 +1032,8 @@ namespace ComMedLibB
 
                 SQL = "";
                 SQL += " SELECT SName,Pano,DeptCode,DrCode,TO_CHAR(Date3,'YYYY-MM-DD') RDate,TO_CHAR(Date3,'HH24:MI') RTime \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DrCode) DRNAME                                              \r";
-                SQL += "   FROM KOSMOS_PMPA.OPD_RESERVED_NEW                                                                \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(DrCode) DRNAME                                              \r";
+                SQL += "   FROM ADMIN.OPD_RESERVED_NEW                                                                \r";
                 SQL += "  WHERE Pano = '" + txtPanoR.Text + "'                                                              \r";
                 SQL += "    AND Date3 >= TO_DATE('" + clsPublic.GstrSysDate + "','YYYY-MM-DD')                              \r";
                 SQL += "    AND TRANSDATE IS NULL                                                                           \r";

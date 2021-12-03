@@ -188,7 +188,7 @@ namespace ComMedLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL.Clear();
-            SQL.AppendLine(" MERGE INTO KOSMOS_OCS.DUR_SAYU_DETAIL ");
+            SQL.AppendLine(" MERGE INTO ADMIN.DUR_SAYU_DETAIL ");
             SQL.AppendLine(" USING DUAL ");
             SQL.AppendLine($" ON (SABUN = '{clsType.User.Sabun}' AND BDATE = TO_DATE('{clsDur.DurPrescription.PrscPresDt}','YYYYMMDD') ");
             SQL.AppendLine($" AND DEPTCODE = '{clsOrdFunction.Pat.DeptCode}' AND PTNO = '{clsOrdFunction.Pat.PtNo}' ");
@@ -533,7 +533,7 @@ namespace ComMedLibB
 
             SQL.Clear();
             SQL.AppendLine("  SELECT REASONCD, REASON                                             ");
-            SQL.AppendLine("  FROM KOSMOS_OCS.DUR_SAYU_DETAIL                                     ");
+            SQL.AppendLine("  FROM ADMIN.DUR_SAYU_DETAIL                                     ");
             SQL.AppendLine($"  WHERE SABUN = '{clsType.User.Sabun}'                               ");
             //SQL.AppendLine($"  AND BDATE = TO_DATE('{resultInfo.m_strDpPrscYYMMDD}','YYYYMMDD')   ");
             SQL.AppendLine($"  AND DEPTCODE = '{clsOrdFunction.Pat.DeptCode}'                     ");
@@ -838,7 +838,7 @@ namespace ComMedLibB
 
             SQL.Clear();
             SQL.AppendLine("  SELECT DAMCD, DAMTYPE, DAMDESC, RMK           ");
-            SQL.AppendLine("   FROM KOSMOS_PMPA.ETC_ALLERGY_MST             ");
+            SQL.AppendLine("   FROM ADMIN.ETC_ALLERGY_MST             ");
             SQL.AppendLine($"  WHERE PANO = '{clsOrdFunction.Pat.PtNo}'     ");
             SQL.AppendLine($"    AND CODE = '100'                           ");
             SQL.AppendLine("   ORDER BY ENTDATE DESC                        ");
@@ -867,7 +867,7 @@ namespace ComMedLibB
             //ADR 코드 SUCODE 추가로 넣어준다
             SQL.Clear();
             SQL.AppendLine("  SELECT SEQNO                                  ");
-            SQL.AppendLine("   FROM KOSMOS_ADM.DRUG_ADR1                    ");
+            SQL.AppendLine("   FROM ADMIN.DRUG_ADR1                    ");
             if (clsOrdFunction.Pat.PtNo == "81000004")
             {
                 SQL.AppendLine("  WHERE PTNO = '06043533'               ");
@@ -883,12 +883,12 @@ namespace ComMedLibB
                 //2019-09-07 ADR보고서 작성된 병원코드-알러지 무조건 띄우도록(조건삭제)
                 //SQL.Clear();
                 //SQL.AppendLine("  SELECT SEQNO                                                     ");
-                //SQL.AppendLine("   FROM KOSMOS_ADM.DRUG_ADR2                                       ");
+                //SQL.AppendLine("   FROM ADMIN.DRUG_ADR2                                       ");
                 ////SQL.AppendLine(" WHERE (RELATION1 = '1' OR RELATION2 = '1' OR RELATION3 = '1')     ");   
                 //SQL.AppendLine($" WHERE SEQNO = {VB.Val(dt.Rows[i]["SEQNO"].ToString())}             ");
                 //SQL.AppendLine("  UNION ALL                                                        ");
                 //SQL.AppendLine("  SELECT SEQNO                                                     ");
-                //SQL.AppendLine("   FROM KOSMOS_ADM.DRUG_ADR3                                       ");
+                //SQL.AppendLine("   FROM ADMIN.DRUG_ADR3                                       ");
                 ////SQL.AppendLine(" WHERE (RELATION1 = '1' OR RELATION2 = '1' OR RELATION3 = '1')     ");
                 //SQL.AppendLine($" WHERE SEQNO = {VB.Val(dt.Rows[i]["SEQNO"].ToString())}             ");
                 //SqlErr = clsDB.GetDataTableREx(ref dt1, SQL.ToString(), clsDB.DbCon);
@@ -897,7 +897,7 @@ namespace ComMedLibB
                 {
                     SQL.Clear();
                     SQL.AppendLine("  SELECT SUCODE,SUNAMEK                                           ");
-                    SQL.AppendLine("   FROM KOSMOS_ADM.DRUG_ADR1_ORDER                                ");
+                    SQL.AppendLine("   FROM ADMIN.DRUG_ADR1_ORDER                                ");
                     SQL.AppendLine($" WHERE SEQNO = {VB.Val(dt.Rows[0]["SEQNO"].ToString())}          ");
                     SqlErr = clsDB.GetDataTableREx(ref dt2, SQL.ToString(), clsDB.DbCon);
 
@@ -937,7 +937,7 @@ namespace ComMedLibB
 
             SQL.Clear();
             SQL.AppendLine("  SELECT B.SUBCODE, B.RESULT, TO_CHAR(B.RESULTDATE,'YYYY-MM-DD') RESULTDATE ");
-            SQL.AppendLine("   FROM KOSMOS_OCS.EXAM_SPECMST A, KOSMOS_OCS.EXAM_RESULTC B                ");
+            SQL.AppendLine("   FROM ADMIN.EXAM_SPECMST A, ADMIN.EXAM_RESULTC B                ");
             SQL.AppendLine($"  WHERE A.PANO = '{clsOrdFunction.Pat.PtNo}'                               ");
             SQL.AppendLine("     AND A.SPECNO = B.SPECNO                                                ");
             SQL.AppendLine("     AND B.SUBCODE = 'CR42A'                                                ");
@@ -976,7 +976,7 @@ namespace ComMedLibB
             {
                 SQL.Clear();
                 SQL.AppendLine("  SELECT ILLCODED, SUBSTR(ILLNAMEE,1,400) AS ILLNAMEE    ");
-                SQL.AppendLine("    FROM KOSMOS_PMPA.BAS_ILLS                            ");
+                SQL.AppendLine("    FROM ADMIN.BAS_ILLS                            ");
                 SQL.AppendLine($"  WHERE ILLCODE = '{clsOrdFunction.Pat_IllCode[index]}' ");
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL.ToString(), clsDB.DbCon);
 

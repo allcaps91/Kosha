@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql(" SELECT COUNT('X') CNT                                 ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_IE_MUNJIN_VIEW                 ");
+            parameter.AppendSql("   FROM ADMIN.HIC_IE_MUNJIN_VIEW                 ");
             parameter.AppendSql("  WHERE VIEWKEY  = :VIEWKEY                            ");
             parameter.AppendSql("    AND VIEWDATE = :VIEWDATE                           ");
 
@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql(" SELECT VIEWID                                         ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_IE_MUNJIN_VIEW                 ");
+            parameter.AppendSql("   FROM ADMIN.HIC_IE_MUNJIN_VIEW                 ");
             parameter.AppendSql("  WHERE VIEWKEY  = :VIEWKEY                            ");
             parameter.AppendSql("    AND VIEWDATE = :VIEWDATE                           ");
             parameter.AppendSql("    AND ViewID IS NOT NULL                             ");
@@ -53,7 +53,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_IE_MUNJIN_VIEW     ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_IE_MUNJIN_VIEW     ");
             parameter.AppendSql("       (VIEWDATE                               ");
             if (!fstrROWID.IsNullOrEmpty())
             {

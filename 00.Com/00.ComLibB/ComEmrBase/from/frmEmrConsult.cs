@@ -70,7 +70,7 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL += " SELECT DRCODE, DRNAME                              \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_DOCTOR                      \r";
+                SQL += "   FROM ADMIN.BAS_DOCTOR                      \r";
                 SQL += "  WHERE DRDEPT1 = '" + clsPublic.GstrDeptCode + "'  \r";
                 SQL += "    AND TOUR = 'N'                                  \r";
                 SQL += "  ORDER BY PRINTRANKING                             \r";
@@ -119,27 +119,27 @@ namespace ComEmrBase
                 SQL += "      , TO_CHAR(B.INDATE, 'YYYY-MM-DD') EntDate, A.GbPrint, A.ROWID RID, a.GbSTS,a.Gubun            \r";
                 SQL += "      , TO_CHAR(SDATE,'YYYY-MM-DD HH24:MI' ) SDATE , TO_CHAR(EDATE, 'YYYY-MM-DD HH24:MI') EDATE     \r";
                 SQL += "      , B.SEX || '/' || B.AGE SEXAGE                                                                \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(a.FRDRCODE) FRDRNAME                                        \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(a.TODRCODE) TODRNAME                                        \r";
-                SQL += "      , KOSMOS_OCS.FC_OCS_DOCTOR_DRNAME(a.BInpID) BINPIDNAME                                        \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(B.DRCODE) CURRDRNAME                                        \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(a.FRDRCODE) FRDRNAME                                        \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(a.TODRCODE) TODRNAME                                        \r";
+                SQL += "      , ADMIN.FC_OCS_DOCTOR_DRNAME(a.BInpID) BINPIDNAME                                        \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(B.DRCODE) CURRDRNAME                                        \r";
                 SQL += "      , (SELECT DISTINCT x.WARDCODE || ' ' || x.TEL WARDTEL                                                  \r";
-                SQL += "           FROM KOSMOS_PMPA.NUR_TEAM          x                                                     \r";
-                SQL += "              , KOSMOS_PMPA.NUR_TEAM_ROOMCODE y                                                     \r";
+                SQL += "           FROM ADMIN.NUR_TEAM          x                                                     \r";
+                SQL += "              , ADMIN.NUR_TEAM_ROOMCODE y                                                     \r";
                 SQL += "          WHERE X.WARDCODE = Y.WARDCODE                                                             \r";
                 SQL += "            AND x.TEAM = y.TEAM                                                                     \r";
                 SQL += "            AND y.ROOMCODE = B.ROOMCODE)  WARDTEL                                                   \r";
                 SQL += "      , (SELECT CODE || ' ' || NAME CODENAME                                                        \r";
-                SQL += "           FROM KOSMOS_PMPA.BAS_BCODE                                                               \r";
+                SQL += "           FROM ADMIN.BAS_BCODE                                                               \r";
                 SQL += "          WHERE GUBUN = 'ETC_병동전화'                                                              \r";
                 SQL += "            AND TRIM(CODE) = DECODE(B.ROOMCODE,320,'SICU',321,'MICU',B.WARDCODE)) CODENAME          \r";
-                SQL += "      , decode(KOSMOS_OCS.FC_NUR_FALL_REPORT_CHK(a.PTNO, TRUNC(SYSDATE)), 'Y', '낙', '') FALLSCALE  \r";
+                SQL += "      , decode(ADMIN.FC_NUR_FALL_REPORT_CHK(a.PTNO, TRUNC(SYSDATE)), 'Y', '낙', '') FALLSCALE  \r";
                 SQL += "      , b.IPDNO, B.WARDCODE, B.AGE                                                                  \r";
-                SQL += "      , KOSMOS_OCS.FC_EXAM_INFECT_MASTER_IMG(a.PTNO, a.BDATE) INFECTION                             \r";
+                SQL += "      , ADMIN.FC_EXAM_INFECT_MASTER_IMG(a.PTNO, a.BDATE) INFECTION                             \r";
                 SQL += "      , a.TODEPTCODE, B.BEDNUM                                                                      \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ITRANSFER   A                                                                \r";
-                SQL += "      , KOSMOS_PMPA.IPD_NEW_MASTER B                                                                \r";
-                SQL += "      , KOSMOS_PMPA.BAS_DOCTOR     C                                                                \r";
+                SQL += "   FROM ADMIN.OCS_ITRANSFER   A                                                                \r";
+                SQL += "      , ADMIN.IPD_NEW_MASTER B                                                                \r";
+                SQL += "      , ADMIN.BAS_DOCTOR     C                                                                \r";
                 
                 switch (clsPublic.GstrDeptCode)
                 {
@@ -358,23 +358,23 @@ namespace ComEmrBase
                 SQL += "      , TO_CHAR(B.INDATE, 'YYYY-MM-DD') EntDate, A.GbPrint, A.ROWID RID,a.GbSTS,a.Gubun             \r";
                 SQL += "      , TO_CHAR(SDATE,'YYYY-MM-DD HH24:MI' ) SDATE , TO_CHAR(EDATE, 'YYYY-MM-DD HH24:MI') EDATE     \r";
                 SQL += "      , B.SEX || '/' || B.AGE SEXAGE                                                                \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(a.FRDRCODE) FRDRNAME                                        \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(a.TODRCODE) TODRNAME                                        \r";
-                SQL += "      , KOSMOS_OCS.FC_OCS_DOCTOR_DRNAME(a.BInpID) BINPIDNAME                                        \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(B.DRCODE) CURRDRNAME                                        \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(a.FRDRCODE) FRDRNAME                                        \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(a.TODRCODE) TODRNAME                                        \r";
+                SQL += "      , ADMIN.FC_OCS_DOCTOR_DRNAME(a.BInpID) BINPIDNAME                                        \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(B.DRCODE) CURRDRNAME                                        \r";
                 SQL += "      , (SELECT DISTINCT x.WARDCODE || ' ' || x.TEL WARDTEL                                                  \r";
-                SQL += "           FROM KOSMOS_PMPA.NUR_TEAM          x                                                     \r";
-                SQL += "              , KOSMOS_PMPA.NUR_TEAM_ROOMCODE y                                                     \r";
+                SQL += "           FROM ADMIN.NUR_TEAM          x                                                     \r";
+                SQL += "              , ADMIN.NUR_TEAM_ROOMCODE y                                                     \r";
                 SQL += "          WHERE X.WARDCODE = Y.WARDCODE                                                             \r";
                 SQL += "            AND x.TEAM = y.TEAM                                                                     \r";
                 SQL += "            AND y.ROOMCODE = B.ROOMCODE)  WARDTEL                                                   \r";
                 SQL += "      , (SELECT CODE || ' ' || NAME CODENAME                                                        \r";
-                SQL += "           FROM KOSMOS_PMPA.BAS_BCODE                                                               \r";
+                SQL += "           FROM ADMIN.BAS_BCODE                                                               \r";
                 SQL += "          WHERE GUBUN = 'ETC_병동전화'                                                              \r";
                 SQL += "            AND TRIM(CODE) = DECODE(B.ROOMCODE,320,'SICU',321,'MICU',B.WARDCODE)) CODENAME          \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ITRANSFER   A                                                                \r";
-                SQL += "      , KOSMOS_PMPA.IPD_NEW_MASTER B                                                                \r";
-                SQL += "      , KOSMOS_PMPA.BAS_DOCTOR     C                                                                \r";
+                SQL += "   FROM ADMIN.OCS_ITRANSFER   A                                                                \r";
+                SQL += "      , ADMIN.IPD_NEW_MASTER B                                                                \r";
+                SQL += "      , ADMIN.BAS_DOCTOR     C                                                                \r";
                 switch (clsPublic.GstrDeptCode)
                 {
                     case "MG":
@@ -660,15 +660,15 @@ namespace ComEmrBase
                 SQL += "      , TO_CHAR(a.KDATE4, 'YYYY-MM-DD') KDate4                                                              \r";
                 SQL += "      , B.GbSpc, B.Bi, B.DrCode, B.AmSet1, B.WardCode                                                       \r";
                 SQL += "      , TO_CHAR(B.INDATE, 'YYYY-MM-DD') EntDate, A.GbPrint, A.ROWID                                         \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(TRIM(A.FRDRCODE)) FRDRNAME                                          \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(TRIM(A.TODRCODE)) TODRNAME                                          \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_USER_USERNAME(A.BINPID) BINPNAME                                                  \r";
-                SQL += "      , KOSMOS_OCS.FC_BAS_USER_USERNAME(A.INPID) INPNAME                                                    \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(TRIM(A.FRDRCODE)) FRDRNAME                                          \r";
+                SQL += "      , ADMIN.FC_BAS_DOCTOR_DRNAME(TRIM(A.TODRCODE)) TODRNAME                                          \r";
+                SQL += "      , ADMIN.FC_BAS_USER_USERNAME(A.BINPID) BINPNAME                                                  \r";
+                SQL += "      , ADMIN.FC_BAS_USER_USERNAME(A.INPID) INPNAME                                                    \r";
                 SQL += "      , to_char(D.BIRTH, 'yyyy-mm-dd') BIRTH                                                                \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ITRANSFER   A                                                                        \r";
-                SQL += "      , KOSMOS_PMPA.IPD_NEW_MASTER B                                                                        \r";
-                SQL += "      , KOSMOS_PMPA.BAS_DOCTOR     C                                                                        \r";
-                SQL += "      , KOSMOS_PMPA.BAS_PATIENT    D                                                                        \r";
+                SQL += "   FROM ADMIN.OCS_ITRANSFER   A                                                                        \r";
+                SQL += "      , ADMIN.IPD_NEW_MASTER B                                                                        \r";
+                SQL += "      , ADMIN.BAS_DOCTOR     C                                                                        \r";
+                SQL += "      , ADMIN.BAS_PATIENT    D                                                                        \r";
                 SQL += "  WHERE A.ROWID = '" + strRowId + "'                                                                        \r";
                 SQL += "    AND A.Ptno     = B.Pano                                                                                 \r";
                 SQL += "    AND A.IPDNO    = B.IPDNO                                                                                \r";

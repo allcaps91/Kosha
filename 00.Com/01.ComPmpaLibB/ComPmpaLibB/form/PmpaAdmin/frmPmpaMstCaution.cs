@@ -102,8 +102,8 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "    AND BI IN ('11','12','13') ";                                     //공단, 직장, 지역
             SQL += ComNum.VBLF + "    AND DEPTCODE NOT IN ('ER','NP','RM','DT') ";                      //응급의료센터, 정신건강의학과, 재활의학과, 치과
             SQL += ComNum.VBLF + "    AND (GBGAMEK IS NULL OR GBGAMEK IN ('00','51','41','55') ) ";     //감액무, 신자감액, 자원봉사자, 계약처
-            SQL += ComNum.VBLF + "    AND PANO NOT IN(select PANO from kosmos_pmpa.mid_summary where tmodel = '5' GROUP BY PANO)";  //사망자 제외
-            SQL += ComNum.VBLF + "    AND PANO NOT IN(select PANO from kosmos_pmpa.BAS_OCSMEMO_MID WHERE  GBN IN('0', '2')AND(DDate IS NULL OR DDate = '') GROUP BY PANO)"; //블랙리스트 제외
+            SQL += ComNum.VBLF + "    AND PANO NOT IN(select PANO from ADMIN.mid_summary where tmodel = '5' GROUP BY PANO)";  //사망자 제외
+            SQL += ComNum.VBLF + "    AND PANO NOT IN(select PANO from ADMIN.BAS_OCSMEMO_MID WHERE  GBN IN('0', '2')AND(DDate IS NULL OR DDate = '') GROUP BY PANO)"; //블랙리스트 제외
             SQL += ComNum.VBLF + "  GROUP BY PANO";
             SQL += ComNum.VBLF + "  HAVING COUNT(PANO) >= " + intCnt + " ";
             SqlErr = clsDB.GetDataTable(ref Dt, SQL, clsDB.DbCon);

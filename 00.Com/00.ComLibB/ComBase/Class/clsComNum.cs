@@ -30,33 +30,33 @@ namespace ComBase
 
         #region //DataBase 이름 세팅 
         /// <summary>
-        /// KOSMOS_PMPA.
+        /// ADMIN.
         /// </summary>
-        public const string DB_PMPA = "KOSMOS_PMPA."; //원무 DataBase
+        public const string DB_PMPA = "ADMIN."; //원무 DataBase
         /// <summary>
-        /// KOSMOS_OCS.
+        /// ADMIN.
         /// </summary>
-        public const string DB_MED = "KOSMOS_OCS.";   //진료 DataBase
+        public const string DB_MED = "ADMIN.";   //진료 DataBase
         /// <summary>
-        /// KOSMOS_ADM.
+        /// ADMIN.
         /// </summary>
-        public const string DB_ERP = "KOSMOS_ADM.";   //일반관리 DataBase
+        public const string DB_ERP = "ADMIN.";   //일반관리 DataBase
         /// <summary>
-        /// KOSMOS_EMR.
+        /// ADMIN.
         /// </summary>
-        public const string DB_EMR = "KOSMOS_EMR.";   //EMR DataBase
+        public const string DB_EMR = "ADMIN.";   //EMR DataBase
         /// <summary>
-        /// KOSMOS_EXAM.
+        /// ADMIN.
         /// </summary>
-        public const string DB_SUP = "KOSMOS_EXAM.";  //지원부서 DataBase
+        public const string DB_SUP = "ADMIN.";  //지원부서 DataBase
         /// <summary>
-        /// KOSMOS_ABC.
+        /// ADMIN.
         /// </summary>
-        public const string DB_ABC = "KOSMOS_ABC.";   //원가관리 DataBase
+        public const string DB_ABC = "ADMIN.";   //원가관리 DataBase
         /// <summary>
-        /// PACS.
+        /// ADMIN.
         /// </summary>
-        public const string DB_PACS = "PACS.";        //PACS DataBase
+        public const string DB_PACS = "ADMIN.";        //PACS DataBase
         #endregion //DataBase 이름 세팅 
 
         #region //AdoConst(adoODBC.bas)

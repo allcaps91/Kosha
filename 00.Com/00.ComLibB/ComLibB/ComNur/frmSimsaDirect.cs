@@ -249,7 +249,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = " INSERT INTO KOSMOS_PMPA.NUR_SIMSA_ERDIRECT(";
+                SQL = " INSERT INTO ADMIN.NUR_SIMSA_ERDIRECT(";
                 SQL = SQL + ComNum.VBLF + " SENDDATE, BUCODE, PART, LAV,";
                 SQL = SQL + ComNum.VBLF + " SABUN, DC_YN  ) VALUES (";
                 SQL = SQL + ComNum.VBLF + " SYSDATE ,'" + FstrBUSE + "','" + txtSIMSA.Text.Replace("'", "`") + "','1', ";
@@ -301,7 +301,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT TO_CHAR(A.SENDDATE,'YYYY-MM-DD HH24:MI:SS') SENDDATE, B.NAME , A.PART,A.LAV ,A.SABUN,C.KORNAME ,A.BUCODE, TO_CHAR(A.CKDATE,'YYYY-MM-DD') CKDATE,A.ROWID,A.SABUN";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_SIMSA_ERDIRECT A ,KOSMOS_PMPA.BAS_BUSE B  ,KOSMOS_ADM.INSA_MST C";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_SIMSA_ERDIRECT A ,ADMIN.BAS_BUSE B  ,ADMIN.INSA_MST C";
                 SQL = SQL + ComNum.VBLF + " WHERE SENDDATE >= TO_DATE('" + (dtpSDATE.Text) + " 00:00','YYYY-MM-DD HH24:MI') ";
                 SQL = SQL + ComNum.VBLF + " AND SENDDATE <= TO_DATE('" + (dtpEDATE.Text) + " 23:59','YYYY-MM-DD HH24:MI')";
                 SQL = SQL + ComNum.VBLF + " AND DC_YN='C'  AND A.BUCODE=B.BUCODE AND A.SABUN=C.SABUN AND A.LAV='1' ";
@@ -447,7 +447,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = " INSERT INTO KOSMOS_PMPA.NUR_SIMSA_ERDIRECT(";
+                SQL = " INSERT INTO ADMIN.NUR_SIMSA_ERDIRECT(";
                 SQL = SQL + ComNum.VBLF + " SENDDATE, BUCODE, POPUP, LAV,";
                 SQL = SQL + ComNum.VBLF + " SABUN, DC_YN ,CKDATE ) VALUES (";
                 SQL = SQL + ComNum.VBLF + " TO_DATE('" + FstrSendate + "','YYYY-MM-DD HH24:MI:SS')  ,'" + FstrBUSE + "','" + txtWARD.Text.Replace("'", "`") + "','2', ";
@@ -467,7 +467,7 @@ namespace ComLibB
                 if (FstrWKBUSE != FstrBUSE)
                 {
                     SQL = "";
-                    SQL = " UPDATE   KOSMOS_PMPA.NUR_SIMSA_ERDIRECT SET CKDATE=SYSDATE ";
+                    SQL = " UPDATE   ADMIN.NUR_SIMSA_ERDIRECT SET CKDATE=SYSDATE ";
                     SQL = SQL + ComNum.VBLF + " WHERE senddate = TO_DATE('" + FstrSendate + "','YYYY-MM-DD HH24:MI:SS') ";
                     SQL = SQL + ComNum.VBLF + " AND LAV = '1' ";
 
@@ -525,12 +525,12 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT  SENDDATE ,PART,KORNAME,A.SABUN,POPUP,BUCODE,TO_CHAR(CKDATE,'MM-DD HH24:MI') CKDATE,A.ROWID,'1' lav  ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_SIMSA_ERDIRECT A,KOSMOS_ADM.INSA_MST B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_SIMSA_ERDIRECT A,ADMIN.INSA_MST B ";
                 SQL = SQL + ComNum.VBLF + " WHERE senddate =  TO_DATE('" + FstrSendate + "','YYYY-MM-DD HH24:MI:SS') and dc_yn='C' ";
                 SQL = SQL + ComNum.VBLF + " AND A.SABUN=B.SABUN ";
                 SQL = SQL + ComNum.VBLF + " AND  LAV ='1'  union all ";
                 SQL = SQL + ComNum.VBLF + " SELECT  SENDDATE ,PART,KORNAME,A.SABUN,POPUP,BUCODE,TO_CHAR(CKDATE,'MM-DD HH24:MI') CKDATE ,A.ROWID, '2' lav  ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_SIMSA_ERDIRECT A,KOSMOS_ADM.INSA_MST B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_SIMSA_ERDIRECT A,ADMIN.INSA_MST B ";
                 SQL = SQL + ComNum.VBLF + " WHERE senddate = TO_DATE('" + FstrSendate + "','YYYY-MM-DD HH24:MI:SS') and dc_yn='C'  ";
                 SQL = SQL + ComNum.VBLF + " AND A.SABUN=B.SABUN ";
                 SQL = SQL + ComNum.VBLF + " AND LAV ='2'   order by lav,ckdate ";
@@ -747,7 +747,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " UPDATE   KOSMOS_PMPA.NUR_SIMSA_ERDIRECT SET dc_yn='D' ";
+                        SQL = " UPDATE   ADMIN.NUR_SIMSA_ERDIRECT SET dc_yn='D' ";
                         SQL = SQL + ComNum.VBLF + " WHERE rowid ='" + ss2_Sheet1.Cells[e.Row, 4].Text.Trim() + "' ";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -775,7 +775,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " UPDATE   KOSMOS_PMPA.NUR_SIMSA_ERDIRECT SET dc_yn='D' ";
+                        SQL = " UPDATE   ADMIN.NUR_SIMSA_ERDIRECT SET dc_yn='D' ";
                         SQL = SQL + ComNum.VBLF + " WHERE rowid ='" + ss2_Sheet1.Cells[e.Row, 9].Text.Trim() + "' ";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

@@ -28,7 +28,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT XRAYNO,TO_CHAR(JEPDATE,'YYYY-MM-DD') JEPDATE,GjJong,SName,Sex                               ");
             parameter.AppendSql("     , Result1,Result1_1,Result2,Result2_1,Result3,Result3_1                                       ");
             parameter.AppendSql("     , Result4,Result4_1,GbSTS,XCode,GbRead,GbChul,DelDate,ReadDoct1,ReadDoct2,GbPacs,PTNO,ROWID   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                                                 ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                                                                ");
             parameter.AppendSql("   AND JEPDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                                   ");
             parameter.AppendSql("   AND JEPDATE <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                                   ");
@@ -67,7 +67,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,NUDO4X_4, NUDO4XETC_4, CATEGORY4, SIZE5_1, SIZE5_2, GOSIZE5_1, GOSIZE5_2, IMAGENO_5             ");
             parameter.AppendSql("      ,NUDO4X_5, NUDO4XETC_5, CATEGORY5, SIZE6_1, SIZE6_2, GOSIZE6_1, GOSIZE6_2, IMAGENO_6             ");
             parameter.AppendSql("      ,NUDO4X_6, NUDO4XETC_6, CATEGORY6                                                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                                                     ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                           ");
             parameter.AppendSql("   AND PTNO =:PTNO                                                                                    ");
             parameter.AppendSql("   AND JEPDATE >= TO_DATE(:JEPDATE1, 'YYYY-MM-DD')                                                     ");
@@ -87,7 +87,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                         ");
             parameter.AppendSql(" WHERE PANO    = :PANO                                     ");
             parameter.AppendSql("   AND XRAYNO  = :XRAYNO                                   ");
             parameter.AppendSql("   AND JEPDATE = TO_DATE(:JEPDATE,'YYYY-MM-DD')            ");
@@ -103,7 +103,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_XRAY_RESULT SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_XRAY_RESULT SET     ");
             parameter.AppendSql("       GJJONG =:GJJONG                     ");
             parameter.AppendSql("      ,PANO =:PANO                         ");
             parameter.AppendSql(" WHERE ROWID = :RID                        ");
@@ -120,7 +120,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT XRAYNO                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT_WORK            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT_WORK            ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                ");
             parameter.AppendSql("   AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')   ");
 
@@ -136,7 +136,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT PTNO, TO_CHAR(JEPDATE,'YYYY-MM-DD') JEPDATE, RESULT1, RESULT1_1,ROWID AS RID        ");
             parameter.AppendSql("     , RESULT2, RESULT2_1, RESULT3, RESULT3_1, RESULT4, RESULT4_1, READDOCT1, READDOCT2    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                                         ");
             parameter.AppendSql(" WHERE PTNO IN ( SELECT PTNO FROM HEA_JEPSU WHERE SDATE =TO_DATE(:SDATE, 'YYYY-MM-DD') AND DELDATE IS NULL ) ");
             parameter.AppendSql("   AND JEPDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')                                             ");
             parameter.AppendSql("   AND GBREAD= '2'                                                                         ");
@@ -150,7 +150,7 @@ namespace ComHpcLibB.Repository
         public int SaveHicXrayResultWork(HIC_XRAY_RESULT item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("MERGE INTO KOSMOS_PMPA.HIC_XRAY_RESULT_WORK a      ");
+            parameter.AppendSql("MERGE INTO ADMIN.HIC_XRAY_RESULT_WORK a      ");
             parameter.AppendSql("using dual d                                       ");
             parameter.AppendSql("   on (a.JEPDATE = TO_DATE(:JEPDATE,'YYYY-MM-DD')  ");
             parameter.AppendSql("  and  a.XCODE   = :XCODE                          ");
@@ -219,7 +219,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT_WORK            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT_WORK            ");
             parameter.AppendSql(" WHERE XRAYNO = :XRAYNO                            ");
             parameter.AppendSql("   AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')   ");
 
@@ -233,7 +233,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT ROWID FROM KOSMOS_PMPA.HIC_XRAY_RESULT      ");
+            parameter.AppendSql("SELECT ROWID FROM ADMIN.HIC_XRAY_RESULT      ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                ");
             parameter.AppendSql("   AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND GBPACS = 'Y'                                ");
@@ -248,7 +248,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_XRAY_RESULT SET             ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_XRAY_RESULT SET             ");
             parameter.AppendSql("       DELDATE = ''                                ");
             parameter.AppendSql(" WHERE JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')  ");
             parameter.AppendSql("   AND PTNO = :PTNO                                ");
@@ -267,7 +267,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT XRAYNO FROM KOSMOS_PMPA.HIC_XRAY_RESULT     ");
+            parameter.AppendSql("SELECT XRAYNO FROM ADMIN.HIC_XRAY_RESULT     ");
             parameter.AppendSql(" WHERE JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND PTNO = :PTNO                                ");
             parameter.AppendSql("   AND XCODE = :XCODE                              ");
@@ -288,7 +288,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_XRAY_RESULT SET         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_XRAY_RESULT SET         ");
             parameter.AppendSql("       DELDATE = TRUNC(SYSDATE)                ");
             parameter.AppendSql(" WHERE XRAYNO =:XRAYNO                         ");
             parameter.AppendSql("   AND PANO =:PANO                             ");
@@ -304,7 +304,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT ROWID FROM KOSMOS_PMPA.HIC_XRAY_RESULT  ");
+            parameter.AppendSql("SELECT ROWID FROM ADMIN.HIC_XRAY_RESULT  ");
             parameter.AppendSql(" WHERE XRAYNO = :XRAYNO                        ");
             parameter.AppendSql("   AND DELDATE IS NULL                         ");
             parameter.AppendSql("   AND GBPACS = 'Y'                            ");
@@ -318,10 +318,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_XRAY_RESULT SET         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_XRAY_RESULT SET         ");
             parameter.AppendSql("       PANO = :PANO                            ");
             parameter.AppendSql(" WHERE PANO IN (SELECT PANO                    ");
-            parameter.AppendSql("                  FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("                  FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql("                 WHERE JUMIN2 = :JUMIN2        ");
             parameter.AppendSql("                   AND PANO <> :PANO)          ");
 
@@ -360,7 +360,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , GOSIZE5_1, GOSIZE5_2, IMAGENO_5, NUDO4X_5, NUDO4XETC_5, CATEGORY5, SIZE6_1      ");
             parameter.AppendSql("     , SIZE6_2, GOSIZE6_1, GOSIZE6_2, IMAGENO_6, NUDO4X_6, NUDO4XETC_6, CATEGORY6      ");
             parameter.AppendSql("     , NUDOUNACTCHKETC, NUDOUNACTETCSOGEN, PASTCANCER, NUDOMAXRESULT, CTDOSE           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                                     ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                                                    ");
             parameter.AppendSql("   AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')                                       ");
             parameter.AppendSql("   AND XCODE   = :XCODE                                                                ");
@@ -402,7 +402,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , GOSIZE5_1, GOSIZE5_2, IMAGENO_5, NUDO4X_5, NUDO4XETC_5, CATEGORY5, SIZE6_1      ");
             parameter.AppendSql("     , SIZE6_2, GOSIZE6_1, GOSIZE6_2, IMAGENO_6, NUDO4X_6, NUDO4XETC_6, CATEGORY6      ");
             parameter.AppendSql("     , NUDOUNACTCHKETC, NUDOUNACTETCSOGEN, PASTCANCER, NUDOMAXRESULT, CTDOSE           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                                     ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                                                    ");
             parameter.AppendSql("   AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')                                       ");
             parameter.AppendSql("   AND XCODE   = :XCODE                                                                ");
@@ -419,7 +419,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT(*)                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT     ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                    ");
             parameter.AppendSql("   AND JEPDATE = TRUNC(SYSDATE)        ");
             parameter.AppendSql("   AND XCODE   = :XCODE                ");
@@ -435,7 +435,7 @@ namespace ComHpcLibB.Repository
         public int Update_Patient_Exid(string strSabun, string strRowId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_XRAY_RESULT SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_XRAY_RESULT SET     ");
             parameter.AppendSql("       EXID  = :EXID                       ");
             parameter.AppendSql(" WHERE ROWID = :ROWID                      ");
 
@@ -453,7 +453,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(JEPDATE,'YYYY-MM-DD') JEPDATE, SEX,AGE,READDOCT1        ");
             parameter.AppendSql("     , READDOCT2, GBSTS, XCODE,RESULT1,RESULT2,RESULT3,RESULT4, ROWID  ");
             parameter.AppendSql("     , RESULT1_1, RESULT2_1, RESULT3_1, RESULT4_1                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                     ");
             parameter.AppendSql(" WHERE JEPDATE >= TO_DATE(:JEPDATE, 'YYYY-MM-DD')                      ");
             parameter.AppendSql("   AND PTNO = :PTNO                                                    ");
             parameter.AppendSql("   AND DELDATE IS NULL                                                 ");
@@ -469,7 +469,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT XRayNo FROM KOSMOS_PMPA.HIC_XRAY_RESULT     ");
+            parameter.AppendSql("SELECT XRayNo FROM ADMIN.HIC_XRAY_RESULT     ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                ");
             parameter.AppendSql("   AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')   ");
 
@@ -483,7 +483,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_XRAY_RESULT ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_XRAY_RESULT ");
             parameter.AppendSql("   SET GBRESULTSEND = 'Y'          ");
             parameter.AppendSql(" WHERE ROWID        = :RID         ");
 
@@ -498,7 +498,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT Pano,TO_CHAR(JepDate,'YYYY-MM-DD') JepDate,XRayNo           ");
             parameter.AppendSql("     , Result1,Result2,Result3,Result4, ROWID                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                 ");
             parameter.AppendSql(" WHERE ReadDate>=TRUNC(SYSDATE-10)                                 ");
             parameter.AppendSql("   AND DelDate IS NULL                                             ");
             parameter.AppendSql("   AND GbResultSend IS NULL                                        ");
@@ -520,7 +520,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , READDOCT2, GBSTS, XCODE,RESULT1,RESULT2,RESULT3,RESULT4, ROWID  ");
             parameter.AppendSql("     , RESULT1_1, RESULT2_1, RESULT3_1, RESULT4_1                      ");
             parameter.AppendSql("     , TO_CHAR(READTIME1,'YYYY-MM-DD HH24:MI') READDATE1               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                     ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                                    ");
             parameter.AppendSql("   AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')                       ");
             parameter.AppendSql("   AND DELDATE IS NULL                                                 ");
@@ -547,7 +547,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT Pano,SName,TO_CHAR(ReadTime1,'YYYY-MM-DD') ReadDate,TO_CHAR(JepDate,'YYYY-MM-DD') JepDate   ");
             parameter.AppendSql("     , Sex,Age,ReadDoct1,ReadDoct2,GbSTS                                                           ");
             parameter.AppendSql("     , XCode,Result1,Result2,Result3,Result4,Result1_1,Result2_1,Result3_1,Result4_1               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                                                 ");
             parameter.AppendSql(" WHERE ROWID = :RID                                                                                ");
             parameter.AppendSql("   AND DelDate is NULL                                                                             ");
 
@@ -561,7 +561,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT XRAYNO                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                 ");
             parameter.AppendSql(" WHERE JEPDATE = TO_DATE(:JEPDATE,'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND PTNO    = :PTNO                             ");
 
@@ -574,7 +574,7 @@ namespace ComHpcLibB.Repository
         public int Insert(HIC_XRAY_RESULT item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_XRAY_RESULT                                                ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_XRAY_RESULT                                                ");
             parameter.AppendSql("       (JEPDATE, XRAYNO, PANO, SNAME, SEX, AGE, GJJONG, GBCHUL, LTDCODE, XCODE         ");
             parameter.AppendSql("       ,GBREAD, GBSTS, GBORDER_SEND, GBPACS, GBCONV, PTNO, ENTTIME, ENTSABUN,EXID)     ");
             parameter.AppendSql("VALUES                                                                                 ");
@@ -609,7 +609,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                 ");
             parameter.AppendSql(" WHERE 1 = 1                                       ");
             if (strGubun == "1")
             {
@@ -635,7 +635,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GBPACS, READDOCT1, TO_CHAR(DELDATE,'YYYY-MM-DD') DELDATE, XRAYNO    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                         ");
             parameter.AppendSql(" WHERE JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')                           ");
             parameter.AppendSql("   AND PANO    = :PANO                                                     ");
             if (!strXrayNo.IsNullOrEmpty())
@@ -658,7 +658,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT     ");
             parameter.AppendSql(" WHERE JEPDATE = TRUNC(SYSDATE)        ");
             parameter.AppendSql("   AND PANO    = :PANO                 ");
             parameter.AppendSql("   AND GbPACS  = 'Y'                   ");
@@ -673,7 +673,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                              ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                      ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                      ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                ");                
             parameter.AppendSql("   AND RDATE >= TO_DATE(:RDATE1,'YYYY-MM-DD')      ");
             parameter.AppendSql("   AND RDATE <  TO_DATE(:RDATE2,'YYYY-MM-DD')      ");
@@ -694,7 +694,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT XRAYNO                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT ");
             parameter.AppendSql(" WHERE XRAYNO = :XRAYNO            ");
 
             parameter.Add("XRAYNO", strXrayno, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -707,7 +707,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT count('X') cnt                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                 ");
             parameter.AppendSql(" WHERE 1 = 1                                       ");
             parameter.AppendSql("   AND PTNO =:PTNO                                ");
             parameter.AppendSql("   AND JEPDATE >= to_date(:JEPDATE1, 'yyyy-MM-dd') ");
@@ -728,7 +728,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT to_char(RESULTDATE, 'yyyy-MM-dd') RESULTDATE    ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                          ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                          ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                    ");
             parameter.AppendSql("   AND DEPTCODE IN ('HR','TO')                         ");
             parameter.AppendSql("   AND JDATE >= TRUNC(SYSDATE - 2)                     ");
@@ -744,7 +744,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT TO_CHAR(JepDate,'YYYY-MM-DD') JepDate                                                           ");
             parameter.AppendSql("      ,DECODE(GbChul,'Y','출장','내원') GbChul,LtdCode,COUNT(*) CNT                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                                                     ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                           ");
             parameter.AppendSql("   AND JEPDATE >= TO_DATE(:JEPDATE1, 'YYYY-MM-DD')                                                     ");
             parameter.AppendSql("   AND JEPDATE <= TO_DATE(:JEPDATE2, 'YYYY-MM-DD')                                                     ");
@@ -772,7 +772,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TO_CHAR(JepDate,'YYYYMMDD') JepDate,XCode,Exid,GBREAD   ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_XRAY_RESULT                              ");
+            parameter.AppendSql(" FROM ADMIN.HIC_XRAY_RESULT                              ");
             parameter.AppendSql(" WHERE PANO = :PANO                                            ");
             parameter.AppendSql(" AND XRayNo = :XRAYNO                                          ");
             parameter.AppendSql(" ORDER BY JEPDATE DESC                                         ");
@@ -792,7 +792,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ,TO_CHAR(ReadTime2,'YYYY-MM-DD HH24:MI') ReadTime2                ");
             parameter.AppendSql(" ,GbRead,Result1,Result2,Result3,Result4,ReadDoct1,ReadDoct2       ");
             parameter.AppendSql(" ,Result1_1,Result2_1,Result3_1,Result4_1                          ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                  ");
+            parameter.AppendSql(" FROM ADMIN.HIC_XRAY_RESULT                                  ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                                ");
             parameter.AppendSql(" AND XRayNo = :XRAYNO                                              ");
 
@@ -806,7 +806,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_XRAY_RESULT SET         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_XRAY_RESULT SET         ");
             parameter.AppendSql(" GBORDER_SEND = 'Y'                            ");
             parameter.AppendSql(" WHERE PANO =:PANO                             ");
             parameter.AppendSql(" AND XRAYNO =:XRAYNO                           ");
@@ -825,7 +825,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , READDOCT1,READDOCT2,COUNT(*) CNT                                        ");
             parameter.AppendSql("     , TO_CHAR(MIN(JEPDATE),'YYYY-MM-DD') MINDATE                              ");
             parameter.AppendSql("     , TO_CHAR(MAX(JEPDATE),'YYYY-MM-DD') MAXDATE                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                             ");
             parameter.AppendSql(" WHERE JEPDATE >= TO_DATE(:FDATE,'YYYY-MM-DD')                                 ");
             parameter.AppendSql(" AND JEPDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')                                  ");
             parameter.AppendSql(" AND GBSTS = '2'                                                               ");
@@ -872,7 +872,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT *                                                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT                                             ");
             parameter.AppendSql(" WHERE READDATE = TO_DATE(:READDATE, 'YYYY-MM-DD')                             ");
             parameter.AppendSql(" AND JEPDATE >= TO_DATE(:FDATE,'YYYY-MM-DD')                                   ");
             parameter.AppendSql(" AND JEPDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')                                  ");
@@ -924,7 +924,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_XRAY_RESULT     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_XRAY_RESULT     ");
             parameter.AppendSql("   SET GBPRINT = :GBPRINT              ");
             parameter.AppendSql(" WHERE XRAYNO = :XRAYNO                ");
 
@@ -938,7 +938,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_XRAY_RESULT     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_XRAY_RESULT     ");
             parameter.AppendSql("   SET GBPRINT = :GBPRINT              ");
             parameter.AppendSql(" WHERE XRAYNO IN (:XRAYNO)             ");
 
@@ -953,7 +953,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MIN(XRAYNO) MINXRAY, MAX(XRAYNO) MAXXRAY    ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_XRAY_RESULT                  ");
+            parameter.AppendSql(" FROM ADMIN.HIC_XRAY_RESULT                  ");
             parameter.AppendSql(" WHERE XRAYNO IN (:XRAYNO)                            ");
             parameter.AppendSql(" AND DELDATE IS NULL                               ");
 
@@ -967,7 +967,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT READDOCT1, READDOCT2                        ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_XRAY_RESULT                  ");
+            parameter.AppendSql(" FROM ADMIN.HIC_XRAY_RESULT                  ");
             parameter.AppendSql(" WHERE XRAYNO IN (:XRAYNO)                            ");
             parameter.AppendSql(" AND DELDATE IS NULL                               ");
             parameter.AppendSql(" GROUP BY READDOCT1, READDOCT2                     ");
@@ -984,7 +984,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT SName,XrayNo,Pano,Result2,Result4, GbPrint          ");
             parameter.AppendSql(" , ReadDoct1, ReadDoct2,GbRead                             ");
             parameter.AppendSql(" , Result2_1, Result4_1, SEX, AGE, PTNO                    ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_XRAY_RESULT                          ");
+            parameter.AppendSql(" FROM ADMIN.HIC_XRAY_RESULT                          ");
             parameter.AppendSql(" WHERE XRAYNO IN (:XRAYNO)                                 ");
             parameter.AppendSql(" AND DELDATE IS NULL                                       ");
             parameter.AppendSql(" ORDER BY XRAYNO                                           ");
@@ -1002,7 +1002,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT XRAYNO,GJJONG,LTDCODE,SNAME,RESULT1,RESULT1_1,RESULT2,RESULT2_1             ");
             parameter.AppendSql(" ,RESULT3,RESULT3_1, RESULT4,RESULT4_1,AGE,SEX,GBSTS,XCODE,GBREAD,GBCHUL           ");
             parameter.AppendSql(" ,DELDATE,READDOCT1,READDOCT2,GBPACS,PTNO,ROWID AS RID                             ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_XRAY_RESULT                                                  ");
+            parameter.AppendSql(" FROM ADMIN.HIC_XRAY_RESULT                                                  ");
             parameter.AppendSql(" WHERE JEPDATE >= TO_DATE(:FDATE,'YYYY-MM-DD')                                     ");
             parameter.AppendSql(" AND JEPDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')                                      ");
             parameter.AppendSql(" AND DELDATE IS NULL                                                               ");
@@ -1063,7 +1063,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_XRAY_RESULT     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_XRAY_RESULT     ");
             parameter.AppendSql("   SET GBREAD = :GBREAD              ");
             parameter.AppendSql(" WHERE XRAYNO = :XRAYNO             ");
 
@@ -1077,7 +1077,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_XRAY_RESULT     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_XRAY_RESULT     ");
             parameter.AppendSql("   SET GBCHUL = :GBCHUL              ");
             parameter.AppendSql(" WHERE XRAYNO = :XRAYNO             ");
 

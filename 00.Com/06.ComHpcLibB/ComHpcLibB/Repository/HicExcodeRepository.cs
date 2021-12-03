@@ -95,7 +95,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT HNAME, YNAME, ENAME     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", strExCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -108,7 +108,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE,HNAME              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE DELDATE IS NULL         ");
             if (!strGubun.IsNullOrEmpty())
             {
@@ -138,7 +138,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE,ENDOGUBUN3,ENDOGUBUN4,ENDOGUBUN5                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE                                  ");
             parameter.AppendSql(" WHERE DELDATE IS NULL                                         ");
             parameter.AppendSql("   AND (ENDOGUBUN3='Y' OR ENDOGUBUN4='Y' OR ENDOGUBUN5='Y')    ");
 
@@ -150,19 +150,19 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, HNAME, SUCODE, EXCODE, ROWID AS RID                       ");
-            parameter.AppendSql("       , CASE WHEN KOSMOS_PMPA.FC_BAS_SUT_SUGBA(SUCODE) = '1' THEN     ");
-            parameter.AppendSql("                   CASE WHEN KOSMOS_PMPA.FC_BAS_SUT_SUGBE(SUCODE) > '0' THEN TRUNC(FC_BAS_SUT_BAMT(SUCODE) * 1.25 , -1)  ");
+            parameter.AppendSql("       , CASE WHEN ADMIN.FC_BAS_SUT_SUGBA(SUCODE) = '1' THEN     ");
+            parameter.AppendSql("                   CASE WHEN ADMIN.FC_BAS_SUT_SUGBE(SUCODE) > '0' THEN TRUNC(FC_BAS_SUT_BAMT(SUCODE) * 1.25 , -1)  ");
             parameter.AppendSql("                        ELSE FC_BAS_SUT_BAMT(SUCODE) END               ");
             parameter.AppendSql("              ELSE FC_BAS_SUT_BAMT(SUCODE) END AS BAMT                 ");
-            parameter.AppendSql("       , KOSMOS_PMPA.FC_BAS_SUT_SUDATE(SUCODE) AS BSUDATE              ");
-            parameter.AppendSql("       , KOSMOS_PMPA.FC_BAS_SUT_SUGBA(SUCODE)  AS SUGBA                ");
-            parameter.AppendSql("       , KOSMOS_PMPA.FC_BAS_SUT_SUGBE(SUCODE)  AS SUGBE                ");
+            parameter.AppendSql("       , ADMIN.FC_BAS_SUT_SUDATE(SUCODE) AS BSUDATE              ");
+            parameter.AppendSql("       , ADMIN.FC_BAS_SUT_SUGBA(SUCODE)  AS SUGBA                ");
+            parameter.AppendSql("       , ADMIN.FC_BAS_SUT_SUGBE(SUCODE)  AS SUGBE                ");
             parameter.AppendSql("       , AMT1,AMT2,AMT3,AMT4,AMT5                                      ");
-            parameter.AppendSql("       , KOSMOS_PMPA.FC_CHK_BAS_SUT_DELDATE(SUCODE) AS ERR1            ");
-            parameter.AppendSql("       , KOSMOS_PMPA.FC_CHK_EXAMCODE_DEL(SUCODE) AS ERR2               ");
+            parameter.AppendSql("       , ADMIN.FC_CHK_BAS_SUT_DELDATE(SUCODE) AS ERR1            ");
+            parameter.AppendSql("       , ADMIN.FC_CHK_EXAMCODE_DEL(SUCODE) AS ERR2               ");
             parameter.AppendSql("       , TO_CHAR(SUDATE, 'YYYY-MM-DD') AS SUDATE                       ");
             parameter.AppendSql("       , TO_CHAR(DELDATE, 'YYYY-MM-DD') AS DELDATE                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE                                          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE                                          ");
             parameter.AppendSql(" WHERE 1 = 1                                                           ");
             if (!bDel)
             {
@@ -196,8 +196,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT ENTDATE, ENTSABUN, KOSMOS_OCS.FC_INSA_MST_KORNAME(ENTSABUN) AS JOBNAME  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE_HIS                                              ");
+            parameter.AppendSql("SELECT ENTDATE, ENTSABUN, ADMIN.FC_INSA_MST_KORNAME(ENTSABUN) AS JOBNAME  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE_HIS                                              ");
             parameter.AppendSql(" WHERE CODE =:CODE                                                             ");
             parameter.AppendSql(" ORDER BY ENTDATE DESC                                                         ");
 
@@ -209,7 +209,7 @@ namespace ComHpcLibB.Repository
         public void SelectInsertHicExCodeByRid(string fstrRowid)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_PMPA.HIC_EXCODE_HIS (                                                                  ");
+            parameter.AppendSql(" INSERT INTO ADMIN.HIC_EXCODE_HIS (                                                                  ");
             parameter.AppendSql("        CODE,HNAME,ENAME,YNAME,UNIT,EXCODE,SUCODE,GCODE,RESCODE,TONGBUN,PART                               ");
             parameter.AppendSql("       ,BRESULT,RESULTTYPE,GBCODEUSE,GBAUTOSEND,MIN_M,MIN_MB,MIN_MR,MAX_M,MAX_MB,MAX_MR                    ");
             parameter.AppendSql("       ,MIN_F,MIN_FB,MIN_FR,MAX_F,MAX_FB,MAX_FR,AMT1,AMT2,AMT3,AMT4,AMT5,SUDATE,OLDAMT1                    ");
@@ -222,7 +222,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("       ,OLDAMT2,OLDAMT3,OLDAMT4,OLDAMT5,DELDATE,SYSDATE," + clsType.User.IdNumber + ",RESBOHUM1,RESBOHUM2  ");
             parameter.AppendSql("       ,RESCANCER,GBGAM,GBRESULT,AMT6,OLDAMT6,HEASORT,ENTPART,GBRESEMPTY,GBPANBUN1                         ");
             parameter.AppendSql("       ,GBPANBUN2 , XRAYCODE, BUCODE, SORTA, PANDISP, EXSORT, ACTTIME,HEAPART,HAROOM,GOTO,GBSORT           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE                                                                              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE                                                                              ");
             parameter.AppendSql(" WHERE ROWID =:RID                                                                                         ");
 
             parameter.Add("RID", fstrRowid);
@@ -235,7 +235,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT unique HAROOM               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE      ");
             parameter.AppendSql(" WHERE DELDATE IS NULL             ");
             parameter.AppendSql("   AND trim(HAROOM) IS NOT NULL    ");
             parameter.AppendSql("   AND HEAPART = :HEAPART          ");
@@ -250,7 +250,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE,HNAME              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE DELDATE IS NULL         ");
             if (!argCode.IsNullOrEmpty() && argCode != "0")
             {
@@ -272,7 +272,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, ENDOGUBUN3        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE CODE       = :CODE      ");
             parameter.AppendSql("   AND ENDOGUBUN3 = 'Y'        ");
 
@@ -285,7 +285,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_EXCODE  ");
             parameter.AppendSql("   SET GBSUGA = :GBSUGA        ");            
             parameter.AppendSql(" WHERE CODE  = :CODE           ");
 
@@ -302,7 +302,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE,HNAME              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE DELDATE IS NULL         ");
             if (!argPart.IsNullOrEmpty() && argPart != "*")
             {
@@ -324,7 +324,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE ENTPART = :ENTPART      ");
             parameter.AppendSql("   AND DelDate IS NULL         ");
             parameter.AppendSql(" ORDER BY Code                 ");
@@ -339,7 +339,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT HNAME                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -352,7 +352,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT RESCODE                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
             parameter.AppendSql("   AND GBAUTOSEND='Y'          "); //결과 자동전송
             parameter.AppendSql("   AND DELDATE IS NULL         ");
@@ -375,7 +375,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,ENDOGUBUN2, ENDOGUBUN3, ENDOGUBUN4, ENDOGUBUN5, ENDOSCOPE, XNAME, XREMARK, XJONG            ");
             parameter.AppendSql("      ,XSUBCODE, XORDERCODE, GBSANGDAM, HEA_PRTGBN, GOTO, EXAMBUN, EXAMFRTO, GBSPCEXAM, SENDBUSE1  ");
             parameter.AppendSql("      ,SENDBUSE2, GBEKGSEND, GBSUGA, GBULINE                                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE                                                                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE                                                                      ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                       ");
             parameter.AppendSql("   AND DELDATE IS NULL                                                                             ");
             parameter.AppendSql("   AND EXCODE =:EXCODE                                                                             ");
@@ -391,7 +391,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, HNAME             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE DELDATE IS NULL         ");
             if (!strPart.IsNullOrEmpty())
             {
@@ -421,7 +421,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, HNAME, UNIT           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE      ");
             if (strTemp != "")
             {
                 if (strGubun == "1")
@@ -445,7 +445,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE      ");
 
             return ExecuteReader<HIC_EXCODE>(parameter);
         }
@@ -455,7 +455,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE              ");
             parameter.AppendSql(" WHERE DELDATE IS NULL                     ");
             parameter.AppendSql("   AND (ENDOGUBUN3='Y' OR  ENDOGUBUN5='Y') "); //위수면내시경 대상자만
 
@@ -467,8 +467,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT b.ENTPART                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b            ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                    ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                ");
             parameter.AppendSql("   AND b.ENTPART NOT IN (' ','Z')          "); //입력조가 없거나 'Z'인 경우 제외]
@@ -484,7 +484,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT RESULTTYPE                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -497,7 +497,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT Code, MIN_M, MAX_M, MIN_F, MAX_F, Unit  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE                  ");
             parameter.AppendSql(" WHERE CODE IN (:CODE)                         ");
 
             parameter.AddInStatement("CODE", rEFER_CHANGE_CODELIST);
@@ -510,7 +510,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT XRAYCODE                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", argCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -559,7 +559,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_EXCODE      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_EXCODE      ");
             parameter.AppendSql("   SET DelDate     =SYSDATE        ");
             parameter.AppendSql(" WHERE ROWID       = :RID          ");
 
@@ -573,7 +573,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_EXCODE      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_EXCODE      ");
             parameter.AppendSql("   SET HName       =:HName        ");
             parameter.AppendSql("     , EName       =:EName        ");
             parameter.AppendSql("     , YName       =:YName        ");
@@ -801,7 +801,7 @@ namespace ComHpcLibB.Repository
         public int Insert(HIC_EXCODE item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_PMPA.HIC_EXCODE (");
+            parameter.AppendSql(" INSERT INTO ADMIN.HIC_EXCODE (");
             parameter.AppendSql("       CODE,HName,EName,YName,Unit,ExCode,SuCode,GCode,ResCode,Part,BResult,ResultType             ");
             parameter.AppendSql("     , GbCodeUse,GbAutoSend,TongBun, SuDate                                                        ");
             parameter.AppendSql("     , Min_M,Min_MB,Min_MR,Max_M,Max_MB,Max_MR,Min_F,Min_FB,Min_FR,Max_F,Max_FB,Max_FR             ");
@@ -909,7 +909,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_EXCODE                      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_EXCODE                      ");
             parameter.AppendSql("   SET SUDATE = TO_DATE(:SUDATE, 'YYYY-MM-DD')     ");
             parameter.AppendSql("     , AMT1    =:AMT1                              ");
             parameter.AppendSql("     , AMT2    =:AMT2                              ");
@@ -1059,7 +1059,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ENDOGUBUN1,ENDOGUBUN2,ENDOGUBUN3,ENDOGUBUN4,ENDOGUBUN5                  ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_EXCODE                                                   ");
+            parameter.AppendSql(" FROM ADMIN.HIC_EXCODE                                                   ");
             parameter.AppendSql(" WHERE 1 = 1                                                                   ");
             parameter.AppendSql(" AND CODE =:Code                                                               ");
             parameter.AppendSql(" AND (ENDOGUBUN2='Y' OR ENDOGUBUN3='Y' OR ENDOGUBUN4='Y' OR ENDOGUBUN5='Y')    ");
@@ -1074,7 +1074,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GOTO                                                                    ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_EXCODE                                                   ");
+            parameter.AppendSql(" FROM ADMIN.HIC_EXCODE                                                   ");
             parameter.AppendSql(" WHERE 1 = 1                                                                   ");
             parameter.AppendSql(" AND CODE =:Code                                                               ");
             parameter.AppendSql(" AND DELDATE IS NULL                                                           ");

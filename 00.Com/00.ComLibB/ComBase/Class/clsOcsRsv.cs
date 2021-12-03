@@ -27,7 +27,7 @@ namespace ComBase
                 clsPublic.GnRInWon_Jae = 0;
 
                 strSql = " SELECT RINWON1, RINWON2 ";
-                strSql = strSql + ComNum.VBLF + "  FROM KOSMOS_PMPA.ETC_FM_SCH ";
+                strSql = strSql + ComNum.VBLF + "  FROM ADMIN.ETC_FM_SCH ";
                 strSql = strSql + ComNum.VBLF + " WHERE SDate <=TO_DATE('" + ArgSDate + "','YYYY-MM-DD') ";
                 strSql = strSql + ComNum.VBLF + "   AND RTime ='" + ArgTime + "' ";
                 strSql = strSql + ComNum.VBLF + "   AND DeptCode ='" + ArgDept + "' ";
@@ -73,7 +73,7 @@ namespace ComBase
                 clsPublic.GnRInWon_Jae = 0;
 
                 strSql = " SELECT RINWON1, RINWON2 ";
-                strSql = strSql + ComNum.VBLF + "  FROM KOSMOS_PMPA.ETC_FM_SCH ";
+                strSql = strSql + ComNum.VBLF + "  FROM ADMIN.ETC_FM_SCH ";
                 strSql = strSql + ComNum.VBLF + " WHERE SDate <=TO_DATE('" + ArgSDate + "','YYYY-MM-DD') ";
                 strSql = strSql + ComNum.VBLF + "   AND RTime ='" + ArgTime + "' ";
                 strSql = strSql + ComNum.VBLF + "   AND DeptCode ='" + ArgDept + "' ";

@@ -44,7 +44,7 @@ namespace ComEmrBase
             OracleDataReader reader = null;
 
             SQL = " SELECT CODE, NAME";
-            SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE";
+            SQL += ComNum.VBLF + " FROM ADMIN.BAS_BCODE";
             SQL += ComNum.VBLF + " WHERE GUBUN = 'EMR_LIST_사용자_상용구'";
 
             string SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -98,7 +98,7 @@ namespace ComEmrBase
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL = " DELETE KOSMOS_PMPA.BAS_BCODE";
+                SQL = " DELETE ADMIN.BAS_BCODE";
                 SQL += ComNum.VBLF + "WHERE GUBUN = 'EMR_LIST_사용자_상용구'";
 
                 sqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
@@ -120,7 +120,7 @@ namespace ComEmrBase
                     if (string.IsNullOrWhiteSpace(strNAME))
                         continue;
 
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_BCODE(";
+                    SQL = " INSERT INTO ADMIN.BAS_BCODE(";
                     SQL += ComNum.VBLF + " GUBUN, CODE, NAME, ENTDATE, ENTSABUN, SORT) VALUES (";
                     SQL += ComNum.VBLF + "'EMR_LIST_사용자_상용구','" + strCODE + "','" + strNAME + "', SYSDATE, " + clsType.User.IdNumber + ", " + i + ")";
 
@@ -179,7 +179,7 @@ namespace ComEmrBase
                 {
                     if (SS1_Sheet1.Cells[i, 0].Text.Trim().Equals("True"))
                     {
-                        SQL = " DELETE KOSMOS_PMPA.BAS_BCODE";
+                        SQL = " DELETE ADMIN.BAS_BCODE";
                         SQL += ComNum.VBLF + " WHERE GUBUN = 'EMR_LIST_사용자_상용구' ";
                         SQL += ComNum.VBLF + "   AND CODE  = '" + SS1_Sheet1.Cells[i, 1].Text.Trim() + "'";
 

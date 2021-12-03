@@ -55,7 +55,7 @@ namespace ComLibB
 
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return; //권한 확인
 
-                SQL = " SELECT SABUN, KORNAME  FROM KOSMOS_ADM.INSA_MST ";
+                SQL = " SELECT SABUN, KORNAME  FROM ADMIN.INSA_MST ";
                 SQL = SQL + ComNum.VBLF + " WHERE TOIDAY IS NULL ";     //'재직자
                 SQL = SQL + ComNum.VBLF + "   AND BUSE ='078201' ";
 
@@ -173,7 +173,7 @@ namespace ComLibB
                     if (Convert.ToBoolean(ss2_Sheet1.Cells[i, 0].Value) == true)
                     {
                         strROWID = ss2_Sheet1.Cells[i, 7].Text;
-                        SQL = " UPDATE KOSMOS_PMPA.BAS_OCSMEMO_SIM  SET DDATE = TRUNC(SYSDATE),JOBSABUN=" + clsType.User.Sabun + ", ENTDATE =SYSDATE    WHERE ROWID = '" + strROWID + "' ";
+                        SQL = " UPDATE ADMIN.BAS_OCSMEMO_SIM  SET DDATE = TRUNC(SYSDATE),JOBSABUN=" + clsType.User.Sabun + ", ENTDATE =SYSDATE    WHERE ROWID = '" + strROWID + "' ";
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                         if (SqlErr != "")
                         {
@@ -244,12 +244,12 @@ namespace ComLibB
 
                 if (FGstrRowid == "")
                 {
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_OCSMEMO_SIM (  PANO, SNAME, MEMO, SDATE, DDATE,  GBN,JOBSABUN,ENTDATE) VALUES (";
+                    SQL = " INSERT INTO ADMIN.BAS_OCSMEMO_SIM (  PANO, SNAME, MEMO, SDATE, DDATE,  GBN,JOBSABUN,ENTDATE) VALUES (";
                     SQL = SQL + ComNum.VBLF + " '" + FstrPano + "', '" + FstrSName + "',  '" + VB.Trim(txtInfo.Text) + "' , TRUNC(SYSDATE), '' , '1'," + clsType.User.Sabun + ",SYSDATE ) ";
                 }
                 else
                 {
-                    SQL = " UPDATE KOSMOS_PMPA.BAS_OCSMEMO_SIM SET MEMO = '" + VB.Trim(txtInfo.Text) + "' , JOBSABUN = " + clsType.User.Sabun + " ,ENTDATE=SYSDATE  ";
+                    SQL = " UPDATE ADMIN.BAS_OCSMEMO_SIM SET MEMO = '" + VB.Trim(txtInfo.Text) + "' , JOBSABUN = " + clsType.User.Sabun + " ,ENTDATE=SYSDATE  ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + FGstrRowid + "' ";
                 }
 
@@ -319,7 +319,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "";
                 SQL = " SELECT PANO, SNAME, TO_CHAR(SDATE,'YYYY-MM-DD') SDATE, TO_CHAR(DDATE,'YYYY-MM-DD') DDATE,";
                 SQL = SQL + ComNum.VBLF + "  ROWID, GBN";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_OCSMEMO_SIM ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_OCSMEMO_SIM ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + FstrPano + "'";
                 if (chkDel.Checked == false)
                 {
@@ -400,7 +400,7 @@ namespace ComLibB
                 FGstrRowid = strROWID;
 
                 SQL = " SELECT MEMO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_OCSMEMO_SIM ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_OCSMEMO_SIM ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -461,7 +461,7 @@ namespace ComLibB
                 }
                 txtPano.Text = ComFunc.SetAutoZero(txtPano.Text, 8);
 
-                SQL = " SELECT PANO , SNAME FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = " SELECT PANO , SNAME FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + txtPano.Text + "' ";
                 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -525,7 +525,7 @@ namespace ComLibB
                 }
                 
                 SQL = " SELECT A.PANO  APANO , A.SNAME,  B.PANO BPANO ,B.JOBSABUN ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT A, KOSMOS_PMPA.BAS_OCSMEMO_SIM B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PATIENT A, ADMIN.BAS_OCSMEMO_SIM B ";
                 if (OptView_0.Checked == true)
                 {
                     SQL = SQL + ComNum.VBLF + " WHERE A.PANO = B.PANO";

@@ -273,7 +273,7 @@ namespace ComPmpaLibB
                             //'현금영수증 카드결제금액 표시
                             SQL = "";
                             SQL += ComNum.VBLF + "  SELECT GUBUN,  SUM(TRADEAMT) TAMT ";
-                            SQL += ComNum.VBLF + "       FROM KOSMOS_PMPA.CARD_APPROV A ";
+                            SQL += ComNum.VBLF + "       FROM ADMIN.CARD_APPROV A ";
                             SQL += ComNum.VBLF + "     WHERE PANO ='" + strPano + "' ";
                             SQL += ComNum.VBLF + "         AND ( ACTDATE =TO_DATE('" + strActdate + "','YYYY-MM-DD') OR ACTDATE =TO_DATE('" + (dt.Rows[0]["BDate"].ToString().Trim() + "") + "','YYYY-MM-DD') ) ";
                             SQL += ComNum.VBLF + "         AND DEPTCODE ='" + strDept + "'  ";

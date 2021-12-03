@@ -325,8 +325,8 @@ namespace ComEmrBase
 
                 SQL = string.Empty;
                 SQL = SQL + ComNum.VBLF + " SELECT A.CHARTDATE, A.CHARTTIME, A.CHARTUSEID, A.COMPUSEID";
-                SQL = SQL + ComNum.VBLF + "  ,  (SELECT USENAME FROM KOSMOS_EMR.AVIEWEMRUSER WHERE USEID = A.CHARTUSEID) AS USENAME";
-                SQL = SQL + ComNum.VBLF + "  ,  (SELECT USENAME FROM KOSMOS_EMR.AVIEWEMRUSER WHERE USEID = A.COMPUSEID) AS USENAME2 -- 이중인증 작성자";
+                SQL = SQL + ComNum.VBLF + "  ,  (SELECT USENAME FROM ADMIN.AVIEWEMRUSER WHERE USEID = A.CHARTUSEID) AS USENAME";
+                SQL = SQL + ComNum.VBLF + "  ,  (SELECT USENAME FROM ADMIN.AVIEWEMRUSER WHERE USEID = A.COMPUSEID) AS USENAME2 -- 이중인증 작성자";
                 if (mstrFalg.Equals("C"))
                 {
                     SQL = SQL + ComNum.VBLF + "  FROM " + ComNum.DB_EMR + "AVIEWCHARTMST A";

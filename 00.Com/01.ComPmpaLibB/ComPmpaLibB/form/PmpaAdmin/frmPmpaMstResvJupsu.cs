@@ -394,7 +394,7 @@ namespace ComPmpaLibB
             string strMsg = "";
 
             SQL = " SELECT GBJIN, GBJIN2 ";
-            SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SCHEDULE ";
+            SQL += ComNum.VBLF + " FROM ADMIN.BAS_SCHEDULE ";
             SQL += ComNum.VBLF + " WHERE SCHDATE = TO_DATE('" + argSCHDATE + "','YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "   AND DRCODE = '" + argDRCODE + "'";
             SqlErr = clsDB.GetDataTableEx(ref Dt, SQL, clsDB.DbCon);
@@ -2597,7 +2597,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT OPDNO, TO_CHAR(ACTDATE, 'YYYY-MM-DD') ACTDATE, DEPTCODE, ";
-            SQL += ComNum.VBLF + "        DRCODE, KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
+            SQL += ComNum.VBLF + "        DRCODE, ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
             SQL += ComNum.VBLF + "        MCODE, VCode  ";
             SQL += ComNum.VBLF + "   From " + ComNum.DB_PMPA + "OPD_MASTER ";
             SQL += ComNum.VBLF + "  WHERE 1     = 1 ";
@@ -2868,11 +2868,11 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT DeptCode, ";
-            SQL += ComNum.VBLF + "        DrCode, KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
+            SQL += ComNum.VBLF + "        DrCode, ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
             SQL += ComNum.VBLF + "        TO_CHAR(BDate,'YYYY-MM-DD') BDate, ";
             SQL += ComNum.VBLF + "        TO_CHAR(RDate,'YYYY-MM-DD HH24:MI') RDate, Pano, SName, ";
             SQL += ComNum.VBLF + "        GbSunap, ";
-            SQL += ComNum.VBLF + "        EntSabun, KOSMOS_OCS.FC_BAS_PASS_NAME(EntSabun) USERNAME, ";
+            SQL += ComNum.VBLF + "        EntSabun, ADMIN.FC_BAS_PASS_NAME(EntSabun) USERNAME, ";
             SQL += ComNum.VBLF + "        ROWID ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_MED + "OCS_RESERVED ";
             SQL += ComNum.VBLF + "  WHERE 1         = 1 ";

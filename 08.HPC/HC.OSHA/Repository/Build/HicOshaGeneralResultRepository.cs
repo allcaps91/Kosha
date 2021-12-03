@@ -102,10 +102,10 @@
             parameter.AppendSql("                            ELSE C.DIABETES_RES                                                                           ");
             parameter.AppendSql("                       END DIABETES_RES                                                                                   ");
             parameter.AppendSql("                     , NVL(B.PANJENGDRNO, 0) AS PANJENGDRNO                                                               ");
-            parameter.AppendSql("                  FROM KOSMOS_PMPA.HIC_JEPSU A                                                                            ");
-            parameter.AppendSql("                  LEFT OUTER JOIN KOSMOS_PMPA.HIC_RES_BOHUM1 B                                                            ");
+            parameter.AppendSql("                  FROM ADMIN.HIC_JEPSU A                                                                            ");
+            parameter.AppendSql("                  LEFT OUTER JOIN ADMIN.HIC_RES_BOHUM1 B                                                            ");
             parameter.AppendSql("                               ON A.WRTNO = B.WRTNO                                                                       ");
-            parameter.AppendSql("                  LEFT OUTER JOIN KOSMOS_PMPA.HIC_RES_BOHUM2 C                                                            ");
+            parameter.AppendSql("                  LEFT OUTER JOIN ADMIN.HIC_RES_BOHUM2 C                                                            ");
             parameter.AppendSql("                               ON A.WRTNO = C.WRTNO                                                                       ");
             parameter.AppendSql("                 WHERE 1 = 1                                                                                              ");
             parameter.AppendSql("                   AND A.JEPDATE BETWEEN TO_DATE(:START_DATE, 'YYYY-MM-DD')                                               ");
@@ -130,7 +130,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MIN(JEPDATE) AS JEPDATE                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU A                                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU A                                                  ");
             parameter.AppendSql(" WHERE 1 = 1                                                                    ");
             parameter.AppendSql("   AND A.JEPDATE BETWEEN TO_DATE(:START_DATE, 'YYYY-MM-DD')                     ");
             parameter.AppendSql("                     AND TO_DATE(:END_DATE, 'YYYY-MM-DD')                       ");
@@ -150,7 +150,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MIN(JEPDATE) AS JEPDATE                                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU A                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU A                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                                   ");
             parameter.AppendSql("   AND A.JEPDATE BETWEEN TO_DATE(:START_DATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("                     AND TO_DATE(:END_DATE, 'YYYY-MM-DD')      ");

@@ -714,10 +714,10 @@ namespace ComBase
                 SQL = "";
                 SQL = " SELECT  ";
                 SQL = SQL + ComNum.VBLF + "    J.AUTHC, J.AUTHR, J.AUTHU, J.AUTHD, J.AUTHP  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_USER U ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_PROJECTFORMGROUP J ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_USER U ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_PROJECTFORMGROUP J ";
                 SQL = SQL + ComNum.VBLF + "    ON U.JOBGROUP = J.JOBGROUP ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_PROJECTFORM F ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_PROJECTFORM F ";
                 SQL = SQL + ComNum.VBLF + "    ON J.FORMCD = F.FORMCD ";
                 SQL = SQL + ComNum.VBLF + "    AND F.FORMNAME = '" + pForm.Name + "' ";
                 SQL = SQL + ComNum.VBLF + "WHERE U.IDNUMBER = '" + clsType.User.IdNumber + "' ";
@@ -744,8 +744,8 @@ namespace ComBase
                 SQL = "";
                 SQL = " SELECT  ";
                 SQL = SQL + ComNum.VBLF + "    J.AUTHC, J.AUTHR, J.AUTHU, J.AUTHD, J.AUTHP  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_PROJECTFORMGROUP J ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_PROJECTFORM F ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_PROJECTFORMGROUP J ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_PROJECTFORM F ";
                 SQL = SQL + ComNum.VBLF + "    ON J.FORMCD = F.FORMCD ";
                 SQL = SQL + ComNum.VBLF + "    AND F.FORMNAME = '" + pForm.Name + "' ";
                 SQL = SQL + ComNum.VBLF + "WHERE J.JOBGROUP = '" + ComNum.DEFAULT_JOBGROUP + "' ";
@@ -977,15 +977,15 @@ namespace ComBase
                 SQL = "";
                 SQL = " SELECT  ";
                 SQL = SQL + ComNum.VBLF + "    J.AUTHC, J.AUTHR, J.AUTHU, J.AUTHD, J.AUTHP  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_USER U ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_PROJECTFORMGROUP J ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_USER U ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_PROJECTFORMGROUP J ";
                 SQL = SQL + ComNum.VBLF + "    ON U.JOBGROUP = J.JOBGROUP ";
                 if (strJob == "C") SQL = SQL + ComNum.VBLF + "    AND J.AUTHC = '1' ";
                 if (strJob == "R") SQL = SQL + ComNum.VBLF + "    AND J.AUTHR = '1' ";
                 if (strJob == "U") SQL = SQL + ComNum.VBLF + "    AND J.AUTHU = '1' ";
                 if (strJob == "D") SQL = SQL + ComNum.VBLF + "    AND J.AUTHD = '1' ";
                 if (strJob == "P") SQL = SQL + ComNum.VBLF + "    AND J.AUTHP = '1' ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_PROJECTFORM F ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_PROJECTFORM F ";
                 SQL = SQL + ComNum.VBLF + "    ON J.FORMCD = F.FORMCD ";
                 SQL = SQL + ComNum.VBLF + "    AND F.FORMNAME = '" + frm.Name + "' ";
                 SQL = SQL + ComNum.VBLF + "WHERE U.IDNUMBER = '" + clsType.User.IdNumber + "' ";
@@ -1016,9 +1016,9 @@ namespace ComBase
                     SQL = "";
                     SQL = " SELECT  ";
                     SQL = SQL + ComNum.VBLF + "    J.AUTHC, J.AUTHR, J.AUTHU, J.AUTHD, J.AUTHP  ";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_PROJECTFORMGROUP J ";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_PROJECTFORMGROUP J ";
 
-                    SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_PROJECTFORM F ";
+                    SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_PROJECTFORM F ";
                     SQL = SQL + ComNum.VBLF + "    ON J.FORMCD = F.FORMCD ";
                     SQL = SQL + ComNum.VBLF + "    AND F.FORMNAME = '" + frm.Name + "' ";
                     SQL = SQL + ComNum.VBLF + "WHERE J.JOBGROUP = '" + ComNum.DEFAULT_JOBGROUP + "' ";
@@ -1099,7 +1099,7 @@ namespace ComBase
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT ";
                 SQL = SQL + ComNum.VBLF + "    FORMCD, FORMNAME, FORMNAME1 ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_PROJECTFORM ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_PROJECTFORM ";
                 SQL = SQL + ComNum.VBLF + "WHERE FORMNAME = '" + frm.Name + "' ";
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, pDbCon);
@@ -1119,7 +1119,7 @@ namespace ComBase
                 }
                 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_PMPA.ETC_USERLOG_" + strTable;
+                SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.ETC_USERLOG_" + strTable;
                 SQL = SQL + ComNum.VBLF + "     (IDNUMBER, FORMCD, INPDATETIME, JOBGB, IP, FORMNAME, FORMNAME1, JOBREMARK)";
                 SQL = SQL + ComNum.VBLF + "VALUES (";
                 SQL = SQL + ComNum.VBLF + "     '" + clsType.User.IdNumber + "', ";
@@ -1663,8 +1663,8 @@ namespace ComBase
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT ";
                 SQL = SQL + ComNum.VBLF + "     BUSE, SIL_BUSE  ";
-                SQL = SQL + ComNum.VBLF + "   , KOSMOS_PMPA.FC_BAS_BUSENAME(BUSE) AS BUSENAME ";
-                SQL = SQL + ComNum.VBLF + "   , KOSMOS_PMPA.FC_BAS_BUSENAME(SIL_BUSE) AS SIL_BUSENAME ";
+                SQL = SQL + ComNum.VBLF + "   , ADMIN.FC_BAS_BUSENAME(BUSE) AS BUSENAME ";
+                SQL = SQL + ComNum.VBLF + "   , ADMIN.FC_BAS_BUSENAME(SIL_BUSE) AS SIL_BUSENAME ";
                 SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_ERP + "INSA_MST";
                 SQL = SQL + ComNum.VBLF + "WHERE SABUN =  '" + clsType.User.Sabun + "'";
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, pDbCon);
@@ -1880,7 +1880,7 @@ namespace ComBase
                 dt = null;
 
                 //간호사체크
-                SQL = "SELECT KORNAME FROM KOSMOS_ADM.INSA_MST";
+                SQL = "SELECT KORNAME FROM ADMIN.INSA_MST";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + clsType.User.Sabun + "' "; //SABUN
                 SQL = SQL + ComNum.VBLF + " AND JikJong = '41' ";
                 SQL = SQL + ComNum.VBLF + " AND (TOIDay IS NULL OR TOIDay ='') ";
@@ -1901,7 +1901,7 @@ namespace ComBase
                 dt = null;
 
                 //간호사조무사체크
-                SQL = "SELECT KORNAME FROM KOSMOS_ADM.INSA_MST";
+                SQL = "SELECT KORNAME FROM ADMIN.INSA_MST";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + clsType.User.Sabun + "' "; //SABUN
                 SQL = SQL + ComNum.VBLF + " AND JikJong = '42' ";
                 SQL = SQL + ComNum.VBLF + " AND (TOIDay IS NULL OR TOIDay ='') ";
@@ -2367,7 +2367,7 @@ namespace ComBase
                 clsDB.setBeginTran(clsDB.DbCon);
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_PMPA.ETC_LOGOUT_LOG ";
+                SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.ETC_LOGOUT_LOG ";
                 SQL = SQL + ComNum.VBLF + "     ( BDATE,SABUN,OUTTIME,IPADDR,GUBUN,EXENAME, SAYU )";
                 SQL = SQL + ComNum.VBLF + "     VALUES ";
                 SQL = SQL + ComNum.VBLF + "     ( ";
@@ -3302,7 +3302,7 @@ namespace ComBase
             {
                 SQL = " SELECT  ";
                 SQL = SQL + ComNum.VBLF + "    FORMNAME1 "; 
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_PROJECTFORM  ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_PROJECTFORM  ";
                 SQL = SQL + ComNum.VBLF + "WHERE FORMNAME = '" + strFormName + "' ";
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -3355,7 +3355,7 @@ namespace ComBase
             {
                 SQL = " SELECT  ";
                 SQL = SQL + ComNum.VBLF + "    SABUN ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_DOCTOR  ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_DOCTOR  ";
                 SQL = SQL + ComNum.VBLF + "WHERE DRCODE = '" + strDrCode + "' ";
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -3409,7 +3409,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT Code,Name,Gubun2 ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + "  WHERE Gubun='" + ArgGubun + "' ";
                 if (ArgCode != "")
                 {
@@ -3541,7 +3541,7 @@ namespace ComBase
             {
                 SQL = " SELECT  ";
                 SQL = SQL + ComNum.VBLF + "    DEPTCODE ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.IPD_NEW_MASTER  ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.IPD_NEW_MASTER  ";
                 SQL = SQL + ComNum.VBLF + "WHERE IPDNO = " + strIpdNo ;
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -3588,7 +3588,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "Insert Into KOSMOS_PMPA.Bas_EXEInfo";
+                SQL = SQL + ComNum.VBLF + "Insert Into ADMIN.Bas_EXEInfo";
                 SQL = SQL + ComNum.VBLF + "     (SAbun, ChulTime, ExeFile, IPadd)";
                 SQL = SQL + ComNum.VBLF + "VALUES (";
                 SQL = SQL + ComNum.VBLF + "  '" + clsType.User.IdNumber + "',";
@@ -3639,7 +3639,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_PMPA.ETC_USERLOGINHIS";
+                SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.ETC_USERLOGINHIS";
                 SQL = SQL + ComNum.VBLF + "     (IDNUMBER, INPDATETIME, LOGINCNT, LOGINYN, LOGINIP, LOGINREMARK)";
                 SQL = SQL + ComNum.VBLF + "VALUES (";
                 SQL = SQL + ComNum.VBLF + "  '" + strIDNUMBER + "',";
@@ -3686,7 +3686,7 @@ namespace ComBase
             try
             {                                
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT NFLAG1 FROM KOSMOS_PMPA.BAS_BASCD ";
+                SQL = SQL + ComNum.VBLF + "SELECT NFLAG1 FROM ADMIN.BAS_BASCD ";
                 SQL = SQL + ComNum.VBLF + " WHERE GRPCDB = '프로그램기초' ";
                 SQL = SQL + ComNum.VBLF + "   AND GRPCD = '프로그램중지' ";
                 SQL = SQL + ComNum.VBLF + "   AND BASCD = '개발DB사용여부' ";

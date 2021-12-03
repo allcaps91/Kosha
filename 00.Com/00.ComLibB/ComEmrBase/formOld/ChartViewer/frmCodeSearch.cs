@@ -57,7 +57,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT ILLNAMEK, ILLNAMEE ";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS";
+                SQL += ComNum.VBLF + "  FROM ADMIN.BAS_ILLS";
                 SQL += ComNum.VBLF + " WHERE ILLCODE = '" + txtCode.Text.Trim() + "'"                                                          ;
 
                 string SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);

@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT PANJENGDRNO, TO_CHAR(PANJENGDATE, 'YYYY-MM-DD') PANJENGDATE     ");
             parameter.AppendSql("     , TO_CHAR(GUNDATE, 'YYYY-MM-DD') GUNDATE                          ");
             parameter.AppendSql("     , GBPANJENG, GBPRINT, SOGEN                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_ETC                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_ETC                                         ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                  ");
             parameter.AppendSql("   AND GUBUN = :GUBUN                                                  ");
 
@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
         public int SaveHicResEtc(long nWrtNo, string strJepDate, string strGubun)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("MERGE INTO KOSMOS_PMPA.HIC_RES_ETC a                   ");
+            parameter.AppendSql("MERGE INTO ADMIN.HIC_RES_ETC a                   ");
             parameter.AppendSql("using dual d                                           ");
             parameter.AppendSql("   on (a.WRTNO     = :WRTNO                            ");
             parameter.AppendSql("  and  a.GUBUN     = :GUBUN)                           ");
@@ -67,7 +67,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_ETC SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_ETC SET     ");
             parameter.AppendSql("       GBPANJENG   = :GBPANJENG        ");
             parameter.AppendSql(" WHERE WRTNO      = :WRTNO             ");
             parameter.AppendSql("   AND GUBUN      = :GUBUN             ");
@@ -83,7 +83,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_ETC SET                         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_ETC SET                         ");
             parameter.AppendSql("       GBPANJENG   = :GBPANJENG                            ");
             parameter.AppendSql("     , SOGEN       = :SOGEN                                ");
             parameter.AppendSql("     , PANJENGDATE = TO_DATE(:PANJENGDATE, 'YYYY-MM-DD')   ");
@@ -105,7 +105,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_ETC SET                         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_ETC SET                         ");
             parameter.AppendSql("       GBPANJENG   = :GBPANJENG                            ");
             parameter.AppendSql("     , PAN         = :PAN                                  ");
             parameter.AppendSql("     , SOGEN       = :SOGEN                                ");
@@ -138,7 +138,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_ETC SET ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_ETC SET ");
             
             if (strOK == "OK")
             {
@@ -161,7 +161,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RES_ETC SET                 ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RES_ETC SET                 ");
             parameter.AppendSql(" GBPRINT = 'Y'                                     ");
             parameter.AppendSql(" ,PRTSABUN = :JOBSABUN                             ");
             parameter.AppendSql(" ,TONGBODATE = TO_DATE(:TONGBODATE,'YYYY-MM-DD')   ");
@@ -180,7 +180,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_RES_ETC                        ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_RES_ETC                        ");
             parameter.AppendSql("       (WRTNO, GUNDATE, GUBUN)                             ");
             parameter.AppendSql("VALUES                                                     ");
             parameter.AppendSql("       (:WRTNO, TO_DATE(:JEPDATE, 'YYYY-MM-DD'), :GUBUN)   ");

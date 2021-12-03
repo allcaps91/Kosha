@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_OCS.ETC_JUPMST                                                                                                                  ");
+            parameter.AppendSql("INSERT INTO ADMIN.ETC_JUPMST                                                                                                                  ");
             parameter.AppendSql("       ( BDATE, PTNO,     SNAME,  SEX,    AGE,   ORDERCODE, ORDERNO, GBIO                                                                          ");
             parameter.AppendSql("       , BUN,   DEPTCODE, DRCODE, REMARK, RDATE, AMT, GBJOB, ENTDATE, GBER, GUBUN                                                                  ");
             parameter.AppendSql("       , ORDERDATE, SENDDATE )                                                                                                                     ");
@@ -59,7 +59,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT IMAGE                       ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST       ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST       ");
             parameter.AppendSql(" WHERE ROWID = :RID                ");
             parameter.AppendSql("   AND IMAGE IS NOT NULL           ");
 
@@ -72,7 +72,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ETC_JUPMST                               ");
+            parameter.AppendSql("UPDATE ADMIN.ETC_JUPMST                               ");
             parameter.AppendSql("   SET SNAME     =:SNAME                                   ");
             parameter.AppendSql("      ,SEX       =:SEX                                     ");
             parameter.AppendSql("      ,AGE       =:AGE                                     ");
@@ -107,7 +107,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT COUNT('X') CNT FROM KOSMOS_OCS.ETC_JUPMST               ");
+            parameter.AppendSql("SELECT COUNT('X') CNT FROM ADMIN.ETC_JUPMST               ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                            ");
             parameter.AppendSql("   AND DEPTCODE IN ('HR','TO')                                 ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                   "); //index 태우기위해사용
@@ -125,7 +125,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT ROWID FROM KOSMOS_OCS.ETC_JUPMST                        ");
+            parameter.AppendSql("SELECT ROWID FROM ADMIN.ETC_JUPMST                        ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                            ");
             parameter.AppendSql("   AND DEPTCODE IN ('HR','TO')                                 ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                   "); //index 태우기위해사용
@@ -142,7 +142,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT ROWID FROM KOSMOS_OCS.ETC_JUPMST                        ");
+            parameter.AppendSql("SELECT ROWID FROM ADMIN.ETC_JUPMST                        ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                            ");
             parameter.AppendSql("   AND DEPTCODE IN ('HR','TO')                                 ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                   "); //index 태우기위해사용
@@ -161,7 +161,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT ROWID FROM KOSMOS_OCS.ETC_JUPMST                        ");
+            parameter.AppendSql("SELECT ROWID FROM ADMIN.ETC_JUPMST                        ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                            ");
             parameter.AppendSql("   AND DEPTCODE IN ('HR','TO')                                 ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                   "); //index 태우기위해사용
@@ -179,7 +179,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                                                   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                                   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                                   ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                            ");
             parameter.AppendSql("   AND DEPTCODE = :DEPTCODE                                    ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                   "); //index 태우기위해사용
@@ -202,7 +202,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ETC_JUPMST SET                           ");
+            parameter.AppendSql("UPDATE ADMIN.ETC_JUPMST SET                           ");
             parameter.AppendSql("       GBJOB = '3'                                         ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                        ");
             parameter.AppendSql("   AND RDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')             ");
@@ -222,7 +222,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                                                   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                                   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                                   ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                            ");
             parameter.AppendSql("   AND DEPTCODE = 'HR'                                         ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                   "); //index 태우기위해사용
@@ -241,7 +241,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                                   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                   ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                           ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')   "); 
             parameter.AppendSql("   AND DEPTCODE = :DEPTCODE                    ");
@@ -259,7 +259,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ETC_JUPMST   ");
+            parameter.AppendSql("UPDATE ADMIN.ETC_JUPMST   ");
             parameter.AppendSql("   SET GBFTP    = :GBFTP       ");
             parameter.AppendSql("     , FILEPATH = :FILEPATH    ");
             parameter.AppendSql(" WHERE ROWID    = :RID         ");
@@ -275,7 +275,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ETC_JUPMST           ");
+            parameter.AppendSql("UPDATE ADMIN.ETC_JUPMST           ");
             parameter.AppendSql("   SET IMAGE_GBN    = :IMAGE_GBN       ");
             parameter.AppendSql("     , GBJOB        = :GBJOB           ");
             parameter.AppendSql("     , STRESS_SOGEN = :STRESS_SOGEN    ");
@@ -293,7 +293,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ETC_JUPMST   ");
+            parameter.AppendSql("UPDATE ADMIN.ETC_JUPMST   ");
             parameter.AppendSql("   SET GBJOB = '9'             ");
             parameter.AppendSql("      ,ENTDATE = SYSDATE       ");
             parameter.AppendSql(" WHERE ROWID =:RID             ");
@@ -308,7 +308,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                          ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                   ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                           ");
             parameter.AppendSql("   AND DEPTCODE IN ('HR','TO')                 ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')   "); //index 태우기위해사용
@@ -331,7 +331,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID RID                               ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                   ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                            ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND ORDERCODE = :ORDERCODE                  ");
@@ -356,7 +356,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                                                   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                                   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                                   ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                            ");
             parameter.AppendSql("   AND DEPTCODE IN ('HR','TO')                                 ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                   "); //index 태우기위해사용
@@ -379,7 +379,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID,TO_CHAR(RDATE,'YYYYMMDD') RDATE, FILEPATH         ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                                   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                                   ");
             parameter.AppendSql(" WHERE ROWID = :RID                                            ");
             parameter.AppendSql("   AND GbFTP = 'Y'                                             ");
 
@@ -393,7 +393,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TO_CHAR(RDate,'YYYY-MM-DD') RDate,Ptno,SName,OrderCode  ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                                   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                                   ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                            ");
             parameter.AppendSql("   AND TRUNC(RDATE) = TO_DATE(:RDATE, 'YYYY-MM-DD')            ");
             parameter.AppendSql("   AND DeptCode IN ('HR','TO')                                 ");
@@ -411,7 +411,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT PTno,Stress_Sogen                                   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                               ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                               ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                        ");
             parameter.AppendSql("   AND TRUNC(RDATE) = TO_DATE(:RDATE,'YYYY-MM-DD')         ");
             parameter.AppendSql("   AND DeptCode IN ('HR','TO')                             ");
@@ -428,7 +428,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT          ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST   ");
             parameter.AppendSql(" WHERE ROWID = :RID            ");
             parameter.AppendSql("   AND GbFTP = 'Y'             ");
 
@@ -442,7 +442,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID, IMAGE_GBN        ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST   ");
             parameter.AppendSql(" WHERE ROWID = :RID            ");
             parameter.AppendSql("   AND GbFTP = 'Y'             ");
 
@@ -456,7 +456,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TO_CHAR(RDate,'YYYY-MM-DD') RDATE, PTNO, SNAME, ORDERCODE, DEPTCODE     ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                                                   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                                                   ");
             parameter.AppendSql(" WHERE RDate >= TRUNC(SYSDATE-7)                                               ");
             parameter.AppendSql("   AND RDate <= TRUNC(SYSDATE)                                                 ");
             parameter.AppendSql("   AND ORDERCODE = 'USTCD'                                                     ");
@@ -471,7 +471,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT PTNO, STRESS_SOGEN      ");
-            parameter.AppendSql(" FROM KOSMOS_OCS.ETC_JUPMST    ");
+            parameter.AppendSql(" FROM ADMIN.ETC_JUPMST    ");
             parameter.AppendSql("WHERE RDate>=TRUNC(SYSDATE-3)  ");
             parameter.AppendSql("  AND RDate<=TRUNC(SYSDATE+1)  ");
             parameter.AppendSql("  AND DeptCode='TO'            ");
@@ -485,7 +485,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT FILEPATH                                    ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                       ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                       ");
             parameter.AppendSql(" WHERE RDate >= TO_DATE('2015-08-01','YYYY-MM-DD') ");
             parameter.AppendSql("   AND DeptCode = 'TO'                             ");
             parameter.AppendSql("   AND Gubun = '18'                                ");
@@ -499,7 +499,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID RID                               ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ETC_JUPMST                   ");
+            parameter.AppendSql("  FROM ADMIN.ETC_JUPMST                   ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                            ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE,'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND DEPTCODE = :DEPTCODE                    ");

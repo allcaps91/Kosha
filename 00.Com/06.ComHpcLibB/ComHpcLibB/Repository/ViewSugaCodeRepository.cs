@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT BAMT FROM KOSMOS_PMPA.VIEW_SUGA_CODE            ");
+            parameter.AppendSql("SELECT BAMT FROM ADMIN.VIEW_SUGA_CODE            ");
             parameter.AppendSql(" WHERE SUCODE LIKE :SUCODE                             ");
             parameter.AppendSql(" ORDER BY SUCODE                                       ");
 

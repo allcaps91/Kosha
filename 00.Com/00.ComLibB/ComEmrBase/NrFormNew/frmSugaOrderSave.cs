@@ -85,8 +85,8 @@ namespace ComEmrBase
                 //SQL = " SELECT ORDERNAME, QTY, ORDERCODE, SUCODE, GBINPUT, SLIPNO, BUN, SUBNAME, GBINFO, BUSE ";
                 SQL = " SELECT ";
                 SQL = SQL + ComNum.VBLF + "   (B.SEQNAME || RPAD(' ', 50, ' ') || B.SEQNO) AS SEQNAME";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRSUGAMAPPING A";
-                SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_PMPA.NUR_CAREMST B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRSUGAMAPPING A";
+                SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.NUR_CAREMST B";
                 SQL = SQL + ComNum.VBLF + "       ON A.SEQNO = B.SEQNO";
                 SQL = SQL + ComNum.VBLF + " WHERE A.FORMNO     = " + FormNo;
                 SQL = SQL + ComNum.VBLF + "   AND A.ITEMCD     = '" + Itemcd + "'";
@@ -158,9 +158,9 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + " , SUBNAME";
                 SQL = SQL + ComNum.VBLF + " , GBINFO";
                 SQL = SQL + ComNum.VBLF + " , BUSE";
-                SQL = SQL + ComNum.VBLF + " , (SELECT SEQNAME || RPAD(' ', 50, ' ') || SEQNO FROM KOSMOS_PMPA.NUR_CAREMST WHERE SEQNO = A.SEQNO AND ROWNUM = 1) AS SEQNAME";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRSUGAMAPPING A";
-                SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_PMPA.NUR_CARECODE B";
+                SQL = SQL + ComNum.VBLF + " , (SELECT SEQNAME || RPAD(' ', 50, ' ') || SEQNO FROM ADMIN.NUR_CAREMST WHERE SEQNO = A.SEQNO AND ROWNUM = 1) AS SEQNAME";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRSUGAMAPPING A";
+                SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.NUR_CARECODE B";
                 SQL = SQL + ComNum.VBLF + "       ON A.SEQNO = B.SEQNO";
                 SQL = SQL + ComNum.VBLF + " WHERE A.FORMNO     = " + FormNo;
                 SQL = SQL + ComNum.VBLF + "   AND A.ITEMCD     = '" + Itemcd + "'";
@@ -178,7 +178,7 @@ namespace ComEmrBase
                     SQL = SQL + ComNum.VBLF + "   AND A.SEQNO  = " + SeqNo;
                 }
                 //'2013-07-02 삭제처리된 오더코드 제외
-                SQL = SQL + ComNum.VBLF + "   AND (B.ORDERCODE, B.SUCODE) NOT IN ( SELECT ORDERCODE,SUCODE FROM KOSMOS_OCS.OCS_ORDERCODE WHERE SENDDEPT='N' ) ";
+                SQL = SQL + ComNum.VBLF + "   AND (B.ORDERCODE, B.SUCODE) NOT IN ( SELECT ORDERCODE,SUCODE FROM ADMIN.OCS_ORDERCODE WHERE SENDDEPT='N' ) ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY A.SEQNO";
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -238,7 +238,7 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL += " SELECT NAME, CODE                      \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_BCODE           \r";
+                SQL += "   FROM ADMIN.BAS_BCODE           \r";
                 SQL += "  WHERE GUBUN = 'OCS_불출부서_코드'       \r";
                 SQL += "  ORDER BY SORT                         \r";
                 
@@ -293,7 +293,7 @@ namespace ComEmrBase
                 string strSName = pAcp.ptName;
 
                 SQL = " SELECT PANO, SEX ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER WHERE PANO ='" + strPano + "' ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER WHERE PANO ='" + strPano + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND GBSTS IN ('0','2','3','4') ";
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -363,7 +363,7 @@ namespace ComEmrBase
 
 
                         //'입원1일처방한도 체크 2012-09-10
-                        SQL = "SELECT  SUCODE, FIELDA FROM KOSMOS_PMPA.BAS_MSELF_I ";
+                        SQL = "SELECT  SUCODE, FIELDA FROM ADMIN.BAS_MSELF_I ";
                         SQL = SQL + ComNum.VBLF + "  WHERE SUCODE = '" + strSucode + "' ";
                         SQL = SQL + ComNum.VBLF + "    AND GUBUNA ='8'";
                         SQL = SQL + ComNum.VBLF + "    AND GUBUNB ='5'";
@@ -637,10 +637,10 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + " SELECT B.SLIPNO, B.PTNO, B.GBSTATUS, B.ROWID , B.ORDERSITE, B.ORDERCODE, B.QTY,  B.GBINFO, ";
             SQL = SQL + ComNum.VBLF + " B.NURSEID, B.GBSEND , B.ORDERNO,  ";
             SQL = SQL + ComNum.VBLF + " C.ORDERNAME, B.SUBUL_WARD   ";
-            SQL = SQL + ComNum.VBLF + " , (SELECT BASNAME FROM KOSMOS_EMR.AEMRBASCD WHERE BSNSCLS = '기록지관리' AND UNITCLS IN ('임상관찰', '특수치료', '기본간호', '섭취배설', '간호활동항목') AND BASCD  = O.ITEMCD AND ROWNUM = 1) AS ITEMNM";
+            SQL = SQL + ComNum.VBLF + " , (SELECT BASNAME FROM ADMIN.AEMRBASCD WHERE BSNSCLS = '기록지관리' AND UNITCLS IN ('임상관찰', '특수치료', '기본간호', '섭취배설', '간호활동항목') AND BASCD  = O.ITEMCD AND ROWNUM = 1) AS ITEMNM";
             SQL = SQL + ComNum.VBLF + " , O.ITEMCD, O.ITEMVALUE";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_IORDER B";
-            SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRSUGAMAPPING_ORDER O";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_IORDER B";
+            SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.AEMRSUGAMAPPING_ORDER O";
             SQL = SQL + ComNum.VBLF + "       ON O.ORDERNO = B.ORDERNO";
             SQL = SQL + ComNum.VBLF + "      AND O.EMRNO = " + EmrNo;
             SQL = SQL + ComNum.VBLF + "      AND O.GBSTATUS NOT IN ('D-')";
@@ -665,7 +665,7 @@ namespace ComEmrBase
             {
                 SQL = SQL + ComNum.VBLF + "      AND O.ITEMVALUE IN ('삽입', '유지')";
             }
-            SQL = SQL + ComNum.VBLF + "     LEFT OUTER JOIN KOSMOS_OCS.OCS_ORDERCODE C ";
+            SQL = SQL + ComNum.VBLF + "     LEFT OUTER JOIN ADMIN.OCS_ORDERCODE C ";
             SQL = SQL + ComNum.VBLF + "       ON B.ORDERCODE = C.ORDERCODE";
             SQL = SQL + ComNum.VBLF + " WHERE B.PTNO = '" + pAcp.ptNo + "' ";
             SQL = SQL + ComNum.VBLF + "   AND B.BDATE = TO_DATE('" + ChartDate + "','YYYY-MM-DD') ";

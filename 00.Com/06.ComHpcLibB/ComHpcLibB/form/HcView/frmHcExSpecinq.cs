@@ -345,15 +345,15 @@ namespace ComHpcLibB.form.HcView
             SQL += "  		, A.ROOM                                      							    AS ROOM			-- 07       \r\n";
             SQL += "  		, A.DRCODE                                    							    AS DRCODE		-- 08       \r\n";
             SQL += "  		, A.WORKSTS                                   							    AS WORKSTS		-- 09       \r\n";
-            SQL += "  		, KOSMOS_OCS.FC_EXAM_RESULTC_EXAMNAME(A.SPECNO) 							AS EXAM_NAME	-- 10       \r\n";
-            SQL += "  		, KOSMOS_OCS.FC_EXAM_SPECMST_NM('14', A.SPECCODE,'Y') 					    AS SPECCODE_NM  -- 11       \r\n";
-            SQL += "  		, KOSMOS_OCS.FC_BAS_BCODE_NAME('EXAM_STATUS', A.STATUS) 	                AS STATUS_NM    -- 12       \r\n";
+            SQL += "  		, ADMIN.FC_EXAM_RESULTC_EXAMNAME(A.SPECNO) 							AS EXAM_NAME	-- 10       \r\n";
+            SQL += "  		, ADMIN.FC_EXAM_SPECMST_NM('14', A.SPECCODE,'Y') 					    AS SPECCODE_NM  -- 11       \r\n";
+            SQL += "  		, ADMIN.FC_BAS_BCODE_NAME('EXAM_STATUS', A.STATUS) 	                AS STATUS_NM    -- 12       \r\n";
             SQL += "  		, TO_CHAR(A.BLOODDATE,'YYYY-MM-DD HH24:MI') 							    AS BLOODDATE	-- 13       \r\n";
             SQL += "  		, TO_CHAR(A.BDATE,'YYYY-MM-DD') 										    AS BDATE        -- 14       \r\n";
             SQL += "  		, TO_CHAR(A.RESULTDATE,'YYYY-MM-DD HH24:MI')							    AS RESULTDATE   -- 15       \r\n";
             SQL += "  		, A.PANO        														    AS PANO			-- 16       \r\n";
             SQL += "  		, A.STATUS        														    AS STATUS       -- 17       \r\n";
-            SQL += "  		, KOSMOS_OCS.FC_EXAM_SPECMST_NM('21', A.CANCEL,'N')   				        AS CANCEL_NM    -- 18       \r\n";
+            SQL += "  		, ADMIN.FC_EXAM_SPECMST_NM('21', A.CANCEL,'N')   				        AS CANCEL_NM    -- 18       \r\n";
             SQL += "  		, A.IPDOPD                                              			        AS IPDOPD       -- 19       \r\n";
 
             if (isPB == true)
@@ -362,7 +362,7 @@ namespace ComHpcLibB.form.HcView
                 SQL += "          SELECT CASE WHEN COUNT(*) > 0 THEN 'Y'        \r\n";
                 SQL += "                  ELSE 'N'                              \r\n";
                 SQL += "                  END                                   \r\n";
-                SQL += "           FROM KOSMOS_OCS.EXAM_RESULTC B                          \r\n";
+                SQL += "           FROM ADMIN.EXAM_RESULTC B                          \r\n";
                 SQL += "          WHERE B.SPECNO = A.SPECNO                     \r\n";
                 SQL += "            AND B.SUBCODE = 'HR10'                      \r\n";
                 SQL += "        )                                                                      AS PB   --20                 \r\n";
@@ -374,7 +374,7 @@ namespace ComHpcLibB.form.HcView
             }
 
             SQL += "  		, A.CANCEL                                             			           AS CANCEL       -- 21        \r\n";
-            SQL += "    FROM KOSMOS_OCS.EXAM_SPECMST A                                                                              \r\n";
+            SQL += "    FROM ADMIN.EXAM_SPECMST A                                                                              \r\n";
             SQL += "   WHERE 1=1                                                                                                    \r\n";
 
             if (string.IsNullOrEmpty(strPANO.Trim()) == false)

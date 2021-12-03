@@ -78,7 +78,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT Pano cPano,TO_CHAR(OUTDATE,'YYYY-MM-DD') cOutDate ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.MID_DIAGNOSIS ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.MID_DIAGNOSIS ";
                 SQL = SQL + ComNum.VBLF + " WHERE OutDate >= TO_DATE('" + dtpFDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND OutDate <= TO_DATE('" + dtpTDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 if (chkMsym.Checked == true)
@@ -118,8 +118,8 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "    Sname,Idept,Tdept,TDoctor,TO_CHAR(InDate,'YYYY-MM-DD') InDate,";
                     SQL = SQL + ComNum.VBLF + "    Jilsu,Jumin2,Age,Bi,CResult,TModel,GbDie,Kukso,Kukso1,";
                     SQL = SQL + ComNum.VBLF + "    Kukso2,Kukso3,Sgun1,SGun1_B, sancd,NbGb,BabyType, ";
-                    SQL = SQL + ComNum.VBLF + "    KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(TDoctor) As TDoctor_Name";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.MID_SUMMARY ";
+                    SQL = SQL + ComNum.VBLF + "    ADMIN.FC_BAS_DOCTOR_DRNAME(TDoctor) As TDoctor_Name";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.MID_SUMMARY ";
                     SQL = SQL + ComNum.VBLF + "WHERE Pano = '" + strPano + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND OutDate = TO_DATE('" + strOutDate + "','YYYY-MM-DD') ";
                     if (strDeptCode != "**")
@@ -178,8 +178,8 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "    Sname,Idept,Tdept,TDoctor,TO_CHAR(InDate,'YYYY-MM-DD') InDate,";
                 SQL = SQL + ComNum.VBLF + "    Jilsu,Jumin2,Age,Bi,CResult,TModel,GbDie,Kukso,Kukso1,";
                 SQL = SQL + ComNum.VBLF + "    Kukso2,Kukso3,Sgun1,SGun1_B,Sancd,NbGb,BabyType,Canc, ";
-                SQL = SQL + ComNum.VBLF + "    KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(TDoctor) As TDoctor_Name";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.MID_SUMMARY ";
+                SQL = SQL + ComNum.VBLF + "    ADMIN.FC_BAS_DOCTOR_DRNAME(TDoctor) As TDoctor_Name";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.MID_SUMMARY ";
                 SQL = SQL + ComNum.VBLF + " WHERE OutDate >= TO_DATE('" + dtpFDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND OutDate <= TO_DATE('" + dtpTDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 if (strDeptCode != "**")
@@ -271,7 +271,7 @@ namespace ComLibB
                 {
                     //상병을 READ
                     SQL = "";
-                    SQL = "SELECT Diagnosis1 FROM KOSMOS_PMPA.MID_DIAGNOSIS ";
+                    SQL = "SELECT Diagnosis1 FROM ADMIN.MID_DIAGNOSIS ";
                     SQL = SQL + ComNum.VBLF + "WHERE Pano = '" + argDt.Rows[FnInx]["Pano"].ToString().Trim() + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND OUTDATE = TO_DATE('" + argDt.Rows[FnInx]["OutDate"].ToString().Trim() + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "  AND ROWNUM <  5 ";
@@ -339,7 +339,7 @@ namespace ComLibB
 
                         //상병을 READ
                         SQL = "";
-                        SQL = "SELECT Diagnosis1 FROM KOSMOS_PMPA.MID_DIAGNOSIS ";
+                        SQL = "SELECT Diagnosis1 FROM ADMIN.MID_DIAGNOSIS ";
                         SQL = SQL + ComNum.VBLF + "WHERE Pano = '" + argDt.Rows[FnInx]["Pano"].ToString().Trim() + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND OUTDATE = TO_DATE('" + argDt.Rows[FnInx]["OutDate"].ToString().Trim() + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "  AND ROWNUM  <  5 ";
@@ -366,7 +366,7 @@ namespace ComLibB
 
                         //수술코드 Display
                         SQL = "";
-                        SQL = "SELECT Operation FROM KOSMOS_PMPA.MID_OP ";
+                        SQL = "SELECT Operation FROM ADMIN.MID_OP ";
                         SQL = SQL + ComNum.VBLF + "WHERE Pano = '" + argDt.Rows[FnInx]["Pano"].ToString().Trim() + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND OUTDATE = TO_DATE('" + argDt.Rows[FnInx]["OutDate"].ToString().Trim() + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "  AND ROWNUM  < 4 ";
@@ -429,7 +429,7 @@ namespace ComLibB
 
                     //상병을 Display
                     SQL = "";
-                    SQL = "SELECT Diagnosis1 FROM KOSMOS_PMPA.MID_DIAGNOSIS ";
+                    SQL = "SELECT Diagnosis1 FROM ADMIN.MID_DIAGNOSIS ";
                     SQL = SQL + ComNum.VBLF + "WHERE Pano = '" + argDt.Rows[FnInx]["Pano"].ToString().Trim() + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND OUTDATE = TO_DATE('" + argDt.Rows[FnInx]["OutDate"].ToString().Trim() + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "  AND Diagnosis1 > ' ' ";
@@ -455,7 +455,7 @@ namespace ComLibB
 
                     //수술코드 Display
                     SQL = "";
-                    SQL = "SELECT Operation FROM KOSMOS_PMPA.MID_OP ";
+                    SQL = "SELECT Operation FROM ADMIN.MID_OP ";
                     SQL = SQL + ComNum.VBLF + "WHERE Pano = '" + argDt.Rows[FnInx]["Pano"].ToString().Trim() + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND OUTDATE = TO_DATE('" + argDt.Rows[FnInx]["OutDate"].ToString().Trim() + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "  AND Operation > ' ' ";
@@ -598,7 +598,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT Pano cPano,TO_CHAR(OUTDATE,'YYYY-MM-DD') cOutDate ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.MID_OP ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.MID_OP ";
                 SQL = SQL + ComNum.VBLF + " WHERE OutDate >= TO_DATE('" + dtpFDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND OutDate <= TO_DATE('" + dtpTDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 if (chkMsym.Checked == true)
@@ -637,8 +637,8 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "    Sname,Idept,Tdept,TDoctor,TO_CHAR(InDate,'YYYY-MM-DD') InDate,";
                     SQL = SQL + ComNum.VBLF + "    Jilsu,Jumin2,Age,Bi,CResult,TModel,GbDie,Kukso,Kukso1,";
                     SQL = SQL + ComNum.VBLF + "    Kukso2,Kukso3,Sgun1,SGun1_B,Sancd,NbGb,BabyType, ";
-                    SQL = SQL + ComNum.VBLF + "    KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(TDoctor) As TDoctor_Name";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.MID_SUMMARY ";
+                    SQL = SQL + ComNum.VBLF + "    ADMIN.FC_BAS_DOCTOR_DRNAME(TDoctor) As TDoctor_Name";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.MID_SUMMARY ";
                     SQL = SQL + ComNum.VBLF + "WHERE Pano = '" + strPano + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND OutDate = TO_DATE('" + strOutDate + "','YYYY-MM-DD') ";
                     if (strDeptCode != "**")
@@ -734,7 +734,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT DeptCode,DeptNameK ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_CLINICDEPT ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_CLINICDEPT ";
                 SQL = SQL + ComNum.VBLF + "WHERE DeptCode NOT IN ('II','R6','TO','AN','HR','PT','CS','ER') ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY PrintRanking,DeptCode ";
 
@@ -843,7 +843,7 @@ namespace ComLibB
                     try
                     {
                         SQL = "";
-                        SQL = "SELECT IllNameE, IllNameK FROM KOSMOS_PMPA.BAS_ILLS ";
+                        SQL = "SELECT IllNameE, IllNameK FROM ADMIN.BAS_ILLS ";
                         SQL = SQL + ComNum.VBLF + "WHERE IllCode = '" + strCode + "' ";
 
                         SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

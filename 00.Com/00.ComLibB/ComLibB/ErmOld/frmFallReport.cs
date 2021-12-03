@@ -373,7 +373,7 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "  AND ACTDATE = TO_DATE('" + dtpOPDDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD')";
                     if (GstrWardCodes == "OP" || cboWard.Text.Trim() == "OP")
                     {
-                        SQL = SQL + ComNum.VBLF + " AND PANO IN (SELECT PANO FROM KOSMOS_PMPA.ORAN_MASTER WHERE OPDATE = TO_DATE('" + dtpOPDDate.Value.ToString("yyyy-MM-dd") + "','YYYY--MM-DD') ) ";
+                        SQL = SQL + ComNum.VBLF + " AND PANO IN (SELECT PANO FROM ADMIN.ORAN_MASTER WHERE OPDATE = TO_DATE('" + dtpOPDDate.Value.ToString("yyyy-MM-dd") + "','YYYY--MM-DD') ) ";
                     }
                     else
                     {
@@ -528,7 +528,7 @@ namespace ComLibB
                         {
                             SQL = "";
                             SQL = " SELECT ROWID ";
-                            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_FALL_REPORT ";
+                            SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_FALL_REPORT ";
                             SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + dt.Rows[i]["Pano"].ToString().Trim() + "' ";
                             SQL = SQL + ComNum.VBLF + "   AND TRUNC(ACTDATE) = TO_DATE('" + dt.Rows[i]["Indate"].ToString().Trim() + "','YYYY-MM-DD')";
                         }
@@ -1093,7 +1093,7 @@ namespace ComLibB
                     }
 
                     SQL = "";
-                    SQL = " DELETE KOSMOS_PMPA.NUR_FALL_REPORT ";
+                    SQL = " DELETE ADMIN.NUR_FALL_REPORT ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + FstrROWID + "' ";
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                     if (SqlErr != "")
@@ -1915,7 +1915,7 @@ namespace ComLibB
                     {
                         SQL = "";
                         SQL = " SELECT EMRNO, FORMNO";
-                        SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_EMR.EMRXMLMST ";
+                        SQL = SQL + ComNum.VBLF + "   FROM ADMIN.EMRXMLMST ";
                         SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + ssView_Sheet1.Cells[5, 2].Text.Trim() + "'";
                         SQL = SQL + ComNum.VBLF + "      AND CHARTDATE >= '" + strInDate.Replace("-", "") + "'";
                         SQL = SQL + ComNum.VBLF + "      AND CHARTDATE <= '" + ComFunc.FormatStrToDateEx(ComQuery.CurrentDateTime(clsDB.DbCon, "D"), "D", "-").Replace("-", "") + "'";
@@ -1975,7 +1975,7 @@ namespace ComLibB
                                     SQL = " SELECT extractValue(chartxml, '//it50') HEIGHT, extractValue(chartxml, '//it49') WEIGHT";
                                     break;
                             }
-                            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML ";
+                            SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRXML ";
                             SQL = SQL + ComNum.VBLF + " WHERE EMRNO = " + strEMRNO;                     
 
                             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -2016,12 +2016,12 @@ namespace ComLibB
                             SQL = "";
                             SQL = SQL + ComNum.VBLF + "SELECT ";
                             SQL = SQL + ComNum.VBLF + "   (SELECT R.ITEMVALUE ";
-                            SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRCHARTROW R ";
+                            SQL = SQL + ComNum.VBLF + "    FROM ADMIN.AEMRCHARTROW R ";
                             SQL = SQL + ComNum.VBLF + "    WHERE R.EMRNO =  ";
                             SQL = SQL + ComNum.VBLF + "                (SELECT  ";
                             SQL = SQL + ComNum.VBLF + "                    MAX(A.EMRNO) ";
-                            SQL = SQL + ComNum.VBLF + "                FROM  KOSMOS_EMR.AEMRCHARTMST A ";
-                            SQL = SQL + ComNum.VBLF + "                INNER JOIN KOSMOS_EMR.AEMRCHARTROW B ";
+                            SQL = SQL + ComNum.VBLF + "                FROM  ADMIN.AEMRCHARTMST A ";
+                            SQL = SQL + ComNum.VBLF + "                INNER JOIN ADMIN.AEMRCHARTROW B ";
                             SQL = SQL + ComNum.VBLF + "                    ON A.EMRNO = B.EMRNO ";
                             SQL = SQL + ComNum.VBLF + "                    AND A.EMRNOHIS = B.EMRNOHIS ";
                             SQL = SQL + ComNum.VBLF + "                    AND B.ITEMNO  = 'I0000000002' ";
@@ -2033,12 +2033,12 @@ namespace ComLibB
                             SQL = SQL + ComNum.VBLF + "         AND R.ITEMNO  = 'I0000000002' ";
                             SQL = SQL + ComNum.VBLF + "    ) AS HEIGHT, ";
                             SQL = SQL + ComNum.VBLF + "    (SELECT R.ITEMVALUE ";
-                            SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRCHARTROW R ";
+                            SQL = SQL + ComNum.VBLF + "    FROM ADMIN.AEMRCHARTROW R ";
                             SQL = SQL + ComNum.VBLF + "    WHERE R.EMRNO =  ";
                             SQL = SQL + ComNum.VBLF + "                (SELECT  ";
                             SQL = SQL + ComNum.VBLF + "                    MAX(A.EMRNO) ";
-                            SQL = SQL + ComNum.VBLF + "                FROM  KOSMOS_EMR.AEMRCHARTMST A ";
-                            SQL = SQL + ComNum.VBLF + "                INNER JOIN KOSMOS_EMR.AEMRCHARTROW B ";
+                            SQL = SQL + ComNum.VBLF + "                FROM  ADMIN.AEMRCHARTMST A ";
+                            SQL = SQL + ComNum.VBLF + "                INNER JOIN ADMIN.AEMRCHARTROW B ";
                             SQL = SQL + ComNum.VBLF + "                    ON A.EMRNO = B.EMRNO ";
                             SQL = SQL + ComNum.VBLF + "                    AND A.EMRNOHIS = B.EMRNOHIS ";
                             SQL = SQL + ComNum.VBLF + "                    AND B.ITEMNO  = 'I0000000418' ";

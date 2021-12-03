@@ -43,10 +43,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.EXAMCODE, m.MASTERCODE, m.EXAMNAME, m.SPECCODE, m.TUBECODE, COUNT(a.EXAMCODE) AS CNT  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_BARCODE a                                                               ");
-            parameter.AppendSql("      ,KOSMOS_OCS.EXAM_MASTER m                                                                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_BARCODE a                                                               ");
+            parameter.AppendSql("      ,ADMIN.EXAM_MASTER m                                                                ");
             parameter.AppendSql(" WHERE a.GROUPCODE IN (                                                                        ");
-            parameter.AppendSql("       SELECT Code FROM KOSMOS_PMPA.HEA_SUNAPDTL WHERE WRTNO =:WRTNO)                          ");
+            parameter.AppendSql("       SELECT Code FROM ADMIN.HEA_SUNAPDTL WHERE WRTNO =:WRTNO)                          ");
             parameter.AppendSql("   AND a.EXAMCODE = m.MASTERCODE(+)                                                            ");
             parameter.AppendSql(" GROUP BY a.EXAMCODE,m.MASTERCODE,m.EXAMNAME,m.SPECCODE,m.TUBECODE                             ");
             parameter.AppendSql(" ORDER BY a.EXAMCODE,m.MASTERCODE,m.EXAMNAME,m.SPECCODE,m.TUBECODE                             ");
@@ -61,8 +61,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WSCODE1,WSCODE1POS,TUBECODE,SPECCODE,RESULTIN                             ");
             parameter.AppendSql("      ,MOTHER,UNITCODE,EQUCODE1,SERIES, PIECE, GBTLA, MASTERCODE                 ");
-            parameter.AppendSql("      ,KOSMOS_OCS.FC_BAS_BCODE_NAMEREAD('EXAM_응급실검사', MASTERCODE) AS CHKGWA ");
-            parameter.AppendSql("      ,KOSMOS_OCS.FC_WSGRP(WSCODE1) AS WSGRP_TITLE                               ");
+            parameter.AppendSql("      ,ADMIN.FC_BAS_BCODE_NAMEREAD('EXAM_응급실검사', MASTERCODE) AS CHKGWA ");
+            parameter.AppendSql("      ,ADMIN.FC_WSGRP(WSCODE1) AS WSGRP_TITLE                               ");
             parameter.AppendSql("  FROM " + ComNum.DB_MED + "EXAM_MASTER                                          ");
             parameter.AppendSql(" WHERE 1 = 1                                                                     ");
             parameter.AppendSql("   AND MASTERCODE =:MASTERCODE                                                  ");
@@ -76,7 +76,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MASTERCODE                  ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_MASTER      ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_MASTER      ");
             parameter.AppendSql(" WHERE WsCode1 > :MASTERCODEFR     ");
             parameter.AppendSql("   AND WsCode1 < :MASTERCODETO     ");
 
@@ -90,7 +90,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TRIM(EXAMNAME) EXAMNAME             ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_MASTER              ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_MASTER              ");
             parameter.AppendSql(" WHERE MASTERCODE = :MASTERCODE            ");
 
             parameter.Add("MASTERCODE", argCode.Trim());

@@ -1133,7 +1133,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "  AND Nu BETWEEN '" + strFnu + "' ";
             SQL += ComNum.VBLF + "  AND '" + strTnu + "' ";
             SQL += ComNum.VBLF + "  AND I.Sunext = B.Sunext";
-            SQL += ComNum.VBLF + "  AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
+            SQL += ComNum.VBLF + "  AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
             SQL += ComNum.VBLF + "  AND Bdate BETWEEN TO_DATE('" + dtpFdate.Text + "','YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "  AND TO_DATE('" + dtpTdate.Text + "','YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "GROUP BY Sucode, I.Sunext, SunameK, B.Bcode, BaseAmt, Qty,SUGBp,I.GBSUGBS,";
@@ -1571,7 +1571,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "  AND Bdate >= TO_DATE('" + dtpFdate.Text + "','YYYY-MM-DD')";
             SQL += ComNum.VBLF + "  AND Bdate <= TO_DATE('" + dtpTdate.Text + "','YYYY-MM-DD')";
             SQL += ComNum.VBLF + "  AND I.Sunext = B.Sunext";
-            SQL += ComNum.VBLF + "  AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
+            SQL += ComNum.VBLF + "  AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
             if (chkMinus.Checked == false)
             {
                 //2015-07-06
@@ -1837,7 +1837,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "  AND Bdate >= TO_DATE('" + dtpFdate.Text + "','YYYY-MM-DD')";
             SQL += ComNum.VBLF + "  AND Bdate <= TO_DATE('" + dtpTdate.Text + "','YYYY-MM-DD')";
             SQL += ComNum.VBLF + "  AND I.Sunext = B.Sunext";
-            SQL += ComNum.VBLF + "  AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
+            SQL += ComNum.VBLF + "  AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
 
             if (DateTime.Now.ToString("yyyy-MM-dd") == dtpTdate.Text && chkJin.Checked == true) // 진찰료포함
             {
@@ -2107,7 +2107,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "  AND Nu BETWEEN '" + strFnu + "' ";
             SQL += ComNum.VBLF + "  AND '" + strTnu + "' ";
             SQL += ComNum.VBLF + "  AND I.Sunext = B.Sunext";
-            SQL += ComNum.VBLF + "  AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
+            SQL += ComNum.VBLF + "  AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
             SQL += ComNum.VBLF + "  AND Bdate BETWEEN TO_DATE('" + dtpFdate.Text + "','YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "  AND TO_DATE('" + dtpTdate.Text + "','YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "GROUP BY Sucode, I.Sunext, SunameK, Hcode, BaseAmt, Qty,";
@@ -2669,7 +2669,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "  AND Nu BETWEEN '" + strFnu + "' ";
             SQL += ComNum.VBLF + "  AND '" + strTnu + "' ";
             SQL += ComNum.VBLF + "  AND I.Sunext = B.Sunext";
-            SQL += ComNum.VBLF + "  AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
+            SQL += ComNum.VBLF + "  AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
             SQL += ComNum.VBLF + "  AND Bdate BETWEEN TO_DATE('" + dtpFdate.Text + "','YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "  AND TO_DATE('" + dtpTdate.Text + "','YYYY-MM-DD') ";
             SQL += ComNum.VBLF + "GROUP BY Sucode, I.Sunext, SunameK, B.Bcode, BaseAmt, Qty,SUGBp,I.GBSUGBS,";

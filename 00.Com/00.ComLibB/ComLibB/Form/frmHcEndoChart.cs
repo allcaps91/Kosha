@@ -106,7 +106,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE, DEPTCODE, PANO, SNAME, SEX || '/' || AGE SEXAGE";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.OPD_MASTER ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.OPD_MASTER ";
                 SQL = SQL + ComNum.VBLF + "  WHERE BDATE = TO_DATE('" + DtpSDate.Value.ToShortDateString() + "', 'YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "    AND DEPTCODE IN('HR', 'TO') ";
                 SQL = SQL + ComNum.VBLF + "  ORDER BY SNAME ";

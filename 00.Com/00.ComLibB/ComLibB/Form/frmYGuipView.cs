@@ -347,7 +347,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "INSERT INTO EDI_YAKGUIP_DEL (SDATE,SEQNO,BUNGI,Gbn,BCode,GDATE,TOTQTY,TOTAMT,AVGAMT,BASEAMT,GASANAMT,PRICE,DelDate,DELSABUN) ";
                 SQL = SQL + ComNum.VBLF + "SELECT SDATE,SEQNO,BUNGI,Gbn,BCode,GDATE,TOTQTY,TOTAMT,AVGAMT,BASEAMT,GASANAMT,PRICE, SYSDATE, '" + mstrJobSabun + "'";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.EDI_YAKGUIP ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.EDI_YAKGUIP ";
                 SQL = SQL + ComNum.VBLF + "WHERE ROWID = '" + strROWID + "' ";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
 

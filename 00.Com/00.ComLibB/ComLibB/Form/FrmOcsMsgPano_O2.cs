@@ -152,7 +152,7 @@ namespace ComLibB
 
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return; //권한 확인
 
-                SQL = " SELECT SABUN, KORNAME  FROM KOSMOS_ADM.INSA_MST ";
+                SQL = " SELECT SABUN, KORNAME  FROM ADMIN.INSA_MST ";
                 SQL = SQL + ComNum.VBLF + " WHERE TOIDAY IS NULL ";     //'재직자
                 SQL = SQL + ComNum.VBLF + "   AND BUSE ='078201' ";
 
@@ -267,7 +267,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return; //권한 확인
 
                 SQL = " SELECT A.PANO APANO , A.SNAME,  B.PANO BPANO, A.BI,B.DEPTCODE,B.MEMO,TO_CHAR(B.SDATE,'YYYY-MM-DD') SDATE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT A, KOSMOS_PMPA.BAS_OCSMEMO_O2 B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PATIENT A, ADMIN.BAS_OCSMEMO_O2 B ";
                 if (rdoRegPerson.Checked == true)
                 {
                     SQL = SQL + ComNum.VBLF + " WHERE A.PANO = B.PANO";
@@ -390,7 +390,7 @@ namespace ComLibB
 
                 if (FGstrROWID == "")
                 {
-                    SQL = " SELECT MAX(WRTNO) MWRTNO FROM KOSMOS_PMPA.BAS_OCSMEMO_O2 ";
+                    SQL = " SELECT MAX(WRTNO) MWRTNO FROM ADMIN.BAS_OCSMEMO_O2 ";
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
                     if (SqlErr != "")
@@ -414,7 +414,7 @@ namespace ComLibB
                     dt.Dispose();
                     dt = null;
 
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_OCSMEMO_O2 (  PANO, SNAME, MEMO, SDATE, DDATE, WRTNO, GBJOB, MEMO2 , ENTSABUN, DEPTCODE ) VALUES (";
+                    SQL = " INSERT INTO ADMIN.BAS_OCSMEMO_O2 (  PANO, SNAME, MEMO, SDATE, DDATE, WRTNO, GBJOB, MEMO2 , ENTSABUN, DEPTCODE ) VALUES (";
                     SQL = SQL + ComNum.VBLF + " '" + FstrPANO + "', '" + FstrSNAME + "', :MEMO, TRUNC(SYSDATE), '' , '" + FdblWRTNO + "', ";
 
                     if (FstrJOB == "고지혈")
@@ -446,7 +446,7 @@ namespace ComLibB
                     }
 
                     
-                    //SQL = "UPDATE KOSMOS_PMPA.BAS_OCSMEMO_O2 SET ";
+                    //SQL = "UPDATE ADMIN.BAS_OCSMEMO_O2 SET ";
                     //SQL = SQL + ComNum.VBLF + "  MEMO = :MEMO ";
                     //SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + FstrPANO + "' ";
                     //SQL = SQL + ComNum.VBLF + "   AND WRTNO = '" + FdblWRTNO + "' ";
@@ -459,7 +459,7 @@ namespace ComLibB
 
 
 
-                    SQL = " SELECT ROWID FROM KOSMOS_PMPA.BAS_OCSMEMO_O2 WHERE PANO = '" + FstrPANO + "'  AND WRTNO = '" + FdblWRTNO + "' ";
+                    SQL = " SELECT ROWID FROM ADMIN.BAS_OCSMEMO_O2 WHERE PANO = '" + FstrPANO + "'  AND WRTNO = '" + FdblWRTNO + "' ";
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
                     if (SqlErr != "")
@@ -481,7 +481,7 @@ namespace ComLibB
                 }
                 else
                 {
-                    SQL = " UPDATE KOSMOS_PMPA.BAS_OCSMEMO_O2";
+                    SQL = " UPDATE ADMIN.BAS_OCSMEMO_O2";
                     SQL = SQL + ComNum.VBLF + " SET";
                     SQL = SQL + ComNum.VBLF + " MEMO2 = '" + txtInfoSim.Text + "',";
                     SQL = SQL + ComNum.VBLF + " MEMO = :MEMO,";
@@ -499,7 +499,7 @@ namespace ComLibB
                         return rtVal;
                     }
 
-                    //SQL = "UPDATE KOSMOS_PMPA.BAS_OCSMEMO_O2 SET ";
+                    //SQL = "UPDATE ADMIN.BAS_OCSMEMO_O2 SET ";
                     //SQL = SQL + ComNum.VBLF + "  MEMO = :MEMO ";
                     //SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + FGstrROWID + "' ";
 
@@ -559,7 +559,7 @@ namespace ComLibB
 
                     SCREEN_CLEAR();
 
-                    SQL = " SELECT ROWID FROM KOSMOS_PMPA.BAS_OCSMEMO_O2 ";
+                    SQL = " SELECT ROWID FROM ADMIN.BAS_OCSMEMO_O2 ";
                     SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + GstrHelpCode + "' ";
                     SQL = SQL + ComNum.VBLF + "    AND GBJOB ='2'  "; //'고지혈증
 
@@ -655,7 +655,7 @@ namespace ComLibB
 
                     SCREEN_CLEAR();
 
-                    SQL = " SELECT ROWID FROM KOSMOS_PMPA.BAS_OCSMEMO_O2 ";
+                    SQL = " SELECT ROWID FROM ADMIN.BAS_OCSMEMO_O2 ";
                     SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + GstrHelpCode + "' ";
                     SQL = SQL + ComNum.VBLF + "    AND GBJOB ='3'  "; //'간장용제
 
@@ -752,7 +752,7 @@ namespace ComLibB
 
                     SCREEN_CLEAR();
 
-                    SQL = " SELECT ROWID FROM KOSMOS_PMPA.BAS_OCSMEMO_O2 ";
+                    SQL = " SELECT ROWID FROM ADMIN.BAS_OCSMEMO_O2 ";
                     SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + GstrHelpCode + "' ";
                     SQL = SQL + ComNum.VBLF + "    AND GBJOB ='5'  "; //'치매약제
 
@@ -841,7 +841,7 @@ namespace ComLibB
             {
                 if (ComQuery.IsJobAuth(this, "U", clsDB.DbCon) == false) return rtVal; ; //권한 확인
 
-                SQL = " UPDATE KOSMOS_PMPA.BAS_OCSMEMO_O2  SET DDATE = TRUNC(SYSDATE) WHERE ROWID = '" + FGstrROWID + "' ";
+                SQL = " UPDATE ADMIN.BAS_OCSMEMO_O2  SET DDATE = TRUNC(SYSDATE) WHERE ROWID = '" + FGstrROWID + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -932,7 +932,7 @@ namespace ComLibB
 
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return; //권한 확인
 
-                SQL = " SELECT PANO , SNAME FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = " SELECT PANO , SNAME FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + txtPano.Text + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1002,7 +1002,7 @@ namespace ComLibB
 
                 SQL = " SELECT PANO, SNAME, TO_CHAR(SDATE,'YYYY-MM-DD') SDATE, TO_CHAR(DDATE,'YYYY-MM-DD') DDATE,";
                 SQL = SQL + ComNum.VBLF + " WRTNO, ROWID";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_OCSMEMO_O2 ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_OCSMEMO_O2 ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + FstrPANO + "'";
                 if (FstrJOB == "고지혈")
                 {
@@ -1149,7 +1149,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return; //권한 확인
 
                 SQL = " SELECT MEMO, MEMO2 , DEPTCODE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_OCSMEMO_O2 ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_OCSMEMO_O2 ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + FGstrROWID + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1210,7 +1210,7 @@ namespace ComLibB
             {
                 if (ComQuery.IsJobAuth(this, "U", clsDB.DbCon) == false) return rtVal; ; //권한 확인
 
-                SQL = " DELETE KOSMOS_PMPA.BAS_OCSMEMO_O2 WHERE ROWID = '" + FGstrROWID + "'       ";
+                SQL = " DELETE ADMIN.BAS_OCSMEMO_O2 WHERE ROWID = '" + FGstrROWID + "'       ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")

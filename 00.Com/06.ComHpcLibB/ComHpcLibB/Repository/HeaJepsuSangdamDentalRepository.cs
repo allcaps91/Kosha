@@ -25,19 +25,19 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT a.WRTNO, a.SNAME,TO_CHAR(a.SDATE,'YY-MM-DD') SDATE                          ");
             parameter.AppendSql("     , TO_CHAR(a.SDATE, 'YYYY-MM-DD') SDATE2                                       ");
-            parameter.AppendSql("     , TRIM(a.GJJONG) || '.' || KOSMOS_PMPA.FC_HEA_GJJONG_NAME(a.GJJONG) GJJONG    ");
+            parameter.AppendSql("     , TRIM(a.GJJONG) || '.' || ADMIN.FC_HEA_GJJONG_NAME(a.GJJONG) GJJONG    ");
             if (strJob == "1")
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU        a                                          ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HEA_SANGDAM_WAIT b                                          ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HEA_DENTAL       c                                          ");
+                parameter.AppendSql("  FROM ADMIN.HEA_JEPSU        a                                          ");
+                parameter.AppendSql("     , ADMIN.HEA_SANGDAM_WAIT b                                          ");
+                parameter.AppendSql("     , ADMIN.HEA_DENTAL       c                                          ");
                 parameter.AppendSql(" WHERE b.ENTTIME >= TO_DATE(:FRDATE,'YYYY-MM-DD')                              ");
                 parameter.AppendSql("   AND b.ENTTIME <  TO_DATE(:TODATE,'YYYY-MM-DD')                              ");
             }
             else
             {
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU  a                                                ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HEA_DENTAL c                                                ");
+                parameter.AppendSql("  FROM ADMIN.HEA_JEPSU  a                                                ");
+                parameter.AppendSql("     , ADMIN.HEA_DENTAL c                                                ");
                 parameter.AppendSql(" WHERE c.JEPDATE = TO_DATE(:FRDATE, 'YYYY-MM-DD')                              ");
             }
             if (strJob == "1")

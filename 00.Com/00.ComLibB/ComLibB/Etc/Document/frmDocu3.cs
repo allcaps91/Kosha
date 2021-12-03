@@ -116,7 +116,7 @@ namespace ComLibB
             //'---< 부서코드 (반단위) >----------------------------------------
             string strBuse = "";
 
-            SQL = "SELECT BUSE FROM KOSMOS_ADM.INSA_DOCU_BUSE ";
+            SQL = "SELECT BUSE FROM ADMIN.INSA_DOCU_BUSE ";
             SQL = SQL + ComNum.VBLF + " WHERE DELDATE IS NULL ";
 
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -149,7 +149,7 @@ namespace ComLibB
 
             //'수정(允2006-01-10) 심사계 => 심사과
             //
-            //'    strSql = " SELECT  Bucode, Name  FROM  KOSMOS_PMPA.BAS_BUSE "
+            //'    strSql = " SELECT  Bucode, Name  FROM  ADMIN.BAS_BUSE "
             //'    strSql = strSql & " WHERE  Bucode IN ('033101','044101','044201','044301','044501','055100','055200', '066101','077101', '070101',"
             //'                                          '간호부 약제과   기록실 영양실  건강관리 방사선   임상병리 관리과   비서실 기획행정과
             //'    strSql = strSql & "                   '077501','078201','077601','077201','077301','077401','088100', '077701','076010',         "
@@ -157,7 +157,7 @@ namespace ComLibB
             //'    strSql = strSql & "                    '044401','044411','055301','077901','076001', '078101','078001', '088201', '076010', '101730') "
             //'                                          '정신의료 임상심리                  적정관리실 QI실   감염관리실 장례식장 구매과, 어린이집
 
-            SQL = "SELECT BUCODE, NAME FROM KOSMOS_PMPA.BAS_BUSE ";
+            SQL = "SELECT BUCODE, NAME FROM ADMIN.BAS_BUSE ";
             SQL = SQL + ComNum.VBLF + " WHERE BUCODE IN (" + strBuse + ") ";
             SQL = SQL + ComNum.VBLF + " ORDER BY BUCODE ";
 
@@ -192,7 +192,7 @@ namespace ComLibB
 
             SQL = "SELECT YEAR, SEQNO, DOCUNO, PLACENAME, PLACENAME2, DOCUNAME, BUSE, OUTMAN, PAGE, ";
             SQL = SQL + ComNum.VBLF + "       TO_CHAR(WORKDAY, 'YYYY-MM-DD') WORKDAY";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_DOCU2 ";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_DOCU2 ";
 
             if (OptGB0.Checked == true)
             {
@@ -252,7 +252,7 @@ namespace ComLibB
             SsList.ActiveSheet.RowCount = 0;
 
             SQL = "SELECT SEQNO, DOCUNO, DOCUNAME, PLACENAME, PLACENAME2, OUTMAN, TO_CHAR(WORKDAY, 'YYYY-MM-DD') WORKDAY, PAGE";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_DOCU2";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_DOCU2";
             SQL = SQL + ComNum.VBLF + " WHERE YEAR = '" + TxtYear.Text + "'";
 
             if (OptGB0.Checked == true)
@@ -401,7 +401,7 @@ namespace ComLibB
                 cGubun = "1";
             }
 
-            SQL = "SELECT * FROM KOSMOS_ADM.INSA_DOCU2 ";
+            SQL = "SELECT * FROM ADMIN.INSA_DOCU2 ";
             SQL = SQL + ComNum.VBLF + " WHERE YEAR = '" + cYear + "' ";
             SQL = SQL + ComNum.VBLF + "   AND SEQNO = '" + cSeqNo + "' ";
             SQL = SQL + ComNum.VBLF + "   AND GUBUN = '" + cGubun + "' ";
@@ -418,7 +418,7 @@ namespace ComLibB
 
             if (dt.Rows.Count == 0)
             {
-                SQL = "INSERT INTO KOSMOS_ADM.INSA_DOCU2 ";
+                SQL = "INSERT INTO ADMIN.INSA_DOCU2 ";
                 SQL = SQL + ComNum.VBLF + " (YEAR, SEQNO, GUBUN, DOCUNO,";
                 SQL = SQL + ComNum.VBLF + "  WORKDAY, PLACENAME, PLACENAME2, DOCUNAME, BUSE, OUTMAN, PAGE, BUSEGBN)";
                 SQL = SQL + ComNum.VBLF + "  VALUES (";
@@ -457,7 +457,7 @@ namespace ComLibB
             }
             else
             {
-                SQL = "UPDATE KOSMOS_ADM.INSA_DOCU2 SET";
+                SQL = "UPDATE ADMIN.INSA_DOCU2 SET";
                 SQL = SQL + ComNum.VBLF + "       DOCUNO = '" + VB.Trim(TxtDocuNo.Text) + "', ";
                 SQL = SQL + ComNum.VBLF + "       WORKDAY = TO_DATE('" + DtpWorkDay.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'), ";
                 SQL = SQL + ComNum.VBLF + "       PLACENAME = '" + VB.Trim(CboPlaceName.Text) + "', ";
@@ -509,7 +509,7 @@ namespace ComLibB
             if (OptGB0.Checked == true) cGubun = "0";
             if (OptGB1.Checked == true) cGubun = "1";
 
-            SQL = "DELETE FROM KOSMOS_ADM.INSA_DOCU2 ";
+            SQL = "DELETE FROM ADMIN.INSA_DOCU2 ";
             SQL = SQL + ComNum.VBLF + " WHERE YEAR = '" + cYear + "'";
             SQL = SQL + ComNum.VBLF + "   AND SEQNO = '" + cSeqNo + "'";
             SQL = SQL + ComNum.VBLF + "   AND GUBUN = '" + cGubun + "'";
@@ -548,7 +548,7 @@ namespace ComLibB
             int nMaxNo = 0;
 
             SQL = "SELECT NVL(MAX(SEQNO), 0) AS MAXNO";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_DOCU2";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_DOCU2";
 
             if (OptGB0.Checked == true)
             {

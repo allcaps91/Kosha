@@ -359,10 +359,10 @@ namespace ComLibB
                         {
                             //2019-06-04 Negative 일때 삭제추가
                             SQL = "";
-                            SQL = " INSERT INTO KOSMOS_PMPA.ETC_ALLERGY_MST_HIS ";
+                            SQL = " INSERT INTO ADMIN.ETC_ALLERGY_MST_HIS ";
                             SQL = SQL + ComNum.VBLF + " (PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, WRITEDATE, DELSABUN) ";
                             SQL = SQL + ComNum.VBLF + " SELECT PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, SYSDATE, " + txtSabun.Text;
-                            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_ALLERGY_MST";
+                            SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_ALLERGY_MST";
                             SQL = SQL + ComNum.VBLF + "     WHERE UPPER(REMARK) LIKE '%" + strORDERCODE.ToUpper() + "%' ";
                             SQL = SQL + ComNum.VBLF + "         AND PANO = '" + strPtNo + "' ";
 
@@ -432,7 +432,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT TO_CHAR(A.BDATE,'YYYY-MM-DD') AS BDATE, A.SUCODE, B.GBN, B.SDATE, B.ROWID, B.JOBNAME, B.GBIOE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_oORDER A, KOSMOS_PMPA.NUR_AST B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_oORDER A, ADMIN.NUR_AST B";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PTNO = B.PTNO(+)";
                 SQL = SQL + ComNum.VBLF + " AND A.SUCODE = B.ORDERCODE(+)";
                 SQL = SQL + ComNum.VBLF + " AND A.BDATE = TO_DATE('" + strInDate + "','YYYY-MM-DD')";
@@ -442,7 +442,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " GROUP BY A.BDATE, A.SUCODE, B.GBN, B.SDATE,  B.ROWID, B.JOBNAME, B.GBIOE";
                 SQL = SQL + ComNum.VBLF + "UNION ALL";
                 SQL = SQL + ComNum.VBLF + "SELECT TO_CHAR(B.SDATE, 'YYYY-MM-DD') AS BDATE, A.SUCODE, B.GBN, B.SDATE, B.ROWID, B.JOBNAME, B.GBIOE    ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_IORDER A, KOSMOS_PMPA.NUR_AST B    ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_IORDER A, ADMIN.NUR_AST B    ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.PTNO = B.PTNO(+)    ";
                 SQL = SQL + ComNum.VBLF + "     AND A.SUCODE = B.ORDERCODE(+)    ";
                 SQL = SQL + ComNum.VBLF + "     AND A.BDATE >= TO_DATE('" + strInDate + "', 'YYYY-MM-DD')    ";
@@ -578,7 +578,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT Code, Remark, SABUN, TO_CHAR(ENTDATE,'YYYY-MM-DD') ENTDATE ";
-                SQL = SQL + ComNum.VBLF + " FROM  KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                SQL = SQL + ComNum.VBLF + " FROM  ADMIN.ETC_ALLERGY_MST ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO ='" + strPano + "' ";
                 SQL = SQL + ComNum.VBLF + "  ORDER BY Code ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -695,7 +695,7 @@ namespace ComLibB
             //알러지 Setting
             SQL = "";
             SQL = " SELECT A.GUBUN, A.CODE, A.NAME, TO_CHAR(B.ENTDATE) ENTDATE, B.REMARK, B.SABUN ";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE A, KOSMOS_PMPA.ETC_ALLERGY_MST B ";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE A, ADMIN.ETC_ALLERGY_MST B ";
             SQL = SQL + ComNum.VBLF + " WHERE GUBUN = '환자정보_알러지종류' ";
             SQL = SQL + ComNum.VBLF + "  AND a.CODE = b.CODE ";
             SQL = SQL + ComNum.VBLF + "  AND b.CODE IN ('001','002','006') ";
@@ -726,7 +726,7 @@ namespace ComLibB
 
             SQL = "";
             SQL = " SELECT A.GUBUN, A.CODE, A.NAME, TO_CHAR(B.ENTDATE) ENTDATE, B.REMARK, B.DELSABUN ";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE A, KOSMOS_PMPA.ETC_ALLERGY_MST_HIS B ";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE A, ADMIN.ETC_ALLERGY_MST_HIS B ";
             SQL = SQL + ComNum.VBLF + " WHERE GUBUN = '환자정보_알러지종류' ";
             SQL = SQL + ComNum.VBLF + "  AND a.CODE = b.CODE ";
             SQL = SQL + ComNum.VBLF + "  AND b.CODE IN ('001','002','006') ";
@@ -767,12 +767,12 @@ namespace ComLibB
 
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT PANO, SNAME, CODE, TO_CHAR(ENTDATE, 'YYYY-MM-DD HH24:MI:SS') ENTDATE, REMARK, SABUN, DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR,  '' WRITEDATE, NULL DELSABUN, '' SAYU";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.ETC_ALLERGY_MST";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.ETC_ALLERGY_MST";
             SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + txtPano.Text + "' ";
             SQL = SQL + ComNum.VBLF + "AND CODE = '100' ";
             SQL = SQL + ComNum.VBLF + "UNION ALL ";
             SQL = SQL + ComNum.VBLF + "SELECT PANO, SNAME, CODE, TO_CHAR(ENTDATE, 'YYYY-MM-DD HH24:MI:SS') ENTDATE, REMARK, SABUN, DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR, TO_CHAR(WRITEDATE, 'YYYY-MM-DD HH24:MI:SS') WRITEDATE, DELSABUN, SAYU ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.ETC_ALLERGY_MST_HIS";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.ETC_ALLERGY_MST_HIS";
             SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + txtPano.Text + "' ";
             SQL = SQL + ComNum.VBLF + "AND CODE = '100' ";
             SQL = SQL + ComNum.VBLF + "ORDER BY WRITEDATE DESC, ENTDATE DESC  ";
@@ -909,7 +909,7 @@ namespace ComLibB
                 {
                     strRemark = txt1[i].Text.Trim();
                     SQL = "";
-                    SQL = " SELECT ROWID, REMARK FROM KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                    SQL = " SELECT ROWID, REMARK FROM ADMIN.ETC_ALLERGY_MST ";
                     SQL = SQL + ComNum.VBLF + " WHERE Pano = '" + strPano + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND Code ='" + VB.Pstr(chk[i].Text, ".", 1).Trim() + "' ";
                     strROWID5 = "";
@@ -932,7 +932,7 @@ namespace ComLibB
                     if (chk[i].Checked == true)
                     {
                         SQL = "";
-                        SQL = " SELECT ROWID FROM KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                        SQL = " SELECT ROWID FROM ADMIN.ETC_ALLERGY_MST ";
                         SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID5 + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND Code ='" + VB.Pstr(chk[i].Text, ".", 1).Trim() + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND REMARK = '" + strRemark + "' ";
@@ -954,10 +954,10 @@ namespace ComLibB
                         if (strROWID5 != "" && strChange == "Y")
                         {
                             SQL = "";
-                            SQL = " INSERT INTO KOSMOS_PMPA.ETC_ALLERGY_MST_HIS ";
+                            SQL = " INSERT INTO ADMIN.ETC_ALLERGY_MST_HIS ";
                             SQL = SQL + ComNum.VBLF + " (PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, WRITEDATE, DELSABUN, DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR) ";
                             SQL = SQL + ComNum.VBLF + " SELECT PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, SYSDATE, " + txtSabun.Text + ", DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR";
-                            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_ALLERGY_MST";
+                            SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_ALLERGY_MST";
                             SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID5 + "' ";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                             if (SqlErr != "")
@@ -992,7 +992,7 @@ namespace ComLibB
                         {
                             //추가
                             SQL = "";
-                            SQL = " INSERT INTO KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                            SQL = " INSERT INTO ADMIN.ETC_ALLERGY_MST ";
                             SQL = SQL + ComNum.VBLF + " (PANO, SNAME, CODE, REMARK, ";
                             SQL = SQL + ComNum.VBLF + " ENTDATE, SABUN) VALUES (  ";
                             SQL = SQL + ComNum.VBLF + " '" + strPano + "', '" + strSname + "', ";
@@ -1013,10 +1013,10 @@ namespace ComLibB
                     else if (strROWID5 != "")
                     {
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_PMPA.ETC_ALLERGY_MST_HIS ";
+                        SQL = " INSERT INTO ADMIN.ETC_ALLERGY_MST_HIS ";
                         SQL = SQL + ComNum.VBLF + " (PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, WRITEDATE, DELSABUN, DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR) ";
                         SQL = SQL + ComNum.VBLF + " SELECT PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, SYSDATE, " + txtSabun.Text + ", DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_ALLERGY_MST ";
                         SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID5 + "' ";
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                         if (SqlErr != "")
@@ -1029,7 +1029,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = "  DELETE FROM KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                        SQL = "  DELETE FROM ADMIN.ETC_ALLERGY_MST ";
                         SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + strROWID5 + "' ";
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                         if (SqlErr != "")
@@ -1058,10 +1058,10 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_PMPA.ETC_ALLERGY_MST_HIS ";
+                        SQL = " INSERT INTO ADMIN.ETC_ALLERGY_MST_HIS ";
                         SQL = SQL + ComNum.VBLF + " (PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, WRITEDATE, DELSABUN, DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR, SAYU) ";
                         SQL = SQL + ComNum.VBLF + " SELECT PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, SYSDATE, " + txtSabun.Text + ", DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR, '" + ssAllergy_Sheet1.Cells[j, 13].Text + "'";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_ALLERGY_MST ";
                         SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + txtPano.Text + "' ";
                         SQL = SQL + ComNum.VBLF + " AND CODE = '100' ";
                         SQL = SQL + ComNum.VBLF + " AND DAMCD = '" + ssAllergy_Sheet1.Cells[j, 8].Text + "' ";
@@ -1076,7 +1076,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " DELETE FROM KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                        SQL = " DELETE FROM ADMIN.ETC_ALLERGY_MST ";
                         SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + txtPano.Text + "' ";
                         SQL = SQL + ComNum.VBLF + " AND CODE = '100' ";
                         SQL = SQL + ComNum.VBLF + " AND DAMCD = '" + ssAllergy_Sheet1.Cells[j, 8].Text + "' ";
@@ -1108,7 +1108,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " SELECT ROWID, REMARK FROM KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                        SQL = " SELECT ROWID, REMARK FROM ADMIN.ETC_ALLERGY_MST ";
                         SQL = SQL + ComNum.VBLF + " WHERE Pano = '" + strPano + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND Code ='100' ";
                         SQL = SQL + ComNum.VBLF + "  AND DAMCD =  '" + ssAllergy_Sheet1.Cells[j, 8].Text + "'";
@@ -1132,7 +1132,7 @@ namespace ComLibB
                         if (ssAllergy_Sheet1.Cells[j, 0].Text != "True")
                         {
                             SQL = "";
-                            SQL = " SELECT ROWID FROM KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                            SQL = " SELECT ROWID FROM ADMIN.ETC_ALLERGY_MST ";
                             SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID5 + "' ";
                             SQL = SQL + ComNum.VBLF + "  AND Code ='100' ";
                             SQL = SQL + ComNum.VBLF + "  AND RMK = '" + strRemark + "' ";
@@ -1162,10 +1162,10 @@ namespace ComLibB
 
 
                                 SQL = "";
-                                SQL = " INSERT INTO KOSMOS_PMPA.ETC_ALLERGY_MST_HIS ";
+                                SQL = " INSERT INTO ADMIN.ETC_ALLERGY_MST_HIS ";
                                 SQL = SQL + ComNum.VBLF + " (PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, WRITEDATE, DELSABUN, DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR, SAYU) ";
                                 SQL = SQL + ComNum.VBLF + " SELECT PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, SYSDATE, " + txtSabun.Text + ", DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR, '" + ssAllergy_Sheet1.Cells[j, 13].Text + "'";
-                                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_ALLERGY_MST";
+                                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_ALLERGY_MST";
                                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID5 + "' ";
                                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                                 if (SqlErr != "")
@@ -1201,7 +1201,7 @@ namespace ComLibB
                             {
                                 //추가
                                 SQL = "";
-                                SQL = " INSERT INTO KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                                SQL = " INSERT INTO ADMIN.ETC_ALLERGY_MST ";
                                 SQL = SQL + ComNum.VBLF + " (PANO, SNAME, CODE,  ";
                                 SQL = SQL + ComNum.VBLF + " ENTDATE, SABUN,DAMCD,DAMTYPE,RMK,REMARK,DAMTYPENM,DAMDESC,DAMDESCKR) ";
                                 SQL = SQL + ComNum.VBLF + "     VALUES('" + txtPano.Text + "',";
@@ -1238,10 +1238,10 @@ namespace ComLibB
                         else if (strROWID5 != "")
                         {
                             SQL = "";
-                            SQL = " INSERT INTO KOSMOS_PMPA.ETC_ALLERGY_MST_HIS ";
+                            SQL = " INSERT INTO ADMIN.ETC_ALLERGY_MST_HIS ";
                             SQL = SQL + ComNum.VBLF + " (PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, WRITEDATE, DELSABUN, DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR) ";
                             SQL = SQL + ComNum.VBLF + " SELECT PANO, SNAME, CODE, ENTDATE, REMARK, SABUN, SYSDATE, " + txtSabun.Text + ", DAMCD, DAMTYPE, RMK, DAMTYPENM, DAMDESC, DAMDESCKR";
-                            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                            SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_ALLERGY_MST ";
                             SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID5 + "' ";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                             if (SqlErr != "")
@@ -1254,7 +1254,7 @@ namespace ComLibB
                             }
 
                             SQL = "";
-                            SQL = "  DELETE FROM KOSMOS_PMPA.ETC_ALLERGY_MST ";
+                            SQL = "  DELETE FROM ADMIN.ETC_ALLERGY_MST ";
                             SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + strROWID5 + "' ";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                             if (SqlErr != "")
@@ -1342,7 +1342,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = " SELECT SNAME FROM KOSMOS_PMPA.BAS_PATIENT WHERE PANO ='" + argPano + "' ";
+                SQL = " SELECT SNAME FROM ADMIN.BAS_PATIENT WHERE PANO ='" + argPano + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -1443,7 +1443,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = " SELECT KORNAME FROM KOSMOS_ADM.INSA_MST WHERE SABUN ='" + argSabun + "' ";
+                SQL = " SELECT KORNAME FROM ADMIN.INSA_MST WHERE SABUN ='" + argSabun + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -1482,7 +1482,7 @@ namespace ComLibB
 
             try
             {                                
-                SQL = " SELECT HNAME FROM KOSMOS_OCS.OCS_DRUGINFO_NEW WHERE SUNEXT = '"+ strDrugCode + "'";
+                SQL = " SELECT HNAME FROM ADMIN.OCS_DRUGINFO_NEW WHERE SUNEXT = '"+ strDrugCode + "'";
                 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 

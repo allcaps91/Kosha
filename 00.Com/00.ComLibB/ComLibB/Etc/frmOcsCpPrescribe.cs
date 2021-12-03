@@ -581,7 +581,7 @@ namespace ComLibB
             bool rtnVal = false;
 
             SQL = "";
-            SQL += " DELETE KOSMOS_OCS.OCS_OPRM_CP                                                                                          \r";
+            SQL += " DELETE ADMIN.OCS_OPRM_CP                                                                                          \r";
             SQL += "  WHERE CPCODE   = '" + ssCPList_Sheet1.Cells[ssCPList_Sheet1.ActiveRowIndex, 1].Text.Trim() + "'                       \r";
             SQL += "    AND CPDAY    = '" + strDay + "'                                                                                     \r"; 
 
@@ -612,7 +612,7 @@ namespace ComLibB
                      
 
             SQL = "";
-            SQL += " INSERT INTO KOSMOS_OCS.OCS_OPRM_CP                             \r";
+            SQL += " INSERT INTO ADMIN.OCS_OPRM_CP                             \r";
             SQL += "        (CPCODE, CPDAY                                          \r";
             SQL += "      , PRMNAME, SEQNO                                          \r";
             SQL += "      , ORDERCODE, SUCODE, BUN                                  \r";
@@ -744,15 +744,15 @@ namespace ComLibB
                 SQL += ComNum.VBLF + "	    SELECT (LEVEL || '') AS DAY_VAL                                                                                      ";
                 SQL += ComNum.VBLF + "    	  FROM DUAL                                                                                                          ";
                 SQL += ComNum.VBLF + "	    CONNECT BY LEVEL <= (SELECT CPDAY                                                                                    ";
-                SQL += ComNum.VBLF + "	                           FROM KOSMOS_OCS.OCS_CP_MAIN A                                                                 ";
+                SQL += ComNum.VBLF + "	                           FROM ADMIN.OCS_CP_MAIN A                                                                 ";
                 SQL += ComNum.VBLF + "	                          WHERE CPCODE = '" + strCpCode + "'                                                             ";
                 SQL += ComNum.VBLF + "	                            AND GBIO = 'I'                                                                               ";
-                SQL += ComNum.VBLF + "	                            AND SDATE = (SELECT MAX(SDATE) FROM KOSMOS_OCS.OCS_CP_MAIN WHERE CPCODE = A.CPCODE))         ";
+                SQL += ComNum.VBLF + "	                            AND SDATE = (SELECT MAX(SDATE) FROM ADMIN.OCS_CP_MAIN WHERE CPCODE = A.CPCODE))         ";
                 SQL += ComNum.VBLF + " 	)                                                                                                                        ";
                 SQL += ComNum.VBLF + " 	SELECT DAY_VAL, CASE WHEN EXISTS                                                                                                  ";
                 SQL += ComNum.VBLF + "     (                                                                                                                     ";
                 SQL += ComNum.VBLF + "     	SELECT 1                                                                                                             ";
-                SQL += ComNum.VBLF + "     	  FROM KOSMOS_OCS.OCS_OPRM_CP                                                                                        ";
+                SQL += ComNum.VBLF + "     	  FROM ADMIN.OCS_OPRM_CP                                                                                        ";
                 SQL += ComNum.VBLF + "     	 WHERE CPCODE = '" + strCpCode + "'                                                                                  ";
                 SQL += ComNum.VBLF + "     	   AND CPDAY = DAY_VAL                                                                                               ";
                 SQL += ComNum.VBLF + "     ) THEN DAY_VAL END CPDAY                                                                                              ";
@@ -829,8 +829,8 @@ namespace ComLibB
                 SQL += "             ELSE B.ORDERNAME                                                                                           \r";
                 SQL += "         END  ORDERNAME1                                                                                                \r";
                 SQL += "      , CASE WHEN A.GBINFO IS NOT NULL THEN A.GBINFO                                                                    \r";
-                SQL += "             WHEN A.BUN < '30' THEN KOSMOS_OCS.FC_OCS_ODOSAGE_NAME(A.DOSCODE)                                           \r";
-                SQL += "             ELSE KOSMOS_OCS.FC_OCS_OSPECIMAN_NAME(A.DOSCODE, A.SLIPNO) END DOSNAME                                     \r";
+                SQL += "             WHEN A.BUN < '30' THEN ADMIN.FC_OCS_ODOSAGE_NAME(A.DOSCODE)                                           \r";
+                SQL += "             ELSE ADMIN.FC_OCS_OSPECIMAN_NAME(A.DOSCODE, A.SLIPNO) END DOSNAME                                     \r";
                 SQL += "      , A.CONTENTS, A.QTY, A.GBDIV, A.NAL, A.GBSELF, A.GBER, A.GBPORT                                                   \r";
                 SQL += "      , A.GBGROUP, A.REMARK, A.SUCODE, B.GBINPUT, A.PRN_REMARK                                                          \r";
                 SQL += "      , A.PRN_INS_GBN, A.PRN_INS_UNIT, A.PRN_INS_SDATE, A.PRN_INS_EDATE                                                 \r";
@@ -839,8 +839,8 @@ namespace ComLibB
                 SQL += "      , NVL(A.ILLCODES_KCD6, A.ILLCODES) ILLCODES                                                                       \r";
                 SQL += "      , A.BOOWI1,  A.BOOWI2, A.BOOWI3, A.BOOWI4, A.GBINFO , A.SLIPNO                                                    \r";
                 SQL += "      , B.SENDDEPT, B.DISPHEADER, B.GBBOTH, B.ORDERNAME, B.ORDERNAMES                                                   \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OPRM_CP   A                                                                                      \r";
-                SQL += "      , KOSMOS_OCS.OCS_ORDERCODE B                                                                                      \r";
+                SQL += "   FROM ADMIN.OCS_OPRM_CP   A                                                                                      \r";
+                SQL += "      , ADMIN.OCS_ORDERCODE B                                                                                      \r";
                 SQL += "    WHERE a.PRMname   = '" + strSetName + "'                                                                            \r";
                 SQL += "      AND A.CPCODE = '" + strCpCode + "'";
 

@@ -25,14 +25,14 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             if (item.ENTGUBUN.IsNullOrEmpty())
             {
-                parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_SANGDAM_HIS                                            ");
+                parameter.AppendSql("INSERT INTO ADMIN.HEA_SANGDAM_HIS                                            ");
                 parameter.AppendSql("       (WRTNO, SNAME, SEX, AGE, GJJONG, GUBUN, ENTTIME, WAITNO)                    ");
                 parameter.AppendSql("VALUES                                                                             ");
                 parameter.AppendSql("       (:WRTNO, :SNAME, :SEX, :AGE, :GJJONG, :GUBUN, SYSDATE, :WAITNO)             ");
             }
             else
             {
-                parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_SANGDAM_HIS                                            ");
+                parameter.AppendSql("INSERT INTO ADMIN.HEA_SANGDAM_HIS                                            ");
                 parameter.AppendSql("       (WRTNO, SNAME, SEX, AGE, GJJONG, GUBUN, ENTTIME, WAITNO, ENTGUBUN)          ");
                 parameter.AppendSql("VALUES                                                                             ");
                 parameter.AppendSql("       (:WRTNO, :SNAME, :SEX, :AGE, :GJJONG, :GUBUN, SYSDATE, :WAITNO, :ENTGUBUN)  ");
@@ -56,7 +56,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_SANGDAM_WAIT                                           ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_SANGDAM_WAIT                                           ");
             parameter.AppendSql("       (WRTNO, SNAME, SEX, AGE, GJJONG, GUBUN, ENTTIME, WAITNO)                    ");
             parameter.AppendSql("VALUES                                                                             ");
             parameter.AppendSql("       (:WRTNO, :SNAME, :SEX, :AGE, :GJJONG, :GUBUN, SYSDATE, :WAITNO)             ");            

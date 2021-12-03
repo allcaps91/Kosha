@@ -73,28 +73,28 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT BDATE, PTNO, WRITESABUN, TITLE, '1' GUBUN, ROWID";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_MCCERTIFI_BOHUM1";
+                SQL += ComNum.VBLF + "   FROM ADMIN.OCS_MCCERTIFI_BOHUM1";
                 SQL += ComNum.VBLF + " WHERE BDATE >= TO_DATE('" + dtpSDATE.Text.Trim() + "','YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "      AND BDATE <= TO_DATE('" + dtpEDATE.Text.Trim() + "','YYYY-MM-DD')";
                 if (txtDrCODE.Text.Trim() != "") SQL += ComNum.VBLF + "      AND DRCODE IN (" + READ_DRCODE(txtDrCODE.Text) + ")";
                 if (txtPTNO.Text.Trim() != "") SQL += ComNum.VBLF + "      AND PTNO = '" + txtPTNO.Text.Trim() + "'";
                 SQL += ComNum.VBLF + " Union All";
                 SQL += ComNum.VBLF + " SELECT BDATE, PTNO, WRITESABUN, TITLE, '2' GUBUN, ROWID";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_MCCERTIFI_BOHUM2";
+                SQL += ComNum.VBLF + "   FROM ADMIN.OCS_MCCERTIFI_BOHUM2";
                 SQL += ComNum.VBLF + " WHERE BDATE >= TO_DATE('" + dtpSDATE.Text.Trim() + "','YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "      AND BDATE <= TO_DATE('" + dtpEDATE.Text.Trim() + "','YYYY-MM-DD')";
                 if (txtDrCODE.Text.Trim() != "") SQL += ComNum.VBLF + "      AND DRCODE IN (" + READ_DRCODE(txtDrCODE.Text) + ")";
                 if (txtPTNO.Text.Trim() != "") SQL += ComNum.VBLF + "      AND PTNO = '" + txtPTNO.Text.Trim() + "'";
                 SQL += ComNum.VBLF + " Union All";
                 SQL += ComNum.VBLF + " SELECT BDATE, PTNO, WRITESABUN, TITLE, '3' GUBUN, ROWID";
-                SQL += ComNum.VBLF + "  From KOSMOS_OCS.OCS_MCCERTIFI_BOHUM3";
+                SQL += ComNum.VBLF + "  From ADMIN.OCS_MCCERTIFI_BOHUM3";
                 SQL += ComNum.VBLF + " WHERE BDATE >= TO_DATE('" + dtpSDATE.Text.Trim() + "','YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "      AND BDATE <= TO_DATE('" + dtpEDATE.Text.Trim() + "','YYYY-MM-DD')";
                 if (txtDrCODE.Text.Trim() != "") SQL += ComNum.VBLF + "      AND DRCODE IN (" + READ_DRCODE(txtDrCODE.Text) + ")";
                 if (txtPTNO.Text.Trim() != "") SQL += ComNum.VBLF + "      AND PTNO = '" + txtPTNO.Text.Trim() + "'";
                 SQL += ComNum.VBLF + " Union All";
                 SQL += ComNum.VBLF + " SELECT BDATE, PTNO, WRITESABUN, '성인 ADHD 소견서', '4' GUBUN, ROWID";
-                SQL += ComNum.VBLF + "  From KOSMOS_OCS.OCS_MCCERTIFI_BOHUM4";
+                SQL += ComNum.VBLF + "  From ADMIN.OCS_MCCERTIFI_BOHUM4";
                 SQL += ComNum.VBLF + " WHERE BDATE >= TO_DATE('" + dtpSDATE.Text.Trim() + "','YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "      AND BDATE <= TO_DATE('" + dtpEDATE.Text.Trim() + "','YYYY-MM-DD')";
                 if (txtDrCODE.Text.Trim() != "")  SQL += ComNum.VBLF + "      AND DRCODE IN (" + READ_DRCODE(txtDrCODE.Text) + ")";
@@ -156,7 +156,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT DRNAME ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_DOCTOR";
+                SQL += ComNum.VBLF + " FROM ADMIN.OCS_DOCTOR";
                 SQL += ComNum.VBLF + " WHERE DRCODE = '" + arg + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -205,7 +205,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT * ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_MCCERTIFI_BOHUM1 ";
+                SQL += ComNum.VBLF + " FROM ADMIN.OCS_MCCERTIFI_BOHUM1 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -372,7 +372,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT * ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_MCCERTIFI_BOHUM2 ";
+                SQL += ComNum.VBLF + " FROM ADMIN.OCS_MCCERTIFI_BOHUM2 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + argROWID + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -509,7 +509,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT * ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_MCCERTIFI_BOHUM3 ";
+                SQL += ComNum.VBLF + " FROM ADMIN.OCS_MCCERTIFI_BOHUM3 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + argROWID + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -653,7 +653,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT * ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_MCCERTIFI_BOHUM4 ";
+                SQL += ComNum.VBLF + " FROM ADMIN.OCS_MCCERTIFI_BOHUM4 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + argROWID + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -747,7 +747,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT SEX ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PATIENT";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + strPano + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

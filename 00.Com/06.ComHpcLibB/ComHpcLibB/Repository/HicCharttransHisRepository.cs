@@ -22,10 +22,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHARTTRANS_HIS                                                 ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHARTTRANS_HIS                                                 ");
             parameter.AppendSql(" (WRTNO,TRDATE,SNAME,GJJONG,TRLIST,EntTime,EntSabun,RecvSabun,RecvTime,BackupTime)         ");
             parameter.AppendSql(" SELECT WRTNO,TRDATE,SNAME,GJJONG,TRLIST,EntTime,EntSabun,RecvSabun,RecvTime,SYSDATE       ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_CHARTTRANS                                                           ");
+            parameter.AppendSql(" FROM ADMIN.HIC_CHARTTRANS                                                           ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                                      ");
 
             parameter.Add("WRTNO", item.WRTNO);
@@ -37,10 +37,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHARTTRANS_HIS                                                 ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHARTTRANS_HIS                                                 ");
             parameter.AppendSql(" (WRTNO,TRDATE,SNAME,GJJONG,TRLIST,EntTime,EntSabun,RecvSabun,RecvTime,BackupTime,GBDEL)   ");
             parameter.AppendSql(" SELECT WRTNO,TRDATE,SNAME,GJJONG,TRLIST,EntTime,EntSabun,RecvSabun,RecvTime,SYSDATE,'Y'   ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_CHARTTRANS                                                           ");
+            parameter.AppendSql(" FROM ADMIN.HIC_CHARTTRANS                                                           ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                                      ");
 
             parameter.Add("WRTNO", item.WRTNO);

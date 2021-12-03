@@ -150,10 +150,10 @@ namespace ComPmpaLibB
 
                 SQL = SQL + ComNum.VBLF + "  E.InRoom, E.InDept, ";
                 SQL = SQL + ComNum.VBLF + " M.DeptCode,M.DrCode,D.DrName,M.AmSet1,M.AmSet6,M.AmSet7 ";
-                SQL = SQL + ComNum.VBLF + " FROM   KOSMOS_PMPA.IPD_NEW_MASTER  M, ";
-                SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.BAS_PATIENT P, ";
-                SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.BAS_DOCTOR  D, ";
-                SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.NUR_MASTER  E ";
+                SQL = SQL + ComNum.VBLF + " FROM   ADMIN.IPD_NEW_MASTER  M, ";
+                SQL = SQL + ComNum.VBLF + "        ADMIN.BAS_PATIENT P, ";
+                SQL = SQL + ComNum.VBLF + "        ADMIN.BAS_DOCTOR  D, ";
+                SQL = SQL + ComNum.VBLF + "        ADMIN.NUR_MASTER  E ";
 
                 switch (cboWard.Text)
                 {

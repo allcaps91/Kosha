@@ -13,8 +13,8 @@ namespace ComLibB
     /// <summary>
     /// 2020-02-26 
     /// 신규 폼(이중 차트 신청서)
-    /// 시퀀스: KOSMOS_PMPA.SEQ_DBLAPPNO.CURRVAL
-    /// 테이블: KOSMOS_PMPA.MID_DBLCHART_APPLICATION
+    /// 시퀀스: ADMIN.SEQ_DBLAPPNO.CURRVAL
+    /// 테이블: ADMIN.MID_DBLCHART_APPLICATION
     /// </summary>
     public partial class frmEmrJobConvPano_Application : Form, MainFormMessage
     {
@@ -235,8 +235,8 @@ namespace ComLibB
             try
             {
                 SQL = "SELECT A.KORNAME, A.SABUN3";
-                SQL += ComNum.VBLF + " FROM KOSMOS_ADM.INSA_MST A";
-                SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_ADM.INSA_CODE B";
+                SQL += ComNum.VBLF + " FROM ADMIN.INSA_MST A";
+                SQL += ComNum.VBLF + "   INNER JOIN ADMIN.INSA_CODE B";
                 SQL += ComNum.VBLF + "      ON A.JIK  = B.CODE";
                 SQL += ComNum.VBLF + "     AND B.GUBUN  = '2'";
                 SQL += ComNum.VBLF + "WHERE BUSE  = '044201'";
@@ -441,9 +441,9 @@ namespace ComLibB
                 SQL = "SELECT '신청' AS GBN, SEQNO, TO_CHAR(REQDATE, 'YYYY-MM-DD') REQDATE, REQBUSE, B.NAME AS BUSENAME, REQSABUN, U.USERNAME AS REQNAME,";
                 SQL += ComNum.VBLF + "TEL, PANO1, PANO2, DOUBLEGBN, PANO3, '' AS ITCONFIRM, '' AS PRTYN ";
                 SQL += ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "MID_DBLCHART_APPLICATION A";
-                SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_BUSE B";
+                SQL += ComNum.VBLF + "  INNER JOIN ADMIN.BAS_BUSE B";
                 SQL += ComNum.VBLF + "     ON A.REQBUSE = B.BUCODE";
-                SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_USER U";
+                SQL += ComNum.VBLF + "  INNER JOIN ADMIN.BAS_USER U";
                 SQL += ComNum.VBLF + "     ON A.REQSABUN = U.IDNUMBER";
                 SQL += ComNum.VBLF + "WHERE REQDATE >= TO_DATE('" + dtpSdate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD') --";
                 SQL += ComNum.VBLF + "  AND REQDATE <= TO_DATE('" + dtpEdate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD') --";
@@ -473,23 +473,23 @@ namespace ComLibB
                 SQL += ComNum.VBLF + "SELECT '완료' AS GBN, SEQNO, TO_CHAR(REQDATE, 'YYYY-MM-DD') REQDATE, REQBUSE, B.NAME AS BUSENAME, REQSABUN, U.USERNAME AS REQNAME,";
                 SQL += ComNum.VBLF + "TEL, (SELECT (DECODE(USE1, '사용', PANO1, NULL) || DECODE(USE2, '사용', PANO2, NULL) || DECODE(USE3, '사용', PANO3, NULL)";
                 SQL += ComNum.VBLF + "              || DECODE(USE4, '사용', PANO4, NULL) || DECODE(USE5, '사용', PANO5, NULL))";
-                SQL += ComNum.VBLF + "        FROM KOSMOS_PMPA.MID_DBLCHART_APPLICATION";
+                SQL += ComNum.VBLF + "        FROM ADMIN.MID_DBLCHART_APPLICATION";
                 SQL += ComNum.VBLF + "       WHERE SEQNO = A.SEQNO";
                 SQL += ComNum.VBLF + "         AND ROWNUM = 1";
                 SQL += ComNum.VBLF + "     ) AS PANO1,";
                 SQL += ComNum.VBLF + "     (SELECT (DECODE(USE1, '사용', SNAME1, NULL) || DECODE(USE2, '사용', SNAME2, NULL) || DECODE(USE3, '사용', SNAME3, NULL)";
                 SQL += ComNum.VBLF + "              || DECODE(USE4, '사용', SNAME4, NULL) || DECODE(USE5, '사용', SNAME5, NULL)) AS SNAME";
-                SQL += ComNum.VBLF + "        FROM KOSMOS_PMPA.MID_DBLCHART_APPLICATION";
+                SQL += ComNum.VBLF + "        FROM ADMIN.MID_DBLCHART_APPLICATION";
                 SQL += ComNum.VBLF + "       WHERE SEQNO = A.SEQNO";
                 SQL += ComNum.VBLF + "         AND ROWNUM = 1";
                 SQL += ComNum.VBLF + "     ) AS PANO2,";
                 SQL += ComNum.VBLF + "DOUBLEGBN, TO_CHAR(COMPLETEDATE, 'YYYY-MM-DD') COMPLETEDATE, U2.USERNAME AS ITCONFIRM , PRTYN ";
                 SQL += ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "MID_DBLCHART_APPLICATION A";
-                SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_BUSE B";
+                SQL += ComNum.VBLF + "  INNER JOIN ADMIN.BAS_BUSE B";
                 SQL += ComNum.VBLF + "     ON A.REQBUSE = B.BUCODE";
-                SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_USER U  -- 신청자";
+                SQL += ComNum.VBLF + "  INNER JOIN ADMIN.BAS_USER U  -- 신청자";
                 SQL += ComNum.VBLF + "     ON A.REQSABUN = U.IDNUMBER";
-                SQL += ComNum.VBLF + "   LEFT JOIN KOSMOS_PMPA.BAS_USER U2 -- 작업자";
+                SQL += ComNum.VBLF + "   LEFT JOIN ADMIN.BAS_USER U2 -- 작업자";
                 SQL += ComNum.VBLF + "     ON A.ITCONFIRM = U2.IDNUMBER";
                 SQL += ComNum.VBLF + "WHERE REQDATE >= TO_DATE('" + dtpSdate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD') --";
                 SQL += ComNum.VBLF + "  AND REQDATE <= TO_DATE('" + dtpEdate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD') --";
@@ -522,9 +522,9 @@ namespace ComLibB
                     SQL += ComNum.VBLF + "SELECT '삭제' AS GBN, SEQNO, TO_CHAR(REQDATE, 'YYYY-MM-DD') REQDATE, REQBUSE, B.NAME AS BUSENAME, REQSABUN, U.USERNAME AS REQNAME,";
                     SQL += ComNum.VBLF + "TEL, PANO1, PANO2, DOUBLEGBN, PANO3, '' AS ITCONFIRM , '' AS PRTYN";
                     SQL += ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "MID_DBLCHART_APPLICATION A";
-                    SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_BUSE B";
+                    SQL += ComNum.VBLF + "  INNER JOIN ADMIN.BAS_BUSE B";
                     SQL += ComNum.VBLF + "     ON A.REQBUSE = B.BUCODE";
-                    SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_USER U";
+                    SQL += ComNum.VBLF + "  INNER JOIN ADMIN.BAS_USER U";
                     SQL += ComNum.VBLF + "     ON A.REQSABUN = U.IDNUMBER";
                     SQL += ComNum.VBLF + "WHERE REQDATE >= TO_DATE('" + dtpSdate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD') --";
                     SQL += ComNum.VBLF + "  AND REQDATE <= TO_DATE('" + dtpEdate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD') --";
@@ -685,9 +685,9 @@ namespace ComLibB
                 SQL += ComNum.VBLF + "ETCCONFIRM,ETCCONFIRM_MEMO,";
                 SQL += ComNum.VBLF + "HEADCONFIRM";
                 SQL += ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "MID_DBLCHART_APPLICATION A";
-                SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_BUSE B";
+                SQL += ComNum.VBLF + "  INNER JOIN ADMIN.BAS_BUSE B";
                 SQL += ComNum.VBLF + "     ON A.REQBUSE = B.BUCODE";
-                SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_USER U";
+                SQL += ComNum.VBLF + "  INNER JOIN ADMIN.BAS_USER U";
                 SQL += ComNum.VBLF + "     ON A.REQSABUN = U.IDNUMBER";
                 SQL += ComNum.VBLF + "WHERE SEQNO = " + strSeqNo;
                 #endregion
@@ -1054,7 +1054,7 @@ namespace ComLibB
                         }
                     }
 
-                    SQL = "INSERT INTO KOSMOS_PMPA.MID_DBLCHART_APPLICATION ";
+                    SQL = "INSERT INTO ADMIN.MID_DBLCHART_APPLICATION ";
                     SQL += ComNum.VBLF + "(";
                     SQL += ComNum.VBLF + "SEQNO,";
                     SQL += ComNum.VBLF + "REQDATE, REQBUSE, REQSABUN, TEL, ";
@@ -1088,7 +1088,7 @@ namespace ComLibB
                     SQL += ComNum.VBLF + "(";
 
                     #region 시퀀스
-                    SQL += ComNum.VBLF + "KOSMOS_PMPA.SEQ_DBLAPPNO.NEXTVAL, ";
+                    SQL += ComNum.VBLF + "ADMIN.SEQ_DBLAPPNO.NEXTVAL, ";
                     #endregion
 
                     #region 신청라인
@@ -1222,7 +1222,7 @@ namespace ComLibB
                     }
 
                     #region 수정 
-                    SQL = "UPDATE KOSMOS_PMPA.MID_DBLCHART_APPLICATION SET ";
+                    SQL = "UPDATE ADMIN.MID_DBLCHART_APPLICATION SET ";
 
                     #region 신청라인
                     SQL += ComNum.VBLF + "REQDATE = TO_DATE('" + dtpReqDate.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD')";
@@ -1446,7 +1446,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL = "UPDATE KOSMOS_PMPA.MID_DBLCHART_APPLICATION SET ";
+                SQL = "UPDATE ADMIN.MID_DBLCHART_APPLICATION SET ";
                 SQL += ComNum.VBLF + "PRTYN = 'Y'";
                 SQL += ComNum.VBLF + "WHERE SEQNO = " + strSeqNo;
 
@@ -1495,7 +1495,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL = "UPDATE KOSMOS_PMPA.MID_DBLCHART_APPLICATION SET ";
+                SQL = "UPDATE ADMIN.MID_DBLCHART_APPLICATION SET ";
                 if (btnDelete.Text.Equals("삭제"))
                 {
                     SQL += ComNum.VBLF + "DELDATE = SYSDATE";

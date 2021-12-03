@@ -1771,7 +1771,7 @@ namespace ComHpcLibB
 
         /// <summary>
         /// 사용자 저장 로그(2020.11.12)
-        /// 오픈 후 안정화 이후 로직 삭제 할것(table : KOSMOS_PMPA.HIC_PROGRAM_USE_CNT)
+        /// 오픈 후 안정화 이후 로직 삭제 할것(table : ADMIN.HIC_PROGRAM_USE_CNT)
         /// </summary>
         void fn_UseCheck()
         {

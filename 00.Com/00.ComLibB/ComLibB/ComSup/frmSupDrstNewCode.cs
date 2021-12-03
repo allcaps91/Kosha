@@ -1325,8 +1325,8 @@ namespace ComLibB
 
                     SQL = "";
                     SQL = "SELECT '청구자-' || TRIM(B.DEPTCODE) || '/' || TRIM(B.DRNAME) AS DRNAME ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.DRUG_MASTER2 A       ";
-                    SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_OCS.OCS_DOCTOR B";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.DRUG_MASTER2 A       ";
+                    SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.OCS_DOCTOR B";
                     SQL = SQL + ComNum.VBLF + "    ON A.CHUNGGUDR = B.DRCODE";
                     SQL = SQL + ComNum.VBLF + " WHERE A.JEPCODE = '" + strJEPCODE + "' ";
 
@@ -1394,11 +1394,11 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "      TUYAKPATH_20_1, TUYAKPATH_20_2, TUYAKPATH_20_3, TUYAKPATH_20_4, TUYAKPATH_20_ETC,  ";
                     SQL = SQL + ComNum.VBLF + "      DECODE(SUGABUN, '11', '1.경구약', '20', '2.주사약', '12', '3.외용약') SUGABUN, ";
                     SQL = SQL + ComNum.VBLF + "      (SELECT SUNGBUN ";
-                    SQL = SQL + ComNum.VBLF + "         FROM KOSMOS_ADM.DRUG_MASTER1_SUNGBUN ";
+                    SQL = SQL + ComNum.VBLF + "         FROM ADMIN.DRUG_MASTER1_SUNGBUN ";
                     SQL = SQL + ComNum.VBLF + "        WHERE JEPCODE = '" + strJEPCODE + "' ";
                     SQL = SQL + ComNum.VBLF + "          AND RANKING = '1' AND ROWNUM = 1) SUNGBUN ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.DRUG_MASTER1 A ";
-                    SQL = SQL + ComNum.VBLF + " INNER JOIN  KOSMOS_ADM.DRUG_MASTER2 B ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.DRUG_MASTER1 A ";
+                    SQL = SQL + ComNum.VBLF + " INNER JOIN  ADMIN.DRUG_MASTER2 B ";
                     SQL = SQL + ComNum.VBLF + "       ON A.JEPCODE = B.JEPCODE ";
                     SQL = SQL + ComNum.VBLF + "WHERE A.JEPCODE = '" + strJEPCODE + "' ";
 
@@ -1516,8 +1516,8 @@ namespace ComLibB
                     // 2019-10-14 멀티성분 함량
                     // 전산업무의뢰서 2019-837
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "SELECT B.QTY, B.UNIT FROM KOSMOS_ADM.DRUG_MASTER2 A ";
-                    SQL = SQL + ComNum.VBLF + "INNER JOIN  KOSMOS_ADM.DRUG_MASTER1_SUNGBUN B       ";
+                    SQL = SQL + ComNum.VBLF + "SELECT B.QTY, B.UNIT FROM ADMIN.DRUG_MASTER2 A ";
+                    SQL = SQL + ComNum.VBLF + "INNER JOIN  ADMIN.DRUG_MASTER1_SUNGBUN B       ";
                     SQL = SQL + ComNum.VBLF + "    ON A.JEPCODE = B.JEPCODE                        ";
                     SQL = SQL + ComNum.VBLF + "WHERE A.SUGABUN IN('11', '12')                      ";
                     SQL = SQL + ComNum.VBLF + "  AND A.JEPCODE = '" + strJEPCODE + "'              ";
@@ -1544,7 +1544,7 @@ namespace ComLibB
 
                         SQL = "";
                         SQL = SQL + ComNum.VBLF + "SELECT SUNGBUN2                          ";
-                        SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.DRUG_MASTER1           ";
+                        SQL = SQL + ComNum.VBLF + "  FROM ADMIN.DRUG_MASTER1           ";
                         SQL = SQL + ComNum.VBLF + " WHERE JEPCODE = '" + strJEPCODE + "'    ";
 
                         SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
@@ -1578,7 +1578,7 @@ namespace ComLibB
                     string strOrderNameS = "";
 
                     SQL = "";
-                    SQL = SQL + ComNum.VBLF + "SELECT ORDERNAMES FROM KOSMOS_OCS.OCS_ORDERCODE ";
+                    SQL = SQL + ComNum.VBLF + "SELECT ORDERNAMES FROM ADMIN.OCS_ORDERCODE ";
                     SQL = SQL + ComNum.VBLF + " WHERE ORDERCODE = '" + strJEPCODE + "'         ";
                     
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

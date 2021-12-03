@@ -17,8 +17,8 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.MCODE, A.EXCODE, B.RESULT     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN_MATCH A ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_RESULT        B ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN_MATCH A ");
+            parameter.AppendSql("     , ADMIN.HEA_RESULT        B ");
             parameter.AppendSql(" WHERE A.WRTNO = :WRTNOA               ");
             parameter.AppendSql("   AND B.WRTNO = :WRTNOB               ");
             parameter.AppendSql("   AND A.EXCODE = B.EXCODE             ");

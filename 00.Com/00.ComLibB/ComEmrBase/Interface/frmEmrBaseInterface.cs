@@ -332,7 +332,7 @@ namespace ComEmrBase
 
                         #region 당일 2중 촬영이 있을경우 문제 발생
                         SQL = " SELECT COUNT(*) CNT ";
-                        SQL += ComNum.VBLF + "      FROM KOSMOS_OCS.ETC_JUPMST ";
+                        SQL += ComNum.VBLF + "      FROM ADMIN.ETC_JUPMST ";
                         SQL += ComNum.VBLF + "     WHERE GBJOB ='3' ";// '접수
                         SQL += ComNum.VBLF + "       AND PTNO = '" + strPtno + "' ";
                         SQL += ComNum.VBLF + "       AND GUBUN ='1' ";// 'EKG
@@ -358,7 +358,7 @@ namespace ComEmrBase
 
                         #region 환자정보
                         SQL = " SELECT PTNO, TO_CHAR(BDATE,'YYYYMMDD') BDATE, DEPTCODE, DRCODE, GBIO , ROWID  ";
-                        SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST ";
+                        SQL += ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST ";
                         SQL += ComNum.VBLF + " WHERE GBJOB IN ('1', '3')";//  '접수
                         SQL += ComNum.VBLF + "   AND PTNO   = '" + strPtno + "' ";
                         SQL += ComNum.VBLF + "   AND GUBUN  = '1' ";// 'EKG
@@ -408,7 +408,7 @@ namespace ComEmrBase
                         if (string.IsNullOrWhiteSpace(strClinCode))
                         {
                             SQL = " SELECT   PTNO, TO_CHAR(SDATE,'YYYYMMDD') BDATE,  'TO' DEPTCODE, '99917' DRCODE,  'O' GBIO ";
-                            SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.HEA_JEPSU ";
+                            SQL += ComNum.VBLF + " FROM ADMIN.HEA_JEPSU ";
                             SQL += ComNum.VBLF + "WHERE PTNO ='" + strPtno + "' ";
                             SQL += ComNum.VBLF + "  AND SDATE =TO_DATE('" + strExamdate + "','YYYY-MM-DD') ";// '검사일자
 
@@ -437,7 +437,7 @@ namespace ComEmrBase
                         #endregion
 
                         #region 입원/외래 데이터 구분
-                        SQL = " SELECT TREATNO, INDATE, OUTDATE  FROM KOSMOS_EMR.EMR_TREATT ";
+                        SQL = " SELECT TREATNO, INDATE, OUTDATE  FROM ADMIN.EMR_TREATT ";
                         SQL += ComNum.VBLF + " WHERE PATID    = '" + strPtno + "' ";
                         SQL += ComNum.VBLF + "   AND CLASS    = '" + strClass + "' ";
                         if (strClass.Equals("O"))
@@ -480,7 +480,7 @@ namespace ComEmrBase
                             strBdate = DateTime.ParseExact(strBdate, "yyyyMMdd", null).AddDays(-1).ToString("yyyyMMdd");
 
                             SQL = " SELECT TREATNO, INDATE, OUTDATE                             ";
-                            SQL += ComNum.VBLF + "  FROM KOSMOS_EMR.EMR_TREATT                  ";
+                            SQL += ComNum.VBLF + "  FROM ADMIN.EMR_TREATT                  ";
                             SQL += ComNum.VBLF + " WHERE PATID  ='" + strPtno + "'            ";
                             SQL += ComNum.VBLF + "   AND CLASS  = '" + strClass + "'            ";
                             SQL += ComNum.VBLF + "   AND INDATE = '" + strBdate + "'            ";
@@ -606,11 +606,11 @@ namespace ComEmrBase
 
             //'1) 대상자 조회
             SQL = " SELECT A.PTNO, A.BDATE, A.ORDERNO, A.DEPTCODE, A.SUCODE, A.ENTDATE, A.PICKUPDATE";
-            SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_IORDER A, KOSMOS_PMPA.IPD_NEW_MASTER M";
+            SQL += ComNum.VBLF + "  FROM ADMIN.OCS_IORDER A, ADMIN.IPD_NEW_MASTER M";
             SQL += ComNum.VBLF + " WHERE BDATE >= TRUNC(SYSDATE - 30)";
             SQL += ComNum.VBLF + "   AND EXISTS (";
             SQL += ComNum.VBLF + "      SELECT ORDERNO";
-            SQL += ComNum.VBLF + "        FROM KOSMOS_OCS.OCS_ITRANSFER B";
+            SQL += ComNum.VBLF + "        FROM ADMIN.OCS_ITRANSFER B";
             SQL += ComNum.VBLF + "       WHERE BDATE >= TRUNC(SYSDATE - 30)";
             SQL += ComNum.VBLF + "         AND INPDATE IS NOT NULL";
             SQL += ComNum.VBLF + "         AND A.PTNO = B.PTNO";
@@ -640,7 +640,7 @@ namespace ComEmrBase
                     #region 3) 컨설트 내역 작성자 및 작성여부 확인
                     strDRSABUN = "";
                     SQL = " SELECT A.INPDATE, A.INPID, A.TOREMARK";
-                    SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_ITRANSFER A";
+                    SQL += ComNum.VBLF + "  FROM ADMIN.OCS_ITRANSFER A";
                     SQL += ComNum.VBLF + " WHERE PTNO = '" + strPTNO + "'";
                     SQL += ComNum.VBLF + "   AND ORDERNO = " + strORDERNO;
 
@@ -663,7 +663,7 @@ namespace ComEmrBase
                     if (!string.IsNullOrWhiteSpace(strDRSABUN))
                     {
                         SQL = " SELECT DRCODE";
-                        SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_DOCTOR ";
+                        SQL += ComNum.VBLF + " FROM ADMIN.OCS_DOCTOR ";
                         SQL += ComNum.VBLF + " WHERE SABUN = " + strDRSABUN;
 
                         SqlErr = clsDB.GetDataTableREx(ref dt2, SQL, clsDB.DbCon);
@@ -685,7 +685,7 @@ namespace ComEmrBase
                     if (!string.IsNullOrWhiteSpace(strDRCode) && !string.IsNullOrWhiteSpace(strDRSABUN) &&
                         !string.IsNullOrWhiteSpace(strPTNO) && !string.IsNullOrWhiteSpace(strORDERNO))
                     {
-                        SQL = " UPDATE KOSMOS_OCS.OCS_IORDER SET";
+                        SQL = " UPDATE ADMIN.OCS_IORDER SET";
                         //'''SQL = SQL & vbCr & " DRCODE2 = '" & strDRCode & "', GBSEND = ' * ' "
                         //'''SQL = SQL & vbCr & " DRCODE2 = '" & strDRCode & "', GBSEND = ' * ' , opdno =1 " '2018 - 11 - 01 변경후 건수 없음 - 정상작동중인듯
                         SQL += ComNum.VBLF + " opdno = 1 ";//  '2018-11-06 구분자만 일단 체크함
@@ -726,7 +726,7 @@ namespace ComEmrBase
             {
 
                 SQL = " SELECT PTNO";
-                SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_Osteocalcin ";
+                SQL += ComNum.VBLF + " FROM ADMIN.OCS_Osteocalcin ";
                 //SQL += ComNum.VBLF + " WHERE BUILDDATE = TO_DATE('" + clsPublic.GstrSysDate + "','YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + " WHERE BUILDDATE = TRUNC(SYSDATE) ";
 
@@ -749,9 +749,9 @@ namespace ComEmrBase
 
                 DateTime dtpSys = ComQuery.CurrentDateTime(clsDB.DbCon, "S").To<DateTime>();
 
-                SQL = " INSERT INTO KOSMOS_OCS.OCS_Osteocalcin(PTNO, BDATE, SUCODE, QTY, NAL, BUILDDATE, GBIO)";
+                SQL = " INSERT INTO ADMIN.OCS_Osteocalcin(PTNO, BDATE, SUCODE, QTY, NAL, BUILDDATE, GBIO)";
                 SQL += ComNum.VBLF + " SELECT PANO, BDATE, SUCODE, QTY, NAL, TO_DATE('" + dtpSys.ToString("yyyyMMdd") + "','YYYY-MM-DD'), 'O'";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_SLIP";
+                SQL += ComNum.VBLF + "  FROM ADMIN.OPD_SLIP";
                 SQL += ComNum.VBLF + " WHERE BDATE = TO_DATE('" + dtpSys.AddDays(-1).ToString("yyyyMMdd") + "','YYYY-MM-DD')";
                 SQL += ComNum.VBLF + "   AND SUCODE IN ('C3630', 'C3932')";
 
@@ -968,7 +968,7 @@ namespace ComEmrBase
                             if (chkHic.Checked)
                             {
                                 //'건진접수 번호 체크
-                                SQL = " SELECT PTNO FROM KOSMOS_PMPA.HIC_JEPSU ";
+                                SQL = " SELECT PTNO FROM ADMIN.HIC_JEPSU ";
                                 SQL += ComNum.VBLF + " WHERE WRTNO =" + nWRTNO + "  ";
                                 SQL += ComNum.VBLF + "  AND JEPDATE =TO_DATE('" + strExamdate + "','YYYYMMDD') ";
 
@@ -991,7 +991,7 @@ namespace ComEmrBase
 
                             #region 당일 2중 촬영이 있을경우 문제 발생
                             SQL = " SELECT COUNT(*) CNT ";
-                            SQL += ComNum.VBLF + "      FROM KOSMOS_OCS.ETC_JUPMST ";
+                            SQL += ComNum.VBLF + "      FROM ADMIN.ETC_JUPMST ";
                             //SQL += ComNum.VBLF + "     WHERE GBJOB = '3' ";// '접수
                             SQL += ComNum.VBLF + "     WHERE PTNO  = '" + strPtno + "' ";
                             SQL += ComNum.VBLF + "       AND GUBUN = '1' ";// 'EKG
@@ -1028,7 +1028,7 @@ namespace ComEmrBase
 
                         #region 환자정보
                         SQL = " SELECT PTNO, TO_CHAR(BDATE,'YYYYMMDD') BDATE, DEPTCODE, DRCODE, GBIO , ROWID, ROOMCODE,(CASE WHEN DEPTCODE <> 'HR' THEN '1' ELSE '0' END) AS EXCEPSORTCODE  ";
-                        SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST ";
+                        SQL += ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST ";
                         if (mstrTitle.Equals("UR") || mstrTitle.Equals("HD"))
                         {
                             SQL += ComNum.VBLF + " WHERE GBJOB IN ('1','2') ";//  '접수,예약
@@ -1199,7 +1199,7 @@ namespace ComEmrBase
 
                             #region 당일 2중 촬영이 있을경우 문제 발생
                             SQL = " SELECT COUNT(*) CNT ";
-                            SQL += ComNum.VBLF + "      FROM KOSMOS_OCS.ETC_JUPMST ";
+                            SQL += ComNum.VBLF + "      FROM ADMIN.ETC_JUPMST ";
                             //SQL += ComNum.VBLF + "     WHERE GBJOB ='3' ";// '접수
                             SQL += ComNum.VBLF + "     WHERE PTNO = '" + strPtno + "' ";
                             SQL += ComNum.VBLF + "       AND GUBUN ='1' ";// 'EKG
@@ -1234,7 +1234,7 @@ namespace ComEmrBase
 
                             //----------------------------------------------------------
                             SQL = " SELECT PTNO, TO_CHAR(BDATE,'YYYYMMDD') BDATE, DEPTCODE, DRCODE, GBIO , ROWID  ";
-                            SQL += ComNum.VBLF + "      FROM KOSMOS_OCS.ETC_JUPMST ";
+                            SQL += ComNum.VBLF + "      FROM ADMIN.ETC_JUPMST ";
                             //SQL += ComNum.VBLF + "     WHERE GBJOB = '3' ";// '접수
                             SQL += ComNum.VBLF + "     WHERE PTNO  = '" + strPtno + "' ";
                             SQL += ComNum.VBLF + "       AND GUBUN = '1' ";// 'EKG
@@ -1315,7 +1315,7 @@ namespace ComEmrBase
 
                                     try
                                     {
-                                        SQL = " UPDATE KOSMOS_OCS.ETC_JUPMST SET  ";
+                                        SQL = " UPDATE ADMIN.ETC_JUPMST SET  ";
                                         SQL += ComNum.VBLF + " Image_Gbn = '07'";
                                         SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid_JUPMST + "' ";
 
@@ -1347,7 +1347,7 @@ namespace ComEmrBase
 
                                 try
                                 {
-                                    SQL = " UPDATE KOSMOS_OCS.ETC_JUPMST SET  ";
+                                    SQL = " UPDATE ADMIN.ETC_JUPMST SET  ";
                                     SQL += ComNum.VBLF + " Image_Gbn = '11',";
                                     SQL += ComNum.VBLF + " GBJOB = '3' ";
                                     SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid_JUPMST + "' ";
@@ -1381,7 +1381,7 @@ namespace ComEmrBase
 
                                     try
                                     {
-                                        SQL = " UPDATE KOSMOS_OCS.ETC_JUPMST SET  ";
+                                        SQL = " UPDATE ADMIN.ETC_JUPMST SET  ";
                                         SQL += ComNum.VBLF + " Image_Gbn = '02'";
                                         SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid_JUPMST + "' ";
 
@@ -1452,7 +1452,7 @@ namespace ComEmrBase
                         if (mstrTitle.Equals("EKG") && string.IsNullOrWhiteSpace(strClinCode))
                         {
                             SQL = " SELECT   PTNO, TO_CHAR(SDATE,'YYYYMMDD') BDATE,  'TO' DEPTCODE, '99917' DRCODE,  'O' GBIO ";
-                            SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.HEA_JEPSU ";
+                            SQL += ComNum.VBLF + " FROM ADMIN.HEA_JEPSU ";
                             SQL += ComNum.VBLF + "WHERE PTNO ='" + strPtno + "' ";
                             SQL += ComNum.VBLF + "  AND SDATE =TO_DATE('" + strExamdate + "','YYYY-MM-DD') ";// '검사일자
 
@@ -1489,7 +1489,7 @@ namespace ComEmrBase
                         }
 
                         #region 입원/외래 데이터 구분
-                        SQL = " SELECT TREATNO, INDATE, OUTDATE  FROM KOSMOS_EMR.EMR_TREATT ";
+                        SQL = " SELECT TREATNO, INDATE, OUTDATE  FROM ADMIN.EMR_TREATT ";
                         SQL += ComNum.VBLF + " WHERE PATID    = '" + strPtno + "' ";
                         SQL += ComNum.VBLF + "   AND CLASS    = '" + strClass + "' ";
                         if (strClass.Equals("O"))
@@ -1531,7 +1531,7 @@ namespace ComEmrBase
                             strBdate = DateTime.ParseExact(strBdate, "yyyyMMdd", null).AddDays(-1).ToString("yyyyMMdd");
 
                             SQL = " SELECT TREATNO, INDATE, OUTDATE                             ";
-                            SQL += ComNum.VBLF + "  FROM KOSMOS_EMR.EMR_TREATT                  ";
+                            SQL += ComNum.VBLF + "  FROM ADMIN.EMR_TREATT                  ";
                             SQL += ComNum.VBLF + " WHERE PATID  ='" + strPtno + "'            ";
                             SQL += ComNum.VBLF + "   AND CLASS  = '" + strClass + "'            ";
                             SQL += ComNum.VBLF + "   AND INDATE = '" + strBdate + "'            ";
@@ -1680,7 +1680,7 @@ namespace ComEmrBase
 
         #region New_EKG_Auto
         /// <summary>
-        /// 2020-12-09 KOSMOS_OCS.ETC_JUPMST_WORK Act 후 EMR에 붙이기.
+        /// 2020-12-09 ADMIN.ETC_JUPMST_WORK Act 후 EMR에 붙이기.
         /// </summary>
         private void New_EKG_Auto()
         {
@@ -1828,7 +1828,7 @@ namespace ComEmrBase
                         //{
                         //    #region 당일 2중 촬영이 있을경우 문제 발생
                         //    SQL = " SELECT COUNT(*) CNT ";
-                        //    SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST ";
+                        //    SQL += ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST ";
                         //    //SQL += ComNum.VBLF + " WHERE GBJOB = '3' ";// '접수
                         //    SQL += ComNum.VBLF + " WHERE PTNO  = '" + strPtno + "' ";
                         //    SQL += ComNum.VBLF + "   AND GUBUN = '1' ";// 'EKG
@@ -1876,8 +1876,8 @@ namespace ComEmrBase
 
                         #region 환자정보
                         SQL = " SELECT A.PTNO, TO_CHAR(A.BDATE,'YYYYMMDD') BDATE, A.DEPTCODE, A.DRCODE, A.GBIO , A.ROWID, b.rowid as RID                                                                                               ";
-                        SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST A                                                                                                                                ";
-                        SQL += ComNum.VBLF + "    INNER JOIN KOSMOS_OCS.ETC_JUPMST_WORK B                                                                                                                   ";
+                        SQL += ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST A                                                                                                                                ";
+                        SQL += ComNum.VBLF + "    INNER JOIN ADMIN.ETC_JUPMST_WORK B                                                                                                                   ";
                         SQL += ComNum.VBLF + "       ON A.WRTNO = B.WRTNO                                                                                                                                   ";
                         SQL += ComNum.VBLF + "      AND A.PTNO  = B.PTNO                                                                                                                                    ";
                         SQL += ComNum.VBLF + "      AND B.GBEMR = 'Y'                                                                                                                                       ";
@@ -1928,7 +1928,7 @@ namespace ComEmrBase
                         }
 
                         #region 입원/외래 데이터 구분
-                        SQL = " SELECT TREATNO, INDATE, OUTDATE  FROM KOSMOS_EMR.EMR_TREATT ";
+                        SQL = " SELECT TREATNO, INDATE, OUTDATE  FROM ADMIN.EMR_TREATT ";
                         SQL += ComNum.VBLF + " WHERE PATID    = '" + strPtno + "' ";
                         SQL += ComNum.VBLF + "   AND CLASS    = '" + strClass + "' ";
                         if (strClass.Equals("O"))
@@ -2082,11 +2082,11 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT BDATE, PANO, DEPTCODE";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_MASTER A";
+                SQL += ComNum.VBLF + "  FROM ADMIN.OPD_MASTER A";
                 SQL += ComNum.VBLF + " WHERE BDate = TRUNC(SYSDATE)";
                 SQL += ComNum.VBLF + "   AND DEPTCODE NOT IN ('HR') ";
                 SQL += ComNum.VBLF + "   AND NOT EXISTS ( SELECT * ";
-                SQL += ComNum.VBLF + "                      FROM KOSMOS_EMR.EMR_TREATT B";
+                SQL += ComNum.VBLF + "                      FROM ADMIN.EMR_TREATT B";
                 SQL += ComNum.VBLF + "                     WHERE B.INDATE = TO_CHAR(A.BDATE,'YYYYMMDD')";
                 SQL += ComNum.VBLF + "                       AND A.DEPTCODE = B.CLINCODE";
                 SQL += ComNum.VBLF + "                       AND A.PANO = B.PATID)";
@@ -2192,7 +2192,7 @@ namespace ComEmrBase
                         //strflag = "A";
 
                         SQL = " SELECT PANO, TO_CHAR(BDATE,'YYYYMMDD') BDATE , DEPTCODE, DRCODE,  IPDOPD , ROWID , EMGWRTNO  ";
-                        SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.XRAY_DETAIL ";
+                        SQL += ComNum.VBLF + "  FROM ADMIN.XRAY_DETAIL ";
                         SQL += ComNum.VBLF + " WHERE PANO = '" + strPtno + "' ";
                         SQL += ComNum.VBLF + "   AND XJONG ='E' ";
                         SQL += ComNum.VBLF + "   AND XCODE NOT IN ('E7190') ";
@@ -2221,7 +2221,7 @@ namespace ComEmrBase
 
                         if (nWrtno == 0)
                         {
-                            SQL = "SELECT MAX(WRTNO ) MWRTNO FROM KOSMOS_OCS.ETC_RESULT ";
+                            SQL = "SELECT MAX(WRTNO ) MWRTNO FROM ADMIN.ETC_RESULT ";
 
                             SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
                             if (string.IsNullOrWhiteSpace(SqlErr) == false)
@@ -2240,7 +2240,7 @@ namespace ComEmrBase
 
                         if (strRowid_JUPMST.NotEmpty())
                         {
-                            SQL = "UPDATE KOSMOS_PMPA.XRAY_DETAIL SET  EMGWRTNO = " + nWrtno;
+                            SQL = "UPDATE ADMIN.XRAY_DETAIL SET  EMGWRTNO = " + nWrtno;
                             SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid_JUPMST + "'";
 
                             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
@@ -2254,7 +2254,7 @@ namespace ComEmrBase
                         }
 
                         #region 값등록
-                        SQL = " INSERT INTO KOSMOS_OCS.ETC_RESULT (WRTNO, GUBUN, SDATE, PTNO, seqno) VALUES ( ";
+                        SQL = " INSERT INTO ADMIN.ETC_RESULT (WRTNO, GUBUN, SDATE, PTNO, seqno) VALUES ( ";
                         SQL += ComNum.VBLF + nWrtno + ", '1', TO_DATE('" + strExamdate + "','YYYY-MM-DD') , '" + strPtno + "' , '" + strSEQ + "' ) ";
 
                         SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
@@ -2268,7 +2268,7 @@ namespace ComEmrBase
                         #endregion
 
                         #region ETC_RESULT ROWID
-                        SQL = " SELECT ROWID FROM  KOSMOS_OCS.ETC_RESULT";
+                        SQL = " SELECT ROWID FROM  ADMIN.ETC_RESULT";
                         SQL += ComNum.VBLF + " WHERE WRTNO =  " + nWrtno;
                         SQL += ComNum.VBLF + "   AND GUBUN =  '1'";
                         SQL += ComNum.VBLF + "   AND PTNO  = '" + strPtno + "' ";
@@ -2303,7 +2303,7 @@ namespace ComEmrBase
                             }
 
                             #region 입원/외래 데이터 구분
-                            SQL = " SELECT TREATNO, INDATE, OUTDATE  FROM KOSMOS_EMR.EMR_TREATT ";
+                            SQL = " SELECT TREATNO, INDATE, OUTDATE  FROM ADMIN.EMR_TREATT ";
                             SQL += ComNum.VBLF + " WHERE PATID    = '" + strPtno + "' ";
                             SQL += ComNum.VBLF + "   AND CLASS    = '" + strClass + "' ";
                             if (strClass.Equals("O"))
@@ -2446,7 +2446,7 @@ namespace ComEmrBase
             DataTable dt2 = null;
 
             SQL = " SELECT P.PANO, P.SNAME, P.SEX, P.JUMIN1,P.JUMIN2,P.JUMIN3, E.PATID , E.ROWID " + ComNum.VBLF +
-           "   FROM KOSMOS_PMPA.BAS_PATIENT  P , KOSMOS_EMR.EMR_PATIENTT E" + ComNum.VBLF +
+           "   FROM ADMIN.BAS_PATIENT  P , ADMIN.EMR_PATIENTT E" + ComNum.VBLF +
            " WHERE E.PATID (+)=P.PANO AND " + ComNum.VBLF +
            "  P.PANO ='" + ArgPatid.Trim() + "' ";
 
@@ -2481,7 +2481,7 @@ namespace ComEmrBase
                     if (argGUBUN.Equals("HR") || argGUBUN.Equals("TO"))
                     {
                         #region 쿼리
-                        SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                        SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                         SQL += ComNum.VBLF + "  WHERE PATID    = '" + ArgPatid + "' ";
                         SQL += ComNum.VBLF + "    AND INDATE   = '" + ArgBDate + "'";
                         SQL += ComNum.VBLF + "    AND CLINCODE = '" + ArgDeptCode + "'";
@@ -2501,7 +2501,7 @@ namespace ComEmrBase
 
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
-                                SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                                SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                                 SQL += ComNum.VBLF + "  DELDATE = '" + strOutDate + "'"; //'2009-09-07 윤조연 수정
                                 SQL += ComNum.VBLF + "  WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString().Trim() + "' ";
 
@@ -2521,7 +2521,7 @@ namespace ComEmrBase
                     else
                     {
                         #region 쿼리
-                        SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                        SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                         SQL += ComNum.VBLF + "  WHERE PATID   = '" + ArgPatid + "' ";
                         SQL += ComNum.VBLF + "    AND INDATE  ='" + ArgBDate + "'";
                         if (ArgDeptCode.Equals("MD") && (ArgDrCode.Equals("1107") || ArgDrCode.Equals("1125"))) //'내과 오동호 과장은 RA로 2009-09-17 윤조연
@@ -2559,7 +2559,7 @@ namespace ComEmrBase
 
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
-                                SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                                SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                                 SQL += ComNum.VBLF + "  DELDATE = '" + strOutDate + "'"; //'2009-09-07 윤조연 수정
                                 SQL += ComNum.VBLF + "  WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString().Trim() + "' ";
 
@@ -2588,7 +2588,7 @@ namespace ComEmrBase
                 if (string.IsNullOrWhiteSpace(dt.Rows[0]["PATID"].ToString().Trim()))
                 {
 
-                    SQL = "INSERT INTO KOSMOS_EMR.EMR_PATIENTT(PATID, JUMINNO, NAME, SEX) " + " " +
+                    SQL = "INSERT INTO ADMIN.EMR_PATIENTT(PATID, JUMINNO, NAME, SEX) " + " " +
                           " VALUES('" + dt.Rows[0]["Pano"].ToString().Trim() + "' ," +
                           " '" + strJumin + "', " +
                           " '" + dt.Rows[0]["Sname"].ToString().Trim() + "', " +
@@ -2605,7 +2605,7 @@ namespace ComEmrBase
                 }
                 else
                 {
-                    SQL = "UPDATE KOSMOS_EMR.EMR_PATIENTT" + " ";
+                    SQL = "UPDATE ADMIN.EMR_PATIENTT" + " ";
                     SQL += ComNum.VBLF + "  SET NAME ='" + dt.Rows[0]["Sname"].ToString().Trim() + "'";
                     SQL += ComNum.VBLF + "    , SEX  ='" + dt.Rows[0]["Sex"].ToString().Trim() + "'";
                     SQL += ComNum.VBLF + "    , JUMINNO ='" + strJumin + "' ";
@@ -2628,7 +2628,7 @@ namespace ComEmrBase
                 {
                     #region 외래
                     SQL = "SELECT m.pano, TO_CHAR(M.BDATE, 'YYYYMMDD') Bdate ,m.deptcode, d.sabun, M.ROWID   ";
-                    SQL += ComNum.VBLF + " from kosmos_pmpa.opd_master m, kosmos_ocs.ocs_doctor  d ";
+                    SQL += ComNum.VBLF + " from ADMIN.opd_master m, ADMIN.ocs_doctor  d ";
                     SQL += ComNum.VBLF + "  WHERE d.drcode = m.drcode AND M.BDATE >= TO_DATE('2009-07-07', 'YYYY-MM-DD') ";
                     SQL += ComNum.VBLF + "    AND M.PANO = '" + ArgPatid.Trim() + "' and  m.DeptCode = '" + ArgDeptCode.Trim() + "'";
                     SQL += ComNum.VBLF + "    AND (m.EMR = '0' OR m.EMR IS NULL) ";
@@ -2648,7 +2648,7 @@ namespace ComEmrBase
                         dt = null;
 
                         SQL = " SELECT DrSabun as Sabun, DeptCode, TO_CHAR(BDATE, 'YYYYMMDD') Bdate,Pano,ROWID ";
-                        SQL += ComNum.VBLF + "  From KOSMOS_PMPA.OPD_MASTER          ";
+                        SQL += ComNum.VBLF + "  From ADMIN.OPD_MASTER          ";
                         SQL += ComNum.VBLF + " Where Pano ='" + (ArgPatid).Trim() + "'                 ";
                         SQL += ComNum.VBLF + "   AND DeptCode = '" + (ArgDeptCode).Trim() + "'  ";
                         SQL += ComNum.VBLF + "   AND (EMR ='0' OR EMR IS NULL )              ";
@@ -2681,7 +2681,7 @@ namespace ComEmrBase
                                 strDept = dt.Rows[i]["DeptCode"].ToString().Trim();
                             }
 
-                            SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                            SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                             SQL += ComNum.VBLF + "  WHERE PATID = '" + dt.Rows[i]["Pano"].ToString().Trim() + "' ";
                             SQL += ComNum.VBLF + "    AND INDATE  ='" + dt.Rows[i]["BDATE"].ToString().Trim() + "'";
                             SQL += ComNum.VBLF + "    AND CLINCODE = '" + strDept + "'";
@@ -2698,9 +2698,9 @@ namespace ComEmrBase
 
                             if (dt2.Rows.Count == 0)
                             {
-                                SQL = "INSERT INTO KOSMOS_EMR.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
+                                SQL = "INSERT INTO ADMIN.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
                                 SQL += ComNum.VBLF + " ERFLAG, INTIME, OLDPATID, FSTFLAG, WARD, ROOM, COMPLETED";
-                                SQL += ComNum.VBLF + " ) values( KOSMOS_EMR.SEQ_TREATNO.NEXTVAL, '" + (ArgPatid).Trim() + "' ,";
+                                SQL += ComNum.VBLF + " ) values( ADMIN.SEQ_TREATNO.NEXTVAL, '" + (ArgPatid).Trim() + "' ,";
                                 SQL += ComNum.VBLF + "'O' ,";//  'CLASS
                                 SQL += ComNum.VBLF + "'" + dt.Rows[i]["BDATE"].ToString().Trim() + "' ,";// 'INDATE
                                 SQL += ComNum.VBLF + "'" + strDept + "' ,";// 'CLINCODE 2009-09-17 윤조연수정
@@ -2716,7 +2716,7 @@ namespace ComEmrBase
                             }
                             else
                             {
-                                SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                                SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                                 SQL += ComNum.VBLF + "  DELDATE ='', ";//  '2009-09-07 윤조연수정
                                 SQL += ComNum.VBLF + "  DOCCODE = '" + dt.Rows[i]["SABUN"].To<long>() + "'";
                                 SQL += ComNum.VBLF + "  WHERE ROWID = '" + dt2.Rows[0]["ROWID"].ToString().Trim() + "' ";
@@ -2734,7 +2734,7 @@ namespace ComEmrBase
                             }
 
                             //'ocs서버 업데이트. 적용시점에 새로 시작
-                            SQL = " UPDATE kosmos_pmpa.opd_master SET   EMR = '1' WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString() + "' ";
+                            SQL = " UPDATE ADMIN.opd_master SET   EMR = '1' WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString() + "' ";
 
                             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
                             if (!string.IsNullOrWhiteSpace(SqlErr))
@@ -2753,7 +2753,7 @@ namespace ComEmrBase
                 {
                     #region 입원
                     SQL = " SELECT  S.PANO, TO_CHAR(S.INDATE, 'YYYYMMDD') INDATE,  TO_CHAR(S.OUTDATE, 'YYYYMMDD') OUTDATE, S.DeptCode, S.ROWID,  D.SABUN ";
-                    SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.ipd_new_master S, kosmos_ocs.ocs_doctor d ";
+                    SQL += ComNum.VBLF + "   FROM ADMIN.ipd_new_master S, ADMIN.ocs_doctor d ";
                     SQL += ComNum.VBLF + "  WHERE S.DrCode = d.drcode ";
                     SQL += ComNum.VBLF + "    AND S.PANO = '" + ArgPatid + "' ";
                     SQL += ComNum.VBLF + "    AND S.DeptCode = '" + ArgDeptCode + "' ";
@@ -2797,7 +2797,7 @@ namespace ComEmrBase
                                 strDept = dt.Rows[i]["DeptCode"].ToString().Trim();
                             }
 
-                            SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                            SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                             SQL += ComNum.VBLF + "  WHERE PATID = '" + ArgPatid + "' ";
                             SQL += ComNum.VBLF + "    AND INDATE  ='" + dt.Rows[i]["INDATE"].ToString().Trim() + "'";
                             SQL += ComNum.VBLF + "    AND CLINCODE = '" + dt.Rows[i]["DeptCode"].ToString().Trim() + "'";
@@ -2814,9 +2814,9 @@ namespace ComEmrBase
 
                             if (dt2.Rows.Count == 0)
                             {
-                                SQL = "INSERT INTO KOSMOS_EMR.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
+                                SQL = "INSERT INTO ADMIN.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
                                 SQL += ComNum.VBLF + " ERFLAG, INTIME, OLDPATID, FSTFLAG, WARD, ROOM, COMPLETED";
-                                SQL += ComNum.VBLF + " ) values( KOSMOS_EMR.SEQ_TREATNO.NEXTVAL, '" + (ArgPatid).Trim() + "' ,";
+                                SQL += ComNum.VBLF + " ) values( ADMIN.SEQ_TREATNO.NEXTVAL, '" + (ArgPatid).Trim() + "' ,";
                                 SQL += ComNum.VBLF + "'I' ,";//  'CLASS
                                 SQL += ComNum.VBLF + "'" + dt.Rows[i]["INDATE"].ToString().Trim() + "' ,";// 'INDATE
                                 SQL += ComNum.VBLF + "'" + strDept + "' ,";// 'CLINCODE 2009-09-17 윤조연수정
@@ -2832,7 +2832,7 @@ namespace ComEmrBase
                             }
                             else
                             {
-                                SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                                SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                                 SQL += ComNum.VBLF + "  DELDATE ='', ";//  '2009-09-07 윤조연수정
                                 SQL += ComNum.VBLF + "  DOCCODE = '" + dt.Rows[i]["SABUN"].To<long>() + "'";
                                 SQL += ComNum.VBLF + "  OUTDATE = '" + dt.Rows[i]["OUTDATE"].ToString() + "'";
@@ -2851,7 +2851,7 @@ namespace ComEmrBase
                             }
 
                             //'ocs서버 업데이트. 적용시점에 새로 시작
-                            SQL = " UPDATE kosmos_pmpa.opd_master SET   EMR = '1' WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString() + "' ";
+                            SQL = " UPDATE ADMIN.opd_master SET   EMR = '1' WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString() + "' ";
 
                             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
                             if (!string.IsNullOrWhiteSpace(SqlErr))
@@ -2869,7 +2869,7 @@ namespace ComEmrBase
                 else if (argGUBUN.Equals("HR") || argGUBUN.Equals("TO"))
                 {
                     #region 입원
-                    SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                    SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                     SQL += ComNum.VBLF + "  WHERE PATID    = '" + ArgPatid + "' ";
                     SQL += ComNum.VBLF + "    AND INDATE   = '" + ArgBDate + "'";
                     SQL += ComNum.VBLF + "    AND CLINCODE = '" + ArgDeptCode + "'";
@@ -2886,9 +2886,9 @@ namespace ComEmrBase
 
                     if (dt.Rows.Count == 0)
                     {
-                        SQL = "INSERT INTO KOSMOS_EMR.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
+                        SQL = "INSERT INTO ADMIN.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
                         SQL += ComNum.VBLF + " ERFLAG, INTIME, OLDPATID, FSTFLAG, WARD, ROOM, COMPLETED";
-                        SQL += ComNum.VBLF + " ) values( KOSMOS_EMR.SEQ_TREATNO.NEXTVAL, '" + (ArgPatid).Trim() + "' ,";
+                        SQL += ComNum.VBLF + " ) values( ADMIN.SEQ_TREATNO.NEXTVAL, '" + (ArgPatid).Trim() + "' ,";
                         SQL += ComNum.VBLF + "'O' ,";//  'CLASS
                         SQL += ComNum.VBLF + "'" + ArgBDate + "' ,";// 'INDATE
                         SQL += ComNum.VBLF + "'" + ArgDeptCode + "' ,";// 'CLINCODE 2009-09-17 윤조연수정
@@ -2904,7 +2904,7 @@ namespace ComEmrBase
                     }
                     else
                     {
-                        SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                        SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                         SQL += ComNum.VBLF + "  DELDATE ='', ";//  '2009-09-07 윤조연수정
                         SQL += ComNum.VBLF + "  DOCCODE = '" + ArgDrCode + "'";
                         SQL += ComNum.VBLF + "  WHERE ROWID = '" + dt.Rows[0]["ROWID"].ToString().Trim() + "' ";
@@ -2924,7 +2924,7 @@ namespace ComEmrBase
                 else if (argGUBUN.Equals("접종"))
                 {
                     #region 접종
-                    SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                    SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                     SQL += ComNum.VBLF + "  WHERE PATID    = '" + ArgPatid + "' ";
                     SQL += ComNum.VBLF + "    AND INDATE   = '" + ArgBDate + "'";
                     SQL += ComNum.VBLF + "    AND CLINCODE = '" + ArgDeptCode + "'";
@@ -2941,9 +2941,9 @@ namespace ComEmrBase
 
                     if (dt.Rows.Count == 0)
                     {
-                        SQL = "INSERT INTO KOSMOS_EMR.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
+                        SQL = "INSERT INTO ADMIN.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
                         SQL += ComNum.VBLF + " ERFLAG, INTIME, OLDPATID, FSTFLAG, WARD, ROOM, COMPLETED";
-                        SQL += ComNum.VBLF + " ) values( KOSMOS_EMR.SEQ_TREATNO.NEXTVAL, '" + (ArgPatid).Trim() + "' ,";
+                        SQL += ComNum.VBLF + " ) values( ADMIN.SEQ_TREATNO.NEXTVAL, '" + (ArgPatid).Trim() + "' ,";
                         SQL += ComNum.VBLF + "'O' ,";//  'CLASS
                         SQL += ComNum.VBLF + "'" + ArgBDate + "' ,";// 'INDATE
                         SQL += ComNum.VBLF + "'" + ArgDeptCode + "' ,";// 'CLINCODE 2009-09-17 윤조연수정
@@ -2959,7 +2959,7 @@ namespace ComEmrBase
                     }
                     else
                     {
-                        SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                        SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                         SQL += ComNum.VBLF + "  DELDATE ='', ";//  '2009-09-07 윤조연수정
                         SQL += ComNum.VBLF + "  DOCCODE = '" + ArgDrCode + "'";
                         SQL += ComNum.VBLF + "  WHERE ROWID = '" + dt.Rows[0]["ROWID"].ToString().Trim() + "' ";
@@ -2990,7 +2990,7 @@ namespace ComEmrBase
 
         #endregion
 
-        #region KOSMOS_OCS.ETC_JUPMST_WORK (EMRDATE = SYSDATE)
+        #region ADMIN.ETC_JUPMST_WORK (EMRDATE = SYSDATE)
         private bool Upd_EmrDate(string strRowid)
         {
             bool rtnVal = false;
@@ -3002,7 +3002,7 @@ namespace ComEmrBase
             try
             {
                 int RowAffected = 0;
-                SQL = "UPDATE KOSMOS_OCS.ETC_JUPMST_WORK ";
+                SQL = "UPDATE ADMIN.ETC_JUPMST_WORK ";
                 SQL += ComNum.VBLF + "SET";
                 SQL += ComNum.VBLF + "EMRDATE = SYSDATE";
                 SQL += ComNum.VBLF + "WHERE ROWID = '" + strRowid + "'";
@@ -3010,7 +3010,7 @@ namespace ComEmrBase
                 string SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
                 if (SqlErr.NotEmpty())
                 {
-                    clsDB.SaveSqlErrLog(SqlErr + "\r\n KOSMOS_OCS.ETC_JUPMST_WORK  업데이트 도중 에러발생", SQL, NewCon);
+                    clsDB.SaveSqlErrLog(SqlErr + "\r\n ADMIN.ETC_JUPMST_WORK  업데이트 도중 에러발생", SQL, NewCon);
                     clsDB.setRollbackTran(NewCon);
                     clsDB.SaveSqlErrLog(SqlErr, SQL, NewCon);
                     return rtnVal;
@@ -3044,7 +3044,7 @@ namespace ComEmrBase
             try
             {
                 int RowAffected = 0;
-                string SQL = " UPDATE KOSMOS_OCS.ETC_JUPMST SET";
+                string SQL = " UPDATE ADMIN.ETC_JUPMST SET";
                 SQL += ComNum.VBLF + "GbJob ='3'";//  '2018-11-06 구분자만 일단 체크함
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "'";
                 SQL += ComNum.VBLF + "   AND GbPort = 'M'";
@@ -3111,7 +3111,7 @@ namespace ComEmrBase
                     //    }
                     //}
 
-                    SQL = "UPDATE KOSMOS_OCS.ETC_JUPMST";
+                    SQL = "UPDATE ADMIN.ETC_JUPMST";
                     SQL += ComNum.VBLF + "SET ";
                     SQL += ComNum.VBLF + "IMAGE = :IMG";
                     SQL += ComNum.VBLF + "WHERE ROWID = '" + ArgRowid + "'";
@@ -3129,7 +3129,7 @@ namespace ComEmrBase
 
                 string InsertNum = ArgFileName.Replace(".ecg", "");
 
-                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "KOSMOS_PMPA", "SEQ_OCSETC_WRTNO").ToString() + "_";
+                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "ADMIN", "SEQ_OCSETC_WRTNO").ToString() + "_";
                 string strLocal = string.Empty;
                 if (File.Exists(strPath + ArgFileName))
                 {
@@ -3148,7 +3148,7 @@ namespace ComEmrBase
                     rtnVal = true;
 
                     DataTable dt = null;
-                    SQL = " SELECT PTNO FROM KOSMOS_OCS.ETC_JUPMST_WORK ";
+                    SQL = " SELECT PTNO FROM ADMIN.ETC_JUPMST_WORK ";
                     SQL += ComNum.VBLF + " WHERE WRTNO = " + InsertNum + "  ";
                     SQL += ComNum.VBLF + "   AND PTNO  = '" + strPtno + "'";
 
@@ -3165,7 +3165,7 @@ namespace ComEmrBase
                     {
                         #region INSERT
                         // '저장 flag
-                        SQL = "  INSERT INTO KOSMOS_OCS.ETC_JUPMST_WORK ";
+                        SQL = "  INSERT INTO ADMIN.ETC_JUPMST_WORK ";
                         SQL += ComNum.VBLF + " (";
                         SQL += ComNum.VBLF + " WRTNO, PTNO, EXDATE, FILENAME";
                         SQL += ComNum.VBLF + " ,    GBEMR";
@@ -3180,7 +3180,7 @@ namespace ComEmrBase
                         SQL += ComNum.VBLF + " WHERE NOT EXISTS";
                         SQL += ComNum.VBLF + " (";
                         SQL += ComNum.VBLF + "  SELECT 1";
-                        SQL += ComNum.VBLF + "    FROM KOSMOS_OCS.ETC_JUPMST_WORK";
+                        SQL += ComNum.VBLF + "    FROM ADMIN.ETC_JUPMST_WORK";
                         SQL += ComNum.VBLF + "   WHERE WRTNO = " + InsertNum;
                         SQL += ComNum.VBLF + "     AND PTNO  = '" + strPtno + "'";
                         SQL += ComNum.VBLF + " )";
@@ -3198,7 +3198,7 @@ namespace ComEmrBase
                         dt.Dispose();
 
                         SQL = " SELECT PTNO, DEPTCODE, ROWID            ";
-                        SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST                  ";
+                        SQL += ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST                  ";
                         SQL += ComNum.VBLF + " WHERE PTNO  = '" + strPtno + "'";
                         SQL += ComNum.VBLF + "   AND RDATE >= TO_DATE('" + ArgYYYYMM + "', 'YYYYMMDD')";
                         SQL += ComNum.VBLF + "   AND RDATE < TO_DATE('" + ArgYYYYMM + "', 'YYYYMMDD') + 1";
@@ -3224,7 +3224,7 @@ namespace ComEmrBase
                                                                         dt.Rows[0]["DEPTCODE"].ToString().Trim().Equals("HR")))
                         {
 
-                            SQL = "  UPDATE KOSMOS_OCS.ETC_JUPMST  SET ";
+                            SQL = "  UPDATE ADMIN.ETC_JUPMST  SET ";
                             SQL += ComNum.VBLF + "      GbFTP = 'Y'                                                  ";
                             SQL += ComNum.VBLF + "  ,   FilePath ='" + strWRTNO + ArgFileName + "'                  ";
                             SQL += ComNum.VBLF + "  ,   WRTNO = " + VB.Pstr(ArgFileName.Replace(".ecg", ""), "_", 1);
@@ -3248,7 +3248,7 @@ namespace ComEmrBase
                             #region  ETC_JUPMST에 성공적으로 업데이트 후 치게
                             if (RowAffected > 0)
                             {
-                                SQL = "  UPDATE KOSMOS_OCS.ETC_JUPMST_WORK  SET  ";
+                                SQL = "  UPDATE ADMIN.ETC_JUPMST_WORK  SET  ";
                                 SQL += ComNum.VBLF + "      GBCHK   = '1'        ";
                                 SQL += ComNum.VBLF + "  ,   UPDT    = SYSDATE    ";
                                 SQL += ComNum.VBLF + "  ,   GBEMR   = 'Y'        ";
@@ -3278,7 +3278,7 @@ namespace ComEmrBase
                         #region UPDATE
 
                         SQL = " SELECT PTNO, DEPTCODE  ";
-                        SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST ";
+                        SQL += ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST ";
                         SQL += ComNum.VBLF + " WHERE PTNO  = '" + strPtno + "'";
                         SQL += ComNum.VBLF + "   AND RDATE >= TO_DATE('" + ArgYYYYMM + "', 'YYYYMMDD')";
                         SQL += ComNum.VBLF + "   AND RDATE < TO_DATE('" + ArgYYYYMM + "', 'YYYYMMDD') + 1";
@@ -3305,7 +3305,7 @@ namespace ComEmrBase
                         if (dt.Rows.Count == 1 || dt.Rows.Count > 0 && (dt.Rows[0]["DEPTCODE"].ToString().Trim().Equals("TO") ||
                                                                         dt.Rows[0]["DEPTCODE"].ToString().Trim().Equals("HR")))
                         {
-                            SQL = "  UPDATE KOSMOS_OCS.ETC_JUPMST  SET ";
+                            SQL = "  UPDATE ADMIN.ETC_JUPMST  SET ";
                             SQL += ComNum.VBLF + "      GbFTP ='Y'                                                  ";
                             SQL += ComNum.VBLF + "  ,   FilePath ='" + strWRTNO + ArgFileName + "'                  ";
                             SQL += ComNum.VBLF + "  ,   WRTNO = " + VB.Pstr(ArgFileName.Replace(".ecg", ""), "_", 1);
@@ -3330,7 +3330,7 @@ namespace ComEmrBase
                             #region ETC_JUPMST에 성공적으로 쳐졌을경우만.
                             if (RowAffected > 0)
                             {
-                                SQL = "  UPDATE KOSMOS_OCS.ETC_JUPMST_WORK  SET  ";
+                                SQL = "  UPDATE ADMIN.ETC_JUPMST_WORK  SET  ";
                                 SQL += ComNum.VBLF + "      GBCHK   = '1'        ";
                                 SQL += ComNum.VBLF + "  ,   UPDT    = SYSDATE    ";
                                 SQL += ComNum.VBLF + "  ,   GBEMR   = 'Y'        ";
@@ -3427,7 +3427,7 @@ namespace ComEmrBase
             {
 
                 #region FTP OCS파일 전송 2014-11-18
-                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "KOSMOS_PMPA", "SEQ_OCSETC_WRTNO").ToString() + "_";
+                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "ADMIN", "SEQ_OCSETC_WRTNO").ToString() + "_";
 
                 string strLocal = string.Empty;
 
@@ -3448,7 +3448,7 @@ namespace ComEmrBase
                 if (FTP_OCS_FILESEND(strLocal, strHost, strHost_folder))
                 {
                     // '저장 flag
-                    SQL = "  UPDATE KOSMOS_OCS.ETC_JUPMST  SET ";
+                    SQL = "  UPDATE ADMIN.ETC_JUPMST  SET ";
                     SQL += ComNum.VBLF + "  GbFTP ='Y', FilePath ='" + strWRTNO + ArgFileName + "' ";
 
                     if (ArgFileName.IndexOf(".ecg") == -1)
@@ -3539,7 +3539,7 @@ namespace ComEmrBase
                         }
                     }
 
-                    SQL = "UPDATE KOSMOS_OCS.ETC_RESULT";
+                    SQL = "UPDATE ADMIN.ETC_RESULT";
                     SQL += ComNum.VBLF + "SET ";
                     SQL += ComNum.VBLF + "IMAGE = :IMG";
                     SQL += ComNum.VBLF + "WHERE ROWID = '" + ArgRowid + "'";
@@ -3556,7 +3556,7 @@ namespace ComEmrBase
                 }
 
 
-                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "KOSMOS_PMPA", "SEQ_OCSETC_WRTNO").ToString() + "_";
+                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "ADMIN", "SEQ_OCSETC_WRTNO").ToString() + "_";
 
                 string strLocal = strPath + ArgFileName.Substring(ArgFileName.LastIndexOf("\\") + 1);
                 string strHost = "/data/ocs_etc/" + ArgYYYYMM + "/" + strWRTNO + ArgFileName;
@@ -3566,7 +3566,7 @@ namespace ComEmrBase
                 if (FTP_OCS_FILESEND(strLocal, strHost, strHost_folder))
                 {
                     // '저장 flag
-                    SQL = "  UPDATE KOSMOS_OCS.ETC_RESULT  SET ";
+                    SQL = "  UPDATE ADMIN.ETC_RESULT  SET ";
                     SQL += ComNum.VBLF + "  GbFTP ='Y', FileName ='" + strWRTNO + ArgFileName + "' ";
                     SQL += ComNum.VBLF + " WHERE ROWID = '" + ArgRowid + "' ";
 
@@ -3621,7 +3621,7 @@ namespace ComEmrBase
             {
 
                 #region FTP OCS파일 전송 2014-11-18
-                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "KOSMOS_PMPA", "SEQ_OCSETC_WRTNO").ToString() + "_";
+                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "ADMIN", "SEQ_OCSETC_WRTNO").ToString() + "_";
 
                 string strLocal = ArgFilePathName;
                 string strHost = "/data/ocs_etc/" + ArgYYYYMM + "/" + strWRTNO + ArgFile;
@@ -3631,7 +3631,7 @@ namespace ComEmrBase
                 if (FTP_OCS_FILESEND(strLocal, strHost, strHost_folder))
                 {
                     // '저장 flag
-                    SQL = "  UPDATE KOSMOS_OCS.ETC_JUPMST  SET ";
+                    SQL = "  UPDATE ADMIN.ETC_JUPMST  SET ";
                     SQL += ComNum.VBLF + "  GbFTP ='Y', FilePath ='" + strWRTNO + ArgFile + "' ";
                     SQL += ComNum.VBLF + " WHERE ROWID = '" + ArgRowid + "' ";
 
@@ -3648,7 +3648,7 @@ namespace ComEmrBase
                 #endregion
 
 
-                SQL = " UPDATE KOSMOS_OCS.ETC_JUPMST SET  ";
+                SQL = " UPDATE ADMIN.ETC_JUPMST SET  ";
                 SQL += ComNum.VBLF + " Image_Gbn = '10',";
                 SQL += ComNum.VBLF + " GBJOB = '3' ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + ArgRowid + "' ";
@@ -3700,7 +3700,7 @@ namespace ComEmrBase
             {
 
                 #region FTP OCS파일 전송 2014-11-18
-                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "KOSMOS_PMPA", "SEQ_OCSETC_WRTNO").ToString() + "_";
+                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "ADMIN", "SEQ_OCSETC_WRTNO").ToString() + "_";
 
                 string strLocal = ArgFilePathName;
                 string strHost = "/data/ocs_etc/" + ArgYYYYMM + "/" + strWRTNO + ArgFile;
@@ -3710,7 +3710,7 @@ namespace ComEmrBase
                 if (FTP_OCS_FILESEND(strLocal, strHost, strHost_folder))
                 {
                     // '저장 flag
-                    SQL = "  UPDATE KOSMOS_OCS.ETC_JUPMST  SET ";
+                    SQL = "  UPDATE ADMIN.ETC_JUPMST  SET ";
                     SQL += ComNum.VBLF + "  GbFTP ='Y', FilePath ='" + strWRTNO + ArgFile + "' ";
                     SQL += ComNum.VBLF + " WHERE ROWID = '" + ArgRowid + "' ";
 
@@ -3727,7 +3727,7 @@ namespace ComEmrBase
                 #endregion
 
 
-                SQL = " UPDATE KOSMOS_OCS.ETC_JUPMST SET  ";
+                SQL = " UPDATE ADMIN.ETC_JUPMST SET  ";
                 SQL += ComNum.VBLF + " Image_Gbn = '08'";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + ArgRowid + "' ";
 
@@ -3789,7 +3789,7 @@ namespace ComEmrBase
                         }
                     }
 
-                    SQL = "UPDATE KOSMOS_OCS.ETC_JUPMST";
+                    SQL = "UPDATE ADMIN.ETC_JUPMST";
                     SQL += ComNum.VBLF + "SET ";
                     SQL += ComNum.VBLF + "IMAGE = :IMG";
                     SQL += ComNum.VBLF + "WHERE ROWID = '" + ArgRowid + "'";
@@ -3805,7 +3805,7 @@ namespace ComEmrBase
                 }
 
                 #region FTP OCS파일 전송 2014-11-18
-                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "KOSMOS_PMPA", "SEQ_OCSETC_WRTNO").ToString() + "_";
+                string strWRTNO = READ_SEQNO_WRTNO(NewCon, "ADMIN", "SEQ_OCSETC_WRTNO").ToString() + "_";
 
                 string strLocal = ArgFilePathName;
                 string strHost = "/data/ocs_etc/" + ArgYYYYMM + "/" + strWRTNO + ArgFile;
@@ -3815,7 +3815,7 @@ namespace ComEmrBase
                 if (FTP_OCS_FILESEND(strLocal, strHost, strHost_folder))
                 {
                     // '저장 flag
-                    SQL = "  UPDATE KOSMOS_OCS.ETC_JUPMST  SET ";
+                    SQL = "  UPDATE ADMIN.ETC_JUPMST  SET ";
                     SQL += ComNum.VBLF + "  GbFTP ='Y', FilePath ='" + strWRTNO + ArgFile + "' ";
                     SQL += ComNum.VBLF + " WHERE ROWID = '" + ArgRowid + "' ";
 
@@ -3937,7 +3937,7 @@ namespace ComEmrBase
             {
                 #region '2014-11-18 FTP저장체크
                 SQL = "SELECT ROWID,TO_CHAR(SDATE,'YYYYMMDD') RDATE,FileName as FILEPATH";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.etc_RESULT ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.etc_RESULT ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + ArgROWID + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND GbFTP ='Y' ";
 
@@ -3984,7 +3984,7 @@ namespace ComEmrBase
                         }
 
 
-                        SQL = "UPDATE KOSMOS_OCS.ETC_RESULT";
+                        SQL = "UPDATE ADMIN.ETC_RESULT";
                         SQL += ComNum.VBLF + "SET ";
                         SQL += ComNum.VBLF + "IMAGE = :IMG";
                         SQL += ComNum.VBLF + "WHERE ROWID = '" + ArgROWID + "'";
@@ -4047,7 +4047,7 @@ namespace ComEmrBase
             //string strPath = @"C:\Program Files\BitNixChart\IMG";
             Ftpedt ftpedt = new Ftpedt();
             string strIp = string.Empty;
-            string SQL = "SELECT  ipaddress ,pathport , localpath,FTPUSER, FTPPASSWD   FROM KOSMOS_EMR.EMR_PATHT WHERE PATHID ='" + strPathID + "'";
+            string SQL = "SELECT  ipaddress ,pathport , localpath,FTPUSER, FTPPASSWD   FROM ADMIN.EMR_PATHT WHERE PATHID ='" + strPathID + "'";
             string SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
             if (string.IsNullOrWhiteSpace(SqlErr) == false)
             {
@@ -4227,7 +4227,7 @@ namespace ComEmrBase
             try
             {
                 #region SQL
-                SQL = "SELECT KOSMOS_EMR.SEQ_PAGENO.NEXTVAL SEQ_PAGENO FROM DUAL";
+                SQL = "SELECT ADMIN.SEQ_PAGENO.NEXTVAL SEQ_PAGENO FROM DUAL";
 
                 SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
                 if (string.IsNullOrWhiteSpace(SqlErr) == false)
@@ -4261,7 +4261,7 @@ namespace ComEmrBase
                 }
 
                 #region CHARTPAGET에 INSERT 
-                SQL = "INSERT INTO KOSMOS_EMR.EMR_PAGET(PAGENO ,PATHID, CDATE, CUSERID, FILESIZE, EXTENSION, LOCATION) " +
+                SQL = "INSERT INTO ADMIN.EMR_PAGET(PAGENO ,PATHID, CDATE, CUSERID, FILESIZE, EXTENSION, LOCATION) " +
                       "VALUES (" + nPageNo + ", '" + strPathID + "'," + strdates + ",'" + strUserID + "', " + nFileSize + ",'" + strExten + "' ,'" + strLocation + "')";
 
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
@@ -4276,7 +4276,7 @@ namespace ComEmrBase
 
 
                 #region SQL
-                SQL = "SELECT NVL(MAX(PAGE), 0) + 1  PAGE   FROM KOSMOS_EMR.EMR_CHARTPAGET ";
+                SQL = "SELECT NVL(MAX(PAGE), 0) + 1  PAGE   FROM ADMIN.EMR_CHARTPAGET ";
                 SQL += ComNum.VBLF + " WHERE TREATNO = " + ntreat + " AND FORMCODE = '" + strFormCode + "'";
 
                 SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -4291,7 +4291,7 @@ namespace ComEmrBase
 
                 if (reader.HasRows && reader.Read())
                 {
-                    SQL = "INSERT INTO KOSMOS_EMR.EMR_CHARTPAGET(PAGENO, TREATNO, FORMCODE, PAGE, CDATE, CUSERID) VALUES(" +
+                    SQL = "INSERT INTO ADMIN.EMR_CHARTPAGET(PAGENO, TREATNO, FORMCODE, PAGE, CDATE, CUSERID) VALUES(" +
                     nPageNo + ", " + ntreat + ", '" + strFormCode + "' , " + reader.GetValue(0).ToString().Trim() + ", '" + strdates + "', '" + strUserID + "') ";
 
                     SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
@@ -4394,7 +4394,7 @@ namespace ComEmrBase
             DataTable dt = null;
 
             SQL = " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE , TO_CHAR(SEEKDATE,'YYYY-MM-DD') SEEKDATE, A.ROWID AROWID , B.SUNAMEK, C.ROWID  CROWID, C.IMAGE,C.GbFTP   ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.XRAY_DETAIL A, KOSMOS_PMPA.BAS_SUN B ,  KOSMOS_OCS.ETC_RESULT C ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.XRAY_DETAIL A, ADMIN.BAS_SUN B ,  ADMIN.ETC_RESULT C ";
             SQL += ComNum.VBLF + "  WHERE A.PANO = '" + strPano + "'";
             SQL += ComNum.VBLF + "    AND A.XCODE = B.SUNEXT "; ;
             SQL += ComNum.VBLF + "    AND A.EMGWRTNO = C.WRTNO ";
@@ -4460,7 +4460,7 @@ namespace ComEmrBase
                     {
                         string strRowid = ss2_Sheet1.Cells[i, 5].Text.Trim();
 
-                        SQL = "DELETE KOSMOS_OCS.ETC_RESULT  WHERE ROWID = '" + strRowid + "'";
+                        SQL = "DELETE ADMIN.ETC_RESULT  WHERE ROWID = '" + strRowid + "'";
 
                         SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, NewCon);
                         if (!string.IsNullOrWhiteSpace(SqlErr))

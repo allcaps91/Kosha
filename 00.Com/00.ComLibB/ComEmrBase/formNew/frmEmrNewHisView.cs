@@ -87,7 +87,7 @@ namespace ComEmrBase
             /// </summary>
             FORMTYPE,
             /// <summary>
-            /// KOSMOS_EMR.EMR_TREATT(TREATNO) 동일
+            /// ADMIN.EMR_TREATT(TREATNO) 동일
             /// </summary>
             ACPNO,
             /// <summary>
@@ -175,17 +175,17 @@ namespace ComEmrBase
                 }
                 SQL += ComNum.VBLF + "        UNION ALL ";
                 SQL += ComNum.VBLF + "        SELECT TO_CHAR(C.CREATED, 'YYYYMMDD') AS CHARTDATE, TO_CHAR(C.CREATED, 'HH24MISS') AS CHARTTIME, B.NAME,A.CREATEDUSER";
-                SQL += ComNum.VBLF + "        , (SELECT MEDDEPTCD FROM KOSMOS_EMR.AEASFORMDATA WHERE ID = A.EASFORMDATA) AS MEDDEPTCD, TO_CHAR(A.CREATED, 'YYYYMMDD HH24MISS') AS DC, 0 AS ACPNO, A.EASFORMDATA as EMRNO, A.ID AS EMRNOHIS";
-                SQL += ComNum.VBLF + "        , CASE WHEN EXISTS(SELECT 1 FROM KOSMOS_EMR.EMRPRTREQ WHERE EMRNO = C.ID AND SCANYN = 'E') THEN '사 본' END PRNTYN, " + pForm.FmFORMNO + ", " + pForm.FmUPDATENO;
+                SQL += ComNum.VBLF + "        , (SELECT MEDDEPTCD FROM ADMIN.AEASFORMDATA WHERE ID = A.EASFORMDATA) AS MEDDEPTCD, TO_CHAR(A.CREATED, 'YYYYMMDD HH24MISS') AS DC, 0 AS ACPNO, A.EASFORMDATA as EMRNO, A.ID AS EMRNOHIS";
+                SQL += ComNum.VBLF + "        , CASE WHEN EXISTS(SELECT 1 FROM ADMIN.EMRPRTREQ WHERE EMRNO = C.ID AND SCANYN = 'E') THEN '사 본' END PRNTYN, " + pForm.FmFORMNO + ", " + pForm.FmUPDATENO;
                 SQL += ComNum.VBLF + "        , TO_CHAR(A.CREATED, 'YYYYMMDD HH24MISS') WRTIE";
-                SQL += ComNum.VBLF + "         FROM KOSMOS_EMR.AEASFORMDATAHISTORY A";
-                SQL += ComNum.VBLF + "           INNER JOIN KOSMOS_EMR.EMR_USERT B   ";
+                SQL += ComNum.VBLF + "         FROM ADMIN.AEASFORMDATAHISTORY A";
+                SQL += ComNum.VBLF + "           INNER JOIN ADMIN.EMR_USERT B   ";
                 SQL += ComNum.VBLF + "              ON A.CREATEDUSER = B.USERID   ";
-                SQL += ComNum.VBLF + "           INNER JOIN KOSMOS_EMR.AEASFORMDATA C   ";
+                SQL += ComNum.VBLF + "           INNER JOIN ADMIN.AEASFORMDATA C   ";
                 SQL += ComNum.VBLF + "              ON C.ID = A.EASFORMDATA   ";
-                //SQL += ComNum.VBLF + "           INNER JOIN KOSMOS_EMR.AEASFORMCONTENT D   ";
+                //SQL += ComNum.VBLF + "           INNER JOIN ADMIN.AEASFORMCONTENT D   ";
                 //SQL += ComNum.VBLF + "              ON D.ID = C.EASFORMCONTENT   ";
-                SQL += ComNum.VBLF + "           INNER JOIN KOSMOS_EMR.AEMRFORM E   ";
+                SQL += ComNum.VBLF + "           INNER JOIN ADMIN.AEMRFORM E   ";
                 SQL += ComNum.VBLF + "              ON E.FORMNO   = " + pForm.FmFORMNO;
                 SQL += ComNum.VBLF + "             AND E.UPDATENO = " + pForm.FmUPDATENO;
                 SQL += ComNum.VBLF + "           WHERE A.EASFORMDATA = " + strEmrNo;
@@ -193,7 +193,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "             AND C.MEDFRDATE = '" + AcpEmr.medFrDate + "'";
                 SQL += ComNum.VBLF + "             AND C.MEDDEPTCD = '" + AcpEmr.medDeptCd +"'";
                 SQL += ComNum.VBLF + ") A ";
-                SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_EMR.AEMRFORM B";
+                SQL += ComNum.VBLF + "  INNER JOIN ADMIN.AEMRFORM B";
                 SQL += ComNum.VBLF + "    ON A.FORMNO = B.FORMNO";
                 SQL += ComNum.VBLF + "   AND A.UPDATENO = B.UPDATENO";
                 SQL += ComNum.VBLF + "ORDER BY DC DESC-- 최신 수정내역 부터 ";

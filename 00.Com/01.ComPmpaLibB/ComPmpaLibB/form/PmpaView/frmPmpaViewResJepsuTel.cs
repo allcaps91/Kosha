@@ -137,7 +137,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "         DeptCode, DrCode, TO_CHAR(RDATE, 'YYYY-MM-DD') RDATE, ";
                 SQL += ComNum.VBLF + "         Rtime, EntSabun, TO_CHAR(EntDate, 'YYYY-MM-DD HH24:MI') EntDate, ";
                 SQL += ComNum.VBLF + "         '' A, '' B, ";
-                SQL += ComNum.VBLF + "         (SELECT '1' FROM KOSMOS_PMPA.BAS_USER B ";
+                SQL += ComNum.VBLF + "         (SELECT '1' FROM ADMIN.BAS_USER B ";
                 SQL += ComNum.VBLF + "                    WHERE A.ENTSABUN = B.SABUN ";
                 SQL += ComNum.VBLF + "                      AND B.JOBGROUP IN('JOB015001', 'JOB015002', 'JOB015003')) GBTODAY ";
                 SQL += ComNum.VBLF + "  FROM " + ComNum.DB_PMPA + "OPD_TELRESV A ";
@@ -187,7 +187,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "             DeptCode, DrCode, TO_CHAR(RDATE, 'YYYY-MM-DD') RDATE, ";
                 SQL += ComNum.VBLF + "             Rtime, EntSabun, TO_CHAR(EntDate, 'YYYY-MM-DD HH24:MI') EntDate, ";
                 SQL += ComNum.VBLF + "             DELSABUN, TO_CHAR(DelDate, 'YYYY-MM-DD HH24:MI') DELDate, ";
-                SQL += ComNum.VBLF + "             (SELECT '1' FROM KOSMOS_PMPA.BAS_USER B ";
+                SQL += ComNum.VBLF + "             (SELECT '1' FROM ADMIN.BAS_USER B ";
                 SQL += ComNum.VBLF + "                        WHERE A.ENTSABUN = B.SABUN ";
                 SQL += ComNum.VBLF + "                          AND B.JOBGROUP IN('JOB015001', 'JOB015002', 'JOB015003')) GBTODAY ";
                 SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "OPD_TELRESV_DEL A ";
@@ -237,12 +237,12 @@ namespace ComPmpaLibB
 
             SQL = "";
             //SQL += ComNum.VBLF + " SELECT JEPGBN, PANO, SNAME, ";
-            //SQL += ComNum.VBLF + "        DEPTCODE, KOSMOS_OCS.FC_BAS_CLINICDEPT_DEPTNAMEK(DEPTCODE) DEPTNAMEK, ";
-            //SQL += ComNum.VBLF + "        DRCODE, KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
+            //SQL += ComNum.VBLF + "        DEPTCODE, ADMIN.FC_BAS_CLINICDEPT_DEPTNAMEK(DEPTCODE) DEPTNAMEK, ";
+            //SQL += ComNum.VBLF + "        DRCODE, ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
             //SQL += ComNum.VBLF + "        RDATE, RTIME, ";
-            //SQL += ComNum.VBLF + "        SABUN, KOSMOS_OCS.FC_BAS_USER_USERNAME(SABUN) USERNAME, ";
+            //SQL += ComNum.VBLF + "        SABUN, ADMIN.FC_BAS_USER_USERNAME(SABUN) USERNAME, ";
             //SQL += ComNum.VBLF + "        ENTDATE, DELDATE, ";
-            //SQL += ComNum.VBLF + "        DELSABUN, KOSMOS_OCS.FC_BAS_USER_USERNAME(DELSABUN) DELNAME ";
+            //SQL += ComNum.VBLF + "        DELSABUN, ADMIN.FC_BAS_USER_USERNAME(DELSABUN) DELNAME ";
             SQL += ComNum.VBLF + "SELECT * ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "VIEW_TELJEPSU ";
             SQL += ComNum.VBLF + "  WHERE 1     = 1 ";

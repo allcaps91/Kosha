@@ -22,10 +22,10 @@ namespace ComHpcLibB.Repository
         public int Result_History_Insert(string SABUN, string RESULT, string ROWID, string EXCODE = "")
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_RESULT_HIS                                     ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_RESULT_HIS                                     ");
             parameter.AppendSql("       (JOBTIME, JOBSABUN, WRTNO, EXCODE, RESULT_OLD, RESULT_New)          ");
             parameter.AppendSql("SELECT SYSDATE, :SABUN, WRTNO, EXCODE, RESULT, :RESULT                     ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HIC_RESULT                                              ");
+            parameter.AppendSql("  From ADMIN.HIC_RESULT                                              ");
             parameter.AppendSql(" WHERE ROWID = :RID                                                        ");
             parameter.AppendSql("   AND RESULT IS NOT NULL                                                  ");
             parameter.AppendSql("   AND RESULT <> :RESULT                                                   ");
@@ -48,7 +48,7 @@ namespace ComHpcLibB.Repository
         public int Result_Update(string RESULT, string PANJENG, string RESCODE, string ENTSABUN, string strRowId, string EXCODE = "")
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RESULT SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RESULT SET              ");
             parameter.AppendSql("       Result   = :RESULT                      ");
             parameter.AppendSql("     , Panjeng  = :PANJENG                     ");
             parameter.AppendSql("     , RESCODE  = :RESCODE                     ");
@@ -84,7 +84,7 @@ namespace ComHpcLibB.Repository
         public int UpdatebyWrtNoExCode_Hea(string strResult, string idNumber, long nWrtNo, string strCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT SET              ");
             parameter.AppendSql("       RESULT   = :RESULT                      ");
             parameter.AppendSql("     , ENTSABUN = :ENTSABUN                    ");
             parameter.AppendSql("     , ENTTIME  = SYSDATE                      ");
@@ -102,7 +102,7 @@ namespace ComHpcLibB.Repository
         public int UpdatebyRowId_Hea(string strResult, string strPanjeng, string strResCode, string idNumber, string strROWID)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT SET              ");
             parameter.AppendSql("       RESULT   = :RESULT                      ");
             parameter.AppendSql("     , PANJENG  = :PANJENG                     ");
             parameter.AppendSql("     , RESCODE  = :RESCODE                     ");
@@ -122,10 +122,10 @@ namespace ComHpcLibB.Repository
         public int Result_History_Insert_Hea(string SABUN, string RESULT, string ROWID, string EXCODE = "")
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_RESULT_HISTORY                                 ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_RESULT_HISTORY                                 ");
             parameter.AppendSql("       (JOBTIME, JOBSABUN, WRTNO, EXCODE, RESULT_OLD, RESULT_NEW)          ");
             parameter.AppendSql("SELECT SYSDATE, :SABUN, WRTNO, EXCODE, RESULT, :RESULT                     ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HEA_RESULT                                              ");
+            parameter.AppendSql("  From ADMIN.HEA_RESULT                                              ");
             parameter.AppendSql(" WHERE ROWID = :RID                                                        ");
             parameter.AppendSql("   AND RESULT IS NOT NULL                                                  ");
             parameter.AppendSql("   AND RESULT <> :RESULT                                                   ");
@@ -148,7 +148,7 @@ namespace ComHpcLibB.Repository
         public int UpdatebyWrtNoExCode(string strResult, string idNumber, long nWrtNo, string strCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RESULT SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RESULT SET              ");
             parameter.AppendSql("       RESULT   = :RESULT                      ");
             parameter.AppendSql("     , ENTSABUN = :ENTSABUN                    ");
             parameter.AppendSql("     , ENTTIME  = SYSDATE                      ");
@@ -166,7 +166,7 @@ namespace ComHpcLibB.Repository
         public int UpdatebyRowId(string strResult, string strPanjeng, string strResCode, string idNumber, string strROWID)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RESULT SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RESULT SET              ");
             parameter.AppendSql("       RESULT   = :RESULT                      ");
             parameter.AppendSql("     , PANJENG  = :PANJENG                     ");
             parameter.AppendSql("     , RESCODE  = :RESCODE                     ");
@@ -186,10 +186,10 @@ namespace ComHpcLibB.Repository
         public int Result_History_Insert2(string SABUN, string RESULT, long WRTNO, string EXCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_RESULT_HISTORY                                 ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_RESULT_HISTORY                                 ");
             parameter.AppendSql("       (JOBTIME,JOBSABUN,WRTNO,EXCODE,RESULT_OLD,RESULT_NEW)               ");
             parameter.AppendSql("SELECT SYSDATE, :SABUN, WRTNO, EXCODE, RESULT, replace(:RESULT, ''', '`')  ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HIC_RESULT                                              ");
+            parameter.AppendSql("  From ADMIN.HIC_RESULT                                              ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                      ");
             parameter.AppendSql("   AND EXCODE = :EXCODE                                                    ");
             parameter.AppendSql("   AND RESULT IS NOT NULL                                                  ");
@@ -206,7 +206,7 @@ namespace ComHpcLibB.Repository
         public int Result_History_Update(string RESULT, string ENTSABUN, long WRTNO, string EXCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RESULT SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RESULT SET              ");
             parameter.AppendSql("       RESULT   = replace(:RESULT, ''', '`')   ");
             parameter.AppendSql("     , ENTSABUN = :ENTSABUN                    ");
             parameter.AppendSql("     , ENTTIME  = SYSDATE                      ");
@@ -225,7 +225,7 @@ namespace ComHpcLibB.Repository
         public int Result_History_Update2(double RESULT, long WRTNO, string EXCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RESULT SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RESULT SET              ");
             parameter.AppendSql("       RESULT   = :RESULT                      ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO                       ");
             parameter.AppendSql("   AND EXCODE   = :EXCODE                      ");

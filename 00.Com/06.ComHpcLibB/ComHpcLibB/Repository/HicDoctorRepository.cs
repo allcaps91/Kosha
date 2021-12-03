@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT DrName                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_DOCTOR  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_DOCTOR  ");
             parameter.AppendSql(" WHERE LICENCE = :LICENCE      ");
 
             parameter.Add("LICENCE", argLicence);
@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT DRNAME, LICENCE         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_DOCTOR  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_DOCTOR  ");
             parameter.AppendSql(" WHERE SABUN = :SABUN          ");
 
             parameter.Add("SABUN", argSabun);
@@ -50,7 +50,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT LICENCE, DRNAME, SABUN          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_DOCTOR          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_DOCTOR          ");
             if (strGubun == "")
             {
                 parameter.AppendSql(" WHERE REDAY IS NULL               ");
@@ -71,7 +71,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SABUN                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_DOCTOR  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_DOCTOR  ");
             parameter.AppendSql(" WHERE ROOM IN (:ROOM)         ");
             parameter.AppendSql("   AND ReDay IS NULL           ");
             parameter.AppendSql(" ORDER BY DrName               ");
@@ -86,7 +86,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT DrName,DRBUNHO,DRCODE   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DOCTOR   ");
+            parameter.AppendSql("  FROM ADMIN.OCS_DOCTOR   ");
             parameter.AppendSql(" WHERE DRBUNHO = :DRBUNHO      ");
 
             parameter.Add("DRBUNHO", argSabun);
@@ -99,7 +99,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_DOCTOR  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_DOCTOR  ");
             parameter.AppendSql(" WHERE SABUN = :SABUN          ");
             parameter.AppendSql("   AND REDAY IS NULL           ");
             parameter.AppendSql("   AND GBHEA = 'Y'             ");
@@ -114,7 +114,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GBHEA                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_DOCTOR  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_DOCTOR  ");
             parameter.AppendSql(" WHERE SABUN = :SABUN          ");
             parameter.AppendSql("   AND GBHEA = 'Y'             ");
 
@@ -128,7 +128,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT LICENCE                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_DOCTOR  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_DOCTOR  ");
             parameter.AppendSql(" WHERE SABUN = :SABUN          ");
 
             parameter.Add("SABUN", nDrSabun);
@@ -141,7 +141,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT DRNAME, LICENCE         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_DOCTOR  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_DOCTOR  ");
             parameter.AppendSql(" WHERE SABUN = :SABUN          ");
 
             parameter.Add("SABUN", strDRSABUN);
@@ -154,7 +154,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT DRCODE, ROOM            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_DOCTOR  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_DOCTOR  ");
             parameter.AppendSql(" WHERE REDAY IS NULL           ");
             parameter.AppendSql("   AND PAN IS NOT NULL         ");
             parameter.AppendSql("   AND ROOM IS NOT NULL        ");
@@ -169,7 +169,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT SABUN, DRNAME, IPSADAY, REDAY               ");
             parameter.AppendSql("     , LICENCE, ENTDATE, ENTSABUN                  ");
             parameter.AppendSql("     , SCHE, ROOM, PAN, DRCODE, GBDENT, GBHEA      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_DOCTOR                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_DOCTOR                      ");
             parameter.AppendSql(" WHERE ROOM >= '01'                                ");
             parameter.AppendSql("   AND (REDAY IS NULL OR ReDay > TRUNC(SYSDATE))   ");
 
@@ -181,7 +181,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SABUN                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_DOCTOR  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_DOCTOR  ");
             parameter.AppendSql(" WHERE LICENCE = :LICENCE      ");
             parameter.AppendSql(" ORDER BY Sabun DESC           ");
 
@@ -195,7 +195,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT DRCODE                  ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DOCTOR   ");
+            parameter.AppendSql("  FROM ADMIN.OCS_DOCTOR   ");
             parameter.AppendSql(" WHERE SABUN = :SABUN          ");
 
             parameter.Add("SABUN", string.Format("0:#00000", argSabun));
@@ -208,7 +208,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SABUN,DRNAME,LICENCE,GBDENT,DRCODE                      ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_DOCTOR                                   ");
+            parameter.AppendSql(" FROM ADMIN.HIC_DOCTOR                                   ");
             parameter.AppendSql(" WHERE 1 = 1                                                   ");
             parameter.AppendSql(" AND (REDAY IS NULL OR REDAY >= TO_DATE(:REDAY,'YYYY-MM-DD'))  ");
             parameter.AppendSql(" AND DRCODE IS NOT NULL                                        ");

@@ -56,7 +56,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT CODE, PRINTRANKING, B.BUSECODE, A.MATCH_CODE";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_CODE A, KOSMOS_EMR.EMR_USERT B";
+                SQL += ComNum.VBLF + " FROM ADMIN.NUR_CODE A, ADMIN.EMR_USERT B";
                 SQL += ComNum.VBLF + " WHERE A.GUBUN = '2'";
                 SQL += ComNum.VBLF + "   AND A.MATCH_CODE = B.BUSECODE(+)";
                 SQL += ComNum.VBLF + "   AND B." + strDept + "VIEW(+) = '*'";
@@ -118,7 +118,7 @@ namespace ComEmrBase
                 for (int i = 0; i < SS1_Sheet1.RowCount; i++)
                 {
                     string strBuse = SS1_Sheet1.Cells[i, 2].Text.Trim();
-                    SQL = " UPDATE KOSMOS_EMR.EMR_USERT ";
+                    SQL = " UPDATE ADMIN.EMR_USERT ";
                     if(SS1_Sheet1.Cells[i, 1].Text.Trim() == "Y")
                     {
                         SQL += ComNum.VBLF + " SET " + strDept + "VIEW = '*' ";

@@ -23,7 +23,7 @@ namespace HC_Measurement.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHUKDTL_RESULT");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHUKDTL_RESULT");
             parameter.AppendSql("(");
             parameter.AppendSql("    WRTNO");
             parameter.AppendSql("  , GUBUN");
@@ -160,8 +160,8 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.INWON AS LABRR_CD");
             parameter.AppendSql("     , A.JTIME AS LABOR_TIME");
             parameter.AppendSql("     , A.CHKWAY_CD AS ANALS_MTH_CD");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE('15', A.CHKWAY_CD) AS WEM_MTH_NM");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE1('15', A.CHKWAY_CD) AS ANALS_MTH_NM");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE('15', A.CHKWAY_CD) AS WEM_MTH_NM");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE1('15', A.CHKWAY_CD) AS ANALS_MTH_NM");
             parameter.AppendSql("     , A.CHKCOUNT AS WEM_CO");
             parameter.AppendSql("     , DECODE (A.MCODE, '31001', '90', '') AS EXPSR_STDR_DEFAULT");
             parameter.AppendSql("     , A.SEQNO");
@@ -188,8 +188,8 @@ namespace HC_Measurement.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.CHMCLS_CD");
             parameter.AppendSql("     , B.NAME AS MCODE_NM");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHUKDTL_RESULT A");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_CHK_MCODE B");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHUKDTL_RESULT A");
+            parameter.AppendSql("     , ADMIN.HIC_CHK_MCODE B");
             parameter.AppendSql(" WHERE A.WRTNO=:WRTNO");
             parameter.AppendSql("   AND A.DELDATE IS NULL");
             parameter.AppendSql("   AND A.CHMCLS_CD = B.CODE");
@@ -228,8 +228,8 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , B.CHKCODE");
             parameter.AppendSql("     , B.GCODE");
             parameter.AppendSql("     , B.GBUSE");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHUKDTL_RESULT A");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_CHK_SUGA B");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHUKDTL_RESULT A");
+            parameter.AppendSql("     , ADMIN.HIC_CHK_SUGA B");
             parameter.AppendSql(" WHERE A.WRTNO=:WRTNO");
             parameter.AppendSql("   AND A.DELDATE IS NULL");
             parameter.AppendSql("   AND B.GJYEAR = :GJYEAR");
@@ -246,7 +246,7 @@ namespace HC_Measurement.Repository
         public void Delete(HIC_CHUKDTL_RESULT dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKDTL_RESULT");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKDTL_RESULT");
             parameter.AppendSql("   SET DELDATE = SYSDATE ");
             parameter.AppendSql(" WHERE ROWID =:RID ");
 
@@ -258,7 +258,7 @@ namespace HC_Measurement.Repository
         public void UpDate(HIC_CHUKDTL_RESULT dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKDTL_RESULT");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKDTL_RESULT");
             parameter.AppendSql("   SET GUBUN = :GUBUN");
             parameter.AppendSql("     , SEQNO = :SEQNO");
             parameter.AppendSql("     , DEPT_NM = :DEPT_NM");

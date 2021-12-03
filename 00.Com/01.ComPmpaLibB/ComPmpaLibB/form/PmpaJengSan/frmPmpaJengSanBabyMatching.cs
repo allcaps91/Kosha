@@ -654,7 +654,7 @@ namespace ComPmpaLibB
                 strPano = ssView_Sheet1.Cells[e.Row, 0].Text.Trim(); ;
 
                 SQL = "";
-                SQL = "SELECT SNAME, JUMIN1, JUMIN2, JUMIN3 FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = "SELECT SNAME, JUMIN1, JUMIN2, JUMIN3 FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + strPano + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -682,7 +682,7 @@ namespace ComPmpaLibB
                 strPano = ssView_Sheet1.Cells[e.Row, 5].Text.Trim(); 
 
                 SQL = "";
-                SQL = "SELECT SNAME, JUMIN1, JUMIN2, JUMIN3 FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = "SELECT SNAME, JUMIN1, JUMIN2, JUMIN3 FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + strPano + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 

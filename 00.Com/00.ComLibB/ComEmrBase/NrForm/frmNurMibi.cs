@@ -103,7 +103,7 @@ namespace ComEmrBase
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = "SELECT Code FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = "SELECT Code FROM ADMIN.BAS_BCODE ";
                 SQL += ComNum.VBLF + " WHERE Gubun='NUR_간호부관리자사번' ";
                 SQL += ComNum.VBLF + "   AND Code=" + argSABUN + " ";
                 SQL += ComNum.VBLF + "   AND DELDATE IS NULL    ";
@@ -167,10 +167,10 @@ namespace ComEmrBase
             {
                 SQL = "  SELECT M.WardCode,M.RoomCode,M.Pano,M.SName,M.Sex,M.Age,M.Bi,M.PName,M.DEPTCODE,";
                 SQL += ComNum.VBLF + "  TRUNC(M.InDate) AS InDate, TRUNC(M.OutDate) AS OutDate, N.OUTTIME";
-                SQL += ComNum.VBLF + "  FROM   KOSMOS_PMPA.IPD_NEW_MASTER  M,";
-                SQL += ComNum.VBLF + "         KOSMOS_PMPA.BAS_PATIENT P,";
-                SQL += ComNum.VBLF + "         KOSMOS_PMPA.BAS_DOCTOR D,";
-                SQL += ComNum.VBLF + "         KOSMOS_PMPA.NUR_MASTER N";
+                SQL += ComNum.VBLF + "  FROM   ADMIN.IPD_NEW_MASTER  M,";
+                SQL += ComNum.VBLF + "         ADMIN.BAS_PATIENT P,";
+                SQL += ComNum.VBLF + "         ADMIN.BAS_DOCTOR D,";
+                SQL += ComNum.VBLF + "         ADMIN.NUR_MASTER N";
                 if(cboWard.Text == "전체")
                 {
                     SQL += ComNum.VBLF + " WHERE M.WardCode>' '";
@@ -247,7 +247,7 @@ namespace ComEmrBase
                     if (dt.Rows[i]["INDATE"].ToString().Trim() != "")
                     {
                         SQL = " SELECT SABUN ";
-                        SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_NURMIBI ";
+                        SQL += ComNum.VBLF + " FROM ADMIN.EMR_NURMIBI ";
                         SQL += ComNum.VBLF + " WHERE PTNO = '" + dt.Rows[i]["PANO"].ToString().Trim() + "' ";
                         SQL += ComNum.VBLF + "   AND INDATE = TO_DATE('" + ComFunc.FormatStrToDateTime(dt.Rows[i]["INDATE"].ToString().Trim(),"D") + "','YYYY-MM-DD') ";
                         SQL += ComNum.VBLF + "   ORDER BY CDATE DESC ";
@@ -352,7 +352,7 @@ namespace ComEmrBase
                     Application.DoEvents();
 
                     SQL = " SELECT CHARTDATE, CHARTTIME, EMRNO, FORMNO ";
-                    SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRXMLMST ";
+                    SQL += ComNum.VBLF + " FROM ADMIN.EMRXMLMST ";
                     SQL += ComNum.VBLF + " WHERE MEDFRDATE = '" + strInDate + "' ";
                     SQL += ComNum.VBLF + "   AND PTNO = '" + strPtNo + "' ";
                     SQL += ComNum.VBLF + "   AND CHARTDATE = '" + strOutDate + "' ";
@@ -370,7 +370,7 @@ namespace ComEmrBase
                     #region 신규
                     SQL += ComNum.VBLF + "UNION ALL ";
                     SQL += ComNum.VBLF + " SELECT CHARTDATE, CHARTTIME, EMRNO, FORMNO ";
-                    SQL += ComNum.VBLF + " FROM KOSMOS_EMR.AEMRCHARTMST ";
+                    SQL += ComNum.VBLF + " FROM ADMIN.AEMRCHARTMST ";
                     SQL += ComNum.VBLF + " WHERE MEDFRDATE = '" + strInDate + "' ";
                     SQL += ComNum.VBLF + "   AND PTNO = '" + strPtNo + "' ";
                     SQL += ComNum.VBLF + "   AND CHARTDATE = '" + strOutDate + "' ";
@@ -536,7 +536,7 @@ namespace ComEmrBase
                         strPtNo = ssList_Sheet1.Cells[i, 3].Text.Trim();
                         strInDate = ssList_Sheet1.Cells[i, 6].Text.Trim();
 
-                        SQL = " INSERT INTO KOSMOS_EMR.EMR_NURMIBI(PTNO, INDATE, CDATE, SABUN) VALUES(";
+                        SQL = " INSERT INTO ADMIN.EMR_NURMIBI(PTNO, INDATE, CDATE, SABUN) VALUES(";
                         SQL += ComNum.VBLF + "'" + strPtNo + "',TO_DATE('" + strInDate + "','YYYY-MM-DD'), SYSDATE, " + clsType.User.Sabun + ") ";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

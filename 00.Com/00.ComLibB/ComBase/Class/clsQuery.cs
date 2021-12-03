@@ -252,7 +252,7 @@ namespace ComBase
 
             if (ArgGubun != "2")
             {
-                SQL = " SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE";
+                SQL = " SELECT CODE FROM ADMIN.BAS_BCODE";
                 SQL = SQL + ComNum.VBLF + "  WHERE GUBUN ='OCS_골다공증약제' ";
                 SQL = SQL + ComNum.VBLF + "   AND TRIM(CODE) ='" + ArgSuCode + "' ";
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -274,12 +274,12 @@ namespace ComBase
             }
 
             SQL = " SELECT a.ptno,a.bdate,a.sucode,b.sname,sum(a.qty*a.nal) qnal ";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_OORDER a, KOSMOS_PMPA.bas_patient b";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_OORDER a, ADMIN.bas_patient b";
             SQL = SQL + ComNum.VBLF + "  Where a.PtNo = b.Pano(+)";
             SQL = SQL + ComNum.VBLF + "  and a.ptno ='" + ArgPano + "' ";
             SQL = SQL + ComNum.VBLF + "  and a.bdate>=to_date('2011-10-01','yyyy-mm-dd')";
             SQL = SQL + ComNum.VBLF + "  and a.bdate<=to_date('" + strSysDate + "','yyyy-mm-dd')"; //GstrSysDate
-            SQL = SQL + ComNum.VBLF + "  AND TRIM(a.SUCODE) IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE";
+            SQL = SQL + ComNum.VBLF + "  AND TRIM(a.SUCODE) IN ( SELECT CODE FROM ADMIN.BAS_BCODE";
             SQL = SQL + ComNum.VBLF + "                           WHERE GUBUN ='OCS_골다공증약제')";
             SQL = SQL + ComNum.VBLF + "  and (a.res is null or a.res <> '1')";
             SQL = SQL + ComNum.VBLF + "  and (a.auto_Send is null or a.auto_Send <> '1')";
@@ -289,12 +289,12 @@ namespace ComBase
             SQL = SQL + ComNum.VBLF + "  Having Sum(a.qty * a.nal) > 0";
             SQL = SQL + ComNum.VBLF + "  Union All";
             SQL = SQL + ComNum.VBLF + "  SELECT a.ptno,a.bdate,a.sucode,b.sname,sum(a.qty*a.nal) qnal ";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_iORDER a, KOSMOS_PMPA.bas_patient b";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_iORDER a, ADMIN.bas_patient b";
             SQL = SQL + ComNum.VBLF + "  Where a.PtNo = b.Pano(+)";
             SQL = SQL + ComNum.VBLF + "  and a.ptno ='" + ArgPano + "' ";
             SQL = SQL + ComNum.VBLF + "  and a.bdate>=to_date('2011-10-01','yyyy-mm-dd')";
             SQL = SQL + ComNum.VBLF + "  and a.bdate<=to_date('" + strSysDate + "','yyyy-mm-dd')";
-            SQL = SQL + ComNum.VBLF + "  AND TRIM(a.SUCODE) IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE";
+            SQL = SQL + ComNum.VBLF + "  AND TRIM(a.SUCODE) IN ( SELECT CODE FROM ADMIN.BAS_BCODE";
             SQL = SQL + ComNum.VBLF + "                           WHERE GUBUN ='OCS_골다공증약제')";
             SQL = SQL + ComNum.VBLF + "  AND a.GbSend =' '";
             SQL = SQL + ComNum.VBLF + "  AND a.GbPRN =' '";    //'2012-11-14
@@ -336,7 +336,7 @@ namespace ComBase
             string SqlErr = ""; //에러문 받는 변수
 
             SQL = " SELECT NAME ";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE ";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE ";
             SQL = SQL + ComNum.VBLF + "  WHERE GUBUN ='OCS_골다공증약제' ";
             SQL = SQL + ComNum.VBLF + "   AND TRIM(CODE) ='" + ArgSuCode.Trim() + "' ";
             SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -378,7 +378,7 @@ namespace ComBase
             try
             {
                 SQL = " ";
-                SQL = SQL + ComNum.VBLF + " SELECT ROWID FROM KOSMOS_PMPA.BAS_BONE_MST";
+                SQL = SQL + ComNum.VBLF + " SELECT ROWID FROM ADMIN.BAS_BONE_MST";
                 SQL = SQL + ComNum.VBLF + "WHERE PANO ='" + ArgPano + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -393,7 +393,7 @@ namespace ComBase
 
                 if (dt.Rows.Count == 0)
                 {
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_BONE_MST(PANO,SNAME,SDATE,ENTDATE,ENTDATE2,ENTSABUN,REMARK) VALUES (";
+                    SQL = " INSERT INTO ADMIN.BAS_BONE_MST(PANO,SNAME,SDATE,ENTDATE,ENTDATE2,ENTSABUN,REMARK) VALUES (";
                     SQL = SQL + ComNum.VBLF + " '" + ArgPano + "','" + ArgSName + "', ";
                     SQL = SQL + ComNum.VBLF + " TO_DATE('" + ArgBDate + "','YYYY-MM-DD'), ";
                     SQL = SQL + ComNum.VBLF + " SYSDATE,SYSDATE," + JobSabun + ",'" + ArgRemark + "')  "; //GnJobSabun 
@@ -435,7 +435,7 @@ namespace ComBase
             string SqlErr = ""; //에러문 받는 변수
 
             SQL = " ";
-            SQL = SQL + ComNum.VBLF + "SELECT TO_CHAR(SDATE,'YYYY-MM-DD') SDATE FROM KOSMOS_PMPA.BAS_BONE_MST";
+            SQL = SQL + ComNum.VBLF + "SELECT TO_CHAR(SDATE,'YYYY-MM-DD') SDATE FROM ADMIN.BAS_BONE_MST";
             SQL = SQL + ComNum.VBLF + "  WHERE WHERE PANO ='" + ArgPano + "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
 
@@ -487,7 +487,7 @@ namespace ComBase
             //DB에서 PC 설정값을 READ
             SQL = "SELECT BuseGbn,WardCode,DeptCode,DrCode,BuCode,OS_Ver,PacsSW,CrtSize,";
             SQL = SQL + ComNum.VBLF + " Job,PcUserYN,PacsID,PacsPass,Remark, BarCode, nX, nY, GX420D, GX420D_X, GX420D_Y ";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_PCCONFIG ";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_PCCONFIG ";
             SQL = SQL + ComNum.VBLF + "WHERE IpAddress='" + clsType.PC_CONFIG.IPAddress + "' ";
             SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
 
@@ -648,7 +648,7 @@ namespace ComBase
                 SQL = SQL + "    TO_CHAR(JDATE3,'YYYY-MM-DD') VJDATE3,PRICE3 VPRICE3,";
                 SQL = SQL + "    TO_CHAR(JDATE4,'YYYY-MM-DD') VJDATE4,PRICE4 VPRICE4,";
                 SQL = SQL + "    TO_CHAR(JDATE5,'YYYY-MM-DD') VJDATE5,PRICE5 VPRICE5 ";
-                SQL = SQL + " FROM KOSMOS_PMPA.EDI_SUGA ";
+                SQL = SQL + " FROM ADMIN.EDI_SUGA ";
                 SQL = SQL + "WHERE CODE = '" + ArgCode.Trim() + "' ";
 
                 //'표준코드 30050010이 산소,실구입재료 2개가 존재함
@@ -941,7 +941,7 @@ namespace ComBase
             ArgBDate = VB.Replace(ArgBDate, "-", "");
 
             SQL = " SELECT P.PANO, P.SNAME, P.SEX, P.JUMIN1,P.JUMIN2,P.JUMIN3, E.PATID , E.ROWID ";
-            SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_PATIENT  P , KOSMOS_EMR.EMR_PATIENTT E" ;
+            SQL = SQL + ComNum.VBLF + "   FROM ADMIN.BAS_PATIENT  P , ADMIN.EMR_PATIENTT E" ;
             SQL = SQL + ComNum.VBLF + " WHERE E.PATID (+)=P.PANO AND " ;
             SQL = SQL + ComNum.VBLF + "  P.PANO ='" + ArgPatid +  "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -969,7 +969,7 @@ namespace ComBase
 
                 if (ArgGubun == "HR" || ArgGubun == "TO" )
                 {
-                    SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                    SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                     SQL = SQL + ComNum.VBLF + "  WHERE PATID = '" + ArgPatid + "' ";
                     SQL = SQL + ComNum.VBLF + "    AND INDATE  ='" + ArgBDate + "'";
                     SQL = SQL + ComNum.VBLF + "    AND CLINCODE = '" + ArgDeptCode + "'";
@@ -987,7 +987,7 @@ namespace ComBase
                     {
                         for (i = 0; i < dt.Rows.Count; i++)
                         {
-                            SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                            SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                             SQL = SQL + ComNum.VBLF + "  DELDATE = '" + strOutDate + "'"; // '2009-09-07 윤조연 수정
                             SQL = SQL + ComNum.VBLF + "   WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString().Trim() + "'";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, pDbCon);
@@ -1006,7 +1006,7 @@ namespace ComBase
                 else
                 {
                     //외래,입원
-                    SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                    SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                     SQL = SQL + ComNum.VBLF + "  WHERE PATID = '" + ArgPatid + "' ";
                     SQL = SQL + ComNum.VBLF + "    AND INDATE  ='" + ArgBDate + "'";
                     if (ArgDeptCode == "MD" && (ArgDrCode == "1107" || ArgDrCode == "1125"))  //내과 오동호 과장은 RA로 2009-09-17 윤조연
@@ -1041,7 +1041,7 @@ namespace ComBase
                     {
                         for (i = 0; i < dt.Rows.Count; i++)
                         {
-                            SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                            SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                             SQL = SQL + ComNum.VBLF + "  DELDATE = '" + strOutDate + "'"; // '2009-09-07 윤조연 수정
                             SQL = SQL + ComNum.VBLF + "   WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString().Trim() + "'";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, pDbCon);
@@ -1065,7 +1065,7 @@ namespace ComBase
             {
                 strJumin = dt.Rows[0]["Jumin1"].ToString().Trim() + VB.Left(dt.Rows[0]["Jumin2"].ToString().Trim(),1) + "******";
 
-                SQL = "INSERT INTO KOSMOS_EMR.EMR_PATIENTT(PATID, JUMINNO, NAME, SEX) " + " ";
+                SQL = "INSERT INTO ADMIN.EMR_PATIENTT(PATID, JUMINNO, NAME, SEX) " + " ";
                 SQL = SQL + ComNum.VBLF + " VALUES('" + dt.Rows[0]["Pano"].ToString().Trim() + "' ,";
                 SQL = SQL + ComNum.VBLF + " '" + strJumin + "', ";
                 SQL = SQL + ComNum.VBLF + " '" + dt.Rows[0]["sName"].ToString().Trim() + "', ";
@@ -1083,7 +1083,7 @@ namespace ComBase
             {
                 strJumin = dt.Rows[0]["Jumin1"].ToString().Trim() + VB.Left(dt.Rows[0]["Jumin2"].ToString().Trim(), 1) + "******";
 
-                SQL = "UPDATE KOSMOS_EMR.EMR_PATIENTT" ;
+                SQL = "UPDATE ADMIN.EMR_PATIENTT" ;
                 SQL = SQL + ComNum.VBLF + "  SET NAME ='" + dt.Rows[0]["SNAME"].ToString().Trim() + "'" ;
                 SQL = SQL + ComNum.VBLF + "    , SEX  ='" + dt.Rows[0]["SEX"].ToString().Trim() + "'" ;
                 SQL = SQL + ComNum.VBLF + "    , JUMINNO ='" + strJumin+ "' " ;
@@ -1106,7 +1106,7 @@ namespace ComBase
                 //진료정보 가져오기 외래 입원 따로 가져오기
                 SQL = "";
                 SQL = "SELECT m.pano, TO_CHAR(M.BDATE, 'YYYYMMDD') Bdate ,m.deptcode, d.sabun, M.ROWID   " ;
-                SQL = SQL + ComNum.VBLF + " from kosmos_pmpa.opd_master m, kosmos_ocs.ocs_doctor  d " ;
+                SQL = SQL + ComNum.VBLF + " from ADMIN.opd_master m, ADMIN.ocs_doctor  d " ;
                 SQL = SQL + ComNum.VBLF + "  where d.drcode = m.drcode AND M.BDATE >= TO_DATE('2009-07-07', 'YYYY-MM-DD') " ;
                 SQL = SQL + ComNum.VBLF + "  and  m.PANO = '" + ArgPatid + "' and  m.DeptCode = '" + ArgDeptCode + "'" ;
                 SQL = SQL + ComNum.VBLF + "  AND (m.EMR ='0' OR m.EMR IS NULL ) ";
@@ -1125,7 +1125,7 @@ namespace ComBase
 
                     SQL = "";
                     SQL = " SELECT DrSabun as Sabun, DeptCode, TO_CHAR(BDATE, 'YYYYMMDD') Bdate,Pano,ROWID ";
-                    SQL = SQL + ComNum.VBLF + "  From KOSMOS_PMPA.OPD_MASTER          ";
+                    SQL = SQL + ComNum.VBLF + "  From ADMIN.OPD_MASTER          ";
                     SQL = SQL + ComNum.VBLF + " Where Pano ='"+ ArgPatid + "'                 ";
                     SQL = SQL + ComNum.VBLF + "   AND DeptCode = '"+ ArgDeptCode + "'  ";
                     SQL = SQL + ComNum.VBLF + "   AND (EMR ='0' OR EMR IS NULL )              ";
@@ -1152,7 +1152,7 @@ namespace ComBase
                             strDept = dt.Rows[i]["DeptCode"].ToString().Trim();
                         }
 
-                        SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                        SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                         SQL = SQL + ComNum.VBLF + "  WHERE PATID = '" + dt.Rows[i]["Pano"].ToString().Trim()  + "' ";
                         SQL = SQL + ComNum.VBLF + "    AND INDATE  ='" + dt.Rows[i]["BDate"].ToString().Trim() + "'";
                         SQL = SQL + ComNum.VBLF + "    AND CLINCODE = '" + strDept + "'";
@@ -1168,9 +1168,9 @@ namespace ComBase
                         }
                         if (dtSub2.Rows.Count == 0)
                         {
-                            SQL = "INSERT INTO KOSMOS_EMR.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
+                            SQL = "INSERT INTO ADMIN.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
                             SQL = SQL + ComNum.VBLF + " ERFLAG, INTIME, OLDPATID, FSTFLAG, WARD, ROOM, COMPLETED";
-                            SQL = SQL + ComNum.VBLF + " ) values( KOSMOS_EMR.SEQ_TREATNO.NEXTVAL, '" + ArgPatid + "' ,";
+                            SQL = SQL + ComNum.VBLF + " ) values( ADMIN.SEQ_TREATNO.NEXTVAL, '" + ArgPatid + "' ,";
                             SQL = SQL + ComNum.VBLF + " 'O' ,";//  'CLASS
                             SQL = SQL + ComNum.VBLF + " '" + dt.Rows[i]["BDate"].ToString().Trim() + "' ,";// 'INDATE
                             SQL = SQL + ComNum.VBLF + " '" + strDept + "' ,";// 'CLINCODE 2009-09-17 윤조연수정
@@ -1194,7 +1194,7 @@ namespace ComBase
                         }
                         else
                         {
-                            SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                            SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                             SQL = SQL + ComNum.VBLF + "  DELDATE ='', "; // '2009-09-07 윤조연수정
                             SQL = SQL + ComNum.VBLF + "  DOCCODE = '" + (long)(VB.Val((dt.Rows[i]["Sabun"].ToString().Trim()))) + "'";
                             SQL = SQL + ComNum.VBLF + "  WHERE ROWID = '" + dtSub2.Rows[0]["ROWID"].ToString().Trim() + "' ";
@@ -1211,7 +1211,7 @@ namespace ComBase
                         dtSub2 = null;
 
                         //ocs서버 업데이트. 적용시점에 새로 시작
-                        SQL = " UPDATE kosmos_pmpa.opd_master SET   EMR = '1' WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString().Trim() + "' ";
+                        SQL = " UPDATE ADMIN.opd_master SET   EMR = '1' WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString().Trim() + "' ";
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, pDbCon);
                         if (SqlErr != "")
                         {
@@ -1229,7 +1229,7 @@ namespace ComBase
             else if (ArgGubun == "입원")
             {
                 SQL = " SELECT  S.PANO, TO_CHAR(S.INDATE, 'YYYYMMDD') INDATE,  TO_CHAR(S.OUTDATE, 'YYYYMMDD') OUTDATE, S.DeptCode, S.ROWID,  D.SABUN ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.ipd_new_master S, kosmos_ocs.ocs_doctor d ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.ipd_new_master S, ADMIN.ocs_doctor d ";
                 SQL = SQL + ComNum.VBLF + "  WHERE S.DrCode = d.drcode ";
                 SQL = SQL + ComNum.VBLF + "    AND S.PANO = '" + ArgPatid + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND S.DeptCode = '" + ArgDeptCode + "' ";
@@ -1269,7 +1269,7 @@ namespace ComBase
                         strDept = dt.Rows[i]["DeptCode"].ToString().Trim();
                     }
 
-                    SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                    SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                     SQL = SQL + ComNum.VBLF + " WHERE PATID = '" + ArgPatid + "'";
                     SQL = SQL + ComNum.VBLF + "   AND INDATE  ='" + dt.Rows[i]["INDATE"].ToString().Trim() + "'";
                     SQL = SQL + ComNum.VBLF + "   AND CLINCODE = '" + dt.Rows[i]["DeptCode"].ToString().Trim() + "'";
@@ -1285,9 +1285,9 @@ namespace ComBase
                     }
                     if (dtSub2.Rows.Count == 0)
                     {
-                        SQL = "INSERT INTO KOSMOS_EMR.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE,  DOCCODE, ";
+                        SQL = "INSERT INTO ADMIN.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE,  DOCCODE, ";
                         SQL = SQL + ComNum.VBLF + " ERFLAG, INTIME, OLDPATID, FSTFLAG, WARD, ROOM, COMPLETED ) ";
-                        SQL = SQL + ComNum.VBLF + " VALUES( KOSMOS_EMR.SEQ_TREATNO.NEXTVAL, '" + ArgPatid + "' ,";
+                        SQL = SQL + ComNum.VBLF + " VALUES( ADMIN.SEQ_TREATNO.NEXTVAL, '" + ArgPatid + "' ,";
                         SQL = SQL + ComNum.VBLF + "'I' ,";//                   'CLASS
                         SQL = SQL + ComNum.VBLF + "'" + dt.Rows[i]["INDATE"].ToString().Trim() + "' ,";// 'INDATE
                         SQL = SQL + ComNum.VBLF + "'" + strDept + "' ,";// 'CLINCODE
@@ -1302,7 +1302,7 @@ namespace ComBase
                     }
                     else
                     {
-                        SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                        SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                         SQL = SQL + ComNum.VBLF + "   DELDATE ='', ";//  '2009-09-07 윤조연수정
                         SQL = SQL + ComNum.VBLF + "   DOCCODE = '" + (long)(VB.Val((dt.Rows[i]["Sabun"].ToString().Trim()))) + "' ,";
                         SQL = SQL + ComNum.VBLF + "   OUTDATE = '" + dt.Rows[i]["OutDate"].ToString().Trim() + "' ";
@@ -1321,7 +1321,7 @@ namespace ComBase
                     dtSub2 = null;
 
                     //ocs서버 업데이트. 사용시 풀기
-                   SQL = " UPDATE kosmos_pmpa.ipd_new_master SET  EMR = '1'";
+                   SQL = " UPDATE ADMIN.ipd_new_master SET  EMR = '1'";
                    SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString().Trim() + "' ";
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, pDbCon);
                     if (SqlErr != "")
@@ -1337,7 +1337,7 @@ namespace ComBase
             }
             else if (ArgGubun == "HR" || ArgGubun == "TO")
             {
-                SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                 SQL = SQL + ComNum.VBLF + "  WHERE PATID = '" + ArgPatid + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND INDATE  ='" + ArgBDate + "'";
                 SQL = SQL + ComNum.VBLF + "    AND CLINCODE = '" + ArgDeptCode + "'";
@@ -1353,9 +1353,9 @@ namespace ComBase
                 }
                 if (dtSub2.Rows.Count == 0)
                 {
-                    SQL = "INSERT INTO KOSMOS_EMR.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
+                    SQL = "INSERT INTO ADMIN.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
                     SQL = SQL + ComNum.VBLF + " ERFLAG, INTIME, OLDPATID, FSTFLAG, WARD, ROOM, COMPLETED";
-                    SQL = SQL + ComNum.VBLF + " ) values( KOSMOS_EMR.SEQ_TREATNO.NEXTVAL, '" + ArgPatid + "' ,";
+                    SQL = SQL + ComNum.VBLF + " ) values( ADMIN.SEQ_TREATNO.NEXTVAL, '" + ArgPatid + "' ,";
                     SQL = SQL + ComNum.VBLF + "'O' ,";// 'CLASS
                     SQL = SQL + ComNum.VBLF + "'" + ArgBDate + "' ,";// 'INDATE
                     SQL = SQL + ComNum.VBLF + "'" + ArgDeptCode + "' ,";// 'CLINCODE 2009-09-17 윤조연수정
@@ -1371,7 +1371,7 @@ namespace ComBase
                 }
                 else
                 {
-                    SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                    SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                     SQL = SQL + ComNum.VBLF + "  DELDATE ='', "; // '2009-09-07 윤조연수정
                     SQL = SQL + ComNum.VBLF + "  DOCCODE = '" + ArgDrCode + "'";
                     SQL = SQL + ComNum.VBLF + "  WHERE ROWID = '" + dtSub2.Rows[i]["ROWID"].ToString().Trim() + "' ";
@@ -1389,7 +1389,7 @@ namespace ComBase
             }
             else if (ArgGubun == "접종")
             {
-                SQL = "SELECT TREATNO, ROWID  FROM KOSMOS_EMR.EMR_TREATT ";
+                SQL = "SELECT TREATNO, ROWID  FROM ADMIN.EMR_TREATT ";
                 SQL = SQL + ComNum.VBLF + "  WHERE PATID = '" + ArgPatid + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND INDATE  ='" + ArgBDate + "'";
                 SQL = SQL + ComNum.VBLF + "    AND CLINCODE = '" + ArgDeptCode + "'";
@@ -1405,9 +1405,9 @@ namespace ComBase
                 }
                 if (dtSub2.Rows.Count == 0)
                 {
-                    SQL = "INSERT INTO KOSMOS_EMR.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
+                    SQL = "INSERT INTO ADMIN.EMR_TREATT(TREATNO, PATID, CLASS, INDATE, CLINCODE, OUTDATE, DOCCODE, ";
                     SQL = SQL + ComNum.VBLF + " ERFLAG, INTIME, OLDPATID, FSTFLAG, WARD, ROOM, COMPLETED";
-                    SQL = SQL + ComNum.VBLF + " ) values( KOSMOS_EMR.SEQ_TREATNO.NEXTVAL, '" + ArgPatid + "' ,";
+                    SQL = SQL + ComNum.VBLF + " ) values( ADMIN.SEQ_TREATNO.NEXTVAL, '" + ArgPatid + "' ,";
                     SQL = SQL + ComNum.VBLF + "'O' ,";// 'CLASS
                     SQL = SQL + ComNum.VBLF + "'" + ArgBDate + "' ,";// 'INDATE
                     SQL = SQL + ComNum.VBLF + "'" + ArgDeptCode + "' ,";// 'CLINCODE 2009-09-17 윤조연수정
@@ -1423,7 +1423,7 @@ namespace ComBase
                 }
                 else
                 {
-                    SQL = " UPDATE KOSMOS_EMR.EMR_TREATT SET ";
+                    SQL = " UPDATE ADMIN.EMR_TREATT SET ";
                     SQL = SQL + ComNum.VBLF + "  DELDATE ='', "; // '2009-09-07 윤조연수정
                     SQL = SQL + ComNum.VBLF + "  DOCCODE = '" + ArgDrCode + "'";
                     SQL = SQL + ComNum.VBLF + "  WHERE ROWID = '" + dtSub2.Rows[i]["ROWID"].ToString().Trim() + "' ";

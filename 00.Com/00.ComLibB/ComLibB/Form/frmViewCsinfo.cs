@@ -337,7 +337,7 @@ namespace ComLibB
             SQL = "";
             SQL += ComNum.VBLF + " SELECT WardCode, RoomCode, DeptCode, ";
             SQL += ComNum.VBLF + "        DrCode, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DrCode) Drname, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_DOCTOR_DRNAME(DrCode) Drname, ";
             SQL += ComNum.VBLF + "        Ilsu, SECRET ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "IPD_NEW_MASTER ";
             SQL += ComNum.VBLF + "  WHERE 1    = 1 ";
@@ -642,7 +642,7 @@ namespace ComLibB
             SQL += ComNum.VBLF + " SELECT Pano, TO_CHAR(OUTDATE,'YYYY-MM-DD') OutDate, ";
             SQL += ComNum.VBLF + "        Sname, Idept, Tdept, ";
             SQL += ComNum.VBLF + "        TDoctor, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(TDoctor) Drname, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_DOCTOR_DRNAME(TDoctor) Drname, ";
             SQL += ComNum.VBLF + "        TO_CHAR(InDate,'YYYY-MM-DD') InDate,";
             SQL += ComNum.VBLF + "        Jilsu, Jumin1, Jumin2, Age, ";
             SQL += ComNum.VBLF + "        Bi, CResult, TModel, ";
@@ -749,11 +749,11 @@ namespace ComLibB
             SQL += ComNum.VBLF + " SELECT IpdOpd, TO_CHAR(SDate,'yyyy-mm-dd') Sdate, ";
             SQL += ComNum.VBLF + "        TO_CHAR(EDate,'yyyy-mm-dd') Edate, ";
             SQL += ComNum.VBLF + "        Ilsu, DeptCode, DRCODE, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) DrName, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) DrName, ";
             SQL += ComNum.VBLF + "        Bi, Pname, Kiho, ";
             SQL += ComNum.VBLF + "        Gkiho, Tamt, Jamt, ";
             SQL += ComNum.VBLF + "        Gamt, Mamt, Yamt ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_HISTORY ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.BAS_HISTORY ";
             SQL += ComNum.VBLF + "  WHERE 1       = 1 ";
             SQL += ComNum.VBLF + "    AND Pano    = '" + txtPtno.Text + "' ";
             SQL += ComNum.VBLF + "    AND TAmt    > 0 ";

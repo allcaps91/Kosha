@@ -51,14 +51,14 @@ namespace ComEmrBase
             {
 
                 SQL = " SELECT A.FORMNO, A.FORMNAME,  B.COLOR, B.RANKING, B.ROWID";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.AEMRFORM A";
-                SQL += ComNum.VBLF + "   LEFT OUTER JOIN KOSMOS_EMR.EMRFORM_SET B";
+                SQL += ComNum.VBLF + " FROM ADMIN.AEMRFORM A";
+                SQL += ComNum.VBLF + "   LEFT OUTER JOIN ADMIN.EMRFORM_SET B";
                 SQL += ComNum.VBLF + "     ON  A.FORMNO = B.FORMNO";
                 SQL += ComNum.VBLF + "     AND B.SABUN = "  + clsType.User.IdNumber;
                 SQL += ComNum.VBLF + " WHERE EXISTS";
                 SQL += ComNum.VBLF + " (";
                 SQL += ComNum.VBLF + "   SELECT FORMNO ";
-                SQL += ComNum.VBLF + "     FROM KOSMOS_EMR.EMRFORM_SET_LIST";
+                SQL += ComNum.VBLF + "     FROM ADMIN.EMRFORM_SET_LIST";
                 SQL += ComNum.VBLF + "    WHERE SABUN = " + clsType.User.IdNumber;
                 SQL += ComNum.VBLF + "      AND FORMNO = A.FORMNO";
                 SQL += ComNum.VBLF + " )";
@@ -136,7 +136,7 @@ namespace ComEmrBase
 
                     if (strROWID.Length > 0)
                     {
-                        SQL = " DELETE KOSMOS_EMR.EMRFORM_SET ";
+                        SQL = " DELETE ADMIN.EMRFORM_SET ";
                         SQL += ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -150,7 +150,7 @@ namespace ComEmrBase
                         }
                     }
 
-                    SQL = " INSERT INTO KOSMOS_EMR.EMRFORM_SET (";
+                    SQL = " INSERT INTO ADMIN.EMRFORM_SET (";
                     SQL += ComNum.VBLF + " FORMNO, SABUN, WRITEDATE, RANKING, COLOR) VALUES (";
                     SQL += ComNum.VBLF + "'" + strCODE + "'," + clsType.User.IdNumber + ", SYSDATE, '" + strRANKING + "','" + strCHECK + "')";
 

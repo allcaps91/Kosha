@@ -22,10 +22,10 @@
         public int Result_History_Insert2(long SABUN, string RESULT, long WRTNO, string EXCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_RESULT_HISTORY                                 ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_RESULT_HISTORY                                 ");
             parameter.AppendSql("       (JOBTIME,JOBSABUN,WRTNO,EXCODE,RESULT_OLD,RESULT_NEW)               ");
             parameter.AppendSql("SELECT SYSDATE, :SABUN, WRTNO, EXCODE, RESULT, :RESULT                     ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HEA_RESULT                                              ");
+            parameter.AppendSql("  From ADMIN.HEA_RESULT                                              ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                      ");
             parameter.AppendSql("   AND EXCODE = :EXCODE                                                    ");
             parameter.AppendSql("   AND RESULT IS NOT NULL                                                  ");
@@ -42,7 +42,7 @@
         public int Result_History_Update(string RESULT, long ENTSABUN, long WRTNO, string EXCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT SET              ");
             parameter.AppendSql("       RESULT   = :RESULT                      ");
             parameter.AppendSql("     , ENTSABUN = :ENTSABUN                    ");
             parameter.AppendSql("     , ENTTIME  = SYSDATE                      ");

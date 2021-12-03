@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO,SNAME,ZIPCODE1,ZIPCODE2,ZIPCODE3,JUSO,BUILDNO,GKIHO,SEX     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                                 ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                                   ");
             parameter.AppendSql("   AND JUMIN1 = :JUMIN1                                        ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN3                                        ");
@@ -41,7 +41,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                                 ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                                   ");
             if (!argSName.IsNullOrEmpty())
             {
@@ -76,7 +76,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Pano, ROWID RID                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                 ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                 ");
             parameter.AppendSql(" WHERE PANO = :PANO                            ");
 
             parameter.Add("PANO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -88,7 +88,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT JUMIN1                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                 ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                 ");
             parameter.AppendSql(" WHERE PANO = :PANO                            ");
 
             parameter.Add("PANO", strPtNo, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -100,7 +100,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO                                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                                         ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                                         ");
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                                                ");
             parameter.AppendSql("   AND ((Jumin3 IS NULL AND JUMIN2 = :JUMIN2) OR JUMIN3 = :JUMIN3)     ");
 
@@ -115,7 +115,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.BAS_PATIENT SET     ");
+            parameter.AppendSql("UPDATE ADMIN.BAS_PATIENT SET     ");
             parameter.AppendSql("       SNAME  = :SNAME                 ");
             parameter.AppendSql("     , HPHONE = :HPHONE                ");
             parameter.AppendSql("     , TEL    = :TEL                   ");
@@ -133,7 +133,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Pano, ROWID RID                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                 ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                 ");
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                        ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN3                        ");
 
@@ -147,7 +147,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SNAME, TEL, PANO, HPHONE, SEX, JUSO, ROADDETAIL           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                 ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                 ");
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                        ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN3                        ");
             if (b04_NOT_PATIENT.Count > 0)
@@ -178,7 +178,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,GB_VIP, GB_VIP_REMARK, GB_VIP_SABUN, GB_VIP_DATE, ROADDETAIL, GB_VIP2, GB_VIP2_REAMRK               ");
             parameter.AppendSql("      ,GB_SVIP, WEBSEND, WEBSENDDATE, GBMERS, OBST, ZIPCODE3, BUILDNO, PT_REMARK, TEMPLE, C_NAME           ");
             parameter.AppendSql("      ,GBCOUNTRY, GBGAMEKC, SNAME2, PNAME2, INJ_SMS1, INJ_SMS2, EPASSNO, EUNIQNO                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                                                                             ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                                                                             ");
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                                                                                    ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN2                                                                                    ");
             parameter.AppendSql("   AND SNAME NOT IN (:SNAME)                                                                               ");
@@ -194,7 +194,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO, SNAME, ZIPCODE1, ZIPCODE2, JUSO, GKIHO, SEX           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                                     ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                                     ");
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                                            ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN3                                            ");
 
@@ -208,7 +208,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.BAS_PATIENT        ");
+            parameter.AppendSql("INSERT INTO ADMIN.BAS_PATIENT        ");
             parameter.AppendSql("       (PANO                               ");
             parameter.AppendSql("     , SNAME                               ");
             parameter.AppendSql("     , SEX                                 ");
@@ -325,7 +325,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT PANO                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT         ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT         ");
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN2                ");
 
@@ -340,7 +340,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT PANO                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT         ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT         ");
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN2                ");
 
@@ -355,7 +355,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT Pano                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT         ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT         ");
             parameter.AppendSql(" WHERE PANO = :PANO                    ");
 
             parameter.Add("PANO", strPtNo);
@@ -368,7 +368,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT Pano,SName, ZipCode1,ZipCode2, Juso, Gkiho,Sex      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                             ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                             ");
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                                    ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN3                                    ");
 
@@ -382,7 +382,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                                 ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                                 ");
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                                        ");
             parameter.AppendSql("   AND JUMIN3 IS NULL                                          ");
             parameter.AppendSql("   AND (JUMIN2 = :JUMIN2                                       ");
@@ -399,7 +399,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                                 ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                                 ");
             parameter.AppendSql(" WHERE JUMIN1 = :JUMIN1                                        ");
             parameter.AppendSql("   AND JUMIN2 = :JUMIN2                                        ");
             parameter.AppendSql("   AND JUMIN3 = :JUMIN3                                        ");
@@ -423,7 +423,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,GBSMS_DRUG, GBINFO_DETAIL, GBINFOR2, ROAD, ROADDONG, JUMIN3, GBFOREIGNER, ENAME, CASHYN             ");
             parameter.AppendSql("      ,GB_VIP, GB_VIP_REMARK, GB_VIP_SABUN, GB_VIP_DATE, ROADDETAIL, GB_VIP2, GB_VIP2_REAMRK               ");
             parameter.AppendSql("      ,GB_SVIP, WEBSEND, WEBSENDDATE, GBMERS, OBST, ZIPCODE3, BUILDNO, PT_REMARK, TEMPLE, C_NAME           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_PATIENT                     ");
+            parameter.AppendSql("  FROM ADMIN.BAS_PATIENT                     ");
             parameter.AppendSql(" WHERE PANO = :PANO                                ");
 
             parameter.Add("PANO", strPano);

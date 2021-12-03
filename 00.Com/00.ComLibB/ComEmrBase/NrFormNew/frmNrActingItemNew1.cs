@@ -313,7 +313,7 @@ namespace ComEmrBase
             string strChartDate2 = dtpChartDate.Value.AddDays(-1).ToShortDateString();
 
             string strSql = " SELECT D.DIETDAY, D.BUN,  D.DIETNAME, D.QTY ";
-            strSql = strSql + ComNum.VBLF + "   FROM KOSMOS_PMPA.DIET_NEWORDER D ";
+            strSql = strSql + ComNum.VBLF + "   FROM ADMIN.DIET_NEWORDER D ";
             strSql = strSql + ComNum.VBLF + "WHERE D.ACTDATE = TO_DATE('" + strChartDate + "', 'YYYY-MM-DD') ";
             strSql = strSql + ComNum.VBLF + "     AND D.PANO = '" + AcpEmr.ptNo + "' ";
             strSql = strSql + ComNum.VBLF + "     AND D.BUN IN ('01','02','03','04') ";
@@ -441,7 +441,7 @@ namespace ComEmrBase
                 {
                     #region 5시 이전에 ICU에서 차팅 할경우
                     strSql = " SELECT D.DIETDAY, D.BUN,  D.DIETNAME, D.QTY ";
-                    strSql = strSql + ComNum.VBLF + "   FROM KOSMOS_PMPA.DIET_NEWORDER D ";
+                    strSql = strSql + ComNum.VBLF + "   FROM ADMIN.DIET_NEWORDER D ";
                     strSql = strSql + ComNum.VBLF + "WHERE D.ACTDATE = TO_DATE('" + strChartDate2 + "', 'YYYY-MM-DD') ";
                     strSql = strSql + ComNum.VBLF + "     AND D.PANO = '" + AcpEmr.ptNo + "' ";
                     strSql = strSql + ComNum.VBLF + "     AND D.BUN IN ('01','02','03','04') ";
@@ -1389,10 +1389,10 @@ namespace ComEmrBase
             SQL += ComNum.VBLF + "   GROUP BY ITEMCD";
             SQL += ComNum.VBLF + ")";
             SQL += ComNum.VBLF + "SELECT   EMRNO";
-            SQL += ComNum.VBLF + "       , (SELECT EMRNOHIS FROM KOSMOS_EMR.AEMRCHARTMST WHERE EMRNO = B.EMRNO) AS EMRNOHIS ";
+            SQL += ComNum.VBLF + "       , (SELECT EMRNOHIS FROM ADMIN.AEMRCHARTMST WHERE EMRNO = B.EMRNO) AS EMRNOHIS ";
             SQL += ComNum.VBLF + "       , ITEMCD ";
             SQL += ComNum.VBLF + "  FROM ITEM_LIST A";
-            SQL += ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRCHARTMST B";
+            SQL += ComNum.VBLF + "    INNER JOIN ADMIN.AEMRCHARTMST B";
             SQL += ComNum.VBLF + "       ON B.PTNO = '" + AcpEmr.ptNo + "'";
             SQL += ComNum.VBLF + "      AND B.FORMNO = 1575";
             SQL += ComNum.VBLF + "      AND B.MEDFRDATE = '" + AcpEmr.medFrDate + "'";

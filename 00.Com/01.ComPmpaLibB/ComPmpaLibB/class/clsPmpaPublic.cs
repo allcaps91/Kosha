@@ -1176,7 +1176,7 @@ namespace ComPmpaLibB
         }
 
         /// <summary>
-        /// KOSMOS_PMPA.IPD_NEW_MASTER 
+        /// ADMIN.IPD_NEW_MASTER 
         /// </summary>
 
         public enum enmSelIpdMstTrs
@@ -1204,7 +1204,7 @@ namespace ComPmpaLibB
         }
 
         /// <summary>
-        /// KOSMOS_PMPA.IPD_TRANS
+        /// ADMIN.IPD_TRANS
         /// </summary>
         public enum enmIpdTrs
         {
@@ -1218,7 +1218,7 @@ namespace ComPmpaLibB
         }
 
         /// <summary>
-        /// KOSMOS_PMPA.BAS_PATIENT
+        /// ADMIN.BAS_PATIENT
         /// </summary>
         public enum enmBasPat
         {
@@ -1231,7 +1231,7 @@ namespace ComPmpaLibB
         }
 
         /// <summary>
-        /// KOSMOS_PMPA.BAS_MIH
+        /// ADMIN.BAS_MIH
         /// </summary>
         public enum enmBasMih
         {
@@ -1239,7 +1239,7 @@ namespace ComPmpaLibB
         }
 
         /// <summary>
-        /// KOSMOS_PMPA.IPD_NEW_SLIP
+        /// ADMIN.IPD_NEW_SLIP
         /// </summary>
         public enum enmIpdNewSlip
         {
@@ -1252,7 +1252,7 @@ namespace ComPmpaLibB
         }
 
         /// <summary>
-        /// KOSMOS_PMPA.OPD_SLIP
+        /// ADMIN.OPD_SLIP
         /// </summary>
         public enum enmOpdSlip
         {
@@ -1264,7 +1264,7 @@ namespace ComPmpaLibB
         
         #region <summary> Misu 관리 Spread Column </summary>
         /// <summary>
-        /// KOSMOS_PMPA.MISU_IDMST
+        /// ADMIN.MISU_IDMST
         /// </summary>
         public enum enmMisuIdMst
         {
@@ -1275,7 +1275,7 @@ namespace ComPmpaLibB
         }
 
         /// <summary>
-        /// KOSMOS_PMPA.MISU_SLIP
+        /// ADMIN.MISU_SLIP
         /// </summary>
         public enum enmMisuSlip
         {
@@ -1446,7 +1446,7 @@ namespace ComPmpaLibB
 
         #region <summary> Bas_Account_Bon 관리 Spread Column </summary>
         /// <summary>
-        /// KOSMOS_PMPA.BAS_ACCOUNT_BON
+        /// ADMIN.BAS_ACCOUNT_BON
         /// </summary>
         public enum enmBasAcctBon
         {// 1           2           3           4           5           6

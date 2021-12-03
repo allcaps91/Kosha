@@ -24,10 +24,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SUNAPDTL_WORK SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SUNAPDTL_WORK SET       ");
             parameter.AppendSql("       PANO = :PANO                            ");
             parameter.AppendSql(" WHERE PANO IN (SELECT PANO                    ");
-            parameter.AppendSql("                  FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("                  FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql("                 WHERE JUMIN2 = :JUMIN2        ");
             parameter.AppendSql("                   AND PANO <> :PANO)          ");
 
@@ -42,7 +42,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, GBSELF, AMT                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAPDTL_WORK                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAPDTL_WORK                           ");
             parameter.AppendSql(" WHERE PANO   = :PANO                                          ");
             parameter.AppendSql("   AND SUDATE = TO_DATE(:SUDATE, 'YYYY-MM-DD')                 ");
             parameter.AppendSql("   AND GJJONG = :GJJONG                                        ");
@@ -60,9 +60,9 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT b.EXCODE, c.HNAME                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAPDTL_WORK a                                 ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_GROUPEXAM     b                                 ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE        c                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAPDTL_WORK a                                 ");
+            parameter.AppendSql("     , ADMIN.HIC_GROUPEXAM     b                                 ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE        c                                 ");
             parameter.AppendSql(" WHERE a.PANO = :PANO                                                  ");
             parameter.AppendSql("   AND a.SUDATE = TO_DATE(:SUDATE, 'YYYY-MM-DD')                       ");
             parameter.AppendSql("   AND a.CODE   = b.GROUPCODE(+)                                       ");
@@ -79,7 +79,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SUNAPDTL_WORK                   ");
+            parameter.AppendSql("DELETE ADMIN.HIC_SUNAPDTL_WORK                   ");
             parameter.AppendSql(" WHERE PANO = :PANO                                    ");
             parameter.AppendSql("   AND SUDATE = TO_DATE(:SUDATE, 'YYYY-MM-DD')         ");
             parameter.AppendSql("   AND GJJONG =:GJJONG                                 ");
@@ -95,7 +95,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SUNAPDTL_WORK                   ");
+            parameter.AppendSql("DELETE ADMIN.HIC_SUNAPDTL_WORK                   ");
             parameter.AppendSql(" WHERE PANO = :PANO                                    ");
             parameter.AppendSql("   AND SUDATE = TO_DATE(:SUDATE, 'YYYY-MM-DD')         ");
             parameter.AppendSql("   AND GJJONG IN ('16','17','18','28','44','45','46')  ");
@@ -111,8 +111,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAPDTL_WORK A                         ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_GROUPCODE     B                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAPDTL_WORK A                         ");
+            parameter.AppendSql("     , ADMIN.HIC_GROUPCODE     B                         ");
             parameter.AppendSql(" WHERE A.CODE = b.CODE                                         ");
             parameter.AppendSql("   AND B.GBGUBUN1 IS NOT NULL                                  ");
             parameter.AppendSql("   AND PANO = :PANO                                            ");
@@ -127,7 +127,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAPDTL_WORK                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAPDTL_WORK                           ");
             parameter.AppendSql(" WHERE PANO   = :PANO                                          ");
             parameter.AppendSql("   AND GJJONG = :GJJONG                                        ");
             parameter.AppendSql(" ORDER BY CODE                                                 ");
@@ -142,7 +142,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SUNAPDTL_WORK       ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SUNAPDTL_WORK       ");
             parameter.AppendSql("     ( WRTNO,CODE,UCODE,AMT,GBSELF,SUDATE,PANO,GJJONG )       ");
             parameter.AppendSql(" VALUES                                    ");
             parameter.AppendSql("     ( 0,:CODE,:UCODE,:AMT,:GBSELF,TO_DATE(:SUDATE,'YYYY-MM-DD'),:PANO,:GJJONG )  ");
@@ -163,7 +163,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SUNAPDTL_WORK   ");
+            parameter.AppendSql("DELETE ADMIN.HIC_SUNAPDTL_WORK   ");
             parameter.AppendSql(" WHERE PANO = :PANO                    ");
             parameter.AppendSql("   AND GJJONG = :GJJONG                ");
 
@@ -177,7 +177,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SUNAPDTL_WORK                                                      ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SUNAPDTL_WORK                                                      ");
             parameter.AppendSql("       (WRTNO, CODE, UCODE, AMT, GBSELF, SUDATE, PANO, GJJONG)                                 ");
             parameter.AppendSql("VALUES                                                                                         ");
             parameter.AppendSql("       (:WRTNO, :CODE, :UCODE, :AMT, :GBSELF, TO_DATE(:SUDATE, 'YYYY-MM-DD'), :PANO, :GJJONG)  ");
@@ -198,7 +198,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SUNAPDTL_WORK       ");
+            parameter.AppendSql("DELETE ADMIN.HIC_SUNAPDTL_WORK       ");
             parameter.AppendSql(" WHERE PANO   = :PANO                      ");
             parameter.AppendSql("   AND GJJONG = :GJJONG                    ");
 

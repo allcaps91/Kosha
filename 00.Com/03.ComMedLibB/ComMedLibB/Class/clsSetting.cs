@@ -22,7 +22,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT *                               \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ENVSETTING       \r";
+                SQL += "   FROM ADMIN.OCS_ENVSETTING       \r";
                 SQL += "  WHERE USERID = '" + sUserId + "'      \r";
                 clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")

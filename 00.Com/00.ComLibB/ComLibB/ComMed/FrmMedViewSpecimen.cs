@@ -68,7 +68,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT SpecCode, SpecName              \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OSPECIMAN        \r";
+                SQL += "   FROM ADMIN.OCS_OSPECIMAN        \r";
                 SQL += "  WHERE Slipno = '" + strSlipNo + "'    \r";
                 SQL += "  ORDER BY SPECCODE                     \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -144,7 +144,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " SELECT ORDERNAME FROM KOSMOS_OCS.OCS_ORDERCODE \r";
+                SQL += " SELECT ORDERNAME FROM ADMIN.OCS_ORDERCODE \r";
                 SQL += " WHERE ORDERCODE = '" + strOrderCode + "'       \r";
                 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

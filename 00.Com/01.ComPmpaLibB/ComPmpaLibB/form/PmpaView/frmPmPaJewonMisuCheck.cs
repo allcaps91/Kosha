@@ -256,7 +256,7 @@ namespace ComPmpaLibB
                 dt = null;
 
                 SQL = "";
-                SQL = "    SELECT ACTDATE, PANO , BI, COUNT(*) CNT FROM KOSMOS_PMPA.MISU_BALTEWON ";
+                SQL = "    SELECT ACTDATE, PANO , BI, COUNT(*) CNT FROM ADMIN.MISU_BALTEWON ";
                 SQL = SQL + ComNum.VBLF + " WHERE  GUBUN ='3' ";
                 SQL = SQL + ComNum.VBLF + "   AND  ACTDate>=TO_DATE('" + dtpFdate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND  ACTDate<=TO_DATE('" + dtpTdate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";

@@ -22,11 +22,11 @@ namespace ComHpcLibB.Repository
         public List<ENDO_JUPMST_ORDERCODE> GetListByRDate(string argFDate, string argTDate, bool chkHc)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT a.PTNO, a.SNAME, (a.SEX || '/' || KOSMOS_OCS.FC_GET_AGE2(a.PTNO, a.BDATE)) AS S_AGE     ");
+            parameter.AppendSql("SELECT a.PTNO, a.SNAME, (a.SEX || '/' || ADMIN.FC_GET_AGE2(a.PTNO, a.BDATE)) AS S_AGE     ");
             parameter.AppendSql("      ,b.DISPHEADER || ' ' || b.ORDERNAME AS ORDERNAME, TO_CHAR(a.RDATE, 'HH24:MI') RDATE, a.DEPTCODE                    ");
-            parameter.AppendSql("      ,KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(a.DRCODE) AS DRNAME                                     ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST a                                                                ");
-            parameter.AppendSql("      ,KOSMOS_OCS.OCS_ORDERCODE b                                                              ");
+            parameter.AppendSql("      ,ADMIN.FC_BAS_DOCTOR_DRNAME(a.DRCODE) AS DRNAME                                     ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST a                                                                ");
+            parameter.AppendSql("      ,ADMIN.OCS_ORDERCODE b                                                              ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                   ");
             parameter.AppendSql("   AND a.RDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')                                                ");
             parameter.AppendSql("   AND a.RDATE <  TO_DATE(:TDATE, 'YYYY-MM-DD')                                                ");

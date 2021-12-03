@@ -158,7 +158,7 @@ namespace ComPmpaLibB
                 //작성 완료 목록
                 SQL = "";
                 SQL = "SELECT TO_CHAR(B.JDATE, 'YYYY-MM-DD') AS BJDATE, B.PTNO BPTNO, B.SNAME BSNAME, B.DRNAME BDRNAME, TO_CHAR(B.RESULT_DATE, 'YYYY-MM-DD') AS BRESULT_DATE, B.PRT_GB BPRT_GB, B.MCNO BMCNO, B.DRCODE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT_POSCO A, KOSMOS_OCS.OCS_MCCERTIFI28 B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PATIENT_POSCO A, ADMIN.OCS_MCCERTIFI28 B";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.PANO(+) = B.PTNO";
                 SQL = SQL + ComNum.VBLF + "  AND RESULT_DATE IS NOT NULL";
                 SQL = SQL + ComNum.VBLF + "  AND B.JDATE BETWEEN TO_DATE('" + strFDate + "', 'YYYY-MM-DD') AND TO_DATE('" + strTDate + "', 'YYYY-MM-DD')";

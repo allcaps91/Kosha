@@ -23,9 +23,9 @@ namespace ComHpcLibB.Repository
         public List<HIC_READING> GetListByYear(string argYear = "", string argCode = "")
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT KOSMOS_OCS.FC_INSA_MST_KORNAME(REG_SABUN) AS REG_SABUN_NM       ");
+            parameter.AppendSql("SELECT ADMIN.FC_INSA_MST_KORNAME(REG_SABUN) AS REG_SABUN_NM       ");
             parameter.AppendSql("      ,CODE,NAME,REG_DATE,REG_SABUN,DATA1,DEL_DATE,YEAR, ROWID AS RID  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_READING                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_READING                                         ");
             parameter.AppendSql(" WHERE 1 = 1                                                           ");
             parameter.AppendSql("   AND DEL_DATE IS NULL                                                ");
 
@@ -57,7 +57,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_READING     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_READING     ");
             parameter.AppendSql("   SET REG_DATE    =:REG_DATE      ");
             parameter.AppendSql("      ,REG_SABUN   =:REG_SABUN     ");
             parameter.AppendSql("      ,DATA1       =:DATA1         ");
@@ -75,7 +75,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_READING (             ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_READING (             ");
             parameter.AppendSql("       CODE,NAME,REG_DATE,REG_SABUN,DATA1,YEAR    ");
             parameter.AppendSql(" ) VALUES (                                       ");
             parameter.AppendSql(" :CODE,:NAME,:REG_DATE,:REG_SABUN,:DATA1,:YEAR  ) ");
@@ -93,7 +93,7 @@ namespace ComHpcLibB.Repository
         public string GetItemByRowid(string strROWID)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT DATA1 FROM KOSMOS_PMPA.HIC_READING  ");
+            parameter.AppendSql("SELECT DATA1 FROM ADMIN.HIC_READING  ");
             parameter.AppendSql(" WHERE 1 = 1                               ");
             parameter.AppendSql("   AND ROWID = :RID                        ");
 
@@ -104,7 +104,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_READING     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_READING     ");
             parameter.AppendSql("   SET DEL_DATE       = SYSDATE    ");
             parameter.AppendSql(" WHERE ROWID          =:RID        ");
 

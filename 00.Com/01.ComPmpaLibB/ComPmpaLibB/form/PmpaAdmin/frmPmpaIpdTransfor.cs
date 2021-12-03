@@ -1168,7 +1168,7 @@ namespace ComPmpaLibB
 
                 // 입원
                 SQL = "SELECT  S.PANO, TO_CHAR(S.INDATE, 'YYYYMMDD') INDATE,  TO_CHAR(S.OUTDATE, 'YYYYMMDD') OUTDATE, S.DeptCode, S.ROWID,D.SABUN";
-                SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "ipd_new_master S , kosmos_ocs.ocs_doctor d";
+                SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "ipd_new_master S , ADMIN.ocs_doctor d";
                 SQL = SQL + ComNum.VBLF + "WHERE S.DrCode = d.drcode";
                 SQL = SQL + ComNum.VBLF + "AND S.PANO = '" + strPatid + "'";
                 SQL = SQL + ComNum.VBLF + "AND TRUNC(S.InDate) = TO_DATE('" + strBDate + "', 'YYYYMMDD')";

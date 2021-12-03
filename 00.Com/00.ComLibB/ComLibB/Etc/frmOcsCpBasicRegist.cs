@@ -270,7 +270,7 @@ namespace ComLibB
                         //if (Convert.ToBoolean(ssCp_Sheet1.Cells[i, 15].Value) == true) //사용으로 체크한 경우만
                         //{
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + " INSERT INTO KOSMOS_PMPA.BAS_BASCD_DEL ( ";
+                            SQL = SQL + ComNum.VBLF + " INSERT INTO ADMIN.BAS_BASCD_DEL ( ";
                             SQL = SQL + ComNum.VBLF + "      GRPCDB,GRPCD,BASCD,APLFRDATE, ";
                             SQL = SQL + ComNum.VBLF + "      APLENDDATE,BASNAME,BASNAME1,VFLAG1, ";
                             SQL = SQL + ComNum.VBLF + "      VFLAG2,VFLAG3,VFLAG4,NFLAG1, ";
@@ -284,7 +284,7 @@ namespace ComLibB
                             SQL = SQL + ComNum.VBLF + "      NFLAG2,NFLAG3,NFLAG4,REMARK, ";
                             SQL = SQL + ComNum.VBLF + "      REMARK1,INPDATE,INPTIME,USECLS, ";
                             SQL = SQL + ComNum.VBLF + "      DISPSEQ, SYSDATE, '" + clsType.User.Sabun + "'";
-                            SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_BASCD ";
+                            SQL = SQL + ComNum.VBLF + "   FROM ADMIN.BAS_BASCD ";
                             SQL = SQL + ComNum.VBLF + "  WHERE GRPCDB = 'CP관리' ";
                             SQL = SQL + ComNum.VBLF + "    AND GRPCD = '" + cboCP.Text + "'";
                             SQL = SQL + ComNum.VBLF + "    AND BASCD = '" + ssCp_Sheet1.Cells[i, 0].Text.Trim() + "'";
@@ -461,7 +461,7 @@ namespace ComLibB
                     {
 
                         SQL = "";
-                        SQL = SQL + ComNum.VBLF + " INSERT INTO KOSMOS_PMPA.BAS_BASCD_DEL ( ";
+                        SQL = SQL + ComNum.VBLF + " INSERT INTO ADMIN.BAS_BASCD_DEL ( ";
                         SQL = SQL + ComNum.VBLF + "      GRPCDB,GRPCD,BASCD,APLFRDATE, ";
                         SQL = SQL + ComNum.VBLF + "      APLENDDATE,BASNAME,BASNAME1,VFLAG1, ";
                         SQL = SQL + ComNum.VBLF + "      VFLAG2,VFLAG3,VFLAG4,NFLAG1, ";
@@ -475,7 +475,7 @@ namespace ComLibB
                         SQL = SQL + ComNum.VBLF + "      NFLAG2,NFLAG3,NFLAG4,REMARK, ";
                         SQL = SQL + ComNum.VBLF + "      REMARK1,INPDATE,INPTIME,USECLS, ";
                         SQL = SQL + ComNum.VBLF + "      DISPSEQ, SYSDATE, '" + clsType.User.Sabun + "'";
-                        SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_BASCD ";
+                        SQL = SQL + ComNum.VBLF + "   FROM ADMIN.BAS_BASCD ";
                         SQL += ComNum.VBLF + " WHERE GRPCDB = 'CP관리' ";
                         SQL += ComNum.VBLF + "   AND GRPCD = 'CP코드관리' ";
                         SQL += ComNum.VBLF + "   AND BASCD = '" + strCPCode + "' ";
@@ -491,7 +491,7 @@ namespace ComLibB
 
 
 
-                        SQL = " DELETE KOSMOS_PMPA.BAS_BASCD ";
+                        SQL = " DELETE ADMIN.BAS_BASCD ";
                         SQL += ComNum.VBLF + " WHERE GRPCDB = 'CP관리' ";
                         SQL += ComNum.VBLF + "   AND GRPCD = 'CP코드관리' ";
                         SQL += ComNum.VBLF + "   AND BASCD = '" + strCPCode + "' ";

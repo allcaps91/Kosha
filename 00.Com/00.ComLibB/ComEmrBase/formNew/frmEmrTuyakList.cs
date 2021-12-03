@@ -556,13 +556,13 @@ namespace ComEmrBase
             {
                 if (Copy)
                 {
-                    SQL.AppendLine("  SELECT A.EMRNO, A.USEID, (SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = LTRIM(A.USEID, '0')) USENAME, WRITEDATE, WRITETIME,");
+                    SQL.AppendLine("  SELECT A.EMRNO, A.USEID, (SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = LTRIM(A.USEID, '0')) USENAME, WRITEDATE, WRITETIME,");
                     SQL.AppendLine("A.CHARTDATE, A.CHARTTIME, 1796 FORMNO, '투약기록지' FORMNAME, 1796 USERFORMNO, ");
                     SQL.AppendLine("  it1 , it2, it3, it4, it5, it6, it7, it8, it9, it10,");
-                    SQL.AppendLine("  (SELECT BUN FROM KOSMOS_OCS.OCS_ORDERCODE WHERE TRIM(SUCODE) = A.IT2 AND ROWNUM = 1) AS BUN");
+                    SQL.AppendLine("  (SELECT BUN FROM ADMIN.OCS_ORDERCODE WHERE TRIM(SUCODE) = A.IT2 AND ROWNUM = 1) AS BUN");
                     SQL.AppendLine("  , '' AS PRNTYN");
-                    SQL.AppendLine("  FROM KOSMOS_EMR.EMRXML_TUYAK A");
-                    SQL.AppendLine("    INNER JOIN KOSMOS_EMR.EMRPRTREQ E ");
+                    SQL.AppendLine("  FROM ADMIN.EMRXML_TUYAK A");
+                    SQL.AppendLine("    INNER JOIN ADMIN.EMRPRTREQ E ");
                     SQL.AppendLine("       ON E.PRTREQNO = " + mstrPrtReqNo);
                     SQL.AppendLine("       AND E.EMRNO = A.EMRNO");
                     SQL.AppendLine("       AND E.SCANYN = 'T'" );
@@ -581,10 +581,10 @@ namespace ComEmrBase
                 {
                     SQL.AppendLine(" SELECT A.EMRNO, A.WRITEDATE, A.WRITETIME, A.USEID, A.CHARTDATE, A.CHARTTIME, 1796 FORMNO, '투약기록지' FORMNAME,  1796 USERFORMNO");
                     SQL.AppendLine(", IT1, IT2, IT3, IT4, IT5, IT6, IT7, IT8, IT9, IT10, ");
-                    SQL.AppendLine("  (SELECT BUN FROM KOSMOS_OCS.OCS_ORDERCODE WHERE TRIM(SUCODE) = A.IT2 AND ROWNUM = 1) AS BUN");
-                    SQL.AppendLine(", CASE WHEN EXISTS(SELECT 1 FROM KOSMOS_EMR.EMRPRTREQ WHERE EMRNO = A.EMRNO AND SCANYN = 'T') THEN '사 본' ELSE '' END PRNTYN");
-                    SQL.AppendLine(", (SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = LTRIM(A.USEID, '0')) AS USENAME");
-                    SQL.AppendLine("FROM KOSMOS_EMR.EMRXML_TUYAK A");
+                    SQL.AppendLine("  (SELECT BUN FROM ADMIN.OCS_ORDERCODE WHERE TRIM(SUCODE) = A.IT2 AND ROWNUM = 1) AS BUN");
+                    SQL.AppendLine(", CASE WHEN EXISTS(SELECT 1 FROM ADMIN.EMRPRTREQ WHERE EMRNO = A.EMRNO AND SCANYN = 'T') THEN '사 본' ELSE '' END PRNTYN");
+                    SQL.AppendLine(", (SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = LTRIM(A.USEID, '0')) AS USENAME");
+                    SQL.AppendLine("FROM ADMIN.EMRXML_TUYAK A");
                     SQL.AppendLine("   WHERE A.FORMNO = 1796");
                     SQL.AppendLine("     AND A.PTNO = '" + pAcp.ptNo + "' ");
                     SQL.AppendLine("     AND A.MEDFRDATE = '" + pAcp.medFrDate + "' ");
@@ -1217,7 +1217,7 @@ namespace ComEmrBase
             {
                 SQL = string.Empty;
                 SQL = " SELECT NAL ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMR_OPTION_SETDATE ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMR_OPTION_SETDATE ";
                 SQL = SQL + ComNum.VBLF + " WHERE IO = '" + ArgIO + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND USEID = " + argUSEID;
                 if (ArgIO != "I")
@@ -1271,7 +1271,7 @@ namespace ComEmrBase
             {
                 SQL = string.Empty;
                 SQL = "SELECT ITEMRMK";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMROPTFORM";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMROPTFORM";
                 SQL = SQL + ComNum.VBLF + "  WHERE FORMNO = 1796";
                 SQL = SQL + ComNum.VBLF + "    AND CONTROLID = 'it7'";
 

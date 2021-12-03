@@ -629,7 +629,7 @@ namespace ComPmpaLibB
             SQL = SQL + ComNum.VBLF + "   AND Bdate >= TO_DATE('" + dtpFdate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
             SQL = SQL + ComNum.VBLF + "   AND Bdate <= TO_DATE('" + dtpTdate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
             SQL = SQL + ComNum.VBLF + "   AND I.Sunext = B.Sunext ";
-            SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
+            SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2011-04-09
             if (chkMinus.Checked == false)
             {
                 SQL = SQL + ComNum.VBLF + " group by   i.pano,i.bi,Bdate,bun,i.deptcode,Nu,Sucode,SunameK,b.bcode,BaseAmt,Qty,GbSpc,GbNgt,GbGisul,GbSelf,GbChild,gbsugbs, b.SugbP";

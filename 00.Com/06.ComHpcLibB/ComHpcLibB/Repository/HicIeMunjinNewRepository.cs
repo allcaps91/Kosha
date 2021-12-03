@@ -78,7 +78,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_IE_MUNJIN_NEW SET   ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_IE_MUNJIN_NEW SET   ");
             parameter.AppendSql("       PTNO   = :PTNO                      ");
             parameter.AppendSql(" WHERE ROWID  = :RID                       ");
 
@@ -92,7 +92,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_IE_MUNJIN_NEW   ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_IE_MUNJIN_NEW   ");
             parameter.AppendSql("   SET GBDBSEND = ''                   ");
             parameter.AppendSql("     , WRTNO1 = ''                     ");
             parameter.AppendSql("     , WRTNO2 = ''                     ");
@@ -110,7 +110,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MUNDATE,WRTNO,RECVFORM,ROWID    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW   ");
             parameter.AppendSql(" WHERE WRTNO =:WRTNO                   ");
             parameter.AppendSql("   AND MUNDATE LIKE :MUNDATE           ");
 
@@ -124,7 +124,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW   ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                    ");
             parameter.AppendSql("   AND MUNDATE >= TRUNC(SYSDATE) -180  ");
             parameter.AppendSql("   AND WebData1 IS NOT NULL            ");
@@ -138,7 +138,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SNAME, PTNO, MUNJINRES              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW       ");
             parameter.AppendSql(" WHERE WRTNO2 =:WRTNO2                     ");
             parameter.AppendSql(" ORDER BY MUNDATE DESC                     ");
 
@@ -151,7 +151,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT RECVFORM                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW   ");
             parameter.AppendSql(" WHERE PTNO =:PTNO                     ");
             parameter.AppendSql("   AND MUNDATE >= :MUNDATE             ");
             parameter.AppendSql("  ORDER By MUNDATE DESC                ");
@@ -166,7 +166,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW   ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                    ");
             parameter.AppendSql("   AND MunDate >= TRUNC(SYSDATE) -180  ");
             parameter.AppendSql("   AND WebData1 IS NOT NULL            ");
@@ -188,7 +188,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT RECVFORM                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW   ");
             parameter.AppendSql(" WHERE WRTNO =:WRTNO                   ");
 
             parameter.Add("WRTNO", wRTNO);
@@ -200,7 +200,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO,RECVFORM,ROWID, GBMUN1,GBMUN2, MUNDATE     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW           ");
             parameter.AppendSql(" WHERE PTNO =:PTNO                             ");
             parameter.AppendSql("   AND MUNDATE >= :MUNDATE                     ");
             parameter.AppendSql("   AND WEBDATA1 IS NOT NULL                    ");
@@ -220,7 +220,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MUNDATE,WRTNO,RECVFORM,ROWID    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW   ");
             parameter.AppendSql(" WHERE SNAME =:SNAME                   ");
             parameter.AppendSql("   AND PTNO =:PTNO                     ");
             parameter.AppendSql("   AND MUNDATE <= :MUNDATE             ");
@@ -237,7 +237,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT RECVFORM, MUNDATE                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW       ");
             parameter.AppendSql(" WHERE MUNDATE >= :MUNDATE                 ");
             parameter.AppendSql("   AND PTNO  = :PTNO                       ");
             parameter.AppendSql(" ORDER BY MUNDATE DESC                     ");
@@ -252,7 +252,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO,MUNDATE,SNAME,BIRTH,PTNO,RECVFORM,MUNJINRES,GBMUN4,ROWID  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW                                   ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                                                   ");
             parameter.AppendSql("   AND MUNDATE  >= :MUNDATE                                            ");
             parameter.AppendSql("   AND WEBDATA1 IS NOT NULL                                            ");
@@ -268,7 +268,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MUNDATE                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW               ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                               ");
             parameter.AppendSql(" ORDER BY MUNDATE DESC                             ");
 
@@ -281,7 +281,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO, RECVFORM                             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW               ");
             parameter.AppendSql(" WHERE ROWID  = :RID                               ");
 
             parameter.Add("RID", strROWID);
@@ -295,7 +295,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT MUNDATE, SNAME, BIRTH, AGE, SEX, GBMUN1, GBMUN2, GBMUN3, GBMUN4, GBMUN5             ");
             parameter.AppendSql("     , MAILCODE, JUSO1, JUSO2, LTDNAME, TEL, HPHONE, CLASS, BAN, BUN, PTNO, RECVFORM,ROWID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW                                                       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW                                                       ");
             if (fnWrtNo > 0)
             {
                 parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                                                 ");
@@ -352,7 +352,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MUNDATE, INJEKDATA, RECVFORM                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW               ");
             parameter.AppendSql(" WHERE ROWID  = :ROWID                             ");
 
             parameter.Add("ROWID", strROWID);
@@ -364,7 +364,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MUNJINRES                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW               ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                               ");
             parameter.AppendSql("   AND MUNDATE >= :SYSDT                           ");
             parameter.AppendSql("   AND MUNDATE <= :JEPDATE                         ");
@@ -384,7 +384,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT RECVFORM                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW       ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                     ");
 
             parameter.Add("WRTNO", iEMUNNO);
@@ -396,7 +396,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MUNJINRES                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW       ");
             parameter.AppendSql(" WHERE WRTNO1  = :WRTNO                     ");
 
             parameter.Add("WRTNO", argWrtNo);
@@ -408,7 +408,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WEBHTML                             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN           ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                     ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -420,7 +420,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN                   ");
             parameter.AppendSql(" WHERE JUMIN2  = :JUMIN                            ");
             parameter.AppendSql("   AND ENTDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')   ");
 
@@ -433,7 +433,7 @@ namespace ComHpcLibB.Repository
         public int GetCountbyWrtNo(long fnWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT COUNT('X') CNT FROM KOSMOS_PMPA.HIC_IE_MUNJIN WHERE WRTNO = :WRTNO  ");
+            parameter.AppendSql("SELECT COUNT('X') CNT FROM ADMIN.HIC_IE_MUNJIN WHERE WRTNO = :WRTNO  ");
 
             parameter.Add("WRTNO", fnWRTNO);
 
@@ -444,7 +444,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_IE_MUNJIN_NEW               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_IE_MUNJIN_NEW               ");
             parameter.AppendSql(" WHERE 1 =1                                        ");
             parameter.AppendSql("   AND PTNO = :PTNO                                ");
             parameter.AppendSql("   AND MUNDATE >= :MUNDATE                         ");

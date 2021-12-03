@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HEA_GROUPEXAM       ");
+            parameter.AppendSql("DELETE ADMIN.HEA_GROUPEXAM       ");
             parameter.AppendSql(" WHERE GROUPCODE =:RID                 ");
 
             parameter.Add("RID", fstrCode);
@@ -36,7 +36,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT KOSMOS_PMPA.HEA_GROUPEXAM (                 ");
+            parameter.AppendSql("INSERT ADMIN.HEA_GROUPEXAM (                 ");
             parameter.AppendSql("   GROUPCODE,EXCODE,SEQNO,ENTSABUN,ENTDATE )       ");
             parameter.AppendSql(" VALUES (                                          ");
             parameter.AppendSql("  :GROUPCODE,:EXCODE,:SEQNO,:ENTSABUN,SYSDATE )    ");
@@ -53,7 +53,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_GROUPEXAM        ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_GROUPEXAM        ");
             parameter.AppendSql("   SET EXCODE   =:EXCODE                ");
             parameter.AppendSql("      ,SEQNO    =:SEQNO                 ");
             parameter.AppendSql("      ,ENTSABUN =:ENTSABUN              ");
@@ -73,7 +73,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID AS RID                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPEXAM     ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPEXAM     ");
             parameter.AppendSql(" WHERE 1 = 1                         ");
             parameter.AppendSql("   AND GROUPCODE =:GROUPCODE         ");
             parameter.AppendSql("   AND EXCODE =:EXCODE               ");
@@ -88,7 +88,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HEA_GROUPEXAM        ");
+            parameter.AppendSql("DELETE ADMIN.HEA_GROUPEXAM        ");
             parameter.AppendSql(" WHERE ROWID    = :RID                  ");
 
             parameter.Add("RID", code.RID);

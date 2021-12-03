@@ -21,7 +21,7 @@ namespace HC_Measurement.Repository
         public void InSert(HIC_CHUKDTL_SUBLTD dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHUKDTL_SUBLTD");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHUKDTL_SUBLTD");
             parameter.AppendSql("(");
             parameter.AppendSql("    WRTNO");
             parameter.AppendSql("  , LTDCODE");
@@ -50,7 +50,7 @@ namespace HC_Measurement.Repository
         public void Delete(HIC_CHUKDTL_SUBLTD dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKDTL_SUBLTD");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKDTL_SUBLTD");
             parameter.AppendSql("   SET DELDATE = SYSDATE ");
             parameter.AppendSql(" WHERE ROWID = :RID ");
 
@@ -62,7 +62,7 @@ namespace HC_Measurement.Repository
         public void DeleteAll(long nWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKDTL_SUBLTD");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKDTL_SUBLTD");
             parameter.AppendSql("   SET DELDATE = SYSDATE ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO ");
 
@@ -82,7 +82,7 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.DELDATE");
             parameter.AppendSql("     , A.REMARK");
             parameter.AppendSql("     , A.ROWID AS RID");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(A.SUB_LTDCODE) SUB_LTDNAME");
+            parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(A.SUB_LTDCODE) SUB_LTDNAME");
             parameter.AppendSql("  FROM HIC_CHUKDTL_SUBLTD A");
             parameter.AppendSql(" WHERE A.WRTNO=:WRTNO");
             parameter.AppendSql("   AND A.DELDATE IS NULL");
@@ -95,7 +95,7 @@ namespace HC_Measurement.Repository
         public void UpDate(HIC_CHUKDTL_SUBLTD dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKDTL_SUBLTD");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKDTL_SUBLTD");
             parameter.AppendSql("   SET SUB_LTDCODE = :SUB_LTDCODE");
             parameter.AppendSql("     , JOBSABUN = :JOBSABUN");
             parameter.AppendSql("     , ENTDATE = SYSDATE");

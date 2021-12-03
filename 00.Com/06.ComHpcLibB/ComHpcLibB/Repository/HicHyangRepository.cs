@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_HYANG SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_HYANG SET       ");
             parameter.AppendSql("       DELDATE = SYSDATE               ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO               ");
             parameter.AppendSql("   AND DEPTCODE = 'HR'                 ");
@@ -47,7 +47,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_HYANG SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_HYANG SET       ");
             parameter.AppendSql("       QTY = :QTY                      ");
             parameter.AppendSql("       ,REALQTY = :REALQTY             ");
             parameter.AppendSql("       ,ENTQTY2 = :ENTQTY2             ");
@@ -68,7 +68,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_HYANG SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_HYANG SET       ");
             parameter.AppendSql("       DELDATE = ''                    ");
             parameter.AppendSql("     , QTY     = :QTY                  ");
             parameter.AppendSql("     , REALQTY = :REALQTY              ");
@@ -85,7 +85,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_HYANG SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_HYANG SET       ");
             parameter.AppendSql("       DELDATE  = SYSDATE              ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO               ");
             parameter.AppendSql("   AND DEPTCODE = 'HR'                 ");
@@ -102,14 +102,14 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_HYANG                                                  ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_HYANG                                                  ");
             parameter.AppendSql("       (PTNO, WRTNO, SNAME, JONG, BI, WARDCODE, BDATE, SDATE, ENTDATE              ");
             parameter.AppendSql("      , DEPTCODE, DRSABUN, IO, SUCODE, QTY, REALQTY, NAL, DOSCODE                  ");
             parameter.AppendSql("      , REMARK1, REMARK2, SEX, AGE, JUMIN, JUSO, ENTQTY, ENTQTY2, JUMIN2, CHASU)   ");
             parameter.AppendSql(" SELECT PTNO, WRTNO, SNAME, JONG, '51', DEPTCODE, BDATE, SDATE,  ENTDATE           ");
             parameter.AppendSql("      , DEPTCODE, DRSABUN, 'O', SUCODE, :QTY, :REALQTY, '1', '920299'              ");
             parameter.AppendSql("      , '°Ë»ç¿ë', 'Pain', SEX, AGE, JUMIN, JUSO, ENTQTY, ENTQTY2, JUMIN2, CHASU     ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_HYANG_APPROVE                                              ");
+            parameter.AppendSql("   FROM ADMIN.HIC_HYANG_APPROVE                                              ");
             parameter.AppendSql("  WHERE ROWID = :RID                                                               ");
 
             parameter.Add("QTY", item.QTY); 
@@ -122,7 +122,7 @@ namespace ComHpcLibB.Repository
         public HIC_HYANG GetRowIdbyWrtNoSuCode(long argWrtNo, string strSuCode)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT ROWID RID FROM KOSMOS_PMPA.HIC_HYANG        ");
+            parameter.AppendSql("SELECT ROWID RID FROM ADMIN.HIC_HYANG        ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO                       ");
             parameter.AppendSql("   AND DEPTCODE = 'HR'                         ");
             parameter.AppendSql("   AND SUCODE   = :SUCODE                      ");
@@ -138,7 +138,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MAX(SeqNo) + 1 SEQNO                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG                   ");
             parameter.AppendSql(" WHERE BDATE >= TO_DATE(:BDATE, 'YYYY-MM-DD')  ");
 
             parameter.Add("BDATE", strSysDate);
@@ -149,7 +149,7 @@ namespace ComHpcLibB.Repository
         public string GetRowIdByItems(string argBdate, long argWrtno, string argPtno, string argSname, string argSucode)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT ROWID AS RID FROM KOSMOS_PMPA.HIC_HYANG     ");
+            parameter.AppendSql("SELECT ROWID AS RID FROM ADMIN.HIC_HYANG     ");
             parameter.AppendSql(" WHERE BDATE    = TO_DATE(:BDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND WRTNO = :WRTNO                              ");
             parameter.AppendSql("   AND PTNO = :PTNO                                ");
@@ -170,7 +170,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_HYANG SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_HYANG SET       ");
             parameter.AppendSql("       DELDATE  = SYSDATE              ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO               ");
             parameter.AppendSql("   AND PTNO     = :PTNO                ");

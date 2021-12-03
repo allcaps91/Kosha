@@ -81,7 +81,7 @@
         public string pibo_name;        // 
 
         /// <summary>
-        /// 접수번호(KOSMOS_EMR.EMR_TREATT) - TREATNO
+        /// 접수번호(ADMIN.EMR_TREATT) - TREATNO
         /// </summary>
         public string acpNo;            //
         /// <summary>
@@ -259,7 +259,7 @@
         /// </summary>
         public string acpNoOut;            //
         /// <summary>
-        /// 입원접수번호(KOSMOS_PMPA.IPD_NEW_MASTER - IPDNO)
+        /// 입원접수번호(ADMIN.IPD_NEW_MASTER - IPDNO)
         /// </summary>
         public string acpNoIn;            //
 

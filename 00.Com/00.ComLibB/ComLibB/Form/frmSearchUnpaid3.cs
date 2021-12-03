@@ -52,7 +52,7 @@ namespace ComLibB
             ssView_Sheet1.Rows.Count = 0;
 
             SQL = "";
-            SQL = SQL + " SELECT CODE, ROWID FROM KOSMOS_PMPA.BAS_BCODE " + ComNum.VBLF;
+            SQL = SQL + " SELECT CODE, ROWID FROM ADMIN.BAS_BCODE " + ComNum.VBLF;
             SQL = SQL + " WHERE 1=1 " + ComNum.VBLF;
             SQL = SQL + " AND GUBUN = 'ETC_비급여고지수가목록' " + ComNum.VBLF;
             SQL = SQL + " ORDER BY CODE " + ComNum.VBLF;
@@ -116,7 +116,7 @@ namespace ComLibB
                     {
                         if(strROWID != "")
                         {
-                            SQL = "DELETE KOSMOS_PMPA.BAS_BCODE ";
+                            SQL = "DELETE ADMIN.BAS_BCODE ";
                             SQL = SQL + " WHERE ROWID = '" + strROWID + "'" + ComNum.VBLF;
                             SQL = SQL + " AND GUBUN = 'ETC_비급여고지수가목록'" + ComNum.VBLF;
 
@@ -134,7 +134,7 @@ namespace ComLibB
     
                     if(strSuCode != "" && strROWID == "")
                     {
-                        SQL = "INSERT INTO KOSMOS_PMPA.BAS_BCODE(GUBUN,CODE,JDATE,ENTSABUN,ENTDATE) VALUES ";
+                        SQL = "INSERT INTO ADMIN.BAS_BCODE(GUBUN,CODE,JDATE,ENTSABUN,ENTDATE) VALUES ";
                         SQL = SQL + "('ETC_비급여고지수가목록','" + ssView_Sheet1.Cells[i, 1].Text.Trim() + "',SYSDATE,'" + clsType.User.Sabun + "',SYSDATE)" + ComNum.VBLF;
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

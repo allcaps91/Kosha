@@ -29,7 +29,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , SUM(DECODE(b.FormCode,'D30',1,0)) D30                       ");
             parameter.AppendSql("     , SUM(DECODE(b.FormCode,'D40',1,0)) D40                       ");
             parameter.AppendSql("     , B.DeptCode                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU a,KOSMOS_PMPA.HIC_CONSENT b           ");
+            parameter.AppendSql("  FROM ADMIN.HEA_JEPSU a,ADMIN.HIC_CONSENT b           ");
             parameter.AppendSql(" WHERE B.SDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                   ");
             parameter.AppendSql("   AND B.SDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                   ");
             if (!strSName.IsNullOrEmpty())
@@ -51,7 +51,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , SUM(DECODE(b.FormCode,'D30',1,0)) D30                       ");
             parameter.AppendSql("     , SUM(DECODE(b.FormCode,'D40',1,0)) D40                       ");
             parameter.AppendSql("     , B.DeptCode                                                  ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_JEPSU a,KOSMOS_PMPA.HIC_CONSENT b            ");
+            parameter.AppendSql(" FROM ADMIN.HIC_JEPSU a,ADMIN.HIC_CONSENT b            ");
             parameter.AppendSql(" WHERE a.JEPDATE>=TO_DATE(:FRDATE,'YYYY-MM-DD')                    ");
             parameter.AppendSql("   AND a.JEPDATE<=TO_DATE(:TODATE,'YYYY-MM-DD')                    ");
             if (!strSName.IsNullOrEmpty())

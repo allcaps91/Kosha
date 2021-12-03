@@ -742,7 +742,7 @@ namespace ComPmpaLibB
                 SQL = SQL + ComNum.VBLF + "             AND ACTDate <= TO_DATE('" + GstrTDate + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "             AND PANO = '" + GstrPano + "' ";
                 SQL = SQL + ComNum.VBLF + "             AND PART <> '#' ";
-                SQL = SQL + ComNum.VBLF + "             AND TRIM(SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2010-11-22
+                SQL = SQL + ComNum.VBLF + "             AND TRIM(SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";  //저가약제 제외코드 2010-11-22
                 SQL = SQL + ComNum.VBLF + "     GROUP BY BUN, IPDNO, TRSNO ";
                 SQL = SQL + ComNum.VBLF + "     HAVING SUM(CASE WHEN BUN = '98' THEN AMT END) <> 0 OR ";
 

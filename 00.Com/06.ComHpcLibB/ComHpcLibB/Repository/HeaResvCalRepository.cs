@@ -16,7 +16,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT LTDCODE, RDATE, STARTTIME, LTDNAME, INWON, SPECIAL, REMARK  ");
             parameter.AppendSql("      ,GBCHANGE, RTIME                                             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHULRESV                                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHULRESV                                    ");
             parameter.AppendSql(" WHERE 1 = 1                                                       ");
             parameter.AppendSql("   AND RDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')                      ");
             parameter.AppendSql("   AND RDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')                      ");

@@ -1877,7 +1877,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "    AND ActDate = TO_DATE('" + clsPmpaType.TIT.ArcDate + "','YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + "    AND BI = '" + clsPmpaType.TIT.Bi + "'                                 ";
                 SQL += ComNum.VBLF + "    AND GbSelf ='0'                                                       ";
-                SQL += ComNum.VBLF + "    AND TRIM(SuCode) IN ( SELECT TRIM(SUNEXT) FROM KOSMOS_PMPA.BAS_SUN WHERE DAICODE ='633' ) ";
+                SQL += ComNum.VBLF + "    AND TRIM(SuCode) IN ( SELECT TRIM(SUNEXT) FROM ADMIN.BAS_SUN WHERE DAICODE ='633' ) ";
                 SQL += ComNum.VBLF + "  GROUP BY TO_CHAR(BDate,'YYYY-MM-DD')                                          ";
                 SQL += ComNum.VBLF + "    HAVING SUM(QTY*NAL) <> 0 ";
                 SqlErr = clsDB.GetDataTable(ref Dt, SQL, pDbCon);
@@ -1902,7 +1902,7 @@ namespace ComPmpaLibB
                         SQL += ComNum.VBLF + "    AND bDate = TO_DATE('" + strBDate + "','YYYY-MM-DD') ";
                         SQL += ComNum.VBLF + "    AND BI = '" + clsPmpaType.TIT.Bi + "' ";
                         SQL += ComNum.VBLF + "    AND GbSelf ='0' ";
-                        SQL += ComNum.VBLF + "    AND TRIM(SuCode) IN ( SELECT TRIM(SUNEXT) FROM KOSMOS_PMPA.BAS_SUN WHERE DAICODE ='633' ) ";
+                        SQL += ComNum.VBLF + "    AND TRIM(SuCode) IN ( SELECT TRIM(SUNEXT) FROM ADMIN.BAS_SUN WHERE DAICODE ='633' ) ";
                         SqlErr = clsDB.GetDataTable(ref Dt2, SQL, pDbCon);
                         if (SqlErr != "")
                         {
@@ -2406,7 +2406,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "    AND IPDNO   = '" + clsPmpaType.TIT.Ipdno + "'                    ";
                 SQL += ComNum.VBLF + "    AND trsno   = '" + clsPmpaType.TIT.Trsno + "'                    ";
                 SQL += ComNum.VBLF + "    AND BDate = TO_DATE('" + clsPmpaType.TIT.ArcDate + "','YYYY-MM-DD') ";
-                SQL += ComNum.VBLF + "    AND orderno in  ( select orderno from kosmos_ocs.ocs_iorder b where bdate = TO_DATE('" + clsPmpaType.TIT.ArcDate + "','YYYY-MM-DD')  and a.pano=b.ptno  and sedation ='1'  )   ";
+                SQL += ComNum.VBLF + "    AND orderno in  ( select orderno from ADMIN.ocs_iorder b where bdate = TO_DATE('" + clsPmpaType.TIT.ArcDate + "','YYYY-MM-DD')  and a.pano=b.ptno  and sedation ='1'  )   ";
                 SqlErr = clsDB.GetDataTable(ref Dt, SQL, pDbCon);
                 if (SqlErr != "")
                 {

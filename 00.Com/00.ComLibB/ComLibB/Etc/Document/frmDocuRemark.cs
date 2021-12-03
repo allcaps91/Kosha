@@ -30,7 +30,7 @@ namespace ComLibB
             ss1.ActiveSheet.RowCount = 0;
 
             SQL = "SELECT CODE, CODENAME, ROWID";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_DOCU_CODE1";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_DOCU_CODE1";
             SQL = SQL + ComNum.VBLF + " WHERE GUBUN = '" + GstrRetValue + "'";
             SQL = SQL + ComNum.VBLF + "   AND DELDATE IS NULL";
             SQL = SQL + ComNum.VBLF + " ORDER BY CODE";
@@ -92,7 +92,7 @@ namespace ComLibB
                     {
                         if (strROWID != "")
                         {
-                            SQL = "UPDATE KOSMOS_ADM.INSA_DOCU_CODE1 SET";
+                            SQL = "UPDATE ADMIN.INSA_DOCU_CODE1 SET";
                             SQL = SQL + "\r\n" + "       DELDATE = SYSDATE";
                             SQL = SQL + "\r\n" + " WHERE ROWID='" + strROWID + "'";
                         }
@@ -103,13 +103,13 @@ namespace ComLibB
                         {
                             if (strROWID == "" && VB.Trim(strName) != "")
                             {
-                                SQL = "INSERT INTO KOSMOS_ADM.INSA_DOCU_CODE1";
+                                SQL = "INSERT INTO ADMIN.INSA_DOCU_CODE1";
                                 SQL = SQL + "\r\n" + "       (CODE, CODENAME, ENTDATE,, GUBUN) ";
                                 SQL = SQL + "\r\n" + "VALUES ('" + strCode + "', '" + strName + "', SYSDATE, '" + GstrRetValue + "') ";
                             }
                             else if (strROWID != "")
                             {
-                                SQL = "UPDATE KOSMOS_ADM.INSA_DOCU_CODE1 SET";
+                                SQL = "UPDATE ADMIN.INSA_DOCU_CODE1 SET";
                                 SQL = SQL + "\r\n" + "       CODE = '" + strCode + "',";
                                 SQL = SQL + "\r\n" + "       CODENAME = '" + strName + "',";
                                 SQL = SQL + "\r\n" + "       ENTDATE = SYSDATE";

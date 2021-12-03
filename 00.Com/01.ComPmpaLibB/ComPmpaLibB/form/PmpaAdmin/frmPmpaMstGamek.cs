@@ -444,7 +444,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "        A.GAMROMAN, A.GAMGUBUN, B.SNAME, ";
             SQL += ComNum.VBLF + "        A.GAMJUMIN, A.GAMJUMIN_NEW, A.ROWID, ";
             SQL += ComNum.VBLF + "        TO_CHAR(A.GAMDATE,'YYYY-MM-DD') GAMDATE, A.GAMSABUN, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_USER_NAME(A.GAMSABUN) AS SABUNNAME ";                                                       
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_USER_NAME(A.GAMSABUN) AS SABUNNAME ";                                                       
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "BAS_GAMFSINGA A, ";
             SQL += ComNum.VBLF + "        " + ComNum.DB_PMPA + "BAS_PATIENT B ";
             SQL += ComNum.VBLF + " WHERE 1 = 1 ";

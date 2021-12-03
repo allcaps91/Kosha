@@ -21,7 +21,7 @@ namespace HC_Measurement.Repository
         public void InSert(HIC_CHUKDTL_LOCATION dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHUKDTL_LOCATION");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHUKDTL_LOCATION");
             parameter.AppendSql("(");
             parameter.AppendSql("    WRTNO");
             parameter.AppendSql("  , SEQNO");
@@ -50,7 +50,7 @@ namespace HC_Measurement.Repository
         public void Delete(HIC_CHUKDTL_LOCATION dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_CHUKDTL_LOCATION");
+            parameter.AppendSql("DELETE ADMIN.HIC_CHUKDTL_LOCATION");
             parameter.AppendSql(" WHERE ROWID = :RID ");
 
             parameter.Add("RID", dto.RID);
@@ -98,7 +98,7 @@ namespace HC_Measurement.Repository
         public void UpDate(HIC_CHUKDTL_LOCATION dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKDTL_LOCATION");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKDTL_LOCATION");
             parameter.AppendSql("   SET SEQNO = :SEQNO");
             parameter.AppendSql("     , REMARK = :REMARK");
             parameter.AppendSql("     , IMAGEDATA = :IMAGEDATA");

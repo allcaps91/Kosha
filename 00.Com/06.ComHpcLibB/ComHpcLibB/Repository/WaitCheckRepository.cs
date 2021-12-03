@@ -25,8 +25,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             
             parameter.AppendSql("SELECT a.WRTNO, a.ActPART, a.ACTIVE                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                                        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_JEPSU  b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                                        ");
+            parameter.AppendSql("     , ADMIN.HEA_JEPSU  b                                        ");
             parameter.AppendSql(" WHERE a.WRTNO = b.WRTNO                                               ");
             parameter.AppendSql("   AND a.Result IS NULL                                                ");
             parameter.AppendSql("   AND a.EXCODE NOT IN ('A101','A102','A103','TX87')                   ");
@@ -54,8 +54,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.WRTNO, a.PART, a.ACTIVE                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU  b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                        ");
+            parameter.AppendSql("     , ADMIN.HIC_JEPSU  b                                        ");
             parameter.AppendSql(" WHERE a.WRTNO = b.WRTNO                                               ");
             parameter.AppendSql("   AND b.JepDate = TO_DATE(:JEPDATE,'YYYY-MM-DD')                      ");
             if (!ENTPART.IsNullOrEmpty())
@@ -90,8 +90,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.WRTNO, a.PART, a.ACTIVE, a.ROWID RID                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a                                        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU  b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a                                        ");
+            parameter.AppendSql("     , ADMIN.HIC_JEPSU  b                                        ");
             parameter.AppendSql(" WHERE a.WRTNO = b.WRTNO                                               ");
             parameter.AppendSql("   AND b.JepDate = TO_DATE(:JEPDATE,'YYYY-MM-DD')                      ");
             parameter.AppendSql("   AND(a.ACTIVE IS NULL OR a.ACTIVE = ' ')                             ");
@@ -110,7 +110,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SANGDAM_WAIT                            ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SANGDAM_WAIT                            ");
             parameter.AppendSql(" WHERE ENTTIME >= TO_DATE(:SDATE, 'yyyy-MM-dd')                ");
             parameter.AppendSql("   AND Gubun <> '12'                                           "); //상담대기
             if (!HEAPART.IsNullOrEmpty())
@@ -132,7 +132,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(WRTNO) CNT                                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SANGDAM_WAIT                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SANGDAM_WAIT                            ");
             parameter.AppendSql(" WHERE 1 = 1                                                   ");
             if (strGbWait.Count > 0)
             {

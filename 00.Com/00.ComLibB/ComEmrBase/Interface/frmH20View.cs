@@ -43,11 +43,11 @@ namespace ComEmrBase
             SQL += ComNum.VBLF + "                THEN REPLACE(REPLACE(UPPER(R.ITEMVALUE),'L',''),'%','')    ";
             SQL += ComNum.VBLF + "                ELSE R.ITEMVALUE                                           ";
             SQL += ComNum.VBLF + "           END ITEMVALUE                                                   ";
-            SQL += ComNum.VBLF + "      FROM KOSMOS_EMR.AEMRCHARTMST A                                       ";
-            SQL += ComNum.VBLF + "     INNER JOIN KOSMOS_EMR.AEMRCHARTROW R                                  ";
+            SQL += ComNum.VBLF + "      FROM ADMIN.AEMRCHARTMST A                                       ";
+            SQL += ComNum.VBLF + "     INNER JOIN ADMIN.AEMRCHARTROW R                                  ";
             SQL += ComNum.VBLF + "        ON A.EMRNO = R.EMRNO                                               ";
             SQL += ComNum.VBLF + "       AND A.EMRNOHIS = R.EMRNOHIS                                         ";
-            SQL += ComNum.VBLF + "     INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER P                               ";
+            SQL += ComNum.VBLF + "     INNER JOIN ADMIN.IPD_NEW_MASTER P                               ";
             SQL += ComNum.VBLF + "        ON A.PTNO = P.PANO                                                 ";
             SQL += ComNum.VBLF + "       AND A.CHARTDATE >= TO_CHAR(P.INDATE,'YYYYMMDD')                     ";
             SQL += ComNum.VBLF + "     WHERE A.FORMNO  = 3150 --                                             ";

@@ -39,7 +39,7 @@ namespace ComHpcLibB
             SQL = " ";
             SQL += " SELECT \r";
             SQL += "    * \r";
-            SQL += " FROM KOSMOS_PMPA.BAS_BASCD \r";
+            SQL += " FROM ADMIN.BAS_BASCD \r";
             SQL += " WHERE GRPCDB = '프로그램PC세팅' \r";
             SQL += "    AND GRPCD = '진료EMRVIEW' \r";
             SQL += "    AND BASCD = '" + clsCompuInfo.gstrCOMIP + "' ";

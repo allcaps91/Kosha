@@ -754,7 +754,7 @@ namespace ComEmrBase
                         #endregion
 
                         #region 권한으로 변경내역 저장
-                        SQL = " INSERT INTO KOSMOS_EMR.EMRXML_MODIFY(UDATE , USABUN, EMRNO, WRITEDATE, WRITETIME, GUBUN) VALUES (";
+                        SQL = " INSERT INTO ADMIN.EMRXML_MODIFY(UDATE , USABUN, EMRNO, WRITEDATE, WRITETIME, GUBUN) VALUES (";
                         SQL += ComNum.VBLF + "SYSDATE, '" + clsType.User.IdNumber + "','" + strEmrNo + "','" + strWriteDate + "',";
                         SQL += ComNum.VBLF + "'" + strWriteTime + "','" + "" + "')";
 
@@ -781,10 +781,10 @@ namespace ComEmrBase
                         #region 입퇴원요약지 검수 관련 데이터 정리
                         if (strFormNo.Equals("1647"))
                         {
-                            SQL = "INSERT INTO KOSMOS_EMR.EMRXML_COMPLETE_HISTORY(";
+                            SQL = "INSERT INTO ADMIN.EMRXML_COMPLETE_HISTORY(";
                             SQL += ComNum.VBLF + " EMRNO, CDATE, CSABUN, DELDATE, DELSABUN, MEDFRDATE, PTNO, INDATE) ";
                             SQL += ComNum.VBLF + " SELECT EMRNO, CDATE, CSABUN, SYSDATE, " + clsType.User.IdNumber + ", MEDFRDATE, PTNO, INDATE";
-                            SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML_COMPLETE ";
+                            SQL += ComNum.VBLF + " FROM ADMIN.EMRXML_COMPLETE ";
                             SQL += ComNum.VBLF + "  WHERE EMRNO = " + VB.Val(strEmrNo);
 
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, pDbCon);
@@ -795,7 +795,7 @@ namespace ComEmrBase
                                 return rtnVal;
                             }
 
-                            SQL = " DELETE KOSMOS_EMR.EMRXML_COMPLETE ";
+                            SQL = " DELETE ADMIN.EMRXML_COMPLETE ";
                             SQL += ComNum.VBLF + "  WHERE PTNO = '" + po.ptNo + "'";
                             SQL += ComNum.VBLF + "    AND MEDFRDATE = '" + po.medFrDate + "'";
 

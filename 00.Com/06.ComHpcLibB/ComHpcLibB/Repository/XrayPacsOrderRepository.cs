@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         public int Insert(XRAY_PACS_ORDER item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO PACS.XRAY_PACS_ORDER(                                               ");
+            parameter.AppendSql("INSERT INTO ADMIN.XRAY_PACS_ORDER(                                               ");
             parameter.AppendSql(" QUEUEID,FALG,WORKTIME,PATID,ACDESSIONNO                                       ");
             parameter.AppendSql(" ,EVENTTYPE,EXAMDATE,EXAMTIME,ExamRoom,EXAMCODE,EXAMNAME                       ");
             parameter.AppendSql(" ,ORDERDOC,ORDERFROM,PATNAME,PATBIRTHDAY                                       ");
@@ -62,7 +62,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                                  ");
-            parameter.AppendSql("  FROM PACS.XRAY_PACS_ORDER                            ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_PACS_ORDER                            ");
             parameter.AppendSql(" WHERE PATID       = :PATID                            ");
             parameter.AppendSql("   AND ACDESSIONNO = :ACDESSIONNO                      ");
             parameter.AppendSql("   AND EXAMDATE    = :EXAMDATE                         ");

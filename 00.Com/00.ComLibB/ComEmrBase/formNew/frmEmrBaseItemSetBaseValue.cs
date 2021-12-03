@@ -366,7 +366,7 @@ namespace ComEmrBase
                 }
                 else
                 {
-                    //KOSMOS_EMR.SEQ_AEMRITEMBASEVALUE_VALUENO
+                    //ADMIN.SEQ_AEMRITEMBASEVALUE_VALUENO
                     for (int i = 0; i < ssValue_Sheet1.RowCount; i++)
                     {
                         if (ssValue_Sheet1.Cells[i, 0].Text.Trim() == "") //신규

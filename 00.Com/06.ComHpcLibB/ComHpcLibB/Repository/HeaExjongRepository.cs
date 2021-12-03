@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXJONG  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXJONG  ");
             parameter.AppendSql(" ORDER BY CODE                 ");
 
             return ExecuteReader<HEA_EXJONG>(parameter);
@@ -33,7 +33,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXJONG  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXJONG  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
         public int Insert(HEA_EXJONG item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_PMPA.HEA_EXJONG (                              ");
+            parameter.AppendSql(" INSERT INTO ADMIN.HEA_EXJONG (                              ");
             parameter.AppendSql("       CODE,NAME,YNAME,BUN,BURATE,BUCHANGE,REMARK,GBINWON          ");
             parameter.AppendSql(") VALUES (                                                         ");
             parameter.AppendSql("       :CODE,:NAME,:YNAME,:BUN,:BURATE,:BUCHANGE,:REMARK,:GBINWON  ");
@@ -69,7 +69,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXJONG      ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXJONG      ");
             parameter.AppendSql(" WHERE CODE =:CODE                 ");
 
             parameter.Add("CODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -81,7 +81,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT BURATE                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXJONG      ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXJONG      ");
             parameter.AppendSql(" WHERE 1 = 1                       ");
             parameter.AppendSql("   AND CODE =:CODE                 ");
 
@@ -94,7 +94,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HEA_EXJONG      ");
+            parameter.AppendSql("DELETE ADMIN.HEA_EXJONG      ");
             parameter.AppendSql(" WHERE ROWID       = :RID          ");
 
             #region Query 변수대입
@@ -108,7 +108,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_EXJONG      ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_EXJONG      ");
             parameter.AppendSql("   SET Name        =:Name          ");
             parameter.AppendSql("       Bun         =:Bun           ");
             parameter.AppendSql("       BuRate      =:BuRate        ");
@@ -140,7 +140,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE,NAME,YNAME,BUN,BURATE,BUCHANGE,REMARK,GBINWON,ROWID AS RID     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXJONG                                              ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXJONG                                              ");
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
 
             return ExecuteReader<HEA_EXJONG>(parameter);
@@ -150,7 +150,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE,NAME,YNAME,BUN,BURATE,BUCHANGE,REMARK,GBINWON,ROWID AS RID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXJONG                                          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXJONG                                          ");
             parameter.AppendSql(" WHERE 1 = 1                                                           ");
             parameter.AppendSql("   AND Code =:Code                                                    ");
 

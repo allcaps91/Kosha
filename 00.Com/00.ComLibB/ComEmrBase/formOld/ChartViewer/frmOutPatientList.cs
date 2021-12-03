@@ -53,8 +53,8 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT PANO, SNAME, DEPTCODE, DRNAME, WARDCODE ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER A";
-                SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.BAS_DOCTOR B";
+                SQL += ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER A";
+                SQL += ComNum.VBLF + "   INNER JOIN ADMIN.BAS_DOCTOR B";
                 SQL += ComNum.VBLF + "      ON B.DRCODE = A.DRCODE";
                 SQL += ComNum.VBLF + " WHERE OUTDATE = TO_DATE('" + dtpDate.Value.ToShortDateString() + "','YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + "   AND GBSTS NOT IN ('9') ";

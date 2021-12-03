@@ -80,7 +80,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT  SUBSTR(C.SCODE, 1,4) || SUBSTR(C.SCODE, 7,1)  SCODE";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_SUT A,  KOSMOS_PMPA.BAS_SUN B,  KOSMOS_PMPA.EDI_SUGA C";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_SUT A,  ADMIN.BAS_SUN B,  ADMIN.EDI_SUGA C";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.BUN IN ('11','12','20')";
                 SQL = SQL + ComNum.VBLF + "   AND A.SUNEXT = B.SUNEXT ";
                 SQL = SQL + ComNum.VBLF + "   AND B.BCODE =  C.CODE";

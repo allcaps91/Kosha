@@ -55,7 +55,7 @@ namespace ComLibB
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = " SELECT SCODEA, SCODEB FROM KOSMOS_PMPA.HIRA_DURSCODE ";
+                SQL = " SELECT SCODEA, SCODEB FROM ADMIN.HIRA_DURSCODE ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -115,8 +115,8 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT B.DUR_CD_A,  B.ANNCE_DT, B.DUR_SD_EFT, C.SUNEXT CSUNEXT ,C.SUNAMEK  SSUNAMEK, B.DUR_CD_B,  E.SUNEXT ESUNEXT  , E.SUNAMEK  ESUNAMEK ";
-                SQL += ComNum.VBLF + " FROM  KOSMOS_PMPA.EDI_SUGA A , KOSMOS_PMPA.HIRA_TBJBD43 B,";
-                SQL += ComNum.VBLF + "   (   SELECT AA.SUNEXT , AA.SUNAMEK , AA.BCODE FROM   KOSMOS_PMPA.BAS_SUN AA, KOSMOS_PMPA.BAS_SUT BB  ";
+                SQL += ComNum.VBLF + " FROM  ADMIN.EDI_SUGA A , ADMIN.HIRA_TBJBD43 B,";
+                SQL += ComNum.VBLF + "   (   SELECT AA.SUNEXT , AA.SUNAMEK , AA.BCODE FROM   ADMIN.BAS_SUN AA, ADMIN.BAS_SUT BB  ";
                 SQL += ComNum.VBLF + "   WHERE AA.SUNEXT = BB.SUNEXT ";
 
                 if(rdoGB1.Checked == true)
@@ -130,9 +130,9 @@ namespace ComLibB
                 }
 
                 SQL += ComNum.VBLF + " ) C,   ";
-                SQL += ComNum.VBLF + "      KOSMOS_PMPA.EDI_SUGA D ,";
+                SQL += ComNum.VBLF + "      ADMIN.EDI_SUGA D ,";
                 SQL += ComNum.VBLF + "   (";
-                SQL += ComNum.VBLF + "    SELECT AA.SUNEXT , AA.SUNAMEK, AA.BCODE FROM   KOSMOS_PMPA.BAS_SUN AA, KOSMOS_PMPA.BAS_SUT BB  ";
+                SQL += ComNum.VBLF + "    SELECT AA.SUNEXT , AA.SUNAMEK, AA.BCODE FROM   ADMIN.BAS_SUN AA, ADMIN.BAS_SUT BB  ";
                 SQL += ComNum.VBLF + "   WHERE AA.SUNEXT = BB.SUNEXT ";
 
 
@@ -192,7 +192,7 @@ namespace ComLibB
                     ss1_Sheet1.Cells[i, 8].Text = dt.Rows[i]["DUR_SD_EFT"].ToString().Trim();
 
                     //성분코드 색깔표시
-                    SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_DURSCODE ";
+                    SQL = " SELECT ROWID FROM ADMIN.HIRA_DURSCODE ";
                     SQL += ComNum.VBLF + " WHERE ( SCODEA = '" +dt.Rows[i]["DUR_CD_A"].ToString().Trim() + "'  AND SCODEB = '" +
                         dt.Rows[i]["DUR_CD_B"].ToString().Trim() + "'  ) ";
                     SQL += ComNum.VBLF + "    OR ( SCODEA = '" + dt.Rows[i]["DUR_CD_B"].ToString().Trim() + "'  AND SCODEB = '" +
@@ -321,7 +321,7 @@ namespace ComLibB
                     if (strSucodeA != "" && strSucodeB != "")
                     {
                         SQL = " SELECT SUCODE, FIELDA ";
-                        SQL += ComNum.VBLF + " From KOSMOS_PMPA.BAS_MSELF ";
+                        SQL += ComNum.VBLF + " From ADMIN.BAS_MSELF ";
                         SQL += ComNum.VBLF + " WHERE GUBUNA='0' ";
                         SQL += ComNum.VBLF + "   AND GUBUNB='9' ";
                         SQL += ComNum.VBLF + "   AND ( ";
@@ -348,7 +348,7 @@ namespace ComLibB
                             //자동 등록
 
                             //'제외성분읽기
-                            SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_DURSCODE";
+                            SQL = " SELECT ROWID FROM ADMIN.HIRA_DURSCODE";
                             SQL += ComNum.VBLF + " WHERE ( SCODEA = '" + strScodeA + "' AND  SCODEB  = '" + strScodeB + "' )";
                             SQL += ComNum.VBLF + "    OR ( SCODEA = '" + strScodeB + "' AND  SCODEB  = '" + strScodeA + "' ) ";
 
@@ -363,7 +363,7 @@ namespace ComLibB
 
                             if (dt2.Rows.Count == 0)
                             {
-                                SQL = " INSERT INTO KOSMOS_PMPA.BAS_MSELF (SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE ) ";
+                                SQL = " INSERT INTO ADMIN.BAS_MSELF (SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE ) ";
                                 SQL = SQL + "  VALUES ( '" + strSucodeA + "' , '0','9', '" + strSucodeB + "' ,'', TO_DATE('" + strGDate + "' ,'YYYY-MM-DD') )";
 
                                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -383,7 +383,7 @@ namespace ComLibB
                         dt = null;
 
                         SQL = " SELECT SUCODE, FIELDA ";
-                        SQL += ComNum.VBLF + " From KOSMOS_PMPA.BAS_MSELF ";
+                        SQL += ComNum.VBLF + " From ADMIN.BAS_MSELF ";
                         SQL += ComNum.VBLF + " WHERE GUBUNA='8' ";
                         SQL += ComNum.VBLF + "   AND GUBUNB='1' ";
                         SQL += ComNum.VBLF + "   AND ( ";
@@ -410,7 +410,7 @@ namespace ComLibB
                             ////자동 등록
 
                             //'제외성분읽기
-                            SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_DURSCODE";
+                            SQL = " SELECT ROWID FROM ADMIN.HIRA_DURSCODE";
                             SQL += ComNum.VBLF + " WHERE ( SCODEA = '" + strScodeA + "' AND  SCODEB  = '" + strScodeB + "' )";
                             SQL += ComNum.VBLF + "    OR ( SCODEA = '" + strScodeB + "' AND  SCODEB  = '" + strScodeA + "' ) ";
 
@@ -425,7 +425,7 @@ namespace ComLibB
 
                             if (dt2.Rows.Count == 0)
                             {
-                                SQL = " INSERT INTO KOSMOS_PMPA.BAS_MSELF (SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE ) ";
+                                SQL = " INSERT INTO ADMIN.BAS_MSELF (SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE ) ";
                                 SQL = SQL + "  VALUES ( '" + strSucodeA + "' , '8','1', '" + strSucodeB + "' ,'',TRUNC(SYSDATE))";
 
                                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -513,7 +513,7 @@ namespace ComLibB
 
             try
             {
-                SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_DURSCODE";
+                SQL = " SELECT ROWID FROM ADMIN.HIRA_DURSCODE";
                 SQL += ComNum.VBLF + " WHERE ( SCODEA = '" + strCodeA + "' AND  SCODEB  = '" + strCodeB + "' )";
                 SQL += ComNum.VBLF + "    OR ( SCODEA = '" + strCodeB + "' AND  SCODEB  = '" + strCodeA + "' ) ";
 
@@ -537,7 +537,7 @@ namespace ComLibB
                 dt.Dispose();
                 dt = null;
 
-                SQL = " INSERT INTO KOSMOS_PMPA.HIRA_DURSCODE ( SCODEA, SCODEB, ENTSABUN, ENTDATE) ";
+                SQL = " INSERT INTO ADMIN.HIRA_DURSCODE ( SCODEA, SCODEB, ENTSABUN, ENTDATE) ";
                 SQL = SQL + "  VALUES ( ";
                 SQL = SQL + " '" + strCodeA + "', '" + strCodeB + "' , '" + clsType.User.Sabun + "', SYSDATE ) ";
 
@@ -610,7 +610,7 @@ namespace ComLibB
 
             try
             {
-                SQL = " DELETE KOSMOS_PMPA.HIRA_DURSCODE ";
+                SQL = " DELETE ADMIN.HIRA_DURSCODE ";
                 SQL = SQL + ComNum.VBLF + " WHERE ( SCODEA  = '" + strCodeA + "' AND  SCODEB = '" + strCodeB + "' )";
                 SQL = SQL + ComNum.VBLF + "    OR ( SCODEA  = '" + strCodeB + "' AND  SCODEB = '" + strCodeA + "' ) ";
 

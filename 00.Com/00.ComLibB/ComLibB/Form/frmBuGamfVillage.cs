@@ -44,7 +44,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = " SELECT Code,Name FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = " SELECT Code,Name FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + "  WHERE GUBUN ='재단산하_구분' ";
                 SQL = SQL + ComNum.VBLF + "   AND (DelDate IS NULL OR DelDate ='') ";
                 SQL = SQL + ComNum.VBLF + "   ORDER BY SORT ";

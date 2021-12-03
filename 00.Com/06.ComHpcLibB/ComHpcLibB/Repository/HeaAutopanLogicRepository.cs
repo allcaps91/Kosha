@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN_LOGIC   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql(" GROUP BY EXCODE                       ");
 
@@ -36,7 +36,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT EXCODE                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN_LOGIC   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql(" GROUP BY EXCODE                       ");
 
@@ -49,7 +49,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC_EXAM A, KOSMOS_PMPA.HIC_RESULT  B     ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN_LOGIC_EXAM A, ADMIN.HIC_RESULT  B     ");
             parameter.AppendSql(" WHERE b.WRTNO = :JEPNO                                                    ");
             parameter.AppendSql("   AND A.EXCODE = B.EXCODE                                                 ");
             parameter.AppendSql("   AND A.SEQNO = :SEQNO                                                    ");            
@@ -68,7 +68,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC_EXAM A, KOSMOS_PMPA.HIC_RESULT  B     ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN_LOGIC_EXAM A, ADMIN.HIC_RESULT  B     ");
             parameter.AppendSql(" WHERE b.WRTNO = :JEPNO                                                    ");
             parameter.AppendSql("   AND A.EXCODE = B.EXCODE                                                 ");
             parameter.AppendSql("   AND A.SEQNO = :SEQNO                                                    ");
@@ -86,7 +86,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                                                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN_LOGIC_EXAM                                          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN_LOGIC_EXAM                                          ");
             parameter.AppendSql(" WHERE EXETC IN ('혈압약 복용 중','당뇨병 치료 중','흡연','고혈압 치료 중','음주') ");
             parameter.AppendSql("   AND WRTNO = :WRTNO                                                              ");
             parameter.AppendSql("   AND SEQNO = :SEQNO                                                              ");

@@ -119,7 +119,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "INSERT INTO  KOSMOS_OCS.OCS_CP_COMP";
+                SQL = SQL + ComNum.VBLF + "INSERT INTO  ADMIN.OCS_CP_COMP";
                 SQL = SQL + ComNum.VBLF + "(";
                 SQL = SQL + ComNum.VBLF + " CPNO, COMIP, IDNUMBER, COMPDATE, COMPTIME";
                 SQL = SQL + ComNum.VBLF + ")";
@@ -129,8 +129,8 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "     '" + clsType.User.IdNumber + "', ";    //IDNUMBER
                 SQL = SQL + ComNum.VBLF + "     '" + VB.Left(strCurDateTime, 8) + "', ";    //COMPDATE
                 SQL = SQL + ComNum.VBLF + "     '" + VB.Right(strCurDateTime, 6) + "' ";    //COMPTIME
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_CP_RECORD R";
-                SQL = SQL + ComNum.VBLF + "WHERE NOT EXISTS (SELECT 1 FROM KOSMOS_OCS.OCS_CP_COMP C";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_CP_RECORD R";
+                SQL = SQL + ComNum.VBLF + "WHERE NOT EXISTS (SELECT 1 FROM ADMIN.OCS_CP_COMP C";
                 SQL = SQL + ComNum.VBLF + "                     WHERE  C.CPNO = R.CPNO ";
                 SQL = SQL + ComNum.VBLF + "                         AND  C.COMIP = '" + clsCompuInfo.gstrCOMIP + "')";
 
@@ -195,7 +195,7 @@ namespace ComLibB
 
                 SQL = " SELECT  ";
                 SQL = SQL + ComNum.VBLF + "    VALUEV, VALUEN ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_PCCONFIG ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_PCCONFIG ";
                 SQL = SQL + ComNum.VBLF + "WHERE IPADDRESS = '" + clsCompuInfo.gstrCOMIP + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND GUBUN = '기타PC설정' ";
                 SQL = SQL + ComNum.VBLF + "    AND CODE = 'CP 메세지 팦업' ";
@@ -225,18 +225,18 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "    R.DEPTCODE, R.BI, R.CPCODE, R.AGE, R.SEX,  ";
                 SQL = SQL + ComNum.VBLF + "    R.STARTSABUN, U.USERNAME,  ";
                 SQL = SQL + ComNum.VBLF + "    B.BASNAME  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_CP_RECORD R  ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.NUR_ER_PATIENT N  ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_CP_RECORD R  ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.NUR_ER_PATIENT N  ";
                 SQL = SQL + ComNum.VBLF + "     ON R.PTNO = N.PANO  ";
                 SQL = SQL + ComNum.VBLF + "     AND R.BDATE = N.JDATE  ";
                 SQL = SQL + ComNum.VBLF + "     AND R.INTIME = N.INTIME  ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_BASCD B  ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_BASCD B  ";
                 SQL = SQL + ComNum.VBLF + "    ON R.CPCODE = B.BASCD  ";
                 SQL = SQL + ComNum.VBLF + "    AND B.GRPCDB = 'CP관리'  ";
                 SQL = SQL + ComNum.VBLF + "    AND B.GRPCD = 'CP코드관리'  ";
-                SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_USER U ";
+                SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_USER U ";
                 SQL = SQL + ComNum.VBLF + "    ON R.STARTSABUN = U.IDNUMBER  ";
-                SQL = SQL + ComNum.VBLF + "WHERE NOT EXISTS (SELECT 1 FROM KOSMOS_OCS.OCS_CP_COMP C ";
+                SQL = SQL + ComNum.VBLF + "WHERE NOT EXISTS (SELECT 1 FROM ADMIN.OCS_CP_COMP C ";
                 SQL = SQL + ComNum.VBLF + "                     WHERE  C.CPNO = R.CPNO  ";
                 SQL = SQL + ComNum.VBLF + "                         AND  C.COMIP = '" + clsCompuInfo.gstrCOMIP + "')";
                 if (mstrCpDept == "PM") //약국은 두가지만 전달

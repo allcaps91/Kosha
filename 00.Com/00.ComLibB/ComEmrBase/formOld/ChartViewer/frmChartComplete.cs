@@ -84,12 +84,12 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT MST.PANO, B.SNAME,  ";
-                SQL += ComNum.VBLF + "(SELECT KORNAME FROM KOSMOS_ADM.INSA_MST WHERE TRIM(SABUN) = TRIM(MST.CSABUN)) AS KORNAME,";
+                SQL += ComNum.VBLF + "(SELECT KORNAME FROM ADMIN.INSA_MST WHERE TRIM(SABUN) = TRIM(MST.CSABUN)) AS KORNAME,";
                 SQL += ComNum.VBLF + "MEDFRDATE, CDATE, CSABUN, TDEPT, TO_CHAR(D.OUTDATE, 'YYYY-MM-DD') OUTDATE, D.DEPTCODE, BB.DRNAME";
                 #region 미비
                 SQL += ComNum.VBLF + (", CASE WHEN");
-                // SQL += ComNum.VBLF + ("  EXISTS(SELECT 1 FROM KOSMOS_EMR.EMRMIBI WHERE PTNO = MST.PANO AND MEDDEPTCD = MST.TDEPT AND MEDFRDATE = MST.MEDFRDATE  AND MIBICLS = 1) THEN '●' ");
-                SQL += ComNum.VBLF + ("  EXISTS(SELECT 1 FROM KOSMOS_EMR.EMRMIBI WHERE PTNO = MST.PANO AND MEDFRDATE = MST.MEDFRDATE  AND MIBICLS = 1) THEN '●' ");
+                // SQL += ComNum.VBLF + ("  EXISTS(SELECT 1 FROM ADMIN.EMRMIBI WHERE PTNO = MST.PANO AND MEDDEPTCD = MST.TDEPT AND MEDFRDATE = MST.MEDFRDATE  AND MIBICLS = 1) THEN '●' ");
+                SQL += ComNum.VBLF + ("  EXISTS(SELECT 1 FROM ADMIN.EMRMIBI WHERE PTNO = MST.PANO AND MEDFRDATE = MST.MEDFRDATE  AND MIBICLS = 1) THEN '●' ");
                 SQL += ComNum.VBLF + (" ELSE NULL ");
                 SQL += ComNum.VBLF + (" END MIBI");
                 #endregion
@@ -98,7 +98,7 @@ namespace ComEmrBase
                 if (VB.Left(cboGubun.Text, 1).Equals("2"))
                 {
                     SQL += ComNum.VBLF + " SELECT A.PANO, B.MEDFRDATE, TO_CHAR(B.CDATE, 'YYYY-MM-DD HH24:MI') CDATE, B.CSABUN, A.TDEPT ";
-                    SQL += ComNum.VBLF + "FROM KOSMOS_PMPA.MID_SUMMARY A, KOSMOS_EMR.EMRXML_COMPLETE B";
+                    SQL += ComNum.VBLF + "FROM ADMIN.MID_SUMMARY A, ADMIN.EMRXML_COMPLETE B";
                     SQL += ComNum.VBLF + "WHERE A.PANO = B.PTNO";
                     SQL += ComNum.VBLF + "  AND A.INDATE = B.INDATE";
                     SQL += ComNum.VBLF + "  AND A.OUTDATE >= TO_DATE('2011-09-01','YYYY-MM-DD')";
@@ -118,7 +118,7 @@ namespace ComEmrBase
                     {
                         case "1":
                             SQL += ComNum.VBLF + " SELECT A.PANO, B.MEDFRDATE, TO_CHAR(B.CDATE, 'YYYY-MM-DD HH24:MI') CDATE, B.CSABUN, A.TDEPT ";
-                            SQL += ComNum.VBLF + "FROM KOSMOS_PMPA.MID_SUMMARY A, KOSMOS_EMR.EMRXML_COMPLETE B";
+                            SQL += ComNum.VBLF + "FROM ADMIN.MID_SUMMARY A, ADMIN.EMRXML_COMPLETE B";
                             SQL += ComNum.VBLF + "WHERE A.PANO = B.PTNO";
                             SQL += ComNum.VBLF + "  AND A.INDATE = B.INDATE";
                             SQL += ComNum.VBLF + "  AND A.OUTDATE >= TO_DATE('2011-09-01','YYYY-MM-DD')";
@@ -134,7 +134,7 @@ namespace ComEmrBase
                             break;
                         case "2":
                             SQL += ComNum.VBLF + " SELECT PANO, TO_CHAR(INDATE,'YYYYMMDD') MEDFRDATE, '' CDATE, '' CSABUN, A.TDEPT";     
-                            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.MID_SUMMARY A ";
+                            SQL += ComNum.VBLF + "   FROM ADMIN.MID_SUMMARY A ";
                             if (txtPano.Text.Trim().Length > 0)
                             {
                                 SQL += ComNum.VBLF + "  WHERE PANO = '" + txtPano.Text.Trim() + "' ";
@@ -147,7 +147,7 @@ namespace ComEmrBase
                             SQL += ComNum.VBLF + "  AND OUTDATE >= TO_DATE('2011-09-01','YYYY-MM-DD')";
                             SQL += ComNum.VBLF + " MINUS";
                             SQL += ComNum.VBLF + " SELECT A.PANO, TO_CHAR(A.INDATE,'YYYYMMDD') MEDFRDATE, '' CDATE, '' CSABUN, A.TDEPT";
-                            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.MID_SUMMARY A, KOSMOS_EMR.EMRXML_COMPLETE B";
+                            SQL += ComNum.VBLF + "   FROM ADMIN.MID_SUMMARY A, ADMIN.EMRXML_COMPLETE B";
                             SQL += ComNum.VBLF + " WHERE A.PANO = B.PTNO";
 
                             if (txtPano.Text.Trim().Length > 0)
@@ -166,7 +166,7 @@ namespace ComEmrBase
                             break;
                         case "3":
                             SQL += ComNum.VBLF + "  SELECT A.PANO, B.MEDFRDATE, TO_CHAR(B.CDATE, 'YYYY-MM-DD HH24:MI') CDATE, TO_CHAR(B.CSABUN) CSABUN, A.TDEPT ";
-                            SQL += ComNum.VBLF + "FROM KOSMOS_PMPA.MID_SUMMARY A, KOSMOS_EMR.EMRXML_COMPLETE B";
+                            SQL += ComNum.VBLF + "FROM ADMIN.MID_SUMMARY A, ADMIN.EMRXML_COMPLETE B";
                             SQL += ComNum.VBLF + "WHERE A.PANO = B.PTNO";
                             SQL += ComNum.VBLF + "  AND A.INDATE = B.INDATE";
                             SQL += ComNum.VBLF + "  AND A.OUTDATE >= TO_DATE('2011-09-01','YYYY-MM-DD')";
@@ -182,7 +182,7 @@ namespace ComEmrBase
 
                             SQL += ComNum.VBLF + " UNION ALL ";
                             SQL += ComNum.VBLF + " SELECT PANO, TO_CHAR(INDATE,'YYYYMMDD') MEDFRDATE, '' CDATE, '' CSABUN, TDEPT";
-                            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.MID_SUMMARY ";
+                            SQL += ComNum.VBLF + "   FROM ADMIN.MID_SUMMARY ";
 
                             if (txtPano.Text.Trim().Length > 0)
                             {
@@ -197,7 +197,7 @@ namespace ComEmrBase
                             SQL += ComNum.VBLF + "   AND OUTDATE >= TO_DATE('2011-09-01','YYYY-MM-DD')";
                             SQL += ComNum.VBLF + " MINUS";
                             SQL += ComNum.VBLF + " SELECT A.PANO, TO_CHAR(A.INDATE,'YYYYMMDD') MEDFRDATE, '' CDATE, '' CSABUN, A.TDEPT";
-                            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.MID_SUMMARY A, KOSMOS_EMR.EMRXML_COMPLETE B";
+                            SQL += ComNum.VBLF + "   FROM ADMIN.MID_SUMMARY A, ADMIN.EMRXML_COMPLETE B";
                             SQL += ComNum.VBLF + " WHERE A.PANO = B.PTNO";
                             SQL += ComNum.VBLF + "   AND A.OUTDATE >= TO_DATE('2011-09-01','YYYY-MM-DD')";
 
@@ -216,21 +216,21 @@ namespace ComEmrBase
                 }
 
                 SQL += ComNum.VBLF + " ) MST ";
-                SQL += ComNum.VBLF + " INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER D";
+                SQL += ComNum.VBLF + " INNER JOIN ADMIN.IPD_NEW_MASTER D";
                 SQL += ComNum.VBLF + "    ON D.PANO = MST.PANO";
                 SQL += ComNum.VBLF + "   AND D.INDATE >= TO_DATE(MST.MEDFRDATE ||' 00:00:00', 'YYYY-MM-DD HH24:MI:SS')";
                 SQL += ComNum.VBLF + "   AND D.INDATE <= TO_DATE(MST.MEDFRDATE ||' 23:59:59', 'YYYY-MM-DD HH24:MI:SS')";
                 SQL += ComNum.VBLF + "   AND D.GBSTS <> '9'";
-                SQL += ComNum.VBLF + " INNER JOIN KOSMOS_PMPA.BAS_DOCTOR BB";
+                SQL += ComNum.VBLF + " INNER JOIN ADMIN.BAS_DOCTOR BB";
                 SQL += ComNum.VBLF + "    ON BB.DRCODE = D.DRCODE";
-                SQL += ComNum.VBLF + " INNER JOIN KOSMOS_PMPA.BAS_PATIENT B";
+                SQL += ComNum.VBLF + " INNER JOIN ADMIN.BAS_PATIENT B";
                 SQL += ComNum.VBLF + "    ON B.PANO = MST.PANO";
 
                 if (chkAll.Checked == false)
                 {
                     SQL += ComNum.VBLF + " WHERE EXISTS ";
                     SQL += ComNum.VBLF + "  ( SELECT * ";
-                    SQL += ComNum.VBLF + "      FROM KOSMOS_PMPA.MID_DEPTPART SUB";
+                    SQL += ComNum.VBLF + "      FROM ADMIN.MID_DEPTPART SUB";
                     SQL += ComNum.VBLF + "    WHERE SUB.DEPTCODE = MST.TDEPT ";
                     SQL += ComNum.VBLF + "         AND SUB.GUBUN = '2'";
                     SQL += ComNum.VBLF + "         AND SUB.SABUN = " + clsType.User.IdNumber + ")";
@@ -378,7 +378,7 @@ namespace ComEmrBase
             {
 
                 SQL = " SELECT A.DEPTCODE DEPT1, B.DEPTCODE DEPT2, DEPTNAMEK";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_CLINICDEPT A, KOSMOS_PMPA.MID_DEPTPART B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_CLINICDEPT A, ADMIN.MID_DEPTPART B";
                 SQL = SQL + ComNum.VBLF + " WHERE A.DEPTCODE = B.DEPTCODE(+)";
                 SQL = SQL + ComNum.VBLF + "    AND A.DEPTCODE NOT IN('OC', 'II','R6','HR','TO','PT','HC','OM','LM')";
                 SQL = SQL + ComNum.VBLF + "    AND B.SABUN(+) = " + clsType.User.Sabun;
@@ -467,7 +467,7 @@ namespace ComEmrBase
 
             try
             {
-                SQL = " DELETE KOSMOS_PMPA.MID_DEPTPART ";
+                SQL = " DELETE ADMIN.MID_DEPTPART ";
                 SQL += ComNum.VBLF + " WHERE SABUN = " + clsType.User.Sabun;
                 SQL += ComNum.VBLF + "   AND GUBUN = '2'";
 
@@ -485,7 +485,7 @@ namespace ComEmrBase
                 {
                     if (ssDept_Sheet1.Cells[i, 0].Text.Trim().Equals("True"))
                     {
-                        SQL = " INSERT INTO KOSMOS_PMPA.MID_DEPTPART(SABUN, DEPTCODE, GUBUN) VALUES (";
+                        SQL = " INSERT INTO ADMIN.MID_DEPTPART(SABUN, DEPTCODE, GUBUN) VALUES (";
                         SQL += ComNum.VBLF + clsType.User.Sabun + ", '" + ssDept_Sheet1.Cells[i, 2].Text.Trim() + "','2')";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

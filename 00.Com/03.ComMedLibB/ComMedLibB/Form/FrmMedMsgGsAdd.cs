@@ -36,7 +36,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT ORDERNAME                           \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE            \r";
+                SQL += "   FROM ADMIN.OCS_ORDERCODE            \r";
                 SQL += "  WHERE ORDERCODE = '" + strOrderCode + "'  \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")

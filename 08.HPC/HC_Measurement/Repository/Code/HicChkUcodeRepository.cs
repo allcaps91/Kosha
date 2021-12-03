@@ -23,7 +23,7 @@ namespace HC_Measurement.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT CODE,NAME,REMARK,SORT,GBUSE,ENTSABUN,ENTDATE,ROWID AS RID  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHK_UCODE                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHK_UCODE                                   ");
             parameter.AppendSql(" WHERE 1 = 1                                                 ");
             parameter.AppendSql(" ORDER BY SORT                                               ");
 
@@ -34,7 +34,7 @@ namespace HC_Measurement.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHK_UCODE");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHK_UCODE");
             parameter.AppendSql("(");
             parameter.AppendSql("    CODE");
             parameter.AppendSql("  , NAME");
@@ -68,7 +68,7 @@ namespace HC_Measurement.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHK_UCODE");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHK_UCODE");
             parameter.AppendSql("   SET CODE = :CODE");
             parameter.AppendSql("     , NAME = :NAME");
             parameter.AppendSql("     , REMARK = :REMARK");

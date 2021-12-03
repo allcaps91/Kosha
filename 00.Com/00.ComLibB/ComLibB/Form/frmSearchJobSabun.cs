@@ -55,7 +55,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT a.Buse,b.Name,COUNT(*) CNT ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_ADM.INSA_MST a,KOSMOS_PMPA.BAS_BUSE b ";
+                SQL += ComNum.VBLF + " FROM ADMIN.INSA_MST a,ADMIN.BAS_BUSE b ";
                 SQL += ComNum.VBLF + " WHERE a.ToiDay IS NULL "; //퇴사자 제외
                 SQL += ComNum.VBLF + "   AND a.Gubun='0' ";
                 SQL += ComNum.VBLF + "   AND a.Buse=b.BuCode(+) ";
@@ -126,7 +126,7 @@ namespace ComLibB
 
             //DB에 저장된 기본코드 종류를 읽음
             SQL = "";
-            SQL = "SELECT Code,Name FROM KOSMOS_PMPA.BAS_JOB_SABUN ";
+            SQL = "SELECT Code,Name FROM ADMIN.BAS_JOB_SABUN ";
             SQL += ComNum.VBLF + "WHERE Gubun='작업목록' ";
             SQL += ComNum.VBLF + "  AND (DelDate IS NULL OR DelDate>TRUNC(SYSDATE)) ";
             SQL += ComNum.VBLF + "ORDER BY Code ";
@@ -229,7 +229,7 @@ namespace ComLibB
                         if (strROWID != "")
                         {
                             SQL = "";
-                            SQL = "DELETE KOSMOS_PMPA.BAS_JOB_SABUN ";
+                            SQL = "DELETE ADMIN.BAS_JOB_SABUN ";
                             SQL += ComNum.VBLF + "WHERE ROWID = '" + strROWID + "' ";
 
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -249,7 +249,7 @@ namespace ComLibB
                         if (strROWID == "")
                         {
                             SQL = "";
-                            SQL = "INSERT INTO KOSMOS_PMPA.BAS_JOB_SABUN (Gubun,Code,Name,JDate,DelDate,EntSabun,EntDate) ";
+                            SQL = "INSERT INTO ADMIN.BAS_JOB_SABUN (Gubun,Code,Name,JDate,DelDate,EntSabun,EntDate) ";
                             SQL += ComNum.VBLF + "VALUES ('" + strGubun + "','" + strCode + "','" + strName + "',";
                             SQL += ComNum.VBLF + "TO_DATE('" + strJDate + "','YYYY-MM-DD'),";
                             SQL += ComNum.VBLF + "TO_DATE('" + strDeldate + "','YYYY-MM-DD'),";
@@ -269,7 +269,7 @@ namespace ComLibB
                         else
                         {
                             SQL = "";
-                            SQL = "UPDATE KOSMOS_PMPA.BAS_JOB_SABUN SET Code='" + strCode + "',";
+                            SQL = "UPDATE ADMIN.BAS_JOB_SABUN SET Code='" + strCode + "',";
                             SQL += ComNum.VBLF + "      Name='" + strName + "',";
                             SQL += ComNum.VBLF + "      JDate=TO_DATE('" + strJDate + "','YYYY-MM-DD'),";
                             SQL += ComNum.VBLF + "      DelDate=TO_DATE('" + strDeldate + "','YYYY-MM-DD'),";
@@ -398,7 +398,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT Code,Name,TO_CHAR(JDate,'YYYY-MM-DD') JDate,";
                 SQL += ComNum.VBLF + " TO_CHAR(DelDate,'YYYY-MM-DD') DelDate,ROWID ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_JOB_SABUN ";
+                SQL += ComNum.VBLF + " FROM ADMIN.BAS_JOB_SABUN ";
                 SQL += ComNum.VBLF + "WHERE Gubun='" + strGubun + "' ";
                 SQL += ComNum.VBLF + "ORDER BY Code ";
 
@@ -461,7 +461,7 @@ namespace ComLibB
             {
                 //근무중인 모든 직원명단을 표시
                 SQL = "";
-                SQL = "SELECT Sabun,KorName FROM KOSMOS_ADM.INSA_MST ";
+                SQL = "SELECT Sabun,KorName FROM ADMIN.INSA_MST ";
                 SQL += ComNum.VBLF + " WHERE ToiDay IS NULL "; //퇴사자 제외
                 if (cboBuse.Text != "전체부서")
                 {
@@ -594,7 +594,7 @@ namespace ComLibB
             {
                 //자료사전 목록을 읽음
                 SQL = "";
-                SQL = "SELECT Code FROM KOSMOS_PMPA.BAS_JOB_SABUN ";
+                SQL = "SELECT Code FROM ADMIN.BAS_JOB_SABUN ";
                 SQL += ComNum.VBLF + "WHERE Gubun='작업목록' ";
                 SQL += ComNum.VBLF + "  AND DelDate IS NULL ";
                 SQL += ComNum.VBLF + "ORDER BY Code ";
@@ -625,7 +625,7 @@ namespace ComLibB
                     SQL = "";
                     SQL = "SELECT Code,Name,TO_CHAR(JDate,'YYYY-MM-DD') JDate,";
                     SQL += ComNum.VBLF + " TO_CHAR(DelDate,'YYYY-MM-DD') DelDate,ROWID ";
-                    SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_JOB_SABUN ";
+                    SQL += ComNum.VBLF + " FROM ADMIN.BAS_JOB_SABUN ";
                     SQL += ComNum.VBLF + "WHERE Gubun='" + dt.Rows[i]["Code"].ToString().Trim() + "' ";
                     SQL += ComNum.VBLF + "  AND DelDate IS NULL ";
                     SQL += ComNum.VBLF + "ORDER BY Code ";

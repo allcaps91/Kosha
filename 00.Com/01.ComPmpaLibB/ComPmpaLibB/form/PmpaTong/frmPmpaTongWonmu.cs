@@ -463,14 +463,14 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "  SUM(DECODE(PACLASS,'5',CPANO) ) DTCNT                                                                           ";
             SQL += ComNum.VBLF + "FROM (                                                                                                            ";
             SQL += ComNum.VBLF + "          SELECT to_char(JOBDATE,'yyyy-mm-dd')  JOBDATE , PACLASS, COUNT(a.PANO) CPANO                            ";
-            SQL += ComNum.VBLF + "          From KOSMOS_PMPA.TONG_PATIENT_TCARE a, ipd_new_master b                                                 ";
+            SQL += ComNum.VBLF + "          From ADMIN.TONG_PATIENT_TCARE a, ipd_new_master b                                                 ";
             SQL += ComNum.VBLF + "          WHERE JobDate >= TO_DATE('" + dtpFDate.Text + "','YYYY-MM-DD')                                          ";
             SQL += ComNum.VBLF + "              AND JobDate <= TO_DATE('" + dtpTDate.Text + "','YYYY-MM-DD')                                        ";
             SQL += ComNum.VBLF + "              and a.pano=b.pano                                                                                   ";
             SQL += ComNum.VBLF + "              and a.indate=trunc(b.indate)                                                                        ";
             SQL += ComNum.VBLF + "              GROUP By to_char(JOBDATE,'yyyy-mm-dd') , PACLASS   union all                                        ";
             SQL += ComNum.VBLF + "          SELECT to_char(JOBDATE,'yyyy-mm-dd')  JOBDATE, '5' PACLASS, COUNT(a.PANO) CPANO                         ";
-            SQL += ComNum.VBLF + "          From KOSMOS_PMPA.TONG_PATIENT_TCARE a, ipd_new_master b                                                 ";
+            SQL += ComNum.VBLF + "          From ADMIN.TONG_PATIENT_TCARE a, ipd_new_master b                                                 ";
             SQL += ComNum.VBLF + "          WHERE JobDate >= TO_DATE('" + dtpFDate.Text + "','YYYY-MM-DD')                                          ";
             SQL += ComNum.VBLF + "              AND JobDate <= TO_DATE('" + dtpTDate.Text + "','YYYY-MM-DD')                                        ";
             SQL += ComNum.VBLF + "              and a.pano=b.pano                                                                                   ";

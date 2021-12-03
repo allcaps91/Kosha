@@ -84,7 +84,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT SNAME, SEX, JUMIN1, JUMIN2, JUMIN3";
-                SQL += ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_PATIENT";
+                SQL += ComNum.VBLF + "FROM ADMIN.BAS_PATIENT";
                 SQL += ComNum.VBLF + "  WHERE PANO = '" + mstrPano + "'";
 
                 string sqlErr = clsDB.GetAdoRs(ref dataReader, SQL, clsDB.DbCon);
@@ -153,21 +153,21 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "        END DUTY";
                 SQL = SQL + ComNum.VBLF + "FROM (";
                 SQL = SQL + ComNum.VBLF + "SELECT SUBSTR((CHARTDATE || CHARTTIME), 0 , 12) AS CDATE, b1.remark1 AS ITEM, SUM(R.ITEMVALUE) AS TOTAL ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRCHARTMST A                                              ";
-                SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_EMR.AEMRBASCD B1                                         ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRCHARTMST A                                              ";
+                SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.AEMRBASCD B1                                         ";
                 SQL = SQL + ComNum.VBLF + "        ON B1.BSNSCLS = '기록지관리'                                              ";
                 SQL = SQL + ComNum.VBLF + "       AND B1.UNITCLS = '섭취배설그룹'                                             ";
                 SQL = SQL + ComNum.VBLF + "       AND B1.BASCD  > CHR(0)                                                 ";
                 SQL = SQL + ComNum.VBLF + "       AND B1.APLFRDATE > CHR(0)                                              ";
                 SQL = SQL + ComNum.VBLF + "       AND B1.REMARK1  IN('경구', '배액관', 'Stool', '혈액', '수액', 'Urine')        ";
-                SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_EMR.AEMRBASCD B                                          ";
+                SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.AEMRBASCD B                                          ";
                 SQL = SQL + ComNum.VBLF + "        ON B.BSNSCLS = '기록지관리'                                               ";
                 SQL = SQL + ComNum.VBLF + "       AND B.UNITCLS = '섭취배설'                                                ";
                 SQL = SQL + ComNum.VBLF + "       AND B.BASCD  > CHR(0)                                                  ";
                 SQL = SQL + ComNum.VBLF + "       AND B.APLFRDATE > CHR(0)                                               ";
                 SQL = SQL + ComNum.VBLF + "       AND B.VFLAG1 = B1.BASCD                                                ";
                 SQL = SQL + ComNum.VBLF + "       AND B.VFLAG3 IN('11.배설', '01.섭취')                                               ";
-                SQL = SQL + ComNum.VBLF + "     INNER JOIN KOSMOS_EMR.AEMRCHARTROW R                                     ";
+                SQL = SQL + ComNum.VBLF + "     INNER JOIN ADMIN.AEMRCHARTROW R                                     ";
                 SQL = SQL + ComNum.VBLF + "        ON A.EMRNO  = R.EMRNO                                                 ";
                 SQL = SQL + ComNum.VBLF + "       AND A.EMRNOHIS = R.EMRNOHIS                                            ";
                 SQL = SQL + ComNum.VBLF + "       AND R.ITEMCD  = B.BASCD                                                ";
@@ -320,9 +320,9 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "               extractValue(chartxml, '//it56') 기타배설4 ,";
                 SQL = SQL + ComNum.VBLF + "               extractValue(chartxml, '//it59') 기타배설5,";
                 SQL = SQL + ComNum.VBLF + "               extractValue(chartxml, '//it62') 배설총량";
-                SQL = SQL + ComNum.VBLF + "     From KOSMOS_EMR.EMRXML";
+                SQL = SQL + ComNum.VBLF + "     From ADMIN.EMRXML";
                 SQL = SQL + ComNum.VBLF + "  WHERE EMRNO IN (";
-                SQL = SQL + ComNum.VBLF + "   SELECT EMRNO FROM KOSMOS_EMR.EMRXMLMST WHERE FORMNO = 1970";
+                SQL = SQL + ComNum.VBLF + "   SELECT EMRNO FROM ADMIN.EMRXMLMST WHERE FORMNO = 1970";
                 SQL = SQL + ComNum.VBLF + "      AND PTNO = '" + (mstrPano) + "'";
                 SQL = SQL + ComNum.VBLF + "      AND CHARTDATE >= '" + dtpSDATE.Value.ToString("yyyyMMdd") + "'";
                 SQL = SQL + ComNum.VBLF + "      AND CHARTDATE <= '" + dtpEDATE.Value.ToString("yyyyMMdd") + "')";
@@ -351,10 +351,10 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "   '0' 기타배설4,";
                 SQL = SQL + ComNum.VBLF + "   EXTRACTVALUE(CHARTXML, '//ta502') 기타배설5,";
                 SQL = SQL + ComNum.VBLF + "   EXTRACTVALUE(CHARTXML, '//ta724') 배설총량";
-                SQL = SQL + ComNum.VBLF + "     From KOSMOS_EMR.EMRXML";
+                SQL = SQL + ComNum.VBLF + "     From ADMIN.EMRXML";
                 SQL = SQL + ComNum.VBLF + "   WHERE EMRNO IN (";
                 SQL = SQL + ComNum.VBLF + "   SELECT EMRNO";
-                SQL = SQL + ComNum.VBLF + "    From KOSMOS_EMR.EMRXMLMST";
+                SQL = SQL + ComNum.VBLF + "    From ADMIN.EMRXMLMST";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + (mstrPano) + "'";
                 SQL = SQL + ComNum.VBLF + " AND CHARTDATE >= '" + dtpSDATE.Value.ToString("yyyyMMdd") + "' ";
                 SQL = SQL + ComNum.VBLF + " AND CHARTDATE <= '" + dtpEDATE.Value.ToString("yyyyMMdd") + "' ";

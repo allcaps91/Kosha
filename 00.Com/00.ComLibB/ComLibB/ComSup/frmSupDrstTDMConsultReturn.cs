@@ -430,7 +430,7 @@ namespace ComLibB
             MParameter mParameter = new MParameter();
 
             mParameter.AppendSql("SELECT NAME                                       ");
-            mParameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE                      ");
+            mParameter.AppendSql("  FROM ADMIN.BAS_BCODE                      ");
             mParameter.AppendSql(" WHERE GUBUN = :GUBUN                             ");
             mParameter.AppendSql(" ORDER BY SORT                                    ");
 
@@ -457,12 +457,12 @@ namespace ComLibB
 
             mParameter.AppendSql("WITH TDM_DATA AS                                                                                                                        ");
             mParameter.AppendSql("(                                                                                                                                       ");
-            mParameter.AppendSql("      SELECT	COALESCE((SELECT (SELECT NAME FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN = 'TDM진행상황' AND CODE = SUB.PROGRESS)               ");
-            mParameter.AppendSql("      		   FROM KOSMOS_OCS.OCS_TDM_RETURN SUB                                                                                     ");
+            mParameter.AppendSql("      SELECT	COALESCE((SELECT (SELECT NAME FROM ADMIN.BAS_BCODE WHERE GUBUN = 'TDM진행상황' AND CODE = SUB.PROGRESS)               ");
+            mParameter.AppendSql("      		   FROM ADMIN.OCS_TDM_RETURN SUB                                                                                     ");
             mParameter.AppendSql("      		  WHERE SUB.SEQNO = A.SEQNO 		                                                                                      ");
             mParameter.AppendSql("      		), '미확인') AS PROGRESS                                                                                                   ");
             mParameter.AppendSql("      	,	TO_CHAR(A.REQDATE, 'YYYY-MM-DD') REQDATE                                                                                  ");
-            mParameter.AppendSql("      	,	(SELECT TRIM(DRNAME) FROM KOSMOS_OCS.OCS_DOCTOR WHERE DRCODE = I.DRCODE) AS REQNAME	                                        ");
+            mParameter.AppendSql("      	,	(SELECT TRIM(DRNAME) FROM ADMIN.OCS_DOCTOR WHERE DRCODE = I.DRCODE) AS REQNAME	                                        ");
             mParameter.AppendSql("      	,	I.WARDCODE                                                                                                                ");
             mParameter.AppendSql("      	,	I.ROOMCODE                                                                                                                ");
             mParameter.AppendSql("      	,	I.PANO	                                                                                                                  ");
@@ -472,21 +472,21 @@ namespace ComLibB
             mParameter.AppendSql("      	,	I.DEPTCODE	                                                                                                              ");
             mParameter.AppendSql("      	,	I.IPDNO	                                                                                                              ");
             mParameter.AppendSql("      	,	A.SEQNO	                                                                                                                  ");
-            mParameter.AppendSql("      	,	(SELECT (SELECT EMP_NM FROM KOSMOS_ERP.HR_EMP_BASIS WHERE EMP_ID = SUB.SABUN)                                             ");
-            mParameter.AppendSql("      		   FROM KOSMOS_OCS.OCS_TDM_RETURN SUB                                                                                     ");
+            mParameter.AppendSql("      	,	(SELECT (SELECT EMP_NM FROM ADMIN.HR_EMP_BASIS WHERE EMP_ID = SUB.SABUN)                                             ");
+            mParameter.AppendSql("      		   FROM ADMIN.OCS_TDM_RETURN SUB                                                                                     ");
             mParameter.AppendSql("      		  WHERE SUB.SEQNO = A.SEQNO 		                                                                                      ");
             mParameter.AppendSql("      		) AS RTNNAME                                                                                                              ");
             mParameter.AppendSql("      	,	(SELECT TO_CHAR(JEPDATE, 'YYYY-MM-DD')                                                                                    ");
-            mParameter.AppendSql("      		   FROM KOSMOS_OCS.OCS_TDM_RETURN SUB                                                                                     ");
+            mParameter.AppendSql("      		   FROM ADMIN.OCS_TDM_RETURN SUB                                                                                     ");
             mParameter.AppendSql("      		  WHERE SUB.SEQNO = A.SEQNO 		                                                                                      ");
             mParameter.AppendSql("      		) AS RTNDATE                                                                                                              ");
             mParameter.AppendSql("      	,	(SELECT SUBVAL                                                                                                            ");
-            mParameter.AppendSql("      		   FROM KOSMOS_OCS.OCS_TDM_MASTERSUB SUB                                                                                  ");
+            mParameter.AppendSql("      		   FROM ADMIN.OCS_TDM_MASTERSUB SUB                                                                                  ");
             mParameter.AppendSql("      		  WHERE SUB.SEQNO = A.SEQNO 		                                                                                      ");
             mParameter.AppendSql("      		    AND SUB.SUBGB = '000' 		                                                                                          ");
             mParameter.AppendSql("      		) AS DRUG_NAME                                                                                                            ");
-            mParameter.AppendSql("        FROM KOSMOS_OCS.OCS_TDM_MASTER A                                                                                                ");
-            mParameter.AppendSql("       INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER I                                                                                          ");
+            mParameter.AppendSql("        FROM ADMIN.OCS_TDM_MASTER A                                                                                                ");
+            mParameter.AppendSql("       INNER JOIN ADMIN.IPD_NEW_MASTER I                                                                                          ");
             mParameter.AppendSql("          ON A.IPDNO = I.IPDNO                                                                                                          ");
             mParameter.AppendSql("       WHERE REQDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')                                                                                   ");
             mParameter.AppendSql("         AND REQDATE <= TO_DATE(:EDATE, 'YYYY-MM-DD')                                                                                   ");
@@ -582,12 +582,12 @@ namespace ComLibB
 
             mParameter.AppendSql("WITH TDM_DATA AS                                                                                                                        ");
             mParameter.AppendSql("(                                                                                                                                       ");
-            mParameter.AppendSql("      SELECT	COALESCE((SELECT (SELECT NAME FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN = 'TDM진행상황' AND CODE = SUB.PROGRESS)               ");
-            mParameter.AppendSql("      		   FROM KOSMOS_OCS.OCS_TDM_RETURN SUB                                                                                     ");
+            mParameter.AppendSql("      SELECT	COALESCE((SELECT (SELECT NAME FROM ADMIN.BAS_BCODE WHERE GUBUN = 'TDM진행상황' AND CODE = SUB.PROGRESS)               ");
+            mParameter.AppendSql("      		   FROM ADMIN.OCS_TDM_RETURN SUB                                                                                     ");
             mParameter.AppendSql("      		  WHERE SUB.SEQNO = A.SEQNO 		                                                                                      ");
             mParameter.AppendSql("      		), '미확인') AS PROGRESS                                                                                                   ");
             mParameter.AppendSql("      	,	TO_CHAR(A.REQDATE, 'YYYY-MM-DD') REQDATE                                                                                  ");
-            mParameter.AppendSql("      	,	(SELECT TRIM(DRNAME) FROM KOSMOS_OCS.OCS_DOCTOR WHERE DRCODE = I.DRCODE) AS REQNAME	                                        ");
+            mParameter.AppendSql("      	,	(SELECT TRIM(DRNAME) FROM ADMIN.OCS_DOCTOR WHERE DRCODE = I.DRCODE) AS REQNAME	                                        ");
             mParameter.AppendSql("      	,	I.WARDCODE                                                                                                                ");
             mParameter.AppendSql("      	,	I.ROOMCODE                                                                                                                ");
             mParameter.AppendSql("      	,	I.PANO	                                                                                                                  ");
@@ -596,21 +596,21 @@ namespace ComLibB
             mParameter.AppendSql("      	,	I.SEX                                                                                                                     ");
             mParameter.AppendSql("      	,	I.DEPTCODE	                                                                                                              ");
             mParameter.AppendSql("      	,	A.SEQNO	                                                                                                                  ");
-            mParameter.AppendSql("      	,	(SELECT (SELECT EMP_NM FROM KOSMOS_ERP.HR_EMP_BASIS WHERE EMP_ID = SUB.SABUN)                                             ");
-            mParameter.AppendSql("      		   FROM KOSMOS_OCS.OCS_TDM_RETURN SUB                                                                                     ");
+            mParameter.AppendSql("      	,	(SELECT (SELECT EMP_NM FROM ADMIN.HR_EMP_BASIS WHERE EMP_ID = SUB.SABUN)                                             ");
+            mParameter.AppendSql("      		   FROM ADMIN.OCS_TDM_RETURN SUB                                                                                     ");
             mParameter.AppendSql("      		  WHERE SUB.SEQNO = A.SEQNO 		                                                                                      ");
             mParameter.AppendSql("      		) AS RTNNAME                                                                                                              ");
             mParameter.AppendSql("      	,	(SELECT TO_CHAR(JEPDATE, 'YYYY-MM-DD')                                                                                    ");
-            mParameter.AppendSql("      		   FROM KOSMOS_OCS.OCS_TDM_RETURN SUB                                                                                     ");
+            mParameter.AppendSql("      		   FROM ADMIN.OCS_TDM_RETURN SUB                                                                                     ");
             mParameter.AppendSql("      		  WHERE SUB.SEQNO = A.SEQNO 		                                                                                      ");
             mParameter.AppendSql("      		) AS RTNDATE                                                                                                              ");
             mParameter.AppendSql("      	,	(SELECT SUBVAL                                                                                                            ");
-            mParameter.AppendSql("      		   FROM KOSMOS_OCS.OCS_TDM_MASTERSUB SUB                                                                                  ");
+            mParameter.AppendSql("      		   FROM ADMIN.OCS_TDM_MASTERSUB SUB                                                                                  ");
             mParameter.AppendSql("      		  WHERE SUB.SEQNO = A.SEQNO 		                                                                                      ");
             mParameter.AppendSql("      		    AND SUB.SUBGB = '000' 		                                                                                          ");
             mParameter.AppendSql("      		) AS DRUG_NAME                                                                                                            ");
-            mParameter.AppendSql("        FROM KOSMOS_OCS.OCS_TDM_MASTER A                                                                                                ");
-            mParameter.AppendSql("       INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER I                                                                                          ");
+            mParameter.AppendSql("        FROM ADMIN.OCS_TDM_MASTER A                                                                                                ");
+            mParameter.AppendSql("       INNER JOIN ADMIN.IPD_NEW_MASTER I                                                                                          ");
             mParameter.AppendSql("          ON A.IPDNO = I.IPDNO                                                                                                          ");
             mParameter.AppendSql("       WHERE REQDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')                                                                                   ");
             mParameter.AppendSql("         AND REQDATE <= TO_DATE(:EDATE, 'YYYY-MM-DD')                                                                                   ");

@@ -31,7 +31,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , OldInwon1,OldInwon2,OldInwon3,ChukHospital                                          ");
             parameter.AppendSql("     , TO_CHAR(ChukDate1,'YYYY-MM-DD') ChukDate1,TO_CHAR(ChukDate2,'YYYY-MM-DD') ChukDate2 ");
             parameter.AppendSql("     , ChukNochul,ChukChogwa,ChukYuhe,Remark1,Remark2,ROWID as RID                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SJ_MST                                                              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SJ_MST                                                              ");
             parameter.AppendSql(" WHERE GJYEAR  = :GJYEAR                                                                   ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE                                                                  ");
 
@@ -45,7 +45,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SJ_MST                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SJ_MST                  ");
             parameter.AppendSql(" WHERE GJYEAR  = :GJYEAR                       ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE                      ");
 
@@ -59,7 +59,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SJ_MST SET                                  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SJ_MST SET                                  ");
             parameter.AppendSql("       JEPDATE       = TO_DATE(:JEPDATE, 'YYYY-MM-DD')             ");
             parameter.AppendSql("     , GBNEWLTD      = :GBNEWLTD                                   ");                    
             parameter.AppendSql("     , GBTEL         = :GBTEL                                      ");
@@ -155,7 +155,7 @@ namespace ComHpcLibB.Repository
         public int Insert(HIC_SJ_MST item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SJ_MST                         ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SJ_MST                         ");
             parameter.AppendSql("       (GJYEAR, LTDCODE, JEPDATE)                          ");
             parameter.AppendSql("VALUES                                                     ");
             parameter.AppendSql("       (:GJYEAR, :LTDCODE, TO_DATE(:JEPDATE, 'YYYY-MM-DD'))");

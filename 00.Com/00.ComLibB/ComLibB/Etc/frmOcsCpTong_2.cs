@@ -188,7 +188,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT WARDCODE, WARDNAME  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_WARD ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_WARD ";
                 SQL = SQL + ComNum.VBLF + "WHERE WARDCODE NOT IN ('IU','NP','2W','IQ','ER') ";
                 SQL = SQL + ComNum.VBLF + "     AND USED = 'Y'  ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY WARDCODE ";
@@ -335,7 +335,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " A.GRPCD, A.BASCD, BB.name BASNAME, A.BASNAME1 ";
                 SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "BAS_BASCD A,";
                 SQL = SQL + ComNum.VBLF + "( select B.CODE, B.NAME from " + ComNum.DB_MED + "OCS_CP_SUB B WHERE GUBUN  in ( '02','03') ";
-                SQL = SQL + ComNum.VBLF + " AND B.SDATE  = (SELECT MAX(SDATE) FROM KOSMOS_OCS.OCS_CP_MAIN WHERE CPCODE = B.CPCODE ) ";
+                SQL = SQL + ComNum.VBLF + " AND B.SDATE  = (SELECT MAX(SDATE) FROM ADMIN.OCS_CP_MAIN WHERE CPCODE = B.CPCODE ) ";
                 SQL = SQL + ComNum.VBLF + " AND B.CPCODE=  '" + strCPCODE + "'    ) BB";
 
                 SQL = SQL + ComNum.VBLF + "WHERE A.GRPCDB = 'CP관리' ";
@@ -497,7 +497,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT BASCD ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_BASCD ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_BASCD ";
                 SQL += ComNum.VBLF + "  WHERE GRPCDB = 'CP관리' ";
                 SQL += ComNum.VBLF + "    AND GRPCD = 'CP코드관리' ";
                 SQL += ComNum.VBLF + "    AND BASNAME1 = 'IPD' ";
@@ -542,19 +542,19 @@ namespace ComLibB
                     {
                         SQL += ComNum.VBLF + "              SELECT IPDNO, PTNO FROM ( ";
                         SQL += ComNum.VBLF + "                        SELECT A.IPDNO, A.PTNO, B.OUTDATE, B.INDATE  ";
-                        SQL += ComNum.VBLF + "                          FROM KOSMOS_OCS.OCS_IILLS A, KOSMOS_PMPA.IPD_NEW_MASTER B  ";
+                        SQL += ComNum.VBLF + "                          FROM ADMIN.OCS_IILLS A, ADMIN.IPD_NEW_MASTER B  ";
                         SQL += ComNum.VBLF + "                         WHERE ILLCODE IN (" + strIllCode;
                         SQL += ComNum.VBLF + "                           AND A.IPDNO = B.IPDNO ";
                         SQL += ComNum.VBLF + "                        UNION ALL ";
                         SQL += ComNum.VBLF + "                        SELECT B.IPDNO, B.PANO, B.OUTDATE, B.INDATE ";
-                        SQL += ComNum.VBLF + "                         FROM KOSMOS_OCS.OCS_OILLS A, KOSMOS_PMPA.IPD_NEW_MASTER B ";
+                        SQL += ComNum.VBLF + "                         FROM ADMIN.OCS_OILLS A, ADMIN.IPD_NEW_MASTER B ";
                         SQL += ComNum.VBLF + "                        WHERE A.BDATE = TRUNC(B.INDATE) ";
                         SQL += ComNum.VBLF + "                          AND A.DEPTCODE = B.DEPTCODE ";
                         SQL += ComNum.VBLF + "                          AND A.PTNO = B.PANO ";
                         SQL += ComNum.VBLF + "                          AND ILLCODE IN (" + strIllCode;
                         SQL += ComNum.VBLF + "                        UNION ALL ";
                         SQL += ComNum.VBLF + "                        SELECT B.IPDNO, B.PANO , B.OUTDATE, B.INDATE ";
-                        SQL += ComNum.VBLF + "                          FROM KOSMOS_OCS.OCS_EILLS A, KOSMOS_PMPA.IPD_NEW_MASTER B ";
+                        SQL += ComNum.VBLF + "                          FROM ADMIN.OCS_EILLS A, ADMIN.IPD_NEW_MASTER B ";
                         SQL += ComNum.VBLF + "                         WHERE A.BDATE = TRUNC(B.INDATE) ";
                         SQL += ComNum.VBLF + "                           AND A.PTNO = B.PANO ";
                         SQL += ComNum.VBLF + "                           AND ILLCODE IN (" + strIllCode;
@@ -589,7 +589,7 @@ namespace ComLibB
                     if (strGubun == "02" || strGubun == "03")
                     {
                         SQL += ComNum.VBLF + "                SELECT A.IPDNO, A.PANO ";
-                        SQL += ComNum.VBLF + "                  FROM KOSMOS_PMPA.IPD_NEW_SLIP A, KOSMOS_PMPA.IPD_NEW_MASTER B  ";
+                        SQL += ComNum.VBLF + "                  FROM ADMIN.IPD_NEW_SLIP A, ADMIN.IPD_NEW_MASTER B  ";
                         SQL += ComNum.VBLF + "                 WHERE SUCODE IN ( ";
                         SQL += ComNum.VBLF + strSuCode;
                         SQL += ComNum.VBLF + "                   AND A.IPDNO = B.IPDNO ";
@@ -619,11 +619,11 @@ namespace ComLibB
                     SQL += ComNum.VBLF + " UNION ALL ";
                     SQL += ComNum.VBLF + " SELECT A.IPDNO, A.PTNO ";
                     SQL += ComNum.VBLF + "  FROM ( ";
-                    SQL += ComNum.VBLF + "        SELECT IPDNO, PTNO, CPCODE FROM KOSMOS_OCS.OCS_CP_RECORD ";
+                    SQL += ComNum.VBLF + "        SELECT IPDNO, PTNO, CPCODE FROM ADMIN.OCS_CP_RECORD ";
                     SQL += ComNum.VBLF + "        UNION ALL ";
-                    SQL += ComNum.VBLF + "        SELECT IPDNO, PTNO, CPCODE FROM KOSMOS_OCS.OCS_CP_RECORD_P S ";
-                    SQL += ComNum.VBLF + "         WHERE NOT EXISTS (SELECT * FROM KOSMOS_OCS.OCS_CP_RECORD WHERE IPDNO = S.IPDNO AND CPCODE = S.CPCODE) ";
-                    SQL += ComNum.VBLF + "       ) A, KOSMOS_PMPA.IPD_NEW_MASTER B ";
+                    SQL += ComNum.VBLF + "        SELECT IPDNO, PTNO, CPCODE FROM ADMIN.OCS_CP_RECORD_P S ";
+                    SQL += ComNum.VBLF + "         WHERE NOT EXISTS (SELECT * FROM ADMIN.OCS_CP_RECORD WHERE IPDNO = S.IPDNO AND CPCODE = S.CPCODE) ";
+                    SQL += ComNum.VBLF + "       ) A, ADMIN.IPD_NEW_MASTER B ";
                     SQL += ComNum.VBLF + " WHERE A.IPDNO = B.IPDNO ";
                     SQL += ComNum.VBLF + "   AND A.CPCODE = '" + strCPCODE + "' ";
                     if (chkSearch.Checked == true)
@@ -662,17 +662,17 @@ namespace ComLibB
                     SQL += ComNum.VBLF + "           TO_CHAR(TO_DATE(C.DROPDATE,'YYYY-MM-DD'),'YYYY-MM-DD') DROPDATE,  ";
                     SQL += ComNum.VBLF + "           '' ILLCODE, '' SUCODE, A.ILSU, TO_CHAR(A.OUTDATE,'YYYY-MM-DD') OUTDATE, ";
                     SQL += ComNum.VBLF + "           A.AMSET7, D.INWARD, D.OUTWARD, C.ROWID CP_ROWID, A.IPDNO, '' GUBUN          ";
-                    SQL += ComNum.VBLF + "      FROM KOSMOS_PMPA.IPD_NEW_MASTER A, CP B, KOSMOS_OCS.OCS_CP_RECORD C, KOSMOS_PMPA.NUR_MASTER D  ";
+                    SQL += ComNum.VBLF + "      FROM ADMIN.IPD_NEW_MASTER A, CP B, ADMIN.OCS_CP_RECORD C, ADMIN.NUR_MASTER D  ";
                     SQL += ComNum.VBLF + "     WHERE A.IPDNO = B.IPDNO ";
                     SQL += ComNum.VBLF + "       AND A.IPDNO = D.IPDNO ";
                     SQL += ComNum.VBLF + "       AND A.IPDNO = C.IPDNO(+) ";
-                    SQL += ComNum.VBLF + "       AND B.IPDNO not in (SELECT IPDNO FROM KOSMOS_OCS.OCS_CP_RECORD  UNION ALL  SELECT IPDNO FROM KOSMOS_OCS.OCS_CP_RECORD_P S )";
+                    SQL += ComNum.VBLF + "       AND B.IPDNO not in (SELECT IPDNO FROM ADMIN.OCS_CP_RECORD  UNION ALL  SELECT IPDNO FROM ADMIN.OCS_CP_RECORD_P S )";
                     if (chkER.Checked == true)
                     {
                         SQL += ComNum.VBLF + "       AND A.AMSET7 NOT IN ('3','4','5') ";
                     }
 
-                    SQL += ComNum.VBLF + "       AND  A.DEPTCODE =  ( SELECT VFLAG1 FROM KOSMOS_PMPA.BAS_BASCD WHERE GRPCDB = 'CP관리'   AND GRPCD = 'CP코드관리' AND BASCD = '" + strCPCODE + "' AND ROWNUM = 1) ";
+                    SQL += ComNum.VBLF + "       AND  A.DEPTCODE =  ( SELECT VFLAG1 FROM ADMIN.BAS_BASCD WHERE GRPCDB = 'CP관리'   AND GRPCD = 'CP코드관리' AND BASCD = '" + strCPCODE + "' AND ROWNUM = 1) ";
 
                     if (cboWard.Text.Trim() != "**")
                     {
@@ -690,11 +690,11 @@ namespace ComLibB
                     SQL += ComNum.VBLF + "           TO_CHAR(TO_DATE(C.DROPDATE,'YYYY-MM-DD'),'YYYY-MM-DD') DROPDATE,  ";
                     SQL += ComNum.VBLF + "           '' ILLCODE, '' SUCODE, A.ILSU, TO_CHAR(A.OUTDATE,'YYYY-MM-DD') OUTDATE, ";
                     SQL += ComNum.VBLF + "           A.AMSET7, D.INWARD, D.OUTWARD, C.ROWID CP_ROWID, A.IPDNO, '' GUBUN          ";
-                    SQL += ComNum.VBLF + "      FROM KOSMOS_PMPA.IPD_NEW_MASTER A, CP B, KOSMOS_OCS.OCS_CP_RECORD C, KOSMOS_PMPA.NUR_MASTER D  ";
+                    SQL += ComNum.VBLF + "      FROM ADMIN.IPD_NEW_MASTER A, CP B, ADMIN.OCS_CP_RECORD C, ADMIN.NUR_MASTER D  ";
                     SQL += ComNum.VBLF + "     WHERE A.IPDNO = B.IPDNO ";
                     SQL += ComNum.VBLF + "       AND A.IPDNO = D.IPDNO ";
                     SQL += ComNum.VBLF + "       AND A.IPDNO = C.IPDNO ";
-                    SQL += ComNum.VBLF + "       AND B.IPDNO not in ( SELECT IPDNO FROM KOSMOS_OCS.OCS_CP_RECORD_P S )";
+                    SQL += ComNum.VBLF + "       AND B.IPDNO not in ( SELECT IPDNO FROM ADMIN.OCS_CP_RECORD_P S )";
                     SQL += ComNum.VBLF + "       AND '" + strCPCODE + "' = C.CPCODE ";
                     if (chkER.Checked == true)
                     {
@@ -717,7 +717,7 @@ namespace ComLibB
                     SQL += ComNum.VBLF + "           TO_CHAR(TO_DATE(C.DROPDATE,'YYYY-MM-DD'),'YYYY-MM-DD') DROPDATE,  ";
                     SQL += ComNum.VBLF + "           '' ILLCODE, '' SUCODE, A.ILSU, TO_CHAR(A.OUTDATE,'YYYY-MM-DD') OUTDATE, ";
                     SQL += ComNum.VBLF + "           A.AMSET7, D.INWARD, D.OUTWARD, C.ROWID CP_ROWID, A.IPDNO, 'QI' GUBUN     ";
-                    SQL += ComNum.VBLF + "      FROM KOSMOS_PMPA.IPD_NEW_MASTER A, CP B, KOSMOS_OCS.OCS_CP_RECORD_P C, KOSMOS_PMPA.NUR_MASTER D  ";
+                    SQL += ComNum.VBLF + "      FROM ADMIN.IPD_NEW_MASTER A, CP B, ADMIN.OCS_CP_RECORD_P C, ADMIN.NUR_MASTER D  ";
                     SQL += ComNum.VBLF + "     WHERE A.IPDNO = B.IPDNO ";
                     SQL += ComNum.VBLF + "       AND A.IPDNO = D.IPDNO ";
                     SQL += ComNum.VBLF + "       AND A.IPDNO = C.IPDNO ";
@@ -914,7 +914,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT BASCD ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_BASCD ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_BASCD ";
                 SQL += ComNum.VBLF + "  WHERE GRPCDB = 'CP관리' ";
                 SQL += ComNum.VBLF + "    AND GRPCD = 'CP코드관리' ";
                 SQL += ComNum.VBLF + "    AND BASNAME1 = 'IPD' ";
@@ -959,19 +959,19 @@ namespace ComLibB
                     {
                         SQL += ComNum.VBLF + "              SELECT IPDNO, PTNO FROM ( ";
                         SQL += ComNum.VBLF + "                        SELECT A.IPDNO, A.PTNO, B.OUTDATE, B.INDATE  ";
-                        SQL += ComNum.VBLF + "                          FROM KOSMOS_OCS.OCS_IILLS A, KOSMOS_PMPA.IPD_NEW_MASTER B  ";
+                        SQL += ComNum.VBLF + "                          FROM ADMIN.OCS_IILLS A, ADMIN.IPD_NEW_MASTER B  ";
                         SQL += ComNum.VBLF + "                         WHERE ILLCODE IN (" + strIllCode;
                         SQL += ComNum.VBLF + "                           AND A.IPDNO = B.IPDNO ";
                         SQL += ComNum.VBLF + "                        UNION ALL ";
                         SQL += ComNum.VBLF + "                        SELECT B.IPDNO, B.PANO, B.OUTDATE, B.INDATE ";
-                        SQL += ComNum.VBLF + "                         FROM KOSMOS_OCS.OCS_OILLS A, KOSMOS_PMPA.IPD_NEW_MASTER B ";
+                        SQL += ComNum.VBLF + "                         FROM ADMIN.OCS_OILLS A, ADMIN.IPD_NEW_MASTER B ";
                         SQL += ComNum.VBLF + "                        WHERE A.BDATE = TRUNC(B.INDATE) ";
                         SQL += ComNum.VBLF + "                          AND A.DEPTCODE = B.DEPTCODE ";
                         SQL += ComNum.VBLF + "                          AND A.PTNO = B.PANO ";
                         SQL += ComNum.VBLF + "                          AND ILLCODE IN (" + strIllCode;
                         SQL += ComNum.VBLF + "                        UNION ALL ";
                         SQL += ComNum.VBLF + "                        SELECT B.IPDNO, B.PANO , B.OUTDATE, B.INDATE ";
-                        SQL += ComNum.VBLF + "                          FROM KOSMOS_OCS.OCS_EILLS A, KOSMOS_PMPA.IPD_NEW_MASTER B ";
+                        SQL += ComNum.VBLF + "                          FROM ADMIN.OCS_EILLS A, ADMIN.IPD_NEW_MASTER B ";
                         SQL += ComNum.VBLF + "                         WHERE A.BDATE = TRUNC(B.INDATE) ";
                         SQL += ComNum.VBLF + "                           AND A.PTNO = B.PANO ";
                         SQL += ComNum.VBLF + "                           AND ILLCODE IN (" + strIllCode;
@@ -1006,7 +1006,7 @@ namespace ComLibB
                     if (strGubun == "02" || strGubun == "03")
                     {
                         SQL += ComNum.VBLF + "                SELECT A.IPDNO, A.PANO ";
-                        SQL += ComNum.VBLF + "                  FROM KOSMOS_PMPA.IPD_NEW_SLIP A, KOSMOS_PMPA.IPD_NEW_MASTER B  ";
+                        SQL += ComNum.VBLF + "                  FROM ADMIN.IPD_NEW_SLIP A, ADMIN.IPD_NEW_MASTER B  ";
                         SQL += ComNum.VBLF + "                 WHERE SUCODE IN ( ";
                         SQL += ComNum.VBLF + strSuCode;
                         SQL += ComNum.VBLF + "                   AND A.IPDNO = B.IPDNO ";
@@ -1035,11 +1035,11 @@ namespace ComLibB
                     SQL += ComNum.VBLF + " UNION ALL ";
                     SQL += ComNum.VBLF + " SELECT A.IPDNO, A.PTNO ";
                     SQL += ComNum.VBLF + "  FROM ( ";
-                    SQL += ComNum.VBLF + "        SELECT IPDNO, PTNO, CPCODE FROM KOSMOS_OCS.OCS_CP_RECORD ";
+                    SQL += ComNum.VBLF + "        SELECT IPDNO, PTNO, CPCODE FROM ADMIN.OCS_CP_RECORD ";
                     SQL += ComNum.VBLF + "        UNION ALL ";
-                    SQL += ComNum.VBLF + "        SELECT IPDNO, PTNO, CPCODE FROM KOSMOS_OCS.OCS_CP_RECORD_P S ";
-                    SQL += ComNum.VBLF + "         WHERE NOT EXISTS (SELECT * FROM KOSMOS_OCS.OCS_CP_RECORD WHERE IPDNO = S.IPDNO AND CPCODE = S.CPCODE) ";
-                    SQL += ComNum.VBLF + "       ) A, KOSMOS_PMPA.IPD_NEW_MASTER B ";
+                    SQL += ComNum.VBLF + "        SELECT IPDNO, PTNO, CPCODE FROM ADMIN.OCS_CP_RECORD_P S ";
+                    SQL += ComNum.VBLF + "         WHERE NOT EXISTS (SELECT * FROM ADMIN.OCS_CP_RECORD WHERE IPDNO = S.IPDNO AND CPCODE = S.CPCODE) ";
+                    SQL += ComNum.VBLF + "       ) A, ADMIN.IPD_NEW_MASTER B ";
                     SQL += ComNum.VBLF + " WHERE A.IPDNO = B.IPDNO ";
                     SQL += ComNum.VBLF + "   AND A.CPCODE = '" + strCPCODE + "' ";
                     if (chkSearch.Checked == true)
@@ -1078,7 +1078,7 @@ namespace ComLibB
                     SQL += ComNum.VBLF + "           TO_CHAR(TO_DATE(C.DROPDATE,'YYYY-MM-DD'),'YYYY-MM-DD') DROPDATE,  ";
                     SQL += ComNum.VBLF + "           '' ILLCODE, '' SUCODE, A.ILSU, TO_CHAR(A.OUTDATE,'YYYY-MM-DD') OUTDATE, ";
                     SQL += ComNum.VBLF + "           A.AMSET7, D.INWARD, D.OUTWARD, C.ROWID CP_ROWID, A.IPDNO, '' GUBUN          ";
-                    SQL += ComNum.VBLF + "      FROM KOSMOS_PMPA.IPD_NEW_MASTER A, CP B, KOSMOS_OCS.OCS_CP_RECORD C, KOSMOS_PMPA.NUR_MASTER D  ";
+                    SQL += ComNum.VBLF + "      FROM ADMIN.IPD_NEW_MASTER A, CP B, ADMIN.OCS_CP_RECORD C, ADMIN.NUR_MASTER D  ";
                     SQL += ComNum.VBLF + "     WHERE A.IPDNO = B.IPDNO ";
                     SQL += ComNum.VBLF + "       AND A.IPDNO = D.IPDNO ";
                     SQL += ComNum.VBLF + "       AND A.IPDNO = C.IPDNO(+) ";
@@ -1087,7 +1087,7 @@ namespace ComLibB
                         SQL += ComNum.VBLF + "       AND A.AMSET7 NOT IN ('3','4','5') ";
                     }
 
-                    SQL += ComNum.VBLF + "       AND  A.DEPTCODE =  ( SELECT VFLAG1 FROM KOSMOS_PMPA.BAS_BASCD WHERE GRPCDB = 'CP관리'   AND GRPCD = 'CP코드관리' AND BASCD = '" + strCPCODE + "' AND ROWNUM = 1) ";
+                    SQL += ComNum.VBLF + "       AND  A.DEPTCODE =  ( SELECT VFLAG1 FROM ADMIN.BAS_BASCD WHERE GRPCDB = 'CP관리'   AND GRPCD = 'CP코드관리' AND BASCD = '" + strCPCODE + "' AND ROWNUM = 1) ";
                     SQL += ComNum.VBLF + "      AND '" + strCPCODE + "' = C.CPCODE(+) ";
                     if (cboWard.Text.Trim() != "**")
                     {
@@ -1105,7 +1105,7 @@ namespace ComLibB
                     SQL += ComNum.VBLF + "           TO_CHAR(TO_DATE(C.DROPDATE,'YYYY-MM-DD'),'YYYY-MM-DD') DROPDATE,  ";
                     SQL += ComNum.VBLF + "           '' ILLCODE, '' SUCODE, A.ILSU, TO_CHAR(A.OUTDATE,'YYYY-MM-DD') OUTDATE, ";
                     SQL += ComNum.VBLF + "           A.AMSET7, D.INWARD, D.OUTWARD, C.ROWID CP_ROWID, A.IPDNO, 'QI' GUBUN     ";
-                    SQL += ComNum.VBLF + "      FROM KOSMOS_PMPA.IPD_NEW_MASTER A, CP B, KOSMOS_OCS.OCS_CP_RECORD_P C, KOSMOS_PMPA.NUR_MASTER D  ";
+                    SQL += ComNum.VBLF + "      FROM ADMIN.IPD_NEW_MASTER A, CP B, ADMIN.OCS_CP_RECORD_P C, ADMIN.NUR_MASTER D  ";
                     SQL += ComNum.VBLF + "     WHERE A.IPDNO = B.IPDNO ";
                     SQL += ComNum.VBLF + "       AND A.IPDNO = D.IPDNO ";
                     SQL += ComNum.VBLF + "       AND A.IPDNO = C.IPDNO ";
@@ -1268,7 +1268,7 @@ namespace ComLibB
 
                 for(int i = 0; i< ssList_Sheet1.NonEmptyRowCount; i++)
                 {
-                    if(ssList_Sheet1.Cells[i, 0].Text.Trim() == "True" && ssList_Sheet1.Rows[i].ForeColor == Color.RoyalBlue) //KOSMOS_OCS.OCS_CP_RECORD_P 등록된 환자 일때만
+                    if(ssList_Sheet1.Cells[i, 0].Text.Trim() == "True" && ssList_Sheet1.Rows[i].ForeColor == Color.RoyalBlue) //ADMIN.OCS_CP_RECORD_P 등록된 환자 일때만
                     {
                         SQL = "DELETE " + ComNum.DB_MED + "OCS_CP_RECORD_P";
                         SQL += ComNum.VBLF + "WHERE PTNO = '" + ssList_Sheet1.Cells[i, 3].Text.Trim() + "'";
@@ -1702,7 +1702,7 @@ namespace ComLibB
 
                             SQL += ComNum.VBLF + "TO_CHAR(B.INDATE, 'YYYY-MM-DD') INDATE, TO_CHAR(B.OUTDATE, 'YYYY-MM-DD') OUTDATE, ";
                             SQL += ComNum.VBLF + "  C.TMODEL";
-                            SQL += ComNum.VBLF + "    FROM KOSMOS_OCS.OCS_CP_RECORD A, KOSMOS_PMPA.IPD_NEW_MASTER B, KOSMOS_PMPA.MID_SUMMARY C ";
+                            SQL += ComNum.VBLF + "    FROM ADMIN.OCS_CP_RECORD A, ADMIN.IPD_NEW_MASTER B, ADMIN.MID_SUMMARY C ";
                             SQL += ComNum.VBLF + "   WHERE A.IPDNO = B.IPDNO ";
                             SQL += ComNum.VBLF + "     AND B.PANO = C.PANO(+) ";
                             SQL += ComNum.VBLF + "     AND B.OUTDATE = C.OUTDATE(+) ";
@@ -1826,7 +1826,7 @@ namespace ComLibB
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = "SELECT DRNAME, DRCODE FROM KOSMOS_OCS.OCS_DOCTOR";
+                SQL = "SELECT DRNAME, DRCODE FROM ADMIN.OCS_DOCTOR";
                 SQL += ComNum.VBLF + "WHERE GBOUT = 'N'";
                 SQL += ComNum.VBLF + "  AND DEPTCODE = '" + strDept + "'";
 
@@ -1874,7 +1874,7 @@ namespace ComLibB
 
             try
             {
-                SQL = "SELECT BIRTH FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = "SELECT BIRTH FROM ADMIN.BAS_PATIENT ";
                 SQL += ComNum.VBLF + "WHERE PANO = '" + strPANO + "' ";
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
                 if (string.IsNullOrEmpty(SqlErr) == false)
@@ -1916,8 +1916,8 @@ namespace ComLibB
             try
             {
                 SQL = "  SELECT CPDAY ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_CP_MAIN A ";
-                SQL += ComNum.VBLF + "  WHERE SDATE = (SELECT MAX(SDATE) FROM KOSMOS_OCS.OCS_CP_MAIN WHERE CPCODE = A.CPCODE) ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.OCS_CP_MAIN A ";
+                SQL += ComNum.VBLF + "  WHERE SDATE = (SELECT MAX(SDATE) FROM ADMIN.OCS_CP_MAIN WHERE CPCODE = A.CPCODE) ";
                 SQL += ComNum.VBLF + "    AND CPCODE = '" + strCPCODE + "' ";
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
                 if (string.IsNullOrEmpty(SqlErr) == false)
@@ -1969,7 +1969,7 @@ namespace ComLibB
             {
                 SQL = " SELECT BASNAME FROM (";
                 SQL += ComNum.VBLF + " SELECT BASNAME, ROWNUM RNUM ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_BASCD ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_BASCD ";
                 SQL += ComNum.VBLF + "   WHERE GRPCDB = 'CP관리' ";
                 if (strGUBUN == "중단")
                 {
@@ -2027,8 +2027,8 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT GUBUN ";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_CP_MAIN A ";
-                SQL += ComNum.VBLF + " WHERE SDATE = (SELECT MAX(SDATE) FROM KOSMOS_OCS.OCS_CP_MAIN WHERE CPCODE = A.CPCODE) ";
+                SQL += ComNum.VBLF + "  FROM ADMIN.OCS_CP_MAIN A ";
+                SQL += ComNum.VBLF + " WHERE SDATE = (SELECT MAX(SDATE) FROM ADMIN.OCS_CP_MAIN WHERE CPCODE = A.CPCODE) ";
                 SQL += ComNum.VBLF + "   AND CPCODE = '" + strCODE + "'";
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
                 if (string.IsNullOrEmpty(SqlErr) == false)
@@ -2070,7 +2070,7 @@ namespace ComLibB
             try
             {
                 SQL = "  SELECT BASNAME ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_BASCD ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_BASCD ";
                 SQL += ComNum.VBLF + "  WHERE GRPCDB = 'CP관리' ";
                 SQL += ComNum.VBLF + "    AND GRPCD = '" + strGRPCD + "' ";
                 SQL += ComNum.VBLF + "    AND BASCD = '" + strBASCD + "' ";
@@ -2114,7 +2114,7 @@ namespace ComLibB
             try
             {
                 SQL = "  SELECT GRPCD, BASCD, BASNAME, BASNAME1 ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_BASCD ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_BASCD ";
                 SQL += ComNum.VBLF + "  WHERE GRPCDB = 'CP관리' ";
                 SQL += ComNum.VBLF + "    AND GRPCD IN('CP코드관리') ";
                 SQL += ComNum.VBLF + "    AND BASNAME = '" + strBASName + "' ";
@@ -2273,13 +2273,13 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += ComNum.VBLF + "                        SELECT A.ILLCODE rtn, TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE ";
-                SQL += ComNum.VBLF + "                          FROM KOSMOS_OCS.OCS_IILLS A, KOSMOS_PMPA.IPD_NEW_MASTER B  ";
+                SQL += ComNum.VBLF + "                          FROM ADMIN.OCS_IILLS A, ADMIN.IPD_NEW_MASTER B  ";
                 SQL += ComNum.VBLF + "                         WHERE ILLCODE IN (" + strIllCode;
                 SQL += ComNum.VBLF + "                           AND A.IPDNO = B.IPDNO ";
                 SQL += ComNum.VBLF + "                           AND B.IPDNO = " + strIPDNO;
                 SQL += ComNum.VBLF + "                        UNION ALL ";
                 SQL += ComNum.VBLF + "                        SELECT A.ILLCODE rtn, TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE ";
-                SQL += ComNum.VBLF + "                         FROM KOSMOS_OCS.OCS_OILLS A, KOSMOS_PMPA.IPD_NEW_MASTER B ";
+                SQL += ComNum.VBLF + "                         FROM ADMIN.OCS_OILLS A, ADMIN.IPD_NEW_MASTER B ";
                 SQL += ComNum.VBLF + "                        WHERE A.BDATE = TRUNC(B.INDATE) ";
                 SQL += ComNum.VBLF + "                          AND A.DEPTCODE = B.DEPTCODE ";
                 SQL += ComNum.VBLF + "                          AND A.PTNO = B.PANO ";
@@ -2287,7 +2287,7 @@ namespace ComLibB
                 SQL += ComNum.VBLF + "                          AND ILLCODE IN (" + strIllCode;
                 SQL += ComNum.VBLF + "                        UNION ALL ";
                 SQL += ComNum.VBLF + "                        SELECT A.ILLCODE rtn, TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE ";
-                SQL += ComNum.VBLF + "                          FROM KOSMOS_OCS.OCS_EILLS A, KOSMOS_PMPA.IPD_NEW_MASTER B ";
+                SQL += ComNum.VBLF + "                          FROM ADMIN.OCS_EILLS A, ADMIN.IPD_NEW_MASTER B ";
                 SQL += ComNum.VBLF + "                         WHERE A.BDATE = TRUNC(B.INDATE) ";
                 SQL += ComNum.VBLF + "                           AND A.PTNO = B.PANO ";
                 SQL += ComNum.VBLF + "                           AND B.IPDNO = " + strIPDNO;
@@ -2296,7 +2296,7 @@ namespace ComLibB
             else
             {
                 SQL = "	 SELECT C.SUCODE rtn, TO_CHAR(C.BDATE,'YYYY-MM-DD') BDATE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.IPD_NEW_MASTER A, KOSMOS_PMPA.IPD_NEW_SLIP C";
+                SQL += ComNum.VBLF + "   FROM ADMIN.IPD_NEW_MASTER A, ADMIN.IPD_NEW_SLIP C";
                 SQL += ComNum.VBLF + "     WHERE A.IPDNO = " + strIPDNO;
                 SQL += ComNum.VBLF + "       AND C.IPDNO = A.IPDNO";
                 SQL += ComNum.VBLF + strSuCode;

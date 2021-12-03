@@ -281,7 +281,7 @@ namespace ComLibB
                 SQL = " SELECT PANO,SNAME,HPHONE,SENDMSG,DeptCode ";
                 SQL = SQL + ComNum.VBLF + " ,TO_CHAR(JOBDATE,'YYYY-MM-DD HH24:MI') JOBDATE     ";
                 SQL = SQL + ComNum.VBLF + " ,TO_CHAR(SENDTIME,'YYYY-MM-DD HH24:MI') SENDTIME   ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_SMS ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_SMS ";
                 SQL = SQL + ComNum.VBLF + "  WHERE 1=1 ";
                 SQL = SQL + ComNum.VBLF + "   AND GUBUN ='" + strGubun + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND PANO ='" + strPano + "' ";
@@ -347,7 +347,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT d.HTEL, c.DRNAME SName ";
-                SQL = SQL + ComNum.VBLF + " FROM   KOSMOS_OCS.OCS_DOCTOR c,  KOSMOS_ADM.INSA_MST d ";
+                SQL = SQL + ComNum.VBLF + " FROM   ADMIN.OCS_DOCTOR c,  ADMIN.INSA_MST d ";
                 SQL = SQL + ComNum.VBLF + " WHERE c.SABUN = d.SABUN ";
                 SQL = SQL + ComNum.VBLF + "  AND d.TOIDAY IS NULL ";
                 SQL = SQL + ComNum.VBLF + "  AND c.Gbout  ='N' ";

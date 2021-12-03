@@ -529,7 +529,7 @@ namespace ComEmrBase
             {
 
                 SQL.AppendLine(" SELECT USERID, NAME");
-                SQL.AppendLine(" FROM KOSMOS_EMR.EMR_USERT ");
+                SQL.AppendLine(" FROM ADMIN.EMR_USERT ");
                 SQL.AppendLine(" WHERE (EDATE >= TO_CHAR(SYSDATE, 'YYYYMMDD') or EDATE = '' OR EDATE IS NULL )  ");
                 SQL.AppendLine(" AND AUTH >= '" + strAuth + "'  ");
                 SQL.AppendLine(" ORDER BY NAME ");
@@ -579,7 +579,7 @@ namespace ComEmrBase
             {
 
                 SQL.AppendLine(" SELECT CODE, NAME, ACTIVE, AUTH");
-                SQL.AppendLine(" FROM KOSMOS_EMR.EMR_PRINTCODET");
+                SQL.AppendLine(" FROM ADMIN.EMR_PRINTCODET");
                 SQL.AppendLine(" WHERE ACTIVE = '1' ");
 
                 string sqlErr = clsDB.GetDataTableREx(ref dt, SQL.ToString(), clsDB.DbCon);
@@ -654,26 +654,26 @@ namespace ComEmrBase
                 SQL.AppendLine("    C.SECURITY, P.FILESIZE, P.CDATE, F.NAME,  ");
                 SQL.AppendLine("    C.FORMCODE, C.UNREADY, C.CDNO, F.NAME ,T.CLASS , ");
                 SQL.AppendLine("    (SELECT C1.NAME  ");
-                SQL.AppendLine("        FROM KOSMOS_EMR.EMR_CLINICT C1  ");
+                SQL.AppendLine("        FROM ADMIN.EMR_CLINICT C1  ");
                 SQL.AppendLine("        WHERE C1.CLINCODE = T.CLINCODE) AS LOCATIONNM,  ");
                 SQL.AppendLine("    T.INDATE, P.LOCATION, ");
                 SQL.AppendLine("    S.IPADDRESS, S.FTPUSER, S.FTPPASSWD, S.LOCALPATH, ");
                 //SQL = SQL + ComNum.VBLF + "    ( REPLACE(S.LOCALPATH, '\', '/') || '/' || REPLACE(P.LOCATION, '\', '/') ) AS SVRFILEPATH  ";
                 SQL.AppendLine("    ( S.LOCALPATH || '/' || P.LOCATION ) AS SVRFILEPATH  ");
-                SQL.AppendLine("FROM KOSMOS_EMR.EMR_PAGET P  ");
-                SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_CHARTPAGET C ");
+                SQL.AppendLine("FROM ADMIN.EMR_PAGET P  ");
+                SQL.AppendLine("INNER JOIN ADMIN.EMR_CHARTPAGET C ");
                 SQL.AppendLine("   ON P.PAGENO = C.PAGENO ");
                 SQL.AppendLine("  AND C.TREATNO = " + VB.Val(mstrACPNO));
                 SQL.AppendLine("  AND C.PAGE > 0 ");
-                SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_FORMT F ");
+                SQL.AppendLine("INNER JOIN ADMIN.EMR_FORMT F ");
                 SQL.AppendLine("   ON C.FORMCODE = F.FORMCODE ");
                 if (VB.Val(mstrFORMCODE) > 0)
                 {
                     SQL.AppendLine("    AND F.FORMCODE = '" + mstrFORMCODE + "' ");
                 }
-                SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_TREATT T ");
+                SQL.AppendLine("INNER JOIN ADMIN.EMR_TREATT T ");
                 SQL.AppendLine("   ON C.TREATNO = T.TREATNO ");
-                SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_PATHT S ");
+                SQL.AppendLine("INNER JOIN ADMIN.EMR_PATHT S ");
                 SQL.AppendLine("   ON P.PATHID = S.PATHID ");
                 SQL.AppendLine("ORDER BY F.ORDERBY, C.FORMCODE, C.PAGE ");
                 //SQL.AppendLine("ORDER BY F.ORDERBY, C.FORMCODE ASC , C.PAGE DESC ");
@@ -804,25 +804,25 @@ namespace ComEmrBase
                         SQL.AppendLine("    C.SECURITY, P.FILESIZE, P.CDATE, F.NAME,  ");
                         SQL.AppendLine("    C.FORMCODE, C.UNREADY, C.CDNO, T.CLASS , ");
                         SQL.AppendLine("    (SELECT C1.NAME  ");
-                        SQL.AppendLine("        FROM KOSMOS_EMR.EMR_CLINICT C1  ");
+                        SQL.AppendLine("        FROM ADMIN.EMR_CLINICT C1  ");
                         SQL.AppendLine("        WHERE C1.CLINCODE = T.CLINCODE) AS LOCATIONNM,  ");
                         SQL.AppendLine("    T.INDATE, P.LOCATION, ");
                         SQL.AppendLine("    S.IPADDRESS, S.FTPUSER, S.FTPPASSWD, S.LOCALPATH, ");
                         SQL.AppendLine("    ( S.LOCALPATH || '/' || P.LOCATION ) AS SVRFILEPATH  ");
                         SQL.AppendLine("    , F.ORDERBY ");
-                        SQL.AppendLine("FROM KOSMOS_EMR.EMR_PAGET P  ");
-                        SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_CHARTPAGET C ");
+                        SQL.AppendLine("FROM ADMIN.EMR_PAGET P  ");
+                        SQL.AppendLine("INNER JOIN ADMIN.EMR_CHARTPAGET C ");
                         SQL.AppendLine("   ON P.PAGENO = C.PAGENO ");
                         SQL.AppendLine("  AND C.PAGE > 0 ");
-                        SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_FORMT F ");
+                        SQL.AppendLine("INNER JOIN ADMIN.EMR_FORMT F ");
                         SQL.AppendLine("   ON C.FORMCODE = F.FORMCODE ");
-                        SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_TREATT T ");
+                        SQL.AppendLine("INNER JOIN ADMIN.EMR_TREATT T ");
                         SQL.AppendLine("   ON C.TREATNO = T.TREATNO ");
                         SQL.AppendLine("  AND T.PATID = '" + mstrPtno + "'");
                         SQL.AppendLine("  AND T.CLINCODE = '" + mstrDeptCode + "'");
-                        SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_PATHT S ");
+                        SQL.AppendLine("INNER JOIN ADMIN.EMR_PATHT S ");
                         SQL.AppendLine("   ON P.PATHID = S.PATHID ");
-                        SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_PRINTNEEDT D");
+                        SQL.AppendLine("INNER JOIN ADMIN.EMR_PRINTNEEDT D");
                         SQL.AppendLine("   ON  D.CDATE = '" + mstrPrtDate + "'");
                         SQL.AppendLine("  AND D.CUSERID = '" + mstrUseId + "'");
                         SQL.AppendLine("  AND D.PAGENO = C.PAGENO");
@@ -842,25 +842,25 @@ namespace ComEmrBase
                         SQL.AppendLine("    '' AS SECURITY, P2.FILESIZE, P2.CDATE, F2.NAME,  ");
                         SQL.AppendLine("    C2.FORMCODE, '' AS UNREADY, '' AS CDNO, T2.CLASS , ");
                         SQL.AppendLine("    (SELECT C1.NAME  ");
-                        SQL.AppendLine("        FROM KOSMOS_EMR.EMR_CLINICT C1  ");
+                        SQL.AppendLine("        FROM ADMIN.EMR_CLINICT C1  ");
                         SQL.AppendLine("        WHERE C1.CLINCODE = T2.CLINCODE) AS LOCATIONNM,  ");
                         SQL.AppendLine("    T2.INDATE, P2.LOCATION, ");
                         SQL.AppendLine("    S2.IPADDRESS, S2.FTPUSER, S2.FTPPASSWD, S2.LOCALPATH, ");
                         SQL.AppendLine("    ( S2.LOCALPATH || '/' || P2.LOCATION ) AS SVRFILEPATH  ");
                         SQL.AppendLine("    , F2.ORDERBY ");
-                        SQL.AppendLine("FROM KOSMOS_EMR.EMR_PAGET P2  ");
-                        SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_DELETEPAGET C2 ");
+                        SQL.AppendLine("FROM ADMIN.EMR_PAGET P2  ");
+                        SQL.AppendLine("INNER JOIN ADMIN.EMR_DELETEPAGET C2 ");
                         SQL.AppendLine("   ON P2.PAGENO = C2.PAGENO ");
                         SQL.AppendLine("  AND C2.PAGE > 0 ");
-                        SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_FORMT F2 ");
+                        SQL.AppendLine("INNER JOIN ADMIN.EMR_FORMT F2 ");
                         SQL.AppendLine("   ON C2.FORMCODE = F2.FORMCODE ");
-                        SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_TREATT T2 ");
+                        SQL.AppendLine("INNER JOIN ADMIN.EMR_TREATT T2 ");
                         SQL.AppendLine("   ON C2.TREATNO = T2.TREATNO ");
                         SQL.AppendLine("  AND T2.PATID = '" + mstrPtno + "'");
                         SQL.AppendLine("  AND T2.CLINCODE = '" + mstrDeptCode + "'");
-                        SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_PATHT S2 ");
+                        SQL.AppendLine("INNER JOIN ADMIN.EMR_PATHT S2 ");
                         SQL.AppendLine("   ON P2.PATHID = S2.PATHID ");
-                        SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_PRINTNEEDT_BACKUP D2");
+                        SQL.AppendLine("INNER JOIN ADMIN.EMR_PRINTNEEDT_BACKUP D2");
                         SQL.AppendLine("   ON D2.CDATE = '" + mstrPrtDate + "'");
                         SQL.AppendLine("  AND D2.CUSERID = '" + mstrUseId + "'");
                         SQL.AppendLine("  AND D2.PAGENO = C2.PAGENO");
@@ -883,25 +883,25 @@ namespace ComEmrBase
                     SQL.AppendLine("    C.SECURITY, P.FILESIZE, P.CDATE, F.NAME,  ");
                     SQL.AppendLine("    C.FORMCODE, C.UNREADY, C.CDNO, T.CLASS , ");
                     SQL.AppendLine("    (SELECT C1.NAME  ");
-                    SQL.AppendLine("        FROM KOSMOS_EMR.EMR_CLINICT C1  ");
+                    SQL.AppendLine("        FROM ADMIN.EMR_CLINICT C1  ");
                     SQL.AppendLine("        WHERE C1.CLINCODE = T.CLINCODE) AS LOCATIONNM,  ");
                     SQL.AppendLine("    T.INDATE, P.LOCATION, ");
                     SQL.AppendLine("    S.IPADDRESS, S.FTPUSER, S.FTPPASSWD, S.LOCALPATH, ");
                     SQL.AppendLine("    ( S.LOCALPATH || '/' || P.LOCATION ) AS SVRFILEPATH  ");
                     SQL.AppendLine("    , F.ORDERBY ");
-                    SQL.AppendLine("FROM KOSMOS_EMR.EMR_PAGET P  ");
-                    SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_CHARTPAGET C ");
+                    SQL.AppendLine("FROM ADMIN.EMR_PAGET P  ");
+                    SQL.AppendLine("INNER JOIN ADMIN.EMR_CHARTPAGET C ");
                     SQL.AppendLine("   ON P.PAGENO = C.PAGENO ");
                     SQL.AppendLine("  AND C.PAGE > 0 ");
-                    SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_FORMT F ");
+                    SQL.AppendLine("INNER JOIN ADMIN.EMR_FORMT F ");
                     SQL.AppendLine("   ON C.FORMCODE = F.FORMCODE ");
-                    SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_TREATT T ");
+                    SQL.AppendLine("INNER JOIN ADMIN.EMR_TREATT T ");
                     SQL.AppendLine("   ON C.TREATNO = T.TREATNO ");
                     SQL.AppendLine("  AND T.PATID = '" + mstrPtno + "'");
                     SQL.AppendLine("  AND T.CLINCODE = '" + mstrDeptCode + "'");
-                    SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_PATHT S ");
+                    SQL.AppendLine("INNER JOIN ADMIN.EMR_PATHT S ");
                     SQL.AppendLine("   ON P.PATHID = S.PATHID ");
-                    SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_PRINTNEEDT D");
+                    SQL.AppendLine("INNER JOIN ADMIN.EMR_PRINTNEEDT D");
                     SQL.AppendLine("   ON  D.CDATE = '" + mstrPrtDate + "'");
                     SQL.AppendLine("  AND D.CUSERID = '" + mstrUseId + "'");
                     SQL.AppendLine("  AND D.PAGENO = C.PAGENO");
@@ -922,25 +922,25 @@ namespace ComEmrBase
                     SQL.AppendLine("    '' AS SECURITY, P2.FILESIZE, P2.CDATE, F2.NAME,  ");
                     SQL.AppendLine("    C2.FORMCODE, '' AS UNREADY, '' AS CDNO, T2.CLASS , ");
                     SQL.AppendLine("    (SELECT C1.NAME  ");
-                    SQL.AppendLine("        FROM KOSMOS_EMR.EMR_CLINICT C1  ");
+                    SQL.AppendLine("        FROM ADMIN.EMR_CLINICT C1  ");
                     SQL.AppendLine("        WHERE C1.CLINCODE = T2.CLINCODE) AS LOCATIONNM,  ");
                     SQL.AppendLine("    T2.INDATE, P2.LOCATION, ");
                     SQL.AppendLine("    S2.IPADDRESS, S2.FTPUSER, S2.FTPPASSWD, S2.LOCALPATH, ");
                     SQL.AppendLine("    ( S2.LOCALPATH || '/' || P2.LOCATION ) AS SVRFILEPATH  ");
                     SQL.AppendLine("    , F2.ORDERBY ");
-                    SQL.AppendLine("FROM KOSMOS_EMR.EMR_PAGET P2  ");
-                    SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_DELETEPAGET C2 ");
+                    SQL.AppendLine("FROM ADMIN.EMR_PAGET P2  ");
+                    SQL.AppendLine("INNER JOIN ADMIN.EMR_DELETEPAGET C2 ");
                     SQL.AppendLine("   ON P2.PAGENO = C2.PAGENO ");
                     SQL.AppendLine("  AND C2.PAGE > 0 ");
-                    SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_FORMT F2 ");
+                    SQL.AppendLine("INNER JOIN ADMIN.EMR_FORMT F2 ");
                     SQL.AppendLine("   ON C2.FORMCODE = F2.FORMCODE ");
-                    SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_TREATT T2 ");
+                    SQL.AppendLine("INNER JOIN ADMIN.EMR_TREATT T2 ");
                     SQL.AppendLine("   ON C2.TREATNO = T2.TREATNO ");
                     SQL.AppendLine("  AND T2.PATID = '" + mstrPtno + "'");
                     SQL.AppendLine("  AND T2.CLINCODE = '" + mstrDeptCode + "'");
-                    SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_PATHT S2 ");
+                    SQL.AppendLine("INNER JOIN ADMIN.EMR_PATHT S2 ");
                     SQL.AppendLine("   ON P2.PATHID = S2.PATHID ");
-                    SQL.AppendLine("INNER JOIN KOSMOS_EMR.EMR_PRINTNEEDT_BACKUP D2");
+                    SQL.AppendLine("INNER JOIN ADMIN.EMR_PRINTNEEDT_BACKUP D2");
                     SQL.AppendLine("   ON D2.CDATE = '" + mstrPrtDate + "'");
                     SQL.AppendLine("  AND D2.CUSERID = '" + mstrUseId + "'");
                     SQL.AppendLine("  AND D2.PAGENO = C2.PAGENO");
@@ -1205,7 +1205,7 @@ namespace ComEmrBase
                     {
                         strSCANNO = spScan_Sheet1.Cells[i, Convert.ToInt32(clsScanPublic.ScanSp.sSCANNO)].Text;
 
-                        SQL = "INSERT INTO KOSMOS_EMR.EMR_PAGEPRINTLOGT(";
+                        SQL = "INSERT INTO ADMIN.EMR_PAGEPRINTLOGT(";
                         SQL += ComNum.VBLF + "PAGENO, PRINTCODE, CUSERID, NEEDUSER, CDATE, CTIME";
                         SQL += ComNum.VBLF + ")";
                         SQL += ComNum.VBLF + "VALUES(";
@@ -1231,7 +1231,7 @@ namespace ComEmrBase
 
                         if (mstrPrtDate.Length > 0 && mstrUseId.Length > 0 && mstrNeedGbn.Length > 0)
                         {
-                            SQL = "UPDATE KOSMOS_EMR.EMR_PRINTNEEDT";
+                            SQL = "UPDATE ADMIN.EMR_PRINTNEEDT";
                             SQL += ComNum.VBLF + " SET PRINTED = 'Y'";
                             SQL += ComNum.VBLF + " WHERE PAGENO    = " + strSCANNO;
                             SQL += ComNum.VBLF + "   AND CDATE     = '" + mstrPrtDate + "' ";
@@ -1247,7 +1247,7 @@ namespace ComEmrBase
                                 return false;
                             }
 
-                            SQL = "UPDATE KOSMOS_EMR.EMR_PRINTNEEDT_BACKUP";
+                            SQL = "UPDATE ADMIN.EMR_PRINTNEEDT_BACKUP";
                             SQL += ComNum.VBLF + " SET PRINTED = 'Y'";
                             SQL += ComNum.VBLF + " WHERE PAGENO    = " + strSCANNO;
                             SQL += ComNum.VBLF + "   AND CDATE     = '" + mstrPrtDate + "' ";
@@ -1463,8 +1463,8 @@ namespace ComEmrBase
                 SQL.AppendLine("WHERE EXISTS");
                 SQL.AppendLine("(");
                 SQL.AppendLine("SELECT 1");
-                SQL.AppendLine(" FROM KOSMOS_EMR.EMR_PRINTNEEDT N, KOSMOS_EMR.EMR_CHARTPAGET C,");
-                SQL.AppendLine("      KOSMOS_EMR.EMR_TREATT T");
+                SQL.AppendLine(" FROM ADMIN.EMR_PRINTNEEDT N, ADMIN.EMR_CHARTPAGET C,");
+                SQL.AppendLine("      ADMIN.EMR_TREATT T");
                 SQL.AppendLine(" WHERE N.CDATE = '" + strDate + "' ");
                 SQL.AppendLine("   AND N.PAGENO  = '" + strPageNo + "' ");
                 SQL.AppendLine("   AND N.CUSERID = '" + strUseId + "' ");
@@ -1528,7 +1528,7 @@ namespace ComEmrBase
                     string strTreatNo = spScan_Sheet1.Cells[lstRow[i], Convert.ToInt32(clsScanPublic.ScanSp.sACPNO)].Text;
 
                     SQL.Clear();
-                    SQL.AppendLine("INSERT INTO KOSMOS_EMR.EMR_PRINTNEEDT(");
+                    SQL.AppendLine("INSERT INTO ADMIN.EMR_PRINTNEEDT(");
                     SQL.AppendLine("TREATNO, PAGENO, CUSERID, PRINTCODE,");
                     SQL.AppendLine("CDATE, NEEDGUBUN, NEEDCNT");
                     SQL.AppendLine(")");
@@ -1686,7 +1686,7 @@ namespace ComEmrBase
                     if (imageListView1.Items[i].IsSelected)
                     {
                         SQL.Clear();
-                        SQL.AppendLine("DELETE KOSMOS_EMR.EMR_PRINTNEEDT N");
+                        SQL.AppendLine("DELETE ADMIN.EMR_PRINTNEEDT N");
                         SQL.AppendLine(" WHERE N.CDATE = '" + mstrPrtDate + "'");
                         SQL.AppendLine("   AND N.CUSERID = '" + mstrUseId + "'");
                         SQL.AppendLine("   AND N.PAGENO  = " + spScan_Sheet1.Cells[i, Convert.ToInt32(clsScanPublic.ScanSp.sSCANNO)].Text.Trim());
@@ -1703,7 +1703,7 @@ namespace ComEmrBase
                         TotRow += RowAffected;
 
                         SQL.Clear();
-                        SQL.AppendLine("DELETE KOSMOS_EMR.EMR_PRINTNEEDT_BACKUP N");
+                        SQL.AppendLine("DELETE ADMIN.EMR_PRINTNEEDT_BACKUP N");
                         SQL.AppendLine(" WHERE N.CDATE = '" + mstrPrtDate + "'");
                         SQL.AppendLine("   AND N.CUSERID = '" + mstrUseId + "'");
                         SQL.AppendLine("   AND N.PAGENO  = " + spScan_Sheet1.Cells[i, Convert.ToInt32(clsScanPublic.ScanSp.sSCANNO)].Text.Trim());

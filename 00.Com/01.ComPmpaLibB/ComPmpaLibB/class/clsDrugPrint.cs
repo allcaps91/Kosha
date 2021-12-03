@@ -50,7 +50,7 @@ namespace ComPmpaLibB
         public string GstrGo = "";                              //모바일 처장전 생성용 2017-03-06 KMC
         
         /// <summary>
-        /// Description : KOSMOS_OCS.OCS_OUTDRUGMST 구조체 선언
+        /// Description : ADMIN.OCS_OUTDRUGMST 구조체 선언
         /// Author : 이정현
         /// Create Date : 2018.02.05
         /// </summary>
@@ -135,7 +135,7 @@ namespace ComPmpaLibB
         }
 
         /// <summary>
-        /// Description : KOSMOS_OCS.OCS_OUTDRUGMST 구조체 클리어
+        /// Description : ADMIN.OCS_OUTDRUGMST 구조체 클리어
         /// Author : 이정현
         /// Create Date : 2018.02.05
         /// </summary>
@@ -383,7 +383,7 @@ namespace ComPmpaLibB
         }
 
         /// <summary>
-        /// Description : DrAtc00.Bas : KOSMOS_OCS.OCS_OUTDRUGMST 데이터 불러오기
+        /// Description : DrAtc00.Bas : ADMIN.OCS_OUTDRUGMST 데이터 불러오기
         /// Author : 이정현
         /// Create Date : 2018.02.05
         /// </summary>
@@ -18837,7 +18837,7 @@ namespace ComPmpaLibB
                             SQL = "";
                             SQL = SQL + ComNum.VBLF + "SELECT ";
                             SQL = SQL + ComNum.VBLF + "       ENAME || '(' || SNAME || ')' AS ENAME  ";
-                            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_DRUGINFO_NEW ";
+                            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_DRUGINFO_NEW ";
                             SQL = SQL + ComNum.VBLF + " WHERE SUNEXT = '" + dt.Rows[i]["SUCODE"].ToString().Trim() + "' ";
 
                             SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);

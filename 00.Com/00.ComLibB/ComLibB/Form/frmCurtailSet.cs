@@ -1133,7 +1133,7 @@ namespace ComLibB
 
             try
             {
-                SQL = "INSERT INTO KOSMOS_PMPA.BAS_AUTO_MST(";
+                SQL = "INSERT INTO ADMIN.BAS_AUTO_MST(";
                 SQL = SQL + ComNum.VBLF + "PANO, SNAME, GUBUN, SDATE, ENTDATE, ENTDATE2, ENTSABUN,REMARK) VALUES(";
                 SQL = SQL + ComNum.VBLF + "'" + ArgPano + "',";
                 SQL = SQL + ComNum.VBLF + "'" + ArgSName + "',";

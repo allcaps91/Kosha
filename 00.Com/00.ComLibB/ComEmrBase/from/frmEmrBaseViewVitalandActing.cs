@@ -269,8 +269,8 @@ namespace ComEmrBase
             SQL.AppendLine("WITH ROW_LIST AS  ");
             SQL.AppendLine("( ");
             SQL.AppendLine("   SELECT C.FORMNO, R.ITEMCD");
-            SQL.AppendLine("     FROM KOSMOS_EMR.AEMRCHARTMST C ");
-            SQL.AppendLine("       INNER JOIN KOSMOS_EMR.AEMRCHARTROW R ");
+            SQL.AppendLine("     FROM ADMIN.AEMRCHARTMST C ");
+            SQL.AppendLine("       INNER JOIN ADMIN.AEMRCHARTROW R ");
             SQL.AppendLine("          ON C.EMRNO = R.EMRNO ");
             SQL.AppendLine("         AND C.EMRNOHIS = R.EMRNOHIS");
             SQL.AppendLine("         AND R.ITEMVALUE IS NOT NULL"); // OR R.ITEMVALUE1 IS NOT NULL) ");SQL = SQL + ComNum.VBLF + "       WHERE C.ACPNO = " + AcpEmr.acpNo;
@@ -427,8 +427,8 @@ namespace ComEmrBase
             SQL.AppendLine("SELECT ");
             SQL.AppendLine("     4 AS GBN, 0 AS GRPSORT, 0 AS GRPSEQ, B.ITEMNO AS BASCD, B.ITEMNAME AS BASNAME, A.FORMNAME  AS BASEXNAME,  ");
             SQL.AppendLine("     DECODE(A.FORMNO, 1725, 0, 2638, 1, 1573, 2) AS NFLAG1, B.ITEMNUMBER AS NFLAG2, 0 AS NFLAG2, 0 AS NFLAG3, 0 AS DISSEQNO");
-            SQL.AppendLine("  FROM KOSMOS_EMR.AEMRFORM A");
-            SQL.AppendLine("    INNER JOIN KOSMOS_EMR.AEMRFLOWXML B");
+            SQL.AppendLine("  FROM ADMIN.AEMRFORM A");
+            SQL.AppendLine("    INNER JOIN ADMIN.AEMRFLOWXML B");
             SQL.AppendLine("       ON A.FORMNO = B.FORMNO");
             SQL.AppendLine("      AND A.UPDATENO = B.UPDATENO");
             SQL.AppendLine("      AND B.ITEMNUMBER >= 0");
@@ -638,11 +638,11 @@ namespace ComEmrBase
             //SQL = SQL + ComNum.VBLF + "                            AND U.USEGB = '" + clsType.User.BuseCode + "'";
             //SQL = SQL + ComNum.VBLF + "                            AND U.ITEMCD = B.BASCD";
             //SQL = SQL + ComNum.VBLF + "                     )";
-            SQL = SQL + ComNum.VBLF + "           AND B.BASCD IN (SELECT R.ITEMCD FROM KOSMOS_EMR.AEMRCHARTMST C ";
-            SQL = SQL + ComNum.VBLF + "                           INNER JOIN KOSMOS_EMR.AEMRCHARTROW R ";
+            SQL = SQL + ComNum.VBLF + "           AND B.BASCD IN (SELECT R.ITEMCD FROM ADMIN.AEMRCHARTMST C ";
+            SQL = SQL + ComNum.VBLF + "                           INNER JOIN ADMIN.AEMRCHARTROW R ";
             SQL = SQL + ComNum.VBLF + "                               ON C.EMRNO = R.EMRNO ";
             SQL = SQL + ComNum.VBLF + "                               AND C.EMRNOHIS  = R.EMRNOHIS ";
-            SQL = SQL + ComNum.VBLF + "                               AND R.ITEMCD IN (SELECT U.ITEMCD FROM KOSMOS_EMR.AEMRUSERITEMVS U ";
+            SQL = SQL + ComNum.VBLF + "                               AND R.ITEMCD IN (SELECT U.ITEMCD FROM ADMIN.AEMRUSERITEMVS U ";
             SQL = SQL + ComNum.VBLF + "                                                WHERE U.JOBGB = 'IVT' ";
             SQL = SQL + ComNum.VBLF + "                                                       AND U.USEGB = '" + clsType.User.IdNumber + "' ";
             SQL = SQL + ComNum.VBLF + "                                                UNION ";
@@ -751,8 +751,8 @@ namespace ComEmrBase
             SQL.AppendLine("         , R.ITEMNO");
             SQL.AppendLine("         , R.ITEMVALUE");
             SQL.AppendLine("         , R.ITEMVALUE1 ");
-            SQL.AppendLine("     FROM KOSMOS_EMR.AEMRCHARTMST C ");
-            SQL.AppendLine("       INNER JOIN KOSMOS_EMR.AEMRCHARTROW R ");
+            SQL.AppendLine("     FROM ADMIN.AEMRCHARTMST C ");
+            SQL.AppendLine("       INNER JOIN ADMIN.AEMRCHARTROW R ");
             SQL.AppendLine("          ON C.EMRNO = R.EMRNO ");
             SQL.AppendLine("         AND C.EMRNOHIS = R.EMRNOHIS");
             SQL.AppendLine("         AND R.ITEMVALUE IS NOT NULL");
@@ -778,7 +778,7 @@ namespace ComEmrBase
             SQL.AppendLine("         , B.BASEXNAME");
             SQL.AppendLine("         , B.BASNAME ");
             SQL.AppendLine("  FROM ROW_LIST C ");
-            SQL.AppendLine("    INNER JOIN KOSMOS_EMR.AEMRBASCD B ");
+            SQL.AppendLine("    INNER JOIN ADMIN.AEMRBASCD B ");
             SQL.AppendLine("       ON C.ITEMCD = B.BASCD ");
             SQL.AppendLine("      AND C.FORMNO IN (3150, 2135, 1935, 1969, 2431, 2431) -- 임상관찰,회복실, Angio, 응급실, 진정, 내시경 ");
             SQL.AppendLine("      AND B.BSNSCLS = '기록지관리' ");
@@ -794,7 +794,7 @@ namespace ComEmrBase
             {
                 SQL.AppendLine(" WHERE EXISTS");
                 SQL.AppendLine(" (");
-                SQL.AppendLine("   SELECT 1 FROM KOSMOS_EMR.AEMRUSERITEMVS U ");
+                SQL.AppendLine("   SELECT 1 FROM ADMIN.AEMRUSERITEMVS U ");
                 SQL.AppendLine("    WHERE U.JOBGB IN('IVT') ");
                 SQL.AppendLine("      AND U.USEGB IN('" + clsType.User.IdNumber + "', '" + clsType.User.BuseCode + "')");
                 SQL.AppendLine("      AND C.ITEMCD = U.ITEMCD");
@@ -818,7 +818,7 @@ namespace ComEmrBase
             SQL.AppendLine("          , B.BASEXNAME");
             SQL.AppendLine("          , B.BASNAME ");
             SQL.AppendLine("FROM ROW_LIST C ");
-            SQL.AppendLine("  INNER JOIN KOSMOS_EMR.AEMRBASCD B ");
+            SQL.AppendLine("  INNER JOIN ADMIN.AEMRBASCD B ");
             SQL.AppendLine("     ON C.ITEMCD = B.BASCD ");
             SQL.AppendLine("     AND C.FORMNO = 1575");
             SQL.AppendLine("    AND B.BSNSCLS = '기록지관리' ");
@@ -834,7 +834,7 @@ namespace ComEmrBase
             {
                 SQL.AppendLine(" WHERE EXISTS");
                 SQL.AppendLine(" (");
-                SQL.AppendLine("   SELECT 1 FROM KOSMOS_EMR.AEMRUSERITEMVS U ");
+                SQL.AppendLine("   SELECT 1 FROM ADMIN.AEMRUSERITEMVS U ");
                 SQL.AppendLine("    WHERE U.JOBGB IN('ACT') ");
                 SQL.AppendLine("      AND U.USEGB IN('" + clsType.User.IdNumber + "', '" + clsType.User.BuseCode + "')");
                 SQL.AppendLine("      AND C.ITEMCD = U.ITEMCD");
@@ -858,7 +858,7 @@ namespace ComEmrBase
             SQL.AppendLine("          , B.BASEXNAME");
             SQL.AppendLine("          , B.BASNAME ");
             SQL.AppendLine("FROM ROW_LIST C ");
-            SQL.AppendLine("  INNER JOIN KOSMOS_EMR.AEMRBASCD B                                      ");
+            SQL.AppendLine("  INNER JOIN ADMIN.AEMRBASCD B                                      ");
             SQL.AppendLine("     ON B.BSNSCLS = '기록지관리'                                            ");
             SQL.AppendLine("    AND B.UNITCLS > CHR(0)                                               ");
             SQL.AppendLine("    AND B.USECLS = '0'                                                   ");
@@ -866,7 +866,7 @@ namespace ComEmrBase
             SQL.AppendLine("    AND B.BASEXNAME IN( '호흡간호', '인공기도') ");
             SQL.AppendLine("    AND C.ITEMCD = B.BASCD");
             SQL.AppendLine("    AND C.FORMNO IN (1575)");
-            SQL.AppendLine("  INNER JOIN KOSMOS_EMR.AEMRBASCD BB                                     ");
+            SQL.AppendLine("  INNER JOIN ADMIN.AEMRBASCD BB                                     ");
             SQL.AppendLine("     ON B.VFLAG1 = BB.BASCD                                              ");
             SQL.AppendLine("    AND BB.BSNSCLS = '기록지관리'                                           ");
             SQL.AppendLine("    AND BB.UNITCLS > CHR(0)                                              ");
@@ -885,7 +885,7 @@ namespace ComEmrBase
             {
                 SQL.AppendLine(" WHERE EXISTS");
                 SQL.AppendLine(" (");
-                SQL.AppendLine("   SELECT 1 FROM KOSMOS_EMR.AEMRUSERITEMVS U ");
+                SQL.AppendLine("   SELECT 1 FROM ADMIN.AEMRUSERITEMVS U ");
                 SQL.AppendLine("    WHERE U.JOBGB IN('SP') ");
                 SQL.AppendLine("      AND U.USEGB IN('" + clsType.User.IdNumber + "', '" + clsType.User.BuseCode + "')");
                 SQL.AppendLine("      AND C.ITEMCD = U.ITEMCD");
@@ -909,7 +909,7 @@ namespace ComEmrBase
             SQL.AppendLine("          , B.BASEXNAME");
             SQL.AppendLine("          , B.BASNAME ");
             SQL.AppendLine("FROM ROW_LIST C ");
-            SQL.AppendLine("  INNER JOIN KOSMOS_EMR.AEMRBASCD B                                      ");
+            SQL.AppendLine("  INNER JOIN ADMIN.AEMRBASCD B                                      ");
             SQL.AppendLine("     ON B.BSNSCLS = '기록지관리'                                            ");
             SQL.AppendLine("    AND B.UNITCLS > CHR(0)                                               ");
             SQL.AppendLine("    AND B.USECLS = '0'                                                   ");
@@ -917,7 +917,7 @@ namespace ComEmrBase
             SQL.AppendLine("    AND B.BASEXNAME IN('산소요법', '인공호흡기', '흡인간호(Suction)') ");
             SQL.AppendLine("    AND C.ITEMCD = B.BASCD");
             SQL.AppendLine("    AND C.FORMNO IN (3150)");
-            SQL.AppendLine("  INNER JOIN KOSMOS_EMR.AEMRBASCD BB                                     ");
+            SQL.AppendLine("  INNER JOIN ADMIN.AEMRBASCD BB                                     ");
             SQL.AppendLine("     ON B.VFLAG1 = BB.BASCD                                              ");
             SQL.AppendLine("    AND BB.BSNSCLS = '기록지관리'                                           ");
             SQL.AppendLine("    AND BB.UNITCLS > CHR(0)                                              ");
@@ -936,7 +936,7 @@ namespace ComEmrBase
             {
                 SQL.AppendLine(" WHERE EXISTS");
                 SQL.AppendLine(" (");
-                SQL.AppendLine("   SELECT 1 FROM KOSMOS_EMR.AEMRUSERITEMVS U ");
+                SQL.AppendLine("   SELECT 1 FROM ADMIN.AEMRUSERITEMVS U ");
                 SQL.AppendLine("    WHERE U.JOBGB IN('SP2') ");
                 SQL.AppendLine("      AND U.USEGB IN('" + clsType.User.IdNumber + "', '" + clsType.User.BuseCode + "')");
                 SQL.AppendLine("      AND C.ITEMCD = U.ITEMCD");
@@ -957,7 +957,7 @@ namespace ComEmrBase
             SQL.AppendLine("          , C.ITEMNO");
             SQL.AppendLine("          , C.ITEMVALUE");
             SQL.AppendLine("          , C.ITEMVALUE1 ");
-            SQL.AppendLine("          , (SELECT FORMNAME FROM KOSMOS_EMR.AEMRFORM WHERE FORMNO = C.FORMNO AND USECHECK = '1' AND ROWNUM = 1) AS ASD");
+            SQL.AppendLine("          , (SELECT FORMNAME FROM ADMIN.AEMRFORM WHERE FORMNO = C.FORMNO AND USECHECK = '1' AND ROWNUM = 1) AS ASD");
             SQL.AppendLine("          , ''");
             SQL.AppendLine("  FROM ROW_LIST C ");
             SQL.AppendLine(" WHERE C.FORMNO IN (1725, 2638, 1573) ");
@@ -972,7 +972,7 @@ namespace ComEmrBase
             {
                 SQL.AppendLine("   AND EXISTS");
                 SQL.AppendLine("   (");
-                SQL.AppendLine("     SELECT 1 FROM KOSMOS_EMR.AEMRUSERITEMVS U ");
+                SQL.AppendLine("     SELECT 1 FROM ADMIN.AEMRUSERITEMVS U ");
                 SQL.AppendLine("      WHERE U.JOBGB IN('WD', 'BD', 'CVC') ");
                 SQL.AppendLine("        AND U.USEGB IN('" + clsType.User.IdNumber + "', '" + clsType.User.BuseCode + "')");
                 SQL.AppendLine("        AND C.ITEMCD = U.ITEMCD");
@@ -1226,11 +1226,11 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "    C.CHARTDATE, C.CHARTTIME, C.CHARTUSEID, C.EMRNO, ";
             SQL = SQL + ComNum.VBLF + "    R.ITEMCD, R.ITEMNO, R.ITEMVALUE, R.ITEMVALUE1, ";
             SQL = SQL + ComNum.VBLF + "    B.BASEXNAME, B.BASNAME ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.AEMRCHARTMST C ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.AEMRCHARTROW R ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.AEMRCHARTMST C ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.AEMRCHARTROW R ";
             SQL = SQL + ComNum.VBLF + "    ON C.EMRNO = R.EMRNO ";
             SQL = SQL + ComNum.VBLF + "    AND C.EMRNOHIS  = R.EMRNOHIS ";
-            SQL = SQL + ComNum.VBLF + "    AND R.ITEMCD IN (SELECT U.ITEMCD FROM KOSMOS_EMR.AEMRUSERITEMVS U ";
+            SQL = SQL + ComNum.VBLF + "    AND R.ITEMCD IN (SELECT U.ITEMCD FROM ADMIN.AEMRUSERITEMVS U ";
             SQL = SQL + ComNum.VBLF + "                     WHERE U.JOBGB = 'IVT' ";
             SQL = SQL + ComNum.VBLF + "                            AND U.USEGB = '" + clsType.User.IdNumber + "' ";
             SQL = SQL + ComNum.VBLF + "                     UNION ";
@@ -1239,7 +1239,7 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "                           AND U.USEGB = '" + clsType.User.BuseCode + "'";
             SQL = SQL + ComNum.VBLF + "                     )";
             SQL = SQL + ComNum.VBLF + "    AND (R.ITEMVALUE IS NOT NULL ) "; // OR R.ITEMVALUE1 IS NOT NULL) ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.AEMRBASCD B ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.AEMRBASCD B ";
             SQL = SQL + ComNum.VBLF + "    ON R.ITEMCD = B.BASCD ";
             SQL = SQL + ComNum.VBLF + "    AND B.BSNSCLS = '기록지관리' ";
             SQL = SQL + ComNum.VBLF + "    AND B.UNITCLS IN ('임상관찰', '섭취배설', '특수치료', '기본간호') ";
@@ -1448,8 +1448,8 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "  AND EXISTS";
             SQL = SQL + ComNum.VBLF + "  (";
             SQL = SQL + ComNum.VBLF + "      SELECT 1";
-            SQL = SQL + ComNum.VBLF + "        FROM KOSMOS_EMR.AEMRCHARTMST C ";
-            SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRCHARTROW R ";
+            SQL = SQL + ComNum.VBLF + "        FROM ADMIN.AEMRCHARTMST C ";
+            SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRCHARTROW R ";
             SQL = SQL + ComNum.VBLF + "             ON C.EMRNO = R.EMRNO ";
             SQL = SQL + ComNum.VBLF + "            AND C.EMRNOHIS = R.EMRNOHIS";
             SQL = SQL + ComNum.VBLF + "            AND R.ITEMVALUE IS NOT NULL"; // OR R.ITEMVALUE1 IS NOT NULL) ";SQL = SQL + ComNum.VBLF + "       WHERE C.ACPNO = " + AcpEmr.acpNo;
@@ -1539,16 +1539,16 @@ namespace ComEmrBase
             SQL = "SELECT B.ITEMNO AS BASCD";
             SQL = SQL + ComNum.VBLF + "  , A.FORMNAME AS BASEXNAME";
             SQL = SQL + ComNum.VBLF + "  , B.ITEMNAME AS BASNAME";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRFORM A";
-            SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRFLOWXML B";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRFORM A";
+            SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.AEMRFLOWXML B";
             SQL = SQL + ComNum.VBLF + "       ON A.FORMNO = B.FORMNO";
             SQL = SQL + ComNum.VBLF + "      AND A.UPDATENO = B.UPDATENO";
             SQL = SQL + ComNum.VBLF + "      AND B.ITEMNUMBER >= 0";
             SQL = SQL + ComNum.VBLF + "      AND EXISTS";
             SQL = SQL + ComNum.VBLF + "      (";
             SQL = SQL + ComNum.VBLF + "          SELECT 1";
-            SQL = SQL + ComNum.VBLF + "            FROM KOSMOS_EMR.AEMRCHARTMST C ";
-            SQL = SQL + ComNum.VBLF + "              INNER JOIN KOSMOS_EMR.AEMRCHARTROW R ";
+            SQL = SQL + ComNum.VBLF + "            FROM ADMIN.AEMRCHARTMST C ";
+            SQL = SQL + ComNum.VBLF + "              INNER JOIN ADMIN.AEMRCHARTROW R ";
             SQL = SQL + ComNum.VBLF + "                 ON C.EMRNO = R.EMRNO ";
             SQL = SQL + ComNum.VBLF + "                AND C.EMRNOHIS = R.EMRNOHIS";
             SQL = SQL + ComNum.VBLF + "                AND R.ITEMNO IN ";
@@ -1648,8 +1648,8 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "SELECT ";
             SQL = SQL + ComNum.VBLF + "    C.CHARTDATE, C.CHARTTIME, C.CHARTUSEID, C.EMRNO, ";
             SQL = SQL + ComNum.VBLF + "    R.ITEMCD, R.ITEMVALUE, R.ITEMVALUE1";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.AEMRCHARTMST C ";
-            SQL = SQL + ComNum.VBLF + "  INNER JOIN KOSMOS_EMR.AEMRCHARTROW R                                   ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.AEMRCHARTMST C ";
+            SQL = SQL + ComNum.VBLF + "  INNER JOIN ADMIN.AEMRCHARTROW R                                   ";
             SQL = SQL + ComNum.VBLF + "     ON C.EMRNO = R.EMRNO                                                ";
             SQL = SQL + ComNum.VBLF + "    AND C.EMRNOHIS  = R.EMRNOHIS                                         ";
             SQL = SQL + ComNum.VBLF + "    AND R.ITEMNO IN                                               ";
@@ -1774,14 +1774,14 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "    C.CHARTDATE, C.CHARTTIME, C.CHARTUSEID, C.EMRNO, ";
             SQL = SQL + ComNum.VBLF + "    R.ITEMCD, R.ITEMVALUE, R.ITEMVALUE1, ";
             SQL = SQL + ComNum.VBLF + "    B.BASEXNAME, B.BASNAME ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.AEMRCHARTMST C ";
-            SQL = SQL + ComNum.VBLF + "  INNER JOIN KOSMOS_EMR.AEMRBASCD B                                      ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.AEMRCHARTMST C ";
+            SQL = SQL + ComNum.VBLF + "  INNER JOIN ADMIN.AEMRBASCD B                                      ";
             SQL = SQL + ComNum.VBLF + "     ON B.BSNSCLS = '기록지관리'                                            ";
             SQL = SQL + ComNum.VBLF + "    AND B.UNITCLS > CHR(0)                                               ";
             SQL = SQL + ComNum.VBLF + "    AND B.USECLS = '0'                                                   ";
             SQL = SQL + ComNum.VBLF + "    AND B.APLFRDATE > CHR(0)                                             ";
             SQL = SQL + ComNum.VBLF + "    AND B.BASEXNAME IN('산소요법', '인공호흡기' , '흡인간호', '호흡간호', '인공기도') ";
-            SQL = SQL + ComNum.VBLF + "  INNER JOIN KOSMOS_EMR.AEMRBASCD BB                                     ";
+            SQL = SQL + ComNum.VBLF + "  INNER JOIN ADMIN.AEMRBASCD BB                                     ";
             SQL = SQL + ComNum.VBLF + "     ON B.VFLAG1 = BB.BASCD                                              ";
             SQL = SQL + ComNum.VBLF + "    AND BB.BSNSCLS = '기록지관리'                                           ";
             SQL = SQL + ComNum.VBLF + "    AND BB.UNITCLS > CHR(0)                                              ";
@@ -1789,7 +1789,7 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "    AND BB.APLFRDATE > CHR(0)                                            ";
             SQL = SQL + ComNum.VBLF + "    AND BB.BASNAME IN('산소요법', '인공호흡기' , '흡인간호', '호흡간호', '인공기도')  ";
             SQL = SQL + ComNum.VBLF + "    AND BB.USECLS = '0'                                                  ";
-            SQL = SQL + ComNum.VBLF + "  INNER JOIN KOSMOS_EMR.AEMRCHARTROW R                                   ";
+            SQL = SQL + ComNum.VBLF + "  INNER JOIN ADMIN.AEMRCHARTROW R                                   ";
             SQL = SQL + ComNum.VBLF + "     ON C.EMRNO = R.EMRNO                                                ";
             SQL = SQL + ComNum.VBLF + "    AND C.EMRNOHIS  = R.EMRNOHIS                                         ";
             SQL = SQL + ComNum.VBLF + "    AND R.ITEMCD = B.BASCD                                               ";
@@ -1918,15 +1918,15 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "                        AND U.USEGB = '" + clsType.User.IdNumber + "'";
             SQL = SQL + ComNum.VBLF + "                        AND U.ITEMCD = B.BASCD";
             SQL = SQL + ComNum.VBLF + "                 )";
-            SQL = SQL + ComNum.VBLF + "     AND B.BASCD IN (SELECT R.ITEMCD FROM KOSMOS_EMR.AEMRCHARTMST C ";
-            SQL = SQL + ComNum.VBLF + "                       INNER JOIN KOSMOS_EMR.AEMRCHARTROW R ";
+            SQL = SQL + ComNum.VBLF + "     AND B.BASCD IN (SELECT R.ITEMCD FROM ADMIN.AEMRCHARTMST C ";
+            SQL = SQL + ComNum.VBLF + "                       INNER JOIN ADMIN.AEMRCHARTROW R ";
             SQL = SQL + ComNum.VBLF + "                           ON C.EMRNO = R.EMRNO ";
             SQL = SQL + ComNum.VBLF + "                           AND C.EMRNOHIS = R.EMRNOHIS";
-            SQL = SQL + ComNum.VBLF + "                           AND R.ITEMCD IN (SELECT U.ITEMCD FROM KOSMOS_EMR.AEMRUSERITEMVS U ";
+            SQL = SQL + ComNum.VBLF + "                           AND R.ITEMCD IN (SELECT U.ITEMCD FROM ADMIN.AEMRUSERITEMVS U ";
             SQL = SQL + ComNum.VBLF + "                                            WHERE U.JOBGB = 'ACT' ";
             SQL = SQL + ComNum.VBLF + "                                                   AND U.USEGB = '" + clsType.User.IdNumber + "' ";
             SQL = SQL + ComNum.VBLF + "                                            UNION ";
-            SQL = SQL + ComNum.VBLF + "                                            SELECT U.ITEMCD FROM KOSMOS_EMR.AEMRUSERITEMVS U ";
+            SQL = SQL + ComNum.VBLF + "                                            SELECT U.ITEMCD FROM ADMIN.AEMRUSERITEMVS U ";
             SQL = SQL + ComNum.VBLF + "                                            WHERE U.JOBGB = 'ACT' ";
             SQL = SQL + ComNum.VBLF + "                                                   AND U.USEGB = '" + clsType.User.BuseCode + "' ";
             SQL = SQL + ComNum.VBLF + "                                            )";
@@ -2020,20 +2020,20 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "    C.CHARTDATE, C.CHARTTIME, C.CHARTUSEID, C.EMRNO, ";
             SQL = SQL + ComNum.VBLF + "    R.ITEMCD, R.ITEMVALUE, R.ITEMVALUE1, ";
             SQL = SQL + ComNum.VBLF + "    B.BASEXNAME, B.BASNAME ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.AEMRCHARTMST C ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.AEMRCHARTROW R ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.AEMRCHARTMST C ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.AEMRCHARTROW R ";
             SQL = SQL + ComNum.VBLF + "    ON C.EMRNO = R.EMRNO ";
             SQL = SQL + ComNum.VBLF + "    AND C.EMRNOHIS  = R.EMRNOHIS ";
-            SQL = SQL + ComNum.VBLF + "    AND R.ITEMCD IN (SELECT U.ITEMCD FROM KOSMOS_EMR.AEMRUSERITEMVS U ";
+            SQL = SQL + ComNum.VBLF + "    AND R.ITEMCD IN (SELECT U.ITEMCD FROM ADMIN.AEMRUSERITEMVS U ";
             SQL = SQL + ComNum.VBLF + "                     WHERE U.JOBGB = 'ACT' ";
             SQL = SQL + ComNum.VBLF + "                            AND U.USEGB = '" + clsType.User.IdNumber + "' ";
             SQL = SQL + ComNum.VBLF + "                     UNION ";
-            SQL = SQL + ComNum.VBLF + "                     SELECT U.ITEMCD FROM KOSMOS_EMR.AEMRUSERITEMVS U ";
+            SQL = SQL + ComNum.VBLF + "                     SELECT U.ITEMCD FROM ADMIN.AEMRUSERITEMVS U ";
             SQL = SQL + ComNum.VBLF + "                     WHERE U.JOBGB = 'ACT' ";
             SQL = SQL + ComNum.VBLF + "                            AND U.USEGB = '" + clsType.User.BuseCode + "' ";
             SQL = SQL + ComNum.VBLF + "                     )";
             SQL = SQL + ComNum.VBLF + "    AND (R.ITEMVALUE IS NOT NULL) "; // OR R.ITEMVALUE1 IS NOT NULL) ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_EMR.AEMRBASCD B ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.AEMRBASCD B ";
             SQL = SQL + ComNum.VBLF + "    ON R.ITEMCD = B.BASCD ";
             SQL = SQL + ComNum.VBLF + "    AND B.BSNSCLS = '기록지관리' ";
             SQL = SQL + ComNum.VBLF + "    AND B.UNITCLS IN ('간호활동항목') ";
@@ -2256,7 +2256,7 @@ namespace ComEmrBase
 
             try
             {
-                SQL = " SELECT KORNAME  FROM KOSMOS_ADM.INSA_MST ";
+                SQL = " SELECT KORNAME  FROM ADMIN.INSA_MST ";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN ='" + ArgCode + "' ";
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);

@@ -165,7 +165,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = " SELECT ROWID FROM KOSMOS_PMPA.BAS_AUTO_MST ";
+                SQL = " SELECT ROWID FROM ADMIN.BAS_AUTO_MST ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO ='" + strPano + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND GUBUN ='1' ";
                 SQL = SQL + ComNum.VBLF + "  AND GBPOSCO ='" + strPosco + "' ";
@@ -190,7 +190,7 @@ namespace ComLibB
                 if (FstrROWID == "")
                 {
                     SQL = "";
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_AUTO_MST ( PANO,SNAME,GUBUN,SDATE,EDATE,DELDATE,";
+                    SQL = " INSERT INTO ADMIN.BAS_AUTO_MST ( PANO,SNAME,GUBUN,SDATE,EDATE,DELDATE,";
                     SQL = SQL + ComNum.VBLF + " ENTSABUN,ENTDATE,ENTDATE2,REMARK,GBPOSCO ) VALUES ( ";
                     SQL = SQL + ComNum.VBLF + " '" + strPano + "','" + StrSname + "','1', ";
                     SQL = SQL + ComNum.VBLF + " TO_DATE('" + strSDate + "','YYYY-MM-DD'),";
@@ -211,10 +211,10 @@ namespace ComLibB
                 {
                     //이전내역 백업
                     SQL = "";
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_AUTO_MST_HIS  ";
+                    SQL = " INSERT INTO ADMIN.BAS_AUTO_MST_HIS  ";
                     SQL = SQL + ComNum.VBLF + " ( PANO,SNAME,GUBUN,DEPTCODE,SDATE,EDATE,DELDATE,ENTDATE,ENTDATE2,ENTSABUN,REMARK,GBPOSCO)   ";
                     SQL = SQL + ComNum.VBLF + "   SELECT PANO,SNAME,GUBUN,DEPTCODE,SDATE,EDATE,DELDATE,ENTDATE,ENTDATE2,ENTSABUN,REMARK,GBPOSCO ";
-                    SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_PMPA.BAS_AUTO_MST ";
+                    SQL = SQL + ComNum.VBLF + "    FROM ADMIN.BAS_AUTO_MST ";
                     SQL = SQL + ComNum.VBLF + "     WHERE ROWID ='" + FstrROWID + "' ";
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
 
@@ -228,7 +228,7 @@ namespace ComLibB
                     }
 
                     SQL = "";
-                    SQL = " UPDATE KOSMOS_PMPA.BAS_AUTO_MST SET ";
+                    SQL = " UPDATE ADMIN.BAS_AUTO_MST SET ";
                     SQL = SQL + ComNum.VBLF + " ENTSABUN ='" + gstrJobPart + "', ";
                     SQL = SQL + ComNum.VBLF + " ENTDATE2 = SYSDATE, ";
                     SQL = SQL + ComNum.VBLF + " REMARK  = '" + strRemark + "' ";
@@ -296,10 +296,10 @@ namespace ComLibB
 
                     //이전내역 백업
                     SQL = "";
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_AUTO_MST_HIS  ";
+                    SQL = " INSERT INTO ADMIN.BAS_AUTO_MST_HIS  ";
                     SQL = SQL + ComNum.VBLF + " ( PANO,SNAME,GUBUN,DEPTCODE,SDATE,EDATE,DELDATE,ENTDATE,ENTDATE2,ENTSABUN,REMARK,GBPOSCO )   ";
                     SQL = SQL + ComNum.VBLF + "   SELECT PANO,SNAME,GUBUN,DEPTCODE,SDATE,EDATE,DELDATE,ENTDATE,ENTDATE2,ENTSABUN,REMARK,GBPOSCO ";
-                    SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_PMPA.BAS_AUTO_MST ";
+                    SQL = SQL + ComNum.VBLF + "    FROM ADMIN.BAS_AUTO_MST ";
                     SQL = SQL + ComNum.VBLF + "     WHERE ROWID ='" + FstrROWID + "' ";
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
 
@@ -313,7 +313,7 @@ namespace ComLibB
                     }
 
                     SQL = "";
-                    SQL = " UPDATE KOSMOS_PMPA.BAS_AUTO_MST SET ";
+                    SQL = " UPDATE ADMIN.BAS_AUTO_MST SET ";
                     SQL = SQL + ComNum.VBLF + " DELDATE =TO_DATE('" + clsPublic.GstrSysDate + "','YYYY-MM-DD') ,  ";
                     SQL = SQL + ComNum.VBLF + " ENTSABUN ='" + clsPublic.GstrJobPart + "', ";
                     SQL = SQL + ComNum.VBLF + " ENTDATE2 = SYSDATE ";
@@ -377,7 +377,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(DelDate,'YYYY-MM-DD') DelDate,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(EntDate,'YYYY-MM-DD HH24:MI') EntDate,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(EntDate2,'YYYY-MM-DD HH24:MI') EntDate2 ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_AUTO_MST ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_AUTO_MST ";
                 SQL = SQL + ComNum.VBLF + "  WHERE GUBUN ='1' ";
                 if (txtPano2.Text.Trim() != "")
                 {
@@ -468,7 +468,7 @@ namespace ComLibB
                 SQL = " SELECT a.Pano,a.SName,a.Jumin1 || '-' || a.Jumin2 AS Jumin, ";
                 SQL = SQL + ComNum.VBLF + "  a.Juso,a.ZipCode1 || a.ZipCode1 AS ZipCode,a.Tel,a.Hphone, ";
                 SQL = SQL + ComNum.VBLF + "  a.Jumin1,a.Jumin3 ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_PATIENT a ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_PATIENT a ";
                 SQL = SQL + ComNum.VBLF + "   WHERE a.PANO ='" + argPano + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -517,7 +517,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = " SELECT ROWID,TO_CHAR(SDate,'YYYY-MM-DD') SDate,Remark FROM KOSMOS_PMPA.BAS_AUTO_MST ";
+                SQL = " SELECT ROWID,TO_CHAR(SDate,'YYYY-MM-DD') SDate,Remark FROM ADMIN.BAS_AUTO_MST ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO ='" + argPano + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND GUBUN ='1' ";
                 SQL = SQL + ComNum.VBLF + "  AND (DelDate IS NULL OR DelDate ='') ";

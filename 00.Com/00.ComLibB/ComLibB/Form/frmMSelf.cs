@@ -318,7 +318,7 @@ namespace ComLibB
                         if (strROWID != "")
                         {
                             SQL = "";
-                            SQL = "DELETE KOSMOS_PMPA.BAS_MSELF WHERE ROWID = '" + strROWID + "' ";
+                            SQL = "DELETE ADMIN.BAS_MSELF WHERE ROWID = '" + strROWID + "' ";
                             strGubun = "D";
                         }
                     }
@@ -329,7 +329,7 @@ namespace ComLibB
                             if (strGubunA == "D" && strGubunB == "1")
                             {
                                 SQL = "";
-                                SQL = "INSERT INTO KOSMOS_PMPA.BAS_MSELF (SuCode,GubunA,GubunB,FieldA,FieldB,FieldC,";
+                                SQL = "INSERT INTO ADMIN.BAS_MSELF (SuCode,GubunA,GubunB,FieldA,FieldB,FieldC,";
                                 SQL = SQL + ComNum.VBLF + "EntDate,Remark) VALUES ('" + strSuCode + "','" + strGubunA + "',";
                                 SQL = SQL + ComNum.VBLF + " '" + strGubunB + "','" + strFieldA + "','" + strFieldB + "','" + strFieldC + "',";
                                 SQL = SQL + ComNum.VBLF + "TO_DATE('" + strDate + "','YYYY-MM-DD') ,'" + strRemark + "' ) ";
@@ -338,7 +338,7 @@ namespace ComLibB
                             else
                             {
                                 SQL = "";
-                                SQL = "INSERT INTO KOSMOS_PMPA.BAS_MSELF (SuCode,GubunA,GubunB,FieldA,FieldB,FieldC,";
+                                SQL = "INSERT INTO ADMIN.BAS_MSELF (SuCode,GubunA,GubunB,FieldA,FieldB,FieldC,";
                                 SQL = SQL + ComNum.VBLF + "EntDate) VALUES ('" + strSuCode + "','" + strGubunA + "',";
                                 SQL = SQL + ComNum.VBLF + "'" + strGubunB + "','" + strFieldA + "','" + strFieldB + "','" + strFieldC + "',";
                                 SQL = SQL + ComNum.VBLF + "TO_DATE('" + strDate + "','YYYY-MM-DD')) ";
@@ -350,7 +350,7 @@ namespace ComLibB
                             if (strGubunA == "D" && strGubunB == "1")
                             {
                                 SQL = "";
-                                SQL = "UPDATE KOSMOS_PMPA.BAS_MSELF SET FieldA='" + strFieldA + "',";
+                                SQL = "UPDATE ADMIN.BAS_MSELF SET FieldA='" + strFieldA + "',";
                                 SQL = SQL + ComNum.VBLF + " Remark ='" + strRemark + "', ";
                                 SQL = SQL + ComNum.VBLF + "FieldB='" + strFieldB + "',";
                                 SQL = SQL + ComNum.VBLF + "FieldC='" + strFieldC + "',";
@@ -361,7 +361,7 @@ namespace ComLibB
                             else
                             {
                                 SQL = "";
-                                SQL = "UPDATE KOSMOS_PMPA.BAS_MSELF SET FieldA='" + strFieldA + "',";
+                                SQL = "UPDATE ADMIN.BAS_MSELF SET FieldA='" + strFieldA + "',";
                                 SQL = SQL + ComNum.VBLF + "FieldB='" + strFieldB + "',";
                                 SQL = SQL + ComNum.VBLF + "FieldC='" + strFieldC + "',";
                                 SQL = SQL + ComNum.VBLF + "EntDate=TO_DATE('" + strDate + "','YYYY-MM-DD') ";
@@ -387,10 +387,10 @@ namespace ComLibB
                         {
                             case "U":
                                 SQL = "";
-                                SQL = " INSERT INTO KOSMOS_PMPA.BAS_MSELF_HISTORY(";
+                                SQL = " INSERT INTO ADMIN.BAS_MSELF_HISTORY(";
                                 SQL = SQL + ComNum.VBLF + " SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE, CHKNO, REMARK, FIELDC, GUBUN, HDATE)  ";
                                 SQL = SQL + ComNum.VBLF + "SELECT SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE, CHKNO, REMARK, FIELDC, '" + strGubun + "', SYSDATE";
-                                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_MSELF";
+                                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_MSELF";
                                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
                                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                                 if (SqlErr != "")
@@ -404,10 +404,10 @@ namespace ComLibB
                                 break;
                             case "D":
                                 SQL = "";
-                                SQL = " INSERT INTO KOSMOS_PMPA.BAS_MSELF_HISTORY(";
+                                SQL = " INSERT INTO ADMIN.BAS_MSELF_HISTORY(";
                                 SQL = SQL + ComNum.VBLF + " SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE, CHKNO, REMARK, FIELDC, GUBUN, HDATE)  ";
                                 SQL = SQL + ComNum.VBLF + "SELECT SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE, CHKNO, REMARK, FIELDC, '" + strGubun + "', SYSDATE";
-                                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_MSELF";
+                                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_MSELF";
                                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
                                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                                 if (SqlErr != "")
@@ -509,7 +509,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT a.SuCode,a.FieldA,a.FieldB,a.FieldC,TO_CHAR(a.EntDate,'YYYY-MM-DD') EntDate,a.ChkNo,a.Remark,";
                 SQL = SQL + ComNum.VBLF + "      a.ROWID,b.SuNameK ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_MSELF a,KOSMOS_PMPA.BAS_SUN b ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_MSELF a,ADMIN.BAS_SUN b ";
                 SQL = SQL + ComNum.VBLF + "WHERE a.GubunA = '" + strGubunA + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND a.GubunB = '" + strGubunB + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND a.SuCode = b.SuNext(+) ";
@@ -546,7 +546,7 @@ namespace ComLibB
                        VB.Left(cboJob.Text, 2) == "82" || VB.Left(cboJob.Text, 2) == "09")
                     {
                         SQL = "";
-                        SQL = "SELECT SuNameK FROM KOSMOS_PMPA.BAS_SUN ";
+                        SQL = "SELECT SuNameK FROM ADMIN.BAS_SUN ";
                         SQL = SQL + ComNum.VBLF + "WHERE SuNext = '" + dt.Rows[i]["FieldA"].ToString().Trim() + "' ";
                         SqlErr = clsDB.GetDataTable(ref dt2, SQL, clsDB.DbCon);
 
@@ -567,7 +567,7 @@ namespace ComLibB
                     if (VB.Left(cboJob.Text, 2) == "C1")
                     {
                         SQL = "";
-                        SQL = "SELECT SuNameK FROM KOSMOS_PMPA.BAS_SUN ";
+                        SQL = "SELECT SuNameK FROM ADMIN.BAS_SUN ";
                         SQL = SQL + ComNum.VBLF + "WHERE SuNext = '" + dt.Rows[i]["FieldB"].ToString().Trim() + "' ";
                         SqlErr = clsDB.GetDataTable(ref dt2, SQL, clsDB.DbCon);
 
@@ -690,7 +690,7 @@ namespace ComLibB
                     {
                         strData = ssView_Sheet1.Cells[e.Row, e.Column].Text.Trim().ToUpper();
                         SQL = "";
-                        SQL = "SELECT SuNameK FROM KOSMOS_PMPA.BAS_SUN ";
+                        SQL = "SELECT SuNameK FROM ADMIN.BAS_SUN ";
                         SQL = SQL + ComNum.VBLF + "WHERE SuNext = '" + strData + "' ";
                         SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -719,7 +719,7 @@ namespace ComLibB
                 {
                     strData = ssView_Sheet1.Cells[e.Row, e.Column].Text.Trim().ToUpper();
                     SQL = "";
-                    SQL = "SELECT SuNameK FROM KOSMOS_PMPA.BAS_SUN ";
+                    SQL = "SELECT SuNameK FROM ADMIN.BAS_SUN ";
                     SQL = SQL + ComNum.VBLF + "WHERE SuNext = '" + strData + "' ";
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -746,7 +746,7 @@ namespace ComLibB
                 {
                     strData = ssView_Sheet1.Cells[e.Row, e.Column].Text.Trim().ToUpper();
                     SQL = "";
-                    SQL = "SELECT SuNameK FROM KOSMOS_PMPA.BAS_SUN ";
+                    SQL = "SELECT SuNameK FROM ADMIN.BAS_SUN ";
                     SQL = SQL + ComNum.VBLF + "WHERE SuNext = '" + strData + "' ";
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -836,7 +836,7 @@ namespace ComLibB
                 if (strROWID != "")
                 {
                     SQL = "";
-                    SQL = " UPDATE KOSMOS_PMPA.BAS_MSELF SET ChkNO = '" + strTemp + "'  ";
+                    SQL = " UPDATE ADMIN.BAS_MSELF SET ChkNO = '" + strTemp + "'  ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "'";
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                     if (SqlErr != "")
@@ -941,7 +941,7 @@ namespace ComLibB
                     {
                         strData = ssView_Sheet1.Cells[e.Row, e.Column].Text.Trim().ToUpper();
                         SQL = "";
-                        SQL = "SELECT SuNameK FROM KOSMOS_PMPA.BAS_SUN ";
+                        SQL = "SELECT SuNameK FROM ADMIN.BAS_SUN ";
                         SQL = SQL + ComNum.VBLF + "WHERE SuNext = '" + strData + "' ";
                         SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -973,7 +973,7 @@ namespace ComLibB
                 {
                     strData = ssView_Sheet1.Cells[e.Row, e.Column].Text.Trim().ToUpper();
                     SQL = "";
-                    SQL = "SELECT SuNameK FROM KOSMOS_PMPA.BAS_SUN ";
+                    SQL = "SELECT SuNameK FROM ADMIN.BAS_SUN ";
                     SQL = SQL + ComNum.VBLF + "WHERE SuNext = '" + strData + "' ";
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -1008,7 +1008,7 @@ namespace ComLibB
                 {
                     strData = ssView_Sheet1.Cells[e.Row, e.Column].Text.Trim().ToUpper();
                     SQL = "";
-                    SQL = "SELECT SuNameK FROM KOSMOS_PMPA.BAS_SUN ";
+                    SQL = "SELECT SuNameK FROM ADMIN.BAS_SUN ";
                     SQL = SQL + ComNum.VBLF + "WHERE SuNext = '" + strData + "' ";
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 

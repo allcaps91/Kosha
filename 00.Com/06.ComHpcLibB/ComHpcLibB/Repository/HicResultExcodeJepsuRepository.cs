@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.WRTNO,a.Part,a.ExCode,b.HName,a.Result,a.ResCode,a.Panjeng                    ");
             parameter.AppendSql("     , b.Min_M,b.Max_M,b.Min_F,b.Max_F,b.ResultType,b.GbCodeUse,b.Unit                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b, KOSMOS_PMPA.HIC_JEPSU c     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b, ADMIN.HIC_JEPSU c     ");
             parameter.AppendSql(" WHERE c.PANO = :PANO                                                                  ");
             if (fstrGjChasu == "2")
             {
@@ -56,7 +56,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.ExCode,b.ENDOGUBUN1,b.ENDOGUBUN2,b.ENDOGUBUN3,b.ENDOGUBUN4,b.ENDOGUBUN5, C.PTNO, C.JEPDATE    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_EXCODE b, KOSMOS_PMPA.HIC_JEPSU C                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULT a, ADMIN.HIC_EXCODE b, ADMIN.HIC_JEPSU C                     ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                                                                ");
             parameter.AppendSql("   AND a.WRTNO = C.WRTNO                                                                               ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE                                                                               ");

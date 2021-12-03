@@ -27,7 +27,7 @@ namespace HC_OSHA.Repository.Schedule
             parameter.AppendSql("             , A.VISITMANAGERID AS VISITUSERID2                                            ");
             parameter.AppendSql("             , C.NAME AS ViSITUSERNAME2                                                    ");
             parameter.AppendSql("             , C.ROLE AS VISITUSERROLE2                                                    ");
-            parameter.AppendSql("          FROM KOSMOS_PMPA.HIC_OSHA_SCHEDULE A                                             ");
+            parameter.AppendSql("          FROM ADMIN.HIC_OSHA_SCHEDULE A                                             ");
             parameter.AppendSql("          INNER JOIN HC_SITE_VIEW AA                                                       ");
             parameter.AppendSql("                  ON A.SITE_ID = AA.ID                                                     ");
             parameter.AppendSql("          LEFT OUTER JOIN HIC_USERS B                                                      ");

@@ -21,7 +21,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WARDNAME                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULTWARD  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULTWARD  ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
             parameter.AppendSql("   AND GUBUN = '01'                ");
 
@@ -34,7 +34,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, GUBUN2, WARDNAME, SEQNO, EXAMWARD, ROWID  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULTWARD                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULTWARD                      ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                                  ");
             parameter.AppendSql(" ORDER BY SEQNO, CODE, GUBUN                           ");
 
@@ -47,7 +47,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WardName, ROWID, GUBUN2,SEQNO       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RESULTWARD          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RESULTWARD          ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                      ");
             parameter.AppendSql("   AND EXAMWARD = :EXAMWARD                ");
             if (strGubun != "*")
@@ -70,7 +70,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_RESULTWARD SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_RESULTWARD SET  ");
             parameter.AppendSql("       CODE     = :CODE                ");
             parameter.AppendSql("     , WARDNAME = :WARDNAME            ");
             parameter.AppendSql(" WHERE ROWID    = :RID                 ");
@@ -86,7 +86,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_RESULTWARD ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_RESULTWARD ");
             parameter.AppendSql("      (SABUN, CODE, WARDNAME, GUBUN)       ");
             parameter.AppendSql("VALUES                                     ");
             parameter.AppendSql("      (:SABUN, :CODE, :WARDNAME, :GUBUN)   ");
@@ -103,7 +103,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_RESULTWARD ");
+            parameter.AppendSql("DELETE ADMIN.HIC_RESULTWARD ");
             parameter.AppendSql(" WHERE ROWID = :RID               ");
 
             parameter.Add("RID", strROWID);

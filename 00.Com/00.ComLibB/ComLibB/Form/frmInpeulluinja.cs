@@ -132,7 +132,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT a.Pano,b.SName,a.EntSabun,a.Remark,a.ROWID,b.Jumin1 || '-' || b.Jumin2 Jumin , ";
                 SQL = SQL + ComNum.VBLF + "  TO_CHAR(a.SDate,'YYYY-MM-DD') SDate, TO_CHAR(a.DelDate,'YYYY-MM-DD') DelDate ";
-                SQL = SQL + ComNum.VBLF + " FROM " + ComNum.DB_PMPA + "ETC_INFLU_OK a, KOSMOS_PMPA.BAS_PATIENT b";
+                SQL = SQL + ComNum.VBLF + " FROM " + ComNum.DB_PMPA + "ETC_INFLU_OK a, ADMIN.BAS_PATIENT b";
                 SQL = SQL + ComNum.VBLF + "  WHERE a.PANO=b.PANO(+)";
                 SQL = SQL + ComNum.VBLF + "    AND a.SDate >=TO_DATE('" + dtpS.Value.ToString ("yyyy-MM-dd") + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "    AND a.SDate <=TO_DATE('" + dtpE.Value.ToString ("yyyy-MM-dd") + "','YYYY-MM-DD') ";
@@ -237,7 +237,7 @@ namespace ComLibB
                     SQL = "";
                     SQL = " SELECT a.Pano,b.SName,a.EntSabun,a.Remark,b.Jumin1 || '-' || b.Jumin2 Jumin , ";
                     SQL = SQL + ComNum.VBLF + "  TO_CHAR(a.SDate,'YYYY-MM-DD') SDate, TO_CHAR(a.DelDate,'YYYY-MM-DD') DelDate ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_INFLU_OK a, KOSMOS_PMPA.BAS_PATIENT b";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_INFLU_OK a, ADMIN.BAS_PATIENT b";
                     SQL = SQL + ComNum.VBLF + "  WHERE a.PANO=b.PANO(+)";
                     SQL = SQL + ComNum.VBLF + "  AND a.PANO ='" + dt.Rows [i] ["Pano"].ToString ().Trim () + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND ( a.DELDATE IS NULL OR a.DELDATE ='') ";

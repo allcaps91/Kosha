@@ -112,10 +112,10 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT A.SPECNO, A.RESULTDATE, C.EXAMNAME, B.MASTERCODE, B.SUBCODE, B.RESULT, B.REFER, B.UNIT, B.SEQNO   ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_SPECMST A                                                                         ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_OCS.EXAM_RESULTC B                                                                    ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EXAM_SPECMST A                                                                         ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.EXAM_RESULTC B                                                                    ";
                 SQL = SQL + ComNum.VBLF + "    ON A.SPECNO = B.SPECNO                                                                               ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_OCS.EXAM_MASTER C                                                                     ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.EXAM_MASTER C                                                                     ";
                 SQL = SQL + ComNum.VBLF + "    ON B.SUBCODE = C.MASTERCODE                                                                          ";
                 SQL = SQL + ComNum.VBLF + "   AND C.EXAMYNAME = '" + EXAMYNAME + "'                                                                 ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PANO = '" + PANO + "'                                                                           ";
@@ -187,7 +187,7 @@ namespace ComEmrBase
             { 
                 SQL = "";
                 SQL = "SELECT PANO,SNAME,JUMIN1,JUMIN2,JUMIN3,SEX ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + PANO + "' ";
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -249,7 +249,7 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL = " SELECT MASTERCODE, NORMAL, SEX, AGEFROM, AGETO, REFVALFROM, REFVALTO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_MASTER_SUB ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_MASTER_SUB ";
                 SQL = SQL + ComNum.VBLF + "WHERE  1=1"; //'41:Reference Value
                 //2018-12-12 안정수 조건 추가함 
                 SQL = SQL + ComNum.VBLF + "AND MASTERCODE = '" + astrCode + "'";

@@ -12,8 +12,8 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT '' CHK, A.MCODE, A.EXCODE, B.HNAME, B.UNIT, A.ROWID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_AUTOPAN_MATCH A                     ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE        B                     ");
+            parameter.AppendSql("  FROM ADMIN.HEA_AUTOPAN_MATCH A                     ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE        B                     ");
             parameter.AppendSql(" WHERE A.EXCODE = B.CODE                                   ");
             parameter.AppendSql("   AND A.WRTNO = :WRTNO                                    ");
             parameter.AppendSql(" ORDER BY MCODE                                            ");

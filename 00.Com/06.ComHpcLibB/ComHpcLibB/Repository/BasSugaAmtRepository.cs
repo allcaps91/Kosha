@@ -32,7 +32,7 @@ namespace ComHpcLibB.Repository
             //nSuAmt = AdoGetNumber(Rs, "bamt", 0)
             //Call AdoCloseSet(Rs)
 
-            parameter.AppendSql("SELECT BAMT FROM KOSMOS_PMPA.BAS_SUGA_AMT              ");
+            parameter.AppendSql("SELECT BAMT FROM ADMIN.BAS_SUGA_AMT              ");
             parameter.AppendSql(" WHERE SUCODE LIKE :SUCODE                             ");
             parameter.AppendSql(" ORDER BY SUCODE                                       ");
 

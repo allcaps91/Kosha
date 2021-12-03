@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT         TO_CHAR(TAXDATE,'YYYY-MM-DD') TAXDATE FROM KOSMOS_ADM.ACC_TAX  ");
+            parameter.AppendSql("SELECT         TO_CHAR(TAXDATE,'YYYY-MM-DD') TAXDATE FROM ADMIN.ACC_TAX  ");
 
             parameter.AppendSql("WHERE          GUBUN = '4'                                                     ");
 

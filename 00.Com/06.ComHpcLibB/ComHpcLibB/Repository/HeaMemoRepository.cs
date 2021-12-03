@@ -22,7 +22,7 @@ namespace ComHpcLibB.Repository
         public int Insert(HEA_MEMO item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_MEMO           ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_MEMO           ");
             parameter.AppendSql("       (WRTNO, MEMO, ENTTIME, JOBSABUN)    ");
             parameter.AppendSql("VALUES                                     ");
             parameter.AppendSql("       (:WRTNO, :MEMO, SYSDATE, :JOBSABUN) ");
@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
         public int Update(string strROWID)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HEA_MEMO    ");
+            parameter.AppendSql("DELETE ADMIN.HEA_MEMO    ");
             parameter.AppendSql(" WHERE ROWID  = :RID           ");
 
             parameter.Add("RID", strROWID);
@@ -49,8 +49,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MEMO,ENTTIME,JOBSABUN                                               ");
-            parameter.AppendSql("      ,KOSMOS_OCS.FC_BAS_USER(JOBSABUN) AS JOBNAME,PTNO,ROWID AS RID       ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HEA_MEMO                                                ");
+            parameter.AppendSql("      ,ADMIN.FC_BAS_USER(JOBSABUN) AS JOBNAME,PTNO,ROWID AS RID       ");
+            parameter.AppendSql("  From ADMIN.HEA_MEMO                                                ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                                        ");
             parameter.AppendSql("   AND MEMO IS NOT NULL                                                    ");
             parameter.AppendSql(" ORDER BY ENTTIME DESC                                                     ");

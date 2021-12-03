@@ -87,8 +87,8 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL += " SELECT b.SuGbF                                                     \r";
-                    SQL += "   FROM KOSMOS_PMPA.BAS_SUT b                                       \r";
-                    SQL += "      , KOSMOS_PMPA.BAS_SUN C                                       \r";
+                    SQL += "   FROM ADMIN.BAS_SUT b                                       \r";
+                    SQL += "      , ADMIN.BAS_SUN C                                       \r";
                     SQL += "  WHERE B.SUNEXT = '" + clsOrdFunction.GstrSELECTSuCode.Trim() + "' \r";
                     SQL += "    AND B.SuCode  = C.SuNEXT(+)                                     \r";
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -152,7 +152,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " SELECT  SubName, SuCode FROM KOSMOS_OCS.OCS_SUBCODE                    \r";
+                SQL += " SELECT  SubName, SuCode FROM ADMIN.OCS_SUBCODE                    \r";
                 SQL += "  WHERE OrderCode = '" + strOrdCode.Trim() + "'                         \r";
                 SQL += "    AND (DelDate IS NULL OR DelDate ='')                                \r";
                 if (strSchWord != "")
@@ -251,7 +251,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " SELECT ORDERNAME FROM KOSMOS_OCS.OCS_ORDERCODE \r";
+                SQL += " SELECT ORDERNAME FROM ADMIN.OCS_ORDERCODE \r";
                 SQL += " WHERE ORDERCODE = '" + strOrderCode + "'       \r";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

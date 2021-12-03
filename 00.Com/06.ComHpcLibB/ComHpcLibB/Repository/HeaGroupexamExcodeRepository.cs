@@ -25,8 +25,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT a.SEQNO,a.EXCODE,b.HNAME,a.SUGAGBN,a.ROWID AS RID,SUDATE        ");
             //parameter.AppendSql("      ,b.GAMT1,b.JAMT1,b.SAMT1,b.IAMT1,b.GAMT2,b.JAMT2,b.SAMT2,b.IAMT2 ");
             parameter.AppendSql("      ,b.AMT1 AS GAMT1 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPEXAM a                                     ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_EXCODE b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPEXAM a                                     ");
+            parameter.AppendSql("      ,ADMIN.HIC_EXCODE b                                        ");
             parameter.AppendSql(" WHERE A.GROUPCODE =:GROUPCODE                                         ");
             parameter.AppendSql("   AND A.EXCODE = B.CODE(+)                                            ");
             parameter.AppendSql(" ORDER BY A.SEQNO,A.EXCODE                                             ");
@@ -40,8 +40,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.EXCODE, b.ENDOGUBUN1, b.ENDOGUBUN2, b.ENDOGUBUN3, b.ENDOGUBUN4, b.ENDOGUBUN5    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPEXAM a                                             ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_EXCODE b                                                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPEXAM a                                             ");
+            parameter.AppendSql("      ,ADMIN.HIC_EXCODE b                                                ");
             parameter.AppendSql(" WHERE a.GROUPCODE IN (:GROUPCODE)                                             ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                    ");
             parameter.AppendSql(" GROUP BY a.EXCODE, b.ENDOGUBUN1, b.ENDOGUBUN2, b.ENDOGUBUN3, b.ENDOGUBUN4, b.ENDOGUBUN5 ");
@@ -57,8 +57,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT a.ROWID AS RID                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPEXAM a         ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_EXCODE b            ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPEXAM a         ");
+            parameter.AppendSql("      ,ADMIN.HIC_EXCODE b            ");
             parameter.AppendSql(" WHERE a.GROUPCODE =:GROUPCODE             ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE                   ");
             parameter.AppendSql("   AND b.DELDATE IS NULL                   ");
@@ -73,8 +73,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.EXCODE, b.HNAME               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPEXAM a     ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_EXCODE b        ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPEXAM a     ");
+            parameter.AppendSql("      ,ADMIN.HIC_EXCODE b        ");
             parameter.AppendSql(" WHERE a.GROUPCODE IN (:GROUPCODE)     ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)            ");
             parameter.AppendSql(" GROUP BY a.EXCODE, b.HNAME            ");

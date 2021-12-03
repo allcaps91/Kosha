@@ -79,7 +79,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT A.YEAR, A.PANO, A.SNAME, A.JUMSU, A.UJUMSU, B.BI, A.ROWID, ";
-            SQL += ComNum.VBLF + "        B.GBSMS, A.ENTSABUN, KOSMOS_OCS.FC_BAS_USER_NAME(A.ENTSABUN) AS USERNAME, ";
+            SQL += ComNum.VBLF + "        B.GBSMS, A.ENTSABUN, ADMIN.FC_BAS_USER_NAME(A.ENTSABUN) AS USERNAME, ";
             SQL += ComNum.VBLF + "        A.GUBUN, B.JUMIN1, B.JUMIN2, B.JUMIN3, B.TEL, B.HPHONE, B.HPHONE2, ";
             SQL += ComNum.VBLF + "        B.BUILDNO, B.ZIPCODE1 || B.ZIPCODE2  AS ZIPCODE, B.JUSO, ";
             SQL += ComNum.VBLF + "        TO_CHAR(B.LASTDATE,'YYYY-MM-DD') AS LASTDATE, ";

@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ENDO_CHART SET                       ");
+            parameter.AppendSql("UPDATE ADMIN.ENDO_CHART SET                       ");
             parameter.AppendSql("       GUBUN         = :GUBUN                          ");
             parameter.AppendSql("     , GB_EGD1       = :GB_EGD1                        ");
             parameter.AppendSql("     , GB_EGD2       = :GB_EGD2                        ");
@@ -113,7 +113,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_OCS.ENDO_CHART              ");
+            parameter.AppendSql("INSERT INTO ADMIN.ENDO_CHART              ");
             parameter.AppendSql("       (PTNO,BDATE,RDATE,GUBUN)                ");
             parameter.AppendSql("VALUES                                         ");
             parameter.AppendSql("       (:PTNO, TO_DATE(:BDATE, 'YYYY-MM-DD')   ");
@@ -132,7 +132,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                          ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_CHART                   ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_CHART                   ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                            ");
             parameter.AppendSql("   AND RDATE = TO_DATE(:RDATE, 'YYYY-MM-DD')   ");
 
@@ -152,7 +152,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , GB_OLD11,GB_OLD12,GB_OLD13,GB_OLD13_1,GB_OLD14,GB_OLD15_1                                       ");
             parameter.AppendSql("     , GB_DRUG,GB_DRUG1,GB_DRUG2,GB_DRUG3,GB_DRUG4,GB_DRUG5,GB_DRUG6,GB_DRUG7,GB_DRUG8_1               ");
             parameter.AppendSql("     , GB_DRUG_STOP1,GB_DRUG_STOP2,GB_B_DRUG,GB_B_DRUG1,GB_B_DRUG1_1,GB_BIGO                           ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_CHART                                                                           ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_CHART                                                                           ");
             parameter.AppendSql(" WHERE ROWID = :RID                                                                                    ");
 
             parameter.Add("RID", argEndoRowId);
@@ -164,7 +164,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT ROWID RID FROM KOSMOS_OCS.ENDO_CHART    ");
+            parameter.AppendSql("SELECT ROWID RID FROM ADMIN.ENDO_CHART    ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                            ");
             parameter.AppendSql("   AND RDATE = TO_DATE(:RDATE, 'YYYY-MM-DD')   ");
 

@@ -308,7 +308,7 @@ namespace ComPmpaLibB
             SQL = SQL + ComNum.VBLF + " WHERE INDATE >= TO_DATE('" + dtpJobFDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD')  ";
             SQL = SQL + ComNum.VBLF + " AND  INDATE <= TO_DATE('" + dtpJobTDate.Value.AddDays(1).ToString("yyyy-MM-dd") + "','YYYY-MM-DD')  ";
             SQL = SQL + ComNum.VBLF + " AND PANO IN (";
-            SQL = SQL + ComNum.VBLF + " SELECT PANO FROM KOSMOS_PMPA.DIET_NEWORDER";
+            SQL = SQL + ComNum.VBLF + " SELECT PANO FROM ADMIN.DIET_NEWORDER";
             SQL = SQL + ComNum.VBLF + " WHERE ACTDATE = TO_DATE('" + dtpJobFDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD')  ";
             SQL = SQL + ComNum.VBLF + " AND WARDCODE = 'HD')";
 

@@ -222,7 +222,7 @@ namespace ComPmpaLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = "";
-            SQL += ComNum.VBLF + "CREATE OR REPLACE VIEW KOSMOS_ADM.VIEW_TAXCASH_VIEW2                                      ";
+            SQL += ComNum.VBLF + "CREATE OR REPLACE VIEW ADMIN.VIEW_TAXCASH_VIEW2                                      ";
             SQL += ComNum.VBLF + "(BuName,Ltd, Name, UPTae, JongMok,GbTRB, GAmt, Gbn, BDate) AS                             ";
             //계산서
             SQL += ComNum.VBLF + "SELECT                                                                                    ";
@@ -359,7 +359,7 @@ namespace ComPmpaLibB
             ssList_Sheet1.Cells[ssList_Sheet1.Rows.Count - 1, 5].Text = nToGamt.ToString();
 
             SQL = "";
-            SQL = "DROP VIEW KOSMOS_ADM.VIEW_TAXCASH_VIEW2";
+            SQL = "DROP VIEW ADMIN.VIEW_TAXCASH_VIEW2";
             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
 
             if (SqlErr != "")

@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.TongBun,a.Panjeng,COUNT(*) CNT                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG a, KOSMOS_PMPA.HIC_MCODE b  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG a, ADMIN.HIC_MCODE b  ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                        ");
             parameter.AppendSql("   AND a.MCode = b.Code(+)                                     ");
             parameter.AppendSql("   AND a.Deldate IS NULL                                       ");
@@ -43,7 +43,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(*) CNT                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG a, KOSMOS_PMPA.HIC_MCODE b  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG a, ADMIN.HIC_MCODE b  ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                        ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                       ");
             parameter.AppendSql("   AND b.UCODE = :UCODE                                        ");

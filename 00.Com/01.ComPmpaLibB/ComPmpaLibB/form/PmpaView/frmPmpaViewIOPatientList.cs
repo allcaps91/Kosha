@@ -453,7 +453,7 @@ namespace ComPmpaLibB
             {
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT A.NAME ";
-                SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "BAS_BUSE A, KOSMOS_ADM.INSA_MST B ";
+                SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "BAS_BUSE A, ADMIN.INSA_MST B ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1";
                 SQL += ComNum.VBLF + "    AND A.BUCODE = B.BUSE ";
                 SQL += ComNum.VBLF + "    AND (B.SABUN = '" + VB.Right(strSABUN, 5) + "' ";

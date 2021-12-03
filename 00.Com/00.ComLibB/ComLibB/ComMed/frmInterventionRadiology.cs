@@ -264,7 +264,7 @@ namespace ComLibB
             if (strROWID == "")
             {
                 SQL = "";
-                SQL += ComNum.VBLF + "INSERT INTO KOSMOS_OCS.ETC_RD_REQ     \r";
+                SQL += ComNum.VBLF + "INSERT INTO ADMIN.ETC_RD_REQ     \r";
                 SQL += ComNum.VBLF + "(	                                    \r";
                 SQL += ComNum.VBLF + "	 PTNO                               \r";
                 SQL += ComNum.VBLF + "	,PROCEDURE                          \r";
@@ -313,7 +313,7 @@ namespace ComLibB
             else
             {
                 SQL = "";
-                SQL += ComNum.VBLF + "UPDATE KOSMOS_OCS.ETC_RD_REQ";
+                SQL += ComNum.VBLF + "UPDATE ADMIN.ETC_RD_REQ";
                 SQL += ComNum.VBLF + "SET ";
                 SQL += ComNum.VBLF + " PROCEDURE                = '" + PROCEDURE            +"'	    \r";
                 SQL += ComNum.VBLF + ",PROCEDURE_CHK            = '" + PROCEDURE_CHK        + "'	\r";

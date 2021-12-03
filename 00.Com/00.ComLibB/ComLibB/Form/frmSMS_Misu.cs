@@ -281,7 +281,7 @@ namespace ComLibB
                     if (Convert.ToBoolean(ssTel_Sheet1.Cells[i, 0].Value) == true)
                     {
                         SQL = "";
-                        SQL = " DELETE KOSMOS_PMPA.KMS_TELNO ";
+                        SQL = " DELETE ADMIN.KMS_TELNO ";
                         SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + ssTel_Sheet1.Cells[i, 4].Text + "' ";
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                         if (SqlErr != "")
@@ -429,7 +429,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT NAME, HPHONE, GROUP_NAME, ROWID ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.KMS_TELNO ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.KMS_TELNO ";
                 SQL = SQL + ComNum.VBLF + "  WHERE BUCODE   = '" + VB.Val((string.IsNullOrEmpty(FstrSabun) ? clsType.User.IdNumber : FstrSabun)).ToString("000000") + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND BUSEGBN  = '2' ";
 
@@ -493,7 +493,7 @@ namespace ComLibB
 
             SQL = "";
             SQL = SQL + ComNum.VBLF + " SELECT SABUN, RESULT, ROWID ";
-            SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.ETC_SMS_RESULT ";
+            SQL = SQL + ComNum.VBLF + "   FROM ADMIN.ETC_SMS_RESULT ";
 
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -1512,7 +1512,7 @@ namespace ComLibB
             {
                 SQL.Clear();
                 SQL.AppendLine(" SELECT A.EMP_ID, A.EMP_NM, B.HP_NO  ");
-                SQL.AppendLine(" FROM KOSMOS_ERP.HR_EMP_BASIS A, KOSMOS_ERP.HR_EMP_PERSONAL B ");
+                SQL.AppendLine(" FROM ADMIN.HR_EMP_BASIS A, ADMIN.HR_EMP_PERSONAL B ");
                 SQL.AppendLine(" WHERE A.EMP_ID = B.EMP_ID");
                 SQL.AppendLine(" AND A.EMP_NM LIKE '%" + txtFindName.Text.Trim() + "%'");
                 SQL.AppendLine(" AND A.RETIRE_YMD IS NULL");
@@ -1659,7 +1659,7 @@ namespace ComLibB
                     if (Convert.ToBoolean(ssList1_Sheet1.Cells[i, 0].Value) == true)
                     {
                         SQL = "";
-                        SQL = " DELETE KOSMOS_PMPA.ETC_SMS_RESULT ";
+                        SQL = " DELETE ADMIN.ETC_SMS_RESULT ";
                         SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + ssList1_Sheet1.Cells[i, 2].Text + "' ";
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                         if (SqlErr != "")

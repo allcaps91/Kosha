@@ -232,7 +232,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT SName,Pano,DeptCode,DrCode,TO_CHAR(Date3,'YYYY-MM-DD') RDate,TO_CHAR(Date3,'HH24:MI') RTime ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_RESERVED_NEW";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OPD_RESERVED_NEW";
                 SQL = SQL + ComNum.VBLF + " WHERE Pano = '" + strPano + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND Date3 >= TO_DATE('" + clsPublic.GstrSysDate + "','YYYY-MM-DD')  ";
                 SQL = SQL + ComNum.VBLF + "   AND TRANSDATE IS NULL ";
@@ -504,7 +504,7 @@ namespace ComLibB
 
 
                 SQL = " SELECT PANO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.XRAY_DETAIL";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.XRAY_DETAIL";
                 SQL = SQL + ComNum.VBLF + "  WHERE BDATE =TRUNC(SYSDATE)";
                 SQL = SQL + ComNum.VBLF + "   AND XCODE ='PACS-C' ";
                 SQL = SQL + ComNum.VBLF + "   AND GB_MANUAL='Y' ";

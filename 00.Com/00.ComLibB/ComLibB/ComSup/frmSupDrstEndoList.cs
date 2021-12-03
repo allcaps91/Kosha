@@ -215,7 +215,7 @@ namespace ComLibB
                     if (chkOrder.Checked == true)
                     {
                         SQL2 = SQL2 + ComNum.VBLF + "WHERE SUCODE IN ( ";
-                        SQL2 = SQL2 + ComNum.VBLF + "                    SELECT JEPCODE FROM KOSMOS_ADM.DRUG_SETCODE ";
+                        SQL2 = SQL2 + ComNum.VBLF + "                    SELECT JEPCODE FROM ADMIN.DRUG_SETCODE ";
                         SQL2 = SQL2 + ComNum.VBLF + "                    WHERE GUBUN = '02' ";
                         SQL2 = SQL2 + ComNum.VBLF + "                      AND DELDATE IS NULL ";
                         SQL2 = SQL2 + ComNum.VBLF + "                      AND VFLAG2 = '1' ";
@@ -243,7 +243,7 @@ namespace ComLibB
                     if (chkOrder.Checked == true)
                     {
                         SQL2 = SQL2 + ComNum.VBLF + "WHERE SUCODE IN ( ";
-                        SQL2 = SQL2 + ComNum.VBLF + "                    SELECT JEPCODE FROM KOSMOS_ADM.DRUG_SETCODE ";
+                        SQL2 = SQL2 + ComNum.VBLF + "                    SELECT JEPCODE FROM ADMIN.DRUG_SETCODE ";
                         SQL2 = SQL2 + ComNum.VBLF + "                    WHERE GUBUN = '02' ";
                         SQL2 = SQL2 + ComNum.VBLF + "                      AND DELDATE IS NULL ";
                         SQL2 = SQL2 + ComNum.VBLF + "                      AND VFLAG2 = '1' ";
@@ -374,7 +374,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT JEPCODE, SUGABUN, JEHYENGBUN ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.DRUG_MASTER2 ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.DRUG_MASTER2 ";
                 SQL = SQL + ComNum.VBLF + " WHERE JEPCODE = '" + strSuCode + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);

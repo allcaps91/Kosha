@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT DRCODE                                      ");
             parameter.AppendSql("     , TO_CHAR(SchDate, 'DD') ILJA, GbJin, GbJin2  ");
             parameter.AppendSql("     , GbJin3, GbDay, ROWID                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SCHEDULE                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_SCHEDULE                    ");
             parameter.AppendSql(" WHERE SCHDATE = TO_DATE(:SCHDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND DRCODE  = :DRCODE                           ");
 
@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT DRCODE, GBJIN, GBJIN2                                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SCHEDULE                                        ");
+            parameter.AppendSql("  FROM ADMIN.BAS_SCHEDULE                                        ");
             parameter.AppendSql(" WHERE SCHDATE = TO_DATE(:SCHDATE, 'YYYY-MM-DD')                       ");
             parameter.AppendSql(" AND DRCODE IN ('1402','1405','1407','3114','3115')                    ");
             parameter.AppendSql(" ORDER BY DECODE(DRCODE, '1405',1,'1407',2,'1402',3,'3114',4,'3115',5) ");
@@ -52,7 +52,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GBJIN, GBJIN2                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SCHEDULE                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_SCHEDULE                    ");
             parameter.AppendSql(" WHERE DRCODE  = :DRCODE                           ");
             parameter.AppendSql("   AND SCHDATE = TO_DATE(:SCHDATE, 'YYYY-MM-DD')   ");
 
@@ -66,7 +66,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GbJin, GbJin2               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SCHEDULE    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_SCHEDULE    ");
             parameter.AppendSql(" WHERE DRCODE  = :DRCODE           ");
             parameter.AppendSql("   AND SCHDATE = TRUNC(SYSDATE)    ");
 
@@ -81,7 +81,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT DRCODE                                      ");
             parameter.AppendSql("     , TO_CHAR(SCHDATE, 'DD') ILJA, GBJIN, GBJIN2  ");
             parameter.AppendSql("     , GBJIN3, GBDAY                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SCHEDULE                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_SCHEDULE                    ");
             parameter.AppendSql(" WHERE  1=1                                        ");
             parameter.AppendSql("   AND SCHDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND SCHDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')    ");
@@ -103,7 +103,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT DRCODE                                      ");
             parameter.AppendSql("     , TO_CHAR(SCHDATE, 'DD') ILJA, GBJIN, GBJIN2  ");
             parameter.AppendSql("     , GBJIN3, GBDAY                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SCHEDULE                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_SCHEDULE                    ");
             parameter.AppendSql(" WHERE  1=1                                        ");
             parameter.AppendSql("   AND SCHDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND SCHDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')    ");
@@ -124,7 +124,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.BAS_SCHEDULE                    ");
+            parameter.AppendSql("DELETE ADMIN.BAS_SCHEDULE                    ");
             parameter.AppendSql(" WHERE DRCODE = :DRCODE                            ");
             parameter.AppendSql("   AND SCHDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND SCHDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')    ");
@@ -142,7 +142,7 @@ namespace ComHpcLibB.Repository
         public int Insert(string strDrCode, string strDate, string strDay, string strGbn, string strGbn2, string strGbn3)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_PMPA.BAS_SCHEDULE (                ");
+            parameter.AppendSql(" INSERT INTO ADMIN.BAS_SCHEDULE (                ");
             parameter.AppendSql("        DRCODE, SCHDATE, GBDAY, GBJINSEND              ");
             parameter.AppendSql("        ,GBJIN, GBJIN2, GBJIN3)                        ");
             parameter.AppendSql(" VALUES (                                              ");
@@ -164,7 +164,7 @@ namespace ComHpcLibB.Repository
         public int Update(string strDayGbn, string strGbn, string strGbn2, string strGbn3, string strROWID)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.BAS_SCHEDULE                            ");
+            parameter.AppendSql("UPDATE ADMIN.BAS_SCHEDULE                            ");
             parameter.AppendSql("   SET GBDAY       =:GBDAY                                 ");
             parameter.AppendSql("      ,GBJIN       =:GBJIN                                 ");
             parameter.AppendSql("      ,GBJINEND    =''                                     ");
@@ -192,7 +192,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(*) CNT                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_SCHEDULE                    ");
+            parameter.AppendSql("  FROM ADMIN.BAS_SCHEDULE                    ");
             parameter.AppendSql(" WHERE 1=1                                         ");
             parameter.AppendSql(" AND SCHDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')      ");
             parameter.AppendSql(" AND SCHDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')      ");

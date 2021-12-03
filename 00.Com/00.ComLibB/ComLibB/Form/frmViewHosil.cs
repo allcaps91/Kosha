@@ -1051,7 +1051,7 @@ namespace ComLibB
             }
         }
 
-        //TODO: IPD_MASTER이 없음  >> KOSMOS_PMPA.IPD_NEW_MASTER로 바뀐거 같음
+        //TODO: IPD_MASTER이 없음  >> ADMIN.IPD_NEW_MASTER로 바뀐거 같음
         void GwaBedTotalStatus()
         {
             if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false)

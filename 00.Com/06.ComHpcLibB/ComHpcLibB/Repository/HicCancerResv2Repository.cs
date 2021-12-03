@@ -27,7 +27,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(RTime,'MM/DD') RTime, Jumin2, SName, Tel, Hphone, GbAm1, GbAm2      ");
             parameter.AppendSql("     , GbAm3, GbAm4, GbUgi, GbGfs, GbMammo, GbRecutm, GbSono,GbWomb, GBCT, REMARK  ");
             parameter.AppendSql("     , TO_CHAR(JepDate,'YYYY-MM-DD') JepDate, EntSabun, EntTime, ROWID             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                ");
             parameter.AppendSql(" WHERE RTime >= TO_DATE(:FRDATE, 'YYYY-MM-DD HH24:MI')                             ");
             parameter.AppendSql("   AND RTime <= TO_DATE(:TODATE, 'YYYY-MM-DD HH24:MI')                             ");
             if (strJong == "1")
@@ -78,7 +78,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CANCER_RESV2 SET                        ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CANCER_RESV2 SET                        ");
             //parameter.AppendSql("       RTIME           = TO_DATE(:RTIME, 'YYYY-MM-DD HH24:MI') ");
             parameter.AppendSql("       RTIME           = :RTIME                                ");
             parameter.AppendSql("     , JUMIN           = :JUMIN                                ");
@@ -149,7 +149,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,GBAM3, GBAM4, GBUGI, GBGFS,GBGFSH, GBMAMMO, GBRECUTM, GBSONO,GBWOMB         ");
             parameter.AppendSql("      ,GBBOHUM,GBCT, REMARK,PANO, TO_CHAR(JEPDATE,'YYYY-MM-DD') JEPDATE            ");
             parameter.AppendSql("      ,ENTSABUN, ENTTIME, ROWID                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                ");
             parameter.AppendSql(" WHERE RTIME >= TO_DATE(:RTIME,'YYYY-MM-DD')                                       ");
             parameter.AppendSql("   AND JUMIN2 =:JUMIN2                                                             ");
             parameter.AppendSql(" ORDER BY RTIME                                                                    ");
@@ -166,7 +166,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT SNAME, JUMIN2, GBAM1, GBAM2, GBAM3, GBAM4, GBUGI, GBGFS, GBGFSH             ");
             parameter.AppendSql("     , GBMAMMO, GBRECUTM, GBSONO, GBWOMB, GBBOHUM, GBCOLON, GBCT, SDOCT, REMARK    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                ");
             parameter.AppendSql(" WHERE RTime >= TO_DATE(:FRDATE, 'YYYY-MM-DD HH24:MI')                             ");
             parameter.AppendSql("   AND RTime <= TO_DATE(:TODATE, 'YYYY-MM-DD HH24:MI')                             ");
             if (strAmPm == "AM")
@@ -193,7 +193,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(RTIME,'HH24:MI') RTIME_TIME, JUMIN2, SNAME, TEL, HPHONE, GBAM1, GBAM2,GBCT              ");
             parameter.AppendSql("     , GBAM3, GBAM4, GBUGI,GBGFS,GBGFSH,GBMAMMO, GBRECUTM, GBSONO,GBWOMB,GBBOHUM,GBCOLON,REMARK,PANO   ");
             parameter.AppendSql("     , TO_CHAR(JEPDATE,'YYYY-MM-DD') JEPDATE,SDOCT,ENTSABUN, ENTTIME, ROWID, GBLUNG_SANGDAM            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                                    ");
             parameter.AppendSql(" WHERE RTime >= TO_DATE(:FRDATE, 'YYYY-MM-DD HH24:MI')                                                 ");
             parameter.AppendSql("   AND RTime <= TO_DATE(:TODATE, 'YYYY-MM-DD HH24:MI')                                                 ");
             if (strSort == "1")
@@ -217,7 +217,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT TO_CHAR(RTIME,'YYYY-MM-DD') RTIME,TO_CHAR(RTIME,'HH24:MI') AMPM, GBUGI, GBGFS           ");
             parameter.AppendSql("     , GBMAMMO, GBRECUTM, GBSONO,GBWOMB,GBBOHUM,GBGFSH,GBCOLON,GBCT,SDOCT, GBLUNG_SANGDAM      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                            ");
             parameter.AppendSql(" WHERE RTime >= TO_DATE(:FRDATE ,'YYYY-MM-DD')                                                 ");
             parameter.AppendSql("   AND RTime <= TO_DATE(:TODATE ,'YYYY-MM-DD HH24:MI')                                         ");
             parameter.AppendSql(" ORDER BY RTime                                                                                ");
@@ -232,7 +232,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CANCER_RESV2 SET    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CANCER_RESV2 SET    ");
             parameter.AppendSql("       REMARK = :REMARK                    ");
             parameter.AppendSql(" WHERE ROWID  = :RID                       ");
 
@@ -246,7 +246,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CANCER_RESV2                                                           ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CANCER_RESV2                                                           ");
             parameter.AppendSql("       (RTIME , JUMIN, SNAME, TEL, HPHONE, GBAM1, GBAM2, GBAM3, GBAM4                              ");
             parameter.AppendSql("     , GBUGI,GBGFS,GBGFSH,GBMAMMO,GBRECUTM,GBSONO,GBWOMB,GBBOHUM,GBCOLON,GBCT,GBLUNG_SANGDAM, PANO ");
             parameter.AppendSql("     , REMARK,SMSOK,SDOCT,ENTTIME,ENTSABUN,JUMIN2 )                                                ");
@@ -292,7 +292,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                            ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                                        ");
             parameter.AppendSql("   AND RTIME >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                 ");
             parameter.AppendSql("   AND RTIME <= TO_DATE(:TODATE, 'YYYY-MM-DD HH24:MI')         ");
@@ -314,7 +314,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , GbAm3, GbAm4, GbUgi,GbGfs,GbGfsH,GbMammo, GbRecutm, GbSono,GbWomb,GbBohum,GbColon,Remark,Pano   ");
             parameter.AppendSql("     , TO_CHAR(JepDate,'YYYY-MM-DD') JepDate,SDoct,EntSabun, EntTime, ROWID                            ");
             parameter.AppendSql("     , GBCT, GBLUNG_SANGDAM                                                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                                    ");
             parameter.AppendSql(" WHERE Jumin2 IN (SELECT Jumin2 FROM HIC_PATIENT WHERE LtdCode = :LTDCODE)                             ");
             if (strYYMM == "ÀüÃ¼")
             {
@@ -349,7 +349,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , JUMIN2, SNAME, TEL, HPHONE, GBAM1, GBAM2                                        ");
             parameter.AppendSql("     , GBAM3, GBAM4, GBUGI, GBGFS, GBGFSH, GBMAMMO, GBRECUTM                           ");
             parameter.AppendSql("     , REMARK, PANO, ENTTIME                                                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                    ");
             parameter.AppendSql(" WHERE ROWID = :RID                                                                    ");
 
             parameter.Add("RID", strROWID);
@@ -365,7 +365,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(RTime, 'YYYY-MM-DD HH24:MI') RTIMESYSDATE                               ");
             parameter.AppendSql("     , GBUGI, GBGFS, GBGFSH, GBMAMMO, GBCT, GBRECUTM, GBCOLON, GBSONO, GBWOMB, GBBOHUM ");
             parameter.AppendSql("     , GBLUNG_SANGDAM                                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                    ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                                                                ");
             parameter.AppendSql("   AND RTIME >= TO_DATE(:FRDATE, 'YYYY-MM-DD HH24:MI')                                 ");
             parameter.AppendSql("   AND RTIME <= TO_DATE(:TODATE, 'YYYY-MM-DD HH24:MI')                                 ");
@@ -384,7 +384,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT PANO, SNAME, HPHONE,TO_CHAR(RTIME,'YYYY-MM-DD HH24:MI') RTIME               ");
             parameter.AppendSql("     , TO_CHAR(RTIME, 'HH24:MI') RTIME2                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                ");
             parameter.AppendSql(" WHERE RTIME >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                     ");
             parameter.AppendSql("   AND RTIME <  TO_DATE(:TODATE, 'YYYY-MM-DD HH24:MI')                                     ");
             parameter.AppendSql("   AND SUBSTR(HPhone,1,3) IN ('010','011','016','017','018','019')                 ");
@@ -403,7 +403,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT Pano,SName,HPhone, TO_CHAR(RTIME,'YYYY-MM-DD HH24:MI') RTIME                ");
             parameter.AppendSql("     , GBUGI,GBGFS,GBMAMMO, GBRECUTM,GBSONO,GBWOMB,GBBOHUM,GBGFSH,GBCOLON,GBCT     ");
             parameter.AppendSql("     , TO_CHAR(RTIME, 'HH24:MI') RTIME2                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                ");
             parameter.AppendSql(" WHERE ENTTIME >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                   ");
             parameter.AppendSql("   AND ENTTIME <  TO_DATE(:TODATE, 'YYYY-MM-DD')                                   ");
             parameter.AppendSql("   AND SUBSTR(HPhone,1,3) IN ('010','011','016','017','018','019')                 ");
@@ -420,7 +420,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CANCER_RESV2                        ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CANCER_RESV2                        ");
             parameter.AppendSql("   SET RTIME    = TO_DATE(:RTIME, 'YYYY-MM-DD HH24:MI')    ");
             parameter.AppendSql("     , ENTTIME  = SYSDATE                                  ");
             parameter.AppendSql("     , ENTSABUN = :ENTSABUN                                ");
@@ -440,7 +440,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(RTime,'YYYY-MM-DD HH24:MI') RTime, Jumin2, SName, Tel, Hphone, GbAm1, GbAm2     ");
             parameter.AppendSql("     , GbAm3, GbAm4, GbUgi, GbGfs, GbMammo, GbRecutm, GbSono,GbWomb, Remark,Pano               ");
             parameter.AppendSql("     , TO_CHAR(JepDate,'YYYY-MM-DD') JepDate, EntSabun, EntTime, ROWID                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                            ");
             parameter.AppendSql(" WHERE RTime >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                                 ");
             parameter.AppendSql("   AND RTime <  TO_DATE(:TODATE ,'YYYY-MM-DD')                                                 ");
             parameter.AppendSql(" ORDER BY SNAME, JUMIN2                                                                        ");
@@ -456,7 +456,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT JUMIN2, GBUGI, GBGFS, GBGFSH                                                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                            ");
             if (strAMPM == "AM")
             {
                 parameter.AppendSql(" WHERE RTime >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                             ");
@@ -482,7 +482,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT RTIME,JUMIN,SNAME,TEL,HPHONE,GBAM1,GBAM2,GBAM3,GBAM4,GBUGI,GBGFS,GBMAMMO                ");
             parameter.AppendSql("      ,GBRECUTM, GBSONO, REMARK, JEPDATE, ENTSABUN, ENTTIME, PANO, GBWOMB, SMSOK, JUMIN2       ");
             parameter.AppendSql("      ,GBBOHUM, GBGFSH, SDOCT, GBCOLON, GBCT, GBLUNG_SANGDAM                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                                                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                                                            ");
             parameter.AppendSql(" WHERE 1=1                                                                                     ");
             parameter.AppendSql("   AND RTime >= TO_DATE(:FRDATE ,'YYYY-MM-DD')                                                 ");
             parameter.AppendSql("   AND RTime <  TO_DATE(:TODATE ,'YYYY-MM-DD')                                                 ");
@@ -500,7 +500,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SDOCT                                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2                            ");
             parameter.AppendSql(" WHERE 1=1                                                     ");
             parameter.AppendSql("   AND PANO  = :PTNO                                           ");
             parameter.AppendSql("   AND RTIME >= TO_DATE(:RDATE, 'YYYY-MM-DD')                  ");

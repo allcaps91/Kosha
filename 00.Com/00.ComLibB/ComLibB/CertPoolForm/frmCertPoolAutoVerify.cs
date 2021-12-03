@@ -61,10 +61,10 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT A.SABUN, B.KORNAME, B.JUMIN3, B.CERTPASS, MAX(A.UDATE) UDATE ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_MSTS A ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_ADM.INSA_MST B ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_MSTS A ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.INSA_MST B ";
                 SQL = SQL + ComNum.VBLF + "    ON A.SABUN = B.SABUN ";
-                SQL = SQL + ComNum.VBLF + " WHERE A.SABUN IN(SELECT SABUN FROM KOSMOS_ADM.INSA_MST ";
+                SQL = SQL + ComNum.VBLF + " WHERE A.SABUN IN(SELECT SABUN FROM ADMIN.INSA_MST ";
                 SQL = SQL + ComNum.VBLF + "                   WHERE TOIDAY IS NULL ";
                 SQL = SQL + ComNum.VBLF + "                     AND CERTPASS IS NOT NULL) ";
                 SQL = SQL + ComNum.VBLF + "   AND A.UDATE >= TRUNC(SYSDATE - " + txtDay.Text + " )";

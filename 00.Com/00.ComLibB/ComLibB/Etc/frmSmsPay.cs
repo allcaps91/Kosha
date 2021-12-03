@@ -170,7 +170,7 @@ namespace ComLibB
             SQL = " select jobdate, send_cnt, pano, sname, hphone, gubun, deptcode, " + ComNum.VBLF;
             SQL += " drcode, rettel, sendmsg, " + ComNum.VBLF;
             SQL += " to_char(RTime, 'yyyy-mm-dd') RTime,TO_CHAR(RTime, 'yyyymmddhh24mi') RTime2, sendmsgback, rowid, GBPUSH " + ComNum.VBLF;
-            SQL += " from kosmos_pmpa.etc_sms " + ComNum.VBLF;
+            SQL += " from ADMIN.etc_sms " + ComNum.VBLF;
             SQL += " Where sendtime is null " + ComNum.VBLF;
             SQL += " And gubun ='71' " + ComNum.VBLF;
             SQL += " Order by jobdate asc " + ComNum.VBLF;
@@ -218,7 +218,7 @@ namespace ComLibB
 
                 clsDB.setBeginTran(clsDB.DbCon);
 
-                SQL = " update kosmos_pmpa.etc_sms set ";
+                SQL = " update ADMIN.etc_sms set ";
                 SQL += " sendtime = to_date('" + strDateTime + "', 'yyyy-mm-dd hh24:mi'), ";
                 SQL += " state = '" + GstrSMS114_Result + "', ";
                 SQL += " GbPush = '" + strOK + "'";

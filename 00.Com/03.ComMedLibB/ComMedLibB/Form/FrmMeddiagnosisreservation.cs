@@ -138,7 +138,7 @@ namespace ComMedLibB
                 ////원본
                 SQL = "";
                 SQL = "SELECT DeptCode,DrCode,TO_CHAR(RDate,'YYYY-MM-DD HH24:MI') RDate ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_RESERVED ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_RESERVED ";
                 SQL = SQL + ComNum.VBLF + "WHERE Pano='" + clsOrdFunction.Pat.PtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND IpdOpd='I' ";
                 SQL = SQL + ComNum.VBLF + "  AND BDate>=TRUNC(SYSDATE-5) ";
@@ -148,7 +148,7 @@ namespace ComMedLibB
                 //clsOrdFunction.Pat.PtNo = "10220483";
                 //SQL = "";
                 //SQL = "SELECT DeptCode,DrCode,TO_CHAR(RDate,'YYYY-MM-DD HH24:MI') RDate ";
-                //SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_RESERVED ";
+                //SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_RESERVED ";
                 //SQL = SQL + ComNum.VBLF + "WHERE Pano='" + clsOrdFunction.Pat.PtNo + "' ";
                 //// SQL = SQL + ComNum.VBLF + "  AND IpdOpd='I' ";
                 //SQL = SQL + ComNum.VBLF + "  AND BDate>=TRUNC(SYSDATE-365) ";
@@ -634,7 +634,7 @@ namespace ComMedLibB
                 //'예약자 인원을 COUNT
                 SQL = "";
                 SQL = "SELECT TO_CHAR(Date3,'YYYY-MM-DD HH24:MI') RTime,COUNT(*) CNT ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_RESERVED_NEW ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_RESERVED_NEW ";
                 SQL = SQL + ComNum.VBLF + "WHERE Date3> TRUNC(SYSDATE) ";
                 SQL = SQL + ComNum.VBLF + "  AND Date3<=TO_DATE('" + strGDate + " 23:59','YYYY-MM-DD HH24:MI') ";
                 SQL = SQL + ComNum.VBLF + "  AND DrCode='" + ArgDrCode + "' ";
@@ -974,7 +974,7 @@ namespace ComMedLibB
             try
             {
                 SQL = "";
-                SQL = "UPDATE KOSMOS_PMPA.OPD_RESERVED_NEW SET ";
+                SQL = "UPDATE ADMIN.OPD_RESERVED_NEW SET ";
                 SQL = SQL + ComNum.VBLF + " Date3=TO_DATE('" + lblRTime.Text + "','YYYY-MM-DD HH24:MI'), ";
                 SQL = SQL + ComNum.VBLF + " DrCode='" + VB.Left(cboDoct.Text, 4) + "' ";
                 SQL = SQL + ComNum.VBLF + "WHERE Pano='" + txtPtno.Text + "' ";
@@ -1245,7 +1245,7 @@ namespace ComMedLibB
                 {
                     //'입원예약이 있는지 Check
                     SQL = "SELECT TO_CHAR(RDate,'YYYY-MM-DD HH24:MI') RTime,DrCode,GbSunap,ROWID ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_RESERVED ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_RESERVED ";
                     SQL = SQL + ComNum.VBLF + "WHERE Pano='" + clsOrdFunction.Pat.PtNo + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND DeptCode='" + strDeptCode + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND Gbsunap ='0' ";// '2013-10-04;

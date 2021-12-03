@@ -2390,12 +2390,12 @@ namespace ComPmpaLibB
             if ((GstrJong == "1" || GstrJong == "2") && GstrYYMM == "201504") { return rtnVal; }
 
             //Select * from MISU_BALCHECK_PANO  where PANO='06417366'
-            //SELECT * FROM KOSMOS_PMPA.MISU_IDMST WHERE MISUID = '06417366'
-            //SELECT * FROM KOSMOS_PMPA.MIR_SANID WHERE WRTNO IN ( '6024183','6024182')
+            //SELECT * FROM ADMIN.MISU_IDMST WHERE MISUID = '06417366'
+            //SELECT * FROM ADMIN.MIR_SANID WHERE WRTNO IN ( '6024183','6024182')
             //청구건 중복인식 문제로 재빌드 안되게 막음 MISU_BALCHECK_PANO 조정
             if (GstrJong == "3" && GstrYYMM == "201612") { return rtnVal; }
 
-            //SELECT A.*, A.ROWID FROM KOSMOS_PMPA.MISU_BALCHECK_PANO A
+            //SELECT A.*, A.ROWID FROM ADMIN.MISU_BALCHECK_PANO A
             //WHERE PANO = '09982178'
             //AND YYMM = '201705'
             //청구건 중복인식 문제로 재빌드 안되게 막음 MISU_BALCHECK_PANO 조정

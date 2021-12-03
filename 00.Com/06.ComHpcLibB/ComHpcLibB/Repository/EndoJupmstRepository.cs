@@ -26,7 +26,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SNAME,PTNO,DEPTCODE,COUNT(*) CNT                                ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                                          ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                                          ");
             parameter.AppendSql(" WHERE RDate >= TRUNC(SYSDATE)                                          ");
             parameter.AppendSql("   AND RDate <  TRUNC(SYSDATE+1)                                       ");
             if (strChkRsltInput == "N")
@@ -59,7 +59,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                          ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                  ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                  ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                            ");
             parameter.AppendSql("   AND JDATE = TO_DATE(:JDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND GBSUNAP <> '*'                          ");
@@ -75,7 +75,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT RESULTDRCODE                                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                                                          ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                                                          ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                                                    ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                                           ");
             parameter.AppendSql("   AND ORDERCODE IN ('OO440916','00440110','00440165','Q7703800','Q7701A', 'E7660GB')  ");
@@ -96,7 +96,7 @@ namespace ComHpcLibB.Repository
             if (sGubun == "1")
             {
                 parameter.AppendSql("SELECT *                                   ");
-                parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST              ");
+                parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST              ");
                 parameter.AppendSql(" WHERE RDATE >= TRUNC(SYSDATE)             ");
                 parameter.AppendSql("   AND RDATE <  TRUNC(SYSDATE) + 1         ");
                 parameter.AppendSql("   AND DEPTCODE IN('TO','HR')              ");
@@ -110,7 +110,7 @@ namespace ComHpcLibB.Repository
             else if (sGubun == "2")
             {
                 parameter.AppendSql("SELECT SNAME, PTNO, DEPTCODE, BUSE         ");
-                parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST              ");
+                parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST              ");
                 parameter.AppendSql(" WHERE RDATE >= TRUNC(SYSDATE)             ");
                 parameter.AppendSql("   AND RDATE <  TRUNC(SYSDATE) + 1         ");
                 parameter.AppendSql("   AND DEPTCODE IN('TO','HR')              ");
@@ -125,7 +125,7 @@ namespace ComHpcLibB.Repository
             else if (sGubun == "3")
             {
                 parameter.AppendSql("SELECT *                                   ");
-                parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST              ");
+                parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST              ");
                 parameter.AppendSql(" WHERE RDATE >= TRUNC(SYSDATE)             ");
                 parameter.AppendSql("   AND RDATE <  TRUNC(SYSDATE) + 1         ");
                 parameter.AppendSql("   AND DEPTCODE IN('HR')                   ");
@@ -139,7 +139,7 @@ namespace ComHpcLibB.Repository
             else if (sGubun == "4")
             {
                 parameter.AppendSql("SELECT SNAME, PTNO, DEPTCODE, BUSE         ");
-                parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST              ");
+                parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST              ");
                 parameter.AppendSql(" WHERE RDATE >= TRUNC(SYSDATE)             ");
                 parameter.AppendSql("   AND RDATE <  TRUNC(SYSDATE) + 1         ");
                 parameter.AppendSql("   AND DEPTCODE IN('HR')                   ");
@@ -164,7 +164,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ENDO_JUPMST SET                      ");
+            parameter.AppendSql("UPDATE ADMIN.ENDO_JUPMST SET                      ");
             parameter.AppendSql("       ORDERCODE  = :ORDERCODE                         ");
             parameter.AppendSql("      ,SENDDATE   = SYSDATE                            ");
             parameter.AppendSql("      ,PACSSEND   = '*'                                ");
@@ -188,7 +188,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SUCODE,TO_CHAR(RESULTDATE,'MM/DD HH24:MI') RESULTDATE, ROWID AS RID ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                                              ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                                              ");
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
             parameter.AppendSql("   AND PTNO = :PTNO                                                        ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                               ");
@@ -206,7 +206,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SEQNO,TO_CHAR(RDATE,'YYYY-MM-DD') RDATE             ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                              ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                              ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                        ");
             parameter.AppendSql("   AND JDATE >= TO_DATE(:JDATE, 'YYYY-MM-DD')              ");
             parameter.AppendSql("   AND RESULTDATE IS NOT NULL                              ");
@@ -228,7 +228,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ENDO_JUPMST SET                      ");
+            parameter.AppendSql("UPDATE ADMIN.ENDO_JUPMST SET                      ");
             parameter.AppendSql("       ORDERCODE  = :ORDERCODE                         ");
             parameter.AppendSql("      ,SENDDATE   = SYSDATE                            ");
             parameter.AppendSql("      ,BUSE       = :BUSE                              ");
@@ -247,7 +247,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID AS RID, ORDERCODE, BUSE, GBSUNAP          ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                          ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                          ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                    ");
             parameter.AppendSql("   AND TRUNC(RDATE) = TO_DATE(:RDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND DEPTCODE IN ('TO', 'HR')                        ");
@@ -265,7 +265,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_OCS.ENDO_JUPMST (                           ");
+            parameter.AppendSql("INSERT INTO ADMIN.ENDO_JUPMST (                           ");
             parameter.AppendSql("   PTNO,     JDATE,     ORDERCODE, ORDERNO,  GBJOB, RDATE      ");
             parameter.AppendSql("  ,DEPTCODE, DRCODE,    WARDCODE,  ROOMCODE, GBIO,  GBSUNAP    ");
             parameter.AppendSql("  ,AMT,      SEQNO,     JUPSUNAME, ENTDATE,  VDATE, SNAME      ");
@@ -273,7 +273,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ) VALUES (                                                    ");
             parameter.AppendSql("  :PTNO, TO_DATE(:JDATE, 'YYYY-MM-DD'),:ORDERCODE,:ORDERNO, :GBJOB,:RDATE      ");
             parameter.AppendSql(" ,:DEPTCODE,:DRCODE,   :WARDCODE, :ROOMCODE,:GBIO, :GBSUNAP    ");
-            parameter.AppendSql(" ,:AMT,KOSMOS_OCS.ENDO_SEQNO.NEXTVAL,:JUPSUNAME,SYSDATE, TO_DATE(:VDATE, 'YYYY-MM-DD'),:SNAME      ");
+            parameter.AppendSql(" ,:AMT,ADMIN.ENDO_SEQNO.NEXTVAL,:JUPSUNAME,SYSDATE, TO_DATE(:VDATE, 'YYYY-MM-DD'),:SNAME      ");
             parameter.AppendSql(" ,:SEX, TO_DATE(:BIRTHDATE, 'YYYY-MM-DD'),:PACSSEND, :SEQNUM,  TO_DATE(:BDATE, 'YYYY-MM-DD')             ");
             parameter.AppendSql(" ,:BUSE)                                                             ");
 
@@ -308,7 +308,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MAX(SEQNUM)                                     ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                          ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                          ");
             parameter.AppendSql(" WHERE JDATE >= TO_DATE(:FJDATE, 'YYYY-MM-DD')         ");
             parameter.AppendSql("   AND JDATE <= TO_DATE(:TJDATE, 'YYYY-MM-DD')         ");
             parameter.AppendSql("   AND GBJOB = :GBJOB                                  ");
@@ -325,7 +325,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ORDERCODE                                       ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                          ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                          ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                    ");
             parameter.AppendSql("   AND TRUNC(RDATE) = TO_DATE(:RDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND DEPTCODE IN ('TO','HR')                         ");
@@ -343,7 +343,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ENDO_JUPMST SET                  ");
+            parameter.AppendSql("UPDATE ADMIN.ENDO_JUPMST SET                  ");
             parameter.AppendSql("       DEPTCODE   = :DEPTCODE                      ");
             parameter.AppendSql("      ,DRCODE     = :DRCODE                        ");
             parameter.AppendSql("      ,PACSSEND   = '*'                            ");
@@ -360,7 +360,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID AS RID, DEPTCODE, DRCODE, BUSE     ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                   ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                   ");
             parameter.AppendSql(" WHERE 1 = 1                                    ");
             parameter.AppendSql("   AND PTNO = :PTNO                             ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')    ");
@@ -389,7 +389,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT RESULTDRCODE                                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                                                          ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                                                          ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                                                    ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                                           ");
             parameter.AppendSql("   AND ORDERCODE IN ('00440110','00440120','00440120','Q7611800','Q7612800','Q7620B')  ");
@@ -406,7 +406,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                          ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                  ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                  ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                            ");
             parameter.AppendSql("   AND ORDERCODE IN('00440110', '00440120')    ");
             parameter.AppendSql("   AND RDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD') ");
@@ -426,7 +426,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ASA                                     ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                  ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                  ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                            ");
             parameter.AppendSql("   AND RDATE >= TO_DATE(:RDATE, 'YYYY-MM-DD')  ");
             parameter.AppendSql("   AND DeptCode IN ('HR','TO')                 ");
@@ -441,7 +441,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ENDO_JUPMST SET                  ");
+            parameter.AppendSql("UPDATE ADMIN.ENDO_JUPMST SET                  ");
             parameter.AppendSql("       ASA   = :ASA                                ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                               ");
             parameter.AppendSql("   AND DeptCode IN('HR', 'TO')                     ");
@@ -458,7 +458,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ENDO_JUPMST SET  ");
+            parameter.AppendSql("UPDATE ADMIN.ENDO_JUPMST SET  ");
             parameter.AppendSql("       ASA   = :ASA                ");
             parameter.AppendSql(" WHERE ROWID = :RID                ");
 
@@ -472,7 +472,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT GbSunap,ASA,ROWID AS RID FROM KOSMOS_OCS.ENDO_JUPMST   ");
+            parameter.AppendSql("SELECT GbSunap,ASA,ROWID AS RID FROM ADMIN.ENDO_JUPMST   ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                    ");
             parameter.AppendSql("   AND DEPTCODE IN ('HR','TO')                         ");
             parameter.AppendSql("   AND BDATE >= TO_DATE(:BDATE, 'YYYY-MM-DD')          ");
@@ -489,7 +489,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GBCON_21, GBCON_31                          ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                      ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                      ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                               ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')       ");
             parameter.AppendSql("   AND GBSUNAP <> '*'                              ");
@@ -508,7 +508,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TO_CHAR(RESULTDATE,'YYYY-MM-DD hh24:mi:ss') RESULTDATE  ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                                  ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                                  ");
             parameter.AppendSql(" WHERE RDATE >= TRUNC(SYSDATE)                                 ");
             parameter.AppendSql("   AND RDATE <  TRUNC(SYSDATE + 1)                             ");
             parameter.AppendSql("   AND DEPTCODE IN ('TO','HR')                                 ");
@@ -526,7 +526,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT RESULTDRCODE ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                                  ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                                  ");
             parameter.AppendSql(" WHERE RDATE >= TRUNC(SYSDATE)                                 ");
             parameter.AppendSql("   AND RDATE <  TRUNC(SYSDATE + 1)                             ");
             parameter.AppendSql("   AND DEPTCODE IN ('TO','HR')                                 ");
@@ -544,7 +544,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PTNO, SNAME, RESULTDATE                  ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                   ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                   ");
             parameter.AppendSql(" WHERE 1=1                                      ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND DEPTCODE = :DEPTCODE                     ");
@@ -562,7 +562,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ENDO_JUPMST SET                  ");
+            parameter.AppendSql("UPDATE ADMIN.ENDO_JUPMST SET                  ");
             parameter.AppendSql("       GBSUNAP   = :GBSUNAP,                       ");
             parameter.AppendSql("       PACSSEND   = '*'                            ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                               ");
@@ -581,7 +581,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.ENDO_JUPMST SET                              ");
+            parameter.AppendSql("UPDATE ADMIN.ENDO_JUPMST SET                              ");
             parameter.AppendSql("       GBSUNAP   = :GBSUNAP                                    ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                                           ");
             parameter.AppendSql("   AND DeptCode = :DEPTCODE                                    ");
@@ -605,7 +605,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT RESULTDATE                                                          ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.ENDO_JUPMST                                              ");
+            parameter.AppendSql("  FROM ADMIN.ENDO_JUPMST                                              ");
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
             parameter.AppendSql("   AND PTNO = :PTNO                                                        ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                               ");

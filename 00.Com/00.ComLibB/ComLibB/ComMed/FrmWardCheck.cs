@@ -41,7 +41,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " SELECT WardCode FROM KOSMOS_PMPA.BAS_WARD  \r";
+                SQL += " SELECT WardCode FROM ADMIN.BAS_WARD  \r";
                 SQL += "  WHERE WardCode <> 'IU'                    \r";
                 SQL += "    AND USED = 'Y'                          \r";
                 SQL += "  ORDER BY WardCode                         \r";

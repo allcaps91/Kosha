@@ -22,7 +22,7 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT EXAMCODE                                    ");
-            parameter.AppendSql(" FROM PACS.XRAY_PACS_EXAM                          ");
+            parameter.AppendSql(" FROM ADMIN.XRAY_PACS_EXAM                          ");
             parameter.AppendSql(" WHERE 1=1                                         ");
             if (strCode != "")
             {
@@ -56,7 +56,7 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MAX(EXAMCODE) AS EXAMCODE                   ");
-            parameter.AppendSql(" FROM PACS.XRAY_PACS_EXAM                          ");
+            parameter.AppendSql(" FROM ADMIN.XRAY_PACS_EXAM                          ");
             parameter.AppendSql(" WHERE 1=1                                         ");
             if (!strCode.IsNullOrEmpty())
             {
@@ -83,7 +83,7 @@
         public int Insert(XRAY_PACS_EXAM item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT NTO PACS.XRAY_PACS_EXAM(                                                ");
+            parameter.AppendSql("INSERT NTO ADMIN.XRAY_PACS_EXAM(                                                ");
             parameter.AppendSql(" EXAMCODE, EXAMNAME, SHORTNAME, MODALITY, SECTCODE)                            ");
             parameter.AppendSql("VALUES                                                                         ");
             parameter.AppendSql(" (:EXAMCODE, :EXAMNAME, '', :MODALITY, '')                                     ");

@@ -23,8 +23,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT B.GBREAD, B.XRAYNO        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a                                 ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_XRAY_RESULT b                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a                                 ");
+            parameter.AppendSql("     , ADMIN.HIC_XRAY_RESULT b                           ");
             parameter.AppendSql(" WHERE  1= 1                                                   ");
             parameter.AppendSql(" AND a.PANO = :PANO                                            ");
             parameter.AppendSql(" AND a.DELDATE IS NULL                                         ");
@@ -42,8 +42,8 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT TO_CHAR(B.JepDate,'YYYY-MM-DD') JepDate,B.XrayNo,       ");
             parameter.AppendSql(" B.Result2,B.Result4,A.WRTNO,A.GjJong                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a                                 ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_XRAY_RESULT b                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a                                 ");
+            parameter.AppendSql("     , ADMIN.HIC_XRAY_RESULT b                           ");
             parameter.AppendSql(" WHERE  1= 1                                                   ");
             parameter.AppendSql(" AND a.XRAYNO = :XRAYNO                                        ");
             parameter.AppendSql(" AND a.DELDATE IS NULL                                         ");

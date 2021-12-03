@@ -201,11 +201,11 @@ namespace ComEmrBase
             StringBuilder SQL = new StringBuilder();
             #region 전자인증시 에러
             SQL.AppendLine("SELECT '에러' AS GBN, EMRNO, EMRNOHIS, A.INOUTCLS, PTNO, P.SNAME, MEDFRDATE, CHARTUSEID, CHARTDATE, CHARTTIME, A.FORMNO, A.UPDATENO, B.FORMNAME");
-            SQL.AppendLine("  FROM KOSMOS_EMR.AEMRCHARTMST A");
-            SQL.AppendLine("    INNER JOIN KOSMOS_EMR.AEMRFORM B");
+            SQL.AppendLine("  FROM ADMIN.AEMRCHARTMST A");
+            SQL.AppendLine("    INNER JOIN ADMIN.AEMRFORM B");
             SQL.AppendLine("       ON A.FORMNO = B.FORMNO");
             SQL.AppendLine("      AND A.UPDATENO = B.UPDATENO");
-            SQL.AppendLine("    INNER JOIN KOSMOS_PMPA.BAS_PATIENT P");
+            SQL.AppendLine("    INNER JOIN ADMIN.BAS_PATIENT P");
             SQL.AppendLine("       ON A.PTNO = P.PANO");
             SQL.AppendLine("WHERE CHARTUSEID = '" + clsType.User.IdNumber + "'");
             SQL.AppendLine("  AND CHARTDATE > CHR(0)");
@@ -218,11 +218,11 @@ namespace ComEmrBase
             #region 임시저장
             SQL.AppendLine("UNION ALL");
             SQL.AppendLine("SELECT '임시저장' AS GBN, EMRNO, EMRNOHIS, A.INOUTCLS, PTNO, P.SNAME, MEDFRDATE, CHARTUSEID, CHARTDATE, CHARTTIME, A.FORMNO, A.UPDATENO, B.FORMNAME");
-            SQL.AppendLine("  FROM KOSMOS_EMR.AEMRCHARTMST A");
-            SQL.AppendLine("    INNER JOIN KOSMOS_EMR.AEMRFORM B");
+            SQL.AppendLine("  FROM ADMIN.AEMRCHARTMST A");
+            SQL.AppendLine("    INNER JOIN ADMIN.AEMRFORM B");
             SQL.AppendLine("       ON A.FORMNO = B.FORMNO");
             SQL.AppendLine("      AND A.UPDATENO = B.UPDATENO");
-            SQL.AppendLine("    INNER JOIN KOSMOS_PMPA.BAS_PATIENT P");
+            SQL.AppendLine("    INNER JOIN ADMIN.BAS_PATIENT P");
             SQL.AppendLine("       ON A.PTNO = P.PANO");
             SQL.AppendLine("WHERE CHARTUSEID = '" + clsType.User.IdNumber + "'");
             SQL.AppendLine("  AND CHARTDATE > CHR(0)");

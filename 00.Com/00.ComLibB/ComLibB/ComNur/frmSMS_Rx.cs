@@ -101,7 +101,7 @@ namespace ComLibB
                 //SMS 전송로그를 표시함
                 SQL = "";
                 SQL = "SELECT TO_CHAR(JobDate,'YYYY-MM-DD HH24:MI') JobDate,Gubun,SendMsg ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_SMS ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_SMS ";
                 SQL = SQL + ComNum.VBLF + "WHERE JobDate>=TRUNC(SYSDATE-5) ";
                 SQL = SQL + ComNum.VBLF + "  AND Pano='" + FstrPANO + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND Gubun IN ('16','17','18','19','20') ";
@@ -444,7 +444,7 @@ namespace ComLibB
                 else
                 {
                     SQL = "";
-                    SQL = "SELECT Tel FROM KOSMOS_PMPA.BAS_WARD ";
+                    SQL = "SELECT Tel FROM ADMIN.BAS_WARD ";
                     SQL = SQL + ComNum.VBLF + "WHERE WardCode='" + FstrWardCode + "' ";
                     SQL = SQL + ComNum.VBLF + "     AND USED = 'Y'  ";
 
@@ -676,7 +676,7 @@ namespace ComLibB
 
                 //인사마스타에서 휴대폰번호를 읽음
                 SQL = "";
-                SQL = "SELECT HTel FROM KOSMOS_ADM.INSA_MST ";
+                SQL = "SELECT HTel FROM ADMIN.INSA_MST ";
                 SQL = SQL + ComNum.VBLF + "WHERE Sabun='" + nSabun.ToString("00000") + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -954,13 +954,13 @@ namespace ComLibB
                 {
                     SQL = "";
                     SQL = "SELECT A.SABUN, A.KORNAME SNAME, A.HTEL, B.SNAME DEPTCODE";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.INSA_MST A, KOSMOS_PMPA.BAS_BUSE B";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.INSA_MST A, ADMIN.BAS_BUSE B";
                     SQL = SQL + ComNum.VBLF + "  WHERE A.BUSE = B.BUCODE(+)";
                     SQL = SQL + ComNum.VBLF + "  AND A.TOIDAY IS NULL";
                     SQL = SQL + ComNum.VBLF + "  AND A.BUSE IN (" + strSmsErSend_Buse + ")";
                     SQL = SQL + ComNum.VBLF + "UNION ALL";
                     SQL = SQL + ComNum.VBLF + "SELECT SABUN, SNAME, HTEL, DEPTCODE";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_CHARGE_NURSE";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_CHARGE_NURSE";
                     SQL = SQL + ComNum.VBLF + "  WHERE DELDATE IS NULL";
                     SQL = SQL + ComNum.VBLF + "  AND DEPTCODE IN (" + strNurse_Buse + ")";
                     SQL = SQL + ComNum.VBLF + "  AND HTEL IS NOT NULL";
@@ -1113,7 +1113,7 @@ namespace ComLibB
                     ComboGbn.Items.Clear();
                     SQL = "";
                     SQL = " SELECT SNAME, DEPTCODE, HTEL";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_CHARGE_NURSE";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_CHARGE_NURSE";
                     SQL = SQL + ComNum.VBLF + " WHERE DELDATE IS NULL ";
                     SQL = SQL + ComNum.VBLF + "  ORDER BY DEPTCODE ASC, SNAME ASC";
 
@@ -1169,7 +1169,7 @@ namespace ComLibB
 
 
             SQL = "";
-            SQL = SQL + "SELECT Name,SName FROM KOSMOS_PMPA.BAS_BUSE ";
+            SQL = SQL + "SELECT Name,SName FROM ADMIN.BAS_BUSE ";
             SQL = SQL + ComNum.VBLF + " WHERE BuCode='" + strBucode + "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 

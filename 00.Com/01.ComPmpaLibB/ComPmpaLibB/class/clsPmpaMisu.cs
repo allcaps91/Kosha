@@ -563,7 +563,7 @@ namespace ComPmpaLibB
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT B.NAME, A.KORNAME";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.INSA_MST A, KOSMOS_PMPA.BAS_BUSE B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.INSA_MST A, ADMIN.BAS_BUSE B";
                 SQL = SQL + ComNum.VBLF + " WHERE 1=1";
                 SQL = SQL + ComNum.VBLF + "   AND A.BUSE = B.BUCODE";
                 SQL = SQL + ComNum.VBLF + "   AND A.SABUN = '" + VB.Val(arg).ToString("00000") + "' ";
@@ -978,7 +978,7 @@ namespace ComPmpaLibB
             {
                 SQL = " SELECT ";
                 SQL = SQL + ComNum.VBLF + "ZipCode1 || ZipCode2 ZipCode, Juso ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "   WHERE Pano ='" + ArgPano + "' ";
 
                 SQL = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1596,7 +1596,7 @@ namespace ComPmpaLibB
             {
                 SQL = "";
                 SQL += ComNum.VBLF + "SELECT NAME";
-                SQL += ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_BCODE";
+                SQL += ComNum.VBLF + "FROM ADMIN.BAS_BCODE";
                 SQL += ComNum.VBLF + "WHERE 1=1";
                 SQL += ComNum.VBLF + "  AND Gubun='ACC_전표입력가능시작일자'";
                 SQL += ComNum.VBLF + "  AND Code='02' ";

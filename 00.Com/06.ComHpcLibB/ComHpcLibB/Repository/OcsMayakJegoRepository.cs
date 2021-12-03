@@ -25,9 +25,9 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT A.SUCODE, B.JEPNAME, B.COVUNIT, C.UNIT, C.HNAME,  A.QTY strQTY , A.ROWID AS RID  ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DRUG         A                                                               ");
-            parameter.AppendSql("     , KOSMOS_ADM.DRUG_JEP         B                                                               ");
-            parameter.AppendSql("     , KOSMOS_OCS.OCS_DRUGINFO_NEW C                                                               ");
+            parameter.AppendSql("  FROM ADMIN.OCS_DRUG         A                                                               ");
+            parameter.AppendSql("     , ADMIN.DRUG_JEP         B                                                               ");
+            parameter.AppendSql("     , ADMIN.OCS_DRUGINFO_NEW C                                                               ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                       ");
             parameter.AppendSql("   AND A.BUILDDATE = TO_DATE(:BUILDATE, 'YYYY-MM-DD')                                              ");
             parameter.AppendSql("   AND A.GBN2 IN ( '3')                                                                            "); // 재고
@@ -53,7 +53,7 @@ namespace ComHpcLibB.Repository
         public int InsertOcsDrugSet(OCS_MAYAK_JEGO item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_OCS.OCS_DRUG_SET (                                                         ");
+            parameter.AppendSql(" INSERT INTO ADMIN.OCS_DRUG_SET (                                                         ");
             parameter.AppendSql("        JDATE, GBN, WARDCODE, SUCODE, BQTY , QTY , ENTDATE, UNIT                               ");
             parameter.AppendSql(" ) VALUES (                                                                                    ");
             parameter.AppendSql("        TO_DATE(:JDATE,'YYYY-MM-DD'), :GBN, :WARDCODE, :SUCODE, :BQTY , :QTY , SYSDATE, :UNIT )");
@@ -72,7 +72,7 @@ namespace ComHpcLibB.Repository
         public int UpdateOcsDrugSetQtyByRowid(string argQty, string argBQty, string argRowid)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_OCS.OCS_DRUG_SET SET    ");
+            parameter.AppendSql(" UPDATE ADMIN.OCS_DRUG_SET SET    ");
             parameter.AppendSql("        QTY   = :QTY                   ");
             parameter.AppendSql("        , BQTY  = :BQTY                  ");
             parameter.AppendSql("  WHERE ROWID = :RID                   ");
@@ -89,7 +89,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID AS RID                            ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DRUG_SET                 ");
+            parameter.AppendSql("  FROM ADMIN.OCS_DRUG_SET                 ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql("   AND SUCODE =:SUCODE                         ");
             parameter.AppendSql("   AND WARDCODE ='TO'                          ");  //종검            
@@ -109,8 +109,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,A.REALQTY * A.NAL AS GREALQTY, A.QTY * A.NAL AS nGQTY , (A.QTY * NAL) - (A.REALQTY * NAL) AS JQTY   ");
             parameter.AppendSql("      ,TO_CHAR(A.BDATE,'YYYY-MM-DD') AS BDATE, A.ENTQTY2, A.ROWID AS RID                                   ");
             parameter.AppendSql("      , A.REALQTY* A.NAL AS REALQTY, A.QTY* A.NAL || '' AS strQTY                                          ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DRUG A                                                                               ");
-            parameter.AppendSql("      ,KOSMOS_ADM.DRUG_JEP B                                                                               ");
+            parameter.AppendSql("  FROM ADMIN.OCS_DRUG A                                                                               ");
+            parameter.AppendSql("      ,ADMIN.DRUG_JEP B                                                                               ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                               ");
             parameter.AppendSql("   AND A.BUILDDATE = TO_DATE(:BUILDATE, 'YYYY-MM-DD')                                                      ");
             parameter.AppendSql("   AND A.GBN2 = :GBN2                                                                                      ");  // 소모
@@ -144,7 +144,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SUM(QTY*NAL) AS QTY                             ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DRUG                             ");
+            parameter.AppendSql("  FROM ADMIN.OCS_DRUG                             ");
             parameter.AppendSql(" WHERE 1 = 1                                           ");
             parameter.AppendSql("   AND BUILDDATE = TO_DATE(:BUILDDATE, 'YYYY-MM-DD')   ");
             parameter.AppendSql("   AND GBN2 = '2'                                      "); //입고(소모)
@@ -163,7 +163,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT  GBN2,  A.SUCODE,  B.SUNAMEK , A.QTY strQTY , A.ROWID AS RID  ");
-            parameter.AppendSql("   FROM KOSMOS_OCS.OCS_DRUG A , KOSMOS_PMPA.BAS_SUN B          ");
+            parameter.AppendSql("   FROM ADMIN.OCS_DRUG A , ADMIN.BAS_SUN B          ");
             parameter.AppendSql("  WHERE A.BUILDDATE =TO_DATE(:BUILDDATE,'YYYY-MM-DD')          ");
             parameter.AppendSql("    AND A.GBN2 IN ('3')                                        ");     //재고
             parameter.AppendSql("    AND A.WARDCODE ='TO'                                       ");     //내시경
@@ -183,8 +183,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT A.SUCODE , A.BQTY, A.QTY , B.UNITNEW1                ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_DRUG_SET A,                          ");
-            parameter.AppendSql("       KOSMOS_PMPA.BAS_SUN     B                           ");
+            parameter.AppendSql("  FROM ADMIN.OCS_DRUG_SET A,                          ");
+            parameter.AppendSql("       ADMIN.BAS_SUN     B                           ");
             parameter.AppendSql(" WHERE 1 = 1                                               ");
             parameter.AppendSql("   AND A.SUCODE = :SUCODE                                  "); 
             parameter.AppendSql("   AND A.JDATE <= TO_DATE(:JDATE, 'YYYY-MM-DD')            ");
@@ -202,7 +202,7 @@ namespace ComHpcLibB.Repository
         public int UpdateOcsDrugSetQty(string argQty, string argBuildDate, string argSuCode)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_OCS.OCS_DRUG SET                        ");
+            parameter.AppendSql(" UPDATE ADMIN.OCS_DRUG SET                        ");
             parameter.AppendSql("        QTY   = :QTY                                   ");
             parameter.AppendSql("        , REALQTY = :QTY                               ");
             parameter.AppendSql("  WHERE BUILDDATE = TO_DATE(:BUILDDATE, 'YYYY-MM-DD')  ");

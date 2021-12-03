@@ -173,7 +173,7 @@ namespace ComBase
             clsDB.setBeginTran(pDbCon);
             try
             {
-                SQL = " SELECT ROWID FROM PACS.DEXAM ";
+                SQL = " SELECT ROWID FROM ADMIN.DEXAM ";
                 SQL = SQL + ComNum.VBLF + " WHERE patid ='" + ArgPano + "'";
                 SQL = SQL + ComNum.VBLF + "  AND serialno ='" + ArgPacsNo + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND ESTATUS ='C' ";  //초기판독
@@ -189,7 +189,7 @@ namespace ComBase
 
                 if (dt.Rows.Count > 0)
                 {
-                    SQL = " UPDATE PACS.DEXAM SET ESTATUS ='R' ";
+                    SQL = " UPDATE ADMIN.DEXAM SET ESTATUS ='R' ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + dt.Rows[0]["ROWID"].ToString().Trim() + "' ";
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, pDbCon);
 
@@ -249,7 +249,7 @@ namespace ComBase
                     if (strPacsNo != "")
                     {
                         //CVR용 영상본 최초시각 update
-                        SQL = " SELECT ROWID FROM KOSMOS_PMPA.XRAY_DETAIL ";
+                        SQL = " SELECT ROWID FROM ADMIN.XRAY_DETAIL ";
                         SQL = SQL + ComNum.VBLF + " WHERE PANO ='" + ArgPano + "'";
                         SQL = SQL + ComNum.VBLF + "  AND PACSNO ='" + strPacsNo + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND CVR IN ('Y','S' ) ";
@@ -266,7 +266,7 @@ namespace ComBase
 
                         if (dt.Rows.Count > 0)
                         {
-                            SQL = " UPDATE KOSMOS_PMPA.XRAY_DETAIL SET CVR_CDATE =SYSDATE ";
+                            SQL = " UPDATE ADMIN.XRAY_DETAIL SET CVR_CDATE =SYSDATE ";
                             SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + dt.Rows[0]["ROWID"].ToString().Trim() + "' ";
                             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, pDbCon);
 
@@ -340,7 +340,7 @@ namespace ComBase
             try
             {
 
-                SQL = "SELECT NAME FROM KOSMOS_PMPA.BAS_PASS";
+                SQL = "SELECT NAME FROM ADMIN.BAS_PASS";
                 SQL = SQL + ComNum.VBLF + " WHERE IDNUMBER = " + strSabun + " ";
                 SQL = SQL + ComNum.VBLF + " AND PROGRAMID = '" + strPROGRAMID + "' ";
 

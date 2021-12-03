@@ -1686,7 +1686,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT";
                 SQL = SQL + ComNum.VBLF + "     A.SUNAMEK, B.EFFECT, B.BUNCODE, C.CLASSNAME ";
-                SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "BAS_SUN A, " + ComNum.DB_MED + "OCS_DRUGINFO_NEW B, KOSMOS_PMPA.BAS_CLASS C";
+                SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "BAS_SUN A, " + ComNum.DB_MED + "OCS_DRUGINFO_NEW B, ADMIN.BAS_CLASS C";
                 SQL = SQL + ComNum.VBLF + "     WHERE A.SUNEXT = B.SUNEXT";
                 SQL = SQL + ComNum.VBLF + "         AND B.BUNCODE = C.CLASSCODE";
                 SQL = SQL + ComNum.VBLF + "         AND A.SUNEXT = '" + ssDrug_Sheet1.Cells[ssDrug_Sheet1.ActiveRowIndex, 0].Text + "' ";
@@ -1777,7 +1777,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT";
                 SQL = SQL + ComNum.VBLF + "     A.SUNAMEK, B.EFFECT, B.BUNCODE, C.CLASSNAME ";
-                SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "BAS_SUN A, " + ComNum.DB_MED + "OCS_DRUGINFO_NEW B, KOSMOS_PMPA.BAS_CLASS C";
+                SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "BAS_SUN A, " + ComNum.DB_MED + "OCS_DRUGINFO_NEW B, ADMIN.BAS_CLASS C";
                 SQL = SQL + ComNum.VBLF + "     WHERE A.SUNEXT = B.SUNEXT";
                 SQL = SQL + ComNum.VBLF + "         AND B.BUNCODE = C.CLASSCODE";
                 SQL = SQL + ComNum.VBLF + "         AND A.SUNEXT = '" + ssDoubt_Sheet1.Cells[ssDoubt_Sheet1.ActiveRowIndex, 0].Text + "' ";

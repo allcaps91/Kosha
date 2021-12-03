@@ -377,19 +377,19 @@ namespace ComLibB
             try
             {
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(BALDATE,'YYYY-MM-DD') BALDATE, PANO, SNAME, '01' GBN, '보험환자용' GBNK, ROWID ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_PRES_INSULIN01 ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.OCS_PRES_INSULIN01 ";
                 SQL += SQL1;
                 SQL += ComNum.VBLF + "  UNION ALL ";
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(BALDATE,'YYYY-MM-DD') BALDATE, PANO, SNAME, '02' GBN, '급여,차상위환자' GBNK, ROWID ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_PRES_INSULIN02 ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.OCS_PRES_INSULIN02 ";
                 SQL += SQL1;
                 SQL += ComNum.VBLF + "  UNION ALL ";
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(BALDATE,'YYYY-MM-DD') BALDATE, PANO, SNAME, '03' GBN, '연속혈당측정용,전극용' GBNK, ROWID ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_PRES_INSULIN03 ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.OCS_PRES_INSULIN03 ";
                 SQL += SQL1;
                 SQL += ComNum.VBLF + "  UNION ALL ";
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(BALDATE,'YYYY-MM-DD') BALDATE, PANO, SNAME, '04' GBN, '연속혈당측정기,인슐린자동주입기' GBNK, ROWID ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_PRES_INSULIN04 ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.OCS_PRES_INSULIN04 ";
                 SQL += SQL1;
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -490,7 +490,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT GKIHO, JUMIN1, JUMIN2, JUMIN3, SNAME, TEL, HPHONE ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL += ComNum.VBLF + " FROM ADMIN.BAS_PATIENT ";
                 SQL += ComNum.VBLF + " WHERE PANO = '" + strPANO + "'";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -547,7 +547,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT GKIHO, JUMIN1, JUMIN2, JUMIN3, SNAME, TEL, HPHONE ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL += ComNum.VBLF + " FROM ADMIN.BAS_PATIENT ";
                 SQL += ComNum.VBLF + " WHERE PANO = '" + strPANO + "'";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -794,7 +794,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT * ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_PRES_INSULIN01 ";
+                SQL += ComNum.VBLF + " FROM ADMIN.OCS_PRES_INSULIN01 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "'";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -859,7 +859,7 @@ namespace ComLibB
             try
             {
 
-                SQL = " DELETE KOSMOS_OCS.OCS_PRES_INSULIN01 ";
+                SQL = " DELETE ADMIN.OCS_PRES_INSULIN01 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "'";    
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -934,7 +934,7 @@ namespace ComLibB
             try
             {
 
-                SQL = " INSERT INTO KOSMOS_OCS.OCS_PRES_INSULIN01 ( ";
+                SQL = " INSERT INTO ADMIN.OCS_PRES_INSULIN01 ( ";
                 SQL += ComNum.VBLF + " PANO, SNAME, BALDATE, DEPTCODE, ";
                 SQL += ComNum.VBLF + " DRCODE, DRNAME, DRBUNHO1, DRBUNHO2, ";
                 SQL += ComNum.VBLF + " BINO, TEL, PHONE, ILLNAME, ";
@@ -1026,7 +1026,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT * ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_PRES_INSULIN02 ";
+                SQL += ComNum.VBLF + " FROM ADMIN.OCS_PRES_INSULIN02 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "'";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -1104,7 +1104,7 @@ namespace ComLibB
             try
             {
 
-                SQL = " DELETE KOSMOS_OCS.OCS_PRES_INSULIN02 ";
+                SQL = " DELETE ADMIN.OCS_PRES_INSULIN02 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "'";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -1194,7 +1194,7 @@ namespace ComLibB
             try
             {
 
-                SQL = " INSERT INTO KOSMOS_OCS.OCS_PRES_INSULIN02 ( ";
+                SQL = " INSERT INTO ADMIN.OCS_PRES_INSULIN02 ( ";
                 SQL += ComNum.VBLF + " PANO, SNAME, BALDATE, DEPTCODE, ";
                 SQL += ComNum.VBLF + " DRCODE, DRNAME, DRBUNHO1, DRBUNHO2, ";
                 SQL += ComNum.VBLF + " BINO, TEL, PHONE, ILLNAME, ";
@@ -1292,7 +1292,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT * ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_PRES_INSULIN03 ";
+                SQL += ComNum.VBLF + " FROM ADMIN.OCS_PRES_INSULIN03 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "'";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -1354,7 +1354,7 @@ namespace ComLibB
             try
             {
 
-                SQL = " DELETE KOSMOS_OCS.OCS_PRES_INSULIN03 ";
+                SQL = " DELETE ADMIN.OCS_PRES_INSULIN03 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "'";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -1426,7 +1426,7 @@ namespace ComLibB
             try
             {
 
-                SQL = " INSERT INTO KOSMOS_OCS.OCS_PRES_INSULIN03 ( ";
+                SQL = " INSERT INTO ADMIN.OCS_PRES_INSULIN03 ( ";
                 SQL += ComNum.VBLF + " PANO, SNAME, BALDATE, DEPTCODE, ";
                 SQL += ComNum.VBLF + " DRCODE, DRNAME, DRBUNHO1, DRBUNHO2, ";
                 SQL += ComNum.VBLF + " BINO, TEL, PHONE, ILLNAME, ";
@@ -1515,7 +1515,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT * ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_OCS.OCS_PRES_INSULIN04 ";
+                SQL += ComNum.VBLF + " FROM ADMIN.OCS_PRES_INSULIN04 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "'";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -1572,7 +1572,7 @@ namespace ComLibB
             try
             {
 
-                SQL = " DELETE KOSMOS_OCS.OCS_PRES_INSULIN04 ";
+                SQL = " DELETE ADMIN.OCS_PRES_INSULIN04 ";
                 SQL += ComNum.VBLF + " WHERE ROWID = '" + strRowid + "'";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -1640,7 +1640,7 @@ namespace ComLibB
             try
             {
 
-                SQL = " INSERT INTO KOSMOS_OCS.OCS_PRES_INSULIN04 ( ";
+                SQL = " INSERT INTO ADMIN.OCS_PRES_INSULIN04 ( ";
                 SQL += ComNum.VBLF + " PANO, SNAME, BALDATE, DEPTCODE, ";
                 SQL += ComNum.VBLF + " DRCODE, DRNAME, DRBUNHO1, DRBUNHO2, ";
                 SQL += ComNum.VBLF + " BINO, TEL, PHONE, ILLNAME, ";
@@ -1721,7 +1721,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT JUSO_1 || ' ' || JUSO_2 || ' ' || JUSO_3 JUSO ";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.VIEW_PATIENT_JUSO ";
+                SQL += ComNum.VBLF + "  FROM ADMIN.VIEW_PATIENT_JUSO ";
                 SQL += ComNum.VBLF + " WHERE PANO = '" + strPANO + "' ";
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
 
@@ -1764,7 +1764,7 @@ namespace ComLibB
 
             try
             {
-                SQL = " SELECT DEPTNAMEK FROM KOSMOS_PMPA.BAS_CLINICDEPT ";
+                SQL = " SELECT DEPTNAMEK FROM ADMIN.BAS_CLINICDEPT ";
                 SQL += ComNum.VBLF + " WHERE DEPTCODE = '" + strDEPT + "' ";
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
 
@@ -1823,7 +1823,7 @@ namespace ComLibB
                 default:
 
                     SQL = " SELECT REPLACE(DEPTNAMEK, ' ', '') DEPTK ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_CLINICDEPT ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_CLINICDEPT ";
                     SQL = SQL + ComNum.VBLF + " WHERE DEPTCODE = '" + strDeptCode + "' ";
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                     if (SqlErr != "")
@@ -1848,13 +1848,13 @@ namespace ComLibB
             if (strDEPTK == "")
             { return ""; }
             #region 이전 전문의 번호 가져오기
-            //SQL = " SELECT BUNHO FROM KOSMOS_ADM.INSA_MSTL ";
+            //SQL = " SELECT BUNHO FROM ADMIN.INSA_MSTL ";
             //SQL = SQL + ComNum.VBLF + " WHERE NAME LIKE '%전문의%' ";
             //SQL = SQL + ComNum.VBLF + "  AND NAME LIKE '%" + strDEPTK + "%'  ";
             //SQL = SQL + ComNum.VBLF + "  AND GIKWAN LIKE '%보건%' ";
             //SQL = SQL + ComNum.VBLF + "  AND GUBUN = '1' ";
             //SQL = SQL + ComNum.VBLF + "  AND SABUN IN ";
-            //SQL = SQL + ComNum.VBLF + "                  ( SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR ";
+            //SQL = SQL + ComNum.VBLF + "                  ( SELECT SABUN FROM ADMIN.OCS_DOCTOR ";
             //SQL = SQL + ComNum.VBLF + "                     WHERE DRCODE = '" + strDrCode + "' ";
             //SQL = SQL + ComNum.VBLF + "                       AND GBOUT = 'N') ";
             //SQL = SQL + ComNum.VBLF + " ORDER BY CHIDATE ASC "; 
@@ -1863,23 +1863,23 @@ namespace ComLibB
             SQL = "";
             if (strDEPTK == "내과")
             {
-                SQL += ComNum.VBLF + " SELECT NAME, BUNHO, '1' GUBUN, CHIDATE FROM KOSMOS_ADM.INSA_MSTL ";
+                SQL += ComNum.VBLF + " SELECT NAME, BUNHO, '1' GUBUN, CHIDATE FROM ADMIN.INSA_MSTL ";
                 SQL += ComNum.VBLF + " WHERE NAME LIKE '%전문의%' ";
                 SQL += ComNum.VBLF + "   AND NAME LIKE '%분과%' ";
                 SQL += ComNum.VBLF + "   AND GUBUN = '1' ";
                 SQL += ComNum.VBLF + "   AND SABUN IN ";
-                SQL += ComNum.VBLF + "                   (SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL += ComNum.VBLF + "                   (SELECT SABUN FROM ADMIN.OCS_DOCTOR ";
                 SQL += ComNum.VBLF + "                     WHERE DRCODE = '" + strDrCode + "' ";
                 SQL += ComNum.VBLF + "                       AND GBOUT = 'N') ";
                 SQL += ComNum.VBLF + " UNION ALL ";
             }
-            SQL += ComNum.VBLF + "  SELECT NAME, BUNHO, '2' GUBUN, CHIDATE FROM KOSMOS_ADM.INSA_MSTL ";
+            SQL += ComNum.VBLF + "  SELECT NAME, BUNHO, '2' GUBUN, CHIDATE FROM ADMIN.INSA_MSTL ";
             SQL += ComNum.VBLF + "  WHERE NAME LIKE '%전문의%' ";
             SQL = SQL + ComNum.VBLF + "  AND NAME LIKE '%" + strDEPTK + "%'  ";
             SQL += ComNum.VBLF + "    AND GIKWAN LIKE '%보건%' ";
             SQL += ComNum.VBLF + "    AND GUBUN = '1' ";
             SQL += ComNum.VBLF + "    AND SABUN IN ";
-            SQL += ComNum.VBLF + "                   (SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR ";
+            SQL += ComNum.VBLF + "                   (SELECT SABUN FROM ADMIN.OCS_DOCTOR ";
             SQL += ComNum.VBLF + "                     WHERE DRCODE = '" + strDrCode + "' ";
             SQL += ComNum.VBLF + "                       AND GBOUT = 'N') ";
             SQL += ComNum.VBLF + "  ORDER BY GUBUN ASC, CHIDATE ASC ";
@@ -1914,7 +1914,7 @@ namespace ComLibB
 
 
             SQL = "";
-            SQL += ComNum.VBLF + "  SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR  ";
+            SQL += ComNum.VBLF + "  SELECT SABUN FROM ADMIN.OCS_DOCTOR  ";
             SQL += ComNum.VBLF + "  WHERE DRCODE = '" + strDrCode + "'";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
             if (SqlErr != "")

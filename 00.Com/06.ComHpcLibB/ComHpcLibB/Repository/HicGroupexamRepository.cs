@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_GROUPEXAM       ");
+            parameter.AppendSql("DELETE ADMIN.HIC_GROUPEXAM       ");
             parameter.AppendSql(" WHERE GROUPCODE =:RID                 ");
 
             parameter.Add("RID", fstrCode);
@@ -36,7 +36,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT KOSMOS_PMPA.HIC_GROUPEXAM (                         ");
+            parameter.AppendSql("INSERT ADMIN.HIC_GROUPEXAM (                         ");
             parameter.AppendSql("   GROUPCODE,EXCODE,SUGAGBN,SEQNO,ENTSABUN,ENTTIME )       ");
             parameter.AppendSql(" VALUES (                                                  ");
             parameter.AppendSql("  :GROUPCODE,:EXCODE,:SUGAGBN,:SEQNO,:ENTSABUN,SYSDATE )   ");
@@ -54,7 +54,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_GROUPEXAM        ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_GROUPEXAM        ");
             parameter.AppendSql("   SET EXCODE   =:EXCODE                ");
             parameter.AppendSql("      ,SUGAGBN  =:SUGAGBN               ");
             parameter.AppendSql("      ,SEQNO    =:SEQNO                 ");
@@ -76,7 +76,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GROUPCODE, EXCODE                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_GROUPEXAM                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_GROUPEXAM                           ");
             parameter.AppendSql(" WHERE GROUPCODE = :GROUPCODE                              ");
             parameter.AppendSql("   AND ExCode IN ('A136','A142','A154','A211','A213','TX11','TX13','TX14','TX16','TX53','TX54')  ");
 
@@ -90,7 +90,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT EXCODE                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_GROUPEXAM    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_GROUPEXAM    ");
             parameter.AppendSql(" WHERE 1 = 1                        ");
             parameter.AppendSql("   AND GROUPCODE =:GROUPCODE        ");
 
@@ -104,7 +104,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_GROUPEXAM        ");
+            parameter.AppendSql("DELETE ADMIN.HIC_GROUPEXAM        ");
             parameter.AppendSql(" WHERE ROWID    =:RID                  ");
 
             parameter.Add("RID",        code.RID);
@@ -117,7 +117,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT EXCODE                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_GROUPEXAM           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_GROUPEXAM           ");
             parameter.AppendSql(" WHERE 1 = 1                               ");
             parameter.AppendSql("   AND GROUPCODE IN (:GROUPCODE)            ");
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)                  ");

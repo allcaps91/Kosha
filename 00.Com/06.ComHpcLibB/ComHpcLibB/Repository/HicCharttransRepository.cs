@@ -27,7 +27,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT WRTNO,SName,GjJong,TrList,TO_CHAR(EntTime,'HH24:MI') EntTime            ");
             parameter.AppendSql(" ,EntSabun,TO_CHAR(RecvTime,'HH24:MI') RecvTime,RecvSabun,Remark               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHARTTRANS                                              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHARTTRANS                                              ");
             parameter.AppendSql("  WHERE  1=1                                                                   ");
             parameter.AppendSql("   AND TRDATE = TO_DATE(:TRDATE,'YYYY-MM-DD')                                  ");
             parameter.AppendSql(" ORDER BY ENTTIME DESC                                                         ");
@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT WRTNO,SName,GjJong,TrList,TO_CHAR(EntTime,'YYYY-MM-DD HH24:MI') EntTime,EntSabun    ");
             parameter.AppendSql("     , TO_CHAR(RecvTime,'YYYY-MM-DD HH24:MI') RecvTime,RecvSabun,Remark,ROWID              ");
             parameter.AppendSql("     , TO_CHAR(RemarkTime,'YYYY-MM-DD HH24:MI') REMARKTIME                                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHARTTRANS                                                          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHARTTRANS                                                          ");
             parameter.AppendSql(" WHERE 1=1                                                                                 ");
             parameter.AppendSql("   AND WRTNO = :WRTNO                                                                      ");
 
@@ -57,7 +57,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHARTTRANS SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHARTTRANS SET  ");
             parameter.AppendSql("       RECVTIME  = SYSDATE             ");
             parameter.AppendSql("     , RECVSABUN = :RECVSABUN          ");
             parameter.AppendSql(" WHERE WRTNO     = :WRTNO              ");
@@ -73,7 +73,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHARTTRANS      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHARTTRANS      ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -87,7 +87,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(b.JepDate,'YYYY-MM-DD') JepDate,b.GjJong,b.GbChul                               ");
             parameter.AppendSql("     , a.WRTNO,b.SName,a.TrList,TO_CHAR(a.EntTime,'YYYY-MM-DD HH24:MI') EntTime,a.EntSabun     ");
             parameter.AppendSql("     , TO_CHAR(a.RecvTime,'YYYY-MM-DD HH24:MI') RecvTime,a.RecvSabun,a.Remark,a.ROWID          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHARTTRANS a, KOSMOS_PMPA.HIC_JEPSU b                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHARTTRANS a, ADMIN.HIC_JEPSU b                                   ");
             parameter.AppendSql(" WHERE a.TrDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                              ");
             parameter.AppendSql("   AND a.TrDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                              ");
             parameter.AppendSql("   AND a.EntTime IS NOT NULL                                                                   ");
@@ -149,7 +149,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHARTTRANS                                             ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHARTTRANS                                             ");
             parameter.AppendSql("       (TRDATE, WRTNO, SNAME, GJJONG, TRLIST, REMARK, REMARKTIME)                  ");
             parameter.AppendSql("VALUES                                                                             ");
             parameter.AppendSql("       (TO_DATE(:TRDATE, 'yyyy-mm-dd'), :WRTNO, :SNAME, :GJJONG, :TRLIST, :REMARK  ");
@@ -176,7 +176,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHARTTRANS SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHARTTRANS SET  ");
             parameter.AppendSql("       REMARK     = ''                 ");
             if (strGubun == "Y")
             {
@@ -197,7 +197,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_CHARTTRANS      ");
+            parameter.AppendSql("DELETE ADMIN.HIC_CHARTTRANS      ");
             parameter.AppendSql(" WHERE ROWID = :RID                    ");
 
             parameter.Add("RID", strROWID);
@@ -210,7 +210,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TrList,TO_CHAR(EntTime,'HH24:MI') EntTime,EntSabun          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHARTTRANS                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHARTTRANS                                  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                              ");
             parameter.AppendSql("   AND ENTSABUN IS NOT NULL                                        ");
 
@@ -225,7 +225,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT WRTNO,SName,GjJong,TrList,TO_CHAR(EntTime,'HH24:MI') EntTime,EntSabun   ");
             parameter.AppendSql("     , TO_CHAR(RecvTime,'HH24:MI') RecvTime,RecvSabun                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHARTTRANS                                              ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHARTTRANS                                              ");
             parameter.AppendSql(" WHERE TrDate = TRUNC(SYSDATE)                                                 ");
             parameter.AppendSql("   AND RecvTime IS NOT NULL                                                    ");
             parameter.AppendSql(" ORDER BY RecvTime DESC                                                        ");
@@ -237,7 +237,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHARTTRANS SET      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHARTTRANS SET      ");
             parameter.AppendSql("       RECVSABUN = 0                       ");
             parameter.AppendSql("     , RECVTIME  = ''                      ");
             parameter.AppendSql(" WHERE WRTNO     = :WRTNO                  ");
@@ -251,10 +251,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHARTTRANS_HIS                                                         ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHARTTRANS_HIS                                                         ");
             parameter.AppendSql("       (WRTNO, TRDATE, SNAME, GJJONG, TRLIST, ENTTIME, ENTSABUN, RECVSABUN, RECVTIME, BACKUPTIME)  ");
             parameter.AppendSql("SELECT WRTNO, TRDATE, SNAME, GJJONG, TRLIST, ENTTIME, ENTSABUN, RECVSABUN, RECVTIME, SYSDATE       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHARTTRANS                                                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHARTTRANS                                                                  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                                              ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -266,7 +266,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHARTTRANS                             ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHARTTRANS                             ");
             parameter.AppendSql(" (WRTNO, TRDATE, SNAME, GJJONG, TRLIST, ENTTIME, ENTSABUN)         ");
             parameter.AppendSql("VALUES                                                             ");
             parameter.AppendSql(" (:WRTNO, :TRDATE, :SNAME, :GJJONG, :TRLIST, SYSDATE, :ENTSABUN)  ");
@@ -286,7 +286,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHARTTRANS SET          ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHARTTRANS SET          ");
             if (strTRDATE != "")
             {
                 parameter.AppendSql(" TRDATE = TO_DATE(:TRDATE, 'YYYY-MM-DD'),  ");
@@ -314,7 +314,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_CHARTTRANS  ");
+            parameter.AppendSql("DELETE ADMIN.HIC_CHARTTRANS  ");
             parameter.AppendSql(" WHERE WRTNO   = :WRTNO              ");
 
             parameter.Add("WRTNO", nWRTNO);

@@ -621,7 +621,7 @@ namespace ComEmrBase
                                 if (ChangePicImage == true)
                                 {
                                     string strEMRIMAGENO = "0";
-                                    strEMRIMAGENO = (ComQuery.GetSequencesNoEx(clsDB.DbCon, "KOSMOS_EMR.EMRXMLIMAGES_EMRIMAGENO_SEQ")).ToString();
+                                    strEMRIMAGENO = (ComQuery.GetSequencesNoEx(clsDB.DbCon, "ADMIN.EMRXMLIMAGES_EMRIMAGENO_SEQ")).ToString();
 
                                     Array.Resize<clsEmrType.EmrXmlImage>(ref pEmrXmlImage, pEmrXmlImage.Length + 1);
                                     pEmrXmlImage[pEmrXmlImage.Length - 1].Pic = objControl;
@@ -829,7 +829,7 @@ namespace ComEmrBase
             try
             {
                 SQL = "SELECT CONTENTS ";
-                SQL += ComNum.VBLF + "FROM KOSMOS_EMR.EMRFORM";
+                SQL += ComNum.VBLF + "FROM ADMIN.EMRFORM";
                 SQL += ComNum.VBLF + "  WHERE formno = " + FormNo;
 
                 string sqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -1049,20 +1049,20 @@ namespace ComEmrBase
             SQL += ComNum.VBLF + "       ,  A2.ITEMVALUE AS TA2";
             SQL += ComNum.VBLF + "       ,  A3.ITEMVALUE AS TA3";
             SQL += ComNum.VBLF + "       ,  A4.ITEMVALUE AS TA4";
-            SQL += ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRCHARTMST A";
-            SQL += ComNum.VBLF + "    LEFT OUTER JOIN KOSMOS_EMR.AEMRCHARTROW A1";
+            SQL += ComNum.VBLF + "  FROM ADMIN.AEMRCHARTMST A";
+            SQL += ComNum.VBLF + "    LEFT OUTER JOIN ADMIN.AEMRCHARTROW A1";
             SQL += ComNum.VBLF + "      ON A1.EMRNO    = A.EMRNO";
             SQL += ComNum.VBLF + "     AND A1.EMRNOHIS = A.EMRNOHIS";
             SQL += ComNum.VBLF + "     AND A1.ITEMCD   = 'I0000002016'";
-            SQL += ComNum.VBLF + "    LEFT OUTER JOIN KOSMOS_EMR.AEMRCHARTROW A2";
+            SQL += ComNum.VBLF + "    LEFT OUTER JOIN ADMIN.AEMRCHARTROW A2";
             SQL += ComNum.VBLF + "      ON A2.EMRNO    = A.EMRNO";
             SQL += ComNum.VBLF + "     AND A2.EMRNOHIS = A.EMRNOHIS";
             SQL += ComNum.VBLF + "     AND A2.ITEMCD   = 'I0000014620'";
-            SQL += ComNum.VBLF + "    LEFT OUTER JOIN KOSMOS_EMR.AEMRCHARTROW A3";
+            SQL += ComNum.VBLF + "    LEFT OUTER JOIN ADMIN.AEMRCHARTROW A3";
             SQL += ComNum.VBLF + "      ON A3.EMRNO    = A.EMRNO";
             SQL += ComNum.VBLF + "     AND A3.EMRNOHIS = A.EMRNOHIS";
             SQL += ComNum.VBLF + "     AND A3.ITEMCD   = 'I0000000190'";
-            SQL += ComNum.VBLF + "    LEFT OUTER JOIN KOSMOS_EMR.AEMRCHARTROW A4";
+            SQL += ComNum.VBLF + "    LEFT OUTER JOIN ADMIN.AEMRCHARTROW A4";
             SQL += ComNum.VBLF + "      ON A4.EMRNO    = A.EMRNO";
             SQL += ComNum.VBLF + "     AND A4.EMRNOHIS = A.EMRNOHIS";
             SQL += ComNum.VBLF + "     AND A4.ITEMCD   = 'I0000014735'";
@@ -1291,7 +1291,7 @@ namespace ComEmrBase
                 {
                     SQL = SQL + ComNum.VBLF + " ,   CASE WHEN R.ITEMTYPE = 'IMAGE' THEN                                             ";
                     SQL = SQL + ComNum.VBLF + "     (	SELECT IMAGE                                                                ";
-                    SQL = SQL + ComNum.VBLF + "     		  FROM KOSMOS_EMR.AEMRCHARTDRAW                                         ";
+                    SQL = SQL + ComNum.VBLF + "     		  FROM ADMIN.AEMRCHARTDRAW                                         ";
                     SQL = SQL + ComNum.VBLF + "       		 WHERE EMRNO      = A.EMRNO                                             ";
                     SQL = SQL + ComNum.VBLF + "      		   AND EMRNOHIS   = A.EMRNOHIS                                          ";
                     SQL = SQL + ComNum.VBLF + "      		   AND ITEMNAME   = R.ITEMCD                                            ";
@@ -2563,10 +2563,10 @@ namespace ComEmrBase
                 #region 입퇴원요약지 검수 관련 데이터 정리
                 //if (FORMNO.Equals("1647"))
                 //{
-                //    SQL = "INSERT INTO KOSMOS_EMR.EMRXML_COMPLETE_HISTORY(";
+                //    SQL = "INSERT INTO ADMIN.EMRXML_COMPLETE_HISTORY(";
                 //    SQL += ComNum.VBLF + " EMRNO, CDATE, CSABUN, DELDATE, DELSABUN, MEDFRDATE, PTNO, INDATE) ";
                 //    SQL += ComNum.VBLF + " SELECT EMRNO, CDATE, CSABUN, SYSDATE, " + clsType.User.IdNumber + ", MEDFRDATE, PTNO, INDATE";
-                //    SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML_COMPLETE ";
+                //    SQL += ComNum.VBLF + " FROM ADMIN.EMRXML_COMPLETE ";
                 //    SQL += ComNum.VBLF + "  WHERE EMRNO = " + VB.Val(strEmrNo);
 
                 //    SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, pDbCon);
@@ -2577,7 +2577,7 @@ namespace ComEmrBase
                 //        return false;
                 //    }
 
-                //    SQL = " DELETE KOSMOS_EMR.EMRXML_COMPLETE ";
+                //    SQL = " DELETE ADMIN.EMRXML_COMPLETE ";
                 //    SQL += ComNum.VBLF + "  WHERE PTNO = '" + PTNO + "'";
                 //    SQL += ComNum.VBLF + "    AND MEDFRDATE = '" + MEDFRDATE + "'";
 
@@ -2804,7 +2804,7 @@ namespace ComEmrBase
             {
                 SQL = "SELECT ";
                 SQL = SQL + ComNum.VBLF + "        A.PTNO, A.MEDFRDATE, A.EMRNO, A.USEID";
-                SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRXML A";
+                SQL = SQL + ComNum.VBLF + "    FROM ADMIN.EMRXML A";
                 SQL = SQL + ComNum.VBLF + "    WHERE A.EMRNO = " + dblEmrNo;
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -2852,10 +2852,10 @@ namespace ComEmrBase
                 #region 입퇴원요약지 검수 관련 데이터 정리
                 if (strFormNo.Equals("1647"))
                 {
-                    SQL = "INSERT INTO KOSMOS_EMR.EMRXML_COMPLETE_HISTORY(";
+                    SQL = "INSERT INTO ADMIN.EMRXML_COMPLETE_HISTORY(";
                     SQL += ComNum.VBLF + " EMRNO, CDATE, CSABUN, DELDATE, DELSABUN, MEDFRDATE, PTNO, INDATE) ";
                     SQL += ComNum.VBLF + " SELECT EMRNO, CDATE, CSABUN, SYSDATE, " + clsType.User.IdNumber + ", MEDFRDATE, PTNO, INDATE";
-                    SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML_COMPLETE ";
+                    SQL += ComNum.VBLF + " FROM ADMIN.EMRXML_COMPLETE ";
                     SQL += ComNum.VBLF + "  WHERE EMRNO = " + dblEmrNo;
 
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, pDbCon);
@@ -2866,7 +2866,7 @@ namespace ComEmrBase
                         return false;
                     }
 
-                    SQL = " DELETE KOSMOS_EMR.EMRXML_COMPLETE ";
+                    SQL = " DELETE ADMIN.EMRXML_COMPLETE ";
                     SQL += ComNum.VBLF + "  WHERE PTNO = '" + strPtno + "'";
                     SQL += ComNum.VBLF + "    AND MEDFRDATE = '" + strMedFrDate + "'";
 
@@ -2880,10 +2880,10 @@ namespace ComEmrBase
                 }
                 #endregion
 
-                double dblEmrHisNo = ComQuery.GetSequencesNo(clsDB.DbCon, "KOSMOS_EMR.EMRXMLHISNO");
+                double dblEmrHisNo = ComQuery.GetSequencesNo(clsDB.DbCon, "ADMIN.EMRXMLHISNO");
                                
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " INSERT INTO KOSMOS_EMR.EMRXMLHISTORY";
+                SQL = SQL + ComNum.VBLF + " INSERT INTO ADMIN.EMRXMLHISTORY";
                 SQL = SQL + ComNum.VBLF + "      (HISTORYNO, EMRNO,FORMNO,USEID,CHARTDATE,CHARTTIME,ACPNO,PTNO,";
                 SQL = SQL + ComNum.VBLF + "      INOUTCLS,MEDFRDATE,MEDFRTIME,MEDENDDATE,MEDENDTIME,MEDDEPTCD,MEDDRCD,";
                 SQL = SQL + ComNum.VBLF + "      WRITEDATE,WRITETIME,CHARTXML,CONTENTS,UPDATENO,HISTORYWRITEDATE,HISTORYWRITETIME,DELUSEID,CERTNO)";
@@ -2893,7 +2893,7 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "      WRITEDATE,WRITETIME,CHARTXML,CONTENTS,UPDATENO,";
                 SQL = SQL + ComNum.VBLF + "      '" + VB.Left(strCurDateTime, 8) + "',";
                 SQL = SQL + ComNum.VBLF + "      '" + VB.Right(strCurDateTime, 6) + "', '" + clsType.User.IdNumber + "',CERTNO";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRXML";
                 SQL = SQL + ComNum.VBLF + "  WHERE EMRNO = " + dblEmrNo;
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -2906,7 +2906,7 @@ namespace ComEmrBase
                 }
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " DELETE FROM KOSMOS_EMR.EMRXML";
+                SQL = SQL + ComNum.VBLF + " DELETE FROM ADMIN.EMRXML";
                 SQL = SQL + ComNum.VBLF + "  WHERE EMRNO = " + dblEmrNo;
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -2919,7 +2919,7 @@ namespace ComEmrBase
                 }
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " DELETE FROM KOSMOS_EMR.EMRXMLMST";
+                SQL = SQL + ComNum.VBLF + " DELETE FROM ADMIN.EMRXMLMST";
                 SQL = SQL + ComNum.VBLF + "  WHERE EMRNO = " + dblEmrNo;
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")

@@ -249,7 +249,7 @@ namespace ComPmpaLibB
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT Pano,SName,Jumin1,Jumin2, Jumin3 ,PName,Sex,HPhone || ' ' || Tel Phone, ";
                 SQL = SQL + ComNum.VBLF + " ZipCode1,ZipCode2 ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "  WHERE JUMIN1='" + txtJumin1.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND  JUMIN2='" + txtJumin2.Text + "' ";
                 if (GnJobSabun == 4349)

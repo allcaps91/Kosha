@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.WRTNO, SUM(DECODE(a.Panjeng,'5',1,0)) D1, SUM(DECODE(a.Panjeng,'6',1,0)) D2   ");
             parameter.AppendSql("     , SUM(DECODE(a.Panjeng,'A',1,0)) DN                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG a, KOSMOS_PMPA.HIC_JEPSU b                          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG a, ADMIN.HIC_JEPSU b                          ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                     ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                     ");
             parameter.AppendSql("   AND a.PanjengDate IS NOT NULL                                                       ");
@@ -66,7 +66,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(PanjengDate,'YYYY-MM-DD') PanjengDate,MCode,Panjeng ");
             parameter.AppendSql("     , SogenCode,JochiCode,WorkYN,SahuCode,MsymCode,MBun,UCode     ");
             parameter.AppendSql("     , SogenRemark,JochiRemark,ROWID                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                 ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                              ");
             parameter.AppendSql("   AND ( DELDATE IS NULL OR DELDATE ='' )                          ");
             parameter.AppendSql(" ORDER BY MCode                                                    ");

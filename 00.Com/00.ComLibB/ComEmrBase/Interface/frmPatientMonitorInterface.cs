@@ -163,8 +163,8 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + " , RESULT_SPO2          -- 산소포화도";
                 SQL += ComNum.VBLF + " , RESULT_CVP_M         -- 중심정맥압 평균";
                 SQL += ComNum.VBLF + " , RESULT_ETCO2         -- 호기말 이산화탄소 분압";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_INTERFACE_PM A";
-                SQL += ComNum.VBLF + "    INNER JOIN KOSMOS_PMPA.BAS_PATIENT B";
+                SQL += ComNum.VBLF + "  FROM ADMIN.EXAM_INTERFACE_PM A";
+                SQL += ComNum.VBLF + "    INNER JOIN ADMIN.BAS_PATIENT B";
                 SQL += ComNum.VBLF + "       ON A.PANO = B.PANO";
                 SQL += ComNum.VBLF + " WHERE A.PANO = '" + AcpEmr.ptNo + "'";
                 SQL += ComNum.VBLF + "   AND A.ACTDATE = '" + strDate + "'";

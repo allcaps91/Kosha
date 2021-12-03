@@ -26,8 +26,8 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("     , A.SEQNO");
             parameter.AppendSql("     , A.SUCODE");
             parameter.AppendSql("     , B.SUNAME");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE('15', B.CHKCODE) AS CHKWAY_NM");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_GCODE1('15', B.CHKCODE) AS ANALWAY_NM");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE('15', B.CHKCODE) AS CHKWAY_NM");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_GCODE1('15', B.CHKCODE) AS ANALWAY_NM");
             parameter.AppendSql("     , A.QTY");
             parameter.AppendSql("     , A.PRICE");
             parameter.AppendSql("     , A.GBHALIN");
@@ -105,7 +105,7 @@ namespace HC_Measurement.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHUK_ESTIMATE (");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHUK_ESTIMATE (");
             parameter.AppendSql("    WRTNO");
             parameter.AppendSql("  , SEQNO");
             parameter.AppendSql("  , TOTAMT");
@@ -145,7 +145,7 @@ namespace HC_Measurement.Repository
         public void UpdateSendMail(string strLtdMgr, string strLtdAddr, string strRid)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUK_ESTIMATE");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUK_ESTIMATE");
             parameter.AppendSql("   SET SENDTIME = SYSDATE");
             parameter.AppendSql("     , LTD_MANAGER = :LTD_MANAGER");
             parameter.AppendSql("     , LTD_EMAILA_DDRESS = :LTD_EMAILA_DDRESS");
@@ -176,7 +176,7 @@ namespace HC_Measurement.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHUK_ESTIMATE (");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHUK_ESTIMATE (");
             parameter.AppendSql("    WRTNO");
             parameter.AppendSql("  , SEQNO");
             parameter.AppendSql("  , TOTAMT");
@@ -225,12 +225,12 @@ namespace HC_Measurement.Repository
         public void DeleteAll(long fnWRTNO)
         {
             MParameter parameter = CreateParameter();
-            //parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUK_ESTIMATE_DTL");
+            //parameter.AppendSql("UPDATE ADMIN.HIC_CHUK_ESTIMATE_DTL");
             //parameter.AppendSql("   SET DELDATE = SYSDATE");
             //parameter.AppendSql(" WHERE WRTNO = :WRTNO");
 
             //완전삭제해야함 다시 띄워볼경우 삭제흔적 보임
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_CHUK_ESTIMATE_DTL");
+            parameter.AppendSql("DELETE ADMIN.HIC_CHUK_ESTIMATE_DTL");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -279,7 +279,7 @@ namespace HC_Measurement.Repository
         public void InsertAmt(HIC_CHUK_ESTIMATE dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHUK_ESTIMATE");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHUK_ESTIMATE");
             parameter.AppendSql("(");
             parameter.AppendSql("    WRTNO");
             parameter.AppendSql("  , SEQNO");
@@ -329,7 +329,7 @@ namespace HC_Measurement.Repository
         public void Delete(HIC_CHUK_ESTIMATE dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUK_ESTIMATE_DTL");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUK_ESTIMATE_DTL");
             parameter.AppendSql("   SET DELDATE = SYSDATE");
             parameter.AppendSql(" WHERE ROWID = :RID");
 
@@ -341,7 +341,7 @@ namespace HC_Measurement.Repository
         public void UpDate(HIC_CHUK_ESTIMATE dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUK_ESTIMATE_DTL");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUK_ESTIMATE_DTL");
             parameter.AppendSql("   SET SEQNO = :SEQNO");
             parameter.AppendSql("     , SUCODE = :SUCODE");
             parameter.AppendSql("     , QTY = :QTY");

@@ -80,7 +80,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT TO_CHAR(REGDATE, 'YYYY-MM-DD') BREGDATE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_CANCER_SERVICE";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_CANCER_SERVICE";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + FstrPano + "'";
                 SQL = SQL + ComNum.VBLF + "  AND DEPT_CODE = '" + FstrDeptCode + "'";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL";
@@ -163,7 +163,7 @@ namespace ComLibB
             {
 
                 SQL = "";
-                SQL = "UPDATE KOSMOS_PMPA.ETC_CANCER_SERVICE SET";
+                SQL = "UPDATE ADMIN.ETC_CANCER_SERVICE SET";
                 SQL = SQL + ComNum.VBLF + " DELDATE = TO_DATE('" + clsPublic.GstrSysDate + "', 'YYYY-MM-DD')";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + FstrPano + "'";
                 SQL = SQL + ComNum.VBLF + "  AND DEPT_CODE = '" + FstrDeptCode + "'";
@@ -211,7 +211,7 @@ namespace ComLibB
                 //환자마스터에서 SMS동의여부 확인
                 SQL = "";
                 SQL = "SELECT PANO, SNAME, HPHONE, GBSMS";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PATIENT";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + FstrPano + "'";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -271,7 +271,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT A.JOBDATE, A.PANO, A.DEPTCODE, A.SENDTIME";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_SMS A, KOSMOS_PMPA.ETC_CANCER_SERVICE B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_SMS A, ADMIN.ETC_CANCER_SERVICE B";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.PANO = B.PANO(+)";
                 SQL = SQL + ComNum.VBLF + "  AND A.GUBUN = '36'";
                 SQL = SQL + ComNum.VBLF + "  AND A.SENDTIME IS  NOT NULL";
@@ -289,7 +289,7 @@ namespace ComLibB
                 if (nREAD > 0)
                 {
                     SQL = "";
-                    SQL = "UPDATE KOSMOS_PMPA.ETC_CANCER_SERVICE SET";
+                    SQL = "UPDATE ADMIN.ETC_CANCER_SERVICE SET";
                     SQL = SQL + ComNum.VBLF + " DELDATE = TO_DATE('" + clsPublic.GstrSysDate + "', 'YYYY-MM-DD')";
                     SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + FstrPano + "'";
                     SQL = SQL + ComNum.VBLF + "  AND DEPT_CODE = '" + FstrDeptCode + "'";
@@ -342,7 +342,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT A.JOBDATE, A.PANO, A.DEPTCODE, A.SENDTIME";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_SMS A, KOSMOS_PMPA.ETC_CANCER_SERVICE B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_SMS A, ADMIN.ETC_CANCER_SERVICE B";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.PANO = B.PANO(+)";
                 SQL = SQL + ComNum.VBLF + "  AND A.GUBUN = '36'";
                 SQL = SQL + ComNum.VBLF + "  AND A.SENDTIME IS NULL";
@@ -362,7 +362,7 @@ namespace ComLibB
                 if (strSendGubun == "")
                 {
                     SQL = "";
-                    SQL = "INSERT INTO KOSMOS_PMPA.ETC_CANCER_SERVICE(";
+                    SQL = "INSERT INTO ADMIN.ETC_CANCER_SERVICE(";
                     SQL = SQL + ComNum.VBLF + "PANO, REGDATE, DEPT_CODE) VALUES(";
                     SQL = SQL + ComNum.VBLF + "'" + FstrPano + "', TO_DATE('" + strSendDate + "', 'YYYY-MM-DD'),";
                     SQL = SQL + ComNum.VBLF + "'" + FstrDeptCode + "')";
@@ -370,7 +370,7 @@ namespace ComLibB
                 else
                 {
                     SQL = "";
-                    SQL = "UPDATE KOSMOS_PMPA.ETC_CANCER_SERVICE SET";
+                    SQL = "UPDATE ADMIN.ETC_CANCER_SERVICE SET";
                     SQL = SQL + ComNum.VBLF + " REGDATE = TO_DATE('" + strSendDate + "', 'YYYY-MM-DD')";
                     SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + FstrPano + "'";
                     SQL = SQL + ComNum.VBLF + "  AND DEPT_CODE = '" + FstrDeptCode + "'";
@@ -418,7 +418,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT TO_CHAR(REGDATE, 'YYYY-MM-DD') BREGDATE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_CANCER_SERVICE";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_CANCER_SERVICE";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + FstrPano + "'";
                 SQL = SQL + ComNum.VBLF + "  AND DEPT_CODE = '" + FstrDeptCode + "'";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL";

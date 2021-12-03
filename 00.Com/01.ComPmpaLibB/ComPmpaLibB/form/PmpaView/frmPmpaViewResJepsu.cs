@@ -219,7 +219,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "      AND A.BDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')                  ";
                 SQL += ComNum.VBLF + "      AND A.JIN ='H'                                                           ";
                 SQL += ComNum.VBLF + "      AND (A.PANO, A.DEPTCODE, A.ACTDATE) NOT IN (                             ";
-                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM KOSMOS_PMPA.OPD_TELRESV             ";
+                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM ADMIN.OPD_TELRESV             ";
                 SQL += ComNum.VBLF + "              WHERE RDATE >= TO_DATE('" + strFDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND RDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND GBINTERNET = 'Y')                                          ";
@@ -246,7 +246,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "      AND A.BDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')                  ";
                 SQL += ComNum.VBLF + "      AND A.JIN ='H'                                                           ";
                 SQL += ComNum.VBLF + "      AND (A.PANO, A.DEPTCODE, A.ACTDATE) NOT IN (                             ";
-                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM KOSMOS_PMPA.OPD_TELRESV             ";
+                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM ADMIN.OPD_TELRESV             ";
                 SQL += ComNum.VBLF + "              WHERE RDATE >= TO_DATE('" + strFDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND RDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND GBINTERNET = 'Y')                                          ";
@@ -275,7 +275,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "      AND A.BDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')                  ";
                 SQL += ComNum.VBLF + "      AND A.JIN ='H'                                                           ";
                 SQL += ComNum.VBLF + "      AND (A.PANO, A.DEPTCODE, A.ACTDATE) NOT IN (                             ";
-                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM KOSMOS_PMPA.OPD_TELRESV             ";
+                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM ADMIN.OPD_TELRESV             ";
                 SQL += ComNum.VBLF + "              WHERE RDATE >= TO_DATE('" + strFDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND RDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND GBFAX = 'Y')                                               ";
@@ -325,7 +325,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "      AND A.BDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')                  ";
                 SQL += ComNum.VBLF + "      AND A.JIN ='H'                                                           ";
                 SQL += ComNum.VBLF + "      AND (A.PANO, A.DEPTCODE, A.ACTDATE) NOT IN (                             ";
-                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM KOSMOS_PMPA.OPD_TELRESV             ";
+                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM ADMIN.OPD_TELRESV             ";
                 SQL += ComNum.VBLF + "              WHERE RDATE >= TO_DATE('" + strFDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND RDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND GBINTERNET = 'Y')                                          ";
@@ -353,7 +353,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "      AND A.BDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')                  ";
                 SQL += ComNum.VBLF + "      AND A.JIN ='H'                                                           ";
                 SQL += ComNum.VBLF + "      AND (A.PANO, A.DEPTCODE, A.ACTDATE) NOT IN (                             ";
-                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM KOSMOS_PMPA.OPD_TELRESV             ";
+                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM ADMIN.OPD_TELRESV             ";
                 SQL += ComNum.VBLF + "              WHERE RDATE >= TO_DATE('" + strFDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND RDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND GBINTERNET = 'Y')                                          ";
@@ -381,7 +381,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "      AND A.BDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')                  ";
                 SQL += ComNum.VBLF + "      AND A.JIN ='H'                                                           ";
                 SQL += ComNum.VBLF + "      AND (A.PANO, A.DEPTCODE, A.ACTDATE) NOT IN (                             ";
-                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM KOSMOS_PMPA.OPD_TELRESV             ";
+                SQL += ComNum.VBLF + "          SELECT PANO, DEPTCODE,RDATE FROM ADMIN.OPD_TELRESV             ";
                 SQL += ComNum.VBLF + "              WHERE RDATE >= TO_DATE('" + strFDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND RDATE <= TO_DATE('" + strTDate + "','YYYY-MM-DD')          ";
                 SQL += ComNum.VBLF + "                AND GBFAX = 'Y')                                               ";

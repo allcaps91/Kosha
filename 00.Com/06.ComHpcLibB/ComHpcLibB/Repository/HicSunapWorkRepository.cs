@@ -24,10 +24,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SUNAP_WORK SET          ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SUNAP_WORK SET          ");
             parameter.AppendSql("       PANO = :PANO                            ");
             parameter.AppendSql(" WHERE PANO IN (SELECT PANO                    ");
-            parameter.AppendSql("                  FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("                  FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql("                 WHERE JUMIN2 = :JUMIN2        ");
             parameter.AppendSql("                   AND PANO <> :PANO)          ");
 
@@ -42,7 +42,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP_WORK          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP_WORK          ");
             parameter.AppendSql(" WHERE PANO   = :PANO                      ");
             parameter.AppendSql("   AND GJJONG = :GJJONG                    ");
 
@@ -56,7 +56,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SUNAP_WORK              ");
+            parameter.AppendSql("DELETE ADMIN.HIC_SUNAP_WORK              ");
             parameter.AppendSql(" WHERE PANO   = :PANO                          ");
             parameter.AppendSql("   AND SUDATE = TO_DATE(:SUDATE,'YYYY-MM-DD')  ");
             if (!argJong.IsNullOrEmpty())
@@ -109,7 +109,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SUNAP_WORK              ");
+            parameter.AppendSql("DELETE ADMIN.HIC_SUNAP_WORK              ");
             parameter.AppendSql(" WHERE PANO   = :PANO                          ");
             parameter.AppendSql("   AND GJJONG = :GJJONG                        ");
 
@@ -127,7 +127,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT                                                                         ");
             parameter.AppendSql(" WRTNO,SUDATE,SEQNO,PANO,TOTAMT,HALINGYE,HALINAMT,JOHAPAMT,LTDAMT,BONINAMT     ");
             parameter.AppendSql(" ,MISUGYE,MISUAMT,SUNAPAMT,JOBSABUN,ENTTIME,BOGUNSOAMT,CARDSEQNO,GJJONG        ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_SUNAP_WORK                                               ");
+            parameter.AppendSql(" FROM ADMIN.HIC_SUNAP_WORK                                               ");
             parameter.AppendSql(" WHERE PANO = :PANO                                                            ");
             parameter.AppendSql(" AND GJJONG = :GJJONG                                                          ");
             parameter.AppendSql(" AND SUDATE >= TO_DATE(:SUDATE1,'YYYY-MM-DD')                                   ");

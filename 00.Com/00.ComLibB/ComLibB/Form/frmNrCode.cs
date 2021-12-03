@@ -77,7 +77,7 @@ namespace ComLibB
             Cursor.Current = Cursors.WaitCursor;
 
             SQL = "";
-            SQL += ComNum.VBLF + "SELECT Sort,Code,Name FROM KOSMOS_PMPA.BAS_BCODE ";
+            SQL += ComNum.VBLF + "SELECT Sort,Code,Name FROM ADMIN.BAS_BCODE ";
             SQL += ComNum.VBLF + "WHERE Gubun='" + ArgGubun + "' ";
             SQL += ComNum.VBLF + "AND (DelDate IS NULL OR DelDate > TRUNC(SYSDATE))";
             SQL += ComNum.VBLF + "ORDER BY Sort,Code ";

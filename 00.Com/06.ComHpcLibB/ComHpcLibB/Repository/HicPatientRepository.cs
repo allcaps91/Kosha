@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         public long Read_HicPano()
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT KOSMOS_PMPA.SEQ_HICPANO.NEXTVAL HicPano FROM DUAL ");
+            parameter.AppendSql("SELECT ADMIN.SEQ_HICPANO.NEXTVAL HicPano FROM DUAL ");
 
             return ExecuteScalar<long>(parameter);
         }
@@ -36,7 +36,7 @@ namespace ComHpcLibB.Repository
         public long Read_HicWrtNo()
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT KOSMOS_PMPA.SEQ_HICJEPNO.NEXTVAL HicWRTNO FROM DUAL ");
+            parameter.AppendSql("SELECT ADMIN.SEQ_HICJEPNO.NEXTVAL HicWRTNO FROM DUAL ");
 
             return ExecuteScalar<long>(parameter);
         }
@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
         public long Read_HicGWrtNo()
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT KOSMOS_PMPA.SEQ_HICGWRTNO.NEXTVAL HicWRTNO FROM DUAL ");
+            parameter.AppendSql("SELECT ADMIN.SEQ_HICGWRTNO.NEXTVAL HicWRTNO FROM DUAL ");
 
             return ExecuteScalar<long>(parameter);
         }
@@ -58,7 +58,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,JUMIN2, GBPRIVACY, BUILDNO, LTDCODE2, BIRTHDAY, GBBIRTH, LTDTEL, GAMCODE, RELIGION       ");
             parameter.AppendSql("      ,STARTDATE, LASTDATE, JINCOUNT, FAMILLY, GAMCODE2, SOSOK, VIPREMARK, GBJIKWON             ");
             parameter.AppendSql("      ,GBFOREIGNER, ENAME, SNAME2, FOREIGNERNUM, GBPRIVACY_NEW, WORKER_ROLE, ISMANAGEOSHA       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                                                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                                                                  ");
             parameter.AppendSql(" WHERE PANO =:PANO ");
 
             parameter.Add("PANO", nPano);
@@ -75,7 +75,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,JUMIN2, GBPRIVACY, BUILDNO, LTDCODE2, BIRTHDAY, GBBIRTH, LTDTEL, GAMCODE, RELIGION       ");
             parameter.AppendSql("      ,STARTDATE, LASTDATE, JINCOUNT, FAMILLY, GAMCODE2, SOSOK, VIPREMARK, GBJIKWON             ");
             parameter.AppendSql("      ,GBFOREIGNER, ENAME, SNAME2, FOREIGNERNUM, GBPRIVACY_NEW, WORKER_ROLE, ISMANAGEOSHA       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                                                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                                                                  ");
             parameter.AppendSql(" WHERE PTNO =:PTNO                                                                             ");
             parameter.AppendSql("   AND (SNAME IS NULL OR  SNAME <> '이중챠트')                                                  ");
 
@@ -111,7 +111,7 @@ namespace ComHpcLibB.Repository
         public string GetLtdNameByJumin2(string strJumin)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT KOSMOS_PMPA.FC_HIC_LTDNAMEPANO(LTDCODE) AS NAME     ");
+            parameter.AppendSql("SELECT ADMIN.FC_HIC_LTDNAMEPANO(LTDCODE) AS NAME     ");
             parameter.AppendSql("  FROM HIC_PATIENT                                         ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                                    ");
 
@@ -124,7 +124,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(GBPRIVACY_NEW, 'YYYY-MM-DD') GBPRIVACY_NEW  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                             ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                                        ");
 
             parameter.Add("PTNO", fstrPtno);
@@ -155,7 +155,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , SABUN,BUSENAME,GONGJENG,IPSADATE,BUSEIPSA,JISA,GKIHO,GBSUCHEP,PTNO,REMARK,KIHO  ");
             parameter.AppendSql("     , BOGUNSO,YOUNGUPSO,LIVER2,GUMDAESANG,EMAIL,HPHONE,GBIEMUNJIN,GBSMS,TEL_CONFIRM   ");
             parameter.AppendSql("     , JUMIN2,GBPRIVACY                                                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                                                         ");
             parameter.AppendSql(" WHERE PANO = :PANO                                                                    ");
 
             parameter.Add("PANO", nPano);
@@ -167,7 +167,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_PATIENT     ");
+            parameter.AppendSql("DELETE ADMIN.HIC_PATIENT     ");
             parameter.AppendSql(" WHERE PANO  = :PANO               ");
 
             parameter.Add("PANO", nPano);
@@ -179,7 +179,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT SET         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT SET         ");
             parameter.AppendSql("       SNAME = :SNAME                      ");
             parameter.AppendSql(" WHERE PANO  = :PANO                       ");
 
@@ -203,7 +203,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SNAME, PANO, LTDCODE, PTNO  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT     ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2            ");
             parameter.AppendSql("   AND SNAME <> '이중챠트'         ");
 
@@ -216,7 +216,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SNAME, JUMIN2               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT     ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                ");
             parameter.AppendSql("   AND SNAME <> '이중챠트'         ");
 
@@ -229,7 +229,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SNAME, JUMIN, JUMIN2, PTNO  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT     ");
             parameter.AppendSql(" WHERE SABUN = :SABUN              ");
             parameter.AppendSql("   AND SNAME <> '이중챠트'          ");
 
@@ -245,15 +245,15 @@ namespace ComHpcLibB.Repository
             if (strJob == "0")  //성명
             {
                 parameter.AppendSql("SELECT PANO,SNAME,JUMIN,JUMIN2,PTNO                                ");
-                parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE) LTDNAME                 ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT a                                   ");
+                parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(LTDCODE) LTDNAME                 ");
+                parameter.AppendSql("  FROM ADMIN.HIC_PATIENT a                                   ");
                 parameter.AppendSql(" WHERE SNAME LIKE :SNAME                                           ");
             }
             else if (strJob == "1") //주민번호
             {
                 parameter.AppendSql("SELECT PANO,SNAME,JUMIN,JUMIN2,PTNO                                ");
-                parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE) LTDNAME                 ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT a                                   ");
+                parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(LTDCODE) LTDNAME                 ");
+                parameter.AppendSql("  FROM ADMIN.HIC_PATIENT a                                   ");
                 parameter.AppendSql(" WHERE JUMIN2 = :SNAME                                             ");
                 if (b04_NOT_PATIENT.Count > 0)
                 {
@@ -264,8 +264,8 @@ namespace ComHpcLibB.Repository
             else if (strJob == "2") //회사코드
             {
                 parameter.AppendSql("SELECT PANO, SNAME,JUMIN,JUMIN2,PTNO                               ");
-                parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE) LTDNAME                 ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT a                                   ");
+                parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(LTDCODE) LTDNAME                 ");
+                parameter.AppendSql("  FROM ADMIN.HIC_PATIENT a                                   ");
                 parameter.AppendSql(" WHERE LTDCODE = :SNAME                                            ");
                 if (b04_NOT_PATIENT.Count > 0)
                 {
@@ -276,8 +276,8 @@ namespace ComHpcLibB.Repository
             else if (strJob == "3") //검진번호
             {
                 parameter.AppendSql("SELECT PANO,SNAME,JUMIN,JUMIN2,PTNO                                ");
-                parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE) LTDNAME                 ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT a                                   ");
+                parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(LTDCODE) LTDNAME                 ");
+                parameter.AppendSql("  FROM ADMIN.HIC_PATIENT a                                   ");
                 parameter.AppendSql(" WHERE PANO = :SNAME                                               ");
                 parameter.AppendSql("   AND SNAME <> '이중챠트'                                         ");
             }
@@ -286,8 +286,8 @@ namespace ComHpcLibB.Repository
                 if (strGubun == "1")
                 {
                     parameter.AppendSql("SELECT a.Pano,a.SName,b.Jumin,b.Jumin2,a.PTNO                      ");
-                    parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME               ");
-                    parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b          ");
+                    parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME               ");
+                    parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b          ");
                     //parameter.AppendSql(" WHERE a.Pano = b.Pano                                             ");
                     parameter.AppendSql(" WHERE a.PANO = b.Pano                                            ");
                     parameter.AppendSql("   AND a.WRTNO = :SNAME                                            ");
@@ -296,11 +296,11 @@ namespace ComHpcLibB.Repository
                         parameter.AppendSql("   AND B.SNAME NOT IN (:B04_NOT_PATIENT)                       ");
                     }
                     parameter.AppendSql(" GROUP BY a.Pano,a.SName,b.Jumin,b.Jumin2,a.Ptno                   ");
-                    parameter.AppendSql("        , KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE)                    ");
+                    parameter.AppendSql("        , ADMIN.FC_HIC_LTDNAME(b.LTDCODE)                    ");
                     parameter.AppendSql(" UNION ALL                                                         ");
                     parameter.AppendSql("SELECT a.Pano,a.SName,b.Jumin,b.Jumin2,a.PTNO                      ");
-                    parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME               ");
-                    parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b          ");
+                    parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME               ");
+                    parameter.AppendSql("  FROM ADMIN.HEA_JEPSU a, ADMIN.HIC_PATIENT b          ");
                     //parameter.AppendSql(" WHERE a.Pano = b.Pano                                             ");
                     parameter.AppendSql(" WHERE a.PANO = b.Pano                                            ");
                     parameter.AppendSql("   AND a.WRTNO = :SNAME                                            ");
@@ -309,21 +309,21 @@ namespace ComHpcLibB.Repository
                         parameter.AppendSql("   AND B.SNAME NOT IN (:B04_NOT_PATIENT)                       ");
                     }
                     parameter.AppendSql(" GROUP BY a.Pano,a.SName,b.Jumin,b.Jumin2,a.Ptno                   ");
-                    parameter.AppendSql("      , KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE)                      ");
+                    parameter.AppendSql("      , ADMIN.FC_HIC_LTDNAME(b.LTDCODE)                      ");
                 }
                 else
                 {
                     if (strGubun == "2")    //일검
                     {
                         parameter.AppendSql("SELECT a.Pano,a.SName,b.Jumin,b.Jumin2,a.PTNO                  ");
-                        parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME           ");
-                        parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b      ");
+                        parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME           ");
+                        parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b      ");
                     }
                     else if (strGubun == "3") //종검
                     {
                         parameter.AppendSql("SELECT a.Pano,a.SName,b.Jumin,b.Jumin2,a.PTNO                  ");
-                        parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME           ");
-                        parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b      ");
+                        parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME           ");
+                        parameter.AppendSql("  FROM ADMIN.HEA_JEPSU a, ADMIN.HIC_PATIENT b      ");
                     }
                     //parameter.AppendSql(" WHERE a.Pano = b.Pano                                             ");
                     parameter.AppendSql(" WHERE a.PANO = b.Pano                                            ");
@@ -333,14 +333,14 @@ namespace ComHpcLibB.Repository
                         parameter.AppendSql("   AND B.SNAME NOT IN (:B04_NOT_PATIENT)                       ");
                     }
                     parameter.AppendSql(" GROUP BY a.Pano,a.SName,b.Jumin,b.Jumin2,a.Ptno                   ");
-                    parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE)                       ");
+                    parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(b.LTDCODE)                       ");
                 }
             }
             else if (strJob == "5") //등록번호
             {   
                 parameter.AppendSql("SELECT b.PANO,b.SNAME,b.JUMIN,b.JUMIN2,b.PTNO                          ");
-                parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME                   ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT b                                       ");
+                parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME                   ");
+                parameter.AppendSql("  FROM ADMIN.HIC_PATIENT b                                       ");
                 parameter.AppendSql(" WHERE b.PTNO = :SNAME                                                 ");
                 if (b04_NOT_PATIENT.Count > 0)
                 {
@@ -350,8 +350,8 @@ namespace ComHpcLibB.Repository
             else if (strJob == "6") //휴대폰
             {
                 parameter.AppendSql("SELECT b.PANO,b.SNAME,b.JUMIN,b.JUMIN2,b.PTNO                          ");
-                parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME                   ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT b                                       ");
+                parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(b.LTDCODE) LTDNAME                   ");
+                parameter.AppendSql("  FROM ADMIN.HIC_PATIENT b                                       ");
                 parameter.AppendSql(" WHERE b.HPhone = :SNAME                                               ");
                 if (!b04_NOT_PATIENT.IsNullOrEmpty())
                 {
@@ -363,17 +363,17 @@ namespace ComHpcLibB.Repository
             {
                 if (strGubun == "2")    //일검
                 {
-                    parameter.AppendSql("   AND A.PTNO IN (SELECT UNIQUE PTNO FROM KOSMOS_PMPA.HIC_JEPSU WHERE PTNO = a.PTNO)   ");
+                    parameter.AppendSql("   AND A.PTNO IN (SELECT UNIQUE PTNO FROM ADMIN.HIC_JEPSU WHERE PTNO = a.PTNO)   ");
                 }
                 else if (strGubun == "3")    //종검
                 {
-                    parameter.AppendSql("   AND A.PTNO IN (SELECT UNIQUE PTNO FROM KOSMOS_PMPA.HEA_JEPSU WHERE PTNO = a.PTNO)   ");
+                    parameter.AppendSql("   AND A.PTNO IN (SELECT UNIQUE PTNO FROM ADMIN.HEA_JEPSU WHERE PTNO = a.PTNO)   ");
                 }
             }
 
             if (strJob == "5" || strJob == "6")
             {
-                parameter.AppendSql(" GROUP BY b.PANO,b.SNAME,b.JUMIN,b.JUMIN2,b.PTNO, KOSMOS_PMPA.FC_HIC_LTDNAME(b.LTDCODE)    ");
+                parameter.AppendSql(" GROUP BY b.PANO,b.SNAME,b.JUMIN,b.JUMIN2,b.PTNO, ADMIN.FC_HIC_LTDNAME(b.LTDCODE)    ");
             }
 
             if (strJob == "0")
@@ -399,7 +399,7 @@ namespace ComHpcLibB.Repository
         public string GetJumin2byPtno(string strPtno)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT JUMIN2 FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("SELECT JUMIN2 FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql(" WHERE PTNO =:PTNO                         ");
 
             parameter.Add("PTNO", strPtno);
@@ -410,7 +410,7 @@ namespace ComHpcLibB.Repository
         public HIC_PATIENT GetJumin2PtNobyPaNo(long fnPano)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT JUMIN2, PTNO FROM KOSMOS_PMPA.HIC_PATIENT   ");
+            parameter.AppendSql("SELECT JUMIN2, PTNO FROM ADMIN.HIC_PATIENT   ");
             parameter.AppendSql(" WHERE PANO = :PANO                                ");
 
             parameter.Add("PANO", fnPano);
@@ -421,7 +421,7 @@ namespace ComHpcLibB.Repository
         public string GetJumin2BySnameJuminLikeLtdCode(string strSName, string argJumin)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT JUMIN2 FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("SELECT JUMIN2 FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql(" WHERE SNAME =:SNAME                       ");
             parameter.AppendSql("   AND JUMIN LIKE (:JUMIN)                 ");
 
@@ -435,8 +435,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.HPHONE                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU   a           ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_PATIENT b           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU   a           ");
+            parameter.AppendSql("     , ADMIN.HIC_PATIENT b           ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                    ");
             parameter.AppendSql("   AND a.PTNO = b.PTNO                     ");
 
@@ -451,8 +451,8 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT SNAME,JUSO1,JUSO2,TEL,HPHONE,PANO,PTNO,JUMIN        ");
             parameter.AppendSql("      ,LTDCODE,TO_CHAR(GBPRIVACY,'YYYY-MM-DD') GBPRIVACY   ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE) AS LTDNAME      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                             ");
+            parameter.AppendSql("      ,ADMIN.FC_HIC_LTDNAME(LTDCODE) AS LTDNAME      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                             ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                                    ");
             
             if (b04_NOT_PATIENT.Count > 0)
@@ -474,7 +474,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(PANO) CNT, JUMIN2, SNAME         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT             ");
             parameter.AppendSql(" WHERE PANO > 0                            ");
             parameter.AppendSql("   AND JUMIN2 IS NOT NULL                  ");
             parameter.AppendSql("   AND SNAME <> '이중챠트'                 ");
@@ -487,7 +487,7 @@ namespace ComHpcLibB.Repository
         public string GetSNameByPano(long argPano)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT SNAME FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("SELECT SNAME FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql(" WHERE PANO = :PANO            ");
 
             parameter.Add("PANO", argPano);
@@ -499,7 +499,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT     ");
             parameter.AppendSql("   SET MAILCODE = :MAILCODE        ");
             parameter.AppendSql("      ,JUSO1   = :JUSO1            ");
             parameter.AppendSql("      ,JUSO2   = :JUSO2            ");
@@ -527,7 +527,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT JUMIN, JUMIN2, SNAME, PANO, PTNO    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT             ");
             parameter.AppendSql(" WHERE PTNO = :PTNO                        ");
             parameter.AppendSql("   AND SNAME <> '이중챠트'                 ");
 
@@ -540,7 +540,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql(" WHERE PTNO = :PTNO            ");
             parameter.AppendSql(" ORDER BY Pano                 ");
 
@@ -553,7 +553,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT ");
             parameter.AppendSql("   SET PTNO = :PTNO            ");
             parameter.AppendSql(" WHERE PANO = :PANO            ");
 
@@ -567,7 +567,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_PATIENT                                    ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_PATIENT                                    ");
             parameter.AppendSql("       (PANO, JUMIN, JUMIN2, SNAME, TEL, PTNO, SEX, LTDCODE)           ");
             parameter.AppendSql("VALUES                                                                 ");
             parameter.AppendSql("       (:PANO, :JUMIN, :JUMIN2, :SNAME, :TEL, :PTNO, :SEX, :LTDCODE)   ");
@@ -589,7 +589,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO, LTDCODE           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2        ");
 
             parameter.Add("JUMIN2", strJumin2);
@@ -601,7 +601,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT     ");
             parameter.AppendSql("   SET LTDCODE = :LTDCODE          ");
             parameter.AppendSql(" WHERE PANO    = :PANO             ");
 
@@ -616,7 +616,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO,PTNO, LTDCODE,TO_CHAR(IPSADATE,'YYYY-MM-DD') IPSADATE, BUSEIPSA, JISA, GKIHO   ");
             parameter.AppendSql("     , GBSUCHEP, KIHO, BOGUNSO, MAILCODE, JUSO1, JUSO2, YOUNGUPSO, LIVER2, TEL, HPHONE     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                                                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                                                             ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                                                                    ");
 
             parameter.Add("JUMIN2", argJumin2, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -628,7 +628,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(PANO) CNT          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql(" WHERE PANO = :PANO            ");
 
             parameter.Add("PANO", strPANO);
@@ -640,7 +640,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT SET             ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT SET             ");
             parameter.AppendSql("       BUSENAME = :BUSENAME                    ");
             if (!strGongjeng.IsNullOrEmpty())
             {
@@ -674,7 +674,7 @@ namespace ComHpcLibB.Repository
         public HIC_PATIENT GetLtdCodebyPaNo(string argPaNo)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT LTDCODE FROM KOSMOS_PMPA.HIC_PATIENT WHERE PANO = :PANO     ");
+            parameter.AppendSql("SELECT LTDCODE FROM ADMIN.HIC_PATIENT WHERE PANO = :PANO     ");
 
             parameter.Add("PANO", argPaNo);
 
@@ -685,7 +685,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT     ");
             parameter.AppendSql("   SET PTNO   = :PTNO              ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2            ");
 
@@ -699,7 +699,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO,SNAME,JUMIN,JUMIN2,Ptno                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                                     ");
             if (strJob == "1")
             {
                 parameter.AppendSql(" WHERE SNAME LIKE :SNAME                                       ");
@@ -728,7 +728,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MAX(PANO) AS PANO       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2        ");
             parameter.AppendSql(" ORDER BY Pano                 ");
 
@@ -743,13 +743,13 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT PANO,SNAME,JUMIN,SEX,MAILCODE,JUSO1,JUSO2,TEL,LTDCODE,JIKGBN,JIKJONG                     ");
             parameter.AppendSql("      ,SABUN, BUSENAME, GONGJENG, TO_CHAR(IPSADATE, 'YYYY-MM-DD') IPSADATE                      ");
             parameter.AppendSql("      ,TO_CHAR(BUSEIPSA, 'YYYY-MM-DD') BUSEIPSA, JISA, GKIHO, GBSUCHEP, PTNO                    ");
-            parameter.AppendSql("      ,REMARK AS PAT_REMARK, KIHO, KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE) AS LTDNAME               ");
+            parameter.AppendSql("      ,REMARK AS PAT_REMARK, KIHO, ADMIN.FC_HIC_LTDNAME(LTDCODE) AS LTDNAME               ");
             parameter.AppendSql("      ,BOGUNSO, YOUNGUPSO, LIVER2, GUMDAESANG, EMAIL, HPHONE, GBIEMUNJIN, GBSMS, TEL_CONFIRM    ");
             parameter.AppendSql("      ,JUMIN2, GBPRIVACY, BUILDNO, LTDCODE2, BIRTHDAY, GBBIRTH, LTDTEL, GAMCODE, RELIGION       ");
             parameter.AppendSql("      ,STARTDATE, LASTDATE, JINCOUNT, FAMILLY, GAMCODE2, SOSOK, VIPREMARK, GBJIKWON             ");
-            parameter.AppendSql("      ,SEX || '/' || KOSMOS_OCS.FC_GET_AGE2(PTNO, TRUNC(SYSDATE)) AS S_AGE                      ");
+            parameter.AppendSql("      ,SEX || '/' || ADMIN.FC_GET_AGE2(PTNO, TRUNC(SYSDATE)) AS S_AGE                      ");
             parameter.AppendSql("      ,GBFOREIGNER, ENAME, SNAME2, FOREIGNERNUM, GBPRIVACY_NEW, WORKER_ROLE, ISMANAGEOSHA       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                                                                  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                                                                  ");
             parameter.AppendSql(" WHERE PTNO =:PTNO                                                                              ");
             parameter.AppendSql("   AND (SNAME IS NULL OR  SNAME <> '이중챠트')                                                  ");
 
@@ -762,10 +762,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT SET             ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT SET             ");
             parameter.AppendSql("       SNAME = '이중챠트'                       ");
             parameter.AppendSql(" WHERE PANO IN (SELECT PANO                    ");
-            parameter.AppendSql("                  FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("                  FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql("                 WHERE JUMIN2 = :JUMIN2        ");
             parameter.AppendSql("                   AND PANO <> :PANO)          ");
 
@@ -778,7 +778,7 @@ namespace ComHpcLibB.Repository
         public string GetPtnoByPano(long nPano)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT PTNO FROM KOSMOS_PMPA.HIC_PATIENT  ");
+            parameter.AppendSql("SELECT PTNO FROM ADMIN.HIC_PATIENT  ");
             parameter.AppendSql(" WHERE PANO =:PANO                        ");
 
             parameter.Add("PANO", nPano);
@@ -789,7 +789,7 @@ namespace ComHpcLibB.Repository
         public HIC_PATIENT GetPanoPtnoByLikeJuminSNameLtdCode(string argBIRTH, string argSNAME, long argLTDCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT PANO, PTNO FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("SELECT PANO, PTNO FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql(" WHERE JUMIN LIKE :BIRTH                      ");
             parameter.AppendSql("   AND SNAME =:SNAME                           ");
             parameter.AppendSql("   AND LTDCODE =:LTDCODE                           ");
@@ -805,7 +805,7 @@ namespace ComHpcLibB.Repository
         public HIC_PATIENT GetPanoPtnoByJumin2SName(string argJUMIN, string argSName)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT PANO, PTNO FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("SELECT PANO, PTNO FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql(" WHERE JUMIN2 =:JUMIN2                         ");
             parameter.AppendSql("   AND SNAME =:SNAME                         ");
             parameter.AppendSql("   AND (SNAME IS NULL OR  SNAME <> '이중챠트') ");
@@ -819,7 +819,7 @@ namespace ComHpcLibB.Repository
         public string GetPtnoByJuminNo(string argJumin)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT PTNO FROM KOSMOS_PMPA.HIC_PATIENT       ");
+            parameter.AppendSql("SELECT PTNO FROM ADMIN.HIC_PATIENT       ");
             parameter.AppendSql(" WHERE JUMIN2 =:JUMIN2                         ");
             parameter.AppendSql("   AND (SNAME IS NULL OR  SNAME <> '이중챠트')  ");
 
@@ -830,7 +830,7 @@ namespace ComHpcLibB.Repository
         public string GetPanoByJuminNo(string argJumin)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT PANO FROM KOSMOS_PMPA.HIC_PATIENT       ");
+            parameter.AppendSql("SELECT PANO FROM ADMIN.HIC_PATIENT       ");
             parameter.AppendSql(" WHERE JUMIN2 =:JUMIN2                         ");
             parameter.AppendSql("   AND (SNAME IS NULL OR  SNAME <> '이중챠트')  ");
 
@@ -842,7 +842,7 @@ namespace ComHpcLibB.Repository
         public string GetPanobyJumin2(string strJumin2)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT PANO FROM KOSMOS_PMPA.HIC_PATIENT       ");
+            parameter.AppendSql("SELECT PANO FROM ADMIN.HIC_PATIENT       ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                        ");
 
             parameter.Add("JUMIN2", strJumin2);
@@ -854,7 +854,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_PATIENT    ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_PATIENT    ");
             parameter.AppendSql("       (PANO, JUMIN, JUMIN2)           ");
             parameter.AppendSql("VALUES                                 ");
             parameter.AppendSql("       (:PANO, :JUMIN, :JUMIN2)        ");
@@ -870,7 +870,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TEL, JUSO1, JUSO2, LTDCODE, JUMIN2, HPHONE      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                         ");
             parameter.AppendSql(" WHERE PANO =:PANO                                    ");
             if (argSName != "")
             {
@@ -890,8 +890,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT b.JUMIN, b.PTNO, b.SNAME, FC_HIC_LTDNAME(b.LTDCODE) AS LTDNAME, A.WRTNO    ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_JEPSU a                                                    ");
-            parameter.AppendSql("       ,KOSMOS_PMPA.HIC_PATIENT b                                                  ");
+            parameter.AppendSql("   FROM ADMIN.HIC_JEPSU a                                                    ");
+            parameter.AppendSql("       ,ADMIN.HIC_PATIENT b                                                  ");
             parameter.AppendSql("  WHERE a.JEPDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')                                 ");
             parameter.AppendSql("    AND a.JEPDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')                                 ");
             parameter.AppendSql("    AND a.DELDATE IS NULL                                                          ");
@@ -941,8 +941,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT b.JUMIN, b.PTNO, b.SNAME, FC_HIC_LTDNAME(b.LTDCODE) AS LTDNAME, A.WRTNO    ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HEA_JEPSU a                                                    ");
-            parameter.AppendSql("       ,KOSMOS_PMPA.HIC_PATIENT b                                                  ");
+            parameter.AppendSql("   FROM ADMIN.HEA_JEPSU a                                                    ");
+            parameter.AppendSql("       ,ADMIN.HIC_PATIENT b                                                  ");
             parameter.AppendSql("  WHERE a.SDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')                                 ");
             parameter.AppendSql("    AND a.SDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')                                 ");
             parameter.AppendSql("    AND a.DELDATE IS NULL                                                          ");
@@ -991,7 +991,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT JUMIN2, PTNO                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT     ");
             parameter.AppendSql(" WHERE PANO =:PANO                ");
 
             parameter.Add("PANO", fnPano);
@@ -1003,7 +1003,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT SET                     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT SET                     ");
             parameter.AppendSql("       GONGJENG  = :GONGJENG                           ");
             parameter.AppendSql("     , SABUN     = :SABUN                              ");
             parameter.AppendSql("     , IPSADATE  = TO_DATE(:IPSADATE, 'YYYY-MM-DD')    ");
@@ -1033,9 +1033,9 @@ namespace ComHpcLibB.Repository
         public long GetPanobyPaNo(long pANO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT PANO FROM KOSMOS_PMPA.HIC_PATIENT           ");
+            parameter.AppendSql("SELECT PANO FROM ADMIN.HIC_PATIENT           ");
             parameter.AppendSql(" WHERE Jumin2 IN (SELECT Jumin2                    ");
-            parameter.AppendSql("                    FROM KOSMOS_PMPA.HIC_PATIENT   ");
+            parameter.AppendSql("                    FROM ADMIN.HIC_PATIENT   ");
             parameter.AppendSql("                   WHERE PANO = :PANO)             ");
             parameter.AppendSql(" AND SNAME <> '이중챠트'                            ");
             parameter.AppendSql(" ORDER BY Pano ASC                                 ");
@@ -1049,7 +1049,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(PANO) CNT                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                 ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                        ");
 
             parameter.Add("JUMIN2", strJumin2);
@@ -1061,7 +1061,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT JUMIN2, PTNO,SNAME, SEX                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                 ");
             parameter.AppendSql(" WHERE PANO = :PANO                            ");
 
             parameter.Add("PANO", fnPano);
@@ -1073,7 +1073,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT HPHONE, TEL                             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                 ");
             parameter.AppendSql(" WHERE PANO =:PANO                            ");
 
             parameter.Add("PANO", nPano);
@@ -1085,7 +1085,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT         ");
             parameter.AppendSql("   SET SNAME       = :SNAME            ");
             parameter.AppendSql("      ,JUMIN       = :JUMIN            ");
             parameter.AppendSql("      ,SEX         = :SEX              ");
@@ -1179,7 +1179,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANO, SNAME, JUMIN2,JUMIN, PTNO         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_PATIENT                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_PATIENT                 ");
             if (sGubun == "1")
             {
                 parameter.AppendSql(" WHERE PANO LIKE :ITEM                     ");
@@ -1213,7 +1213,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT SET         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT SET         ");
             parameter.AppendSql(" GbPrivacy_NEW = SYSDATE                   ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                       ");
 
@@ -1226,7 +1226,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT SET         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT SET         ");
             parameter.AppendSql(" JUMIN2 = :JUMIN2                          ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                       ");
 
@@ -1240,7 +1240,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_PATIENT SET         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_PATIENT SET         ");
             parameter.AppendSql(" WEBSEND = ''                               ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                       ");
 
@@ -1252,7 +1252,7 @@ namespace ComHpcLibB.Repository
         public long Read_HeaWrtNo()
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT KOSMOS_PMPA.SEQ_HEAJEPNO.NEXTVAL HEAWRTNO FROM DUAL ");
+            parameter.AppendSql("SELECT ADMIN.SEQ_HEAJEPNO.NEXTVAL HEAWRTNO FROM DUAL ");
 
             return ExecuteScalar<long>(parameter);
         }

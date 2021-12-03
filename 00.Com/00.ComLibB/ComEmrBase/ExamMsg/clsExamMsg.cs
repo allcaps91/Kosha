@@ -146,7 +146,7 @@ namespace ComEmrBase
             string SqlErr = "";
 
             SQL = "";
-            SQL += " INSERT INTO KOSMOS_OCS.EXAM_RESULTC_CV(JOBDATE, GBN, SPECNO, Pano, MASTERCODE, SUBCODE, Result, RESULTDATE, RESULTSABUN, UNIT) \r\n";
+            SQL += " INSERT INTO ADMIN.EXAM_RESULTC_CV(JOBDATE, GBN, SPECNO, Pano, MASTERCODE, SUBCODE, Result, RESULTDATE, RESULTSABUN, UNIT) \r\n";
             SQL += " SELECT TRUNC(SYSDATE), '3', C.SPECNO, C.PANO, C.MASTERCODE, C.SUBCODE, C.RESULT, C.RESULTDATE, C.RESULTSABUN, C.UNIT           \r\n";
             SQL += " FROM  " + ComNum.DB_MED + "EXAM_RESULTC C                                                                                      \r\n";
             SQL += "     , " + ComNum.DB_MED + "EXAM_SPECMST M                                                                                      \r\n";
@@ -180,9 +180,9 @@ namespace ComEmrBase
             {
                 //SQL += "      , CASE WHEN LENGTH('" + strMsg.Trim() + "') > 0  THEN '" + strMsg.Trim() + "' || A.PANO || '/' || A.SNAME || '/' || D.EXAMYNAME                              \r\n";
                 //2018-10-23 안정수, 김은정t 요청으로 문자양식 변경함 
-                //SQL += "      , CASE WHEN LENGTH('" + strMsg.Trim() + "') > 0  THEN '" + strMsg.Trim() + "' || '/ ' || A.DEPTCODE || '/ ' || A.PANO || '/ ' || A.SNAME || '/ ' || TO_CHAR(A.RECEIVEDATE, 'YYYY.MM.DD') || '/ ' || KOSMOS_OCS.FC_EXAM_SPECMST_NM('14',A.SPECCODE,'N') || '/ ' || C.RESULT  \r\n";
+                //SQL += "      , CASE WHEN LENGTH('" + strMsg.Trim() + "') > 0  THEN '" + strMsg.Trim() + "' || '/ ' || A.DEPTCODE || '/ ' || A.PANO || '/ ' || A.SNAME || '/ ' || TO_CHAR(A.RECEIVEDATE, 'YYYY.MM.DD') || '/ ' || ADMIN.FC_EXAM_SPECMST_NM('14',A.SPECCODE,'N') || '/ ' || C.RESULT  \r\n";
                 //2019-12-24 안정수, 김은정t 요청으로 문자양식 변경함(외래, 입원 구분 추가) 
-                SQL += "      , CASE WHEN LENGTH('" + strMsg.Trim() + "') > 0  THEN '" + strMsg.Trim() + "' || '/ ' || DECODE(A.IPDOPD, 'O', 'O', 'I', 'I' || ' / ' || A.ROOM) || '/ ' || A.DEPTCODE || '/ ' || A.PANO || '/ ' || A.SNAME || '/ ' || TO_CHAR(A.RECEIVEDATE, 'YYYY.MM.DD') || '/ ' || KOSMOS_OCS.FC_EXAM_SPECMST_NM('14',A.SPECCODE,'N') || '/ ' || C.RESULT  \r\n";
+                SQL += "      , CASE WHEN LENGTH('" + strMsg.Trim() + "') > 0  THEN '" + strMsg.Trim() + "' || '/ ' || DECODE(A.IPDOPD, 'O', 'O', 'I', 'I' || ' / ' || A.ROOM) || '/ ' || A.DEPTCODE || '/ ' || A.PANO || '/ ' || A.SNAME || '/ ' || TO_CHAR(A.RECEIVEDATE, 'YYYY.MM.DD') || '/ ' || ADMIN.FC_EXAM_SPECMST_NM('14',A.SPECCODE,'N') || '/ ' || C.RESULT  \r\n";
                 //SQL += "              ELSE '★긴급(CV)★' || DECODE(TRIM(A.WARD), '', '', A.WARD || '병동') || A.PANO || '/' || A.SNAME || '/' || d.EXAMYNAME || '/' || C.RESULT    \r\n";
                 //2020-02-13 안정수, 약어 누락되는 경우 있어 조건 추가함
                 SQL += "              ELSE CASE WHEN D.EXAMYNAME <> '' THEN '★긴급(CV)★' || DECODE(TRIM(A.WARD), '', '', A.WARD || '병동') || A.PANO || '/' || A.SNAME || '/' || D.EXAMYNAME || '/' || C.RESULT    \r\n";
@@ -480,7 +480,7 @@ namespace ComEmrBase
             SQL += "   AND A.SABUN      = " + ComFunc.covSqlstr(strSabun, false);
             SQL += "   AND A.SETSABUN   = B.SABUN                           \r\n";
             SQL += "   AND A.YYMM = (SELECT MAX(YYMM)                       \r\n";
-            SQL += "                   FROM KOSMOS_OCS.OCS_DOCTOR_SCH       \r\n";
+            SQL += "                   FROM ADMIN.OCS_DOCTOR_SCH       \r\n";
             SQL += "                  WHERE SABUN = " + ComFunc.covSqlstr(strSabun, false);
             SQL += "                 )                                      \r\n";
 

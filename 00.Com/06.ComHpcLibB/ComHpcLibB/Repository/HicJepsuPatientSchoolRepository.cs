@@ -42,7 +42,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , C.ENTSABUN, C.GBDNTPRT, C.GBPANPRT, C.GBPAN, C.PMUND9, C.PPANREMARK1                ");
             parameter.AppendSql("     , C.PPANREMARK2, C.GBMIRPRINT, C.SANGDAM, C.DPANDATE, C.DPAN12, C.DPAN13              ");
             parameter.AppendSql("     , C.TONGBODATE, C.PRTSABUN, C.JUMIN2, C.LTDCODE2                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_SCHOOL_NEW c    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_SCHOOL_NEW c    ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                                   ");
@@ -64,7 +64,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT c.Class,c.Ban,c.Bun,a.SName,DECODE(SUBSTR(a.Sex,1,1),'M','³²','F','¿©') Sex1 ,c.PPanRemark1,c.PPanRemark2,c.PPanDrno    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_SCHOOL_NEW c                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_SCHOOL_NEW c                                        ");
             parameter.AppendSql(" WHERE a.JEPDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                                                             ");
             parameter.AppendSql("   AND a.JEPDATE <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                                                             ");
             parameter.AppendSql("   AND a.LTDCODE = :LTDCODE                                                                                                    ");
@@ -94,7 +94,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.LtdCode,c.Class,MAX(a.JepDate) MaxDate,MIN(a.JepDate) MinDate                     ");
             parameter.AppendSql("     , COUNT(a.LtdCode) CNT                                                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_SCHOOL_NEW c    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_SCHOOL_NEW c    ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                                   ");
@@ -124,7 +124,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.LtdCode,c.Class,MAX(a.JepDate) MaxDate,MIN(a.JepDate) MinDate                     ");
             parameter.AppendSql("     , COUNT(a.LtdCode) CNT                                                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_SCHOOL_NEW c    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_SCHOOL_NEW c    ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                                   ");
@@ -158,7 +158,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(MAX(a.JepDate), 'YYYY-MM-DD') MaxDate                                       ");
             parameter.AppendSql("     , TO_CHAR(MIN(a.JepDate), 'YYYY-MM-DD') MinDate                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_SCHOOL_NEW c    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_SCHOOL_NEW c    ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                                   ");
@@ -207,7 +207,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , C.ENTSABUN, C.GBDNTPRT, C.GBPANPRT, C.GBPAN, C.PMUND9, C.PPANREMARK1                ");
             parameter.AppendSql("     , C.PPANREMARK2, C.GBMIRPRINT, C.SANGDAM, C.DPANDATE, C.DPAN12, C.DPAN13              ");
             parameter.AppendSql("     , C.TONGBODATE, C.PRTSABUN, C.JUMIN2, C.LTDCODE2                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_SCHOOL_NEW c    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_SCHOOL_NEW c    ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.LTDCODE = :LTDCODE                                                                ");
@@ -242,7 +242,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.LtdCode,c.Class,MAX(a.JepDate) MaxDate,MIN(a.JepDate) MinDate                     ");
             parameter.AppendSql("     , COUNT(a.LtdCode) CNT                                                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_SCHOOL_NEW c    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_SCHOOL_NEW c    ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                                   ");
@@ -279,7 +279,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.SEX                                                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_SCHOOL_NEW c    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_SCHOOL_NEW c    ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                                   ");
@@ -330,7 +330,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , C.ENTSABUN, C.GBDNTPRT, C.GBPANPRT, C.GBPAN, C.PMUND9, C.PPANREMARK1                ");
             parameter.AppendSql("     , C.PPANREMARK2, C.GBMIRPRINT, C.SANGDAM, C.DPANDATE, C.DPAN12, C.DPAN13              ");
             parameter.AppendSql("     , C.TONGBODATE, C.PRTSABUN, C.LTDCODE2                                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_SCHOOL_NEW c    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_SCHOOL_NEW c    ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                                   ");
@@ -362,7 +362,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(a.JEPDATE,'YYYY-MM-DD') JEPDATE, a.PANO, a.SNAME, a.SEX, a.AGE              ");
             parameter.AppendSql("     , a.WRTNO,a.LTDCODE, b.JUMIN2, c.CLASS, c.BAN, c.BUN, c.ROWID                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_SCHOOL_NEW c    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_SCHOOL_NEW c    ");
             parameter.AppendSql(" WHERE a.JEPDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.JEPDATE <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                         ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                                                   ");

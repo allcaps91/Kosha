@@ -532,7 +532,7 @@ namespace HC_OSHA.StatusReport
         //SUM(DECODE(PANJENGR11,'1','1','0')) R비만, SUM(DECODE(PANJENGR12,'1','1','0')) R난청,
         //SUM(DECODE(PANJENGR3,'1','1','0')) U고혈압, SUM(DECODE(PANJENGR6,'1','1','0')) U당뇨,
         //SUM(DECODE(PANJENGU1,'1','1','0')) D고혈압, SUM(DECODE(PANJENGU2,'1','1','0')) D당뇨병 ,SUM(DECODE(PANJENGU3,'1','1','0')) D이상지질혈증, SUM(DECODE(PANJENGU4,'1','1','0')) D폐결핵
-        //FROM KOSMOS_PMPA.HIC_RES_BOHUM1 WHERE WRTNO =1029524;
+        //FROM ADMIN.HIC_RES_BOHUM1 WHERE WRTNO =1029524;
         private void BtnGetCount_Click(object sender, EventArgs e)
         {
 

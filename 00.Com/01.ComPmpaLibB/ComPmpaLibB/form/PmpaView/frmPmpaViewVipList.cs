@@ -379,7 +379,7 @@ namespace ComPmpaLibB
             {
                 if (strGubun == "**")
                 {
-                    SQL += ComNum.VBLF + "      AND  TRIM(b.GB_VIP2) IN ( SELECT TRIM(CODE) FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='BAS_VIP_구분코드2' AND DELDATE IS NULL ) ";
+                    SQL += ComNum.VBLF + "      AND  TRIM(b.GB_VIP2) IN ( SELECT TRIM(CODE) FROM ADMIN.BAS_BCODE WHERE GUBUN ='BAS_VIP_구분코드2' AND DELDATE IS NULL ) ";
                 }
                 else
                 {
@@ -391,7 +391,7 @@ namespace ComPmpaLibB
             {
                 if (strGubun == "**")
                 {
-                    SQL += ComNum.VBLF + "      AND  TRIM(b.GB_VIP) IN ( SELECT TRIM(CODE) FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='BAS_VIP_구분코드' AND DELDATE IS NULL )   ";
+                    SQL += ComNum.VBLF + "      AND  TRIM(b.GB_VIP) IN ( SELECT TRIM(CODE) FROM ADMIN.BAS_BCODE WHERE GUBUN ='BAS_VIP_구분코드' AND DELDATE IS NULL )   ";
                 }
                 else
                 {

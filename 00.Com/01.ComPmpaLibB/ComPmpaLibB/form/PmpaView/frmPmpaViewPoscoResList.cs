@@ -547,8 +547,8 @@ namespace ComPmpaLibB
 
             try
             {
-                SQL = " INSERT INTO KOSMOS_OCS.OCS_MCCERTIFI28_HISTORY ";
-                SQL = SQL + ComNum.VBLF + " SELECT * FROM KOSMOS_OCS.OCS_MCCERTIFI28";
+                SQL = " INSERT INTO ADMIN.OCS_MCCERTIFI28_HISTORY ";
+                SQL = SQL + ComNum.VBLF + " SELECT * FROM ADMIN.OCS_MCCERTIFI28";
                 SQL = SQL + ComNum.VBLF + "   WHERE ROWID = '" + VB.Trim(txtDelRowid.Text) + "' ";
                 //'SQL = SQL & "   WHERE MCNO = '" & Format(Trim(pnlMcNo.Caption), "00000000") & "' "
                 
@@ -562,7 +562,7 @@ namespace ComPmpaLibB
                     return;
                 }
                 
-                SQL = " DELETE KOSMOS_OCS.OCS_MCCERTIFI28 ";
+                SQL = " DELETE ADMIN.OCS_MCCERTIFI28 ";
                 SQL = SQL + ComNum.VBLF + "   WHERE ROWID = '" + VB.Trim(txtDelRowid.Text) + "' ";
                 //'SQL = SQL & "   WHERE MCNO = '" & Format(Trim(pnlMcNo.Caption), "00000000") & "' "
 

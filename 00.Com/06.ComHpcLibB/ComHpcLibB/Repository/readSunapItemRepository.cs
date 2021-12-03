@@ -21,22 +21,22 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT X.JEPBUN, X.GJNAME, X.GRPCODE, X.GRPNAME, X.AMT, X.GBSELF                           ");
             parameter.AppendSql("  FROM (                                                                                   ");
-            parameter.AppendSql("         SELECT A.JEPBUN, KOSMOS_PMPA.FC_HIC_GJJONG_NAME(A.GJJONG, A.UCODES) AS GJNAME     ");
-            parameter.AppendSql("              , B.CODE AS GRPCODE, KOSMOS_PMPA.FC_HIC_GROUPCODE_NAME(B.CODE) AS GRPNAME    ");
+            parameter.AppendSql("         SELECT A.JEPBUN, ADMIN.FC_HIC_GJJONG_NAME(A.GJJONG, A.UCODES) AS GJNAME     ");
+            parameter.AppendSql("              , B.CODE AS GRPCODE, ADMIN.FC_HIC_GROUPCODE_NAME(B.CODE) AS GRPNAME    ");
             parameter.AppendSql("              , B.AMT, B.GBSELF                                                            ");
-            parameter.AppendSql("           FROM KOSMOS_PMPA.HIC_SUNAPDTL B,                                                ");
-            parameter.AppendSql("                KOSMOS_PMPA.HIC_JEPSU A                                                    ");
+            parameter.AppendSql("           FROM ADMIN.HIC_SUNAPDTL B,                                                ");
+            parameter.AppendSql("                ADMIN.HIC_JEPSU A                                                    ");
             parameter.AppendSql("          WHERE 1 = 1                                                                      ");
             parameter.AppendSql("            AND B.GWRTNO = :GWRTNO                                                         ");
             parameter.AppendSql("            AND B.WRTNO  = A.WRTNO                                                         ");
 
             parameter.AppendSql("          UNION ALL                                                                        ");
 
-            parameter.AppendSql("         SELECT '4' AS JEPBUN, KOSMOS_PMPA.FC_HEA_GJJONG_NAME(A.GJJONG) AS GJNAME          ");
-            parameter.AppendSql("              , B.CODE AS GRPCODE, KOSMOS_PMPA.FC_HEA_GROUPCODE_NAME(B.CODE) AS GRPNAME    ");
+            parameter.AppendSql("         SELECT '4' AS JEPBUN, ADMIN.FC_HEA_GJJONG_NAME(A.GJJONG) AS GJNAME          ");
+            parameter.AppendSql("              , B.CODE AS GRPCODE, ADMIN.FC_HEA_GROUPCODE_NAME(B.CODE) AS GRPNAME    ");
             parameter.AppendSql("              , B.AMT, B.GBSELF                                                            ");
-            parameter.AppendSql("           FROM KOSMOS_PMPA.HEA_SUNAPDTL B,                                                ");
-            parameter.AppendSql("                KOSMOS_PMPA.HEA_JEPSU A                                                    ");
+            parameter.AppendSql("           FROM ADMIN.HEA_SUNAPDTL B,                                                ");
+            parameter.AppendSql("                ADMIN.HEA_JEPSU A                                                    ");
             parameter.AppendSql("          WHERE 1 = 1                                                                      ");
             parameter.AppendSql("            AND B.GWRTNO = :GWRTNO                                                         ");
             parameter.AppendSql("            AND B.WRTNO  = A.WRTNO                                                         ");
@@ -64,7 +64,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE AS GRPCODE, NAME AS GRPNAME, AMT           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPCODE                       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPCODE                       ");
             parameter.AppendSql(" WHERE 1 = 1                                           ");
             parameter.AppendSql("   AND DELDATE IS NULL                                 ");
             if (argWard == "전체")
@@ -154,8 +154,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE AS GRPCODE, AMT, GBSELF, ROWID AS RID          ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.FC_HIC_GROUPCODE_NAME(CODE) AS GRPNAME  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAPDTL_HIS                        ");
+            parameter.AppendSql("      ,ADMIN.FC_HIC_GROUPCODE_NAME(CODE) AS GRPNAME  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAPDTL_HIS                        ");
             parameter.AppendSql(" WHERE 1 = 1                                               ");
             parameter.AppendSql("   AND WRTNO = :WRTNO                                      ");
 
@@ -170,7 +170,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT  CODE AS GRPCODE, NAME AS GRPNAME, GBSELECT, ROWID AS RID, AMT              ");
             parameter.AppendSql("     , OLDAMT, TO_CHAR(SUDATE, 'YYYY-MM-DD') SUDATE, ENDOCODE, BURATE AS GBSELF    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPCODE                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPCODE                                                   ");
             parameter.AppendSql(" WHERE 1 = 1                                                                       ");
             parameter.AppendSql("   AND CODE = :CODE                                                                ");
 
@@ -185,7 +185,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT CODE AS GRPCODE, NAME AS GRPNAME, UCODE, GBSELECT, GBSUGA, GBAM     ");
             parameter.AppendSql("      ,REMARK, LPAD(GBSELF, 2, '0') GBSELF, ROWID AS RID                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_GROUPCODE                                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_GROUPCODE                                           ");
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE > TRUNC(SYSDATE))                       ");
             parameter.AppendSql("   AND (SDATE IS NULL OR SDATE <= TRUNC(SYSDATE))                          ");
@@ -218,7 +218,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT CODE AS GRPCODE, NAME AS GRPNAME, GBSELECT, ROWID AS RID, AMT               ");
             parameter.AppendSql("     , OLDAMT, TO_CHAR(SUDATE, 'YYYY-MM-DD') SUDATE, ENDOCODE, BURATE AS GBSELF    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GROUPCODE                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GROUPCODE                                                   ");
             parameter.AppendSql(" WHERE 1 = 1                                                                       ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE > TO_DATE(:DELDATE, 'YYYY-MM-DD'))              ");
             parameter.AppendSql("   AND (SDATE IS NULL OR SDATE <= TO_DATE(:SDATE, 'YYYY-MM-DD'))                   ");
@@ -279,7 +279,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT CODE AS GRPCODE, NAME AS GRPNAME, UCODE, GBSELECT, GBSUGA, GBAM     ");
             parameter.AppendSql("      ,REMARK ,GBSELF, ROWID AS RID, HANG     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_GROUPCODE                                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_GROUPCODE                                           ");
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE > TO_DATE(:DELDATE, 'YYYY-MM-DD'))      ");
             parameter.AppendSql("   AND (SDATE IS NULL OR SDATE <= TO_DATE(:SDATE, 'YYYY-MM-DD'))           ");
@@ -300,11 +300,11 @@ namespace ComHpcLibB.Repository
         public List<READ_SUNAP_ITEM> GetHicSunapWorkInfoByWrtno(long argPano, string argJong)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT a.CODE AS GRPCODE, KOSMOS_PMPA.FC_HIC_GROUPCODE_NAME(a.CODE) AS GRPNAME ");
+            parameter.AppendSql("SELECT a.CODE AS GRPCODE, ADMIN.FC_HIC_GROUPCODE_NAME(a.CODE) AS GRPNAME ");
             parameter.AppendSql("     , FC_HIC_GROUPCODE_UCODE(a.CODE) AS UCODE, HANG                           ");
             parameter.AppendSql("     , a.UCODE, a.AMT, a.GBSELF, a.ROWID AS RID, b.GBSELECT                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAPDTL_WORK a                                         ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_GROUPCODE b                                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAPDTL_WORK a                                         ");
+            parameter.AppendSql("      ,ADMIN.HIC_GROUPCODE b                                             ");
             parameter.AppendSql(" WHERE 1 = 1                                                                   ");
             parameter.AppendSql("   AND a.CODE   = b.CODE                                                       ");
             parameter.AppendSql("   AND a.PANO   = :PANO                                                        ");
@@ -325,8 +325,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , B.GBSELF, B.ROWID AS RID, C.GBSELECT                                ");
             parameter.AppendSql("     , DECODE(B.GBHALIN, '1', 'Y', 'N') GBHALIN                            ");
             parameter.AppendSql("     , B.BONINAMT, B.LTDAMT                                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAPDTL B                                          ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HEA_GROUPCODE C                                         ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAPDTL B                                          ");
+            parameter.AppendSql("      ,ADMIN.HEA_GROUPCODE C                                         ");
             parameter.AppendSql(" WHERE 1 = 1                                                               ");
             parameter.AppendSql("   AND B.WRTNO = :WRTNO                                                    ");
             parameter.AppendSql("   AND B.CODE  = C.CODE(+)                                                 ");
@@ -340,14 +340,14 @@ namespace ComHpcLibB.Repository
         public List<READ_SUNAP_ITEM> GetHicSunapInfoByWrtno(long argWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT KOSMOS_PMPA.FC_HIC_GJJONG_NAME(A.GJJONG, A.UCODES) AS GJNAME, B.CODE AS GRPCODE  ");
-            //parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_GROUPCODE_NAME(B.CODE) AS GRPNAME     ");
+            parameter.AppendSql("SELECT ADMIN.FC_HIC_GJJONG_NAME(A.GJJONG, A.UCODES) AS GJNAME, B.CODE AS GRPCODE  ");
+            //parameter.AppendSql("     , ADMIN.FC_HIC_GROUPCODE_NAME(B.CODE) AS GRPNAME     ");
             //parameter.AppendSql("     , FC_HIC_GROUPCODE_UCODE(B.CODE) AS UCODE, C.GBSELECT                         ");
             parameter.AppendSql("     , C.NAME AS GRPNAME, C.UCODE, C.GBSELECT , C.HANG                             ");
             parameter.AppendSql("     , B.AMT, LPAD(B.GBSELF, 2,'0') GBSELF, B.ROWID AS RID                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU A                                                     ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_SUNAPDTL B                                                  ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_GROUPCODE C                                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU A                                                     ");
+            parameter.AppendSql("      ,ADMIN.HIC_SUNAPDTL B                                                  ");
+            parameter.AppendSql("      ,ADMIN.HIC_GROUPCODE C                                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                                                       ");
             parameter.AppendSql("   AND A.WRTNO = :WRTNO                                                            ");
             parameter.AppendSql("   AND A.WRTNO  = B.WRTNO                                                          ");

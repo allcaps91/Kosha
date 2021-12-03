@@ -162,7 +162,7 @@ namespace ComLibB
 
                 SqlErr = clsDB.ExecuteNonQuery (SQL , ref intRowAffected , clsDB.DbCon);
 
-                SQL = "DELETE KOSMOS_PMPA.BAS_SELECT_SET WHERE ROWID = '" + strROWID + "' ";
+                SQL = "DELETE ADMIN.BAS_SELECT_SET WHERE ROWID = '" + strROWID + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery (SQL , ref intRowAffected , clsDB.DbCon);
 
@@ -206,7 +206,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT JDATE, DEPTCODE, OSET0, OSET1, OSET2, OSET3, OSET4, OSET5, OSET6, OSET7, ISET0, ISET1, ISET2, ISET3, ISET4, ISET5, ISET6, ISET7, DrCode, ROWID ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_SELECT_SET ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_SELECT_SET ";
 
                 if (VB.Left (cboChois.Text , 2) != "**") SQL = SQL + ComNum.VBLF + " WHERE DEPTCODE = '" + VB.Left (cboChois.Text , 2) + "' ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY JDATE DESC  ";
@@ -428,7 +428,7 @@ namespace ComLibB
                 if (strROWID == "")
                 {
                     SQL = " INSERT INTO " + ComNum.DB_PMPA + "BAS_SELECT_SET_HIS(JDATE, OSET0,OSET1,OSET2, OSET3, OSET4, OSET5, OSET6, OSET7,ISET0,ISET1,ISET2, ISET3, ISET4, ISET5, ISET6, ISET7,  ENTDATE, SABUN, GBN ,DEPTCODE, CDATE, DrCode )  ";
-                    SQL = SQL + ComNum.VBLF + " SELECT JDATE, OSET0,OSET1,OSET2, OSET3, OSET4, OSET5, OSET6, OSET7,ISET0,ISET1,ISET2, ISET3, ISET4, ISET5, ISET6, ISET7,  SYSDATE , '" + GstrSabun + "' ,'I', DEPTCODE, SYSDATE,DrCode  FROM KOSMOS_PMPA.BAS_SELECT_SET ";
+                    SQL = SQL + ComNum.VBLF + " SELECT JDATE, OSET0,OSET1,OSET2, OSET3, OSET4, OSET5, OSET6, OSET7,ISET0,ISET1,ISET2, ISET3, ISET4, ISET5, ISET6, ISET7,  SYSDATE , '" + GstrSabun + "' ,'I', DEPTCODE, SYSDATE,DrCode  FROM ADMIN.BAS_SELECT_SET ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
 
                     SqlErr = clsDB.ExecuteNonQuery (SQL , ref intRowAffected , clsDB.DbCon);

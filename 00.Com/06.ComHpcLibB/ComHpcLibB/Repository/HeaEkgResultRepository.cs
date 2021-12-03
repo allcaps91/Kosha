@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT EKGRESULT                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EKG_RESULT  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EKG_RESULT  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO              ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -35,7 +35,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID RID                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EKG_RESULT  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EKG_RESULT  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO              ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -47,7 +47,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_EKG_RESULT ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_EKG_RESULT ");
             parameter.AppendSql("       (WRTNO , EKGRESULT , ENTDATE)   ");
             parameter.AppendSql(" VALUES                                ");
             parameter.AppendSql("       (:WRTNO , :EKGRESULT , SYSDATE) ");
@@ -62,7 +62,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_EKG_RESULT SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_EKG_RESULT SET  ");
             parameter.AppendSql("       EKGRESULT = :EKGRESULT          ");
             parameter.AppendSql("     , ENTDATE   = SYSDATE             ");
             parameter.AppendSql(" WHERE ROWID     = :RID                ");
@@ -77,7 +77,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HEA_EKG_RESULT  ");
+            parameter.AppendSql("DELETE ADMIN.HEA_EKG_RESULT  ");
             parameter.AppendSql(" WHERE ROWID = :RID                ");
 
             parameter.Add("RID", strRowId);

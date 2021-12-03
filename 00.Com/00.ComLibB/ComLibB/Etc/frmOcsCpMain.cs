@@ -1309,7 +1309,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "SELECT USERPASS FROM KOSMOS_PMPA.BAS_ACCOUNT_SERVER      ";
+                SQL = "SELECT USERPASS FROM ADMIN.BAS_ACCOUNT_SERVER      ";
                 SQL = SQL + ComNum.VBLF + "WHERE IP = '" + strIP + "'      ";
                 SQL = SQL + ComNum.VBLF + "    AND USERID = '" + strUser + "'        ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY SDATE DESC      ";
@@ -1516,11 +1516,11 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT ROWID ROWID1 ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_CP_MAIN ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.OCS_CP_MAIN ";
                 SQL = SQL + ComNum.VBLF + "  WHERE CPCODE = '" + strCode + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND SDATE = ( ";
                 SQL = SQL + ComNum.VBLF + "                SELECT MAX(SDATE) SDATE ";
-                SQL = SQL + ComNum.VBLF + "                  FROM KOSMOS_OCS.OCS_CP_MAIN ";
+                SQL = SQL + ComNum.VBLF + "                  FROM ADMIN.OCS_CP_MAIN ";
                 SQL = SQL + ComNum.VBLF + "                 WHERE CPCODE = '" + strCode + "') ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")

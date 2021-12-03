@@ -1145,7 +1145,7 @@ namespace ComLibB
         //                {
         //                    strIllCodeNew = strIllCode + VB.Format(dt2.Rows[0]["000"].ToString().Trim());
 
-        //                    SQL = "SELECT ILLCODE FROM KOSMOS_PMPA.BAS_ILLS ";
+        //                    SQL = "SELECT ILLCODE FROM ADMIN.BAS_ILLS ";
         //                    SQL = SQL + ComNum.VBLF + " WHERE ILLCODE = '" + strIllCodeNew + "' ";
         //                    SQL = SQL + ComNum.VBLF + " AND   ILLCLASS = '1' ";
         //                    SqlErr = clsDB.GetDataTable(ref dt2, SQL, clsDB.DbCon);
@@ -1205,7 +1205,7 @@ namespace ComLibB
         //                if (nREAD2 > 1)
         //                {
         //                    strIllCodeNew = strIllCode + VB.Format(dt2.Rows[0]["000"].ToString().Trim());
-        //                    SQL = "SELECT ILLCODE FROM KOSMOS_PMPA.BAS_ILLS ";
+        //                    SQL = "SELECT ILLCODE FROM ADMIN.BAS_ILLS ";
         //                    SQL = SQL + ComNum.VBLF + " WHERE ILLCODE = '" + strIllCodeNew + "' ";
         //                    SQL = SQL + ComNum.VBLF + " AND ILLCLASS = '1' ";
 

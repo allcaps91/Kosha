@@ -36,7 +36,7 @@ namespace ComEmrBase
 
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT 1";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRBVITALTIME";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRBVITALTIME";
                 SQL = SQL + ComNum.VBLF + "  WHERE FORMNO = " + strFormNo;
                 SQL = SQL + ComNum.VBLF + "   AND ACPNO = " + strAcpNo;
                 SQL = SQL + ComNum.VBLF + "   AND CHARTDATE = '" + strChartDate + "'";
@@ -154,7 +154,7 @@ namespace ComEmrBase
 
             try
             {
-                SQL = " SELECT NAME FROM KOSMOS_PMPA.BAS_BUSE ";
+                SQL = " SELECT NAME FROM ADMIN.BAS_BUSE ";
                 SQL += ComNum.VBLF + " WHERE BUCODE = '" + strBUSE + "' ";
                 SQL += ComNum.VBLF + "   AND DEPT_ID_UP = '44500' ";
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -197,10 +197,10 @@ namespace ComEmrBase
             try
             {
                 SQL += ComNum.VBLF + " SELECT ITEMCD, ITEMVALUE  ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_EMR.AEMRCHARTROW  ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.AEMRCHARTROW  ";
                 SQL += ComNum.VBLF + "  WHERE EMRNO IN ( ";
                 SQL += ComNum.VBLF + "                 SELECT EMRNO  ";
-                SQL += ComNum.VBLF + "                   FROM KOSMOS_EMR.AEMRCHARTMST ";
+                SQL += ComNum.VBLF + "                   FROM ADMIN.AEMRCHARTMST ";
                 //SQL += ComNum.VBLF + "                  WHERE FORMNO IN (2285,2294,2295,2296,2305,2311,2356) ";
                 SQL += ComNum.VBLF + "                  WHERE FORMNO = 2311";
                 SQL += ComNum.VBLF + "                    AND MEDFRDATE = '" + strMedFrDate + "' ";
@@ -290,7 +290,7 @@ namespace ComEmrBase
 
             try
             {
-                SQL = " select b.result from kosmos_pmpa.hic_jepsu a, kosmos_pmpa.hic_result b ";
+                SQL = " select b.result from ADMIN.hic_jepsu a, ADMIN.hic_result b ";
                 SQL += ComNum.VBLF + " where a.wrtno = b.wrtno ";
                 SQL += ComNum.VBLF + " and a.deldate is null ";
                 SQL += ComNum.VBLF + " and a.ptno = '" + strPTNO + "' ";
@@ -298,7 +298,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + " and b.excode in('A102') ";
                 SQL += ComNum.VBLF + " AND B.RESULT IS NOT NULL ";
                 SQL += ComNum.VBLF + " UNION ALL ";
-                SQL += ComNum.VBLF + " select b.result from kosmos_pmpa.hea_jepsu a, kosmos_pmpa.hea_result b ";
+                SQL += ComNum.VBLF + " select b.result from ADMIN.hea_jepsu a, ADMIN.hea_result b ";
                 SQL += ComNum.VBLF + " where a.wrtno = b.wrtno ";
                 SQL += ComNum.VBLF + " and a.deldate is null ";
                 SQL += ComNum.VBLF + " and a.ptno = '" + strPTNO + "' ";
@@ -343,9 +343,9 @@ namespace ComEmrBase
 
             try
             {
-                SQL = " SELECT ORDERNAME FROM KOSMOS_OCS.OCS_ORDERCODE ";
+                SQL = " SELECT ORDERNAME FROM ADMIN.OCS_ORDERCODE ";
                 SQL += ComNum.VBLF + " WHERE ORDERNAME LIKE '%수면%' ";
-                SQL += ComNum.VBLF + "   AND ORDERCODE = (SELECT ORDERCODE FROM KOSMOS_OCS.ENDO_JUPMST  ";
+                SQL += ComNum.VBLF + "   AND ORDERCODE = (SELECT ORDERCODE FROM ADMIN.ENDO_JUPMST  ";
                 SQL += ComNum.VBLF + " WHERE PTNO = '" + strPTNO + "' ";
                 if(strDEPTCODE == "HR" || strDEPTCODE == "TO")
                 {
@@ -409,7 +409,7 @@ namespace ComEmrBase
             //    SQL = " ";
             //    SQL = SQL + ComNum.VBLF + "SELECT ";
             //    SQL = SQL + ComNum.VBLF + "    NFLAG1 ";
-            //    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_BASCD ";
+            //    SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_BASCD ";
             //    SQL = SQL + ComNum.VBLF + "WHERE GRPCDB = '프로그램기초' ";
             //    SQL = SQL + ComNum.VBLF + "AND GRPCD = '프로그램' ";
             //    SQL = SQL + ComNum.VBLF + "AND BASCD = '신EMR사용' ";

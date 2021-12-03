@@ -150,7 +150,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " SuNext,TO_CHAR(DelDate,'YY-MM-DD') DelDate,SuNameK,Unit,";
                 SQL = SQL + ComNum.VBLF + " DaiCode,HCode,BCode,TableGbn ";
                 SQL = SQL + ComNum.VBLF + " FROM BAS_SUGAHIS A";
-                SQL = SQL + ComNum.VBLF + "   LEFT OUTER JOIN  KOSMOS_PMPA.BAS_USER B";
+                SQL = SQL + ComNum.VBLF + "   LEFT OUTER JOIN  ADMIN.BAS_USER B";
                 SQL = SQL + ComNum.VBLF + "     ON B.IDNUMBER = A.JOBSABUN";
 
                 if (rdoTerm.Checked == true)

@@ -174,7 +174,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT * FROM KOSMOS_OCS.PRNINSULIN_3SCALE ";
+                SQL = SQL + ComNum.VBLF + "SELECT * FROM ADMIN.PRNINSULIN_3SCALE ";
                 SQL = SQL + ComNum.VBLF + " WHERE ORDSEQ = '" + strOrdSeq + "'";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

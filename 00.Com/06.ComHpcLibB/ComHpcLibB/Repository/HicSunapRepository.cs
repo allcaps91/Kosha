@@ -28,7 +28,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT SUM(TOTAMT) TOTAMT,SUM(HALINAMT) HALINAMT, SUM(JOHAPAMT) JOHAPAMT       ");
             parameter.AppendSql("     , SUM(LTDAMT) LTDAMT, SUM(BONINAMT) BOINAMT                               ");
             parameter.AppendSql("     , SUM(BOGENAMT) BOGENAMT                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP                                                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                          ");
 
             parameter.Add("WRTNO", argWrtNo);
@@ -40,7 +40,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SUNAP                                                          ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SUNAP                                                          ");
             parameter.AppendSql("       (WRTNO,SUDATE,SEQNO,PANO,TOTAMT,HALINGYE,HALINAMT,JOHAPAMT,LTDAMT,BONINAMT          ");
             parameter.AppendSql("      , MISUGYE,MISUAMT,SUNAPAMT,JOBSABUN,ENTTIME,BOGUNSOAMT,CARDSEQNO,MIRNO1,MIRNO2       ");
             parameter.AppendSql("      , MIRNO3 , MISUNO1, MIRNO4, SUNAPAMT2, MISUNO2, MIRNO5, MISUNO3)                     ");
@@ -50,7 +50,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      , MISUGYE,MISUAMT,SUNAPAMT, :JOBSABUN, SYSDATE                                       ");
             parameter.AppendSql("      , BOGUNSOAMT,CARDSEQNO,MIRNO1,MIRNO2                                                 ");
             parameter.AppendSql("      , MIRNO3 , MISUNO1, MIRNO4, SUNAPAMT2, MISUNO2, MIRNO5, MISUNO3                      ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_SUNAP                                                              ");
+            parameter.AppendSql("   FROM ADMIN.HIC_SUNAP                                                              ");
             parameter.AppendSql("  WHERE WRTNO = :FWRTNO                                                                    ");
             parameter.AppendSql("    AND SEQNO = :OLDSEQNO                                                                  ");
 
@@ -72,7 +72,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("             ,SUM(LTDAMT) LTDAMT, SUM(BONINAMT) BONINAMT,  SUM(MISUAMT) MISUAMT           ");
             parameter.AppendSql("             ,0 BOGENAMT                                                                  ");
             parameter.AppendSql("             ,SUM(SUNAPAMT1) SUNAPAMT1, SUM(SUNAPAMT2) SUNAPAMT2                          ");
-            parameter.AppendSql("         FROM KOSMOS_PMPA.HEA_SUNAP                                                       ");
+            parameter.AppendSql("         FROM ADMIN.HEA_SUNAP                                                       ");
             parameter.AppendSql("        WHERE 1 = 1                                                                       ");
             parameter.AppendSql("          AND WRTNO = :WRTNO                                                              ");
 
@@ -85,7 +85,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("       SELECT WRTNO, CODE                          ");
-            parameter.AppendSql("         FROM KOSMOS_PMPA.HIC_SUNAP                ");
+            parameter.AppendSql("         FROM ADMIN.HIC_SUNAP                ");
             parameter.AppendSql("        WHERE 1 = 1                                ");
             parameter.AppendSql("          AND WRTNO = :WRTNO                       ");
             parameter.AppendSql("          AND CODE IN ('3101')                     ");
@@ -102,7 +102,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("       ,SUM(LTDAMT) LTDAMT,     SUM(BONINAMT) BONINAMT,   SUM(MISUAMT) MISUAMT        ");
             parameter.AppendSql("       ,SUM(BOGENAMT) BOGENAMT, SUM(SUNAPAMT) SUNAPAMT, SUM(SUNAPAMT2) SUNAPAMT2    ");
             //parameter.AppendSql("       ,MAX(SEQNO) SEQNO                                                             ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_SUNAP                                                        ");
+            parameter.AppendSql("   FROM ADMIN.HIC_SUNAP                                                        ");
             parameter.AppendSql("  WHERE 1 = 1                                                                        ");
             parameter.AppendSql("    AND WRTNO = :WRTNO                                                               ");
             
@@ -116,7 +116,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MISUGYE                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND SEQNO = :SEQNO                          ");
 
@@ -130,7 +130,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SUNAP (                                                    ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SUNAP (                                                    ");
             parameter.AppendSql("       WRTNO,SUDATE,SEQNO,PANO,TOTAMT,HALINGYE,HALINAMT,JOHAPAMT,LTDAMT                ");
             parameter.AppendSql("      ,BONINAMT,BOGENAMT,MISUGYE,MISUAMT,SUNAPAMT,SUNAPAMT2,JOBSABUN,ENTTIME           ");
             parameter.AppendSql(" ) VALUES (                                                                            ");
@@ -161,7 +161,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_SUNAP (                                            ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_SUNAP (                                            ");
             parameter.AppendSql("       WRTNO,SUDATE,SEQNO,PANO,TOTAMT,HALINGYE,HALINAMT,LTDAMT                 ");
             parameter.AppendSql("      ,BONINAMT,MISUGYE,MISUAMT,SUNAPAMT1,SUNAPAMT2,JOBSABUN,ENTTIME           ");
             parameter.AppendSql(" ) VALUES (                                                                    ");
@@ -190,7 +190,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SUNAP SET   ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SUNAP SET   ");
             parameter.AppendSql("       TOTAMT = :TOTAMT            ");
             parameter.AppendSql("      ,JOHAPAMT = :JOHAPAMT        ");
             parameter.AppendSql(" WHERE ROWID = :RID                ");
@@ -207,7 +207,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT TOTAMT, JOHAPAMT, SUNAPAMT, SUNAPAMT2, SEQNO, ROWID AS RID    ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_SUNAP                           ");
+            parameter.AppendSql("   FROM ADMIN.HIC_SUNAP                           ");
             parameter.AppendSql("  WHERE 1 = 1                                           ");
             parameter.AppendSql("    AND WRTNO = :WRTNO                                  ");
             parameter.AppendSql("  ORDER BY SEQNO DESC                                   "); 
@@ -222,7 +222,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT SUM(TotAmt) TotAmt                                     ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_SUNAP                                  ");
+            parameter.AppendSql("   FROM ADMIN.HIC_SUNAP                                  ");
             parameter.AppendSql("  WHERE WRTNO = :WRTNO                                         ");
 
             parameter.Add("WRTNO", wRTNO2);
@@ -235,7 +235,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT SUM(JohapAmt) JohapAmt,SUM(BogenAmt) BogenAmt          ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_SUNAP                                  ");
+            parameter.AppendSql("   FROM ADMIN.HIC_SUNAP                                  ");
             parameter.AppendSql("  WHERE WRTNO = :WRTNO                                         ");
 
             parameter.Add("WRTNO", wRTNO);
@@ -248,9 +248,9 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT SUM(JohapAmt) JOHAPAMT                                 ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_SUNAP                                  ");
+            parameter.AppendSql("   FROM ADMIN.HIC_SUNAP                                  ");
             parameter.AppendSql("  WHERE Wrtno IN (SELECT Wrtno                                 ");
-            parameter.AppendSql("                    FROM KOSMOS_PMPA.HIC_JEPSU                 ");
+            parameter.AppendSql("                    FROM ADMIN.HIC_JEPSU                 ");
             if (strJong == "4")
             {
                 parameter.AppendSql("                   WHERE MIRNO3 = :MIRNO )                 ");
@@ -269,7 +269,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SUNAP SET               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SUNAP SET               ");
             parameter.AppendSql("       MIRNO5 = 0                              ");
             parameter.AppendSql(" WHERE MIRNO5 = :MIRNO                         ");
 
@@ -282,7 +282,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE             KOSMOS_PMPA.HIC_SUNAP SET           ");
+            parameter.AppendSql("UPDATE             ADMIN.HIC_SUNAP SET           ");
             parameter.AppendSql("                   MISUNO4=:MISUNO                     ");
             parameter.AppendSql("WHERE              WRTNO IN (:WRTNO)                    ");
             parameter.AppendSql("   AND             (MISUNO4 IS NULL OR MISUNO4 = 0)    ");
@@ -299,14 +299,14 @@ namespace ComHpcLibB.Repository
 
             if (fstrJong != "6")
             {
-                parameter.AppendSql("UPDATE             KOSMOS_PMPA.HIC_SUNAP SET                   ");
+                parameter.AppendSql("UPDATE             ADMIN.HIC_SUNAP SET                   ");
                 parameter.AppendSql("                   MISUNO2=:MISUNO                             ");
                 parameter.AppendSql("WHERE              WRTNO IN (:WRTNO)                           ");
                 parameter.AppendSql("   AND             (MISUNO2 IS NULL OR MISUNO2 = 0)            ");
             }
             else
             {
-                parameter.AppendSql("UPDATE             KOSMOS_PMPA.HIC_SUNAP SET                   ");
+                parameter.AppendSql("UPDATE             ADMIN.HIC_SUNAP SET                   ");
                 parameter.AppendSql("                   MISUNO3=:MISUNO                             ");
                 parameter.AppendSql("WHERE              WRTNO IN (:WRTNO)                           ");
                 parameter.AppendSql("   AND             (MISUNO3 IS NULL OR MISUNO3 = 0)            ");
@@ -332,7 +332,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE                 KOSMOS_PMPA.HIC_SUNAP SET                                   ");
+            parameter.AppendSql("UPDATE                 ADMIN.HIC_SUNAP SET                                   ");
             parameter.AppendSql("                       MISUNO2=:MISUNO                                             ");
 
             parameter.AppendSql("WHERE                  WRTNO IN ( SELECT WRTNO FROM HIC_JEPSU                      ");
@@ -357,7 +357,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SUNAP SET               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SUNAP SET               ");
             parameter.AppendSql("       MIRNO2 = 0                              ");
             parameter.AppendSql(" WHERE MIRNO2 = :MIRNO                         ");
 
@@ -370,7 +370,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SUNAP SET               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SUNAP SET               ");
             parameter.AppendSql("       MIRNO3 = 0                              ");
             parameter.AppendSql(" WHERE MIRNO3 = :MIRNO                         ");
 
@@ -383,7 +383,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SUNAP SET               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SUNAP SET               ");
             parameter.AppendSql("       MIRNO1 = 0                              ");
             parameter.AppendSql(" WHERE MIRNO1 = :MIRNO                         ");
 
@@ -396,7 +396,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SUNAP SET               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SUNAP SET               ");
             if (strGubun == "1")
             {
                 parameter.AppendSql("       MIRNO1 = 0                          ");
@@ -426,9 +426,9 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT SUM(LtdAmt) LtdAmt                                     ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_SUNAP                                  ");
+            parameter.AppendSql("   FROM ADMIN.HIC_SUNAP                                  ");
             parameter.AppendSql("  WHERE WRTNO IN (SELECT Wrtno                                 ");
-            parameter.AppendSql("                    FROM KOSMOS_PMPA.HIC_JEPSU                 ");
+            parameter.AppendSql("                    FROM ADMIN.HIC_JEPSU                 ");
             parameter.AppendSql("                   WHERE MIRNO3 = :MIRNO                       ");
             parameter.AppendSql("                     AND MURYOAM = 'Y'                         ");
             parameter.AppendSql("                     AND MuryoGbn  > '0' )                     ");
@@ -443,7 +443,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT SUM(BogenAmt) BogenAmt                                 ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_SUNAP                                  ");
+            parameter.AppendSql("   FROM ADMIN.HIC_SUNAP                                  ");
             parameter.AppendSql("  WHERE WRTNO = :WRTNO                                         ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -455,7 +455,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SUNAP SET               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SUNAP SET               ");
             if (sGubun == "1")
             {
                 parameter.AppendSql("       MIRNO1 = :MIRNO                     ");
@@ -484,12 +484,12 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SUNAP (                                                        ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SUNAP (                                                        ");
             parameter.AppendSql("            WRTNO,SUDATE,SEQNO,PANO,TOTAMT,HALINGYE,HALINAMT                               ");
             parameter.AppendSql("           ,JOHAPAMT,LTDAMT,BONINAMT,SUNAPAMT,JOBSABUN,ENTTIME, BOGENAMT )                 ");
             parameter.AppendSql(" SELECT :WRTNO,TRUNC(SYSDATE), 0, PANO,SUM(TOTAMT),HALINGYE,SUM(HALINAMT)                  ");
             parameter.AppendSql("       ,SUM(JOHAPAMT),SUM(LTDAMT),SUM(BONINAMT),SUM(SUNAPAMT),111,SYSDATE, SUM(BOGUNSOAMT) ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP_WORK                                                          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP_WORK                                                          ");
             parameter.AppendSql(" WHERE SUDATE = TO_DATE(:SUDATE,'YYYY-MM-DD')                                              ");
             parameter.AppendSql("   AND PANO = :PANO                                                                        ");
             if (!argJong.IsNullOrEmpty())
@@ -515,7 +515,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SUM(MISUAMT) AS MISUAMT                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAP                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAP                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
 
             parameter.Add("WRTNO", nWRTNO);
@@ -528,7 +528,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT HALINGYE                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND SEQNO = :SEQNO                          ");
 
@@ -543,7 +543,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MISUGYE                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAP                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAP                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND SEQNO = :SEQNO                          ");
 
@@ -558,7 +558,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT HALINGYE                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAP                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAP                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND SEQNO = :SEQNO                          ");
 
@@ -572,7 +572,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SUNAP (                                                    ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SUNAP (                                                    ");
             parameter.AppendSql("       WRTNO,SUDATE,SEQNO,PANO,TOTAMT,HALINGYE,HALINAMT,JOHAPAMT,LTDAMT                ");
             parameter.AppendSql("      ,BONINAMT,BOGENAMT,MISUGYE,MISUAMT,SUNAPAMT,SUNAPAMT2,JOBSABUN,ENTTIME           ");
             parameter.AppendSql(" ) VALUES (                                                                            ");
@@ -603,7 +603,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_SUNAP (                                            ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_SUNAP (                                            ");
             parameter.AppendSql("       WRTNO,SUDATE,SEQNO,PANO,TOTAMT,HALINGYE,HALINAMT,LTDAMT                 ");
             parameter.AppendSql("      ,BONINAMT,MISUGYE,MISUAMT,SUNAPAMT1,SUNAPAMT2,JOBSABUN,ENTTIME           ");
             parameter.AppendSql(" ) VALUES (                                                                    ");
@@ -632,10 +632,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SUNAP SET               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SUNAP SET               ");
             parameter.AppendSql("       PANO = :PANO                            ");
             parameter.AppendSql(" WHERE PANO IN (SELECT PANO                    ");
-            parameter.AppendSql("                  FROM KOSMOS_PMPA.HIC_PATIENT ");
+            parameter.AppendSql("                  FROM ADMIN.HIC_PATIENT ");
             parameter.AppendSql("                 WHERE JUMIN2 = :JUMIN2        ");
             parameter.AppendSql("                   AND PANO <> :PANO)          ");
 
@@ -650,7 +650,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MAX(SeqNo) + 1 SEQ                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
 
             parameter.Add("WRTNO", nWrtNo);
@@ -663,7 +663,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MAX(SeqNo) + 1 SEQ                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_SUNAP                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_SUNAP                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
 
             parameter.Add("WRTNO", nWrtNo);
@@ -687,8 +687,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("             ,SUM(BOGENAMT) BOGENAMT                                                                       ");
             parameter.AppendSql("             ,SUM(SUNAPAMT) SUNAPAMT1, SUM(SUNAPAMT2) SUNAPAMT2                                            ");
             parameter.AppendSql("             ,A.WRTNO, B.JEPBUN                                                                            ");
-            parameter.AppendSql("         FROM KOSMOS_PMPA.HIC_SUNAP A                                                                      ");
-            parameter.AppendSql("             ,KOSMOS_PMPA.HIC_JEPSU B                                                                      ");
+            parameter.AppendSql("         FROM ADMIN.HIC_SUNAP A                                                                      ");
+            parameter.AppendSql("             ,ADMIN.HIC_JEPSU B                                                                      ");
             parameter.AppendSql("        WHERE 1 = 1                                                                                        ");
             parameter.AppendSql("          AND A.GWRTNO = :GWRTNO                                                                           ");
             parameter.AppendSql("          AND A.WRTNO  = B.WRTNO                                                                           ");
@@ -699,7 +699,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("             ,0 BOGENAMT                                                                                   ");
             parameter.AppendSql("             ,SUM(SUNAPAMT1) SUNAPAMT1, SUM(SUNAPAMT2) SUNAPAMT2                                           ");
             parameter.AppendSql("             ,WRTNO, '4' AS JEPBUN                                                                         ");
-            parameter.AppendSql("         FROM KOSMOS_PMPA.HEA_SUNAP                                                                        ");
+            parameter.AppendSql("         FROM ADMIN.HEA_SUNAP                                                                        ");
             parameter.AppendSql("        WHERE GWRTNO = :GWRTNO                                                                             ");
             parameter.AppendSql("        GROUP By WRTNO                                                                                     ");
             parameter.AppendSql(" ) X                                                                                                       ");
@@ -715,7 +715,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SUM(SunapAmt) SunapAmt                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SUNAP                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SUNAP                                                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                          ");
 
             parameter.Add("WRTNO", argWRTNO);

@@ -233,7 +233,7 @@ namespace ComHpcLibB
 
             //웹으로 전송된 건 원내DB에 UPDATE
             //If Result = 0 Then
-            //    SQL = " UPDATE KOSMOS_PMPA.ETC_ALIMTALK Set WEBSEND = 'Y' "
+            //    SQL = " UPDATE ADMIN.ETC_ALIMTALK Set WEBSEND = 'Y' "
             //    SQL = SQL & " WHERE SENDUID ='" & ATK.SendUID & "' "
             //    Result = AdoExecute(SQL)
             //End If
@@ -1166,9 +1166,9 @@ namespace ComHpcLibB
 
             //'건진 결과지 전송
             //SQL = "SELECT a.Pano,a.SName,b.HPhone,TO_CHAR(a.TONGBODATE,'YYYY-MM-DD') TONGBODATE "
-            //SQL = SQL & " FROM KOSMOS_PMPA.HIC_JEPSU a,  "
-            //SQL = SQL & "      KOSMOS_PMPA.HIC_RESULT r, "
-            //SQL = SQL & "      KOSMOS_PMPA.HIC_PATIENT b, "
+            //SQL = SQL & " FROM ADMIN.HIC_JEPSU a,  "
+            //SQL = SQL & "      ADMIN.HIC_RESULT r, "
+            //SQL = SQL & "      ADMIN.HIC_PATIENT b, "
             //SQL = SQL & "WHERE a.JepDate >= TO_DATE('" & strGDate & "','YYYY-MM-DD') "
             //SQL = SQL & "  AND a.TONGBODATE >= TO_DATE('" & strFDate & "','YYYY-MM-DD') "
             //SQL = SQL & "  AND a.TONGBODATE <  TO_DATE('" & strTDate & "','YYYY-MM-DD') "
@@ -1215,7 +1215,7 @@ namespace ComHpcLibB
 
             //    '이미 자료를 넘겼는지 확인함
             //    SQL = "SELECT MIN(TO_CHAR(RDate,'YYYY-MM-DD HH24:MI')) RTie "
-            //    SQL = SQL & " FROM KOSMOS_PMPA.ETC_ALIMTALK "
+            //    SQL = SQL & " FROM ADMIN.ETC_ALIMTALK "
             //    SQL = SQL & "WHERE JobDate>=TO_DATE('" & strFDate & "','YYYY-MM-DD') "
             //    SQL = SQL & "  AND JobDate< TO_DATE('" & strTDate & "','YYYY-MM-DD') "
             //    If strPANO<> "00000000" Then
@@ -1952,11 +1952,11 @@ namespace ComHpcLibB
             SQL = SQL & "  AND a.DRCODE = c.DRCODE"
             SQL = SQL & "  AND (b.GbSMS <> 'X' or b.GbSMS is null) "  '동의안한분을 제외한 모두에게 발송
             SQL = SQL & "  AND A.SMSBUILD IS NULL " '예약자 SMS형성 했는 사람 제외
-            SQL = SQL & "  AND A.PANO NOT IN(SELECT PANO FROM KOSMOS_PMPA.NUR_STD_DEATH WHERE ACTDATE >= TRUNC(SYSDATE)-180)" '6개월이내 병원에서 사망환자 제외
+            SQL = SQL & "  AND A.PANO NOT IN(SELECT PANO FROM ADMIN.NUR_STD_DEATH WHERE ACTDATE >= TRUNC(SYSDATE)-180)" '6개월이내 병원에서 사망환자 제외
             '======================================================================
             '2016-07-19 계장 김현욱 작업(예약시 문자 날아가지 않도록 외래에서 체크)
             SQL = SQL & "  AND NOT EXISTS ("
-            SQL = SQL & "    SELECT * FROM KOSMOS_PMPA.ETC_SMS_RESNOTSEND SUB"
+            SQL = SQL & "    SELECT * FROM ADMIN.ETC_SMS_RESNOTSEND SUB"
             SQL = SQL & "    WHERE A.PANO = SUB.PTNO"
             SQL = SQL & "        AND A.DATE3 = SUB.RDATE"
             SQL = SQL & "        AND A.DEPTCODE = SUB.DEPTCODE)"
@@ -1997,7 +1997,7 @@ namespace ComHpcLibB
 
                 '입원환자 필터링(입원중이면 SMS전송 안되게)
                 SQL = "SELECT PANO, INDATE, OUTDATE"
-                SQL = SQL & vbCr & " FROM KOSMOS_PMPA.IPD_NEW_MASTER"
+                SQL = SQL & vbCr & " FROM ADMIN.IPD_NEW_MASTER"
                 SQL = SQL & vbCr & "  WHERE PANO = '" & strPANO & "'"
                 SQL = SQL & vbCr & "  AND JDATE = TO_DATE('1900-01-01','YYYY-MM-DD')" '입원중인 환자만 조회
                 Call AdoOpenSet(rs2, SQL)
@@ -2042,7 +2042,7 @@ namespace ComHpcLibB
                 SQL = SQL & vbCr & "TO_CHAR(EXAMRES12, 'YYYY-MM-DD HH24:MI') EXAMRES12, TO_CHAR(EXAMRES13, 'YYYY-MM-DD HH24:MI') EXAMRES13,"
                 SQL = SQL & vbCr & "TO_CHAR(EXAMRES14, 'YYYY-MM-DD HH24:MI') EXAMRES14, TO_CHAR(EXAMRES15, 'YYYY-MM-DD HH24:MI') EXAMRES15,"
                 SQL = SQL & vbCr & "TO_CHAR(EXAMRES16, 'YYYY-MM-DD HH24:MI') EXAMRES16"
-                SQL = SQL & vbCr & " FROM KOSMOS_PMPA.BAS_PATIENT_POSCO"
+                SQL = SQL & vbCr & " FROM ADMIN.BAS_PATIENT_POSCO"
                 SQL = SQL & vbCr & "  WHERE PANO = '" & strPANO & "'"
                 SQL = SQL & vbCr & "  AND (TRUNC(EXAMRES1) = TO_DATE('" & strFDate & "', 'YYYY-MM-DD')"
                 SQL = SQL & vbCr & "  OR TRUNC(EXAMRES2) = TO_DATE('" & strFDate & "', 'YYYY-MM-DD')"
@@ -2073,7 +2073,7 @@ namespace ComHpcLibB
         '==========================================================================================================
                     '진료과별 회신번호 SET
                     SQL = "SELECT DRCODE,DRDEPT1,DRNAME,TELNO,ROWID"
-                    SQL = SQL & vbCr & " From KOSMOS_PMPA.BAS_DOCTOR"
+                    SQL = SQL & vbCr & " From ADMIN.BAS_DOCTOR"
                     SQL = SQL & vbCr & "  WHERE TOUR = 'N'"
                     SQL = SQL & vbCr & "  AND TELNO IS NOT NULL"
                     SQL = SQL & vbCr & "  AND DRDEPT1 = '" & strDeptCode & "'"
@@ -2097,7 +2097,7 @@ namespace ComHpcLibB
 
                     '진료과명을 READ
                     SQL = " SELECT TOGO || ' ' || DeptNameK DEPTNAMEK, DeptNameK DeptNameS"
-                    SQL = SQL & vbCr & " FROM KOSMOS_PMPA.BAS_CLINICDEPT A, KOSMOS_PMPA.BAS_CLINICDEPT_TOGO B"
+                    SQL = SQL & vbCr & " FROM ADMIN.BAS_CLINICDEPT A, ADMIN.BAS_CLINICDEPT_TOGO B"
                     SQL = SQL & vbCr & " WHERE A.DEPTCODE(+) = B.DEPTCODE"
                     SQL = SQL & vbCr & "      AND A.DEPTCODE ='" & strDeptCode & "' "
 
@@ -2261,7 +2261,7 @@ namespace ComHpcLibB
 
                     '입원환자 필터링(입원중이면 SMS전송 안되게)
                     SQL = "SELECT PANO, INDATE, OUTDATE"
-                    SQL = SQL & vbCr & " FROM KOSMOS_PMPA.IPD_NEW_MASTER"
+                    SQL = SQL & vbCr & " FROM ADMIN.IPD_NEW_MASTER"
                     SQL = SQL & vbCr & "  WHERE PANO = '" & strPANO & "'"
                     SQL = SQL & vbCr & "  AND JDATE = TO_DATE('1900-01-01','YYYY-MM-DD')" '입원중인 환자만 조회
                     Call AdoOpenSet(rs2, SQL)
@@ -2372,7 +2372,7 @@ namespace ComHpcLibB
 
 
             //SQL = "  SELECT DNAME1 , ROWID  "
-            //SQL = SQL & "  FROM KOSMOS_PMPA.ETC_DANGJIK "
+            //SQL = SQL & "  FROM ADMIN.ETC_DANGJIK "
             //SQL = SQL & " WHERE GUBUN ='99' "
             //SQL = SQL & " AND TDATE =TRUNC(SYSDATE) "
             //SQL = SQL & "  AND SMS IS NULL "
@@ -2384,7 +2384,7 @@ namespace ComHpcLibB
             //For i = 0 To RowIndicator -1
 
 
-            //    SQL = " SELECT  HTEL, TO_CHAR(SYSDATE,'YYYY-MM-DD')TIME FROM KOSMOS_ADM.INSA_MST "
+            //    SQL = " SELECT  HTEL, TO_CHAR(SYSDATE,'YYYY-MM-DD')TIME FROM ADMIN.INSA_MST "
             //    SQL = SQL & " WHERE KORNAME ='" & Trim(AdoRes!DNAME1 & "") & "' "
             //    SQL = SQL & "   AND BUSE ='077501' "  '전산정보과
             //    Result = AdoOpenSet(rs1, SQL)

@@ -401,7 +401,7 @@ namespace ComLibB
             {
                 #region 기초코드 쿼리 
                 mParameter.AppendSql("SELECT NAME AS SNAME                      ");
-                mParameter.AppendSql("  FROM KOSMOS_PMPA.BAS_BCODE              ");
+                mParameter.AppendSql("  FROM ADMIN.BAS_BCODE              ");
                 mParameter.AppendSql(" WHERE GUBUN = 'TDM_대상약물(성분명)'        ");
                 mParameter.AppendSql(" ORDER BY SORT                            ");
 
@@ -443,17 +443,17 @@ namespace ComLibB
                     mParameter.AppendSql("	    ,   B.PANO                                                                                                                              ");
                     mParameter.AppendSql("	    ,   B.SNAME                                                                                                                             ");
                     mParameter.AppendSql("	    ,   B.DEPTCODE                                                                                                                          ");
-                    mParameter.AppendSql("	    ,   (SELECT SUBVAL FROM KOSMOS_OCS.OCS_TDM_MASTERSUB WHERE SEQNO = A.SEQNO AND SUBGB = '000') AS JEPCODE                                ");
+                    mParameter.AppendSql("	    ,   (SELECT SUBVAL FROM ADMIN.OCS_TDM_MASTERSUB WHERE SEQNO = A.SEQNO AND SUBGB = '000') AS JEPCODE                                ");
                     mParameter.AppendSql("	    ,   B.WARDCODE                                                                                                                          ");
                     mParameter.AppendSql("	    ,   A.SEQNO                                                                                                                             ");
                     mParameter.AppendSql("	    ,   TO_CHAR(A.REQDATE, 'YYYY-MM-DD') AS REQDATE                                                                                         ");
                     mParameter.AppendSql("	    ,   TO_CHAR(B.INDATE , 'YYYY-MM-DD') AS INDATE                                                                                          ");
                     mParameter.AppendSql("	    ,   :GBIO AS GBIO                                                                                                                       ");
-                    mParameter.AppendSql("	    ,   (SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR WHERE DRCODE= B.DRCODE) AS DRNAME                                                         ");
-                    mParameter.AppendSql("	    ,   (SELECT EMP_NM FROM KOSMOS_ERP.HR_EMP_BASIS WHERE EMP_ID = TRIM(A.SABUN)) AS EMP_NM                                                 ");
-                    mParameter.AppendSql("	    ,   (SELECT PROGRESS FROM KOSMOS_OCS.OCS_TDM_RETURN WHERE SEQNO = A.SEQNO) AS PROGRESS                                                  ");
-                    mParameter.AppendSql("  FROM KOSMOS_OCS.OCS_TDM_MASTER A                                                                                                            ");
-                    mParameter.AppendSql(" INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER B                                                                                                      ");
+                    mParameter.AppendSql("	    ,   (SELECT DRNAME FROM ADMIN.OCS_DOCTOR WHERE DRCODE= B.DRCODE) AS DRNAME                                                         ");
+                    mParameter.AppendSql("	    ,   (SELECT EMP_NM FROM ADMIN.HR_EMP_BASIS WHERE EMP_ID = TRIM(A.SABUN)) AS EMP_NM                                                 ");
+                    mParameter.AppendSql("	    ,   (SELECT PROGRESS FROM ADMIN.OCS_TDM_RETURN WHERE SEQNO = A.SEQNO) AS PROGRESS                                                  ");
+                    mParameter.AppendSql("  FROM ADMIN.OCS_TDM_MASTER A                                                                                                            ");
+                    mParameter.AppendSql(" INNER JOIN ADMIN.IPD_NEW_MASTER B                                                                                                      ");
                     mParameter.AppendSql("    ON A.PTNO  = B.PANO                                                                                                                       ");
                     mParameter.AppendSql("   AND A.IPDNO = B.IPDNO                                                                                                                      ");
                     mParameter.AppendSql(" WHERE A.IPDNO = :IPDNO                                                                                                                       ");
@@ -466,17 +466,17 @@ namespace ComLibB
                     mParameter.AppendSql("	    ,   B.PANO                                                                                                                              ");
                     mParameter.AppendSql("	    ,   B.SNAME                                                                                                                             ");
                     mParameter.AppendSql("	    ,   B.DEPTCODE                                                                                                                          ");
-                    mParameter.AppendSql("	    ,   (SELECT SUBVAL FROM KOSMOS_OCS.OCS_TDM_MASTERSUB WHERE SEQNO = A.SEQNO AND SUBGB = '000') AS JEPCODE                                ");
+                    mParameter.AppendSql("	    ,   (SELECT SUBVAL FROM ADMIN.OCS_TDM_MASTERSUB WHERE SEQNO = A.SEQNO AND SUBGB = '000') AS JEPCODE                                ");
                     mParameter.AppendSql("	    ,   '' AS WARDCODE                                                                                                                      ");
                     mParameter.AppendSql("	    ,   :GBIO AS GBIO                                                                                                                       ");
                     mParameter.AppendSql("	    ,   A.SEQNO                                                                                                                             ");
                     mParameter.AppendSql("	    ,   TO_CHAR(A.REQDATE, 'YYYY-MM-DD') AS REQDATE                                                                                         ");
                     mParameter.AppendSql("	    ,   TO_CHAR(B.BDATE , 'YYYY-MM-DD') AS INDATE                                                                                           ");
-                    mParameter.AppendSql("	    ,   (SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR WHERE DRCODE= B.DRCODE) AS DRNAME                                                         ");
-                    mParameter.AppendSql("	    ,   (SELECT EMP_NM FROM KOSMOS_ERP.HR_EMP_BASIS WHERE EMP_ID = TRIM(A.SABUN)) AS EMP_NM                                                 ");
-                    mParameter.AppendSql("	    ,   (SELECT PROGRESS FROM KOSMOS_OCS.OCS_TDM_RETURN WHERE SEQNO = A.SEQNO) AS PROGRESS                                                  ");
-                    mParameter.AppendSql("  FROM KOSMOS_OCS.OCS_TDM_MASTER A                                                                                                            ");
-                    mParameter.AppendSql(" INNER JOIN KOSMOS_PMPA.OPD_MASTER B                                                                                                          ");
+                    mParameter.AppendSql("	    ,   (SELECT DRNAME FROM ADMIN.OCS_DOCTOR WHERE DRCODE= B.DRCODE) AS DRNAME                                                         ");
+                    mParameter.AppendSql("	    ,   (SELECT EMP_NM FROM ADMIN.HR_EMP_BASIS WHERE EMP_ID = TRIM(A.SABUN)) AS EMP_NM                                                 ");
+                    mParameter.AppendSql("	    ,   (SELECT PROGRESS FROM ADMIN.OCS_TDM_RETURN WHERE SEQNO = A.SEQNO) AS PROGRESS                                                  ");
+                    mParameter.AppendSql("  FROM ADMIN.OCS_TDM_MASTER A                                                                                                            ");
+                    mParameter.AppendSql(" INNER JOIN ADMIN.OPD_MASTER B                                                                                                          ");
                     mParameter.AppendSql("    ON A.PTNO    = B.PANO                                                                                                                     ");
                     mParameter.AppendSql("   AND A.REQDATE = B.BDATE                                                                                                                    ");
                     mParameter.AppendSql(" WHERE A.PTNO    = :PTNO                                                                                                                      ");
@@ -512,8 +512,8 @@ namespace ComLibB
                     mParameter.AppendSql("	    ,   B.DEPTCODE                                                                                  ");
                     mParameter.AppendSql("	    ,   B.WARDCODE                                                                                  ");
                     mParameter.AppendSql("	    ,   TO_CHAR(B.INDATE, 'YYYY-MM-DD') AS INDATE                                                   ");
-                    mParameter.AppendSql("	    ,   (SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR WHERE DRCODE= B.DRCODE) AS DRNAME                 ");
-                    mParameter.AppendSql("  FROM KOSMOS_PMPA.IPD_NEW_MASTER B                                                                   ");
+                    mParameter.AppendSql("	    ,   (SELECT DRNAME FROM ADMIN.OCS_DOCTOR WHERE DRCODE= B.DRCODE) AS DRNAME                 ");
+                    mParameter.AppendSql("  FROM ADMIN.IPD_NEW_MASTER B                                                                   ");
                     mParameter.AppendSql(" WHERE B.IPDNO = :IPDNO                                                                               ");
 
                     mParameter.Add("IPDNO", IPDNO);
@@ -526,8 +526,8 @@ namespace ComLibB
                     mParameter.AppendSql("	    ,   B.DEPTCODE                                                                                  ");
                     mParameter.AppendSql("	    ,   '' AS WARDCODE                                                                              ");
                     mParameter.AppendSql("	    ,   TO_CHAR(B.BDATE, 'YYYY-MM-DD') AS INDATE                                                    ");
-                    mParameter.AppendSql("	    ,   (SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR WHERE DRCODE= B.DRCODE) AS DRNAME                 ");
-                    mParameter.AppendSql("  FROM KOSMOS_PMPA.OPD_MASTER B                                                                       ");
+                    mParameter.AppendSql("	    ,   (SELECT DRNAME FROM ADMIN.OCS_DOCTOR WHERE DRCODE= B.DRCODE) AS DRNAME                 ");
+                    mParameter.AppendSql("  FROM ADMIN.OPD_MASTER B                                                                       ");
                     mParameter.AppendSql(" WHERE B.PANO  = :PANO                                                                                ");
                     mParameter.AppendSql("   AND B.BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                                                        ");
 
@@ -654,7 +654,7 @@ namespace ComLibB
         {
             MParameter mParameter = new MParameter();
 
-            mParameter.AppendSql("SELECT KOSMOS_OCS.SEQ_OCS_TDMSEQNO.NEXTVAL AS SEQNO");
+            mParameter.AppendSql("SELECT ADMIN.SEQ_OCS_TDMSEQNO.NEXTVAL AS SEQNO");
             mParameter.AppendSql("  FROM DUAL");
 
             return clsDB.ExecuteScalar<long>(mParameter, clsDB.DbCon);
@@ -668,7 +668,7 @@ namespace ComLibB
 
             try
             {
-                mParameter.AppendSql("	  MERGE INTO KOSMOS_OCS.OCS_TDM_MASTER D			 ");
+                mParameter.AppendSql("	  MERGE INTO ADMIN.OCS_TDM_MASTER D			 ");
                 mParameter.AppendSql("	  USING DUAL			                             ");
                 mParameter.AppendSql("	     ON (D.SEQNO = :SEQNO)                           ");
                 mParameter.AppendSql("	   WHEN MATCHED THEN                                 ");
@@ -728,7 +728,7 @@ namespace ComLibB
             {
 
                 mParameter = new MParameter();
-                mParameter.AppendSql("DELETE KOSMOS_OCS.OCS_TDM_MASTERSUB			 ");
+                mParameter.AppendSql("DELETE ADMIN.OCS_TDM_MASTERSUB			 ");
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO						     ");
 
                 mParameter.Add("SEQNO", SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
@@ -761,7 +761,7 @@ namespace ComLibB
                     }
 
                     mParameter = new MParameter();
-                    mParameter.AppendSql("	  INSERT INTO KOSMOS_OCS.OCS_TDM_MASTERSUB			 ");
+                    mParameter.AppendSql("	  INSERT INTO ADMIN.OCS_TDM_MASTERSUB			 ");
                     mParameter.AppendSql("	  (                            				         ");
                     mParameter.AppendSql("	      SEQNO											 ");
                     mParameter.AppendSql("	    , SUBGB                                          ");
@@ -807,7 +807,7 @@ namespace ComLibB
             {
                 mParameter = new MParameter();
                 mParameter.AppendSql("SELECT 1                                       ");
-                mParameter.AppendSql("  FROM KOSMOS_OCS.OCS_TDM_MASTER  			 ");
+                mParameter.AppendSql("  FROM ADMIN.OCS_TDM_MASTER  			 ");
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO						     ");
                 mParameter.AppendSql("   AND SABUN = :SABUN						     ");
 
@@ -821,14 +821,14 @@ namespace ComLibB
                 }
 
                 mParameter = new MParameter();
-                mParameter.AppendSql("DELETE KOSMOS_OCS.OCS_TDM_MASTER  			 ");
+                mParameter.AppendSql("DELETE ADMIN.OCS_TDM_MASTER  			 ");
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO						     ");
 
                 mParameter.Add("SEQNO", sItem.SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
                 result.SetSuccessCountPlus(clsDB.ExecuteNonQuery(mParameter, clsDB.DbCon));
 
                 mParameter = new MParameter();
-                mParameter.AppendSql("DELETE KOSMOS_OCS.OCS_TDM_MASTERSUB			 ");
+                mParameter.AppendSql("DELETE ADMIN.OCS_TDM_MASTERSUB			 ");
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO						     ");
 
                 mParameter.Add("SEQNO", sItem.SEQNO, Oracle.ManagedDataAccess.Client.OracleDbType.Int32);
@@ -891,8 +891,8 @@ namespace ComLibB
             {
                 MParameter mParameter = new MParameter();
 
-                mParameter.AppendSql("SELECT  COALESCE((SELECT NAME FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN = 'TDM진행상황' AND CODE = SUB.PROGRESS), '미확인')                ");
-                mParameter.AppendSql("  FROM KOSMOS_OCS.OCS_TDM_RETURN SUB                                                                                          ");
+                mParameter.AppendSql("SELECT  COALESCE((SELECT NAME FROM ADMIN.BAS_BCODE WHERE GUBUN = 'TDM진행상황' AND CODE = SUB.PROGRESS), '미확인')                ");
+                mParameter.AppendSql("  FROM ADMIN.OCS_TDM_RETURN SUB                                                                                          ");
                 mParameter.AppendSql(" WHERE SUB.SEQNO = :SEQNO 		                                                                                            ");
 
                 mParameter.Add("SEQNO", sItem.SEQNO);
@@ -906,7 +906,7 @@ namespace ComLibB
                 mParameter = new MParameter();
 
                 mParameter.AppendSql("SELECT IPDNO, PTNO, TO_CHAR(REQDATE, 'YYYY-MM-DD') BDATE                                                                      ");
-                mParameter.AppendSql("  FROM KOSMOS_OCS.OCS_TDM_MASTER                                                                                              ");
+                mParameter.AppendSql("  FROM ADMIN.OCS_TDM_MASTER                                                                                              ");
                 mParameter.AppendSql(" WHERE SEQNO = :SEQNO 		                                                                                                ");
 
                 mParameter.Add("SEQNO", sItem.SEQNO);
@@ -920,14 +920,14 @@ namespace ComLibB
                 mParameter = new MParameter();
                 mParameter.AppendSql("SELECT    SUBGB                                                                                     ");
                 mParameter.AppendSql("	    ,   SUBVAL                                                                                    ");
-                mParameter.AppendSql("  FROM KOSMOS_OCS.OCS_TDM_MASTERSUB A                                                               ");
+                mParameter.AppendSql("  FROM ADMIN.OCS_TDM_MASTERSUB A                                                               ");
                 mParameter.AppendSql(" WHERE A.SEQNO = :SEQNO                                                                             ");
                 mParameter.AppendSql("   AND A.SUBGB NOT IN ('V13') -- 약제 회신내용                                                        ");
 
                 mParameter.AppendSql(" UNION ALL                                                                                          ");
                 mParameter.AppendSql("SELECT    SUBGB                                                                                     ");
                 mParameter.AppendSql("	    ,   SUBVAL                                                                                    ");
-                mParameter.AppendSql("  FROM KOSMOS_OCS.OCS_TDM_RETURNSUB A                                                               ");
+                mParameter.AppendSql("  FROM ADMIN.OCS_TDM_RETURNSUB A                                                               ");
                 mParameter.AppendSql(" WHERE A.SEQNO = :SEQNO                                                                             ");
                 mParameter.AppendSql("   AND A.SUBGB IN ('V13') -- 약제 회신내용                                                            ");
                 mParameter.AppendSql(" ORDER BY SUBGB                                                                                     ");

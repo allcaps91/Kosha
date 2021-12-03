@@ -296,7 +296,7 @@ namespace ComLibB
                 else
                 {
                     SQL += ComNum.VBLF + "          AND JEPCODE NOT IN ( SELECT SUCODE                      ";
-                    SQL += ComNum.VBLF + "                               FROM KOSMOS_PMPA.BAS_SUT           ";
+                    SQL += ComNum.VBLF + "                               FROM ADMIN.BAS_SUT           ";
                     SQL += ComNum.VBLF + "                               WHERE 1=1                          ";
                     SQL += ComNum.VBLF + "                                 AND DELDATE IS NOT NULL          ";
                     SQL += ComNum.VBLF + "                                 AND BUN IN ('11','12','20')      ";
@@ -693,8 +693,8 @@ namespace ComLibB
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT                                                                                           ";
                 SQL = SQL + ComNum.VBLF + "    A.WARDCODE, A.ROOMCODE, A.PANO, A.SNAME, A.AGE, A.SEX, A.DEPTCODE, IPDNO, A.DRCODE, B.DRNAME ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_NEW_MASTER A                                                              ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_OCS.OCS_DOCTOR B                                                              ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_NEW_MASTER A                                                              ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.OCS_DOCTOR B                                                              ";
                 SQL = SQL + ComNum.VBLF + "    ON A.DRCODE = B.DRCODE                                                                       ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.IPDNO = " + strIPDNO;
                 
@@ -745,16 +745,16 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT ACTDATE, PANO, SNAME, AGE, SEX, A.DEPTCODE, A.DRCODE, B.DRNAME ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_MASTER A ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_OCS.OCS_DOCTOR B ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OPD_MASTER A ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.OCS_DOCTOR B ";
                 SQL = SQL + ComNum.VBLF + "ON A.DRCODE = B.DRCODE ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.PANO = '"+ strPANO + "' ";
-                SQL = SQL + ComNum.VBLF + "  AND A.DRCODE = (SELECT DRCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE SABUN = '"+ strSABUN + "' AND ROWNUM = 1)   ";
+                SQL = SQL + ComNum.VBLF + "  AND A.DRCODE = (SELECT DRCODE FROM ADMIN.OCS_DOCTOR WHERE SABUN = '"+ strSABUN + "' AND ROWNUM = 1)   ";
                 SQL = SQL + ComNum.VBLF + "  AND A.ACTDATE IN( ";
                 SQL = SQL + ComNum.VBLF + "                SELECT MAX(ACTDATE) ACTDATE ";
-                SQL = SQL + ComNum.VBLF + "                  FROM KOSMOS_PMPA.OPD_MASTER A ";
+                SQL = SQL + ComNum.VBLF + "                  FROM ADMIN.OPD_MASTER A ";
                 SQL = SQL + ComNum.VBLF + "                 WHERE A.PANO = '"+ strPANO + "' ";
-                SQL = SQL + ComNum.VBLF + "                   AND A.DRCODE = (SELECT DRCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE SABUN = '"+ strSABUN + "' AND ROWNUM = 1) ";
+                SQL = SQL + ComNum.VBLF + "                   AND A.DRCODE = (SELECT DRCODE FROM ADMIN.OCS_DOCTOR WHERE SABUN = '"+ strSABUN + "' AND ROWNUM = 1) ";
                 SQL = SQL + ComNum.VBLF + "                   AND A.ACTDATE <= TO_DATE('"+ strBDATE + "', 'YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "                ) ";
 
@@ -810,10 +810,10 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "     ,   O.SEX                                           ";
                 SQL = SQL + ComNum.VBLF + "     ,   O.DEPTCODE                                      ";
                 SQL = SQL + ComNum.VBLF + "     ,   B.DRNAME                                        ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.EMR_TREATT A                           ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_OCS.OCS_DOCTOR B                      ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EMR_TREATT A                           ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.OCS_DOCTOR B                      ";
                 SQL = SQL + ComNum.VBLF + "    ON A.DOCCODE = TRIM(B.DOCCODE)                       ";
-                SQL = SQL + ComNum.VBLF + " INNER JOIN KOSMOS_PMPA.OPD_MASTER O                     ";
+                SQL = SQL + ComNum.VBLF + " INNER JOIN ADMIN.OPD_MASTER O                     ";
                 SQL = SQL + ComNum.VBLF + "    ON B.DRCODE = O.DRCODE                               ";
                 SQL = SQL + ComNum.VBLF + "   AND A.PATID  = TRIM(O.PANO)                           ";
                 SQL = SQL + ComNum.VBLF + "   AND O.BDATE  = TO_DATE(A.INDATE, 'YYYYMMDD')          ";
@@ -1096,7 +1096,7 @@ namespace ComLibB
             try
             {
                 SQL = "";                
-                SQL = SQL + ComNum.VBLF + "SELECT SEQNO FROM KOSMOS_ADM.DRUG_PCONSULT ";
+                SQL = SQL + ComNum.VBLF + "SELECT SEQNO FROM ADMIN.DRUG_PCONSULT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + strPANO + "'            ";
                 SQL = SQL + ComNum.VBLF + "   AND ORDERCODE = '" + strORDERCODE + "'  ";
                 SQL = SQL + ComNum.VBLF + "   AND PROGRESS NOT IN ('3')               ";
@@ -1157,7 +1157,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT ITEMVALUE FROM KOSMOS_ADM.DRUG_PCONSULT_ROW ";
+                SQL = SQL + ComNum.VBLF + "SELECT ITEMVALUE FROM ADMIN.DRUG_PCONSULT_ROW ";
                 SQL = SQL + ComNum.VBLF + " WHERE SEQNO = '" + strSEQNO + "'                 ";
                 SQL = SQL + ComNum.VBLF + "   AND ITEMCD = 'I00000033'                        ";
 
@@ -1210,7 +1210,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT ITEMVALUE FROM KOSMOS_ADM.DRUG_PCONSULT_ROW ";
+                SQL = SQL + ComNum.VBLF + "SELECT ITEMVALUE FROM ADMIN.DRUG_PCONSULT_ROW ";
                 SQL = SQL + ComNum.VBLF + " WHERE SEQNO = '" + strSEQNO + "'                 ";
                 SQL = SQL + ComNum.VBLF + "   AND ITEMCD = 'I00000031'                        ";
                 

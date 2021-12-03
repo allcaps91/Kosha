@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.EXCODE, b.HNAME, b.YNAME, a.HANG                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_SOGENEXAM a, KOSMOS_PMPA.HIC_EXCODE b   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_SOGENEXAM a, ADMIN.HIC_EXCODE b   ");
             parameter.AppendSql(" WHERE a.SOGENCODE = :SOGENCODE                                    ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                        ");
             parameter.AppendSql(" ORDER BY a.EXCODE                                                 ");

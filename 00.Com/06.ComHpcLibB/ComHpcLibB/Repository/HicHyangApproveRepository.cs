@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_HYANG_APPROVE                              ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_HYANG_APPROVE                              ");
             parameter.AppendSql("       (SDATE, BDATE, WRTNO, PANO, SNAME, JONG, GBSITE                 ");
             parameter.AppendSql("      , DEPTCODE, SUCODE, QTY, REALQTY, ENTQTY, NRSABUN, PTNO, JUMIN                 ");
             parameter.AppendSql("      , JUMIN2, SEX, AGE, ENTDATE, DRSABUN, AMPM, GBSLEEP, JUSO)                            ");
@@ -67,7 +67,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(BDATE,'YYYY-MM-DD') BDate                                           ");
             parameter.AppendSql("     , TO_CHAR(OCSSENDTIME,'YYYY-MM-DD HH24:MI') OCSSENDTIME                       ");
             parameter.AppendSql("     , TO_CHAR(APPROVETIME,'YYYY-MM-DD HH24:MI') APPROVETIME,ROWID RID             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE                                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE                                               ");
             parameter.AppendSql(" WHERE BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                                       ");
             parameter.AppendSql("   AND DEPTCODE  = :DEPTCODE                                                       ");
             parameter.AppendSql("   AND DelDate IS NULL                                                             ");
@@ -88,14 +88,14 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_HYANG_APPROVE                                                  ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_HYANG_APPROVE                                                  ");
             parameter.AppendSql("       (SDATE,BDATE,WRTNO,PANO,SNAME,JONG,GBSITE,DEPTCODE,SUCODE,QTY,REALQTY               ");
             parameter.AppendSql("     , ENTQTY,NRSABUN,PTNO,JUMIN,SEX,AGE,ENTDATE,DRSABUN,APPROVETIME,PRINT,OCSSENDTIME     ");
             parameter.AppendSql("     , ENTQTY2 , AMPM, GBSLEEP, JUMIN2, CHASU, DELDATE, CERTNO)                            ");
             parameter.AppendSql("SELECT SDATE,BDATE,WRTNO,PANO,SNAME,JONG,GBSITE,DEPTCODE,SUCODE,QTY,REALQTY                ");
             parameter.AppendSql("       ENTQTY,NRSABUN,PTNO,JUMIN,SEX,AGE,ENTDATE,DRSABUN,APPROVETIME,PRINT,OCSSENDTIME     ");
             parameter.AppendSql("       ENTQTY2,AMPM,GBSLEEP,JUMIN2,CHASU,SYSDATE,CERTNO                                    ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HIC_HYANG_APPROVE                                                       ");
+            parameter.AppendSql("  From ADMIN.HIC_HYANG_APPROVE                                                       ");
             parameter.AppendSql(" WHERE ROWID = :RID                                                                        ");
 
             parameter.Add("RID", strROWID);
@@ -107,7 +107,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_HYANG_APPROVE               ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_HYANG_APPROVE               ");
             parameter.AppendSql("   SET DELDATE  = SYSDATE                          ");
             parameter.AppendSql(" WHERE SDATE    = TO_DATE(:SDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND WRTNO    =:WRTNO                            ");
@@ -126,7 +126,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_HYANG_APPROVE SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_HYANG_APPROVE SET       ");
             if (strGb == "Y")
             {
                 parameter.AppendSql("       GBSITE      = :GBSITE ,             ");
@@ -165,7 +165,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_HYANG_APPROVE SET           ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_HYANG_APPROVE SET           ");
             if (strGubun == "1")
             {
                 parameter.AppendSql("       QTY         = :QTY                      ");
@@ -200,7 +200,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_HYANG_APPROVE SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_HYANG_APPROVE SET       ");
             parameter.AppendSql("       GBSITE = :GBSITE                        ");
             parameter.AppendSql("     , ENTQTY     = :ENTQTY                    ");
             parameter.AppendSql(" WHERE BDATE = TO_DATE(:BDATE,'YYYY-MM-DD')    ");
@@ -237,7 +237,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT PtNo,SuCode,TO_CHAR(BDate,'YYYY-MM-DD') BDate           ");
             parameter.AppendSql("     , TO_CHAR(DelDate,'YYYY-MM-DD HH24:MI') DelDate,ROWID     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE                           ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO                                       ");
             parameter.AppendSql("   AND DEPTCODE = :DEPTCODE                                    ");
             parameter.AppendSql("   AND DELDATE IS NULL                                         ");
@@ -252,7 +252,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SUCODE, DRSABUN, QTY            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE   ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO               ");
             parameter.AppendSql("   AND DeptCode = 'HR'                 ");
             parameter.AppendSql("   AND DelDate IS NULL                 ");
@@ -265,7 +265,7 @@ namespace ComHpcLibB.Repository
         public int UpdateItembyRowId(double nQty, double nOldQty, string idNumber, string strRowId, string strApproveTime)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_HYANG_APPROVE SET   ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_HYANG_APPROVE SET   ");
             parameter.AppendSql("       DELDATE = ''                        ");
             if (nQty != nOldQty)
             {
@@ -302,14 +302,14 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_HYANG_APPROVE                                                      ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_HYANG_APPROVE                                                      ");
             parameter.AppendSql("       (SDATE,BDATE,WRTNO,PANO,SNAME,JONG,GBSITE,DEPTCODE,SUCODE,QTY,REALQTY                   ");
             parameter.AppendSql("      , ENTQTY,NRSABUN,PTNO,JUMIN,SEX,AGE,ENTDATE,DRSABUN,APPROVETIME,PRINT,OCSSENDTIME        ");
             parameter.AppendSql("      , ENTQTY2 , AMPM, GBSLEEP, JUMIN2, CHASU, DELDATE, CERTNO)                               ");
             parameter.AppendSql("      , SELECT SDATE,BDATE,WRTNO,PANO,SNAME,JONG,GBSITE,DEPTCODE,SUCODE,QTY,REALQTY            ");
             parameter.AppendSql("      ,        ENTQTY,NRSABUN,PTNO,JUMIN,SEX,AGE,ENTDATE,DRSABUN,APPROVETIME,PRINT,OCSSENDTIME ");
             parameter.AppendSql("      ,        ENTQTY2,AMPM,GBSLEEP,JUMIN2,CHASU,SYSDATE,CERTNO                                ");
-            parameter.AppendSql("          From KOSMOS_PMPA.HIC_HYANG_Approve                                                   ");
+            parameter.AppendSql("          From ADMIN.HIC_HYANG_Approve                                                   ");
             parameter.AppendSql("         WHERE ROWID = :RID                                                                    ");
 
             parameter.Add("RID", strROWID);
@@ -323,7 +323,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT DRSABUN,PTNO,GBSITE,QTY,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,SNAME,SEX,AGE     ");
             parameter.AppendSql("     , TO_CHAR(APPROVETIME,'YYYY-MM-DD HH24:MI') APPROVETIME,ROWID RID             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE                                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE                                               ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO                                                           ");
             parameter.AppendSql("   AND DEPTCODE = 'HR'                                                             ");
             parameter.AppendSql("   AND SUCODE   = :SUCODE                                                          ");
@@ -339,7 +339,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_HYANG_APPROVE SET   ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_HYANG_APPROVE SET   ");
             parameter.AppendSql("       DELDATE = SYSDATE                   ");
             parameter.AppendSql(" WHERE ROWID = :RID                        ");
 
@@ -353,7 +353,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PtNo,SuCode,TO_CHAR(BDate,'YYYY-MM-DD') BDate                   ");
             parameter.AppendSql("     , TO_CHAR(DelDate,'YYYY-MM-DD HH24:MI') DelDate, ROWID RID        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE                                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                  ");
             parameter.AppendSql("   AND DEPTCODE = :DEPTCODE                                            ");
             parameter.AppendSql("   AND DelDate IS NULL                                                 ");
@@ -369,7 +369,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO,SName,DeptCode,NrSabun,PtNo,Sex,Age,DrSabun,Ptno,GbSite   ");
             parameter.AppendSql("     , SuCode,EntQty,ApproveTime                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE                                   ");
             parameter.AppendSql(" WHERE BDATE    = TO_DATE(:BDATE, 'YYYY-MM-DD')                        ");
             parameter.AppendSql("   AND PANO     = :PANO                                                ");
             parameter.AppendSql("   AND DEPTCODE IN ('TO','HR')                                                 ");
@@ -419,7 +419,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT AMPM, GBSLEEP, PTNO, JUMIN2, SEX, AGE   ");
             parameter.AppendSql("     , DEPTCODE, DRSABUN, PRINT, CHASU, GBSITE ");
             parameter.AppendSql("     ,ROWID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE           ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND BDATE  = TO_DATE(:BDATE, 'YYYY-MM-DD')  ");
             if (argSuCode != "")
@@ -456,7 +456,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(APPROVETIME, 'YYYY-MM-DD') APPROVETIME, JUSO, JUMIN ");
             parameter.AppendSql("     , JONG,DEPTCODE,SUCODE,ENTQTY,ENTQTY2,NRSABUN,DRSABUN         ");
             parameter.AppendSql("     ,  TO_CHAR(BDATE, 'YYYY-MM-DD') BDATE                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE                               ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                              ");
             if (strBDate != "")
             {
@@ -494,7 +494,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SNAME, WRTNO, PANO, PRINT, COUNT(*) CNT ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE           ");
             parameter.AppendSql(" WHERE BDATE  = TO_DATE(:BDATE, 'YYYY-MM-DD')  ");
             parameter.AppendSql("   AND APPROVETIME IS NOT NULL                 ");
             parameter.AppendSql("   AND GBSITE = '1'                            ");
@@ -511,7 +511,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE               ");
             parameter.AppendSql(" WHERE BDATE  = TO_DATE(:BDATE, 'YYYY-MM-DD')      ");
             if (strGubun == "")
             {
@@ -530,7 +530,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT JONG, GBSITE, DEPTCODE, SUCODE, ENTQTY, NRSABUN, PTNO, JUMIN2               ");
             parameter.AppendSql("     , DRSABUN, SEX, AGE, APPROVETIME, PRINT, OCSSENDTIME, AMPM, GBSLEEP, CHASU    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE                                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE                                               ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                              ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                                       ");
             parameter.AppendSql("   AND DelDate IS NULL                                                             ");
@@ -552,7 +552,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql(" SELECT SNAME, WRTNO, PANO, PTNO, DEPTCODE, COUNT(*) AS CNT    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE                           ");
             parameter.AppendSql(" WHERE BDATE = TO_DATE(:BDATE,'YYYY-MM-DD')                    ");
             if (nSabun != 36540)
             {
@@ -571,7 +571,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO, PANO, SNAME, GBSITE, SUCODE, QTY, SEX, AGE,DRSABUN                   ");
             parameter.AppendSql("     , TO_CHAR(APPROVETIME,'YYYY-MM-DD HH24:MI') APPROVETIME                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE                                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE                                               ");
             parameter.AppendSql(" WHERE SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')                                       ");
             parameter.AppendSql("   AND DEPTCODE  = :DEPTCODE                                                       ");
             parameter.AppendSql("   AND DelDate IS NULL                                                             ");
@@ -614,7 +614,7 @@ namespace ComHpcLibB.Repository
         public int DeleteHicHyangApprove(string argBdate,  long argWrtno)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" DELETE KOSMOS_PMPA.HIC_HYANG_APPROVE                                      ");
+            parameter.AppendSql(" DELETE ADMIN.HIC_HYANG_APPROVE                                      ");
             parameter.AppendSql("  WHERE BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                              ");
             parameter.AppendSql("  AND WRTNO = :WRTNO                                                       ");
 
@@ -643,7 +643,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO, PANO, PTNO, SNAME, COUNT(*) CNT  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE           ");
             parameter.AppendSql(" WHERE BDATE  = TO_DATE(:BDATE, 'YYYY-MM-DD')  ");
             parameter.AppendSql("   AND GBSITE = '1'                            ");
             parameter.AppendSql("   AND DRSABUN IS NOT NULL                     ");
@@ -659,7 +659,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID, SUCODE, ENTQTY, ENTQTY2          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE           ");
             parameter.AppendSql(" WHERE BDATE  = TO_DATE(:BDATE, 'YYYY-MM-DD')  ");
             parameter.AppendSql("   AND GBSITE = '1'                            ");
             parameter.AppendSql("   AND WRTNO = :WRTNO                          ");
@@ -705,7 +705,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID, ENTQTY, ENTQTY2                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE               ");
             parameter.AppendSql(" WHERE BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')       ");
             parameter.AppendSql("   AND SUCODE = :SUCODE                            ");
             parameter.AppendSql("   AND ENTQTY2 <> 0                                ");
@@ -722,7 +722,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE           ");
             parameter.AppendSql(" WHERE PTNO  = :PTNO                           ");
             parameter.AppendSql("   AND SDATE >= TO_DATE(:SDATE, 'YYYY-MM-DD')  ");
             parameter.AppendSql("   AND DELDATE IS NULL                         ");

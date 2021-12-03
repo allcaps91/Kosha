@@ -197,7 +197,7 @@ namespace ComLibB
             mParameter.AppendSql("SELECT TO_CHAR(WDATE, 'YYYYMM') YYYYMM                                                                                     ");
             mParameter.AppendSql("	,	CASE WHEN PATIENT_BUN IN ('입원', '외래') THEN PATIENT_BUN ELSE '기타' END GUBUN                                       ");
             mParameter.AppendSql("	,	COUNT(PTNO) CNT                                                                                                      ");
-            mParameter.AppendSql("  FROM KOSMOS_ADM.DRUG_ADR1                                                                                                ");
+            mParameter.AppendSql("  FROM ADMIN.DRUG_ADR1                                                                                                ");
             mParameter.AppendSql(" WHERE WDATE >= TO_DATE(:SDATE)                                                                                            ");
             mParameter.AppendSql("   AND WDATE <= TO_DATE(:EDATE)                                                                                            ");
             mParameter.AppendSql(" GROUP BY TO_CHAR(WDATE, 'YYYYMM'), CASE WHEN PATIENT_BUN IN ('입원', '외래') THEN PATIENT_BUN ELSE '기타' END               ");
@@ -244,7 +244,7 @@ namespace ComLibB
             mParameter.AppendSql("(                                                                                                                         ");
             mParameter.AppendSql("SELECT  DEPTCODE                                                                                                          ");
             mParameter.AppendSql("      , COUNT(DEPTCODE) AS SORT                                                                                           ");
-            mParameter.AppendSql("  FROM KOSMOS_ADM.DRUG_ADR1                                                                                               ");
+            mParameter.AppendSql("  FROM ADMIN.DRUG_ADR1                                                                                               ");
             mParameter.AppendSql(" WHERE WDATE >= TO_DATE(:SDATE)                                                                                           ");
             mParameter.AppendSql("   AND WDATE <= TO_DATE(:EDATE)                                                                                           ");
             mParameter.AppendSql(" GROUP BY DEPTCODE                                                                                                        ");
@@ -277,7 +277,7 @@ namespace ComLibB
             mParameter.AppendSql("(                                                                                                                         ");
             mParameter.AppendSql("SELECT  DEPTCODE                                                                                                          ");
             mParameter.AppendSql("      , COUNT(DEPTCODE) AS SORT                                                                                           ");
-            mParameter.AppendSql("  FROM KOSMOS_ADM.DRUG_ADR1                                                                                               ");
+            mParameter.AppendSql("  FROM ADMIN.DRUG_ADR1                                                                                               ");
             mParameter.AppendSql(" WHERE WDATE >= TO_DATE(:SDATE)                                                                                           ");
             mParameter.AppendSql("   AND WDATE <= TO_DATE(:EDATE)                                                                                           ");
             mParameter.AppendSql("   AND DEPTCODE LIKE 'M%'                                                                                                 ");
@@ -312,7 +312,7 @@ namespace ComLibB
             mParameter.AppendSql("(                                                                                                                          ");
             mParameter.AppendSql("SELECT	CASE WHEN DEPTCODE LIKE 'M%' THEN 'MD' ELSE DEPTCODE END DEPTCODE                                                ");
             mParameter.AppendSql("	    ,	COUNT(DEPTCODE) AS SORT                                                                                          ");
-            mParameter.AppendSql("  FROM KOSMOS_ADM.DRUG_ADR1                                                                                                ");
+            mParameter.AppendSql("  FROM ADMIN.DRUG_ADR1                                                                                                ");
             mParameter.AppendSql(" WHERE WDATE >= TO_DATE(:SDATE)                                                                                            ");
             mParameter.AppendSql("   AND WDATE <= TO_DATE(:EDATE)                                                                                            ");
             mParameter.AppendSql("--   AND DEPTCODE LIKE 'M%'                                                                                                ");
@@ -348,7 +348,7 @@ namespace ComLibB
             mParameter.AppendSql("(                                                                                      ");
             mParameter.AppendSql("SELECT TO_NUMBER(SUBSTR(AGESEX, 0, INSTR(AGESEX, '/') - 1)) AS AGE                     ");
             mParameter.AppendSql("	,	TRIM(SUBSTR(AGESEX, INSTR(AGESEX, '/') + 1)) AS SEX                              ");
-            mParameter.AppendSql("  FROM kosmos_adm.DRUG_ADR1                                                            ");
+            mParameter.AppendSql("  FROM ADMIN.DRUG_ADR1                                                            ");
             mParameter.AppendSql(" WHERE WDATE >= TO_DATE(:SDATE)                                                        ");
             mParameter.AppendSql("   AND WDATE <= TO_DATE(:EDATE)                                                        ");
             mParameter.AppendSql("   AND AGESEX LIKE '%/%'                                                               ");
@@ -414,7 +414,7 @@ namespace ComLibB
            mParameter.AppendSql("WITH ADR_SEQNO AS                                                                                                                             ");
            mParameter.AppendSql("(                                                                                                                                              ");
            mParameter.AppendSql(" 	SELECT SEQNO                                                                                                                                ");
-           mParameter.AppendSql("	  FROM KOSMOS_ADM.DRUG_ADR1                                                                                                                 ");
+           mParameter.AppendSql("	  FROM ADMIN.DRUG_ADR1                                                                                                                 ");
            mParameter.AppendSql("	 WHERE WDATE >= TO_DATE(:SDATE)                                                                                                             ");
            mParameter.AppendSql("	   AND WDATE <= TO_DATE(:EDATE)                                                                                                             ");
            mParameter.AppendSql(")                                                                                                                                              ");
@@ -422,8 +422,8 @@ namespace ComLibB
            mParameter.AppendSql("(                                                                                                                                              ");
            mParameter.AppendSql("SELECT	B.SUNGBUN                                                                                                                               ");
            mParameter.AppendSql("	,	COUNT(B.SUNGBUN) CNT                                                                                                                    ");
-           mParameter.AppendSql("  FROM KOSMOS_ADM.DRUG_ADR1_ORDER A                                                                                                            ");
-           mParameter.AppendSql(" INNER JOIN KOSMOS_ADM.DRUG_JEP B                                                                                                              ");
+           mParameter.AppendSql("  FROM ADMIN.DRUG_ADR1_ORDER A                                                                                                            ");
+           mParameter.AppendSql(" INNER JOIN ADMIN.DRUG_JEP B                                                                                                              ");
            mParameter.AppendSql("   ON A.SUCODE = B.JEPCODE                                                                                                                     ");
            mParameter.AppendSql(" WHERE SEQNO  IN                                                                                                                               ");
            mParameter.AppendSql(" (                                                                                                                                             ");
@@ -434,8 +434,8 @@ namespace ComLibB
            mParameter.AppendSql(" UNION ALL                                                                                                                                     ");
            mParameter.AppendSql("SELECT	B.SUNGBUN                                                                                                                               ");
            mParameter.AppendSql("	,	COUNT(B.SUNGBUN) CNT                                                                                                                    ");
-           mParameter.AppendSql("  FROM KOSMOS_ADM.DRUG_ADR1_ORDER_JO A                                                                                                         ");
-           mParameter.AppendSql(" INNER JOIN KOSMOS_ADM.DRUG_JEP B                                                                                                              ");
+           mParameter.AppendSql("  FROM ADMIN.DRUG_ADR1_ORDER_JO A                                                                                                         ");
+           mParameter.AppendSql(" INNER JOIN ADMIN.DRUG_JEP B                                                                                                              ");
            mParameter.AppendSql("   ON A.SUCODE = B.JEPCODE                                                                                                                     ");
            mParameter.AppendSql(" WHERE SEQNO  IN                                                                                                                               ");
            mParameter.AppendSql(" (                                                                                                                                             ");
@@ -445,7 +445,7 @@ namespace ComLibB
            mParameter.AppendSql(" GROUP BY B.SUNGBUN                                                                                                                            ");
            mParameter.AppendSql(")                                                                                                                                              ");
            mParameter.AppendSql("SELECT SUNGBUN                                                                                                                                 ");
-           mParameter.AppendSql("	,	(SELECT CLASSNAME FROM KOSMOS_PMPA.BAS_CLASS WHERE CLASSCODE = A.SUNGBUN) AS SUNGBUN_NM                                                 ");
+           mParameter.AppendSql("	,	(SELECT CLASSNAME FROM ADMIN.BAS_CLASS WHERE CLASSCODE = A.SUNGBUN) AS SUNGBUN_NM                                                 ");
            mParameter.AppendSql("	,	CNT                                                                                                                                     ");
            mParameter.AppendSql("	,	0 AS SORT                                                                                                                               ");
            mParameter.AppendSql("  FROM SUNGBUN_DATA A                                                                                                                          ");
@@ -473,13 +473,13 @@ namespace ComLibB
             mParameter.AppendSql("WITH JO_DATA AS                                                                           ");
             mParameter.AppendSql("(                                                                                         ");
             mParameter.AppendSql("SELECT SUCODE                                                                             ");
-            mParameter.AppendSql("	,	(SELECT JEPNAME FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = A.SUCODE) AS JEPNAMEK      ");
+            mParameter.AppendSql("	,	(SELECT JEPNAME FROM ADMIN.DRUG_JEP WHERE JEPCODE = A.SUCODE) AS JEPNAMEK      ");
             mParameter.AppendSql("	,	COUNT(SUCODE) CNT                                                                   ");
-            mParameter.AppendSql("     FROM KOSMOS_ADM.DRUG_ADR1_ORDER_JO A                                                 ");
+            mParameter.AppendSql("     FROM ADMIN.DRUG_ADR1_ORDER_JO A                                                 ");
             mParameter.AppendSql("    WHERE SEQNO IN                                                                        ");
             mParameter.AppendSql("    (                                                                                     ");
             mParameter.AppendSql("	   SELECT SEQNO                                                                         ");
-            mParameter.AppendSql("	     FROM KOSMOS_ADM.DRUG_ADR1                                                          ");
+            mParameter.AppendSql("	     FROM ADMIN.DRUG_ADR1                                                          ");
             mParameter.AppendSql("	    WHERE WDATE >= TO_DATE(:SDATE)                                                      ");
             mParameter.AppendSql("		  AND WDATE <= TO_DATE(:EDATE)                                                      ");
             mParameter.AppendSql("    )                                                                                     ");
@@ -509,7 +509,7 @@ namespace ComLibB
             mParameter.AppendSql("(                                                                                                                           ");
             mParameter.AppendSql(" SELECT B1.NAME                                                                                                             ");
             mParameter.AppendSql(" 	,	COUNT(B1.NAME) CNT                                                                                                    ");
-            mParameter.AppendSql("   FROM KOSMOS_PMPA.BAS_BCODE B1                                                                                            ");
+            mParameter.AppendSql("   FROM ADMIN.BAS_BCODE B1                                                                                            ");
             mParameter.AppendSql("  INNER JOIN                                                                                                                ");
             mParameter.AppendSql("(SELECT * FROM                                                                                                              ");
             mParameter.AppendSql("(SELECT SEQNO,                                                                                                              ");
@@ -526,11 +526,11 @@ namespace ComLibB
             mParameter.AppendSql("        RACT_J11, RACT_J12, RACT_J13, RACT_J14, RACT_J15, RACT_J16,                                                         ");
             mParameter.AppendSql("        RACT_K1, RACT_K2, RACT_K3, RACT_K4, RACT_K5, RACT_K6, RACT_K7,                                                      ");
             mParameter.AppendSql("        RACT_L1, RACT_L2, RACT_L3                                                                                           ");
-            mParameter.AppendSql("    FROM KOSMOS_ADM.DRUG_ADR1 T1                                                                                            ");
+            mParameter.AppendSql("    FROM ADMIN.DRUG_ADR1 T1                                                                                            ");
             mParameter.AppendSql("    WHERE T1.SEQNO IN                                                                                                       ");
             mParameter.AppendSql("    (                                                                                                                       ");
             mParameter.AppendSql("    	SELECT SEQNO                                                                                                          ");
-            mParameter.AppendSql("		  FROM KOSMOS_ADM.DRUG_ADR1                                                                                           ");
+            mParameter.AppendSql("		  FROM ADMIN.DRUG_ADR1                                                                                           ");
             mParameter.AppendSql("		 WHERE WDATE >= TO_DATE(:SDATE)                                                                                       ");
             mParameter.AppendSql("		   AND WDATE <= TO_DATE(:EDATE)                                                                                       ");
             mParameter.AppendSql("    )                                                                                                                       ");
@@ -575,7 +575,7 @@ namespace ComLibB
             mParameter.AppendSql("WITH ADR_SEQNO AS                                                                                                                              ");
             mParameter.AppendSql("(                                                                                                                                              ");
             mParameter.AppendSql(" 	SELECT SEQNO                                                                                                                                 ");
-            mParameter.AppendSql("	  FROM KOSMOS_ADM.DRUG_ADR1                                                                                                                  ");
+            mParameter.AppendSql("	  FROM ADMIN.DRUG_ADR1                                                                                                                  ");
             mParameter.AppendSql("	 WHERE WDATE >= TO_DATE(:SDATE)                                                                                                              ");
             mParameter.AppendSql("	   AND WDATE <= TO_DATE(:EDATE)                                                                                                              ");
             mParameter.AppendSql(")                                                                                                                                              ");
@@ -584,8 +584,8 @@ namespace ComLibB
             mParameter.AppendSql("	SELECT	SUCODE                                                                                                                               ");
             mParameter.AppendSql("		,	SUNAMEK                                                                                                                              ");
             mParameter.AppendSql("		,	SEQNO                                                                                                                                ");
-            mParameter.AppendSql("		,	(SELECT SUNGBUN FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = A.SUCODE) AS SUNGBUN		                                                 ");
-            mParameter.AppendSql("	  FROM KOSMOS_ADM.DRUG_ADR1_ORDER A	                                                                                                         ");
+            mParameter.AppendSql("		,	(SELECT SUNGBUN FROM ADMIN.DRUG_JEP WHERE JEPCODE = A.SUCODE) AS SUNGBUN		                                                 ");
+            mParameter.AppendSql("	  FROM ADMIN.DRUG_ADR1_ORDER A	                                                                                                         ");
             mParameter.AppendSql("	WHERE SUCODE IS NOT NULL                                                                                                                     ");
             mParameter.AppendSql("	  AND EXISTS                                                                                                                                 ");
             mParameter.AppendSql("	  (                                                                                                                                          ");
@@ -597,8 +597,8 @@ namespace ComLibB
             mParameter.AppendSql("	SELECT	SUCODE                                                                                                                               ");
             mParameter.AppendSql("		,	SUNAMEK                                                                                                                              ");
             mParameter.AppendSql("		,	SEQNO                                                                                                                                ");
-            mParameter.AppendSql("		,	(SELECT SUNGBUN FROM KOSMOS_ADM.DRUG_JEP WHERE JEPCODE = A.SUCODE) AS SUNGBUN                                                        ");
-            mParameter.AppendSql("	  FROM KOSMOS_ADM.DRUG_ADR1_ORDER_JO A	                                                                                                     ");
+            mParameter.AppendSql("		,	(SELECT SUNGBUN FROM ADMIN.DRUG_JEP WHERE JEPCODE = A.SUCODE) AS SUNGBUN                                                        ");
+            mParameter.AppendSql("	  FROM ADMIN.DRUG_ADR1_ORDER_JO A	                                                                                                     ");
             mParameter.AppendSql("	WHERE SUCODE IS NOT NULL                                                                                                                     ");
             mParameter.AppendSql("	  AND EXISTS                                                                                                                                 ");
             mParameter.AppendSql("	  (                                                                                                                                          ");
@@ -611,7 +611,7 @@ namespace ComLibB
             mParameter.AppendSql("(                                                                                                                                              ");
             mParameter.AppendSql(" SELECT SUCODE                                                                                                                                 ");
             mParameter.AppendSql("	,	TO_CHAR(WM_CONCAT(DISTINCT B1.NAME)) AS LIST                                                                                             ");
-            mParameter.AppendSql("   FROM KOSMOS_PMPA.BAS_BCODE B1                                                                                                               ");
+            mParameter.AppendSql("   FROM ADMIN.BAS_BCODE B1                                                                                                               ");
             mParameter.AppendSql("  INNER JOIN                                                                                                                                   ");
             mParameter.AppendSql("(SELECT * FROM                                                                                                                                 ");
             mParameter.AppendSql("	(SELECT SEQNO,                                                                                                                               ");
@@ -628,7 +628,7 @@ namespace ComLibB
             mParameter.AppendSql("	        RACT_J11, RACT_J12, RACT_J13, RACT_J14, RACT_J15, RACT_J16,                                                                          ");
             mParameter.AppendSql("	        RACT_K1, RACT_K2, RACT_K3, RACT_K4, RACT_K5, RACT_K6, RACT_K7,                                                                       ");
             mParameter.AppendSql("	        RACT_L1, RACT_L2, RACT_L3                                                                                                            ");
-            mParameter.AppendSql("	    FROM KOSMOS_ADM.DRUG_ADR1 T1                                                                                                             ");
+            mParameter.AppendSql("	    FROM ADMIN.DRUG_ADR1 T1                                                                                                             ");
             mParameter.AppendSql("	   WHERE SEQNO IN                                                                                                                            ");
             mParameter.AppendSql("	   (                                                                                                                                         ");
             mParameter.AppendSql("	   		SELECT SEQNO                                                                                                                         ");
@@ -660,8 +660,8 @@ namespace ComLibB
             mParameter.AppendSql("(                                                                                                                                              ");
             mParameter.AppendSql("SELECT	B.SUNGBUN                                                                                                                            ");
             mParameter.AppendSql("	,	COUNT(B.SUNGBUN) CNT                                                                                                                     ");
-            mParameter.AppendSql("  FROM KOSMOS_ADM.DRUG_ADR1_ORDER A                                                                                                            ");
-            mParameter.AppendSql(" INNER JOIN KOSMOS_ADM.DRUG_JEP B                                                                                                              ");
+            mParameter.AppendSql("  FROM ADMIN.DRUG_ADR1_ORDER A                                                                                                            ");
+            mParameter.AppendSql(" INNER JOIN ADMIN.DRUG_JEP B                                                                                                              ");
             mParameter.AppendSql("   ON A.SUCODE = B.JEPCODE                                                                                                                     ");
             mParameter.AppendSql(" WHERE SEQNO  IN                                                                                                                               ");
             mParameter.AppendSql(" (                                                                                                                                             ");
@@ -672,8 +672,8 @@ namespace ComLibB
             mParameter.AppendSql(" UNION ALL                                                                                                                                     ");
             mParameter.AppendSql("SELECT	B.SUNGBUN                                                                                                                            ");
             mParameter.AppendSql("	,	COUNT(B.SUNGBUN) CNT                                                                                                                     ");
-            mParameter.AppendSql("  FROM KOSMOS_ADM.DRUG_ADR1_ORDER_JO A                                                                                                         ");
-            mParameter.AppendSql(" INNER JOIN KOSMOS_ADM.DRUG_JEP B                                                                                                              ");
+            mParameter.AppendSql("  FROM ADMIN.DRUG_ADR1_ORDER_JO A                                                                                                         ");
+            mParameter.AppendSql(" INNER JOIN ADMIN.DRUG_JEP B                                                                                                              ");
             mParameter.AppendSql("   ON A.SUCODE = B.JEPCODE                                                                                                                     ");
             mParameter.AppendSql(" WHERE SEQNO  IN                                                                                                                               ");
             mParameter.AppendSql(" (                                                                                                                                             ");
@@ -690,7 +690,7 @@ namespace ComLibB
             mParameter.AppendSql("	,	D.LIST		                                                                                                                             ");
             mParameter.AppendSql("	,	COUNT(A.SUCODE) CNT                                                                                                                      ");
             mParameter.AppendSql("  FROM ORDER_DATA A                                                                                                                            ");
-            mParameter.AppendSql(" INNER JOIN KOSMOS_OCS.OCS_DRUGINFO_NEW C                                                                                                      ");
+            mParameter.AppendSql(" INNER JOIN ADMIN.OCS_DRUGINFO_NEW C                                                                                                      ");
             mParameter.AppendSql("    ON A.SUCODE = C.SUNEXT                                                                                                                     ");
             mParameter.AppendSql(" INNER JOIN ADR_LIST D                                                                                                                         ");
             mParameter.AppendSql("    ON A.SUCODE = D.SUCODE                                                                                                                     ");

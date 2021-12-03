@@ -28,7 +28,7 @@ namespace ComHpcLibB.Model
             parameter.AppendSql("      , TO_CHAR(b.IpsaDate,'YYYY-MM-DD') IpsaDate,b.Tel,b.LtdCode,c.BuseName,b.GbChul              ");
             parameter.AppendSql("      , a.Wrtno,a.SOGEN,a.SOGENB,a.SOGENC,a.SOGEND,a.TMUN0092,a.TMUN0093,a.TMUN0094,a.TMUN0095     ");
             parameter.AppendSql("      , a.PANJENG,a.PANJENGU1,a.PANJENGU2,a.PANJENGU3,a.PANJENGU4, B.GBJUSO                        ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_RES_BOHUM1 a, KOSMOS_PMPA.HIC_JEPSU b, KOSMOS_PMPA.HIC_PATIENT c           ");
+            parameter.AppendSql("   FROM ADMIN.HIC_RES_BOHUM1 a, ADMIN.HIC_JEPSU b, ADMIN.HIC_PATIENT c           ");
             parameter.AppendSql("  WHERE a.WRTNO = :WRTNO                                                                           ");
             parameter.AppendSql("    AND a.WRTNO = b.WRTNO(+)                                                                       ");
             parameter.AppendSql("    AND b.Pano  = c.Pano(+)                                                                        ");
@@ -87,7 +87,7 @@ namespace ComHpcLibB.Model
             parameter.AppendSql("      , c.TMUN0102, c.TMUN0103, c.TMUN0104, c.SIM_RESULT1, c.SIM_RESULT2, c.SIM_RESULT3, c.TMUN0105, c.TMUN0106                ");
             parameter.AppendSql("      , c.TMUN0107, c.TMUN0108, c.TMUN0109, c.TMUN0110, c.TMUN0111, c.TMUN0112, c.TMUN0113, c.TMUN0114, c.TMUN0115             ");
             parameter.AppendSql("      , c.TMUN0116, c.TMUN0117, c.TMUN0118, c.TMUN0119, c.TMUN0120, c.TMUN0121, c.TMUN0122, c.TMUN0123, c.TMUN0124             ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HIC_RES_BOHUM1 c                                       ");
+            parameter.AppendSql("   FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HIC_RES_BOHUM1 c                                       ");
             parameter.AppendSql("  WHERE a.JEPDATE >= TO_DATE(:JEPDATE,'YYYY-MM-DD')                                                                            ");
             parameter.AppendSql("    AND a.MIRNO1 = :MIRNO                                                                                                      ");
             parameter.AppendSql("    AND a.Pano = b.Pano(+)                                                                                                     ");

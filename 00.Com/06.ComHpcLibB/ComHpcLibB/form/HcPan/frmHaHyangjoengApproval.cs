@@ -823,7 +823,7 @@ namespace ComHpcLibB
                     Call AdoCloseSet(rs1)
             
                     '2014-12-15 OCS_OORDER 전송
-                    SQL = "SELECT ROWID,Qty FROM KOSMOS_OCS.OCS_OORDER "
+                    SQL = "SELECT ROWID,Qty FROM ADMIN.OCS_OORDER "
                     SQL = SQL & "WHERE Ptno='" & strPtNo & "' "
                     SQL = SQL & "  AND BDate=TO_DATE('" & ArgBDate & "','YYYY-MM-DD') "
                     SQL = SQL & "  AND DeptCode='TO' "
@@ -850,7 +850,7 @@ namespace ComHpcLibB
                         'Call OCS_OORDER_INSERT(strPtNo, strORDERCODE, strSuCode)
                 
                 
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_OORDER " & vbLf
+                        SQL = " INSERT INTO ADMIN.OCS_OORDER " & vbLf
                         SQL = SQL & "  (PTNO, BDATE, DEPTCODE, SEQNO, ORDERCODE, SUCODE, BUN, SLIPNO, REALQTY, QTY, NAL, GBDIV, "
                         SQL = SQL & "   DOSCODE, GBBOTH, GBINFO, GBER, GBSELF, GBSPC, BI, DRCODE, REMARK, ENTDATE, GBSUNAP, TUYAKNO, "
                         SQL = SQL & "   ORDERNO, MULTI, MULTIREMARK, DUR, RESV, SCODESAYU, SCODEREMARK, GBSEND,SABUN, "
@@ -858,13 +858,13 @@ namespace ComHpcLibB
                         SQL = SQL & "   ( '" & strPtNo & "' , TO_DATE('" & ArgBDate & "','YYYY-MM-DD'), 'TO',"
                         SQL = SQL & "     99, '" & strORDERCODE & "', '" & strSuCode & "','20','" & strSlipNo & "'," & nQty & "," & nQty & ",'1','1', "
                         SQL = SQL & "     '" & strDosCode & "','0','','','','','51', '" & StrDrCode & "','검사용' ,"
-                        SQL = SQL & "     SYSDATE, '1','0', KOSMOS_OCS.SEQ_ORDERNO.NEXTVAL,'','','','','','','Y','" & GnJobSabun & "',"
+                        SQL = SQL & "     SYSDATE, '1','0', ADMIN.SEQ_ORDERNO.NEXTVAL,'','','','','','','Y','" & GnJobSabun & "',"
                         SQL = SQL & "    '" & strORDERCODE & "','" & strSuCode & "','20' ) " & vbLf
                         result = AdoExecute(SQL)
                          
                 
                     ElseIf AdoGetNumber(rs1, "Qty", 0) <> nQty Then
-                        SQL = "UPDATE KOSMOS_OCS.OCS_OORDER SET "
+                        SQL = "UPDATE ADMIN.OCS_OORDER SET "
                         SQL = SQL & " Qty=" & nQty & ", "
                         SQL = SQL & " RealQty=" & nQty & "  "
                         SQL = SQL & "WHERE ROWID='" & Trim(AdoGetString(rs1, "ROWID", 0)) & "' "
@@ -873,7 +873,7 @@ namespace ComHpcLibB
                     Call AdoCloseSet(rs1)
 
                     'OCS 오더번호를 찾음
-                    SQL = "SELECT ORDERNO FROM KOSMOS_OCS.OCS_OORDER "
+                    SQL = "SELECT ORDERNO FROM ADMIN.OCS_OORDER "
                     SQL = SQL & "WHERE Ptno='" & strPtNo & "' "
                     SQL = SQL & "  AND BDate=TO_DATE('" & ArgBDate & "','YYYY-MM-DD') "
                     SQL = SQL & "  AND DeptCode='TO' "
@@ -883,14 +883,14 @@ namespace ComHpcLibB
                     Call AdoCloseSet(rs1)
             
                     'OCS_HYANG Update
-                    SQL = "SELECT ROWID FROM KOSMOS_OCS.OCS_HYANG "
+                    SQL = "SELECT ROWID FROM ADMIN.OCS_HYANG "
                     SQL = SQL & "WHERE Ptno='" & strPtNo & "' "
                     SQL = SQL & "  AND BDate=TO_DATE('" & ArgBDate & "','YYYY-MM-DD') "
                     SQL = SQL & "  AND DeptCode IN ('HR','TO') "
                     SQL = SQL & "  AND SuCode='" & strSuCode & "' "
                     Call AdoOpenSet(rs1, SQL)
                     If RowIndicator > 0 Then
-                        SQL = "UPDATE KOSMOS_OCS.OCS_HYANG SET "
+                        SQL = "UPDATE ADMIN.OCS_HYANG SET "
                         SQL = SQL & " DeptCode='TO', "
                         SQL = SQL & " WardCode='EN', "
                         SQL = SQL & " OrderNo=" & nOrderNo & ", "
@@ -900,14 +900,14 @@ namespace ComHpcLibB
                     End If
             
                     'OCS_MAYAK Update
-                    SQL = "SELECT ROWID FROM KOSMOS_OCS.OCS_MAYAK "
+                    SQL = "SELECT ROWID FROM ADMIN.OCS_MAYAK "
                     SQL = SQL & "WHERE Ptno='" & strPtNo & "' "
                     SQL = SQL & "  AND BDate=TO_DATE('" & ArgBDate & "','YYYY-MM-DD') "
                     SQL = SQL & "  AND DeptCode IN ('HR','TO') "
                     SQL = SQL & "  AND SuCode='" & strSuCode & "' "
                     Call AdoOpenSet(rs1, SQL)
                     If RowIndicator > 0 Then
-                        SQL = "UPDATE KOSMOS_OCS.OCS_MAYAK SET "
+                        SQL = "UPDATE ADMIN.OCS_MAYAK SET "
                         SQL = SQL & " DeptCode='TO', "
                         SQL = SQL & " WardCode='EN', "
                         SQL = SQL & " OrderNo=" & nOrderNo & ", "

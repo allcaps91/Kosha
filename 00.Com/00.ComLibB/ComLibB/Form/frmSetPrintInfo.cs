@@ -118,7 +118,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += ComNum.VBLF + " INSERT INTO  KOSMOS_PMPA.ETC_PRINT_HIS";
+                SQL += ComNum.VBLF + " INSERT INTO  ADMIN.ETC_PRINT_HIS";
                 SQL += ComNum.VBLF + "        (ACTDATE, PANO, USE1, USE2, REMARK, ENTPART,";
                 SQL += ComNum.VBLF + "         ENTDATE, PJUMIN1, PJUMIN2, PJUMIN3, PSNAME, PTEL, GUBUN)";
                 SQL += ComNum.VBLF + " VALUES (";

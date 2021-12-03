@@ -100,7 +100,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT CPCODE , CPNAME                             \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_CP_CODE                      \r";
+                SQL += "   FROM ADMIN.OCS_CP_CODE                      \r";
                 SQL += "  WHERE (DeptDr ='" + clsType.User.Sabun + "'       \r";
                 SQL += "     OR DeptDr ='" + clsPublic.GstrDeptCode + "')   \r";
                 SQL += "  ORDER BY CPCODE                                   \r";
@@ -219,7 +219,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT distinct PRMNAME                    \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OPRM                 \r";
+                SQL += "   FROM ADMIN.OCS_OPRM                 \r";
                 SQL += "  WHERE DeptDr = '" + strDeptDr.Trim() + "' \r";
                 
                 if (rdoGbOrder1.Checked == true)
@@ -440,7 +440,7 @@ namespace ComMedLibB
             //{
                 SQL = "";
                 SQL += " DELETE                                         \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OPRM                     \r";
+                SQL += "   FROM ADMIN.OCS_OPRM                     \r";
                 SQL += "  WHERE DeptDr = '" + strDeptDr.Trim() + "'     \r";
                 SQL += "    AND PRMNAME = '" + strSetName.Trim() + "'   \r";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -470,7 +470,7 @@ namespace ComMedLibB
             {
                 SQL = "";
                 SQL += " SELECT distinct PRMNAME                        \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OPRM                     \r";
+                SQL += "   FROM ADMIN.OCS_OPRM                     \r";
                 SQL += "  WHERE DeptDr = '" + sGubun.Trim() + "'        \r";
                 SQL += "    AND PRMNAME = '" + strSetName.Trim() + "'   \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

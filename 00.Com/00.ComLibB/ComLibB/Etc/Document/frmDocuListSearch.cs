@@ -73,7 +73,7 @@ namespace ComLibB
             {
                 SQL = string.Empty;
                 SQL = "SELECT BUSE";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_MST";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_MST";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + VB.Val(clsType.User.Sabun).ToString("00000") + "'";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -166,12 +166,12 @@ namespace ComLibB
 
                 if (OptSort0.Checked == true)
                 {
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_DOCU";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_DOCU";
                     SQL = SQL + ComNum.VBLF + " WHERE GUBUN = '0'";
                 }
                 else if (OptSort1.Checked == true)
                 {
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_DOCU1";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_DOCU1";
                     SQL = SQL + ComNum.VBLF + " WHERE GUBUN = '1'";
                 }
 

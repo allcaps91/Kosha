@@ -24,8 +24,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT b.ENDOSCOPE, b.ENDOGUBUN1, b.ENDOGUBUN2, b.ENDOGUBUN3, b.ENDOGUBUN4, b.ENDOGUBUN5       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_GROUPEXAM a                                                             ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE    b                                                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_GROUPEXAM a                                                             ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE    b                                                             ");
             parameter.AppendSql(" WHERE a.GROUPCODE = :CODE                                                                     ");
             parameter.AppendSql("   AND (b.ENDOGUBUN2 = 'Y' OR b.ENDOGUBUN3 = 'Y' OR b.ENDOGUBUN4 = 'Y' OR b.ENDOGUBUN5 = 'Y')  ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                                                    ");
@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , c.Amt3,c.Amt4,c.Amt5,TO_CHAR(c.SuDate,'YYYY-MM-DD') SuDate                              ");
             parameter.AppendSql("     , c.OldAmt1,c.OldAmt2,c.OldAmt3,c.OldAmt4,c.OldAmt5                                       ");
             parameter.AppendSql("     , a.SugaGbn,b.GbSuga                                                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_GROUPEXAM a, KOSMOS_PMPA.HIC_GROUPCODE b, KOSMOS_PMPA.HIC_EXCODE c      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_GROUPEXAM a, ADMIN.HIC_GROUPCODE b, ADMIN.HIC_EXCODE c      ");
             parameter.AppendSql(" WHERE a.GROUPCODE = :GROUPCODE                                                                ");
             if (!strExamList.IsNullOrEmpty() && strExamList.Count > 0)
             {
@@ -69,8 +69,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT a.SEQNO,a.EXCODE,b.HNAME,a.SUGAGBN,a.ROWID AS RID,SUDATE        ");
             //parameter.AppendSql("      ,b.GAMT1,b.JAMT1,b.SAMT1,b.IAMT1,b.GAMT2,b.JAMT2,b.SAMT2,b.IAMT2 ");
             parameter.AppendSql("      ,b.AMT1 AS GAMT1 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_GROUPEXAM a                                     ");
-            parameter.AppendSql("      ,KOSMOS_PMPA.HIC_EXCODE b                                        ");
+            parameter.AppendSql("  FROM ADMIN.HIC_GROUPEXAM a                                     ");
+            parameter.AppendSql("      ,ADMIN.HIC_EXCODE b                                        ");
             parameter.AppendSql(" WHERE A.GROUPCODE =:GROUPCODE                                         ");
             parameter.AppendSql("   AND A.EXCODE = B.CODE(+)                                            ");
             parameter.AppendSql(" ORDER BY A.SEQNO,A.EXCODE                                             ");

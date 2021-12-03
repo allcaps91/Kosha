@@ -26,7 +26,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("   SELECT                  MISUNO                  ");
 
-            parameter.AppendSql("   FROM                    KOSMOS_PMPA.MISU_GIRO   ");
+            parameter.AppendSql("   FROM                    ADMIN.MISU_GIRO   ");
 
             parameter.AppendSql("   WHERE                   WRTNO = :WRTNO          ");
             parameter.AppendSql("       AND                 DELDATE IS NULL         ");

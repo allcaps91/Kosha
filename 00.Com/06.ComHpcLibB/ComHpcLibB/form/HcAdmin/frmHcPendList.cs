@@ -490,8 +490,8 @@ namespace ComHpcLibB
                     SQL += ComNum.VBLF + " SELECT TO_CHAR(a.JepDate,'YYYY-MM-DD') JepDate,a.WRTNO WRTNO,b.Pano,b.SName SName,b.LtdCode,                 ";
                     SQL += ComNum.VBLF + "        FC_HIC_LTDNAME(b.LtdCode) LtdName, DECODE(RTRIM(c.HPhone),'', c.Tel, c.HPhone) HTEL,                  ";
                     SQL += ComNum.VBLF + "        DECODE(b.GbChul, 'Y', '출장', '') GbChul, a.ExamName,a.Sayu,a.GUBUN,SPECSABUN,                        ";  
-                    SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_INSA_MST_KORNAME(a.EntSabun) ENTSABUN, TO_CHAR(ENDDATE,'YYYY-MM-DD') ENDDATE,           ";
-                    SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_INSA_MST_KORNAME(a.EndSabun) ENDSABUN, a.ROWID, TO_CHAR(SPECDATE,'YYYY-MM-DD') SPECDATE,";
+                    SQL += ComNum.VBLF + "        ADMIN.FC_INSA_MST_KORNAME(a.EntSabun) ENTSABUN, TO_CHAR(ENDDATE,'YYYY-MM-DD') ENDDATE,           ";
+                    SQL += ComNum.VBLF + "        ADMIN.FC_INSA_MST_KORNAME(a.EndSabun) ENDSABUN, a.ROWID, TO_CHAR(SPECDATE,'YYYY-MM-DD') SPECDATE,";
                     SQL += ComNum.VBLF + "        TO_CHAR(b.TONGBODATE, 'YYYY-MM-DD') TONGBODATE, DECODE(WEBPRINTSEND, '','우편','알림톡') TONGBOGBN     ";
                     SQL += ComNum.VBLF + "  FROM " + ComNum.DB_PMPA + "HIC_PENDING a,                                                                   ";
                     SQL += ComNum.VBLF + "       " + ComNum.DB_PMPA + "HIC_JEPSU b,                                                                     ";
@@ -535,8 +535,8 @@ namespace ComHpcLibB
                     SQL += ComNum.VBLF + " SELECT TO_CHAR(a.JepDate,'YYYY-MM-DD') JepDate,a.WRTNO WRTNO,b.Pano,b.SName SName,b.LtdCode,              ";
                     SQL += ComNum.VBLF + "        FC_HIC_LTDNAME(b.LtdCode) LtdName, DECODE(RTRIM(c.HPhone),'', c.Tel, c.HPhone) HTEL,               ";
                     SQL += ComNum.VBLF + "        '' GbChul, a.ExamName,a.Sayu,a.GUBUN, SPECSABUN,                                                   ";
-                    SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_INSA_MST_KORNAME(a.EntSabun) ENTSABUN, TO_CHAR(ENDDATE,'YYYY-MM-DD') ENDDATE,        ";
-                    SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_INSA_MST_KORNAME(a.EndSabun) ENDSABUN, a.ROWID, TO_CHAR(SPECDATE,'YYYY-MM-DD') SPECDATE,";
+                    SQL += ComNum.VBLF + "        ADMIN.FC_INSA_MST_KORNAME(a.EntSabun) ENTSABUN, TO_CHAR(ENDDATE,'YYYY-MM-DD') ENDDATE,        ";
+                    SQL += ComNum.VBLF + "        ADMIN.FC_INSA_MST_KORNAME(a.EndSabun) ENDSABUN, a.ROWID, TO_CHAR(SPECDATE,'YYYY-MM-DD') SPECDATE,";
                     SQL += ComNum.VBLF + "        TO_CHAR(b.PRTDATE, 'YYYY-MM-DD') TONGBODATE, DECODE(WEBPRINTSEND, '','우편','알림톡') TONGBOGBN    ";
                     SQL += ComNum.VBLF + "  FROM " + ComNum.DB_PMPA + "HIC_PENDING a,                                                         ";
                     SQL += ComNum.VBLF + "       " + ComNum.DB_PMPA + "HEA_JEPSU b,                                                           ";
@@ -575,8 +575,8 @@ namespace ComHpcLibB
                     SQL += ComNum.VBLF + " SELECT TO_CHAR(a.JepDate,'YYYY-MM-DD') JepDate,a.WRTNO,b.Pano,b.SName,b.LtdCode,                   ";
                     SQL += ComNum.VBLF + "        FC_HIC_LTDNAME(b.LtdCode) LtdName, DECODE(RTRIM(c.HPhone),'', c.Tel, c.HPhone) HTEL,        ";
                     SQL += ComNum.VBLF + "        DECODE(b.GbChul, 'Y', '출장', '') GbChul, a.ExamName,a.Sayu,a.GUBUN,SPECSABUN,              ";
-                    SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_INSA_MST_KORNAME(a.EntSabun) ENTSABUN, TO_CHAR(ENDDATE,'YYYY-MM-DD') ENDDATE, ";
-                    SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_INSA_MST_KORNAME(a.EndSabun) ENDSABUN, a.ROWID, TO_CHAR(SPECDATE,'YYYY-MM-DD') SPECDATE, ";
+                    SQL += ComNum.VBLF + "        ADMIN.FC_INSA_MST_KORNAME(a.EntSabun) ENTSABUN, TO_CHAR(ENDDATE,'YYYY-MM-DD') ENDDATE, ";
+                    SQL += ComNum.VBLF + "        ADMIN.FC_INSA_MST_KORNAME(a.EndSabun) ENDSABUN, a.ROWID, TO_CHAR(SPECDATE,'YYYY-MM-DD') SPECDATE, ";
                     SQL += ComNum.VBLF + "        TO_CHAR(b.TONGBODATE, 'YYYY-MM-DD') TONGBODATE, DECODE(WEBPRINTSEND, '','우편','알림톡') TONGBOGBN    ";
                     SQL += ComNum.VBLF + "  FROM " + ComNum.DB_PMPA + "HIC_PENDING a,                                                         ";
                     SQL += ComNum.VBLF + "       " + ComNum.DB_PMPA + "HIC_JEPSU b,                                                           ";
@@ -617,8 +617,8 @@ namespace ComHpcLibB
                     SQL += ComNum.VBLF + " SELECT TO_CHAR(a.JepDate,'YYYY-MM-DD') JepDate,a.WRTNO,b.Pano,b.SName,b.LtdCode,                   ";
                     SQL += ComNum.VBLF + "        FC_HIC_LTDNAME(b.LtdCode) LtdName, DECODE(RTRIM(c.HPhone),'', c.Tel, c.HPhone) HTEL,        ";
                     SQL += ComNum.VBLF + "        '' GbChul, a.ExamName,a.Sayu,a.GUBUN,SPECSABUN,                                             ";
-                    SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_INSA_MST_KORNAME(a.EntSabun) ENTSABUN, TO_CHAR(ENDDATE,'YYYY-MM-DD') ENDDATE, ";
-                    SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_INSA_MST_KORNAME(a.EndSabun) ENDSABUN, a.ROWID,TO_CHAR(SPECDATE,'YYYY-MM-DD') SPECDATE,";
+                    SQL += ComNum.VBLF + "        ADMIN.FC_INSA_MST_KORNAME(a.EntSabun) ENTSABUN, TO_CHAR(ENDDATE,'YYYY-MM-DD') ENDDATE, ";
+                    SQL += ComNum.VBLF + "        ADMIN.FC_INSA_MST_KORNAME(a.EndSabun) ENDSABUN, a.ROWID,TO_CHAR(SPECDATE,'YYYY-MM-DD') SPECDATE,";
                     SQL += ComNum.VBLF + "        TO_CHAR(b.PRTDATE, 'YYYY-MM-DD') TONGBODATE, DECODE(WEBPRINTSEND, '','우편','알림톡') TONGBOGBN    ";
                     SQL += ComNum.VBLF + "  FROM " + ComNum.DB_PMPA + "HIC_PENDING a,                                                         ";
                     SQL += ComNum.VBLF + "       " + ComNum.DB_PMPA + "HEA_JEPSU b,                                                           ";

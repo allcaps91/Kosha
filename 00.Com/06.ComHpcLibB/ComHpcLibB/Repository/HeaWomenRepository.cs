@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO,MIN_ONE,MAX_ONE,MIN_TWO,MAX_TWO   ");
             parameter.AppendSql("     , ROWID RID                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_WOMEN                   ");
+            parameter.AppendSql("  FROM ADMIN.HEA_WOMEN                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
 
             parameter.Add("WRTNO", WRTNO);
@@ -34,7 +34,7 @@ namespace ComHpcLibB.Repository
         public int Merge_Women_Reference(string MIN_ONE, string MAX_ONE, string MIN_TWO, string MAX_TWO, long WRTNO, string CODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("MERGE INTO KOSMOS_PMPA.HEA_WOMEN a     ");
+            parameter.AppendSql("MERGE INTO ADMIN.HEA_WOMEN a     ");
             parameter.AppendSql("using dual d                           ");
             parameter.AppendSql("   on (a.WRTNO = :WRTNO)               ");
             parameter.AppendSql(" when matched then                     ");

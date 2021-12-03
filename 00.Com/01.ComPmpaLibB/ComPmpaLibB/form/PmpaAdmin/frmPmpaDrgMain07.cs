@@ -1435,7 +1435,7 @@ namespace ComPmpaLibB
                 if (FstrROWID == "")
                 {
                     SQL = "";
-                    SQL += ComNum.VBLF + " INSERT INTO KOSMOS_PMPA.DRG_MASTER_NEW (     ";
+                    SQL += ComNum.VBLF + " INSERT INTO ADMIN.DRG_MASTER_NEW (     ";
                     SQL += ComNum.VBLF + "      TRSNO,IPDNO,pano,sName,jindate ,Ilsu,   ";
                     SQL += ComNum.VBLF + "      ILLCODE1,ILLCODE2,ILLCODE3,ILLCODE4,    ";
                     SQL += ComNum.VBLF + "      ILLCODE5,ILLCODE6,ILLCODE7,ILLCODE8,    ";
@@ -1470,7 +1470,7 @@ namespace ComPmpaLibB
                 }
                 else
                 {
-                    SQL = "UPDATE  KOSMOS_PMPA.DRG_MASTER_NEW SET ";
+                    SQL = "UPDATE  ADMIN.DRG_MASTER_NEW SET ";
                     SQL += ComNum.VBLF + "  Jindate  = '" + txtJinDate.Text + "', ";
                     SQL += ComNum.VBLF + "  Ilsu  = '" + txtJinIlsu.Text + "', ";
                     SQL += ComNum.VBLF + "  ILLCODE1 = '" + txtILLCode1.Text + "', ";

@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT          ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT          ");
             parameter.AppendSql("   SET RESULT   = :RESULT              ");
             parameter.AppendSql("     , RESCODE  = :RESCODE             ");
             parameter.AppendSql("     , ENTSABUN = :ENTSABUN            ");
@@ -48,7 +48,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT EXCODE, RESULT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT          ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND Result IS NOT NULL              ");
 
@@ -61,7 +61,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID AS RID            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT  ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO         ");
             parameter.AppendSql("   AND EXCODE = :EXCODE        ");
 
@@ -75,7 +75,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT          ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT          ");
             parameter.AppendSql("   SET RESULT   = :RESULT              ");
             parameter.AppendSql("     , ACTIVE   = :ACTIVE              ");
             parameter.AppendSql("     , ENTSABUN = :ENTSABUN            ");
@@ -97,7 +97,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT          ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT          ");
             parameter.AppendSql("   SET RESULT   = :RESULT              ");
             parameter.AppendSql("     , ACTIVE   = :ACTIVE              ");
             parameter.AppendSql("     , ENTSABUN = :ENTSABUN            ");
@@ -117,10 +117,10 @@ namespace ComHpcLibB.Repository
         public int Result_History_Insert(string idNumber, string strResult, string strROWID, string strExCode)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_RESULT_HIS                                     ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_RESULT_HIS                                     ");
             parameter.AppendSql("       (ENTTIME, ENTSABUN, WRTNO, EXCODE, RESULT)                          ");
             parameter.AppendSql("SELECT SYSDATE, :SABUN, WRTNO, EXCODE, RESULT                              ");
-            parameter.AppendSql("  From KOSMOS_PMPA.HEA_RESULT                                              ");
+            parameter.AppendSql("  From ADMIN.HEA_RESULT                                              ");
             parameter.AppendSql(" WHERE ROWID = :RID                                                        ");
             parameter.AppendSql("   AND RESULT IS NOT NULL                                                  ");
             parameter.AppendSql("   AND RESULT <> :RESULT                                                   ");
@@ -145,8 +145,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT A    ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE B    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT A    ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE B    ");
             parameter.AppendSql(" WHERE A.WRTNO = :WRTNO            ");
             parameter.AppendSql("   AND A.EXCODE = B.CODE(+)        ");
             if (!strRoom.IsNullOrEmpty())
@@ -169,8 +169,8 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT a.ROWID AS RID, a.EXCODE, a.RESULT, a.PANJENG       ");
             parameter.AppendSql("     , b.MIN_M, b.MAX_M, b.MIN_F, b.MAX_F                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a                            ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b                            ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a                            ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b                            ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                    ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE(+)                                ");
 
@@ -184,7 +184,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ACTIVE                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT    ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT    ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO            ");
             parameter.AppendSql("   AND EXCODE = :EXCODE          ");
 
@@ -199,7 +199,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT RESULT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)     ");
 
@@ -213,7 +213,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT SET  ");
             parameter.AppendSql("       SANGDAM = :SANGDAM          ");
             parameter.AppendSql(" WHERE WRTNO   = :WRTNO            ");
             parameter.AppendSql("   AND EXCODE  = :EXCODE           ");
@@ -229,7 +229,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT SET                      ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT SET                      ");
             parameter.AppendSql("       RESULT = :RESULT                                ");
             parameter.AppendSql("     , ACTIVE = :ACTIVE                                ");
             if (!item.READTIME.IsNullOrEmpty())
@@ -259,7 +259,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT        ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT        ");
             parameter.AppendSql("   SET PANJENG   = :PANJENG          ");
             parameter.AppendSql(" WHERE ROWID    = :RID               ");
 
@@ -273,7 +273,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT EXCODE,Result           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -285,7 +285,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT EXCODE,Result           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
             parameter.AppendSql(" AND RESULT IS NOT NULL        ");
 
@@ -298,7 +298,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MAX(ENTTIME), ENTSABUN  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
             parameter.AppendSql("   AND PART <> '5'             ");
             parameter.AppendSql("   AND ENTTIME IS NOT NULL     ");
@@ -315,7 +315,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT RESULT                                                          "); 
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT A, KOSMOS_PMPA.HIC_EXCODE B              ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT A, ADMIN.HIC_EXCODE B              ");
             parameter.AppendSql(" WHERE A.WRTNO = :WRTNO                                                ");
             parameter.AppendSql("   AND A.Part = '5'                                                    "); //ACT코드만
             parameter.AppendSql("   AND A.EXCODE = B.CODE(+)                                            ");
@@ -332,12 +332,12 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE b        ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a        ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE b        ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND A.EXCODE = B.CODE(+)            ");
             parameter.AppendSql("   AND A.Active = 'Y'                  ");
-            parameter.AppendSql("   AND Trim(B.HeaPART) IN(SELECT TRIM(HEAPART) FROM KOSMOS_PMPA.HIC_EXCODE WHERE HAROOM = :HAROOM)  ");
+            parameter.AppendSql("   AND Trim(B.HeaPART) IN(SELECT TRIM(HEAPART) FROM ADMIN.HIC_EXCODE WHERE HAROOM = :HAROOM)  ");
 
             parameter.Add("WRTNO", argWrtNo);
             parameter.Add("HAROOM", strRoom);
@@ -350,7 +350,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID AS RID                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT          ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND ACTIVE IS NOT NULL              ");
             parameter.AppendSql("   AND PART NOT IN ('5')               ");
@@ -365,7 +365,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT EXCODE, RESULT                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT          ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)             ");
 
@@ -381,7 +381,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT WRTNO,EXCODE,PART,RESCODE,PANJENG,RESULT,SANGDAM    ");
             parameter.AppendSql("      ,ACTIVE, ACTPART, ENTSABUN, ENTTIME, READTIME, ROWID AS RID        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT                              ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT                              ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                      ");
             parameter.AppendSql("   AND EXCODE =:EXCODE                                     ");
 
@@ -394,7 +394,7 @@ namespace ComHpcLibB.Repository
         public void DeleteByRowid(string argRid)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HEA_RESULT  WHERE ROWID = :RID  ");
+            parameter.AppendSql("DELETE ADMIN.HEA_RESULT  WHERE ROWID = :RID  ");
 
             parameter.Add("RID", argRid);
 
@@ -405,10 +405,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_RESULT_HIS                         ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_RESULT_HIS                         ");
             parameter.AppendSql("     ( WRTNO,EXCODE,RESULT,ACTIVE,GUBUN,ENTSABUN,ENTTIME )     ");
             parameter.AppendSql(" SELECT WRTNO,EXCODE,RESULT,ACTIVE,'D',:ENTSABUN,SYSDATE      ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HEA_RESULT                                                         ");
+            parameter.AppendSql("   FROM ADMIN.HEA_RESULT                                                         ");
             parameter.AppendSql("  WHERE ROWID = :RID                                                                ");
 
             parameter.Add("RID", argRid);
@@ -422,7 +422,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO, RESCODE, SANGDAM, ACTIVE, ACTPART, PANJENG   ");
             parameter.AppendSql("     , EXCODE, RESULT, ROWID AS RID                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT                              ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT                              ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                      ");
 
             parameter.Add("WRTNO", argWrtno);
@@ -434,7 +434,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID AS RID                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT      ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT      ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO             ");
             parameter.AppendSql("   AND EXCODE IN (:EXCODES)        ");
 
@@ -448,7 +448,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT EXCODE, RESULT                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT                  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT                  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND EXCODE IN ('TZ08','A902','A903','A920') ");
             parameter.AppendSql("   AND Result IS NOT NULL                      ");
@@ -462,7 +462,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID RID, ACTIVE       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO          ");
             parameter.AppendSql("   AND ACTPART IN (:ACTPART)   ");
 
@@ -478,7 +478,7 @@ namespace ComHpcLibB.Repository
         public int Result_Update(string strResult, string strPanjeng, string strResCode, string idNumber, string strRowId, string strExCode = "")
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT SET              ");
             parameter.AppendSql("       RESULT   = :RESULT                      ");
             if (!strPanjeng.IsNullOrEmpty())
             {
@@ -521,7 +521,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT EXCODE,RESULT                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT                  ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT                  ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
 
             parameter.Add("WRTNO", wRTNO);
@@ -534,7 +534,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT RESULT, EXCODE, SANGDAM         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT          ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("  AND (RESULT IS NULL OR RESULT = '')  ");
 
@@ -547,8 +547,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ACTIVE                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT A                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE B                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT A                ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE B                ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql("   AND WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND A.EXCODE NOT IN ('A101','A102','A103')  "); //ACT코드만
@@ -572,8 +572,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Result                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT A                ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE B                ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT A                ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE B                ");
             parameter.AppendSql(" WHERE 1 = 1                                   ");
             parameter.AppendSql("   AND A.Part = '5'                            "); //ACT코드만
             parameter.AppendSql("   AND WRTNO = :WRTNO                          ");
@@ -591,8 +591,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Result                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT A        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXCODE B        ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT A        ");
+            parameter.AppendSql("     , ADMIN.HIC_EXCODE B        ");
             parameter.AppendSql(" WHERE 1 = 1                           ");
             parameter.AppendSql("   AND WRTNO    = :WRTNO               ");
             parameter.AppendSql("   AND A.Part   = '5'                  "); //ACT코드만
@@ -609,7 +609,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT EXCODE, RESULT                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT              ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT              ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                      ");
             parameter.AppendSql("   AND EXCODE IN ('A101','A102')           ");
 
@@ -622,7 +622,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.Active, a.EXCODE                                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT a, KOSMOS_PMPA.HIC_EXCODE b      ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT a, ADMIN.HIC_EXCODE b      ");
             parameter.AppendSql(" WHERE a.WRTNO = :WRTNO                                        ");
             parameter.AppendSql("   AND a.EXCODE = b.CODE                                       ");
             parameter.AppendSql("   AND b.Part = '1'                                            "); //신체계측구분
@@ -636,7 +636,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT EXCODE, RESULT                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT                          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT                          ");
             parameter.AppendSql("  WHERE WRTNO = :WRTNO                                 ");
             parameter.AppendSql("    AND EXCODE IN (:EXCODE)                            ");
             parameter.AppendSql("  ORDER By EXCODE                                      ");
@@ -651,7 +651,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT FROM HEA_RESULT                              ");
-            parameter.AppendSql(" WHERE WRTNO IN (SELECT WRTNO FROM KOSMOS_PMPA.HEA_JEPSU           ");
+            parameter.AppendSql(" WHERE WRTNO IN (SELECT WRTNO FROM ADMIN.HEA_JEPSU           ");
             parameter.AppendSql("                  WHERE PTNO = :PTNO                               ");
             parameter.AppendSql("                    AND SDate=TRUNC(SYSDATE)                       ");
             parameter.AppendSql("                    AND DelDate IS NULL)                           ");
@@ -666,7 +666,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_RESULT (                               ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_RESULT (                               ");
             parameter.AppendSql("       WRTNO,EXCODE,PART,RESCODE,PANJENG,RESULT,ACTPART            ");
             parameter.AppendSql(" ) VALUES (                                                        ");
             parameter.AppendSql("       :WRTNO,:EXCODE,:PART,:RESCODE,:PANJENG,:RESULT,:ACTPART )   ");
@@ -686,7 +686,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT          ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT          ");
             parameter.AppendSql("   SET RESCODE = :RESCODE              ");
             parameter.AppendSql("     , ACTPART = :ACTPART              ");
             parameter.AppendSql("     , PART    = :PART                 ");
@@ -707,7 +707,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT(*) CNT                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT          ");
             parameter.AppendSql(" WHERE WRTNO IN (:WRTNO)               ");
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)             ");
 
@@ -722,7 +722,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID AS RID                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT          ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT          ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND EXCODE =:EXCODE                 ");
 
@@ -737,7 +737,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT              ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT              ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                      ");
             parameter.AppendSql("   AND EXCODE IN (:EXCODE)                 ");
             //parameter.AppendSql("   AND EXCODE = :EXCODE                    ");
@@ -756,8 +756,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT A.ACTPART                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT A        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_CODE   B        ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT A        ");
+            parameter.AppendSql("     , ADMIN.HEA_CODE   B        ");
             parameter.AppendSql(" WHERE A.WRTNO = :WRTNO                ");
             parameter.AppendSql("   AND TRIM(A.ACTPART) = B.NAME(+)     ");
             parameter.AppendSql("   AND A.ACTPART IS NOT NULL           ");
@@ -776,7 +776,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID RID, EXCODE, RESULT   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_RESULT      ");
+            parameter.AppendSql("  FROM ADMIN.HEA_RESULT      ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO              ");
             parameter.AppendSql("   AND EXCODE = :EXCODE            ");
             //parameter.AppendSql("   AND Result <> '.'               ");
@@ -791,7 +791,7 @@ namespace ComHpcLibB.Repository
 		public int Result_Update2(double RESULT, long WRTNO, string EXCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT SET              ");
             parameter.AppendSql("       RESULT   = :RESULT                      ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO                       ");
             parameter.AppendSql("   AND EXCODE   = :EXCODE                      ");
@@ -808,7 +808,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_RESULT SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_RESULT SET  ");
             parameter.AppendSql("       RESCODE  = :RESCODE         ");
             parameter.AppendSql("     , RESULT   = :RESULT          ");
             parameter.AppendSql(" WHERE WRTNO    = :WRTNO           ");

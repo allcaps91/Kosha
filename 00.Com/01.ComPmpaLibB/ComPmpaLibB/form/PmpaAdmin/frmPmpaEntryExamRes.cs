@@ -1497,7 +1497,7 @@ namespace ComPmpaLibB
 
             //'주소통합
             SQL = " SELECT  ZIPCODE1,ZIPCODE2,JUSO,JICODE,Hphone,Road,RoadDong,ZIPCODE3,BUILDNO,ROADDETAIL ";
-            SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_PATIENT ";
+            SQL += ComNum.VBLF + "  FROM ADMIN.BAS_PATIENT ";
             SQL += ComNum.VBLF + "   WHERE PANO ='" + txtPtno.Text + "' ";
 
             SqlErr = clsDB.GetDataTable(ref Dt, SQL, clsDB.DbCon);
@@ -2769,7 +2769,7 @@ namespace ComPmpaLibB
             try
             {
                 //'최근 검색한 자료가 있으면 다시 검색을 안함
-                SQL = "SELECT * FROM KOSMOS_PMPA.WORK_NHIC ";
+                SQL = "SELECT * FROM ADMIN.WORK_NHIC ";
                 SQL = SQL + ComNum.VBLF + " WHERE Jumin2='" + clsAES.AES(VB.Trim(txtJumin1.Text) + VB.Trim(txtJumin2.Text)) + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND SNAME='" + VB.Trim(txtSname.Text) + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND Gubun='H' "; //'건강검진 대상자

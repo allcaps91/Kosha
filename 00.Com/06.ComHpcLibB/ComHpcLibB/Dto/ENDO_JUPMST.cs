@@ -191,7 +191,7 @@ namespace ComHpcLibB.Dto
 		public string ENDOCHK { get; set; } 
 
         /// <summary>
-        /// 예약검사 WRTNO (KOSMOS_PMPA.ETC_EXAM_RESERVED_MST)
+        /// 예약검사 WRTNO (ADMIN.ETC_EXAM_RESERVED_MST)
         /// </summary>
 		public long EXAM_WRTNO { get; set; } 
 

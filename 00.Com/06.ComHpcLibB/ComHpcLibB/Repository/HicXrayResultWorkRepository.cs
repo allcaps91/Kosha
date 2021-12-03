@@ -22,7 +22,7 @@ namespace ComHpcLibB
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT *                                                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT_WORK                               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT_WORK                               ");
             parameter.AppendSql(" WHERE 1 = 1                                                          ");
             parameter.AppendSql("   AND JEPDATE = TO_DATE(:JEPDATE, 'YYYY-MM-DD')                      ");
             parameter.AppendSql("   AND PANO = :PANO                                                   ");
@@ -39,10 +39,10 @@ namespace ComHpcLibB
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TO_CHAR(JEPDATE, 'YYYY-MM-DD') JEPDATE, PANO, SNAME, AGE, SEX, LTDCODE              ");
-            parameter.AppendSql(" ,KOSMOS_PMPA.FC_HIC_LTDNAME(LTDCODE) LTDNAME, ROWID AS RID                                ");
+            parameter.AppendSql(" ,ADMIN.FC_HIC_LTDNAME(LTDCODE) LTDNAME, ROWID AS RID                                ");
             parameter.AppendSql(" ,CASE WHEN GBREAD = '1' THEN  '일반' ELSE '분진' END AS GBREAD                             ");
             parameter.AppendSql(" ,SUBSTR(XRAYNO, 1, 8) || ' ' || SUBSTR(XRAYNO, 9, 5) AS XRAYNO                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_XRAY_RESULT_WORK                                                    ");
+            parameter.AppendSql("  FROM ADMIN.HIC_XRAY_RESULT_WORK                                                    ");
             parameter.AppendSql(" WHERE 1 = 1                                                                               ");
             parameter.AppendSql("   AND JEPDATE >= TO_DATE(:JEPDATE, 'YYYY-MM-DD')                                          ");
             parameter.AppendSql("   AND DELDATE IS NULL                                                                     ");

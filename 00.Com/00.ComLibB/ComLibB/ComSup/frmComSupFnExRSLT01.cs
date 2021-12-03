@@ -714,7 +714,7 @@ namespace ComLibB
                         {
                             strFile = fi[i].Name.ToString();
                             strFiles = strHost + strFile;
-                            strHostFile = strHost + ComQuery.GetSequencesNo(pDbCon, "KOSMOS_OCS", "SEQ_ETC_RESULT_NVC").ToString() + ".jpg";
+                            strHostFile = strHost + ComQuery.GetSequencesNo(pDbCon, "ADMIN", "SEQ_ETC_RESULT_NVC").ToString() + ".jpg";
                             strFileNames += strHostFile + "|";
 
                             FtpedtX.FtpUpload("192.168.100.31", "oracle", "oracle", gFilePath + strFile, strHostFile, strHost); //TODO 윤조연 FTP 계정 정리

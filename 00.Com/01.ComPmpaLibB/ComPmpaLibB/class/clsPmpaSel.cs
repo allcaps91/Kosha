@@ -354,7 +354,7 @@ namespace ComPmpaLibB
             SQL = "";
             SQL += ComNum.VBLF + " SELECT Pano,Set1,Set2,Set3,Set4,Set5,Set6,Set7,Set8,Set9,";
             SQL += ComNum.VBLF + "        TO_CHAR(SDATE,'YYYY-MM-DD') SDATE,TO_CHAR(EDATE,'YYYY-MM-DD') EDATE ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_SELECT_MST";
+            SQL += ComNum.VBLF + "   FROM ADMIN.BAS_SELECT_MST";
             SQL += ComNum.VBLF + "  WHERE PANO ='" + ArgPano + "' ";
             SQL += ComNum.VBLF + "    AND DRCODE ='" + ArgDrCode + "' ";
             SQL += ComNum.VBLF + "    AND GUBUN ='" + ArgIO + "' ";

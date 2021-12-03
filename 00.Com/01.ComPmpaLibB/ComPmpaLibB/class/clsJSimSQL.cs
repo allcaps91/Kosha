@@ -23,7 +23,7 @@ namespace ComPmpaLibB
             try
             {
                 SQL = "";
-                SQL += ComNum.VBLF + " SELECT /*+ INDEX_DESC(kosmos_ocs.ipd_trans INDEX_IPDTRS0) */ A.IPDNO, A.TRSNO, A.Pano      ";
+                SQL += ComNum.VBLF + " SELECT /*+ INDEX_DESC(ADMIN.ipd_trans INDEX_IPDTRS0) */ A.IPDNO, A.TRSNO, A.Pano      ";
                 SQL += ComNum.VBLF + "        ,A.GBIPD, B.SName, B.WARDCODE, B.RoomCode   ";
                 SQL += ComNum.VBLF + "        ,A.DeptCode, A.DrCode,  A.ILSU, A.VCODE, A.OGPDBUN, A.OGPDBUNDTL,A.FCode                      ";
                 SQL += ComNum.VBLF + "        ,TO_CHAR(A.InDate,'YYYY-MM-DD') InDate                                                   ";
@@ -32,19 +32,19 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "        ,DECODE(a.Bohun, '3', '장애', '') Bohun ";
                 SQL += ComNum.VBLF + "        ,DECODE(A.GbDRG, 'D', A.GbDRG, '') GBDRG ";
                 SQL += ComNum.VBLF + "        ,DECODE(B.OP_JIPYO,'Y',B.OP_JIPYO,'') OP_JIPYO ";
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_MIR_IPDID_CHK(A.TRSNO) MIR "; 
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_NUR_MASTER_ROUTDATE(A.PANO, A.IPDNO) ROUTDATE "; 
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(A.DrCode) DRNAME "; 
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_IPD_GBSTS_NM(A.GBSTS) GBSTS "; 
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_BI_NM(A.Bi) BI ";
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_OCS_IILLS(A.PANO, A.IPDNO, TO_CHAR(A.INDATE, 'YYYY-MM-DD')) ILLS "; 
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_IPD_GUB_NOTICE(A.PANO, A.IPDNO) IPDGUB "; 
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_ORAN_MASTER_YN(A.PANO, TO_CHAR(A.INDATE, 'YYYY-MM-DD')) OPYN ";
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_OCS_IILLS_IPDETC(A.PANO, A.IPDNO, TO_CHAR(A.INDATE, 'YYYY-MM-DD'),A.Bi) IPDETC "; 
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_INSA_MST_KORNAME(JSIM_SABUN) JSIMSABUN ";
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_INSA_MST_KORNAME(JSIM_SET) JSIMSET ";
-                SQL += ComNum.VBLF + "        ,KOSMOS_OCS.FC_OCS_CPNOTE(A.IPDNO) CPNOTE ";
-                SQL += ComNum.VBLF + "        ,A.JINDTL,A.Gbilban2 ,KOSMOS_OCS.FC_NUR_MASTER_ROUTDATE2(A.PANO, A.IPDNO) ROUTDATE2  "; 
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_MIR_IPDID_CHK(A.TRSNO) MIR "; 
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_NUR_MASTER_ROUTDATE(A.PANO, A.IPDNO) ROUTDATE "; 
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_BAS_DOCTOR_DRNAME(A.DrCode) DRNAME "; 
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_IPD_GBSTS_NM(A.GBSTS) GBSTS "; 
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_BI_NM(A.Bi) BI ";
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_OCS_IILLS(A.PANO, A.IPDNO, TO_CHAR(A.INDATE, 'YYYY-MM-DD')) ILLS "; 
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_IPD_GUB_NOTICE(A.PANO, A.IPDNO) IPDGUB "; 
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_ORAN_MASTER_YN(A.PANO, TO_CHAR(A.INDATE, 'YYYY-MM-DD')) OPYN ";
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_OCS_IILLS_IPDETC(A.PANO, A.IPDNO, TO_CHAR(A.INDATE, 'YYYY-MM-DD'),A.Bi) IPDETC "; 
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_INSA_MST_KORNAME(JSIM_SABUN) JSIMSABUN ";
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_INSA_MST_KORNAME(JSIM_SET) JSIMSET ";
+                SQL += ComNum.VBLF + "        ,ADMIN.FC_OCS_CPNOTE(A.IPDNO) CPNOTE ";
+                SQL += ComNum.VBLF + "        ,A.JINDTL,A.Gbilban2 ,ADMIN.FC_NUR_MASTER_ROUTDATE2(A.PANO, A.IPDNO) ROUTDATE2  "; 
                 SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "IPD_TRANS A,        ";
                 SQL += ComNum.VBLF + "        " + ComNum.DB_PMPA + "IPD_NEW_MASTER B    ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
@@ -78,14 +78,14 @@ namespace ComPmpaLibB
                     SQL += ComNum.VBLF + "     AND A.Pano IN ( SELECT Pano ";
                     SQL += ComNum.VBLF + "                       FROM " + ComNum.DB_PMPA + "IPD_NEW_SLIP ";
                     SQL += ComNum.VBLF + "                        WHERE trsno = a.TRSNO  ";
-                    SQL += ComNum.VBLF + "                         AND TRIM(SUNEXT) IN ( SELECT TRIM(SuCode) FROM KOSMOS_PMPA.ETC_JSIM_SUCHK WHERE USE ='Y' and SABUN  = '" + JPL.JobSabun + "' ) ";
+                    SQL += ComNum.VBLF + "                         AND TRIM(SUNEXT) IN ( SELECT TRIM(SuCode) FROM ADMIN.ETC_JSIM_SUCHK WHERE USE ='Y' and SABUN  = '" + JPL.JobSabun + "' ) ";
 
                     SQL += ComNum.VBLF + "                    ) ";
                 }
 
                 if (JPL.Tewon)
                 {
-                    SQL += ComNum.VBLF + "     AND KOSMOS_OCS.FC_NUR_MASTER_ROUTDATE(A.PANO, A.IPDNO) IS NOT NULL ";
+                    SQL += ComNum.VBLF + "     AND ADMIN.FC_NUR_MASTER_ROUTDATE(A.PANO, A.IPDNO) IS NOT NULL ";
                 }
 
                 if (JPL.MySet)

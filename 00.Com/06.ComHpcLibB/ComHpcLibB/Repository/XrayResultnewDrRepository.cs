@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(READDATE,'YYYY-MM-DD') RDATE, PANO, RESULT, RESULT1 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_RESULTNEW_DR                               ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_RESULTNEW_DR                               ");
             parameter.AppendSql(" WHERE READDATE >= TRUNC(SYSDATE - :DAY)                           ");
             parameter.AppendSql("   AND READDATE <= TRUNC(SYSDATE)                                  ");
             parameter.AppendSql("   AND XCODE    = :XCODE                                           ");
@@ -41,7 +41,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(ReadDate,'YYYY-MM-DD') RDate,Pano,Result,Result1    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_RESULTNEW_DR                               ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_RESULTNEW_DR                               ");
             parameter.AppendSql(" WHERE PANO = :PANO                                                ");
             parameter.AppendSql("   AND TRUNC(READDATE)=TO_DATE(:READDATE, 'YYYY-MM-DD')            ");
             parameter.AppendSql("   AND DeptCode IN ('HR','TO')                                     ");

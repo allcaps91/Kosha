@@ -44,8 +44,8 @@ namespace ComLibB
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT to_char(b.indate, 'yyyy-mm-dd') INDATE, a.pano, a.sname, B.SEX, B.AGE, ";
                 SQL += ComNum.VBLF + "        b.wardcode,b.roomcode, TO_CHAR(a.birth, 'YYYY-MM-DD') BIRTH";
-                SQL += ComNum.VBLF + "   FROM kosmos_pmpa.bas_patient a,";
-                SQL += ComNum.VBLF + "        kosmos_pmpa.ipd_new_master b";
+                SQL += ComNum.VBLF + "   FROM ADMIN.bas_patient a,";
+                SQL += ComNum.VBLF + "        ADMIN.ipd_new_master b";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1";
                 SQL += ComNum.VBLF + "    AND a.pano = b.pano";
                 SQL += ComNum.VBLF + "    AND b.gbsts = '0'";

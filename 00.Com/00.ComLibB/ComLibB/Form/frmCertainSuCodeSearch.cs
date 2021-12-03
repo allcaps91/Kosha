@@ -154,7 +154,7 @@ namespace ComLibB
 
                     SQL = "";
                     SQL += ComNum.VBLF + " SELECT a.MasterCode,a.SubCode,a.Status,b.Status stat,a.ReSult ";
-                    SQL += ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_RESULTC a, KOSMOS_OCS.EXAM_SPECMST b  ";
+                    SQL += ComNum.VBLF + " FROM ADMIN.EXAM_RESULTC a, ADMIN.EXAM_SPECMST b  ";
                     SQL += ComNum.VBLF + "  WHERE a.Pano=b.Pano ";
                     SQL += ComNum.VBLF + "   AND a.SpecNo=b.SpecNo ";
                     SQL += ComNum.VBLF + "   AND a.PANO ='" + dt.Rows[i]["PTNO"].ToString().Trim() + "' ";
@@ -225,7 +225,7 @@ namespace ComLibB
             string rtnval = "";
 
             SQL = "";
-            SQL += ComNum.VBLF + " SELECT OrderName FROM KOSMOS_OCS.OCS_ORDERCODE ";
+            SQL += ComNum.VBLF + " SELECT OrderName FROM ADMIN.OCS_ORDERCODE ";
             SQL += ComNum.VBLF + " WHERE OrderCode = '" + argCode.Trim() + "'   ";
             SQL += ComNum.VBLF + "   AND (SendDept <> 'N' OR SendDept IS NULL) ";
 

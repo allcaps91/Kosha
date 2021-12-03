@@ -73,7 +73,7 @@ namespace ComLibB
                 DataTable dt = null;
 
                 SQL = "SELECT PANO, SNAME, AGE, SEX, TO_CHAR(INDATE, 'YYYY-MM-DD') INDATE, DEPTCODE, DRCODE, ROOMCODE ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+                SQL += ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER ";
                 SQL += ComNum.VBLF + " WHERE  PANO = '" + mPtno + "' AND SNAME = '" + mSname + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -145,7 +145,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT";
-                SQL = SQL + ComNum.VBLF + "     /*+ index( kosmos_ocs.ocs_iorder INXOCS_IORDER1) **/ Min(A.BDATE) AS MinDate, Max(A.BDATE) AS MaxDate, a.SuCode ";
+                SQL = SQL + ComNum.VBLF + "     /*+ index( ADMIN.ocs_iorder INXOCS_IORDER1) **/ Min(A.BDATE) AS MinDate, Max(A.BDATE) AS MaxDate, a.SuCode ";
                 SQL = SQL + ComNum.VBLF + "FROM " + ComNum.DB_MED + "OCS_IORDER A, " + ComNum.DB_PMPA + "BAS_SUN B";
                 SQL = SQL + ComNum.VBLF + "     WHERE A.PTNO = '" + strPano + "' ";
                 SQL = SQL + ComNum.VBLF + "         AND A.BDATE >= TO_DATE('" + dtpSDATE.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
@@ -155,7 +155,7 @@ namespace ComLibB
                 //SQL = SQL + ComNum.VBLF + "         AND TRIM(a.SuCode) IN (SELECT TRIM(CODE) FROM " + ComNum.DB_PMPA + "BAS_BCODE WHERE GUBUN = 'OCS_장기항생제코드' AND (DELDATE IS NULL OR DELDATE = '')) ";
                 //SQL = SQL + ComNum.VBLF + "         AND TRIM(a.SuCode) IN ( SELECT TRIM(CODE) FROM " + ComNum.DB_PMPA + "BAS_BCODE WHERE GUBUN ='OCS_항생제코드' AND (DELDATE IS NULL OR DELDATE ='')  )  \r";
                 //2021-06-24 조회 기준 약품마스터로 변경
-                SQL = SQL + ComNum.VBLF + "         AND A.SUCODE IN ( SELECT JEPCODE FROM KOSMOS_ADM.DRUG_MASTER2 WHERE SUB  IN (02, 07))  \r";
+                SQL = SQL + ComNum.VBLF + "         AND A.SUCODE IN ( SELECT JEPCODE FROM ADMIN.DRUG_MASTER2 WHERE SUB  IN (02, 07))  \r";
                 SQL = SQL + ComNum.VBLF + "         AND A.SUCODE = B.SUNEXT ";
                 SQL = SQL + ComNum.VBLF + "GROUP BY A.SUCODE ";
                 SQL = SQL + ComNum.VBLF + "HAVING SUM(A.QTY * A.NAL) > 0";
@@ -213,7 +213,7 @@ namespace ComLibB
                         //SQL = SQL + ComNum.VBLF + "         AND TRIM(a.SuCode) IN ( SELECT TRIM(CODE) FROM " + ComNum.DB_PMPA + "BAS_BCODE WHERE GUBUN = 'OCS_장기항생제코드' AND (DELDATE IS NULL OR DELDATE = '')) ";
                         //SQL = SQL + ComNum.VBLF + "         AND TRIM(a.SuCode) IN ( SELECT TRIM(CODE) FROM " + ComNum.DB_PMPA + "BAS_BCODE WHERE GUBUN = 'OCS_항생제코드' AND (DELDATE IS NULL OR DELDATE = '')) ";
                         //2021-06-24 조회 기준 약품마스터로 변경
-                        SQL = SQL + ComNum.VBLF + "         AND A.SUCODE IN ( SELECT JEPCODE FROM KOSMOS_ADM.DRUG_MASTER2 WHERE SUB  IN (02, 07))  \r";
+                        SQL = SQL + ComNum.VBLF + "         AND A.SUCODE IN ( SELECT JEPCODE FROM ADMIN.DRUG_MASTER2 WHERE SUB  IN (02, 07))  \r";
                         SQL = SQL + ComNum.VBLF + "         AND A.PTNO = '" + strPano + "'";
                         SQL = SQL + ComNum.VBLF + "         AND A.SuCode = '" + dt.Rows[i]["SuCode"].ToString().Trim() + "'";
                         SQL = SQL + ComNum.VBLF + "         AND A.SUCODE = B.SUNEXT";

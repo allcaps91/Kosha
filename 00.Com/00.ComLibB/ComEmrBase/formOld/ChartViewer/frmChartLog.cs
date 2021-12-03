@@ -75,7 +75,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT A.FORMNAME, B.CHARTDATE, B.CHARTTIME, B.WRITEDATE, B.WRITETIME, B.USEID, B.ROWID, '1' GUBUN, M.KORNAME"                ;
-                SQL += ComNum.VBLF + "  FROM KOSMOS_EMR.EMRFORM A, KOSMOS_EMR.EMRXMLMST B, KOSMOS_ADM.INSA_MST M"                                                   ;
+                SQL += ComNum.VBLF + "  FROM ADMIN.EMRFORM A, ADMIN.EMRXMLMST B, ADMIN.INSA_MST M"                                                   ;
                 SQL += ComNum.VBLF + " WHERE B.PTNO = '"  + txtPTNO.Text.Trim() + "'"                                                          ;
                 SQL += ComNum.VBLF + "   AND B.FORMNO = " + lblFormNo.Text;
                 SQL += ComNum.VBLF + "   AND B.CHARTDATE = '" + dtpSDATE.Value.ToString("yyyyMMdd") + "'"                                  ;
@@ -83,7 +83,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "   AND M.SABUN3 = B.USEID"                                                                            ;
                 SQL += ComNum.VBLF + " UNION ALL";
                 SQL += ComNum.VBLF + " SELECT A.FORMNAME, B.CHARTDATE, B.CHARTTIME, B.WRITEDATE, B.WRITETIME, B.USEID, B.ROWID, '2' GUBUN, M.KORNAME";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_EMR.EMRFORM A, KOSMOS_EMR.EMRXMLHISTORY B, KOSMOS_ADM.INSA_MST M";
+                SQL += ComNum.VBLF + "  FROM ADMIN.EMRFORM A, ADMIN.EMRXMLHISTORY B, ADMIN.INSA_MST M";
                 SQL += ComNum.VBLF + " WHERE B.PTNO = '"  + txtPTNO.Text.Trim() + "'"                                                          ;
                 SQL += ComNum.VBLF + "   AND B.FORMNO = " + lblFormNo.Text                                                           ;
                 SQL += ComNum.VBLF + "   AND B.CHARTDATE = '" + dtpSDATE.Value.ToString("yyyyMMdd") +  "'"                                  ;
@@ -209,7 +209,7 @@ namespace ComEmrBase
                 try
                 {
                     SQL = "SELECT FORMNO, FORMNAME";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.AEMRFORM ";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.AEMRFORM ";
                     SQL = SQL + ComNum.VBLF + " WHERE UPPER(FORMNAME) LIKE '%" + txtFormName.Text.Trim().ToUpper() + "%'";
 
                     string SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -250,7 +250,7 @@ namespace ComEmrBase
                 try
                 {
                     SQL = "SELECT PANO, SNAME";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_PATIENT ";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_PATIENT ";
                     SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + txtPTNO.Text + "'";
 
                     string SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);

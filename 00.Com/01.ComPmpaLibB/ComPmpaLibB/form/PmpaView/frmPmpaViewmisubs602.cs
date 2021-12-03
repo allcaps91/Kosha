@@ -564,7 +564,7 @@ namespace ComPmpaLibB
                         {
                             SQL = "";
                             SQL += ComNum.VBLF + " SELECT A.ROWID, A.WRTNO   ";
-                            SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.MISU_SLIP A , MISU_IDMST B ";
+                            SQL += ComNum.VBLF + "  FROM ADMIN.MISU_SLIP A , MISU_IDMST B ";
                             SQL += ComNum.VBLF + "  WHERE 1=1";
                             SQL += ComNum.VBLF + "    AND A.MISUID = '" + Convert.ToInt32(dtFc.Rows[j]["jepno"].ToString().Trim()).ToString("00000000") + "' ";
                             SQL += ComNum.VBLF + "    AND A.GUBUN ='11'";

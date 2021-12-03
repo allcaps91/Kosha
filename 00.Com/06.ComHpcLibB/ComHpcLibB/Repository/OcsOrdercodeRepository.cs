@@ -40,7 +40,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SLIPNO, SUCODE, ORDERNAME, BUN      ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_ORDERCODE            ");
+            parameter.AppendSql("  FROM ADMIN.OCS_ORDERCODE            ");
             parameter.AppendSql(" WHERE ORDERCODE = :ORDERCODE              ");
 
             parameter.Add("ORDERCODE", argOrderCode.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -52,7 +52,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ORDERCODE                   ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.OCS_ORDERCODE    ");
+            parameter.AppendSql("  FROM ADMIN.OCS_ORDERCODE    ");
             parameter.AppendSql(" WHERE ITEMCD = :ITEMCD            ");
 
             parameter.Add("ITEMCD", fstrORDERCODE.Trim(), Oracle.ManagedDataAccess.Client.OracleDbType.Char);

@@ -212,15 +212,15 @@ namespace ComEmrBase
             //SQL = SQL + ComNum.VBLF + "        S.UNITNEW1,   S.UNITNEW2,   S.UNITNEW3,   S.UNITNEW4, C.DISPRGB, C.ITEMCD, ";
             //SQL = SQL + ComNum.VBLF + "        TO_CHAR(O.PICKUPDATE,'YYYY-MM-DD HH24:MI') PICKUPDATE, S.SUNAMEK ,O.PICKUPSABUN, TO_CHAR(O.ENTDATE, 'YYYY-MM-DD') AS ENTDATE, ";
             //SQL = SQL + ComNum.VBLF + "        O.GBIOE, O.GBGROUP ";      //2019-02-14 응급실 NDC 용
-            //SQL = SQL + ComNum.VBLF + "		, KOSMOS_OCS.FC_INSA_MST_KORNAME(LPAD(TRIM(O.PICKUPSABUN), 5, '0')) AS PICKUPNAME ";
-            //SQL = SQL + ComNum.VBLF + "        , KOSMOS_OCS.FC_INSA_BUSE(LPAD(TRIM(O.PICKUPSABUN), 5, '0')) AS PICKUPBUSE ";
-            //SQL = SQL + ComNum.VBLF + "        , KOSMOS_OCS.FC_READ_ATTENTION(O.SUCODE) AS ATTENTION ";
-            //SQL = SQL + ComNum.VBLF + "        , KOSMOS_OCS.FC_READ_AST_REACTION(O.SUCODE, O.PTNO, TO_CHAR(M.INDATE,'YYYY-MM-DD'), KOSMOS_OCS.FC_GET_AGE2(O.PTNO, SYSDATE)) AS AST_ATTENTION ";
-            //SQL = SQL + ComNum.VBLF + "        , KOSMOS_OCS.FC_OCS_DRUGINFO_SNAME(O.ORDERCODE) AS DRUGNAME ";
-            //SQL = SQL + ComNum.VBLF + "        , KOSMOS_OCS.FC_OCS_OSPECIMAN_SPECNAME(O.SLIPNO, O.DOSCODE) AS SPECNAME ";
-            //SQL = SQL + ComNum.VBLF + "        , KOSMOS_OCS.FC_OCS_ODOSAGE_NAME1(O.DOSCODE) AS DOSCODEYN ";
+            //SQL = SQL + ComNum.VBLF + "		, ADMIN.FC_INSA_MST_KORNAME(LPAD(TRIM(O.PICKUPSABUN), 5, '0')) AS PICKUPNAME ";
+            //SQL = SQL + ComNum.VBLF + "        , ADMIN.FC_INSA_BUSE(LPAD(TRIM(O.PICKUPSABUN), 5, '0')) AS PICKUPBUSE ";
+            //SQL = SQL + ComNum.VBLF + "        , ADMIN.FC_READ_ATTENTION(O.SUCODE) AS ATTENTION ";
+            //SQL = SQL + ComNum.VBLF + "        , ADMIN.FC_READ_AST_REACTION(O.SUCODE, O.PTNO, TO_CHAR(M.INDATE,'YYYY-MM-DD'), ADMIN.FC_GET_AGE2(O.PTNO, SYSDATE)) AS AST_ATTENTION ";
+            //SQL = SQL + ComNum.VBLF + "        , ADMIN.FC_OCS_DRUGINFO_SNAME(O.ORDERCODE) AS DRUGNAME ";
+            //SQL = SQL + ComNum.VBLF + "        , ADMIN.FC_OCS_OSPECIMAN_SPECNAME(O.SLIPNO, O.DOSCODE) AS SPECNAME ";
+            //SQL = SQL + ComNum.VBLF + "        , ADMIN.FC_OCS_ODOSAGE_NAME1(O.DOSCODE) AS DOSCODEYN ";
             //SQL = SQL + ComNum.VBLF + "		, (SELECT COUNT(*) CNT ";
-            //SQL = SQL + ComNum.VBLF + "		             FROM KOSMOS_OCS.OCS_IORDER ";
+            //SQL = SQL + ComNum.VBLF + "		             FROM ADMIN.OCS_IORDER ";
             //SQL = SQL + ComNum.VBLF + "		             WHERE ORDERNO = O.ORDERNO ";
             //SQL = SQL + ComNum.VBLF + "		                  AND PTNO = O.PTNO ";
             //SQL = SQL + ComNum.VBLF + "		                  AND BDATE = O.BDATE ";
@@ -228,7 +228,7 @@ namespace ComEmrBase
             //SQL = SQL + ComNum.VBLF + "		                  AND DIVQTY IS NULL) AS IORDER_CNT1 ";
             //SQL = SQL + ComNum.VBLF + "        , ( SELECT  ";
             //SQL = SQL + ComNum.VBLF + "                MAX(AA1.ORDERNO) ";
-            //SQL = SQL + ComNum.VBLF + "            FROM KOSMOS_OCS.OCS_IORDER AA1  ";
+            //SQL = SQL + ComNum.VBLF + "            FROM ADMIN.OCS_IORDER AA1  ";
             //SQL = SQL + ComNum.VBLF + "            WHERE AA1.PTNO  = O.PTNO ";
             //SQL = SQL + ComNum.VBLF + "               AND AA1.BDATE  = (O.BDATE - 1) ";
             //SQL = SQL + ComNum.VBLF + "               AND AA1.GBSTATUS  IN  (' ','D+','D','D-')  ";
@@ -252,21 +252,21 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "      O.GBGROUP, ";
             SQL = SQL + ComNum.VBLF + "      O.ENTDATE, ";
             SQL = SQL + ComNum.VBLF + "      O.ROWID AS ORDROWID ";
-            //SQL = SQL + ComNum.VBLF + "      , (SELECT SUM(NAL) FROM KOSMOS_OCS.OCS_IORDER WHERE ORDERNO = O.ORDERNO GROUP BY ORDERNO) AS SUMQTY";
-            SQL = SQL + ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM KOSMOS_OCS.OCS_IORDER WHERE ORDERNO = O.ORDERNO AND DIVQTY IS NULL AND ORDERSITE NOT IN ('CAN')) THEN 1 END IS_ORDER";
-            SQL = SQL + ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM KOSMOS_OCS.OCS_DOCTOR WHERE SABUN = O.DRCODE AND DEPTCODE = 'PC') THEN 1 END PC_BUSE";
+            //SQL = SQL + ComNum.VBLF + "      , (SELECT SUM(NAL) FROM ADMIN.OCS_IORDER WHERE ORDERNO = O.ORDERNO GROUP BY ORDERNO) AS SUMQTY";
+            SQL = SQL + ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM ADMIN.OCS_IORDER WHERE ORDERNO = O.ORDERNO AND DIVQTY IS NULL AND ORDERSITE NOT IN ('CAN')) THEN 1 END IS_ORDER";
+            SQL = SQL + ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM ADMIN.OCS_DOCTOR WHERE SABUN = O.DRCODE AND DEPTCODE = 'PC') THEN 1 END PC_BUSE";
 
             #region 그룹
             SQL = SQL + ComNum.VBLF + "      ,  CASE WHEN LENGTH(TRIM(GBGROUP)) > 0 THEN  ( ";
             SQL = SQL + ComNum.VBLF + "         SELECT ";
             SQL = SQL + ComNum.VBLF + "             LISTAGG(S.SUNAMEK , '\r\n') WITHIN GROUP(ORDER BY BDATE, GBGROUP, GBDIV, ENTDATE)  ";
-            SQL = SQL + ComNum.VBLF + "         FROM KOSMOS_OCS.OCS_IORDER O2";
-            SQL = SQL + ComNum.VBLF + "         INNER JOIN KOSMOS_OCS.OCS_ORDERCODE C ";
+            SQL = SQL + ComNum.VBLF + "         FROM ADMIN.OCS_IORDER O2";
+            SQL = SQL + ComNum.VBLF + "         INNER JOIN ADMIN.OCS_ORDERCODE C ";
             SQL = SQL + ComNum.VBLF + "             ON O2.ORDERCODE = C.ORDERCODE ";
             SQL = SQL + ComNum.VBLF + "             AND O2.SLIPNO     =  C.SLIPNO   ";
             SQL = SQL + ComNum.VBLF + "             AND O2.ORDERCODE  =  C.ORDERCODE  ";
             SQL = SQL + ComNum.VBLF + "             AND (C.SENDDEPT  !=  'N' OR C.SENDDEPT IS NULL)   ";
-            SQL = SQL + ComNum.VBLF + "         INNER JOIN KOSMOS_PMPA.BAS_SUN S ";
+            SQL = SQL + ComNum.VBLF + "         INNER JOIN ADMIN.BAS_SUN S ";
             SQL = SQL + ComNum.VBLF + "             ON O2.SUCODE = S.SUNEXT ";
             SQL = SQL + ComNum.VBLF + "         WHERE O2.PTNO = O.PTNO";
             SQL = SQL + ComNum.VBLF + "             AND O2.BUN IN ( '20','23'  )  ";
@@ -284,21 +284,21 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "       ) END NOTE";
             #endregion
 
-            SQL = SQL + ComNum.VBLF + " FROM   KOSMOS_OCS.OCS_IORDER O, ";
+            SQL = SQL + ComNum.VBLF + " FROM   ADMIN.OCS_IORDER O, ";
             SQL = SQL + ComNum.VBLF + " (SELECT ACTDATE, INDATE, OUTDATE, GBSTS, WARDCODE, ROOMCODE, PANO, SNAME, SEX, AGE, DEPTCODE, IPDNO ";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_NEW_MASTER ";
             SQL = SQL + ComNum.VBLF + "  WHERE IPDNO = (SELECT ";
             SQL = SQL + ComNum.VBLF + "                     MAX(IPDNO) ";
-            SQL = SQL + ComNum.VBLF + "                  FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+            SQL = SQL + ComNum.VBLF + "                  FROM ADMIN.IPD_NEW_MASTER ";
             SQL = SQL + ComNum.VBLF + "                  WHERE(ACTDATE IS NULL OR OUTDATE = TRUNC(SYSDATE))   ";
             SQL = SQL + ComNum.VBLF + " 		         AND PANO = '" + p.ptNo + "')) M,                 ";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.BAS_PATIENT P,                           ";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_OCS.OCS_ORDERCODE           C,                           ";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_OCS.OCS_ODOSAGE             D,                           ";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_OCS.OCS_DOCTOR              N,                            ";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.BAS_SUN     S   ,";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_ADM.DRUG_MASTER2 F   ,";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_ADM.DRUG_MASTER1 F2   ";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.BAS_PATIENT P,                           ";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.OCS_ORDERCODE           C,                           ";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.OCS_ODOSAGE             D,                           ";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.OCS_DOCTOR              N,                            ";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.BAS_SUN     S   ,";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.DRUG_MASTER2 F   ,";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.DRUG_MASTER1 F2   ";
             SQL = SQL + ComNum.VBLF + "  WHERE PTNO = '" + p.ptNo + "'";
             SQL = SQL + ComNum.VBLF + "   AND O.BUN IN ( " + strBun + " ) ";
             SQL = SQL + ComNum.VBLF + "   AND O.BDATE >= TO_DATE('" + dtpOrderDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') - 1";
@@ -323,12 +323,12 @@ namespace ComEmrBase
             }
             else if (p.ward == "ENDO")
             {
-                SQL = SQL + ComNum.VBLF + " AND O.DOSCODE IN ( SELECT DOSCODE FROM KOSMOS_OCS.OCS_ODOSAGE WHERE WARDCODE IN ( 'EN') ) ";
+                SQL = SQL + ComNum.VBLF + " AND O.DOSCODE IN ( SELECT DOSCODE FROM ADMIN.OCS_ODOSAGE WHERE WARDCODE IN ( 'EN') ) ";
                 SQL = SQL + ComNum.VBLF + " AND ( O.GBIOE NOT IN ('E','EI') OR GBIOE IS NULL)";
             }
             else if (p.ward == "CT/MRI")
             {
-                SQL = SQL + ComNum.VBLF + " AND O.DOSCODE IN ( SELECT DOSCODE FROM KOSMOS_OCS.OCS_ODOSAGE WHERE WARDCODE IN ( 'RD') ) ";
+                SQL = SQL + ComNum.VBLF + " AND O.DOSCODE IN ( SELECT DOSCODE FROM ADMIN.OCS_ODOSAGE WHERE WARDCODE IN ( 'RD') ) ";
                 SQL = SQL + ComNum.VBLF + " AND ( O.GBIOE NOT IN ('E','EI') OR GBIOE IS NULL)";
             }
             else if (p.ward == "OP" || p.ward == "AG")
@@ -396,20 +396,20 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "      O.GBGROUP, ";
             SQL = SQL + ComNum.VBLF + "      O.ENTDATE, ";
             SQL = SQL + ComNum.VBLF + "      O.ROWID AS ORDROWID ";
-            //SQL = SQL + ComNum.VBLF + "      , (SELECT SUM(NAL) FROM KOSMOS_OCS.OCS_IORDER WHERE ORDERNO = O.ORDERNO GROUP BY ORDERNO) AS SUMQTY";
-            SQL = SQL + ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM KOSMOS_OCS.OCS_IORDER WHERE ORDERNO = O.ORDERNO AND DIVQTY IS NULL AND ORDERSITE NOT IN ('CAN')) THEN 1 END IS_ORDER";
+            //SQL = SQL + ComNum.VBLF + "      , (SELECT SUM(NAL) FROM ADMIN.OCS_IORDER WHERE ORDERNO = O.ORDERNO GROUP BY ORDERNO) AS SUMQTY";
+            SQL = SQL + ComNum.VBLF + "      , CASE WHEN EXISTS(SELECT 1 FROM ADMIN.OCS_IORDER WHERE ORDERNO = O.ORDERNO AND DIVQTY IS NULL AND ORDERSITE NOT IN ('CAN')) THEN 1 END IS_ORDER";
             SQL = SQL + ComNum.VBLF + "      , NULL AS PC_BUSE";
             #region 그룹
             SQL = SQL + ComNum.VBLF + "      ,  CASE WHEN LENGTH(TRIM(O.GBGROUP)) > 0 THEN  ( ";
             SQL = SQL + ComNum.VBLF + "         SELECT ";
             SQL = SQL + ComNum.VBLF + "             LISTAGG(S.SUNAMEK , '\r\n') WITHIN GROUP(ORDER BY BDATE, GBGROUP, GBDIV, ENTDATE)  ";
-            SQL = SQL + ComNum.VBLF + "         FROM KOSMOS_OCS.OCS_IORDER O2";
-            SQL = SQL + ComNum.VBLF + "         INNER JOIN KOSMOS_OCS.OCS_ORDERCODE C ";
+            SQL = SQL + ComNum.VBLF + "         FROM ADMIN.OCS_IORDER O2";
+            SQL = SQL + ComNum.VBLF + "         INNER JOIN ADMIN.OCS_ORDERCODE C ";
             SQL = SQL + ComNum.VBLF + "             ON O2.ORDERCODE = C.ORDERCODE ";
             SQL = SQL + ComNum.VBLF + "             AND O2.SLIPNO     =  C.SLIPNO   ";
             SQL = SQL + ComNum.VBLF + "             AND O2.ORDERCODE  =  C.ORDERCODE  ";
             SQL = SQL + ComNum.VBLF + "             AND (C.SENDDEPT  !=  'N' OR C.SENDDEPT IS NULL)   ";
-            SQL = SQL + ComNum.VBLF + "         INNER JOIN KOSMOS_PMPA.BAS_SUN S ";
+            SQL = SQL + ComNum.VBLF + "         INNER JOIN ADMIN.BAS_SUN S ";
             SQL = SQL + ComNum.VBLF + "             ON O2.SUCODE = S.SUNEXT ";
             SQL = SQL + ComNum.VBLF + "         WHERE O2.PTNO = O.PTNO";
             SQL = SQL + ComNum.VBLF + "             AND O2.BUN IN ( '20','23'  )  ";
@@ -426,15 +426,15 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "         	AND O2.GBGROUP = O.GBGROUP";
             SQL = SQL + ComNum.VBLF + "       ) END NOTE";
             #endregion
-            SQL = SQL + ComNum.VBLF + " FROM   KOSMOS_OCS.OCS_IORDER O, ";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.OPD_MASTER  M,                           ";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.BAS_PATIENT P,                           ";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_OCS.OCS_ORDERCODE           C,                           ";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_OCS.OCS_ODOSAGE             D,                           ";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_OCS.OCS_DOCTOR              N,                            ";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.BAS_SUN     S  ,";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_ADM.DRUG_MASTER2 F  ,";
-            SQL = SQL + ComNum.VBLF + "        KOSMOS_ADM.DRUG_MASTER1 F2   ";
+            SQL = SQL + ComNum.VBLF + " FROM   ADMIN.OCS_IORDER O, ";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.OPD_MASTER  M,                           ";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.BAS_PATIENT P,                           ";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.OCS_ORDERCODE           C,                           ";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.OCS_ODOSAGE             D,                           ";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.OCS_DOCTOR              N,                            ";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.BAS_SUN     S  ,";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.DRUG_MASTER2 F  ,";
+            SQL = SQL + ComNum.VBLF + "        ADMIN.DRUG_MASTER1 F2   ";
             SQL = SQL + ComNum.VBLF + " WHERE  O.PTNO = '" + p.ptNo + "' ";
             SQL = SQL + ComNum.VBLF + "    AND  O.BUN IN ( " + strBun + " ) ";
             SQL = SQL + ComNum.VBLF + "    AND  (O.GBPRN IN  NULL OR O.GBPRN <> 'P') ";
@@ -478,16 +478,16 @@ namespace ComEmrBase
             //SQL = SQL + ComNum.VBLF + "    O.ENTDATE, ";
             //SQL = SQL + ComNum.VBLF + "    O.ROWID AS ORDROWID ";
             //SQL = SQL + ComNum.VBLF + "    --C.UNIT,   ";
-            //SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.ORAN_SLIP O ";
-            //SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.OPR_BUSEJEPUM J ";
+            //SQL = SQL + ComNum.VBLF + "FROM ADMIN.ORAN_SLIP O ";
+            //SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.OPR_BUSEJEPUM J ";
             //SQL = SQL + ComNum.VBLF + "    ON O.JEPCODE = J.JEPCODE ";
             //SQL = SQL + ComNum.VBLF + "    AND J.BUCODE = '033103'  ";
             //SQL = SQL + ComNum.VBLF + "    AND J.BUN = '04' ";
-            //SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_PMPA.BAS_SUT B    ";
+            //SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.BAS_SUT B    ";
             //SQL = SQL + ComNum.VBLF + "   ON J.JEPCODE = B.SUCODE    ";
-            //SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_PMPA.BAS_SUN C    ";
+            //SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.BAS_SUN C    ";
             //SQL = SQL + ComNum.VBLF + "   ON B.SUNEXT = C.SUNEXT     ";
-            //SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_ADM.ORD_JEP D    ";
+            //SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.ORD_JEP D    ";
             //SQL = SQL + ComNum.VBLF + "   ON J.JEPCODE = D.JEPCODE  ";
             //SQL = SQL + ComNum.VBLF + "WHERE O.PANO = '" + p.ptNo + "' ";
             //SQL = SQL + ComNum.VBLF + "    AND   O.OPDATE >= TO_DATE('" + dtpOrderDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') - 1 ";
@@ -742,13 +742,13 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "    O.ORDERCODE,  ";
             SQL = SQL + ComNum.VBLF + "    C.ORDERNAME, C.ORDERNAMES, ";
             SQL = SQL + ComNum.VBLF + "    S.SUNAMEK  ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_IORDER O ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_OCS.OCS_ORDERCODE C ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_IORDER O ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.OCS_ORDERCODE C ";
             SQL = SQL + ComNum.VBLF + "    ON O.ORDERCODE = C.ORDERCODE ";
             SQL = SQL + ComNum.VBLF + "    AND O.SLIPNO     =  C.SLIPNO   ";
             SQL = SQL + ComNum.VBLF + "    AND O.ORDERCODE  =  C.ORDERCODE  ";
             SQL = SQL + ComNum.VBLF + "    AND (C.SENDDEPT  !=  'N' OR C.SENDDEPT IS NULL)   ";
-            SQL = SQL + ComNum.VBLF + "INNER JOIN KOSMOS_PMPA.BAS_SUN S ";
+            SQL = SQL + ComNum.VBLF + "INNER JOIN ADMIN.BAS_SUN S ";
             SQL = SQL + ComNum.VBLF + "    ON O.SUCODE = S.SUNEXT ";
             SQL = SQL + ComNum.VBLF + "WHERE O.PTNO = '" + p.ptNo + "' ";
             SQL = SQL + ComNum.VBLF + "    AND O.BUN IN ( '20','23'  )  ";
@@ -765,7 +765,7 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "	   AND O.GBGROUP = '" + pstrGbGroup + "'";
             //SQL = SQL + ComNum.VBLF + "    AND O.GBGROUP IS NOT NULL ";
             //SQL = SQL + ComNum.VBLF + "	   AND O.GBGROUP = (SELECT MAX(O1.GBGROUP)  ";
-            //SQL = SQL + ComNum.VBLF + "                        FROM KOSMOS_OCS.OCS_IORDER O1 ";
+            //SQL = SQL + ComNum.VBLF + "                        FROM ADMIN.OCS_IORDER O1 ";
             //SQL = SQL + ComNum.VBLF + "                        WHERE O1.PTNO = '" + p.ptNo + "' ";
             //SQL = SQL + ComNum.VBLF + "                            AND O1.BDATE = TO_DATE('" + pstrOrderDate + "','YYYY-MM-DD') ";
             //SQL = SQL + ComNum.VBLF + "                            AND O1.ORDERNO = " + pOrderNo;
@@ -1225,8 +1225,8 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "    SELECT ";
             SQL = SQL + ComNum.VBLF + "        B.BASCD AS ITEMCD, B.BASNAME, B.BASEXNAME, B.NFLAG1  AS SORT3, B.NFLAG2  AS SORT4, B.NFLAG3  AS SORT5, B.DISSEQNO  AS SORT6, ";
             SQL = SQL + ComNum.VBLF + "        BB.BASCD AS ITEMGROUP, BB.BASNAME AS ITEMGROUPNM, BB.VFLAG1 AS SORT1, BB.DISSEQNO AS SORT2 ";
-            SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRBASCD B ";
-            SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRBASCD BB ";
+            SQL = SQL + ComNum.VBLF + "    FROM ADMIN.AEMRBASCD B ";
+            SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.AEMRBASCD BB ";
             SQL = SQL + ComNum.VBLF + "        ON B.VFLAG1 = BB.BASCD ";
             SQL = SQL + ComNum.VBLF + "        AND BB.BSNSCLS = '기록지관리' ";
             SQL = SQL + ComNum.VBLF + "        AND BB.UNITCLS IN ('임상관찰그룹')  ";
@@ -1236,8 +1236,8 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "    SELECT ";
             SQL = SQL + ComNum.VBLF + "        B.BASCD AS ITEMCD, B.BASNAME, B.BASEXNAME, B.NFLAG1  AS SORT3, B.NFLAG2  AS SORT4, B.NFLAG3  AS SORT5, B.DISSEQNO  AS SORT6, ";
             SQL = SQL + ComNum.VBLF + "        BB.BASCD AS ITEMGROUP, BB.BASNAME AS ITEMGROUPNM, BB.VFLAG1 AS SORT1, BB.DISSEQNO AS SORT2 ";
-            SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRBASCD B ";
-            SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRBASCD BB ";
+            SQL = SQL + ComNum.VBLF + "    FROM ADMIN.AEMRBASCD B ";
+            SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.AEMRBASCD BB ";
             SQL = SQL + ComNum.VBLF + "        ON B.VFLAG1 = BB.BASCD ";
             SQL = SQL + ComNum.VBLF + "        AND BB.BSNSCLS = '기록지관리' ";
             SQL = SQL + ComNum.VBLF + "        AND BB.UNITCLS IN ('섭취배설그룹')  ";
@@ -1247,8 +1247,8 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "    SELECT ";
             SQL = SQL + ComNum.VBLF + "        B.BASCD AS ITEMCD, B.BASNAME, B.BASEXNAME, B.NFLAG1  AS SORT3, B.NFLAG2  AS SORT4, B.NFLAG3  AS SORT5, B.DISSEQNO  AS SORT6, ";
             SQL = SQL + ComNum.VBLF + "        BB.BASCD AS ITEMGROUP, BB.BASNAME AS ITEMGROUPNM, BB.VFLAG1 AS SORT1, BB.DISSEQNO AS SORT2 ";
-            SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRBASCD B ";
-            SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRBASCD BB ";
+            SQL = SQL + ComNum.VBLF + "    FROM ADMIN.AEMRBASCD B ";
+            SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.AEMRBASCD BB ";
             SQL = SQL + ComNum.VBLF + "        ON B.VFLAG1 = BB.BASCD ";
             SQL = SQL + ComNum.VBLF + "        AND BB.BSNSCLS = '기록지관리' ";
             SQL = SQL + ComNum.VBLF + "        AND BB.UNITCLS IN ('특수치료그룹')  ";
@@ -1258,8 +1258,8 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "    SELECT ";
             SQL = SQL + ComNum.VBLF + "        B.BASCD AS ITEMCD, B.BASNAME, B.BASEXNAME, B.NFLAG1  AS SORT3, B.NFLAG2  AS SORT4, B.NFLAG3  AS SORT5, B.DISSEQNO  AS SORT6, ";
             SQL = SQL + ComNum.VBLF + "        BB.BASCD AS ITEMGROUP, BB.BASNAME AS ITEMGROUPNM, BB.VFLAG1 AS SORT1, BB.DISSEQNO AS SORT2 ";
-            SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRBASCD B ";
-            SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRBASCD BB ";
+            SQL = SQL + ComNum.VBLF + "    FROM ADMIN.AEMRBASCD B ";
+            SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.AEMRBASCD BB ";
             SQL = SQL + ComNum.VBLF + "        ON B.VFLAG1 = BB.BASCD ";
             SQL = SQL + ComNum.VBLF + "        AND BB.BSNSCLS = '기록지관리' ";
             SQL = SQL + ComNum.VBLF + "        AND BB.UNITCLS IN ('기본간호그룹')  ";
@@ -1626,7 +1626,7 @@ namespace ComEmrBase
                                 dtEmr.Dispose();
 
                                 SQL = "";
-                                SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_EMR.AEMRCHARTROW ";
+                                SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.AEMRCHARTROW ";
                                 SQL = SQL + ComNum.VBLF + "    (EMRNO, EMRNOHIS, ITEMCD, ITEMNO, ITEMINDEX, ITEMTYPE, ITEMVALUE, DSPSEQ, ITEMVALUE1, INPUSEID, INPDATE, INPTIME )";
                                 SQL = SQL + ComNum.VBLF + "VALUES (";
 
@@ -1877,7 +1877,7 @@ namespace ComEmrBase
                                 if (VB.Val(dt.Rows[i]["IOSUM"].ToString().Trim()) != 0)
                                 {
                                     SQL = "";
-                                    SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_EMR.AEMRCHARTROW ";
+                                    SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.AEMRCHARTROW ";
                                     SQL = SQL + ComNum.VBLF + "    (EMRNO, EMRNOHIS, ITEMCD, ITEMNO, ITEMINDEX, ITEMTYPE, ITEMVALUE, DSPSEQ, ITEMVALUE1, INPUSEID, INPDATE, INPTIME )";
                                     SQL = SQL + ComNum.VBLF + "VALUES (";
                                     SQL = SQL + ComNum.VBLF + " " + dt.Rows[i]["EMRNO"].ToString().Trim() + ",";  //EMRNO
@@ -2042,8 +2042,8 @@ namespace ComEmrBase
                         SQL = SQL + ComNum.VBLF + "    SELECT ";
                         SQL = SQL + ComNum.VBLF + "        B.BASCD AS ITEMCD, B.BASNAME, B.BASEXNAME, B.NFLAG1  AS SORT3, B.NFLAG2  AS SORT4, B.NFLAG3  AS SORT5, B.DISSEQNO  AS SORT6, ";
                         SQL = SQL + ComNum.VBLF + "        BB.BASCD AS ITEMGROUP, BB.BASNAME AS ITEMGROUPNM, BB.VFLAG1 AS SORT1, BB.DISSEQNO AS SORT2 ";
-                        SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRBASCD B ";
-                        SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRBASCD BB ";
+                        SQL = SQL + ComNum.VBLF + "    FROM ADMIN.AEMRBASCD B ";
+                        SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.AEMRBASCD BB ";
                         SQL = SQL + ComNum.VBLF + "        ON B.VFLAG1 = BB.BASCD ";
                         SQL = SQL + ComNum.VBLF + "        AND BB.BSNSCLS = '기록지관리' ";
                         SQL = SQL + ComNum.VBLF + "        AND BB.UNITCLS IN ('임상관찰그룹')  ";
@@ -2053,8 +2053,8 @@ namespace ComEmrBase
                         SQL = SQL + ComNum.VBLF + "    SELECT ";
                         SQL = SQL + ComNum.VBLF + "        B.BASCD AS ITEMCD, B.BASNAME, B.BASEXNAME, B.NFLAG1  AS SORT3, B.NFLAG2  AS SORT4, B.NFLAG3  AS SORT5, B.DISSEQNO  AS SORT6, ";
                         SQL = SQL + ComNum.VBLF + "        BB.BASCD AS ITEMGROUP, BB.BASNAME AS ITEMGROUPNM, BB.VFLAG1 AS SORT1, BB.DISSEQNO AS SORT2 ";
-                        SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRBASCD B ";
-                        SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRBASCD BB ";
+                        SQL = SQL + ComNum.VBLF + "    FROM ADMIN.AEMRBASCD B ";
+                        SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.AEMRBASCD BB ";
                         SQL = SQL + ComNum.VBLF + "        ON B.VFLAG1 = BB.BASCD ";
                         SQL = SQL + ComNum.VBLF + "        AND BB.BSNSCLS = '기록지관리' ";
                         SQL = SQL + ComNum.VBLF + "        AND BB.UNITCLS IN ('섭취배설그룹')  ";
@@ -2064,8 +2064,8 @@ namespace ComEmrBase
                         SQL = SQL + ComNum.VBLF + "    SELECT ";
                         SQL = SQL + ComNum.VBLF + "        B.BASCD AS ITEMCD, B.BASNAME, B.BASEXNAME, B.NFLAG1  AS SORT3, B.NFLAG2  AS SORT4, B.NFLAG3  AS SORT5, B.DISSEQNO  AS SORT6, ";
                         SQL = SQL + ComNum.VBLF + "        BB.BASCD AS ITEMGROUP, BB.BASNAME AS ITEMGROUPNM, BB.VFLAG1 AS SORT1, BB.DISSEQNO AS SORT2 ";
-                        SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRBASCD B ";
-                        SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRBASCD BB ";
+                        SQL = SQL + ComNum.VBLF + "    FROM ADMIN.AEMRBASCD B ";
+                        SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.AEMRBASCD BB ";
                         SQL = SQL + ComNum.VBLF + "        ON B.VFLAG1 = BB.BASCD ";
                         SQL = SQL + ComNum.VBLF + "        AND BB.BSNSCLS = '기록지관리' ";
                         SQL = SQL + ComNum.VBLF + "        AND BB.UNITCLS IN ('특수치료그룹')  ";
@@ -2075,8 +2075,8 @@ namespace ComEmrBase
                         SQL = SQL + ComNum.VBLF + "    SELECT ";
                         SQL = SQL + ComNum.VBLF + "        B.BASCD AS ITEMCD, B.BASNAME, B.BASEXNAME, B.NFLAG1  AS SORT3, B.NFLAG2  AS SORT4, B.NFLAG3  AS SORT5, B.DISSEQNO  AS SORT6, ";
                         SQL = SQL + ComNum.VBLF + "        BB.BASCD AS ITEMGROUP, BB.BASNAME AS ITEMGROUPNM, BB.VFLAG1 AS SORT1, BB.DISSEQNO AS SORT2 ";
-                        SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRBASCD B ";
-                        SQL = SQL + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRBASCD BB ";
+                        SQL = SQL + ComNum.VBLF + "    FROM ADMIN.AEMRBASCD B ";
+                        SQL = SQL + ComNum.VBLF + "    INNER JOIN ADMIN.AEMRBASCD BB ";
                         SQL = SQL + ComNum.VBLF + "        ON B.VFLAG1 = BB.BASCD ";
                         SQL = SQL + ComNum.VBLF + "        AND BB.BSNSCLS = '기록지관리' ";
                         SQL = SQL + ComNum.VBLF + "        AND BB.UNITCLS IN ('기본간호그룹')  ";
@@ -2123,7 +2123,7 @@ namespace ComEmrBase
                             }
 
                             SQL = "";
-                            SQL = SQL + ComNum.VBLF + "INSERT INTO KOSMOS_EMR.AEMRCHARTROW ";
+                            SQL = SQL + ComNum.VBLF + "INSERT INTO ADMIN.AEMRCHARTROW ";
                             SQL = SQL + ComNum.VBLF + "    (EMRNO, EMRNOHIS, ITEMCD, ITEMNO, ITEMINDEX, ITEMTYPE, ITEMVALUE, DSPSEQ, ITEMVALUE1, INPUSEID, INPDATE, INPTIME )";
                             SQL = SQL + ComNum.VBLF + "VALUES (";
                             SQL = SQL + ComNum.VBLF +  dblEmrNoNew.ToString() + ",";    //EMRNO
@@ -2231,7 +2231,7 @@ namespace ComEmrBase
                         SQL = SQL + ComNum.VBLF + "WHERE EXISTS";
                         SQL = SQL + ComNum.VBLF + "(";
                         SQL = SQL + ComNum.VBLF + "SELECT 1";
-                        SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRBVITALTIME";
+                        SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRBVITALTIME";
                         SQL = SQL + ComNum.VBLF + "  WHERE FORMNO = " + mstrFormNo;
                         SQL = SQL + ComNum.VBLF + "   AND ACPNO = " + p.acpNo;
                         SQL = SQL + ComNum.VBLF + "   AND CHARTDATE = '" + dtpOrderDate.Value.ToString("yyyyMMdd") + "'";

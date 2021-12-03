@@ -26,7 +26,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT a.WRTNO,a.SName,TO_CHAR(a.JepDate,'YY-MM-DD') JepDate,FC_HIC_GJJONG_NAME(a.GjJong, a.UCodes) GJJONG, a.UCodes,a.Gbjinchal2    ");
             parameter.AppendSql("     , a.GjYear,b.PanjengDrno, b.PanjengDate, a.PTNO                                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_RES_DENTAL b                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_RES_DENTAL b                                   ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'yyyy-mm-dd')                                             ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'yyyy-mm-dd')                                             ");
             parameter.AppendSql("   AND a.WRTNO = b.WRTNO(+)                                                                    ");
@@ -94,7 +94,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT a.WRTNO,a.Pano,a.Kiho,a.GjJong,a.JikGbn,a.Sname,a.Sex,a.Age, A.GBCHUL   ");
             parameter.AppendSql("     , TO_CHAR(a.JepDate,'YYYY-MM-DD') JepDate                                 ");
             parameter.AppendSql("     , TO_CHAR(a.DelDate,'YYYY-MM-DD') DelDate                                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a, KOSMOS_PMPA.HIC_RES_DENTAL b                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a, ADMIN.HIC_RES_DENTAL b                   ");
             parameter.AppendSql(" WHERE a.Wrtno = b.Wrtno(+)                                                    ");
             parameter.AppendSql("   AND a.JEPDATE >= TO_DATE(:FRDATE,'YYYY-MM-DD')                              ");
             parameter.AppendSql("   AND a.JEPDATE <= TO_DATE(:TODATE,'YYYY-MM-DD')                              ");

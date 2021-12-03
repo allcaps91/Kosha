@@ -1416,7 +1416,7 @@ namespace ComPmpaLibB
         /// </summary>
         /// JinSel, ChoSel, SpcSel, BiSel, MCode, Argilban2
         /// 
-        /// SELECT  JINSEL, CHOSEL, SPCSEL, BISEL, MCODE, ARGILBAN2 FROM KOSMOS_PMPA.OPD_MASTER WHERE PANO = '' AND DEPTCODE = 'DEPT' AND BDATE = BDATE  
+        /// SELECT  JINSEL, CHOSEL, SPCSEL, BISEL, MCODE, ARGILBAN2 FROM ADMIN.OPD_MASTER WHERE PANO = '' AND DEPTCODE = 'DEPT' AND BDATE = BDATE  
         /// 
         /// <seealso cref="OUMSAD.bas : Jin_Amt_Account"/>
         public void Jin_Amt_Account_OLD(string JinSel, int ChoSel, int SpcSel, string GamSel, string BiSel, string Jangae, string Dept, string Doct, string BDate, int GyeJin, string MCode, string Argilban2, string ArgJinDtl, string ArgJiwon)

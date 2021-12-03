@@ -108,7 +108,7 @@ namespace ComEmrBase
             SQL = "";
             SQL = SQL + ComNum.VBLF + " SELECT ";
             SQL = SQL + ComNum.VBLF + "     VFLAG1";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.AEMRBASCD ";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.AEMRBASCD ";
             SQL = SQL + ComNum.VBLF + " WHERE BSNSCLS = '기록지관리'";
             SQL = SQL + ComNum.VBLF + "     AND UNITCLS = '간호활동간격'";
             SQL = SQL + ComNum.VBLF + "     AND USECLS = '0'";

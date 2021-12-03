@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT HANG                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_SogenExam   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_SogenExam   ");
             parameter.AppendSql(" WHERE SOGENCODE = :SOGENCODE          ");
 
             parameter.Add("SOGENCODE", fstrCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);

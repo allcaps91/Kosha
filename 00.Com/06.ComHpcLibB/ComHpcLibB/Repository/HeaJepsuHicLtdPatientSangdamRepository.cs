@@ -32,10 +32,10 @@ namespace ComHpcLibB.Repository
             if (sJob == "1")
             {
                 parameter.AppendSql("     , TO_CHAR(a.MailDate,'YYYY-MM-DD') MailDate,d.WaitNo,DeCode(d.GbCall,'','1','Y','2') GbCall,d.GUBUN       ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU        a                                                              ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_LTD          b                                                              ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_PATIENT      c                                                              ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HEA_SANGDAM_WAIT d                                                              ");
+                parameter.AppendSql("  FROM ADMIN.HEA_JEPSU        a                                                              ");
+                parameter.AppendSql("     , ADMIN.HIC_LTD          b                                                              ");
+                parameter.AppendSql("     , ADMIN.HIC_PATIENT      c                                                              ");
+                parameter.AppendSql("     , ADMIN.HEA_SANGDAM_WAIT d                                                              ");
                 parameter.AppendSql(" WHERE d.ENTTIME >= TO_DATE(:FRDATE,'YYYY-MM-DD')                                                  ");
                 parameter.AppendSql("   AND d.ENTTIME <= TO_DATE(:W_TODATE,'YYYY-MM-DD')                                                ");
                 if (idNumber == "32158") //ÀÌÁÖ·É
@@ -59,9 +59,9 @@ namespace ComHpcLibB.Repository
             else
             {
                 parameter.AppendSql("     , TO_CHAR(a.MAILDATE,'YYYY-MM-DD') MAILDATE                                                   ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_JEPSU   a                                                                   ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_LTD     b                                                                   ");
-                parameter.AppendSql("     , KOSMOS_PMPA.HIC_PATIENT c                                                                   ");
+                parameter.AppendSql("  FROM ADMIN.HEA_JEPSU   a                                                                   ");
+                parameter.AppendSql("     , ADMIN.HIC_LTD     b                                                                   ");
+                parameter.AppendSql("     , ADMIN.HIC_PATIENT c                                                                   ");
                 parameter.AppendSql(" WHERE a.SDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                                   ");
                 parameter.AppendSql("   AND a.SDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                                   ");
                 if (nLicenceNo > 0)

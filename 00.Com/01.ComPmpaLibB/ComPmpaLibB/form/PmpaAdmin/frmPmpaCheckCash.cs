@@ -291,7 +291,7 @@ namespace ComPmpaLibB
 
                             SQL = "";
                             SQL += ComNum.VBLF + " SELECT  sum(transamt) transamt ";
-                            SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_RESERVED_EXAM ";
+                            SQL += ComNum.VBLF + "  FROM ADMIN.OPD_RESERVED_EXAM ";
                             SQL += ComNum.VBLF + "   WHERE TRUNC(TRANSDATE) =TO_DATE('" + strDate + "','YYYY-MM-DD') ";
                             SQL += ComNum.VBLF + "    AND PANO ='" + strPtno + "' ";
                             SqlErr = clsDB.GetDataTable(ref Dt2, SQL, pDbCon);
@@ -315,7 +315,7 @@ namespace ComPmpaLibB
 
                             SQL = "";
                             SQL += ComNum.VBLF + " SELECT  sum(RAMT) RAMT ";
-                            SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_REFUND ";
+                            SQL += ComNum.VBLF + "  FROM ADMIN.OPD_REFUND ";
                             SQL += ComNum.VBLF + "   WHERE TRUNC(RDATE) =TO_DATE('" + strDate + "','YYYY-MM-DD') ";
                             SQL += ComNum.VBLF + "    AND PANO ='" + strPtno + "' ";
                             SqlErr = clsDB.GetDataTable(ref Dt2, SQL, pDbCon);
@@ -363,8 +363,8 @@ namespace ComPmpaLibB
 
             //SQL = "";
             //SQL += ComNum.VBLF + " SELECT A.PANO, A.SNAME, CFM, B.AMT, ";
-            //SQL += ComNum.VBLF + "        KOSMOS_PMPA.FC_TRANSAMT(A.PANO, '" + strDate + "') TRANSAMT, ";
-            //SQL += ComNum.VBLF + "        KOSMOS_PMPA.FC_RAMT(A.PANO, '" + strDate + "') RAMT, ";
+            //SQL += ComNum.VBLF + "        ADMIN.FC_TRANSAMT(A.PANO, '" + strDate + "') TRANSAMT, ";
+            //SQL += ComNum.VBLF + "        ADMIN.FC_RAMT(A.PANO, '" + strDate + "') RAMT, ";
             //SQL += ComNum.VBLF + "        SUM(DECODE(TranHeader, '2', TradeAmt * -1, TradeAmt)) CardAmt ";
             //SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "CARD_APPROV A, ";
             //SQL += ComNum.VBLF + "        (SELECT PANO, SUM(AMT1 + AMT2) AMT ";

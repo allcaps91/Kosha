@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SJ_PANO ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SJ_PANO ");
             parameter.AppendSql("   SET GbDel   = 'Y'           ");
             parameter.AppendSql(" WHERE GJYEAR  = :GJYEAR       ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE      ");
@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID RID, BUSE, PANJENG    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SJ_PANO     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SJ_PANO     ");
             parameter.AppendSql(" WHERE WRTNO   = :WRTNO            ");
             parameter.AppendSql("   AND GJYEAR  = :GJYEAR           ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE          ");
@@ -54,7 +54,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SJ_PANO     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SJ_PANO     ");
             parameter.AppendSql("       BUSE       = :BUSE          ");
             parameter.AppendSql("     , CHUKRESULT = :CHUKRESULT    ");
             parameter.AppendSql("     , PANJENG    = :PANJENG       ");
@@ -72,7 +72,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SJ_PANO ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SJ_PANO ");
             parameter.AppendSql("   SET PANJENG = :PANJENG      ");
             parameter.AppendSql("     , GbDel   = 'Y'           ");
             parameter.AppendSql(" WHERE ROWID   = :RID          ");
@@ -88,7 +88,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SJ_PANO                                        ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SJ_PANO                                        ");
             parameter.AppendSql("       (GJYEAR, LTDCODE, WRTNO, BUSE, CHUKRESULT, PANJENG, GBDEL)          ");
             parameter.AppendSql("VALUES                                                                     "); 
             parameter.AppendSql("       (:GJYEAR, :LTDCODE, :WRTNO, :BUSE, :CHUKRESULT, :PANJENG, :GBDEL)   ");

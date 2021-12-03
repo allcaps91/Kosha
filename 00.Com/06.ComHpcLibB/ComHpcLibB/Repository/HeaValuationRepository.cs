@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID, WRTNO, SMOKE, ACTIVE, GAJOK1             ");
             parameter.AppendSql("     , GAJOK2, GAJOK3, JANGI, JIHWAN, ENTSABUN, GBSTS  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_VALUATION                       ");
+            parameter.AppendSql("  FROM ADMIN.HEA_VALUATION                       ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                  ");
 
             parameter.Add("WRTNO", fnWRTNO);
@@ -36,7 +36,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_VALUATION SET ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_VALUATION SET ");
             parameter.AppendSql("     , SMOKE    = :SMOKE             ");
             parameter.AppendSql("     , ACTIVE   = :ACTIVE            ");
             parameter.AppendSql("     , GAJOK1   = :GAJOK1            ");
@@ -64,7 +64,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HEA_VALUATION                                                          ");
+            parameter.AppendSql("INSERT INTO ADMIN.HEA_VALUATION                                                          ");
             parameter.AppendSql("       (WRTNO, SMOKE, ACTIVE, GAJOK1, GAJOK2, GAJOK3, JANGI, JIHWAN, ENTSABUN, GBSTS)          ");
             parameter.AppendSql("VALUES                                                                                         ");
             parameter.AppendSql("       (:WRTNO, :SMOKE, :ACTIVE, :GAJOK1, :GAJOK2, :GAJOK3, :JANGI, :JIHWAN, :ENTSABUN, 'Y')   ");
@@ -86,7 +86,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HEA_VALUATION WHERE WRTNO = :WRTNO  ");
+            parameter.AppendSql("DELETE ADMIN.HEA_VALUATION WHERE WRTNO = :WRTNO  ");
 
             parameter.Add("WRTNO", fnWRTNO);
 

@@ -82,7 +82,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " SELECT * FROM  KOSMOS_OCS.ENDO_REMARK                                          \r";
+                SQL += " SELECT * FROM  ADMIN.ENDO_REMARK                                          \r";
                 SQL += "  WHERE Ptno      = '" + clsOrdFunction.Pat.PtNo + "'                           \r";
                 SQL += "    AND JDate     = TO_DATE('" + clsOrdFunction.GstrBDate + "', 'YYYY-MM-DD')   \r";
                 SQL += "    AND OrderCode = '" + strOrdercode + "'                                      \r";
@@ -126,7 +126,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT RemarkName                                          \r";
-                SQL += "   FROM KOSMOS_OCS.ENDO_SREMARK                             \r";
+                SQL += "   FROM ADMIN.ENDO_SREMARK                             \r";
                 SQL += "  WHERE GbJob = '" + ComFunc.LeftH(cboSelect.Text, 1) + "'  \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (SqlErr != "")
@@ -166,7 +166,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " SELECT * FROM KOSMOS_OCS.ENDO_SREMARK                      \r";
+                SQL += " SELECT * FROM ADMIN.ENDO_SREMARK                      \r";
                 SQL += "  WHERE GbJob = '" + ComFunc.LeftH(cboSelect.Text, 1) + "'  \r";
                 SQL += "    AND RemarkName = '" + cboSRemark.Text.Trim() + "'       \r";
                 SQL += "    AND ROWNUM = 1                                          \r";
@@ -259,7 +259,7 @@ namespace ComLibB
                     if (rdoCP0.Checked)
                     {
                         SQL = "";
-                        SQL += " DELETE KOSMOS_OCS.ENDO_REMARK                                              \r";
+                        SQL += " DELETE ADMIN.ENDO_REMARK                                              \r";
                         SQL += "  WHERE Ptno  = '" + clsOrdFunction.Pat.PtNo + "'                           \r";
                         SQL += "    AND JDate = TO_DATE('" + clsOrdFunction.GstrBDate + "', 'YYYY-MM-DD')   \r";
                         SQL += "    AND OrderCode = '" + strOrdercode + "'                                  \r";
@@ -267,7 +267,7 @@ namespace ComLibB
                     else
                     {
                         SQL = "";
-                        SQL += " DELETE KOSMOS_OCS.ENDO_REMARK_CP                                           \r";
+                        SQL += " DELETE ADMIN.ENDO_REMARK_CP                                           \r";
                         SQL += "  WHERE CPCODE    = '" + lstCode[cboCP.SelectedIndex] + "'                  \r";
                         SQL += "    AND OrderCode = '" + strOrdercode + "'                                  \r";
                     }
@@ -304,7 +304,7 @@ namespace ComLibB
                     {
                         #region CP가 안리경우
                         SQL = "";
-                        SQL += " UPDATE KOSMOS_OCS.ENDO_REMARK                                              \r";
+                        SQL += " UPDATE ADMIN.ENDO_REMARK                                              \r";
                         SQL += "    SET REMARKC = '" + rtxtRemark1.Text.Trim() + "'                         \r";
                         SQL += "      , REMARKD = '" + rtxtRemark2.Text.Trim() + "'                         \r";
                         SQL += "  WHERE Ptno  = '" + clsOrdFunction.Pat.PtNo + "'                           \r";
@@ -324,7 +324,7 @@ namespace ComLibB
                         if (intRowAffected == 0)
                         {
                             SQL = "";
-                            SQL += " INSERT INTO KOSMOS_OCS.ENDO_REMARK                                 \r";
+                            SQL += " INSERT INTO ADMIN.ENDO_REMARK                                 \r";
                             SQL += "       (PTNO, JDATE, ORDERCODE, REMARKC, REMARKD)                   \r";
                             SQL += " VALUES                                                             \r";
                             SQL += "       ('" + clsOrdFunction.Pat.PtNo + "'                           \r";
@@ -349,7 +349,7 @@ namespace ComLibB
                     else
                     {
                         SQL = "";
-                        SQL += " UPDATE KOSMOS_OCS.ENDO_REMARK_CP                                           \r";
+                        SQL += " UPDATE ADMIN.ENDO_REMARK_CP                                           \r";
                         SQL += "    SET REMARKC   = '" + rtxtRemark1.Text.Trim() + "'                       \r";
                         SQL += "      , REMARKD   = '" + rtxtRemark2.Text.Trim() + "'                       \r";
                         SQL += "  WHERE CPCODE    = '" + lstCode[cboCP.SelectedIndex] + "'                  \r";
@@ -368,7 +368,7 @@ namespace ComLibB
                         if (intRowAffected == 0)
                         {
                             SQL = "";
-                            SQL += " INSERT INTO KOSMOS_OCS.ENDO_REMARK_CP                              \r";
+                            SQL += " INSERT INTO ADMIN.ENDO_REMARK_CP                              \r";
                             SQL += "       (CPCODE, ORDERCODE, REMARKC, REMARKD)                        \r";
                             SQL += " VALUES                                                             \r";
                             SQL += "       ('" + lstCode[cboCP.SelectedIndex] + "'                      \r";

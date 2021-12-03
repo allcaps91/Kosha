@@ -22,7 +22,7 @@ namespace ComHpcLibB.Repository
         public int Insert(XRAY_PACS_ADT item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO PACS.XRAY_PACS_ADT(                                                ");
+            parameter.AppendSql("INSERT INTO ADMIN.XRAY_PACS_ADT(                                                ");
             parameter.AppendSql(" QUEUEID,FLAG,WORKTIME,PATID,EVENTTYPE                                         ");
             parameter.AppendSql(" ,BIRTHDAY, DEPT,ATTENDDOCT1,PATNAME,PATTYPE,PERSONALID,SEX)                   ");
             parameter.AppendSql("VALUES                                                                         ");
@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT PATID                                       ");
-            parameter.AppendSql("  FROM PACS.XRAY_PACS_ADT                          ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_PACS_ADT                          ");
             parameter.AppendSql(" WHERE 1=1                                         ");
             parameter.AppendSql("   AND PATID = :PANO                             ");
 

@@ -73,7 +73,7 @@ namespace ComLibB
             {
                 SQL = "SELECT Bun,Nu,SuCode,SuNext,SuNameK,SuNameG,HCode,  ";
                 SQL = SQL + "     TO_CHAR(SuDate,'YYYY-MM-DD') SuDate,BCode,BAmt ";
-                SQL = SQL + " FROM KOSMOS_PMPA.VIEW_SUGA_CODE ";
+                SQL = SQL + " FROM ADMIN.VIEW_SUGA_CODE ";
 
                 if (optJong0.Checked == true)
                 {

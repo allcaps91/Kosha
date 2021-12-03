@@ -143,7 +143,7 @@ namespace ComPmpaLibB
             SS1_Sheet1.RowCount = 0;
 
             SQL = " SELECT A.PANO, A.SNAME, A.AGE, A.SEX, A.BI, A.ROWID ROWID1 ";
-            SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_MASTER A ";
+            SQL += ComNum.VBLF + "  FROM ADMIN.OPD_MASTER A ";
             SQL += ComNum.VBLF + " WHERE BDATE = TRUNC(SYSDATE) ";
             SQL += ComNum.VBLF + "   AND DEPTCODE = 'FM' ";
             SQL += ComNum.VBLF + "   AND BI = '43' ";
@@ -168,7 +168,7 @@ namespace ComPmpaLibB
                     strPano = dt.Rows[i]["PANO"].ToString().Trim();
 
                     SQL = " SELECT A.PANO ";
-                    SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_SUNAP A ";
+                    SQL += ComNum.VBLF + "  FROM ADMIN.OPD_SUNAP A ";
                     SQL += ComNum.VBLF + " WHERE ACTDATE = TRUNC(SYSDATE) ";
                     SQL += ComNum.VBLF + "   AND DEPTCODE = 'FM' ";
                     SQL += ComNum.VBLF + "   AND PANO = '" + strPano + "' ";

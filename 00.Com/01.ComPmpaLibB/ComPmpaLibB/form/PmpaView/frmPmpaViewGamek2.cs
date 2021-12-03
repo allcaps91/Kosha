@@ -208,7 +208,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "OPD_SLIP a, " + ComNum.DB_PMPA + "BAS_PATIENT b                                    ";
                 SQL += ComNum.VBLF + "WHERE 1=1                                                                                                     ";
                 SQL += ComNum.VBLF + "      AND ( a.Pano,a.BDate,a.Deptcode) IN (                                                                   ";
-                SQL += ComNum.VBLF + "                                          SELECT Pano,BDate,DeptCode FROM KOSMOS_PMPA.OPD_MASTER              ";
+                SQL += ComNum.VBLF + "                                          SELECT Pano,BDate,DeptCode FROM ADMIN.OPD_MASTER              ";
                 SQL += ComNum.VBLF + "                                              WHERE BDate >=TO_DATE('" + dtpFDate.Text + "','YYYY-MM-DD')     ";
                 SQL += ComNum.VBLF + "                                                  AND BDate <=TO_DATE('" + dtpTDate.Text + "','YYYY-MM-DD')   ";
                 SQL += ComNum.VBLF + "                                                  AND GbGamek ='11'                                           ";
@@ -229,7 +229,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "FROM " + ComNum.DB_PMPA + "IPD_NEW_CASH a, " + ComNum.DB_PMPA + "IPD_NEW_MASTER b                             ";
                 SQL += ComNum.VBLF + "WHERE 1=1                                                                                                     ";
                 SQL += ComNum.VBLF + "      AND ( a.IPDNO )                  IN (                                                                   ";
-                SQL += ComNum.VBLF + "                                          SELECT IPDNO FROM KOSMOS_PMPA.IPD_NEW_MASTER                        ";
+                SQL += ComNum.VBLF + "                                          SELECT IPDNO FROM ADMIN.IPD_NEW_MASTER                        ";
                 SQL += ComNum.VBLF + "                                              WHERE INDate >=TO_DATE('" + dtpFDate.Text + "','YYYY-MM-DD')    ";
                 SQL += ComNum.VBLF + "                                                  AND INDate <=TO_DATE('" + dtpTDate.Text + "','YYYY-MM-DD')  ";
                 SQL += ComNum.VBLF + "                                                  AND GbGamek ='11'                                           ";

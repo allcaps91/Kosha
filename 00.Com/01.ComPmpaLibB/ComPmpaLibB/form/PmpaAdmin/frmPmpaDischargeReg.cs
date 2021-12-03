@@ -654,7 +654,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "    AND PANO      = '" + txtPtno.Text.Trim() + "' ";
                 SQL += ComNum.VBLF + "    AND IPDOPD    = 'I' ";
                 SQL += ComNum.VBLF + "    AND SLIPSEND IS NULL ";
-                SQL += ComNum.VBLF + "    AND JepCode  NOT IN ( SELECT Code FROM KOSMOS_PMPA.OPR_CODE  WHERE Gubun = 'C'  ) ";
+                SQL += ComNum.VBLF + "    AND JepCode  NOT IN ( SELECT Code FROM ADMIN.OPR_CODE  WHERE Gubun = 'C'  ) ";
                 SQL += ComNum.VBLF + "    AND WRTNO     > 0 ";
                 SQL += ComNum.VBLF + "  GROUP BY TO_CHAR(OPDATE,'YYYY-MM-DD') ";
                 SqlErr = clsDB.GetDataTable(ref Dt, SQL, pDbCon);
@@ -678,7 +678,7 @@ namespace ComPmpaLibB
                     SQL += ComNum.VBLF + "    AND PANO      = '" + txtPtno.Text.Trim() + "' ";
                     SQL += ComNum.VBLF + "    AND IPDOPD    = 'I' ";
                     SQL += ComNum.VBLF + "    AND SLIPSEND IS NULL ";
-                    SQL += ComNum.VBLF + "    AND JepCode  NOT IN ( SELECT Code FROM KOSMOS_PMPA.OPR_CODE  WHERE Gubun = 'C'  ) ";
+                    SQL += ComNum.VBLF + "    AND JepCode  NOT IN ( SELECT Code FROM ADMIN.OPR_CODE  WHERE Gubun = 'C'  ) ";
                     SQL += ComNum.VBLF + "    AND WRTNO     > 0 ";
                     SqlErr = clsDB.GetDataTable(ref DtSub, SQL, pDbCon);
 
@@ -1284,7 +1284,7 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "        TO_CHAR(A.InDate,'YYYY-MM-DD') InDate, ";
             SQL += ComNum.VBLF + "        A.Bi, A.Ilsu, A.AMSETB, ";
             SQL += ComNum.VBLF + "        A.AMSET1, A.DeptCode,A.DrCode, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(A.DrCode) DRNAME, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_DOCTOR_DRNAME(A.DrCode) DRNAME, ";
             SQL += ComNum.VBLF + "        TO_CHAR(A.OutDate,'YYYY-MM-DD') OutDate, ";
             SQL += ComNum.VBLF + "        A.AMSET5, ";
             SQL += ComNum.VBLF + "        TO_CHAR(A.RoutDate,'YYYY-MM-DD HH24:MI') RoutDate, ";
@@ -1630,7 +1630,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "        a.GbDrg, B.GbSTS, ";
                 SQL += ComNum.VBLF + "        A.GbSTS GBSTS2, ";
                 SQL += ComNum.VBLF + "        TO_CHAR(B.OutDate,'YY/MM/DD') OutDate, ";
-                SQL += ComNum.VBLF + "        b.DeptCode, b.DrCode, KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(b.DrCode) DRNAME,";
+                SQL += ComNum.VBLF + "        b.DeptCode, b.DrCode, ADMIN.FC_BAS_DOCTOR_DRNAME(b.DrCode) DRNAME,";
                 SQL += ComNum.VBLF + "        TO_CHAR(B.RoutDate,'YY/MM/DD HH24:MI:SS') RoutDate, ";
                 SQL += ComNum.VBLF + "        TO_CHAR(B.SunapTime,'YY/MM/DD HH24:MI') SunapTime, ";
                 SQL += ComNum.VBLF + "        TO_CHAR(B.SIMSATime,'YY/MM/DD HH24:MI') SIMSATime, ";
@@ -1660,7 +1660,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "        TO_CHAR(B.InDate,'YY/MM/DD') InDate, ";
                 SQL += ComNum.VBLF + "        a.GbDrg, B.GbSTS, ";
                 SQL += ComNum.VBLF + "        TO_CHAR(B.OutDate,'YY/MM/DD') OutDate, ";
-                SQL += ComNum.VBLF + "        b.DeptCode,b.DrCode, KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(b.DrCode) DRNAME,";
+                SQL += ComNum.VBLF + "        b.DeptCode,b.DrCode, ADMIN.FC_BAS_DOCTOR_DRNAME(b.DrCode) DRNAME,";
                 SQL += ComNum.VBLF + "        TO_CHAR(B.RoutDate,'YY/MM/DD HH24:MI:SS') RoutDate, ";
                 SQL += ComNum.VBLF + "        TO_CHAR(B.SunapTime,'YY/MM/DD HH24:MI') SunapTime, ";
                 SQL += ComNum.VBLF + "        TO_CHAR(B.SIMSATime,'YY/MM/DD HH24:MI') SIMSATime, ";
@@ -2024,7 +2024,7 @@ namespace ComPmpaLibB
             string strSabun = string.Format("{0:D5}", ArgSabun);
 
             SQL = "";
-            SQL += ComNum.VBLF + " SELECT Buse FROM  KOSMOS_ADM.INSA_MST ";
+            SQL += ComNum.VBLF + " SELECT Buse FROM  ADMIN.INSA_MST ";
             SQL += ComNum.VBLF + "  WHERE Sabun     = '" + strSabun + "'  ";
             SQL += ComNum.VBLF + "    AND Buse      = '078201' ";
             SqlErr = clsDB.GetDataTable(ref DtSim, SQL, pDbCon);
@@ -2143,7 +2143,7 @@ namespace ComPmpaLibB
                         if (strBi[3] == "" && strWard[3] == "" && strRoom[3] == "" && strDept[3] == "") { strOK4 = ""; }
 
                         SQL = "";
-                        SQL += ComNum.VBLF + " SELECT /*+ INDEX_DESC(kosmos_ocs.ipd_trans INDEX_IPDTRS0) */ ";
+                        SQL += ComNum.VBLF + " SELECT /*+ INDEX_DESC(ADMIN.ipd_trans INDEX_IPDTRS0) */ ";
                         SQL += ComNum.VBLF + "        A.IPDNO, A.TRSNO, A.GBSTS, ";
                         SQL += ComNum.VBLF + "        A.Pano, A.GBIPD, B.SName, ";
                         SQL += ComNum.VBLF + "        B.WARDCODE, B.RoomCode, B.ILLCODE1, ";

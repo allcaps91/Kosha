@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GAMCODE     ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GAMCODE     ");
             parameter.AppendSql(" WHERE CODE =:CODE                ");
 
             parameter.Add("CODE", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME, GUBUN, RATE, AMT1, AMT2                 ");
             parameter.AppendSql("      ,TO_CHAR(DELDATE,'YYYY-MM-DD') DELDATE ,ROWID AS RID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GAMCODE                             ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GAMCODE                             ");
             parameter.AppendSql(" WHERE 1 = 1                                               ");
             if (!bDel)
             {
@@ -52,7 +52,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_GAMCODE                 ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_GAMCODE                 ");
             parameter.AppendSql("   SET DELDATE =TRUNC(SYSDATE)                 ");
             parameter.AppendSql(" WHERE ROWID =:RID                             ");
 
@@ -67,7 +67,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT CODE, NAME, GUBUN, RATE, AMT1, AMT2                 ");
             parameter.AppendSql("      ,TO_CHAR(DELDATE,'YYYY-MM-DD') DELDATE ,ROWID AS RID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_GAMCODE                             ");
+            parameter.AppendSql("  FROM ADMIN.HEA_GAMCODE                             ");
             parameter.AppendSql(" WHERE CODE = :CODE                                        ");
 
             parameter.Add("CODE", strGamCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -79,7 +79,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HEA_GAMCODE                 ");
+            parameter.AppendSql("UPDATE ADMIN.HEA_GAMCODE                 ");
             parameter.AppendSql("   SET NAME =:NAME                             ");
             parameter.AppendSql("      ,GUBUN =:GUBUN                           ");
             parameter.AppendSql("      ,RATE =:RATE                             ");
@@ -104,7 +104,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT KOSMOS_PMPA.HEA_GAMCODE (                           ");
+            parameter.AppendSql("INSERT ADMIN.HEA_GAMCODE (                           ");
             parameter.AppendSql("   CODE,NAME,GUBUN,RATE,AMT1,AMT2,ENTTIME,ENTSABUN )       ");
             parameter.AppendSql(" VALUES (                                                  ");
             parameter.AppendSql("   :CODE,:NAME,:GUBUN,:RATE,:AMT1,:AMT2,SYSDATE,:ENTSABUN )");

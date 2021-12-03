@@ -1387,7 +1387,7 @@ namespace ComEmrBase
                 DataTable dt = null;
 
                 SQL = " SELECT * ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_FALL_EVAL ";
+                SQL += ComNum.VBLF + " FROM ADMIN.NUR_FALL_EVAL ";
                 SQL += ComNum.VBLF + " WHERE IPDNO = " + pAcp.acpNoIn;
 
                 string sqlErr = clsDB.GetDataTableREx(ref dt, SQL, pDbCon);

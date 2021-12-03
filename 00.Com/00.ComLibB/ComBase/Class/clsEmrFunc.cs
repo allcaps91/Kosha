@@ -943,8 +943,8 @@ namespace ComBase
                     SQL += "SELECT \r";
                     SQL += "    A.EMRNO, \r";
                     SQL += "    '{' || '\"ITEMCD\"' || ':\"' || B.TITLE || '\", ' || '\"ITEMVALUE\"' || ':\"' || B.CONTROLVALUE || '\"}' AS ITEM \r";
-                    SQL += "FROM KOSMOS_EMR.AEMRCHARTMST A \r";
-                    SQL += "INNER JOIN KOSMOS_EMR.AEMRANCHART B \r";
+                    SQL += "FROM ADMIN.AEMRCHARTMST A \r";
+                    SQL += "INNER JOIN ADMIN.AEMRANCHART B \r";
                     SQL += "   ON A.EMRNO = B.EMRNO \r";
                     SQL += "  AND A.EMRNOHIS = B.EMRNOHIS \r";
                     SQL += "WHERE A.EMRNO = " + strEmrNo + "    \r";
@@ -965,8 +965,8 @@ namespace ComBase
                     SQL += "       'PROBLEM : ' || PROBLEM || ' | ' || \r";
                     SQL += "       'TYPE : ' || TYPE || ' | ' || \r";
                     SQL += "       'NRRECODE : ' || NRRECODE AS JSON \r";
-                    SQL += " FROM KOSMOS_EMR.AEMRCHARTMST A \r";
-                    SQL += "INNER JOIN KOSMOS_EMR.AEMRNURSRECORD B \r";
+                    SQL += " FROM ADMIN.AEMRCHARTMST A \r";
+                    SQL += "INNER JOIN ADMIN.AEMRNURSRECORD B \r";
                     SQL += "   ON A.EMRNO = B.EMRNO \r";
                     SQL += "WHERE A.EMRNO = " + strEmrNo + "    \r";
                 }
@@ -977,8 +977,8 @@ namespace ComBase
                     SQL += "SELECT \r";
                     SQL += "    A.EMRNO, \r";
                     SQL += "    TO_CLOB('{' || '\"ITEMCD\"' || ':\"' || B.ITEMCD || '\", ' || '\"ITEMVALUE\"' || ':\"' || B.ITEMVALUE || '\", ' || '\"ITEMVALUE1\"' || ':\"' || B.ITEMVALUE1 || '\", ITEMVALUE2\"' || ':\"' || B.ITEMVALUE2 || '\"}') AS ITEM \r";
-                    SQL += "FROM KOSMOS_EMR.AEMRCHARTMST A \r";
-                    SQL += "INNER JOIN KOSMOS_EMR.AEMRCHARTROW B \r";
+                    SQL += "FROM ADMIN.AEMRCHARTMST A \r";
+                    SQL += "INNER JOIN ADMIN.AEMRCHARTROW B \r";
                     SQL += "   ON A.EMRNO = B.EMRNO \r";
                     SQL += "  AND A.EMRNOHIS = B.EMRNOHIS \r";
                     SQL += "  AND B.ITEMCD > CHR(0) \r";
@@ -1001,8 +1001,8 @@ namespace ComBase
                     SQL += "    ,   B.ITEMVALUE                                                                                     \r";
                     SQL += "    ,   B.ITEMVALUE1                                                                                    \r";
                     SQL += "    ,   B.ITEMVALUE2                                                                                    \r";
-                    SQL += "FROM KOSMOS_EMR.AEMRCHARTMST A                                                                          \r";
-                    SQL += "INNER JOIN KOSMOS_EMR.AEMRCHARTROW B                                                                    \r";
+                    SQL += "FROM ADMIN.AEMRCHARTMST A                                                                          \r";
+                    SQL += "INNER JOIN ADMIN.AEMRCHARTROW B                                                                    \r";
                     SQL += "   ON A.EMRNO = B.EMRNO                                                                                 \r";
                     SQL += "  AND A.EMRNOHIS = B.EMRNOHIS                                                                           \r";
                     SQL += "  AND B.ITEMCD > CHR(0)                                                                                 \r";
@@ -1055,8 +1055,8 @@ namespace ComBase
                         SQL += "SELECT \r";
                         SQL += "    A.EMRNO, \r";
                         SQL += "    TO_CLOB('{' || '\"ITEMCD\"' || ':\"' || B.ITEMCD || '\", ' || '\"ITEMVALUE\"' || ':\"' || B.ITEMVALUE || '\"}') AS ITEM \r";
-                        SQL += "FROM KOSMOS_EMR.AEMRCHARTMST A \r";
-                        SQL += "INNER JOIN KOSMOS_EMR.AEMRCHARTROW B \r";
+                        SQL += "FROM ADMIN.AEMRCHARTMST A \r";
+                        SQL += "INNER JOIN ADMIN.AEMRCHARTROW B \r";
                         SQL += "   ON A.EMRNO = B.EMRNO \r";
                         SQL += "  AND A.EMRNOHIS = B.EMRNOHIS \r";
                         SQL += "  AND B.ITEMCD > CHR(0) \r";
@@ -1218,7 +1218,7 @@ namespace ComBase
                 SQL = SQL + ComNum.VBLF + "    ADDR, ";
                 SQL = SQL + ComNum.VBLF + "    acpnoin, ";
                 SQL = SQL + ComNum.VBLF + "    BI -- 접수시 BI";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.AVIEWACPOCS ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.AVIEWACPOCS ";
                 SQL = SQL + ComNum.VBLF + "WHERE PTNO = '" + strPTNO + "'";
                 SQL = SQL + ComNum.VBLF + "     AND INOUTCLS = '" + strInOutCls + "'";
                 SQL = SQL + ComNum.VBLF + "     AND MEDFRDATE = '" + strMedFrDate.Replace("-", "") + "'";

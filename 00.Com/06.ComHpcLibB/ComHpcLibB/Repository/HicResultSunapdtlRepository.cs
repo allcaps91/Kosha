@@ -19,7 +19,7 @@
         public List<HIC_RESULT_SUNAPDTL> GetItembyWrtnoExcodeIN(long argWrtno, List<string> lstExcode)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT ExCode,Result FROM KOSMOS_PMPA.HIC_RESULT A, KOSMOS_PMPA.HIC_SUNAPDTL B");
+            parameter.AppendSql(" SELECT ExCode,Result FROM ADMIN.HIC_RESULT A, ADMIN.HIC_SUNAPDTL B");
             parameter.AppendSql("  WHERE A.WRTNO = :WRTNO                                                       ");
             parameter.AppendSql("    AND A.WRTNO = B.WRTNO                                                      ");
             parameter.AppendSql("    AND A.GROUPCODE = B.CODE                                                   ");
@@ -36,7 +36,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql(" SELECT a.Code                                                                 ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_RESULT A, KOSMOS_PMPA.HIC_SUNAPDTL B                   ");
+            parameter.AppendSql("   FROM ADMIN.HIC_RESULT A, ADMIN.HIC_SUNAPDTL B                   ");
             parameter.AppendSql("  WHERE A.WRTNO = :WRTNO                                                       ");
             parameter.AppendSql("    AND A.WRTNO = B.WRTNO                                                      ");
             parameter.AppendSql("    AND A.GROUPCODE = B.CODE                                                   ");
@@ -52,7 +52,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql(" SELECT COUNT('X') CNT                                                         ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_RESULT A, KOSMOS_PMPA.HIC_SUNAPDTL B                   ");
+            parameter.AppendSql("   FROM ADMIN.HIC_RESULT A, ADMIN.HIC_SUNAPDTL B                   ");
             parameter.AppendSql("  WHERE a.WRTNO = :WRTNO                                                       ");
             parameter.AppendSql("    AND a.GbSelf IN ('2','3','6')                                              "); //조합부담이 없으면
             parameter.AppendSql("    AND a.wrtno  = b.wrtno(+)                                                  ");
@@ -69,7 +69,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql(" SELECT a.CODE                                                                 ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_RESULT A, KOSMOS_PMPA.HIC_SUNAPDTL B                   ");
+            parameter.AppendSql("   FROM ADMIN.HIC_RESULT A, ADMIN.HIC_SUNAPDTL B                   ");
             parameter.AppendSql("  WHERE a.WRTNO = :WRTNO                                                       ");
             parameter.AppendSql("    AND a.GbSelf = '1'                                                         ");
             parameter.AppendSql("    AND a.wrtno = b.wrtno(+)                                                   ");
@@ -99,7 +99,7 @@
         public List<HIC_RESULT_SUNAPDTL> GetItembyWrtNoExCode(long nWRTNO, string eXCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT a.Code  FROM KOSMOS_PMPA.HIC_SUNAPDTL A, KOSMOS_PMPA.HIC_RESULT B      ");
+            parameter.AppendSql(" SELECT a.Code  FROM ADMIN.HIC_SUNAPDTL A, ADMIN.HIC_RESULT B      ");
             parameter.AppendSql("  WHERE A.WRTNO  = :WRTNO                                                      ");
             parameter.AppendSql("    AND a.GbSelf = '2'                                                         ");
             parameter.AppendSql("    AND a.WRTNO  = b.WRTNO                                                     ");
@@ -126,7 +126,7 @@
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql(" SELECT ExCode,Result                                                          ");
-            parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_RESULT A, KOSMOS_PMPA.HIC_SUNAPDTL B                   ");
+            parameter.AppendSql("   FROM ADMIN.HIC_RESULT A, ADMIN.HIC_SUNAPDTL B                   ");
             parameter.AppendSql("  WHERE A.WRTNO = :WRTNO                                                       ");
             parameter.AppendSql("    AND A.WRTNO = B.WRTNO(+)                                                   ");
             parameter.AppendSql("    AND a.GroupCode = b.Code(+)                                                ");
@@ -139,7 +139,7 @@
             {
                 parameter.AppendSql(" UNION ALL                                                                 ");
                 parameter.AppendSql(" SELECT a.ExCode,a.Result, b.Gbself                                        ");
-                parameter.AppendSql("   FROM KOSMOS_PMPA.HIC_RESULT a, KOSMOS_PMPA.HIC_SUNAPDTL b               ");
+                parameter.AppendSql("   FROM ADMIN.HIC_RESULT a, ADMIN.HIC_SUNAPDTL b               ");
                 parameter.AppendSql("  WHERE a.WRTNO = b.WRTNO(+)                                               ");
                 parameter.AppendSql("    AND a.GroupCode = b.Code(+)                                            ");
                 parameter.AppendSql("    AND a.WRTNO = :WRTNO                                                   ");

@@ -82,13 +82,13 @@ namespace ComPmpaLibB
                 SQL = SQL + ComNum.VBLF + "   AND FrDoctor <> ToDoctor";
                 if (strDrcode != "")
                 {
-                    SQL = SQL + ComNum.VBLF + "   AND ( FrDoctor IN ( SELECT DRCODE FROM KOSMOS_PMPA.BAS_DOCTOR WHERE GBCHOICE='Y' AND DrCode ='" + strDrcode + "' ) OR";
-                    SQL = SQL + ComNum.VBLF + "        ToDoctor IN ( SELECT DRCODE FROM KOSMOS_PMPA.BAS_DOCTOR WHERE GBCHOICE='Y' AND DrCode ='" + strDrcode + "') )";
+                    SQL = SQL + ComNum.VBLF + "   AND ( FrDoctor IN ( SELECT DRCODE FROM ADMIN.BAS_DOCTOR WHERE GBCHOICE='Y' AND DrCode ='" + strDrcode + "' ) OR";
+                    SQL = SQL + ComNum.VBLF + "        ToDoctor IN ( SELECT DRCODE FROM ADMIN.BAS_DOCTOR WHERE GBCHOICE='Y' AND DrCode ='" + strDrcode + "') )";
                 }
                 else
                 {
-                    SQL = SQL + ComNum.VBLF + "   AND ( FrDoctor IN ( SELECT DRCODE FROM KOSMOS_PMPA.BAS_DOCTOR WHERE GBCHOICE='Y' ) OR";
-                    SQL = SQL + ComNum.VBLF + "        ToDoctor IN ( SELECT DRCODE FROM KOSMOS_PMPA.BAS_DOCTOR WHERE GBCHOICE='Y') ) ";
+                    SQL = SQL + ComNum.VBLF + "   AND ( FrDoctor IN ( SELECT DRCODE FROM ADMIN.BAS_DOCTOR WHERE GBCHOICE='Y' ) OR";
+                    SQL = SQL + ComNum.VBLF + "        ToDoctor IN ( SELECT DRCODE FROM ADMIN.BAS_DOCTOR WHERE GBCHOICE='Y') ) ";
                 }
                 SQL = SQL + ComNum.VBLF + "   AND Pano <> '81000004'";
 

@@ -92,7 +92,7 @@ namespace ComLibB
 
             SQL = "";
             SQL = SQL + " SELECT IPaddress, hostname ";
-            SQL = SQL + " from kosmos_pmpa.etc_pingtest ";
+            SQL = SQL + " from ADMIN.etc_pingtest ";
             SQL = SQL + " where deldate is null ";
             SQL = SQL + " order by ipaddress ";
 
@@ -133,7 +133,7 @@ namespace ComLibB
                     //전산실직원 조회
                     SQL = "";
                     SQL = SQL + " select korname, htel ";
-                    SQL = SQL + " from kosmos_adm.insa_mst ";
+                    SQL = SQL + " from ADMIN.insa_mst ";
                     SQL = SQL + " where buse = '077501' ";
                     SQL = SQL + " and toiday is null ";
 
@@ -151,7 +151,7 @@ namespace ComLibB
                         //이미전송했는지 확인
                         SQL = "";
                         SQL = SQL + " select to_char(jobdate, 'yyyy-mm-dd hh24') jobdate, gubun, sname, hphone ";
-                        SQL = SQL + " from kosmos_pmpa.etc_sms ";
+                        SQL = SQL + " from ADMIN.etc_sms ";
                         SQL = SQL + " where gubun = '" + strGubun + "' ";
                         SQL = SQL + " and sname = '" + strKorname + "' ";
                         SQL = SQL + " and hphone = '" + strHTEL + "' ";
@@ -164,7 +164,7 @@ namespace ComLibB
                         //전송 안했으면 etc_sms 테이블에 입력하기
                         if (nREAD_3 == 0)
                         {
-                            SQL = " insert into kosmos_pmpa.etc_sms(jobdate, gubun, sname, hphone, rettel, sendmsg,PSMHSEND) values(";
+                            SQL = " insert into ADMIN.etc_sms(jobdate, gubun, sname, hphone, rettel, sendmsg,PSMHSEND) values(";
                             SQL = SQL + "to_date('" + strDateTime + "', 'yyyy-mm-dd hh24:mi'), '" + strGubun + "', '" + strKorname + "',";
                             SQL = SQL + "'" + strHTEL + "', '" + strRettel + "', '" + strSENDMSG + "','Y')";
 
@@ -258,7 +258,7 @@ namespace ComLibB
             SQL = "";
             SQL = SQL + " select to_char(jobdate, 'yyyy-mm-dd hh24:mi') jobdate, to_char(sendtime, 'yyyy-mm-dd hh24:mi') sendtime, ";
             SQL = SQL + " hphone, sname, rettel, gubun, sendmsg, state, rowid ";
-            SQL = SQL + " from kosmos_pmpa.etc_sms ";
+            SQL = SQL + " from ADMIN.etc_sms ";
             SQL = SQL + " where jobdate >= to_date('" + strDate + " 00:01', 'yyyy-mm-dd hh24:mi') ";
             SQL = SQL + " and gubun <> '8' ";
             SQL = SQL + " and ROWNUM< 500 ";
@@ -344,7 +344,7 @@ namespace ComLibB
             SQL = " select jobdate, send_cnt, pano, sname, hphone, gubun, deptcode, " + ComNum.VBLF;
             SQL += " drcode, rettel, sendmsg, " + ComNum.VBLF;
             SQL += " to_char(RTime, 'yyyy-mm-dd') RTime,TO_CHAR(RTime, 'yyyymmddhh24mi') RTime2, sendmsgback, rowid, GBPUSH " + ComNum.VBLF;
-            SQL += " from kosmos_pmpa.etc_sms " + ComNum.VBLF;
+            SQL += " from ADMIN.etc_sms " + ComNum.VBLF;
 
             if (cpublic.strSysTime.CompareTo("00:00") >= 0 && cpublic.strSysTime.CompareTo("06:59") <= 0)
             {
@@ -427,7 +427,7 @@ namespace ComLibB
 
                 clsDB.setBeginTran(clsDB.DbCon);
 
-                SQL = " update kosmos_pmpa.etc_sms set ";
+                SQL = " update ADMIN.etc_sms set ";
                 SQL += " sendtime = to_date('" + strDateTime + "', 'yyyy-mm-dd hh24:mi'), ";
                 SQL += " state = '" + GstrSMS114_Result + "', ";
                 SQL += " GbPush = '" + strOK + "'";
@@ -489,7 +489,7 @@ namespace ComLibB
             SQL = " select jobdate, send_cnt, pano, sname, hphone, gubun, deptcode, " + ComNum.VBLF;
             SQL += " drcode, rettel, sendmsg, " + ComNum.VBLF;
             SQL += " to_char(RTime, 'yyyy-mm-dd') RTime,TO_CHAR(RTime, 'yyyymmddhh24mi') RTime2, sendmsgback, rowid, GBPUSH " + ComNum.VBLF;
-            SQL += " from kosmos_pmpa.etc_sms " + ComNum.VBLF;
+            SQL += " from ADMIN.etc_sms " + ComNum.VBLF;
             SQL += " where jobdate between to_date('" + strDateTime_3 + "', 'yyyy-mm-dd hh24:mi') and to_date('" + strDateTime + "', 'yyyy-mm-dd hh24:mi:') " + ComNum.VBLF;
             SQL += " and GUBUN = '84' " + ComNum.VBLF; //코로나 입원자 사전 내용 문자 구분 제외
             SQL += " and sendtime is null " + ComNum.VBLF;
@@ -530,7 +530,7 @@ namespace ComLibB
           
                 clsDB.setBeginTran(clsDB.DbCon);
 
-                SQL = " update kosmos_pmpa.etc_sms set ";
+                SQL = " update ADMIN.etc_sms set ";
                 SQL += " sendtime = to_date('" + strDateTime + "', 'yyyy-mm-dd hh24:mi'), ";
                 SQL += " state = '" + GstrSMS114_Result + "', ";
                 SQL += " GbPush = '" + strOK + "', ";
@@ -846,7 +846,7 @@ namespace ComLibB
             strDept = "XX";
 
             SQL = " SELECT Round((SYSDATE - JOBDATE) * 24 * 60) " + ComNum.VBLF;
-            SQL += " From KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;
+            SQL += " From ADMIN.ETC_SMS " + ComNum.VBLF;
             SQL += " Where TRUNC(JOBDATE) = TRUNC(SYSDATE) " + ComNum.VBLF;
             SQL += " AND GUBUN ='T1' " + ComNum.VBLF;
             SQL += " AND Bigo ='" + ArgCode + "' " + ComNum.VBLF;
@@ -864,7 +864,7 @@ namespace ComLibB
 
             if (argSendChk == true)
             {
-                SQL = " SELECT ROWID FROM KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;
+                SQL = " SELECT ROWID FROM ADMIN.ETC_SMS " + ComNum.VBLF;
                 SQL += " WHERE TRUNC(JOBDATE) =TRUNC(SYSDATE) " + ComNum.VBLF;
                 SQL += " AND GUBUN ='T1' " + ComNum.VBLF;
                 SQL += " AND Bigo ='" + ArgCode + "' " + ComNum.VBLF;
@@ -883,7 +883,7 @@ namespace ComLibB
                 rsSend2 = null;
             }
 
-            SQL = " SELECT NAME FROM KOSMOS_PMPA.BAS_BCODE " + ComNum.VBLF;
+            SQL = " SELECT NAME FROM ADMIN.BAS_BCODE " + ComNum.VBLF;
             SQL += " WHERE  1=1 " + ComNum.VBLF;
             SQL += " AND GUBUN ='ETC_샌드프로그램체크_SMS' " + ComNum.VBLF;
             SQL += " AND GUBUN2 ='" + ArgCode + "' " + ComNum.VBLF;
@@ -900,7 +900,7 @@ namespace ComLibB
                 for (i = 0; i < nREAD; i++)
                 {
 
-                    SQL = "INSERT INTO KOSMOS_PMPA.ETC_SMS ( JOBDATE,PANO,SNAME,HPHONE,GUBUN,DEPTCODE,DRCODE,RTIME,RETTEL,";
+                    SQL = "INSERT INTO ADMIN.ETC_SMS ( JOBDATE,PANO,SNAME,HPHONE,GUBUN,DEPTCODE,DRCODE,RTIME,RETTEL,";
                     SQL += "SENDMSG , ENTSABUN, ENTDATE,  BIGO, GBPUSH,PSMHSEND) VALUES (";
                     SQL += "SYSDATE,'','','" + rsSend.Rows[i]["NAME"].ToString().Trim() + "','" + ArgGubun + "','" + strDept + "','0000',";
                     SQL += "SYSDATE,'" + ArgRHphone + "','" + ArgMsg + "'," + clsType.User.Sabun + ",SYSDATE,'" + ArgCode + "' , 'N','Y')";
@@ -919,7 +919,7 @@ namespace ComLibB
 
             SQL = "  SELECT ROUND((SYSDATE - JDATE)  * 24 * 60) min_diff , " + ComNum.VBLF;
             SQL += " CASE WHEN ROUND((SYSDATE - JDATE)  * 24 * 60) > CNT THEN 'CHK' ELSE 'OK' END min_diff2 " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.BAS_BCODE " + ComNum.VBLF;
+            SQL += " FROM ADMIN.BAS_BCODE " + ComNum.VBLF;
             SQL += " WHERE GUBUN ='ETC_샌드프로그램체크' " + ComNum.VBLF;
             SQL += " AND Code ='" + ArgCode + "'" + ComNum.VBLF;
 
@@ -960,7 +960,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = " SELECT ACTDATE, PANO, SNAME, MAGAM, MAGAMDATE, MAGAMSABUN " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.ETC_RETURN A, KOSMOS_PMPA.ETC_RETURN_CODE B " + ComNum.VBLF;
+            SQL += " FROM ADMIN.ETC_RETURN A, ADMIN.ETC_RETURN_CODE B " + ComNum.VBLF;
             SQL += " WHERE A.H_CODE = B.Code " + ComNum.VBLF;
             SQL += " AND A.MAGAMDATE >= TRUNC(SYSDATE) " + ComNum.VBLF;
             SQL += " AND A.OPDIPD1 = 'OPD' " + ComNum.VBLF;
@@ -1005,7 +1005,7 @@ namespace ComLibB
                 }
 
                 //재원중인 환자는 제외
-                SQL = " SELECT Pano FROM KOSMOS_PMPA.IPD_NEW_MASTER " + ComNum.VBLF;
+                SQL = " SELECT Pano FROM ADMIN.IPD_NEW_MASTER " + ComNum.VBLF;
                 SQL += " WHERE Pano='" + strPano + "' " + ComNum.VBLF;
                 SQL += "  AND JDATE = TO_DATE('1900-01-01','YYYY-MM-DD') " + ComNum.VBLF;
 
@@ -1019,7 +1019,7 @@ namespace ComLibB
                 rs1.Dispose();
                 rs1 = null;
 
-                SQL = " SELECT Ptno,SUCODE FROM KOSMOS_OCS.OCS_OORDER " + ComNum.VBLF;
+                SQL = " SELECT Ptno,SUCODE FROM ADMIN.OCS_OORDER " + ComNum.VBLF;
                 SQL += " WHERE Ptno='" + strPano + "' " + ComNum.VBLF;
                 SQL += " AND BDATE >= TRUNC(SYSDATE) " + ComNum.VBLF;
                 SQL += " AND SUCODE IN ('IA231', 'IA213') " + ComNum.VBLF;
@@ -1087,7 +1087,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = " SELECT PANO, SNAME, DEPTCODE, DRCODE, WARDCODE,ROOMCODE, COMPLITE " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.DIET_NST_PROGRESS " + ComNum.VBLF;
+            SQL += " FROM ADMIN.DIET_NST_PROGRESS " + ComNum.VBLF;
             SQL += " WHERE COMPLITE IS NOT NULL " + ComNum.VBLF;
             SQL += " AND GBSMS  IS NULL " + ComNum.VBLF;
 
@@ -1107,7 +1107,7 @@ namespace ComLibB
                     //핸드폰체크
                     //핸드폰체크
                     SQL = " SELECT A.HTEL " + ComNum.VBLF;
-                    SQL += " FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B  " + ComNum.VBLF;
+                    SQL += " FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B  " + ComNum.VBLF;
                     SQL += " WHERE a.SABUN = b.SABUN " + ComNum.VBLF;
                     SQL += " AND b.DrCode ='" + AdoRes.Rows[i]["DRCODE"].ToString().Trim() + "' " + ComNum.VBLF;
 
@@ -1139,7 +1139,7 @@ namespace ComLibB
                                 return;
                             }
 
-                            SQL = " UPDATE KOSMOS_PMPA.DIET_NST_PROGRESS SET";
+                            SQL = " UPDATE ADMIN.DIET_NST_PROGRESS SET";
                             SQL += " GBSMS ='Y'";
                             SQL += " WHERE PANO ='" + strPano + "'";
 
@@ -1187,7 +1187,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = " SELECT Ipdopd, Cvr, Cvr_Gubun,DeptCode,DrCode,Pano,SName,ROWID, WardCode,RoomCode,xjong " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.XRAY_DETAIL " + ComNum.VBLF;
+            SQL += " FROM ADMIN.XRAY_DETAIL " + ComNum.VBLF;
             SQL += " WHERE Cvr = 'Y' " + ComNum.VBLF;
             SQL += " AND Cvr_Gubun = '1' " + ComNum.VBLF;
             SQL += " AND DEPTCODE IN ('ER', 'NE', 'NS') " + ComNum.VBLF;
@@ -1210,7 +1210,7 @@ namespace ComLibB
 
                 //핸드폰체크
                 SQL = " SELECT A.HTEL " + ComNum.VBLF;
-                SQL += " FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B  " + ComNum.VBLF;
+                SQL += " FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B  " + ComNum.VBLF;
                 SQL += " WHERE a.SABUN = b.SABUN " + ComNum.VBLF;
                 SQL += " AND b.DrCode ='" + AdoRes.Rows[i]["DRCODE"].ToString().Trim() + "' " + ComNum.VBLF;
 
@@ -1254,7 +1254,7 @@ namespace ComLibB
                             return;
                         }
 
-                        SQL = " UPDATE KOSMOS_PMPA.XRAY_DETAIL SET";
+                        SQL = " UPDATE ADMIN.XRAY_DETAIL SET";
                         SQL += " CVR ='S', CVR_SEND =SYSDATE";
                         SQL += "WHERE ROWID ='" + strROWID + "'";
                         SQL += " AND PANO ='" + strPano + "' ";
@@ -1328,7 +1328,7 @@ namespace ComLibB
                 {
                     strHTEL = "01093284620";
 
-                    SQL = "INSERT INTO KOSMOS_PMPA.ETC_SMS (JOBDATE, PANO, SNAME , HPHONE , GUBUN, SENDMSG,PSMHSEND) ";
+                    SQL = "INSERT INTO ADMIN.ETC_SMS (JOBDATE, PANO, SNAME , HPHONE , GUBUN, SENDMSG,PSMHSEND) ";
                     SQL += "VALUES ( SYSDATE,'" + strPano + "','" + strSname + "','" + strHTEL + "','61','" + strSENDMSG + "','Y' )";
 
                     SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1371,7 +1371,7 @@ namespace ComLibB
             //SMS전송 대상자 자료조회
             SQL = " SELECT SABUN, CDATE FROM( " + ComNum.VBLF;
             SQL += " SELECT A.SABUN, TRUNC(MAX(CERDATE) + 365) CDATE " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_ADM.INSA_MSTS A, KOSMOS_ADM.INSA_MST B " + ComNum.VBLF;
+            SQL += " FROM ADMIN.INSA_MSTS A, ADMIN.INSA_MST B " + ComNum.VBLF;
             SQL += " WHERE A.SABUN = B.SABUN " + ComNum.VBLF;
             SQL += " AND B.TOIDAY IS NULL " + ComNum.VBLF;
             SQL += " GROUP BY A.SABUN) " + ComNum.VBLF;
@@ -1387,7 +1387,7 @@ namespace ComLibB
 
                 //INSA_MST 에서 전화번호, 등록번호, 이름 조회
                 SQL = " SELECT KORNAME, HTEL, PANO " + ComNum.VBLF;
-                SQL += " FROM KOSMOS_ADM.INSA_MST " + ComNum.VBLF;
+                SQL += " FROM ADMIN.INSA_MST " + ComNum.VBLF;
                 SQL += " WHERE SABUN = '" + strSabun + "'" + ComNum.VBLF;
 
                 SqlErr = clsDB.GetDataTableEx(ref Rs, SQL, clsDB.DbCon);
@@ -1400,7 +1400,7 @@ namespace ComLibB
                 Rs = null;
 
                 //이미 자료를 넘겼는지 확인함 
-                SQL = " SELECT MIN(TO_CHAR(RTime,'YYYY-MM-DD HH24:MI')) RTime FROM KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;
+                SQL = " SELECT MIN(TO_CHAR(RTime,'YYYY-MM-DD HH24:MI')) RTime FROM ADMIN.ETC_SMS " + ComNum.VBLF;
                 SQL += " WHERE JobDate>=TO_DATE('" + cpublic.strSysDate + "','YYYY-MM-DD') " + ComNum.VBLF;
                 SQL += " AND JobDate<=TO_DATE('" + cpublic.strSysDate + " 23:59','YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                 SQL += " AND HPHONE='" + strTel + "' " + ComNum.VBLF;
@@ -1474,8 +1474,8 @@ namespace ComLibB
 
             SQL = " SELECT b.indate, " + ComNum.VBLF;
             SQL += " a.pano apano, b.wardcode bwardcode, a.sname asname, a.birth abirth" + ComNum.VBLF;
-            SQL += " FROM kosmos_pmpa.bas_patient a, " + ComNum.VBLF;
-            SQL += " kosmos_pmpa.ipd_new_master b " + ComNum.VBLF;
+            SQL += " FROM ADMIN.bas_patient a, " + ComNum.VBLF;
+            SQL += " ADMIN.ipd_new_master b " + ComNum.VBLF;
             SQL += " WHERE a.pano = b.pano(+) " + ComNum.VBLF;
             SQL += " AND b.gbsts = '0' " + ComNum.VBLF;
             SQL += " and b.jdate =to_date('1900-01-01','yyyy-mm-dd') " + ComNum.VBLF;
@@ -1496,7 +1496,7 @@ namespace ComLibB
                 strMsg = "(" + strWardCode + ")병동 (" + strName + ") 님 " + VB.Mid(strBirth, 6, 2) + "월" + VB.Mid(strBirth, 9, 2) + "일 생일입니다.";
 
                 SQL = " select rowid " + ComNum.VBLF;
-                SQL += " from kosmos_pmpa.etc_sms " + ComNum.VBLF;
+                SQL += " from ADMIN.etc_sms " + ComNum.VBLF;
                 SQL += " where gubun = '" + strGubun + "' " + ComNum.VBLF;
                 SQL += " and sname = '" + strName + "' " + ComNum.VBLF;
                 SQL += " and bigo = '" + strWardCode + "' " + ComNum.VBLF;
@@ -1509,7 +1509,7 @@ namespace ComLibB
 
                 if (nREAD_2 == 0)
                 {
-                    SQL = "insert into kosmos_pmpa.etc_sms(";
+                    SQL = "insert into ADMIN.etc_sms(";
                     SQL += "jobdate, pano, bigo, sname, hphone, rettel, gubun, sendmsg,PSMHSEND) values(";
                     SQL += "to_date('" + strDateTime + "', 'yyyy-mm-dd hh24:mi'),";
                     SQL += "'" + strPano + "', '" + strWardCode + "', '" + strName + "',";
@@ -1548,7 +1548,7 @@ namespace ComLibB
             //'장례식장 고인 문자 발송(아직 사용 안함)
             //'===========================
             SQL = " SELECT CUSTNO, DEAD_NAME, TEL HPHONE " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_ADM.FMS_SMS " + ComNum.VBLF;
+            SQL += " FROM ADMIN.FMS_SMS " + ComNum.VBLF;
             SQL += " WHERE GUBUN IS NULL" + ComNum.VBLF;
 
             SqlErr = clsDB.GetDataTableEx(ref rsSub, SQL, clsDB.DbCon);
@@ -1569,7 +1569,7 @@ namespace ComLibB
 
                     SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
-                    SQL = " UPDATE KOSMOS_ADM.FMS_SMS SET GUBUN = '1' ";
+                    SQL = " UPDATE ADMIN.FMS_SMS SET GUBUN = '1' ";
                     SQL += " WHERE CUSTNO = '" + strCUSTNO + "' ";
 
                     SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1581,7 +1581,7 @@ namespace ComLibB
         {
             //90일 이상된 SMS 통보내역은 삭제함
             clsDB.setBeginTran(clsDB.DbCon);
-            SQL = " DELETE KOSMOS_PMPA.ETC_SMS WHERE JOBDATE < TRUNC(SYSDATE - 90) ";
+            SQL = " DELETE ADMIN.ETC_SMS WHERE JOBDATE < TRUNC(SYSDATE - 90) ";
             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
             clsDB.setCommitTran(clsDB.DbCon);
 
@@ -1604,7 +1604,7 @@ namespace ComLibB
             strDName2 = "";
 
             SQL = " SELECT DNAME1, DNAME2, ROWID " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.ETC_DANGJIK " + ComNum.VBLF;
+            SQL += " FROM ADMIN.ETC_DANGJIK " + ComNum.VBLF;
             SQL += " WHERE GUBUN ='97' " + ComNum.VBLF;
             SQL += " AND TDATE = TRUNC(SYSDATE) " + ComNum.VBLF;
             SQL += " AND SMS IS NULL " + ComNum.VBLF;
@@ -1618,7 +1618,7 @@ namespace ComLibB
                 strROWID = RsEdps1.Rows[i]["ROWID"].ToString().Trim();
 
 
-                SQL = " SELECT  HTEL FROM KOSMOS_ADM.INSA_MST " + ComNum.VBLF;
+                SQL = " SELECT  HTEL FROM ADMIN.INSA_MST " + ComNum.VBLF;
                 if (strDName2 != "")
                 {
                     SQL += " WHERE KORNAME ='" + strDName2 + "' " + ComNum.VBLF;
@@ -1638,14 +1638,14 @@ namespace ComLibB
 
                     if (strHTEL != "")
                     {
-                        SQL = "insert into kosmos_pmpa.etc_sms(";
+                        SQL = "insert into ADMIN.etc_sms(";
                         SQL += "jobdate, sname, hphone, rettel, gubun, sendmsg, PSMHSEND) values(";
                         SQL += "to_date('" + strDateTime + "', 'yyyy-mm-dd hh24:mi'),";
                         SQL += "'행정당직', '" + strHTEL + "', '054-260-8016', 'A', '" + "오늘 행정당직입니다." + "','Y')";
 
                         SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
-                        SQL = " UPDATE KOSMOS_PMPA.ETC_DANGJIK SET SMS = '*' ";
+                        SQL = " UPDATE ADMIN.ETC_DANGJIK SET SMS = '*' ";
                         SQL += " WHERE ROWID = '" + strROWID + "' ";
                         SQL += " AND GUBUN = '97' ";
                         SQL += " AND SMS IS NULL";
@@ -1672,7 +1672,7 @@ namespace ComLibB
 
             strSENDMSG1 = "";
 
-            SQL = " select YYMMDD,sum(ocnt1+ocnt2) HAP from KOSMOS_PMPA.TONG_DAILY " + ComNum.VBLF;
+            SQL = " select YYMMDD,sum(ocnt1+ocnt2) HAP from ADMIN.TONG_DAILY " + ComNum.VBLF;
             SQL += " where YYMMDD >= TO_CHAR(trunc(sysdate-3),'YYYYMMDD') " + ComNum.VBLF;
             SQL += " group by YYMMDD " + ComNum.VBLF;
             SQL += " order by YYMMDD " + ComNum.VBLF;
@@ -1700,14 +1700,14 @@ namespace ComLibB
                 clsDB.setBeginTran(clsDB.DbCon);
 
                 //SMS 자료에 INSERT 
-                SQL = "insert into kosmos_pmpa.etc_sms(";
+                SQL = "insert into ADMIN.etc_sms(";
                 SQL += "jobdate, sname, hphone, rettel, gubun, sendmsg,PSMHSEND) values(";
                 SQL += "to_date('" + strDateTime + "', 'yyyy-mm-dd hh24:mi'),";
                 SQL += "'원무팀인원문자', '01085669765', '054-260-8338', '80', '" + strSENDMSG1 + "','Y')";
 
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
-                SQL = "insert into kosmos_pmpa.etc_sms(";
+                SQL = "insert into ADMIN.etc_sms(";
                 SQL += "jobdate, sname, hphone, rettel, gubun, sendmsg,PSMHSEND) values(";
                 SQL += "to_date('" + strDateTime + "', 'yyyy-mm-dd hh24:mi'),";
                 SQL += "'원무팀인원문자', '01071594679', '054-260-8338', '80', '" + strSENDMSG1 + "','Y')";
@@ -1749,7 +1749,7 @@ namespace ComLibB
             strRettel = "0542608051";
 
             SQL = " select pano, sucode, rdate, entdate, entsabun, qty " + ComNum.VBLF;
-            SQL += " from kosmos_pmpa.etc_mr_drug_sms " + ComNum.VBLF;
+            SQL += " from ADMIN.etc_mr_drug_sms " + ComNum.VBLF;
             SQL += " where deldate is null " + ComNum.VBLF;
             SQL += " and sms = 'N' " + ComNum.VBLF;
 
@@ -1772,7 +1772,7 @@ namespace ComLibB
                              + strSucode + " " + strQty + "개 사용예정입니다. 준비부탁드립니다. -" + strDeptName;
 
                 //약제과 수녀님(요한릿다)에게 전송
-                SQL="insert into kosmos_pmpa.etc_sms(jobdate,pano,sname,hphone,gubun,rettel,sendmsg,PSMHSEND)values(";
+                SQL="insert into ADMIN.etc_sms(jobdate,pano,sname,hphone,gubun,rettel,sendmsg,PSMHSEND)values(";
                 SQL+="to_date('"+strJobTime+"','yyyy-mm-dd hh24:mi'),'"+strPano+"','"+strKorname+"',";
                 SQL+="'"+strTel+"','"+strGubun+"','"+strRettel+"','"+strSENDMSG+"','Y')";
 
@@ -1784,7 +1784,7 @@ namespace ComLibB
                     return;
                 }
 
-                SQL = " update kosmos_pmpa.etc_mr_drug_sms set ";
+                SQL = " update ADMIN.etc_mr_drug_sms set ";
                 SQL += " sms = 'Y'";
                 SQL += " where pano = '" + strPano + "'";
                 SQL += " and sucode = '" + strSucode + "'";
@@ -1834,7 +1834,7 @@ namespace ComLibB
 
             //오늘이 휴일인지 점검 
             SQL = " SELECT HOLYDAY " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.BAS_JOB " + ComNum.VBLF;
+            SQL += " FROM ADMIN.BAS_JOB " + ComNum.VBLF;
             SQL += " WHERE JOBDATE=TRUNC(SYSDATE) " + ComNum.VBLF;
 
             SqlErr = clsDB.GetDataTableEx(ref AdoRes, SQL, clsDB.DbCon);
@@ -1856,8 +1856,8 @@ namespace ComLibB
 
             //타이치 운동 대상자를 읽음
             SQL = " SELECT a.Pano,b.SName,b.HPhone " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.ETC_CSINFO_DATA a, " + ComNum.VBLF;
-            SQL += " KOSMOS_PMPA.BAS_PATIENT b " + ComNum.VBLF;
+            SQL += " FROM ADMIN.ETC_CSINFO_DATA a, " + ComNum.VBLF;
+            SQL += " ADMIN.BAS_PATIENT b " + ComNum.VBLF;
             SQL += " WHERE a.Gubun='121' " + ComNum.VBLF;
             SQL += " AND a.BDate<=TRUNC(SYSDATE) " + ComNum.VBLF;
             SQL += " AND (a.EndDate IS NULL OR a.EndDate>=TRUNC(SYSDATE)) " + ComNum.VBLF;
@@ -1962,7 +1962,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = " SELECT a.Ptno,b.SName,b.HPhone,TO_CHAR(a.RDate,'YYYY-MM-DD HH24:MI') RDate , b.gbsms ,  '10' day " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_OCS.ENDO_JUPMST a, KOSMOS_PMPA.BAS_PATIENT b " + ComNum.VBLF;
+            SQL += " FROM ADMIN.ENDO_JUPMST a, ADMIN.BAS_PATIENT b " + ComNum.VBLF;
             SQL += " WHERE a.RDate >= trunc(sysdate + 10) " + ComNum.VBLF;
             SQL += " AND a.RDate < trunc(sysdate + 11) " + ComNum.VBLF;
             SQL += " AND a.Ptno=b.Pano(+) " + ComNum.VBLF;
@@ -1976,7 +1976,7 @@ namespace ComLibB
             SQL += " GROUP BY a.Ptno,b.SName,b.HPhone,TO_CHAR(a.RDate,'YYYY-MM-DD HH24:MI') , b.gbsms " + ComNum.VBLF;
             SQL += " union all " + ComNum.VBLF;
             SQL += " SELECT a.Ptno,b.SName,b.HPhone,TO_CHAR(a.RDate,'YYYY-MM-DD HH24:MI') RDate , b.gbsms ,  '4' day " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_OCS.ENDO_JUPMST a, KOSMOS_PMPA.BAS_PATIENT b " + ComNum.VBLF;
+            SQL += " FROM ADMIN.ENDO_JUPMST a, ADMIN.BAS_PATIENT b " + ComNum.VBLF;
             SQL += " WHERE a.RDate >= trunc(sysdate + 4) " + ComNum.VBLF;
             SQL += " AND a.RDate < trunc(sysdate + 5) " + ComNum.VBLF;
             SQL += " AND a.Ptno=b.Pano(+) " + ComNum.VBLF;
@@ -1990,7 +1990,7 @@ namespace ComLibB
             SQL += " GROUP BY a.Ptno,b.SName,b.HPhone,TO_CHAR(a.RDate,'YYYY-MM-DD HH24:MI') , b.gbsms " + ComNum.VBLF;
             SQL += " union all " + ComNum.VBLF;
             SQL += " SELECT a.Ptno,b.SName,b.HPhone,TO_CHAR(a.RDate,'YYYY-MM-DD HH24:MI') RDate , b.gbsms ,  '1' day " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_OCS.ENDO_JUPMST a, KOSMOS_PMPA.BAS_PATIENT b " + ComNum.VBLF;
+            SQL += " FROM ADMIN.ENDO_JUPMST a, ADMIN.BAS_PATIENT b " + ComNum.VBLF;
             SQL += " WHERE a.RDate >= trunc(sysdate + 1) " + ComNum.VBLF;
             SQL += " AND a.RDate < trunc(sysdate + 2) " + ComNum.VBLF;
             SQL += " AND a.Ptno=b.Pano(+) " + ComNum.VBLF;
@@ -2147,7 +2147,7 @@ namespace ComLibB
 
                 //이미 문자를 전송했는지 확인 작업
                 SQL = " SELECT PANO, SENDTIME " + ComNum.VBLF;
-                SQL += " FROM KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;
+                SQL += " FROM ADMIN.ETC_SMS " + ComNum.VBLF;
                 SQL += " WHERE GUBUN = '" + strGubun + "' " + ComNum.VBLF;
                 SQL += " AND PANO = '" + strIdx + "' " + ComNum.VBLF;
                 SQL += " AND HPHONE = '" + strPhone + "'" + ComNum.VBLF;
@@ -2163,7 +2163,7 @@ namespace ComLibB
 
                 if (nREAD2 < 1)
                 {
-                    SQL = " INSERT INTO KOSMOS_PMPA.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, ENTDATE, PSMHSEND) ";
+                    SQL = " INSERT INTO ADMIN.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, ENTDATE, PSMHSEND) ";
                     SQL += " VALUES(SYSDATE, '" + strIdx + "', '" + strName + "', '" + strPhone + "', ";
                     SQL += " '" + strGubun + "', '" + strMobile2 + "', '" + strSENDMSG + "', TO_DATE('" + cpublic.strSysDate + "', 'YYYY-MM-DD'),'Y') ";
 
@@ -2244,7 +2244,7 @@ namespace ComLibB
 
                 //이미 문자를 전송했는지 확인작업
                 SQL = " SELECT PANO, SENDTIME " + ComNum.VBLF;
-                SQL += " FROM KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;
+                SQL += " FROM ADMIN.ETC_SMS " + ComNum.VBLF;
                 SQL += " WHERE GUBUN = '" + strGubun + "'" + ComNum.VBLF;
                 SQL += " AND PANO = '" + strIdx + "'" + ComNum.VBLF;
 
@@ -2259,7 +2259,7 @@ namespace ComLibB
 
                 if (nREAD2 < 1)
                 {
-                    SQL = " INSERT INTO KOSMOS_PMPA.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, ENTDATE, PSMHSEND) ";
+                    SQL = " INSERT INTO ADMIN.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, ENTDATE, PSMHSEND) ";
                     SQL += " VALUES(TO_DATE('" + strDate + "', 'YYYY-MM-DD HH24:MI'), '" + strIdx + "', '" + strName + "', '" + strMobile + "', ";
                     SQL += " '" + strGubun + "', '" + strMobile2 + "', '" + strSENDMSG + "', TO_DATE('" + cpublic.strSysDate + "', 'YYYY-MM-DD'),'Y') ";
 
@@ -2272,7 +2272,7 @@ namespace ComLibB
                     }
 
                     //총무팀 하상진 선생님 추가
-                    SQL = " INSERT INTO KOSMOS_PMPA.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, ENTDATE, PSMHSEND) ";
+                    SQL = " INSERT INTO ADMIN.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, ENTDATE, PSMHSEND) ";
                     SQL += " VALUES(TO_DATE('" + strDate + "', 'YYYY-MM-DD HH24:MI'), '" + strIdx + "', '" + strName + "', '" + strMobile_1 + "', ";
                     SQL += " '" + strGubun + "', '" + strMobile2 + "', '" + strSENDMSG + "', TO_DATE('" + cpublic.strSysDate + "', 'YYYY-MM-DD'),'Y') ";
 
@@ -2332,7 +2332,7 @@ namespace ComLibB
             SQL += " TO_CHAR(EXAMRES12, 'YYYY-MM-DD HH24:MI') EXAMRES12, TO_CHAR(EXAMRES13, 'YYYY-MM-DD HH24:MI') EXAMRES13, " + ComNum.VBLF;
             SQL += " TO_CHAR(EXAMRES14, 'YYYY-MM-DD HH24:MI') EXAMRES14, TO_CHAR(EXAMRES15, 'YYYY-MM-DD HH24:MI') EXAMRES15, " + ComNum.VBLF;
             SQL += " TO_CHAR(EXAMRES16, 'YYYY-MM-DD HH24:MI') EXAMRES16 " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.BAS_PATIENT_POSCO " + ComNum.VBLF;
+            SQL += " FROM ADMIN.BAS_PATIENT_POSCO " + ComNum.VBLF;
             SQL += " WHERE JDATE = TO_DATE('" + cpublic.strSysDate + "', 'YYYY-MM-DD') " + ComNum.VBLF;
 
             SqlErr = clsDB.GetDataTableEx(ref Rs, SQL, clsDB.DbCon);
@@ -2391,7 +2391,7 @@ namespace ComLibB
 
                 //이미자료를 전송했는지 점검 
                 SQL = " SELECT JOBDATE, PANO, SNAME, HPHONE, GUBUN " + ComNum.VBLF;
-                SQL += " FROM KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;
+                SQL += " FROM ADMIN.ETC_SMS " + ComNum.VBLF;
                 SQL += " WHERE JOBDATE BETWEEN TO_DATE('" + cpublic.strSysDate + " 00:00', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                 SQL += " AND TO_DATE('" + cpublic.strSysDate + " 23:59', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                 SQL += " AND PANO = '" + strPano + "' " + ComNum.VBLF;
@@ -2409,7 +2409,7 @@ namespace ComLibB
                     strMsg = strMsg + strMM + strDD;
                     strMsg = strMsg + " 검사 예약이 완료되었습니다.";
 
-                    SQL = " INSERT INTO KOSMOS_PMPA.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, PSMHSEND) VALUES( ";
+                    SQL = " INSERT INTO ADMIN.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, PSMHSEND) VALUES( ";
                     SQL += " TO_DATE('" + strSendTime + "', 'YYYY-MM-DD HH24:MI'), ";
                     SQL += " '" + strPano + "', ";
                     SQL += " '" + strName + "', ";
@@ -2458,7 +2458,7 @@ namespace ComLibB
             strSendTime = cpublic.strSysDate + " " + cpublic.strSysTime;
 
             SQL = " SELECT A.REGDATE AREGDATE, A.PANO APANO,B.SNAME BSNAME, B.HPHONE BHPHONE, A.DEPT_CODE ADEPT_CODE " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.ETC_CANCER_SERVICE A, KOSMOS_PMPA.BAS_PATIENT B " + ComNum.VBLF;
+            SQL += " FROM ADMIN.ETC_CANCER_SERVICE A, ADMIN.BAS_PATIENT B " + ComNum.VBLF;
             SQL += " WHERE A.PANO = B.PANO(+) " + ComNum.VBLF;
             SQL += " AND A.DELDATE IS NULL " + ComNum.VBLF;
             SQL += " AND B.GBSMS = 'Y' " + ComNum.VBLF;
@@ -2487,7 +2487,7 @@ namespace ComLibB
 
                 //진료과별 회신번호 SET
                 SQL = " SELECT DRCODE,DRDEPT1,DRNAME,TELNO,ROWID " + ComNum.VBLF;
-                SQL += " From KOSMOS_PMPA.BAS_DOCTOR " + ComNum.VBLF;
+                SQL += " From ADMIN.BAS_DOCTOR " + ComNum.VBLF;
                 SQL += " WHERE TOUR = 'N' " + ComNum.VBLF;
                 SQL += " AND TELNO IS NOT NULL " + ComNum.VBLF;
                 SQL += " AND DRDEPT1 = '" + strDeptCode + "' " + ComNum.VBLF;
@@ -2514,7 +2514,7 @@ namespace ComLibB
 
                 //이미 자료를 전송했는지 점검 
                 SQL = " SELECT JOBDATE, PANO, SNAME, HPHONE, GUBUN, DEPTCODE " + ComNum.VBLF;
-                SQL += " FROM KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;
+                SQL += " FROM ADMIN.ETC_SMS " + ComNum.VBLF;
                 SQL += " WHERE JOBDATE BETWEEN TO_DATE('" + cpublic.strSysDate + " 00:00', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                 SQL += " AND TO_DATE('" + cpublic.strSysDate + " 23:59', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                 SQL += " AND PANO = '" + strPano + "' " + ComNum.VBLF;
@@ -2533,7 +2533,7 @@ namespace ComLibB
 
                     clsDB.setBeginTran(clsDB.DbCon);
 
-                    SQL = " INSERT INTO KOSMOS_PMPA.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, DEPTCODE, RETTEL, SENDMSG, PSMHSEND) VALUES( ";
+                    SQL = " INSERT INTO ADMIN.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, DEPTCODE, RETTEL, SENDMSG, PSMHSEND) VALUES( ";
                     SQL += " TO_DATE('" + strSendTime + "', 'YYYY-MM-DD HH24:MI'),";
                     SQL += " '" + strPano + "', ";
                     SQL += " '" + strName + "', ";
@@ -2592,7 +2592,7 @@ namespace ComLibB
             strSendTime = cpublic.strSysDate + " " + cpublic.strSysTime;
 
             SQL = " SELECT JDATE, PANO, SNAME, HPHONE, TO_CHAR(EXAMRES6, 'YYYY-MM-DD HH24:MI') EXAMRES6 " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.BAS_PATIENT_POSCO " + ComNum.VBLF;
+            SQL += " FROM ADMIN.BAS_PATIENT_POSCO " + ComNum.VBLF;
             SQL += " WHERE TRUNC(EXAMRES6) = TO_DATE('" + strYDATE + "', 'YYYY-MM-DD') " + ComNum.VBLF;
 
             SqlErr = clsDB.GetDataTableEx(ref Rs, SQL, clsDB.DbCon);
@@ -2622,7 +2622,7 @@ namespace ComLibB
 
                 //이미 자료를 전송했는지 점검
                 SQL = " SELECT JOBDATE, PANO, SNAME, HPHONE, GUBUN " + ComNum.VBLF;
-                SQL += " FROM KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;
+                SQL += " FROM ADMIN.ETC_SMS " + ComNum.VBLF;
                 SQL += " WHERE JOBDATE BETWEEN TO_DATE('" + cpublic.strSysDate + " 00:00', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                 SQL += " AND TO_DATE('" + cpublic.strSysDate + " 23:59', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                 SQL += " AND PANO = '" + strPano + "'" + ComNum.VBLF;
@@ -2642,7 +2642,7 @@ namespace ComLibB
 
                     clsDB.setBeginTran(clsDB.DbCon);
 
-                    SQL = " INSERT INTO KOSMOS_PMPA.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, PSMHSEND) VALUES( ";
+                    SQL = " INSERT INTO ADMIN.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, PSMHSEND) VALUES( ";
                     SQL += " TO_DATE('" + strSendTime + "', 'YYYY-MM-DD HH24:MI'), ";
                     SQL += " '" + strPano + "', ";
                     SQL += " '" + strName + "', ";
@@ -2714,7 +2714,7 @@ namespace ComLibB
             SQL += " TO_CHAR(EXAMRES12, 'YYYY-MM-DD HH24:MI') EXAMRES12, TO_CHAR(EXAMRES13, 'YYYY-MM-DD HH24:MI') EXAMRES13, " + ComNum.VBLF;
             SQL += " TO_CHAR(EXAMRES14, 'YYYY-MM-DD HH24:MI') EXAMRES14, TO_CHAR(EXAMRES15, 'YYYY-MM-DD HH24:MI') EXAMRES15, " + ComNum.VBLF;
             SQL += " TO_CHAR(EXAMRES16, 'YYYY-MM-DD HH24:MI') EXAMRES16 " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.BAS_PATIENT_POSCO " + ComNum.VBLF;
+            SQL += " FROM ADMIN.BAS_PATIENT_POSCO " + ComNum.VBLF;
             SQL += " WHERE TRUNC(EXAMRES1) = TO_DATE('" + strYDate + "', 'YYYY-MM-DD') " + ComNum.VBLF;
             SQL += " OR TRUNC(EXAMRES2) = TO_DATE('" + strYDate + "', 'YYYY-MM-DD')" + ComNum.VBLF;
             SQL += " OR TRUNC(EXAMRES3) = TO_DATE('" + strYDate + "', 'YYYY-MM-DD')" + ComNum.VBLF;
@@ -2823,7 +2823,7 @@ namespace ComLibB
 
                     //이미 자료를 전송했는지 점검
                     SQL = " SELECT JOBDATE, PANO, SNAME, HPHONE, GUBUN " + ComNum.VBLF;
-                    SQL += " FROM KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;
+                    SQL += " FROM ADMIN.ETC_SMS " + ComNum.VBLF;
                     SQL += " WHERE JOBDATE BETWEEN TO_DATE('" + cpublic.strSysDate + " 00:00', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                     SQL += " AND TO_DATE('" + cpublic.strSysDate + " 23:59', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                     SQL += " AND PANO = '" + strPano + "' " + ComNum.VBLF;
@@ -2853,7 +2853,7 @@ namespace ComLibB
 
                         strMsg = strMsg + " 검사예약되었습니다. 포항성모병원";
 
-                        SQL = " INSERT INTO KOSMOS_PMPA.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, PSMHSEND) VALUES( " + ComNum.VBLF;
+                        SQL = " INSERT INTO ADMIN.ETC_SMS(JOBDATE, PANO, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG, PSMHSEND) VALUES( " + ComNum.VBLF;
                         SQL += " TO_DATE('" + strSendTime + "', 'YYYY-MM-DD HH24:MI'), " + ComNum.VBLF;
                         SQL += " '" + strPano + "', " + ComNum.VBLF;
                         SQL += " '" + strName + "', " + ComNum.VBLF;
@@ -2901,7 +2901,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = " SELECT PANO , SNAME,  EXAMRESULT, ROWID " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.ETC_ARS " + ComNum.VBLF;
+            SQL += " FROM ADMIN.ETC_ARS " + ComNum.VBLF;
             SQL += " WHERE ENTDATE  >= TO_DATE('" + CF.DATE_ADD(clsDB.DbCon, cpublic.strSysDate, 01) + "','YYYY-MM-DD') " + ComNum.VBLF;
             SQL += " AND CLASSCODE ='2' " + ComNum.VBLF; //NBST 검사
             SQL += " AND VIEWCHK NOT IN 'Y' " + ComNum.VBLF;
@@ -2924,7 +2924,7 @@ namespace ComLibB
                 strName = AdoRes.Rows[i]["SNAME"].ToString().Trim();
 
                 SQL = " SELECT GBSMS, HPHONE " + ComNum.VBLF;
-                SQL += " FROM KOSMOS_PMPA.BAS_PATIENT " + ComNum.VBLF;
+                SQL += " FROM ADMIN.BAS_PATIENT " + ComNum.VBLF;
                 SQL += " WHERE PANO ='" + strPano + "' " + ComNum.VBLF;
                 SQL += " AND GBSMS ='Y' " + ComNum.VBLF;
 
@@ -3025,7 +3025,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = " SELECT a.Ptno, a.SName, a.DeptCode, a.GuBun,a.ordercode   , TO_CHAR(C.RDate,'YYYY-MM-DD HH24:Mi') RDate, b.HPhone " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_OCS.ETC_JUPMST a, KOSMOS_PMPA.BAS_PATIENT B, KOSMOS_OCS.ETC_ECHO_RESV C " + ComNum.VBLF;
+            SQL += " FROM ADMIN.ETC_JUPMST a, ADMIN.BAS_PATIENT B, ADMIN.ETC_ECHO_RESV C " + ComNum.VBLF;
             SQL += " WHERE C.RDate >= TO_DATE('" + strFDate + "','YYYY-MM-DD') " + ComNum.VBLF;
             SQL += " AND C.RDate <  TO_DATE('" + strTDate + "','YYYY-MM-DD') " + ComNum.VBLF;
             SQL += " AND A.GUBUN IN ('2','3','9','10','11','16','22') " + ComNum.VBLF;
@@ -3080,7 +3080,7 @@ namespace ComLibB
                 }
 
                 //재원중인 환자는 제외 
-                SQL = " SELECT Pano FROM KOSMOS_PMPA.IPD_NEW_MASTER " + ComNum.VBLF;
+                SQL = " SELECT Pano FROM ADMIN.IPD_NEW_MASTER " + ComNum.VBLF;
                 SQL += " WHERE Pano='" + strPano + "' " + ComNum.VBLF;
                 SQL += " AND JDATE = TO_DATE('1900-01-01','YYYY-MM-DD') " + ComNum.VBLF;
 
@@ -3219,7 +3219,7 @@ namespace ComLibB
             strHiraGubun = "DUR_고시일자";
             strMsg = "심평원 연령금기 고시 사항이 변동되었습니다.";
 
-            SQL = " SELECT MAX(ANNCE_DT) ADATE FROM KOSMOS_PMPA.HIRA_TBJBD44 " + ComNum.VBLF;
+            SQL = " SELECT MAX(ANNCE_DT) ADATE FROM ADMIN.HIRA_TBJBD44 " + ComNum.VBLF;
 
             SqlErr = clsDB.GetDataTableEx(ref Rs, SQL, clsDB.DbCon);
 
@@ -3230,7 +3230,7 @@ namespace ComLibB
             Rs = null;
 
             SQL = " SELECT CODE, NAME " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.BAS_BCODE " + ComNum.VBLF;
+            SQL += " FROM ADMIN.BAS_BCODE " + ComNum.VBLF;
             SQL += " WHERE GUBUN = 'DUR_고시일자' AND CODE = '" + strHiraCode + "' " + ComNum.VBLF;
 
             SqlErr = clsDB.GetDataTableEx(ref rs2, SQL, clsDB.DbCon);
@@ -3245,7 +3245,7 @@ namespace ComLibB
                 clsDB.setBeginTran(clsDB.DbCon);
 
                 SQL = " SELECT SABUN, KORNAME, HTEL, MSTEL " + ComNum.VBLF;
-                SQL += " FROM KOSMOS_ADM.INSA_MST " + ComNum.VBLF;
+                SQL += " FROM ADMIN.INSA_MST " + ComNum.VBLF;
                 SQL += " WHERE SABUN IN('02186', '25180', '29439') " + ComNum.VBLF; //약제과수녀님
 
                 SqlErr = clsDB.GetDataTableEx(ref rs3, SQL, clsDB.DbCon);
@@ -3259,7 +3259,7 @@ namespace ComLibB
 
                     //이미전송했는지 확인
                     SQL = " SELECT JOBDATE, GUBUN, HPHONE " + ComNum.VBLF;
-                    SQL += " FROM KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;
+                    SQL += " FROM ADMIN.ETC_SMS " + ComNum.VBLF;
                     SQL += " WHERE JOBDATE BETWEEN TO_DATE('" + cpublic.strSysDate + " 00:00', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                     SQL += " AND TO_DATE('" + cpublic.strSysDate + " 23:59', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                     SQL += " AND GUBUN = '" + strGubun + "' " + ComNum.VBLF;
@@ -3271,7 +3271,7 @@ namespace ComLibB
 
                     if (nREAD2 == 0 && strTel != "")
                     {
-                        SQL = " INSERT INTO KOSMOS_PMPA.ETC_SMS(JOBDATE, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG,PSMHSEND) VALUES( ";
+                        SQL = " INSERT INTO ADMIN.ETC_SMS(JOBDATE, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG,PSMHSEND) VALUES( ";
                         SQL += " TO_DATE('" + strJobTime + "', 'YYYY-MM-DD HH24:MI'), '" + strKorname + "', ";
                         SQL += " '" + strTel + "', '" + strGubun + "', '" + strRettel + "', '" + strMsg + "','Y') ";
 
@@ -3290,7 +3290,7 @@ namespace ComLibB
                 }
 
                 //BCODE 테이블에 새로고시된(HIRA 테이블 일자 업데이트 해줌)
-                SQL = " UPDATE KOSMOS_PMPA.BAS_BCODE SET ";
+                SQL = " UPDATE ADMIN.BAS_BCODE SET ";
                 SQL += " NAME = '" + strADate + "' ";
                 SQL += " WHERE GUBUN = '" + strHiraGubun + "' ";
                 SQL += " AND CODE = '" + strHiraCode + "' ";
@@ -3339,7 +3339,7 @@ namespace ComLibB
             strHiraGubun = "DUR_고지일자";
             strMsg = "심평원 병용금기 고시 사항이 변동되었습니다.";
 
-            SQL = " SELECT MAX(ANNCE_DT) ADATE FROM KOSMOS_PMPA.HIRA_TBJBD43 " + ComNum.VBLF;
+            SQL = " SELECT MAX(ANNCE_DT) ADATE FROM ADMIN.HIRA_TBJBD43 " + ComNum.VBLF;
 
             SqlErr = clsDB.GetDataTableEx(ref Rs, SQL, clsDB.DbCon);
 
@@ -3350,7 +3350,7 @@ namespace ComLibB
             Rs = null;
 
             SQL = " SELECT CODE, NAME " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.BAS_BCODE " + ComNum.VBLF;
+            SQL += " FROM ADMIN.BAS_BCODE " + ComNum.VBLF;
             SQL += " WHERE GUBUN = 'DUR_고시일자' AND CODE = '" + strHiraCode + "' " + ComNum.VBLF;
 
             SqlErr = clsDB.GetDataTableEx(ref rs2, SQL, clsDB.DbCon);
@@ -3365,7 +3365,7 @@ namespace ComLibB
                 clsDB.setBeginTran(clsDB.DbCon);
 
                 SQL = " SELECT SABUN, KORNAME, HTEL, MSTEL " + ComNum.VBLF;
-                SQL += " FROM KOSMOS_ADM.INSA_MST " + ComNum.VBLF;
+                SQL += " FROM ADMIN.INSA_MST " + ComNum.VBLF;
                 SQL += " WHERE SABUN IN('02186', '25180', '29439') " + ComNum.VBLF;
 
                 SqlErr = clsDB.GetDataTableEx(ref rs3, SQL, clsDB.DbCon);
@@ -3379,7 +3379,7 @@ namespace ComLibB
 
                     //이미 전송했는지 확인 
                     SQL = " SELECT JOBDATE, GUBUN, HPHONE " + ComNum.VBLF;
-                    SQL += " FROM KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;
+                    SQL += " FROM ADMIN.ETC_SMS " + ComNum.VBLF;
                     SQL += " WHERE JOBDATE BETWEEN TO_DATE('" + cpublic.strSysDate + " 00:00', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                     SQL += " AND TO_DATE('" + cpublic.strSysDate + " 23:59', 'YYYY-MM-DD HH24:MI') " + ComNum.VBLF;
                     SQL += " AND GUBUN = '" + strGubun + "' " + ComNum.VBLF;
@@ -3394,7 +3394,7 @@ namespace ComLibB
 
                     if (nREAD2 == 0 && strTel != "")
                     {
-                        SQL = " INSERT INTO KOSMOS_PMPA.ETC_SMS(JOBDATE, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG,PSMHSEND) VALUES( ";
+                        SQL = " INSERT INTO ADMIN.ETC_SMS(JOBDATE, SNAME, HPHONE, GUBUN, RETTEL, SENDMSG,PSMHSEND) VALUES( ";
                         SQL += " TO_DATE('" + strJobTime + "', 'YYYY-MM-DD HH24:MI'), '" + strKorname + "', ";
                         SQL += " '" + strTel + "', '" + strGubun + "', '" + strRettel + "', '" + strMsg + "','Y') ";
 
@@ -3409,7 +3409,7 @@ namespace ComLibB
                 }
 
                 //BCODE 테이블에 새로고시된 (HIRA 테이블 일자 업데이트 해줌)
-                SQL = " UPDATE KOSMOS_PMPA.BAS_BCODE SET ";
+                SQL = " UPDATE ADMIN.BAS_BCODE SET ";
                 SQL += " NAME = '" + strADate + "' ";
                 SQL += " WHERE GUBUN = '" + strHiraGubun + "' ";
                 SQL += " AND CODE = '" + strHiraCode + "' ";
@@ -3585,7 +3585,7 @@ namespace ComLibB
 
             //   '익일의 종검예약자를 SMS 자료로 Update
             SQL = " SELECT a.Ptno,a.SName,b.HPhone,b.Tel,TO_CHAR(a.SDate,'YYYY-MM-DD HH24:MI') YDate " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.HEA_JEPSU a, KOSMOS_PMPA.HIC_PATIENT b, KOSMOS_PMPA.HEA_RESULT c " + ComNum.VBLF;
+            SQL += " FROM ADMIN.HEA_JEPSU a, ADMIN.HIC_PATIENT b, ADMIN.HEA_RESULT c " + ComNum.VBLF;
             SQL += " WHERE a.Pano=b.Pano(+) " + ComNum.VBLF;
             SQL += " AND a.WRTNO=c.WRTNO(+) " + ComNum.VBLF;
             SQL += " AND c.EXCODE ='TX32' " + ComNum.VBLF;
@@ -3699,16 +3699,16 @@ namespace ComLibB
 
             clsDB.setBeginTran(clsDB.DbCon);
 
-            SQL = " SELECT JOBDATE FROM KOSMOS_PMPA.ETC_SMS_OPDDRUG " + ComNum.VBLF;
+            SQL = " SELECT JOBDATE FROM ADMIN.ETC_SMS_OPDDRUG " + ComNum.VBLF;
             SQL += " WHERE JOBDATE = TRUNC(SYSDATE) " + ComNum.VBLF;
 
             SqlErr = clsDB.GetDataTableEx(ref rs1, SQL, clsDB.DbCon);
 
             if (rs1.Rows.Count == 0)
             {
-                SQL = " INSERT INTO KOSMOS_PMPA.ETC_SMS_OPDDRUG( JOBDATE, BDATE, PANO, DEPTCODE,DRCODE, SNAME, HPHONE , NAL  ) ";
+                SQL = " INSERT INTO ADMIN.ETC_SMS_OPDDRUG( JOBDATE, BDATE, PANO, DEPTCODE,DRCODE, SNAME, HPHONE , NAL  ) ";
                 SQL += " SELECT  TRUNC(SYSDATE), A.BDATE,  A.PANO, A.DEPTCODE, A.DRCODE, B.SNAME, B.HPHONE, MAX(A.NAL) ";
-                SQL += " FROM KOSMOS_PMPA.OPD_SLIP A,  KOSMOS_PMPA.BAS_PATIENT B ";
+                SQL += " FROM ADMIN.OPD_SLIP A,  ADMIN.BAS_PATIENT B ";
                 SQL += " WHERE A.BDATE =TRUNC(SYSDATE -15) ";
                 SQL += " AND A.BUN IN ('11') ";
                 SQL += " AND A.NAL >= 30 ";
@@ -3721,7 +3721,7 @@ namespace ComLibB
                 SQL += " Having Sum(A.QTY * A.NAL) > 0 ";
                 SQL += " Union All ";
                 SQL += " SELECT  TRUNC(SYSDATE), A.BDATE,  A.PANO, A.DEPTCODE, A.DRCODE, B.SNAME, B.HPHONE, MAX(A.NAL) ";
-                SQL += " FROM KOSMOS_PMPA.OPD_SLIP A,  KOSMOS_PMPA.BAS_PATIENT B ";
+                SQL += " FROM ADMIN.OPD_SLIP A,  ADMIN.BAS_PATIENT B ";
                 SQL += " WHERE A.BDATE =TRUNC(SYSDATE -30) ";
                 SQL += " AND A.BUN IN ('11') ";
                 SQL += " AND A.NAL >= 60 ";
@@ -3734,7 +3734,7 @@ namespace ComLibB
                 SQL += " Having Sum(A.QTY * A.NAL) > 0 ";
                 SQL += " Union All ";
                 SQL += " SELECT  TRUNC(SYSDATE), A.BDATE,  A.PANO, A.DEPTCODE, A.DRCODE, B.SNAME, B.HPHONE, MAX(A.NAL) ";
-                SQL += " FROM KOSMOS_PMPA.OPD_SLIP A,  KOSMOS_PMPA.BAS_PATIENT B ";
+                SQL += " FROM ADMIN.OPD_SLIP A,  ADMIN.BAS_PATIENT B ";
                 SQL += " WHERE A.BDATE =TRUNC(SYSDATE -45) ";
                 SQL += " AND A.BUN IN ('11') ";
                 SQL += " AND A.NAL >= 90 ";
@@ -3752,7 +3752,7 @@ namespace ComLibB
             rs1 = null;
 
             SQL = " SELECT  BDATE,  PANO, DEPTCODE, DRCODE, SNAME, HPHONE, ROWID " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.ETC_SMS_OPDDRUG " + ComNum.VBLF;
+            SQL += " FROM ADMIN.ETC_SMS_OPDDRUG " + ComNum.VBLF;
             SQL += " WHERE JOBDATE =TRUNC(SYSDATE) " + ComNum.VBLF;
             SQL += " AND SMSSEND IS NULL " + ComNum.VBLF;
 
@@ -3799,7 +3799,7 @@ namespace ComLibB
 
                     //진료과별 회신번호 SET
                     SQL = " SELECT DRCODE,DRDEPT1,DRNAME,TELNO,ROWID " + ComNum.VBLF;
-                    SQL += " From KOSMOS_PMPA.BAS_DOCTOR " + ComNum.VBLF;
+                    SQL += " From ADMIN.BAS_DOCTOR " + ComNum.VBLF;
                     SQL += " WHERE TOUR = 'N' " + ComNum.VBLF;
                     SQL += " AND TELNO IS NOT NULL " + ComNum.VBLF;
                     SQL += " AND DRDEPT1 = '" + strDeptCode + "' " + ComNum.VBLF;
@@ -3836,7 +3836,7 @@ namespace ComLibB
                         return;
                     }
 
-                    SQL = " UPDATE KOSMOS_PMPA.ETC_SMS_OPDDRUG  SET SMSSEND ='Y' ";
+                    SQL = " UPDATE ADMIN.ETC_SMS_OPDDRUG  SET SMSSEND ='Y' ";
                     SQL += " WHERE ROWID = '" + AdoRes.Rows[i]["ROWID"].ToString().Trim() + "' ";
 
                     SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -3891,14 +3891,14 @@ namespace ComLibB
             SQL = " SELECT A.DrCode, A.GUBUN, SUM(A.CNT1) CNT1, SUM(A.CNT2) CNT2 " + ComNum.VBLF;
             SQL += " FROM ( " + ComNum.VBLF;
             SQL += " SELECT DOCCODE DrCode, PATID,OUTDATE, DECODE(CHECKED, '1',1,0) CNT1, 1 CNT2 , 'G' GUBUN " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_EMR.EMR_MIBIT " + ComNum.VBLF;
+            SQL += " FROM ADMIN.EMR_MIBIT " + ComNum.VBLF;
             SQL += " WHERE OUTDATE >='20050101' " + ComNum.VBLF;
             SQL += " AND OUTDATE <='" + strLDate + "' " + ComNum.VBLF;
             SQL += " AND CHECKED='1' " + ComNum.VBLF;
             SQL += " GROUP BY PATID, DOCCODE, OUTDATE, CHECKED, 'G' " + ComNum.VBLF;
             SQL += " UNION ALL " + ComNum.VBLF;
             SQL += " SELECT MEDDRCD DrCode, PTNO PATID, MEDENDDATE OUTDATE, DECODE(MIBICLS, '1', 1, 0) CNT1, 1 CNT2, 'T' GUBUN " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_EMR.EMRMIBI " + ComNum.VBLF;
+            SQL += " FROM ADMIN.EMRMIBI " + ComNum.VBLF;
             SQL += " WHERE MIBIFNDATE Is Null " + ComNum.VBLF;
             SQL += " AND MIBICLS = 1 " + ComNum.VBLF;
             SQL += " AND MEDENDDATE <= '" + strLDate + "' " + ComNum.VBLF;
@@ -3906,7 +3906,7 @@ namespace ComLibB
             SQL += " GROUP BY PTNO, MEDDRCD, MEDENDDATE, MIBICLS, 'T' " + ComNum.VBLF;
             SQL += " UNION ALL " + ComNum.VBLF;
             SQL += " SELECT MEDDRCD1 DrCode, PTNO PATID, MEDENDDATE OUTDATE, DECODE(MIBICLS, '1', 1, 0) CNT1, 1 CNT2, 'T' GUBUN " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_EMR.EMRMIBI " + ComNum.VBLF;
+            SQL += " FROM ADMIN.EMRMIBI " + ComNum.VBLF;
             SQL += " WHERE MIBIFNDATE Is Null " + ComNum.VBLF;
             SQL += " AND MIBICLS = 1 " + ComNum.VBLF;
             SQL += " AND MEDENDDATE <= '" + strLDate + "' " + ComNum.VBLF;
@@ -3936,7 +3936,7 @@ namespace ComLibB
                         if (strSabun == "") { return; }
 
                         //인사에서 휴대폰 번호를 읽음
-                        SQL = " SELECT HTel, MSTEL,KorName FROM KOSMOS_ADM.INSA_MST " + ComNum.VBLF;
+                        SQL = " SELECT HTel, MSTEL,KorName FROM ADMIN.INSA_MST " + ComNum.VBLF;
                         SQL += " WHERE Sabun='" + strSabun + "' " + ComNum.VBLF;
                         SQL += " AND (ToiDay IS NULL OR ToiDay > TRUNC(SYSDATE)) " + ComNum.VBLF;
 
@@ -4039,7 +4039,7 @@ namespace ComLibB
                 if (strSabun == "") { return; }
 
                 //인사에서 휴대폰 번호를 읽음
-                SQL = " SELECT HTel, MSTEL,KorName FROM KOSMOS_ADM.INSA_MST " + ComNum.VBLF;
+                SQL = " SELECT HTel, MSTEL,KorName FROM ADMIN.INSA_MST " + ComNum.VBLF;
                 SQL += " WHERE Sabun='" + strSabun + "' " + ComNum.VBLF;
                 SQL += " AND (ToiDay IS NULL OR ToiDay > TRUNC(SYSDATE)) " + ComNum.VBLF;
 
@@ -4133,7 +4133,7 @@ namespace ComLibB
 
             clsDB.setBeginTran(clsDB.DbCon);
 
-            SQL = " SELECT SERENAME, HTEL, CHUK_MM, CHUK_DD FROM KOSMOS_ADM.INSA_MST " + ComNum.VBLF;
+            SQL = " SELECT SERENAME, HTEL, CHUK_MM, CHUK_DD FROM ADMIN.INSA_MST " + ComNum.VBLF;
             SQL += " WHERE CHUK_MM = '" + VB.Mid(cpublic.strSysDate, 6, 2) + "' " + ComNum.VBLF;
             SQL += " AND CHUK_DD = '" + VB.Right(cpublic.strSysDate, 2) + "' " + ComNum.VBLF;
             SQL += " AND TOIDAY IS NULL " + ComNum.VBLF;
@@ -4188,7 +4188,7 @@ namespace ComLibB
             AdoRes = null;
 
             //생일(양력)자 조회
-            SQL = " SELECT KORNAME, HTEL, CHUK_MM, CHUK_DD FROM KOSMOS_ADM.INSA_MST " + ComNum.VBLF;
+            SQL = " SELECT KORNAME, HTEL, CHUK_MM, CHUK_DD FROM ADMIN.INSA_MST " + ComNum.VBLF;
             SQL += " WHERE (CHUK_MM IS NULL OR CHUK_MM = '') " + ComNum.VBLF;
             SQL += " AND BIRTHGU = '0' " + ComNum.VBLF;
             SQL += " AND TO_CHAR(BIRTHDAY,'MM-DD') = '" + VB.Mid(cpublic.strSysDate, 6, 5) + "' " + ComNum.VBLF;
@@ -4249,7 +4249,7 @@ namespace ComLibB
             //양력->음력 변경
             strBirt = ToLunarDate(DateTime.Now);
 
-            SQL = " SELECT KORNAME, HTEL, CHUK_MM, CHUK_DD FROM KOSMOS_ADM.INSA_MST " + ComNum.VBLF;
+            SQL = " SELECT KORNAME, HTEL, CHUK_MM, CHUK_DD FROM ADMIN.INSA_MST " + ComNum.VBLF;
             SQL += " WHERE (CHUK_MM IS NULL OR CHUK_MM = '') " + ComNum.VBLF;
             SQL += " AND BIRTHGU = '1' " + ComNum.VBLF;
             SQL += " AND TO_CHAR(BIRTHDAY,'MM-DD') = '" + VB.Mid(strBirt, 6, 5) + "' " + ComNum.VBLF;
@@ -4320,7 +4320,7 @@ namespace ComLibB
 
             SQL = " SELECT A.PTNO,  TO_CHAR(A.RDATE,'YYYY-MM-DD') RDATE, " + ComNum.VBLF;
             SQL += " A.DEPTCODE, A.DRCODE, B.SNAME " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_OCS.ENDO_JUPMST A, KOSMOS_PMPA.BAS_PATIENT B " + ComNum.VBLF;
+            SQL += " FROM ADMIN.ENDO_JUPMST A, ADMIN.BAS_PATIENT B " + ComNum.VBLF;
             SQL += " WHERE A.RDATE = TO_DATE('" + cpublic.strSysDate + "','YYYY-MM-DD') " + ComNum.VBLF;
             SQL += " AND A.ORDERCODE IN ('GI1','GI1A','GI2','GI2A','GI3','GI3A') " + ComNum.VBLF;
             SQL += " AND A.PTNO = B.PANO(+) " + ComNum.VBLF;
@@ -4406,7 +4406,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = " SELECT A.PANO, A.SNAME,B.HPHONE " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_PMPA.OPD_MASTER A, KOSMOS_PMPA.BAS_PATIENT B " + ComNum.VBLF;
+            SQL += " FROM ADMIN.OPD_MASTER A, ADMIN.BAS_PATIENT B " + ComNum.VBLF;
             SQL += " WHERE A.PANO = B.PANO " + ComNum.VBLF;
             SQL += " AND ACTDATE = TO_DATE('" + cpublic.strSysDate + "','YYYY-MM-DD') " + ComNum.VBLF;
             SQL += " AND A.DEPTCODE = 'HD' " + ComNum.VBLF;
@@ -4454,7 +4454,7 @@ namespace ComLibB
                 }
 
                 //재원중인 환자는 제외
-                SQL = " SELECT Pano FROM KOSMOS_PMPA.IPD_NEW_MASTER " + ComNum.VBLF;
+                SQL = " SELECT Pano FROM ADMIN.IPD_NEW_MASTER " + ComNum.VBLF;
                 SQL += " WHERE Pano='" + strPano + "' " + ComNum.VBLF;
                 SQL += " AND JDATE = TO_DATE('1900-01-01','YYYY-MM-DD') " + ComNum.VBLF;
 
@@ -4520,7 +4520,7 @@ namespace ComLibB
 
             SQL = " SELECT A.PANO, B.SNAME, A.SUCODE, A.STATE, A.EXDATE, A.OKDATE, A.SMSDATE, " + ComNum.VBLF;
             SQL += " A.SMSDATE2, A.SABUN, A.ROWID, C.KORNAME, C.HTEL " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_OCS.OCS_ANTI_MST A, KOSMOS_PMPA.BAS_PATIENT B, KOSMOS_ADM.INSA_MST C " + ComNum.VBLF;
+            SQL += " FROM ADMIN.OCS_ANTI_MST A, ADMIN.BAS_PATIENT B, ADMIN.INSA_MST C " + ComNum.VBLF;
             SQL += " WHERE (A.SMSDATE IS NULL OR A.SMSDATE2 IS NULL) " + ComNum.VBLF;
             SQL += " AND A.OKDATE IS NOT NULL " + ComNum.VBLF;
             SQL += " AND A.PANO = B.PANO(+) " + ComNum.VBLF;
@@ -4541,7 +4541,7 @@ namespace ComLibB
 
                 //입원환자 필터링(입원중인 환자만 SMS전송)
                 SQL = " SELECT PANO, INDATE, OUTDATE " + ComNum.VBLF;
-                SQL += " FROM KOSMOS_PMPA.IPD_NEW_MASTER " + ComNum.VBLF;
+                SQL += " FROM ADMIN.IPD_NEW_MASTER " + ComNum.VBLF;
                 SQL += " WHERE PANO = '" + strPano + "'" + ComNum.VBLF;
                 SQL += " AND JDATE = TO_DATE('1900-01-01','YYYY-MM-DD')" + ComNum.VBLF;
 
@@ -4571,7 +4571,7 @@ namespace ComLibB
 
                         strMsg = strMsg + "★유효기간: " + Rs.Rows[i]["EXDATE"].ToString().Trim() + " 까지입니다.";
 
-                        SQL = " UPDATE KOSMOS_OCS.OCS_ANTI_MST SET SMSDATE = '" + VB.Replace(cpublic.strSysDate, "-", "") + "' ";
+                        SQL = " UPDATE ADMIN.OCS_ANTI_MST SET SMSDATE = '" + VB.Replace(cpublic.strSysDate, "-", "") + "' ";
                         SQL += " WHERE ROWID = '" + Rs.Rows[i]["ROWID"].ToString().Trim() + "' ";
 
                         SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -4584,7 +4584,7 @@ namespace ComLibB
                             strMsg = strMsg + strName + "환자의 " + Rs.Rows[i]["SuCode"].ToString().Trim() + " ";
                             strMsg = strMsg + "★유효기간이 " + Rs.Rows[i]["EXDATE"].ToString().Trim() + " 까지 입니다. 신청서 작성 요망!!";
 
-                            SQL = " UPDATE KOSMOS_OCS.OCS_ANTI_MST SET SMSDATE2 = '" + VB.Replace(cpublic.strSysDate, "-", "") + "' ";
+                            SQL = " UPDATE ADMIN.OCS_ANTI_MST SET SMSDATE2 = '" + VB.Replace(cpublic.strSysDate, "-", "") + "' ";
                             SQL += " WHERE ROWID = '" + Rs.Rows[i]["ROWID"].ToString().Trim() + "' ";
 
                             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -4634,7 +4634,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = " SELECT d.HTEL,c.DrName,a.SName,a.Pano,a.Sex,a.Age, a.DrCode,a.DeptCode,a.WardCode,a.RoomCode, c.SABUN " + ComNum.VBLF;
-            SQL += " FROM  KOSMOS_PMPA.IPD_NEW_MASTER a, KOSMOS_OCS.OCS_DOCTOR c,  KOSMOS_ADM.INSA_MST D " + ComNum.VBLF;
+            SQL += " FROM  ADMIN.IPD_NEW_MASTER a, ADMIN.OCS_DOCTOR c,  ADMIN.INSA_MST D " + ComNum.VBLF;
             SQL += " Where TRUNC(A.ipwontime) = TRUNC(SYSDATE) " + ComNum.VBLF;
             SQL += " AND A.DRCODE = C.DRCODE " + ComNum.VBLF;
             SQL += " AND C.SABUN = D.SABUN " + ComNum.VBLF;
@@ -4656,7 +4656,7 @@ namespace ComLibB
                 strDeptCode = AdoRes.Rows[i]["DeptCode"].ToString().Trim();
 
 
-                SQL = " SELECT Pano FROM KOSMOS_PMPA.IPD_NEW_MASTER " + ComNum.VBLF;  //오늘이전 재원건 있으면 제외
+                SQL = " SELECT Pano FROM ADMIN.IPD_NEW_MASTER " + ComNum.VBLF;  //오늘이전 재원건 있으면 제외
                 SQL += " WHERE Pano ='" + strPano + "' " + ComNum.VBLF;
                 SQL += " AND TRUNC(ipwontime) < TRUNC(SYSDATE) " + ComNum.VBLF;
                 SQL += " AND (ACTDATE IS NULL OR ACTDATE ='') " + ComNum.VBLF;
@@ -4671,7 +4671,7 @@ namespace ComLibB
                 rs1.Dispose();
                 rs1 = null;
 
-                SQL = " SELECT Pano FROM KOSMOS_PMPA.ETC_SMS " + ComNum.VBLF;  //당일 문자전송건 제외
+                SQL = " SELECT Pano FROM ADMIN.ETC_SMS " + ComNum.VBLF;  //당일 문자전송건 제외
                 SQL += " WHERE Pano ='" + strPano + "' " + ComNum.VBLF;
                 SQL += " AND GUBUN ='28' " + ComNum.VBLF;
                 SQL += " AND TRUNC(JOBDATE) =TRUNC(SYSDATE) " + ComNum.VBLF;
@@ -4765,13 +4765,13 @@ namespace ComLibB
             SQL += " SELECT B.BDATE, A.PANO, A.ROOMCODE " + ComNum.VBLF;
             SQL += " FROM IPD_NEW_MASTER A, IPD_NEW_SLIP B, BAS_DOCTOR C " + ComNum.VBLF;
             SQL += " WHERE B.BDATE = TO_DATE('" + ArgDATE + "','YYYY-MM-DD') " + ComNum.VBLF;
-            SQL += " AND B.SUNEXT IN (       SELECT CODE FROM KOSMOS_ADM.DRUG_YAKMUL " + ComNum.VBLF;
+            SQL += " AND B.SUNEXT IN (       SELECT CODE FROM ADMIN.DRUG_YAKMUL " + ComNum.VBLF;
             SQL += " WHERE BUN IN ('02')) " + ComNum.VBLF;
             SQL += " AND A.IPDNO = B.IPDNO " + ComNum.VBLF;
             SQL += " AND A.PANO = B.PANO   AND B.DRCODE = C.DRCODE " + ComNum.VBLF;
             SQL += " GROUP BY  B.BDATE, A.PANO, A.ROOMCODE) MST " + ComNum.VBLF;
             SQL += " WHERE NOT EXISTS " + ComNum.VBLF;
-            SQL += " (SELECT  * FROM KOSMOS_PMPA.ETC_SMS SUB  " + ComNum.VBLF;
+            SQL += " (SELECT  * FROM ADMIN.ETC_SMS SUB  " + ComNum.VBLF;
             SQL += " WHERE MST.PANO = SUB.PANO " + ComNum.VBLF;
             SQL += " AND SUB.GUBUN = '39' " + ComNum.VBLF;
             SQL += " AND TRUNC(SUB.JOBDATE ) = MST.BDATE) " + ComNum.VBLF;
@@ -4810,7 +4810,7 @@ namespace ComLibB
 
             if (ArgPano == "0") { return rtnVal; }
 
-            SQL = " SELECT SName FROM KOSMOS_PMPA.BAS_PATIENT " + ComNum.VBLF;
+            SQL = " SELECT SName FROM ADMIN.BAS_PATIENT " + ComNum.VBLF;
             SQL += " WHERE Pano='" + ArgPano + "' " + ComNum.VBLF;
 
             SqlErr = clsDB.GetDataTableEx(ref RsFunc, SQL, clsDB.DbCon);
@@ -4852,7 +4852,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = " SELECT A.PANO, A.SNAME, A.FRWARD, A.TOWARD, A.TOROOM, A.TODOCTOR , A.ROWID ,  B.SABUN " + ComNum.VBLF;
-            SQL += " FROM IPD_TRANSFOR    A, KOSMOS_OCS.OCS_DOCTOR B " + ComNum.VBLF;
+            SQL += " FROM IPD_TRANSFOR    A, ADMIN.OCS_DOCTOR B " + ComNum.VBLF;
             SQL += " WHERE TRSDATE >= TRUNC(SYSDATE) " + ComNum.VBLF;
             SQL += " AND ( A.FRWARD = 'IU'  OR A.TOWARD ='IU') " + ComNum.VBLF;
             SQL += " AND ( A.FRDEPT = 'MC' OR A.TODEPT= 'MC') " + ComNum.VBLF;
@@ -4874,7 +4874,7 @@ namespace ComLibB
                 strMsg = "[전실알림]" + AdoRes.Rows[i]["FRWARD"].ToString().Trim() + "=>" + AdoRes.Rows[i]["TOROOM"].ToString().Trim() + "호실/" + strName;
 
                 //전공의 전화번호 READ
-                SQL = " SELECT MAX(YYMM) YYMM FROM KOSMOS_OCS.OCS_DOCTOR_SCH " + ComNum.VBLF;
+                SQL = " SELECT MAX(YYMM) YYMM FROM ADMIN.OCS_DOCTOR_SCH " + ComNum.VBLF;
                 SqlErr = clsDB.GetDataTableEx(ref Rs, SQL, clsDB.DbCon);
 
                 if (Rs.Rows.Count > 0)
@@ -4885,7 +4885,7 @@ namespace ComLibB
                 Rs.Dispose();
                 Rs = null;
 
-                SQL = " SELECT A.SABUN, a.setsabun,  B.HTEL  FROM KOSMOS_OCS.OCS_DOCTOR_SCH  A, KOSMOS_ADM.INSA_MST B " + ComNum.VBLF;
+                SQL = " SELECT A.SABUN, a.setsabun,  B.HTEL  FROM ADMIN.OCS_DOCTOR_SCH  A, ADMIN.INSA_MST B " + ComNum.VBLF;
                 SQL += " WHERE A.SABUN  = '" + strSabun + "' " + ComNum.VBLF;
                 SQL += " AND A.SETSABUN = B.SABUN " + ComNum.VBLF;
                 if (strYYMM != "")
@@ -4922,7 +4922,7 @@ namespace ComLibB
 
                 if (strSMSSend == true)
                 {
-                    SQL = " UPDATE KOSMOS_PMPA.IPD_TRANSFOR SET SMS = '*' ";
+                    SQL = " UPDATE ADMIN.IPD_TRANSFOR SET SMS = '*' ";
                     SQL += " WHERE ROWID = '" + AdoRes.Rows[i]["ROWID"].ToString().Trim() + "' ";
 
                     SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -4971,7 +4971,7 @@ namespace ComLibB
 
             //마취과 컨설트 현황
             SQL = " select bdate, sname, gbconfirm, todrcode, gbsend, sms_send, frdeptcode, binpid " + ComNum.VBLF;
-            SQL += " From kosmos_ocs.ocs_itransfer " + ComNum.VBLF;
+            SQL += " From ADMIN.ocs_itransfer " + ComNum.VBLF;
             SQL += " where todeptcode = 'PC' " + ComNum.VBLF;
             SQL += " and bdate >= to_date('" + cpublic.strSysDate + "', 'yyyy-mm-dd') " + ComNum.VBLF;
 
@@ -4992,7 +4992,7 @@ namespace ComLibB
 
                 //마취과(진료과장) 부서만 조회
                 SQL = " select htel, mstel " + ComNum.VBLF;
-                SQL += " from kosmos_adm.insa_mst " + ComNum.VBLF;
+                SQL += " from ADMIN.insa_mst " + ComNum.VBLF;
                 SQL += " where buse = '011118' " + ComNum.VBLF;
                 SQL += " and sabun not in ('06882','17723') " + ComNum.VBLF; //20131004-노선주과장님 임시제외(수술실 수간호사 요청)
                 SQL += " and toiday is null" + ComNum.VBLF;
@@ -5007,7 +5007,7 @@ namespace ComLibB
                     strSENDMSG = "[컨설트수신알림]" + strFrDeptCode + "-" + strSname;
 
                     SQL = " select bigo " + ComNum.VBLF;
-                    SQL += " from kosmos_pmpa.etc_sms " + ComNum.VBLF;
+                    SQL += " from ADMIN.etc_sms " + ComNum.VBLF;
                     SQL += " where gubun = 'L1' " + ComNum.VBLF;
                     SQL += " and sname = '" + strSname + "' " + ComNum.VBLF;
                     SQL += " and hphone = '" + strHTEL + "' " + ComNum.VBLF;
@@ -5019,7 +5019,7 @@ namespace ComLibB
 
                     if (nREAD > 0 && nREAD2 == 0)
                     {
-                        SQL = " insert into kosmos_pmpa.etc_sms( ";
+                        SQL = " insert into ADMIN.etc_sms( ";
                         SQL += " jobdate, sname, hphone, rettel, gubun, sendmsg, bigo, PSMHSEND) values( ";
                         SQL += " to_date('" + strDateTime + "', 'yyyy-mm-dd hh24:mi'), ";
                         SQL += " '" + strSname + "', '" + strHTEL + "', '" + strRettel + "', 'L1', '" + strSENDMSG + "', '전송완료','Y') ";
@@ -5068,8 +5068,8 @@ namespace ComLibB
 
             SQL = " SELECT A.SPECNO, TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, A.PANO, A.SNAME, E.JUMIN1, E.JUMIN2, B.SEX, B.AGE, C.IPDOPD, C.DEPTCODE, C.DRCODE, F.DRNAME, TO_CHAR(C.RECEIVEDATE,'YYYY-MM-DD HH24:MI') AS RECEIVEDATE, TO_CHAR(C.RESULTDATE,'YYYY-MM-DD HH24:MI') AS RESULTDATE, TO_CHAR(C.BDATE,'YYYY-MM-DD') AS GDATE " + ComNum.VBLF;
             SQL += ", B.MASTERCODE, C.SPECCODE, A.HPHONE, D.RESULT, A.EDOCUGU, A.SUGI1, A.SUGI2, B.ORDERNO, D.SUBCODE,A.ROWID " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_OCS.EXAM_SPECMST_SUN A, KOSMOS_OCS.EXAM_ORDER B, KOSMOS_OCS.EXAM_SPECMST C " + ComNum.VBLF;
-            SQL += ", KOSMOS_OCS.EXAM_RESULTC D, KOSMOS_PMPA.BAS_PATIENT E, KOSMOS_PMPA.BAS_DOCTOR F " + ComNum.VBLF;
+            SQL += " FROM ADMIN.EXAM_SPECMST_SUN A, ADMIN.EXAM_ORDER B, ADMIN.EXAM_SPECMST C " + ComNum.VBLF;
+            SQL += ", ADMIN.EXAM_RESULTC D, ADMIN.BAS_PATIENT E, ADMIN.BAS_DOCTOR F " + ComNum.VBLF;
             SQL += " WHERE D.RESULTDATE >= TRUNC(SYSDATE - 1) " + ComNum.VBLF;
             SQL += " AND  D.RESULTDATE < TRUNC(SYSDATE + 1) " + ComNum.VBLF;
             SQL += " AND A.PANO = E.PANO " + ComNum.VBLF;
@@ -5136,7 +5136,7 @@ namespace ComLibB
                     return;
                 }
 
-                SQL = " UPDATE KOSMOS_OCS.EXAM_SPECMST_SUN SET SUGI2 = TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI') ";
+                SQL = " UPDATE ADMIN.EXAM_SPECMST_SUN SET SUGI2 = TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI') ";
                 SQL += " WHERE ROWID = '" + strROWID + "'  ";
 
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -5175,14 +5175,14 @@ namespace ComLibB
 
             SQL = " SELECT  B.DEPTCODE, B.PANO, B.SNAME, B.WARDCODE, A.FRDRCODE, " + ComNum.VBLF;
             SQL += " ( " + ComNum.VBLF;
-            SQL += " SELECT HTEL FROM KOSMOS_ADM.INSA_MST " + ComNum.VBLF;
+            SQL += " SELECT HTEL FROM ADMIN.INSA_MST " + ComNum.VBLF;
             SQL += " Where SABUN = c.SABUN " + ComNum.VBLF;
             SQL += " AND TOIDAY IS NULL " + ComNum.VBLF;
             SQL += " AND SABUN NOT IN ('18210','20110','35104') " + ComNum.VBLF;
             SQL += " AND BUSE NOT IN ('011118', '011114') " + ComNum.VBLF;
             SQL += " ) HTEL, " + ComNum.VBLF;
             SQL += " C.SABUN, A.FRDEPTCODE, A.ROWID, a.binpid abinpid " + ComNum.VBLF;
-            SQL += " FROM KOSMOS_OCS.OCS_ITRANSFER A, KOSMOS_PMPA.IPD_NEW_MASTER B, KOSMOS_OCS.OCS_DOCTOR C " + ComNum.VBLF;
+            SQL += " FROM ADMIN.OCS_ITRANSFER A, ADMIN.IPD_NEW_MASTER B, ADMIN.OCS_DOCTOR C " + ComNum.VBLF;
             SQL += " WHERE A.GBCONFIRM = '*' " + ComNum.VBLF;
             SQL += " AND A.BDATE between TRUNC(SYSDATE-5) and TRUNC(SYSDATE) " + ComNum.VBLF;
             SQL += " AND A.GBDEL <> '*' " + ComNum.VBLF;
@@ -5275,7 +5275,7 @@ namespace ComLibB
 
                     if (strSMSSend == true)
                     {
-                        SQL = " UPDATE KOSMOS_OCS.OCS_ITRANSFER SET ";
+                        SQL = " UPDATE ADMIN.OCS_ITRANSFER SET ";
                         SQL += " SMS_REQ = 'Y'  ";
                         SQL += " WHERE ROWID = '" + AdoRes.Rows[i]["ROWID"].ToString().Trim() + "' ";
 
@@ -5320,14 +5320,14 @@ namespace ComLibB
 
             SQL = " SELECT  B.DEPTCODE, B.PANO, B.SNAME, B.WARDCODE, A.TODRCODE, ";
             SQL = SQL + " ( ";
-            SQL = SQL + "  SELECT HTEL FROM KOSMOS_ADM.INSA_MST ";
+            SQL = SQL + "  SELECT HTEL FROM ADMIN.INSA_MST ";
             SQL = SQL + "  Where SABUN = c.SABUN ";
             SQL = SQL + "  AND TOIDAY IS NULL ";
             SQL = SQL + "  AND SABUN NOT IN ('18210','20110','35104') ";
             SQL = SQL + "  AND BUSE NOT IN ('011118', '011114') ";
             SQL = SQL + "  ) HTEL, ";
             SQL = SQL + " C.SABUN, A.TODEPTCODE, A.GBEMSMS, A.ROWID, a.binpid abinpid ";
-            SQL = SQL + " FROM KOSMOS_OCS.OCS_ITRANSFER A, KOSMOS_PMPA.IPD_NEW_MASTER B, KOSMOS_OCS.OCS_DOCTOR C  ";
+            SQL = SQL + " FROM ADMIN.OCS_ITRANSFER A, ADMIN.IPD_NEW_MASTER B, ADMIN.OCS_DOCTOR C  ";
             SQL = SQL + " WHERE A.GBCONFIRM <> '*' ";
             SQL = SQL + " AND A.BDATE between TRUNC(SYSDATE-5) and TRUNC(SYSDATE) ";
             SQL = SQL + " AND A.GBDEL <> '*' ";
@@ -5416,7 +5416,7 @@ namespace ComLibB
 
                     if (strSMSSend == true)
                     {
-                        SQL = " UPDATE KOSMOS_OCS.OCS_ITRANSFER SET ";
+                        SQL = " UPDATE ADMIN.OCS_ITRANSFER SET ";
                         SQL += " SMS_SEND = 'Y'  ";
                         SQL += " WHERE ROWID = '" + dt.Rows[i]["ROWID"].ToString().Trim() + "' ";
 
@@ -5606,7 +5606,7 @@ namespace ComLibB
             string rtnVal = "";
 
             SQL = " SELECT SABUN, KORNAME, BUSE, HTEL ";
-            SQL = SQL + " FROM KOSMOS_ADM.INSA_MST ";
+            SQL = SQL + " FROM ADMIN.INSA_MST ";
             SQL = SQL + " WHERE SABUN = '" + argSABUN + "' ";
 
             SqlErr = clsDB.GetDataTableEx(ref RsFunc, SQL, clsDB.DbCon);
@@ -5643,7 +5643,7 @@ namespace ComLibB
 
             //회수번호 설정(사내정보게시판-전공의스케줄 하단)
             SQL = " select code, name " + ComNum.VBLF;
-            SQL += " from kosmos_pmpa.bas_bcode " + ComNum.VBLF;
+            SQL += " from ADMIN.bas_bcode " + ComNum.VBLF;
             SQL += " where gubun = '개인회신번호설정' " + ComNum.VBLF;
             SQL += " and deldate is null " + ComNum.VBLF;
             SQL += " and code = '" + argSABUN + "' " + ComNum.VBLF;
@@ -5677,7 +5677,7 @@ namespace ComLibB
             string strSchRettel = "";
 
             SQL = " SELECT MAX(YYMM) MYYMM ";
-            SQL = SQL + " FROM KOSMOS_OCS.OCS_DOCTOR_SCH ";
+            SQL = SQL + " FROM ADMIN.OCS_DOCTOR_SCH ";
             SQL = SQL + " WHERE SABUN = '" + ArgSABUN.Trim() + "' ";
 
             SqlErr = clsDB.GetDataTableEx(ref RsSch, SQL, clsDB.DbCon);
@@ -5692,7 +5692,7 @@ namespace ComLibB
                 //컨설트의 경우 전공의에게도 문자전송
                 //전공의문자 세팅은 사내게시판-근무표-전공의스케줄(의국장이 셋팅함)
                 SQL = " select b.sabun bsabun, b.htel bhtel, b.mstel bmstel ";
-                SQL = SQL + " from kosmos_ocs.ocs_doctor_sch a, kosmos_adm.insa_mst b ";
+                SQL = SQL + " from ADMIN.ocs_doctor_sch a, ADMIN.insa_mst b ";
                 SQL = SQL + " where a.sabun = '" + ArgSABUN.Trim() + "' ";
                 SQL = SQL + " and a.yymm = '" + strYYMM + "' ";
                 SQL = SQL + " and a.setsabun = b.sabun ";
@@ -5850,7 +5850,7 @@ namespace ComLibB
             }
 
             SQL = " select a.deptcode adeptcode, b.deptnamek bdeptnamek " + ComNum.VBLF;
-            SQL += " from kosmos_ocs.ocs_doctor a, kosmos_pmpa.bas_clinicdept b " + ComNum.VBLF;
+            SQL += " from ADMIN.ocs_doctor a, ADMIN.bas_clinicdept b " + ComNum.VBLF;
             SQL += " where a.deptcode = b.deptcode " + ComNum.VBLF;
             SQL += " and a.sabun = '" + ArgSABUN + "' " + ComNum.VBLF;
 

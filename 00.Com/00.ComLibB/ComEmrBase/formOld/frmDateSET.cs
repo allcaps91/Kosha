@@ -33,7 +33,7 @@ namespace ComEmrBase
 
             #region 입원
             SQL = " SELECT B.NAL, B.SDATE, B.EDATE, B.USED, B.ROWID ";
-            SQL += ComNum.VBLF + "  FROM KOSMOS_EMR.EMR_OPTION_SETDATE B";
+            SQL += ComNum.VBLF + "  FROM ADMIN.EMR_OPTION_SETDATE B";
             SQL += ComNum.VBLF + "  WHERE B.USEID = " + clsType.User.IdNumber;
             SQL += ComNum.VBLF + "   AND B.IO = 'I'";
 
@@ -68,7 +68,7 @@ namespace ComEmrBase
 
             #region 외래
             SQL = " SELECT A.DEPTCODE, B.NAL, B.SDATE, B.EDATE, B.USED, B.ROWID";
-            SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_CLINICDEPT A, KOSMOS_EMR.EMR_OPTION_SETDATE B";
+            SQL += ComNum.VBLF + "  FROM ADMIN.BAS_CLINICDEPT A, ADMIN.EMR_OPTION_SETDATE B";
             SQL += ComNum.VBLF + " WHERE A.DEPTCODE NOT IN ('II','R6','HD','PT','AN')";
             SQL += ComNum.VBLF + "   AND A.DEPTCODE = B.DEPTCODE(+)";
             SQL += ComNum.VBLF + "   AND B.USEID(+) = " + clsType.User.IdNumber;
@@ -123,7 +123,7 @@ namespace ComEmrBase
 
                     if(string.IsNullOrWhiteSpace(strROWID))
                     {
-                        SQL = " INSERT INTO KOSMOS_EMR.EMR_OPTION_SETDATE(";
+                        SQL = " INSERT INTO ADMIN.EMR_OPTION_SETDATE(";
                         SQL += ComNum.VBLF + " USEID, IO, DEPTCODE, SDATE, ";
                         SQL += ComNum.VBLF + " EDATE, WRITEDATE, USED, NAL) VALUES (";
                         SQL += ComNum.VBLF +  clsType.User.IdNumber + ",'I','" + strDeptCode + "', TO_DATE('" + strSDate + "','YYYY-MM-DD'), ";
@@ -131,7 +131,7 @@ namespace ComEmrBase
                     }
                     else
                     {
-                        SQL = " UPDATE KOSMOS_EMR.EMR_OPTION_SETDATE SET ";
+                        SQL = " UPDATE ADMIN.EMR_OPTION_SETDATE SET ";
                         SQL += ComNum.VBLF + " SDATE = TO_DATE('" + strSDate + "','YYYY-MM-DD'), ";
                         SQL += ComNum.VBLF + " EDATE = TO_DATE('" + strEDATE + "','YYYY-MM-DD'), ";
                         SQL += ComNum.VBLF + " USED = '" + strUSED + "', ";
@@ -163,7 +163,7 @@ namespace ComEmrBase
 
                     if (string.IsNullOrWhiteSpace(strROWID))
                     {
-                        SQL = " INSERT INTO KOSMOS_EMR.EMR_OPTION_SETDATE(";
+                        SQL = " INSERT INTO ADMIN.EMR_OPTION_SETDATE(";
                         SQL += ComNum.VBLF + " USEID, IO, DEPTCODE, SDATE, ";
                         SQL += ComNum.VBLF + " EDATE, WRITEDATE, USED, NAL) VALUES (";
                         SQL += ComNum.VBLF + clsType.User.IdNumber + ",'O','" + strDeptCode + "', TO_DATE('" + strSDate + "','YYYY-MM-DD'), ";
@@ -171,7 +171,7 @@ namespace ComEmrBase
                     }
                     else
                     {
-                        SQL = " UPDATE KOSMOS_EMR.EMR_OPTION_SETDATE SET ";
+                        SQL = " UPDATE ADMIN.EMR_OPTION_SETDATE SET ";
                         SQL += ComNum.VBLF + " SDATE = TO_DATE('" + strSDate + "','YYYY-MM-DD'), ";
                         SQL += ComNum.VBLF + " EDATE = TO_DATE('" + strEDATE + "','YYYY-MM-DD'), ";
                         SQL += ComNum.VBLF + " USED = '" + strUSED + "', ";

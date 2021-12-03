@@ -298,7 +298,7 @@ namespace ComPmpaLibB
 
                         //예약검사 체크 -----------------------------------------------------
                         SQL = "";
-                        SQL = "SELECT NVL(SUM(AMT6), 0) AMT6 FROM KOSMOS_PMPA.OPD_RESERVED_EXAM ";
+                        SQL = "SELECT NVL(SUM(AMT6), 0) AMT6 FROM ADMIN.OPD_RESERVED_EXAM ";
                         SQL = SQL + ComNum.VBLF + " WHERE PANO ='" + txtPtNo.Text + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND DEPTCODE ='" + strArrDept[i] + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND BDATE =TO_DATE('" + strArrBDate[i] + "','YYYY-MM-DD') ";
@@ -403,7 +403,7 @@ namespace ComPmpaLibB
                         }
 
                         SQL = "";
-                        SQL = "SELECT KTASLEVL FROM KOSMOS_PMPA.OPD_MASTER ";
+                        SQL = "SELECT KTASLEVL FROM ADMIN.OPD_MASTER ";
                         SQL = SQL + ComNum.VBLF + " Where Pano = '" + txtPtNo.Text + "' ";
                         SQL = SQL + ComNum.VBLF + "   And BDate = TO_DATE('" + strArrBDate[i] + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "   And DEPTCODE = '" + dt.Rows[i]["DEPTCODE"].ToString().Trim() + "'";
@@ -758,7 +758,7 @@ namespace ComPmpaLibB
             try
             {
                 SQL = "";
-                SQL = "SELECT JepSuSayu From KOSMOS_PMPA.OPD_MASTER";
+                SQL = "SELECT JepSuSayu From ADMIN.OPD_MASTER";
                 SQL = SQL + ComNum.VBLF + " Where Pano ='" + txtPtNo.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND DEPTCODE = '" + strDept + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND BDate = TO_DATE('" + strBDate + "','YYYY-MM-DD') ";
@@ -980,7 +980,7 @@ namespace ComPmpaLibB
                 }
                 
                 SQL = "";
-                SQL = "SELECT A.ILLCODE, B.ILLNAMEK FROM KOSMOS_OCS.OCS_OILLS A, KOSMOS_PMPA.BAS_ILLS B";
+                SQL = "SELECT A.ILLCODE, B.ILLNAMEK FROM ADMIN.OCS_OILLS A, ADMIN.BAS_ILLS B";
                 SQL = SQL + ComNum.VBLF + " WHERE a.BDate  = TO_DATE('" + strADate + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND a.PTno     = '" + txtPtNo.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.DeptCode = '" + strArrDept[intIndex] + "' ";

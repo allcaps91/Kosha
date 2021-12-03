@@ -1886,14 +1886,14 @@ namespace ComLibB
             if (rdo2.Checked == true)       //암
             {
                 SQL = "  SELECT SUBSTR(REPLACE(ILLCODE, '.', '') || '        ', 1, 16) || ILLNAMEK || ' (V193)' ILLNAMEK   ";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_CANCER ";
+                SQL += ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_CANCER ";
                 SQL += ComNum.VBLF + " WHERE REPLACE(ILLCODE, '.', '') LIKE '" + strSang + "%' ";
                 SQL += ComNum.VBLF + "   ORDER BY ILLCODE ASC, ILLNAMEK ASC ";
             }
             else
             {
                 SQL = "  SELECT SUBSTR(REPLACE(ILLCODE, '.', '') || '        ', 1, 16) || ILLNAMEK || ' (' || VCODE || ')' ILLNAMEK   ";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_H3 ";
+                SQL += ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_H3 ";
                 SQL += ComNum.VBLF + " WHERE REPLACE(ILLCODE, '.', '') LIKE '" + strSang + "%' ";
                 SQL += ComNum.VBLF + "  GROUP BY ILLCODE, ILLNAMEK, VCODE ";
                 SQL += ComNum.VBLF + "   ORDER BY ILLCODE ASC, ILLNAMEK ASC ";

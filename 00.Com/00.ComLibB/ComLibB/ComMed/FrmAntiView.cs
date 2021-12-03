@@ -119,9 +119,9 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT A.SUNEXT, A.SUNAMEK                                                                                 \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_SUN A                                                                               \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUT B                                                                               \r";
-                SQL += "  WHERE SUCODE IN (SELECT JEPCODE FROM KOSMOS_ADM.DRUG_MASTER2 WHERE SUB  IN (02, 07) AND ETCBUN1 = 'Y')    \r";
+                SQL += "   FROM ADMIN.BAS_SUN A                                                                               \r";
+                SQL += "      , ADMIN.BAS_SUT B                                                                               \r";
+                SQL += "  WHERE SUCODE IN (SELECT JEPCODE FROM ADMIN.DRUG_MASTER2 WHERE SUB  IN (02, 07) AND ETCBUN1 = 'Y')    \r";
                 SQL += "    AND A.SUNEXT = B.SUCODE                                                                                 \r";
                 SQL += "    AND (B.DELDATE IS NULL OR B.DELDATE <> '')                                                              \r";
                 SQL += "  ORDER BY  A.SUNEXT                                                                                        \r";
@@ -158,7 +158,7 @@ namespace ComLibB
             try
             { 
                 SQL = "";
-                SQL += " SELECT SABUN FROM KOSMOS_ADM.INSA_MST                  \r";
+                SQL += " SELECT SABUN FROM ADMIN.INSA_MST                  \r";
                 SQL += " WHERE SABUN = '" + clsType.User.Sabun.Trim() + "'      \r";
                 SQL += "   AND BUSE = '044101'                                  \r";
                 SQL += "   AND TOIDAY IS NULL                                   \r";
@@ -196,25 +196,25 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL += " SELECT                                                                                                         \r";
-                //SQL += "        KOSMOS_OCS.FC_OCS_DOCTOR_DRNAME(A.SABUN) DRNAME                     \r";
-                SQL += "        (SELECT D1.DRNAME FROM KOSMOS_OCS.OCS_DOCTOR D1 WHERE D1.SABUN = A.SABUN) AS DRNAME                     \r";
+                //SQL += "        ADMIN.FC_OCS_DOCTOR_DRNAME(A.SABUN) DRNAME                     \r";
+                SQL += "        (SELECT D1.DRNAME FROM ADMIN.OCS_DOCTOR D1 WHERE D1.SABUN = A.SABUN) AS DRNAME                     \r";
                 SQL += "      , TO_CHAR(A.SDATE,'YY/MM/DD')  SDATE                                                                      \r";
                 SQL += "      , to_char(A.PANO, 'FM00000000') PANO                                                                      \r";
                 SQL += "      , B.SNAME                                                                                                 \r";
                 SQL += "      , B.DEPTCODE                                                                                              \r";
                 SQL += "      , B.WARDCODE                                                                                              \r";
                 SQL += "      , B.ROOMCODE                                                                                              \r";
-                //SQL += "      , KOSMOS_OCS.FC_BAS_USER_USERNAME(a.SSABUN) DRNAME1                   \r";
-                SQL += "      , (SELECT D1.DRNAME FROM KOSMOS_OCS.OCS_DOCTOR D1 WHERE D1.SABUN = A.SSABUN) DRNAME1                      \r";
+                //SQL += "      , ADMIN.FC_BAS_USER_USERNAME(a.SSABUN) DRNAME1                   \r";
+                SQL += "      , (SELECT D1.DRNAME FROM ADMIN.OCS_DOCTOR D1 WHERE D1.SABUN = A.SSABUN) DRNAME1                      \r";
                 SQL += "      , TO_CHAR(A.OKDATE,'YY/MM/DD') OKDATE                                                                     \r";   
                 SQL += "      , TO_CHAR(A.EXDATE,'YY/MM/DD') EXDATE                                                                     \r";
                 SQL += "      , DECODE ( A.STATE, '1', '승인','2','보류','3','불가','') STATE                                             \r";
                 SQL += "      , '[' || TRIM(D.SUCODE) || '] ' || D.ORDERNAMES                                                           \r";
                 SQL += "      , TO_CHAR(B.INDATE,'YY/MM/DD') INDATE                                                                     \r";
                 SQL += "      , a.ROWID                                                                                                 \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ANTI_MST    A                                                                            \r";
-                SQL += "      , KOSMOS_PMPA.IPD_NEW_MASTER B                                                                            \r";
-                SQL += "      , KOSMOS_OCS.OCS_ORDERCODE   D                                                                            \r";
+                SQL += "   FROM ADMIN.OCS_ANTI_MST    A                                                                            \r";
+                SQL += "      , ADMIN.IPD_NEW_MASTER B                                                                            \r";
+                SQL += "      , ADMIN.OCS_ORDERCODE   D                                                                            \r";
                 SQL += "  WHERE A.SDATE >=TO_DATE('" + dtpFrDate.Text + "','YYYY-MM-DD')                                                \r";
                 SQL += "    AND A.SDATE <=TO_DATE('" + dtpToDate.Text + "','YYYY-MM-DD')                                                \r";
                 SQL += "    AND A.PANO = B.PANO                                                                                         \r";
@@ -365,8 +365,8 @@ namespace ComLibB
                 SQL += "      , A.SUCODE                                                    \r";
                 SQL += "      , TOREMARK                                                    \r";
                 SQL += "      , b.SUNAMEK                                                   \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_ANTI_MST A                                   \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUN     B                                   \r";
+                SQL += "   FROM ADMIN.OCS_ANTI_MST A                                   \r";
+                SQL += "      , ADMIN.BAS_SUN     B                                   \r";
                 SQL += "  WHERE a.ROWID = '" + strRowid + "'                                \r";
                 SQL += "    AND A.SUCODE = B.SUNEXT(+)                                      \r";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

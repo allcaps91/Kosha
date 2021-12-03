@@ -109,7 +109,7 @@ namespace ComLibB
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(A.InDate,'YYYY-MM-DD') InDate, A.Pano, A.SName,";
                 SQL += ComNum.VBLF + "        A.Bi, C.NAME AS BINAME, A.Age, A.Sex,";
                 SQL += ComNum.VBLF + "        A.DeptCode, D.DEPTNAMEK, A.WardCode, A.RoomCode, B.NAME ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.IPD_NEW_MASTER A,";
+                SQL += ComNum.VBLF + "   FROM ADMIN.IPD_NEW_MASTER A,";
                 SQL += ComNum.VBLF + "        ETC_CSINFO_CODE B,";
                 SQL += ComNum.VBLF + "        BAS_BCODE C,";
                 SQL += ComNum.VBLF + "        BAS_CLINICDEPT D";

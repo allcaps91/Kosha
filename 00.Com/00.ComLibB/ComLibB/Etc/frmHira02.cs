@@ -60,7 +60,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT C.SUNEXT,  C.SUNAMEK, A.GNL_NM_CD,  A.SPC_AGE,  A.SPC_AGE_UNIT, A.ADPT_FR_DT, A.ADPT_TO_DT, A.ANNCE_DT,  TO_CHAR(D.DELDATE,'YYYYMMDD') DELDATE  , F.OFFR_MSG, F.CND_CD  ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.HIRA_TBJBD44 A ,    KOSMOS_PMPA.EDI_SUGA B ,  KOSMOS_PMPA.BAS_SUN C , KOSMOS_PMPA.BAS_SUT D, KOSMOS_PMPA.HIRA_TBDUD230 F";
+                SQL += ComNum.VBLF + "   FROM ADMIN.HIRA_TBJBD44 A ,    ADMIN.EDI_SUGA B ,  ADMIN.BAS_SUN C , ADMIN.BAS_SUT D, ADMIN.HIRA_TBDUD230 F";
                 SQL += ComNum.VBLF + "   WHERE A.GNL_NM_CD =  B.SCODE";
                 SQL += ComNum.VBLF + "     AND B.CODE = C.BCODE";
                 SQL += ComNum.VBLF + "     AND A.ADPT_FR_DT <= '" + ComQuery.CurrentDateTime(clsDB.DbCon, "D") + "' ";
@@ -68,7 +68,7 @@ namespace ComLibB
                 SQL += ComNum.VBLF + "     AND C.SUNEXT =D.SUNEXT ";
                 SQL += ComNum.VBLF + "     AND  B.CODE NOT IN  ";
                 SQL += ComNum.VBLF + "          (SELECT B.MEDC_CD ";
-                SQL += ComNum.VBLF + "          FROM KOSMOS_PMPA.HIRA_TBJBD47 B ";
+                SQL += ComNum.VBLF + "          FROM ADMIN.HIRA_TBJBD47 B ";
                 SQL += ComNum.VBLF + "          WHERE B.GNL_NM_CD = A.GNL_NM_CD)";
                 SQL += ComNum.VBLF + "     AND A.SPC_AGE_UNIT || COALESCE(A.AGE_PRS_CND_CD,'') = F.INFM_CD";
                 SQL += ComNum.VBLF + "     AND F.EXM_KND_CD = '01'";
@@ -219,7 +219,7 @@ namespace ComLibB
             {
 
                 //기존자료 삭제
-                SQL = "DELETE KOSMOS_PMPA.BAS_MSELF WHERE GUBUNA = '0' AND GUBUNB = '9' ";
+                SQL = "DELETE ADMIN.BAS_MSELF WHERE GUBUNA = '0' AND GUBUNB = '9' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -234,7 +234,7 @@ namespace ComLibB
 
                 //'등록할 자료 읽기
                 SQL = " SELECT C.SUNEXT,  C.SUNAMEK, A.GNL_NM_CD,  A.SPC_AGE,  A.SPC_AGE_UNIT, A.ADPT_FR_DT, A.ADPT_TO_DT, TO_CHAR(D.DELDATE,'YYYYMMDD') DELDATE  , F.OFFR_MSG, F.CND_CD  ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.HIRA_TBJBD44 A ,    KOSMOS_PMPA.EDI_SUGA B ,  KOSMOS_PMPA.BAS_SUN C , KOSMOS_PMPA.BAS_SUT D, KOSMOS_PMPA.HIRA_TBDUD230 F";
+                SQL += ComNum.VBLF + "   FROM ADMIN.HIRA_TBJBD44 A ,    ADMIN.EDI_SUGA B ,  ADMIN.BAS_SUN C , ADMIN.BAS_SUT D, ADMIN.HIRA_TBDUD230 F";
                 SQL += ComNum.VBLF + "   WHERE A.GNL_NM_CD =  B.SCODE";
                 SQL += ComNum.VBLF + "     AND B.CODE = C.BCODE";
                 SQL += ComNum.VBLF + "     AND A.ADPT_FR_DT <= '" + ComQuery.CurrentDateTime(clsDB.DbCon, "D") + "' ";
@@ -242,7 +242,7 @@ namespace ComLibB
                 SQL += ComNum.VBLF + "     AND C.SUNEXT =D.SUNEXT ";
                 SQL += ComNum.VBLF + "     AND  B.CODE NOT IN  ";
                 SQL += ComNum.VBLF + "          (SELECT B.MEDC_CD ";
-                SQL += ComNum.VBLF + "          FROM KOSMOS_PMPA.HIRA_TBJBD47 B ";
+                SQL += ComNum.VBLF + "          FROM ADMIN.HIRA_TBJBD47 B ";
                 SQL += ComNum.VBLF + "          WHERE B.GNL_NM_CD = A.GNL_NM_CD)";
                 SQL += ComNum.VBLF + "     AND A.SPC_AGE_UNIT || COALESCE(A.AGE_PRS_CND_CD,'') = F.INFM_CD";
                 SQL += ComNum.VBLF + "     AND F.EXM_KND_CD = '01'";
@@ -272,7 +272,7 @@ namespace ComLibB
 
 
                         SQL = "";
-                        SQL = "INSERT INTO KOSMOS_PMPA.BAS_MSELF (SuCode,GubunA,GubunB,FieldA,FieldB,";
+                        SQL = "INSERT INTO ADMIN.BAS_MSELF (SuCode,GubunA,GubunB,FieldA,FieldB,";
                         SQL = SQL + "EntDate) VALUES ('" + strSuCode + "','1','0','" + strFieldA + "','" + strFieldB + "',";
                         SQL = SQL + "TO_DATE('" + strDate + "','YYYY-MM-DD')) ";
 

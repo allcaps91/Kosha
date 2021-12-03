@@ -78,7 +78,7 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT A.PTNO , A.PTNAME, A.BIRTHDATE, A.SSNO1, A.SSNO2, A.ADDR, TO_CHAR(A.LSTINCMDATE, 'YYYY-MM-DD') LSTINCMDATE, A.DEPTCODE";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.VIEWBPT2 A";
+                SQL += ComNum.VBLF + " FROM ADMIN.VIEWBPT2 A";
 
 
                 if(bolInpt && strInqInfo == "")

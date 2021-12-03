@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(D.ENTDATE,'YYYY-MM-DD') ENTDATE,ENTSABUN, B.PRTSABUN, B.TONGBODATE      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU b , KOSMOS_PMPA.HIC_PATIENT c, KOSMOS_PMPA.HIC_JIN_GBN d  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU b , ADMIN.HIC_PATIENT c, ADMIN.HIC_JIN_GBN d  ");
             parameter.AppendSql(" WHERE b.WRTNO=d.WRTNO                                                                 ");
             parameter.AppendSql("   AND B.WRTNO = :WRTNO                                                                ");
             parameter.AppendSql("   AND b.Pano = c.Pano(+)                                                              ");
@@ -47,9 +47,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ,substr(c.Jumin,1,6)||'-'||substr(c.Jumin,7,7) AS JUMIN, C.SABUN , B.GJJONG                       ");
             parameter.AppendSql(" ,B.LtdCode, TO_CHAR(b.JepDate,'YYYY-MM-DD') JEPDATE , B.AGE, B.SEX                                ");
             parameter.AppendSql(" ,B.WRTNO, B.UCODES, A.GUBUN, A.PanjengDrNo                                                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JIN_GBN A                                                                   ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_JEPSU B                                                                     ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_PATIENT C                                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JIN_GBN A                                                                   ");
+            parameter.AppendSql("     , ADMIN.HIC_JEPSU B                                                                     ");
+            parameter.AppendSql("     , ADMIN.HIC_PATIENT C                                                                   ");
             parameter.AppendSql(" WHERE 1=1                                                                                         ");
             parameter.AppendSql(" AND B.JEPDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                                   ");
             parameter.AppendSql(" AND B.JEPDATE <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                                   ");

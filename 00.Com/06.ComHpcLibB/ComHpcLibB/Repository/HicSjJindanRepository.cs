@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SJ_JINDAN                                  ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SJ_JINDAN                                  ");
             parameter.AppendSql("       (GJYEAR, LTDCODE, PANJENG, BUSE, YUHE, JANGGI, INWON)           ");
             parameter.AppendSql("VALUES                                                                 ");
             parameter.AppendSql("       (:GJYEAR, :LTDCODE, :PANJENG, :BUSE, :YUHE, :JANGGI, :INWON)    ");
@@ -43,7 +43,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SJ_JINDAN           ");
+            parameter.AppendSql("DELETE ADMIN.HIC_SJ_JINDAN           ");
             parameter.AppendSql(" WHERE GJYEAR  = :GJYEAR                   ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE                  ");
 
@@ -57,7 +57,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Panjeng,Buse,Yuhe,Janggi,Inwon,ROWID RID    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SJ_JINDAN                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SJ_JINDAN                   ");
             parameter.AppendSql(" WHERE GJYEAR  = :GJYEAR                           ");
             parameter.AppendSql("   AND LTDCODE = :LTDCODE                          ");
             parameter.AppendSql(" ORDER BY PANJENG, BUSE                            ");
@@ -72,7 +72,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SJ_JINDAN SET   ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SJ_JINDAN SET   ");
             parameter.AppendSql("       INWON = :INWON                  ");
             parameter.AppendSql(" WHERE ROWID  = :RID                   ");
 
@@ -105,7 +105,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SJ_JINDAN SET   ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SJ_JINDAN SET   ");
             parameter.AppendSql("     , PANJENG = :PANJENG              ");
             parameter.AppendSql("     , BUSE    = :BUSE                 ");            
             parameter.AppendSql("     , YUHE    = :YUHE                 ");            
@@ -127,7 +127,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SJ_JINDAN   ");
+            parameter.AppendSql("DELETE ADMIN.HIC_SJ_JINDAN   ");
             parameter.AppendSql(" WHERE ROWID = :RID                ");
 
             parameter.Add("RID", strROWID);

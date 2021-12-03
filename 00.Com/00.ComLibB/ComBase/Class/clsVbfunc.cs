@@ -544,7 +544,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = " SELECT COUNT(*) CNT FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+                SQL = " SELECT COUNT(*) CNT FROM ADMIN.IPD_NEW_MASTER ";
 
                 if (strFlag == "1")
                 {
@@ -592,7 +592,7 @@ namespace ComBase
 
                 //'입원 예약자 READ
                 SQL = " SELECT COUNT(*) CNT ";
-                SQL = SQL + ComNum.VBLF + " FROM  KOSMOS_PMPA.IPD_NEW_MASTER ";
+                SQL = SQL + ComNum.VBLF + " FROM  ADMIN.IPD_NEW_MASTER ";
                 SQL = SQL + ComNum.VBLF + " WHERE OUTDATE = TRUNC(SYSDATE)";
                 SQL = SQL + ComNum.VBLF + "   AND ACTDATE IS NULL ";
                 SQL = SQL + ComNum.VBLF + "   AND Amset4 <> '3' "; //'정상애기
@@ -620,11 +620,11 @@ namespace ComBase
                 //'잔여병상조회 (중환자실, 인큐베이터제외)
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT  SUM(TCNT - ICNT) CNT FROM ( ";
-                SQL = SQL + ComNum.VBLF + "   SELECT  'T' GBN,  SUM(TBED) TCNT, 0 ICNT FROM KOSMOS_PMPA.BAS_ROOM ";
+                SQL = SQL + ComNum.VBLF + "   SELECT  'T' GBN,  SUM(TBED) TCNT, 0 ICNT FROM ADMIN.BAS_ROOM ";
                 SQL = SQL + ComNum.VBLF + "   WHERE WARDCODE NOT IN ('NR','IQ','32','33','35') ";
                 SQL = SQL + ComNum.VBLF + "   UNION ";
                 SQL = SQL + ComNum.VBLF + "   SELECT   'I', 0 TCNT ,  COUNT(*) ICNT  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.IPD_NEW_MASTER  ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.IPD_NEW_MASTER  ";
                 SQL = SQL + ComNum.VBLF + "WHERE PANO <  '90000000'  ";
                 SQL = SQL + ComNum.VBLF + "  AND SUBSTR(Pano,1,7) <> '8100000'  ";
                 SQL = SQL + ComNum.VBLF + "  AND JDATE = TO_DATE('1900-01-01','YYYY-MM-DD') ";
@@ -729,7 +729,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT TO_CHAR(JOBDATE,'YYYY-MM-DD') JOBDATE ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_JOB ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_JOB ";
                 SQL = SQL + ComNum.VBLF + " WHERE JOBDATE > TRUNC(SYSDATE) ";
                 SQL = SQL + ComNum.VBLF + "   AND HOLYDAY <> '*' ";
                 SQL = SQL + ComNum.VBLF + "   AND ROWNUM = 1 ";
@@ -778,7 +778,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT USERNAME FROM KOSMOS_PMPA.BAS_USER ";
+                SQL = SQL + ComNum.VBLF + "SELECT USERNAME FROM ADMIN.BAS_USER ";
                 SQL = SQL + ComNum.VBLF + " WHERE IDNUMBER =" + VB.Val(strSaBun) + " ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -825,7 +825,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT DRNAME FROM KOSMOS_PMPA.BAS_DOCTOR ";
+                SQL = SQL + ComNum.VBLF + "SELECT DRNAME FROM ADMIN.BAS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + " WHERE DRCODE ='" + strDrCode + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -872,7 +872,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = SQL + ComNum.VBLF + "SELECT DRNAME FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN ='" + strDrSabun + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -919,7 +919,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT DRBUNHO FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = "SELECT DRBUNHO FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + "WHERE SABUN='" + strSabun + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -971,7 +971,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT DRCODE FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = "SELECT DRCODE FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + "WHERE DrName='" + strDrName + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -1018,7 +1018,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = "SELECT DRNAME FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + "WHERE SABUN ='" + strSabun + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -1065,7 +1065,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = "SELECT DRNAME FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + "WHERE DrCode='" + strCode + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -1112,7 +1112,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = "SELECT SABUN FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + "WHERE DRCODE='" + strDrCode.Trim() + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dtVB, SQL, pDbCon);
@@ -1160,7 +1160,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = "SELECT SABUN FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + "WHERE DRNAME='" + strDrName.Trim() + "' ";
 
                 if (strDepcode != "")
@@ -1212,7 +1212,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT DEPTCODE FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = "SELECT DEPTCODE FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + "WHERE SABUN='" + strDrSabun.Trim() + "' ";
 
           
@@ -1260,7 +1260,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT DRBUNHO FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = SQL + ComNum.VBLF + "SELECT DRBUNHO FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + " WHERE DrCode='" + strDrCode.Trim() + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -1307,7 +1307,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT DEPTNAMEK FROM KOSMOS_PMPA.BAS_CLINICDEPT ";
+                SQL = SQL + ComNum.VBLF + "SELECT DEPTNAMEK FROM ADMIN.BAS_CLINICDEPT ";
                 SQL = SQL + ComNum.VBLF + " WHERE DEPTCODE = '" + strDeptCode.Trim() + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -1380,7 +1380,7 @@ namespace ComBase
                 SQL = " SELECT TO_CHAR(RDATE,'YYYY-MM-DD') RDATE1, ";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(RDATE,'YY/MM/DD') RDATE2, ";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(RDATE2,'YYYY-MM-DD') RDATE_TO, GBN ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.VACCINE_RESERVED  ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.VACCINE_RESERVED  ";
                 SQL = SQL + ComNum.VBLF + "    WHERE ( JUMIN ='" + strJuMin.Replace("-", "") + "'  or JUMIN3 = '" + strJuminHash + "')  "; //'주민번호 - 입력 해도 처리;
                 SQL = SQL + ComNum.VBLF + "    AND ( VDATE IS NULL OR VDATE =TRUNC(SYSDATE) )";
                 SQL = SQL + ComNum.VBLF + "    AND CANDATE IS NULL ";
@@ -1474,7 +1474,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT KORNAME , BUSE FROM KOSMOS_ADM.INSA_MST ";
+                SQL = SQL + ComNum.VBLF + "SELECT KORNAME , BUSE FROM ADMIN.INSA_MST ";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + strSabun1 + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND ( TOIDAY IS NULL OR TOIDAY < TRUNC(SYSDATE) )";
 
@@ -1562,7 +1562,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT SNAME FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + "SELECT SNAME FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO='" + strPtNo + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -1611,7 +1611,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT nvl(sname2,sname) SNAME FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + "SELECT nvl(sname2,sname) SNAME FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO='" + strPtNo + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -1670,7 +1670,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT SNAME FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + "SELECT SNAME FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO='" + strPtNo + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -1695,7 +1695,7 @@ namespace ComBase
                     for (int i = 1; i <= strVal.Length; i++)
                     {
                         SQL = "";
-                        SQL = "SELECT ENGNAME FROM KOSMOS_PMPA.BAS_Z300FONT ";
+                        SQL = "SELECT ENGNAME FROM ADMIN.BAS_Z300FONT ";
                         SQL = SQL + ComNum.VBLF + " WHERE Z300CODE = '" + VB.Mid(strVal, i, 1) + "' ";
 
                         SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -1775,7 +1775,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT JUMIN1 || JUMIN2 AS JUMIN FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + "SELECT JUMIN1 || JUMIN2 AS JUMIN FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO='" + strPtNo + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -1831,7 +1831,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT JUMIN1 || JUMIN2 AS JUMIN FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + "SELECT JUMIN1 || JUMIN2 AS JUMIN FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO='" + strPtNo + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -1909,7 +1909,7 @@ namespace ComBase
                 SQL = SQL + ComNum.VBLF + "             WHEN '0' THEN '18'";
                 SQL = SQL + ComNum.VBLF + "         END NYEAR, ";
                 SQL = SQL + ComNum.VBLF + "         JUMIN1, JUMIN2, BIRTH ";
-                SQL = SQL + ComNum.VBLF + "     From KOSMOS_PMPA.BAS_PATIENT";
+                SQL = SQL + ComNum.VBLF + "     From ADMIN.BAS_PATIENT";
                 SQL = SQL + ComNum.VBLF + "     WHERE PANO = '" + strPtNo + "')";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -2076,7 +2076,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT SEX FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + "SELECT SEX FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO='" + strPtNo + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -2124,7 +2124,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT HPHONE FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + "SELECT HPHONE FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO='" + strPtNo + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -2238,7 +2238,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT NAME, SNAME FROM KOSMOS_PMPA.BAS_BUSE ";
+                SQL = SQL + ComNum.VBLF + "SELECT NAME, SNAME FROM ADMIN.BAS_BUSE ";
                 SQL = SQL + ComNum.VBLF + " WHERE BUCODE = '" + strBuCode.Trim() + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -2302,7 +2302,7 @@ namespace ComBase
                 //'직원 감액 조회
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT A.GamSaBun, B.NAME, A.GAMMESSAGE  ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_GAMF A , KOSMOS_PMPA.BAS_BUSE B";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.BAS_GAMF A , ADMIN.BAS_BUSE B";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.GAMSOSOK = B.BUCODE(+) ";
                 SQL = SQL + ComNum.VBLF + "    AND A.GAMJUMIN3 = '" + strJuminHash + "'  ";  //'2014-05-27
                 SQL = SQL + ComNum.VBLF + "    AND (A.GAMEND >= TO_DATE('" + strSYSDATE + "','YYYY-MM-DD') OR A.GAMEND IS NULL) ";
@@ -2359,7 +2359,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT NAME FROM KOSMOS_PMPA.ETC_CSINFO_CODE ";
+                SQL = SQL + ComNum.VBLF + "SELECT NAME FROM ADMIN.ETC_CSINFO_CODE ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN = '4' "; //'직업
                 SQL = SQL + ComNum.VBLF + "   AND CODE = '" + strCode + "' ";
 
@@ -2408,7 +2408,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT JINAME FROM KOSMOS_PMPA.BAS_AREA ";
+                SQL = SQL + ComNum.VBLF + "SELECT JINAME FROM ADMIN.BAS_AREA ";
                 SQL = SQL + ComNum.VBLF + " WHERE JICODE='" + strCode + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -2456,7 +2456,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT MAILJUSO FROM KOSMOS_PMPA.BAS_MAILNEW ";
+                SQL = SQL + ComNum.VBLF + "SELECT MAILJUSO FROM ADMIN.BAS_MAILNEW ";
                 SQL = SQL + ComNum.VBLF + " WHERE MAILCODE='" + strCode + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -2501,7 +2501,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT REMARK FROM KOSMOS_PMPA.ETC_JOB_STOP";
+                SQL = SQL + ComNum.VBLF + "SELECT REMARK FROM ADMIN.ETC_JOB_STOP";
                 SQL = SQL + ComNum.VBLF + " WHERE ACTDATE <= SYSDATE ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -2825,7 +2825,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT NAME FROM KOSMOS_ADM.AIS_LTD ";
+                SQL = "SELECT NAME FROM ADMIN.AIS_LTD ";
                 SQL = SQL + ComNum.VBLF + "WHERE LTDCODE='" + strCode.Trim() + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -2920,7 +2920,7 @@ namespace ComBase
             try
             {
                 SQL = "SELECT MAILJUSO";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_MAILNEW      ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_MAILNEW      ";
                 SQL = SQL + ComNum.VBLF + "WHERE MAILCODE = '" + strZipCode1.Trim() + strZipCode2.Trim() + "'";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -2969,7 +2969,7 @@ namespace ComBase
                 SQL = "";
                 SQL = " SELECT ZIPNAME1 || ' ' || ZIPNAME2 || ' ' || ZIPNAME3 AS HEADJUSO,";
                 SQL = SQL + ComNum.VBLF + "  ROADNAME, BUILDNAME, BUN1, BUN2 ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ZIPS_ROAD ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_ZIPS_ROAD ";
                 SQL = SQL + ComNum.VBLF + " WHERE BUILDNO = '" + strBuildNo + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -3139,7 +3139,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT REMARK FROM KOSMOS_PMPA.ETC_JOBSTOP_TIME ";
+                SQL = SQL + ComNum.VBLF + "SELECT REMARK FROM ADMIN.ETC_JOBSTOP_TIME ";
                 SQL = SQL + ComNum.VBLF + " WHERE JOBSTOP_FROM <= SYSDATE ";
                 SQL = SQL + ComNum.VBLF + "   AND JOBSTOP_TO >= SYSDATE ";
 
@@ -3222,7 +3222,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = "SELECT CODE FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN='" + strGubun + "' ";
 
                 if (strDate != "")
@@ -3286,7 +3286,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT " + (strFlag.Trim() == "1" ? "NAME" : "CODE") + " FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = SQL + ComNum.VBLF + "SELECT " + (strFlag.Trim() == "1" ? "NAME" : "CODE") + " FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN='" + strGubun + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND " + (strFlag.Trim() == "1" ? "CODE" : "NAME") + " = '" + strData.Trim() + "'";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL ";
@@ -3349,7 +3349,7 @@ namespace ComBase
                 }
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT SORT,CODE,NAME FROM KOSMOS_PMPA.OPR_CODE ";
+                SQL = SQL + ComNum.VBLF + "SELECT SORT,CODE,NAME FROM ADMIN.OPR_CODE ";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN='" + argGubun + "' ";
 
                 if (strTYPE == "4")
@@ -3421,7 +3421,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT HOLYDAY,TEMPHOLYDAY FROM KOSMOS_PMPA.BAS_JOB ";
+                SQL = SQL + ComNum.VBLF + "SELECT HOLYDAY,TEMPHOLYDAY FROM ADMIN.BAS_JOB ";
                 SQL = SQL + ComNum.VBLF + " WHERE JOBDATE = TO_DATE('" + strDate + "','YYYY-MM-DD') ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -3505,7 +3505,7 @@ namespace ComBase
                 //'병동마스타에서 코드를 Select
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT WARDCODE,WARDNAME ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_WARD ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_WARD ";
 
                 if (strIcuGbn == "1")
                 {
@@ -3593,7 +3593,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT * FROM KOSMOS_PMPA.BAS_JOB_SABUN ";
+                SQL = SQL + ComNum.VBLF + "SELECT * FROM ADMIN.BAS_JOB_SABUN ";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN='" + strJobName + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND CODE = '" + clsPublic.GnJobSabun.ToString("00000") + "' ";
 
@@ -3649,7 +3649,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT SORT,CODE,NAME FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = SQL + ComNum.VBLF + "SELECT SORT,CODE,NAME FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN='" + strGuBun + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND (DELDATE IS NULL OR DELDATE > TRUNC(SYSDATE)) ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY SORT,CODE ";
@@ -3796,7 +3796,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + "  WHERE GUBUN ='OCS_외래물리치료수가2' ";
                 SQL = SQL + ComNum.VBLF + "   AND (DELDATE IS NULL OR DELDATE ='') ";
                 SQL = SQL + ComNum.VBLF + "   AND TRIM(Code) ='" + strSuGaCode.Trim() + "' ";
@@ -3860,7 +3860,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT DEPTCODE, DEPTNAMEK FROM KOSMOS_PMPA.BAS_CLINICDEPT ";
+                SQL = "SELECT DEPTCODE, DEPTNAMEK FROM ADMIN.BAS_CLINICDEPT ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY PRINTRANKING  ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -3961,7 +3961,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT DRCODE, DRNAME ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_DOCTOR";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_DOCTOR";
                 SQL = SQL + ComNum.VBLF + "WHERE TOUR <> 'Y'";
 
                 if (strDept.IndexOf("전체") > -1 || strDept.IndexOf("**") > -1)
@@ -4164,7 +4164,7 @@ namespace ComBase
 
             try
             {
-                SQL = " SELECT PATID FROM KOSMOS_EMR.EMR_TREATT ";
+                SQL = " SELECT PATID FROM ADMIN.EMR_TREATT ";
                 SQL = SQL + ComNum.VBLF + "WHERE PATID = '" + strPano.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND CHECKED ='1'";
 
@@ -4228,7 +4228,7 @@ namespace ComBase
                 {
                     SQL = "";
                     SQL = "SELECT A.PATID ";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.EMR_TREATT A,KOSMOS_EMR.EMR_CHARTPAGET B ";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.EMR_TREATT A,ADMIN.EMR_CHARTPAGET B ";
                     SQL = SQL + ComNum.VBLF + "WHERE A.PATID = '" + strPano.Trim() + "' ";
                     SQL = SQL + ComNum.VBLF + "     AND A.CLASS='I' ";
                     SQL = SQL + ComNum.VBLF + "     AND A.CHECKED ='1'";
@@ -4451,7 +4451,7 @@ namespace ComBase
             try
             {
                 SQL = "   SELECT B.SABUN, B.CERTIOK";
-                SQL = SQL + ComNum.VBLF + "       FROM KOSMOS_ADM.INSA_MST A, KOSMOS_ADM.INSA_MSTS B";
+                SQL = SQL + ComNum.VBLF + "       FROM ADMIN.INSA_MST A, ADMIN.INSA_MSTS B";
                 SQL = SQL + ComNum.VBLF + "       WHERE A.SABUN = B.SABUN";
                 SQL = SQL + ComNum.VBLF + "         AND A.TOIDAY IS NULL";
                 SQL = SQL + ComNum.VBLF + "         AND B.CERTIOK = '1'";
@@ -4502,7 +4502,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "   SELECT NAME FROM KOSMOS_PMPA.ETC_ER_CAR ";
+                SQL = "   SELECT NAME FROM ADMIN.ETC_ER_CAR ";
                 SQL = SQL + ComNum.VBLF + "    WHERE CODE = '" + strCode + "' ";
                 SQL = SQL + ComNum.VBLF + "      AND DELDATE IS NULL";
 
@@ -4557,7 +4557,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT BUSE FROM KOSMOS_ADM.INSA_MST ";
+                SQL = SQL + ComNum.VBLF + "SELECT BUSE FROM ADMIN.INSA_MST ";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN='" + strSaBun + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND ( TOIDAY IS NULL OR TOIDAY < TRUNC(SYSDATE) )";
 
@@ -4583,7 +4583,7 @@ namespace ComBase
                 dt = null;
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT NAME,SNAME FROM KOSMOS_PMPA.BAS_BUSE ";
+                SQL = SQL + ComNum.VBLF + "SELECT NAME,SNAME FROM ADMIN.BAS_BUSE ";
                 SQL = SQL + ComNum.VBLF + " WHERE BUCODE='" + strBuse + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -4655,7 +4655,7 @@ namespace ComBase
                     case "I":
                         SQL = "";
                         SQL = " SELECT /*+ INDEX(IPD_NEW_MASTER INDEX_IPDNEWMST6) */ GBSPC SPECIAL";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER ";
                         SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + strPTNO + "' ";
                         SQL = SQL + ComNum.VBLF + "   AND INDATE >= TO_DATE('" + strBDate + " 00:00','YYYY-MM-DD HH24:MI') ";
                         SQL = SQL + ComNum.VBLF + "   AND INDATE <= TO_DATE('" + strBDate + " 23:59','YYYY-MM-DD HH24:MI') ";
@@ -4673,7 +4673,7 @@ namespace ComBase
 
                     case "O":
                         SQL = "SELECT /*+ INDEX(OPD_MASTER INDEX_OM5) */ GBSPC SPECIAL";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_MASTER";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_MASTER";
                         SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + strPTNO + "'";
                         SQL = SQL + ComNum.VBLF + "   AND BDATE = TO_DATE('" + strBDate + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "   AND DEPTCODE = '" + strDeptCode + "'";
@@ -4742,7 +4742,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT CODE ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN ='외부진료영수증인쇄제한' ";
                 SQL = SQL + ComNum.VBLF + "AND TRIM(CODE) ='" + strCode + "'  ";
 
@@ -4798,7 +4798,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT CODE      ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN = 'BAS_V코드비필요내시경'        ";
                 SQL = SQL + ComNum.VBLF + "AND TRIM(CODE) = '" + strSuCode + "'  ";
 
@@ -4854,7 +4854,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT CODE      ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_BCODE       ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_BCODE       ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN = 'BAS_V코드필요내시경'         ";
                 SQL = SQL + ComNum.VBLF + "AND TRIM(CODE) = '" + strSuCode + "'  ";
 
@@ -4906,15 +4906,15 @@ namespace ComBase
                 SQL = "  SELECT GUBUN";
                 SQL = SQL + ComNum.VBLF + "  FROM (";
                 SQL = SQL + ComNum.VBLF + "  SELECT TO_CHAR(WRITEDATE, 'YYYY-MM-DD') CDATE, '신약사용안내' GUBUN";
-                SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_ADM.DRUG_INFO01";
+                SQL = SQL + ComNum.VBLF + "    FROM ADMIN.DRUG_INFO01";
                 SQL = SQL + ComNum.VBLF + "  WHERE (CDATE >= TRUNC(SYSDATE) OR CDATE IS NULL)";
                 SQL = SQL + ComNum.VBLF + "    UNION ALL";
                 SQL = SQL + ComNum.VBLF + "  SELECT TO_CHAR(WRITEDATE, 'YYYY-MM-DD') CDATE, '원내사용중단약품' GUBUN";
-                SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_ADM.DRUG_INFO02";
+                SQL = SQL + ComNum.VBLF + "    FROM ADMIN.DRUG_INFO02";
                 SQL = SQL + ComNum.VBLF + "  WHERE (CDATE >= TRUNC(SYSDATE) OR CDATE IS NULL)";
                 SQL = SQL + ComNum.VBLF + "    UNION ALL";
                 SQL = SQL + ComNum.VBLF + " SELECT TO_CHAR(WRITEDATE, 'YYYY-MM-DD') CDATE, '약품코드변경안내' GUBUN";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_ADM.DRUG_INFO03";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.DRUG_INFO03";
                 SQL = SQL + ComNum.VBLF + "  WHERE (CDATE >= TRUNC(SYSDATE) OR CDATE IS NULL))";
                 SQL = SQL + ComNum.VBLF + " GROUP BY GUBUN";
                 SQL = SQL + ComNum.VBLF + " ORDER BY GUBUN";
@@ -4991,7 +4991,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT OUTDATE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_MASTER ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_MASTER ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + strPTNO + "' ";
 
                 if (strGBN == "1")
@@ -5071,7 +5071,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = " SELECT  NAME ";
-                SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_PMPA.BAS_BCODE";
+                SQL = SQL + ComNum.VBLF + "     FROM ADMIN.BAS_BCODE";
                 SQL = SQL + ComNum.VBLF + "  WHERE GUBUN = 'BAS_격리실종류'";
                 SQL = SQL + ComNum.VBLF + "      AND CODE = '" + strRoom + "'";
 
@@ -5117,7 +5117,7 @@ namespace ComBase
 
                 SQL = "";
                 SQL = " SELECT  NAME ";
-                SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_PMPA.BAS_BCODE";
+                SQL = SQL + ComNum.VBLF + "     FROM ADMIN.BAS_BCODE";
                 SQL = SQL + ComNum.VBLF + "  WHERE GUBUN = 'BAS_특실표시_간호'";
                 SQL = SQL + ComNum.VBLF + "      AND CODE = '" + strRoom + "'";
 
@@ -5174,7 +5174,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = " SELECT SI_DO, SI_GUN_GU, EUP_MYEON, RI, GIL, DONG";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_ZIPSNEW_2";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_ZIPSNEW_2";
                 SQL = SQL + ComNum.VBLF + " WHERE ZIPCODE = '" + strZipCode1 + strZipCode2 + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -5248,7 +5248,7 @@ namespace ComBase
             try
             {
                 SQL = " SELECT CODE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN = 'NUR_시스템관리자'";
                 SQL = SQL + ComNum.VBLF + "   AND CODE = '" + strSabun + "' ";
                 SQL = SQL + ComNum.VBLF + "      AND DELDATE IS NULL";
@@ -5285,7 +5285,7 @@ namespace ComBase
                 {
 
                     SQL = " SELECT CODE";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE";
                     SQL = SQL + ComNum.VBLF + " WHERE GUBUN = 'NUR_시스템관리자'";
                     SQL = SQL + ComNum.VBLF + "   AND CODE = '" + clsCompuInfo.gstrCOMIP + "' ";
                     SQL = SQL + ComNum.VBLF + "      AND DELDATE IS NULL";
@@ -5393,7 +5393,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = " SELECT extractValue(chartxml, '//dt1') indate, extractValue(chartxml, '//it4') time";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.EMRXML ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.EMRXML ";
                 SQL = SQL + ComNum.VBLF + "     WHERE PTNO = '" + strPTNO + "'";
                 SQL = SQL + ComNum.VBLF + "     AND FORMNO = '2311'";
                 SQL = SQL + ComNum.VBLF + "     AND MEDFRDATE = '" + strInDate.Replace("-", "") + "'";
@@ -5430,7 +5430,7 @@ namespace ComBase
                 SQL = "";
                 SQL = " SELECT DECODE(FORMNO, '2285', extractValue(chartxml, '//dt1'), extractValue(chartxml, '//dt2')) indate, ";
                 SQL = SQL + ComNum.VBLF + " extractValue(chartxml, '//it3') time";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRXML ";
                 SQL = SQL + ComNum.VBLF + "    WHERE PTNO = '" + strPTNO + "'";
                 SQL = SQL + ComNum.VBLF + "    AND FORMNO IN ('2285','2356')";
                 SQL = SQL + ComNum.VBLF + "    AND MEDFRDATE = '" + strInDate.Replace("-", "") + "'";
@@ -5467,7 +5467,7 @@ namespace ComBase
                 SQL = "";
                 SQL = " SELECT DECODE(FORMNO, '2295', extractValue(chartxml, '//dt3'), extractValue(chartxml, '//dt2')) indate, ";
                 SQL = SQL + ComNum.VBLF + " extractValue(chartxml, '//it4') time";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRXML ";
                 SQL = SQL + ComNum.VBLF + "    WHERE PTNO = '" + strPTNO + "'";
                 SQL = SQL + ComNum.VBLF + "    AND FORMNO IN ('2294','2295','2305')";
                 SQL = SQL + ComNum.VBLF + "    AND MEDFRDATE = '" + strInDate.Replace("-", "") + "'";
@@ -5504,7 +5504,7 @@ namespace ComBase
                 SQL = "";
                 SQL = " SELECT DECODE(FORMNO, '1556', extractValue(chartxml, '//it8'), ";
                 SQL = SQL + ComNum.VBLF + " DECODE(FORMNO, '1558', extractValue(chartxml, '//it99'), extractValue(chartxml, '//it3'))) time";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRXML";
                 SQL = SQL + ComNum.VBLF + "    WHERE PTNO = '" + strPTNO + "'";
                 SQL = SQL + ComNum.VBLF + "    AND FORMNO IN ('1545','1553','1554','1556','1558','1561')";
                 SQL = SQL + ComNum.VBLF + "    AND MEDFRDATE = '" + strInDate.Replace("-", "") + "'";
@@ -5556,7 +5556,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = " SELECT NAME FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = " SELECT NAME FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN ='환자장애구분' ";
                 SQL = SQL + ComNum.VBLF + "   AND CODE ='" + strCode + "' ";
 
@@ -5605,7 +5605,7 @@ namespace ComBase
 
             try
             {
-                SQL = " SELECT OBST FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = " SELECT OBST FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO ='" + strPtNo + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -5659,7 +5659,7 @@ namespace ComBase
 
             try
             {
-                SQL = " SELECT JUMIN1,JUMIN2,JUMIN3 FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = " SELECT JUMIN1,JUMIN2,JUMIN3 FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO ='" + strPtNo + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -5728,7 +5728,7 @@ namespace ComBase
 
             try
             {
-                SQL = " SELECT JUMIN1,JUMIN2,JUMIN3 FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = " SELECT JUMIN1,JUMIN2,JUMIN3 FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO ='" + strPtNo + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -5794,7 +5794,7 @@ namespace ComBase
                 conText.Enabled = false;
 
                 SQL = " SELECT NAME";
-                SQL = SQL + ComNum.VBLF + " From KOSMOS_PMPA.BAS_BCODE";
+                SQL = SQL + ComNum.VBLF + " From ADMIN.BAS_BCODE";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN = 'OCS_기타검사결과_조회제한'";
                 SQL = SQL + ComNum.VBLF + " AND CODE = '시행'";
                 SQL = SQL + ComNum.VBLF + " AND NAME = 'N'";
@@ -5825,7 +5825,7 @@ namespace ComBase
 
                 //'1) 의사일 경우 OK
                 SQL = " SELECT DRCODE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_DOCTOR";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_DOCTOR";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + ComFunc.LPAD(strJobSaBun, 5, "0") + "'";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -5852,7 +5852,7 @@ namespace ComBase
 
                 //'2) 의료정보팀에서 세팅한 경우 OK
                 SQL = " SELECT USERID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMR_USERT ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMR_USERT ";
                 SQL = SQL + ComNum.VBLF + " WHERE USERID = '" + strJobSaBun + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND H_VIEW = '*'";
 
@@ -5880,7 +5880,7 @@ namespace ComBase
 
                 //'3) 당일 외래 접수 내역이 있을 경우 OK
                 SQL = " SELECT PANO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_MASTER";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_MASTER";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + strPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND BDATE = TO_DATE('" + strDate + "','YYYY-MM-DD') ";
 
@@ -5908,7 +5908,7 @@ namespace ComBase
 
                 //'4) 현재 재원자이거나 당일 퇴원자일 경우 OK
                 SQL = " SELECT PANO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + strPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND (JDATE = TO_DATE('1900-01-01','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "     OR OUTDATE = TO_DATE('" + strDate + "','YYYY-MM-DD')";
@@ -5973,7 +5973,7 @@ namespace ComBase
             try
             {
                 SQL = "SELECT NAME ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + "WHERE CODE = '" + strWard + "' ";
 
                 if (strGubun == "DRUG")
@@ -6160,7 +6160,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = " SELECT B.NAME ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.INSA_MST A, KOSMOS_PMPA.BAS_BUSE B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.INSA_MST A, ADMIN.BAS_BUSE B";
                 SQL = SQL + ComNum.VBLF + " WHERE A.SABUN = '" + strSABUN + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.BUSE = B.BUCODE ";
 
@@ -6831,7 +6831,7 @@ namespace ComBase
             if (ArgIO == "I")
             {
                 SQL = " SELECT /*+ INDEX(IPD_NEW_MASTER INDEX_IPDNEWMST6) */ GBSPC SPECIAL";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + argPTNO + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND INDATE >= TO_DATE('" + ArgBDate + " 00:00','YYYY-MM-DD HH24:MI') ";
                 SQL = SQL + ComNum.VBLF + "   AND INDATE <= TO_DATE('" + ArgBDate + " 23:59','YYYY-MM-DD HH24:MI') ";
@@ -6848,7 +6848,7 @@ namespace ComBase
             else if (ArgIO == "O")
             {
                 SQL = "SELECT /*+ INDEX(OPD_MASTER INDEX_OM5) */ GBSPC SPECIAL";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_MASTER";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_MASTER";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + argPTNO + "'";
                 SQL = SQL + ComNum.VBLF + "   AND BDATE = TO_DATE('" + ArgBDate + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND DEPTCODE = '" + ArgDeptCode + "'";
@@ -7178,12 +7178,12 @@ namespace ComBase
                 //SQL = SQL + ComNum.VBLF + "ORDER BY TOIDAY desc ";
 
                 SQL = " SELECT SABUN ,SYSDATE TOIDAY ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.INSA_MSTB a, KOSMOS_PMPA.BAS_GAMF b ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.INSA_MSTB a, ADMIN.BAS_GAMF b ";
                 SQL = SQL + ComNum.VBLF + "  WHERE a.JUMIN3 = b.GAMJUMIN3 ";
                 SQL = SQL + ComNum.VBLF + "   AND a.JUMIN3 ='" + clsAES.AES(strJumin) + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND rownum=1 union all ";
                 SQL = SQL + ComNum.VBLF + " SELECT SABUN ,TOIDAY  ";
-                SQL = SQL + ComNum.VBLF + "  FROM kosmos_adm.insa_mst ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.insa_mst ";
                 SQL = SQL + ComNum.VBLF + " WHERE Jumin3  = '" + clsAES.AES(strJumin) + "'  ";
                 SQL = SQL + ComNum.VBLF + "   ORDER BY TOIDAY desc  ";
 
@@ -7319,7 +7319,7 @@ namespace ComBase
             try
             {
                 //'LEVEL 읽기
-                SQL = " SELECT MAX(TREE_DEPTH) DEPT_LEVEL FROM KOSMOS_PMPA.BAS_BUSE ";
+                SQL = " SELECT MAX(TREE_DEPTH) DEPT_LEVEL FROM ADMIN.BAS_BUSE ";
                 SQL += ComNum.VBLF + " WHERE BUCODE = '" + ArgBucode + "'";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -7348,7 +7348,7 @@ namespace ComBase
                     strBuCode = ArgBucode;
                     for (int i = 1; i < nCnt; i++)
                     {
-                        SQL = " SELECT INSA, DEPT_ID_UP FROM KOSMOS_PMPA.BAS_BUSE ";
+                        SQL = " SELECT INSA, DEPT_ID_UP FROM ADMIN.BAS_BUSE ";
                         SQL += ComNum.VBLF + " WHERE DEPT_ID = " + strBuCode;
 
                         SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);
@@ -7365,7 +7365,7 @@ namespace ComBase
                             break;
                         }
 
-                        SQL = " SELECT INSA FROM KOSMOS_PMPA.BAS_BUSE WHERE BUCODE = '" + VB.Val(dt.Rows[0]["DEPT_ID_UP"].ToString().Trim()).ToString("000000") + "'";
+                        SQL = " SELECT INSA FROM ADMIN.BAS_BUSE WHERE BUCODE = '" + VB.Val(dt.Rows[0]["DEPT_ID_UP"].ToString().Trim()).ToString("000000") + "'";
 
                         SqlErr = clsDB.GetDataTable(ref dt2, SQL, pDbCon);
                         if (SqlErr != "")
@@ -7528,7 +7528,7 @@ namespace ComBase
 
             try
             {
-                SQL = "SELECT Name,SName FROM KOSMOS_PMPA.BAS_BUSE ";
+                SQL = "SELECT Name,SName FROM ADMIN.BAS_BUSE ";
                 SQL += ComNum.VBLF + " WHERE BuCode='" + strBuseCode + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, pDbCon);

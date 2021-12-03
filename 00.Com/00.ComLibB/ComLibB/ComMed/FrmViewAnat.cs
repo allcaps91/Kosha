@@ -112,7 +112,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL += " SELECT * FROM KOSMOS_OCS.EXAM_ANATMST                                      \r";
+                SQL += " SELECT * FROM ADMIN.EXAM_ANATMST                                      \r";
                 SQL += "  WHERE Ptno      = '" + clsOrdFunction.Pat.PtNo + "'                       \r";
                 SQL += "    AND BDate     = TO_DATE('" + clsOrdFunction.GstrBDate + "','YYYY-MM-DD')   \r";
                 SQL += "    AND OrderCode = '" + strAnatCode.Trim() + "'                            \r";
@@ -256,7 +256,7 @@ namespace ComLibB
                 if (rdoCP0.Checked)
                 {
                     SQL = "";
-                    SQL += " SELECT ROWID FROM KOSMOS_OCS.EXAM_ANATMST                                  \r";
+                    SQL += " SELECT ROWID FROM ADMIN.EXAM_ANATMST                                  \r";
                     SQL += "  WHERE Ptno      = '" + clsOrdFunction.Pat.PtNo + "'                       \r";
                     SQL += "    AND BDate     = TO_DATE('" + clsOrdFunction.GstrBDate + "','YYYY-MM-DD')\r";
                     SQL += "    AND OrderCode = '" + strAnatCode.Trim() + "'                            \r";
@@ -280,7 +280,7 @@ namespace ComLibB
 
 
                     SQL = "";
-                    SQL += "   merge into KOSMOS_OCS.EXAM_ANATMST b                                 \r";
+                    SQL += "   merge into ADMIN.EXAM_ANATMST b                                 \r";
                     SQL += "   using dual d                                                         \r";
                     SQL += "      on (b.ROWID = '" + strRowId + "')                                 \r";
                     SQL += "    when matched then                                                   \r";
@@ -329,7 +329,7 @@ namespace ComLibB
                 else
                 {
                     SQL = "";
-                    SQL += " SELECT ROWID FROM KOSMOS_OCS.EXAM_ANATMST_CP                                  \r";
+                    SQL += " SELECT ROWID FROM ADMIN.EXAM_ANATMST_CP                                  \r";
                     SQL += "  WHERE CPCODE    = '" + lstCode[cboCP.SelectedIndex] + "'                     \r";
                     SQL += "    AND OrderCode = '" + strAnatCode.Trim() + "'                               \r";
 
@@ -349,7 +349,7 @@ namespace ComLibB
                     dt = null;
 
                     SQL = "";
-                    SQL += "   merge into KOSMOS_OCS.EXAM_ANATMST_CP b                              \r";
+                    SQL += "   merge into ADMIN.EXAM_ANATMST_CP b                              \r";
                     SQL += "   using dual d                                                         \r";
                     SQL += "      on (b.ROWID = '" + strRowId + "')                                 \r";
                     SQL += "    when matched then                                                   \r";

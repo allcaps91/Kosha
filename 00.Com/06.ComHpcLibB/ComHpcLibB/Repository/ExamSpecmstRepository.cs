@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         public int InsertData(EXAM_SPECMST item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_OCS.EXAM_SPECMST (                                         ");
+            parameter.AppendSql(" INSERT INTO ADMIN.EXAM_SPECMST (                                         ");
             parameter.AppendSql("        SPECNO, PANO, BI, SNAME, IPDOPD, AGE, AGEMM, SEX, DEPTCODE             ");
             parameter.AppendSql("       ,WARD, ROOM, DRCODE, DRCOMMENT, STRT, SPECCODE, TUBE, WORKSTS           ");
             parameter.AppendSql("       ,BDATE, BLOODDATE, STATUS, EMR, GB_GWAEXAM, HICNO                       ");
@@ -111,7 +111,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      , STRT, AGE, SEX, TO_CHAR(BLOODDATE, 'HH24:MI') BDATE                ");
             parameter.AppendSql("      , TO_CHAR(BDATE, 'YYYY-MM-DD') BBDATE                                ");
             parameter.AppendSql("      , PANO, IPDOPD, WARD, BI, HICNO                                      ");
-            parameter.AppendSql("   FROM KOSMOS_OCS.EXAM_SPECMST                                            ");
+            parameter.AppendSql("   FROM ADMIN.EXAM_SPECMST                                            ");
             parameter.AppendSql("  WHERE SPECNO = :SPECNO                                                   ");
 
             parameter.Add("SPECNO", strSpecNo);
@@ -124,8 +124,8 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql(" SELECT b.RESULT                           ");
-            parameter.AppendSql("   FROM KOSMOS_OCS.EXAM_SPECMST a          ");
-            parameter.AppendSql("      , KOSMOS_OCS.EXAM_RESULTC b          ");
+            parameter.AppendSql("   FROM ADMIN.EXAM_SPECMST a          ");
+            parameter.AppendSql("      , ADMIN.EXAM_RESULTC b          ");
             parameter.AppendSql("  WHERE a.PANO = :PANO                     ");
             parameter.AppendSql("    AND b.Result IS NOT NULL               ");
             parameter.AppendSql("    AND a.Specno = b.Specno                ");
@@ -144,7 +144,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql(" SELECT SPECNO FROM KOSMOS_OCS.EXAM_SPECMST    ");
+            parameter.AppendSql(" SELECT SPECNO FROM ADMIN.EXAM_SPECMST    ");
             parameter.AppendSql("  WHERE PANO =:PANO                            ");
             parameter.AppendSql("    AND HICNO =:HICNO                          ");
 
@@ -157,7 +157,7 @@ namespace ComHpcLibB.Repository
         public int UpDateSendFlag(string fstrSpecNo)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" UPDATE KOSMOS_OCS.EXAM_SPECMST SET SENDFLAG = 'OK'  ");
+            parameter.AppendSql(" UPDATE ADMIN.EXAM_SPECMST SET SENDFLAG = 'OK'  ");
             parameter.AppendSql("        WHERE SPECNO =:SPECNO                        ");
             
             #region Query 변수대입
@@ -174,12 +174,12 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT /* INDEX(EXAM_SPECMST INDEX_EXAMSPECMST4) */                            ");
             parameter.AppendSql("      SPECNO, PANO, SNAME, AGE || '/' || SEX AS AGESEX, DEPTCODE               ");
             parameter.AppendSql("     ,DECODE(SENDFLAG, 'OK', '전송', '') AS SENDFLAG                           ");
-            parameter.AppendSql("     ,'' ROOMCODE, KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) AS DRNAME, WORKSTS, SPECCODE   ");
+            parameter.AppendSql("     ,'' ROOMCODE, ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) AS DRNAME, WORKSTS, SPECCODE   ");
             parameter.AppendSql("     ,DECODE(STATUS, '04', '일부완료', '검사완료') AS STATUS, ANATNO           ");
             parameter.AppendSql("     ,TO_CHAR(RESULTDATE, 'YYYY-MM-DD HH24:MI') RESULTDATE, HICNO              ");
             parameter.AppendSql("     ,TO_CHAR(BDATE, 'YYYY-MM-DD') BDATE                                       ");
-            parameter.AppendSql("     ,KOSMOS_OCS.FC_EXAM_RESULTC_MSTNAME(SPECNO) AS EXNAME                     ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_SPECMST                                                 ");
+            parameter.AppendSql("     ,ADMIN.FC_EXAM_RESULTC_MSTNAME(SPECNO) AS EXNAME                     ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_SPECMST                                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                                                   ");
             parameter.AppendSql("  AND BDATE >= TO_DATE(:BFDATE,'YYYY-MM-DD')                                   ");
             parameter.AppendSql("  AND BDATE <  TO_DATE(:BTDATE,'YYYY-MM-DD')                                   ");
@@ -227,7 +227,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.EXAM_SPECMST     ");
+            parameter.AppendSql("UPDATE ADMIN.EXAM_SPECMST     ");
             parameter.AppendSql("   SET HICNO   = '0'               ");
             parameter.AppendSql(" WHERE PANO  = :PTNO               ");
             parameter.AppendSql(" AND HICNO  = :WRTNO               ");

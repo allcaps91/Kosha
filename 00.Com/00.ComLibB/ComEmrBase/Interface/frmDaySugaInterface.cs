@@ -153,14 +153,14 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "                 THEN REPLACE(REPLACE(UPPER(R.ITEMVALUE),'L',''),'%','')";
                 SQL += ComNum.VBLF + "                 ELSE UPPER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(UPPER(R.ITEMVALUE),'시작', 'Start'),'유지', 'Keep'),'제거', 'Remove'),'종료', 'Remove'),'퇴원', 'Remove'))";
                 SQL += ComNum.VBLF + "           END ITEMVALUE                                                                                                          ";
-                SQL += ComNum.VBLF + "      FROM KOSMOS_EMR.AEMRCHARTMST A                                                                                 ";
-                SQL += ComNum.VBLF + "     INNER JOIN KOSMOS_EMR.AEMRCHARTROW R                                                                            ";
+                SQL += ComNum.VBLF + "      FROM ADMIN.AEMRCHARTMST A                                                                                 ";
+                SQL += ComNum.VBLF + "     INNER JOIN ADMIN.AEMRCHARTROW R                                                                            ";
                 SQL += ComNum.VBLF + "        ON A.EMRNO = R.EMRNO                                                                                         ";
                 SQL += ComNum.VBLF + "       AND A.EMRNOHIS = R.EMRNOHIS                                                                                   ";
-                SQL += ComNum.VBLF + "     INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER P                                                                         ";
+                SQL += ComNum.VBLF + "     INNER JOIN ADMIN.IPD_NEW_MASTER P                                                                         ";
                 SQL += ComNum.VBLF + "        ON A.PTNO = P.PANO                                                                                           ";
                 SQL += ComNum.VBLF + "       AND A.CHARTDATE >= TO_CHAR(P.INDATE, 'YYYYMMDD')";
-                SQL += ComNum.VBLF + "     INNER JOIN KOSMOS_EMR.AEMRBVITALSET V                                                                        ";
+                SQL += ComNum.VBLF + "     INNER JOIN ADMIN.AEMRBVITALSET V                                                                        ";
                 SQL += ComNum.VBLF + "        ON A.PTNO = V.PTNO                                                                                           ";
                 SQL += ComNum.VBLF + "       AND V.FORMNO = 3150";
                 SQL += ComNum.VBLF + "       AND V.JOBGB IN ('IIO', 'IVT', 'IBN', 'IST')";
@@ -269,12 +269,12 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "                 , CASE                                                                                              ";
                 SQL += ComNum.VBLF + "                   WHEN A.ITEMCD = 'I0000037576'                                                                     ";
                 SQL += ComNum.VBLF + "                        THEN (SELECT VFLAG2                                                                          ";
-                SQL += ComNum.VBLF + "                                FROM KOSMOS_EMR.AEMRBASCD                                                            ";
+                SQL += ComNum.VBLF + "                                FROM ADMIN.AEMRBASCD                                                            ";
                 SQL += ComNum.VBLF + "                               WHERE BSNSCLS = '기록지관리'                                                             ";
                 SQL += ComNum.VBLF + "                                 AND UNITCLS = '산소관리'                                                               ";
                 SQL += ComNum.VBLF + "                                 AND VFLAG1 = A.ITEMVALUE)                                                           ";
                 SQL += ComNum.VBLF + "                        ELSE (SELECT VFLAG2                                                                          ";
-                SQL += ComNum.VBLF + "                                FROM KOSMOS_EMR.AEMRBASCD                                                            ";
+                SQL += ComNum.VBLF + "                                FROM ADMIN.AEMRBASCD                                                            ";
                 SQL += ComNum.VBLF + "                               WHERE BSNSCLS = '기록지관리'                                                             ";
                 SQL += ComNum.VBLF + "                                 AND UNITCLS = '산소관리'                                                               ";
                 SQL += ComNum.VBLF + "                                 AND BASCD = A.ITEMVALUE)                                                            ";
@@ -325,7 +325,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + " , TO_CHAR(P.INDATE, 'YYYYMMDD') MEDFRDATE ";
                 SQL += ComNum.VBLF + " , P.DEPTCODE ";
                 SQL += ComNum.VBLF + " , (SELECT SUM(QTY)         ";
-                SQL += ComNum.VBLF + "      FROM KOSMOS_OCS.OCS_IORDER                          ";
+                SQL += ComNum.VBLF + "      FROM ADMIN.OCS_IORDER                          ";
                 SQL += ComNum.VBLF + "     WHERE PTNO      = A.PTNO                                  ";
                 SQL += ComNum.VBLF + "       AND BDATE     = TO_DATE('" + dtpSDATE.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD')    ";
                 SQL += ComNum.VBLF + "       AND SUCODE    = RPAD(E.BASEXNAME, 8, ' ')          ";
@@ -337,7 +337,7 @@ namespace ComEmrBase
                 //SQL += ComNum.VBLF + " , CASE WHEN EXISTS  ";
                 //SQL += ComNum.VBLF + "   ( ";
                 //SQL += ComNum.VBLF + "   SELECT 1  ";
-                //SQL += ComNum.VBLF + "     FROM KOSMOS_OCS.OCS_IORDER";
+                //SQL += ComNum.VBLF + "     FROM ADMIN.OCS_IORDER";
                 //SQL += ComNum.VBLF + "    WHERE PTNO = A.PTNO";
                 //SQL += ComNum.VBLF + "      AND BDATE = TO_DATE('" + dtpSDATE.Value.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD')";
                 //SQL += ComNum.VBLF + "      AND SUCODE    = RPAD(E.BASEXNAME, 8, ' ')";
@@ -346,9 +346,9 @@ namespace ComEmrBase
                 //SQL += ComNum.VBLF + "     HAVING SUM(NAL) > 0";
                 //SQL += ComNum.VBLF + "   ) THEN 1 END ORDERSEND ";
                 SQL += ComNum.VBLF + "  FROM MM A                                                                                                           ";
-                SQL += ComNum.VBLF + "     INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER P                                                                         ";
+                SQL += ComNum.VBLF + "     INNER JOIN ADMIN.IPD_NEW_MASTER P                                                                         ";
                 SQL += ComNum.VBLF + "        ON A.PTNO = P.PANO                                                                                           ";
-                SQL += ComNum.VBLF + "      LEFT OUTER JOIN KOSMOS_EMR.AEMRBASCD E                                                                         ";
+                SQL += ComNum.VBLF + "      LEFT OUTER JOIN ADMIN.AEMRBASCD E                                                                         ";
                 SQL += ComNum.VBLF + "        ON E.BSNSCLS = '기록지관리'    ";
                 SQL += ComNum.VBLF + "       AND E.UNITCLS = '산소오더관리'   ";
                 SQL += ComNum.VBLF + "       AND E.BASCD  =  A.VALUE         ";
@@ -499,7 +499,7 @@ namespace ComEmrBase
                         string strDosCode = string.Empty;
 
                         #region GET SABUN
-                        SQL = " SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR ";
+                        SQL = " SELECT SABUN FROM ADMIN.OCS_DOCTOR ";
                         SQL = SQL + ComNum.VBLF + " WHERE DRCODE = '" + pAcp.medDrCd + "' ";
                         SQL = SQL + ComNum.VBLF + "   AND GBOUT  = 'N' ";
 
@@ -521,7 +521,7 @@ namespace ComEmrBase
                         #endregion
 
                         #region DOSCODE
-                        SQL = " SELECT SPECCODE  FROM KOSMOS_OCS.OCS_ORDERCODE ";
+                        SQL = " SELECT SPECCODE  FROM ADMIN.OCS_ORDERCODE ";
                         SQL = SQL + ComNum.VBLF + " WHERE ORDERCODE ='" + strORDERCODE + "' ";
 
                         SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -543,7 +543,7 @@ namespace ComEmrBase
 
                         #region 오더등록
                         //'<오더등록>---------------------------------------------------------------------------------------
-                        SQL = "SELECT KOSMOS_OCS.SEQ_ORDERNO.NextVal nNEXTVAL FROM DUAL";
+                        SQL = "SELECT ADMIN.SEQ_ORDERNO.NextVal nNEXTVAL FROM DUAL";
                         SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
 
                         if (SqlErr != "")
@@ -562,7 +562,7 @@ namespace ComEmrBase
                         dt = null;
 
 
-                        SQL = "INSERT INTO KOSMOS_OCS.OCS_IORDER ( Ptno, BDate,     Seqno,     DeptCode,  ";
+                        SQL = "INSERT INTO ADMIN.OCS_IORDER ( Ptno, BDate,     Seqno,     DeptCode,  ";
                         SQL = SQL + ComNum.VBLF + "  DrCode,  StaffID,    Slipno,    OrderCode, SuCode,  Bun,      ";
                         SQL = SQL + ComNum.VBLF + "  GbOrder, Contents,   BContents, RealQty,   Qty,     RealNal,  ";
                         SQL = SQL + ComNum.VBLF + "  Nal,     DosCode,    GbInfo,    GbSelf,    GbSpc,   GbNgt,    ";
@@ -605,7 +605,7 @@ namespace ComEmrBase
                         //int AMT = 0;
 
                         //SQL = "SELECT 1";
-                        //SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_IORDER";
+                        //SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_IORDER";
                         //SQL = SQL + ComNum.VBLF + "WHERE SUCODE = 'M0040'";
                         //SQL = SQL + ComNum.VBLF + "  AND BDATE  = TO_DATE('" + dtpSDATE.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD')";
                         //SQL = SQL + ComNum.VBLF + "  AND PTNO   = '" + pAcp.ptNo + "'";
@@ -631,7 +631,7 @@ namespace ComEmrBase
                         //}
 
                         ////'<오더등록>---------------------------------------------------------------------------------------
-                        //SQL = "SELECT KOSMOS_OCS.SEQ_ORDERNO.NextVal nNEXTVAL FROM DUAL";
+                        //SQL = "SELECT ADMIN.SEQ_ORDERNO.NextVal nNEXTVAL FROM DUAL";
                         //SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
 
                         //if (SqlErr != "")
@@ -650,7 +650,7 @@ namespace ComEmrBase
                         //dt = null;
 
 
-                        //SQL = "INSERT INTO KOSMOS_OCS.OCS_IORDER ( Ptno, BDate,     Seqno,     DeptCode,  ";
+                        //SQL = "INSERT INTO ADMIN.OCS_IORDER ( Ptno, BDate,     Seqno,     DeptCode,  ";
                         //SQL = SQL + ComNum.VBLF + "  DrCode,  StaffID,    Slipno,    OrderCode, SuCode,  Bun,      ";
                         //SQL = SQL + ComNum.VBLF + "  GbOrder, Contents,   BContents, RealQty,   Qty,     RealNal,  ";
                         //SQL = SQL + ComNum.VBLF + "  Nal,     DosCode,    GbInfo,    GbSelf,    GbSpc,   GbNgt,    ";
@@ -696,8 +696,8 @@ namespace ComEmrBase
                         SQL = SQL + ComNum.VBLF + "             , A.CHARTDATE || ' ' || A.CHARTTIME AS CHARTDATETIME                                                                                                                 ";
                         SQL = SQL + ComNum.VBLF + "             , R.ITEMCD                                                                                                                                                           ";
                         SQL = SQL + ComNum.VBLF + "             , R.ITEMVALUE                                                                                                                                                        ";
-                        SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.AEMRCHARTMST A                                                                                                                                          ";
-                        SQL = SQL + ComNum.VBLF + "         INNER JOIN KOSMOS_EMR.AEMRCHARTROW R                                                                                                                                     ";
+                        SQL = SQL + ComNum.VBLF + "          FROM ADMIN.AEMRCHARTMST A                                                                                                                                          ";
+                        SQL = SQL + ComNum.VBLF + "         INNER JOIN ADMIN.AEMRCHARTROW R                                                                                                                                     ";
                         SQL = SQL + ComNum.VBLF + "            ON A.EMRNO = R.EMRNO                                                                                                                                                  ";
                         SQL = SQL + ComNum.VBLF + "           AND A.EMRNOHIS = R.EMRNOHIS                                                                                                                                            ";
                         SQL = SQL + ComNum.VBLF + "         WHERE A.FORMNO = 3150-- 임상관찰 기록                                                                                                                                      ";
@@ -862,7 +862,7 @@ namespace ComEmrBase
                         SQL = SQL + ComNum.VBLF + "      WHERE NOT EXISTS";
                         SQL = SQL + ComNum.VBLF + "      (";
                         SQL = SQL + ComNum.VBLF + "          SELECT 1";
-                        SQL = SQL + ComNum.VBLF + "           FROM KOSMOS_OCS.OCS_IORDER";
+                        SQL = SQL + ComNum.VBLF + "           FROM ADMIN.OCS_IORDER";
                         SQL = SQL + ComNum.VBLF + "          WHERE SUCODE = A.SUCODE";
                         SQL = SQL + ComNum.VBLF + "            AND BDATE  = TO_DATE('" + dtpSDATE.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD')";
                         SQL = SQL + ComNum.VBLF + "            AND PTNO   = '" + pAcp.ptNo + "'";
@@ -885,7 +885,7 @@ namespace ComEmrBase
                             for (int j = 0; j < dt2.Rows.Count; j++)
                             {
                                 #region '<오더등록>---------------------------------------------------------------------------------------
-                                SQL = "SELECT KOSMOS_OCS.SEQ_ORDERNO.NextVal nNEXTVAL FROM DUAL";
+                                SQL = "SELECT ADMIN.SEQ_ORDERNO.NextVal nNEXTVAL FROM DUAL";
                                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
 
                                 if (SqlErr != "")
@@ -907,7 +907,7 @@ namespace ComEmrBase
                                 strSucode = dt2.Rows[j]["SUCODE"].ToString().Trim();
 
 
-                                SQL = "INSERT INTO KOSMOS_OCS.OCS_IORDER ( Ptno, BDate,     Seqno,     DeptCode,  ";
+                                SQL = "INSERT INTO ADMIN.OCS_IORDER ( Ptno, BDate,     Seqno,     DeptCode,  ";
                                 SQL = SQL + ComNum.VBLF + "  DrCode,  StaffID,    Slipno,    OrderCode, SuCode,  Bun,      ";
                                 SQL = SQL + ComNum.VBLF + "  GbOrder, Contents,   BContents, RealQty,   Qty,     RealNal,  ";
                                 SQL = SQL + ComNum.VBLF + "  Nal,     DosCode,    GbInfo,    GbSelf,    GbSpc,   GbNgt,    ";

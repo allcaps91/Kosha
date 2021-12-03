@@ -131,7 +131,7 @@ namespace ComLibB
 
                 if (FGstrRowid == "")
                 {
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_SIMSAINFOR_File ( SUNEXT, REMARK, JONG) VALUES (";
+                    SQL = " INSERT INTO ADMIN.BAS_SIMSAINFOR_File ( SUNEXT, REMARK, JONG) VALUES (";
                     SQL = SQL + ComNum.VBLF + " '" + txtSuNext.Text + "', :REMARK, '" + VB.Left(cboJong.Text, 2) + "' ) ";
 
                     SqlErr = clsDB.ExecuteClobQuery(SQL, strData, ref intRowAffected, clsDB.DbCon);
@@ -144,7 +144,7 @@ namespace ComLibB
                         return;
                     }
 
-                    SQL = " SELECT ROWID FROM KOSMOS_PMPA.BAS_SIMSAINFOR_File WHERE SUNEXT = '" + txtSuNext.Text + "' ";
+                    SQL = " SELECT ROWID FROM ADMIN.BAS_SIMSAINFOR_File WHERE SUNEXT = '" + txtSuNext.Text + "' ";
 
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                     if (SqlErr != "")
@@ -157,7 +157,7 @@ namespace ComLibB
                 }
                 else
                 {
-                    SQL = " UPDATE KOSMOS_PMPA.BAS_SIMSAINFOR_File SET REMARK = :remark";
+                    SQL = " UPDATE ADMIN.BAS_SIMSAINFOR_File SET REMARK = :remark";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + FGstrRowid + "' ";
 
                     SqlErr = clsDB.ExecuteClobQuery(SQL, strData, ref intRowAffected, clsDB.DbCon);
@@ -218,7 +218,7 @@ namespace ComLibB
             {
                 if (ComQuery.IsJobAuth(this, "U", clsDB.DbCon) == false) return; ; //권한 확인
 
-                SQL = " DELETE KOSMOS_PMPA.BAS_SIMSAINFOR_File WHERE ROWID = '" + FGstrRowid + "' ";
+                SQL = " DELETE ADMIN.BAS_SIMSAINFOR_File WHERE ROWID = '" + FGstrRowid + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -323,7 +323,7 @@ namespace ComLibB
 
 
                 SQL = "SELECT A.SUNEXT, B.SUNAMEK ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SIMSAINFOR_File A, KOSMOS_PMPA.BAS_SUN B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SIMSAINFOR_File A, ADMIN.BAS_SUN B";
                 SQL = SQL + ComNum.VBLF + " WHERE A.SUNEXT =B.SUNEXT ";
 
                 if (OptView_1.Checked == true) SQL = SQL + ComNum.VBLF + " AND A.SUNEXT LIKE '" + "%" + txtView.Text + "%" + "' ";
@@ -385,7 +385,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false) return; //권한 확인
 
                 SQL = "SELECT A.SUNEXT, B.SUNAMEK ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SIMSAINFOR_File A, KOSMOS_PMPA.BAS_SUN B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SIMSAINFOR_File A, ADMIN.BAS_SUN B";
                 SQL = SQL + ComNum.VBLF + " WHERE A.SUNEXT =B.SUNEXT ";
                 SQL = SQL + ComNum.VBLF + "  AND JONG = '" + VB.Left(listBun.Text, 2) + "' ";
                 if (OptSort_0.Checked == true) SQL = SQL + ComNum.VBLF + " ORDER BY A.SUNEXT ";
@@ -455,7 +455,7 @@ namespace ComLibB
                 //'수가READ;
                 SQL = " SELECT A.SUNAMEK, A.SUNAMEE, A.WONCODE, A.BCODE, B.BAMT, ";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(B.DELDATE,'YYYY-MM-DD') DELDATE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SUN A, KOSMOS_PMPA.BAS_SUT B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SUN A, ADMIN.BAS_SUT B ";
                 SQL = SQL + ComNum.VBLF + "   WHERE A.SUNEXT = B.SUNEXT ";
                 SQL = SQL + ComNum.VBLF + "   AND A.SUNEXT = '" + txtSuNext.Text + "'";
 
@@ -486,7 +486,7 @@ namespace ComLibB
                 //SQL = "     SELECT TO_CHAR(A.GDATE,'YYYY-MM-DD') GDATE,A.GUBUN,A.SGBN,";
                 //SQL = SQL + ComNum.VBLF + "      TO_CHAR(A.SDATE,'YYYY-MM-DD') SDATE,";
                 //SQL = SQL + ComNum.VBLF + "      A.QTY,A.AMT,A.PRICE,A.PANO,B.NAME ";
-                //SQL = SQL + ComNum.VBLF + " FROM EDI_GUIP A,KOSMOS_ADM.AIS_LTD B ";
+                //SQL = SQL + ComNum.VBLF + " FROM EDI_GUIP A,ADMIN.AIS_LTD B ";
                 //SQL = SQL + ComNum.VBLF + "WHERE A.BCODE = '" + VB.Trim(txtBCode.Text) + "' ";
                 //SQL = SQL + ComNum.VBLF + "  AND A.GELCODE = B.LTDCODE(+) ";
                 //SQL = SQL + ComNum.VBLF + "ORDER BY A.GDATE DESC ";
@@ -518,7 +518,7 @@ namespace ComLibB
 
                 //'심사기준 READ
                 SQL = " SELECT JONG, REMARK, ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_SIMSAINFOR_File ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_SIMSAINFOR_File ";
                 SQL = SQL + ComNum.VBLF + " WHERE SUNEXT = '" + txtSuNext.Text + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -573,7 +573,7 @@ namespace ComLibB
                     return ArgReturn;
                 }
 
-                SQL = "SELECT HANGNAME FROM KOSMOS_ADM.WON_HANG ";
+                SQL = "SELECT HANGNAME FROM ADMIN.WON_HANG ";
                 SQL = SQL + ComNum.VBLF + "WHERE HANG='" + VB.Trim(ArgCode) + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

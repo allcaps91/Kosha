@@ -57,8 +57,8 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT PTNO, B.SNAME, MEDFRDATE, CONVDATE, CONVTIME, GUBUN, EMRNO";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMR_CONV_RESULT A";
-                SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.BAS_PATIENT B";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMR_CONV_RESULT A";
+                SQL += ComNum.VBLF + "   INNER JOIN ADMIN.BAS_PATIENT B";
                 SQL += ComNum.VBLF + "      ON B.PANO = A.PTNO";
 
                 if (cGBN == "1")

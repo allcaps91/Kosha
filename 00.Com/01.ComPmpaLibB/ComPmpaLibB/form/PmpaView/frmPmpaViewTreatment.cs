@@ -2127,7 +2127,7 @@ namespace ComPmpaLibB
                     SQL = SQL + ComNum.VBLF + "       AMT27,AMT28,AMT29,AMT30,AMT31,AMT32,AMT33,AMT34,AMT35,AMT36,AMT37,AMT38,AMT39,AMT40,";
                     SQL = SQL + ComNum.VBLF + "       AMT41,AMT42,AMT43,AMT44,AMT45,AMT46,AMT47,AMT48,AMT49,AMT50,AMT51,AMT52,AMT53,AMT54,";
                     SQL = SQL + ComNum.VBLF + "       AMT55,AMT56,AMT57,AMT58,AMT59,AMT60,REMARK,ENTDATE,ENTSABUN,GbSPC ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_TRANS ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_TRANS ";
                     SQL = SQL + ComNum.VBLF + " WHERE TRSNO=" + nTRSNO[i] + " ";
 
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -2175,7 +2175,7 @@ namespace ComPmpaLibB
                     SQL = SQL + ComNum.VBLF + "SELECT '" + nIPDNO + "','" + nIPDNO2 + "',ACTDATE,'81000004',BI,BDATE,SUNEXT,";
                     SQL = SQL + ComNum.VBLF + "       BUN,QTY,NAL,AMT,DEPTCODE,DRCODE,";
                     SQL = SQL + ComNum.VBLF + "       GBGAMEK,GELCODE,BIGO,ENTDATE,PART,CARDSEQNO ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_NEW_CASH ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_NEW_CASH ";
                     SQL = SQL + ComNum.VBLF + " WHERE TRSNO=" + nTRSNO[i] + " ";
 
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -2978,7 +2978,7 @@ namespace ComPmpaLibB
 
                     SQL = SQL + ComNum.VBLF + "   AND  NAL IN ( '1','-1')  ";
                     //저가약제 제외코드 2011-04-09
-                    SQL = SQL + ComNum.VBLF + "   AND TRIM(SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
+                    SQL = SQL + ComNum.VBLF + "   AND TRIM(SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
 
                     SQL = SQL + ComNum.VBLF + " GROUP BY BDATE, IPDNO,  SUCODE, SUNEXT, BASEAMT, QTY , DECODE(DIV,'0',1,'',1, DIV) ,";
                     SQL = SQL + ComNum.VBLF + "          GBSPC, GBNGT, GBGISUL, GBSELF, GBCHILD, NU, BUN  ";
@@ -3031,7 +3031,7 @@ namespace ComPmpaLibB
                 SQL = SQL + ComNum.VBLF + "    AND I.Sunext = B.Sunext";
 
                 //저가약제 제외코드 2011-04-09
-                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
+                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
 
                 SQL = SQL + ComNum.VBLF + "  GROUP BY Sucode, I.Sunext, SunameK, Hcode, BaseAmt, Qty,";
                 SQL = SQL + ComNum.VBLF + "           GbSpc, GbNgt, GbGisul, GbSelf, GbChild, Nu, Bun";
@@ -3437,7 +3437,7 @@ namespace ComPmpaLibB
                 SQL = SQL + ComNum.VBLF + "    AND I.Sunext = B.Sunext";
 
                 //저가약제 제외코드 2011-04-09
-                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
+                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
 
                 SQL = SQL + ComNum.VBLF + "  GROUP BY Sucode, I.Sunext, SunameK, Bcode, BaseAmt, Qty,I.GBSugbs,b.Sugbp,  ";
                 SQL = SQL + ComNum.VBLF + "           GbSpc, GbNgt, GbGisul, GbSelf, GbChild, Nu, Bun,DRG100,DRGF  ";
@@ -4927,7 +4927,7 @@ namespace ComPmpaLibB
                 SQL = SQL + ComNum.VBLF + "    AND I.Sunext = B.Sunext";
 
                 //저가약제 제외코드 2011-04-09
-                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
+                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
 
                 SQL = SQL + ComNum.VBLF + "  GROUP BY Sucode, SunameK, B.Bcode, BaseAmt, Qty, I.GBSugbs,";
                 SQL = SQL + ComNum.VBLF + "           GbSpc, GbNgt, GbGisul, GbSelf, GbChild,";
@@ -5358,7 +5358,7 @@ namespace ComPmpaLibB
                 SQL = SQL + ComNum.VBLF + "    AND I.Sunext = B.Sunext";
 
                 //저가약제 제외코드 2011-04-09
-                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
+                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
 
                 SQL = SQL + ComNum.VBLF + "  GROUP BY Sucode, I.Sunext, SunameK, B.Bcode, BaseAmt, Qty,I.GBSugbs,b.Sugbp,  ";
                 SQL = SQL + ComNum.VBLF + "           GbSpc, GbNgt, GbGisul, GbSelf, GbChild, Bun,DRG100,DRGF  ";
@@ -5919,7 +5919,7 @@ namespace ComPmpaLibB
                 SQL = SQL + ComNum.VBLF + "    AND I.Sunext = B.Sunext";
 
                 //저가약제 제외코드 2011-04-09
-                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
+                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
 
                 SQL = SQL + ComNum.VBLF + "  ORDER BY Nu, Sucode, I.Sunext, Bdate";
 
@@ -7307,7 +7307,7 @@ namespace ComPmpaLibB
                 SQL = SQL + ComNum.VBLF + "    AND I.Sunext = B.Sunext";
 
                 //저가약제 제외코드 2011-04-09
-                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
+                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
 
                 SQL = SQL + ComNum.VBLF + "  ORDER BY  Nu, Bdate, Sucode, I.Sunext";
 
@@ -7594,7 +7594,7 @@ namespace ComPmpaLibB
                 SQL = SQL + ComNum.VBLF + "    AND I.Sunext = B.Sunext";
 
                 //저가약제 제외코드 2011-04-09
-                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
+                SQL = SQL + ComNum.VBLF + "   AND TRIM(i.SUNEXT) NOT IN ( SELECT CODE FROM ADMIN.BAS_BCODE WHERE GUBUN ='원무영수제외코드') ";
 
                 SQL = SQL + ComNum.VBLF + "  GROUP BY Sucode, I.Sunext, SunameK, B.Bcode, BaseAmt, Qty,";
                 SQL = SQL + ComNum.VBLF + "           GbSpc, GbNgt, GbGisul, GbSelf, GbChild, Nu, Bun, DRG100, DRGF, GBSUGBS";

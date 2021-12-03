@@ -68,7 +68,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT PANO, DEPTCODE, DRCODE, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_DOCTOR_DRNAME(DRCODE) DRNAME, ";
             SQL += ComNum.VBLF + "        CHOJAE, BI, SNAME, ";
             SQL += ComNum.VBLF + "        SEX, AGE, AMT1, ROWID ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "OPD_MASTER  ";

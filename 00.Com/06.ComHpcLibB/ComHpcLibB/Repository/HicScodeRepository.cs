@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE,NAME,PANJENG,CHASU,SCODE, JCODE,ROWID AS RID ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SCODE                       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SCODE                       ");
             parameter.AppendSql(" WHERE 1 = 1                                       ");            
             parameter.AppendSql(" ORDER BY CODE                                     ");
 
@@ -35,7 +35,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_SCODE               ");
+            parameter.AppendSql("DELETE ADMIN.HIC_SCODE               ");
             parameter.AppendSql(" WHERE ROWID =:RID                         ");
 
             parameter.Add("RID", code.RID);
@@ -47,7 +47,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SCODE  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SCODE  ");
             parameter.AppendSql("   SET CODE     =:CODE        ");
             parameter.AppendSql("      ,NAME     =:NAME        ");
             parameter.AppendSql("      ,PANJENG  =:PANJENG     ");
@@ -74,7 +74,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT KOSMOS_PMPA.HIC_SCODE (                                             ");
+            parameter.AppendSql("INSERT ADMIN.HIC_SCODE (                                             ");
             parameter.AppendSql("   CODE,NAME,PANJENG,CHASU,SCODE,JCODE,ENTSABUN,ENTDATE                    ");
             parameter.AppendSql(" ) VALUES (                                                                ");
             parameter.AppendSql("  :CODE,:NAME,:PANJENG,:CHASU,:SCODE,:JCODE,:ENTSABUN,SYSDATE )            ");

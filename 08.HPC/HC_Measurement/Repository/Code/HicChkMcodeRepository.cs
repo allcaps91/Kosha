@@ -27,7 +27,7 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("       ,STEL_PPM, STEL_MG, CEILING, CEILING_UNIT, RET_RATE, PAS_RATE, FACTOR_VAL, CHK_WAY, CHK_UNIT ");
             parameter.AppendSql("       ,MOLECULE, CAL_CONST, APPLY_VALUE1, APPLY_VALUE2, GBCHK, GBSPC, GBMIX, GBCAN, GBUSE ");
             parameter.AppendSql("       ,SORT, ENTSABUN, ENTDATE, APPLY_VALUE3, ROWID AS RID  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHK_MCODE                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHK_MCODE                             ");
             parameter.AppendSql(" WHERE 1 = 1                                                 ");
             if (!argKeyWord.IsNullOrEmpty())
             {
@@ -48,7 +48,7 @@ namespace HC_Measurement.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHK_MCODE");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHK_MCODE");
             parameter.AppendSql("   SET CODE = :CODE");
             parameter.AppendSql("     , K2BCODE = :K2BCODE");
             parameter.AppendSql("     , FULLNAME = :FULLNAME");
@@ -132,7 +132,7 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("       ,STEL_PPM, STEL_MG, CEILING, CEILING_UNIT, RET_RATE, PAS_RATE, FACTOR_VAL, CHK_WAY, CHK_UNIT ");
             parameter.AppendSql("       ,MOLECULE, CAL_CONST, APPLY_VALUE1, APPLY_VALUE2, GBCHK, GBSPC, GBMIX, GBCAN, GBUSE ");
             parameter.AppendSql("       ,SORT, ENTSABUN, ENTDATE, APPLY_VALUE3, ROWID AS RID  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHK_MCODE                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHK_MCODE                             ");
             parameter.AppendSql(" WHERE CODE =:CODE                                           ");
 
             parameter.Add("CODE", argCode);
@@ -148,7 +148,7 @@ namespace HC_Measurement.Repository
             parameter.AppendSql("       ,STEL_PPM, STEL_MG, CEILING, CEILING_UNIT, RET_RATE, PAS_RATE, FACTOR_VAL, CHK_WAY, CHK_UNIT ");
             parameter.AppendSql("       ,MOLECULE, CAL_CONST, APPLY_VALUE1, APPLY_VALUE2, GBCHK, GBSPC, GBMIX, GBCAN, GBUSE ");
             parameter.AppendSql("       ,SORT, ENTSABUN, ENTDATE, APPLY_VALUE3, ROWID AS RID  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CHK_MCODE                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CHK_MCODE                             ");
             parameter.AppendSql(" WHERE ROWID =:RID                                           ");
 
             parameter.Add("RID", argRid);
@@ -160,7 +160,7 @@ namespace HC_Measurement.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHK_MCODE");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHK_MCODE");
             parameter.AppendSql("(");
             parameter.AppendSql("    CODE");
             parameter.AppendSql("  , K2BCODE");

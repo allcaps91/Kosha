@@ -54,7 +54,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT CODE, NAME, SORT, ROWID";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.ETC_CSINFO_CODE";
+                SQL += ComNum.VBLF + "   FROM ADMIN.ETC_CSINFO_CODE";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1";
                 SQL += ComNum.VBLF + "    AND GUBUN = '" + strGubun + "' ";
                 SQL += ComNum.VBLF + "  ORDER BY CODE";

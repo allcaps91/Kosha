@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql(" SELECT WORD1, WORD2                               ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.HIC_JIN_WORD                     ");
+            parameter.AppendSql(" FROM ADMIN.HIC_JIN_WORD                     ");
             parameter.AppendSql(" WHERE JDATE   <= TO_DATE(:JDATE,'YYYY-MM-DD')     ");
             parameter.AppendSql(" AND GUBUN = :GUBUN                                ");
             parameter.AppendSql(" ORDER BY JDATE DESC                               ");

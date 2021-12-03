@@ -54,23 +54,23 @@ namespace ComEmrBase
                 #region 총제수량 일의 마지막에 합계 표시
                 SQL.AppendLine("       , CASE WHEN R.ITEMNO = 'I0000013209' AND CHARTTIME = ");
                 SQL.AppendLine("            (SELECT MAX(CHARTTIME)");
-                SQL.AppendLine("               FROM KOSMOS_EMR.AEMRCHARTMST");
+                SQL.AppendLine("               FROM ADMIN.AEMRCHARTMST");
                 SQL.AppendLine("              WHERE MEDFRDATE  = A.MEDFRDATE ");
                 SQL.AppendLine("                AND FORMNO  = A.FORMNO ");
                 SQL.AppendLine("                AND CHARTDATE = A.CHARTDATE");
                 SQL.AppendLine("            )");
                 SQL.AppendLine("         THEN");
                 SQL.AppendLine("             (SELECT SUM(RR.ITEMVALUE)                                                     ");
-                SQL.AppendLine("                FROM KOSMOS_EMR.AEMRCHARTMST AA                                            ");
-                SQL.AppendLine("                  INNER JOIN KOSMOS_EMR.AEMRCHARTROW RR                                  ");
+                SQL.AppendLine("                FROM ADMIN.AEMRCHARTMST AA                                            ");
+                SQL.AppendLine("                  INNER JOIN ADMIN.AEMRCHARTROW RR                                  ");
                 SQL.AppendLine("                     ON AA.EMRNO = RR.EMRNO                                             ");
                 SQL.AppendLine("                    AND AA.EMRNOHIS = RR.EMRNOHIS                                          ");
                 SQL.AppendLine("                    AND RR.ITEMNO = 'I0000013209'                                          ");
-                SQL.AppendLine("                  INNER JOIN KOSMOS_EMR.AEMRCHARTROW RR2                                 ");
+                SQL.AppendLine("                  INNER JOIN ADMIN.AEMRCHARTROW RR2                                 ");
                 SQL.AppendLine("                     ON AA.EMRNO = RR2.EMRNO                                            ");
                 SQL.AppendLine("                    AND AA.EMRNOHIS = RR2.EMRNOHIS                                         ");
                 SQL.AppendLine("                    AND RR2.ITEMNO = 'I0000013354'                                         ");
-                SQL.AppendLine("                  INNER JOIN KOSMOS_EMR.AEMRCHARTROW RR3                                 ");
+                SQL.AppendLine("                  INNER JOIN ADMIN.AEMRCHARTROW RR3                                 ");
                 SQL.AppendLine("                     ON AA.EMRNO = RR3.EMRNO                                            ");
                 SQL.AppendLine("                    AND AA.EMRNOHIS = RR3.EMRNOHIS                                         ");
                 SQL.AppendLine("                    AND RR3.ITEMNO = 'I0000013353'                                         ");

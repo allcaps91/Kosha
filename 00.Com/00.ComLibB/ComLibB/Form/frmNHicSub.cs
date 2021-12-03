@@ -196,7 +196,7 @@ namespace ComLibB
             try
             {
                 //'자격조회된 자료- 가장 최근자료
-                SQL = "SELECT SName FROM KOSMOS_PMPA.WORK_NHIC ";
+                SQL = "SELECT SName FROM ADMIN.WORK_NHIC ";
                 SQL = SQL + ComNum.VBLF + " WHERE Jumin2='" + clsAES.AES(FstrJumin) + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND SNAME = '" + FstrSName + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND CTime>=TRUNC(SYSDATE) ";
@@ -225,7 +225,7 @@ namespace ComLibB
                 }
                 else
                 {
-                    SQL = "SELECT SName FROM KOSMOS_PMPA.WORK_NHIC ";
+                    SQL = "SELECT SName FROM ADMIN.WORK_NHIC ";
                     SQL = SQL + ComNum.VBLF + "WHERE Jumin2='" + clsAES.AES(FstrJumin) + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND TRUNC(RTime)>=TRUNC(SYSDATE) ";
                     SQL = SQL + ComNum.VBLF + "  AND GBSTS ='0' ";
@@ -246,7 +246,7 @@ namespace ComLibB
                     if (dt2.Rows.Count == 0)
                     {
                         //'한번도 조회한적이 없고 실패가 없는 수검자
-                        SQL = "SELECT SName FROM KOSMOS_PMPA.WORK_NHIC ";
+                        SQL = "SELECT SName FROM ADMIN.WORK_NHIC ";
                         SQL = SQL + ComNum.VBLF + "WHERE Jumin2='" + clsAES.AES(FstrJumin) + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND TRUNC(RTime)>=TRUNC(SYSDATE) ";
                         SQL = SQL + ComNum.VBLF + "  AND GBSTS ='2' ";

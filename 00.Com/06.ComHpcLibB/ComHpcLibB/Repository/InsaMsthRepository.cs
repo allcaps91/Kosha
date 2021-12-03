@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GUNTAE                  ");
-            parameter.AppendSql("  FROM KOSMOS_ADM.INSA_MSTH    ");
+            parameter.AppendSql("  FROM ADMIN.INSA_MSTH    ");
             parameter.AppendSql(" WHERE SABUN = :SABUN          ");
             parameter.AppendSql("   AND YEAR  = :YEAR           ");
 

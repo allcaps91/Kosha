@@ -302,14 +302,14 @@ namespace ComLibB
                 GstrE000 = "";
 
                 SQL = " SELECT MCODE ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.OPD_MASTER ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.OPD_MASTER ";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + txtPtNo.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND BDATE = TRUNC(SYSDATE) ";
                 SQL = SQL + ComNum.VBLF + "    AND MCODE = 'E000' ";
                 SQL = SQL + ComNum.VBLF + "    AND BI IN ('11','12','13') ";
                 SQL = SQL + ComNum.VBLF + "  UNION ALL ";
                 SQL = SQL + ComNum.VBLF + " SELECT OGPDBUN ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.IPD_NEW_MASTER  ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.IPD_NEW_MASTER  ";
                 SQL = SQL + ComNum.VBLF + "  WHERE PANO = '" + txtPtNo.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND (JDATE = TO_DATE('1900-01-01','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "             OR OUTDATE = TRUNC(SYSDATE) ) ";
@@ -378,7 +378,7 @@ namespace ComLibB
             {
                 //전문의
                 SQL += ComNum.VBLF + " SELECT BUNHO  ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_ADM.INSA_MSTL A, KOSMOS_OCS.OCS_DOCTOR B ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.INSA_MSTL A, ADMIN.OCS_DOCTOR B ";
                 SQL += ComNum.VBLF + "  WHERE B.DRCODE = '" + argDRCODE + "' ";
                 SQL += ComNum.VBLF + "    AND A.SABUN = B.SABUN ";
                 
@@ -386,12 +386,12 @@ namespace ComLibB
             else if (argGUBUN == "3")
             {
                 //세부전문의
-                SQL += ComNum.VBLF + " SELECT NAME, BUNHO, '1' GUBUN, CHIDATE FROM KOSMOS_ADM.INSA_MSTL ";
+                SQL += ComNum.VBLF + " SELECT NAME, BUNHO, '1' GUBUN, CHIDATE FROM ADMIN.INSA_MSTL ";
                 SQL += ComNum.VBLF + " WHERE NAME LIKE '%전문의%' ";
                 SQL += ComNum.VBLF + "   AND NAME LIKE '%분과%' ";
                 SQL += ComNum.VBLF + "   AND GUBUN = '1' ";
                 SQL += ComNum.VBLF + "   AND SABUN IN ";
-                SQL += ComNum.VBLF + "                   (SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL += ComNum.VBLF + "                   (SELECT SABUN FROM ADMIN.OCS_DOCTOR ";
                 SQL += ComNum.VBLF + "                     WHERE DRCODE = '" + argDRCODE + "' ";
                 SQL += ComNum.VBLF + "                       AND GBOUT = 'N') ";
             }
@@ -399,7 +399,7 @@ namespace ComLibB
             {
                 //의사면허번호
                 SQL += ComNum.VBLF + " SELECT MYEN_BUNHO BUNHO";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B ";
                 SQL += ComNum.VBLF + "  WHERE A.SABUN = B.SABUN ";
                 SQL += ComNum.VBLF + "    AND B.DRCODE = '" + argDRCODE + "' ";
             }
@@ -438,7 +438,7 @@ namespace ComLibB
             SQL = "";
             SQL += ComNum.VBLF + "SELECT ";
             SQL += ComNum.VBLF + "A.DEPTCODE, (SELECT MAX(NAME)      ";
-            SQL += ComNum.VBLF + "                           FROM KOSMOS_PMPA.BAS_BUSE B ";
+            SQL += ComNum.VBLF + "                           FROM ADMIN.BAS_BUSE B ";
             SQL += ComNum.VBLF + "                           WHERE 1=1";
             SQL += ComNum.VBLF + "                           AND B.DEPTCODE = A.DEPTCODE";
             SQL += ComNum.VBLF + "                           AND DELDATE IS NULL";
@@ -666,7 +666,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "       AND PANO = '" + strPtNo + "'";
                 SQL = SQL + ComNum.VBLF + "   Union";
                 SQL = SQL + ComNum.VBLF + "   SELECT PANO, '기타 산정특례' GUBUN, ILLCODE1, ILLCODE2, ILLCODE3, ILLCODE4, ILLCODE5";
-                SQL = SQL + ComNum.VBLF + "   From KOSMOS_PMPA.BAS_CANCER";
+                SQL = SQL + ComNum.VBLF + "   From ADMIN.BAS_CANCER";
                 SQL = SQL + ComNum.VBLF + "   WHERE GUBUN = '2'";
                 SQL = SQL + ComNum.VBLF + "       AND PANO = '" + strPtNo + "'";
                 SQL = SQL + ComNum.VBLF + "   Union";
@@ -749,14 +749,14 @@ namespace ComLibB
             else if (strGubun == "0")       //암
             {
                 SQL = "  SELECT SUBSTR(ILLCODE || '        ', 1, 16) || ILLNAMEK || '     (V193)' ILLNAMEK   ";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_CANCER ";
+                SQL += ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_CANCER ";
                 SQL += ComNum.VBLF + " WHERE REPLACE(ILLCODE, '.', '') LIKE '" + strSang + "%' ";
                 SQL += ComNum.VBLF + "   ORDER BY ILLCODE ASC, ILLNAMEK ASC ";
             }
             else
             {
                 SQL = "  SELECT SUBSTR(ILLCODE || '        ', 1, 16) || ILLNAMEK || '     (' || VCODE || ')' ILLNAMEK   ";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_ILLS_H3 ";
+                SQL += ComNum.VBLF + "  FROM ADMIN.BAS_ILLS_H3 ";
                 SQL += ComNum.VBLF + " WHERE REPLACE(ILLCODE, '.', '') LIKE '" + strSang + "%' ";
                 SQL += ComNum.VBLF + "  GROUP BY ILLCODE, ILLNAMEK, VCODE ";
                 SQL += ComNum.VBLF + "   ORDER BY ILLCODE ASC, ILLNAMEK ASC ";
@@ -2280,7 +2280,7 @@ namespace ComLibB
 
                 //중증등록여부표시-원내
                 SQL = "";
-                SQL = "SELECT Gubun FROM KOSMOS_PMPA.BAS_CANCER";
+                SQL = "SELECT Gubun FROM ADMIN.BAS_CANCER";
                 SQL = SQL + ComNum.VBLF + "     WHERE  PANO ='" + txtPtNo.Text + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -2989,7 +2989,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "SELECT KOSMOS_PMPA.SEQ_OPD_NHIC.NEXTVAL WRTNO FROM DUAL";
+                SQL = "SELECT ADMIN.SEQ_OPD_NHIC.NEXTVAL WRTNO FROM DUAL";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -3409,7 +3409,7 @@ namespace ComLibB
                 if(strFlag != "" && VB.Val(ComQuery.CurrentDateTime(clsDB.DbCon, "D")) <= 20150120)
                 {
                     SQL = "";
-                    SQL = "SELECT ROWID FROM KOSMOS_PMPA.BAS_CANCER";
+                    SQL = "SELECT ROWID FROM ADMIN.BAS_CANCER";
                     SQL = SQL + ComNum.VBLF + "     WHERE PANO ='" + strPtNo + "' ";
                     SQL = SQL + ComNum.VBLF + "     AND GUBUN ='2'";
                     SQL = SQL + ComNum.VBLF + "     AND FDATE >= TO_DATE('" + ComFunc.FormatStrToDateEx(ComQuery.CurrentDateTime(clsDB.DbCon, "D"), "D", "-") + "','YYYY-MM-DD')";
@@ -4966,7 +4966,7 @@ namespace ComLibB
                 default:
 
                     SQL = " SELECT REPLACE(DEPTNAMEK, ' ', '') DEPTK ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_CLINICDEPT ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_CLINICDEPT ";
                     SQL = SQL + ComNum.VBLF + " WHERE DEPTCODE = '" + strDeptCode + "' ";
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                     if (SqlErr != "")
@@ -4991,13 +4991,13 @@ namespace ComLibB
             if(strDEPTK == "")
             { return ""; }
             #region 이전 전문의 번호 가져오기
-            //SQL = " SELECT BUNHO FROM KOSMOS_ADM.INSA_MSTL ";
+            //SQL = " SELECT BUNHO FROM ADMIN.INSA_MSTL ";
             //SQL = SQL + ComNum.VBLF + " WHERE NAME LIKE '%전문의%' ";
             //SQL = SQL + ComNum.VBLF + "  AND NAME LIKE '%" + strDEPTK + "%'  ";
             //SQL = SQL + ComNum.VBLF + "  AND GIKWAN LIKE '%보건%' ";
             //SQL = SQL + ComNum.VBLF + "  AND GUBUN = '1' ";
             //SQL = SQL + ComNum.VBLF + "  AND SABUN IN ";
-            //SQL = SQL + ComNum.VBLF + "                  ( SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR ";
+            //SQL = SQL + ComNum.VBLF + "                  ( SELECT SABUN FROM ADMIN.OCS_DOCTOR ";
             //SQL = SQL + ComNum.VBLF + "                     WHERE DRCODE = '" + strDrCode + "' ";
             //SQL = SQL + ComNum.VBLF + "                       AND GBOUT = 'N') ";
             //SQL = SQL + ComNum.VBLF + " ORDER BY CHIDATE ASC "; 
@@ -5005,13 +5005,13 @@ namespace ComLibB
             //2020-02-17 내과는 세부전문의번호 먼저 가져오고 없으면 그냥 전문의 가져오기
             SQL = "";
             
-            SQL += ComNum.VBLF + "  SELECT NAME, BUNHO, '2' GUBUN, CHIDATE FROM KOSMOS_ADM.INSA_MSTL ";
+            SQL += ComNum.VBLF + "  SELECT NAME, BUNHO, '2' GUBUN, CHIDATE FROM ADMIN.INSA_MSTL ";
             SQL += ComNum.VBLF + "  WHERE NAME LIKE '%전문의%' ";
             SQL += ComNum.VBLF + "  AND NAME LIKE '%" + strDEPTK + "%'  ";
             SQL += ComNum.VBLF + "    AND GIKWAN LIKE '%보건%' ";
             SQL += ComNum.VBLF + "    AND GUBUN = '1' ";
             SQL += ComNum.VBLF + "    AND SABUN IN ";
-            SQL += ComNum.VBLF + "                   (SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR ";
+            SQL += ComNum.VBLF + "                   (SELECT SABUN FROM ADMIN.OCS_DOCTOR ";
             SQL += ComNum.VBLF + "                     WHERE DRCODE = '" + strDrCode + "' ";
             SQL += ComNum.VBLF + "                       AND GBOUT = 'N') ";
             SQL += ComNum.VBLF + "  ORDER BY GUBUN ASC, CHIDATE ASC ";
@@ -5037,12 +5037,12 @@ namespace ComLibB
             {
                 if (strDEPTK == "내과")
                 {
-                    SQL = " SELECT NAME, BUNHO, '1' GUBUN, CHIDATE FROM KOSMOS_ADM.INSA_MSTL ";
+                    SQL = " SELECT NAME, BUNHO, '1' GUBUN, CHIDATE FROM ADMIN.INSA_MSTL ";
                     SQL += ComNum.VBLF + " WHERE NAME LIKE '%전문의%' ";
                     SQL += ComNum.VBLF + "   AND NAME LIKE '%분과%' ";
                     SQL += ComNum.VBLF + "   AND GUBUN = '1' ";
                     SQL += ComNum.VBLF + "   AND SABUN IN ";
-                    SQL += ComNum.VBLF + "                   (SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR ";
+                    SQL += ComNum.VBLF + "                   (SELECT SABUN FROM ADMIN.OCS_DOCTOR ";
                     SQL += ComNum.VBLF + "                     WHERE DRCODE = '" + strDrCode + "' ";
                     SQL += ComNum.VBLF + "                       AND GBOUT = 'N') ";
                     SQL += ComNum.VBLF + "  ORDER BY GUBUN ASC, CHIDATE ASC ";
@@ -7392,10 +7392,10 @@ namespace ComLibB
 
             SQL = " SELECT ILLCODE, VCODE FROM( ";
             SQL += ComNum.VBLF + "  SELECT REPLACE(REPLACE(ILLCODE, '.', ''), '+', '') ILLCODE, VCODE ";
-            SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_ILLS_H3 ";
+            SQL += ComNum.VBLF + " FROM ADMIN.BAS_ILLS_H3 ";
             SQL += ComNum.VBLF + " UNION ALL ";
             SQL += ComNum.VBLF + " SELECT REPLACE(REPLACE(ILLCODE, '.', ''), '+', '') ILLCODE, 'V193' VCODE ";
-            SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_ILLS_CANCER) ";
+            SQL += ComNum.VBLF + " FROM ADMIN.BAS_ILLS_CANCER) ";
             SQL += ComNum.VBLF + "   WHERE ILLCODE = '" + argIlls + "' ";
             SQL += ComNum.VBLF + "     AND ROWNUM = 1";
             SQL += ComNum.VBLF + " GROUP BY ILLCODE, VCODE ";

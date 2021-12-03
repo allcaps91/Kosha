@@ -571,11 +571,11 @@ namespace ComEmrBase
                     SQL.AppendLine("  SELECT TO_CHAR(O.BDate, 'YYYY-MM-DD') BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames, O.REMARK,");
                     SQL.AppendLine("    C.DispHeader, O.Qty, O.CONTENTS, O.GbGroup,");
                     SQL.AppendLine("    O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE, '' RES, O.GBPRN, O.GBACT ");
-                    SQL.AppendLine("    FROM KOSMOS_OCS.OCS_IORDER O,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_ORDERCODE C,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_ODOSAGE D,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_DOCTOR N,");
-                    SQL.AppendLine("          KOSMOS_PMPA.BAS_SUN     S");
+                    SQL.AppendLine("    FROM ADMIN.OCS_IORDER O,");
+                    SQL.AppendLine("          ADMIN.OCS_ORDERCODE C,");
+                    SQL.AppendLine("          ADMIN.OCS_ODOSAGE D,");
+                    SQL.AppendLine("          ADMIN.OCS_DOCTOR N,");
+                    SQL.AppendLine("          ADMIN.BAS_SUN     S");
                     SQL.AppendLine("      WHERE O.PTNO = '" + pAcp.ptNo + "' ");
 
                     if (mstrOrderDate != "")
@@ -623,11 +623,11 @@ namespace ComEmrBase
                     SQL.AppendLine("  SELECT TO_CHAR(O.BDate, 'YYYY-MM-DD') BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames,  O.REMARK,");
                     SQL.AppendLine("    C.DispHeader, O.Qty, O.CONTENTS, '' AS GbGroup,");
                     SQL.AppendLine("     O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE, O.RES, '' GBPRN, '' GBACT  ");
-                    SQL.AppendLine("    FROM KOSMOS_OCS.OCS_OORDER O,");
-                    SQL.AppendLine("         KOSMOS_OCS.OCS_ORDERCODE C,");
-                    SQL.AppendLine("         KOSMOS_OCS.OCS_ODOSAGE D,");
-                    SQL.AppendLine("         KOSMOS_OCS.OCS_DOCTOR N,");
-                    SQL.AppendLine("         KOSMOS_PMPA.BAS_SUN     S");
+                    SQL.AppendLine("    FROM ADMIN.OCS_OORDER O,");
+                    SQL.AppendLine("         ADMIN.OCS_ORDERCODE C,");
+                    SQL.AppendLine("         ADMIN.OCS_ODOSAGE D,");
+                    SQL.AppendLine("         ADMIN.OCS_DOCTOR N,");
+                    SQL.AppendLine("         ADMIN.BAS_SUN     S");
                     SQL.AppendLine("    WHERE O.PTNO = '" + pAcp.ptNo + "' ");
                     SQL.AppendLine("      AND O.BDATE = TO_DATE('" + dtpOptSDate.Value.ToShortDateString() + "','YYYY-MM-DD') ");
 
@@ -662,11 +662,11 @@ namespace ComEmrBase
                     SQL.AppendLine("  SELECT TO_CHAR(O.BDate, 'YYYY-MM-DD') BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames, O.REMARK,");
                     SQL.AppendLine("    C.DispHeader, O.Qty, O.CONTENTS, O.GbGroup,");
                     SQL.AppendLine("    O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE , O.GBACT ");
-                    SQL.AppendLine("    FROM KOSMOS_OCS.OCS_IORDER O,");
-                    SQL.AppendLine("         KOSMOS_OCS.OCS_ORDERCODE C,");
-                    SQL.AppendLine("         KOSMOS_OCS.OCS_ODOSAGE D,");
-                    SQL.AppendLine("         KOSMOS_OCS.OCS_DOCTOR N,");
-                    SQL.AppendLine("         KOSMOS_PMPA.BAS_SUN     S");
+                    SQL.AppendLine("    FROM ADMIN.OCS_IORDER O,");
+                    SQL.AppendLine("         ADMIN.OCS_ORDERCODE C,");
+                    SQL.AppendLine("         ADMIN.OCS_ODOSAGE D,");
+                    SQL.AppendLine("         ADMIN.OCS_DOCTOR N,");
+                    SQL.AppendLine("         ADMIN.BAS_SUN     S");
                     SQL.AppendLine("      WHERE O.PTNO = '" + pAcp.ptNo + "' ");
                     SQL.AppendLine("        AND O.BDATE >= TO_DATE('" + dtpOptSDate.Value.ToShortDateString() + "','YYYY-MM-DD') ");
                     SQL.AppendLine("        AND O.BDATE <= TO_DATE('" + dtpOptSDate.Value.AddDays(1).ToShortDateString() + "','YYYY-MM-DD') ");
@@ -811,7 +811,7 @@ namespace ComEmrBase
             {
                 StringBuilder SQL = new StringBuilder();
                 SQL.AppendLine(" SELECT NAL ");
-                SQL.AppendLine(" FROM KOSMOS_EMR.EMR_OPTION_SETDATE ");
+                SQL.AppendLine(" FROM ADMIN.EMR_OPTION_SETDATE ");
                 SQL.AppendLine(" WHERE IO = '" + ArgIO + "' ");
                 SQL.AppendLine("   AND USEID = " + argUSEID);
                 if (ArgIO != "I")
@@ -885,11 +885,11 @@ namespace ComEmrBase
                     SQL.AppendLine("  SELECT TO_CHAR(O.BDate, 'YYYY-MM-DD') BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames, O.REMARK,");
                     SQL.AppendLine("    C.DispHeader, O.Qty, O.CONTENTS, O.GbGroup,");
                     SQL.AppendLine("    O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE, '' RES ");
-                    SQL.AppendLine("    FROM KOSMOS_OCS.OCS_IORDER O,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_ORDERCODE C,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_ODOSAGE D,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_DOCTOR N,");
-                    SQL.AppendLine("          KOSMOS_PMPA.BAS_SUN     S");
+                    SQL.AppendLine("    FROM ADMIN.OCS_IORDER O,");
+                    SQL.AppendLine("          ADMIN.OCS_ORDERCODE C,");
+                    SQL.AppendLine("          ADMIN.OCS_ODOSAGE D,");
+                    SQL.AppendLine("          ADMIN.OCS_DOCTOR N,");
+                    SQL.AppendLine("          ADMIN.BAS_SUN     S");
                     SQL.AppendLine("      WHERE O.PTNO = '" + pAcp.ptNo + "' ");
                     SQL.AppendLine("          AND O.BDATE >= TO_DATE('" + dtpOptSDate.Value.ToShortDateString() + "','YYYY-MM-DD') ");
 
@@ -950,11 +950,11 @@ namespace ComEmrBase
                     SQL.AppendLine("  SELECT TO_CHAR(O.BDate, 'YYYY-MM-DD') BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames,  O.REMARK,");
                     SQL.AppendLine("    C.DispHeader, O.Qty, O.RealQty AS CONTENTS, '' AS GbGroup,");
                     SQL.AppendLine("     O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE, O.RES ");
-                    SQL.AppendLine("    FROM KOSMOS_OCS.OCS_OORDER O,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_ORDERCODE C,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_ODOSAGE D,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_DOCTOR N,");
-                    SQL.AppendLine("          KOSMOS_PMPA.BAS_SUN     S)");
+                    SQL.AppendLine("    FROM ADMIN.OCS_OORDER O,");
+                    SQL.AppendLine("          ADMIN.OCS_ORDERCODE C,");
+                    SQL.AppendLine("          ADMIN.OCS_ODOSAGE D,");
+                    SQL.AppendLine("          ADMIN.OCS_DOCTOR N,");
+                    SQL.AppendLine("          ADMIN.BAS_SUN     S)");
                     SQL.AppendLine("      WHERE O.PTNO = '" + pAcp.ptNo + "' ");
                     SQL.AppendLine("          AND O.BDATE = TO_DATE('" + dtpOptSDate.Value.ToShortDateString() + "','YYYY-MM-DD') ");
 
@@ -996,11 +996,11 @@ namespace ComEmrBase
                     SQL.AppendLine("  SELECT TO_CHAR(O.BDate, 'YYYY-MM-DD') BDate, O.BUN, O.OrderCode, O.NAL, C.OrderName,  C.OrderNames, O.REMARK,");
                     SQL.AppendLine("    C.DispHeader, O.Qty, O.CONTENTS, O.GbGroup,");
                     SQL.AppendLine("    O.RealQty,    O.DosCode,    D.DosName,   D.GBDIV,  N.DrName, C.DispRGB cDispRGB, O.DRCODE , '' RES");
-                    SQL.AppendLine("    FROM KOSMOS_OCS.OCS_IORDER O,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_ORDERCODE C,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_ODOSAGE D,");
-                    SQL.AppendLine("          KOSMOS_OCS.OCS_DOCTOR N,");
-                    SQL.AppendLine("          KOSMOS_PMPA.BAS_SUN     S");
+                    SQL.AppendLine("    FROM ADMIN.OCS_IORDER O,");
+                    SQL.AppendLine("          ADMIN.OCS_ORDERCODE C,");
+                    SQL.AppendLine("          ADMIN.OCS_ODOSAGE D,");
+                    SQL.AppendLine("          ADMIN.OCS_DOCTOR N,");
+                    SQL.AppendLine("          ADMIN.BAS_SUN     S");
                     SQL.AppendLine("      WHERE O.PTNO = '" + pAcp.ptNo + "' ");
                     SQL.AppendLine("          AND O.BDATE >= TO_DATE('" + dtpOptSDate.Value.ToShortDateString() + "','YYYY-MM-DD') ");
                     SQL.AppendLine("          AND O.BDATE <= TO_DATE('" + dtpOptSDate.Value.AddDays(1).ToShortDateString() + "','YYYY-MM-DD') ");
@@ -1106,7 +1106,7 @@ namespace ComEmrBase
             try
             {
                 StringBuilder SQL = new StringBuilder();
-                SQL.AppendLine("SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR ");
+                SQL.AppendLine("SELECT DRNAME FROM ADMIN.OCS_DOCTOR ");
                 SQL.AppendLine("          WHERE DRCODE = '" + strDrCode + "'");
                 SQL.AppendLine("          AND ((GBOUT <> 'Y')");
                 SQL.AppendLine("              OR (GBOUT = 'Y' AND ");
@@ -1158,7 +1158,7 @@ namespace ComEmrBase
         //    {
         //        StringBuilder SQL = new StringBuilder();
         //        string SQL = " SELECT SNAME, SEX, JUMIN1, JUMIN2 ";
-        //        SQL.AppendLine(" FROM KOSMOS_PMPA.BAS_PATIENT ";
+        //        SQL.AppendLine(" FROM ADMIN.BAS_PATIENT ";
         //        SQL.AppendLine(" WHERE PANO = '" + pAcp.ptNo + "' ";
 
         //        string sqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -1241,7 +1241,7 @@ namespace ComEmrBase
                     StringBuilder SQL = new StringBuilder();
 
                     SQL.AppendLine(" SELECT BUN ");
-                    SQL.AppendLine(" FROM KOSMOS_PMPA.BAS_SUT ");
+                    SQL.AppendLine(" FROM ADMIN.BAS_SUT ");
                     SQL.AppendLine(" WHERE SUNEXT = '" + strCode + "' ");
                     SQL.AppendLine("   AND BUN IN ('11','12','20','23')");
 

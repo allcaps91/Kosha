@@ -136,7 +136,7 @@ namespace ComLibB
                         rtnVal = rtnVal + ComNum.VBLF + "  SELECT PANO, OUTDATE FROM " + ComNum.DB_PMPA + "MID_SUMMARY";
                         rtnVal = rtnVal + ComNum.VBLF + "  WHERE TMODEL = '3'";
                         rtnVal = rtnVal + ComNum.VBLF + "  AND OUTDATE >= TO_DATE('" + dtpSDate.Text + "','YYYY-MM-DD')";
-                        rtnVal = rtnVal + ComNum.VBLF + "  AND OUTDATE <= TO_DATE('" + dtpEDate.Text + "','YYYY-MM-DD')) A, KOSMOS_PMPA.BAS_PATIENT B";
+                        rtnVal = rtnVal + ComNum.VBLF + "  AND OUTDATE <= TO_DATE('" + dtpEDate.Text + "','YYYY-MM-DD')) A, ADMIN.BAS_PATIENT B";
                         rtnVal = rtnVal + ComNum.VBLF + "  WHERE A.PANO = B.PANO ";
                         rtnVal = rtnVal + ComNum.VBLF + " ORDER BY OUTDATE ";
                         rtnVal = rtnVal + ComNum.VBLF + "";
@@ -157,7 +157,7 @@ namespace ComLibB
                         rtnVal = rtnVal + ComNum.VBLF + "    FROM " + ComNum.DB_PMPA + "NUR_QI_TRANSFOR";
                         rtnVal = rtnVal + ComNum.VBLF + "  WHERE TDATE >= TO_DATE('" + dtpSDate.Text + " 00:00','YYYY-MM-DD HH24:MI')";
                         rtnVal = rtnVal + ComNum.VBLF + "       AND TDATE <= TO_DATE('" + dtpEDate.Text + " 23:59','YYYY-MM-DD HH24:MI'))";
-                        rtnVal = rtnVal + ComNum.VBLF + " ) A, KOSMOS_PMPA.BAS_PATIENT B";
+                        rtnVal = rtnVal + ComNum.VBLF + " ) A, ADMIN.BAS_PATIENT B";
                         rtnVal = rtnVal + ComNum.VBLF + "  WHERE A.PANO = B.PANO ";
                         rtnVal = rtnVal + ComNum.VBLF + " ORDER BY OUTDATE ";
                         rtnVal = rtnVal + ComNum.VBLF + "";
@@ -173,7 +173,7 @@ namespace ComLibB
                         rtnVal = rtnVal + ComNum.VBLF + "    FROM " + ComNum.DB_PMPA + "NUR_QI_TRANSFOR";
                         rtnVal = rtnVal + ComNum.VBLF + "  WHERE TDATE >= TO_DATE('" + dtpSDate.Text + " 00:00','YYYY-MM-DD HH24:MI')";
                         rtnVal = rtnVal + ComNum.VBLF + "       AND TDATE <= TO_DATE('" + dtpEDate.Text + " 23:59','YYYY-MM-DD HH24:MI'))";
-                        rtnVal = rtnVal + ComNum.VBLF + " ) A, KOSMOS_PMPA.BAS_PATIENT B";
+                        rtnVal = rtnVal + ComNum.VBLF + " ) A, ADMIN.BAS_PATIENT B";
                         rtnVal = rtnVal + ComNum.VBLF + "  WHERE A.PANO = B.PANO ";
                         rtnVal = rtnVal + ComNum.VBLF + " ORDER BY OUTDATE ";
                         rtnVal = rtnVal + ComNum.VBLF + "";
@@ -183,7 +183,7 @@ namespace ComLibB
                     {
                         rtnVal = "";
                         rtnVal = rtnVal + ComNum.VBLF + " SELECT A.PANO, A.OUTDATE, B.SNAME, B.SEX, B.JUMIN1 FROM (";
-                        rtnVal = rtnVal + ComNum.VBLF + "  SELECT PANO, OUTDATE FROM KOSMOS_PMPA.MID_SUMMARY";
+                        rtnVal = rtnVal + ComNum.VBLF + "  SELECT PANO, OUTDATE FROM ADMIN.MID_SUMMARY";
                         rtnVal = rtnVal + ComNum.VBLF + "  WHERE TMODEL = '3'";
                         rtnVal = rtnVal + ComNum.VBLF + "  AND OUTDATE >= TO_DATE('" + dtpSDate.Text + "','YYYY-MM-DD')";
                         rtnVal = rtnVal + ComNum.VBLF + "  AND OUTDATE <= TO_DATE('" + dtpEDate.Text + "','YYYY-MM-DD')";

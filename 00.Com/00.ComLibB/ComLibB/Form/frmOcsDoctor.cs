@@ -603,7 +603,7 @@ namespace ComLibB
                     try
                     {
                         SQL = "";
-                        SQL += ComNum.VBLF + "UPDATE KOSMOS_OCS.OCS_DOCTOR set image = " + " :Parameter  ";
+                        SQL += ComNum.VBLF + "UPDATE ADMIN.OCS_DOCTOR set image = " + " :Parameter  ";
                         SQL += ComNum.VBLF + "  WHERE SABUN = '" + txtSabun.Text + "' ";
 
                         SqlErr = TestExecutLongRawQuery(SQL, rawdata, "Parameter", ref intRowAffected, clsDB.DbCon, true);

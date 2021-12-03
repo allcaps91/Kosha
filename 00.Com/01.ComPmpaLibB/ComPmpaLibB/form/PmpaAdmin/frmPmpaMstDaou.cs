@@ -469,7 +469,7 @@ namespace ComPmpaLibB
             SQL = "";
             SQL += ComNum.VBLF + " SELECT TO_CHAR(TRANDATE,'YYYY-MM-DD') TRANDATE, ";
             SQL += ComNum.VBLF + "        TO_CHAR(TRANDATE,'HH24:MI') TRANTIME, ";
-            SQL += ComNum.VBLF + "        PANO, KOSMOS_OCS.FC_BAS_PATIENT_SNAME(PANO) SNAME, GBIO, ";
+            SQL += ComNum.VBLF + "        PANO, ADMIN.FC_BAS_PATIENT_SNAME(PANO) SNAME, GBIO, ";
             SQL += ComNum.VBLF + "        DEPTCODE, CARDNO, PERIOD, ";
             SQL += ComNum.VBLF + "        INSTPERIOD, ";
             SQL += ComNum.VBLF + "        DECODE(TRANHEADER,'2',TRADEAMT * -1,TRADEAMT) TRADEAMT, ";

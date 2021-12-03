@@ -676,7 +676,7 @@ namespace ComPmpaLibB
 
                         SQL = "";
                         SQL = " SELECT DrCode ";
-                        SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_DOCTOR ";
+                        SQL = SQL + ComNum.VBLF + "FROM ADMIN.BAS_DOCTOR ";
                         SQL = SQL + ComNum.VBLF + " WHERE ( DRCODE ='" + strFrRoom + "' OR DRCODE ='" + strToRoom + "' ) ";
                         SQL = SQL + ComNum.VBLF + " AND GBCHOICE='Y' ";
 

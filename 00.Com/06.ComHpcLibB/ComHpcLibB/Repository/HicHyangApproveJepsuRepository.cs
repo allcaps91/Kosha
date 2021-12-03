@@ -28,8 +28,8 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , TO_CHAR(a.BDate,'YYYY-MM-DD') BDate                                         ");
             parameter.AppendSql("     , TO_CHAR(a.OcsSendTime,'YYYY-MM-DD HH24:MI') OcsSendTime                     ");
             parameter.AppendSql("     , TO_CHAR(a.ApproveTime,'YYYY-MM-DD HH24:MI') ApproveTime,a.ROWID AS RID      ");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_INSA_MST_KORNAME(a.DRSABUN) DRNAME                            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_HYANG_APPROVE a, KOSMOS_PMPA.HEA_JEPSU b                    ");
+            parameter.AppendSql("     , ADMIN.FC_INSA_MST_KORNAME(a.DRSABUN) DRNAME                            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_HYANG_APPROVE a, ADMIN.HEA_JEPSU b                    ");
             parameter.AppendSql(" WHERE a.BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')                                     ");
             parameter.AppendSql(" AND a.GBSITE = :GBSITE                                                            ");
             

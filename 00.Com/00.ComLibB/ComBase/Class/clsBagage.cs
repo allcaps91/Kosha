@@ -33,7 +33,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT A.SUNEXT";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_SUN A, KOSMOS_PMPA.EDI_SUGA B, KOSMOS_OCS.OCS_DRUGINFO_NEW C";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.BAS_SUN A, ADMIN.EDI_SUGA B, ADMIN.OCS_DRUGINFO_NEW C";
                 SQL = SQL + ComNum.VBLF + "    WHERE A.BCODE = B.CODE";
                 SQL = SQL + ComNum.VBLF + "       AND B.EFFECT = '721'";
                 SQL = SQL + ComNum.VBLF + "       AND A.SUNEXT = C.SUNEXT";
@@ -106,7 +106,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMR_AGREE_PRINT ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMR_AGREE_PRINT ";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + strDate[0].Trim() + "'";
                 SQL = SQL + ComNum.VBLF + "    AND MEDFRDATE = '" + strDate[3].Replace("-", "").Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND FORMNO = '" + strDate[11] + "' ";
@@ -159,7 +159,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT PANO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_HDMST";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_HDMST";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO= '" + strData[0] + "'";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -174,7 +174,7 @@ namespace ComBase
                 {
                     SQL = "";
                     SQL = "SELECT A.PATID";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMR_TREATT A, KOSMOS_EMR.EMR_CHARTPAGET B, KOSMOS_EMR.EMR_PAGET C";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMR_TREATT A, ADMIN.EMR_CHARTPAGET B, ADMIN.EMR_PAGET C";
                     SQL = SQL + ComNum.VBLF + " WHERE a.TREATNO = b.TREATNO";
                     SQL = SQL + ComNum.VBLF + "    AND B.PAGENO = C.PAGENO";
                     SQL = SQL + ComNum.VBLF + "    AND B.FORMCODE IN ('146','147')";
@@ -237,7 +237,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT CODE, REMARK, ENTDATE, NVL(SABUN,'4349') ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_ALLERGY_MST";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_ALLERGY_MST";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + strPtNo + "'";
                 SQL = SQL + ComNum.VBLF + " ORDER BY CODE";
 
@@ -295,7 +295,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT ZIPNAME1 || ' ' || ZIPNAME2 || ' ' || ZIPNAME3 || ' ' || RI || ' ' || DLGB || ' ' || BUNJI juso";
-                SQL = SQL + ComNum.VBLF + "  From KOSMOS_PMPA.BAS_ZIPSNEW";
+                SQL = SQL + ComNum.VBLF + "  From ADMIN.BAS_ZIPSNEW";
                 SQL = SQL + ComNum.VBLF + "  WHERE ZIPCODE1 = '" + strArg1 + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND ZIPCODE2 = '" + strArg2 + "' ";
 
@@ -413,7 +413,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = "SELECT ROWID FROM KOSMOS_OCS.OCS_ORDERCODE";
+                SQL = "SELECT ROWID FROM ADMIN.OCS_ORDERCODE";
                 SQL = SQL + ComNum.VBLF + " WHERE BUN IN ('72','73')";
                 SQL = SQL + ComNum.VBLF + " AND ORDERCODE = '" + strCode + "' ";
 
@@ -512,7 +512,7 @@ namespace ComBase
                 SQL = "SELECT ROWNUM SEQ, OUTSEQ, ENTTIME, GBATC, WRITESABUN, GBTFLAG, AIRSHT";
                 SQL = SQL + ComNum.VBLF + "    FROM (";
                 SQL = SQL + ComNum.VBLF + " SELECT MAX(A.OUTSEQ) OUTSEQ, A.ENTTIME, A.GBATC, B.WRITESABUN,  A.GBTFLAG, '' AIRSHT";
-                SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_OCS.OCS_PHARMACY A, KOSMOS_ADM.DRUG_PROGRESS B";
+                SQL = SQL + ComNum.VBLF + "    FROM ADMIN.OCS_PHARMACY A, ADMIN.DRUG_PROGRESS B";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.ENTDATE = TO_DATE('" + strDate + "','YYYY-MM-DD')";
                 SQL = SQL + ComNum.VBLF + "       AND PTNO = '" + strPtNo + "'";
                 SQL = SQL + ComNum.VBLF + "       AND A.GBTFLAG = 'T'";
@@ -521,7 +521,7 @@ namespace ComBase
                 SQL = SQL + ComNum.VBLF + "  GROUP BY  A.ENTTIME, A.GBATC, B.WRITESABUN, A.GBTFLAG, ''";
                 SQL = SQL + ComNum.VBLF + "  Union All";
                 SQL = SQL + ComNum.VBLF + "   SELECT MAX(A.OUTSEQ) OUTSEQ, A.ENTTIME, A.GBATC, B.WRITESABUN,  '' GBTFLAG, A.AIRSHT";
-                SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_OCS.OCS_PHARMACY A, KOSMOS_ADM.DRUG_PROGRESS B";
+                SQL = SQL + ComNum.VBLF + "     FROM ADMIN.OCS_PHARMACY A, ADMIN.DRUG_PROGRESS B";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.ENTDATE = TO_DATE('" + strDate + "','YYYY-MM-DD')";
                 SQL = SQL + ComNum.VBLF + "       AND PTNO = '" + strPtNo + "'";
                 SQL = SQL + ComNum.VBLF + "       AND A.AIRSHT = '1'";
@@ -617,7 +617,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT A.JEPCODE, B.SUNAMEK";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_ADM.VIEW_NOT_AIRSHT A, KOSMOS_PMPA.BAS_SUN B";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.VIEW_NOT_AIRSHT A, ADMIN.BAS_SUN B";
                 SQL = SQL + ComNum.VBLF + " WHERE JEPCODE IN (" + strQuery + ")";
                 SQL = SQL + ComNum.VBLF + " AND A.JEPCODE = B.SUNEXT";
 
@@ -716,7 +716,7 @@ namespace ComBase
                 {
                     case "INSERT":
                         SQL = "";
-                        SQL = "INSERT INTO KOSMOS_PMPA.ETC_SMS_RESNOTSEND";
+                        SQL = "INSERT INTO ADMIN.ETC_SMS_RESNOTSEND";
                         SQL = SQL + ComNum.VBLF + "     (PTNO, BDATE, DEPTCODE, DRCODE, RDATE, WRITEDATE, WRITESABUN)";
                         SQL = SQL + ComNum.VBLF + "VALUES";
                         SQL = SQL + ComNum.VBLF + "     (";
@@ -731,7 +731,7 @@ namespace ComBase
                         break;
                     case "UPDATE":
                         SQL = "";
-                        SQL = "UPDATE KOSMOS_PMPA.ETC_SMS_RESNOTSEND";
+                        SQL = "UPDATE ADMIN.ETC_SMS_RESNOTSEND";
                         SQL = SQL + ComNum.VBLF + "     SET ";
                         SQL = SQL + ComNum.VBLF + "         DRCODE = '" + strDrCode + "', ";
                         SQL = SQL + ComNum.VBLF + "         RDATE = TO_DATE('" + strRDate + " " + strRTime + "','YYYY-MM-DD HH24:MI'), ";
@@ -743,7 +743,7 @@ namespace ComBase
                         break;
                     case "DELETE":
                         SQL = "";
-                        SQL = "DELETE KOSMOS_PMPA.ETC_SMS_RESNOTSEND ";
+                        SQL = "DELETE ADMIN.ETC_SMS_RESNOTSEND ";
                         SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + strPtNo + "' ";
                         SQL = SQL + ComNum.VBLF + "   AND BDATE = TO_DATE('" + strBDate + "','YYYY-MM-DD') ";
                         SQL = SQL + ComNum.VBLF + "   AND DEPTCODE = '" + strDeptCode + "' ";
@@ -753,7 +753,7 @@ namespace ComBase
                 if (strGubun == "UPDATE")
                 {
                     SQL = "";
-                    SQL = "INSERT INTO KOSMOS_PMPA.ETC_SMS_RESNOTSEND";
+                    SQL = "INSERT INTO ADMIN.ETC_SMS_RESNOTSEND";
                     SQL = SQL + ComNum.VBLF + "     (PTNO, BDATE, DEPTCODE, DRCODE, RDATE, WRITEDATE, WRITESABUN)";
                     SQL = SQL + ComNum.VBLF + "VALUES";
                     SQL = SQL + ComNum.VBLF + "     (";
@@ -811,7 +811,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT PTNO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_SMS_RESNOTSEND";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_SMS_RESNOTSEND";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + strPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND RDATE = TO_DATE('" + strRDate + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND DRCODE = '" + strDrCode + "' ";
@@ -861,7 +861,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT PTNO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_SMS_RESNOTSEND";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_SMS_RESNOTSEND";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + strPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND BDATE = TO_DATE('" + strBDate + "','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "   AND DEPTCODE = '" + strDeptCode + "' ";
@@ -915,7 +915,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT NAME, CODE";
-                SQL = SQL + ComNum.VBLF + "  From KOSMOS_PMPA.BAS_BCODE";
+                SQL = SQL + ComNum.VBLF + "  From ADMIN.BAS_BCODE";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN = 'OCS_불출부서_코드'";
                 SQL = SQL + ComNum.VBLF + "   AND CODE = '" + strArg + "'";
 
@@ -969,7 +969,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = "SELECT ORDERCODE";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_ORDERCODE";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_ORDERCODE";
                 SQL = SQL + ComNum.VBLF + " WHERE ORDERCODE = '" + strArg + "'";
                 SQL = SQL + ComNum.VBLF + "   AND (SLIPNO = 'A6' OR BUN IN ('11','12','20','23'))";
 
@@ -1047,15 +1047,15 @@ namespace ComBase
                 SQL = "";
                 SQL += " SELECT /*+ INDEX(BAS_SUN INDEX_BASSUN20) */ nvl(SUGBY, 0) SUGBY    \r";
                 SQL += "      , nvl(SUGBZ, 0) SUGBZ                                         \r";
-                SQL += "   From KOSMOS_PMPA.BAS_SUN                                         \r";
+                SQL += "   From ADMIN.BAS_SUN                                         \r";
                 SQL += "  WHERE SUNEXT = '" + strOrderCode + "'                             \r";
                 SQL += "  Union                                                             \r";
                 SQL += " SELECT /*+ INDEX(BAS_SUN INDEX_BASSUN20) */ nvl(SUGBY, 0)SUGBY     \r";
                 SQL += "      , nvl(SUGBZ, 0) SUGBZ                                         \r";
-                SQL += "   From KOSMOS_PMPA.BAS_SUN                                         \r";
+                SQL += "   From ADMIN.BAS_SUN                                         \r";
                 SQL += "  WHERE SUNEXT IN  (                                                \r";
                 SQL += "                     SELECT SUCODE                                  \r";
-                SQL += "                       From KOSMOS_OCS.OCS_ORDERCODE                \r";
+                SQL += "                       From ADMIN.OCS_ORDERCODE                \r";
                 SQL += "                      WHERE ORDERCODE = '" + strOrderCode + "')     \r";
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
 
@@ -1135,7 +1135,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL += " SELECT NAME, CODE                      \r";
-                SQL += "   FROM KOSMOS_PMPA.BAS_BCODE           \r";
+                SQL += "   FROM ADMIN.BAS_BCODE           \r";
                 SQL += "  WHERE GUBUN = 'OCS_불출부서_코드'     \r";
                 SQL += "  ORDER BY SORT                         \r";
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -1314,7 +1314,7 @@ namespace ComBase
                     {
                         SQL = "";
                         SQL += " SELECT ORDERCODE                           \r";
-                        SQL += "   FROM KOSMOS_OCS.OCS_ORDERCODE            \r";
+                        SQL += "   FROM ADMIN.OCS_ORDERCODE            \r";
                         SQL += "  WHERE SLIPNO = '0060'                     \r";
                         SQL += "    AND ORDERCODE = '" + strOrderCode + "'  \r";
                         SqlErr = clsDB.GetDataTableEx(ref dt, SQL, pDbCon);
@@ -1393,7 +1393,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL += " SELECT GBAUTOSEND2                                         \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_OORDER                               \r";
+                SQL += "   FROM ADMIN.OCS_OORDER                               \r";
                 SQL += "  WHERE PTNO = '" + sPano + "'                              \r";
                 SQL += "    AND BDATE = TO_DATE('" + sBDate + "','YYYY-MM-DD')      \r";
                 SQL += "    AND ORDERNO = " + VB.Val(sOrdNo) + "                    \r";
@@ -1488,7 +1488,7 @@ namespace ComBase
             {
 
                 SQL = " SELECT NAME";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_BCODE";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_BCODE";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN = 'DRUG_DIF_교체'";
                 SQL = SQL + ComNum.VBLF + "   AND CODE = 'USE'";
                 SQL = SQL + ComNum.VBLF + "   AND NAME = 'Y'";

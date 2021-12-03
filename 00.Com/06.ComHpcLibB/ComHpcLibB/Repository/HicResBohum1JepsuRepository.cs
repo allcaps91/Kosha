@@ -29,7 +29,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , A.ROWID,HABIT1,HABIT2,HABIT3,HABIT4,HABIT5,T_SMOKE1,T_DRINK1                                ");
             parameter.AppendSql("     , A.OLDBYENG2, A.OLDBYENG5, A.PanjengU1, A.PanjengU2, A.PanjengU3, A.PanjengU4                ");
             parameter.AppendSql("     , A.TMUN0125, A.TMUN0126, A.TMUN0127, A.TMUN0128                                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_BOHUM1 A, KOSMOS_PMPA.HIC_JEPSU B                                       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_BOHUM1 A, ADMIN.HIC_JEPSU B                                       ");
             parameter.AppendSql(" WHERE A.WRTNO = :WRTNO                                                                            ");
             parameter.AppendSql("   AND A.WRTNO = B.WRTNO                                                                           ");
 

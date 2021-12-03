@@ -167,12 +167,12 @@ namespace ComLibB
             try
             {
                 //이전 내용 백업한다
-                SQL = " INSERT INTO KOSMOS_PMPA.BAS_SELECT_MST_HIS  ";
+                SQL = " INSERT INTO ADMIN.BAS_SELECT_MST_HIS  ";
                 SQL = SQL + ComNum.VBLF + " ( PANO,SNAME,GUBUN,DEPTCODE,DRCODE,SDATE,EDATE,DELDATE,ENTSABUN,ENTDATE,WORK,ENTDATE2,BIGO,";
                 SQL = SQL + ComNum.VBLF + "   Set1,Set2,Set3,Set4,Set5,Set6,Set7,Set8,Set9,Setc1,Setc2,Setc3,Setc4,Setc5,Setc6,Setc7,Setc8,Setc9 )   ";
                 SQL = SQL + ComNum.VBLF + "   SELECT  PANO,SNAME,GUBUN,DEPTCODE,DRCODE,SDATE,EDATE,DELDATE,ENTSABUN,ENTDATE,WORK,ENTDATE,BIGO, ";
                 SQL = SQL + ComNum.VBLF + "           Set1,Set2,Set3,Set4,Set5,Set6,Set7,Set8,Set9,Setc1,Setc2,Setc3,Setc4,Setc5,Setc6,Setc7,Setc8,Setc9 ";
-                SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_PMPA.BAS_SELECT_MST ";
+                SQL = SQL + ComNum.VBLF + "    FROM ADMIN.BAS_SELECT_MST ";
                 SQL = SQL + ComNum.VBLF + "     WHERE ROWID =//" + FstrRowid + "// ";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -185,7 +185,7 @@ namespace ComLibB
 
                 }
 
-                SQL = " UPDATE KOSMOS_PMPA.BAS_SELECT_MST SET ";
+                SQL = " UPDATE ADMIN.BAS_SELECT_MST SET ";
                 SQL = SQL + ComNum.VBLF + " DELDATE =TO_DATE(//" + clsPublic.GstrSysDate + "//,//YYYY-MM-DD//) ,  ";
                 SQL = SQL + ComNum.VBLF + " ENTSABUN =//" + clsPublic.GstrJobPart + "//, ";
                 SQL = SQL + ComNum.VBLF + " ENTDATE2 = SYSDATE ";
@@ -388,7 +388,7 @@ namespace ComLibB
                     strChk = "OK";
                     strDelDate = "";
 
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_SELECT_MST ( PANO,SNAME,GUBUN,DEPTCODE,DRCODE,SDATE,EDATE,DELDATE,ENTSABUN,ENTDATE,WORK,ENTDATE2,Bigo, ";
+                    SQL = " INSERT INTO ADMIN.BAS_SELECT_MST ( PANO,SNAME,GUBUN,DEPTCODE,DRCODE,SDATE,EDATE,DELDATE,ENTSABUN,ENTDATE,WORK,ENTDATE2,Bigo, ";
                     SQL = SQL + ComNum.VBLF + "   Set1,Set2,Set3,Set4,Set5,Set6,Set7,Set8,Set9,Setc1,Setc2,Setc3,Setc4,Setc5,Setc6,Setc7,Setc8,Setc9  ) VALUES ( ";
                     SQL = SQL + ComNum.VBLF + " //" + strPano + "//,//" + strSname + "//,//" + strGubun + "//,//" + strDeptCode + "//,//" + strDrCode + "//,";
                     SQL = SQL + ComNum.VBLF + " TO_DATE(//" + strSDate + "//,//YYYY-MM-DD//),TO_DATE(//" + strEDate + "//,//YYYY-MM-DD//),TO_DATE(//" + strDelDate + "//,//YYYY-MM-DD//), ";
@@ -405,7 +405,7 @@ namespace ComLibB
                         return false;
                     }
 
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_SELECT_MST_HIS  ";
+                    SQL = " INSERT INTO ADMIN.BAS_SELECT_MST_HIS  ";
                     SQL = SQL + ComNum.VBLF + " ( PANO,SNAME,GUBUN,DEPTCODE,DRCODE,SDATE,EDATE,DELDATE,ENTSABUN,ENTDATE,WORK,ENTDATE2,Bigo,";
                     SQL = SQL + ComNum.VBLF + "   Set1,Set2,Set3,Set4,Set5,Set6,Set7,Set8,Set9,Setc1,Setc2,Setc3,Setc4,Setc5,Setc6,Setc7,Setc8,Setc9 ) VALUES ( ";
                     SQL = SQL + ComNum.VBLF + " //" + strPano + "//,//" + strSname + "//,//" + strGubun + "//,//" + strDeptCode + "//,//" + strDrCode + "//,";
@@ -427,12 +427,12 @@ namespace ComLibB
                 {
                     strChk = "OK";
                     //이전내역 백업
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_SELECT_MST_HIS  ";
+                    SQL = " INSERT INTO ADMIN.BAS_SELECT_MST_HIS  ";
                     SQL = SQL + ComNum.VBLF + " ( PANO,SNAME,GUBUN,DEPTCODE,DRCODE,SDATE,EDATE,DELDATE,ENTSABUN,ENTDATE,WORK,ENTDATE2,BIGO,";
                     SQL = SQL + ComNum.VBLF + "   Set1,Set2,Set3,Set4,Set5,Set6,Set7,Set8,Set9,Setc1,Setc2,Setc3,Setc4,Setc5,Setc6,Setc7,Setc8,Setc9 )   ";
                     SQL = SQL + ComNum.VBLF + "   SELECT  PANO,SNAME,GUBUN,DEPTCODE,DRCODE,SDATE,EDATE,DELDATE,ENTSABUN,ENTDATE,//0//,ENTDATE2,BIGO, ";
                     SQL = SQL + ComNum.VBLF + "           Set1,Set2,Set3,Set4,Set5,Set6,Set7,Set8,Set9,Setc1,Setc2,Setc3,Setc4,Setc5,Setc6,Setc7,Setc8,Setc9 ";
-                    SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_PMPA.BAS_SELECT_MST ";
+                    SQL = SQL + ComNum.VBLF + "    FROM ADMIN.BAS_SELECT_MST ";
                     SQL = SQL + ComNum.VBLF + "     WHERE ROWID =//" + FstrRowid + "// ";
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                     if (SqlErr != "")
@@ -444,7 +444,7 @@ namespace ComLibB
                         return false;
                     }
 
-                    SQL = " UPDATE KOSMOS_PMPA.BAS_SELECT_MST SET ";
+                    SQL = " UPDATE ADMIN.BAS_SELECT_MST SET ";
                     //2014-04-17 시작일자 조정가능하게 변경 원무과 의뢰서 요청
                     SQL = SQL + ComNum.VBLF + " SDate =TO_DATE(//" + strSDate + "//,//YYYY-MM-DD//) ,  ";
                     SQL = SQL + ComNum.VBLF + "  Work =//" + strWork + "//, ";
@@ -517,7 +517,7 @@ namespace ComLibB
             SQL = " SELECT a.Pano,a.SName,a.Jumin1,a.Jumin2,a.Jumin3, ";
             SQL = SQL + ComNum.VBLF + "  a.Juso,a.ZipCode1 || a.ZipCode1 AS ZipCode,a.Tel,a.Hphone, "  ;
             SQL = SQL + ComNum.VBLF + "  b.DelDate,b.ROWID, a.ZIPCODE3, a.ROADDETAIL, a.BUILDNO "  ;
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_PATIENT a, KOSMOS_PMPA.BAS_SELECT_MST b "  ;
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_PATIENT a, ADMIN.BAS_SELECT_MST b "  ;
             SQL = SQL + ComNum.VBLF + "   WHERE a.PANO =b.Pano(+) "  ;
             SQL = SQL + ComNum.VBLF + "    AND a.PANO =//" + argPano + "// "  ;
 
@@ -616,7 +616,7 @@ namespace ComLibB
 
             //의사
             SQL = " SELECT a.DrCode,a.DrName,a.DrDept1,a.GbChoice,b.DeptNamek ";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_DOCTOR a, KOSMOS_PMPA.BAS_CLINICDEPT b ";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_DOCTOR a, ADMIN.BAS_CLINICDEPT b ";
             SQL = SQL + ComNum.VBLF + " WHERE a.DrDept1=b.DeptCode(+) ";
             if (argDept != "전체") { SQL = SQL + ComNum.VBLF + "  AND a.DrDept1 IN ( " + argDept + " )"; }
             SQL = SQL + ComNum.VBLF + "  AND a.GbChoice='Y' ";
@@ -658,7 +658,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(SDATE,'YYYY-MM-DD') SDATE, ";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(EDATE,'YYYY-MM-DD') EDATE,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(EntDate,'YYYY-MM-DD') EntDate,ENTSABUN,ROWID";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_SELECT_MST ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.BAS_SELECT_MST ";
                 SQL = SQL + ComNum.VBLF + " WHERE Pano ='" + argPano + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND DrCode ='" + strDrCode + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND GUBUN ='" + argIO + "' ";
@@ -794,7 +794,7 @@ namespace ComLibB
             SQL = ComNum.VBLF + " TO_CHAR(a.EntDate,//YYYY-MM-DD HH24:MI//) EntDate,";
             SQL = ComNum.VBLF + " TO_CHAR(a.EntDate2,//YYYY-MM-DD HH24:MI//) EntDate2,";
             SQL = ComNum.VBLF + " a.ENTSABUN,a.ROWID ";
-            SQL = ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_SELECT_MST a, KOSMOS_PMPA.BAS_CLINICDEPT b ";
+            SQL = ComNum.VBLF + "  FROM ADMIN.BAS_SELECT_MST a, ADMIN.BAS_CLINICDEPT b ";
             SQL = ComNum.VBLF + " WHERE a.DeptCode=b.DeptCode(+)";
             SQL = ComNum.VBLF + "  AND a.Pano =//" + argPano + "// " ;
 

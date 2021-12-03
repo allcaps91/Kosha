@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT(DECODE(a.PanJengDRNO, :LICENSE, 1)) CNT                   ");
             parameter.AppendSql("     , COUNT(DECODE(a.PanJengDRNO,'', 1)) CNT2                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_RES_DENTAL a, KOSMOS_PMPA.HIC_JEPSU b           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_DENTAL a, ADMIN.HIC_JEPSU b           ");
             parameter.AppendSql(" WHERE b.WRTNO = a.WRTNO                                               ");
             parameter.AppendSql("   AND b.DELDATE IS NULL                                               ");
             parameter.AppendSql("   AND b.GjJong NOT IN ('31','35','56')                                "); //암검진 제외

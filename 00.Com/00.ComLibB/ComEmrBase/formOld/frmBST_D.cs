@@ -53,9 +53,9 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "              (extractValue(chartxml, '//ta4') || ' ' || ";
                 SQL = SQL + ComNum.VBLF + "              extractValue(chartxml, '//ta5') ||";
                 SQL = SQL + ComNum.VBLF + "              extractValue(chartxml, '//ta9')) AS VAL2";
-                SQL = SQL + ComNum.VBLF + "    From KOSMOS_EMR.EMRXML";
+                SQL = SQL + ComNum.VBLF + "    From ADMIN.EMRXML";
                 SQL = SQL + ComNum.VBLF + " WHERE EMRNO IN (";
-                SQL = SQL + ComNum.VBLF + "  SELECT EMRNO FROM KOSMOS_EMR.EMRXMLMST WHERE FORMNO = 1572";
+                SQL = SQL + ComNum.VBLF + "  SELECT EMRNO FROM ADMIN.EMRXMLMST WHERE FORMNO = 1572";
                 SQL = SQL + ComNum.VBLF + "      AND PTNO = '" + strPano + "'";
                 SQL = SQL + ComNum.VBLF + "      AND CHARTDATE >= '" + dtpSDATE.Value.ToString("yyyyMMdd") + "'";
                 SQL = SQL + ComNum.VBLF + "      AND CHARTDATE <= '" + dtpEDATE.Value.ToString("yyyyMMdd") + "')";
@@ -65,20 +65,20 @@ namespace ComEmrBase
                 {
                     SQL += ComNum.VBLF + "UNION ALL";
                     SQL += ComNum.VBLF + " SELECT CHARTDATE, CHARTTIME, B1.ITEMVALUE AS TA2, (B2.ITEMVALUE || ' ' || B3.ITEMVALUE || B4.ITEMVALUE) AS VAL2";
-                    SQL += ComNum.VBLF + "    From KOSMOS_EMR.AEMRCHARTMST A";
-                    SQL += ComNum.VBLF + "      LEFT OUTER JOIN KOSMOS_EMR.AEMRCHARTROW B1";
+                    SQL += ComNum.VBLF + "    From ADMIN.AEMRCHARTMST A";
+                    SQL += ComNum.VBLF + "      LEFT OUTER JOIN ADMIN.AEMRCHARTROW B1";
                     SQL += ComNum.VBLF + "         ON A.EMRNO = B1.EMRNO";
                     SQL += ComNum.VBLF + "        AND A.EMRNOHIS = B1.EMRNOHIS";
                     SQL += ComNum.VBLF + "        AND B1.ITEMCD = 'I0000009122' -- Glucose";
-                    SQL += ComNum.VBLF + "      LEFT OUTER JOIN KOSMOS_EMR.AEMRCHARTROW B2";
+                    SQL += ComNum.VBLF + "      LEFT OUTER JOIN ADMIN.AEMRCHARTROW B2";
                     SQL += ComNum.VBLF + "         ON A.EMRNO = B2.EMRNO";
                     SQL += ComNum.VBLF + "        AND A.EMRNOHIS = B2.EMRNOHIS";
                     SQL += ComNum.VBLF + "        AND B2.ITEMCD = 'I0000004686' -- Insulin";
-                    SQL += ComNum.VBLF + "      LEFT OUTER JOIN KOSMOS_EMR.AEMRCHARTROW B3";
+                    SQL += ComNum.VBLF + "      LEFT OUTER JOIN ADMIN.AEMRCHARTROW B3";
                     SQL += ComNum.VBLF + "         ON A.EMRNO = B3.EMRNO";
                     SQL += ComNum.VBLF + "        AND A.EMRNOHIS = B3.EMRNOHIS";
                     SQL += ComNum.VBLF + "        AND B3.ITEMCD = 'I0000035480' -- 약용량";
-                    SQL += ComNum.VBLF + "      LEFT OUTER JOIN KOSMOS_EMR.AEMRCHARTROW B4";
+                    SQL += ComNum.VBLF + "      LEFT OUTER JOIN ADMIN.AEMRCHARTROW B4";
                     SQL += ComNum.VBLF + "         ON A.EMRNO = B4.EMRNO";
                     SQL += ComNum.VBLF + "        AND A.EMRNOHIS = B4.EMRNOHIS";
                     SQL += ComNum.VBLF + "        AND B4.ITEMCD = 'I0000001311' -- 비고";

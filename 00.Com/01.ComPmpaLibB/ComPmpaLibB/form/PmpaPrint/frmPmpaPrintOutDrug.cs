@@ -439,8 +439,8 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + "        TO_CHAR(a.PrtDate,'YYYY-MM-DD HH24:MI') PrtDate,      --인쇄시각";
             SQL += ComNum.VBLF + "        a.SlipNo, a.Part, a.PrtBun,                           --원외처방전번호,작업조,위치";
             SQL += ComNum.VBLF + "        a.ChkPrt, a.GbAuto, a.GbV252,  a.GbV352,                       --인쇄처리구분(대상기본:Y,처리:P),자동출력,V252여부";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_ETC_TUYAKNO(TO_CHAR(a.SlipDate,'YYYY-MM-DD'), a.SlipNo, a.Pano) TUNO, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_OPD_CHOJAE(TO_CHAR(a.SlipDate,'YYYY-MM-DD'), a.Pano,a.DeptCode) CHOJAE, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_ETC_TUYAKNO(TO_CHAR(a.SlipDate,'YYYY-MM-DD'), a.SlipNo, a.Pano) TUNO, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_OPD_CHOJAE(TO_CHAR(a.SlipDate,'YYYY-MM-DD'), a.Pano,a.DeptCode) CHOJAE, ";
             SQL += ComNum.VBLF + "        a.ROWID ";                
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_MED + "OCS_OUTDRUGMST a,                --원외처방전 마스터테이블";
             SQL += ComNum.VBLF + "        " + ComNum.DB_PMPA + "BAS_Patient b                   --환자기본 마스터테이블";

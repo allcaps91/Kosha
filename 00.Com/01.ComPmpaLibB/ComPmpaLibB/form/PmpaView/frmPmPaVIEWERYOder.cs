@@ -89,7 +89,7 @@ namespace ComPmpaLibB
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "  SELECT PTNO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE, TO_CHAR(EntDATE,'YY/MM/DD HH24:MI') EntDATE,";
                 SQL = SQL + ComNum.VBLF + " DEPTCODE,SUCODE,QTY,NAL,GBACT,GBSEND,GBPICKUP,PICKUPDATE,GBIOE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_IORDER ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_IORDER ";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO ='" + txtpano.Text + "' ";
                 SQL = SQL + ComNum.VBLF + " AND BDATE =TO_DATE('" + dtpFdate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
 
@@ -192,7 +192,7 @@ namespace ComPmpaLibB
                 //'외래오더
                 SQL = "  SELECT PTNO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,TO_CHAR(EntDATE,'YY/MM/DD HH24:MI') EntDATE,";
                 SQL = SQL + ComNum.VBLF + " DEPTCODE,SUCODE,QTY,NAL,GBSUNAP ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_OORDER ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_OORDER ";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO ='" + txtpano.Text + "' ";
                 SQL = SQL + ComNum.VBLF + " AND BDATE =TO_DATE('" + dtpFdate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
 

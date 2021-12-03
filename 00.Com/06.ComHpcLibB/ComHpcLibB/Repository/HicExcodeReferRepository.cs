@@ -26,7 +26,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT CODE,FROMDATE,TODATE,EXCODE,MIN_M,MIN_MB,MIN_MR,MAX_M,MAX_MB,MAX_MR         ");
             parameter.AppendSql("      ,MIN_F, MIN_FB, MIN_FR, MAX_F, MAX_FB, MAX_FR, EXAMFRTO, RESULTTYPE, UNIT    ");
             parameter.AppendSql("      ,GUBUN, DECODE(GUBUN, '1','일반','2','종검','3','특수','') AS GUBUNNM        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE_REFER                                                ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE_REFER                                                ");
             parameter.AppendSql(" WHERE CODE = :CODE                                                                ");
             parameter.AppendSql("   AND FROMDATE >= TO_DATE(:FROMDATE,'YYYY-MM-DD')                                 ");
             //parameter.AppendSql("   AND (TODATE IS NULL OR TODATE < TO_DATE(:FROMDATE,'YYYY-MM-DD'))                ");
@@ -44,7 +44,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_EXCODE_REFER        ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_EXCODE_REFER        ");
             parameter.AppendSql("   SET FROMDATE =:FROMDATE                 ");
             parameter.AppendSql("       MIN_M =:MIN_M                       ");
             parameter.AppendSql("       MIN_MB =:MIN_MB                     ");
@@ -81,7 +81,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_EXCODE_REFER (                                             ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_EXCODE_REFER (                                             ");
             parameter.AppendSql("   CODE,FROMDATE,MIN_M,MIN_MB,MIN_MR,MAX_M,MAX_MB,MAX_MR                               ");
             parameter.AppendSql("  ,MIN_F, MIN_FB, MIN_FR, MAX_F, MAX_FB, MAX_FR, GUBUN                                 ");
             parameter.AppendSql(" ) VALUES (                                                                            ");
@@ -123,7 +123,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , MIN_FR, MAX_F, MAX_FB                   ");
             parameter.AppendSql("     , MAX_FR, EXAMFRTO, RESULTTYPE            ");
             parameter.AppendSql("     , UNIT                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXCODE_REFER            ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXCODE_REFER            ");
             parameter.AppendSql(" WHERE RESULTTYPE :RESULTTYPE                  ");
             parameter.AppendSql(" ORDER BY Code                                 ");
 

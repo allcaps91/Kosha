@@ -827,7 +827,7 @@ namespace ComPmpaLibB
 
                         SQL = "";
                         SQL = SQL + ComNum.VBLF + " SELECT SUM(Qty*Nal) SQty,SUM(Amt1+Amt2) SAmt, SUCODE    ";
-                        SQL = SQL + ComNum.VBLF + "   From KOSMOS_PMPA.IPD_NEW_SLIP                         ";
+                        SQL = SQL + ComNum.VBLF + "   From ADMIN.IPD_NEW_SLIP                         ";
                         SQL = SQL + ComNum.VBLF + "  Where Pano='" + strPano + "'                           ";
                         SQL = SQL + ComNum.VBLF + "    AND TRSNO=" + lngTrsno + "                           ";
                         SQL = SQL + ComNum.VBLF + "    AND SUCODE='" + strSuCode + "'                       ";
@@ -2018,7 +2018,7 @@ namespace ComPmpaLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " SELECT * FROM KOSMOS_OCS.OCS_OORDER                     ";
+                SQL = SQL + ComNum.VBLF + " SELECT * FROM ADMIN.OCS_OORDER                     ";
                 SQL = SQL + ComNum.VBLF + "  WHERE BDATE =TO_DATE('" + strBDate + "','YYYY-MM-DD')  ";
                 SQL = SQL + ComNum.VBLF + "    AND Ptno = '" + strPano + "'                         ";
                 //2013-11-05
@@ -2054,12 +2054,12 @@ namespace ComPmpaLibB
                             if (strDept == "MN")
                             {
                                 SQL = SQL + ComNum.VBLF + "    AND (DeptCode = '" + strDept + "'  OR DEPTCODE = 'HD' ";
-                                SQL = SQL + ComNum.VBLF + "         OR DeptCode IN ( SELECT DeptCode FROM KOSMOS_OCS.OCS_OORDER WHERE BDATE=TO_DATE('" + strBDate + "','YYYY-MM-DD') AND BI IN ('11','12','13') ) ) ";
+                                SQL = SQL + ComNum.VBLF + "         OR DeptCode IN ( SELECT DeptCode FROM ADMIN.OCS_OORDER WHERE BDATE=TO_DATE('" + strBDate + "','YYYY-MM-DD') AND BI IN ('11','12','13') ) ) ";
                             }
                             else
                             {
                                 SQL = SQL + ComNum.VBLF + "    AND (DeptCode = '" + strDept + "'                    ";
-                                SQL = SQL + ComNum.VBLF + "         OR DeptCode IN ( SELECT DeptCode FROM KOSMOS_OCS.OCS_OORDER WHERE BDATE=TO_DATE('" + strBDate + "','YYYY-MM-DD') AND BI IN ('11','12','13')  ) ) ";
+                                SQL = SQL + ComNum.VBLF + "         OR DeptCode IN ( SELECT DeptCode FROM ADMIN.OCS_OORDER WHERE BDATE=TO_DATE('" + strBDate + "','YYYY-MM-DD') AND BI IN ('11','12','13')  ) ) ";
                             }
                         }
                         else if (VB.Left(strBi, 1) == "3")

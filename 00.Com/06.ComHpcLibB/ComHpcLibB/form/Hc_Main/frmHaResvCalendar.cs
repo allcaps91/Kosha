@@ -959,8 +959,8 @@ namespace ComHpcLibB
             SQL += ComNum.VBLF + "           SELECT a.PANO, a.PTNO, a.SNAME, d.GUBUN1, DECODE(a.AMPM2, '1', 'A', 'P') AS AMPM, TO_CHAR(a.SDATE, 'YYYY-MM-DD') SDATE     ";
             SQL += ComNum.VBLF + "                , TO_CHAR(c.RTIME, 'YYYY-MM-DD') RTIME                                                                                ";
             SQL += ComNum.VBLF + "                , DECODE(b.EXCODE, 'TX20', '수면', 'TX41', '수면', 'TX64', '수면', '') AS EXCODE                                      ";
-            SQL += ComNum.VBLF + "             FROM KOSMOS_PMPA.HEA_JEPSU a,     KOSMOS_PMPA.HEA_RESULT b,                                                              ";
-            SQL += ComNum.VBLF + "                  KOSMOS_PMPA.HEA_RESV_EXAM c, KOSMOS_PMPA.HEA_CODE d                                                                 ";
+            SQL += ComNum.VBLF + "             FROM ADMIN.HEA_JEPSU a,     ADMIN.HEA_RESULT b,                                                              ";
+            SQL += ComNum.VBLF + "                  ADMIN.HEA_RESV_EXAM c, ADMIN.HEA_CODE d                                                                 ";
             SQL += ComNum.VBLF + "            WHERE 1 = 1                                                                                                               ";
             SQL += ComNum.VBLF + "              AND (a.SDATE= TO_DATE('" + strFDate + "', 'YYYY-MM-DD')                                                                 ";
             SQL += ComNum.VBLF + "                   OR(    c.RTIME >= TO_DATE('" + strFDate + "', 'YYYY-MM-DD')                                                        ";
@@ -977,7 +977,7 @@ namespace ComHpcLibB
             SQL += ComNum.VBLF + "              UNION                                                                                                                   ";
             SQL += ComNum.VBLF + "              SELECT PANO, PTNO, SNAME, '' AS GUBUN1, DECODE(AMPM2, '1', 'A', 'P') AS AMPM, TO_CHAR(SDATE, 'YYYY-MM-DD') SDATE        ";
             SQL += ComNum.VBLF + "              , TO_CHAR(SDATE, 'YYYY-MM-DD') RTIME                , '' AS EXCODE                                                      ";
-            SQL += ComNum.VBLF + "              FROM KOSMOS_PMPA.HEA_JEPSU                                                                                              ";
+            SQL += ComNum.VBLF + "              FROM ADMIN.HEA_JEPSU                                                                                              ";
             SQL += ComNum.VBLF + "              WHERE 1 = 1                                                                                                             ";
             SQL += ComNum.VBLF + "              AND SDATE = TO_DATE('" + strFDate + "', 'YYYY-MM-DD')                                                                   ";
             SQL += ComNum.VBLF + "              AND DELDATE IS NULL                                                                                                     ";

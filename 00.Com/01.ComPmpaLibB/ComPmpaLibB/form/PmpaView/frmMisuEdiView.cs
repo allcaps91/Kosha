@@ -294,7 +294,7 @@ namespace ComPmpaLibB
                         SQL = SQL + ComNum.VBLF + "SELECT nvl(SUM(EDIBAMT) ,0) EDIBAMT ";
                         SQL = SQL + ComNum.VBLF + "FROM (";
                         SQL = SQL + ComNum.VBLF + "SELECT A.EDIBAMT, A.SEQNO";
-                        SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.MIR_INSID A, KOSMOS_PMPA.MIR_INSDTL B";
+                        SQL = SQL + ComNum.VBLF + "FROM ADMIN.MIR_INSID A, ADMIN.MIR_INSDTL B";
                         SQL = SQL + ComNum.VBLF + "WHERE A.WRTNO = B.WRTNO";
                         SQL = SQL + ComNum.VBLF + "AND A.EDIMIRNO = '" + Dt.Rows[i]["MirNo"].ToString().Trim() + "'";
                         SQL = SQL + ComNum.VBLF + "AND A.IPDOPD = '" + Dt.Rows[i]["IpdOpd"].ToString() + "'";

@@ -24,10 +24,10 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.WRTNO,a.SName,TO_CHAR(a.JepDate,'YY-MM-DD') JepDate,a.GjJong,a.ltdcode                    ");
             parameter.AppendSql("     , a.UCodes,a.SExams,a.Sex,a.Age,b.PanjengDrNo,c.Name ExName,d.Name LtdName,b.GbPanjeng        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU   a                                                                   ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_RES_ETC b                                                                   ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_EXJONG  c                                                                   ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_LTD     d                                                                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU   a                                                                   ");
+            parameter.AppendSql("     , ADMIN.HIC_RES_ETC b                                                                   ");
+            parameter.AppendSql("     , ADMIN.HIC_EXJONG  c                                                                   ");
+            parameter.AppendSql("     , ADMIN.HIC_LTD     d                                                                   ");
             parameter.AppendSql(" WHERE a.JepDate >= TO_DATE(:FRDATE, 'YYYY-MM-DD')                                                 ");
             parameter.AppendSql("   AND a.JepDate <= TO_DATE(:TODATE, 'YYYY-MM-DD')                                                 ");
             parameter.AppendSql("   AND a.DelDate IS NULL                                                                           ");

@@ -252,7 +252,7 @@ namespace ComLibB
 
                 timer1.Stop();
                 //작동
-                SQL = " SELECT HIRAJOB , ROWID FROM KOSMOS_PMPA.BAS_JOB " + ComNum.VBLF;
+                SQL = " SELECT HIRAJOB , ROWID FROM ADMIN.BAS_JOB " + ComNum.VBLF;
                 SQL += " WHERE JOBDATE = TRUNC(SYSDATE)                 " + ComNum.VBLF;
        
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);    //전체 조회자료 
@@ -265,7 +265,7 @@ namespace ComLibB
 
                         if(strOK == "OK")
                         {
-                            SQL = " UPDATE KOSMOS_PMPA.BAS_JOB SET HIRAJOB ='*' WHERE JOBDATE =TRUNC(SYSDATE) " + ComNum.VBLF;
+                            SQL = " UPDATE ADMIN.BAS_JOB SET HIRAJOB ='*' WHERE JOBDATE =TRUNC(SYSDATE) " + ComNum.VBLF;
 
                             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
@@ -555,7 +555,7 @@ namespace ComLibB
 
                         if (dt1.Rows.Count == 0)
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD40(MEDC_CD, ADPT_FR_DT, ADPT_TO_DT, ARTCNM, NOM, UNIT, MNF_CO_NM, MDC_CORS, PAY_TYPE, UN_COST, MAX_COST, GNL_NM_CD )" + ComNum.VBLF;
+                            SQL = " INSERT INTO ADMIN.HIRA_TBJBD40(MEDC_CD, ADPT_FR_DT, ADPT_TO_DT, ARTCNM, NOM, UNIT, MNF_CO_NM, MDC_CORS, PAY_TYPE, UN_COST, MAX_COST, GNL_NM_CD )" + ComNum.VBLF;
                             SQL += " VALUES ('" + strMEDC_CD + "' , '" + strADPT_FR_DT + "', '" + strADPT_TO_DT + "'," + ComNum.VBLF;
                             SQL += " '" + Quot_Conv(strARTCNM) + "', '" + strNOM + "', '" + strUNIT + "', '" + strMNF_CO_NM + "', " + ComNum.VBLF;
                             SQL += "  '" + strMDC_CORS + "' , '" + strPAY_TYPE + "', '" + strUN_COST + "', '" + strMAX_COST + "', '" + strGNL_NM_CD + "' ) " + ComNum.VBLF;
@@ -600,7 +600,7 @@ namespace ComLibB
 
                         #region INSERT_RTN_TBJBD43
 
-                        SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD43(DUR_CD_A, DUR_CD_B, ADPT_FR_DT, ADPT_TO_DT, ADPT_TYPE, DIV_CD3, " + ComNum.VBLF;
+                        SQL = " INSERT INTO ADMIN.HIRA_TBJBD43(DUR_CD_A, DUR_CD_B, ADPT_FR_DT, ADPT_TO_DT, ADPT_TYPE, DIV_CD3, " + ComNum.VBLF;
                         SQL += " INCOMP_MEDC_DT, UNIT_TYPE, DUR_SD_EFT, BEF_CMPT_CD, SPC_AGE, SPC_AGE_UNIT, SEX, EXM_RNG_TP, EXM_TYPE, OFFR_MSG, ANNCE_DT, ANNCE_NO, EXCEP_DD_CNT )" + ComNum.VBLF;
                         SQL += " VALUES ('" + strDUR_CD_A + "' , '" + strDUR_CD_B + "', '" + strADPT_FR_DT + "'," + ComNum.VBLF;
                         SQL += " '" + strADPT_TO_DT + "', '" + strADPT_TYPE + "', '" + strDIV_CD3 + "', '" + strINCOMP_MEDC_DT + "', " + ComNum.VBLF;
@@ -634,7 +634,7 @@ namespace ComLibB
 
                         #region INSERT_RTN_TBJBD44
 
-                        SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD44(GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, SPC_AGE, " + ComNum.VBLF;
+                        SQL = " INSERT INTO ADMIN.HIRA_TBJBD44(GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, SPC_AGE, " + ComNum.VBLF;
                         SQL += " SPC_AGE_UNIT, ADPT_TYPE, AGE_SD_EFT, EXM_TYPE,  OFFR_MSG , ANNCE_DT , ANNCE_NO , AGE_PRS_CND_CD ) " + ComNum.VBLF;
                         SQL += " VALUES ('" + strGNL_NM_CD + "' , '" + strADPT_FR_DT + "', " + ComNum.VBLF;
                         SQL += " '" + strADPT_TO_DT + "', '" + strSPC_AGE + "', '" + strSPC_AGE_UNIT + "', '" + strADPT_TYPE + "' , " + ComNum.VBLF;
@@ -660,7 +660,7 @@ namespace ComLibB
 
                         #region INSERT_RTN_TBJBD46
 
-                        SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD46(DUR_CD_A, DUR_CD_B, ADPT_FR_DT, ADPT_TO_DT, MEDC_CD, DIV_CD3) " + ComNum.VBLF;
+                        SQL = " INSERT INTO ADMIN.HIRA_TBJBD46(DUR_CD_A, DUR_CD_B, ADPT_FR_DT, ADPT_TO_DT, MEDC_CD, DIV_CD3) " + ComNum.VBLF;
                         SQL += " VALUES ('" + strDUR_CD_A + "' , '" + strDUR_CD_B + "', '" + strADPT_FR_DT + "'," + ComNum.VBLF;
                         SQL += " '" + strADPT_TO_DT + "', '" + strMEDC_CD + "', '" + strDIV_CD3 + "' )" + ComNum.VBLF;
 
@@ -684,7 +684,7 @@ namespace ComLibB
 
 
                         #region INSERT_RTN_TBJBD47
-                        SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD47(GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, SPC_AGE, SPC_AGE_UNIT, MEDC_CD ) " + ComNum.VBLF;
+                        SQL = " INSERT INTO ADMIN.HIRA_TBJBD47(GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, SPC_AGE, SPC_AGE_UNIT, MEDC_CD ) " + ComNum.VBLF;
                         SQL += " VALUES ('" + strGNL_NM_CD + "' , '" + strADPT_FR_DT + "'," + ComNum.VBLF;
                         SQL += " '" + strADPT_TO_DT + "', '" + strSPC_AGE + "', '" + strSPC_AGE_UNIT + "', '" + strMEDC_CD + "' )" + ComNum.VBLF;
 
@@ -707,7 +707,7 @@ namespace ComLibB
 
 
                         #region INSERT_RTN_TBJBD48
-                        SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD48(MEDC_INF_TYPE, MEDC_CD, ADPT_TYPE, ADPT_FR_DT, ADPT_TO_DT )" + ComNum.VBLF;
+                        SQL = " INSERT INTO ADMIN.HIRA_TBJBD48(MEDC_INF_TYPE, MEDC_CD, ADPT_TYPE, ADPT_FR_DT, ADPT_TO_DT )" + ComNum.VBLF;
                         SQL += " VALUES ('" + strMEDC_INF_TYPE + "' , '" + strMEDC_CD + "', '" + strADPT_TYPE + "'," + ComNum.VBLF;
                         SQL += " '" + strADPT_FR_DT + "', '" + strADPT_TO_DT + "' ) " + ComNum.VBLF;
 
@@ -732,7 +732,7 @@ namespace ComLibB
 
 
                         #region INSERT_RTN_TBJBD52
-                        SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD52(LOW_IQTY_MEDC_CD, ADPT_STAT_TYPE, ADPT_FR_DT, UNIT_CNT, ADPT_TO_DT, HIGH_IQTY_MEDC_CD )" + ComNum.VBLF;
+                        SQL = " INSERT INTO ADMIN.HIRA_TBJBD52(LOW_IQTY_MEDC_CD, ADPT_STAT_TYPE, ADPT_FR_DT, UNIT_CNT, ADPT_TO_DT, HIGH_IQTY_MEDC_CD )" + ComNum.VBLF;
                         SQL += " VALUES ('" + strLOW_IQTY_MEDC_CD + "' , '" + strADPT_STAT_TYPE + "', " + ComNum.VBLF;
                         SQL += " '" + strADPT_FR_DT + "', '" + strUNIT_CNT + "', '" + strADPT_TO_DT + "' ,'" + strHIGH_IQTY_MEDC_CD + "')" + ComNum.VBLF;
 
@@ -760,7 +760,7 @@ namespace ComLibB
                         strANNCE_NO = Rdr["ANNCE_NO"].ToString().Trim();                    //고시번호
 
                         #region INSERT_RTN_TBJBD55
-                        SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD55(GUBUN_CD, GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, DD_MAX_QTY_FREQ, MAX_MDC_TERM, ADPT_TYPE, ANNCE_DT, ANNCE_NO )" + ComNum.VBLF;
+                        SQL = " INSERT INTO ADMIN.HIRA_TBJBD55(GUBUN_CD, GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, DD_MAX_QTY_FREQ, MAX_MDC_TERM, ADPT_TYPE, ANNCE_DT, ANNCE_NO )" + ComNum.VBLF;
                         SQL += " VALUES ('" + strGUBUN_CD + "' , '" + strGNL_NM_CD + "'," + ComNum.VBLF;
                         SQL += " '" + strADPT_FR_DT + "', '" + strADPT_TO_DT + "' ,'" + strDD_MAX_QTY_FREQ + "', " + ComNum.VBLF;
                         SQL += " '" + strMAX_MDC_TERM + "','" + strADPT_TYPE + "', '" + strANNCE_DT + "', '" + strANNCE_NO + "' ) " + ComNum.VBLF;
@@ -784,7 +784,7 @@ namespace ComLibB
                         strADPT_TO_DT = Rdr["ADPT_TO_DT"].ToString().Trim();    //적용종료일자
 
                         #region INSERT_RTN_TBJBD56
-                        SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD56(GUBUN_CD, GNL_NM_CD, MEDC_CD, ADPT_FR_DT, ADPT_TO_DT )" + ComNum.VBLF;
+                        SQL = " INSERT INTO ADMIN.HIRA_TBJBD56(GUBUN_CD, GNL_NM_CD, MEDC_CD, ADPT_FR_DT, ADPT_TO_DT )" + ComNum.VBLF;
                         SQL += " VALUES ('" + strGUBUN_CD + "' , '" + strGNL_NM_CD + "', '" + strMEDC_CD + "'," + ComNum.VBLF;
                         SQL += " '" + strADPT_FR_DT + "',  '" + strADPT_TO_DT + "' )" + ComNum.VBLF;
 
@@ -808,7 +808,7 @@ namespace ComLibB
                         strINCOMP_REASON = Rdr["INCOMP_REASON"].ToString().Trim();      //금기사유
 
                         #region INSERT_RTN_TBJBD63
-                        SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD63( ELMT_CD, ADPT_FR_DT, ADPT_TO_DT, EXAM_TYPE, CONTRAD_GRADE, ADPT_TYPE, INCOMP_REASON) " + ComNum.VBLF;
+                        SQL = " INSERT INTO ADMIN.HIRA_TBJBD63( ELMT_CD, ADPT_FR_DT, ADPT_TO_DT, EXAM_TYPE, CONTRAD_GRADE, ADPT_TYPE, INCOMP_REASON) " + ComNum.VBLF;
                         SQL += " VALUES ('" + strELMT_CD + "' , '" + strADPT_FR_DT + "', '" + strADPT_TO_DT + "'," + ComNum.VBLF;
                         SQL += " '" + strEXAM_TYPE + "',  '" + strCONTRAD_GRADE + "' , '" + strADPT_TYPE + "', '" + strINCOMP_REASON + "' )" + ComNum.VBLF;
 
@@ -834,7 +834,7 @@ namespace ComLibB
 
 
                         #region INSERT_RTN_TBDUD230
-                        SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBDUD230( EXM_KND_CD,   INFM_CD,   ADT_STA_DD ,   ADT_END_DD ,   ADT_TP_CD ,   OFFR_MSG,   CND_CD,  RMK )" + ComNum.VBLF;
+                        SQL = " INSERT INTO ADMIN.HIRA_TBDUD230( EXM_KND_CD,   INFM_CD,   ADT_STA_DD ,   ADT_END_DD ,   ADT_TP_CD ,   OFFR_MSG,   CND_CD,  RMK )" + ComNum.VBLF;
                         SQL += " VALUES ('" + EXM_KND_CD + "',  '" + INFM_CD + "',  '" + ADT_STA_DD + "' ,  '" + ADT_END_DD + "', '" + ADT_TP_CD + "' , '" + Quot(OFFR_MSG) + "', '" + CND_CD + "',  '" + VB.Left(RMK, 280) + "' )" + ComNum.VBLF;
 
                         SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -863,7 +863,7 @@ namespace ComLibB
 
         void TRUNCATE_TALBE(string ArgTable)
         {
-            SQL = "TRUNCATE TABLE  KOSMOS_PMPA.HIRA_" + ArgTable;
+            SQL = "TRUNCATE TABLE  ADMIN.HIRA_" + ArgTable;
             SqlErr = clsDB.GetDataTable(ref rs, SQL, clsDB.DbCon);
             rs.Dispose();
             rs = null;
@@ -904,12 +904,12 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = "";
-            SQL = " DELETE KOSMOS_PMPA.BAS_MSELF WHERE GUBUNA = '1' AND GUBUNB = '0' ";
+            SQL = " DELETE ADMIN.BAS_MSELF WHERE GUBUNA = '1' AND GUBUNB = '0' ";
             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
             //등록할 자료 읽기
             SQL = " SELECT C.SUNEXT,  C.SUNAMEK, A.GNL_NM_CD,  A.SPC_AGE,  A.SPC_AGE_UNIT, A.ADPT_FR_DT, A.ADPT_TO_DT, TO_CHAR(D.DELDATE,'YYYYMMDD') DELDATE  , F.OFFR_MSG, F.CND_CD";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.HIRA_TBJBD44 A ,    KOSMOS_PMPA.EDI_SUGA B ,  KOSMOS_PMPA.BAS_SUN C , KOSMOS_PMPA.BAS_SUT D, KOSMOS_PMPA.HIRA_TBDUD230 F ";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.HIRA_TBJBD44 A ,    ADMIN.EDI_SUGA B ,  ADMIN.BAS_SUN C , ADMIN.BAS_SUT D, ADMIN.HIRA_TBDUD230 F ";
             SQL = SQL + ComNum.VBLF + " WHERE A.GNL_NM_CD =  B.SCODE";
             SQL = SQL + ComNum.VBLF + " AND B.CODE = C.BCODE";
             SQL = SQL + ComNum.VBLF + " AND A.ADPT_FR_DT <= '" + VB.Format(cpublic.strSysDate, "YYYYMMDD") + "' ";
@@ -917,7 +917,7 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + " AND C.SUNEXT =D.SUNEXT ";
             SQL = SQL + ComNum.VBLF + " AND  B.CODE NOT IN";
             SQL = SQL + ComNum.VBLF + "                     (SELECT B.MEDC_CD ";
-            SQL = SQL + ComNum.VBLF + "                      FROM KOSMOS_PMPA.HIRA_TBJBD47 B ";
+            SQL = SQL + ComNum.VBLF + "                      FROM ADMIN.HIRA_TBJBD47 B ";
             SQL = SQL + ComNum.VBLF + "                      WHERE B.GNL_NM_CD = A.GNL_NM_CD)";
             SQL = SQL + ComNum.VBLF + " AND A.SPC_AGE_UNIT || COALESCE(A.AGE_PRS_CND_CD,'') = F.INFM_CD";
             SQL = SQL + ComNum.VBLF + " AND F.EXM_KND_CD = '01'";
@@ -936,7 +936,7 @@ namespace ComLibB
                     strFieldB = VB.Replace(dt.Rows[i]["OFFR_MSG"].ToString().Trim(), " ", "");
                     strDate = dt.Rows[i]["ADPT_FR_DT"].ToString();
 
-                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_MSELF (SuCode,GubunA,GubunB,FieldA,FieldB, " + ComNum.VBLF;
+                    SQL = " INSERT INTO ADMIN.BAS_MSELF (SuCode,GubunA,GubunB,FieldA,FieldB, " + ComNum.VBLF;
                     SQL += " EntDate) VALUES ('" + strSuCode + "','1','0','" + strFieldA + "','" + strFieldB + "', " + ComNum.VBLF;
                     SQL += " TO_DATE('" + strDate + "','YYYY-MM-DD')) " + ComNum.VBLF;
 
@@ -972,14 +972,14 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
 
             SQL = " SELECT B.DUR_CD_A,  B.ANNCE_DT, B.DUR_SD_EFT, C.SUNEXT CSUNEXT ,C.SUNAMEK  SSUNAMEK, B.DUR_CD_B,  E.SUNEXT ESUNEXT  , E.SUNAMEK  ESUNAMEK ";
-            SQL = SQL + ComNum.VBLF + " FROM  KOSMOS_PMPA.EDI_SUGA A , KOSMOS_PMPA.HIRA_TBJBD43 B, ";
-            SQL = SQL + ComNum.VBLF + " ( SELECT AA.SUNEXT , AA.SUNAMEK , AA.BCODE FROM   KOSMOS_PMPA.BAS_SUN AA, KOSMOS_PMPA.BAS_SUT BB ";
+            SQL = SQL + ComNum.VBLF + " FROM  ADMIN.EDI_SUGA A , ADMIN.HIRA_TBJBD43 B, ";
+            SQL = SQL + ComNum.VBLF + " ( SELECT AA.SUNEXT , AA.SUNAMEK , AA.BCODE FROM   ADMIN.BAS_SUN AA, ADMIN.BAS_SUT BB ";
             SQL = SQL + ComNum.VBLF + "   WHERE AA.SUNEXT = BB.SUNEXT ";
             SQL = SQL + ComNum.VBLF + "   AND BB.DELDATE IS NULL ";
             SQL = SQL + ComNum.VBLF + " ) C, ";
-            SQL = SQL + ComNum.VBLF + "   KOSMOS_PMPA.EDI_SUGA D ,";
+            SQL = SQL + ComNum.VBLF + "   ADMIN.EDI_SUGA D ,";
             SQL = SQL + ComNum.VBLF + " (";
-            SQL = SQL + ComNum.VBLF + "   SELECT AA.SUNEXT , AA.SUNAMEK, AA.BCODE FROM   KOSMOS_PMPA.BAS_SUN AA, KOSMOS_PMPA.BAS_SUT BB ";
+            SQL = SQL + ComNum.VBLF + "   SELECT AA.SUNEXT , AA.SUNAMEK, AA.BCODE FROM   ADMIN.BAS_SUN AA, ADMIN.BAS_SUT BB ";
             SQL = SQL + ComNum.VBLF + "   WHERE AA.SUNEXT = BB.SUNEXT ";
             SQL = SQL + ComNum.VBLF + "   AND BB.DELDATE IS NULL ";
             SQL = SQL + ComNum.VBLF + " ) E ";
@@ -1002,7 +1002,7 @@ namespace ComLibB
                     strSuCodeB = dt.Rows[i]["ESUNEXT"].ToString().Trim();
 
                     //성분코드 색깔표시
-                    SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_DURSCODE " + ComNum.VBLF;
+                    SQL = " SELECT ROWID FROM ADMIN.HIRA_DURSCODE " + ComNum.VBLF;
                     SQL += " WHERE ( SCODEA = '" + dt.Rows[i]["DUR_CD_A"].ToString().Trim() + "' AND SCODEB = '" + dt.Rows[i]["DUR_CD_B"].ToString().Trim() + "' )" + ComNum.VBLF;
                     SQL += "    OR ( SCODEA = '" + dt.Rows[i]["DUR_CD_A"].ToString().Trim() + "' AND SCODEB = '" + dt.Rows[i]["DUR_CD_B"].ToString().Trim() + "' )" + ComNum.VBLF;
 
@@ -1012,7 +1012,7 @@ namespace ComLibB
                     {
                         //등록작업
                         SQL = " SELECT SUCODE, FIELDA " + ComNum.VBLF;
-                        SQL += " From KOSMOS_PMPA.BAS_MSELF " + ComNum.VBLF;
+                        SQL += " From ADMIN.BAS_MSELF " + ComNum.VBLF;
                         SQL += " WHERE GUBUNA='0' " + ComNum.VBLF;
                         SQL += "   AND GUBUNB='9'" + ComNum.VBLF;
                         SQL += "   AND (" + ComNum.VBLF;
@@ -1034,7 +1034,7 @@ namespace ComLibB
                                     //류마티스내과제외
                                     break;
                                 default:
-                                    SQL = " INSERT INTO KOSMOS_PMPA.BAS_MSELF (SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE ) " + ComNum.VBLF;
+                                    SQL = " INSERT INTO ADMIN.BAS_MSELF (SUCODE, GUBUNA, GUBUNB, FIELDA, FIELDB, ENTDATE ) " + ComNum.VBLF;
                                     SQL += " VALUES ( '" + strSuCodeA + "' , '0','9', '" + strSuCodeB + "' ,'',TO_DATE('" + strAnnDate + "','YYYY-MM-DD') )" + ComNum.VBLF;
 
                                     SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1226,7 +1226,7 @@ namespace ComLibB
                         strUNIT_TYPE = Rdr["UNIT_TYPE"].ToString().Trim();           //단위구분(1일)
 
                         #region INSERT_RTN_TBJBD43
-                        SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_TBJBD43      " + ComNum.VBLF;
+                        SQL = " SELECT ROWID FROM ADMIN.HIRA_TBJBD43      " + ComNum.VBLF;
                         SQL += " WHERE DUR_CD_A = '" + strDUR_CD_A + "'         " + ComNum.VBLF;
                         SQL += " AND DUR_CD_B = '" + strDUR_CD_B + "'           " + ComNum.VBLF;
                         SQL += " AND ADPT_FR_DT = '" + strADPT_FR_DT + "'       " + ComNum.VBLF;
@@ -1237,7 +1237,7 @@ namespace ComLibB
                         {
                             strRowid = dt.Rows[0]["ROWID"].ToString().Trim();
 
-                            SQL = " UPDATE KOSMOS_PMPA.HIRA_TBJBD43 SET             ";
+                            SQL = " UPDATE ADMIN.HIRA_TBJBD43 SET             ";
                             SQL += " ADPT_FR_DT = '" + strADPT_FR_DT + "' ,         ";
                             SQL += " ADPT_TO_DT = '" + strADPT_TO_DT + "' ,         ";
                             SQL += " ADPT_TYPE= '" + strADPT_TYPE + "' ,            ";
@@ -1248,7 +1248,7 @@ namespace ComLibB
                         }
                         else
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD43(DUR_CD_A, DUR_CD_B, ADPT_FR_DT, ADPT_TO_DT, ADPT_TYPE, DIV_CD3, INCOMP_MEDC_DT, UNIT_TYPE )    ";
+                            SQL = " INSERT INTO ADMIN.HIRA_TBJBD43(DUR_CD_A, DUR_CD_B, ADPT_FR_DT, ADPT_TO_DT, ADPT_TYPE, DIV_CD3, INCOMP_MEDC_DT, UNIT_TYPE )    ";
                             SQL += " VALUES ('" + strDUR_CD_A + "' , '" + strDUR_CD_B + "', '" + strADPT_FR_DT + "',                                                    ";
                             SQL += " '" + strADPT_TO_DT + "', '" + strADPT_TYPE + "', '" + strDIV_CD3 + "', '" + strINCOMP_MEDC_DT + "',                                ";
                             SQL += " '" + strUNIT_TYPE + "' )                                                                                                           ";
@@ -1276,7 +1276,7 @@ namespace ComLibB
                         strADPT_TYPE = Rdr["ADPT_TYPE"].ToString().Trim();          //적용구분
 
                         #region INSERT_RTN_TBJBD44
-                        SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_TBJBD44      " + ComNum.VBLF;
+                        SQL = " SELECT ROWID FROM ADMIN.HIRA_TBJBD44      " + ComNum.VBLF;
                         SQL += " WHERE GNL_NM_CD = '" + strGNL_NM_CD + "'       " + ComNum.VBLF;
                         SQL += " AND ADPT_FR_DT = '" + strADPT_FR_DT + "'       " + ComNum.VBLF;
                         SQL += " AND ADPT_TYPE = '" + strADPT_FR_DT + "'        " + ComNum.VBLF;
@@ -1287,7 +1287,7 @@ namespace ComLibB
                         {
                             strRowid = dt.Rows[0]["ROWID"].ToString().Trim();
 
-                            SQL = " UPDATE KOSMOS_PMPA.HIRA_TBJBD44 SET         ";
+                            SQL = " UPDATE ADMIN.HIRA_TBJBD44 SET         ";
                             SQL += " ADPT_FR_DT = '" + strADPT_FR_DT + "' ,     ";
                             SQL += " ADPT_TO_DT = '" + strADPT_TO_DT + "' ,     ";
                             SQL += " SPC_AGE= '" + strSPC_AGE + "' ,            ";
@@ -1297,7 +1297,7 @@ namespace ComLibB
                         }
                         else
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD44(GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, SPC_AGE, SPC_AGE_UNIT, ADPT_TYPE )  ";
+                            SQL = " INSERT INTO ADMIN.HIRA_TBJBD44(GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, SPC_AGE, SPC_AGE_UNIT, ADPT_TYPE )  ";
                             SQL += " VALUES ('" + strGNL_NM_CD + "' , '" + strADPT_FR_DT + "',                                                  ";
                             SQL += " '" + strADPT_TO_DT + "', '" + strSPC_AGE + "', '" + strSPC_AGE_UNIT + "', '" + strADPT_TYPE + "' )         ";
                         }
@@ -1324,7 +1324,7 @@ namespace ComLibB
                         strDIV_CD3 = Rdr["DIV_CD3"].ToString().Trim();              //분류코드
 
                         #region INSERT_TRN_TBJBD46
-                        SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_TBJBD46      " + ComNum.VBLF;
+                        SQL = " SELECT ROWID FROM ADMIN.HIRA_TBJBD46      " + ComNum.VBLF;
                         SQL += " WHERE DUR_CD_A = '" + strDUR_CD_A + "'         " + ComNum.VBLF;
                         SQL += " AND DUR_CD_B = '" + strDUR_CD_B + "'           " + ComNum.VBLF;
                         SQL += " AND ADPT_FR_DT = '" + strADPT_FR_DT + "'       " + ComNum.VBLF;
@@ -1335,7 +1335,7 @@ namespace ComLibB
                         {
                             strRowid = dt.Rows[0]["ROWID"].ToString().Trim();
 
-                            SQL = " UPDATE KOSMOS_PMPA.HIRA_TBJBD46 SET         ";
+                            SQL = " UPDATE ADMIN.HIRA_TBJBD46 SET         ";
                             SQL += " ADPT_FR_DT = '" + strADPT_FR_DT + "' ,     ";
                             SQL += " ADPT_TO_DT = '" + strADPT_TO_DT + "' ,     ";
                             SQL += " MEDC_CD= '" + strMEDC_CD + "' ,            ";
@@ -1344,7 +1344,7 @@ namespace ComLibB
                         }
                         else
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD46(DUR_CD_A, DUR_CD_B, ADPT_FR_DT, ADPT_TO_DT, MEDC_CD, DIV_CD3)      ";
+                            SQL = " INSERT INTO ADMIN.HIRA_TBJBD46(DUR_CD_A, DUR_CD_B, ADPT_FR_DT, ADPT_TO_DT, MEDC_CD, DIV_CD3)      ";
                             SQL += " VALUES ('" + strDUR_CD_A + "' , '" + strDUR_CD_B + "', '" + strADPT_FR_DT + "',                        ";
                             SQL += " '" + strADPT_TO_DT + "', '" + strMEDC_CD + "', '" + strDIV_CD3 + "' )                                  ";
                         }
@@ -1371,7 +1371,7 @@ namespace ComLibB
                         strMEDC_CD = Rdr["MEDC_CD"].ToString().Trim();              //약품코드
 
                         #region INSERT_RTN_TBJBD47
-                        SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_TBJBD47      " + ComNum.VBLF;
+                        SQL = " SELECT ROWID FROM ADMIN.HIRA_TBJBD47      " + ComNum.VBLF;
                         SQL += " WHERE GNL_NM_CD = '" + strGNL_NM_CD + "'       " + ComNum.VBLF;
                         SQL += " AND ADPT_FR_DT = '" + strADPT_FR_DT + "'       " + ComNum.VBLF;
 
@@ -1381,7 +1381,7 @@ namespace ComLibB
                         {
                             strRowid = dt.Rows[0]["ROWID"].ToString().Trim();
 
-                            SQL = " UPDATE KOSMOS_PMPA.HIRA_TBJBD47 SET         ";
+                            SQL = " UPDATE ADMIN.HIRA_TBJBD47 SET         ";
                             SQL += " ADPT_FR_DT = '" + strADPT_FR_DT + "' ,     ";
                             SQL += " ADPT_TO_DT = '" + strADPT_TO_DT + "' ,     ";
                             SQL += " SPC_AGE= '" + strSPC_AGE + "' ,            ";
@@ -1391,7 +1391,7 @@ namespace ComLibB
                         }
                         else
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD47(GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, SPC_AGE, SPC_AGE_UNIT, MEDC_CD)     ";
+                            SQL = " INSERT INTO ADMIN.HIRA_TBJBD47(GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, SPC_AGE, SPC_AGE_UNIT, MEDC_CD)     ";
                             SQL += " VALUES ('" + strGNL_NM_CD + "' , '" + strADPT_FR_DT + "',                                                  ";
                             SQL += " '" + strADPT_TO_DT + "', '" + strSPC_AGE + "', '" + strSPC_AGE_UNIT + "', '" + strMEDC_CD + "' )           ";
                         }
@@ -1417,7 +1417,7 @@ namespace ComLibB
                         strADPT_TO_DT = Rdr["ADPT_TO_DT"].ToString().Trim();            //적용종료일자
 
                         #region INSERT_RTN_TBJBD48
-                        SQL = "SELECT ROWID FROM KOSMOS_PMPA.HIRA_TBJBD48           " + ComNum.VBLF;
+                        SQL = "SELECT ROWID FROM ADMIN.HIRA_TBJBD48           " + ComNum.VBLF;
                         SQL += " WHERE MEDC_INF_TYPE = '" + strMEDC_INF_TYPE + "'   " + ComNum.VBLF;
                         SQL += " AND MEDC_CD = '" + strMEDC_CD + "'                 " + ComNum.VBLF;
 
@@ -1427,7 +1427,7 @@ namespace ComLibB
                         {
                             strRowid = dt.Rows[0]["ROWID"].ToString().Trim();
 
-                            SQL = " UPDATE KOSMOS_PMPA.HIRA_TBJBD48 SET             ";
+                            SQL = " UPDATE ADMIN.HIRA_TBJBD48 SET             ";
                             SQL += " MEDC_INF_TYPE = '" + strMEDC_INF_TYPE + "' ,   ";
                             SQL += " MEDC_CD = '" + strMEDC_CD + "' ,               ";
                             SQL += " ADPT_TYPE= '" + strADPT_TYPE + "' ,            ";
@@ -1437,7 +1437,7 @@ namespace ComLibB
                         }
                         else
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD48(MEDC_INF_TYPE, MEDC_CD, ADPT_TYPE, ADPT_FR_DT, ADPT_TO_DT )    ";
+                            SQL = " INSERT INTO ADMIN.HIRA_TBJBD48(MEDC_INF_TYPE, MEDC_CD, ADPT_TYPE, ADPT_FR_DT, ADPT_TO_DT )    ";
                             SQL += " VALUES ('" + strMEDC_INF_TYPE + "' , '" + strMEDC_CD + "', '" + strADPT_TYPE + "',                 ";
                             SQL += " '" + strADPT_FR_DT + "', '" + strADPT_TO_DT + "' )                                                 ";
                         }
@@ -1464,7 +1464,7 @@ namespace ComLibB
                         strHIGH_IQTY_MEDC_CD = Rdr["HIGH_IQTY_MEDC_CD"].ToString().Trim();      //고함량약품코드
 
                         #region INSERT_RTN_TBJBD52
-                        SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_TBJBD52              " + ComNum.VBLF;
+                        SQL = " SELECT ROWID FROM ADMIN.HIRA_TBJBD52              " + ComNum.VBLF;
                         SQL += " WHERE LOW_IQTY_MEDC_CD = '" + strLOW_IQTY_MEDC_CD + "' " + ComNum.VBLF;
                         SQL += " AND HIGH_IQTY_MEDC_CD = '" + strHIGH_IQTY_MEDC_CD + "' " + ComNum.VBLF;
 
@@ -1474,7 +1474,7 @@ namespace ComLibB
                         {
                             strRowid = dt.Rows[0]["ROWID"].ToString().Trim();
 
-                            SQL = " UPDATE KOSMOS_PMPA.HIRA_TBJBD52 SET                     ";
+                            SQL = " UPDATE ADMIN.HIRA_TBJBD52 SET                     ";
                             SQL += " ADPT_STAT_TYPE = '" + strADPT_STAT_TYPE + "' ,         ";
                             SQL += " ADPT_FR_DT = '" + strADPT_FR_DT + "' ,                 ";
                             SQL += " UNIT_CNT= '" + strUNIT_CNT + "' ,                      ";
@@ -1484,7 +1484,7 @@ namespace ComLibB
                         }
                         else
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD52(LOW_IQTY_MEDC_CD, ADPT_STAT_TYPE, ADPT_FR_DT, UNIT_CNT, ADPT_TO_DT, HIGH_IQTY_MEDC_CD )    ";
+                            SQL = " INSERT INTO ADMIN.HIRA_TBJBD52(LOW_IQTY_MEDC_CD, ADPT_STAT_TYPE, ADPT_FR_DT, UNIT_CNT, ADPT_TO_DT, HIGH_IQTY_MEDC_CD )    ";
                             SQL += " VALUES ('" + strLOW_IQTY_MEDC_CD + "' , '" + strADPT_STAT_TYPE + "',                                                           ";
                             SQL += " '" + strADPT_FR_DT + "', '" + strUNIT_CNT + "', '" + strADPT_TO_DT + "' ,'" + strHIGH_IQTY_MEDC_CD + "')                       ";
                         }
@@ -1512,7 +1512,7 @@ namespace ComLibB
                         strADPT_TYPE = Rdr["ADPT_TYPE"].ToString().Trim();                      //적용구분
 
                         #region INSERT_RTN_TBJBD55
-                        SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_TBJBD55  " + ComNum.VBLF;
+                        SQL = " SELECT ROWID FROM ADMIN.HIRA_TBJBD55  " + ComNum.VBLF;
                         SQL += " WHERE GUBUN_CD = '" + strGUBUN_CD + "'     " + ComNum.VBLF;
                         SQL += " AND GNL_NM_CD = '" + strGNL_NM_CD + "'     " + ComNum.VBLF;
                         SQL += " AND ADPT_FR_DT = '" + strADPT_FR_DT + "'   " + ComNum.VBLF;
@@ -1523,7 +1523,7 @@ namespace ComLibB
                         {
                             strRowid = dt.Rows[0]["ROWID"].ToString().Trim();
 
-                            SQL = " UPDATE KOSMOS_PMPA.HIRA_TBJBD55 SET                 ";
+                            SQL = " UPDATE ADMIN.HIRA_TBJBD55 SET                 ";
                             SQL += " GUBUN_CD = '" + strGUBUN_CD + "',                  ";
                             SQL += " GNL_NM_CD = '" + strGNL_NM_CD + "',                ";
                             SQL += " ADPT_FR_DT = '" + strADPT_FR_DT + "' ,             ";
@@ -1535,7 +1535,7 @@ namespace ComLibB
                         }
                         else
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD55(GUBUN_CD, GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, DD_MAX_QTY_FREQ, MAX_MDC_TERM, ADPT_TYPE )    ";
+                            SQL = " INSERT INTO ADMIN.HIRA_TBJBD55(GUBUN_CD, GNL_NM_CD, ADPT_FR_DT, ADPT_TO_DT, DD_MAX_QTY_FREQ, MAX_MDC_TERM, ADPT_TYPE )    ";
                             SQL += " VALUES ('" + strGUBUN_CD + "' , '" + strGNL_NM_CD + "',                                                                        ";
                             SQL += " '" + strADPT_FR_DT + "', '" + strADPT_TO_DT + "' ,'" + strDD_MAX_QTY_FREQ + "',                                                ";
                             SQL += " '" + strMAX_MDC_TERM + "','" + strADPT_TYPE + "')                                                                              ";
@@ -1562,7 +1562,7 @@ namespace ComLibB
                         strADPT_TO_DT = Rdr["ADPT_TO_DT"].ToString().Trim();                    //적용종료일자 
 
                         #region INSERT_RTN_TBJBD56
-                        SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_TBJBD56      " + ComNum.VBLF;
+                        SQL = " SELECT ROWID FROM ADMIN.HIRA_TBJBD56      " + ComNum.VBLF;
                         SQL += " WHERE GUBUN_CD = '" + strGUBUN_CD + "'         " + ComNum.VBLF;
                         SQL += " AND GNL_NM_CD = '" + strGNL_NM_CD + "'         " + ComNum.VBLF;
                         SQL += " AND MEDC_CD = '" + strMEDC_CD + "'             " + ComNum.VBLF;
@@ -1573,7 +1573,7 @@ namespace ComLibB
                         {
                             strRowid = dt.Rows[0]["ROWID"].ToString().Trim();
 
-                            SQL = " UPDATE KOSMOS_PMPA.HIRA_TBJBD56 SET     ";
+                            SQL = " UPDATE ADMIN.HIRA_TBJBD56 SET     ";
                             SQL += " GUBUN_CD = '" + strGUBUN_CD + "' ,     ";
                             SQL += " GNL_NM_CD  = '" + strGNL_NM_CD + "' ,  ";
                             SQL += " MEDC_CD = '" + strMEDC_CD + "' ,       ";
@@ -1583,7 +1583,7 @@ namespace ComLibB
                         }
                         else
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD56(GUBUN_CD, GNL_NM_CD, MEDC_CD, ADPT_FR_DT, ADPT_TO_DT )     ";
+                            SQL = " INSERT INTO ADMIN.HIRA_TBJBD56(GUBUN_CD, GNL_NM_CD, MEDC_CD, ADPT_FR_DT, ADPT_TO_DT )     ";
                             SQL += " VALUES ('" + strGUBUN_CD + "' , '" + strGNL_NM_CD + "', '" + strMEDC_CD + "',                  ";
                             SQL += " '" + strADPT_FR_DT + "',  '" + strADPT_TO_DT + "' )                                            ";
                         }
@@ -1611,7 +1611,7 @@ namespace ComLibB
                         strINCOMP_REASON = Rdr["INCOMP_REASON"].ToString().Trim();              //금기사유
 
                         #region INSERT_RTN_TBJBD63
-                        SQL = " SELECT ROWID FROM KOSMOS_PMPA.HIRA_TBJBD63      " + ComNum.VBLF;
+                        SQL = " SELECT ROWID FROM ADMIN.HIRA_TBJBD63      " + ComNum.VBLF;
                         SQL += " WHERE ELMT_CD = '" + strGUBUN_CD + "'          " + ComNum.VBLF;
 
                         SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
@@ -1620,7 +1620,7 @@ namespace ComLibB
                         {
                             strRowid = dt.Rows[0]["ROWID"].ToString().Trim();
 
-                            SQL = " UPDATE KOSMOS_PMPA.HIRA_TBJBD63 SET                 ";
+                            SQL = " UPDATE ADMIN.HIRA_TBJBD63 SET                 ";
                             SQL += " ELMT_CD = '" + strELMT_CD + "' ,                   ";
                             SQL += " ADPT_FR_DT = '" + strADPT_FR_DT + "' ,             ";
                             SQL += " ADPT_TO_DT = '" + strADPT_TO_DT + "'               ";
@@ -1632,7 +1632,7 @@ namespace ComLibB
                         }
                         else
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.HIRA_TBJBD63( ELMT_CD, ADPT_FR_DT, ADPT_TO_DT, EXAM_TYPE, CONTRAD_GRADE, ADPT_TYPE, INCOMP_REASON)  ";
+                            SQL = " INSERT INTO ADMIN.HIRA_TBJBD63( ELMT_CD, ADPT_FR_DT, ADPT_TO_DT, EXAM_TYPE, CONTRAD_GRADE, ADPT_TYPE, INCOMP_REASON)  ";
                             SQL += " VALUES ('" + strELMT_CD + "' , '" + strADPT_FR_DT + "', '" + strADPT_TO_DT + "',                                           ";
                             SQL += " '" + strEXAM_TYPE + "',  '" + strCONTRAD_GRADE + "' , '" + strADPT_TYPE + "', '" + strINCOMP_REASON + "' )                 ";
                         }

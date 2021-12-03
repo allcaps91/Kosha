@@ -22,7 +22,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SAHUCODE                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG ");
             parameter.AppendSql(" WHERE WRTNO     = :WRTNO          ");
             parameter.AppendSql("   AND SOGENCODE = :SOGENCODE      ");
 
@@ -40,7 +40,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,JOCHICODE,WORKYN,SAHUCODE,MSYMCODE,MBUN,UCODE,SOGENREMARK,JOCHIREMARK,REEXAM     ");
             parameter.AppendSql("      ,ENTSABUN,ENTTIME,DELDATE,ORCODE,ORSAYUCODE,SAHUREMARK,GJCHASU,LTDCODE2,PYOJANGGI ");
             parameter.AppendSql("      ,ROWID AS RID                                                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                                      ");
             parameter.AppendSql(" WHERE 1 = 1                                                                            ");
             parameter.AppendSql("   AND WRTNO  =:WRTNO                                                                   ");
             parameter.AppendSql("   AND ( DELDATE IS NULL OR DELDATE ='' )                                               ");
@@ -55,7 +55,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MCode,SogenCode,Panjeng,WorkYN,SahuCode,JochiRemark,SogenRemark     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                         ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                                     ");
             if (strGubun == "")
             {
@@ -71,7 +71,7 @@ namespace ComHpcLibB.Repository
             {
                 parameter.AppendSql(" UNION ALL                                                             ");
                 parameter.AppendSql("SELECT MCode,SogenCode,Panjeng,WorkYN,SahuCode,JochiRemark,SogenRemark ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                     ");
+                parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                     ");
                 parameter.AppendSql(" WHERE WRTNO  = :WRTNO2                                                ");
                 if (strGubun == "")
                 {
@@ -112,7 +112,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , SOGENREMARK, JOCHIREMARK, REEXAM, ENTSABUN, ENTTIME, DELDATE        ");
             parameter.AppendSql("     , ORCODE, ORSAYUCODE, SAHUREMARK, GJCHASU, LTDCODE2, PYOJANGGI        ");
             parameter.AppendSql("     , ROWID                                                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                         ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                      ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE ='')                                    "); 
 
@@ -125,7 +125,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_PANJENG      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_PANJENG      ");
             parameter.AppendSql("   SET DELDATE = TRUNC(SYSDATE)         ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                  ");
             parameter.AppendSql("   AND MCODE IN (:MCODE)                ");
@@ -140,7 +140,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_PANJENG SET             ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_PANJENG SET             ");
             parameter.AppendSql("       PANJENG = '8'                               ");
             parameter.AppendSql("     , SOGENREMARK = '기간내 미실시'               ");
             parameter.AppendSql(" WHERE JEPDATE >= TO_DATE(:FRDATE, 'YYYY-MM-DD')   ");
@@ -157,7 +157,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANJENG     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG             ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND DELDATE IS NULL                         ");
             parameter.AppendSql("   AND MCODE NOT IN ('ZZZ')                    ");
@@ -171,7 +171,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(PANJENGDATE, 'YYYY-MM-DD') PANJENGDATE  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG         ");
             parameter.AppendSql(" WHERE WRTNO     = :WRTNO                  ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE ='')    ");
 
@@ -184,7 +184,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SUM(DECODE(Panjeng,'7',1,0)) PAN_R      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG             ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
 
             parameter.Add("WRTNO", wRTNO);
@@ -197,7 +197,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT SUM(DECODE(PANJENG, '5', 1, 0)) D1      ");
             parameter.AppendSql("     , SUM(DECODE(PANJENG, '6', 1, 0)) D2      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG             ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND Panjeng IN ('5','6')                    ");
 
@@ -210,7 +210,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_PANJENG SET                      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_PANJENG SET                      ");
             if (nDrNO > 0)
             {
                 parameter.AppendSql("     PANJENGDATE = TO_DATE(:PANJENGDATE, 'YYYY-MM-DD')   ");
@@ -238,7 +238,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG         ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                     ");
             parameter.AppendSql("   AND MCODE  = :MCODE                     ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE ='')    ");
@@ -253,7 +253,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_PANJENG SET     ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_PANJENG SET     ");
             parameter.AppendSql("       WRTNO = :WRTNO                      ");
             parameter.AppendSql(" WHERE WRTNO = :FWRTNO                     ");
 
@@ -267,7 +267,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_PANJENG SET                         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_PANJENG SET                         ");
             if (fstrSaveGbn == "저장")
             {
                 parameter.AppendSql("       PANJENGDATE =TO_DATE(:PANJENGDATE, 'YYYY-MM-DD')    ");
@@ -323,7 +323,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_PANJENG SET                         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_PANJENG SET                         ");
             if (fstrSaveGbn == "저장")
             {
                 parameter.AppendSql("       PANJENGDATE =TO_DATE(:PANJENGDATE, 'YYYY-MM-DD')    ");
@@ -376,10 +376,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SPC_PANJENG        ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SPC_PANJENG        ");
             parameter.AppendSql("       (WRTNO, JEPDATE, LTDCODE, MCODE, UCODE) ");
             parameter.AppendSql("SELECT WRTNO, JepDate, LtdCode, :MCODE, :UCODE ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU                   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU                   ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
 
             parameter.Add("WRTNO", fnWrtNo);
@@ -395,7 +395,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(PANJENGDATE,'YYYY-MM-DD') PANJENGDATE,MCODE,PANJENG ");
             parameter.AppendSql("     , SOGENCODE,JOCHICODE,WORKYN,SAHUCODE,MSYMCODE,MBUN,UCODE     ");
             parameter.AppendSql("     , SOGENREMARK,JOCHIREMARK,REEXAM,WRTNO,ROWID  AS RID          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                 ");
             if (!fnWrtNo.IsNullOrEmpty() && fnWrtNo > 0)
             {
                 parameter.AppendSql(" WHERE WRTNO = :WRTNO                                          ");
@@ -415,7 +415,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MCODE, ROWID                                                        ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                         ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                                                      ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE ='')                                    ");
             parameter.AppendSql("   AND(PanjengDate IS NULL OR PanjengDate = '')                            ");
@@ -430,7 +430,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_PANJENG         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_PANJENG         ");
             parameter.AppendSql("   SET DELDATE = TRUNC(SYSDATE)            ");
             parameter.AppendSql(" WHERE WRTNO   = :WRTNO                    ");
 
@@ -444,7 +444,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MCode,SogenCode,Panjeng,WorkYN,SahuCode,JochiRemark,SogenRemark     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                         ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                                     ");
             if (strTemp == "OK")
             {
@@ -455,7 +455,7 @@ namespace ComHpcLibB.Repository
             {
                 parameter.AppendSql(" UNION ALL                                                             ");
                 parameter.AppendSql("SELECT MCode,SogenCode,Panjeng,WorkYN,SahuCode,JochiRemark,SogenRemark ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                     ");
+                parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                     ");
                 parameter.AppendSql(" WHERE WRTNO  = :WRTNO2                                                ");
                 if (strTemp == "OK")
                 {
@@ -480,7 +480,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MCode,SogenCode,Panjeng,WorkYN,SahuCode,JochiRemark,SogenRemark     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                         ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                                     ");
             parameter.AppendSql("   AND MCode <> 'ZZZ'                                                      ");
             parameter.AppendSql("   AND Panjeng IN ('3','4','5','6','7','8','9','A')                        ");
@@ -489,7 +489,7 @@ namespace ComHpcLibB.Repository
             {
                 parameter.AppendSql(" UNION ALL                                                             ");
                 parameter.AppendSql("SELECT MCode,SogenCode,Panjeng,WorkYN,SahuCode,JochiRemark,SogenRemark ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                     ");
+                parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                     ");
                 parameter.AppendSql(" WHERE WRTNO  = :WRTNO2                                                ");
                 parameter.AppendSql("   AND MCode <> 'ZZZ'                                                  ");
                 parameter.AppendSql("   AND Panjeng IN ('3','4','5','6','7','8','9','A')                    ");
@@ -512,7 +512,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MCode,SogenCode,Panjeng,WorkYN,SahuCode,JochiRemark,SogenRemark     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                         ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                                     ");
             parameter.AppendSql("   AND MCode <> 'ZZZ'                                                      ");
             if (strTemp == "OK")
@@ -524,7 +524,7 @@ namespace ComHpcLibB.Repository
             {
                 parameter.AppendSql(" UNION ALL                                                             ");
                 parameter.AppendSql("SELECT MCode,SogenCode,Panjeng,WorkYN,SahuCode,JochiRemark,SogenRemark ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                     ");
+                parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                     ");
                 parameter.AppendSql(" WHERE WRTNO  = :WRTNO2                                                ");
                 parameter.AppendSql("   AND MCode <> 'ZZZ'                                                  ");
                 if (strTemp == "OK")
@@ -549,7 +549,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Panjeng, SahuCode, COUNT(*) CNT         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG             ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                          ");
             parameter.AppendSql("   AND Panjeng IN ('3','4','5','6','9','A')    ");
             parameter.AppendSql("   AND DelDate IS NULL                         ");
@@ -565,7 +565,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANJENGDRNO                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG         ");
             parameter.AppendSql(" WHERE WRTNO     = :WRTNO                  ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE ='')    ");
 
@@ -578,10 +578,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SPC_PANJENG    ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SPC_PANJENG    ");
             parameter.AppendSql("       (WRTNO, JEPDATE, LTDCODE, MCODE)    ");
             parameter.AppendSql("SELECT WRTNO, JEPDATE, LTDCODE, :MCODE     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU               ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU               ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO                      ");
 
             parameter.Add("MCODE", strCode, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -594,7 +594,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_PANJENG         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_PANJENG         ");
             parameter.AppendSql("   SET DELDATE = TRUNC(SYSDATE)            ");
             parameter.AppendSql(" WHERE ROWID = :RID                        ");
 
@@ -609,7 +609,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(PanjengDate,'YYYY-MM-DD') PanjengDate,MCode,Panjeng         ");
             parameter.AppendSql("     , SogenCode,JochiCode,WorkYN,SahuCode,MsymCode,MBun,UCode             ");
             parameter.AppendSql("     , SogenRemark,JochiRemark,ROWID                                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                         ");
             if (fnWrtno1 > 0 && fnWrtno2 > 0)
             {
                 parameter.AppendSql(" WHERE WRTNO IN (:WRTNO1, :WRTNO2)                                     ");
@@ -637,7 +637,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(PANJENGDATE, 'YYYY-MM-DD') PANJENGDATE,PANJENGDRNO,MCODE,PANJENG,SOGENCODE      ");
             parameter.AppendSql("     , JOCHICODE,WORKYN,SAHUCODE,SAHUREMARK,MSYMCODE,MBUN,UCODE,SOGENREMARK,JOCHIREMARK        ");
             parameter.AppendSql("     , REEXAM,ORCODE,ORSAYUCODE                                                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                                             ");
             parameter.AppendSql(" WHERE ROWID = :RID                                                                            ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE ='')                                                        ");
 
@@ -652,7 +652,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT TO_CHAR(PanjengDate,'YYYY-MM-DD') PanjengDate,MCode,Panjeng ");
             parameter.AppendSql("     , SogenCode,JochiCode,WorkYN,SahuCode,MsymCode,MBun,UCode     ");
             parameter.AppendSql("     , SogenRemark,JochiRemark,ROWID RID                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                 ");
             if (fnWrtno1 > 0 && fnWrtno2 > 0)
             {
                 parameter.AppendSql(" WHERE WRTNO IN (:WRTNO1, :WRTNO2)                             ");
@@ -681,7 +681,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANJENG, MCODE                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                     ");
             parameter.AppendSql(" WHERE 1 = 1                                           ");
             if (nWRTNO != 0)
             {
@@ -703,7 +703,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Panjeng,COUNT(*) CNT            ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG     ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO2                 ");
             parameter.AppendSql("   AND MCode NOT IN ('ZZZ')            ");
             parameter.AppendSql(" GROUP BY Panjeng                      ");
@@ -718,7 +718,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT WRTNO, MCODE, PANJENG, SOGENREMARK, JOCHIREMARK     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                         ");
             parameter.AppendSql(" WHERE WRTNO     = :WRTNO                                  ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE = '')                   ");
             parameter.AppendSql("   AND Panjeng IN ('5','6','A')                            ");
@@ -732,7 +732,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT PANJENGDRNO                 ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG ");
             parameter.AppendSql(" WHERE WRTNO     = :WRTNO          ");
 
             parameter.Add("WRTNO", fnWrtno2);
@@ -745,7 +745,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT MCode,SogenCode,Panjeng,WorkYN,SahuCode,JochiRemark,SogenRemark     ");            
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                         ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                         ");
             parameter.AppendSql(" WHERE WRTNO  = :WRTNO                                                     ");            
             if (strGubun == "")
             {
@@ -761,7 +761,7 @@ namespace ComHpcLibB.Repository
             {
                 parameter.AppendSql(" UNION ALL                                                             ");
                 parameter.AppendSql("SELECT MCode,SogenCode,Panjeng,WorkYN,SahuCode,JochiRemark,SogenRemark ");
-                parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                     ");
+                parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                     ");
                 parameter.AppendSql(" WHERE WRTNO  = :WRTNO2                                                ");
                 parameter.AppendSql("   AND MCode <> 'ZZZ'                                                  ");
                 if (strGubun == "")
@@ -794,7 +794,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('x') CNT                                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                                     ");
             parameter.AppendSql(" WHERE WRTNO  =:WRTNO                                                                  ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE ='')                                                ");
             parameter.AppendSql("   AND (PanjengDrNo IS NULL OR PanjengDrNo = 0)                                        ");
@@ -809,7 +809,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('x') CNT                                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG                                                     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG                                                     ");
             parameter.AppendSql(" WHERE WRTNO  =:WRTNO                                                                  ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE ='')                                                ");
             //parameter.AppendSql("   AND (PanjengDrNo IS NULL OR PanjengDrNo = 0)                                        ");
@@ -823,7 +823,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_PANJENG         ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_PANJENG         ");
             parameter.AppendSql("   SET GJCHASU = '1'                       ");
             parameter.AppendSql(" WHERE 1 = 1                               ");
             parameter.AppendSql("   AND WRTNO =:WRTNO                      ");
@@ -839,7 +839,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID RID                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG     ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG     ");
             parameter.AppendSql(" WHERE WRTNO     = :WRTNO              ");
             parameter.AppendSql("   AND (DELDATE IS NULL OR DELDATE ='')");
             parameter.AppendSql("   AND GJCHASU = '2'                   ");
@@ -853,7 +853,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_SPC_PANJENG (       ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_SPC_PANJENG (       ");
             parameter.AppendSql("       WRTNO,JEPDATE,LtdCode,MCode,UCode        ");
             parameter.AppendSql(") VALUES (                                      ");
             parameter.AppendSql("      :WRTNO,TO_DATE(:JEPDATE,'YYYY-MM-DD'),:LtdCode,:MCode,:UCode    ");
@@ -873,7 +873,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT ROWID                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_SPC_PANJENG ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG ");
             parameter.AppendSql(" WHERE WRTNO   = :WRTNO            ");
             if (!string.IsNullOrEmpty(strMCode))
             {
@@ -894,7 +894,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_PANJENG                                 ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_PANJENG                                 ");
             parameter.AppendSql("   SET DelDate     = TO_DATE('" + gstrSysDate + "','YYYY-MM-DD')   ");
             parameter.AppendSql(" WHERE 1 = 1                                                       ");
             parameter.AppendSql("   AND ROWID =:RID                                                ");
@@ -909,7 +909,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_SPC_PANJENG ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_SPC_PANJENG ");
             parameter.AppendSql("   SET DelDate     = SYSDATE       ");
             parameter.AppendSql(" WHERE WRTNO       = :WRTNO        ");
             parameter.AppendSql("   AND DELDATE IS NULL             ");

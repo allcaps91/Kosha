@@ -103,7 +103,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT PANO, DEPTCODE, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_CLINICDEPT_DEPTNAMEK(DEPTCODE) DEPTNAMEK, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_CLINICDEPT_DEPTNAMEK(DEPTCODE) DEPTNAMEK, ";
             SQL += ComNum.VBLF + "        BI, DRCODE, GBSPC, ";
             SQL += ComNum.VBLF + "        TO_CHAR(BDate,'YYYY-MM-DD') BDate, WRTNO ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "OPD_RESERVED_EXAM ";
@@ -382,7 +382,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT PANO, DEPTCODE, ";
-            SQL += ComNum.VBLF + "        KOSMOS_OCS.FC_BAS_CLINICDEPT_DEPTNAMEK(DEPTCODE) DEPTNAMEK, ";
+            SQL += ComNum.VBLF + "        ADMIN.FC_BAS_CLINICDEPT_DEPTNAMEK(DEPTCODE) DEPTNAMEK, ";
             SQL += ComNum.VBLF + "        BI, DRCODE, GBSPC, ";
             SQL += ComNum.VBLF + "        TO_CHAR(BDate,'YYYY-MM-DD') BDate, WRTNO ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "OPD_RESERVED_EXAM ";

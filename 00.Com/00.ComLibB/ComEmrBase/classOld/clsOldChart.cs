@@ -516,9 +516,9 @@ namespace ComEmrBase
                         //string strSrc = childNode.Attributes.GetNamedItem("src").Value;
                         //string strEmrImage = childNode.Attributes.GetNamedItem("emrimageno").Value;
                         //string strFormImage = childNode.Attributes.GetNamedItem("imgNo").Value;
-                        ////emrimageno : 작성된 이미지 번호 : KOSMOS_EMR.EMRXMLIMAGES
+                        ////emrimageno : 작성된 이미지 번호 : ADMIN.EMRXMLIMAGES
                         ////ftp Path : /emr1/mento/tomcat/webapps/Emr/images/mts/emrimages
-                        ////imgNo : 기본이미지 : KOSMOS_EMR.EMRFORMIMAGES
+                        ////imgNo : 기본이미지 : ADMIN.EMRFORMIMAGES
                         ////ftp Path : /emr1/mento/tomcat/webapps/Emr/images/mts/formimages
 
                         //if (strSrc.IndexOf("emrimageno") > 0)

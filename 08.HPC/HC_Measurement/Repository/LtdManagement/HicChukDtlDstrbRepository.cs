@@ -42,7 +42,7 @@ namespace HC_Measurement.Repository
         public void Delete(HIC_CHUKDTL_DSTRB dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_CHUKDTL_DSTRB");
+            parameter.AppendSql("DELETE ADMIN.HIC_CHUKDTL_DSTRB");
             parameter.AppendSql(" WHERE ROWID = :RID ");
 
             parameter.Add("RID", dto.RID);

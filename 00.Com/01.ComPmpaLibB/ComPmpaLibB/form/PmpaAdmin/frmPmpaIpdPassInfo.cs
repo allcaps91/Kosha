@@ -310,7 +310,7 @@ namespace ComPmpaLibB
                 clsDB.setBeginTran(pDbCon);
 
                 SQL = "";
-                SQL += " UPDATE KOSMOS_PMPA.IPD_NEW_MASTER                  ";
+                SQL += " UPDATE ADMIN.IPD_NEW_MASTER                  ";
                 SQL += "    SET PASS_DATE=TRUNC(SYSDATE)                    ";
                 SQL += "       ,PASS_SABUN = " + clsType.User.IdNumber + "  ";
                 SQL += "       ,ARTICLE= 'N'                                ";

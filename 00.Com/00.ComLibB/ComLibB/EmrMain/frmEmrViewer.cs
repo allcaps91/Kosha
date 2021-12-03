@@ -562,8 +562,8 @@ namespace ComLibB
             OracleDataReader reader = null;
 
             strSql = " SELECT COUNT(A.PTNO) AS CNT";
-            strSql = strSql + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRMIBI A";
-            strSql = strSql + ComNum.VBLF + "      INNER JOIN KOSMOS_PMPA.BAS_PATIENT B";
+            strSql = strSql + ComNum.VBLF + "    FROM ADMIN.EMRMIBI A";
+            strSql = strSql + ComNum.VBLF + "      INNER JOIN ADMIN.BAS_PATIENT B";
             strSql = strSql + ComNum.VBLF + "         ON B.PANO = A.PTNO";
 
             if (clsType.User.DeptCode == "MD" || clsType.User.Sabun == "31606" || clsType.User.Sabun == "34241")
@@ -627,7 +627,7 @@ namespace ComLibB
             DateTime dtp = Convert.ToDateTime(ComQuery.CurrentDateTime(clsDB.DbCon, "S"));
 
             strSql = "  SELECT COUNT(EMRNO) AS CNT";
-            strSql = strSql + ComNum.VBLF + "  FROM KOSMOS_EMR.EMRXMLMST A, KOSMOS_PMPA.IPD_NEW_MASTER B";
+            strSql = strSql + ComNum.VBLF + "  FROM ADMIN.EMRXMLMST A, ADMIN.IPD_NEW_MASTER B";
             strSql = strSql + ComNum.VBLF + "   WHERE B.INDATE >= TO_DATE('2017-06-01 00:00','YYYY-MM-DD HH24:MI')";
             strSql = strSql + ComNum.VBLF + "     AND B.OUTDATE >= TO_DATE('" + dtp.AddDays(-7).ToShortDateString() + "','YYYY-MM-DD')";
             strSql = strSql + ComNum.VBLF + "     AND B.OUTDATE <= TO_DATE('" + dtp.ToShortDateString() + "','YYYY-MM-DD')";
@@ -635,7 +635,7 @@ namespace ComLibB
             strSql = strSql + ComNum.VBLF + "     AND A.MEDFRDATE = TO_CHAR(B.INDATE,'YYYYMMDD')";
             strSql = strSql + ComNum.VBLF + "   AND A.USEID IN (";
             strSql = strSql + ComNum.VBLF + "                   SELECT TO_CHAR(SABUN3)";
-            strSql = strSql + ComNum.VBLF + "                     FROM KOSMOS_ADM.INSA_MST";
+            strSql = strSql + ComNum.VBLF + "                     FROM ADMIN.INSA_MST";
             //'('022101','022105','022150','022160')    --내과, 정형외과, 인턴, 일반의
             if (clsType.User.BuseCode == "044201")
             {
@@ -643,7 +643,7 @@ namespace ComLibB
             }
             strSql = strSql + ComNum.VBLF + "     AND A.FORMNO NOT IN ('963','1232')";
             strSql = strSql + ComNum.VBLF + "     AND NOT EXISTS";
-            strSql = strSql + ComNum.VBLF + "   ( SELECT * FROM KOSMOS_EMR.EMRXML_DUALSIGN SUB";
+            strSql = strSql + ComNum.VBLF + "   ( SELECT * FROM ADMIN.EMRXML_DUALSIGN SUB";
             strSql = strSql + ComNum.VBLF + "       WHERE SUB.EMRNO = A.EMRNO)";
 
             string sqlErr = clsDB.GetAdoRs(ref reader, strSql, clsDB.DbCon);
@@ -777,7 +777,7 @@ namespace ComLibB
 
             try
             {
-                SQL = " SELECT USED FROM KOSMOS_EMR.EMR_OPTION_TOTALDATE ";
+                SQL = " SELECT USED FROM ADMIN.EMR_OPTION_TOTALDATE ";
                 SQL = SQL + ComNum.VBLF + " WHERE USEID = " + clsType.User.IdNumber;
 
                 string SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -1337,12 +1337,12 @@ namespace ComLibB
             OracleDataReader reader = null;
 
             string strSql = " SELECT PANO";
-            strSql += ComNum.VBLF + "    FROM KOSMOS_PMPA.OPD_MASTER";
+            strSql += ComNum.VBLF + "    FROM ADMIN.OPD_MASTER";
             strSql += ComNum.VBLF + " WHERE PANO = '" + strPtNo + "'";
             strSql += ComNum.VBLF + "  AND TO_CHAR(BDATE,'YYYY-MM-DD') = TO_CHAR(SYSDATE,'YYYY-MM-DD')";
             strSql += ComNum.VBLF + " UNION ALL";
             strSql += ComNum.VBLF + " SELECT PANO";
-            strSql += ComNum.VBLF + "    FROM KOSMOS_PMPA.IPD_NEW_MASTER";
+            strSql += ComNum.VBLF + "    FROM ADMIN.IPD_NEW_MASTER";
             strSql += ComNum.VBLF + " WHERE PANO = '" + strPtNo + "'";
             strSql += ComNum.VBLF + "      AND TO_CHAR(INDATE,'YYYYMMDD') <= TO_CHAR(SYSDATE,'YYYYMMDD')";
             strSql += ComNum.VBLF + "      AND (OUTDATE IS NULL OR TO_CHAR(OUTDATE,'YYYYMMDD') >= TO_CHAR(SYSDATE,'YYYYMMDD'))";
@@ -1453,7 +1453,7 @@ namespace ComLibB
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL += ComNum.VBLF + " INSERT INTO KOSMOS_EMR.EMRCHARREQ ";
+                SQL += ComNum.VBLF + " INSERT INTO ADMIN.EMRCHARREQ ";
                 SQL += ComNum.VBLF + "  (PTNO,REQUSEID,REQSTDDATE,REQENDDATE,";
                 SQL += ComNum.VBLF + "  REQTYPE,REQMEMO,REQTEL,REQDATE,REQTIME,";
                 SQL += ComNum.VBLF + "  CONUSEID,CONDATE,CONTIME,CONNUM,CONGB,";
@@ -1471,7 +1471,7 @@ namespace ComLibB
                 SQL += ComNum.VBLF + "  '16109',";
                 SQL += ComNum.VBLF + "  TO_CHAR(SYSDATE, 'YYYYMMDD'),";
                 SQL += ComNum.VBLF + "  TO_CHAR(SYSDATE, 'HH24MISS'),";
-                SQL += ComNum.VBLF + "  KOSMOS_EMR.EMRCHARREQ_SEQ.NextVal,";
+                SQL += ComNum.VBLF + "  ADMIN.EMRCHARREQ_SEQ.NextVal,";
                 SQL += ComNum.VBLF + "  '1',";
                 SQL += ComNum.VBLF + "  '1',";
                 SQL += ComNum.VBLF + "  '')";
@@ -1504,7 +1504,7 @@ namespace ComLibB
             OracleDataReader reader = null;
 
             string strSql = " SELECT A.REQTYPE, A.REQMEMO";
-            strSql += ComNum.VBLF + "    FROM KOSMOS_EMR.EMRCHARREQ A ";
+            strSql += ComNum.VBLF + "    FROM ADMIN.EMRCHARREQ A ";
             strSql += ComNum.VBLF + " WHERE A.PTNO = '" + strPtNo + "'";
             strSql += ComNum.VBLF + "      AND A.REQUSEID = '" + strUseId + "'";
             strSql += ComNum.VBLF + "      AND A.REQSTDDATE <= '" + strDate + "'";
@@ -2389,7 +2389,7 @@ namespace ComLibB
             #region 삭제
             try
             {
-                string SQL = " DELETE KOSMOS_EMR.EMR_OPTION_TOTALDATE ";
+                string SQL = " DELETE ADMIN.EMR_OPTION_TOTALDATE ";
                 SQL += ComNum.VBLF + " WHERE USEID = " + clsType.User.IdNumber;
 
                 string sqlErr = clsDB.ExecuteNonQuery(SQL, ref RowAffected, clsDB.DbCon);
@@ -2401,7 +2401,7 @@ namespace ComLibB
                     return;
                 }
 
-                SQL = " INSERT INTO KOSMOS_EMR.EMR_OPTION_TOTALDATE(USEID, USED) VALUES (";
+                SQL = " INSERT INTO ADMIN.EMR_OPTION_TOTALDATE(USEID, USED) VALUES (";
                 SQL += ComNum.VBLF + clsType.User.IdNumber + ",'" + (clsEmrPublic.gDateSET ? "1" : "0") + "')";
 
                 sqlErr = clsDB.ExecuteNonQuery(SQL, ref RowAffected, clsDB.DbCon);

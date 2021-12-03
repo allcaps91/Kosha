@@ -11,7 +11,7 @@ namespace ComEmrBase
         public static bool START_TUYAK()
         {
             //' SQL1 = "  SELECT CODE"
-            //' SQL1 = SQL1 & vbCr & "   FROM KOSMOS_PMPA.BAS_BCODE"
+            //' SQL1 = SQL1 & vbCr & "   FROM ADMIN.BAS_BCODE"
             //' SQL1 = SQL1 & vbCr & " WHERE GUBUN = 'EMR_투약기록지분리시행'"
             //' SQL1 = SQL1 & vbCr & "      AND CODE = 'START'"
             //' SQL1 = SQL1 & vbCr & "      AND NAME = 'Y'"

@@ -543,8 +543,8 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "         A.USEID,            ";
             SQL = SQL + ComNum.VBLF + "         A.MEDFRDATE,        ";
             SQL = SQL + ComNum.VBLF + "         A.MedFrTime,        ";
-            SQL = SQL + ComNum.VBLF + "         CASE WHEN EXISTS (SELECT 1 FROM KOSMOS_EMR.EMRPRTREQ WHERE EMRNO = A.EMRNO AND SCANYN = 'T') THEN '사 본' END PRNTYN";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.EMRXML A, KOSMOS_EMR.EMRXMLMST B ";
+            SQL = SQL + ComNum.VBLF + "         CASE WHEN EXISTS (SELECT 1 FROM ADMIN.EMRPRTREQ WHERE EMRNO = A.EMRNO AND SCANYN = 'T') THEN '사 본' END PRNTYN";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EMRXML A, ADMIN.EMRXMLMST B ";
             SQL = SQL + ComNum.VBLF + " WHERE a.EMRNO = b.EMRNO ";
             SQL = SQL + ComNum.VBLF + "   AND B.FORMNO = 1562 ";
             SQL = SQL + ComNum.VBLF + "   AND B.PTNO = '" + p.ptNo + "'";
@@ -558,22 +558,22 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "         A.CHARTDATE, ";
             SQL = SQL + ComNum.VBLF + "         A.CHARTTIME,    ";
             SQL = SQL + ComNum.VBLF + "         '' AS COL1, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000024733') AS COL2, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000002018') AS COL3, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000001765') AS COL4, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000037575') AS COL5, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000014815') AS COL6, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000002009') AS COL7, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000001811') AS COL8, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000035464') AS COL9, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000008708') AS COL14, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000000418') AS COL10, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000000002') AS COL11, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000018853') AS COL12, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000029454') AS COL13, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000017712') AS COL21, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000010747') AS COL150, ";
-            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM KOSMOS_EMR.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000001311') AS COL274, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000024733') AS COL2, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000002018') AS COL3, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000001765') AS COL4, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000037575') AS COL5, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000014815') AS COL6, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000002009') AS COL7, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000001811') AS COL8, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000035464') AS COL9, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000008708') AS COL14, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000000418') AS COL10, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000000002') AS COL11, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000018853') AS COL12, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000029454') AS COL13, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000017712') AS COL21, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000010747') AS COL150, ";
+            SQL = SQL + ComNum.VBLF + "         (SELECT ITEMVALUE FROM ADMIN.AEMRCHARTROW WHERE EMRNO = A.EMRNO AND EMRNOHIS = A.EMRNOHIS AND ITEMNO = 'I0000001311') AS COL274, ";
             SQL = SQL + ComNum.VBLF + "         A.EMRNO,            ";
             SQL = SQL + ComNum.VBLF + "         A.ACPNO,            ";
             SQL = SQL + ComNum.VBLF + "         A.INOUTCLS,         ";
@@ -583,7 +583,7 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "         A.MEDFRDATE,        ";
             SQL = SQL + ComNum.VBLF + "         A.MedFrTime,        ";
             SQL = SQL + ComNum.VBLF + "         CASE WHEN A.PRNTYN = 'Y' THEN '사 본' END PRNTYN";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRCHARTMST A";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRCHARTMST A";
             SQL = SQL + ComNum.VBLF + " WHERE FORMNO = 1562 ";
             SQL = SQL + ComNum.VBLF + "   AND PTNO = '" + p.ptNo + "'";
             SQL = SQL + ComNum.VBLF + "   AND CHARTDATE >= '" + dtpFrDate.Value.ToString("yyyyMMdd") + "'";
@@ -805,7 +805,7 @@ namespace ComEmrBase
             #region 날짜 셋팅
 
             //strSql = string.Empty;
-            //strSql = "SELECT CHARTDATE FROM KOSMOS_EMR.AEMRCHARTMST";
+            //strSql = "SELECT CHARTDATE FROM ADMIN.AEMRCHARTMST";
             //strSql = strSql + ComNum.VBLF + "    WHERE PTNO = '" + p.ptNo + "' ";
             ////strSql = strSql + ComNum.VBLF + "    AND FORMNO = " + mstrFormNo;
             //strSql = strSql + ComNum.VBLF + "      AND FORMNO = 1562";
@@ -859,7 +859,7 @@ namespace ComEmrBase
             #region 부-신장, 모-신장, MPH 있으면 셋팅
 
             strSql = string.Empty;
-            strSql = "SELECT ITEMCD, ITEMVALUE FROM KOSMOS_EMR.EMR_BPTINFO";
+            strSql = "SELECT ITEMCD, ITEMVALUE FROM ADMIN.EMR_BPTINFO";
             strSql = strSql + ComNum.VBLF + "    WHERE PTNO = '" + p.ptNo + "' ";
 
             SqlErr = clsDB.GetAdoRs(ref reader, strSql, clsDB.DbCon);
@@ -939,7 +939,7 @@ namespace ComEmrBase
             string strMPH = string.Empty;
 
             string SqlErr = string.Empty;
-            strSql = "SELECT ITEMVALUE FROM KOSMOS_EMR.EMR_BPTINFO";
+            strSql = "SELECT ITEMVALUE FROM ADMIN.EMR_BPTINFO";
             strSql = strSql + ComNum.VBLF + "    WHERE PTNO = '" + p.ptNo + "' ";
             strSql = strSql + ComNum.VBLF + "    AND ITEMCD = 'I0000037281'";
 
@@ -1496,7 +1496,7 @@ namespace ComEmrBase
             try
             {
                 strSql = "";
-                strSql = "SELECT 1 FROM KOSMOS_EMR.EMR_BPTINFO";
+                strSql = "SELECT 1 FROM ADMIN.EMR_BPTINFO";
                 strSql = strSql + ComNum.VBLF + "    WHERE PTNO = '" + p.ptNo + "' ";
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, strSql, clsDB.DbCon);
@@ -1522,7 +1522,7 @@ namespace ComEmrBase
                     dt = null;
 
                     strSql = "";
-                    strSql = "DELETE KOSMOS_EMR.EMR_BPTINFO";
+                    strSql = "DELETE ADMIN.EMR_BPTINFO";
                     strSql = strSql + ComNum.VBLF + "    WHERE PTNO = '" + p.ptNo + "' ";
 
                     SqlErr = clsDB.ExecuteNonQuery(strSql, ref RowAffected, clsDB.DbCon);
@@ -1536,7 +1536,7 @@ namespace ComEmrBase
                 }
 
                 strSql = "";
-                strSql = "INSERT INTO KOSMOS_EMR.EMR_BPTINFO";
+                strSql = "INSERT INTO ADMIN.EMR_BPTINFO";
                 strSql = strSql + ComNum.VBLF + "    (PTNO, ITEMCD, ITEMNO, ITEMVALUE)";
                 strSql = strSql + ComNum.VBLF + "    VALUES (";
                 strSql = strSql + ComNum.VBLF + "    '" + p.ptNo + "' ";
@@ -1554,7 +1554,7 @@ namespace ComEmrBase
                 }
 
                 strSql = "";
-                strSql = "INSERT INTO KOSMOS_EMR.EMR_BPTINFO";
+                strSql = "INSERT INTO ADMIN.EMR_BPTINFO";
                 strSql = strSql + ComNum.VBLF + "    (PTNO, ITEMCD, ITEMNO, ITEMVALUE)";
                 strSql = strSql + ComNum.VBLF + "    VALUES (";
                 strSql = strSql + ComNum.VBLF + "    '" + p.ptNo + "' ";
@@ -1572,7 +1572,7 @@ namespace ComEmrBase
                 }
 
                 strSql = "";
-                strSql = "INSERT INTO KOSMOS_EMR.EMR_BPTINFO";
+                strSql = "INSERT INTO ADMIN.EMR_BPTINFO";
                 strSql = strSql + ComNum.VBLF + "    (PTNO, ITEMCD, ITEMNO, ITEMVALUE)";
                 strSql = strSql + ComNum.VBLF + "    VALUES (";
                 strSql = strSql + ComNum.VBLF + "    '" + p.ptNo + "' ";
@@ -1713,7 +1713,7 @@ namespace ComEmrBase
             OracleDataReader reader = null;
             string strMPH = string.Empty;
 
-            strSql = "SELECT ITEMVALUE FROM KOSMOS_EMR.EMR_BPTINFO";
+            strSql = "SELECT ITEMVALUE FROM ADMIN.EMR_BPTINFO";
             strSql = strSql + ComNum.VBLF + "    WHERE PTNO = '" + p.ptNo + "' ";
             strSql = strSql + ComNum.VBLF + "    AND ITEMCD = 'I0000037283'";
 

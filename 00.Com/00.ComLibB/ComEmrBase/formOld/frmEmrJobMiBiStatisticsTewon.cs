@@ -288,7 +288,7 @@ namespace ComEmrBase
                 if (chkPOA.Checked == true)
                 {
                     // SQL = SQL + ComNum.VBLF + "  AND A.MIBICD IN ('A14') ";
-                    SQL = SQL + ComNum.VBLF + " AND EXISTS(select* from KOSMOS_EMR.EMRMIBI AA where MIBICD IN ('A14') and AA.MIBICLS > 0  and aa.PTNO = a.PTNO and aa.MEDDRCD = a.MEDDRCD   and aa.MEDENDDATE = a.MEDENDDATE  ) ";
+                    SQL = SQL + ComNum.VBLF + " AND EXISTS(select* from ADMIN.EMRMIBI AA where MIBICD IN ('A14') and AA.MIBICLS > 0  and aa.PTNO = a.PTNO and aa.MEDDRCD = a.MEDDRCD   and aa.MEDENDDATE = a.MEDENDDATE  ) ";
 
                 }
 
@@ -734,13 +734,13 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "          (";
                 SQL = SQL + ComNum.VBLF + "              SELECT";
                 SQL = SQL + ComNum.VBLF + "              PRINTRANK";
-                SQL = SQL + ComNum.VBLF + "              FROM KOSMOS_PMPA.MID_DEPT";
+                SQL = SQL + ComNum.VBLF + "              FROM ADMIN.MID_DEPT";
                 SQL = SQL + ComNum.VBLF + "              WHERE DEPTNAMEK = DEPTNAME";
                 SQL = SQL + ComNum.VBLF + "          ) As SORTNO";
                 SQL = SQL + ComNum.VBLF + "From (";
                 if (chkCheck.Checked == true)
                 {
-                    SQL = SQL + ComNum.VBLF + "              SELECT /*+INDEX(kosmos_emr.emr_treatt  index_indate*/A.DEPTNAME, A.MEDENDDATE, A.MEDDEPTCD, A.USENAME,";
+                    SQL = SQL + ComNum.VBLF + "              SELECT /*+INDEX(ADMIN.emr_treatt  index_indate*/A.DEPTNAME, A.MEDENDDATE, A.MEDDEPTCD, A.USENAME,";
                     SQL = SQL + ComNum.VBLF + "                          NVL(A.MIBIBALCNT,0) AS BALCNT, NVL(B.MIBICNT, 0) AS MIBICNT";
                     SQL = SQL + ComNum.VBLF + "              From";
                     SQL = SQL + ComNum.VBLF + "              (SELECT C.DEPTNAMEK DEPTNAME, A.MEDENDDATE, A.MEDDEPTCD, B.USENAME,";
@@ -1607,7 +1607,7 @@ namespace ComEmrBase
                 SQL = "";
                 SQL = " SELECT COUNT(MUMIBICNT) MUMIBICNT FROM (";
                 SQL = SQL + ComNum.VBLF + "   SELECT COUNT(DISTINCT(PTNO)) MUMIBICNT, MEDFRDATE";
-                SQL = SQL + ComNum.VBLF + "        From KOSMOS_EMR.EMRMIBI A, KOSMOS_EMR.VIEWBUSER B, KOSMOS_PMPA.IPD_NEW_MASTER  C";
+                SQL = SQL + ComNum.VBLF + "        From ADMIN.EMRMIBI A, ADMIN.VIEWBUSER B, ADMIN.IPD_NEW_MASTER  C";
                 SQL = SQL + ComNum.VBLF + "         WHERE A.MIBICLS IN (1)";
                 SQL = SQL + ComNum.VBLF + "             AND A.MEDENDDATE <= '" + ArgDate + "'";
                 SQL = SQL + ComNum.VBLF + "             AND A.MEDDRCD = B.USEID";
@@ -1799,11 +1799,11 @@ namespace ComEmrBase
 
             try
             {
-                //SQL = "SELECT DEPTCODE, DEPTNAMEK FROM KOSMOS_PMPA.BAS_CLINICDEPT";
+                //SQL = "SELECT DEPTCODE, DEPTNAMEK FROM ADMIN.BAS_CLINICDEPT";
                 //SQL = SQL + ComNum.VBLF + "WHERE DEPTCODE NOT IN('OC', 'II','R6','HR','TO','PT','HC','OM','LM')";
                 //SQL = SQL + ComNum.VBLF + " ORDER BY PRINTRANKING";
 
-                SQL = "SELECT DEPTCODE, DEPTNAMEK FROM KOSMOS_PMPA.MID_DEPT";
+                SQL = "SELECT DEPTCODE, DEPTNAMEK FROM ADMIN.MID_DEPT";
                 SQL = SQL + ComNum.VBLF + "WHERE DEPTCODE NOT IN('OC', 'II','R6','HR','TO','PT','HC','OM','LM')";
                 SQL = SQL + ComNum.VBLF + " ORDER BY PRINTRANK";
 

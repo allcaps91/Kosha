@@ -707,7 +707,7 @@ namespace ComLibB
             string SqlErr = string.Empty;
 
             SQL = "";
-            SQL += " UPDATE KOSMOS_PMPA.BAS_PROJECT_UC               \r\n";
+            SQL += " UPDATE ADMIN.BAS_PROJECT_UC               \r\n";
             SQL += "    SET                                          \r\n";
 
             if (isClear == true)
@@ -744,7 +744,7 @@ namespace ComLibB
             string SqlErr = string.Empty;
 
             SQL = "";
-            SQL += " UPDATE KOSMOS_PMPA.BAS_PROJECT_UC               \r\n";
+            SQL += " UPDATE ADMIN.BAS_PROJECT_UC               \r\n";
             SQL += "    SET                                          \r\n";
 
             if (isClear == true)
@@ -774,11 +774,11 @@ namespace ComLibB
             string SqlErr = string.Empty;
 
             SQL = "";
-            SQL += " UPDATE KOSMOS_PMPA.BAS_PROJECT_UC              \r\n";
+            SQL += " UPDATE ADMIN.BAS_PROJECT_UC              \r\n";
 
             if (isReWork == true)
             {
-                SQL += "    SET REWORK_CNT = (SELECT COUNT(*) + 1 FROM KOSMOS_PMPA.BAS_PROJECT_UC B WHERE RT_MNGM_NO =  " + this.gDr[(int)enmSel_BAS_PROJECT_UC.MNGM_NO].ToString() + ")            \r\n";
+                SQL += "    SET REWORK_CNT = (SELECT COUNT(*) + 1 FROM ADMIN.BAS_PROJECT_UC B WHERE RT_MNGM_NO =  " + this.gDr[(int)enmSel_BAS_PROJECT_UC.MNGM_NO].ToString() + ")            \r\n";
             }
             else
             {
@@ -810,8 +810,8 @@ namespace ComLibB
             string SqlErr = string.Empty;
 
             SQL = "";
-            SQL += " UPDATE KOSMOS_PMPA.BAS_PROJECT_UC              \r\n";
-            SQL += "    SET REWORK_CNT = (SELECT COUNT(*) FROM KOSMOS_PMPA.BAS_PROJECT_UC B WHERE RT_MNGM_NO =  " + this.gDr[(int)enmSel_BAS_PROJECT_UC.MNGM_NO].ToString() + ")            \r\n";
+            SQL += " UPDATE ADMIN.BAS_PROJECT_UC              \r\n";
+            SQL += "    SET REWORK_CNT = (SELECT COUNT(*) FROM ADMIN.BAS_PROJECT_UC B WHERE RT_MNGM_NO =  " + this.gDr[(int)enmSel_BAS_PROJECT_UC.MNGM_NO].ToString() + ")            \r\n";
             SQL += "  WHERE 1=1                                     \r\n";
             SQL += "    AND MNGM_NO    =  " + this.gDr[(int)enmSel_BAS_PROJECT_UC.MNGM_NO].ToString() + "\r\n";
             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -842,7 +842,7 @@ namespace ComLibB
             string SqlErr = string.Empty;
 
             SQL = "";
-            SQL += " INSERT INTO KOSMOS_PMPA.BAS_PROJECT_UC                                                                 \r\n";
+            SQL += " INSERT INTO ADMIN.BAS_PROJECT_UC                                                                 \r\n";
             SQL += " (                                                                                                      \r\n";
             SQL += "       MNGM_NO                                                                                          \r\n";
             SQL += "     , RT_MNGM_NO   --원관리번호(재발생시사용)                                                          \r\n";   
@@ -858,19 +858,19 @@ namespace ComLibB
             SQL += "     , UPDT_DY      --수정일시                                                                          \r\n";
             SQL += " )                                                                                                      \r\n";
             SQL += " SELECT                                                                                                 \r\n";
-            SQL += "       KOSMOS_PMPA.SEQ_BAS_PROJECT_UC.NEXTVAL AS MNGM_NO                                                \r\n";
+            SQL += "       ADMIN.SEQ_BAS_PROJECT_UC.NEXTVAL AS MNGM_NO                                                \r\n";
             SQL += "     , DECODE(A.RT_MNGM_NO, NULL, A.MNGM_NO,A.RT_MNGM_NO) AS RT_MNGM_NO  -- 원관리번호(재발생시사용)   \r\n";
             SQL += "     , SYSDATE                                  \r\n";
             SQL += "    " + ComFunc.covSqlstr(this.gDr[(int)enmSel_BAS_PROJECT_UC.RQST_PS].ToString(), true);
             SQL += "    " + ComFunc.covSqlstr(this.gDr[(int)enmSel_BAS_PROJECT_UC.FORMCD].ToString(), true);
             SQL += "    , '00'                                                                                            \r\n";
             SQL += "    " + ComFunc.covSqlstr(this.gDr[(int)enmSel_BAS_PROJECT_UC.RQST_CNTS].ToString(), true);
-            SQL += "     , (SELECT COUNT(*) FROM KOSMOS_PMPA.BAS_PROJECT_UC B WHERE RT_MNGM_NO = A.RT_MNGM_NO)           \r\n";
+            SQL += "     , (SELECT COUNT(*) FROM ADMIN.BAS_PROJECT_UC B WHERE RT_MNGM_NO = A.RT_MNGM_NO)           \r\n";
             SQL += "    " + ComFunc.covSqlstr(this.gDr[(int)enmSel_BAS_PROJECT_UC.INPS].ToString(), true);
             SQL += "     , SYSDATE                                  \r\n";
             SQL += "    " + ComFunc.covSqlstr(this.gDr[(int)enmSel_BAS_PROJECT_UC.UPPS].ToString(), true);
             SQL += "     , SYSDATE                                  \r\n";
-            SQL += "  FROM KOSMOS_PMPA.BAS_PROJECT_UC A             \r\n";
+            SQL += "  FROM ADMIN.BAS_PROJECT_UC A             \r\n";
             SQL += " WHERE ROWID = " + ComFunc.covSqlstr(this.gDr[(int)enmSel_BAS_PROJECT_UC.ROWID].ToString(), false);
 
             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -882,7 +882,7 @@ namespace ComLibB
             string SqlErr = string.Empty;
 
             SQL = "";
-            SQL += " INSERT INTO KOSMOS_PMPA.BAS_PROJECT_UC         \r\n";
+            SQL += " INSERT INTO ADMIN.BAS_PROJECT_UC         \r\n";
             SQL += " (                                              \r\n";
             SQL += "       MNGM_NO                                  \r\n";
             SQL += "     , RT_MNGM_NO   --원관리번호(재발생시사용)  \r\n";
@@ -899,7 +899,7 @@ namespace ComLibB
             SQL += " )                                              \r\n";
             SQL += " VALUES                                         \r\n";
             SQL += " (                                              \r\n";
-            SQL += "       KOSMOS_PMPA.SEQ_BAS_PROJECT_UC.NEXTVAL   \r\n";
+            SQL += "       ADMIN.SEQ_BAS_PROJECT_UC.NEXTVAL   \r\n";
 
             if (string.IsNullOrEmpty(this.gDr[(int)enmSel_BAS_PROJECT_UC.RT_MNGM_NO].ToString()) == false)
             {
@@ -936,7 +936,7 @@ namespace ComLibB
             SQL += "       , RT_MNGM_NO   											                                    --원관리번호                                                                        \r\n";
             SQL += "       , TO_CHAR(OCRR_DT,'YYYY-MM-DD HH24:MI') 	AS OCRR_DT     	                                    --발생일시                                                                          \r\n";
             SQL += "       , RQST_PS      											                                    --요청자                                                                            \r\n";
-            SQL += "       , KOSMOS_OCS.FC_BAS_USER(RQST_PS) 		AS RQST_PSNM 	                                    --요청자이름                                                                        \r\n";
+            SQL += "       , ADMIN.FC_BAS_USER(RQST_PS) 		AS RQST_PSNM 	                                    --요청자이름                                                                        \r\n";
             SQL += "       , FORMCD       											                                    --프로그램ID                                                                        \r\n";
             SQL += "       , RQST_CNTS    											                                    --요청내용                                                                          \r\n";
             SQL += "       , WORK_DVSN    																				--작업구분 (BCODE : BAS_PROJECT_UC.WORK_DVSN)                                       \r\n";
@@ -944,25 +944,25 @@ namespace ComLibB
             SQL += "                 (TO_DATE(TO_CHAR(CMPL_DT,'YYYY-MM-DD HH24:MI'), 'YYYY-MM-DD HH24:MI')                      \r\n";
             SQL += "                - TO_DATE(TO_CHAR(RCPN_DT,'YYYY-MM-DD HH24:MI'), 'YYYY-MM-DD HH24:MI') )* 24 * 60,0         \r\n";
             SQL += "               )                                                                    AS MIN                  \r\n";
-            SQL += "       , DECODE(WORK_DVSN,NULL,'',KOSMOS_OCS.FC_BAS_BCODE_NAMEREAD('BAS_PROJECT_UC.WORK_DVSN',WORK_DVSN)) 	AS WORK_DVSN_NM --작업상태 (BCODE : BAS_PROJECT_UC.WORK_STAT)                                   \r\n";
+            SQL += "       , DECODE(WORK_DVSN,NULL,'',ADMIN.FC_BAS_BCODE_NAMEREAD('BAS_PROJECT_UC.WORK_DVSN',WORK_DVSN)) 	AS WORK_DVSN_NM --작업상태 (BCODE : BAS_PROJECT_UC.WORK_STAT)                                   \r\n";
             SQL += "       , WORK_STAT    																				--작업상태 (BCODE : BAS_PROJECT_UC.WORK_STAT)                                       \r\n";
-            SQL += "       , KOSMOS_OCS.FC_BAS_BCODE_NAMEREAD('BAS_PROJECT_UC.WORK_STAT',WORK_STAT) 	AS WORK_STAT_NM --작업상태 (BCODE : BAS_PROJECT_UC.WORK_STAT)                                   \r\n";
+            SQL += "       , ADMIN.FC_BAS_BCODE_NAMEREAD('BAS_PROJECT_UC.WORK_STAT',WORK_STAT) 	AS WORK_STAT_NM --작업상태 (BCODE : BAS_PROJECT_UC.WORK_STAT)                                   \r\n";
             SQL += "       , RCPN_PRSN    											                                    --접수자                                                                                                                \r\n";
-            SQL += "       , DECODE(KOSMOS_OCS.FC_BAS_USER(RCPN_PRSN),'', RCPN_PRSN)                	AS RCPN_PRSN_NM                                                                                         \r\n";
+            SQL += "       , DECODE(ADMIN.FC_BAS_USER(RCPN_PRSN),'', RCPN_PRSN)                	AS RCPN_PRSN_NM                                                                                         \r\n";
             SQL += "       , TO_CHAR(RCPN_DT,'YYYY-MM-DD HH24:MI') 									    AS RCPN_DT      --접수시간                                                                          \r\n";
             SQL += "       , CMPL_PS      											                                    --작업자                                                                                                                \r\n";
-            SQL += "       , DECODE(KOSMOS_OCS.FC_BAS_USER(CMPL_PS),'', CMPL_PS)    					AS WORK_PSNM                                                                                            \r\n";
+            SQL += "       , DECODE(ADMIN.FC_BAS_USER(CMPL_PS),'', CMPL_PS)    					AS WORK_PSNM                                                                                            \r\n";
             SQL += "       , REWORK_CNT   											                                    --재발생건수                                                                                                            \r\n";
             SQL += "       , TO_CHAR(CMPL_DT,'YYYY-MM-DD HH24:MI') 									    AS CMPL_DT    	--완료일시                                                                          \r\n";
             SQL += "       , WORK_CLS     																				--작업분류 (BCODE : BAS_PROJECT_UC.WORK_CLS)                                        \r\n";
-            SQL += "       , DECODE(WORK_CLS,NULL,'',WORK_CLS || '.' || KOSMOS_OCS.FC_BAS_BCODE_NAMEREAD('BAS_PROJECT_UC.WORK_CLS',WORK_CLS)) 	AS WORK_CLS_NM    	--작업상태 (BCODE : BAS_PROJECT_UC.WORK_STAT)                                       \r\n";
+            SQL += "       , DECODE(WORK_CLS,NULL,'',WORK_CLS || '.' || ADMIN.FC_BAS_BCODE_NAMEREAD('BAS_PROJECT_UC.WORK_CLS',WORK_CLS)) 	AS WORK_CLS_NM    	--작업상태 (BCODE : BAS_PROJECT_UC.WORK_STAT)                                       \r\n";
             SQL += "       , CMPL_CNTS    --작업내용                                                                                                                                                        \r\n";
             SQL += "       , INPS         --입력자                                                                                                                                                          \r\n";
             SQL += "       , INPT_DY      --입력일시                                                                                                                                                        \r\n";
             SQL += "       , UPPS         --수정자                                                                                                                                                          \r\n";
             SQL += "       , UPDT_DY      --수정일시                                                                                                                                                        \r\n";
             SQL += "       , ROWID        --ROWID                                                                                                                                                           \r\n";
-            SQL += "    FROM KOSMOS_PMPA.BAS_PROJECT_UC /** 전산 커뮤니티 관리*/                                                                                                                            \r\n";
+            SQL += "    FROM ADMIN.BAS_PROJECT_UC /** 전산 커뮤니티 관리*/                                                                                                                            \r\n";
             SQL += "  WHERE 1=1                                                                                                                                                                             \r\n";
 
             if (string.IsNullOrEmpty(strMNGM_NO) == false)

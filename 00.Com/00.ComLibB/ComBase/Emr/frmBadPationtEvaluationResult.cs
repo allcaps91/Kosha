@@ -176,7 +176,7 @@ namespace ComBase
             try
             {
                 SQL = "";
-                SQL = " UPDATE KOSMOS_PMPA.DIET_RATING_PATIENT_NEW SET ";
+                SQL = " UPDATE ADMIN.DIET_RATING_PATIENT_NEW SET ";
                 SQL = SQL + ComNum.VBLF + " DIETRESULT = '" + (strDIETRESULT).Trim() + "',";
                 SQL = SQL + ComNum.VBLF + " HEALTH_2 = '" + (strHEALTH_2).Trim() + "',";
                 SQL = SQL + ComNum.VBLF + " PIBW_2 = '" + (strPIBW_2).Trim() + "',";

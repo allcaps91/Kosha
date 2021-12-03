@@ -221,7 +221,7 @@ namespace ComHpcLibB.Dto
         public string GBPRINT { get; set; }
 
         /// <summary>
-        /// 예약검사 WRTNO (KOSMOS_PMPA.ETC_EXAM_RESERVED_MST)
+        /// 예약검사 WRTNO (ADMIN.ETC_EXAM_RESERVED_MST)
         /// </summary>
         public long EXAM_WRTNO { get; set; }
 
@@ -276,7 +276,7 @@ namespace ComHpcLibB.Dto
         public string BDATE { get; set; }
 
         /// <summary>
-        /// 근전도 결과(KOSMOS_OCS.ETC_RSEULT 의 WRTNO)
+        /// 근전도 결과(ADMIN.ETC_RSEULT 의 WRTNO)
         /// </summary>
         public long EMGWRTNO { get; set; }
 

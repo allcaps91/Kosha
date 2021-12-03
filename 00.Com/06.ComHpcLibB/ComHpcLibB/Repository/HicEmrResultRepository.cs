@@ -20,7 +20,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_EMR_RESULT(                            ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_EMR_RESULT(                            ");
             parameter.AppendSql(" JOBDATE, TABLE_NAME, GUBUN, WRTNO, SEQNO, DRNO, PRTRESULT         ");
             parameter.AppendSql(" ,HASHDATA, CERTDATA, ENTSABUN, ENTDATE, FILENAME)                 ");
             parameter.AppendSql("VALUES(                                                            ");
@@ -45,7 +45,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_EMR_RESULT SET              ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_EMR_RESULT SET              ");
             parameter.AppendSql(" FILENAME = :FILENAMEFTP                           ");
             parameter.AppendSql(" WHERE ROWID  = :ROWID                            ");
 
@@ -61,7 +61,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID RID, JOBDATE              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EMR_RESULT      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EMR_RESULT      ");
             parameter.AppendSql(" WHERE 1 = 1                           ");
             parameter.AppendSql(" AND WRTNO = :WRTNO                    ");
             parameter.AppendSql(" AND GUBUN = :GUBUN                    ");

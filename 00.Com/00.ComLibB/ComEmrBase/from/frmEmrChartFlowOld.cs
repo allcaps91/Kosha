@@ -1851,8 +1851,8 @@ namespace ComEmrBase
             OracleDataReader dataReader = null;
 
             string SQL = " SELECT Total ";
-            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_BRADEN_SCALE B ";
-            SQL = SQL + ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER M";
+            SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_BRADEN_SCALE B ";
+            SQL = SQL + ComNum.VBLF + "   INNER JOIN ADMIN.IPD_NEW_MASTER M";
             SQL = SQL + ComNum.VBLF + "      ON B.IPDNO = M.IPDNO";
             SQL = SQL + ComNum.VBLF + " AND M.PANO = '" + pAcp.ptNo + "'";
             SQL = SQL + ComNum.VBLF + " AND B.ACTDATE = TO_DATE('" + ComQuery.CurrentDateTime(clsDB.DbCon, "S").Substring(0, 10) + "','YYYY-MM-DD') ";
@@ -2206,7 +2206,7 @@ namespace ComEmrBase
             if (pForm.FmOLDGB == 1 && (pForm.FmFORMNO == 1562 || pForm.FmFORMNO ==  2201))
             #region  mstrFormNo.Equals("1562") || mstrFormNo.Equals("2201")
             {
-                SQL = " SELECT VAL1, VAL2 FROM KOSMOS_EMR.EMR_SETUP_01 ";
+                SQL = " SELECT VAL1, VAL2 FROM ADMIN.EMR_SETUP_01 ";
                 SQL += ComNum.VBLF + " WHERE BUSE = '" + clsType.User.BuseCode + "'";
 
                 string sqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -2245,7 +2245,7 @@ namespace ComEmrBase
                     #region 쿼리
 
                     SQL = " SELECT RT_A, LT_A, RT_L, LT_L ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.NUR_VITAL_REGION ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.NUR_VITAL_REGION ";
                     SQL = SQL + ComNum.VBLF + "    WHERE PANO = '" + pAcp.ptNo + "'";
 
                     string SqlErr = clsDB.GetAdoRs(ref reader, SQL, clsDB.DbCon);
@@ -2410,7 +2410,7 @@ namespace ComEmrBase
 
                 #region 쿼리
                 SQL = "SELECT GUBUN, CODE ";
-                SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL += ComNum.VBLF + " FROM ADMIN.BAS_BCODE ";
                 SQL += ComNum.VBLF + " WHERE GUBUN IN ('OP_Intake','OP_Output','OP_Medication') ";
                 SQL += ComNum.VBLF + " ORDER BY GUBUN ";
 
@@ -3055,7 +3055,7 @@ namespace ComEmrBase
                 XMLBuilder.AppendLine(@"<?xml version=""1.0"" encoding=""UTF-8""?>");
                 XMLBuilder.AppendLine("<chart>");
 
-                string strCONTENTS = "(SELECT CONTENTS FROM KOSMOS_EMR.EMRFORM WHERE FORMNO = " + VB.Val(mstrFormNo) + ")";
+                string strCONTENTS = "(SELECT CONTENTS FROM ADMIN.EMRFORM WHERE FORMNO = " + VB.Val(mstrFormNo) + ")";
                 string strUPDATENO = clsEmrQuery.GetMaxUpdateNo(clsDB.DbCon, VB.Val(mstrFormNo)).ToString();
 
                 Cursor.Current = Cursors.WaitCursor;
@@ -5111,7 +5111,7 @@ namespace ComEmrBase
             mParameter.AppendSql("(                                                                                                                                             ");
             mParameter.AppendSql("  SELECT  MASTERCODE                                                                                                                         ");
             mParameter.AppendSql("  	,   TRIM(EXAMNAME) EXAMNAME                                                                                                                        ");
-            mParameter.AppendSql("    FROM KOSMOS_OCS.EXAM_MASTER A                                                                                                             ");
+            mParameter.AppendSql("    FROM ADMIN.EXAM_MASTER A                                                                                                             ");
             mParameter.AppendSql("   WHERE TRIM(UPPER(EXAMNAME)) IN ('" + INData.ToString().Trim() + "')                                                                        ");
             mParameter.AppendSql(")                                                                                                                                             ");
 
@@ -5123,8 +5123,8 @@ namespace ComEmrBase
             mParameter.AppendSql("  	,   C.SUBCODE                                                                                                                           ");
             mParameter.AppendSql("  	,   C.RESULT                                                                                                                            ");
             mParameter.AppendSql("  	, ROW_NUMBER() OVER(PARTITION BY C.SUBCODE ORDER BY C.RESULTDATE DESC) AS ROW_NUM                                                       ");
-            mParameter.AppendSql("    FROM KOSMOS_OCS.EXAM_SPECMST A                                                                                                            ");
-            mParameter.AppendSql("   INNER JOIN KOSMOS_OCS.EXAM_RESULTC C                                                                                                       ");
+            mParameter.AppendSql("    FROM ADMIN.EXAM_SPECMST A                                                                                                            ");
+            mParameter.AppendSql("   INNER JOIN ADMIN.EXAM_RESULTC C                                                                                                       ");
             mParameter.AppendSql("      ON A.SPECNO = C.SPECNO                                                                                                                  ");
             mParameter.AppendSql("     AND C.RESULT IS NOT NULL                                                                                                                 ");
             mParameter.AppendSql("   INNER JOIN EXAM_MST D                                                                                                                      ");

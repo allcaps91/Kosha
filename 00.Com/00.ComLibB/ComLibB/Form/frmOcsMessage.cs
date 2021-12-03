@@ -55,7 +55,7 @@ namespace ComLibB
 
             try
             {                
-                SQL = "SELECT ROWID,REMARK FROM KOSMOS_OCS.OCS_DRUG_MESSAGE ";                
+                SQL = "SELECT ROWID,REMARK FROM ADMIN.OCS_DRUG_MESSAGE ";                
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
                 if (SqlErr != "")
@@ -130,8 +130,8 @@ namespace ComLibB
 
                 if (FstrMsgROWID != "")
                 {
-                    SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG_MESSAGE_HIS";
-                    SQL = SQL + ComNum.VBLF + " SELECT * FROM KOSMOS_OCS.OCS_DRUG_MESSAGE";
+                    SQL = " INSERT INTO ADMIN.OCS_DRUG_MESSAGE_HIS";
+                    SQL = SQL + ComNum.VBLF + " SELECT * FROM ADMIN.OCS_DRUG_MESSAGE";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + FstrMsgROWID + "' ";
 
                     SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -144,13 +144,13 @@ namespace ComLibB
                         return;
                     }
 
-                    SQL = " UPDATE KOSMOS_OCS.OCS_DRUG_MESSAGE SET INDATE = TRUNC(SYSDATE), ";
+                    SQL = " UPDATE ADMIN.OCS_DRUG_MESSAGE SET INDATE = TRUNC(SYSDATE), ";
                     SQL = SQL + ComNum.VBLF + " REMARK = '" + VB.Trim(txtInfo.Text) + "' ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + FstrMsgROWID + "' ";                    
                 }
                 else
                 {
-                    SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG_MESSAGE (INDATE,REMARK) VALUES (";
+                    SQL = " INSERT INTO ADMIN.OCS_DRUG_MESSAGE (INDATE,REMARK) VALUES (";
                     SQL = SQL + ComNum.VBLF + " TRUNC(SYSDATE),'" + VB.Trim(txtInfo.Text) + "') ";                    
                 }
                 
@@ -193,8 +193,8 @@ namespace ComLibB
             {
                 if (ComQuery.IsJobAuth(this, "U", clsDB.DbCon) == false) return; ; //권한 확인
 
-                SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG_MESSAGE_HIS";
-                SQL = SQL + ComNum.VBLF + " SELECT * FROM KOSMOS_OCS.OCS_DRUG_MESSAGE";
+                SQL = " INSERT INTO ADMIN.OCS_DRUG_MESSAGE_HIS";
+                SQL = SQL + ComNum.VBLF + " SELECT * FROM ADMIN.OCS_DRUG_MESSAGE";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + FstrMsgROWID + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -207,7 +207,7 @@ namespace ComLibB
                     return;
                 }
 
-                SQL = " DELETE KOSMOS_OCS.OCS_DRUG_MESSAGE ";
+                SQL = " DELETE ADMIN.OCS_DRUG_MESSAGE ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + FstrMsgROWID + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);

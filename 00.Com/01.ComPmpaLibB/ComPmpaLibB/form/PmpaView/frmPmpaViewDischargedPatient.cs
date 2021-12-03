@@ -66,7 +66,7 @@ namespace ComPmpaLibB
                 SQL = SQL + ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "IPD_NEW_MASTER ";
                 SQL = SQL + ComNum.VBLF + "  WHERE 1 = 1";
                 SQL = SQL + ComNum.VBLF + "    AND ACTDATE =TO_DATE('" + dtpDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD') ";
-                SQL = SQL + ComNum.VBLF + "    AND PANO IN ( SELECT PANO FROM KOSMOS_PMPA.BAS_SELECT_MST WHERE GUBUN ='I'";
+                SQL = SQL + ComNum.VBLF + "    AND PANO IN ( SELECT PANO FROM ADMIN.BAS_SELECT_MST WHERE GUBUN ='I'";
                 SQL = SQL + ComNum.VBLF + "    AND (EDATE IS NULL OR EDATE =TO_DATE('" + dtpDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD')) AND DELDATE IS NULL GROUP BY PANO)";
                 SQL = SQL + ComNum.VBLF + "  ORDER BY PANO ";
 

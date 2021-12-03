@@ -91,7 +91,7 @@ namespace ComEmrBase
                     return; //권한 확인
 
                 SQL = "SELECT CODE  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.NUR_CODE ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.NUR_CODE ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN = '2'";
                 SQL = SQL + ComNum.VBLF + "  AND SUBUSE = '1' ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY SUBRANKING ";
@@ -222,7 +222,7 @@ namespace ComEmrBase
                     return; //권한 확인
 
                 SQL = "SELECT CODE, NAME  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.NUR_CODE_DAR ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.NUR_CODE_DAR ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN = '1'";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY CODE ";
@@ -285,14 +285,14 @@ namespace ComEmrBase
                     return; //권한 확인
 
                 SQL = "SELECT CODE, NAME  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.NUR_CODE_DAR A";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.NUR_CODE_DAR A";
                 SQL = SQL + ComNum.VBLF + "WHERE A.GUBUN = '2'";
 
                 if(string.IsNullOrEmpty(argWard) == false)
                 {
                     SQL = SQL + ComNum.VBLF + "    AND EXISTS ( ";
                     SQL = SQL + ComNum.VBLF + "        SELECT 1 ";
-                    SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_PMPA.NUR_CODE_DAR_WARDSET SUB";
+                    SQL = SQL + ComNum.VBLF + "          FROM ADMIN.NUR_CODE_DAR_WARDSET SUB";
                     SQL = SQL + ComNum.VBLF + "         WHERE SUB.WARDCODE = '" + argWard + "' ";
                     SQL = SQL + ComNum.VBLF + "           AND A.CODE = SUB.CODE";
                     SQL = SQL + ComNum.VBLF + "           AND SUB.GUBUN = '2')";
@@ -360,7 +360,7 @@ namespace ComEmrBase
                     return; //권한 확인
 
                 SQL = "SELECT CODE, NAME  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.NUR_CODE_DAR ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.NUR_CODE_DAR ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN = '3'";
                 SQL = SQL + ComNum.VBLF + "  AND CODE LIKE '" + arg + "%'";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL";
@@ -414,7 +414,7 @@ namespace ComEmrBase
                     return; //권한 확인
 
                 SQL = "SELECT CODE, NAME  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.NUR_CODE_DAR ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.NUR_CODE_DAR ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN = 'D'";
                 SQL = SQL + ComNum.VBLF + "  AND CODE LIKE '" + arg + "%'";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL";
@@ -468,7 +468,7 @@ namespace ComEmrBase
                     return; //권한 확인
 
                 SQL = "SELECT CODE, NAME  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.NUR_CODE_DAR ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.NUR_CODE_DAR ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN = 'A'";
                 SQL = SQL + ComNum.VBLF + "  AND CODE LIKE '" + arg + "%'";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL";
@@ -522,7 +522,7 @@ namespace ComEmrBase
                     return; //권한 확인
 
                 SQL = "SELECT CODE, NAME  ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.NUR_CODE_DAR ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.NUR_CODE_DAR ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN = 'R'";
                 SQL = SQL + ComNum.VBLF + "  AND CODE LIKE '" + arg + "%'";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL";
@@ -648,7 +648,7 @@ namespace ComEmrBase
                 {
                     #region 조회 
                     string SQL = " SELECT NAME ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_CODE_DAR";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_CODE_DAR";
                     SQL = SQL + ComNum.VBLF + " WHERE CODE = '" + fstrCODE3 + "'";
 
                     string sqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -663,7 +663,7 @@ namespace ComEmrBase
                     #endregion
 
                     #region INSERT
-                    SQL = " INSERT INTO KOSMOS_PMPA.NUR_CARE_GOAL (";
+                    SQL = " INSERT INTO ADMIN.NUR_CARE_GOAL (";
                     SQL = SQL + ComNum.VBLF + " PTNO, INDATE, SDATE, PROBLEM, ";
                     SQL = SQL + ComNum.VBLF + " GOAL, WRITEDATE, WRITESABUN, RANKING, DARCODE) VALUES ( ";
                     SQL = SQL + ComNum.VBLF + "'" + emrPatient.ptNo + "', TO_DATE('" + ComFunc.FormatStrToDateEx(emrPatient.medFrDate,"D","-") + "','YYYY-MM-DD'), TO_DATE('" + dtpDate.Value.ToShortDateString() + "','YYYY-MM-DD'),'" + strProblem.Trim() + "', ";
@@ -733,7 +733,7 @@ namespace ComEmrBase
                 {
                     #region 조회 
                     string SQL = " SELECT NAME ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_CODE_DAR";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_CODE_DAR";
                     SQL = SQL + ComNum.VBLF + " WHERE CODE = '" + fstrCODE3 + "'";
 
                     string sqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -748,7 +748,7 @@ namespace ComEmrBase
                     #endregion
 
                     #region INSERT
-                    SQL = " INSERT INTO KOSMOS_PMPA.NUR_CARE_GOAL (";
+                    SQL = " INSERT INTO ADMIN.NUR_CARE_GOAL (";
                     SQL = SQL + ComNum.VBLF + " PTNO, INDATE, SDATE, PROBLEM, ";
                     SQL = SQL + ComNum.VBLF + " GOAL, WRITEDATE, WRITESABUN, RANKING, DARCODE) VALUES ( ";
                     SQL = SQL + ComNum.VBLF + "'" + emrPatient.ptNo + "', TO_DATE('" + emrPatient.medFrDate + "','YYYY-MM-DD'), TO_DATE('" + dtpDate.Value.ToShortDateString() + "','YYYY-MM-DD'),'" + strProblem.Trim() + "', ";
@@ -843,7 +843,7 @@ namespace ComEmrBase
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL = " INSERT INTO KOSMOS_PMPA.NUR_CODE_DAR";
+                SQL = " INSERT INTO ADMIN.NUR_CODE_DAR";
                 SQL = SQL + ComNum.VBLF + " (GUBUN, CODE, NAME) VALUES (";
                 SQL = SQL + ComNum.VBLF + "'" + strGubun + "','" + strCode + "','" + txt1.Text.Trim() + "')";
 
@@ -904,7 +904,7 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT CODE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_CODE_DAR";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.NUR_CODE_DAR";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN = '" + strGubun + "'";
                 SQL = SQL + ComNum.VBLF + "   AND NAME  = '" + txt1.Text.Trim() + "'";
                 SQL = SQL + ComNum.VBLF + "   AND DELDATE IS NULL";
@@ -940,11 +940,11 @@ namespace ComEmrBase
             try
             {
                 SQL = " SELECT MIN(SEQ_STRING) MINCODE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.ETC_SEQ_DIGIT A";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_SEQ_DIGIT A";
                 SQL = SQL + ComNum.VBLF + " WHERE NOT EXISTS (";
                 SQL = SQL + ComNum.VBLF + "  SELECT CODE FROM (";
                 SQL = SQL + ComNum.VBLF + "  SELECT TRIM(SUBSTR(CODE, LENGTH(TRIM(CODE))-1, LENGTH(TRIM(CODE)))) CODE";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.NUR_CODE_DAR";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.NUR_CODE_DAR";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN = '" + arg + "'";
                 if (string.IsNullOrEmpty(arg2) == false)
                 {
@@ -1009,7 +1009,7 @@ namespace ComEmrBase
                     if (Convert.ToBoolean(ss2_Sheet1.Cells[i, 0].Value) == true)
                     {
                         string SQL = " SELECT CODE ";
-                        SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.NUR_CODE_DAR_WARDSET "            ;
+                        SQL += ComNum.VBLF + " FROM ADMIN.NUR_CODE_DAR_WARDSET "            ;
                         SQL += ComNum.VBLF + " WHERE GUBUN = '2'"                                 ;
                         SQL += ComNum.VBLF + "   AND WARDCODE = '" + cboWard.Text.Trim() + "' "  ;
                         SQL += ComNum.VBLF + "   AND CODE = '" + strCode + "' ";
@@ -1024,7 +1024,7 @@ namespace ComEmrBase
 
                         if(dt.Rows.Count == 0)
                         {
-                            SQL = "INSERT INTO KOSMOS_PMPA.NUR_CODE_DAR_WARDSET(CODE, GUBUN, WARDCODE)";
+                            SQL = "INSERT INTO ADMIN.NUR_CODE_DAR_WARDSET(CODE, GUBUN, WARDCODE)";
                             SQL += ComNum.VBLF + "VALUES (";
                             SQL += ComNum.VBLF + "'" + strCode + "',";
                             SQL += ComNum.VBLF + "'2',";
@@ -1092,7 +1092,7 @@ namespace ComEmrBase
                     if (Convert.ToBoolean(ss2_Sheet1.Cells[i, 0].Value) == true)
                     {
                         string SQL = string.Empty;
-                        SQL = "DELETE KOSMOS_PMPA.NUR_CODE_DAR_WARDSET";
+                        SQL = "DELETE ADMIN.NUR_CODE_DAR_WARDSET";
                         SQL += ComNum.VBLF + " WHERE GUBUN = '2'";
                         SQL += ComNum.VBLF + "  AND WARDCODE = '" + cboWard.Text.Trim() + "' ";
                         SQL += ComNum.VBLF + "  AND CODE = '" + strCode + "' ";
@@ -1147,7 +1147,7 @@ namespace ComEmrBase
 
                         string strCode = spd.ActiveSheet.Cells[i, 1].Text.Trim();
 
-                        SQL = "UPDATE KOSMOS_PMPA.NUR_CODE_DAR";
+                        SQL = "UPDATE ADMIN.NUR_CODE_DAR";
                         SQL = SQL + ComNum.VBLF + "SET";
                         SQL = SQL + ComNum.VBLF + "DELDATE = SYSDATE";
                         SQL = SQL + ComNum.VBLF + "WHERE CODE LIKE '" + strCode + "%'";

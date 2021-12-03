@@ -95,8 +95,8 @@ namespace ComPmpaLibB
                     SQL = SQL + ComNum.VBLF + "       a.Qty, a.Nal , a.Amt1 + A.AMT2 Amt, C.BONRATE RateBon, C.BOHUN , '' GBSLIP, C.VCode, D.KORNAME, E.NAME ";
                     SQL = SQL + ComNum.VBLF + "  FROM IPD_NEW_SLIP a,BAS_SUN b , IPD_TRANS C,";
                     SQL = SQL + ComNum.VBLF + "       (SELECT TO_NUMBER(RTRIM(SABUN),'999999') SABUN, KORNAME, BUSE";
-                    SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_ADM.INSA_MST) D , ";
-                    SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.BAS_BUSE E     ";
+                    SQL = SQL + ComNum.VBLF + "          FROM ADMIN.INSA_MST) D , ";
+                    SQL = SQL + ComNum.VBLF + "        ADMIN.BAS_BUSE E     ";
                     SQL = SQL + ComNum.VBLF + " WHERE 1 = 1";
                     SQL = SQL + ComNum.VBLF + "   AND A.IPDNO  = " + nIPDNO + " ";
                     SQL = SQL + ComNum.VBLF + "   AND A.TRSNO  = " + nTRSNO + "  ";
@@ -120,8 +120,8 @@ namespace ComPmpaLibB
                     SQL = SQL + ComNum.VBLF + "	    , C.VCode, D.KORNAME, E.NAME ";
                     SQL = SQL + ComNum.VBLF + "  FROM " + ComNum.DB_PMPA + "IPD_NEW_SLIP a," + ComNum.DB_PMPA + "BAS_SUN b , " + ComNum.DB_PMPA + "IPD_TRANS C,";
                     SQL = SQL + ComNum.VBLF + "       (SELECT TO_NUMBER(RTRIM(SABUN),'999999') SABUN, KORNAME, BUSE";
-                    SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_ADM.INSA_MST) D , ";
-                    SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.BAS_BUSE E     ";
+                    SQL = SQL + ComNum.VBLF + "          FROM ADMIN.INSA_MST) D , ";
+                    SQL = SQL + ComNum.VBLF + "        ADMIN.BAS_BUSE E     ";
                     SQL = SQL + ComNum.VBLF + " WHERE 1 = 1";
                     SQL = SQL + ComNum.VBLF + "   AND A.IPDNO  = " + nIPDNO + " ";
                     SQL = SQL + ComNum.VBLF + "   AND A.TRSNO  = " + nTRSNO + "  ";
@@ -131,7 +131,7 @@ namespace ComPmpaLibB
                     SQL = SQL + ComNum.VBLF + "   AND A.PART  = D.SABUN(+)";
                     SQL = SQL + ComNum.VBLF + "   AND D.BUSE = E.BUCODE(+)";
                     SQL = SQL + ComNum.VBLF + "   AND A.PART IN  (  SELECT SABUN                ";
-                    SQL = SQL + ComNum.VBLF + "                       FROM KOSMOS_ADM.INSA_MST A, KOSMOS_PMPA.BAS_BUSE B                  ";
+                    SQL = SQL + ComNum.VBLF + "                       FROM ADMIN.INSA_MST A, ADMIN.BAS_BUSE B                  ";
                     SQL = SQL + ComNum.VBLF + "                      WHERE A.BUSE  = B.BUCODE                ";
                     SQL = SQL + ComNum.VBLF + "                        AND B.NAME LIKE '%심사%'   )  ";
                 }

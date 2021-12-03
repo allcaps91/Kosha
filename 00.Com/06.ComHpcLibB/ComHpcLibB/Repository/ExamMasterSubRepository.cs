@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NORMAL                      ");
-            parameter.AppendSql("  FROM KOSMOS_OCS.EXAM_MASTER_SUB  ");
+            parameter.AppendSql("  FROM ADMIN.EXAM_MASTER_SUB  ");
             parameter.AppendSql(" WHERE MASTERCODE =:MASTERCODE     ");
             parameter.AppendSql("   AND GUBUN = '31'                ");
             parameter.AppendSql("   AND NORMAL > ' '                ");

@@ -435,7 +435,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT ITEM51";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.OCS_ENVSETTING";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.OCS_ENVSETTING";
                 SQL = SQL + ComNum.VBLF + "WHERE USERID = '" + sabun + "'";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -524,7 +524,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "SELECT SABUN FROM KOSMOS_OCS.OCS_DOCTOR ";
+                SQL = "SELECT SABUN FROM ADMIN.OCS_DOCTOR ";
                 SQL = SQL + ComNum.VBLF + "WHERE SABUN='" + clsType.User.IdNumber + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -598,7 +598,7 @@ namespace ComLibB
                 if (ComQuery.IsJobAuth(this, "R", clsDB.DbCon) == false)
                     return; //권한 확인
 
-                SQL = "SELECT ABO FROM KOSMOS_OCS.EXAM_BLOOD_MASTER ";
+                SQL = "SELECT ABO FROM ADMIN.EXAM_BLOOD_MASTER ";
                 SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + txtPtNo.Text.Trim() + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
@@ -674,7 +674,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT NAME";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN = 'OCS_기타검사결과_조회제한'";
                 SQL = SQL + ComNum.VBLF + " AND CODE = '시행'";
                 SQL = SQL + ComNum.VBLF + " AND NAME = 'N'";
@@ -704,7 +704,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT DRCODE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_DOCTOR";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_DOCTOR";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + ComFunc.LPAD(clsType.User.IdNumber.Trim(), 5, "0") + "'";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -731,7 +731,7 @@ namespace ComLibB
                 //'2) 의료정보팀에서 세팅한 경우 OK
                 SQL = "";
                 SQL = " SELECT USERID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMR_USERT ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMR_USERT ";
                 SQL = SQL + ComNum.VBLF + " WHERE USERID = '" + clsType.User.IdNumber + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND H_VIEW = '*'";
 
@@ -759,7 +759,7 @@ namespace ComLibB
                 //'3) 당일 외래 접수 내역이 있을 경우 OK
                 SQL = "";
                 SQL = " SELECT PANO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.OPD_MASTER";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OPD_MASTER";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + strPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND BDATE = TO_DATE('" + ComQuery.CurrentDateTime(clsDB.DbCon, "D") + "','YYYY-MM-DD') ";
 
@@ -786,7 +786,7 @@ namespace ComLibB
                 //'4) 현재 재원자이거나 당일 퇴원자일 경우 OK
                 SQL = "";
                 SQL = " SELECT PANO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + strPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND (JDATE = TO_DATE('1900-01-01','YYYY-MM-DD') ";
                 SQL = SQL + ComNum.VBLF + "     OR OUTDATE = TO_DATE('" + ComQuery.CurrentDateTime(clsDB.DbCon, "D") + "','YYYY-MM-DD')";
@@ -851,7 +851,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT  B.SUBCODE, TO_CHAR(B.RESULTDATE,'MM-DD') RESULTDATE ,";
                 SQL = SQL + ComNum.VBLF + "B.RESULT, B.REFER,  B.UNIT,  C.EXAMYNAME "; //' ,  B.*  "
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.EXAM_SPECMST A, KOSMOS_OCS.EXAM_RESULTC B, KOSMOS_OCS.EXAM_MASTER C ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.EXAM_SPECMST A, ADMIN.EXAM_RESULTC B, ADMIN.EXAM_MASTER C ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.PANO ='" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND  A.SPECNO = B.SPECNO(+)  ";
 
@@ -1005,14 +1005,14 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.BLOODDATE,'YYYY-MM-DD HH24:MI') BLOODDATE,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.RECEIVEDATE,'YYYY-MM-DD HH24:MI') RECEIVEDATE,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.RESULTDATE,'YYYY-MM-DD HH24:MI') RESULTDATE,A.PRINT ";
-                SQL = SQL + ComNum.VBLF + " ,(SELECT NAME FROM KOSMOS_OCS.EXAM_SPECODE WHERE GUBUN = '14' AND CODE = A.SPECCODE) AS SPECCODENAME        ";
+                SQL = SQL + ComNum.VBLF + " ,(SELECT NAME FROM ADMIN.EXAM_SPECODE WHERE GUBUN = '14' AND CODE = A.SPECCODE) AS SPECCODENAME        ";
                 SQL = SQL + ComNum.VBLF + " ,(SELECT WM_CONCAT(TRIM(BB.EXAMNAME))        ";
-                SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_OCS.EXAM_RESULTC AA        ";
-                SQL = SQL + ComNum.VBLF + "     INNER JOIN KOSMOS_OCS.EXAM_MASTER BB        ";
+                SQL = SQL + ComNum.VBLF + "     FROM ADMIN.EXAM_RESULTC AA        ";
+                SQL = SQL + ComNum.VBLF + "     INNER JOIN ADMIN.EXAM_MASTER BB        ";
                 SQL = SQL + ComNum.VBLF + "         ON AA.MASTERCODE = AA.SUBCODE        ";
                 SQL = SQL + ComNum.VBLF + "         AND AA.MASTERCODE = BB.MASTERCODE        ";
                 SQL = SQL + ComNum.VBLF + "     WHERE AA.SPECNO = A.SPECNO) AS EXAMNAME        ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_SPECMST A, KOSMOS_OCS.EXAM_RESULTC B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_SPECMST A, ADMIN.EXAM_RESULTC B ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PANO='" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.WORKSTS NOT IN ('A','T') ";  //'세포학,조직학은 제외
                 SQL = SQL + ComNum.VBLF + "  AND NVL(SUBSTR(A.ANATNO,1,2),0) != 'IH'         ";
@@ -1042,7 +1042,7 @@ namespace ComLibB
                 if (txtExName.Text != "")
                 {
                     SQL = SQL + ComNum.VBLF + "   AND B.SUBCODE IN (";
-                    SQL = SQL + ComNum.VBLF + "         SELECT  MASTERCODE  FROM  KOSMOS_OCS.EXAM_MASTER ";
+                    SQL = SQL + ComNum.VBLF + "         SELECT  MASTERCODE  FROM  ADMIN.EXAM_MASTER ";
                     SQL = SQL + ComNum.VBLF + "          WHERE  ( UPPER(EXAMNAME) LIKE '%" + txtExName.Text.Trim().ToUpper() + "%' OR UPPER(EXAMFNAME) LIKE '%" + txtExName.Text.Trim().ToUpper() + "%' OR UPPER(EXAMYNAME) LIKE '%" + txtExName.Text.Trim().ToUpper() + "%'  ) ";
                     SQL = SQL + ComNum.VBLF + "       ) ";
                 }
@@ -1238,7 +1238,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = "SELECT B.WSCODE1,B.WSCODE1POS,A.MASTERCODE,B.EXAMNAME,COUNT(A.MASTERCODE) CNT        ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.EXAM_RESULTC A, KOSMOS_OCS.EXAM_MASTER B ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.EXAM_RESULTC A, ADMIN.EXAM_MASTER B ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.SPECNO = '" + strSpecno + "'    ";
                 SQL = SQL + ComNum.VBLF + "  AND A.MASTERCODE = A.SUBCODE   ";
                 SQL = SQL + ComNum.VBLF + "  AND A.MASTERCODE = B.MASTERCODE(+) ";
@@ -1329,7 +1329,7 @@ namespace ComLibB
 
 
                 //'2014-11-18 FTP저장체크
-                SQL = " SELECT ROWID,TO_CHAR(RDATE,'YYYYMMDD') AS RDATE, FILEPATH FROM KOSMOS_OCS.ETC_JUPMST ";
+                SQL = " SELECT ROWID,TO_CHAR(RDATE,'YYYYMMDD') AS RDATE, FILEPATH FROM ADMIN.ETC_JUPMST ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + strROWID + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND GbFTP ='Y' ";
 
@@ -1366,7 +1366,7 @@ namespace ComLibB
 
                     SQL = "";
                     SQL = "SELECT IMAGE ";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.ETC_JUPMST ";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.ETC_JUPMST ";
                     SQL = SQL + ComNum.VBLF + "WHERE ROWID = '" + strROWID + "' ";
 
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1479,7 +1479,7 @@ namespace ComLibB
                 //'2014-11-18 FTP저장체크
 
                 SQL = " SELECT ROWID,TO_CHAR(RDATE,'YYYYMMDD') AS RDATE, TO_CHAR(BDATE,'YYYYMMDD') AS BDATE,  GUBUN,FILEPATH       ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.ETC_JUPMST ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_JUPMST ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID ='" + strROWID + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND GBFTP ='Y' ";
 
@@ -1521,7 +1521,7 @@ namespace ComLibB
                     dt = null;
 
                     SQL = "";
-                    SQL = "SELECT IMAGE FROM KOSMOS_OCS.ETC_JUPMST  WHERE ROWID = '" + strROWID + "' ";
+                    SQL = "SELECT IMAGE FROM ADMIN.ETC_JUPMST  WHERE ROWID = '" + strROWID + "' ";
 
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -1619,7 +1619,7 @@ namespace ComLibB
 
                 strFileName = @"c:\CMC\EMG"; // '.jpg";
 
-                SQL = " SELECT  IMAGE,TO_CHAR(SDATE,'YYYYMMDD') SDATE,FILENAME FROM KOSMOS_OCS.ETC_RESULT  ";
+                SQL = " SELECT  IMAGE,TO_CHAR(SDATE,'YYYYMMDD') SDATE,FILENAME FROM ADMIN.ETC_RESULT  ";
                 SQL = SQL + ComNum.VBLF + " WHERE  WRTNO = '" + argWRTNO + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND GBFTP ='Y' ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY SEQNO";
@@ -1638,7 +1638,7 @@ namespace ComLibB
                     dt.Dispose();
                     dt = null;
 
-                    SQL = " SELECT  IMAGE FROM KOSMOS_OCS.ETC_RESULT  ";
+                    SQL = " SELECT  IMAGE FROM ADMIN.ETC_RESULT  ";
                     SQL = SQL + ComNum.VBLF + " WHERE  WRTNO = '" + argWRTNO + "' ";
                     SQL = SQL + ComNum.VBLF + "   AND IMAGE IS NOT NULL ";
                     SQL = SQL + ComNum.VBLF + " ORDER BY SEQNO";
@@ -1733,7 +1733,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT IMAGE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_ANATMST_IMG    ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_ANATMST_IMG    ";
                 SQL = SQL + ComNum.VBLF + " WHERE ANATNO = '" + ArgANATNO + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -1826,7 +1826,7 @@ namespace ComLibB
 
                 strFileName = @"C:\CMC\exam"; //'.jpg";
 
-                SQL = " SELECT  IMAGE FROM KOSMOS_OCS.EXAM_RESULT_IMG ";
+                SQL = " SELECT  IMAGE FROM ADMIN.EXAM_RESULT_IMG ";
                 SQL = SQL + ComNum.VBLF + " WHERE  WRTNO = '" + argWRTNO + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND IMAGE IS NOT NULL ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY SEQNO";
@@ -1905,7 +1905,7 @@ namespace ComLibB
                 //'DB에서 자료를 SELECT
                 SQL = "";
                 SQL = "SELECT CODE,WARDNAME ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.XRAY_RESULTWARD ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.XRAY_RESULTWARD ";
                 SQL = SQL + ComNum.VBLF + "WHERE SABUN = " + clsType.User.IdNumber + " ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -2037,7 +2037,7 @@ namespace ComLibB
             {
 
                 SQL = "";
-                SQL = "SELECT CODE, NAME, YNAME, WSGROUP FROM KOSMOS_OCS.EXAM_SPECODE       ";
+                SQL = "SELECT CODE, NAME, YNAME, WSGROUP FROM ADMIN.EXAM_SPECODE       ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN = '" + strCGuBun + "'       ";
                 SQL = SQL + ComNum.VBLF + "    AND CODE = '" + strCode + "'        ";
                 SQL = SQL + ComNum.VBLF + "    AND DELDATE IS NULL      ";
@@ -2113,7 +2113,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = "SELECT PANO,SNAME,JUMIN1,JUMIN2,JUMIN3,SEX ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + strPtNo.Trim() + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -2154,8 +2154,8 @@ namespace ComLibB
                 //'등록번호로 종합건진 접수번호를 찾음 => 등록번호 -> 주민번호
                 SQL = "";
                 SQL = "SELECT TO_CHAR(JEPDATE,'YYYY-MM-DD') JEPDATE,WRTNO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.HEA_JEPSU ";
-                SQL = SQL + ComNum.VBLF + "WHERE PANO IN (SELECT PANO FROM KOSMOS_PMPA.HIC_PATIENT ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.HEA_JEPSU ";
+                SQL = SQL + ComNum.VBLF + "WHERE PANO IN (SELECT PANO FROM ADMIN.HIC_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "      WHERE JUMIN2='" + clsAES.AES(mstrJumin1 + mstrJumin2) + "') ";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY JEPDATE DESC ";
@@ -2180,8 +2180,8 @@ namespace ComLibB
                 //'등록번호로 일반건진 접수번호를 찾음 => 등록번호 -> 주민번호
                 SQL = "";
                 SQL = "SELECT TO_CHAR(JEPDATE,'YYYY-MM-DD') JEPDATE,WRTNO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.HIC_JEPSU ";
-                SQL = SQL + ComNum.VBLF + "WHERE PANO IN (SELECT PANO FROM KOSMOS_PMPA.HIC_PATIENT ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.HIC_JEPSU ";
+                SQL = SQL + ComNum.VBLF + "WHERE PANO IN (SELECT PANO FROM ADMIN.HIC_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "      WHERE JUMIN2 = '" + clsAES.AES(mstrJumin1 + mstrJumin2) + "') ";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY JEPDATE DESC ";
@@ -2205,7 +2205,7 @@ namespace ComLibB
 
                 //'EMR영상 존재여부확인
                 SQL = "";
-                SQL = " SELECT PATID FROM KOSMOS_EMR.EMR_TREATT ";
+                SQL = " SELECT PATID FROM ADMIN.EMR_TREATT ";
                 SQL = SQL + ComNum.VBLF + "WHERE PATID = '" + mstrPano + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND CHECKED ='1'";
 
@@ -2228,7 +2228,7 @@ namespace ComLibB
 
                 //'생체현미경 검사 존재여부를 읽음
                 SQL = "";
-                SQL = "SELECT PtNo FROM KOSMOS_OCS.ETC_RESULT_NVC ";
+                SQL = "SELECT PtNo FROM ADMIN.ETC_RESULT_NVC ";
                 SQL = SQL + ComNum.VBLF + "WHERE PtNo='" + mstrPano + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND ResultTime IS NOT NULL";
 
@@ -2270,7 +2270,7 @@ namespace ComLibB
 
             try
             {
-                SQL = " SELECT ORDERNAME FROM KOSMOS_OCS.OCS_ORDERCODE ";
+                SQL = " SELECT ORDERNAME FROM ADMIN.OCS_ORDERCODE ";
                 SQL = SQL + ComNum.VBLF + " WHERE ORDERCODE = '" + strCode.Trim() + "'   ";
                 //2019-12-03 안정수 제외처리함
                 //SQL = SQL + ComNum.VBLF + "   AND (SENDDEPT <> 'N' OR SENDDEPT IS NULL) ";
@@ -2330,7 +2330,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT MASTERCODE, NORMAL, SEX, AGEFROM, AGETO, REFVALFROM, REFVALTO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_MASTER_SUB ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_MASTER_SUB ";
                 SQL = SQL + ComNum.VBLF + "WHERE  1=1"; //'41:Reference Value
                 //2018-12-12 안정수 조건 추가함 
                 SQL = SQL + ComNum.VBLF + "AND MASTERCODE = '" + astrCode + "'";
@@ -2449,7 +2449,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT ANATNO, GBJOB,  RESULT1, RESULT2, BDATE, RESULT_IMG,";
                 SQL = SQL + ComNum.VBLF + "TO_CHAR(RESULTDATE,'YYYY-MM-DD HH24:MI') RESULTDATE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_ANATMST ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_ANATMST ";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -2527,7 +2527,7 @@ namespace ComLibB
 
 
                 SQL = "";
-                SQL = " SELECT ROWID FROM KOSMOS_OCS.EXAM_ANATMST ";
+                SQL = " SELECT ROWID FROM ADMIN.EXAM_ANATMST ";
                 SQL = SQL + ComNum.VBLF + " WHERE ANATNO ='" + strAnatNo + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND CVR_CONFIRM_DATE2 IS NULL ";
 
@@ -2547,7 +2547,7 @@ namespace ComLibB
                         return; //권한 확인
 
                     SQL = "";
-                    SQL = "UPDATE KOSMOS_OCS.EXAM_ANATMST SET ";
+                    SQL = "UPDATE ADMIN.EXAM_ANATMST SET ";
                     SQL = SQL + ComNum.VBLF + "        CVR_CONFIRM_DATE2 =SYSDATE,";
                     SQL = SQL + ComNum.VBLF + "        CVR_CONFIRM_SABUN2 = '" + clsType.User.IdNumber + "' ";
                     SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + strROWID + "' ";
@@ -2633,7 +2633,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "  A.HRREMARK3, A.HRREMARK4, A.HRREMARK5,";
                 SQL = SQL + ComNum.VBLF + "  TO_CHAR(A.RESULTDATE ,'YYYY-MM-DD') RDATE, ";
                 SQL = SQL + ComNum.VBLF + "   TO_CHAR(B.RECEIVEDATE, 'YYYY-MM-DD') REDATE, A.RESULTDATE, A.RESULTSABUN ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_ANATMST A , KOSMOS_OCS.EXAM_SPECMST B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EXAM_ANATMST A , ADMIN.EXAM_SPECMST B";
                 SQL = SQL + ComNum.VBLF + " WHERE A.ROWID = '" + strROWID + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.SPECNO = B.SPECNO(+) ";
 
@@ -3190,7 +3190,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "RESULTSABUN, ITEMS1, ITEMS2, DISEASE,";
                 SQL = SQL + ComNum.VBLF + "VERIFY1, VERIFY2, VERIFY3, VERIFY4, VERIFY5, VERIFY6,";
                 SQL = SQL + ComNum.VBLF + "COMMENTS, RECOMMENDATION, PRINT ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_VERIFY ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_VERIFY ";
                 SQL = SQL + ComNum.VBLF + "WHERE ROWID = '" + strROWID + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -3378,8 +3378,8 @@ namespace ComLibB
                     return; //권한 확인
 
                 SQL = " SELECT REMARKC, REMARKX, REMARKP, REMARKD ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.ENDO_JUPMST A,   ";
-                SQL = SQL + ComNum.VBLF + "      KOSMOS_OCS.ENDO_REMARK B    ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ENDO_JUPMST A,   ";
+                SQL = SQL + ComNum.VBLF + "      ADMIN.ENDO_REMARK B    ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.ROWID      = '" + strROWID + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.PTNO       = B.PTNO      ";
                 SQL = SQL + ComNum.VBLF + "   AND A.JDATE      = B.JDATE     ";
@@ -3469,7 +3469,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(B.RDATE,'YYYY-MM-DD HH24:MI') RDATE, ";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(B.RESULTDATE,'YYYY-MM-DD HH24:MI') RESULTDATE,B.GBNEW, ";
                 SQL = SQL + ComNum.VBLF + " B.RESULTDRCODE ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.ENDO_RESULT A, KOSMOS_OCS.ENDO_JUPMST B ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.ENDO_RESULT A, ADMIN.ENDO_JUPMST B ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.SEQNO  = " + dblSeqno + " ";
                 SQL = SQL + ComNum.VBLF + "   AND A.SEQNO = B.SEQNO ";
                 SQL = SQL + ComNum.VBLF + "   AND ROWNUM = 1  ";
@@ -3504,7 +3504,7 @@ namespace ComLibB
                     if (strResultDrCode != "")
                     {
                         SQL = "";
-                        SQL = " SELECT KORNAME FROM KOSMOS_ADM.INSA_MST ";
+                        SQL = " SELECT KORNAME FROM ADMIN.INSA_MST ";
                         SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + strResultDrCode + "' ";
 
                         SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
@@ -4230,8 +4230,8 @@ namespace ComLibB
                     return; //권한 확인
 
                 SQL = "";
-                SQL = " SELECT XDRCODE1,RESULT,RESULT1,APPROVE , ADDENDUM1, ADDENDUM2, TEMP, READTIME, ADDDATE, (SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR WHERE SABUN = XDRCODE1) AS DRGUBUN ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.XRAY_RESULTNEW ";
+                SQL = " SELECT XDRCODE1,RESULT,RESULT1,APPROVE , ADDENDUM1, ADDENDUM2, TEMP, READTIME, ADDDATE, (SELECT DRNAME FROM ADMIN.OCS_DOCTOR WHERE SABUN = XDRCODE1) AS DRGUBUN ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.XRAY_RESULTNEW ";
                 SQL = SQL + ComNum.VBLF + " WHERE WRTNO = " + Convert.ToString(intWrtno) + " ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -4319,8 +4319,8 @@ namespace ComLibB
                 SQL = "SELECT PANO,SNAME,TO_CHAR(READTIME1,'YYYY-MM-DD') READDATE,READTIME1,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(JEPDATE,'YYYY-MM-DD') JEPDATE,GBREAD,";
                 SQL = SQL + ComNum.VBLF + " SEX,AGE,READDOCT1,READDOCT2,GBSTS, ";
-                SQL = SQL + ComNum.VBLF + " XCODE,RESULT1,RESULT2,RESULT3,RESULT4,RESULT1_1,RESULT2_1,RESULT3_1,RESULT4_1,(SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR WHERE SABUN = READDOCT1) AS DRGUBUN ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.HIC_XRAY_RESULT ";
+                SQL = SQL + ComNum.VBLF + " XCODE,RESULT1,RESULT2,RESULT3,RESULT4,RESULT1_1,RESULT2_1,RESULT3_1,RESULT4_1,(SELECT DRNAME FROM ADMIN.OCS_DOCTOR WHERE SABUN = READDOCT1) AS DRGUBUN ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.HIC_XRAY_RESULT ";
                 SQL = SQL + ComNum.VBLF + "WHERE ROWID ='" + strROWID + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -4399,7 +4399,7 @@ namespace ComLibB
                     return; //권한 확인
 
                 SQL = "";
-                SQL = " SELECT XDRCODE1,RESULT,RESULT1,APPROVE FROM KOSMOS_PMPA.XRAY_RESULTNEW_DR ";
+                SQL = " SELECT XDRCODE1,RESULT,RESULT1,APPROVE FROM ADMIN.XRAY_RESULTNEW_DR ";
                 SQL = SQL + ComNum.VBLF + " WHERE DRWRTNO = " + Convert.ToString(intWrtno) + " ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -4546,7 +4546,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT PROGRESS, TO_CHAR(A.WRITEDATE,'YYYY-MM-DD') WDATE, A.WRITESABUN, ORDERCODE, A.SEQNO, IPDNO, USED, B.ROWID ROWID2, A.RETURN_TEXT, A.RETURN_TEXT2, A.BIGO ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.DRUG_PCONSULT A, KOSMOS_ADM.DRUG_PCONSULT_RETURN B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.DRUG_PCONSULT A, ADMIN.DRUG_PCONSULT_RETURN B ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PANO = '" + strPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.PROGRESS >= '0' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.DELDATE IS NULL ";
@@ -4573,7 +4573,7 @@ namespace ComLibB
                         ssPConsult_Sheet1.Cells[i, 2].Text = clsVbfunc.GetInSaName(clsDB.DbCon, dt.Rows[i]["WRITESABUN"].ToString().Trim());
 
                         SQL = "";
-                        SQL = " SELECT ROWID FROM KOSMOS_ADM.INSA_MST ";
+                        SQL = " SELECT ROWID FROM ADMIN.INSA_MST ";
                         SQL = SQL + ComNum.VBLF + " WHERE BUSE IN ('044101','044100') ";
                         SQL = SQL + ComNum.VBLF + "   AND SABUN = '" + ComFunc.LPAD(dt.Rows[i]["WRITESABUN"].ToString().Trim(), 5, "0") + "' ";
                         SqlErr = clsDB.GetDataTableEx(ref dt1, SQL, clsDB.DbCon);
@@ -4647,7 +4647,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT WARDCODE, ROOMCODE, PANO, SNAME, AGE, SEX, DEPTCODE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER ";
                 SQL = SQL + ComNum.VBLF + " WHERE IPDNO = " + strIpdNo;
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -4697,9 +4697,9 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT COMMENTS";
-                SQL = SQL + ComNum.VBLF + "  From KOSMOS_ADM.DRUG_SETCODE";
+                SQL = SQL + ComNum.VBLF + "  From ADMIN.DRUG_SETCODE";
                 SQL = SQL + ComNum.VBLF + "  WHERE PART = (";
-                SQL = SQL + ComNum.VBLF + "  SELECT PART FROM KOSMOS_ADM.DRUG_SETCODE";
+                SQL = SQL + ComNum.VBLF + "  SELECT PART FROM ADMIN.DRUG_SETCODE";
                 SQL = SQL + ComNum.VBLF + "  WHERE GUBUN = '11'";
                 SQL = SQL + ComNum.VBLF + "  AND JEPCODE = '" + strCode + "')";
                 SQL = SQL + ComNum.VBLF + "  AND JEPCODE = '분류명칭'";
@@ -4805,7 +4805,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT A.PTNO,B.SNAME, B.SEX, A.DEPTCODE, A.DRCODE, A.ORDERCODE,A.SUCODE,A.REMARK,B.JUSAMSG, ";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.ACTDATE2,'YYYY-MM-DD HH24:MI') ACTDATE2,TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.ETC_JUSASUB A,KOSMOS_PMPA.BAS_PATIENT B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_JUSASUB A,ADMIN.BAS_PATIENT B";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PTNO=B.PANO(+) ";
                 SQL = SQL + ComNum.VBLF + "   AND A.PTNO='" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.ACTDATE<=TO_DATE('" + ComFunc.FormatStrToDate(strDate, "D") + "','YYYY-MM-DD') ";
@@ -4894,7 +4894,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT TO_CHAR(SDATE,'YYYY-MM-DD') SDATE, PANO, SNAME, DRUGYAK1, ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.DRUG_TDM ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.DRUG_TDM ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO  = '" + strPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY SDATE, PANO ";
 
@@ -5006,7 +5006,7 @@ namespace ComLibB
 
                 SQL = "SELECT TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, A.GBIO,A.DEPTCODE, B.ORDERNAME,A.ANATNO, ";
                 SQL = SQL + ComNum.VBLF + "A.CREMARK1,A.RESULT_IMG,  A.ROWID, A.GBJOB ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.EXAM_ANATMST A, KOSMOS_OCS.OCS_ORDERCODE B ,KOSMOS_OCS.EXAM_SPECMST C  ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.EXAM_ANATMST A, ADMIN.OCS_ORDERCODE B ,ADMIN.EXAM_SPECMST C  ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.PTNO     = '" + txtPtNo.Text.Trim() + "' ";
 
                 SQL = SQL + ComNum.VBLF + "   AND A.SPECNO =C.SPECNO ";
@@ -5070,8 +5070,8 @@ namespace ComLibB
 
                 //'등록번호로 일반건진 접수번호를 찾음(일반건진은 SPECMST -> 일반건진 접수번호로 전송)
                 SQL = "";
-                SQL = "SELECT WRTNO FROM KOSMOS_PMPA.HIC_JEPSU ";
-                SQL = SQL + ComNum.VBLF + "WHERE PANO IN (SELECT PANO FROM KOSMOS_PMPA.HIC_PATIENT ";
+                SQL = "SELECT WRTNO FROM ADMIN.HIC_JEPSU ";
+                SQL = SQL + ComNum.VBLF + "WHERE PANO IN (SELECT PANO FROM ADMIN.HIC_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "      WHERE JUMIN2= '" + clsAES.AES(strJumin) + "') ";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL ";
 
@@ -5101,8 +5101,8 @@ namespace ComLibB
 
                 //'종합건진 등록번호 찾음(종검은 SPECTMST -> 종검접수번호로 전송)
                 SQL = "";
-                SQL = "SELECT WRTNO FROM KOSMOS_PMPA.HEA_JEPSU ";
-                SQL = SQL + ComNum.VBLF + "WHERE PANO IN ( SELECT PANO FROM KOSMOS_PMPA.HEA_PATIENT ";
+                SQL = "SELECT WRTNO FROM ADMIN.HEA_JEPSU ";
+                SQL = SQL + ComNum.VBLF + "WHERE PANO IN ( SELECT PANO FROM ADMIN.HEA_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "      WHERE JUMIN2 = '" + clsAES.AES(strJumin) + "')  ";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL ";
 
@@ -5136,7 +5136,7 @@ namespace ComLibB
                     //'종검(건진은 외래번호로 접수됨)
 
                     SQL = " SELECT TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, A.GBIO, B.ORDERNAME,A.ANATNO, A.ROWID,A.CREMARK1, A.GBJOB ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_ANATMST A, KOSMOS_OCS.OCS_ORDERCODE B ,KOSMOS_OCS.EXAM_SPECMST C  ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EXAM_ANATMST A, ADMIN.OCS_ORDERCODE B ,ADMIN.EXAM_SPECMST C  ";
                     SQL = SQL + ComNum.VBLF + " WHERE A.PTNO IN (" + strHeaPano + ")  ";
                     SQL = SQL + ComNum.VBLF + "   AND A.SPECNO =C.SPECNO ";
                     SQL = SQL + ComNum.VBLF + "   AND A.ORDERCODE = B.ORDERCODE       ";
@@ -5284,8 +5284,8 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.XSENDDATE,'MM/DD HH24:MI') XSENDDATE,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.BDATE,'YYYY/MM/DD') BDATE,";
                 SQL = SQL + ComNum.VBLF + " A.PACSSTUDYID,A.ORDERNAME,A.REMARK,A.ROWID, GBPACS ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.XRAY_DETAIL A,KOSMOS_PMPA.BAS_PATIENT B,KOSMOS_PMPA.BAS_DOCTOR C,";
-                SQL = SQL + ComNum.VBLF + "      KOSMOS_PMPA.XRAY_CODE D ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.XRAY_DETAIL A,ADMIN.BAS_PATIENT B,ADMIN.BAS_DOCTOR C,";
+                SQL = SQL + ComNum.VBLF + "      ADMIN.XRAY_CODE D ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.PANO='" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.GBRESERVED >='6' "; //'접수 또는 촬영완료;
                 //SQL = SQL + ComNum.VBLF + "  AND A.XJONG NOT IN ('E') "; // '근전도 별도로 조회;
@@ -5321,8 +5321,8 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " A.XCODE,'' XSUBCODE,'O' IPDOPD,0 ORDERNO,";
                 SQL = SQL + ComNum.VBLF + " '' ORDERDATE,'' JEPSUTIME,'' XSENDDATE, '' BDATE, ";
                 SQL = SQL + ComNum.VBLF + " A.XRAYNO PACSSTUDYID,D.HNAME ORDERNAME,'' REMARK,A.ROWID, A.GBPACS ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.HIC_XRAY_RESULT A,KOSMOS_PMPA.BAS_PATIENT B, ";
-                SQL = SQL + ComNum.VBLF + "      KOSMOS_PMPA.HIC_EXCODE D ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.HIC_XRAY_RESULT A,ADMIN.BAS_PATIENT B, ";
+                SQL = SQL + ComNum.VBLF + "      ADMIN.HIC_EXCODE D ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.PTNO='" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.DELDATE IS NULL ";
 
@@ -5524,7 +5524,7 @@ namespace ComLibB
                             case "46000": //정지애
                             case "50773": //이현정
                             case "45316": //김해수
-                                SQL = "SELECT TO_CHAR(READDATE,'YYYY-MM-DD') READDATE, XDRCODE1 FROM KOSMOS_PMPA.XRAY_RESULTNEW";
+                                SQL = "SELECT TO_CHAR(READDATE,'YYYY-MM-DD') READDATE, XDRCODE1 FROM ADMIN.XRAY_RESULTNEW";
                                 SQL = SQL + ComNum.VBLF + "WHERE 1=1 ";
                                 SQL = SQL + ComNum.VBLF + "AND WRTNO = '" + dt.Rows[i]["EXINFO"].ToString().Trim() + "'";
 
@@ -5580,7 +5580,7 @@ namespace ComLibB
             {
 
                 SQL = "";
-                SQL = "SELECT CODE FROM KOSMOS_PMPA.BAS_BCODE ";
+                SQL = "SELECT CODE FROM ADMIN.BAS_BCODE ";
                 SQL = SQL + ComNum.VBLF + "WHERE GUBUN = 'PACS_서비스' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -5670,8 +5670,8 @@ namespace ComLibB
 
                 SQL = SQL + ComNum.VBLF + "  A.FRREMARK, A.TOREMARK , A.ROWID,A.GBEMSMS,  ";
                 SQL = SQL + ComNum.VBLF + "  C.DRNAME CDRNAME, D.DRNAME DDRNAME  ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_ITRANSFER  A, KOSMOS_PMPA.BAS_PATIENT B, ";
-                SQL = SQL + ComNum.VBLF + "        KOSMOS_PMPA.BAS_DOCTOR C ,   KOSMOS_PMPA.BAS_DOCTOR D ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.OCS_ITRANSFER  A, ADMIN.BAS_PATIENT B, ";
+                SQL = SQL + ComNum.VBLF + "        ADMIN.BAS_DOCTOR C ,   ADMIN.BAS_DOCTOR D ";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.PTNO ='" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "    AND A.EDATE IS NOT NULL";
                 SQL = SQL + ComNum.VBLF + "    AND (A.GBDEL <>'*' OR A.GBDEL IS NULL ) "; //'삭제 제외;
@@ -5809,7 +5809,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "  TO_CHAR(A.CVR_ENTDATE,'YYYY-MM-DD HH24:MI') CVRENTDATE,    ";
                 SQL = SQL + ComNum.VBLF + "  A.CVR_ENTSABUN, A.CREMARK1,A.CVR_CONFIRM_SABUN,A.CREMARK2, ";
                 SQL = SQL + ComNum.VBLF + "  TO_CHAR(A.CVR_CONFIRM_DATE,'YYYY-MM-DD HH24:MI') CVRCDATE  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_ANATMST A, KOSMOS_OCS.EXAM_SPECMST S                ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EXAM_ANATMST A, ADMIN.EXAM_SPECMST S                ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.SPECNO = S.SPECNO                           ";
                 SQL = SQL + ComNum.VBLF + "   AND A.PTNO ='" + strPtNo + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.ANATNO = S.ANATNO       ";
@@ -5887,7 +5887,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = " UPDATE KOSMOS_OCS.EXAM_ANATMST SET ";
+                SQL = " UPDATE ADMIN.EXAM_ANATMST SET ";
                 SQL = SQL + ComNum.VBLF + " CVR_CONFIRM_DATE = SYSDATE, ";
                 SQL = SQL + ComNum.VBLF + " CVR_CONFIRM_SABUN = " + clsType.User.IdNumber + ", ";
                 SQL = SQL + ComNum.VBLF + " CREMARK2 = '" + txtCRemark2.Text.Trim() + "' ";
@@ -5952,7 +5952,7 @@ namespace ComLibB
 
 
                 SQL = "";
-                SQL = " UPDATE KOSMOS_OCS.EXAM_ANATMST SET ";
+                SQL = " UPDATE ADMIN.EXAM_ANATMST SET ";
                 SQL = SQL + ComNum.VBLF + " CVR_CONFIRM_DATE = SYSDATE, ";
                 SQL = SQL + ComNum.VBLF + " CVR_CONFIRM_SABUN = " + clsType.User.IdNumber + ", ";
                 SQL = SQL + ComNum.VBLF + " CREMARK2 = '" + txtCVR2.Text.Trim() + "' ";
@@ -6024,7 +6024,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, A.GBIO, B.ORDERNAME, A.DEPTCODE,A.ANATNO,A.ROWID,A.CREMARK1 ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.EXAM_ANATMST A, KOSMOS_OCS.OCS_ORDERCODE B  ,KOSMOS_OCS.EXAM_SPECMST C  ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EXAM_ANATMST A, ADMIN.OCS_ORDERCODE B  ,ADMIN.EXAM_SPECMST C  ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PTNO     = '" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.SPECNO = C.SPECNO ";
                 SQL = SQL + ComNum.VBLF + "   AND A.ORDERCODE = B.ORDERCODE       ";
@@ -6129,7 +6129,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT PANO,TO_CHAR(BDATE,'YYYY-MM-DD') BDATE,                ";
                 SQL = SQL + ComNum.VBLF + "  ROWID, IPDOPD, BUN, WRTNO                                    ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.DRUG_HOIMST               ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.DRUG_HOIMST               ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + txtPtNo.Text.Trim() + "'                                       ";
                 //2020-09-11 GBJOB 조건 제외 
                 //SQL = SQL + ComNum.VBLF + " AND GBJOB IS NULL ";
@@ -6237,7 +6237,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE , TO_CHAR(A.RDATE,'YYYY-MM-DD') RDATE ,A.GBFTP, ";
                 SQL = SQL + ComNum.VBLF + "  A.AGE, A.SEX, A.GBIO, A.DEPTCODE,   B.ORDERNAME, A.ROWID, A.IMAGE , C.DRNAME  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST A, KOSMOS_OCS.OCS_ORDERCODE B, KOSMOS_PMPA.BAS_DOCTOR C";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST A, ADMIN.OCS_ORDERCODE B, ADMIN.BAS_DOCTOR C";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO= '" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.GUBUN ='" + mstrGubun + "' "; //' AUDIO;
                 SQL = SQL + ComNum.VBLF + "  AND A.GBJOB NOT IN ('9') ";
@@ -6350,8 +6350,8 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.XSENDDATE,'MM/DD HH24:MI') XSENDDATE,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, ";
                 SQL = SQL + ComNum.VBLF + " A.PACSSTUDYID,A.ORDERNAME,A.REMARK,A.ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.XRAY_DETAIL A,KOSMOS_PMPA.BAS_PATIENT B,KOSMOS_PMPA.BAS_DOCTOR C,";
-                SQL = SQL + ComNum.VBLF + "      KOSMOS_PMPA.XRAY_CODE D ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.XRAY_DETAIL A,ADMIN.BAS_PATIENT B,ADMIN.BAS_DOCTOR C,";
+                SQL = SQL + ComNum.VBLF + "      ADMIN.XRAY_CODE D ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.PANO='" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND (A.XJONG ='C' OR A.XCODE IN ('EB521A', 'EB561'))"; //'심장초음파;
                 SQL = SQL + ComNum.VBLF + "  AND A.GBRESERVED >= '6' "; //'접수 또는 촬영완료;
@@ -6487,7 +6487,7 @@ namespace ComLibB
                 //IF ARGIO = "I" OR ARGDEPT = "ER" THEN;
                 if (strIO == "I" || strDept == "ER")
                 {
-                    SQL = " SELECT PTNO FROM KOSMOS_OCS.OCS_IORDER ";
+                    SQL = " SELECT PTNO FROM ADMIN.OCS_IORDER ";
                     SQL = SQL + ComNum.VBLF + " WHERE PTNO ='" + strPano + "' ";
                     SQL = SQL + ComNum.VBLF + " AND BDATE =TO_DATE('" + strBDate + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + " AND ORDERNO =" + strOrderNo + " ";
@@ -6495,7 +6495,7 @@ namespace ComLibB
                 }
                 else
                 {
-                    SQL = " SELECT PTNO FROM KOSMOS_OCS.OCS_OORDER ";
+                    SQL = " SELECT PTNO FROM ADMIN.OCS_OORDER ";
                     SQL = SQL + ComNum.VBLF + " WHERE PTNO ='" + strPano + "' ";
                     SQL = SQL + ComNum.VBLF + " AND BDATE =TO_DATE('" + strBDate + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + " AND ORDERNO =" + strOrderNo + " ";
@@ -6580,7 +6580,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE , TO_CHAR(A.RDATE,'YYYY-MM-DD') RDATE ,A.GBFTP,A.IMAGE_GBN, ";
                 SQL = SQL + ComNum.VBLF + "  A.AGE, A.SEX, A.GBIO, A.DEPTCODE,   B.ORDERNAME, A.ROWID, A.IMAGE , C.DRNAME  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST A, KOSMOS_OCS.OCS_ORDERCODE B, KOSMOS_PMPA.BAS_DOCTOR C";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST A, ADMIN.OCS_ORDERCODE B, ADMIN.BAS_DOCTOR C";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO= '" + txtPtNo.Text + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.GUBUN ='" + mstrGubun + "'";  //AUDIO
                 SQL = SQL + ComNum.VBLF + "  AND A.GBJOB NOT IN ('9') ";
@@ -6694,7 +6694,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT  TO_CHAR(A.RDATE,'YYYY-MM-DD') RDATE ,  A.READ_WRTNO,   DECODE(A.GBJOB ,'3','EEG','기타') GBJOB, A.ORDERNO, A.ROWID,  ";
                 SQL = SQL + ComNum.VBLF + "   B.ORDERNAME, A.DEPTCODE, A.DRCODE ,  C.DRNAME   ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_OCS.ETC_JUPMST  A,  KOSMOS_OCS.OCS_ORDERCODE B , KOSMOS_PMPA.BAS_DOCTOR C ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.ETC_JUPMST  A,  ADMIN.OCS_ORDERCODE B , ADMIN.BAS_DOCTOR C ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PTNO = '" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.GUBUN = '2' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.ORDERCODE = B.ORDERCODE(+)";
@@ -6794,7 +6794,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE , TO_CHAR(A.RDATE,'YYYY-MM-DD') RDATE ,A.GBFTP, ";
                 SQL = SQL + ComNum.VBLF + "  A.AGE, A.SEX, A.GBIO, A.DEPTCODE,   B.ORDERNAME, A.ROWID, A.IMAGE , C.DRNAME  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST A, KOSMOS_OCS.OCS_ORDERCODE B, KOSMOS_PMPA.BAS_DOCTOR C";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST A, ADMIN.OCS_ORDERCODE B, ADMIN.BAS_DOCTOR C";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO= '" + txtPtNo.Text.Trim() + "' ";
                 //'ABI 검사 함께 보여달라고 의뢰서 올라옴
                 //'2016-05-03 계장 김현욱
@@ -6914,8 +6914,8 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.SEEKDATE,'MM/DD HH24:MI') JEPSUTIME,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.XSENDDATE,'MM/DD HH24:MI') XSENDDATE, E.GBJOB, ";
                 SQL = SQL + ComNum.VBLF + " A.PACSSTUDYID,A.ORDERNAME,A.REMARK,A.ROWID , A.EMGWRTNO, TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, A.SEX, A.AGE   ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.XRAY_DETAIL A,KOSMOS_PMPA.BAS_PATIENT B,KOSMOS_PMPA.BAS_DOCTOR C,";
-                SQL = SQL + ComNum.VBLF + "      KOSMOS_PMPA.XRAY_CODE D , KOSMOS_OCS.ETC_JUPMST E ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.XRAY_DETAIL A,ADMIN.BAS_PATIENT B,ADMIN.BAS_DOCTOR C,";
+                SQL = SQL + ComNum.VBLF + "      ADMIN.XRAY_CODE D , ADMIN.ETC_JUPMST E ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PANO='" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.PANO=E.PTNO(+) ";
                 SQL = SQL + ComNum.VBLF + "  AND A.ORDERNO=E.ORDERNO(+) ";
@@ -6980,7 +6980,7 @@ namespace ComLibB
                         if (dt.Rows[i]["EMGWRTNO"].ToString().Trim() != "")
                         {
                             //'이미지 장수 표시
-                            SQL = " SELECT ROWID FROM KOSMOS_OCS.ETC_RESULT    ";
+                            SQL = " SELECT ROWID FROM ADMIN.ETC_RESULT    ";
                             SQL = SQL + ComNum.VBLF + "WHERE WRTNO = '" + dt.Rows[i]["EMGWRTNO"].ToString().Trim() + "' AND GBFTP ='Y' ";
 
                             SqlErr = clsDB.GetDataTableEx(ref dt1, SQL, clsDB.DbCon);
@@ -7002,7 +7002,7 @@ namespace ComLibB
                                 dt1.Dispose();
                                 dt1 = null;
 
-                                SQL = " SELECT COUNT(*) CNT FROM KOSMOS_OCS.ETC_RESULT ";
+                                SQL = " SELECT COUNT(*) CNT FROM ADMIN.ETC_RESULT ";
                                 SQL = SQL + ComNum.VBLF + "WHERE WRTNO = '" + dt.Rows[i]["EMGWRTNO"].ToString().Trim() + "' AND IMAGE IS NOT NULL ";
 
                                 SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
@@ -7123,7 +7123,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT  TO_CHAR(JDATE,'YYYY-MM-DD') BDATE1,TO_CHAR(RDATE,'YY/MM/DD') RDATE, ORDERCODE, GBJOB,GBNEW, ";
                 SQL = SQL + ComNum.VBLF + "      SEQNO,  REMARK, PACSUID,PACSNO, ROWID ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.ENDO_JUPMST ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.ENDO_JUPMST ";
                 SQL = SQL + ComNum.VBLF + "WHERE PTNO = '" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND GBSUNAP <> '*'  ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY 1 DESC   ";
@@ -7276,8 +7276,8 @@ namespace ComLibB
                 //    '등록번호로 일반건진 접수번호를 찾음(일반건진은 SPECMST -> 일반건진 접수번호로 전송)
 
                 SQL = "";
-                SQL = "SELECT WRTNO FROM KOSMOS_PMPA.HIC_JEPSU ";
-                SQL = SQL + ComNum.VBLF + "WHERE PANO IN (SELECT PANO FROM KOSMOS_PMPA.HIC_PATIENT ";
+                SQL = "SELECT WRTNO FROM ADMIN.HIC_JEPSU ";
+                SQL = SQL + ComNum.VBLF + "WHERE PANO IN (SELECT PANO FROM ADMIN.HIC_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "      WHERE JUMIN2 = '" + clsAES.AES(strJumin) + "') ";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL ";
 
@@ -7310,8 +7310,8 @@ namespace ComLibB
 
                 //'종합건진 등록번호 찾음(종검은 SPECTMST -> 종검접수번호로 전송)
                 SQL = "";
-                SQL = "SELECT WRTNO FROM KOSMOS_PMPA.HEA_JEPSU ";
-                SQL = SQL + ComNum.VBLF + "WHERE PANO IN ( SELECT PANO FROM KOSMOS_PMPA.HEA_PATIENT ";
+                SQL = "SELECT WRTNO FROM ADMIN.HEA_JEPSU ";
+                SQL = SQL + ComNum.VBLF + "WHERE PANO IN ( SELECT PANO FROM ADMIN.HEA_PATIENT ";
                 SQL = SQL + ComNum.VBLF + "      WHERE JUMIN2 = '" + clsAES.AES(strJumin) + "')  ";
                 SQL = SQL + ComNum.VBLF + "  AND DELDATE IS NULL ";
 
@@ -7350,14 +7350,14 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.ORDERDATE,'MM/DD HH24:MI') ORDERDATE,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.RESULTDATE,'MM/DD HH24:MI') RESULTDATE1,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(A.RESULTDATE,'YYYY-MM-DD HH24:MI') RESULTDATE,A.PRINT ";
-                SQL = SQL + ComNum.VBLF + " ,(SELECT NAME FROM KOSMOS_OCS.EXAM_SPECODE WHERE GUBUN = '14' AND CODE = A.SPECCODE) AS SPECCODENAME        ";
+                SQL = SQL + ComNum.VBLF + " ,(SELECT NAME FROM ADMIN.EXAM_SPECODE WHERE GUBUN = '14' AND CODE = A.SPECCODE) AS SPECCODENAME        ";
                 SQL = SQL + ComNum.VBLF + " ,(SELECT WM_CONCAT(TRIM(BB.EXAMNAME))        ";
-                SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_OCS.EXAM_RESULTC AA        ";
-                SQL = SQL + ComNum.VBLF + "     INNER JOIN KOSMOS_OCS.EXAM_MASTER BB        ";
+                SQL = SQL + ComNum.VBLF + "     FROM ADMIN.EXAM_RESULTC AA        ";
+                SQL = SQL + ComNum.VBLF + "     INNER JOIN ADMIN.EXAM_MASTER BB        ";
                 SQL = SQL + ComNum.VBLF + "         ON AA.MASTERCODE = AA.SUBCODE        ";
                 SQL = SQL + ComNum.VBLF + "         AND AA.MASTERCODE = BB.MASTERCODE        ";
                 SQL = SQL + ComNum.VBLF + "     WHERE AA.SPECNO = A.SPECNO) AS EXAMNAME        ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_SPECMST A  ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_SPECMST A  ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PANO = '" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.BDATE  >= TRUNC(SYSDATE-1000) ";
                 SQL = SQL + ComNum.VBLF + "   AND A.WORKSTS  IN ('M') ";   //'미생물만;
@@ -7490,7 +7490,7 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + " TO_CHAR(ORDERDATE,'MM/DD HH24:MI') ORDERDATE,";
                     SQL = SQL + ComNum.VBLF + " TO_CHAR(RESULTDATE,'MM/DD HH24:MI') RESULTDATE1,";
                     SQL = SQL + ComNum.VBLF + " TO_CHAR(RESULTDATE,'YYYY-MM-DD HH24:MI') RESULTDATE,PRINT ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_SPECMST ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_SPECMST ";
                     SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + txtPtNo.Text.Trim() + "'  ";
                     SQL = SQL + ComNum.VBLF + "   AND HICNO IN (" + strHicPano + ") ";
                     SQL = SQL + ComNum.VBLF + "   AND DEPTCODE  = 'HR'";
@@ -7555,7 +7555,7 @@ namespace ComLibB
 
                             //'검체구분 조회
                             SQL = "";
-                            SQL = "SELECT NAME,YNAME FROM KOSMOS_OCS.EXAM_SPECODE ";
+                            SQL = "SELECT NAME,YNAME FROM ADMIN.EXAM_SPECODE ";
                             SQL = SQL + ComNum.VBLF + " WHERE GUBUN ='14' ";
                             SQL = SQL + ComNum.VBLF + "   AND  CODE = '" + dt.Rows[i]["SPECCODE"].ToString().Trim() + "' ";
 
@@ -7774,7 +7774,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE , TO_CHAR(A.RDATE,'YYYY-MM-DD') RDATE ,A.GUBUN, A.GBFTP,";
                 SQL = SQL + ComNum.VBLF + "  A.AGE, A.SEX, A.GBIO, A.DEPTCODE,   B.ORDERNAME, A.ROWID, A.IMAGE , C.DRNAME  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST A, KOSMOS_OCS.OCS_ORDERCODE B, KOSMOS_PMPA.BAS_DOCTOR C";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST A, ADMIN.OCS_ORDERCODE B, ADMIN.BAS_DOCTOR C";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO= '" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.GUBUN IN ('17')  "; //' INBODY;
                 SQL = SQL + ComNum.VBLF + "  AND A.GBJOB NOT IN ('9') ";
@@ -7892,7 +7892,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE , TO_CHAR(A.RDATE,'YYYY-MM-DD') RDATE ,A.GUBUN, A.GBFTP,";
                 SQL = SQL + ComNum.VBLF + "  A.AGE, A.SEX, A.GBIO, A.DEPTCODE,   B.ORDERNAME, A.ROWID, A.IMAGE , C.DRNAME  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST A, KOSMOS_OCS.OCS_ORDERCODE B, KOSMOS_PMPA.BAS_DOCTOR C";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST A, ADMIN.OCS_ORDERCODE B, ADMIN.BAS_DOCTOR C";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO= '" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.GUBUN IN ('18','19','20')  "; //' INBODY;
                 SQL = SQL + ComNum.VBLF + "  AND A.GBJOB NOT IN ('9') ";
@@ -8034,7 +8034,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " SNAME, TO_CHAR(INDATE ,'YYYY-MM-DD') AS INDATE, DEPTCODE, DRCODE, ";
                 SQL = SQL + ComNum.VBLF + " WARDCODE, ROOMCODE, DIAGNOSIS, DRSABUN, ";
                 SQL = SQL + ComNum.VBLF + " NRSABUN, PMSABUN, DTSABUN ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.DIET_NST_PROGRESS ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.DIET_NST_PROGRESS ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO = '" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY BDATE DESC ";
 
@@ -8199,7 +8199,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE , TO_CHAR(A.RDATE,'YYYY-MM-DD') RDATE ,A.GBFTP, ";
                 SQL = SQL + ComNum.VBLF + "  A.AGE, A.SEX, A.GBIO, A.DEPTCODE,   B.ORDERNAME, A.ROWID, A.IMAGE , C.DRNAME  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_JUPMST A, KOSMOS_OCS.OCS_ORDERCODE B, KOSMOS_PMPA.BAS_DOCTOR C";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.ETC_JUPMST A, ADMIN.OCS_ORDERCODE B, ADMIN.BAS_DOCTOR C";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO= '" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.GUBUN ='" + mstrGubun + "' "; //' AUDIO;
                 SQL = SQL + ComNum.VBLF + "  AND A.GBJOB NOT IN ('9') ";
@@ -8260,7 +8260,7 @@ namespace ComLibB
                             if (dt2.Rows.Count == 1)
                             {
                                 SQL = "";
-                                SQL += ComNum.VBLF + " SELECT FEV1_PRED2, FEV1_PRED FROM KOSMOS_OCS.ETC_RESULT_PFT ";
+                                SQL += ComNum.VBLF + " SELECT FEV1_PRED2, FEV1_PRED FROM ADMIN.ETC_RESULT_PFT ";
                                 SQL += ComNum.VBLF + "  WHERE PTNO = '" + txtPtNo.Text.Trim() + "' ";
                                 SQL += ComNum.VBLF + "    AND BDATE =TO_DATE('" + dt.Rows[i]["BDATE"].ToString().Trim() + "','YYYY-MM-DD')";
                                 SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
@@ -8268,7 +8268,7 @@ namespace ComLibB
                             else if(dt2.Rows.Count > 1)
                             {
                                 SQL = "";
-                                SQL += ComNum.VBLF + " SELECT FEV1_PRED2, FEV1_PRED FROM KOSMOS_OCS.ETC_RESULT_PFT ";
+                                SQL += ComNum.VBLF + " SELECT FEV1_PRED2, FEV1_PRED FROM ADMIN.ETC_RESULT_PFT ";
                                 SQL += ComNum.VBLF + "  WHERE PTNO = '" + txtPtNo.Text.Trim() + "' ";
                                 SQL += ComNum.VBLF + "    AND BDATE =TO_DATE('" + dt.Rows[i]["BDATE"].ToString().Trim() + "','YYYY-MM-DD')";
                                 SQL += ComNum.VBLF + "    AND RDATE =TO_DATE('" + dt.Rows[i]["RDATE"].ToString().Trim() + "','YYYY-MM-DD')";
@@ -8415,7 +8415,7 @@ namespace ComLibB
                 #region Result_Print_Specno_NEW_SUB1 //'검체번호별 검사결과,FootNote,결과사번을 READ
 
                 //'나이 및 성별을 READ
-                SQL = "SELECT AGE,SEX FROM KOSMOS_OCS.EXAM_SPECMST ";
+                SQL = "SELECT AGE,SEX FROM ADMIN.EXAM_SPECMST ";
                 SQL = SQL + ComNum.VBLF + "WHERE SPECNO = '" + ArgSpecNo + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -8441,7 +8441,7 @@ namespace ComLibB
                 SQL = "        SELECT M.EXAMNAME, R.SEQNO,R.MASTERCODE, R.SUBCODE, R.RESULT, TO_CHAR(R.RESULTDATE, 'YYYY-MM-DD') RESULTDATE,";
                 SQL = SQL + ComNum.VBLF + "         R.STATUS, R.REFER, R.UNIT, R.RESULTSABUN, ";
                 SQL = SQL + ComNum.VBLF + "         TO_CHAR(R.RESULTDATE,'YYYY-MM-DD HH24:MI') RESULTTIME ";
-                SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_OCS.EXAM_RESULTC R, KOSMOS_OCS.EXAM_MASTER M ";
+                SQL = SQL + ComNum.VBLF + "    FROM ADMIN.EXAM_RESULTC R, ADMIN.EXAM_MASTER M ";
                 SQL = SQL + ComNum.VBLF + "   WHERE R.SPECNO= '" + ArgSpecNo + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND R.SUBCODE = M.MASTERCODE ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY R.SEQNO ";
@@ -8477,7 +8477,7 @@ namespace ComLibB
 
                         //    'Foot를 Read
                         SQL = "";
-                        SQL = "SELECT FOOTNOTE FROM KOSMOS_OCS.EXAM_RESULTCF ";
+                        SQL = "SELECT FOOTNOTE FROM ADMIN.EXAM_RESULTCF ";
                         SQL = SQL + ComNum.VBLF + " WHERE SPECNO= '" + ArgSpecNo + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND SEQNO = " + dt.Rows[i]["SEQNO"].ToString().Trim() + " ";
                         SQL = SQL + ComNum.VBLF + " ORDER BY SORT";
@@ -8614,7 +8614,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " DEPTCODE,DRCODE,TO_CHAR(BLOODDATE,'YYMMDD-HH24:MI') BLOODDATE,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(RESULTDATE,'YYMMDD-HH24:MI') RESULTDATE,";
                 SQL = SQL + ComNum.VBLF + " TO_CHAR(RECEIVEDATE,'YYMMDD-HH24:MI') RECEIVEDATE,PRINT ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_SPECMST ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_SPECMST ";
                 SQL = SQL + ComNum.VBLF + "WHERE SPECNO = '" + ArgSpecNo + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
@@ -8642,7 +8642,7 @@ namespace ComLibB
                 for (i = 0; i < VB.Split(strWS, ",").Length; i++)
                 {
                     SQL = "";
-                    SQL = "SELECT NAME FROM KOSMOS_OCS.EXAM_SPECODE ";
+                    SQL = "SELECT NAME FROM ADMIN.EXAM_SPECODE ";
                     SQL = SQL + ComNum.VBLF + "WHERE GUBUN = '12' ";
                     SQL = SQL + ComNum.VBLF + " AND YNAME = '" + VB.Split(strWS, ",")[i] + "' ";
                     SQL = SQL + ComNum.VBLF + " AND CODE LIKE '%0' ";
@@ -8722,7 +8722,7 @@ namespace ComLibB
                 }
 
                 //'진료과명을 READ
-                SQL = "SELECT DEPTNAMEK FROM KOSMOS_PMPA.BAS_CLINICDEPT ";
+                SQL = "SELECT DEPTNAMEK FROM ADMIN.BAS_CLINICDEPT ";
                 SQL = SQL + ComNum.VBLF + "WHERE DEPTCODE = '" + strDeptCode + "'";
 
 
@@ -8871,7 +8871,7 @@ namespace ComLibB
             try
             {
 
-                SQL = "UPDATE KOSMOS_OCS.EXAM_SPECMST SET PRINT = " + nSpecPrtCNT + " ";
+                SQL = "UPDATE ADMIN.EXAM_SPECMST SET PRINT = " + nSpecPrtCNT + " ";
                 SQL = SQL + ComNum.VBLF + "WHERE SPECNO = '" + argSpecNo + "'";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -9000,7 +9000,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "UPDATE KOSMOS_OCS.EXAM_RESULTC SET REFER = '" + strRPD + "' ";
+                SQL = "UPDATE ADMIN.EXAM_RESULTC SET REFER = '" + strRPD + "' ";
                 SQL = SQL + ComNum.VBLF + "WHERE SPECNO = '" + argSpecNo + "'";
                 SQL = SQL + ComNum.VBLF + "  AND SUBCODE = '" + strSubCode + "' ";
 
@@ -9239,7 +9239,7 @@ namespace ComLibB
                 return bolVal; //권한 확인
             }
             SQL = "";
-            SQL = "UPDATE KOSMOS_PMPA.XRAY_RESULTNEW SET ";
+            SQL = "UPDATE ADMIN.XRAY_RESULTNEW SET ";
             SQL = SQL + ComNum.VBLF + " READDATE=TO_DATE('" + strREADDATE + "','YYYY-MM-DD'), ";
             SQL = SQL + ComNum.VBLF + " READTIME=TO_DATE('" + strREADDATE + " " + ComFunc.FormatStrToDate(ComQuery.CurrentDateTime(clsDB.DbCon, "T"), "D") + "','YYYY-MM-DD HH24:MI'),";  //'2015-05-27;
             SQL = SQL + ComNum.VBLF + " XCODE='" + strXCode + "',";
@@ -9263,13 +9263,13 @@ namespace ComLibB
 
             //'PACS 전송용 TABLE에 INSERT(판독변경);
             SQL = "";
-            SQL = "INSERT INTO KOSMOS_PMPA.XRAY_PACSSEND (ENTDATE,PACSNO,SENDGBN,PANO,SNAME,";
+            SQL = "INSERT INTO ADMIN.XRAY_PACSSEND (ENTDATE,PACSNO,SENDGBN,PANO,SNAME,";
             SQL = SQL + ComNum.VBLF + "SEX,AGE,IPDOPD,DEPTCODE,DRCODE,WARDCODE,ROOMCODE,XJONG,XSUBCODE,";
             SQL = SQL + ComNum.VBLF + "XCODE,ORDERCODE,SEEKDATE,REMARK,XRAYROOM,READNO,GBINFO) ";
             SQL = SQL + ComNum.VBLF + "SELECT SYSDATE,PACSNO,'5',PANO,SNAME,";
             SQL = SQL + ComNum.VBLF + "       SEX,AGE,IPDOPD,DEPTCODE,DRCODE,WARDCODE,ROOMCODE,XJONG,XSUBCODE,";
             SQL = SQL + ComNum.VBLF + "       XCODE,ORDERCODE,SEEKDATE,REMARK,XRAYROOM,EXINFO,GBINFO ";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.XRAY_DETAIL ";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.XRAY_DETAIL ";
             SQL = SQL + ComNum.VBLF + "   WHERE ROWID = '" + mstrROWID + "' ";
 
             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -9302,7 +9302,7 @@ namespace ComLibB
 
             //'새로운 WRTNO를 부여함
 
-            SQL = "SELECT KOSMOS_PMPA.SEQ_XRAYREAD.NEXTVAL XRAYWRTNO FROM DUAL";
+            SQL = "SELECT ADMIN.SEQ_XRAYREAD.NEXTVAL XRAYWRTNO FROM DUAL";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
             if (SqlErr != "")
@@ -9328,7 +9328,7 @@ namespace ComLibB
                 return bolVal; //권한 확인
             }
 
-            SQL = "INSERT INTO KOSMOS_PMPA.XRAY_RESULTNEW (WRTNO,PANO,READDATE,READTIME,SEEKDATE,XJONG,SNAME,SEX,AGE,";
+            SQL = "INSERT INTO ADMIN.XRAY_RESULTNEW (WRTNO,PANO,READDATE,READTIME,SEEKDATE,XJONG,SNAME,SEX,AGE,";
             SQL = SQL + ComNum.VBLF + "IPDOPD,DEPTCODE,DRCODE,WARDCODE,ROOMCODE,XDRCODE1,XDRCODE2,XDRCODE3,";
             SQL = SQL + ComNum.VBLF + "ILLCODE1,ILLCODE2,ILLCODE3,XCODE,XNAME,RESULT,RESULT1,ENTDATE,APPROVE) VALUES ";
             SQL = SQL + ComNum.VBLF + "(" + nWRTNO + ",";
@@ -9370,7 +9370,7 @@ namespace ComLibB
                 return bolVal; //권한 확인
             }
 
-            SQL = "UPDATE KOSMOS_PMPA.XRAY_DETAIL SET EXINFO=" + nWRTNO + " ";
+            SQL = "UPDATE ADMIN.XRAY_DETAIL SET EXINFO=" + nWRTNO + " ";
             SQL = SQL + ComNum.VBLF + " WHERE ROWID IN ( '" + mstrROWID + "'" + " ) ";
 
             SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -9391,13 +9391,13 @@ namespace ComLibB
                 return bolVal; //권한 확인
             }
 
-            SQL = "INSERT INTO KOSMOS_PMPA.XRAY_PACSSEND (ENTDATE,PACSNO,SENDGBN,PANO,SNAME,";
+            SQL = "INSERT INTO ADMIN.XRAY_PACSSEND (ENTDATE,PACSNO,SENDGBN,PANO,SNAME,";
             SQL = SQL + ComNum.VBLF + "SEX,AGE,IPDOPD,DEPTCODE,DRCODE,WARDCODE,ROOMCODE,XJONG,XSUBCODE,";
             SQL = SQL + ComNum.VBLF + "XCODE,ORDERCODE,SEEKDATE,REMARK,XRAYROOM,READNO,GBINFO) ";
             SQL = SQL + ComNum.VBLF + "SELECT SYSDATE,PACSNO,'5',PANO,SNAME,";
             SQL = SQL + ComNum.VBLF + "       SEX,AGE,IPDOPD,DEPTCODE,DRCODE,WARDCODE,ROOMCODE,XJONG,XSUBCODE,";
             SQL = SQL + ComNum.VBLF + "       XCODE,ORDERCODE,SEEKDATE,REMARK,XRAYROOM,EXINFO,GBINFO ";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.XRAY_DETAIL ";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.XRAY_DETAIL ";
             SQL = SQL + ComNum.VBLF + " WHERE ROWID IN ( '" + mstrROWID + "'" + " ) ";
             SQL = SQL + ComNum.VBLF + "   AND PACSNO IS NOT NULL ";
 
@@ -9426,7 +9426,7 @@ namespace ComLibB
             }
 
             SQL = "";
-            SQL = "UPDATE KOSMOS_PMPA.XRAY_RESULTNEW_DR SET ";
+            SQL = "UPDATE ADMIN.XRAY_RESULTNEW_DR SET ";
             SQL = SQL + " READDATE=TO_DATE('" + strREADDATE + "','YYYY-MM-DD'), ";
             SQL = SQL + " XCODE ='" + strXCode + "',";
             SQL = SQL + " XNAME ='" + strXName + "',";
@@ -9459,7 +9459,7 @@ namespace ComLibB
             DataTable dt = null;
             string SqlErr = ""; //에러문 받는 변수
 
-            SQL = "SELECT KOSMOS_PMPA.SEQ_XRAYREAD_DR.NEXTVAL XRAYWRTNO FROM DUAL";
+            SQL = "SELECT ADMIN.SEQ_XRAYREAD_DR.NEXTVAL XRAYWRTNO FROM DUAL";
 
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -9480,7 +9480,7 @@ namespace ComLibB
             dt = null;
 
             //'자료를 INSERT
-            SQL = "INSERT INTO KOSMOS_PMPA.XRAY_RESULTNEW_DR (DRWRTNO,PANO,READDATE,SEEKDATE,XJONG,SNAME,SEX,AGE,";
+            SQL = "INSERT INTO ADMIN.XRAY_RESULTNEW_DR (DRWRTNO,PANO,READDATE,SEEKDATE,XJONG,SNAME,SEX,AGE,";
             SQL = SQL + ComNum.VBLF + "IPDOPD,DEPTCODE,DRCODE,WARDCODE,ROOMCODE,XDRCODE1,XDRCODE2,XDRCODE3,";
             SQL = SQL + ComNum.VBLF + "ILLCODE1,ILLCODE2,ILLCODE3,XCODE,XNAME,RESULT,RESULT1,ENTDATE,APPROVE)";
             SQL = SQL + ComNum.VBLF + " VALUES";
@@ -9524,7 +9524,7 @@ namespace ComLibB
 
             //'XRAY_DETAIL에 판독번호를 UPDATE
             SQL = "";
-            SQL = "UPDATE KOSMOS_PMPA.XRAY_DETAIL";
+            SQL = "UPDATE ADMIN.XRAY_DETAIL";
             SQL = SQL + ComNum.VBLF + " SET DRWRTNO =" + nDRWRTNO + " ";
             SQL = SQL + ComNum.VBLF + " WHERE ROWID IN ( '" + mstrROWID + "'" + " ) ";
 
@@ -9562,7 +9562,7 @@ namespace ComLibB
             SQL = SQL + ComNum.VBLF + "      ROOMCODE,XJONG,XCODE,REMARK,EXID,SEX,AGE, XCODE,";
             SQL = SQL + ComNum.VBLF + "      TO_CHAR(SEEKDATE,'YYYY-MM-DD') AS SEEKDATE,EXINFO,EXID,";
             SQL = SQL + ComNum.VBLF + "      PACSNO,PACSSTUDYID,ORDERNAME,ROWID ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.XRAY_DETAIL ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.XRAY_DETAIL ";
             SQL = SQL + ComNum.VBLF + "WHERE ROWID = '" + mstrROWID + "' ";
 
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -9595,7 +9595,7 @@ namespace ComLibB
                 dt.Dispose();
                 dt = null;
 
-                SQL = "SELECT XNAME FROM KOSMOS_PMPA.XRAY_CODE ";
+                SQL = "SELECT XNAME FROM ADMIN.XRAY_CODE ";
                 SQL = SQL + ComNum.VBLF + "WHERE XCODE = '" + strXCode + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -9634,7 +9634,7 @@ namespace ComLibB
                 }
 
                 //'의사체크;
-                SQL = "SELECT DRNAME FROM KOSMOS_OCS.OCS_DOCTOR";
+                SQL = "SELECT DRNAME FROM ADMIN.OCS_DOCTOR";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN ='" + strSaBun + "' ";
                 SQL = SQL + ComNum.VBLF + " AND GBOUT='N' ";
 
@@ -9658,7 +9658,7 @@ namespace ComLibB
                     dt.Dispose();
                     dt = null;
 
-                    SQL = "SELECT KORNAME FROM KOSMOS_ADM.INSA_MST ";
+                    SQL = "SELECT KORNAME FROM ADMIN.INSA_MST ";
                     SQL = SQL + ComNum.VBLF + " WHERE SABUN =" + strSaBun + " ";
                     SQL = SQL + ComNum.VBLF + " AND JIKJONG IN ('15') ";
                     SQL = SQL + ComNum.VBLF + " AND (TOIDAY IS NULL OR TOIDAY ='') ";
@@ -9725,7 +9725,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT TO_CHAR(BDATE, 'YYYY-MM-DD') AS BDATE, PTNO, SNAME, AGE, SEX, EXAMNAME, TO_CHAR(WRITEDATE, 'YYYY-MM-DD HH24:MI') WRITEDATE, ROWID ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.ETC_SIXMINWARK ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.ETC_SIXMINWARK ";
                 SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + txtPtNo.Text.Trim() + "'";
                 SQL = SQL + ComNum.VBLF + " ORDER BY BDATE, PTNO, SNAME ";
 
@@ -9827,7 +9827,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT TO_CHAR(A.JDATE,'YYYY-MM-DD') JDATE,  WARD, ROOM, DEPTCODE  ,A.ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_VERIFY A ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_VERIFY A ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PANO  = '" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.STATUS ='3'"; // '결과 완료된것;
                 SQL = SQL + ComNum.VBLF + "   AND A.RESULTDATE IS NOT NULL ";
@@ -10068,7 +10068,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT R.STATUS,R.MASTERCODE,R.SUBCODE, R.RESULT, R.REFER, R.PANIC, R.IMGWRTNO,  ";
                 SQL = SQL + ComNum.VBLF + " R.DELTA, R.UNIT, R.SEQNO, M.EXAMNAME, TO_CHAR(R.RESULTDATE,'YYYY-MM-DD') RESULTDATE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_RESULTC R, KOSMOS_OCS.EXAM_MASTER M ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_RESULTC R, ADMIN.EXAM_MASTER M ";
                 SQL = SQL + ComNum.VBLF + "WHERE SPECNO='" + strSpecNo + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND R.SUBCODE = M.MASTERCODE(+) ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY R.SEQNO ";
@@ -10151,7 +10151,7 @@ namespace ComLibB
                         strResult = "-< 검사중 >-";
 
                         SQL = "";
-                        SQL = " SELECT PANO FROM KOSMOS_OCS.EXAM_RESULT_BAE ";
+                        SQL = " SELECT PANO FROM ADMIN.EXAM_RESULT_BAE ";
                         SQL = SQL + ComNum.VBLF + " WHERE SPECNO = '" + strSpecNo + "' ";
 
                         SqlErr = clsDB.GetDataTableEx(ref dt1, SQL, clsDB.DbCon);
@@ -10199,7 +10199,7 @@ namespace ComLibB
                         {
                             SQL = "";
                             SQL = " SELECT COUNT(*) CNT ";
-                            SQL = SQL + ComNum.VBLF + "FROM  KOSMOS_OCS.EXAM_RESULT_IMG ";
+                            SQL = SQL + ComNum.VBLF + "FROM  ADMIN.EXAM_RESULT_IMG ";
                             SQL = SQL + ComNum.VBLF + " WHERE WRTNO = '" + dt.Rows[i]["IMGWRTNO"].ToString().Trim() + "' ";
                             SQL = SQL + ComNum.VBLF + " AND SPECNO = '" + strSpecNo + "' ";
                             SQL = SQL + ComNum.VBLF + " AND SUBCODE = '" + dt.Rows[i]["SUBCODE"].ToString().Trim() + "' ";
@@ -10240,7 +10240,7 @@ namespace ComLibB
                     //'혈액배양중간결과
                     if (strResult == "-    < 중간결과 >-" || i == 0)
                     {
-                        SQL = " SELECT TO_CHAR(ENTDATE,'YYYY/MM/DD HH24:MI') ENTDATE , RESULT  FROM KOSMOS_OCS.EXAM_RESULT_BAE ";
+                        SQL = " SELECT TO_CHAR(ENTDATE,'YYYY/MM/DD HH24:MI') ENTDATE , RESULT  FROM ADMIN.EXAM_RESULT_BAE ";
                         SQL = SQL + ComNum.VBLF + " WHERE SPECNO = '" + strSpecNo + "' ";
 
                         if (i == 0)
@@ -10284,7 +10284,7 @@ namespace ComLibB
                     }
 
                     //'Foot Note를 READ
-                    SQL = " SELECT FOOTNOTE FROM KOSMOS_OCS.EXAM_RESULTCF ";
+                    SQL = " SELECT FOOTNOTE FROM ADMIN.EXAM_RESULTCF ";
                     SQL = SQL + ComNum.VBLF + "WHERE SPECNO = '" + strSpecNo + "' ";
                     SQL = SQL + ComNum.VBLF + "  AND SEQNO =  " + dt.Rows[i]["SEQNO"].ToString().Trim() + "  ";
                     SqlErr = clsDB.GetDataTableEx(ref dt1, SQL, clsDB.DbCon);
@@ -10327,7 +10327,7 @@ namespace ComLibB
 
 
                     SQL = "";
-                    SQL = "UPDATE KOSMOS_OCS.EXAM_RESULTC_CV SET CHKDATE = SYSDATE, CHKSABUN = '" + clsType.User.IdNumber + "' ";
+                    SQL = "UPDATE ADMIN.EXAM_RESULTC_CV SET CHKDATE = SYSDATE, CHKSABUN = '" + clsType.User.IdNumber + "' ";
                     SQL = SQL + ComNum.VBLF + " WHERE SPECNO = '" + strSpecNo + "' ";
                     SQL = SQL + ComNum.VBLF + "   AND CHKDATE IS NULL ";
                     SQL = SQL + ComNum.VBLF + "   AND GBN IN ('1','2') ";
@@ -10416,7 +10416,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = "SELECT ROWID ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_OCS.EXAM_HISRESULTC ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.EXAM_HISRESULTC ";
                 SQL = SQL + ComNum.VBLF + "WHERE SPECNO ='" + strSpecNo + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND JOBGBN <> '3' ";
 
@@ -10468,7 +10468,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT CODE";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.BAS_BCODE";
                 SQL = SQL + ComNum.VBLF + " WHERE GUBUN = 'NUR_시스템관리자'";
                 SQL = SQL + ComNum.VBLF + "   AND CODE=" + strSaBun + " ";
                 SQL = SQL + ComNum.VBLF + "      AND DELDATE IS NULL";
@@ -10545,7 +10545,7 @@ namespace ComLibB
                 //'자료를 SELECT;
                 SQL = "";
                 SQL = "SELECT TO_CHAR(A.RECEIVEDATE,'YYYY-MM-DD HH24:MI') RECEIVEDATE,B.RESULT ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_SPECMST A,KOSMOS_OCS.EXAM_RESULTC B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_SPECMST A,ADMIN.EXAM_RESULTC B ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.PANO='" + txtPtNo.Text.Trim() + "' ";
 
                 if(clsPublic.GstrDeptCode == "MR")
@@ -10594,7 +10594,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = " SELECT TO_CHAR(BDATE,'YYYY-MM-DD') BDATE, ";
                 SQL = SQL + ComNum.VBLF + "   TO_CHAR(ENTDATE,'YYYY-MM-DD') ENTDATE, ";
-                SQL = SQL + ComNum.VBLF + " RESULT FROM KOSMOS_OCS.EXAM_RESULT_BAE ";
+                SQL = SQL + ComNum.VBLF + " RESULT FROM ADMIN.EXAM_RESULT_BAE ";
                 SQL = SQL + ComNum.VBLF + " WHERE SPECNO  = '" + mstrSpecNo + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND PANO = '" + txtPtNo.Text.Trim() + "' ";
 
@@ -10690,7 +10690,7 @@ namespace ComLibB
                 //'자료를 SELECT;
                 SQL = "";
                 SQL = "SELECT TO_CHAR(A.RECEIVEDATE,'YYYY-MM-DD HH24:MI') RECEIVEDATE,B.RESULT ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_SPECMST A,KOSMOS_OCS.EXAM_RESULTC B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_SPECMST A,ADMIN.EXAM_RESULTC B ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.PANO='" + txtPtNo.Text.Trim() + "' ";
 
                 if (clsPublic.GstrDeptCode == "MR")
@@ -10762,7 +10762,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = "SELECT M.EXAMNAME,TO_CHAR(R.JOBDATE,'YYYY-MM-DD HH24:MI') JOBDATE, R.JOBSABUN,  ";
                 SQL = SQL + ComNum.VBLF + " R.JOBGBN, R.RESULT,R.SAYU  ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_HISRESULTC R, KOSMOS_OCS.EXAM_MASTER M ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_HISRESULTC R, ADMIN.EXAM_MASTER M ";
                 SQL = SQL + ComNum.VBLF + "WHERE SPECNO='" + strSpecNo + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND R.SUBCODE = M.MASTERCODE(+) ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY R.SEQNO ";
@@ -10846,7 +10846,7 @@ namespace ComLibB
                     panEtcCVR.Visible = true;
                     strPano = txtPtNo.Text.Trim();
                     SQL = "";
-                    SQL = " SELECT CREMARK1,CREMARK2 FROM KOSMOS_OCS.EXAM_ANATMST ";
+                    SQL = " SELECT CREMARK1,CREMARK2 FROM ADMIN.EXAM_ANATMST ";
                     SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + strPano + "' ";
                     SQL = SQL + ComNum.VBLF + "   AND ANATNO = '" + mstrAnatno + "' ";
 
@@ -10956,7 +10956,7 @@ namespace ComLibB
                     strPano = txtPtNo.Text.Trim();
 
                     SQL = "";
-                    SQL = " SELECT CREMARK1,CREMARK2 FROM KOSMOS_OCS.EXAM_ANATMST ";
+                    SQL = " SELECT CREMARK1,CREMARK2 FROM ADMIN.EXAM_ANATMST ";
                     SQL = SQL + ComNum.VBLF + " WHERE PTNO = '" + strPano + "' ";
                     SQL = SQL + ComNum.VBLF + "   AND ANATNO = '" + mstrAnatno + "' ";
 
@@ -11085,7 +11085,7 @@ namespace ComLibB
                     //'기존의 자료를 읽음;
                     SQL = "";
                     SQL = "SELECT CODE,WARDNAME,ROWID ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.XRAY_RESULTWARD ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.XRAY_RESULTWARD ";
                     SQL = SQL + ComNum.VBLF + "WHERE SABUN=" + clsType.User.IdNumber + " ";
 
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -11195,7 +11195,7 @@ namespace ComLibB
                             //-- RESULT1 == "" 판독중....
 
                             SQL = "SELECT RESULT1       ";
-                            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.HIC_XRAY_RESULT        ";
+                            SQL = SQL + ComNum.VBLF + " FROM ADMIN.HIC_XRAY_RESULT        ";
                             SQL = SQL + ComNum.VBLF + "WHERE ROWID = '" + mstrROWID + "'      ";
                         }
                         else
@@ -11211,7 +11211,7 @@ namespace ComLibB
                             }
 
                             SQL = "SELECT APPROVE, TEMP";
-                            SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.XRAY_RESULTNEW";
+                            SQL = SQL + ComNum.VBLF + " FROM ADMIN.XRAY_RESULTNEW";
                             SQL = SQL + ComNum.VBLF + "WHERE WRTNO = " + Convert.ToString(intWRTNO);
                         }
 
@@ -11363,7 +11363,7 @@ namespace ComLibB
 
                             //'건진결과에서 PACS를 변경하였는지 점검
                             SQL = "";
-                            SQL = "SELECT Pano,PTno,GbConv FROM KOSMOS_PMPA.HIC_XRAY_RESULT ";
+                            SQL = "SELECT Pano,PTno,GbConv FROM ADMIN.HIC_XRAY_RESULT ";
                             SQL = SQL + ComNum.VBLF + "WHERE ROWID='" + mstrROWID + "' ";
 
                             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -11402,7 +11402,7 @@ namespace ComLibB
                             if (cboPacs.Text.Trim() == "당일영상전체")
                             {
                                 SQL = "";
-                                SQL = "SELECT XRAYNO FROM KOSMOS_PMPA.HIC_XRAY_RESULT ";
+                                SQL = "SELECT XRAYNO FROM ADMIN.HIC_XRAY_RESULT ";
                                 if (bolPACSChange == true)
                                 {
                                     SQL = SQL + ComNum.VBLF + "WHERE PTNO = '" + strPano + "' ";
@@ -11453,7 +11453,7 @@ namespace ComLibB
                             else if (cboPacs.Text.Trim() == "전체영상")
                             {
                                 SQL = "";
-                                SQL = "SELECT XRAYNO FROM KOSMOS_PMPA.HIC_XRAY_RESULT ";
+                                SQL = "SELECT XRAYNO FROM ADMIN.HIC_XRAY_RESULT ";
 
                                 if (bolPACSChange == true)
                                 {
@@ -11594,7 +11594,7 @@ namespace ComLibB
                                     return; //권한 확인
 
                                 SQL = "";
-                                SQL = "SELECT PACSNO FROM KOSMOS_PMPA.XRAY_DETAIL ";
+                                SQL = "SELECT PACSNO FROM ADMIN.XRAY_DETAIL ";
                                 SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + strPano + "' ";
                                 SQL = SQL + ComNum.VBLF + "  AND SEEKDATE>=TO_DATE('" + VB.Left(strSeekDate, 10) + "','YYYY-MM-DD') ";
                                 SQL = SQL + ComNum.VBLF + "  AND SEEKDATE<=TO_DATE('" + VB.Left(strSeekDate, 10) + " 23:59','YYYY-MM-DD HH24:MI') ";
@@ -11639,7 +11639,7 @@ namespace ComLibB
                             else if (cboPacs.Text.Trim() == "전체영상")
                             {
                                 SQL = "";
-                                SQL = "SELECT PACSNO FROM KOSMOS_PMPA.XRAY_DETAIL ";
+                                SQL = "SELECT PACSNO FROM ADMIN.XRAY_DETAIL ";
                                 SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + strPano + "' ";
                                 SQL = SQL + ComNum.VBLF + "  AND PACSSTUDYID > ' ' ";
 
@@ -11784,8 +11784,8 @@ namespace ComLibB
                 SQL = "SELECT A.PTNO,A.SNAME, A.AGE, A.SEX, TO_CHAR(A.BDATE, 'YYYY-MM-DD') AS BDATE,TO_CHAR(A.JDATE, 'YYYY-MM-DD') AS JDATE,";
                 SQL = SQL + ComNum.VBLF + "TO_CHAR(A.RDATE, 'YYYY-MM-DD') AS RDATE,  A.DEPTCODE, A.DRCODE, A.GBIO,  A.RESULT, A.RESULTSABUN, B.DRNAME,";
                 SQL = SQL + ComNum.VBLF + " A.ORDERCODE, C.ORDERNAME ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.ETC_RESULT_DEMENTIA A,KOSMOS_PMPA.BAS_DOCTOR B,";
-                SQL = SQL + ComNum.VBLF + "      KOSMOS_OCS.OCS_ORDERCODE C ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_RESULT_DEMENTIA A,ADMIN.BAS_DOCTOR B,";
+                SQL = SQL + ComNum.VBLF + "      ADMIN.OCS_ORDERCODE C ";
                 SQL = SQL + ComNum.VBLF + "WHERE A.PTNO='" + txtPtNo.Text.Trim() + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.BDATE<=TRUNC(SYSDATE+1) ";
                 SQL = SQL + ComNum.VBLF + "  AND A.DRCODE=B.DRCODE(+) ";
@@ -12331,7 +12331,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " A.REMCODE11, A.REMCODE12, A.REMCODE13, A.REMCODE14, ";
                 SQL = SQL + ComNum.VBLF + " A.REMCODE15, A.REMCODE16, A.REMCODE17, ";
                 SQL = SQL + ComNum.VBLF + " A.HOSP, A.PHAR, B.SNAME, B.JUMIN1, B.JUMIN2, A.DABCODE ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.DRUG_HOIMST A, KOSMOS_PMPA.BAS_PATIENT B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.DRUG_HOIMST A, ADMIN.BAS_PATIENT B ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.WRTNO = '" + strWRTNO + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.PANO = B.PANO ";
 
@@ -12417,7 +12417,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " REMARK5, REMARK6, REMARK7, REMARK8, ";
                 SQL = SQL + ComNum.VBLF + " REMARK9, REMARK10, REMARK11, REMARK12, ";
                 SQL = SQL + ComNum.VBLF + " REMARK13, REMARK14, BLOOD, ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.DRUG_HOISLIP ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.DRUG_HOISLIP ";
                 SQL = SQL + ComNum.VBLF + " WHERE WRTNO = " + strWRTNO;
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -12545,7 +12545,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " A.HOSP, A.PHAR, B.SNAME, B.JUMIN1, B.JUMIN2, A.DABCODE, ";
                 SQL = SQL + ComNum.VBLF + " A.FASTRETURN, A.RETURNMEMO, TO_CHAR(A.HDATE, 'YYYY/MM/DD HH24:MM') AS HDATE, A.DRUGNAME, ";
                 SQL = SQL + ComNum.VBLF + " A.PANO, A.DRUGGIST, A.ROWID ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.DRUG_HOIMST A, KOSMOS_PMPA.BAS_PATIENT B ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.DRUG_HOIMST A, ADMIN.BAS_PATIENT B ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.WRTNO = '" + strWRTNO + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND A.PANO = B.PANO ";
 
@@ -12634,7 +12634,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " REMARK13, BLOOD, ROWID, EDICODE, METFORMIN,";
                 SQL = SQL + ComNum.VBLF + " REMARK14, QTY, NAL, DOSCODE, DECODE(TUYAKGBN, '1', '●', '') TUYAKGBN, RP, ";
                 SQL = SQL + ComNum.VBLF + " NOT_SIKBYUL, ROWID  ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.DRUG_HOISLIP ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.DRUG_HOISLIP ";
                 SQL = SQL + ComNum.VBLF + " WHERE WRTNO = " + strWRTNO;
                 SQL = SQL + ComNum.VBLF + " ORDER BY RP ASC, EDICODE ASC";
 
@@ -13092,7 +13092,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = " SELECT IDOSNAME ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_ODOSAGE ";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_ODOSAGE ";
                 SQL = SQL + ComNum.VBLF + " WHERE DOSCODE = '" + strDOSCODE + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -13383,7 +13383,7 @@ namespace ComLibB
                     return; //권한 확인
 
                 SQL = "";
-                SQL = " SELECT XDRCODE1,RESULT,RESULT1,APPROVE FROM KOSMOS_PMPA.XRAY_RESULTNEW ";
+                SQL = " SELECT XDRCODE1,RESULT,RESULT1,APPROVE FROM ADMIN.XRAY_RESULTNEW ";
                 SQL = SQL + ComNum.VBLF + " WHERE WRTNO = " + nWRTNO + " ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -13447,7 +13447,7 @@ namespace ComLibB
                 {
                     strWRTNO = ssEMG_Sheet1.Cells[e.Row, 10].Text.Trim();
 
-                    SQL = " SELECT XDRCODE1,RESULT,RESULT1,APPROVE FROM KOSMOS_PMPA.XRAY_RESULTNEW ";
+                    SQL = " SELECT XDRCODE1,RESULT,RESULT1,APPROVE FROM ADMIN.XRAY_RESULTNEW ";
                     SQL = SQL + ComNum.VBLF + " WHERE WRTNO = " + strWRTNO + " ";
 
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -13559,7 +13559,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT A.DRCODE, B.SABUN ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER A, KOSMOS_OCS.OCS_DOCTOR B";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER A, ADMIN.OCS_DOCTOR B";
                 SQL = SQL + ComNum.VBLF + " WHERE A.PANO = '" + strPano + "'";
                 SQL = SQL + ComNum.VBLF + "   AND A.IPDNO = " + strIPDNO;
                 SQL = SQL + ComNum.VBLF + "   AND A.DRCODE = B.DRCODE ";
@@ -13582,7 +13582,7 @@ namespace ComLibB
                         return; //권한 확인
 
                     SQL = "";
-                    SQL = "UPDATE KOSMOS_PMPA.DIET_NST_PROGRESS SET ";
+                    SQL = "UPDATE ADMIN.DIET_NST_PROGRESS SET ";
                     SQL = SQL + ComNum.VBLF + " VIEW_SABUN = " + clsType.User.IdNumber + ",";
                     SQL = SQL + ComNum.VBLF + " VIEW_WRITEDATE = SYSDATE ";
                     SQL = SQL + ComNum.VBLF + " WHERE WRTNO = " + strWRTNO;
@@ -13656,8 +13656,8 @@ namespace ComLibB
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT                                                        ";
                 SQL = SQL + ComNum.VBLF + "    PART, SEQNO, IPDNO, TREATNO, PANO, PROGRESS, ORDERCODE    ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.DRUG_PCONSULT A                             ";
-                SQL = SQL + ComNum.VBLF + "  INNER JOIN KOSMOS_ADM.DRUG_SETCODE B                        ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.DRUG_PCONSULT A                             ";
+                SQL = SQL + ComNum.VBLF + "  INNER JOIN ADMIN.DRUG_SETCODE B                        ";
                 SQL = SQL + ComNum.VBLF + "    ON A.ORDERCODE = B.JEPCODE                                ";
                 SQL = SQL + ComNum.VBLF + "    AND B.GUBUN = '11'                                        ";
                 SQL = SQL + ComNum.VBLF + "  WHERE SEQNO = '" + strSEQNO + "'                            ";
@@ -13753,7 +13753,7 @@ namespace ComLibB
 
                 SQL = "";
                 SQL = " SELECT  IMAGE ";
-                SQL = SQL + ComNum.VBLF + "  FROM  KOSMOS_OCS.ETC_JUPMST ";
+                SQL = SQL + ComNum.VBLF + "  FROM  ADMIN.ETC_JUPMST ";
                 SQL = SQL + ComNum.VBLF + "  WHERE ROWID = '" + strROWID + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -13842,7 +13842,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + " MIN1, MIN2, MIN3, ";
                 SQL = SQL + ComNum.VBLF + " END_SAYU, ROWID, EMRNO, DRCODE, ";
                 SQL = SQL + ComNum.VBLF + " IO, DEPTCODE, INDATE, EXAMNAME   ";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.ETC_SIXMINWARK";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.ETC_SIXMINWARK";
                 SQL = SQL + ComNum.VBLF + "WHERE ROWID = '" + strROWID + "'";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -13984,7 +13984,7 @@ namespace ComLibB
                     return; //권한 확인
 
                 SQL = "";
-                SQL = " SELECT ROWID FROM KOSMOS_ADM.DRUG_TDM ";
+                SQL = " SELECT ROWID FROM ADMIN.DRUG_TDM ";
                 SQL = SQL + ComNum.VBLF + " WHERE PANO  = '" + strPano + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND SDATE = TO_DATE('" + strSDate + "','YYYY-MM-DD') ";
 
@@ -14014,7 +14014,7 @@ namespace ComLibB
                     SQL = "";
                     SQL = " SELECT TO_CHAR(OUTDATE, 'YYYY-MM-DD') OUTDATE, SNAME, AGE, SEX, ";
                     SQL = SQL + ComNum.VBLF + " WARDCODE, ROOMCODE, DEPTCODE, TO_CHAR(INDATE,'YYYY-MM-DD') INDATE, GBSTS ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.IPD_NEW_MASTER ";
                     SQL = SQL + ComNum.VBLF + " WHERE INDATE <= TO_DATE('" + strSDate + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "   AND (OUTDATE >= TO_DATE('" + strSDate + "','YYYY-MM-DD') OR ACTDATE IS NULL) ";
                     SQL = SQL + ComNum.VBLF + "   AND PANO = '" + strPano + "' ";
@@ -14040,7 +14040,7 @@ namespace ComLibB
                         if (dt.Rows[0]["GBSTS"].ToString().Trim() == "7")
                         {
                             SQL = "";
-                            SQL = " SELECT B.ILLNAMEK FROM KOSMOS_PMPA.MID_DIAGNOSIS A, KOSMOS_PMPA.BAS_ILLS B ";
+                            SQL = " SELECT B.ILLNAMEK FROM ADMIN.MID_DIAGNOSIS A, ADMIN.BAS_ILLS B ";
                             SQL = SQL + ComNum.VBLF + " WHERE A.PANO = '" + strPano + "' ";
                             SQL = SQL + ComNum.VBLF + "   AND OUTDATE = TO_DATE('" + dt.Rows[0]["OUTDATE"].ToString().Trim() + "','YYYY-MM-DD') ";
                             SQL = SQL + ComNum.VBLF + "   AND B.ILLCODE = TRIM(A.DIAGNOSIS1) ";
@@ -14072,7 +14072,7 @@ namespace ComLibB
                             //        '병동 환자마스타를 읽음
 
                             SQL = "";
-                            SQL = "SELECT DIAGNOSIS FROM KOSMOS_PMPA.NUR_MASTER ";
+                            SQL = "SELECT DIAGNOSIS FROM ADMIN.NUR_MASTER ";
                             SQL = SQL + ComNum.VBLF + "WHERE PANO='" + strPano + "' ";
                             SQL = SQL + ComNum.VBLF + "  AND INDATE=TO_DATE('" + dt.Rows[0]["INDATE"].ToString().Trim() + "','YYYY-MM-DD') ";
                             SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
@@ -14114,7 +14114,7 @@ namespace ComLibB
 
                     SQL = "";
                     SQL = " SELECT SUBCODE, RESULT, TO_CHAR(BDATE,'YYYY-MM-DD') BDATE ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_SPECMST A, KOSMOS_OCS.EXAM_RESULTC B ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.EXAM_SPECMST A, ADMIN.EXAM_RESULTC B ";
                     SQL = SQL + ComNum.VBLF + " WHERE A.PANO  = '" + strPano + "' ";
                     SQL = SQL + ComNum.VBLF + "   AND A.BDATE >= TO_DATE('" + strInDate + "','YYYY-MM-DD') ";
                     SQL = SQL + ComNum.VBLF + "   AND A.BDATE <= TO_DATE('" + strOutDate + "','YYYY-MM-DD') ";
@@ -14186,7 +14186,7 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + " PANO,SNAME,DEPT,DRNAME,WARDCODE,ROOM,DEPTCODE,SEX,AGE,KI, ";
                     SQL = SQL + ComNum.VBLF + " KG,ILLNAME,CHTIME,CHNUNG,DRUGYAK1,DRUGYAK2,DRUGYAK3,ALT,AST,ALB,";
                     SQL = SQL + ComNum.VBLF + " SCR,OTHERS,VD,T12,CPEAK,CTRO,REMAKR,DRUGNAME ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_ADM.DRUG_TDM ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.DRUG_TDM ";
                     SQL = SQL + ComNum.VBLF + " WHERE PANO  = '" + strPano + "' ";
                     SQL = SQL + ComNum.VBLF + "   AND SDATE = TO_DATE('" + strSDate + "','YYYY-MM-DD') ";
 
@@ -14482,7 +14482,7 @@ namespace ComLibB
                 SQL.AppendLine("SELECT A.SUNEXT, A.HNAME, A.SNAME, A.UNIT, A.EFFECT, ");
                 SQL.AppendLine("       A.JEHENG, A.JEHENG2, A.JEHENG3_1, A.JEHENG3_2,  ");
                 SQL.AppendLine("       A.JEYAK, B.GELCODE, C.NAME, D.DELDATE ");
-                SQL.AppendLine(" FROM KOSMOS_OCS.OCS_DRUGINFO_NEW A, KOSMOS_ADM.DRUG_JEP B, KOSMOS_ADM.AIS_LTD C, KOSMOS_PMPA.BAS_SUT D ");
+                SQL.AppendLine(" FROM ADMIN.OCS_DRUGINFO_NEW A, ADMIN.DRUG_JEP B, ADMIN.AIS_LTD C, ADMIN.BAS_SUT D ");
                 SQL.AppendLine(" WHERE A.SUNEXT = '" + strCode + "' ");
                 SQL.AppendLine("   AND A.SUNEXT = B.JEPCODE(+) ");
                 SQL.AppendLine("   AND B.GELCODE = C.LTDCODE(+) ");
@@ -14626,15 +14626,15 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "      , TO_CHAR(a.KDATE4, 'YYYY-MM-DD') KDate4                                                           ";
                 SQL = SQL + ComNum.VBLF + "      , B.GbSpc, B.Bi, B.DrCode, B.AmSet1, B.WardCode                                                    ";
                 SQL = SQL + ComNum.VBLF + "      , TO_CHAR(B.INDATE, 'YYYY-MM-DD') EntDate, A.GbPrint, A.ROWID                                      ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(TRIM(A.FRDRCODE)) FRDRNAME                                       ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(TRIM(A.TODRCODE)) TODRNAME                                       ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_BAS_USER_USERNAME(A.BINPID) BINPNAME                                               ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_OCS.FC_BAS_USER_USERNAME(A.INPID) INPNAME                                                 ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_BAS_DOCTOR_DRNAME(TRIM(A.FRDRCODE)) FRDRNAME                                       ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_BAS_DOCTOR_DRNAME(TRIM(A.TODRCODE)) TODRNAME                                       ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_BAS_USER_USERNAME(A.BINPID) BINPNAME                                               ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.FC_BAS_USER_USERNAME(A.INPID) INPNAME                                                 ";
                 SQL = SQL + ComNum.VBLF + "      , to_char(D.BIRTH, 'yyyy-mm-dd') BIRTH                                                             ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_OCS.OCS_ITRANSFER A                                                                       ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_PMPA.IPD_NEW_MASTER B                                                                     ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_PMPA.BAS_DOCTOR C                                                                         ";
-                SQL = SQL + ComNum.VBLF + "      , KOSMOS_PMPA.BAS_PATIENT D                                                                        ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.OCS_ITRANSFER A                                                                       ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.IPD_NEW_MASTER B                                                                     ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.BAS_DOCTOR C                                                                         ";
+                SQL = SQL + ComNum.VBLF + "      , ADMIN.BAS_PATIENT D                                                                        ";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.ROWID = '"+ strROWID + "'                                                                      ";
                 SQL = SQL + ComNum.VBLF + "    AND A.Ptno = B.Pano                                                                                  ";
                 SQL = SQL + ComNum.VBLF + "    AND A.IPDNO = B.IPDNO                                                                                ";

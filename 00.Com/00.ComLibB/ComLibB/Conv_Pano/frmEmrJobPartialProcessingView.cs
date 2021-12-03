@@ -62,7 +62,7 @@ namespace ComLibB
             #region 현재 자료를 READ
             SQL = "SELECT Code,Name,TO_CHAR(JDate,'YYYY-MM-DD') JDate,  ";
             SQL += ComNum.VBLF + " TO_CHAR(DelDate,'YYYY-MM-DD') DelDate,ROWID   ";
-            SQL += ComNum.VBLF + " FROM KOSMOS_PMPA.BAS_BCODE                    ";
+            SQL += ComNum.VBLF + " FROM ADMIN.BAS_BCODE                    ";
             SQL += ComNum.VBLF + "WHERE Gubun = '부분이중처리내역'                 ";
  
             if (string.IsNullOrWhiteSpace(txtPano.Text.Trim()) == false)
@@ -190,7 +190,7 @@ namespace ComLibB
                         if (string.IsNullOrWhiteSpace(strROWID))
                         {
                             #region 신규등록
-                            SQL = "INSERT INTO KOSMOS_PMPA.BAS_BCODE (Gubun,Code,Name,JDate,DelDate,EntSabun,EntDate) ";
+                            SQL = "INSERT INTO ADMIN.BAS_BCODE (Gubun,Code,Name,JDate,DelDate,EntSabun,EntDate) ";
                             SQL += ComNum.VBLF + "VALUES ('부분이중처리내역','" + strCode + "','" + strName + "',";
                             SQL += ComNum.VBLF + "TO_DATE('" + strJDate + "','YYYY-MM-DD'),";
                             SQL += ComNum.VBLF + "TO_DATE('" + strDeldate + "','YYYY-MM-DD'),";
@@ -209,7 +209,7 @@ namespace ComLibB
                         else
                         {
                             #region UPDATE '자료를 변경
-                            SQL = "UPDATE KOSMOS_PMPA.BAS_BCODE SET Code='" + strCode + "',";
+                            SQL = "UPDATE ADMIN.BAS_BCODE SET Code='" + strCode + "',";
                             SQL += ComNum.VBLF + "      Name = '" + strName + "',";
                             SQL += ComNum.VBLF + "      JDate = TO_DATE('" + strJDate + "','YYYY-MM-DD'),";
                             SQL += ComNum.VBLF + "      DelDate = TO_DATE('" + strDeldate + "','YYYY-MM-DD'),";

@@ -56,7 +56,7 @@ namespace ComLibB
             try
             {
                 SQL = " SELECT C.SUNEXT,  C.SUNAMEK, A.GNL_NM_CD,  A.DD_MAX_QTY_FREQ,  TO_CHAR(D.DELDATE,'YYYYMMDD') DELDATE   ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.HIRA_TBJBD55 A ,    KOSMOS_PMPA.EDI_SUGA B ,  KOSMOS_PMPA.BAS_SUN C , KOSMOS_PMPA.BAS_SUT D";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.HIRA_TBJBD55 A ,    ADMIN.EDI_SUGA B ,  ADMIN.BAS_SUN C , ADMIN.BAS_SUT D";
                 SQL = SQL + ComNum.VBLF + "   WHERE A.GNL_NM_CD =  B.SCODE";
                 SQL = SQL + ComNum.VBLF + "     AND B.CODE = C.BCODE";
                 SQL = SQL + ComNum.VBLF + "     AND A.ADPT_FR_DT <= '" + ComQuery.CurrentDateTime(clsDB.DbCon, "D") + "' ";
@@ -65,7 +65,7 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "     AND C.SUNEXT =D.SUNEXT ";
                 SQL = SQL + ComNum.VBLF + "     AND  B.CODE NOT IN  ";
                 SQL = SQL + ComNum.VBLF + "          (SELECT B.MEDC_CD ";
-                SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_PMPA.HIRA_TBJBD56 B ";
+                SQL = SQL + ComNum.VBLF + "          FROM ADMIN.HIRA_TBJBD56 B ";
                 SQL = SQL + ComNum.VBLF + "          WHERE B.GNL_NM_CD = A.GNL_NM_CD)";
                 SQL = SQL + ComNum.VBLF + "   ORDER BY C.SUNEXT, A.ADPT_FR_DT DESC";
 

@@ -64,7 +64,7 @@ namespace ComEmrBase
 
                 SQL = "";
                 SQL = "SELECT BASCD, BASNAME, BASEXNAME, DISSEQNO, USECLS";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.AEMRBASCD            ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.AEMRBASCD            ";
                 SQL = SQL + ComNum.VBLF + " WHERE BSNSCLS = '기록지관리'         ";
                 SQL = SQL + ComNum.VBLF + "   AND UNITCLS = '마취기록항목_Agent' ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY DISSEQNO                   ";
@@ -129,7 +129,7 @@ namespace ComEmrBase
                 }
 
                 SQL = "SELECT ITEMNO, ITEMNAME, ITEMUNIT";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.AEMRITEM-- EMR 아이템관리                                 ";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.AEMRITEM-- EMR 아이템관리                                 ";
                 SQL = SQL + ComNum.VBLF + " WHERE 1 = 1                                                             ";
                 SQL = SQL + ComNum.VBLF + "   AND(ITEMINDEXNM  LIKE '%" + TxtAgentSearch.Text.Trim().ToUpper() + "%' OR ITEMNAME LIKE '%" + TxtAgentSearch.Text.Trim().ToUpper() + "%')    ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY ITEMNAME                                                       ";
@@ -238,7 +238,7 @@ namespace ComEmrBase
                     USECLS = Convert.ToBoolean(SsAgentItems.ActiveSheet.Cells[i, 4].Value);
 
                     SQL = "";
-                    SQL = "MERGE INTO KOSMOS_EMR.AEMRBASCD M";
+                    SQL = "MERGE INTO ADMIN.AEMRBASCD M";
                     SQL = SQL + ComNum.VBLF + "USING DUAL                                                                                        ";
                     SQL = SQL + ComNum.VBLF + "   ON(M.BSNSCLS = '기록지관리' AND M.UNITCLS = '마취기록항목_Agent' AND M.BASCD = '" + BASCD + "')  ";
                     SQL = SQL + ComNum.VBLF + "WHEN MATCHED THEN                                                                                 ";

@@ -21,7 +21,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MAILJUSO                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_MAILNEW     ");
+            parameter.AppendSql("  FROM ADMIN.BAS_MAILNEW     ");
             parameter.AppendSql(" WHERE MAILCODE = :MAILCODE        ");
 
             parameter.Add("MAILCODE", MAILCODE);
@@ -33,7 +33,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT MAILJIYEK                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_MAILNEW     ");
+            parameter.AppendSql("  FROM ADMIN.BAS_MAILNEW     ");
             parameter.AppendSql(" WHERE MAILCODE = :MAILCODE        ");
 
             parameter.Add("MAILCODE", strZipCode);

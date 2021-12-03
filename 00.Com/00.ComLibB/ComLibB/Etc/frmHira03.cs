@@ -58,7 +58,7 @@ namespace ComLibB
                 SQL = "  SELECT B.SUNEXT, B.SUNAMEK,  MEDC_CD, MEDC_INF_TYPE, TO_CHAR(C.DELDATE,'YYYYMMDD') DELDATE,     ";
                 SQL += ComNum.VBLF + " A.ADPT_FR_DT,"; //'   적용시작일자"
                 SQL += ComNum.VBLF + " A.ADPT_TO_DT"; //'   적용종료일자"
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.HIRA_TBJBD48 A, KOSMOS_PMPA.BAS_SUN B , KOSMOS_PMPA.BAS_SUT C";
+                SQL += ComNum.VBLF + "   FROM ADMIN.HIRA_TBJBD48 A, ADMIN.BAS_SUN B , ADMIN.BAS_SUT C";
                 SQL += ComNum.VBLF + " WHERE ADPT_TYPE = '0' "; //' 0:        적용 , 1: 해지
                 SQL += ComNum.VBLF + "   AND ADPT_FR_DT <=  '" + ComQuery.CurrentDateTime(clsDB.DbCon, "D") + "' ";
                 SQL += ComNum.VBLF + "   AND A.MEDC_CD =  B.BCODE ";

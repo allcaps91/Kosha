@@ -74,26 +74,26 @@ namespace ComEmrBase
                 strSql = strSql + ComNum.VBLF + "  FROM ";
                 strSql = strSql + ComNum.VBLF + "  (";
                 strSql = strSql + ComNum.VBLF + "    SELECT PTNO, CHARTDATE, EMRNO, MEDFRDATE, FORMNO, RPAD(USEID, 6, ' ') AS USEID";
-                strSql = strSql + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRXMLMST";
+                strSql = strSql + ComNum.VBLF + "    FROM ADMIN.EMRXMLMST";
                 strSql = strSql + ComNum.VBLF + "   WHERE CHARTDATE >='20160410'";
                 strSql = strSql + ComNum.VBLF + "     AND CHARTDATE <='" + strSysDate + "'";
                 strSql = strSql + ComNum.VBLF + "  UNION ALL";
                 strSql = strSql + ComNum.VBLF + "    SELECT PTNO, CHARTDATE, EMRNO, MEDFRDATE, FORMNO, RPAD(CHARTUSEID, 6, ' ') AS USEID";
-                strSql = strSql + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRCHARTMST";
+                strSql = strSql + ComNum.VBLF + "    FROM ADMIN.AEMRCHARTMST";
                 strSql = strSql + ComNum.VBLF + "   WHERE CHARTDATE >='20160410'";
                 strSql = strSql + ComNum.VBLF + "     AND CHARTDATE <='" + strSysDate + "'";
                 strSql = strSql + ComNum.VBLF + "  )A";
-                strSql = strSql + ComNum.VBLF + "    INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER B";
+                strSql = strSql + ComNum.VBLF + "    INNER JOIN ADMIN.IPD_NEW_MASTER B";
                 strSql = strSql + ComNum.VBLF + "       ON A.PTNO = B.PANO";
                 strSql = strSql + ComNum.VBLF + "      AND A.MEDFRDATE = TO_CHAR(B.INDATE,'YYYYMMDD')";
                 strSql = strSql + ComNum.VBLF + "      AND B.INDATE >= TO_DATE('2017-06-01 00:00','YYYY-MM-DD HH24:MI')";
                 strSql = strSql + ComNum.VBLF + "      AND B.OUTDATE >= TO_DATE('" + dtpSDATE.Value.ToShortDateString() + "', 'YYYY-MM-DD')";
                 strSql = strSql + ComNum.VBLF + "      AND B.OUTDATE <= TO_DATE('" + dtpEDATE.Value.ToShortDateString() + "', 'YYYY-MM-DD')";
-                strSql = strSql + ComNum.VBLF + "    INNER JOIN KOSMOS_OCS.OCS_DOCTOR D";
+                strSql = strSql + ComNum.VBLF + "    INNER JOIN ADMIN.OCS_DOCTOR D";
                 strSql = strSql + ComNum.VBLF + "       ON D.DRCODE = B.DRCODE";
                 strSql = strSql + ComNum.VBLF + "     WHERE EXISTS (";
                 strSql = strSql + ComNum.VBLF + "                   SELECT 1";
-                strSql = strSql + ComNum.VBLF + "                     FROM KOSMOS_ADM.INSA_MST";
+                strSql = strSql + ComNum.VBLF + "                     FROM ADMIN.INSA_MST";
                 //'('022101','022105','022150','022160')    --내과, 정형외과, 인턴, 일반의
                 if(clsType.User.BuseCode == "044201")
                 {
@@ -141,7 +141,7 @@ namespace ComEmrBase
                     strSql = strSql + ComNum.VBLF + "     AND EXISTS";
                 }
                 
-                strSql = strSql + ComNum.VBLF + "   ( SELECT * FROM KOSMOS_EMR.EMRXML_DUALSIGN SUB";
+                strSql = strSql + ComNum.VBLF + "   ( SELECT * FROM ADMIN.EMRXML_DUALSIGN SUB";
                 strSql = strSql + ComNum.VBLF + "       WHERE SUB.EMRNO = A.EMRNO)";
 
                 strSql = strSql + ComNum.VBLF + " GROUP BY A.PTNO, TO_CHAR(B.INDATE,'YYYY-MM-DD'), B.OUTDATE, B.DEPTCODE, B.DRCODE, D.DRNAME, B.SNAME";
@@ -259,7 +259,7 @@ namespace ComEmrBase
                     {
                         string strEmrNo    = SS2_Sheet1.Cells[i, 12].Text.Trim();
 
-                        SQL = " INSERT INTO KOSMOS_EMR.EMRXML_DUALSIGN("                                              ;
+                        SQL = " INSERT INTO ADMIN.EMRXML_DUALSIGN("                                              ;
                         SQL = SQL + ComNum.VBLF + "  EMRNO, FORMNO, USEID, CHARTDATE,"                                       ;
                         SQL = SQL + ComNum.VBLF + "  CHARTTIME, PTNO, INOUTCLS, MEDFRDATE,"                                  ;
                         SQL = SQL + ComNum.VBLF + "  MEDFRTIME, MEDENDDATE, MEDENDTIME, MEDDEPTCD,"                          ;
@@ -273,7 +273,7 @@ namespace ComEmrBase
                         SQL = SQL + ComNum.VBLF + "  MEDDRCD, WRITEDATE, WRITETIME, CERTDATE,"                               ;
                         SQL = SQL + ComNum.VBLF + "  CERTTIME , CERTUSEID, CERTNO, TO_CHAR(SYSDATE, 'YYYYMMDD'), TO_CHAR(SYSDATE, 'HH24MISS')" ;
                         SQL = SQL + ComNum.VBLF + "  ,'" + clsType.User.IdNumber + "'"  ;
-                        SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.EMRXML"                                                 ;
+                        SQL = SQL + ComNum.VBLF + "  FROM ADMIN.EMRXML"                                                 ;
                         SQL = SQL + ComNum.VBLF + "  WHERE EMRNO = " + strEmrNo;
                         
                         SQL = SQL + ComNum.VBLF + "  UNION ALL";
@@ -283,7 +283,7 @@ namespace ComEmrBase
                         SQL = SQL + ComNum.VBLF + "  MEDDRCD, WRITEDATE, WRITETIME, CERTDATE,";
                         SQL = SQL + ComNum.VBLF + "  '' , CHARTUSEID, CERTNO, TO_CHAR(SYSDATE, 'YYYYMMDD'), TO_CHAR(SYSDATE, 'HH24MISS')";
                         SQL = SQL + ComNum.VBLF + "  ,'" + clsType.User.IdNumber + "'";
-                        SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_EMR.AEMRCHARTMST";
+                        SQL = SQL + ComNum.VBLF + "  FROM ADMIN.AEMRCHARTMST";
                         SQL = SQL + ComNum.VBLF + "  WHERE EMRNO = " + strEmrNo;
 
                         string sqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
@@ -297,7 +297,7 @@ namespace ComEmrBase
 
                         if (RowAffected > 0)
                         {
-                            SQL = "  UPDATE KOSMOS_EMR.AEMRCHARTMST SET";
+                            SQL = "  UPDATE ADMIN.AEMRCHARTMST SET";
                             SQL = SQL + ComNum.VBLF + "    COMPUSEID = '" + clsType.User.IdNumber + "'";
                             SQL = SQL + ComNum.VBLF + "  , COMPDATE = TO_CHAR(SYSDATE, 'YYYYMMDD')";
                             SQL = SQL + ComNum.VBLF + "  , COMPTIME = TO_CHAR(SYSDATE, 'HH24MISS')";
@@ -342,7 +342,7 @@ namespace ComEmrBase
                         string strDeptCode = SS1_Sheet1.Cells[i, 5].Text.Trim();
                         string strDrCode = SS1_Sheet1.Cells[i, 7].Text.Trim();
 
-                        SQL = " INSERT INTO KOSMOS_EMR.EMRXML_DUALSIGN_PTNO(";
+                        SQL = " INSERT INTO ADMIN.EMRXML_DUALSIGN_PTNO(";
                         SQL = SQL + ComNum.VBLF + "  PTNO, INDATE, OUTDATE, DEPTCODE, ";
                         SQL = SQL + ComNum.VBLF + "  DRCODE, CONFIRMDATE, CONFIRMSABUN) VALUES ( ";
                         SQL = SQL + ComNum.VBLF + "'" + strPtNo + "', TO_DATE('" + strInDate + "','YYYY-MM-DD'), ";
@@ -426,27 +426,27 @@ namespace ComEmrBase
                 strSql = strSql + ComNum.VBLF + "  FROM ";
                 strSql = strSql + ComNum.VBLF + "  (";
                 strSql = strSql + ComNum.VBLF + "    SELECT PTNO, CHARTDATE, CHARTTIME, EMRNO, MEDFRDATE, RPAD(USEID, 6, ' ') AS USEID, FORMNO, 1 AS UPDATENO";
-                strSql = strSql + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRXMLMST";
+                strSql = strSql + ComNum.VBLF + "    FROM ADMIN.EMRXMLMST";
                 strSql = strSql + ComNum.VBLF + "   WHERE CHARTDATE >='20160410'";
                 strSql = strSql + ComNum.VBLF + "     AND CHARTDATE <='" + strSysDate + "'";
                 strSql = strSql + ComNum.VBLF + "  UNION ALL";
                 strSql = strSql + ComNum.VBLF + "    SELECT PTNO, CHARTDATE, CHARTTIME, EMRNO, MEDFRDATE, RPAD(CHARTUSEID, 6, ' ') AS USEID, FORMNO, UPDATENO";
-                strSql = strSql + ComNum.VBLF + "    FROM KOSMOS_EMR.AEMRCHARTMST";
+                strSql = strSql + ComNum.VBLF + "    FROM ADMIN.AEMRCHARTMST";
                 strSql = strSql + ComNum.VBLF + "   WHERE CHARTDATE >='20160410'";
                 strSql = strSql + ComNum.VBLF + "     AND CHARTDATE <='" + strSysDate + "'";
                 strSql = strSql + ComNum.VBLF + "  )A";
-                strSql = strSql + ComNum.VBLF + "    INNER JOIN KOSMOS_PMPA.IPD_NEW_MASTER B";
+                strSql = strSql + ComNum.VBLF + "    INNER JOIN ADMIN.IPD_NEW_MASTER B";
                 strSql = strSql + ComNum.VBLF + "       ON A.PTNO = B.PANO";
                 strSql = strSql + ComNum.VBLF + "      AND B.INDATE >= TO_DATE('" + ArgInDate + " 00:00','YYYY-MM-DD HH24:MI')";
                 strSql = strSql + ComNum.VBLF + "      AND B.INDATE <= TO_DATE('" + ArgInDate + " 23:59','YYYY-MM-DD HH24:MI')";
-                strSql = strSql + ComNum.VBLF + "    INNER JOIN KOSMOS_OCS.OCS_DOCTOR D";
+                strSql = strSql + ComNum.VBLF + "    INNER JOIN ADMIN.OCS_DOCTOR D";
                 strSql = strSql + ComNum.VBLF + "       ON D.DRCODE = B.DRCODE";
-                strSql = strSql + ComNum.VBLF + "    INNER JOIN KOSMOS_ADM.INSA_MST M";
+                strSql = strSql + ComNum.VBLF + "    INNER JOIN ADMIN.INSA_MST M";
                 strSql = strSql + ComNum.VBLF + "       ON M.SABUN = A.USEID";
-                strSql = strSql + ComNum.VBLF + "    INNER JOIN KOSMOS_EMR.AEMRFORM F";
+                strSql = strSql + ComNum.VBLF + "    INNER JOIN ADMIN.AEMRFORM F";
                 strSql = strSql + ComNum.VBLF + "       ON F.FORMNO = A.FORMNO";
                 strSql = strSql + ComNum.VBLF + "      AND F.UPDATENO = A.UPDATENO";
-                strSql = strSql + ComNum.VBLF + "     LEFT OUTER JOIN KOSMOS_EMR.EMRXML_DUALSIGN E";
+                strSql = strSql + ComNum.VBLF + "     LEFT OUTER JOIN ADMIN.EMRXML_DUALSIGN E";
                 strSql = strSql + ComNum.VBLF + "       ON E.EMRNO = A.EMRNO";
                 strSql = strSql + ComNum.VBLF + "  WHERE A.MEDFRDATE = '" + ArgInDate + "'";
                 strSql = strSql + ComNum.VBLF + "    AND A.CHARTDATE >='20160410'";
@@ -454,7 +454,7 @@ namespace ComEmrBase
                 strSql = strSql + ComNum.VBLF + "    AND A.PTNO = '" + argPTNO + "'";
                 strSql = strSql + ComNum.VBLF + "    AND EXISTS (";
                 strSql = strSql + ComNum.VBLF + "                   SELECT TO_CHAR(SABUN3)";
-                strSql = strSql + ComNum.VBLF + "                     FROM KOSMOS_ADM.INSA_MST";
+                strSql = strSql + ComNum.VBLF + "                     FROM ADMIN.INSA_MST";
                 //'('022101','022105','022150','022160')    --내과, 정형외과, 인턴, 일반의
                 if (clsType.User.BuseCode == "044201")
                 {

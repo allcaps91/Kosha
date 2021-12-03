@@ -93,7 +93,7 @@ namespace ComBase
                 {
                     SQL = "";
                     SQL = " SELECT DRCODE ";
-                    SQL = SQL + ComNum.VBLF + " FROM KOSMOS_OCS.OCS_DOCTOR ";
+                    SQL = SQL + ComNum.VBLF + " FROM ADMIN.OCS_DOCTOR ";
                     SQL = SQL + ComNum.VBLF + " WHERE DOCCODE = " + clsType.User.Sabun;
 
                     SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -243,7 +243,7 @@ namespace ComBase
                 SQL = " SELECT DEPTCODE, KORNAME, HTEL";
                 SQL = SQL + ComNum.VBLF + " FROM (";
                 SQL = SQL + ComNum.VBLF + "   SELECT B.DEPTCODE, A.KORNAME, NVL(A.MSTEL, A.HTEL) HTEL";
-                SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_ADM.INSA_MST A, KOSMOS_OCS.OCS_DOCTOR B";
+                SQL = SQL + ComNum.VBLF + "     FROM ADMIN.INSA_MST A, ADMIN.OCS_DOCTOR B";
                 SQL = SQL + ComNum.VBLF + "    WHERE A.Sabun = b.Sabun";
                 SQL = SQL + ComNum.VBLF + "      AND B.GBOUT = 'N'";
                 SQL = SQL + ComNum.VBLF + "      AND A.BUSE >= '010000'";
@@ -251,7 +251,7 @@ namespace ComBase
                 SQL = SQL + ComNum.VBLF + "      AND A.TOIDAY IS NULL";
                 SQL = SQL + ComNum.VBLF + "   Union All";
                 SQL = SQL + ComNum.VBLF + "   SELECT A.DEPTCODE, A.SNAME, A.HTEL";
-                SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_PMPA.NUR_CHARGE_NURSE A, KOSMOS_ADM.INSA_MST B";
+                SQL = SQL + ComNum.VBLF + "     FROM ADMIN.NUR_CHARGE_NURSE A, ADMIN.INSA_MST B";
                 SQL = SQL + ComNum.VBLF + "    WHERE a.Sabun = b.Sabun";
                 SQL = SQL + ComNum.VBLF + "      AND B.TOIDAY IS NULL)";
                 SQL = SQL + ComNum.VBLF + " WHERE HTEL Is Not Null";
@@ -767,7 +767,7 @@ namespace ComBase
 
 
                 SQL = "";
-                SQL = " DELETE KOSMOS_OCS.OCS_MCCERTIFI_REQUEST";
+                SQL = " DELETE ADMIN.OCS_MCCERTIFI_REQUEST";
                 SQL = SQL + ComNum.VBLF + " WHERE ROWID = '" + FstrROWID + "' ";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1845,7 +1845,7 @@ namespace ComBase
                     if (VB.UCase(strEXEName) == "EMRPRT")
                     {
                         SQL = "";
-                        SQL = " SELECT DRNAME,DocCode FROM KOSMOS_OCS.OCS_DOCTOR ";
+                        SQL = " SELECT DRNAME,DocCode FROM ADMIN.OCS_DOCTOR ";
                         SQL = SQL + ComNum.VBLF + " WHERE DrCode = '" + FstrDrCode + "' ";
 
                         SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

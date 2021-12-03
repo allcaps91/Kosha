@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT REMARK                          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_CHK      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_CHK      ");
             parameter.AppendSql(" WHERE PANO  = :PANO                   ");
             parameter.AppendSql("   AND YEAR  = :YEAR                   ");
 
@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CANCER_CHK SET  ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CANCER_CHK SET  ");
             parameter.AppendSql("       REMARK   = :REMARK              ");
             parameter.AppendSql("     , JOBSABUN = :JOBSABUN            ");
             parameter.AppendSql("     , ENTTIME  = SYSDATE              ");
@@ -57,7 +57,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID                           ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_CHK      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_CHK      ");
             parameter.AppendSql(" WHERE PANO  = :PANO                   ");
             parameter.AppendSql("   AND YEAR  = :YEAR                   ");
 
@@ -71,7 +71,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT KOSMOS_PMPA.HIC_JEPSU                       ");
+            parameter.AppendSql("INSERT ADMIN.HIC_JEPSU                       ");
             parameter.AppendSql("       (PANO, YEAR, REMARK, JOBSABUN, ENTTIME)     ");
             parameter.AppendSql("VALUES                                             ");
             parameter.AppendSql("       (:PANO, :YEAR, :REMARK, :JOBSABUN, SYSDATE) ");

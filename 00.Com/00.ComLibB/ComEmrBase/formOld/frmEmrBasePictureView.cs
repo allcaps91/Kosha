@@ -703,7 +703,7 @@ namespace ComEmrBase
                 string strCurDate = VB.Left(strCurDateTime, 8);
                 string strCurTime = VB.Right(strCurDateTime, 6);
 
-                SQL = " SELECT EMRNO FROM KOSMOS_EMR.EMRXMLIMAGES";
+                SQL = " SELECT EMRNO FROM ADMIN.EMRXMLIMAGES";
                 SQL = SQL + ComNum.VBLF + " WHERE WRITEDATE = '" + strCurDate + "'";
                 SQL = SQL + ComNum.VBLF + " AND USEID = '" + clsType.User.IdNumber + "'";
                 SQL = SQL + ComNum.VBLF + " AND PTNO = '" + pAcp.ptNo + "'";
@@ -730,11 +730,11 @@ namespace ComEmrBase
                 dt.Dispose();
                 dt = null;
 
-                SQL = " INSERT INTO KOSMOS_EMR.EMRXMLMST";
+                SQL = " INSERT INTO ADMIN.EMRXMLMST";
                 SQL = SQL + ComNum.VBLF + " SELECT EMRNO, PTNO, '1', FORMNO, USEID,";
                 SQL = SQL + ComNum.VBLF + " CHARTDATE, CHARTTIME, INOUTCLS, MEDFRDATE,";
                 SQL = SQL + ComNum.VBLF + " MedFrTime , MedEndDate, MedEndTime, MedDeptCd, MedDrCd, writeDate, writeTime";
-                SQL = SQL + ComNum.VBLF + "  From KOSMOS_EMR.EMRXML";
+                SQL = SQL + ComNum.VBLF + "  From ADMIN.EMRXML";
                 SQL = SQL + ComNum.VBLF + " Where EMRNO = " + strEmrNo;
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -998,7 +998,7 @@ namespace ComEmrBase
             {
                 SQL = "SELECT ";
                 SQL = SQL + ComNum.VBLF + "                A.EMRNO, A.USEID";
-                SQL = SQL + ComNum.VBLF + "    FROM KOSMOS_EMR.EMRXML A";
+                SQL = SQL + ComNum.VBLF + "    FROM ADMIN.EMRXML A";
                 SQL = SQL + ComNum.VBLF + "    WHERE A.EMRNO = " + dblEmrNo;
 
                 SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
@@ -1035,10 +1035,10 @@ namespace ComEmrBase
                 string strCurDateTime = ComQuery.CurrentDateTime(clsDB.DbCon, "A");
                 strCurDateTime = strCurDateTime.Replace("-", "").Replace(":", "");
 
-                double dblEmrHisNo = ComQuery.GetSequencesNo(clsDB.DbCon, "KOSMOS_EMR.EMRXMLHISNO");
+                double dblEmrHisNo = ComQuery.GetSequencesNo(clsDB.DbCon, "ADMIN.EMRXMLHISNO");
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " INSERT INTO KOSMOS_EMR.EMRXMLHISTORY";
+                SQL = SQL + ComNum.VBLF + " INSERT INTO ADMIN.EMRXMLHISTORY";
                 SQL = SQL + ComNum.VBLF + "      (HISTORYNO, EMRNO,FORMNO,USEID,CHARTDATE,CHARTTIME,ACPNO,PTNO,";
                 SQL = SQL + ComNum.VBLF + "      INOUTCLS,MEDFRDATE,MEDFRTIME,MEDENDDATE,MEDENDTIME,MEDDEPTCD,MEDDRCD,";
                 SQL = SQL + ComNum.VBLF + "      WRITEDATE,WRITETIME,CHARTXML,CONTENTS,UPDATENO,HISTORYWRITEDATE,HISTORYWRITETIME,DELUSEID,CERTNO)";
@@ -1048,7 +1048,7 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "      WRITEDATE,WRITETIME,CHARTXML,CONTENTS,UPDATENO,";
                 SQL = SQL + ComNum.VBLF + "      '" + VB.Left(strCurDateTime, 8) + "',";
                 SQL = SQL + ComNum.VBLF + "      '" + VB.Right(strCurDateTime, 6) + "', '" + clsType.User.IdNumber + "',CERTNO";
-                SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML";
+                SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRXML";
                 SQL = SQL + ComNum.VBLF + "  WHERE EMRNO = " + dblEmrNo;
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -1061,7 +1061,7 @@ namespace ComEmrBase
                 }
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " DELETE FROM KOSMOS_EMR.EMRXML";
+                SQL = SQL + ComNum.VBLF + " DELETE FROM ADMIN.EMRXML";
                 SQL = SQL + ComNum.VBLF + "  WHERE EMRNO = " + dblEmrNo;
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")
@@ -1074,7 +1074,7 @@ namespace ComEmrBase
                 }
 
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + " DELETE FROM KOSMOS_EMR.EMRXMLMST";
+                SQL = SQL + ComNum.VBLF + " DELETE FROM ADMIN.EMRXMLMST";
                 SQL = SQL + ComNum.VBLF + "  WHERE EMRNO = " + dblEmrNo;
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
                 if (SqlErr != "")

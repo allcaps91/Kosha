@@ -25,33 +25,33 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT /*+ INDEX(KOSMOS_PMPA.HIC_JEPSU INX_HICJEPSU2) */ a.WRTNO, a.SNAME                                      ");
+            parameter.AppendSql("SELECT /*+ INDEX(ADMIN.HIC_JEPSU INX_HICJEPSU2) */ a.WRTNO, a.SNAME                                      ");
             parameter.AppendSql("     , TO_CHAR(a.JEPDATE,'YYYY-MM-DD') JEPDATE, a.BURATE, a.GJCHASU, a.GJJONG, a.GBSTS, a.LTDCODE, a.ERFLAG    ");
             parameter.AppendSql("     , a.PTNO, a.UCODES, a.SEX, a.AGE, a.PANJENGDRNO, DECODE(a.GBCHUL, 'Y', 'Y', '') AS GBCHUL                 ");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_GJJONG_NAME(a.GJJONG, a.UCODES) EXNAME                                               ");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_LTDNAME(a.LTDCODE) LTDNAME                                                           ");
+            parameter.AppendSql("     , ADMIN.FC_HIC_GJJONG_NAME(a.GJJONG, a.UCODES) EXNAME                                               ");
+            parameter.AppendSql("     , ADMIN.FC_HIC_LTDNAME(a.LTDCODE) LTDNAME                                                           ");
             parameter.AppendSql("     , DECODE(a.JONGGUMYN, '1', 'Y', '') AS  JONGGUMYN                                                         ");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_XRAYREAD_CHK(a.PTNO, TO_CHAR(a.JEPDATE, 'YYYY-MM-DD')) AS XREAD                      "); //미판독 여부 (미판독 : N)
+            parameter.AppendSql("     , ADMIN.FC_HIC_XRAYREAD_CHK(a.PTNO, TO_CHAR(a.JEPDATE, 'YYYY-MM-DD')) AS XREAD                      "); //미판독 여부 (미판독 : N)
             parameter.AppendSql("     , a.CLASS, a.BAN, a.BUN, a.GBADDPAN                                                                       ");
             if (sItem.JOB == "1")
             {
-                parameter.AppendSql("     , KOSMOS_PMPA.FC_READ_DRNAME_SABUN(a.SANGDAMDRNO) AS DOCTOR                                           ");
+                parameter.AppendSql("     , ADMIN.FC_READ_DRNAME_SABUN(a.SANGDAMDRNO) AS DOCTOR                                           ");
             }
             else if (sItem.JOB == "2")
             {
-                parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_DOCTOR_NAME(a.PANJENGDRNO) AS DOCTOR                                             ");
+                parameter.AppendSql("     , ADMIN.FC_HIC_DOCTOR_NAME(a.PANJENGDRNO) AS DOCTOR                                             ");
             }
             else
             {
-                parameter.AppendSql("     , CASE WHEN a.PANJENGDRNO = 0 THEN KOSMOS_PMPA.FC_READ_DRNAME_SABUN(a.SANGDAMDRNO)                    ");
-                parameter.AppendSql("            ELSE KOSMOS_PMPA.FC_HIC_DOCTOR_NAME(a.PANJENGDRNO) END AS DOCTOR                               ");
+                parameter.AppendSql("     , CASE WHEN a.PANJENGDRNO = 0 THEN ADMIN.FC_READ_DRNAME_SABUN(a.SANGDAMDRNO)                    ");
+                parameter.AppendSql("            ELSE ADMIN.FC_HIC_DOCTOR_NAME(a.PANJENGDRNO) END AS DOCTOR                               ");
             }
             parameter.AppendSql("     , DECODE(a.GBSTS, '0','N','1','N','Y') GBSTSNM                                                            ");
             parameter.AppendSql("     , a.SANGDAMDRNO, a.GBAUTOPAN, a.PANO, a.IEMUNNO                                                           ");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_BAS_PATIENT_JUMINNO(a.PTNO) JUMIN                                                         ");
-            parameter.AppendSql("     , KOSMOS_OCS.FC_HIC_PATIENT_JUMIN2(a.PTNO) JUMIN2                                                         ");
+            parameter.AppendSql("     , ADMIN.FC_BAS_PATIENT_JUMINNO(a.PTNO) JUMIN                                                         ");
+            parameter.AppendSql("     , ADMIN.FC_HIC_PATIENT_JUMIN2(a.PTNO) JUMIN2                                                         ");
             parameter.AppendSql("     , a.GWRTNO                                                                                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU a                                                                                 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU a                                                                                 ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                                   ");
             parameter.AppendSql("   AND a.DELDATE IS NULL                                                                                       ");
 
@@ -130,7 +130,7 @@ namespace ComHpcLibB.Repository
                         if (sItem.LICENSE_VIEW != "**")
                         {
                             parameter.AppendSql("   AND (FIRSTPANDRNO = :DRNO                                                         ");
-                            parameter.AppendSql("       OR (FIRSTPANDRNO IS NULL AND (SELECT SANGDAMDRNO FROM KOSMOS_PMPA.HIC_SANGDAM_NEW WHERE WRTNO = A.WRTNO) = :DRNO)) ");
+                            parameter.AppendSql("       OR (FIRSTPANDRNO IS NULL AND (SELECT SANGDAMDRNO FROM ADMIN.HIC_SANGDAM_NEW WHERE WRTNO = A.WRTNO) = :DRNO)) ");
                         }
                     }
                 }
@@ -155,7 +155,7 @@ namespace ComHpcLibB.Repository
                 if (sItem.SORT == "0") { parameter.AppendSql(" ORDER BY a.GJJONG, a.LTDCODE, a.SNAME  "); }
                 else if (sItem.SORT == "1") { parameter.AppendSql(" ORDER BY a.SNAME, a.JEPDATE, a.GJJONG  "); }
                 else if (sItem.SORT == "2") { parameter.AppendSql(" ORDER BY a.JEPDATE, a.SNAME, a.GJJONG  "); }
-                else { parameter.AppendSql(" ORDER BY KOSMOS_PMPA.FC_HIC_LTDNAME(a.LTDCODE), a.SNAME, a.JEPDATE, a.GJJONG "); }
+                else { parameter.AppendSql(" ORDER BY ADMIN.FC_HIC_LTDNAME(a.LTDCODE), a.SNAME, a.JEPDATE, a.GJJONG "); }
             }
 
             if (!sItem.WRTNO.IsNullOrEmpty() && sItem.WRTNO != 0)

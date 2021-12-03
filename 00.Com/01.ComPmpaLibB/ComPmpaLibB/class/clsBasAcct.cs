@@ -164,7 +164,7 @@ namespace ComPmpaLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1  ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'IPD_BON' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate + "', 'YYYY-MM-DD')   ";
@@ -284,7 +284,7 @@ namespace ComPmpaLibB
             {
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(STARTDATE, 'YYYY-MM-DD') SDATE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1   ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'JOJE' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE <= TO_DATE('" + strAcctDate + "', 'YYYY-MM-DD')";
@@ -400,7 +400,7 @@ namespace ComPmpaLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'GISUL'";
                 SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate1 + "', 'YYYY-MM-DD')";
@@ -421,7 +421,7 @@ namespace ComPmpaLibB
                 {
                     SQL = "";
                     SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                    SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                    SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                     SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                     SQL += ComNum.VBLF + "    AND IDNAME    = 'GISUL' ";
                     SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate2 + "', 'YYYY-MM-DD') ";
@@ -517,7 +517,7 @@ namespace ComPmpaLibB
                 {
                     SQL = "";
                     SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                    SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                    SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                     SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                     SQL += ComNum.VBLF + "    AND IDNAME    = 'NIGHT' ";
                     SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate2 + "', 'YYYY-MM-DD')";
@@ -569,7 +569,7 @@ namespace ComPmpaLibB
             {
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(STARTDATE, 'YYYY-MM-DD') SDATE";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'NIGHT_22' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE <= TO_DATE('" + strAcctDate + "', 'YYYY-MM-DD')";
@@ -591,7 +591,7 @@ namespace ComPmpaLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'NIGHT_22' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate1 + "', 'YYYY-MM-DD')";
@@ -612,7 +612,7 @@ namespace ComPmpaLibB
                 {
                     SQL = "";
                     SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                    SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                    SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                     SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                     SQL += ComNum.VBLF + "    AND IDNAME    = 'NIGHT_22'";
                     SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate2 + "', 'YYYY-MM-DD') ";
@@ -663,7 +663,7 @@ namespace ComPmpaLibB
                 //진찰료감액
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(STARTDATE, 'YYYY-MM-DD') SDATE";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT  ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT  ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1  ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'GAMEK_JIN' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE <= TO_DATE('" + strAcctDate + "', 'YYYY-MM-DD') ";
@@ -679,7 +679,7 @@ namespace ComPmpaLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'GAMEK_JIN' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate + "', 'YYYY-MM-DD')";
@@ -702,7 +702,7 @@ namespace ComPmpaLibB
                 //보험 감액율
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(STARTDATE, 'YYYY-MM-DD') SDATE";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'GAM_BOHUM' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE <= TO_DATE('" + strAcctDate + "', 'YYYY-MM-DD')";
@@ -718,7 +718,7 @@ namespace ComPmpaLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'GAM_BOHUM' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate + "', 'YYYY-MM-DD') ";
@@ -741,7 +741,7 @@ namespace ComPmpaLibB
                 //일반 감액율
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(STARTDATE, 'YYYY-MM-DD') SDATE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'GAM_ILBAN' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE <= TO_DATE('" + strAcctDate + "', 'YYYY-MM-DD') ";
@@ -757,7 +757,7 @@ namespace ComPmpaLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'GAM_ILBAN' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate + "', 'YYYY-MM-DD')";
@@ -780,7 +780,7 @@ namespace ComPmpaLibB
                 //보험100% 감액율
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(STARTDATE, 'YYYY-MM-DD') SDATE";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'GAM_OPD'";
                 SQL += ComNum.VBLF + "    AND STARTDATE <= TO_DATE('" + strAcctDate + "', 'YYYY-MM-DD') ";
@@ -796,7 +796,7 @@ namespace ComPmpaLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'GAM_OPD'";
                 SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate + "', 'YYYY-MM-DD')";
@@ -860,7 +860,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT TO_CHAR(STARTDATE, 'YYYY-MM-DD') SDATE ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
             SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
             SQL += ComNum.VBLF + "    AND IDNAME    = 'PEDADD' ";
             SQL += ComNum.VBLF + "    AND STARTDATE <= TO_DATE('" + strAcctDate + "', 'YYYY-MM-DD')";
@@ -880,7 +880,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE  ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT  ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT  ";
             SQL += ComNum.VBLF + "  WHERE 1 = 1  ";
             SQL += ComNum.VBLF + "    AND IDNAME    = 'PEDADD' ";
             SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate1 + "', 'YYYY-MM-DD') ";
@@ -914,7 +914,7 @@ namespace ComPmpaLibB
             {
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1  ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'PEDADD' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate2 + "', 'YYYY-MM-DD')";
@@ -970,7 +970,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT TO_CHAR(STARTDATE, 'YYYY-MM-DD') SDATE ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
             SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
             SQL += ComNum.VBLF + "    AND IDNAME    = 'PEDADDYG' ";
             SQL += ComNum.VBLF + "    AND STARTDATE <= TO_DATE('" + strAcctDate + "', 'YYYY-MM-DD')";
@@ -990,7 +990,7 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE  ";
-            SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT  ";
+            SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT  ";
             SQL += ComNum.VBLF + "  WHERE 1 = 1  ";
             SQL += ComNum.VBLF + "    AND IDNAME    = 'PEDADDYG' ";
             SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate1 + "', 'YYYY-MM-DD') ";
@@ -1024,7 +1024,7 @@ namespace ComPmpaLibB
             {
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1  ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'PEDADDYG' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate2 + "', 'YYYY-MM-DD')";
@@ -1068,7 +1068,7 @@ namespace ComPmpaLibB
             {
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT TO_CHAR(STARTDATE, 'YYYY-MM-DD') SDATE";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'BON_TAX' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE <= TO_DATE('" + strAcctDate + "', 'YYYY-MM-DD')";
@@ -1091,7 +1091,7 @@ namespace ComPmpaLibB
 
                 SQL = "";
                 SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                 SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                 SQL += ComNum.VBLF + "    AND IDNAME    = 'BON_TAX' ";
                 SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate1 + "', 'YYYY-MM-DD')";
@@ -1112,7 +1112,7 @@ namespace ComPmpaLibB
                 {
                     SQL = "";
                     SQL += ComNum.VBLF + " SELECT ARRAYCLASS, RATEVALUE ";
-                    SQL += ComNum.VBLF + "   FROM KOSMOS_PMPA.BAS_ACCOUNT ";
+                    SQL += ComNum.VBLF + "   FROM ADMIN.BAS_ACCOUNT ";
                     SQL += ComNum.VBLF + "  WHERE 1 = 1 ";
                     SQL += ComNum.VBLF + "    AND IDNAME    = 'BON_TAX'";
                     SQL += ComNum.VBLF + "    AND STARTDATE = TO_DATE('" + strDate2 + "', 'YYYY-MM-DD')";

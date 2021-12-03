@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT JUMIN, JUMIN2, SNAME, YEAR, ROWID AS RID    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.WORK_NHIC                       ");
+            parameter.AppendSql("  FROM ADMIN.WORK_NHIC                       ");
             parameter.AppendSql(" WHERE 1 = 1                                       "); 
             parameter.AppendSql("   AND RTIME >= TRUNC(SYSDATE)                     ");
             parameter.AppendSql("   AND CTIME IS NULL                               ");
@@ -54,7 +54,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,GBCHK10_NAME, CANCER71, CANCER72                                                                    ");
             parameter.AppendSql("      ,GBCHK15, GBCHK15_CHUL, GBCHK15_NAME, GBCHK16, GBCHK16_CHUL, GBCHK16_NAME                            ");
             parameter.AppendSql("      ,GBCHK17,GBCHK17_CHUL,GBCHK17_NAME                                                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.WORK_NHIC                                                                               ");
+            parameter.AppendSql("  FROM ADMIN.WORK_NHIC                                                                               ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                               ");
             parameter.AppendSql("   AND JUMIN2  = :JUMIN2                                                                                   ");
             if (!argSName.IsNullOrEmpty())
@@ -95,7 +95,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT ROWID FROM KOSMOS_PMPA.WORK_NHIC    ");
+            parameter.AppendSql("SELECT ROWID FROM ADMIN.WORK_NHIC    ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                    ");
             parameter.AppendSql("   AND TRUNC(RTIME) = TRUNC(SYSDATE)       ");
             parameter.AppendSql(" ORDER BY RTIME DESC                       ");
@@ -119,7 +119,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , SECOND, JUMIN2, CANCER61, CANCER62, GBCHK09, GBCHK09_CHUL, GBCHK09_NAME, LIVERC, FIRSTADD           ");
             parameter.AppendSql("     , SECONDADD, DENTAL, EXAMA, EXAMD, EXAME, EXAMF, EXAMG, EXAMH, EXAMI, LUNG, GBCHK10, GBCHK10_CHUL     ");
             parameter.AppendSql("     , GBCHK10_NAME, CANCER71, CANCER72, GBCHK15, GBCHK15_CHUL, GBCHK15_NAME                               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.WORK_NHIC                                                                               ");
+            parameter.AppendSql("  FROM ADMIN.WORK_NHIC                                                                               ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                               ");
             parameter.AppendSql("   AND JUMIN2  = :JUMIN2                                                                                   ");
             if (!argSName.IsNullOrEmpty())
@@ -177,7 +177,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("     , SECOND, JUMIN2, CANCER61, CANCER62, GBCHK09, GBCHK09_CHUL, GBCHK09_NAME, LIVERC, FIRSTADD           ");
             parameter.AppendSql("     , SECONDADD, DENTAL, EXAMA, EXAMD, EXAME, EXAMF, EXAMG, EXAMH, EXAMI, LUNG, GBCHK10, GBCHK10_CHUL     ");
             parameter.AppendSql("     , GBCHK10_NAME, CANCER71, CANCER72                                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.WORK_NHIC                                                                               ");
+            parameter.AppendSql("  FROM ADMIN.WORK_NHIC                                                                               ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                               ");
             parameter.AppendSql("   AND JUMIN2  = :JUMIN2                                                                                   ");
             if (!strSName.IsNullOrEmpty())
@@ -213,7 +213,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT GKIHO,REL,YEAR,LIVER,LIVER2,JISA,FIRST, GBCHK01_NAME,GBCHK02_NAME,GBCHK03_NAME  ");
             parameter.AppendSql("     , GBCHK01,GBCHK03,GBCHK03, EXAMA, EXAME, EXAMG, EXAMF                             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.WORK_NHIC                                                           ");
+            parameter.AppendSql("  FROM ADMIN.WORK_NHIC                                                           ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                                                                ");
             parameter.AppendSql("   AND GUBUN  = 'H'                                                                    "); //가접수 대상자
             parameter.AppendSql("   AND CTIME >= TRUNC(SYSDATE - 3)                                                     ");
@@ -229,7 +229,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT SName FROM KOSMOS_PMPA.WORK_NHIC    ");
+            parameter.AppendSql("SELECT SName FROM ADMIN.WORK_NHIC    ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                    ");
             parameter.AppendSql("   AND TRUNC(RTime)>=TRUNC(SYSDATE)        ");
             parameter.AppendSql("   AND GBSTS = '2'                         ");
@@ -248,7 +248,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT SName FROM KOSMOS_PMPA.WORK_NHIC                ");
+            parameter.AppendSql("SELECT SName FROM ADMIN.WORK_NHIC                ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                                ");
             parameter.AppendSql("   AND TRUNC(RTime) >= TRUNC(SYSDATE)                  ");
             parameter.AppendSql("   AND GBSTS = '0'                                     ");
@@ -272,7 +272,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT GKiho,Rel,Year,Liver2,Jisa,First, GBCHK01_NAME,GBCHK02_NAME,GBCHK03_NAME    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.WORK_NHIC                                                       ");
+            parameter.AppendSql("  FROM ADMIN.WORK_NHIC                                                       ");
             parameter.AppendSql(" WHERE JUMIN2 = :JUMIN2                                                            ");
             parameter.AppendSql("   AND SNAME  = :SNAME                                                             ");
             parameter.AppendSql("   AND GUBUN  = 'H'                                                                ");
@@ -292,7 +292,7 @@ namespace ComHpcLibB.Repository
 
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.WORK_NHIC   ");
+            parameter.AppendSql("UPDATE ADMIN.WORK_NHIC   ");
             parameter.AppendSql("   SET GBSTS = '0'             ");
             parameter.AppendSql("      ,GUBUN = 'H'             ");
             parameter.AppendSql(" WHERE ROWID = :RID            ");
@@ -310,7 +310,7 @@ namespace ComHpcLibB.Repository
 
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.WORK_NHIC   ");
+            parameter.AppendSql("UPDATE ADMIN.WORK_NHIC   ");
             parameter.AppendSql("   SET GBERROR = 'Y'           ");
             parameter.AppendSql(" WHERE ROWID = :RID            ");
 
@@ -325,7 +325,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE FROM KOSMOS_PMPA.WORK_NHIC WHERE JUMIN2 = :JUMIN2   ");
+            parameter.AppendSql("DELETE FROM ADMIN.WORK_NHIC WHERE JUMIN2 = :JUMIN2   ");
 
             #region Query 변수대입
             parameter.Add("JUMIN2", argJumin);
@@ -338,7 +338,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.WORK_NHIC (                            ");
+            parameter.AppendSql("INSERT INTO ADMIN.WORK_NHIC (                            ");
             parameter.AppendSql("       RTIME,GUBUN,SNAME,JUMIN,JUMIN2,PANO,GBSTS,YEAR          ");
             parameter.AppendSql(") VALUES (                                                     ");
             parameter.AppendSql("       SYSDATE,:GUBUN,:SNAME,:JUMIN,:JUMIN2,:PANO,:GBSTS,:YEAR  ");
@@ -370,7 +370,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,SECOND, JUMIN2, CANCER61, CANCER62, GBCHK09, GBCHK09_CHUL, GBCHK09_NAME, LIVERC, FIRSTADD           ");
             parameter.AppendSql("      ,SECONDADD, DENTAL, EXAMA, EXAMD, EXAME, EXAMF, EXAMG, EXAMH, EXAMI, LUNG, GBCHK10, GBCHK10_CHUL     ");
             parameter.AppendSql("      ,GBCHK10_NAME, CANCER71, CANCER72                                                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.WORK_NHIC                                                                               ");
+            parameter.AppendSql("  FROM ADMIN.WORK_NHIC                                                                               ");
             parameter.AppendSql(" WHERE 1 = 1                                                                                               ");
             parameter.AppendSql("   AND JUMIN2  = :JUMIN2                                                                                   ");
 

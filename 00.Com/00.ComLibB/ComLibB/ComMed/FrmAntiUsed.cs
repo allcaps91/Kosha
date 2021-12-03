@@ -90,20 +90,20 @@ namespace ComLibB
                 SQL += "      , A.SUCODE                                                                                \r";
                 SQL += "      , B.SUNAMEK                                                                               \r";
                 SQL += "      , C.GBN                                                                                   \r";
-                SQL += "      , (SELECT TRIM(DRNAME) FROM KOSMOS_OCS.OCS_DOCTOR WHERE SABUN = A.DRCODE) AS  DRNAME      \r";
+                SQL += "      , (SELECT TRIM(DRNAME) FROM ADMIN.OCS_DOCTOR WHERE SABUN = A.DRCODE) AS  DRNAME      \r";
                 SQL += "      , decode(A.GBIOE, null, null, '응급실') GBIOE                                              \r";
                 SQL += "      , SUM(A.QTY*A.NAL) nal                                                                    \r";
-                SQL += "   FROM KOSMOS_OCS.OCS_IORDER A                                                                 \r";
-                SQL += "      , KOSMOS_PMPA.BAS_SUN   B                                                                 \r";
-                SQL += "      , KOSMOS_PMPA.NUR_AST   C                                                                 \r";
+                SQL += "   FROM ADMIN.OCS_IORDER A                                                                 \r";
+                SQL += "      , ADMIN.BAS_SUN   B                                                                 \r";
+                SQL += "      , ADMIN.NUR_AST   C                                                                 \r";
                 SQL += "  WHERE A.BDATE >= TO_DATE('" + dtpFrDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD')       \r";
                 SQL += "    AND A.BDATE <= TO_DATE('" + dtpToDate.Value.ToString("yyyy-MM-dd") + "','YYYY-MM-DD')       \r";
                 SQL += "    AND A.BDATE >= TO_DATE('" + strInDate + "','YYYY-MM-DD')                                    \r";
                 ///TODO : 이상훈 항생제 조건 통합 필요
-                //SQL += "    AND TRIM(a.SuCode) IN ( SELECT TRIM(CODE) FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='OCS_장기항생제코드' AND (DELDATE IS NULL OR DELDATE ='')  )  \r";
-                //SQL += "    AND TRIM(a.SuCode) IN ( SELECT TRIM(CODE) FROM KOSMOS_PMPA.BAS_BCODE WHERE GUBUN ='OCS_항생제코드' AND (DELDATE IS NULL OR DELDATE ='')  )  \r 21-06-24주석";
+                //SQL += "    AND TRIM(a.SuCode) IN ( SELECT TRIM(CODE) FROM ADMIN.BAS_BCODE WHERE GUBUN ='OCS_장기항생제코드' AND (DELDATE IS NULL OR DELDATE ='')  )  \r";
+                //SQL += "    AND TRIM(a.SuCode) IN ( SELECT TRIM(CODE) FROM ADMIN.BAS_BCODE WHERE GUBUN ='OCS_항생제코드' AND (DELDATE IS NULL OR DELDATE ='')  )  \r 21-06-24주석";
                 //2021-06-24 조회 기준 약품마스터로 변경
-                SQL += "    AND A.SUCODE IN ( SELECT JEPCODE FROM KOSMOS_ADM.DRUG_MASTER2 WHERE SUB  IN (02, 07))       \r";
+                SQL += "    AND A.SUCODE IN ( SELECT JEPCODE FROM ADMIN.DRUG_MASTER2 WHERE SUB  IN (02, 07))       \r";
                 SQL += "    AND A.PTNO = '" + strPano + "'                                                              \r";
                 SQL += "    AND A.SUCODE = B.SUNEXT                                                                     \r";
                 SQL += "    AND A.ORDERCODE = C.ORDERCODE(+)                                                            \r";

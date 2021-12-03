@@ -22,7 +22,7 @@
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT BIGO                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.ETC_ALIMTALK_RESULT     ");
+            parameter.AppendSql("  FROM ADMIN.ETC_ALIMTALK_RESULT     ");
             parameter.AppendSql(" WHERE 1 = 1                               ");
             if (argGubun == "알림톡")
             {

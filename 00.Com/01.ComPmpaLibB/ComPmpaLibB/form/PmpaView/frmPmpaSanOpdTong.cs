@@ -108,7 +108,7 @@ namespace ComPmpaLibB
                 SQL = " SELECT A.SNAME, A.PANO, TO_CHAR(A.BDATE,'YYYY-MM-DD') BDATE, ";
 
            
-                SQL = SQL + ComNum.VBLF + "A.DEPTCODE,KOSMOS_OCS.FC_BAS_DOCTOR_DRNAME(a.DrCode ) DrCode, decode(A.JIN,'0','진료','물리치료') JIN, B.JUMIN1||'-'||B.JUMIN2 JUMIN  ";
+                SQL = SQL + ComNum.VBLF + "A.DEPTCODE,ADMIN.FC_BAS_DOCTOR_DRNAME(a.DrCode ) DrCode, decode(A.JIN,'0','진료','물리치료') JIN, B.JUMIN1||'-'||B.JUMIN2 JUMIN  ";
                 SQL = SQL + ComNum.VBLF + " FROM OPD_MASTER A, BAS_PATIENT B";
                 SQL = SQL + ComNum.VBLF + " WHERE B.PANO = A.PANO ";
                 SQL = SQL + ComNum.VBLF + "   AND A.BDATE >=TO_DATE('" + strSdate + "','YYYY-MM-DD') ";

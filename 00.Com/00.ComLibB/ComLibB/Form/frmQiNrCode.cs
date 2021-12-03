@@ -314,7 +314,7 @@ namespace ComLibB
             
 
             SQL = "";
-            SQL += ComNum.VBLF + "SELECT Name FROM KOSMOS_ADM.AIS_LTD ";
+            SQL += ComNum.VBLF + "SELECT Name FROM ADMIN.AIS_LTD ";
             SQL += ComNum.VBLF + "WHERE LtdCode='" + argCode.Trim() + "' ";
             try
             {

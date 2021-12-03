@@ -79,7 +79,7 @@ namespace ComEmrBase
                 SQL = "SELECT TO_CHAR(StartDate, 'YYYY-MM-DD') Sdate,";
                 SQL += ComNum.VBLF + "       TO_CHAR(LastDate, 'YYYY-MM-DD') Ldate, ";
                 SQL += ComNum.VBLF + "       Sname, Sex, Jumin1, Jumin2 ";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.BAS_PATIENT ";
+                SQL += ComNum.VBLF + "  FROM ADMIN.BAS_PATIENT ";
                 SQL += ComNum.VBLF + " WHERE Pano = '" + txtPano.Text + "' ";
                 #endregion
 
@@ -133,7 +133,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "SELECT TO_CHAR(ActDate,'YYYY-MM-DD') Adate, ";
                 SQL += ComNum.VBLF + "       DeptCode, DrName, Bi, o.DRCode,   ";
                 SQL += ComNum.VBLF + "       TO_CHAR(BDATE,'YYYY-MM-DD') BDATE ";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_SLIP O, KOSMOS_PMPA.BAS_DOCTOR B ";
+                SQL += ComNum.VBLF + "  FROM ADMIN.OPD_SLIP O, ADMIN.BAS_DOCTOR B ";
                 SQL += ComNum.VBLF + " WHERE Pano     = '" + txtPano.Text + "' ";
                 SQL += ComNum.VBLF + "   AND O.DrCode = B.DrCode(+) ";
                 SQL += ComNum.VBLF + " GROUP BY ActDate, DeptCode, DrName, Bi, o.DrCode, BDATE ";
@@ -200,7 +200,7 @@ namespace ComEmrBase
                 SQL += ComNum.VBLF + "SELECT Sucode, SunameK, BaseAmt, Qty, Nal,";
                 SQL += ComNum.VBLF + "       GbSpc, GbNgt, GbGisul, GbSelf, GbChild,";
                 SQL += ComNum.VBLF + "       Amt1, Amt2, SeqNo, Part, O.Rowid ";
-                SQL += ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_SLIP O,  KOSMOS_PMPA.BAS_SUN B";
+                SQL += ComNum.VBLF + "  FROM ADMIN.OPD_SLIP O,  ADMIN.BAS_SUN B";
                 SQL += ComNum.VBLF + " WHERE ActDate  = TO_DATE('" + ArgDate + "','YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + "   AND Pano     = '" + txtPano.Text + "' ";
                 SQL += ComNum.VBLF + "   AND Bi       = '" + ArgBi + "' ";
@@ -252,7 +252,7 @@ namespace ComEmrBase
                 #region 상병
 
                 #region 쿼리
-                SQL = "SELECT A.ILLCODE, B.ILLNAMEK FROM KOSMOS_OCS.OCS_OILLS A, KOSMOS_PMPA.BAS_ILLS B";
+                SQL = "SELECT A.ILLCODE, B.ILLNAMEK FROM ADMIN.OCS_OILLS A, ADMIN.BAS_ILLS B";
                 SQL += ComNum.VBLF + " WHERE a.BDate  = TO_DATE('" + ArgDate + "','YYYY-MM-DD') ";
                 SQL += ComNum.VBLF + "   AND a.PTno     = '" + txtPano.Text + "' ";
                 SQL += ComNum.VBLF + "   AND A.DeptCode = '" + ArgDept + "' ";

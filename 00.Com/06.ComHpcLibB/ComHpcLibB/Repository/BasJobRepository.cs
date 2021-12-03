@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT TO_CHAR(JOBDATE,'DD') ILJA                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_JOB                         ");
+            parameter.AppendSql("  FROM ADMIN.BAS_JOB                         ");
             parameter.AppendSql(" WHERE  1=1                                        ");
             parameter.AppendSql("   AND JOBDATE >= TO_DATE(:FDATE, 'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND JOBDATE <= TO_DATE(:TDATE, 'YYYY-MM-DD')    ");
@@ -40,7 +40,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT HolyDay                                     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.BAS_JOB                         ");
+            parameter.AppendSql("  FROM ADMIN.BAS_JOB                         ");
             parameter.AppendSql(" WHERE JOBDATE = TO_DATE(:JOBDATE, 'YYYY-MM-DD')   ");
 
             parameter.Add("JOBDATE", strDate);

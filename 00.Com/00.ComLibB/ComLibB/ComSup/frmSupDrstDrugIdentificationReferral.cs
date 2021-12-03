@@ -3619,7 +3619,7 @@ namespace ComLibB
                 SQL.AppendLine("SELECT A.SUNEXT, A.HNAME, A.SNAME, A.UNIT, A.EFFECT, ");
                 SQL.AppendLine("       A.JEHENG, A.JEHENG2, A.JEHENG3_1, A.JEHENG3_2,  ");
                 SQL.AppendLine("       A.JEYAK, B.GELCODE, C.NAME, D.DELDATE ");
-                SQL.AppendLine(" FROM KOSMOS_OCS.OCS_DRUGINFO_NEW A, KOSMOS_ADM.DRUG_JEP B, KOSMOS_ADM.AIS_LTD C, KOSMOS_PMPA.BAS_SUT D ");
+                SQL.AppendLine(" FROM ADMIN.OCS_DRUGINFO_NEW A, ADMIN.DRUG_JEP B, ADMIN.AIS_LTD C, ADMIN.BAS_SUT D ");
                 SQL.AppendLine(" WHERE A.SUNEXT = '" + strCode + "' ");
                 SQL.AppendLine("   AND A.SUNEXT = B.JEPCODE(+) ");
                 SQL.AppendLine("   AND B.GELCODE = C.LTDCODE(+) ");

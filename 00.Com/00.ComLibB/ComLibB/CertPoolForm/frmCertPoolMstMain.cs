@@ -131,7 +131,7 @@ namespace ComLibB
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT M.Sabun, M.KorName, M.Buse, B.Name ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_MST M, KOSMOS_PMPA.BAS_BUSE  B ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_MST M, ADMIN.BAS_BUSE  B ";
                 SQL = SQL + ComNum.VBLF + " WHERE M.Buse = Bucode ";
 
                 if (RdoJaeGu_0.Checked == true)
@@ -262,7 +262,7 @@ namespace ComLibB
                     SQL = SQL + ComNum.VBLF + "SELECT SABUN,BUSE,JUMIN3,KORNAME,TO_CHAR(TOIDAY,'YYYY-MM-DD') TOIDAY,CERTPASS, ";
                     SQL = SQL + ComNum.VBLF + "       TO_CHAR(KUNDAY,'YYYY-MM-DD') KUNDAY, TO_CHAR(IPSADAY,'YYYY-MM-DD') IPSADAY, ";
                     SQL = SQL + ComNum.VBLF + "       TO_CHAR(BALDAY,'YYYY-MM-DD') BALDAY  ";
-                    SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_MST ";
+                    SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_MST ";
                     SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + strSabun + "' ";
                     SQL = SQL + ComNum.VBLF + "   AND   SUBSTR(BUSE, 1, 4) <> '0992' ";     //'용역직원 제외
 
@@ -287,7 +287,7 @@ namespace ComLibB
 
                         ImageView(strSabun);
 
-                        SQL = "SELECT TO_CHAR(CERDATE,'YYYY-MM-DD') CERTDATE FROM KOSMOS_ADM.INSA_MSTS WHERE SABUN = '" + strSabun + "' ORDER BY CERDATE DESC ";
+                        SQL = "SELECT TO_CHAR(CERDATE,'YYYY-MM-DD') CERTDATE FROM ADMIN.INSA_MSTS WHERE SABUN = '" + strSabun + "' ORDER BY CERDATE DESC ";
                         SqlErr = clsDB.GetDataTableEx(ref dt1, SQL, clsDB.DbCon);
                         if (SqlErr != "")
                         {
@@ -431,7 +431,7 @@ namespace ComLibB
                 try
                 {
 
-                    SQL = " INSERT INTO KOSMOS_ADM.INSA_MSTS(SABUN, UDATE, CERDATE) VALUES (";
+                    SQL = " INSERT INTO ADMIN.INSA_MSTS(SABUN, UDATE, CERDATE) VALUES (";
                     SQL = SQL + ComNum.VBLF + "'" + TxtSabun.Text + "', TO_DATE('" + clsPublic.GstrSysDate + " " + clsPublic.GstrSysTime + "','YYYY-MM-DD HH24:MI'),";
                     SQL = SQL + ComNum.VBLF + " TO_DATE('" + clsPublic.GstrSysDate + " " + clsPublic.GstrSysTime + "','YYYY-MM-DD HH24:MI') )";
 
@@ -445,7 +445,7 @@ namespace ComLibB
                         return;
                     }
 
-                    SQL = " UPDATE KOSMOS_ADM.INSA_MST SET ";
+                    SQL = " UPDATE ADMIN.INSA_MST SET ";
                     SQL = SQL + ComNum.VBLF + "  CertPass = '" + clsAES.AES(strPass) + "' ";
                     SQL = SQL + ComNum.VBLF + "  WHERE SABUN = '" + strSabun + "' ";
 
@@ -497,7 +497,7 @@ namespace ComLibB
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + "SELECT A.SABUN, TO_CHAR(A.UDATE, 'YYYY-MM-DD') UDATE, A.CERTIOK,b.CertPass, ";
                 SQL = SQL + ComNum.VBLF + "       TO_CHAR(A.CERDATE, 'YYYY-MM-DD') CERDATE, B.BUSE, B.KORNAME, A.ROWID, A.USE, B.JUMIN3 BJUMIN3 ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_MSTS A, KOSMOS_ADM.INSA_MST B ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_MSTS A, ADMIN.INSA_MST B ";
                 SQL = SQL + ComNum.VBLF + " WHERE A.SABUN = B.SABUN ";
                 SQL = SQL + ComNum.VBLF + "   AND A.UDATE >= TO_DATE('" + DtpSDate.Value.ToShortDateString() + "','YYYY-MM-DD')  ";
                 SQL = SQL + ComNum.VBLF + "   AND trunc(A.UDATE) <= TO_DATE('" + DtpEDate.Value.ToShortDateString() + "','YYYY-MM-DD')  ";                
@@ -602,7 +602,7 @@ namespace ComLibB
 
                     if (clsCertWork.ROAMING_NOVIEW_FORM(strJUMIN, strCERTPASS) == true)
                     {
-                        SQL = " UPDATE KOSMOS_ADM.INSA_MSTS SET ";
+                        SQL = " UPDATE ADMIN.INSA_MSTS SET ";
                         SQL = SQL + ComNum.VBLF + " CERDATE = TO_DATE('" + clsPublic.GstrSysDate + " " + clsPublic.GstrSysTime + "','YYYY-MM-DD HH24:MI'), ";
                         SQL = SQL + ComNum.VBLF + " CERTIOK = '1' ";
                         SQL = SQL + ComNum.VBLF + "  WHERE SABUN = '" + strSABUN + "' ";
@@ -622,7 +622,7 @@ namespace ComLibB
                     }
                     else
                     {
-                        SQL = " UPDATE KOSMOS_ADM.INSA_MSTS SET ";
+                        SQL = " UPDATE ADMIN.INSA_MSTS SET ";
                         SQL = SQL + ComNum.VBLF + " CERDATE = TO_DATE('" + clsPublic.GstrSysDate + " " + clsPublic.GstrSysTime + "','YYYY-MM-DD HH24:MI'), ";
                         SQL = SQL + ComNum.VBLF + " CERTIOK = '0' ";
                         SQL = SQL + ComNum.VBLF + "  WHERE SABUN = '" + strSABUN + "' ";
@@ -678,7 +678,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = SQL + ComNum.VBLF + "SELECT IMAGE FROM KOSMOS_ADM.INSA_IMAGE ";
+                SQL = SQL + ComNum.VBLF + "SELECT IMAGE FROM ADMIN.INSA_IMAGE ";
                 SQL = SQL + ComNum.VBLF + " WHERE SABUN = '" + ComFunc.SetAutoZero(strSABUN, 6) + "' ";
 
                 SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);

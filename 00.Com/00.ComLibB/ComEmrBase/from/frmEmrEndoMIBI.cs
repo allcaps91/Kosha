@@ -76,13 +76,13 @@ namespace ComEmrBase
             {
                 SQL = "";
                 SQL = " SELECT ROOMCODE, PANO, SNAME, AGE, SEX, GBDRG, B.DRNAME, TO_CHAR(INDATE,'YYYY-MM-DD') INDATE, DEPTCODE, A.DRCODE, 'I' GUBUN";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.IPD_NEW_MASTER A, KOSMOS_PMPA.BAS_DOCTOR B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.IPD_NEW_MASTER A, ADMIN.BAS_DOCTOR B";
                 SQL = SQL + ComNum.VBLF + "  WHERE a.DrCode = b.DrCode";
                 SQL = SQL + ComNum.VBLF + "    AND (JDATE = TO_DATE('1900-01-01','YYYY-MM-DD') OR OUTDATE = TO_DATE('" + strToDate + "','YYYY-MM-DD'))";
                 SQL = SQL + ComNum.VBLF + "    AND PANO IN (";
                 SQL = SQL + ComNum.VBLF + "   SELECT A1.PTNO";
-                SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_OCS.ENDO_JUPMST A1,";
-                SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_ORDERCODE b1";
+                SQL = SQL + ComNum.VBLF + "     FROM ADMIN.ENDO_JUPMST A1,";
+                SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_ORDERCODE b1";
                 SQL = SQL + ComNum.VBLF + "    Where A1.OrderCode = b1.OrderCode";
                 SQL = SQL + ComNum.VBLF + "          AND A1.BDATE < TRUNC (SYSDATE + 1)";
                 SQL = SQL + ComNum.VBLF + "          AND (B1.SLIPNO = '0044' OR B1.SLIPNO = '0064' OR B1.SLIPNO = '0105')";
@@ -93,13 +93,13 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "          AND A1.GBIO = 'I')";
                 SQL = SQL + ComNum.VBLF + " Union All";
                 SQL = SQL + ComNum.VBLF + " SELECT 0 ROOMCODE, PANO, SNAME, AGE, SEX, '' GBDRG, B.DRNAME, TO_CHAR(BDATE,'YYYY-MM-DD') INDATE, DEPTCODE, A.DRCODE, 'O' GUBUN";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.OPD_MASTER A, KOSMOS_PMPA.BAS_DOCTOR B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OPD_MASTER A, ADMIN.BAS_DOCTOR B";
                 SQL = SQL + ComNum.VBLF + "  WHERE a.DrCode = b.DrCode";
                 SQL = SQL + ComNum.VBLF + "    AND A.BDATE = TO_DATE('" + strToDate + "','YYYY-MM-DD')";
                 SQL = SQL + ComNum.VBLF + "  AND PANO IN (";
                 SQL = SQL + ComNum.VBLF + "   SELECT A1.PTNO";
-                SQL = SQL + ComNum.VBLF + "     FROM KOSMOS_OCS.ENDO_JUPMST A1,";
-                SQL = SQL + ComNum.VBLF + "          KOSMOS_OCS.OCS_ORDERCODE b1";
+                SQL = SQL + ComNum.VBLF + "     FROM ADMIN.ENDO_JUPMST A1,";
+                SQL = SQL + ComNum.VBLF + "          ADMIN.OCS_ORDERCODE b1";
                 SQL = SQL + ComNum.VBLF + "    Where A1.OrderCode = b1.OrderCode";
                 SQL = SQL + ComNum.VBLF + "          AND A1.BDATE < TRUNC (SYSDATE + 1)";
                 SQL = SQL + ComNum.VBLF + "          AND (B1.SLIPNO = '0044' OR B1.SLIPNO = '0064' OR B1.SLIPNO = '0105')";
@@ -139,13 +139,13 @@ namespace ComEmrBase
 
                         SQL = "";
                         SQL = " SELECT CHARTDATE, CHARTTIME, USEID, FORMNO";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.EMRXMLMST";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.EMRXMLMST";
                         SQL = SQL + ComNum.VBLF + "WHERE FORMNO IN (2429, 2430, 2431, 2433, 2467)";
                         SQL = SQL + ComNum.VBLF + "  AND PTNO = '" + strPtNo + "'";
                         SQL = SQL + ComNum.VBLF + "  AND CHARTDATE = '" +strToDate.Replace("-", "") + "'";
                         SQL = SQL + ComNum.VBLF + "UNION ALL";
                         SQL = SQL + ComNum.VBLF + " SELECT CHARTDATE, CHARTTIME, CHARTUSEID, FORMNO";
-                        SQL = SQL + ComNum.VBLF + " FROM KOSMOS_EMR.AEMRCHARTMST";
+                        SQL = SQL + ComNum.VBLF + " FROM ADMIN.AEMRCHARTMST";
                         SQL = SQL + ComNum.VBLF + "WHERE FORMNO IN (2429, 2430, 2431, 2433, 2467)";
                         SQL = SQL + ComNum.VBLF + "  AND PTNO = '" + strPtNo + "'";
                         SQL = SQL + ComNum.VBLF + "  AND CHARTDATE = '" + strToDate.Replace("-", "") + "'";

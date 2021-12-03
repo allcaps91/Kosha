@@ -1002,11 +1002,11 @@ namespace ComEmrBase
             //SQL.AppendLine( "             , F.FORMNAME");
             //if (pForm.FmOLDGB == 1)
             //{
-            //    SQL.AppendLine("     ,(SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = LTRIM(C.USEID, '0')) AS NAME");
+            //    SQL.AppendLine("     ,(SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = LTRIM(C.USEID, '0')) AS NAME");
             //}
             //else
             //{
-            //    SQL.AppendLine("     ,(SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = LTRIM(C.CHARTUSEID, '0')) AS NAME");
+            //    SQL.AppendLine("     ,(SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = LTRIM(C.CHARTUSEID, '0')) AS NAME");
             //}
 
             //SQL.AppendLine("             , 0 AS EMRNOHIS");
@@ -1014,18 +1014,18 @@ namespace ComEmrBase
 
             //if (pForm.FmOLDGB == 1)
             //{
-            //    SQL.AppendLine("FROM KOSMOS_EMR.EMRXMLMST C ");
+            //    SQL.AppendLine("FROM ADMIN.EMRXMLMST C ");
             //}
             //else
             //{
-            //    SQL.AppendLine("FROM KOSMOS_EMR.AEMRCHARTMST C ");
+            //    SQL.AppendLine("FROM ADMIN.AEMRCHARTMST C ");
             //}
 
-            //SQL.AppendLine( "          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+            //SQL.AppendLine( "          INNER JOIN ADMIN.AEMRFORM F ");
             //SQL.AppendLine( "                  ON F.FORMNO       = C.FORMNO ");
             //SQL.AppendLine( "                 AND F.GRPFORMNO    = 1001 ");
             //SQL.AppendLine( "                 AND F.UPDATENO     = " + pForm.FmUPDATENO);
-            //SQL.AppendLine( "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+            //SQL.AppendLine( "          INNER JOIN ADMIN.BAS_CLINICDEPT D");
             //SQL.AppendLine( "                  ON C.MEDDEPTCD = D.DEPTCODE");
             //SQL.AppendLine( "         WHERE C.PTNO       = '" + AcpEmr.ptNo + "' ");
             //SQL.AppendLine( "           AND C.FORMNO  = " + pForm.FmFORMNO);
@@ -1076,11 +1076,11 @@ namespace ComEmrBase
             //if (isImport == true)
             //{
             //    SQL.AppendLine( "                  AND ( ");
-            //    SQL.AppendLine( "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP");
+            //    SQL.AppendLine( "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP");
             //    SQL.AppendLine( "                                 WHERE IMP.EMRNO = C.EMRNO");
             //    SQL.AppendLine( "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )");
             //    SQL.AppendLine( "                         OR");
-            //    SQL.AppendLine( "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP");
+            //    SQL.AppendLine( "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP");
             //    SQL.AppendLine( "                                 WHERE IMP.EMRNO = C.EMRNO");
             //    //SQL.AppendLine( "                                 AND IMP.EMRNOHIS = C.EMRNOHIS");
             //    SQL.AppendLine( "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )");
@@ -1137,14 +1137,14 @@ namespace ComEmrBase
             SQL.AppendLine("             , F.UPDATENO");
             SQL.AppendLine("             , F.OLDGB");
             SQL.AppendLine("             , F.FORMNAME");
-            SQL.AppendLine("             , (SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = LTRIM(C.USEID, '0')) AS NAME");
+            SQL.AppendLine("             , (SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = LTRIM(C.USEID, '0')) AS NAME");
             SQL.AppendLine("             , 0 AS EMRNOHIS");
-            SQL.AppendLine("  FROM KOSMOS_EMR.EMRXMLMST C ");
-            SQL.AppendLine("    INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+            SQL.AppendLine("  FROM ADMIN.EMRXMLMST C ");
+            SQL.AppendLine("    INNER JOIN ADMIN.AEMRFORM F ");
             SQL.AppendLine("       ON F.FORMNO       = C.FORMNO ");
             SQL.AppendLine("      AND F.GRPFORMNO    = 1001 ");
             SQL.AppendLine("      AND F.OLDGB = '1'");
-            SQL.AppendLine("    INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+            SQL.AppendLine("    INNER JOIN ADMIN.BAS_CLINICDEPT D");
             SQL.AppendLine("       ON C.MEDDEPTCD = D.DEPTCODE");
             SQL.AppendLine(" WHERE C.PTNO    = '" + AcpEmr.ptNo + "' ");
             SQL.AppendLine("   AND C.FORMNO  = " + pForm.FmFORMNO);
@@ -1195,11 +1195,11 @@ namespace ComEmrBase
             if (isImport == true)
             {
                 SQL.AppendLine("                  AND ( ");
-                SQL.AppendLine("                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP");
+                SQL.AppendLine("                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP");
                 SQL.AppendLine("                                 WHERE IMP.EMRNO = C.EMRNO");
                 if (clsType.User.DeptCode == "MN")
                 {
-                    SQL.AppendLine("                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))");
+                    SQL.AppendLine("                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))");
                 }
                 else
                 {
@@ -1207,7 +1207,7 @@ namespace ComEmrBase
                 }
                 
                 SQL.AppendLine("                         OR");
-                SQL.AppendLine("                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP");
+                SQL.AppendLine("                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP");
                 SQL.AppendLine("                                 WHERE IMP.EMRNO = C.EMRNO");
                 //SQL.AppendLine( "                                 AND IMP.EMRNOHIS = C.EMRNOHIS");
                 SQL.AppendLine("                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )");
@@ -1232,14 +1232,14 @@ namespace ComEmrBase
             SQL.AppendLine("             , F.UPDATENO");
             SQL.AppendLine("             , F.OLDGB");
             SQL.AppendLine("             , F.FORMNAME");
-            SQL.AppendLine("             , (SELECT NAME FROM KOSMOS_EMR.EMR_USERT WHERE USERID = C.CHARTUSEID) AS NAME");
+            SQL.AppendLine("             , (SELECT NAME FROM ADMIN.EMR_USERT WHERE USERID = C.CHARTUSEID) AS NAME");
             SQL.AppendLine("             , 0 AS EMRNOHIS");
-            SQL.AppendLine("  FROM KOSMOS_EMR.AEMRCHARTMST C ");
-            SQL.AppendLine("    INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+            SQL.AppendLine("  FROM ADMIN.AEMRCHARTMST C ");
+            SQL.AppendLine("    INNER JOIN ADMIN.AEMRFORM F ");
             SQL.AppendLine("       ON F.FORMNO       = C.FORMNO ");
             SQL.AppendLine("      AND F.GRPFORMNO    = 1001 ");
             SQL.AppendLine("      AND F.UPDATENO     = " + pForm.FmUPDATENO);
-            SQL.AppendLine("    INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+            SQL.AppendLine("    INNER JOIN ADMIN.BAS_CLINICDEPT D");
             SQL.AppendLine("       ON C.MEDDEPTCD = D.DEPTCODE");
             SQL.AppendLine(" WHERE C.PTNO    = '" + AcpEmr.ptNo + "' ");
             SQL.AppendLine("   AND C.FORMNO  = " + pForm.FmFORMNO);
@@ -1290,11 +1290,11 @@ namespace ComEmrBase
             if (isImport == true)
             {
                 SQL.AppendLine("                  AND ( ");
-                SQL.AppendLine("                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP");
+                SQL.AppendLine("                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP");
                 SQL.AppendLine("                                 WHERE IMP.EMRNO = C.EMRNO");
                 if (clsType.User.DeptCode == "MN")
                 {
-                    SQL.AppendLine("                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))");
+                    SQL.AppendLine("                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))");
                 }
                 else
                 {
@@ -1302,7 +1302,7 @@ namespace ComEmrBase
                 }
                 //SQL.AppendLine("                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )");
                 SQL.AppendLine("                         OR");
-                SQL.AppendLine("                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP");
+                SQL.AppendLine("                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP");
                 SQL.AppendLine("                                 WHERE IMP.EMRNO = C.EMRNO");
                 //SQL.AppendLine( "                                 AND IMP.EMRNOHIS = C.EMRNOHIS");
                 SQL.AppendLine("                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )");
@@ -1392,14 +1392,14 @@ namespace ComEmrBase
             SQL.AppendLine("             , F.FORMNAME");
             SQL.AppendLine("             , U.NAME");
             SQL.AppendLine("             , 0 AS EMRNOHIS");
-            SQL.AppendLine("          FROM KOSMOS_EMR.EMRXMLMST C ");
-            SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+            SQL.AppendLine("          FROM ADMIN.EMRXMLMST C ");
+            SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
             SQL.AppendLine("                  ON F.FORMNO       = C.FORMNO ");
             SQL.AppendLine("                 AND F.UPDATENO     = 1 ");
             SQL.AppendLine("                 AND F.GRPFORMNO    = 1001");
-            SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+            SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
             SQL.AppendLine("                  ON C.USEID = U.USERID                 ");
-            SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+            SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
             SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
             SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
             //SQL.AppendLine("           AND C.INOUTCLS   = '" + AcpEmr.inOutCls + "' ");
@@ -1485,14 +1485,14 @@ namespace ComEmrBase
             //    SQL.AppendLine("             , F.FORMNAME");
             //    SQL.AppendLine("             , U.NAME");
             //    SQL.AppendLine("             , 0 AS EMRNOHIS");
-            //    SQL.AppendLine("          FROM KOSMOS_EMR.EMRXMLMST C ");
-            //    SQL.AppendLine("         INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+            //    SQL.AppendLine("          FROM ADMIN.EMRXMLMST C ");
+            //    SQL.AppendLine("         INNER JOIN ADMIN.AEMRFORM F ");
             //    SQL.AppendLine("                 ON F.FORMNO    = C.FORMNO ");
             //    SQL.AppendLine("                AND F.UPDATENO  = 1 ");
             //    SQL.AppendLine("                AND F.GRPFORMNO = 1001");
-            //    SQL.AppendLine("         INNER JOIN KOSMOS_EMR.EMR_USERT U");
+            //    SQL.AppendLine("         INNER JOIN ADMIN.EMR_USERT U");
             //    SQL.AppendLine("                 ON C.USEID = U.USERID");
-            //    SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+            //    SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
             //    SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
             //    SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
             //    SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -1500,11 +1500,11 @@ namespace ComEmrBase
             //    if (isImport == true)
             //    {
             //        SQL.AppendLine("                  AND ( ");
-            //        SQL.AppendLine("                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP");
+            //        SQL.AppendLine("                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP");
             //        SQL.AppendLine("                                 WHERE IMP.EMRNO = C.EMRNO");
             //        SQL.AppendLine("                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )");
             //        SQL.AppendLine("                         OR");
-            //        SQL.AppendLine("                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP");
+            //        SQL.AppendLine("                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP");
             //        SQL.AppendLine("                                 WHERE IMP.EMRNO = C.EMRNO");
             //        //SQL.AppendLine("                                 AND IMP.EMRNOHIS = C.EMRNOHIS");
             //        SQL.AppendLine("                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )");
@@ -1533,14 +1533,14 @@ namespace ComEmrBase
                 SQL.AppendLine("             , F.FORMNAME");
                 SQL.AppendLine("             , U.NAME");
                 SQL.AppendLine("             , 0 AS EMRNOHIS");
-                SQL.AppendLine("          FROM KOSMOS_EMR.EMRXMLMST C ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                SQL.AppendLine("          FROM ADMIN.EMRXMLMST C ");
+                SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 SQL.AppendLine("                  ON C.FORMNO       = F.FORMNO ");
                 SQL.AppendLine("                 AND F.UPDATENO     = 1 ");
                 SQL.AppendLine("                 AND F.GRPFORMNO    = 1000");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 SQL.AppendLine("                  ON C.USEID = U.USERID                 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
                 SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -1582,14 +1582,14 @@ namespace ComEmrBase
                 SQL.AppendLine("             , F.FORMNAME");
                 SQL.AppendLine("             , U.NAME");
                 SQL.AppendLine("             , 0 AS EMRNOHIS");
-                SQL.AppendLine("          FROM KOSMOS_EMR.EMRXMLMST C ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                SQL.AppendLine("          FROM ADMIN.EMRXMLMST C ");
+                SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 SQL.AppendLine("                  ON F.FORMNO     = C.FORMNO ");
                 SQL.AppendLine("                 AND F.UPDATENO   = 1 ");
                 SQL.AppendLine("                 AND F.GRPFORMNO  = 1002");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 SQL.AppendLine("                  ON C.USEID = U.USERID                 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
                 SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -1633,14 +1633,14 @@ namespace ComEmrBase
                 SQL.AppendLine("             , F.FORMNAME");
                 SQL.AppendLine("             , U.NAME");
                 SQL.AppendLine("             , 0 AS EMRNOHIS");
-                SQL.AppendLine("          FROM KOSMOS_EMR.EMRXMLMST C ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                SQL.AppendLine("          FROM ADMIN.EMRXMLMST C ");
+                SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 SQL.AppendLine("                  ON F.FORMNO     = C.FORMNO ");
                 SQL.AppendLine("                 AND F.UPDATENO   = 1 ");
                 SQL.AppendLine("                 AND F.GRPFORMNO  = 1009");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 SQL.AppendLine("                  ON C.USEID = U.USERID                 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
                 SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -1677,14 +1677,14 @@ namespace ComEmrBase
                 SQL.AppendLine("             , F.FORMNAME");
                 SQL.AppendLine("             , U.NAME");
                 SQL.AppendLine("             , 0 AS EMRNOHIS");
-                SQL.AppendLine("          FROM KOSMOS_EMR.EMRXMLMST C ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                SQL.AppendLine("          FROM ADMIN.EMRXMLMST C ");
+                SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 SQL.AppendLine("                  ON F.FORMNO     = C.FORMNO ");
                 SQL.AppendLine("                 AND F.UPDATENO   = 1 ");
                 SQL.AppendLine("                 AND F.GRPFORMNO  = 1010 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 SQL.AppendLine("                  ON C.USEID = U.USERID                 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
                 SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -1728,14 +1728,14 @@ namespace ComEmrBase
                 SQL.AppendLine("             , F.FORMNAME");
                 SQL.AppendLine("             , U.NAME");
                 SQL.AppendLine("             , 0 AS EMRNOHIS");
-                SQL.AppendLine("          FROM  KOSMOS_EMR.EMRXMLMST C ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                SQL.AppendLine("          FROM  ADMIN.EMRXMLMST C ");
+                SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 SQL.AppendLine("                  ON F.FORMNO       = C.FORMNO ");
                 SQL.AppendLine("                 AND F.UPDATENO     = 1 ");
                 SQL.AppendLine("                 AND F.GRPFORMNO    = 1004 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 SQL.AppendLine("                  ON C.USEID = U.USERID                 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
                 SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -1778,14 +1778,14 @@ namespace ComEmrBase
                 SQL.AppendLine("             , F.FORMNAME");
                 SQL.AppendLine("             , U.NAME");
                 SQL.AppendLine("             , 0 AS EMRNOHIS");
-                SQL.AppendLine("          FROM KOSMOS_EMR.EMRXMLMST C ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                SQL.AppendLine("          FROM ADMIN.EMRXMLMST C ");
+                SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 SQL.AppendLine("                  ON F.FORMNO       = C.FORMNO ");
                 SQL.AppendLine("                 AND F.UPDATENO     = 1");
                 SQL.AppendLine("                 AND F.GRPFORMNO    = 1075 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 SQL.AppendLine("                  ON C.USEID = U.USERID                 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
                 SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -1830,14 +1830,14 @@ namespace ComEmrBase
             SQL.AppendLine("             , F.FORMNAME");
             SQL.AppendLine("             , U.NAME");
             SQL.AppendLine("             , C.EMRNOHIS");
-            SQL.AppendLine("          FROM KOSMOS_EMR.AEMRCHARTMST C ");
-            SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+            SQL.AppendLine("          FROM ADMIN.AEMRCHARTMST C ");
+            SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
             SQL.AppendLine("                  ON F.FORMNO       = C.FORMNO ");
             SQL.AppendLine("                 AND F.UPDATENO     = C.UPDATENO ");
             SQL.AppendLine("                 AND F.GRPFORMNO    = 1001 ");
-            SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+            SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
             SQL.AppendLine("                  ON C.CHARTUSEID = U.USERID                 ");
-            SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+            SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
             SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
             SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
             SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -1879,14 +1879,14 @@ namespace ComEmrBase
                 //SQL.AppendLine("             , F.FORMNAME");
                 //SQL.AppendLine("             , U.NAME");
                 //SQL.AppendLine("             , C.EMRNOHIS");
-                //SQL.AppendLine("          FROM KOSMOS_EMR.AEMRCHARTMST C ");
-                //SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                //SQL.AppendLine("          FROM ADMIN.AEMRCHARTMST C ");
+                //SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 //SQL.AppendLine("                  ON F.FORMNO       = C.FORMNO ");
                 //SQL.AppendLine("                 AND F.UPDATENO     = C.UPDATENO ");
                 //SQL.AppendLine("                 AND F.GRPFORMNO    = 1001 ");
-                //SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                //SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 //SQL.AppendLine("                  ON C.CHARTUSEID = U.USERID                 ");
-                //SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                //SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 //SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 //SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
                 //SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -1920,14 +1920,14 @@ namespace ComEmrBase
                 SQL.AppendLine("             , F.FORMNAME");
                 SQL.AppendLine("             , U.NAME");
                 SQL.AppendLine("             , C.EMRNOHIS");
-                SQL.AppendLine("          FROM KOSMOS_EMR.AEMRCHARTMST C ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                SQL.AppendLine("          FROM ADMIN.AEMRCHARTMST C ");
+                SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 SQL.AppendLine("                  ON F.FORMNO       = C.FORMNO ");
                 SQL.AppendLine("                 AND F.UPDATENO     = C.UPDATENO ");
                 SQL.AppendLine("                 AND F.GRPFORMNO    = 1000 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 SQL.AppendLine("                  ON C.CHARTUSEID = U.USERID                 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
                 SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -1966,14 +1966,14 @@ namespace ComEmrBase
                 SQL.AppendLine("             , F.FORMNAME");
                 SQL.AppendLine("             , U.NAME");
                 SQL.AppendLine("             , C.EMRNOHIS");
-                SQL.AppendLine("          FROM KOSMOS_EMR.AEMRCHARTMST C ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                SQL.AppendLine("          FROM ADMIN.AEMRCHARTMST C ");
+                SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 SQL.AppendLine("                  ON F.FORMNO    = C.FORMNO ");
                 SQL.AppendLine("                 AND F.UPDATENO     = C.UPDATENO ");
                 SQL.AppendLine("                 AND F.GRPFORMNO = 1002 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 SQL.AppendLine("                  ON C.CHARTUSEID = U.USERID                 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine("         WHERE C.PTNO        = '" + ptNo + "' ");
                 SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -2010,14 +2010,14 @@ namespace ComEmrBase
                 SQL.AppendLine("             , F.FORMNAME");
                 SQL.AppendLine("             , U.NAME");
                 SQL.AppendLine("             , EMRNOHIS");
-                SQL.AppendLine("          FROM KOSMOS_EMR.AEMRCHARTMST C ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                SQL.AppendLine("          FROM ADMIN.AEMRCHARTMST C ");
+                SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 SQL.AppendLine("                  ON F.FORMNO     = C.FORMNO ");
                 SQL.AppendLine("                 AND F.UPDATENO   = C.UPDATENO ");
                 SQL.AppendLine("                 AND F.GRPFORMNO IN (1009, 1010) ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 SQL.AppendLine("                  ON C.CHARTUSEID = U.USERID                 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
                 SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -2074,14 +2074,14 @@ namespace ComEmrBase
                 SQL.AppendLine("             , F.FORMNAME");
                 SQL.AppendLine("             , U.NAME");
                 SQL.AppendLine("             , C.EMRNOHIS");
-                SQL.AppendLine("          FROM KOSMOS_EMR.AEMRCHARTMST C ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                SQL.AppendLine("          FROM ADMIN.AEMRCHARTMST C ");
+                SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 SQL.AppendLine("                  ON F.FORMNO       = C.FORMNO ");
                 SQL.AppendLine("                 AND F.UPDATENO     = C.UPDATENO ");
                 SQL.AppendLine("                 AND F.GRPFORMNO    = 1004 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 SQL.AppendLine("                  ON C.CHARTUSEID = U.USERID                 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
                 SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -2128,14 +2128,14 @@ namespace ComEmrBase
                 SQL.AppendLine("             , F.FORMNAME");
                 SQL.AppendLine("             , U.NAME");
                 SQL.AppendLine("             , C.EMRNOHIS");
-                SQL.AppendLine("          FROM KOSMOS_EMR.AEMRCHARTMST C ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.AEMRFORM F ");
+                SQL.AppendLine("          FROM ADMIN.AEMRCHARTMST C ");
+                SQL.AppendLine("          INNER JOIN ADMIN.AEMRFORM F ");
                 SQL.AppendLine("                  ON F.FORMNO       = C.FORMNO ");
                 SQL.AppendLine("                 AND F.UPDATENO     = C.UPDATENO ");
                 SQL.AppendLine("                 AND F.GRPFORMNO    = 1075 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_EMR.EMR_USERT U");
+                SQL.AppendLine("          INNER JOIN ADMIN.EMR_USERT U");
                 SQL.AppendLine("                  ON C.CHARTUSEID = U.USERID                 ");
-                SQL.AppendLine("          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D");
+                SQL.AppendLine("          INNER JOIN ADMIN.BAS_CLINICDEPT D");
                 SQL.AppendLine("                  ON C.MEDDEPTCD = D.DEPTCODE");
                 SQL.AppendLine("         WHERE C.PTNO       = '" + ptNo + "' ");
                 SQL.AppendLine("           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ");
@@ -2152,11 +2152,11 @@ namespace ComEmrBase
 
             if (isImport == true)
             {
-                SQL.AppendLine("WHERE EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP");
+                SQL.AppendLine("WHERE EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP");
                 SQL.AppendLine("         WHERE IMP.EMRNO = C.EMRNO");
                 if (clsType.User.DeptCode == "MN")
                 {
-                    SQL.AppendLine("                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))");
+                    SQL.AppendLine("                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))");
                 }
                 else
                 {
@@ -2165,12 +2165,12 @@ namespace ComEmrBase
 
 //                SQL.AppendLine("         AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )");
                 SQL.AppendLine("      OR");
-                SQL.AppendLine("      EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP");
+                SQL.AppendLine("      EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP");
                 SQL.AppendLine("         WHERE IMP.EMRNO = C.EMRNO");
                 //                SQL.AppendLine("         AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )");
                 if (clsType.User.DeptCode == "MN")
                 {
-                    SQL.AppendLine("                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))");
+                    SQL.AppendLine("                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))");
                 }
                 else
                 {
@@ -2242,14 +2242,14 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
             SQL = SQL + ComNum.VBLF + "             , U.NAME";
             SQL = SQL + ComNum.VBLF + "             , 0 AS EMRNOHIS";
-            SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.EMRXMLMST C ";
-            SQL = SQL + ComNum.VBLF + "         INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+            SQL = SQL + ComNum.VBLF + "          FROM ADMIN.EMRXMLMST C ";
+            SQL = SQL + ComNum.VBLF + "         INNER JOIN ADMIN.AEMRFORM F ";
             SQL = SQL + ComNum.VBLF + "                 ON F.FORMNO    = C.FORMNO ";
             SQL = SQL + ComNum.VBLF + "                AND F.UPDATENO  = 1 ";
             SQL = SQL + ComNum.VBLF + "                AND F.GRPFORMNO = 1001";
-            SQL = SQL + ComNum.VBLF + "         INNER JOIN KOSMOS_EMR.EMR_USERT U";
+            SQL = SQL + ComNum.VBLF + "         INNER JOIN ADMIN.EMR_USERT U";
             SQL = SQL + ComNum.VBLF + "                 ON C.USEID = U.USERID";
-            SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+            SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
             SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
             SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
             SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -2257,11 +2257,11 @@ namespace ComEmrBase
             if (isImport == true)
             {
                 SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                 SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                 if (clsType.User.DeptCode == "MN")
                 {
-                    SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                    SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                 }
                 else
                 {
@@ -2269,7 +2269,7 @@ namespace ComEmrBase
                 }
                 //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                 SQL = SQL + ComNum.VBLF + "                         OR";
-                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                 SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                 //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                 SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -2295,14 +2295,14 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
                 SQL = SQL + ComNum.VBLF + "             , U.NAME";
                 SQL = SQL + ComNum.VBLF + "             , 0 AS EMRNOHIS";
-                SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.EMRXMLMST C ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+                SQL = SQL + ComNum.VBLF + "          FROM ADMIN.EMRXMLMST C ";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
                 SQL = SQL + ComNum.VBLF + "                  ON C.FORMNO       = F.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.UPDATENO     = 1 ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO    = 1000";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
                 SQL = SQL + ComNum.VBLF + "                  ON C.USEID = U.USERID                 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
                 SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
                 SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
                 SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -2316,11 +2316,11 @@ namespace ComEmrBase
                 if (isImport == true)
                 {
                     SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     if (clsType.User.DeptCode == "MN")
                     {
-                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                     }
                     else
                     {
@@ -2329,7 +2329,7 @@ namespace ComEmrBase
 
 //                    SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                     SQL = SQL + ComNum.VBLF + "                         OR";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -2360,14 +2360,14 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
                 SQL = SQL + ComNum.VBLF + "             , U.NAME";
                 SQL = SQL + ComNum.VBLF + "             , 0 AS EMRNOHIS";
-                SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.EMRXMLMST C ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+                SQL = SQL + ComNum.VBLF + "          FROM ADMIN.EMRXMLMST C ";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
                 SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO     = C.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.UPDATENO   = 1 ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO  = 1002";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
                 SQL = SQL + ComNum.VBLF + "                  ON C.USEID = U.USERID                 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
                 SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
                 SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
                 SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -2381,11 +2381,11 @@ namespace ComEmrBase
                 if (isImport == true)
                 {
                     SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     if (clsType.User.DeptCode == "MN")
                     {
-                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                     }
                     else
                     {
@@ -2394,7 +2394,7 @@ namespace ComEmrBase
 
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                     SQL = SQL + ComNum.VBLF + "                         OR";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -2426,14 +2426,14 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
                 SQL = SQL + ComNum.VBLF + "             , U.NAME";
                 SQL = SQL + ComNum.VBLF + "             , 0 AS EMRNOHIS";
-                SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.EMRXMLMST C ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+                SQL = SQL + ComNum.VBLF + "          FROM ADMIN.EMRXMLMST C ";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
                 SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO     = C.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.UPDATENO   = 1 ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO  = 1009";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
                 SQL = SQL + ComNum.VBLF + "                  ON C.USEID = U.USERID                 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
                 SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
                 SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
                 SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -2447,11 +2447,11 @@ namespace ComEmrBase
                 if (isImport == true)
                 {
                     SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     if (clsType.User.DeptCode == "MN")
                     {
-                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                     }
                     else
                     {
@@ -2460,7 +2460,7 @@ namespace ComEmrBase
 
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                     SQL = SQL + ComNum.VBLF + "                         OR";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -2484,14 +2484,14 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
                 SQL = SQL + ComNum.VBLF + "             , U.NAME";
                 SQL = SQL + ComNum.VBLF + "             , 0 AS EMRNOHIS";
-                SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.EMRXMLMST C ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+                SQL = SQL + ComNum.VBLF + "          FROM ADMIN.EMRXMLMST C ";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
                 SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO     = C.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.UPDATENO   = 1 ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO  = 1010 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
                 SQL = SQL + ComNum.VBLF + "                  ON C.USEID = U.USERID                 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
                 SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
                 SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
                 SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -2505,11 +2505,11 @@ namespace ComEmrBase
                 if (isImport == true)
                 {
                     SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     if (clsType.User.DeptCode == "MN")
                     {
-                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                     }
                     else
                     {
@@ -2517,7 +2517,7 @@ namespace ComEmrBase
                     }
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                     SQL = SQL + ComNum.VBLF + "                         OR";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -2547,14 +2547,14 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
             SQL = SQL + ComNum.VBLF + "             , U.NAME";
             SQL = SQL + ComNum.VBLF + "             , 0 AS EMRNOHIS";
-            SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.EMRXMLMST C ";
-            SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+            SQL = SQL + ComNum.VBLF + "          FROM ADMIN.EMRXMLMST C ";
+            SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
             SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO       = C.FORMNO ";
             SQL = SQL + ComNum.VBLF + "                 AND F.UPDATENO     = 1 ";
             SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO    = 1001";
-            SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+            SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
             SQL = SQL + ComNum.VBLF + "                  ON C.USEID = U.USERID                 ";
-            SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+            SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
             SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
             SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
             //SQL = SQL + ComNum.VBLF + "           AND C.INOUTCLS   = '" + AcpEmr.inOutCls + "' ";
@@ -2605,11 +2605,11 @@ namespace ComEmrBase
             if (isImport == true)
             {
                 SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                 SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                 if (clsType.User.DeptCode == "MN")
                 {
-                    SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                    SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                 }
                 else
                 {
@@ -2617,7 +2617,7 @@ namespace ComEmrBase
                 }
                 //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                 SQL = SQL + ComNum.VBLF + "                         OR";
-                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                 SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                 //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                 SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -2647,14 +2647,14 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
                 SQL = SQL + ComNum.VBLF + "             , U.NAME";
                 SQL = SQL + ComNum.VBLF + "             , 0 AS EMRNOHIS";
-                SQL = SQL + ComNum.VBLF + "          FROM  KOSMOS_EMR.EMRXMLMST C ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+                SQL = SQL + ComNum.VBLF + "          FROM  ADMIN.EMRXMLMST C ";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
                 SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO       = C.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.UPDATENO     = 1 ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO    = 1004 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
                 SQL = SQL + ComNum.VBLF + "                  ON C.USEID = U.USERID                 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
                 SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
                 SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
                 SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -2668,11 +2668,11 @@ namespace ComEmrBase
                 if (isImport == true)
                 {
                     SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     if (clsType.User.DeptCode == "MN")
                     {
-                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                     }
                     else
                     {
@@ -2680,7 +2680,7 @@ namespace ComEmrBase
                     }
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                     SQL = SQL + ComNum.VBLF + "                         OR";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -2713,13 +2713,13 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
                 SQL = SQL + ComNum.VBLF + "             , U.NAME";
                 SQL = SQL + ComNum.VBLF + "             , 0 AS EMRNOHIS";
-                SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.EMRXMLMST C ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+                SQL = SQL + ComNum.VBLF + "          FROM ADMIN.EMRXMLMST C ";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
                 SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO       = C.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO    = 1075 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
                 SQL = SQL + ComNum.VBLF + "                  ON C.USEID = U.USERID                 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
                 SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
                 SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
                 SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -2733,11 +2733,11 @@ namespace ComEmrBase
                 if (isImport == true)
                 {
                     SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     if (clsType.User.DeptCode == "MN")
                     {
-                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                     }
                     else
                     {
@@ -2745,7 +2745,7 @@ namespace ComEmrBase
                     }
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                     SQL = SQL + ComNum.VBLF + "                         OR";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -2779,13 +2779,13 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
             SQL = SQL + ComNum.VBLF + "             , U.NAME";
             SQL = SQL + ComNum.VBLF + "             , C.EMRNOHIS";
-            SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.AEMRCHARTMST C ";
-            SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+            SQL = SQL + ComNum.VBLF + "          FROM ADMIN.AEMRCHARTMST C ";
+            SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
             SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO       = C.FORMNO ";
             SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO    = 1001 ";
-            SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+            SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
             SQL = SQL + ComNum.VBLF + "                  ON C.USEID = U.USERID                 ";
-            SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+            SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
             SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
             SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
             SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -2799,11 +2799,11 @@ namespace ComEmrBase
             if (isImport == true)
             {
                 SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                 SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                 if (clsType.User.DeptCode == "MN")
                 {
-                    SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                    SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                 }
                 else
                 {
@@ -2811,7 +2811,7 @@ namespace ComEmrBase
                 }
                 //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                 SQL = SQL + ComNum.VBLF + "                         OR";
-                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                 SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                 //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                 SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -2838,13 +2838,13 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
                 SQL = SQL + ComNum.VBLF + "             , U.NAME";
                 SQL = SQL + ComNum.VBLF + "             , C.EMRNOHIS";
-                SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.AEMRCHARTMST C ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+                SQL = SQL + ComNum.VBLF + "          FROM ADMIN.AEMRCHARTMST C ";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
                 SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO       = C.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO    = 1000 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
                 SQL = SQL + ComNum.VBLF + "                  ON C.CHARTUSEID = U.USERID                 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
                 SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
                 SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
                 SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -2859,11 +2859,11 @@ namespace ComEmrBase
                 if (isImport == true)
                 {
                     SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     if (clsType.User.DeptCode == "MN")
                     {
-                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                     }
                     else
                     {
@@ -2871,7 +2871,7 @@ namespace ComEmrBase
                     }
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                     SQL = SQL + ComNum.VBLF + "                         OR";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -2903,13 +2903,13 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
                 SQL = SQL + ComNum.VBLF + "             , U.NAME";
                 SQL = SQL + ComNum.VBLF + "             , C.EMRNOHIS";
-                SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.AEMRCHARTMST C ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+                SQL = SQL + ComNum.VBLF + "          FROM ADMIN.AEMRCHARTMST C ";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
                 SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO    = C.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO = 1002 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
                 SQL = SQL + ComNum.VBLF + "                  ON C.CHARTUSEID = U.USERID                 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
                 SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
                 SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO        = '" + ptNo + "' ";
                 SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -2923,11 +2923,11 @@ namespace ComEmrBase
                 if (isImport == true)
                 {
                     SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     if (clsType.User.DeptCode == "MN")
                     {
-                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                     }
                     else
                     {
@@ -2935,7 +2935,7 @@ namespace ComEmrBase
                     }
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                     SQL = SQL + ComNum.VBLF + "                         OR";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -2967,13 +2967,13 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
                 SQL = SQL + ComNum.VBLF + "             , U.NAME";
                 SQL = SQL + ComNum.VBLF + "             , C.EMRNOHIS";
-                SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.AEMRCHARTMST C ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+                SQL = SQL + ComNum.VBLF + "          FROM ADMIN.AEMRCHARTMST C ";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
                 SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO       = C.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO    = 1001 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
                 SQL = SQL + ComNum.VBLF + "                  ON C.CHARTUSEID = U.USERID                 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
                 SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
                 SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
                 SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -2987,11 +2987,11 @@ namespace ComEmrBase
                 if (isImport == true)
                 {
                     SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     if (clsType.User.DeptCode == "MN")
                     {
-                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                     }
                     else
                     {
@@ -2999,7 +2999,7 @@ namespace ComEmrBase
                     }
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                     SQL = SQL + ComNum.VBLF + "                         OR";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -3031,13 +3031,13 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
                 SQL = SQL + ComNum.VBLF + "             , U.NAME";
                 SQL = SQL + ComNum.VBLF + "             , C.EMRNOHIS";
-                SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.AEMRCHARTMST C ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+                SQL = SQL + ComNum.VBLF + "          FROM ADMIN.AEMRCHARTMST C ";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
                 SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO       = C.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO    = 1004 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
                 SQL = SQL + ComNum.VBLF + "                  ON C.CHARTUSEID = U.USERID                 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
                 SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
                 SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
                 SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -3051,11 +3051,11 @@ namespace ComEmrBase
                 if (isImport == true)
                 {
                     SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     if (clsType.User.DeptCode == "MN")
                     {
-                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                     }
                     else
                     {
@@ -3063,7 +3063,7 @@ namespace ComEmrBase
                     }
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                     SQL = SQL + ComNum.VBLF + "                         OR";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -3096,13 +3096,13 @@ namespace ComEmrBase
                 SQL = SQL + ComNum.VBLF + "             , F.FORMNAME";
                 SQL = SQL + ComNum.VBLF + "             , U.NAME";
                 SQL = SQL + ComNum.VBLF + "             , C.EMRNOHIS";
-                SQL = SQL + ComNum.VBLF + "          FROM KOSMOS_EMR.AEMRCHARTMST C ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.AEMRFORM F ";
+                SQL = SQL + ComNum.VBLF + "          FROM ADMIN.AEMRCHARTMST C ";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.AEMRFORM F ";
                 SQL = SQL + ComNum.VBLF + "                  ON F.FORMNO       = C.FORMNO ";
                 SQL = SQL + ComNum.VBLF + "                 AND F.GRPFORMNO    = 1075 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_EMR.EMR_USERT U";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.EMR_USERT U";
                 SQL = SQL + ComNum.VBLF + "                  ON C.CHARTUSEID = U.USERID                 ";
-                SQL = SQL + ComNum.VBLF + "          INNER JOIN KOSMOS_PMPA.BAS_CLINICDEPT D";
+                SQL = SQL + ComNum.VBLF + "          INNER JOIN ADMIN.BAS_CLINICDEPT D";
                 SQL = SQL + ComNum.VBLF + "                  ON C.MEDDEPTCD = D.DEPTCODE";
                 SQL = SQL + ComNum.VBLF + "         WHERE C.PTNO       = '" + ptNo + "' ";
                 SQL = SQL + ComNum.VBLF + "           AND C.CHARTDATE >= '" + dtpSDate.Value.ToString("yyyyMMdd") + "' ";
@@ -3110,11 +3110,11 @@ namespace ComEmrBase
                 if (isImport == true)
                 {
                     SQL = SQL + ComNum.VBLF + "                  AND ( ";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTIMPORT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTIMPORT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     if (clsType.User.DeptCode == "MN")
                     {
-                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM KOSMOS_OCS.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
+                        SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER IN (SELECT DOCCODE FROM ADMIN.OCS_DOCTOR WHERE DEPTCODE = 'MN'))";
                     }
                     else
                     {
@@ -3122,7 +3122,7 @@ namespace ComEmrBase
                     }
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
                     SQL = SQL + ComNum.VBLF + "                         OR";
-                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM KOSMOS_EMR.AEMRCHARTCOMMENT IMP";
+                    SQL = SQL + ComNum.VBLF + "                         EXISTS (SELECT 1 FROM ADMIN.AEMRCHARTCOMMENT IMP";
                     SQL = SQL + ComNum.VBLF + "                                 WHERE IMP.EMRNO = C.EMRNO";
                     //SQL = SQL + ComNum.VBLF + "                                 AND IMP.EMRNOHIS = C.EMRNOHIS";
                     SQL = SQL + ComNum.VBLF + "                                 AND IMP.IDNUMBER = '" + clsType.User.IdNumber + "' )";
@@ -3258,9 +3258,9 @@ namespace ComEmrBase
             SQL = SQL + ComNum.VBLF + "SELECT 	  TO_CHAR(A.INDATE, 'YYYY-MM-DD') MEDFRDATE                                             ";
             SQL = SQL + ComNum.VBLF + "		, COALESCE(TO_CHAR(A.OUTDATE, 'YYYY-MM-DD'), '재원중') AS MEDENDDATE                                               ";
             SQL = SQL + ComNum.VBLF + "		, A.DEPTCODE AS MEDDEPTCD                                                                 ";
-            SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.IPD_NEW_MASTER A                                                              ";
+            SQL = SQL + ComNum.VBLF + "FROM ADMIN.IPD_NEW_MASTER A                                                              ";
             SQL = SQL + ComNum.VBLF + "WHERE PANO = '" + mPTNO + "'                                                                        ";
-            SQL = SQL + ComNum.VBLF + "  AND IPDNO  = (SELECT MAX(IPDNO) FROM KOSMOS_PMPA.IPD_NEW_MASTER WHERE PANO = A.PANO)       ";
+            SQL = SQL + ComNum.VBLF + "  AND IPDNO  = (SELECT MAX(IPDNO) FROM ADMIN.IPD_NEW_MASTER WHERE PANO = A.PANO)       ";
 
             SqlErr = clsDB.GetDataTableREx(ref dt, SQL, clsDB.DbCon);
             if (SqlErr != "")
@@ -3473,19 +3473,19 @@ namespace ComEmrBase
         //    SQL = SQL + ComNum.VBLF + "         ELSE NULL";
         //    SQL = SQL + ComNum.VBLF + "    END AS C_SUMMARY, ";
         //    SQL = SQL + ComNum.VBLF + " CASE  ";
-        //    SQL = SQL + ComNum.VBLF + "         WHEN X.GB = '초진' THEN KOSMOS_EMR.OLDCHARTCOMPACT(X.FORMNO, X.EMRNO) ";
+        //    SQL = SQL + ComNum.VBLF + "         WHEN X.GB = '초진' THEN ADMIN.OLDCHARTCOMPACT(X.FORMNO, X.EMRNO) ";
         //    SQL = SQL + ComNum.VBLF + "         ELSE NULL ";
         //    SQL = SQL + ComNum.VBLF + "    END AS C_SUMMARY, ";
         //    SQL = SQL + ComNum.VBLF + "    CASE  ";
         //    SQL = SQL + ComNum.VBLF + "        WHEN X.GB = '진단' THEN 0 ";
         //    SQL = SQL + ComNum.VBLF + "        WHEN X.GB = '처방' THEN 0 ";
-        //    SQL = SQL + ComNum.VBLF + "        ELSE (SELECT IM.EMRNO FROM KOSMOS_EMR.AEMRCHARTIMPORT IM ";
+        //    SQL = SQL + ComNum.VBLF + "        ELSE (SELECT IM.EMRNO FROM ADMIN.AEMRCHARTIMPORT IM ";
         //    SQL = SQL + ComNum.VBLF + "                WHERE IM.IDNUMBER = '15200' AND IM.PTNO = '" + mPTNO + "' AND IM.EMRNO = X.EMRNO) ";
         //    SQL = SQL + ComNum.VBLF + "    END AS C_IMPORT, ";
         //    SQL = SQL + ComNum.VBLF + "    CASE  ";
         //    SQL = SQL + ComNum.VBLF + "        WHEN X.GB = '진단' THEN 0 ";
         //    SQL = SQL + ComNum.VBLF + "        WHEN X.GB = '처방' THEN 0 ";
-        //    SQL = SQL + ComNum.VBLF + "        ELSE (SELECT IM.EMRNO FROM KOSMOS_EMR.AEMRCHARTIMPORTREMARK IM ";
+        //    SQL = SQL + ComNum.VBLF + "        ELSE (SELECT IM.EMRNO FROM ADMIN.AEMRCHARTIMPORTREMARK IM ";
         //    SQL = SQL + ComNum.VBLF + "                WHERE IM.IDNUMBER = '15200' AND IM.PTNO = '" + mPTNO + "' AND IM.EMRNO = X.EMRNO) ";
         //    SQL = SQL + ComNum.VBLF + "    END AS C_IMPORT_REMARK ";
         //    #endregion //상단쿼리
@@ -3930,7 +3930,7 @@ namespace ComEmrBase
         //    {
         //        SQL = SQL + ComNum.VBLF + "        --외래처방 ";
         //        SQL = SQL + ComNum.VBLF + "        SELECT  ";
-        //        SQL = SQL + ComNum.VBLF + "            /*+ index( kosmos_ocs.ocs_iorder INXOCS_IORDER1) */  ";
+        //        SQL = SQL + ComNum.VBLF + "            /*+ index( ADMIN.ocs_iorder INXOCS_IORDER1) */  ";
         //        SQL = SQL + ComNum.VBLF + "            7 AS SORT, ";
         //        SQL = SQL + ComNum.VBLF + "            '처방' AS GB, ";
         //        SQL = SQL + ComNum.VBLF + "            'O' AS INOUTCLS, ";
@@ -3973,7 +3973,7 @@ namespace ComEmrBase
         //        SQL = SQL + ComNum.VBLF + "        UNION ALL ";
         //        SQL = SQL + ComNum.VBLF + "        --입원처방 ";
         //        SQL = SQL + ComNum.VBLF + "        SELECT  ";
-        //        SQL = SQL + ComNum.VBLF + "            /*+ index( kosmos_ocs.ocs_iorder INXOCS_IORDER1) */  ";
+        //        SQL = SQL + ComNum.VBLF + "            /*+ index( ADMIN.ocs_iorder INXOCS_IORDER1) */  ";
         //        SQL = SQL + ComNum.VBLF + "            8 AS SORT, ";
         //        SQL = SQL + ComNum.VBLF + "            '처방' AS GB, ";
         //        SQL = SQL + ComNum.VBLF + "            'I' AS INOUTCLS, ";
@@ -5083,7 +5083,7 @@ namespace ComEmrBase
             try
             {
                 SQL = string.Empty;
-                SQL = SQL + ComNum.VBLF + " DELETE FROM KOSMOS_EMR.EMRUSERDEPT";
+                SQL = SQL + ComNum.VBLF + " DELETE FROM ADMIN.EMRUSERDEPT";
                 SQL = SQL + ComNum.VBLF + " WHERE USEID = '" + clsType.User.IdNumber + "'";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -5103,7 +5103,7 @@ namespace ComEmrBase
                         string strDeptCode = ssUserDept_Sheet1.Cells[i, 2].Text.Trim();
 
                         SQL = string.Empty;
-                        SQL = SQL + ComNum.VBLF + " INSERT INTO KOSMOS_EMR.EMRUSERDEPT ";
+                        SQL = SQL + ComNum.VBLF + " INSERT INTO ADMIN.EMRUSERDEPT ";
                         SQL = SQL + ComNum.VBLF + "      (USEID, MEDDEPTCD, DISPSEQ, WRITEDATE, WRITETIME)";
                         SQL = SQL + ComNum.VBLF + " VALUES (";
                         SQL = SQL + ComNum.VBLF + "  '" + clsType.User.IdNumber + "',";
@@ -5153,8 +5153,8 @@ namespace ComEmrBase
                 SQL = string.Empty;
                 SQL = "SELECT ";
                 SQL = SQL + ComNum.VBLF + "     A.MEDDEPTCD, A.DEPTKORNAME, B.USEID ";
-                SQL = SQL + ComNum.VBLF + "FROM KOSMOS_EMR.VIEWBMEDDEPT A ";
-                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN KOSMOS_EMR.EMRUSERDEPT B";
+                SQL = SQL + ComNum.VBLF + "FROM ADMIN.VIEWBMEDDEPT A ";
+                SQL = SQL + ComNum.VBLF + "LEFT OUTER JOIN ADMIN.EMRUSERDEPT B";
                 SQL = SQL + ComNum.VBLF + "    ON A.MEDDEPTCD = B.MEDDEPTCD ";
                 SQL = SQL + ComNum.VBLF + "     AND B.USEID = '" + clsType.User.IdNumber + "'";
                 SQL = SQL + ComNum.VBLF + " ORDER BY A.DEPTKORNAME, A.PRTGRD ";

@@ -243,7 +243,7 @@ namespace ComBase
                 if (nEMRNO > 0 && pForm.FmOLDGB == 1)
                 {
                     //기존차트를 변경할 경우 : 백업 테이블로 백업을 하고 신규 data를 입력한다
-                    //KOSMOS_EMR.EMRXMLHISTORY_HISTORYNO_SEQ
+                    //ADMIN.EMRXMLHISTORY_HISTORYNO_SEQ
                     dblEmrHisNo = ComQuery.GetSequencesNo(clsDB.DbCon, ComNum.DB_EMR + "EMRXMLHISNO");
 
                     SQL = "";
@@ -2360,9 +2360,9 @@ namespace ComBase
                 if (nEMRNO > 0)
                 {
                     //기존차트를 변경할 경우 : 백업 테이블로 백업을 하고 신규 data를 입력한다
-                    //KOSMOS_EMR.EMRXMLHISTORY_HISTORYNO_SEQ
+                    //ADMIN.EMRXMLHISTORY_HISTORYNO_SEQ
 
-                    dblEmrHisNo = ComQuery.GetSequencesNo(clsDB.DbCon, "KOSMOS_EMR.EMRXMLHISNO");
+                    dblEmrHisNo = ComQuery.GetSequencesNo(clsDB.DbCon, "ADMIN.EMRXMLHISNO");
 
                     #region 이전 XML 
 
@@ -2621,7 +2621,7 @@ namespace ComBase
             //strBRADEN_OK = Convert.ToBoolean(ssWarning_Sheet1.Cells[1, 8].Value) == true ? "1" : "0";
 
             //저장할 당시 
-            SQL = " SELECT PANO FROM KOSMOS_PMPA.IPD_NEW_MASTER ";
+            SQL = " SELECT PANO FROM ADMIN.IPD_NEW_MASTER ";
             SQL += ComNum.VBLF + " WHERE IPDNO = " + argIPDNO;
             SQL += ComNum.VBLF + "   AND WARDCODE IN ('33','35') ";
             SQL += ComNum.VBLF + "   AND (JDATE = TO_DATE('1900-01-01','YYYY-MM-DD') OR OUTDATE = TRUNC(SYSDATE))";
@@ -3077,7 +3077,7 @@ namespace ComBase
             {
                 SQL = "";
                 SQL = SQL + ComNum.VBLF + " SELECT A.ACTDATE, A.PANO, A.IPDNO, '1' GUBUN, A.ROWID ROWID1, B.ROWID ROWID2, A.ACTTIME  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.NUR_BRADEN_WARNING A, KOSMOS_PMPA.NUR_BRADEN_EVAL B ";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.NUR_BRADEN_WARNING A, ADMIN.NUR_BRADEN_EVAL B ";
                 if (gsWard == "HD" || gsWard == "ER")
                 {
                     SQL = SQL + ComNum.VBLF + " WHERE A.PANO = '" + argPano + "' ";
@@ -3094,7 +3094,7 @@ namespace ComBase
                 SQL = SQL + ComNum.VBLF + "    AND A.ACTTIME = B.ACTTIME ";
                 SQL = SQL + ComNum.VBLF + " UNION ALL";
                 SQL = SQL + ComNum.VBLF + " SELECT A.ACTDATE, A.PANO, A.IPDNO, '2' GUBUN, A.ROWID ROWID1, B.ROWID ROWID2, A.ACTTIME  ";
-                SQL = SQL + ComNum.VBLF + "   FROM KOSMOS_PMPA.NUR_BRADEN_WARNING_HISTORY A, KOSMOS_PMPA.NUR_BRADEN_EVAL_HISTORY B ";
+                SQL = SQL + ComNum.VBLF + "   FROM ADMIN.NUR_BRADEN_WARNING_HISTORY A, ADMIN.NUR_BRADEN_EVAL_HISTORY B ";
                 if (gsWard == "HD" || gsWard == "ER")
                 {
                     SQL = SQL + ComNum.VBLF + " WHERE A.PANO = '" + argPano + "' ";
@@ -3775,7 +3775,7 @@ namespace ComBase
 
             cmd.Connection = pDbCon.Con;
             cmd.InitialLONGFetchSize = 1000;
-            cmd.CommandText = "KOSMOS_EMR.XMLINSRT3";
+            cmd.CommandText = "ADMIN.XMLINSRT3";
             cmd.CommandType = CommandType.StoredProcedure;
 
             try

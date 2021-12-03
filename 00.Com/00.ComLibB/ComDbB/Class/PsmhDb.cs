@@ -472,7 +472,7 @@ namespace ComDbB
         //    DataSet ds = null;
         //    string rtnVal = "";
         //    string SQL = "";
-        //    string DB_PMPA = "KOSMOS_PMPA.";
+        //    string DB_PMPA = "ADMIN.";
 
         //    int RowAffected = 0;
 
@@ -660,7 +660,7 @@ namespace ComDbB
         //    OracleCommand Cmd = null;
         //    string rtnVal = "";
         //    string SQL = "";
-        //    string DB_PMPA = "KOSMOS_PMPA.";
+        //    string DB_PMPA = "ADMIN.";
 
         //    int RowAffected = 0;
 

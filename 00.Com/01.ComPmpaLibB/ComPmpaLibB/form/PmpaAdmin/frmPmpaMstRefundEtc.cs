@@ -204,9 +204,9 @@ namespace ComPmpaLibB
             SQL += ComNum.VBLF + " SELECT TO_CHAR(ACTDATE,'YYYY-MM-DD') ACTDATE, PANO, SNAME, ";
             SQL += ComNum.VBLF + "        DEPTCODE, BI, YEAR, ";
             SQL += ComNum.VBLF + "        CREMARK, TO_CHAR(BDATE, 'YYYY-MM-DD') BDATE, CAMT, ";
-            SQL += ComNum.VBLF + "        CSABUN, KOSMOS_OCS.FC_BAS_PASS_NAME(CSABUN) CNAME, ";
+            SQL += ComNum.VBLF + "        CSABUN, ADMIN.FC_BAS_PASS_NAME(CSABUN) CNAME, ";
             SQL += ComNum.VBLF + "        TO_CHAR(RDATE, 'YYYY-MM-DD') RDATE, RAMT, ";
-            SQL += ComNum.VBLF + "        RSABUN, KOSMOS_OCS.FC_BAS_PASS_NAME(RSABUN) RNAME, ";
+            SQL += ComNum.VBLF + "        RSABUN, ADMIN.FC_BAS_PASS_NAME(RSABUN) RNAME, ";
             SQL += ComNum.VBLF + "        RREMARK, NOTREMARK, ROWID ";
             SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "OPD_REFUND_ETC ";
             SQL += ComNum.VBLF + "  WHERE 1         = 1 ";
@@ -556,7 +556,7 @@ namespace ComPmpaLibB
 
             try
             {
-                SQL = " INSERT INTO KOSMOS_PMPA.OPD_REFUND_ETC_DEL ( ";
+                SQL = " INSERT INTO ADMIN.OPD_REFUND_ETC_DEL ( ";
                 SQL += ComNum.VBLF + "        ACTDATE, BDATE, PANO, DEPTCODE, ";
                 SQL += ComNum.VBLF + "        DRCODE, BI, SNAME, PART, ";
                 SQL += ComNum.VBLF + "        SABUN, CAMT, CSABUN, CPART, ";
@@ -570,7 +570,7 @@ namespace ComPmpaLibB
                 SQL += ComNum.VBLF + "        RDATE, RAMT, RSABUN, RPART, ";
                 SQL += ComNum.VBLF + "        RREMARK, CARDSEQNO, RETCARDSEQNO, ENTDATE, ";
                 SQL += ComNum.VBLF + "        YEAR, CREMARK, NOTREMARK, SYSDATE,'" + clsType.User.Sabun + "'  ";
-                SQL += ComNum.VBLF + "        FROM KOSMOS_PMPA.OPD_REFUND_ETC ";
+                SQL += ComNum.VBLF + "        FROM ADMIN.OPD_REFUND_ETC ";
                 SQL += ComNum.VBLF + "        WHERE ROWID = '" + strRowID + "' ";
                 SQL += ComNum.VBLF + "          AND ACTDATE = TRUNC(SYSDATE) ";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowCnt, pDbCon);
@@ -583,7 +583,7 @@ namespace ComPmpaLibB
                     return;
                 }
 
-                SQL = " DELETE KOSMOS_PMPA.OPD_REFUND_ETC ";
+                SQL = " DELETE ADMIN.OPD_REFUND_ETC ";
                 SQL += ComNum.VBLF + "        WHERE ROWID = '" + strRowID + "' ";
                 SQL += ComNum.VBLF + "          AND ACTDATE = TRUNC(SYSDATE)";
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowCnt, pDbCon);

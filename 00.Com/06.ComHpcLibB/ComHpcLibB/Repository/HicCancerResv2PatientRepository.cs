@@ -25,8 +25,8 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT TO_CHAR(a.RTIME,'HH24:MI') RTIME, a.JUMIN, a.SNAME  ");
             parameter.AppendSql("     , a.PANO, a.HPHONE, a.JUMIN2, b.SEX                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_CANCER_RESV2 a                      ");
-            parameter.AppendSql("     , KOSMOS_PMPA.BAS_PATIENT      b                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_CANCER_RESV2 a                      ");
+            parameter.AppendSql("     , ADMIN.BAS_PATIENT      b                      ");
             parameter.AppendSql(" WHERE a.RTIME >= TO_DATE(:RTIME, 'YYYY-MM-DD')            ");
             parameter.AppendSql("   AND a.RTIME <= TO_DATE(:RTIME, 'YYYY-MM-DD') + 0.999999 ");
             parameter.AppendSql("   AND a.PANO IS NOT NULL                                  ");
@@ -45,9 +45,9 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT TO_CHAR(c.SDATE,'HH24:MI') RTIME, a.SNAME, a.PTNO, b.SEX, a.PANO  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_JEPSU_WORK a                        ");
-            parameter.AppendSql("     , KOSMOS_PMPA.BAS_PATIENT b                           ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HEA_JEPSU c                             ");
+            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU_WORK a                        ");
+            parameter.AppendSql("     , ADMIN.BAS_PATIENT b                           ");
+            parameter.AppendSql("     , ADMIN.HEA_JEPSU c                             ");
             parameter.AppendSql(" WHERE c.SDATE = TO_DATE(:SDATE, 'YYYY-MM-DD')             ");
             parameter.AppendSql("   AND a.GJJONG = '31'                                     ");
             parameter.AppendSql("   AND a.PTNO = b.PANO                                     ");

@@ -132,7 +132,7 @@ namespace ComPmpaLibB
 
                     SQL = "";
                     SQL = SQL + ComNum.VBLF + "SELECT B.IpdOpd, B.Class, B.TongGbn, Sum(A.Amt) Amt , B.GelCode";
-                    SQL = SQL + ComNum.VBLF + "FROM KOSMOS_PMPA.MISU_SLIP A, KOSMOS_PMPA.MISU_IDMST B";
+                    SQL = SQL + ComNum.VBLF + "FROM ADMIN.MISU_SLIP A, ADMIN.MISU_IDMST B";
                     SQL = SQL + ComNum.VBLF + "WHERE A.BDATE >= TO_DATE('" + FDATE + "','YYYY-MM-DD')";
                     SQL = SQL + ComNum.VBLF + "AND A.BDATE <= TO_DATE('" + TDATE + "','YYYY-MM-DD')";
                     SQL = SQL + ComNum.VBLF + "AND A.GUBUN >='11' AND A.GUBUN <='20'";

@@ -23,7 +23,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.XRAY_DETAIL (                                                          ");
+            parameter.AppendSql("INSERT INTO ADMIN.XRAY_DETAIL (                                                          ");
             parameter.AppendSql("       ENTERDATE,IPDOPD,GBRESERVED,SEEKDATE,PANO,SNAME,SEX,AGE,DEPTCODE,DRCODE                 ");
             parameter.AppendSql("      ,XJONG,XSUBCODE,XCODE,EXINFO,QTY,REMARK,XRAYROOM,PACSNO,ORDERNAME,ORDERCODE              ");
             parameter.AppendSql("      ,BDATE,GBSPC,GBHIC,HIC_WRTNO                                                             ");
@@ -66,7 +66,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID AS RID                                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_DETAIL                     ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_DETAIL                     ");
             parameter.AppendSql(" WHERE PANO = :PANO                                ");
             parameter.AppendSql("   AND XCODE = :XCODE                              ");
             parameter.AppendSql("   AND BDATE = TO_DATE(:BDATE, 'YYYY-MM-DD')       ");
@@ -87,7 +87,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT COUNT('X') CNT                              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_DETAIL                     ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_DETAIL                     ");
             parameter.AppendSql(" WHERE PANO     = :PANO                            ");
             parameter.AppendSql("   AND DeptCode IN ('HR','TO')                     ");
             parameter.AppendSql("   AND BDate    = TO_DATE(:BDATE, 'YYYY-MM-DD')    ");
@@ -106,7 +106,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT PACSNO AS XRAYNO                                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.XRAY_DETAIL                             ");
+            parameter.AppendSql("  FROM ADMIN.XRAY_DETAIL                             ");
             parameter.AppendSql(" WHERE PANO = :PANO                                        ");
             parameter.AppendSql("   AND TRUNC(SEEKDATE) = TO_DATE(:SEEKDATE, 'YYYY-MM-DD')  ");
             if (argDept == "TO")
@@ -135,8 +135,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            //parameter.AppendSql("UPDATE KOSMOS_PMPA.XRAY_DETAIL SET SEEKDATE = TRUNC(SYSDATE)   ");
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.XRAY_DETAIL SET SEEKDATE = TO_DATE(:SEEKDATE, 'YYYY-MM-DD HH24:MI')     ");
+            //parameter.AppendSql("UPDATE ADMIN.XRAY_DETAIL SET SEEKDATE = TRUNC(SYSDATE)   ");
+            parameter.AppendSql("UPDATE ADMIN.XRAY_DETAIL SET SEEKDATE = TO_DATE(:SEEKDATE, 'YYYY-MM-DD HH24:MI')     ");
             parameter.AppendSql(" WHERE PANO =:PANO                                                                         ");
             parameter.AppendSql("   AND DEPTCODE =:DEPTCODE                                                                 ");
             parameter.AppendSql("   AND XCODE =:XCODE                                                                       ");
@@ -156,7 +156,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.XRAY_DETAIL         ");
+            parameter.AppendSql("UPDATE ADMIN.XRAY_DETAIL         ");
             parameter.AppendSql("   SET GBRESERVED = '1'               ");
             parameter.AppendSql("      ,GBSTS = 'D'                     ");
             parameter.AppendSql("      ,DELDATE = SYSDATE               ");
@@ -173,7 +173,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.XRAY_DETAIL         ");
+            parameter.AppendSql("UPDATE ADMIN.XRAY_DETAIL         ");
             parameter.AppendSql("   SET GBRESERVED = :GBRESERVED        ");
             parameter.AppendSql(" WHERE ROWID =:RID                     ");
             parameter.AppendSql(" AND GBRESERVED = '6'                  ");
@@ -192,7 +192,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
  
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.XRAY_DETAIL (                                                              ");
+            parameter.AppendSql("INSERT INTO ADMIN.XRAY_DETAIL (                                                              ");
             parameter.AppendSql(" ENTERDATE, IPDOPD, GBRESERVED, SEEKDATE, PANO, SNAME, SEX, AGE, DEPTCODE, DRCODE                  ");
             parameter.AppendSql(" ,WARDCODE, ROOMCODE, XJONG, XSUBCODE, XCODE, EXINFO, QTY, EXMORE, EXID, GBEND, MGRNO, GBPORTABLE  ");
             parameter.AppendSql(" ,REMARK, XRAYROOM, GBNGT, DRREMARK, ORDERNO, ORDERCODE, PACSNO, ORDERNAME, PACSSTUDYID            ");
@@ -211,7 +211,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql(" ,DELDATE, CSABUN, CREMARK, N_STS, N_REMARK, N_ENTDATE, GB_MANUAL, PICKUPREMARK, CON_DATE          ");
             parameter.AppendSql(" ,GDATE, GSABUN, GBINFO, CVR, CVR_DATE, CVR_GUBUN, CVR_DRSABUN, CVR_SEND, GBER, CVR_CDATE          ");
             parameter.AppendSql(" ,ASA, INPS, INPT_DT, UPPS, UP_DT                                                                  ");
-            parameter.AppendSql(" FROM KOSMOS_PMPA.XRAY_DETAIL                                                                      ");
+            parameter.AppendSql(" FROM ADMIN.XRAY_DETAIL                                                                      ");
             parameter.AppendSql(" WHERE ROWID = :RID                                                                                ");
 
             parameter.Add("RID", argRowid);

@@ -25,7 +25,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE,NAME,ROWID             ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_ORGANCODE   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_ORGANCODE   ");
             parameter.AppendSql(" WHERE GUBUN =:GUBUN               ");
             if (!argCode.IsNullOrEmpty())
             {
@@ -48,7 +48,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID AS RID                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_ORGANCODE  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_ORGANCODE  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -61,7 +61,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT SAYUCODE, SAYUNAME          ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_ORGANCODE   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_ORGANCODE   ");
             parameter.AppendSql(" WHERE GUBUN =:GUBUN               ");
             if (!strCode.IsNullOrEmpty())
             {
@@ -83,7 +83,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID AS RID                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_ORGANCODE   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_ORGANCODE   ");
             parameter.AppendSql(" WHERE SAYUCODE = :SAYUCODE        ");
             parameter.AppendSql("   AND CODE = :CODE                ");
 
@@ -97,7 +97,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_ORGANCODE (CODE,NAME,GUBUN)  ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_ORGANCODE (CODE,NAME,GUBUN)  ");
             parameter.AppendSql(" VALUES (:CODE,:NAME,:GUBUN)                             ");
 
             parameter.Add("CODE", item.CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -111,7 +111,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_OCS.HIC_ORGANCODE SET    ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_ORGANCODE SET    ");
             parameter.AppendSql("       CODE    = :CODE                 ");
             parameter.AppendSql("     , NAME    = :NAME                 ");
             parameter.AppendSql(" WHERE ROWID   = :RID                  ");
@@ -127,7 +127,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_ORGANCODE   ");
+            parameter.AppendSql("DELETE ADMIN.HIC_ORGANCODE   ");
             parameter.AppendSql(" WHERE ROWID = :RID                ");
 
             #region Query 변수대입

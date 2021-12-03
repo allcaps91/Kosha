@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT RoomName                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_ROOM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT_ROOM   ");
             parameter.AppendSql(" WHERE ROOM = :ROOM                ");
 
             parameter.Add("ROOM", strRoom, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -37,7 +37,7 @@ namespace ComHpcLibB.Repository
 
             parameter.AppendSql("SELECT ROOM, ROOMNAME              ");
             parameter.AppendSql(" ,AMUSE, PMUSE, AMSANG, PMSANG     ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_ROOM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT_ROOM   ");
             parameter.AppendSql(" WHERE ROOM = :ROOM                ");
 
             parameter.Add("ROOM", strRoom, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -50,7 +50,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT Room, RoomName, AmSang, PmSang  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_ROOM       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT_ROOM       ");
             parameter.AppendSql(" WHERE Room IN (:ROOM)                 ");
             if (string.Compare(strSysTime, "13:00") < 0)
             {
@@ -71,7 +71,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROOM, ROOMNAME              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_ROOM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT_ROOM   ");
             parameter.AppendSql(" WHERE ROOM = :ROOM                ");
 
             parameter.Add("ROOM", strNextRoom, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -82,7 +82,7 @@ namespace ComHpcLibB.Repository
         public string GetRoomRoomNameByRoomCd(string strCODE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT RoomName FROM KOSMOS_PMPA.HIC_WAIT_ROOM             ");
+            parameter.AppendSql("SELECT RoomName FROM ADMIN.HIC_WAIT_ROOM             ");
             parameter.AppendSql(" WHERE ROOM = :ROOMCD                                      ");
 
             parameter.Add("ROOMCD", strCODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -93,7 +93,7 @@ namespace ComHpcLibB.Repository
         public int UpdatebyRoom(HIC_WAIT_ROOM item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_WAIT_ROOM SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_WAIT_ROOM SET       ");
             parameter.AppendSql("       AMUSE     = :AMUSE                  ");
             parameter.AppendSql("     , PMUSE     = :PMUSE                  ");
             parameter.AppendSql("     , AmSang    = :AMSANG                 ");
@@ -112,7 +112,7 @@ namespace ComHpcLibB.Repository
         public int Update(HIC_WAIT_ROOM item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_WAIT_ROOM SET       ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_WAIT_ROOM SET       ");
             parameter.AppendSql("       ROOM      = :ROOM                   ");  
             parameter.AppendSql("     , ROOMNAME  = :ROOMNAME               ");
             parameter.AppendSql("     , AMUSE     = :AMUSE                  ");
@@ -135,7 +135,7 @@ namespace ComHpcLibB.Repository
         public int InsertAll(HIC_WAIT_ROOM item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_WAIT_ROOM      ");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_WAIT_ROOM      ");
             parameter.AppendSql("       (ROOM, ROOMNAME, AMUSE, PMUSE)      ");
             parameter.AppendSql("VALUES                                     ");
             parameter.AppendSql("       (:ROOM, :ROOMNAME, :AMUSE, :PMUSE)  ");
@@ -153,7 +153,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROWID RID                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_ROOM   ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT_ROOM   ");
             parameter.AppendSql(" WHERE ROOM = :ROOM                ");
 
             parameter.Add("ROOM", strRoom, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -166,7 +166,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT ROOM, ROOMNAME, AMUSE, PMUSE, AMSANG, PMSANG    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_WAIT_ROOM                       ");
+            parameter.AppendSql("  FROM ADMIN.HIC_WAIT_ROOM                       ");
             parameter.AppendSql("  WHERE ROOM NOT IN ('00')                             ");
             parameter.AppendSql(" ORDER BY Room                                         ");
 

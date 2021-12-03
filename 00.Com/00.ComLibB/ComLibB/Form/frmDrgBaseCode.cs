@@ -122,11 +122,11 @@ namespace ComLibB
                     {
                         if (strSuNext == "")    //'삭제
                         {
-                            SQL = " DELETE KOSMOS_PMPA.DRG_MAP_SUGA WHERE ROWID = '" + strROWID + "' ";
+                            SQL = " DELETE ADMIN.DRG_MAP_SUGA WHERE ROWID = '" + strROWID + "' ";
                         }
                         else    //'갱신
                         {
-                            SQL = " UPDATE KOSMOS_PMPA.DRG_MAP_SUGA SET ";
+                            SQL = " UPDATE ADMIN.DRG_MAP_SUGA SET ";
                             SQL = SQL + "  SUNEXT = '" + strSuNext + "'";
                             SQL = SQL + " WHERE ROWID = '" + strROWID + "' ";
                         }
@@ -135,7 +135,7 @@ namespace ComLibB
                     {
                         if (strSuNext != "")    //'등록
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.DRG_MAP_SUGA ( DCODE, SUNEXT ,ENTDATE,GBN ) VALUES ( ";
+                            SQL = " INSERT INTO ADMIN.DRG_MAP_SUGA ( DCODE, SUNEXT ,ENTDATE,GBN ) VALUES ( ";
                             SQL = SQL + "  '" + FstrDRGCode + "', '" + strSuNext + "', SYSDATE ,'A' ) ";
                         }
                     }
@@ -161,11 +161,11 @@ namespace ComLibB
                     {
                         if (strSuNext == "")    //'삭제
                         {
-                            SQL = " DELETE KOSMOS_PMPA.DRG_MAP_SUGA WHERE ROWID = '" + strROWID + "' ";
+                            SQL = " DELETE ADMIN.DRG_MAP_SUGA WHERE ROWID = '" + strROWID + "' ";
                         }
                         else    //'갱신
                         {
-                            SQL = " UPDATE KOSMOS_PMPA.DRG_MAP_SUGA SET ";
+                            SQL = " UPDATE ADMIN.DRG_MAP_SUGA SET ";
                             SQL = SQL + "  SUNEXT = '" + strSuNext + "'";
                             SQL = SQL + " WHERE ROWID = '" + strROWID + "' ";
                         }
@@ -174,7 +174,7 @@ namespace ComLibB
                     {
                         if (strSuNext != "")    //'등록
                         {
-                            SQL = " INSERT INTO KOSMOS_PMPA.DRG_MAP_SUGA ( DCODE, SUNEXT ,ENTDATE,GBN ) VALUES ( ";
+                            SQL = " INSERT INTO ADMIN.DRG_MAP_SUGA ( DCODE, SUNEXT ,ENTDATE,GBN ) VALUES ( ";
                             SQL = SQL + "  '" + FstrDRGCode + "', '" + strSuNext + "', SYSDATE ,'B' ) ";
                         }
                     }
@@ -225,8 +225,8 @@ namespace ComLibB
                 SQL = SQL + ComNum.VBLF + "";
 
                 SQL = " SELECT A.SUNEXT ,   B.SUNAMEK , A.ROWID  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.DRG_MAP_SUGA A ";
-                SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN KOSMOS_PMPA.BAS_SUN B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.DRG_MAP_SUGA A ";
+                SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN ADMIN.BAS_SUN B";
                 SQL = SQL + ComNum.VBLF + "      ON A.SUNEXT = B.SUNEXT ";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.DCODE  = '" + FstrDRGCode + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND A.GBN ='A' ";
@@ -260,8 +260,8 @@ namespace ComLibB
                 dt = null;
 
                 SQL = " SELECT A.SUNEXT ,   B.SUNAMEK , A.ROWID  ";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_PMPA.DRG_MAP_SUGA A ";
-                SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN KOSMOS_PMPA.BAS_SUN B";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.DRG_MAP_SUGA A ";
+                SQL = SQL + ComNum.VBLF + "  LEFT OUTER JOIN ADMIN.BAS_SUN B";
                 SQL = SQL + ComNum.VBLF + "      ON A.SUNEXT = B.SUNEXT ";
                 SQL = SQL + ComNum.VBLF + "  WHERE A.DCODE  = '" + FstrDRGCode + "' ";
                 SQL = SQL + ComNum.VBLF + "     AND A.GBN ='B' ";
@@ -490,7 +490,7 @@ namespace ComLibB
                 SQL = SQL + " DAY1,DAY2,DAY3,DAY4,DAY5,DAY6,DAY7,DAY8,DAY9,DAY10,";
                 SQL = SQL + " DAY11,DAY12,DAY13,DAY14,DAY15,DAY16,DAY17,DAY18,DAY19,DAY20,";
                 SQL = SQL + " DAY21,DAY22,DAY23,DAY24,DAY25,DAY26,DAY27,DAY28,DAY29,DAY30";
-                SQL = SQL + "   FROM KOSMOS_PMPA.DRG_DAY_COST_NEW ";
+                SQL = SQL + "   FROM ADMIN.DRG_DAY_COST_NEW ";
                 SQL = SQL + "  WHERE DCODE = '" + FstrDRGCode + "'";
                 SQL = SQL + "    AND DDATE = TO_DATE('" + strSDate + "','YYYY-MM-DD')";
                 SQL = SQL + "    AND GBN = '" + VB.Left(cboGBN.Text, 1) + "' ";
@@ -597,7 +597,7 @@ namespace ComLibB
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                SQL = " SELECT SUNAMEK FROM KOSMOS_PMPA.BAS_SUN ";
+                SQL = " SELECT SUNAMEK FROM ADMIN.BAS_SUN ";
                 SQL = SQL + ComNum.VBLF + "   WHERE SUNEXT = '" + strSuNext + "' ";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

@@ -69,7 +69,7 @@ namespace ComLibB
 
             ComboFrBuse.Items.Clear();
 
-            SQL = "SELECT BUSE FROM KOSMOS_ADM.INSA_MST WHERE SABUN = '" + clsType.User.Sabun.PadLeft(5, '0') + "'";
+            SQL = "SELECT BUSE FROM ADMIN.INSA_MST WHERE SABUN = '" + clsType.User.Sabun.PadLeft(5, '0') + "'";
 
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
@@ -162,9 +162,9 @@ namespace ComLibB
 
             ss1.ActiveSheet.RowCount = 0;
 
-            SQL = "SELECT SEQNO, DOCUNO, PLACENAME, DOCUNAME, KOSMOS_PMPA.BAS_BUSE.NAME BUSENAME, OUTMAN, OUTTIME, ";
+            SQL = "SELECT SEQNO, DOCUNO, PLACENAME, DOCUNAME, ADMIN.BAS_BUSE.NAME BUSENAME, OUTMAN, OUTTIME, ";
             SQL = SQL + ComNum.VBLF + "       TO_CHAR(WORKDAY,'YYYY-MM-DD') WORKDAY ";
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_DOCU1, KOSMOS_PMPA.BAS_BUSE ";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_DOCU1, ADMIN.BAS_BUSE ";
             SQL = SQL + ComNum.VBLF + " WHERE BUSE = BUCODE ";
             SQL = SQL + ComNum.VBLF + "   AND TO_CHAR(WORKDAY, 'yyyy-mm-dd') >= '" + VB.Trim(strFrDate) + "'";
             SQL = SQL + ComNum.VBLF + "   AND TO_CHAR(WORKDAY, 'yyyy-mm-dd') <= '" + VB.Trim(strToDate) + "'";

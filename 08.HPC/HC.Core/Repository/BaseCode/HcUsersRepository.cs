@@ -62,7 +62,7 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
             //parameter.AppendSql("SELECT * FROM HIC_USERS WHERE ISDELETED = 'N'AND DEPT ='WEM' AND ISACTIVE='Y' ORDER BY NAME                            ");
             parameter.AppendSql("SELECT A.*, B.JUMIN3 from HIC_USERS A                        ");
-            parameter.AppendSql("INNER JOIN  KOSMOS_ADM.INSA_MST B                        ");
+            parameter.AppendSql("INNER JOIN  ADMIN.INSA_MST B                        ");
             parameter.AppendSql("ON A.USERID = trim(B.SABUN)                        ");
             parameter.AppendSql("WHERE A.ISDELETED = 'N'                        ");
             parameter.AppendSql("AND A.DEPT = 'WEM'                        ");

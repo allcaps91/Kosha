@@ -24,7 +24,7 @@ namespace ComHpcLibB.Repository
         {
              MParameter parameter = CreateParameter();
 
-             parameter.AppendSql("SELECT     MM_CLO_YN FROM KOSMOS_ERP.ACC_CLO_MGT   ");
+             parameter.AppendSql("SELECT     MM_CLO_YN FROM ADMIN.ACC_CLO_MGT   ");
 
              parameter.AppendSql("WHERE      CLO_BSNS_GB = '0003'                    ");
             parameter.AppendSql("   AND     CLO_YMD = :COLYMD                       ");

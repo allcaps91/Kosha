@@ -23,8 +23,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.LTDCODE, b.NAME, COUNT(*) CNT ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXCEL a         ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_LTD   b         ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXCEL a         ");
+            parameter.AppendSql("     , ADMIN.HIC_LTD   b         ");
             parameter.AppendSql(" WHERE a.YEAR = :YEAR                  ");
             if (strChk == "1")
             {
@@ -51,8 +51,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT a.LTDCODE CODE,b.Name NAME, COUNT(*) CNT    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HEA_EXCEL a                     ");
-            parameter.AppendSql("     , KOSMOS_PMPA.HIC_LTD   b                     ");
+            parameter.AppendSql("  FROM ADMIN.HEA_EXCEL a                     ");
+            parameter.AppendSql("     , ADMIN.HIC_LTD   b                     ");
             parameter.AppendSql(" WHERE a.YEAR = :YEAR                              ");
             if (strChk == "OK")
             {

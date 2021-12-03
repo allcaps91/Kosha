@@ -72,7 +72,7 @@ namespace ComLibB
             try
             {
                 SQL = "";
-                SQL = "INSERT INTO KOSMOS_ADM.INSA_DOCU_BUSE (BUSE) VALUES (";
+                SQL = "INSERT INTO ADMIN.INSA_DOCU_BUSE (BUSE) VALUES (";
                 SQL = SQL + ComNum.VBLF + "'" + LblBUSE.Text.Trim() + "')";
 
                 SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -122,7 +122,7 @@ namespace ComLibB
                 {
                     if (Convert.ToBoolean(SsView_Sheet1.Cells[i, 0].Value) == true)
                     {
-                        SQL = "DELETE FROM KOSMOS_ADM.INSA_DOCU_BUSE";
+                        SQL = "DELETE FROM ADMIN.INSA_DOCU_BUSE";
                         SQL = SQL + " WHERE BUSE = '" + SsView_Sheet1.Cells[i, 1].Text.Trim() + "'";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -182,7 +182,7 @@ namespace ComLibB
             {
                 SQL = string.Empty;
                 SQL = "SELECT BUSE, DELDATE";
-                SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_ADM.INSA_DOCU_BUSE";
+                SQL = SQL + ComNum.VBLF + "  FROM ADMIN.INSA_DOCU_BUSE";
                 SQL = SQL + ComNum.VBLF + " ORDER BY RANKING ASC, BUSE";
 
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -254,7 +254,7 @@ namespace ComLibB
             try
             {
                 SQL = string.Empty;
-                SQL = "SELECT BUCODE FROM KOSMOS_PMPA.BAS_BUSE";
+                SQL = "SELECT BUCODE FROM ADMIN.BAS_BUSE";
                 SQL = SQL + ComNum.VBLF + " WHERE NAME LIKE '%" + TxtBuse.Text.Trim() + "%'";
                 SQL = SQL + ComNum.VBLF + "   AND BUCODE < '090000' ";
                 SQL = SQL + ComNum.VBLF + " ORDER BY BUCODE DESC ";

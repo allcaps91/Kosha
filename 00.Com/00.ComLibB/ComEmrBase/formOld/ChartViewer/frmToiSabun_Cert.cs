@@ -58,10 +58,10 @@ namespace ComEmrBase
             {
 
                 SQL = " SELECT A.SABUN, TO_CHAR(A.WRITEDATE, 'YYYY-MM-DD') WRITEDATE, A.WRITESABUN, B.KORNAME, C.NAME, TO_CHAR(B.TOIDAY, 'YYYY-MM-DD') TOIDAY";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.EMRXML_MOCIFY_CERT_B A";
-                SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_ADM.INSA_MST B";
+                SQL += ComNum.VBLF + " FROM ADMIN.EMRXML_MOCIFY_CERT_B A";
+                SQL += ComNum.VBLF + "   INNER JOIN ADMIN.INSA_MST B";
                 SQL += ComNum.VBLF + "      ON A.SABUN = B.SABUN";
-                SQL += ComNum.VBLF + "   INNER JOIN KOSMOS_PMPA.BAS_BUSE C";
+                SQL += ComNum.VBLF + "   INNER JOIN ADMIN.BAS_BUSE C";
                 SQL += ComNum.VBLF + "      ON C.BUCODE = B.BUSE";
                 SQL += ComNum.VBLF + " ORDER BY B.KORNAME ASC ";
 
@@ -121,7 +121,7 @@ namespace ComEmrBase
             try
             {
 
-                SQL = " INSERT INTO KOSMOS_EMR.EMRXML_MOCIFY_CERT_HISTORY(";
+                SQL = " INSERT INTO ADMIN.EMRXML_MOCIFY_CERT_HISTORY(";
                 SQL += ComNum.VBLF + " SABUN, WRITEDATE, WRITESABUN, GUBUN ) VALUES (";
                 SQL += ComNum.VBLF + txtSabun.Text.Trim() + ", SYSDATE, " + clsType.User.IdNumber + ",'I')";
 
@@ -133,7 +133,7 @@ namespace ComEmrBase
                     return rtnVal;
                 }
 
-                SQL = " INSERT INTO KOSMOS_EMR.EMRXML_MOCIFY_CERT_B(";
+                SQL = " INSERT INTO ADMIN.EMRXML_MOCIFY_CERT_B(";
                 SQL += ComNum.VBLF + " SABUN, WRITEDATE, WRITESABUN ) VALUES (";
                 SQL += ComNum.VBLF + txtSabun.Text.Trim() + ", SYSDATE, " + clsType.User.IdNumber + ")";
 
@@ -178,7 +178,7 @@ namespace ComEmrBase
 
                     if(SS1_Sheet1.Cells[i, 0].Text.Trim().Equals("True"))
                     {
-                        SQL = " INSERT INTO KOSMOS_EMR.EMRXML_MOCIFY_CERT_HISTORY(";
+                        SQL = " INSERT INTO ADMIN.EMRXML_MOCIFY_CERT_HISTORY(";
                         SQL += ComNum.VBLF + " SABUN, WRITEDATE, WRITESABUN, GUBUN ) VALUES (";
                         SQL += ComNum.VBLF + strSabun + ", SYSDATE, " + clsType.User.IdNumber + ",'D')";
 
@@ -190,7 +190,7 @@ namespace ComEmrBase
                             return rtnVal;
                         }
 
-                        SQL = " DELETE KOSMOS_EMR.EMRXML_MOCIFY_CERT_B ";
+                        SQL = " DELETE ADMIN.EMRXML_MOCIFY_CERT_B ";
                         SQL += ComNum.VBLF + " WHERE SABUN = '" + strSabun + "'";
 
                         sqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
@@ -234,9 +234,9 @@ namespace ComEmrBase
             clsDB.setBeginTran(clsDB.DbCon);
             try
             {
-                SQL = " INSERT INTO KOSMOS_EMR.EMRXML_MOCIFY_CERT_HISTORY(CERT, WRITEDATE, WRITESABUN, DELDATE, DELSABUN)";
+                SQL = " INSERT INTO ADMIN.EMRXML_MOCIFY_CERT_HISTORY(CERT, WRITEDATE, WRITESABUN, DELDATE, DELSABUN)";
                 SQL += ComNum.VBLF + "SELECT CERT, WRITEDATE, WRITESABUN, SYSDATE, " + clsType.User.IdNumber;
-                SQL += ComNum.VBLF + "  FROM KOSMOS_EMR.EMRXML_MOCIFY_CERT";
+                SQL += ComNum.VBLF + "  FROM ADMIN.EMRXML_MOCIFY_CERT";
 
                 string sqlErr = clsDB.ExecuteNonQueryEx(SQL, ref RowAffected, clsDB.DbCon);
                 if (sqlErr.Length > 0)
@@ -248,13 +248,13 @@ namespace ComEmrBase
 
                 if(cboSET.Text.Trim().Equals("허용"))
                 {
-                    SQL = " INSERT INTO KOSMOS_EMR.EMRXML_MOCIFY_CERT(";
+                    SQL = " INSERT INTO ADMIN.EMRXML_MOCIFY_CERT(";
                     SQL += ComNum.VBLF + " CERT, WRITEDATE, WRITESABUN) VALUES ( ";
                     SQL += ComNum.VBLF + " '1',  SYSDATE, " + clsType.User.IdNumber + ")";
                 }
                 else
                 {
-                    SQL = " DELETE KOSMOS_EMR.EMRXML_MOCIFY_CERT ";
+                    SQL = " DELETE ADMIN.EMRXML_MOCIFY_CERT ";
                 }
 
 

@@ -77,10 +77,10 @@ namespace ComEmrBase
                 #region 쿼리
                 OracleDataReader reader = null;
                 string SQL = " SELECT USERNAME, C.NAME  ";
-                SQL = SQL += ComNum.VBLF + "FROM KOSMOS_PMPA.BAS_USER A";
-                SQL = SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_ADM.INSA_MST B";
+                SQL = SQL += ComNum.VBLF + "FROM ADMIN.BAS_USER A";
+                SQL = SQL += ComNum.VBLF + "  INNER JOIN ADMIN.INSA_MST B";
                 SQL = SQL += ComNum.VBLF + "     ON A.SABUN = B.SABUN";
-                SQL = SQL += ComNum.VBLF + "  INNER JOIN KOSMOS_PMPA.BAS_BUSE C";
+                SQL = SQL += ComNum.VBLF + "  INNER JOIN ADMIN.BAS_BUSE C";
                 SQL = SQL += ComNum.VBLF + "     ON B.BUSE = C.BUCODE";
                 SQL = SQL += ComNum.VBLF + "WHERE IDNUMBER =  '" + txtConfirmID2.Text.Trim() + "'";
                 SQL = SQL += ComNum.VBLF + "  AND PASSHASH256 =  '" + clsSHA.SHA256(txtConfirmPw2.Text.Trim()) + "'";
@@ -147,7 +147,7 @@ namespace ComEmrBase
 
             #region 진짜 쿼리
             string SQL = " SELECT TO_CHAR(B.OUTDATE, 'YYYY-MM-DD HH24:MI:SS') OUTDATE , A.PANO, (C.PTABO || C.PTRH) AS PTAR, B.COMPONENT, B.BLOODNO, TO_CHAR(B.EXPIRE, 'YYYY-MM-DD') EXPIRE, C.GUMSAJA";
-            SQL += ComNum.VBLF + " FROM KOSMOS_OCS.EXAM_BLOODTRANS A, KOSMOS_OCS.EXAM_BLOOD_IO B, KOSMOS_OCS.EXAM_BLOODCROSSM C";
+            SQL += ComNum.VBLF + " FROM ADMIN.EXAM_BLOODTRANS A, ADMIN.EXAM_BLOOD_IO B, ADMIN.EXAM_BLOODCROSSM C";
             if (argBLOODNO.Length == 10)
             {
                 SQL += ComNum.VBLF + "WHERE B.BLOODNO   = '" + argBLOODNO + "'";

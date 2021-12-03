@@ -60,7 +60,7 @@ namespace ComLibB
                 //'물품코드 조회
                 SQL = "";
                 SQL = SQL + " SELECT JepCode,JepName ";
-                SQL = SQL + ComNum.VBLF + " From KOSMOS_ADM.ORD_JEP ";
+                SQL = SQL + ComNum.VBLF + " From ADMIN.ORD_JEP ";
                 SQL = SQL + ComNum.VBLF + " Where GbCSR Is Not Null ";
                 SQL = SQL + ComNum.VBLF + " AND DelDate IS NULL ";
 

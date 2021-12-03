@@ -98,7 +98,7 @@ namespace ComEmrBase
                 Cmd = clsDB.DbCon.Con.CreateCommand();
 
                 #region 쿼리
-                SQL = " DELETE KOSMOS_EMR.AEMRMEMO ";
+                SQL = " DELETE ADMIN.AEMRMEMO ";
                 SQL += ComNum.VBLF + " WHERE BDATE = '" + dtpBdate.Value.ToString("yyyyMMdd") + "'";
                 SQL += ComNum.VBLF + "   AND PTNO  = '" + AcpEmr.ptNo + "'";
                 SQL += ComNum.VBLF + "   AND IPDNO = " + AcpEmr.acpNoIn;
@@ -110,7 +110,7 @@ namespace ComEmrBase
                 int RowAffected = Cmd.ExecuteNonQuery();
 
                 #region 쿼리
-                SQL = " INSERT INTO KOSMOS_EMR.AEMRMEMO ";
+                SQL = " INSERT INTO ADMIN.AEMRMEMO ";
                 SQL += ComNum.VBLF + " (";
                 SQL += ComNum.VBLF + " BDATE, ACPNO, PTNO, ";
                 SQL += ComNum.VBLF + " IPDNO, MEMO, MEMO2, MEMO3,";
@@ -190,7 +190,7 @@ namespace ComEmrBase
                 #region 쿼리
                 SQL = "SELECT ";
                 SQL += ComNum.VBLF + " MEMO, MEMO2, MEMO3";
-                SQL += ComNum.VBLF + " FROM KOSMOS_EMR.AEMRMEMO ";
+                SQL += ComNum.VBLF + " FROM ADMIN.AEMRMEMO ";
                 if (BeforeText == false)
                 {
                     SQL += ComNum.VBLF + " WHERE BDATE = '" + dtpBdate.Value.ToString("yyyyMMdd") + "'";
@@ -208,7 +208,7 @@ namespace ComEmrBase
                     SQL += ComNum.VBLF + " WHERE BDATE = ";
                     SQL += ComNum.VBLF + "               (";
                     SQL += ComNum.VBLF + "               SELECT MAX(BDATE)";
-                    SQL += ComNum.VBLF + "                 FROM KOSMOS_EMR.AEMRMEMO ";
+                    SQL += ComNum.VBLF + "                 FROM ADMIN.AEMRMEMO ";
                     SQL += ComNum.VBLF + "                WHERE IPDNO = " + AcpEmr.acpNoIn;
                     SQL += ComNum.VBLF + "               )";
                     SQL += ComNum.VBLF + "   AND IPDNO = " + AcpEmr.acpNoIn;

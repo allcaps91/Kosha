@@ -21,7 +21,7 @@ namespace HC_Measurement.Repository
         public void InSert(HIC_CHUKDTL_CHEMICAL dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO KOSMOS_PMPA.HIC_CHUKDTL_CHEMICAL");
+            parameter.AppendSql("INSERT INTO ADMIN.HIC_CHUKDTL_CHEMICAL");
             parameter.AppendSql("(");
             parameter.AppendSql("    WRTNO");
             parameter.AppendSql("  , PROCESS");
@@ -68,7 +68,7 @@ namespace HC_Measurement.Repository
         public void DeleteAll(long nWRTNO)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKDTL_CHEMICAL");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKDTL_CHEMICAL");
             parameter.AppendSql("   SET DELDATE = SYSDATE ");
             parameter.AppendSql(" WHERE WRTNO = :WRTNO ");
 
@@ -82,7 +82,7 @@ namespace HC_Measurement.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT A.WRTNO");
             parameter.AppendSql("     , A.PROCESS");
-            parameter.AppendSql("     , KOSMOS_PMPA.FC_HIC_CODE_NM('C4', A.PROCESS) AS PROCESS_NM");
+            parameter.AppendSql("     , ADMIN.FC_HIC_CODE_NM('C4', A.PROCESS) AS PROCESS_NM");
             parameter.AppendSql("     , A.PROCESS_K2BCD");
             parameter.AppendSql("     , A.PRODUCT_NM");
             parameter.AppendSql("     , A.GBUSE");
@@ -113,7 +113,7 @@ namespace HC_Measurement.Repository
         public void Delete(HIC_CHUKDTL_CHEMICAL dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_CHUKDTL_CHEMICAL");
+            parameter.AppendSql("UPDATE ADMIN.HIC_CHUKDTL_CHEMICAL");
             parameter.AppendSql("   SET DELDATE = SYSDATE ");
             parameter.AppendSql(" WHERE ROWID = :RID ");
 

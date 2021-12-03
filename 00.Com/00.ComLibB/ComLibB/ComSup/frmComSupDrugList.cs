@@ -1198,7 +1198,7 @@ namespace ComLibB
                     case "ER":
                         #region ER
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '1', '3', 'ER', 'N-PTD-HA', '5','5','1' ,TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1213,7 +1213,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '1', '3', 'ER', 'N-PTD25', '10','10','1' ,TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1228,7 +1228,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '1', '3', 'ER', 'N-MP-HA', '2','2','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1243,7 +1243,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '1', '3', 'ER', 'N-MP5', '3','3','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1258,7 +1258,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '1', '3', 'ER', 'N-FT-HA', '3','3','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1273,7 +1273,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', 'ER', 'A-BASCA', '3','3','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1288,7 +1288,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', 'ER', 'A-PEN250', '3','3','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1303,7 +1303,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', 'ER', 'DZP10', '5','5','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1318,7 +1318,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', 'ER', 'A-POL12A', '2','2','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1333,7 +1333,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', 'ER', 'A-KETA5', '1','1','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1348,7 +1348,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', 'ER', 'LZPA', '3','3','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1363,7 +1363,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', 'ER', 'NALPA', '1','1','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1378,7 +1378,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', 'ER', 'A-ETOM', '3','3','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1398,7 +1398,7 @@ namespace ComLibB
                     case "35":
                         #region ICU
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '1', '3', '32', 'N-PTD25', '2','2','1' ,TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1413,7 +1413,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '1', '3', '32', 'N-MP-HA', '1','1','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1428,7 +1428,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '1', '3', '32', 'N-FT-HA', '2','2','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1443,7 +1443,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', '32', 'A-BASCA', '13','13','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1458,7 +1458,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', '32', 'A-PEN250', '1','1','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1473,7 +1473,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', '32', 'DZP10', '3','3','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1488,7 +1488,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', '32', 'A-POL12A', '1','1','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1503,7 +1503,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', '32', 'LZPA', '3','3','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1518,7 +1518,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', '32', 'A-POF50', '3','3','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1536,7 +1536,7 @@ namespace ComLibB
                     case "JS":
                         #region JS
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '1', '3', 'JS', 'N-PTD-HA', '5','5','1' ,TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1551,7 +1551,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '1', '3', 'JS', 'N-PTD25', '5','5','1' ,TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1566,7 +1566,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '1', '3', 'JS', 'N-MP-HA', '3','3','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1581,7 +1581,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', 'JS', 'DZP10', '5','5','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1596,7 +1596,7 @@ namespace ComLibB
                         }
 
                         SQL = "";
-                        SQL = " INSERT INTO KOSMOS_OCS.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
+                        SQL = " INSERT INTO ADMIN.OCS_DRUG  ( BDATE, GBN, GBN2, WARDCODE, SUCODE, QTY, REALQTY, NAL, BUILDDATE ) ";
                         SQL = SQL + "  VALUES ( TO_DATE('" + strDate + "','YYYY-MM-DD') , '2', '3', 'JS', 'NALPA', '2','2','1', TO_DATE('" + strDate + "','YYYY-MM-DD'))";
 
                         SqlErr = clsDB.ExecuteNonQuery(SQL, ref intRowAffected, clsDB.DbCon);
@@ -4522,7 +4522,7 @@ namespace ComLibB
             ssMagam.ActiveSheet.Cells[0, 6].Text = "X";
 
             SQL = "";
-            SQL = SQL + ComNum.VBLF + "SELECT NO1 FROM KOSMOS_OCS.OCS_DRUG ";
+            SQL = SQL + ComNum.VBLF + "SELECT NO1 FROM ADMIN.OCS_DRUG ";
             if (bolHuil == false && (strYoil != "토요일" || strYoil != "일요일"))
             {
                 if (strYoil == "월요일")
@@ -4607,7 +4607,7 @@ namespace ComLibB
 
             SQL = "";
             SQL = SQL + ComNum.VBLF + "SELECT WARDCODE, CHASU              ";             
-            SQL = SQL + ComNum.VBLF + "  FROM KOSMOS_OCS.OCS_DRUG_MAGAMLOG ";
+            SQL = SQL + ComNum.VBLF + "  FROM ADMIN.OCS_DRUG_MAGAMLOG ";
             SQL = SQL + ComNum.VBLF + " WHERE BDATE = '" + strDate + "'    ";
             
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

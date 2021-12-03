@@ -397,7 +397,7 @@ namespace ComLibB
                         if (strROWID == "")
                         {
                             SQL = "";
-                            SQL += "SELECT * FROM KOSMOS_PMPA.BAS_BCODE " + ComNum.VBLF;
+                            SQL += "SELECT * FROM ADMIN.BAS_BCODE " + ComNum.VBLF;
                             SQL += "WHERE Gubun='" + strGUBUN + "'      " + ComNum.VBLF;
                             SQL += "AND CODE='" + strCODE + "'          " + ComNum.VBLF;
                             

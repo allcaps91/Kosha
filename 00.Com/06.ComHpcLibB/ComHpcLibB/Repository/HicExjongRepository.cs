@@ -27,7 +27,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT CODE,NAME,BUN,CHASU,BURATE,BUCHANGE,REMARK,ENTDATE,ENTSABUN,GBSUGA,GBMUNJIN      ");
             parameter.AppendSql("      ,MISUJONG, GBINWON, GBJIN, GBPRT1, GBPRT2, GBPRT3, GBPRT4, GBPRT5, GBPRT6, BUCODE ");
             parameter.AppendSql("      ,GBSANGDAM, GBNHIC, CODE2, Rowid                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG                                                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG                                                           ");
             parameter.AppendSql(" WHERE 1 = 1                                                                            ");
             parameter.AppendSql(" ORDER By CODE                                                                          ");
 
@@ -38,7 +38,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE,NAME               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG  ");
             parameter.AppendSql(" WHERE 1 = 1                   ");
             parameter.AppendSql("   AND BUN =:BUN               ");
             parameter.AppendSql(" ORDER By CODE                 ");
@@ -52,7 +52,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.HIC_EXJONG      ");
+            parameter.AppendSql("DELETE ADMIN.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE ROWID       = :RID          ");
 
             #region Query 변수대입
@@ -66,7 +66,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("UPDATE KOSMOS_PMPA.HIC_EXJONG      ");
+            parameter.AppendSql("UPDATE ADMIN.HIC_EXJONG      ");
             parameter.AppendSql("   SET Name        =:Name          ");
             parameter.AppendSql("      ,Bun         =:Bun           ");
             parameter.AppendSql("      ,Chasu       =:Chasu         ");
@@ -124,7 +124,7 @@ namespace ComHpcLibB.Repository
 
 
             parameter.AppendSql("SELECT     CODE                                                  ");
-            parameter.AppendSql("FROM       KOSMOS_PMPA.HIC_EXJONG                                ");
+            parameter.AppendSql("FROM       ADMIN.HIC_EXJONG                                ");
             parameter.AppendSql("WHERE      MISUJONG = :JONG                                      ");
             parameter.AppendSql("   AND     CODE NOT IN (:JONG1, :JONG2, :JONG3, :JONG4)          ");
 
@@ -141,7 +141,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE, NAME                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG          ");
             if (!strName.IsNullOrEmpty())
             {
                 parameter.AppendSql(" WHERE NAME LIKE :NAME             ");
@@ -165,7 +165,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GBNHIC                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
             parameter.Add("CODE", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -177,7 +177,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GBMUNJIN                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
             parameter.Add("CODE", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -189,7 +189,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG  ");
             parameter.AppendSql(" WHERE 1 = 1                   ");
             parameter.AppendSql("   AND CODE =:CODE             ");
 
@@ -202,7 +202,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT BURATE                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG  ");
             parameter.AppendSql(" WHERE 1 = 1                   ");
             parameter.AppendSql("   AND CODE =:CODE             ");
 
@@ -215,7 +215,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT CODE,NAME               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG  ");
             parameter.AppendSql(" WHERE 1 = 1                   ");
             parameter.AppendSql("   AND CODE < '90'             ");     //추가 선택검사 영역
             parameter.AppendSql(" ORDER By CODE                 ");
@@ -227,7 +227,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT BUN                         ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
             parameter.Add("CODE", grgJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -239,7 +239,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GBMUNJIN,GBSANGDAM,GBPRT1,GBPRT2,GBPRT3,GBPRT4,GBPRT5,GBPRT6    ");
             parameter.AppendSql("      ,BURATE,BUCHANGE,CHASU,GBINWON                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG                                          ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG                                          ");
             parameter.AppendSql(" WHERE CODE = :CODE                                                    ");
 
             parameter.Add("CODE", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -251,7 +251,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Chasu                       ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
             parameter.Add("CODE", strJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -263,7 +263,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GBSANGDAM                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
             parameter.Add("CODE", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -275,7 +275,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GBPRT5                      ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
 
             parameter.Add("CODE", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -288,7 +288,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT CODE, NAME                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CHASU = :CHASU              ");
             parameter.AppendSql("   AND BUN IN (:InBUN)               ");
 
@@ -302,7 +302,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT COUNT('X') CNT              ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG      ");
             parameter.AppendSql(" WHERE CODE = :CODE                ");
             parameter.AppendSql("   AND NAME LIKE '%생애%'          ");
 
@@ -315,7 +315,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GBMUNJIN                ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", argJONG, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -327,7 +327,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Code,Name               ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -341,7 +341,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SELECT CODE,NAME,BUN,CHASU,BURATE,BUCHANGE,REMARK,ENTDATE,ENTSABUN,GBSUGA,GBMUNJIN      ");
             parameter.AppendSql("     , MISUJONG, GBINWON, GBJIN, GBPRT1, GBPRT2, GBPRT3, GBPRT4, GBPRT5, GBPRT6, BUCODE ");
             parameter.AppendSql("     , GBSANGDAM, GBNHIC, CODE2, Rowid                                                  ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_ExJong                                                           ");
+            parameter.AppendSql("  FROM ADMIN.HIC_ExJong                                                           ");
             parameter.AppendSql(" WHERE 1 = 1                                                                            ");
             parameter.AppendSql("   AND CODE = :CODE                                                                     ");
 
@@ -353,7 +353,7 @@ namespace ComHpcLibB.Repository
         public int Insert(HIC_EXJONG item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO KOSMOS_PMPA.HIC_EXJONG (                                                              ");
+            parameter.AppendSql(" INSERT INTO ADMIN.HIC_EXJONG (                                                              ");
             parameter.AppendSql("       CODE,Name,Bun,Chasu,BuRate,BuChange,GbSuga                                                  ");
             parameter.AppendSql("     , GbMunjin,GbInwon,GbJin,GbPrt1,GbPrt2,GbPrt3,GbPrt4,GbPrt5,GbPrt6,GbSangDam                  ");
             parameter.AppendSql("     , Remark,BuCode,EntDate,EntSabun,GbNhic                                                       ");
@@ -396,7 +396,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT NAME                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG  ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG  ");
             parameter.AppendSql(" WHERE CODE = :CODE            ");
 
             parameter.Add("CODE", CODE, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
@@ -408,7 +408,7 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT Code,Name                                                   ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_EXJONG                                      ");
+            parameter.AppendSql("  FROM ADMIN.HIC_EXJONG                                      ");
             parameter.AppendSql(" WHERE 1 = 1                                                       ");
             if (chk == true)
             {
