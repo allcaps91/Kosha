@@ -22,6 +22,8 @@ namespace ComHpcLibB
             string SqlErr = ""; //에러문 받는 변수
 
 
+
+
             string strCurdateTime = ComQuery.CurrentDateTime(clsDB.DbCon, "A");
 
             if (VB.Val(strCurdateTime) < 20190905080000)
