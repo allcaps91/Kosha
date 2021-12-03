@@ -415,9 +415,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\00.Com\00.ComLibB\ComBase\ComBase.csproj">
       <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
       <Name>ComBase</Name>

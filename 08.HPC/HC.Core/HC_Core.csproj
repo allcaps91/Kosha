@@ -873,9 +873,7 @@
     <Content Include="Resources\html\statusReportByNurse.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="App.config" />
     <None Include="HC_Core.snk" />
-    <None Include="packages.config" />
     <None Include="Resources\dmp\osha_export_schema.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

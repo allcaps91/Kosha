@@ -992,9 +992,7 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="HC_OSHA.snk" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\00.Com\00.ComLibB\ComBase\ComBase.csproj">
