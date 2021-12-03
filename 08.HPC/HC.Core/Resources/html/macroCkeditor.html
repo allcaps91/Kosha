@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CKEditor Sample</title>
+    <script src='./js/jquery-3.4.1.min.js'></script>
+    <script src="js/ckeditor.js"></script>
+    <script src="js/sample.js"></script>
+    <script src="js/config.js"></script>
+    <link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body id="main">
+    <div id="editor">
+        <div id="opinion">
+            <table border=1>
+                <tr>
+                    <th width="350px">현실태 및 문제점</th>
+                    <th width="350px">개선의견</th>
+                    <th width="">개선여부</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            initSample();
+
+        });
+
+
+        function load(html) {
+            console.log(html);
+            //console.log(json.html);
+            CKEDITOR.instances.editor.setData(html);
+        }
+        function saveMacro() {
+            (async function () {
+                await CefSharp.BindObjectAsync("cefsharpBoundAsync");
+                var content = CKEDITOR.instances.editor.document.getBody().getHtml();
+                cefsharpBoundAsync.saveMacro(content);
+
+            })();
+        }
+
+
+
+        function clear() {
+            var html = "";
+            html += '<div id="opinion">';
+            html += '<table border=1>';
+            html += '<tr>';
+                html += '<th width="350px">현실태 및 문제점</th>';
+            html += '<th width="350px">개선의견</th>';
+            html += '<th width="">개선여부</th>';
+            html += '</tr>';
+            html += '<tr>';
+            html += '<td></td>';
+            html += '<td></td>';
+            html += '<td></td>';
+            html += '</tr>';
+            html += '</table>';
+            html += '</div>';
+            CKEDITOR.instances.editor.setData(html);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CKEditor Sample</title>
+    <script src='./js/jquery-3.4.1.min.js'></script>
+    <script src="js/ckeditor.js"></script>
+    <script src="js/sample.js"></script>
+    <script src="js/config.js"></script>
+    <link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body id="main">
+    <div id="editor">
+        <div id="opinion">
+            <table border=1>
+                <tbody id="table-opinion">
+                    <tr>
+                        <th width="350px">현실태 및 문제점</th>
+                        <th width="350px">개선의견</th>
+                        <th width="">개선여부</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="tmp" style="display:none">
+        </div>
+    </div> 			
+	<script>
+        $(document).ready(function () {
+            initSample();
+            (async function(){
+                await CefSharp.BindObjectAsync("cefsharpBoundAsync");
+                cefsharpBoundAsync.readyStatusReportNurse();
+                
+            })();
+        });
+    
+      
+        function load(html) {
+            console.log(html);
+            //console.log(json.html);
+            CKEDITOR.instances.editor.setData(html);
+        }
+
+         function macroLoad(macroLoad, subtitle, html) {
+            console.log(html);
+
+            var tmp  =  $( CKEDITOR.instances.editor.window.getFrame().$ ).contents().find( "#tmp");
+            $(tmp).append(html);
+             console.log($(tmp).find('table').find('tr:eq(1)').html());
+
+            var control = $(CKEDITOR.instances.editor.window.getFrame().$).contents().find("#table-opinion");
+             
+
+            var sceondTr = $(control).find('tr:eq(1)');
+             console.log("sceondTr: " + $(sceondTr).html());
+
+            console.log("공백: " + $(sceondTr).find('td').text());
+            if ($(sceondTr).find('td').text().length == 0) {
+                 $(sceondTr).remove();
+            }
+          
+            var macro = $(tmp).find('table').find('tr:eq(1)').html();
+         //   var macro = $(tmp).find('table').find('tr:eq(1)');
+             console.log("macro: ",macro);
+
+            
+           $(control).append('<tr>'+macro+'</tr>');
+           // $(control).find('tr').last().after('<tr>'+macro+'</tr>');
+         
+            $(tmp).empty();
+     
+            //console.log(json.html);
+            //CKEDITOR.instances.editor.setData(html);
+            //CKEDITOR.instances.editor.insertHtml(html);
+        }
+        function performContentLoad(content) {
+            console.log(content);
+            var html = '<tr><td>' + content + '</td><td></td><td></td></tr>';
+            var control = $(CKEDITOR.instances.editor.window.getFrame().$).contents().find("#table-opinion");
+            $(control).append(html);
+        }
+        function save() {
+            (async function()
+			{
+				await CefSharp.BindObjectAsync("cefsharpBoundAsync");
+                var content = CKEDITOR.instances.editor.document.getBody().getHtml();
+               // var data = { "html": content }; 
+              //  var json = JSON.stringify(data);
+                //console.log(json); 
+                
+                cefsharpBoundAsync.saveNurseOpinion(content);
+                
+			})();
+        }
+
+        function clear(){
+            var html = "";
+            html += '<div id="opinion">';
+            html += '<table border=1>';
+            html += '<tbody id="table-opinion">';
+            html += '<tr>';
+            html += '<th width="350px">현실태 및 문제점</th>';
+            html += '<th width="350px">개선의견</th>';
+            html += '<th width="">개선여부</th>';
+            html += '</tr>';
+            html += '<tr>'; 
+            html += '<td></td>';
+            html += '<td></td>';
+            html += '<td></td>';
+            html += '</tr>';
+            html += '</tbody>';
+            html += '</table>';
+            html += '</div>';
+            html += ' <div id="tmp" style="display:none">';
+            html += ' </div>';
+            CKEDITOR.instances.editor.setData(html);
+        }
+	</script>
+</body>
+</html>
