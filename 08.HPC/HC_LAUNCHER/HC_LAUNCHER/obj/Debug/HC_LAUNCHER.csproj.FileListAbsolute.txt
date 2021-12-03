@@ -1,6 +1,0 @@
-C:\PSMH\08.HPC\HC_LAUNCHER\HC_LAUNCHER\obj\Debug\HC_LAUNCHER.csprojAssemblyReference.cache
-C:\PSMH\08.HPC\HC_LAUNCHER\HC_LAUNCHER\obj\Debug\HC_LAUNCHER.exe.config
-C:\PSMH\08.HPC\HC_LAUNCHER\HC_LAUNCHER\obj\Debug\HC_LAUNCHER.frmDashBoard.resources
-C:\PSMH\08.HPC\HC_LAUNCHER\HC_LAUNCHER\obj\Debug\HC_LAUNCHER.Properties.Resources.resources
-C:\PSMH\08.HPC\HC_LAUNCHER\HC_LAUNCHER\obj\Debug\HC_LAUNCHER.csproj.GenerateResource.cache
-C:\PSMH\08.HPC\HC_LAUNCHER\HC_LAUNCHER\obj\Debug\HC_LAUNCHER.csproj.CoreCompileInputs.cache
