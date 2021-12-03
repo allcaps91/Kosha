@@ -91,7 +91,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\PSMH\00.Com\06.ComHpcLibB\ComHpcLibB\ComHpcLibB.csproj">
+    <ProjectReference Include="..\..\..\00.Com\06.ComHpcLibB\ComHpcLibB\ComHpcLibB.csproj">
       <Project>{9748399A-1223-4361-B341-2BC620EB7B2F}</Project>
       <Name>ComHpcLibB</Name>
     </ProjectReference>
