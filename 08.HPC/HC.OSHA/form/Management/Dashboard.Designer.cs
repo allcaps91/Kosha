@@ -137,6 +137,7 @@
             this.panFrame.Name = "panFrame";
             this.panFrame.Size = new System.Drawing.Size(1256, 817);
             this.panFrame.TabIndex = 7;
+            this.panFrame.Paint += new System.Windows.Forms.PaintEventHandler(this.panFrame_Paint);
             // 
             // menuStrip1
             // 
@@ -213,14 +214,14 @@
             // 월별일정ToolStripMenuItem
             // 
             this.월별일정ToolStripMenuItem.Name = "월별일정ToolStripMenuItem";
-            this.월별일정ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.월별일정ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.월별일정ToolStripMenuItem.Text = "방문예정등록";
             this.월별일정ToolStripMenuItem.Click += new System.EventHandler(this.월별일정ToolStripMenuItem_Click);
             // 
             // 방문일정공문ToolStripMenuItem
             // 
             this.방문일정공문ToolStripMenuItem.Name = "방문일정공문ToolStripMenuItem";
-            this.방문일정공문ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.방문일정공문ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.방문일정공문ToolStripMenuItem.Text = "방문일정 공문";
             this.방문일정공문ToolStripMenuItem.Click += new System.EventHandler(this.방문일정공문ToolStripMenuItem_Click);
             // 
@@ -228,13 +229,13 @@
             // 
             this.스케쥴조회ToolStripMenuItem.Enabled = false;
             this.스케쥴조회ToolStripMenuItem.Name = "스케쥴조회ToolStripMenuItem";
-            this.스케쥴조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.스케쥴조회ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.스케쥴조회ToolStripMenuItem.Text = "스케쥴조회";
             // 
             // 방문주기조회ToolStripMenuItem
             // 
             this.방문주기조회ToolStripMenuItem.Name = "방문주기조회ToolStripMenuItem";
-            this.방문주기조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.방문주기조회ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.방문주기조회ToolStripMenuItem.Text = "방문주기조회";
             this.방문주기조회ToolStripMenuItem.Click += new System.EventHandler(this.방문주기조회ToolStripMenuItem_Click);
             // 
@@ -750,7 +751,7 @@
             // oshaSiteEstimateList
             // 
             this.oshaSiteEstimateList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.oshaSiteEstimateList.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.oshaSiteEstimateList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             hC_ESTIMATE_MODEL1.ComboDisplay = null;
             hC_ESTIMATE_MODEL1.CONTRACTDATE = null;
             hC_ESTIMATE_MODEL1.CONTRACTENDDATE = null;
@@ -820,6 +821,7 @@
             hC_OSHA_SITE_MODEL1.PARENTSITE_ID = ((long)(0));
             hC_OSHA_SITE_MODEL1.PARENTSITE_NAME = null;
             hC_OSHA_SITE_MODEL1.RowStatus = ComBase.Mvc.RowStatus.None;
+            hC_OSHA_SITE_MODEL1.SITE_ID = ((long)(0));
             hC_OSHA_SITE_MODEL1.TEL = null;
             hC_OSHA_SITE_MODEL1.VISITDAY = ((long)(0));
             hC_OSHA_SITE_MODEL1.VISITWEEK = ((long)(0));

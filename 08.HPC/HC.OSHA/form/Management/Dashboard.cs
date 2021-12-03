@@ -757,5 +757,10 @@ namespace HC_OSHA
             }
             form.Show();
         }
+
+        private void panFrame_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
