@@ -90,6 +90,32 @@ namespace ComBase
         /// DB Connect 함수 입니다.(기본)
         /// </summary>
         /// <returns>DataBase Connection 객체</returns>
+        public static PsmhDb DBConnect_Cloud()
+        {
+            try
+            {
+                PsmhDb pPsmhDb = new PsmhDb();
+
+                if (pPsmhDb.DBConnect_Cloud() == true)
+                {
+                    return pPsmhDb;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception exc)
+            {
+                ComFunc.MsgBox(exc.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// DB Connect 함수 입니다.(기본)
+        /// </summary>
+        /// <returns>DataBase Connection 객체</returns>
         public static PsmhDb DBConnect()
         {
             try

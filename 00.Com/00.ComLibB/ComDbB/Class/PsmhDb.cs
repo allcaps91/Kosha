@@ -159,6 +159,36 @@ namespace ComDbB
         /// <summary>
         /// DB 함수 입니다.
         /// </summary>
+        public bool DBConnect_Cloud()
+        {
+            //GetDbInfo();
+            //Enter your ADB's user id, password, and net service name
+            string conString = "User Id=ADMIN;Password=QjelQjel!@12;Data Source=kosha_high;Connection Timeout=30;";
+
+            //Enter directory where you unzipped your cloud credentials
+            if (OracleConfiguration.TnsAdmin == null)
+            {
+                OracleConfiguration.TnsAdmin = @"C:\Oracle11g\product\11.2.0\client_1\network\admin";
+                OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
+            }
+
+            try
+            {
+                Con = new OracleConnection(conString);
+                Con.Open();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(new Form() { TopMost = true }, ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// DB 함수 입니다.
+        /// </summary>
         public bool DBConnect()
         {
             GetDbInfo();

@@ -40,10 +40,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\PSMHEXE\exenet\CefSharp.Core.dll</HintPath>
     </Reference>
-    <Reference Include="HC_Measurement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ccee827a02c3cc38, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\PSMHEXE\Debug\HC_Measurement.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -110,6 +106,10 @@
     <ProjectReference Include="..\..\HC.OSHA\HC_OSHA.csproj">
       <Project>{4b15b3c6-a091-46de-9049-7365eea34fe7}</Project>
       <Name>HC_OSHA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HC_Measurement\HC_Measurement.csproj">
+      <Project>{e20cabde-5e97-4fd8-8a02-5da3a5c16247}</Project>
+      <Name>HC_Measurement</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

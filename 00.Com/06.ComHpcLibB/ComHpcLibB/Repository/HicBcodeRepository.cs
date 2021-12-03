@@ -337,7 +337,7 @@ namespace ComHpcLibB.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT GUBUN, CODE, NAME, JDATE, SORT, DELDATE         ");
             parameter.AppendSql("     , ENTSABUN, ENTDATE, ROWID RID                    ");
-            parameter.AppendSql("  FROM KOSMOS_PMPA.HIC_BCODE                           ");
+            parameter.AppendSql("  FROM HIC_BCODE                           ");
             parameter.AppendSql(" WHERE GUBUN = :GUBUN                                  ");
             if (strName != "")
             {
