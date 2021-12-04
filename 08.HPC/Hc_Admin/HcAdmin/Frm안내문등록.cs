@@ -20,7 +20,7 @@ namespace HcAdmin
             InitializeComponent();
 
             //서버접속
-            if (clsMySql.DBConnect("115.68.23.223", "3306", "dhson", "@thsehdgml#", "dhson") == false)
+            if (clsDbMySql.DBConnect("115.68.23.223", "3306", "dhson", "@thsehdgml#", "dhson") == false)
             {
                 ComFunc.MsgBox("라이선스 서버에 접속할 수 없습니다");
                 Application.Exit();
@@ -59,7 +59,7 @@ namespace HcAdmin
                     SQL += ComNum.VBLF + "    SET Remark   = '" + txtRemark.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        EntTime  = '" + strTime + "' ";
                 }
-                SqlErr = clsMySql.ExecuteNonQuery(SQL);
+                SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
 
                 if (SqlErr == false)
                 {
@@ -91,7 +91,7 @@ namespace HcAdmin
             try
             {
                 SQL = "SELECT Remark FROM LICMSG";
-                dt = clsMySql.GetDataTable(SQL);
+                dt = clsDbMySql.GetDataTable(SQL);
 
                 if (dt.Rows.Count > 0)
                 {

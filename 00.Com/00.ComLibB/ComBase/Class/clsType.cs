@@ -437,6 +437,11 @@
             /// 전자인증-병원인정서
             /// </summary>
             public static string strCertDn;        //전자인증-병원인정서
+            /// <summary>
+            /// S/W 라이선스 정보
+            /// </summary>
+            public static string SwLicense="";        //SW 라이선스번호
+            public static string SwLicInfo="";        //SW 라이선스정보
         }
 
         public static void ClearHosInfo()

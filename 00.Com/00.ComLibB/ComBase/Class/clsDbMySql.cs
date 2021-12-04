@@ -14,8 +14,8 @@ namespace ComBase
         {
             string strConnectString = null;
 
-            strConnectString = "server=" + strServer + ";user=" + strUser + ";database=" + strDB + ";port=" + strPort + ";password=" + strPWD + ";CharSet=utf8;SslMode = none";
-
+            //strConnectString = "server=" + strServer + ";user=" + strUser + ";database=" + strDB + ";port=" + strPort + ";password=" + strPWD + ";CharSet=utf8;SslMode = none";
+            strConnectString = "server=" + strServer + ";user=" + strUser + ";database=" + strDB + ";port=" + strPort + ";password=" + strPWD + ";CharSet=utf8";
             try
             {
                 gDc = new MySqlConnection(strConnectString);
