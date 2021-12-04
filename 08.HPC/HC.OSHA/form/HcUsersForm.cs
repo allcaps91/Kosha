@@ -15,6 +15,8 @@ namespace HC_OSHA
         public HcUsersForm()
         {
             InitializeComponent();
+
+
         }
     }
 }
