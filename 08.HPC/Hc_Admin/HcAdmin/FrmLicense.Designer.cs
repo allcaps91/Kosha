@@ -42,6 +42,8 @@
             this.dtpViewSDate = new System.Windows.Forms.DateTimePicker();
             this.BtnSearch = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtDbConnect = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -70,8 +72,6 @@
             this.txtSangho = new System.Windows.Forms.TextBox();
             this.SS1 = new FarPoint.Win.Spread.FpSpread();
             this.SS1_Sheet1 = new FarPoint.Win.Spread.SheetView();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtDbConnect = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -93,21 +93,20 @@
             this.menuStrip1.Size = new System.Drawing.Size(949, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // 닫기ToolStripMenuItem
             // 
             this.닫기ToolStripMenuItem.Name = "닫기ToolStripMenuItem";
             this.닫기ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.닫기ToolStripMenuItem.Text = "닫기";
-            this.닫기ToolStripMenuItem.Click += new System.EventHandler(this.닫기ToolStripMenuItem_Click);
+            this.닫기ToolStripMenuItem.Click += new System.EventHandler(this.닫기ToolStripMenuItem_Click_1);
             // 
             // 신규발급ToolStripMenuItem
             // 
             this.신규발급ToolStripMenuItem.Name = "신규발급ToolStripMenuItem";
             this.신규발급ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.신규발급ToolStripMenuItem.Text = "신규발급";
-            this.신규발급ToolStripMenuItem.Click += new System.EventHandler(this.신규발급ToolStripMenuItem_Click);
+            this.신규발급ToolStripMenuItem.Click += new System.EventHandler(this.신규발급ToolStripMenuItem_Click_1);
             // 
             // 저장ToolStripMenuItem
             // 
@@ -121,7 +120,7 @@
             this.삭제ToolStripMenuItem.Name = "삭제ToolStripMenuItem";
             this.삭제ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.삭제ToolStripMenuItem.Text = "삭제";
-            this.삭제ToolStripMenuItem.Click += new System.EventHandler(this.삭제ToolStripMenuItem_Click);
+            this.삭제ToolStripMenuItem.Click += new System.EventHandler(this.삭제ToolStripMenuItem_Click_1);
             // 
             // 메세지전송ToolStripMenuItem
             // 
@@ -205,7 +204,6 @@
             this.BtnSearch.TabIndex = 85;
             this.BtnSearch.Text = "검색(&F)";
             this.BtnSearch.UseVisualStyleBackColor = true;
-            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // panel3
             // 
@@ -241,7 +239,27 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(609, 529);
             this.panel3.TabIndex = 87;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // txtDbConnect
+            // 
+            this.txtDbConnect.Location = new System.Drawing.Point(108, 232);
+            this.txtDbConnect.Multiline = true;
+            this.txtDbConnect.Name = "txtDbConnect";
+            this.txtDbConnect.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDbConnect.Size = new System.Drawing.Size(358, 57);
+            this.txtDbConnect.TabIndex = 152;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.LightBlue;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label12.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.Location = new System.Drawing.Point(10, 230);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(85, 23);
+            this.label12.TabIndex = 151;
+            this.label12.Text = "DB서버";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
@@ -521,6 +539,7 @@
             this.SS1_Sheet1.ColumnCount = 419;
             this.SS1_Sheet1.ColumnFooterSheetCornerStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SS1_Sheet1.ColumnFooterSheetCornerStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.SS1_Sheet1.ColumnFooterSheetCornerStyle.Parent = "CornerFooterDefaultEnhanced";
             this.SS1_Sheet1.ColumnFooterSheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 0).Value = "라이선스번호";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "상호";
@@ -533,30 +552,10 @@
             this.SS1_Sheet1.Columns.Get(2).Width = 102F;
             this.SS1_Sheet1.FilterBarHeaderStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SS1_Sheet1.FilterBarHeaderStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.SS1_Sheet1.FilterBarHeaderStyle.Parent = "RowHeaderDefaultEnhanced";
             this.SS1_Sheet1.FilterBarHeaderStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SS1_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SS1_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.LightBlue;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.Location = new System.Drawing.Point(10, 230);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 23);
-            this.label12.TabIndex = 151;
-            this.label12.Text = "DB서버";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtDbConnect
-            // 
-            this.txtDbConnect.Location = new System.Drawing.Point(108, 232);
-            this.txtDbConnect.Multiline = true;
-            this.txtDbConnect.Name = "txtDbConnect";
-            this.txtDbConnect.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDbConnect.Size = new System.Drawing.Size(358, 57);
-            this.txtDbConnect.TabIndex = 152;
             // 
             // FrmLicense
             // 

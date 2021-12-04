@@ -106,6 +106,8 @@ namespace HcAdmin
                     return;
                 }
 
+                OciDb_AdminPass_Update();
+
                 ComFunc.MsgBox("저장되었습니다.", "알림");
                 Cursor.Current = Cursors.Default;
                 List_Search();
@@ -118,6 +120,67 @@ namespace HcAdmin
                 return;
             }
 
+        }
+
+        // 클라우드 서버에 관리자 기본정보 Update //
+        private void OciDb_AdminPass_Update()
+        {
+            string SQL = "";
+            string SqlErr = "";
+            string strNewPass = "";
+            DataTable dt = null;
+            int intRowAffected = 0;
+            int i = 0;
+
+            strNewPass = clsAES.AES(txtAdminpass.Text.Trim());
+
+            try
+            {
+                SQL = "";
+                SQL = "SELECT * FROM HIC_USERMST ";
+                SQL = SQL + ComNum.VBLF + "WHERE LicNo = '" + txtLicno.Text.Trim() + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND Sabun = 1 ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count == 0)
+                {
+                    SQL = "";
+                    SQL = " INSERT INTO HIC_USERMST ";
+                    SQL +=  "        (LicNo, SABUN, NAME, BUSE, JIK, INDATE, ";
+                    SQL +=  "         JIKMU01, JIKMU02, JIKMU03, JIKMU04,JIKMU05,JIKMU06,";
+                    SQL +=  "          Password, GBLTDUSER, LTDCODE, ENTTIME, ENTSABUN) ";
+                    SQL +=  " VALUES ('" + txtLicno.Text.Trim() + "', 1,'관리자','관리자','관리자', ";
+                    SQL +=  "         '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
+                    SQL +=  "         'Y','Y','Y','Y','Y','Y',";
+                    SQL +=  "         '" + strNewPass + "','N',0, ";
+                    SQL +=  "         SYSDATE,1) ";
+                }
+                else
+                {
+                    SQL = "";
+                    SQL =  " UPDATE HIC_USERMST ";
+                    SQL += "    SET NAME          = '관리자', ";
+                    SQL += "        Buse          = '관리자', ";
+                    SQL +=  "       Jik           = '관리자', ";
+                    SQL +=  "       InDate        = '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
+                    SQL +=  "       TesaDate      = '', ";
+                    SQL +=  "       GBLTDUSER     = 'N', ";
+                    SQL +=  "       LTDCODE       =  0, ";
+                    SQL +=  "       ENTTIME = SYSDATE, ENTSABUN = 1 ";
+                    SQL +=  " WHERE LicNo         = '" + txtLicno.Text.Trim() + "'";
+                    SQL +=  "   AND Sabun          = 1 ";
+                }
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+            }
+            catch (Exception ex)
+            {
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                }
+
+                ComFunc.MsgBox(ex.Message);
+            }
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -186,35 +249,6 @@ namespace HcAdmin
             }
         }
 
-        private void 닫기ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void 신규발급ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //                0123456789
-            string strConv = "P583E96T2M";
-            int[] rank = new int[] { 11, 8, 4, 10, 1, 6, 2, 5, 3, 7, 12, 9 };
-            string strTime = DateTime.Now.ToString("yyyyMMddmmss");
-            string strResult = "";
-            int i = 0;
-
-            for (i = 0; i < 12; i++)
-            {
-                int inx = int.Parse(strTime.Substring(rank[i] - 1, 1));
-                string strChar = strConv.Substring(inx, 1);
-                strResult = strResult + strChar;
-                if (i == 3 || i == 7) strResult += "-";
-            }
-            Screen_Clear();
-
-            삭제ToolStripMenuItem.Enabled = false;
-            FbNew = true;
-            txtLicno.Text = strResult;
-            dptSDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
-        }
-
         private void Screen_Clear()
         {
             txtLicno.Text = "";
@@ -243,48 +277,6 @@ namespace HcAdmin
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
-
-        }
-
-        private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string SQL = string.Empty;
-            bool SqlErr;
-
-            if (FbNew == true) return;
-
-            if (ComFunc.MsgBoxQ("삭제하시겠습니까") == DialogResult.No) return;
-             
-            Cursor.Current = Cursors.WaitCursor;
-
-            DataTable Dt = new DataTable();
-
-            try
-            {
-                SQL = "";
-                SQL += ComNum.VBLF + " DELETE FROM LICMST ";
-                SQL += ComNum.VBLF + "  WHERE LicNo = '" + txtLicno.Text.Trim() + "'";
-
-                SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
-
-                if (SqlErr == false)
-                {
-                    ComFunc.MsgBox("삭제 실패", "알림");
-                    Cursor.Current = Cursors.Default;
-                    return;
-                }
-
-                ComFunc.MsgBox("삭제되었습니다.", "알림");
-                Cursor.Current = Cursors.Default;
-                List_Search();
-                Screen_Clear();
-            }
-            catch (Exception ex)
-            {
-                ComFunc.MsgBox(ex.Message);
-                Cursor.Current = Cursors.Default;
-                return;
-            }
 
         }
 
@@ -350,6 +342,78 @@ namespace HcAdmin
 
                 ComFunc.MsgBox(ex.Message);
                 Cursor.Current = Cursors.Default;
+            }
+
+        }
+
+        private void 닫기ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void 신규발급ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            //                0123456789
+            string strConv = "P583E96T2M";
+            int[] rank = new int[] { 11, 8, 4, 10, 1, 6, 2, 5, 3, 7, 12, 9 };
+            string strTime = DateTime.Now.ToString("yyyyMMddmmss");
+            string strResult = "";
+            int i = 0;
+
+            for (i = 0; i < 12; i++)
+            {
+                int inx = int.Parse(strTime.Substring(rank[i] - 1, 1));
+                string strChar = strConv.Substring(inx, 1);
+                strResult = strResult + strChar;
+                if (i == 3 || i == 7) strResult += "-";
+            }
+            Screen_Clear();
+
+            삭제ToolStripMenuItem.Enabled = false;
+            FbNew = true;
+            txtLicno.Text = strResult;
+            dptSDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
+        }
+
+        private void 삭제ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            string SQL = string.Empty;
+            bool SqlErr;
+
+            if (FbNew == true) return;
+
+            if (ComFunc.MsgBoxQ("삭제하시겠습니까") == DialogResult.No) return;
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            DataTable Dt = new DataTable();
+
+            try
+            {
+                SQL = "";
+                SQL += ComNum.VBLF + " DELETE FROM LICMST ";
+                SQL += ComNum.VBLF + "  WHERE LicNo = '" + txtLicno.Text.Trim() + "'";
+
+                SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
+
+                if (SqlErr == false)
+                {
+                    ComFunc.MsgBox("삭제 실패", "알림");
+                    Cursor.Current = Cursors.Default;
+                    return;
+                }
+
+                ComFunc.MsgBox("삭제되었습니다.", "알림");
+                Cursor.Current = Cursors.Default;
+                List_Search();
+                Screen_Clear();
+            }
+            catch (Exception ex)
+            {
+                ComFunc.MsgBox(ex.Message);
+                Cursor.Current = Cursors.Default;
+                return;
             }
 
         }
