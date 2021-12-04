@@ -767,5 +767,10 @@ namespace HC_OSHA
         {
             new UsermstForm().Show();
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new FrmPassChange().Show();
+        }
     }
 }

@@ -28,7 +28,9 @@ namespace HS_OSHA
             if (READ_Licno_Server() == false) this.Close();
 
             GuideMsg_Display();
-            clsDB.DBConnect_Cloud();
+
+            clsDB.GetDbInfo();
+            clsDB.DbCon = clsDB.DBConnect_Cloud();
         }
 
         private void txtIdNumber_TextChanged(object sender, EventArgs e)
@@ -209,6 +211,7 @@ namespace HS_OSHA
                     clsType.User.Sabun = "admin";
                     clsType.User.IdNumber = "1";
                     clsType.User.JobName = "관리자";
+                    clsType.User.BuseName = "관리자";
                 } else {
                     ComFunc.MsgBox("관리자 비밀번호 오류 입니다", "알림");
                     Cursor.Current = Cursors.Default;
@@ -224,8 +227,11 @@ namespace HS_OSHA
                 }
             }
 
+            this.Hide();
+
             // 프로그램 실행
-            new Dashboard().Show();
+            Dashboard form = new Dashboard();
+            form.Show();
         }
 
         private bool Set_UserInfo(int ArgSabun, string argPassword)

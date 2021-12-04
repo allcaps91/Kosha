@@ -217,6 +217,12 @@
     <Compile Include="form\Etc\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\Management\FrmPassChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Management\FrmPassChange.designer.cs">
+      <DependentUpon>FrmPassChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Management\SitePriceManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -817,6 +823,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Etc\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Management\FrmPassChange.resx">
+      <DependentUpon>FrmPassChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Management\SitePriceManageForm.resx">
       <DependentUpon>SitePriceManageForm.cs</DependentUpon>
