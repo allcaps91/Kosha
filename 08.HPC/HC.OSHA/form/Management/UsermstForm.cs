@@ -120,16 +120,17 @@ namespace HC_OSHA
 
             if (txtID.Text.Trim() == "") { ComFunc.MsgBox("아이디가 공란입니다."); return; }
             int nID = Int32.Parse(txtID.Text.Trim());
-            if (nID<1 || nID > 999999) { ComFunc.MsgBox("아이디는 1~999999만 가능합니다."); return; }
+            if (nID < 1 || nID > 999999) { ComFunc.MsgBox("아이디는 1~999999만 가능합니다."); return; }
             if (txtName.Text.Trim() == "") { ComFunc.MsgBox("성명이 공란입니다."); return; }
             if (txtBuse.Text.Trim() == "") { ComFunc.MsgBox("부서명이 공란입니다."); return; }
             if (txtJik.Text.Trim() == "") { ComFunc.MsgBox("직책이 공란입니다."); return; }
-            if (FbNew==true)
+            if (FbNew == true)
             {
                 if (nID == 1) { ComFunc.MsgBox("아이디 1은 사용이 불가능 합니다."); return; }
                 strNewPass = clsAES.AES("1234");
             }
-            nLtdCode = Int32.Parse(txtLtdcode.Text.Trim());
+            nLtdCode = 0;
+            if (txtLtdcode.Text.Trim() != "") { nLtdCode = Int32.Parse(txtLtdcode.Text.Trim()); }
             if (nLtdCode > 0 && chkLtduser.Checked == false) { ComFunc.MsgBox("관계사 사용 아이디 오류입니다."); return; }
             if (nLtdCode == 0 && chkLtduser.Checked == true) { ComFunc.MsgBox("관계사 사용 아이디 오류입니다."); return; }
 
@@ -182,7 +183,6 @@ namespace HC_OSHA
                     SQL += ComNum.VBLF + "         '" + strNewPass + "', ";
                     SQL += ComNum.VBLF + "         '" + strLtduser + "', ";
                     SQL += ComNum.VBLF + "          " + nLtdCode + ", ";
-                    SQL += ComNum.VBLF + "         '" + strNewPass + "', ";
                     SQL += ComNum.VBLF + "         SYSDATE,"  + FnJobSabun + ") ";
                 }
                 else
@@ -256,7 +256,7 @@ namespace HC_OSHA
                 SQL = "SELECT";
                 SQL = SQL + ComNum.VBLF + "      Sabun, Name, Buse, Jik ";
                 SQL = SQL + ComNum.VBLF + " FROM HIC_USERMST ";
-                SQL = SQL + ComNum.VBLF + "WHERE 1 = 1 ";
+                SQL = SQL + ComNum.VBLF + " WHERE Licno='" + FstrLicno + "' ";
                 if (txtViewName.TextLength > 0) SQL = SQL + " AND Name LIKE '%" + txtViewName.Text + "%' ";
                 if (chkTejik.Checked == true) SQL = SQL + " AND (TesaDate='' OR TesaDate IS NULL) ";
                 SQL = SQL + ComNum.VBLF + "ORDER BY Name,Sabun ";

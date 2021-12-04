@@ -179,7 +179,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(134, 12);
             this.label6.TabIndex = 19;
-            this.label6.Text = "(1~999999 숫자만 가능)";
+            this.label6.Text = "(2~999999 숫자만 가능)";
             // 
             // panel1
             // 

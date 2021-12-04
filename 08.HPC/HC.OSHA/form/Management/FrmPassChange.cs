@@ -75,7 +75,17 @@ namespace HC_OSHA
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void FrmPassChange_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
         {
             string strPass1 = "";
             string strPass2 = "";
@@ -141,16 +151,6 @@ namespace HC_OSHA
                 return;
             }
 
-        }
-
-        private void FrmPassChange_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

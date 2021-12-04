@@ -130,6 +130,7 @@
             this.btnSave.TabIndex = 84;
             this.btnSave.Text = "비밀번호 변경";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // FrmPassChange
             // 
