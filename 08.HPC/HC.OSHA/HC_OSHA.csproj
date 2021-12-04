@@ -229,6 +229,12 @@
     <Compile Include="form\Management\SiteRelationForm.Designer.cs">
       <DependentUpon>SiteRelationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\Management\UsermstForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Management\UsermstForm.designer.cs">
+      <DependentUpon>UsermstForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Migration\MigrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -817,6 +823,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Management\SiteRelationForm.resx">
       <DependentUpon>SiteRelationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Management\UsermstForm.resx">
+      <DependentUpon>UsermstForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Migration\MigrationForm.resx">
       <DependentUpon>MigrationForm.cs</DependentUpon>

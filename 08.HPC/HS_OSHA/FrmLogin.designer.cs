@@ -43,11 +43,10 @@
             this.lblLicno.BackColor = System.Drawing.Color.Transparent;
             this.lblLicno.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblLicno.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblLicno.Location = new System.Drawing.Point(8, 9);
+            this.lblLicno.Location = new System.Drawing.Point(12, 3);
             this.lblLicno.Name = "lblLicno";
-            this.lblLicno.Size = new System.Drawing.Size(109, 12);
+            this.lblLicno.Size = new System.Drawing.Size(135, 24);
             this.lblLicno.TabIndex = 5;
-            this.lblLicno.Text = "1234-1234-1234";
             this.lblLicno.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnExit
@@ -115,7 +114,6 @@
             this.lblSangho.Name = "lblSangho";
             this.lblSangho.Size = new System.Drawing.Size(140, 12);
             this.lblSangho.TabIndex = 11;
-            this.lblSangho.Text = "(주)동방운수";
             this.lblSangho.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FrmLogin

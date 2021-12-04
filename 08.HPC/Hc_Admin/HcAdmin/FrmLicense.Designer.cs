@@ -41,12 +41,20 @@
             this.label15 = new System.Windows.Forms.Label();
             this.dtpViewSDate = new System.Windows.Forms.DateTimePicker();
             this.BtnSearch = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.SS1 = new FarPoint.Win.Spread.FpSpread();
-            this.SS1_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtLicno = new System.Windows.Forms.TextBox();
+            this.lblLTD02 = new System.Windows.Forms.Label();
             this.txtLicCnt = new System.Windows.Forms.TextBox();
-            this.check신규등록 = new System.Windows.Forms.CheckBox();
             this.check작업측정 = new System.Windows.Forms.CheckBox();
             this.check보건대행 = new System.Windows.Forms.CheckBox();
             this.check건강검진 = new System.Windows.Forms.CheckBox();
@@ -60,24 +68,15 @@
             this.dptEDate = new System.Windows.Forms.DateTimePicker();
             this.dptSDate = new System.Windows.Forms.DateTimePicker();
             this.txtSangho = new System.Windows.Forms.TextBox();
-            this.txtLicno = new System.Windows.Forms.TextBox();
-            this.lblLTD02 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.SS1 = new FarPoint.Win.Spread.FpSpread();
+            this.SS1_Sheet1 = new FarPoint.Win.Spread.SheetView();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtDbConnect = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SS1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SS1_Sheet1)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -94,6 +93,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(949, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // 닫기ToolStripMenuItem
             // 
@@ -207,48 +207,10 @@
             this.BtnSearch.UseVisualStyleBackColor = true;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.SS1);
-            this.panel2.Location = new System.Drawing.Point(18, 89);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(432, 473);
-            this.panel2.TabIndex = 86;
-            // 
-            // SS1
-            // 
-            this.SS1.AccessibleDescription = "SS1, Sheet1, Row 0, Column 0, ";
-            this.SS1.Location = new System.Drawing.Point(3, 17);
-            this.SS1.Name = "SS1";
-            this.SS1.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
-            this.SS1_Sheet1});
-            this.SS1.Size = new System.Drawing.Size(422, 446);
-            this.SS1.TabIndex = 0;
-            this.SS1.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SS1_CellClick);
-            this.SS1.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SS1_CellDoubleClick);
-            this.SS1.SetViewportTopRow(0, 0, 6);
-            // 
-            // SS1_Sheet1
-            // 
-            this.SS1_Sheet1.Reset();
-            this.SS1_Sheet1.SheetName = "Sheet1";
-            // Formulas and custom names must be loaded with R1C1 reference style
-            this.SS1_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1;
-            this.SS1_Sheet1.ColumnCount = 419;
-            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 0).Value = "라이선스번호";
-            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "상호";
-            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "계약일자";
-            this.SS1_Sheet1.Columns.Get(0).Label = "라이선스번호";
-            this.SS1_Sheet1.Columns.Get(0).Width = 116F;
-            this.SS1_Sheet1.Columns.Get(1).Label = "상호";
-            this.SS1_Sheet1.Columns.Get(1).Width = 139F;
-            this.SS1_Sheet1.Columns.Get(2).Label = "계약일자";
-            this.SS1_Sheet1.Columns.Get(2).Width = 102F;
-            this.SS1_Sheet1.RowHeader.Columns.Default.Resizable = false;
-            this.SS1_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
-            // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.txtDbConnect);
+            this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label10);
@@ -262,7 +224,6 @@
             this.panel3.Controls.Add(this.txtLicno);
             this.panel3.Controls.Add(this.lblLTD02);
             this.panel3.Controls.Add(this.txtLicCnt);
-            this.panel3.Controls.Add(this.check신규등록);
             this.panel3.Controls.Add(this.check작업측정);
             this.panel3.Controls.Add(this.check보건대행);
             this.panel3.Controls.Add(this.check건강검진);
@@ -282,6 +243,148 @@
             this.panel3.TabIndex = 87;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.LightBlue;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(245, 76);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 23);
+            this.label5.TabIndex = 150;
+            this.label5.Text = "만기일자";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.LightBlue;
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label7.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Location = new System.Drawing.Point(245, 44);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 23);
+            this.label7.TabIndex = 149;
+            this.label7.Text = "관리자비번";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.LightBlue;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Location = new System.Drawing.Point(245, 163);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 23);
+            this.label10.TabIndex = 148;
+            this.label10.Text = "전화번호";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.LightBlue;
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label9.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(10, 328);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 23);
+            this.label9.TabIndex = 147;
+            this.label9.Text = "고겍장보";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.LightBlue;
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label8.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(10, 195);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(85, 23);
+            this.label8.TabIndex = 146;
+            this.label8.Text = "이메일";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.LightBlue;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.Location = new System.Drawing.Point(10, 161);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(85, 23);
+            this.label11.TabIndex = 145;
+            this.label11.Text = "담당자";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.LightBlue;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label6.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(10, 133);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(85, 23);
+            this.label6.TabIndex = 144;
+            this.label6.Text = "주  소";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.LightBlue;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(10, 103);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 23);
+            this.label4.TabIndex = 143;
+            this.label4.Text = "시용자수";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.LightBlue;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(10, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 23);
+            this.label3.TabIndex = 142;
+            this.label3.Text = "발급일자";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.LightBlue;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(10, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 23);
+            this.label2.TabIndex = 141;
+            this.label2.Text = "회사명";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtLicno
+            // 
+            this.txtLicno.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtLicno.Location = new System.Drawing.Point(108, 10);
+            this.txtLicno.Name = "txtLicno";
+            this.txtLicno.Size = new System.Drawing.Size(131, 25);
+            this.txtLicno.TabIndex = 140;
+            this.txtLicno.Tag = "MAILCODE";
+            this.txtLicno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblLTD02
+            // 
+            this.lblLTD02.BackColor = System.Drawing.Color.LightBlue;
+            this.lblLTD02.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblLTD02.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblLTD02.Location = new System.Drawing.Point(10, 14);
+            this.lblLTD02.Name = "lblLTD02";
+            this.lblLTD02.Size = new System.Drawing.Size(85, 23);
+            this.lblLTD02.TabIndex = 139;
+            this.lblLTD02.Text = "라이선스";
+            this.lblLTD02.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // txtLicCnt
             // 
             this.txtLicCnt.Location = new System.Drawing.Point(108, 104);
@@ -289,16 +392,6 @@
             this.txtLicCnt.Size = new System.Drawing.Size(69, 22);
             this.txtLicCnt.TabIndex = 138;
             this.txtLicCnt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // check신규등록
-            // 
-            this.check신규등록.AutoSize = true;
-            this.check신규등록.Location = new System.Drawing.Point(335, 18);
-            this.check신규등록.Name = "check신규등록";
-            this.check신규등록.Size = new System.Drawing.Size(78, 17);
-            this.check신규등록.TabIndex = 137;
-            this.check신규등록.Text = "신규등록";
-            this.check신규등록.UseVisualStyleBackColor = true;
             // 
             // check작업측정
             // 
@@ -348,11 +441,11 @@
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(15, 263);
+            this.txtRemark.Location = new System.Drawing.Point(10, 354);
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRemark.Size = new System.Drawing.Size(451, 256);
+            this.txtRemark.Size = new System.Drawing.Size(451, 172);
             this.txtRemark.TabIndex = 126;
             // 
             // txtEmail
@@ -408,156 +501,70 @@
             this.txtSangho.Size = new System.Drawing.Size(131, 22);
             this.txtSangho.TabIndex = 112;
             // 
-            // txtLicno
+            // SS1
             // 
-            this.txtLicno.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtLicno.Location = new System.Drawing.Point(108, 10);
-            this.txtLicno.Name = "txtLicno";
-            this.txtLicno.Size = new System.Drawing.Size(131, 25);
-            this.txtLicno.TabIndex = 140;
-            this.txtLicno.Tag = "MAILCODE";
-            this.txtLicno.Text = "12345678";
-            this.txtLicno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SS1.AccessibleDescription = "SS1, Sheet1, Row 0, Column 0, ";
+            this.SS1.Location = new System.Drawing.Point(21, 79);
+            this.SS1.Name = "SS1";
+            this.SS1.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
+            this.SS1_Sheet1});
+            this.SS1.Size = new System.Drawing.Size(429, 483);
+            this.SS1.TabIndex = 88;
+            this.SS1.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SS1_CellClick_1);
             // 
-            // lblLTD02
+            // SS1_Sheet1
             // 
-            this.lblLTD02.BackColor = System.Drawing.Color.LightBlue;
-            this.lblLTD02.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblLTD02.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblLTD02.Location = new System.Drawing.Point(10, 14);
-            this.lblLTD02.Name = "lblLTD02";
-            this.lblLTD02.Size = new System.Drawing.Size(85, 23);
-            this.lblLTD02.TabIndex = 139;
-            this.lblLTD02.Text = "라이선스";
-            this.lblLTD02.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SS1_Sheet1.Reset();
+            this.SS1_Sheet1.SheetName = "Sheet1";
+            // Formulas and custom names must be loaded with R1C1 reference style
+            this.SS1_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1;
+            this.SS1_Sheet1.ColumnCount = 419;
+            this.SS1_Sheet1.ColumnFooterSheetCornerStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            this.SS1_Sheet1.ColumnFooterSheetCornerStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.SS1_Sheet1.ColumnFooterSheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 0).Value = "라이선스번호";
+            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "상호";
+            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "계약일자";
+            this.SS1_Sheet1.Columns.Get(0).Label = "라이선스번호";
+            this.SS1_Sheet1.Columns.Get(0).Width = 116F;
+            this.SS1_Sheet1.Columns.Get(1).Label = "상호";
+            this.SS1_Sheet1.Columns.Get(1).Width = 139F;
+            this.SS1_Sheet1.Columns.Get(2).Label = "계약일자";
+            this.SS1_Sheet1.Columns.Get(2).Width = 102F;
+            this.SS1_Sheet1.FilterBarHeaderStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            this.SS1_Sheet1.FilterBarHeaderStyle.NoteIndicatorColor = System.Drawing.Color.Red;
+            this.SS1_Sheet1.FilterBarHeaderStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            this.SS1_Sheet1.RowHeader.Columns.Default.Resizable = false;
+            this.SS1_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
-            // label2
+            // label12
             // 
-            this.label2.BackColor = System.Drawing.Color.LightBlue;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(10, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 23);
-            this.label2.TabIndex = 141;
-            this.label2.Text = "회사명";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label12.BackColor = System.Drawing.Color.LightBlue;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label12.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.Location = new System.Drawing.Point(10, 230);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(85, 23);
+            this.label12.TabIndex = 151;
+            this.label12.Text = "DB서버";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // txtDbConnect
             // 
-            this.label3.BackColor = System.Drawing.Color.LightBlue;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(10, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 23);
-            this.label3.TabIndex = 142;
-            this.label3.Text = "발급일자";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.LightBlue;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(10, 103);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 23);
-            this.label4.TabIndex = 143;
-            this.label4.Text = "시용자수";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.LightBlue;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(10, 133);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 23);
-            this.label6.TabIndex = 144;
-            this.label6.Text = "주  소";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.LightBlue;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.Location = new System.Drawing.Point(10, 161);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(85, 23);
-            this.label11.TabIndex = 145;
-            this.label11.Text = "담당자";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.BackColor = System.Drawing.Color.LightBlue;
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(10, 195);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 23);
-            this.label8.TabIndex = 146;
-            this.label8.Text = "이메일";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.Color.LightBlue;
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label9.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(10, 237);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 23);
-            this.label9.TabIndex = 147;
-            this.label9.Text = "고겍장보";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.LightBlue;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.Location = new System.Drawing.Point(245, 163);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(85, 23);
-            this.label10.TabIndex = 148;
-            this.label10.Text = "전화번호";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.LightBlue;
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(245, 44);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 23);
-            this.label7.TabIndex = 149;
-            this.label7.Text = "관리자비번";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.LightBlue;
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(245, 76);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 23);
-            this.label5.TabIndex = 150;
-            this.label5.Text = "만기일자";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtDbConnect.Location = new System.Drawing.Point(108, 232);
+            this.txtDbConnect.Multiline = true;
+            this.txtDbConnect.Name = "txtDbConnect";
+            this.txtDbConnect.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDbConnect.Size = new System.Drawing.Size(358, 57);
+            this.txtDbConnect.TabIndex = 152;
             // 
             // FrmLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 592);
+            this.Controls.Add(this.SS1);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -570,11 +577,10 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SS1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SS1_Sheet1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SS1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SS1_Sheet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,9 +597,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DateTimePicker dtpViewSDate;
         private System.Windows.Forms.Button BtnSearch;
-        private System.Windows.Forms.Panel panel2;
-        private FarPoint.Win.Spread.FpSpread SS1;
-        private FarPoint.Win.Spread.SheetView SS1_Sheet1;
         private System.Windows.Forms.ToolStripMenuItem 신규발급ToolStripMenuItem;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtEmail;
@@ -612,7 +615,6 @@
         private System.Windows.Forms.CheckBox check보건대행;
         private System.Windows.Forms.CheckBox check건강검진;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.CheckBox check신규등록;
         private System.Windows.Forms.TextBox txtLicCnt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
@@ -626,5 +628,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtLicno;
         private System.Windows.Forms.Label lblLTD02;
+        private FarPoint.Win.Spread.FpSpread SS1;
+        private FarPoint.Win.Spread.SheetView SS1_Sheet1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtDbConnect;
     }
 }

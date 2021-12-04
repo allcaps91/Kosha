@@ -31,12 +31,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.닫기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.라이선스ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.안내문등록ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panLogin = new System.Windows.Forms.Panel();
             this.CmdExit = new System.Windows.Forms.Button();
             this.CmdLogin = new System.Windows.Forms.Button();
             this.TxtPass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.안내문등록ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panLogin.SuspendLayout();
             this.SuspendLayout();
@@ -68,9 +68,17 @@
             this.라이선스ToolStripMenuItem.Text = "라이선스";
             this.라이선스ToolStripMenuItem.Click += new System.EventHandler(this.라이선스ToolStripMenuItem_Click);
             // 
+            // 안내문등록ToolStripMenuItem
+            // 
+            this.안내문등록ToolStripMenuItem.Name = "안내문등록ToolStripMenuItem";
+            this.안내문등록ToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.안내문등록ToolStripMenuItem.Text = "안내문등록";
+            this.안내문등록ToolStripMenuItem.Click += new System.EventHandler(this.안내문등록ToolStripMenuItem_Click);
+            // 
             // panLogin
             // 
             this.panLogin.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panLogin.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panLogin.Controls.Add(this.CmdExit);
             this.panLogin.Controls.Add(this.CmdLogin);
             this.panLogin.Controls.Add(this.TxtPass);
@@ -82,7 +90,7 @@
             // 
             // CmdExit
             // 
-            this.CmdExit.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.CmdExit.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.CmdExit.Location = new System.Drawing.Point(170, 111);
             this.CmdExit.Name = "CmdExit";
             this.CmdExit.Size = new System.Drawing.Size(84, 33);
@@ -93,7 +101,7 @@
             // 
             // CmdLogin
             // 
-            this.CmdLogin.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.CmdLogin.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.CmdLogin.Location = new System.Drawing.Point(52, 111);
             this.CmdLogin.Name = "CmdLogin";
             this.CmdLogin.Size = new System.Drawing.Size(91, 33);
@@ -104,6 +112,7 @@
             // 
             // TxtPass
             // 
+            this.TxtPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtPass.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.TxtPass.Location = new System.Drawing.Point(52, 56);
             this.TxtPass.Name = "TxtPass";
@@ -115,19 +124,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(40, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 15);
+            this.label1.Size = new System.Drawing.Size(229, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "관리자의 비밀번호를 입력하세요";
-            // 
-            // 안내문등록ToolStripMenuItem
-            // 
-            this.안내문등록ToolStripMenuItem.Name = "안내문등록ToolStripMenuItem";
-            this.안내문등록ToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.안내문등록ToolStripMenuItem.Text = "안내문등록";
-            this.안내문등록ToolStripMenuItem.Click += new System.EventHandler(this.안내문등록ToolStripMenuItem_Click);
             // 
             // FrmMainform
             // 

@@ -14,11 +14,13 @@ namespace HcAdmin
 {
     public partial class FrmLicense : Form
     {
+        public bool FbNew = false;
+
         public FrmLicense()
         {
             InitializeComponent();
 
-            check신규등록.Checked = false;
+            FbNew = false;
 
             //서버접속
             if (clsDbMySql.DBConnect("115.68.23.223", "3306", "dhson", "@thsehdgml#", "dhson") == false)
@@ -36,6 +38,7 @@ namespace HcAdmin
             string strChkHic1 = "N";
             string strChkHic2 = "N";
             string strChkHic3 = "N";
+
             bool SqlErr;
             
             if (dptSDate.Text == "") { ComFunc.MsgBox("발급일자가 공란입니다."); dptSDate.Focus(); return; }
@@ -46,7 +49,6 @@ namespace HcAdmin
             if (check보건대행.Checked == true) strChkHic2 = "Y";
             if (check작업측정.Checked == true) strChkHic3 = "Y";
 
-            #region 입력데이터 저장
             Cursor.Current = Cursors.WaitCursor;
 
             DataTable Dt = new DataTable();
@@ -54,12 +56,12 @@ namespace HcAdmin
             try
             {
                 SQL = "";
-                if (check신규등록.Checked == true)
+                if (FbNew == true)
                 {
                     SQL += ComNum.VBLF + " INSERT INTO LICMST ";
                     SQL += ComNum.VBLF + "        (LicNo, AdminPass, SDate, EDate, LicCnt,";
                     SQL += ComNum.VBLF + "         chkHic1, chkHic2, chkHic3, Sangho,Juso,";
-                    SQL += ComNum.VBLF + "         Damdang, Tel, EMail,Remark) ";
+                    SQL += ComNum.VBLF + "         Damdang, Tel, EMail,DbConnect,Remark) ";
                     SQL += ComNum.VBLF + " VALUES ('" + txtLicno.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtAdminpass.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
@@ -73,6 +75,7 @@ namespace HcAdmin
                     SQL += ComNum.VBLF + "         '" + txtDamdang.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtTel.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtEmail.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "         '" + txtDbConnect.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtRemark.Text.Trim() + "') ";
                 }
                 else
@@ -90,6 +93,7 @@ namespace HcAdmin
                     SQL += ComNum.VBLF + "        Damdang       = '" + txtDamdang.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        Tel           = '" + txtTel.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        EMail         = '" + txtEmail.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "        DbConnect     = '" + txtDbConnect.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        Remark        = '" + txtRemark.Text.Trim() + "'  ";
                     SQL += ComNum.VBLF + "  WHERE LicNo         = '" + txtLicno.Text.Trim() + "'";
                 }
@@ -113,8 +117,6 @@ namespace HcAdmin
                 Cursor.Current = Cursors.Default;
                 return;
             }
-
-            #endregion
 
         }
 
@@ -208,7 +210,7 @@ namespace HcAdmin
             Screen_Clear();
 
             삭제ToolStripMenuItem.Enabled = false;
-            check신규등록.Checked = true;
+            FbNew = true;
             txtLicno.Text = strResult;
             dptSDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
@@ -229,8 +231,9 @@ namespace HcAdmin
             txtEmail.Text = "";
             txtTel.Text = "";
             txtRemark.Text = "";
-            check신규등록.Checked = false;
-            삭제ToolStripMenuItem.Enabled = true;
+            txtDbConnect.Text = "";
+            FbNew = false;
+            삭제ToolStripMenuItem.Enabled = false;
         }
 
         private void FrmLicense_Load(object sender, EventArgs e)
@@ -248,7 +251,7 @@ namespace HcAdmin
             string SQL = string.Empty;
             bool SqlErr;
 
-            if (check신규등록.Checked == true) return;
+            if (FbNew == true) return;
 
             if (ComFunc.MsgBoxQ("삭제하시겠습니까") == DialogResult.No) return;
              
@@ -285,8 +288,14 @@ namespace HcAdmin
 
         }
 
-        private void SS1_CellDoubleClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+
+        }
+
+        private void SS1_CellClick_1(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
+        {
+
             string strLicno = SS1.ActiveSheet.Cells[e.Row, 0].Value.ToString();
 
             string SQL = "";
@@ -311,7 +320,7 @@ namespace HcAdmin
                     dptSDate.Text = dt.Rows[0]["SDate"].ToString().Trim();
                     dptEDate.Text = dt.Rows[0]["EDate"].ToString().Trim();
                     txtLicCnt.Text = dt.Rows[0]["LicCnt"].ToString().Trim();
-                    if (dt.Rows[0]["chkHic1"].ToString().Trim()=="Y") check건강검진.Checked=true;
+                    if (dt.Rows[0]["chkHic1"].ToString().Trim() == "Y") check건강검진.Checked = true;
                     if (dt.Rows[0]["chkHic2"].ToString().Trim() == "Y") check보건대행.Checked = true;
                     if (dt.Rows[0]["chkHic3"].ToString().Trim() == "Y") check작업측정.Checked = true;
                     txtSangho.Text = dt.Rows[0]["Sangho"].ToString().Trim();
@@ -319,12 +328,15 @@ namespace HcAdmin
                     txtDamdang.Text = dt.Rows[0]["Damdang"].ToString().Trim();
                     txtTel.Text = dt.Rows[0]["Tel"].ToString().Trim();
                     txtEmail.Text = dt.Rows[0]["EMail"].ToString().Trim();
+                    txtDbConnect.Text = dt.Rows[0]["DbConnect"].ToString().Trim();
                     txtRemark.Text = dt.Rows[0]["Remark"].ToString().Trim();
                 }
 
                 dt.Dispose();
                 dt = null;
 
+                FbNew = false;
+                삭제ToolStripMenuItem.Enabled = true;
                 Cursor.Current = Cursors.Default;
 
             }
@@ -339,11 +351,6 @@ namespace HcAdmin
                 ComFunc.MsgBox(ex.Message);
                 Cursor.Current = Cursors.Default;
             }
-
-        }
-
-        private void SS1_CellClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
-        {
 
         }
     }

@@ -762,5 +762,10 @@ namespace HC_OSHA
         {
 
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new UsermstForm().Show();
+        }
     }
 }

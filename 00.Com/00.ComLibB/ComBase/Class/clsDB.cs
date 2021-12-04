@@ -96,6 +96,8 @@ namespace ComBase
             {
                 PsmhDb pPsmhDb = new PsmhDb();
 
+                pPsmhDb.strDbIp = "";
+
                 if (pPsmhDb.DBConnect_Cloud() == true)
                 {
                     return pPsmhDb;
