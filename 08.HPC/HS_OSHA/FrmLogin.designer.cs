@@ -110,9 +110,9 @@
             this.lblSangho.BackColor = System.Drawing.Color.Transparent;
             this.lblSangho.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblSangho.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblSangho.Location = new System.Drawing.Point(315, 9);
+            this.lblSangho.Location = new System.Drawing.Point(254, 9);
             this.lblSangho.Name = "lblSangho";
-            this.lblSangho.Size = new System.Drawing.Size(140, 12);
+            this.lblSangho.Size = new System.Drawing.Size(201, 18);
             this.lblSangho.TabIndex = 11;
             this.lblSangho.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -131,6 +131,7 @@
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lblLicno);
             this.Name = "FrmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "보건관리전문 프로그램";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);

@@ -146,12 +146,11 @@ namespace HcAdmin
                     SQL = "";
                     SQL = " INSERT INTO HIC_USERMST ";
                     SQL +=  "        (LicNo, SABUN, NAME, BUSE, JIK, INDATE, ";
-                    SQL +=  "         JIKMU01, JIKMU02, JIKMU03, JIKMU04,JIKMU05,JIKMU06,";
+                    SQL +=  "         JIKMU01, JIKMU02, JIKMU03, ";
                     SQL +=  "          Password, GBLTDUSER, LTDCODE, ENTTIME, ENTSABUN) ";
                     SQL +=  " VALUES ('" + txtLicno.Text.Trim() + "', 1,'관리자','관리자','관리자', ";
                     SQL +=  "         '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
-                    SQL +=  "         'Y','Y','Y','Y','Y','Y',";
-                    SQL +=  "         '" + strNewPass + "','N',0, ";
+                    SQL +=  "         'Y','Y','Y','" + strNewPass + "','N',0, ";
                     SQL +=  "         SYSDATE,1) ";
                 }
                 else
@@ -416,6 +415,22 @@ namespace HcAdmin
                 return;
             }
 
+        }
+
+        private void pC저장ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string strNewData = "";
+            string strPcData = "";
+
+            strNewData = txtLicno.Text.Trim() + "{}";
+            strNewData += txtSangho.Text.Trim() + "{}";
+            strNewData += dptEDate.Value.ToString("yyyy-MM-dd") + "{}";
+            strNewData += txtAdminpass.Text.Trim() + "{}";
+
+            strPcData = clsAES.AES(strNewData);
+            System.IO.File.WriteAllText(@"C:\Windows\System32\acledit392io87.dll", strPcData);
+
+            ComFunc.MsgBox("PC에 해당회사로 라이선스가 설정되었습니다.", "알림");
         }
     }
 }

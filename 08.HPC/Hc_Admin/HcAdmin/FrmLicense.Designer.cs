@@ -33,7 +33,7 @@
             this.신규발급ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.저장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.메세지전송ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pC저장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkEnd = new System.Windows.Forms.CheckBox();
             this.TxtViewSangho = new System.Windows.Forms.TextBox();
@@ -86,7 +86,7 @@
             this.신규발급ToolStripMenuItem,
             this.저장ToolStripMenuItem,
             this.삭제ToolStripMenuItem,
-            this.메세지전송ToolStripMenuItem});
+            this.pC저장ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -122,11 +122,12 @@
             this.삭제ToolStripMenuItem.Text = "삭제";
             this.삭제ToolStripMenuItem.Click += new System.EventHandler(this.삭제ToolStripMenuItem_Click_1);
             // 
-            // 메세지전송ToolStripMenuItem
+            // pC저장ToolStripMenuItem
             // 
-            this.메세지전송ToolStripMenuItem.Name = "메세지전송ToolStripMenuItem";
-            this.메세지전송ToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.메세지전송ToolStripMenuItem.Text = "메세지전송";
+            this.pC저장ToolStripMenuItem.Name = "pC저장ToolStripMenuItem";
+            this.pC저장ToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.pC저장ToolStripMenuItem.Text = "PC저장";
+            this.pC저장ToolStripMenuItem.Click += new System.EventHandler(this.pC저장ToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -496,6 +497,7 @@
             // 
             // dptEDate
             // 
+            this.dptEDate.AccessibleRole = System.Windows.Forms.AccessibleRole.Clock;
             this.dptEDate.CustomFormat = "";
             this.dptEDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dptEDate.Location = new System.Drawing.Point(332, 77);
@@ -570,6 +572,7 @@
             this.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmLicense";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmLicense_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -607,7 +610,6 @@
         private System.Windows.Forms.TextBox txtSangho;
         private System.Windows.Forms.ToolStripMenuItem 저장ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 삭제ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 메세지전송ToolStripMenuItem;
         private System.Windows.Forms.TextBox txtJuso;
         private System.Windows.Forms.TextBox txtRemark;
         private System.Windows.Forms.CheckBox check작업측정;
@@ -631,5 +633,6 @@
         private FarPoint.Win.Spread.SheetView SS1_Sheet1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtDbConnect;
+        private System.Windows.Forms.ToolStripMenuItem pC저장ToolStripMenuItem;
     }
 }

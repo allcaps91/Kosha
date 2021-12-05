@@ -141,6 +141,7 @@
             this.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMainform";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "보건관리 관리자";
             this.Load += new System.EventHandler(this.FrmMainform_Load);
             this.menuStrip1.ResumeLayout(false);

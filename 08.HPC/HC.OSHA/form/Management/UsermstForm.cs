@@ -386,8 +386,11 @@ namespace HC_OSHA
                 dt.Dispose();
                 dt = null;
 
-                삭제ToolStripMenuItem1.Visible = true;
-                비밀번호초기화ToolStripMenuItem.Visible = true;
+                if (nID > 1)
+                {
+                    삭제ToolStripMenuItem1.Visible = true;
+                    if (clsType.User.Sabun == "admin") 비밀번호초기화ToolStripMenuItem.Visible = true;
+                }
                 Cursor.Current = Cursors.Default;
                 txtName.Focus();
 
@@ -419,6 +422,8 @@ namespace HC_OSHA
             int intRowAffected = 0; //변경된 Row 받는 변수
 
             int nID = Int32.Parse(txtID.Text.Trim());
+            if (nID ==1) { ComFunc.MsgBox("관리자비번은 초기화 불가능합니다.", "알림"); return; }
+
             strPass = clsAES.AES("1234");
 
             Cursor.Current = Cursors.WaitCursor;

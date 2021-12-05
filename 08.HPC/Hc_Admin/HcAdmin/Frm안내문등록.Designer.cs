@@ -70,7 +70,7 @@
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRemark.Size = new System.Drawing.Size(420, 391);
+            this.txtRemark.Size = new System.Drawing.Size(420, 256);
             this.txtRemark.TabIndex = 1;
             // 
             // chkNew
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 427);
+            this.ClientSize = new System.Drawing.Size(444, 298);
             this.Controls.Add(this.chkNew);
             this.Controls.Add(this.txtRemark);
             this.Controls.Add(this.menuStrip1);
@@ -98,6 +98,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Frm안내문등록";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "안내문 등록";
             this.Load += new System.EventHandler(this.Frm안내문등록_Load);
             this.menuStrip1.ResumeLayout(false);
