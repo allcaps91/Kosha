@@ -1,0 +1,42 @@
+                         AddAlias to BDE for Delphi.
+
+
+This little program adds an alias to the BDE configuration file.
+It is written for use from programs which want to add alias at runtime.
+Source code included.
+
+
+
+1. PARAMETERS
+
+   Paramstr(0): programname + path (standard parameter of OS)
+   Paramstr(1): Name of alias: if begins with '-' then delete first then add
+                else only add if doesn't exist
+   Paramstr(2): path to data directory
+   Paramstr(3): BDE driver name
+
+
+
+2. LICENSING AND PURCHASE
+
+AddAlias free software, and you may use it without any fees in your freeware,
+shareware and commercial projects.
+                          
+
+
+3. DISCLAIMER
+
+IN NO EVENT SHALL ADDALIAS AUTHORS, OR ANY OTHER PARTY WHO MAY HAVE DISTRIBUTED
+THE SOFTWARE AS PERMITTED, BE LIABLE FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL,
+INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE
+THE SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED
+INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR FAILURE OF THE SOFTWARE
+TO OPERATE WITH ANY OTHER PRODUCTS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN 
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+
+
+4. CONTACT INFO
+
+AddAlias is the product of Ralf Walhöfer
+You can send an e-mail to the authors to ralf@trigo.de

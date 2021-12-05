@@ -1,0 +1,46 @@
+                           InstallFactory Report화일
+
+                                                       작성: 2021-12-5/16:00:09
+
+[일반]
+타이틀: 헬스소프트
+소스 폴더: C:\Kosha\08.HPC\HS_OSHA\bin\Release
+기본 설치 폴더: {ProgramFiles}\HSMain
+기본 설치 폴더로만 설치 가능: 아니오
+설치화일이 만들어진 폴더: C:\Kosha\Setup
+설치화일의 이름: HSMainSetup.exe
+설치화일의 언어: 한글
+설치화일의 볼륨 크기: 단일 볼륨
+설치시 화일이 이미 있으면 겹쳐쓸지 물어보기: 아니오
+설치 완료 후 시스템 재시작 필요함: 아니오
+
+[창]
+위자드 창 비트맵: InstallFactory 기본 위자드 창 비트맵
+제작자: 
+
+[단축 아이콘]
+단축 아이콘1: 헬스소프트,C:\Kosha\08.HPC\HS_OSHA\bin\Release\HS_OSHA.exe,{DeskTop},,{ProgramFiles}\HSMain,
+
+[기타 화일]
+기타 화일1: C:\Oracle11g\product\11.2.0\client_1\network\admin\cwallet.sso,C:\Oracle11g\product\11.2.0\client_1\network\admin,겹쳐쓰기,그냥 두기,,,
+기타 화일2: C:\Oracle11g\product\11.2.0\client_1\network\admin\ewallet.p12,C:\Oracle11g\product\11.2.0\client_1\network\admin,겹쳐쓰기,그냥 두기,,,
+기타 화일3: C:\Oracle11g\product\11.2.0\client_1\network\admin\keystore.jks,C:\Oracle11g\product\11.2.0\client_1\network\admin,겹쳐쓰기,그냥 두기,,,
+기타 화일4: C:\Oracle11g\product\11.2.0\client_1\network\admin\ojdbc.properties,C:\Oracle11g\product\11.2.0\client_1\network\admin,겹쳐쓰기,그냥 두기,,,
+기타 화일5: C:\Oracle11g\product\11.2.0\client_1\network\admin\README,C:\Oracle11g\product\11.2.0\client_1\network\admin,겹쳐쓰기,그냥 두기,,,
+기타 화일6: C:\Oracle11g\product\11.2.0\client_1\network\admin\sqlnet.ora,C:\Oracle11g\product\11.2.0\client_1\network\admin,겹쳐쓰기,그냥 두기,,,
+기타 화일7: C:\Oracle11g\product\11.2.0\client_1\network\admin\tnsnames.ora,C:\Oracle11g\product\11.2.0\client_1\network\admin,겹쳐쓰기,그냥 두기,,,
+기타 화일8: C:\Oracle11g\product\11.2.0\client_1\network\admin\truststore.jks,C:\Oracle11g\product\11.2.0\client_1\network\admin,겹쳐쓰기,그냥 두기,,,
+
+[레지스트리]
+
+[실행]
+설치 완료 후 실행할 프로그램: C:\Kosha\08.HPC\HS_OSHA\bin\Release\HS_SETUP.exe
+설치 완료 후 실행할 프로그램 명령행 인수: 
+설치 완료 후 실행할 프로그램 실행 선택 가능: 아니오
+
+--------------------------------------------------------------------------------
+총 소스화일의 수  : 92
+총 소스화일의 크기: 296,696,506 바이트
+
+총 설치화일의 수  : 1
+총 설치화일의 크기: 74,127,238 바이트
