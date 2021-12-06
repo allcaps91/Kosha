@@ -1,6 +1,7 @@
 namespace HC.OSHA.Repository
 {
     using System.Collections.Generic;
+    using ComBase;
     using ComBase.Mvc;
     using HC.Core.Service;
     using HC.OSHA.Dto;
@@ -17,7 +18,9 @@ namespace HC.OSHA.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_OSHA_CARD10                                               ");
             parameter.AppendSql("WHERE ID = :ID                                                             ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE                                                ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
 
             return ExecuteReaderSingle<HC_OSHA_CARD10>(parameter);
 
@@ -30,12 +33,18 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("ON A.CREATEDUSER = B.USERID                          ");
             parameter.AppendSql("INNER JOIN HIC_USERS C                          ");
             parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                          ");
-            parameter.AppendSql("WHERE SITE_ID = :SITE_ID                                   ");
-            parameter.AppendSql("AND YEAR = :YEAR                                ");
-        //    parameter.AppendSql("ORDER BY PUBLISHDATE                                 ");
+            parameter.AppendSql("WHERE A.SITE_ID = :SITE_ID                                   ");
+            parameter.AppendSql("  AND A.YEAR = :YEAR                              ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1                   ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2                   ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3                   ");
+            //    parameter.AppendSql("ORDER BY PUBLISHDATE                                 ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("YEAR", year);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicInfo);
 
             return ExecuteReader<HC_OSHA_CARD10>(parameter);
 
@@ -46,6 +55,7 @@ namespace HC.OSHA.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("INSERT INTO HIC_OSHA_CARD10                                                  ");
             parameter.AppendSql("(                                                                           ");
+            parameter.AppendSql("  SWLICENSE,                                                                ");
             parameter.AppendSql("  ID,                                                                       ");
             parameter.AppendSql("  SITE_ID,                                                                  ");
             parameter.AppendSql("  ESTIMATE_ID,                                                              ");
@@ -61,6 +71,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql(")                                                                           ");
             parameter.AppendSql("VALUES                                                                      ");
             parameter.AppendSql("(                                                                           ");
+            parameter.AppendSql("  :SWLICENSE,                                                               ");
             parameter.AppendSql("  :ID,                                                                      ");
             parameter.AppendSql("  :SITE_ID,                                                                 ");
             parameter.AppendSql("  :ESTIMATE_ID,                                                             ");
@@ -84,6 +95,7 @@ namespace HC.OSHA.Repository
             parameter.Add("STATUS", dto.STATUS);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Insert("HIC_OSHA_CARD10", dto.ID);
@@ -103,6 +115,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,                                                     ");
             parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER                                             ");
             parameter.AppendSql("WHERE ID = :ID                                                              ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE                                                ");
 
             parameter.Add("ID", dto.ID);
             parameter.Add("PUBLISHDATE", dto.PUBLISHDATE);
@@ -111,7 +124,7 @@ namespace HC.OSHA.Repository
             parameter.Add("COMPLETE", dto.COMPLETE);
             parameter.Add("STATUS", dto.STATUS);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
-
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Update("HIC_OSHA_CARD10", dto.ID);
@@ -124,7 +137,9 @@ namespace HC.OSHA.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("DELETE FROM HIC_OSHA_CARD10                                                   ");
             parameter.AppendSql("WHERE ID = :ID                                                              ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE                                                ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
             ExecuteNonQuery(parameter);
 
             DataSyncService.Instance.Delete("HIC_OSHA_CARD10", id);

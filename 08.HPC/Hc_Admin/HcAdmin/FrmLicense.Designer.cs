@@ -573,7 +573,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmLicense";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "라이선스 관리";
             this.Load += new System.EventHandler(this.FrmLicense_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

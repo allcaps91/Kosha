@@ -489,11 +489,6 @@ namespace HC_OSHA
 
         }
 
-        private void oshaSiteLastTree_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void 사업장등록ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 

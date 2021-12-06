@@ -855,7 +855,6 @@
             this.oshaSiteLastTree.Size = new System.Drawing.Size(194, 541);
             this.oshaSiteLastTree.TabIndex = 0;
             this.oshaSiteLastTree.NodeClick += new HC_OSHA.OshaSiteLastTree.SiteTreeViewNodeMouseClickEventHandler(this.OshaSiteLastTree_NodeClick);
-            this.oshaSiteLastTree.Load += new System.EventHandler(this.oshaSiteLastTree_Load);
             // 
             // tabControl1
             // 
