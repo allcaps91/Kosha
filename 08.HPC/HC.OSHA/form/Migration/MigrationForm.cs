@@ -537,6 +537,7 @@ namespace HC_OSHA.Migration
             long estimateId = 0;
             SQL = " ";
             SQL = SQL + ComNum.VBLF + "   select trim(ltdcode) as ltdcode, trim(yyyymm) year, image from HIC_BOGEN_DATA ";
+            SQL = SQL + ComNum.VBLF + "    where SWLICENSE = '" + clsType.HosInfo.SwLicense + "' ";
             SqlErr = clsDB.GetDataTableEx(ref dt, SQL, clsDB.DbCon);
 
             if (SqlErr != "")

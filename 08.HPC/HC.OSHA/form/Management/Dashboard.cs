@@ -415,7 +415,7 @@ namespace HC_OSHA
 
         private void 사용자관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new UserManagerForm().Show();
+            new UsermstForm().Show();
         }
 
         private void 방문일정공문ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -561,7 +561,8 @@ namespace HC_OSHA
             //}
             if (exitDelegate != null)
             {
-                this.exitDelegate();
+                //this.exitDelegate();
+                this.Close();
             }
         }
 
@@ -761,11 +762,6 @@ namespace HC_OSHA
         private void panFrame_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            new UsermstForm().Show();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)

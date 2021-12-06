@@ -79,16 +79,6 @@ namespace HC_OSHA
 
         }
 
-        private void 저장ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void 신규ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Screen_Clear();
@@ -102,7 +92,10 @@ namespace HC_OSHA
             string SQL = string.Empty;
             string SqlErr = string.Empty;
             string strNewPass = "";
+            string strJikmu = "";
             int nLtdCode = 0;
+            string strGbActive = "Y";
+            string strGbDelete = "N";
             int intRowAffected = 0; //변경된 Row 받는 변수
 
             string strJikmu01 = "N";
@@ -116,6 +109,7 @@ namespace HC_OSHA
             string strJikmu09 = "N";
             string strJikmu10 = "N";
             string strJikmu11 = "N";
+
             string strLtduser = "N";
 
             if (txtID.Text.Trim() == "") { ComFunc.MsgBox("아이디가 공란입니다."); return; }
@@ -147,6 +141,12 @@ namespace HC_OSHA
             if (chkJik11.Checked == true) strJikmu11 = "Y";
             if (chkLtduser.Checked == true) strLtduser = "Y";
 
+            strJikmu = strJikmu01 + strJikmu02 + strJikmu03 + strJikmu04 + strJikmu05;
+            strJikmu += strJikmu06 + strJikmu07 + strJikmu08 + strJikmu09 + strJikmu10;
+            strJikmu += strJikmu11 + "NNNN";
+
+            if (txtTesaDate.Text.Trim() == "") { strGbActive = "Y"; strGbDelete = "N"; }
+
             Cursor.Current = Cursors.WaitCursor;
 
             DataTable Dt = new DataTable();
@@ -156,60 +156,43 @@ namespace HC_OSHA
                 SQL = "";
                 if (FbNew == true)
                 {
-                    SQL += ComNum.VBLF + " INSERT INTO HIC_USERMST ";
-                    SQL += ComNum.VBLF + "        (LicNo, SABUN, NAME, BUSE, JIK, INDATE, TESADATE,";
-                    SQL += ComNum.VBLF + "         JIKMU01, JIKMU02, JIKMU03, JIKMU04,JIKMU05,JIKMU06,";
-                    SQL += ComNum.VBLF + "         JIKMU07, JIKMU08, JIKMU09, JIKMU10,JIKMU11,";
-                    SQL += ComNum.VBLF + "         MYENHENO, Password, GBLTDUSER, LTDCODE, ENTTIME, ENTSABUN) ";
+                    SQL += ComNum.VBLF + " INSERT INTO HIC_USERS ";
+                    SQL += ComNum.VBLF + "        (SWLICENSE, USERID, NAME, DEPT, ROLE, INDATE, TESADATE,";
+                    SQL += ComNum.VBLF + "         ISACTIVE, ISDELETED, JIKMU, PASSHASH256,CERTNO,SEQ_WORD,";
+                    SQL += ComNum.VBLF + "         LTDUSER,MODIFIED, MODIFIEDUSER, CREATED, CREATEDUSER) ";
                     SQL += ComNum.VBLF + " VALUES ('" + FstrLicno + "', ";
-                    SQL += ComNum.VBLF + "         " + nID + ", ";
+                    SQL += ComNum.VBLF + "         '" + txtID.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtName.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtBuse.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtJik.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + dtpInDate.Value.ToString("yyyy-MM-dd") + "', ";
                     SQL += ComNum.VBLF + "         '" + txtTesaDate.Text.Trim() + "', ";
-                    SQL += ComNum.VBLF + "         '" + strJikmu01 + "', ";
-                    SQL += ComNum.VBLF + "         '" + strJikmu02 + "', ";
-                    SQL += ComNum.VBLF + "         '" + strJikmu03 + "', ";
-                    SQL += ComNum.VBLF + "         '" + strJikmu04 + "', ";
-                    SQL += ComNum.VBLF + "         '" + strJikmu05 + "', ";
-                    SQL += ComNum.VBLF + "         '" + strJikmu06 + "', ";
-                    SQL += ComNum.VBLF + "         '" + strJikmu07 + "', ";
-                    SQL += ComNum.VBLF + "         '" + strJikmu08 + "', ";
-                    SQL += ComNum.VBLF + "         '" + strJikmu09 + "', ";
-                    SQL += ComNum.VBLF + "         '" + strJikmu10 + "', ";
-                    SQL += ComNum.VBLF + "         '" + strJikmu11 + "', ";
-                    SQL += ComNum.VBLF + "         '" + txtMyenhe.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "         '" + strGbActive + "', ";
+                    SQL += ComNum.VBLF + "         '" + strGbDelete + "', ";
+                    SQL += ComNum.VBLF + "         '" + strJikmu + "', ";
                     SQL += ComNum.VBLF + "         '" + strNewPass + "', ";
-                    SQL += ComNum.VBLF + "         '" + strLtduser + "', ";
-                    SQL += ComNum.VBLF + "          " + nLtdCode + ", ";
-                    SQL += ComNum.VBLF + "         SYSDATE,"  + FnJobSabun + ") ";
+                    SQL += ComNum.VBLF + "         '" + txtMyenhe.Text.Trim() + "','', ";
+                    SQL += ComNum.VBLF + "         '" + txtLtdcode.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "         SYSDATE,'" + clsType.User.IdNumber + "', ";
+                    SQL += ComNum.VBLF + "         SYSDATE,'" + clsType.User.IdNumber + "') ";
                 }
                 else
                 {
-                    SQL += ComNum.VBLF + " UPDATE HIC_USERMST ";
+                    SQL += ComNum.VBLF + " UPDATE HIC_USERS ";
                     SQL += ComNum.VBLF + "    SET NAME          = '" + txtName.Text.Trim() + "', ";
-                    SQL += ComNum.VBLF + "        Buse          = '" + txtBuse.Text.Trim() + "', ";
-                    SQL += ComNum.VBLF + "        Jik           = '" + txtJik.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "        DEPT          = '" + txtBuse.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "        ROLE          = '" + txtJik.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        InDate        = '" + dtpInDate.Value.ToString("yyyy-MM-dd") + "', ";
                     SQL += ComNum.VBLF + "        TesaDate      = '" + txtTesaDate.Text.Trim() + "', ";
-                    SQL += ComNum.VBLF + "        JIKMU01       = '" + strJikmu01 + "', ";
-                    SQL += ComNum.VBLF + "        JIKMU02       = '" + strJikmu02 + "', ";
-                    SQL += ComNum.VBLF + "        JIKMU03       = '" + strJikmu03 + "', ";
-                    SQL += ComNum.VBLF + "        JIKMU04       = '" + strJikmu04 + "', ";
-                    SQL += ComNum.VBLF + "        JIKMU05       = '" + strJikmu05 + "', ";
-                    SQL += ComNum.VBLF + "        JIKMU06       = '" + strJikmu06 + "', ";
-                    SQL += ComNum.VBLF + "        JIKMU07       = '" + strJikmu07 + "', ";
-                    SQL += ComNum.VBLF + "        JIKMU08       = '" + strJikmu08 + "', ";
-                    SQL += ComNum.VBLF + "        JIKMU09       = '" + strJikmu09 + "', ";
-                    SQL += ComNum.VBLF + "        JIKMU10       = '" + strJikmu10 + "', ";
-                    SQL += ComNum.VBLF + "        JIKMU11       = '" + strJikmu11 + "', ";
-                    SQL += ComNum.VBLF + "        MyenheNo      = '" + txtMyenhe.Text.Trim() + "', ";
-                    SQL += ComNum.VBLF + "        GBLTDUSER     = '" + strLtduser + "', ";
-                    SQL += ComNum.VBLF + "        LTDCODE       =  " + nLtdCode + ", ";
-                    SQL += ComNum.VBLF + "        ENTTIME = SYSDATE, ENTSABUN = " + FnJobSabun + " ";
-                    SQL += ComNum.VBLF + "  WHERE LicNo         = '" + FstrLicno + "'";
-                    SQL += ComNum.VBLF + "    AND IDNO          = " + nID + " ";
+                    SQL += ComNum.VBLF + "        ISACTIVE      = '" + strGbActive + "', ";
+                    SQL += ComNum.VBLF + "        ISDELETED     = '" + strGbDelete + "', ";
+                    SQL += ComNum.VBLF + "        JIKMU         = '" + strJikmu + "', ";
+                    SQL += ComNum.VBLF + "        CERTNO        = '" + txtMyenhe.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "        LTDUSER       = '" + txtLtdcode.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "        MODIFIEDUSER  = '" + clsType.User.IdNumber + "', ";
+                    SQL += ComNum.VBLF + "        MODIFIED      = SYSDATE ";
+                    SQL += ComNum.VBLF + "  WHERE SWLICENSE     = '" + FstrLicno + "' ";
+                    SQL += ComNum.VBLF + "    AND USERID        = '" + txtID.Text.Trim() + "' ";
                 }
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
@@ -254,12 +237,12 @@ namespace HC_OSHA
             {
                 SQL = "";
                 SQL = "SELECT";
-                SQL = SQL + ComNum.VBLF + "      Sabun, Name, Buse, Jik ";
-                SQL = SQL + ComNum.VBLF + " FROM HIC_USERMST ";
-                SQL = SQL + ComNum.VBLF + " WHERE Licno='" + FstrLicno + "' ";
+                SQL = SQL + ComNum.VBLF + "      USERID , Name, DEPT, ROLE ";
+                SQL = SQL + ComNum.VBLF + " FROM HIC_USERS ";
+                SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + FstrLicno + "' ";
                 if (txtViewName.TextLength > 0) SQL = SQL + " AND Name LIKE '%" + txtViewName.Text + "%' ";
                 if (chkTejik.Checked == true) SQL = SQL + " AND (TesaDate='' OR TesaDate IS NULL) ";
-                SQL = SQL + ComNum.VBLF + "ORDER BY Name,Sabun ";
+                SQL = SQL + ComNum.VBLF + "ORDER BY Name,USERID ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (dt.Rows.Count > 0)
                 {
@@ -268,10 +251,10 @@ namespace HC_OSHA
 
                     for (i = 0; i < dt.Rows.Count; i++)
                     {
-                        SS1_Sheet1.Cells[i, 0].Text = dt.Rows[i]["Sabun"].ToString().Trim();
+                        SS1_Sheet1.Cells[i, 0].Text = dt.Rows[i]["USERID"].ToString().Trim();
                         SS1_Sheet1.Cells[i, 1].Text = dt.Rows[i]["Name"].ToString().Trim();
-                        SS1_Sheet1.Cells[i, 2].Text = dt.Rows[i]["Buse"].ToString().Trim();
-                        SS1_Sheet1.Cells[i, 3].Text = dt.Rows[i]["Jik"].ToString().Trim();
+                        SS1_Sheet1.Cells[i, 2].Text = dt.Rows[i]["DEPT"].ToString().Trim();
+                        SS1_Sheet1.Cells[i, 3].Text = dt.Rows[i]["ROLE"].ToString().Trim();
                     }
                 }
 
@@ -309,9 +292,9 @@ namespace HC_OSHA
             try
             {
                 SQL = "";
-                SQL += ComNum.VBLF + " DELETE FROM HIC_USERMST ";
-                SQL += ComNum.VBLF + "  WHERE LicNo         = '" + FstrLicno + "'";
-                SQL += ComNum.VBLF + "    AND Sabun         = " + nID + " ";
+                SQL += ComNum.VBLF + " DELETE FROM HIC_USERS ";
+                SQL += ComNum.VBLF + "  WHERE SWLICENSE     = '" + FstrLicno + "'";
+                SQL += ComNum.VBLF + "    AND USERID        = '" + txtID.Text.Trim() + "' ";
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
                 if (SqlErr != "")
@@ -345,10 +328,11 @@ namespace HC_OSHA
         {
             string SQL = "";
             string SqlErr = "";
+            string strJikmu = "";
             DataTable dt = null;
             int i = 0;
 
-            int nID = Int32.Parse(SS1.ActiveSheet.Cells[e.Row, 0].Value.ToString());
+            string strUserID = SS1.ActiveSheet.Cells[e.Row, 0].Value.ToString();
 
             Screen_Clear();
 
@@ -357,36 +341,38 @@ namespace HC_OSHA
             try
             {
                 SQL = "";
-                SQL = "SELECT * FROM HIC_USERMST ";
-                SQL = SQL + ComNum.VBLF + "Where Licno = '" + FstrLicno + "' ";
-                SQL = SQL + ComNum.VBLF + "  And Sabun = " + nID + " ";
+                SQL = "SELECT * FROM HIC_USERS ";
+                SQL = SQL + ComNum.VBLF + "Where SWLICENSE = '" + FstrLicno + "' ";
+                SQL = SQL + ComNum.VBLF + "  And USERID = '" + strUserID + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (dt.Rows.Count > 0)
                 {
-                    txtID.Text = dt.Rows[i]["Sabun"].ToString().Trim();
+                    txtID.Text = dt.Rows[i]["USERID"].ToString().Trim();
                     txtName.Text = dt.Rows[i]["Name"].ToString().Trim();
-                    txtBuse.Text = dt.Rows[i]["Buse"].ToString().Trim();
-                    txtJik.Text = dt.Rows[i]["Jik"].ToString().Trim();
-                    txtMyenhe.Text = dt.Rows[i]["MyenheNo"].ToString().Trim();
+                    txtBuse.Text = dt.Rows[i]["DEPT"].ToString().Trim();
+                    txtJik.Text = dt.Rows[i]["ROLE"].ToString().Trim();
+                    txtMyenhe.Text = dt.Rows[i]["CERTNO"].ToString().Trim();
                     dtpInDate.Text = dt.Rows[0]["InDate"].ToString().Trim();
                     txtTesaDate.Text = dt.Rows[0]["TesaDate"].ToString().Trim();
-                    if (dt.Rows[0]["JIKMU01"].ToString().Trim() == "Y") chkJik01.Checked = true;
-                    if (dt.Rows[0]["JIKMU02"].ToString().Trim() == "Y") chkJik02.Checked = true;
-                    if (dt.Rows[0]["JIKMU03"].ToString().Trim() == "Y") chkJik03.Checked = true;
-                    if (dt.Rows[0]["JIKMU04"].ToString().Trim() == "Y") chkJik04.Checked = true;
-                    if (dt.Rows[0]["JIKMU05"].ToString().Trim() == "Y") chkJik05.Checked = true;
-                    if (dt.Rows[0]["JIKMU06"].ToString().Trim() == "Y") chkJik06.Checked = true;
-                    if (dt.Rows[0]["JIKMU07"].ToString().Trim() == "Y") chkJik07.Checked = true;
-                    if (dt.Rows[0]["JIKMU08"].ToString().Trim() == "Y") chkJik08.Checked = true;
-                    if (dt.Rows[0]["JIKMU09"].ToString().Trim() == "Y") chkJik09.Checked = true;
-                    if (dt.Rows[0]["JIKMU10"].ToString().Trim() == "Y") chkJik10.Checked = true;
-                    if (dt.Rows[0]["JIKMU11"].ToString().Trim() == "Y") chkJik11.Checked = true;
+                    strJikmu = dt.Rows[0]["JIKMU"].ToString().Trim();
+
+                    if (VB.Left(strJikmu,1)=="Y") chkJik01.Checked = true;
+                    if (VB.Mid(strJikmu, 2, 1) == "Y") chkJik02.Checked = true;
+                    if (VB.Mid(strJikmu, 3, 1) == "Y") chkJik03.Checked = true;
+                    if (VB.Mid(strJikmu, 4, 1) == "Y") chkJik04.Checked = true;
+                    if (VB.Mid(strJikmu, 5, 1) == "Y") chkJik05.Checked = true;
+                    if (VB.Mid(strJikmu, 6, 1) == "Y") chkJik06.Checked = true;
+                    if (VB.Mid(strJikmu, 7, 1) == "Y") chkJik07.Checked = true;
+                    if (VB.Mid(strJikmu, 8, 1) == "Y") chkJik08.Checked = true;
+                    if (VB.Mid(strJikmu, 9, 1) == "Y") chkJik09.Checked = true;
+                    if (VB.Mid(strJikmu, 10, 1) == "Y") chkJik10.Checked = true;
+                    if (VB.Mid(strJikmu, 11, 1) == "Y") chkJik11.Checked = true;
                 }
 
                 dt.Dispose();
                 dt = null;
 
-                if (nID > 1)
+                if (strUserID != "1")
                 {
                     삭제ToolStripMenuItem1.Visible = true;
                     if (clsType.User.Sabun == "admin") 비밀번호초기화ToolStripMenuItem.Visible = true;
@@ -433,11 +419,12 @@ namespace HC_OSHA
             try
             {
                 SQL = "";
-                SQL += ComNum.VBLF + " UPDATE HIC_USERMST SET ";
-                SQL += ComNum.VBLF + "        Password      = '" + strPass + "', ";
-                SQL += ComNum.VBLF + "        PassChange    = ''  ";
-                SQL += ComNum.VBLF + "  WHERE LicNo         = '" + FstrLicno + "'";
-                SQL += ComNum.VBLF + "    AND Sabun         = " + nID + " ";
+                SQL += ComNum.VBLF + " UPDATE HIC_USERS SET ";
+                SQL += ComNum.VBLF + "        PASSHASH256   = '" + strPass + "', ";
+                SQL += ComNum.VBLF + "        MODIFIEDUSER  = '" + clsType.User.IdNumber + "', ";
+                SQL += ComNum.VBLF + "        MODIFIED      = SYSDATE ";
+                SQL += ComNum.VBLF + "  WHERE SWLICENSE     = '" + FstrLicno + "'";
+                SQL += ComNum.VBLF + "    AND USERID        = '" + txtID.Text.Trim() + "' ";
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
                 if (SqlErr != "")

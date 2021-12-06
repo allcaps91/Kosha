@@ -1506,6 +1506,7 @@
             tipAppearance1.ForeColor = System.Drawing.SystemColors.InfoText;
             this.SSCard.TextTipAppearance = tipAppearance1;
             this.SSCard.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
+            this.SSCard.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSCard_CellClick);
             // 
             // SSCard_Sheet1
             // 

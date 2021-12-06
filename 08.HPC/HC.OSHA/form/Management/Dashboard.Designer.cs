@@ -92,12 +92,12 @@
             this.장비사용대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.정보자료제공ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.장비사용대장간호사ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuBaseCode = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCode = new System.Windows.Forms.ToolStripMenuItem();
             this.그룹코드관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mSD코드관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.사용자관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuNotebookManager = new System.Windows.Forms.ToolStripMenuItem();
             this.노트북으로DB가져오기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.원내서버로DB올리기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,7 +117,6 @@
             this.Mnu_OtherAllClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_AllTabClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_TabPopup = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.LeftPanel.SuspendLayout();
@@ -622,14 +621,20 @@
             this.장비사용대장간호사ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.장비사용대장간호사ToolStripMenuItem.Text = "장비사용대장(간호사)";
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(91, 20);
+            this.toolStripMenuItem1.Text = "비밀번호변경";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
             // MenuBaseCode
             // 
             this.MenuBaseCode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuCode,
             this.그룹코드관리ToolStripMenuItem,
             this.mSD코드관리ToolStripMenuItem,
-            this.사용자관리ToolStripMenuItem,
-            this.toolStripMenuItem2});
+            this.사용자관리ToolStripMenuItem});
             this.MenuBaseCode.Name = "MenuBaseCode";
             this.MenuBaseCode.Size = new System.Drawing.Size(67, 20);
             this.MenuBaseCode.Text = "기초코드";
@@ -661,13 +666,6 @@
             this.사용자관리ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.사용자관리ToolStripMenuItem.Text = "사용자 관리";
             this.사용자관리ToolStripMenuItem.Click += new System.EventHandler(this.사용자관리ToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
-            this.toolStripMenuItem2.Text = "사용자마스타 관리";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // MenuNotebookManager
             // 
@@ -921,13 +919,6 @@
             this.Mnu_TabPopup.Text = "팝업으로 보기";
             this.Mnu_TabPopup.Click += new System.EventHandler(this.Mnu_TabPopup_Click);
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(91, 20);
-            this.toolStripMenuItem1.Text = "비밀번호변경";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1028,7 +1019,6 @@
         private System.Windows.Forms.ToolStripMenuItem 사업장원하청관리ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 청력보존프로그램ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 밀폐공간프로그램ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem 검진결과ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 기업건강증진지수EHPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 장비사용대장간호사ToolStripMenuItem;

@@ -128,45 +128,43 @@ namespace HcAdmin
             string SQL = "";
             string SqlErr = "";
             string strNewPass = "";
+            string strJikmu = "YYYNNNNNNNNNNNN";
             DataTable dt = null;
             int intRowAffected = 0;
-            int i = 0;
 
             strNewPass = clsAES.AES(txtAdminpass.Text.Trim());
 
             try
             {
                 SQL = "";
-                SQL = "SELECT * FROM HIC_USERMST ";
-                SQL = SQL + ComNum.VBLF + "WHERE LicNo = '" + txtLicno.Text.Trim() + "' ";
-                SQL = SQL + ComNum.VBLF + "  AND Sabun = 1 ";
+                SQL = "SELECT * FROM HIC_USERS ";
+                SQL = SQL + ComNum.VBLF + "WHERE SWLICENSE = '" + txtLicno.Text.Trim() + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND USERID = '1' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (dt.Rows.Count == 0)
                 {
-                    SQL = "";
-                    SQL = " INSERT INTO HIC_USERMST ";
-                    SQL +=  "        (LicNo, SABUN, NAME, BUSE, JIK, INDATE, ";
-                    SQL +=  "         JIKMU01, JIKMU02, JIKMU03, ";
-                    SQL +=  "          Password, GBLTDUSER, LTDCODE, ENTTIME, ENTSABUN) ";
-                    SQL +=  " VALUES ('" + txtLicno.Text.Trim() + "', 1,'관리자','관리자','관리자', ";
-                    SQL +=  "         '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
-                    SQL +=  "         'Y','Y','Y','" + strNewPass + "','N',0, ";
-                    SQL +=  "         SYSDATE,1) ";
+                    SQL  = ComNum.VBLF + " INSERT INTO HIC_USERS ";
+                    SQL += ComNum.VBLF + "        (SWLICENSE, USERID, NAME, DEPT, ROLE, INDATE, TESADATE,";
+                    SQL += ComNum.VBLF + "         ISACTIVE, ISDELETED, JIKMU, PASSHASH256,CERTNO,SEQ_WORD,";
+                    SQL += ComNum.VBLF + "         LTDUSER,MODIFIED, MODIFIEDUSER, CREATED, CREATEDUSER) ";
+                    SQL += ComNum.VBLF + " VALUES ('" + txtLicno.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "         '1','관리자','관리자','관리자', ";
+                    SQL += ComNum.VBLF + "         '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
+                    SQL += ComNum.VBLF + "         '','Y','N','" + strJikmu + "', ";
+                    SQL += ComNum.VBLF + "         '" + strNewPass + "','','','',";
+                    SQL += ComNum.VBLF + "         SYSDATE,'1',SYSDATE,'1') ";
                 }
                 else
                 {
-                    SQL = "";
-                    SQL =  " UPDATE HIC_USERMST ";
+                    SQL =  " UPDATE HIC_USERS ";
                     SQL += "    SET NAME          = '관리자', ";
-                    SQL += "        Buse          = '관리자', ";
-                    SQL +=  "       Jik           = '관리자', ";
+                    SQL += "        DEPT          = '관리자', ";
+                    SQL += "        ROLE          = '관리자', ";
                     SQL +=  "       InDate        = '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
                     SQL +=  "       TesaDate      = '', ";
-                    SQL +=  "       GBLTDUSER     = 'N', ";
-                    SQL +=  "       LTDCODE       =  0, ";
-                    SQL +=  "       ENTTIME = SYSDATE, ENTSABUN = 1 ";
-                    SQL +=  " WHERE LicNo         = '" + txtLicno.Text.Trim() + "'";
-                    SQL +=  "   AND Sabun          = 1 ";
+                    SQL += "        MODIFIED = SYSDATE, MODIFIEDUSER = '1' ";
+                    SQL +=  " WHERE SWLICENSE     = '" + txtLicno.Text.Trim() + "'";
+                    SQL += "    AND USERID        = '1' ";
                 }
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
             }

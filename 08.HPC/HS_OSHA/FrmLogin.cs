@@ -227,8 +227,6 @@ namespace HS_OSHA
                 }
             }
 
-            this.Hide();
-
             // 프로그램 실행
             Dashboard form = new Dashboard();
             form.Show();
