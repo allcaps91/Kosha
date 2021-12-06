@@ -39,7 +39,7 @@ namespace HC_OSHA
             txtID.Text = "";
             txtName.Text = "";
             txtBuse.Text = "";
-            txtJik.Text = "";
+            cboRole.Text = "";
             txtMyenhe.Text = "";
             dtpInDate.Text = "";
             txtTesaDate.Text = "";
@@ -117,7 +117,7 @@ namespace HC_OSHA
             if (nID < 1 || nID > 999999) { ComFunc.MsgBox("아이디는 1~999999만 가능합니다."); return; }
             if (txtName.Text.Trim() == "") { ComFunc.MsgBox("성명이 공란입니다."); return; }
             if (txtBuse.Text.Trim() == "") { ComFunc.MsgBox("부서명이 공란입니다."); return; }
-            if (txtJik.Text.Trim() == "") { ComFunc.MsgBox("직책이 공란입니다."); return; }
+            if (cboRole.Text.Trim() == "") { ComFunc.MsgBox("권한이 공란입니다."); return; }
             if (FbNew == true)
             {
                 if (nID == 1) { ComFunc.MsgBox("아이디 1은 사용이 불가능 합니다."); return; }
@@ -164,7 +164,7 @@ namespace HC_OSHA
                     SQL += ComNum.VBLF + "         '" + txtID.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtName.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtBuse.Text.Trim() + "', ";
-                    SQL += ComNum.VBLF + "         '" + txtJik.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "         '" + cboRole.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + dtpInDate.Value.ToString("yyyy-MM-dd") + "', ";
                     SQL += ComNum.VBLF + "         '" + txtTesaDate.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + strGbActive + "', ";
@@ -181,7 +181,7 @@ namespace HC_OSHA
                     SQL += ComNum.VBLF + " UPDATE HIC_USERS ";
                     SQL += ComNum.VBLF + "    SET NAME          = '" + txtName.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        DEPT          = '" + txtBuse.Text.Trim() + "', ";
-                    SQL += ComNum.VBLF + "        ROLE          = '" + txtJik.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "        ROLE          = '" + cboRole.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        InDate        = '" + dtpInDate.Value.ToString("yyyy-MM-dd") + "', ";
                     SQL += ComNum.VBLF + "        TesaDate      = '" + txtTesaDate.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        ISACTIVE      = '" + strGbActive + "', ";
@@ -350,7 +350,7 @@ namespace HC_OSHA
                     txtID.Text = dt.Rows[i]["USERID"].ToString().Trim();
                     txtName.Text = dt.Rows[i]["Name"].ToString().Trim();
                     txtBuse.Text = dt.Rows[i]["DEPT"].ToString().Trim();
-                    txtJik.Text = dt.Rows[i]["ROLE"].ToString().Trim();
+                    cboRole.Text = dt.Rows[i]["ROLE"].ToString().Trim();
                     txtMyenhe.Text = dt.Rows[i]["CERTNO"].ToString().Trim();
                     dtpInDate.Text = dt.Rows[0]["InDate"].ToString().Trim();
                     txtTesaDate.Text = dt.Rows[0]["TesaDate"].ToString().Trim();

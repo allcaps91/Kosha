@@ -219,8 +219,7 @@ namespace HS_OSHA
                 }
 
             } else {
-                nSabun = Int32.Parse(txtIdNumber.Text.Trim());
-                if (Set_UserInfo(nSabun, txtPassword.Text.Trim()) == false)
+                if (Set_UserInfo(txtIdNumber.Text.Trim(), txtPassword.Text.Trim()) == false)
                 {
                     Cursor.Current = Cursors.Default;
                     return;
@@ -232,7 +231,7 @@ namespace HS_OSHA
             form.Show();
         }
 
-        private bool Set_UserInfo(int ArgSabun, string argPassword)
+        private bool Set_UserInfo(string ArgSabun, string argPassword)
         {
             string SQL = "";
             string SqlErr = "";
@@ -245,9 +244,9 @@ namespace HS_OSHA
             try
             {
                 SQL = "";
-                SQL = "SELECT * FROM HIC_USERMST ";
-                SQL = SQL + ComNum.VBLF + "Where Licno = '" + clsType.HosInfo.SwLicense + "' ";
-                SQL = SQL + ComNum.VBLF + "  And Sabun = " + ArgSabun + " ";
+                SQL = "SELECT Name,DEPT,PASSHASH256 FROM HIC_USERS ";
+                SQL = SQL + ComNum.VBLF + "Where SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "  And USERID = '" + ArgSabun + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
 
                 if (dt.Rows.Count == 0)
@@ -259,7 +258,7 @@ namespace HS_OSHA
                     return false;
                 }
 
-                strPassword = clsAES.DeAES(dt.Rows[i]["Password"].ToString().Trim());
+                strPassword = clsAES.DeAES(dt.Rows[i]["PASSHASH256"].ToString().Trim());
                 if (strPassword != argPassword)
                 {
                     dt.Dispose();
@@ -269,10 +268,10 @@ namespace HS_OSHA
                     return false;
                 }
 
-                clsType.User.Sabun = ArgSabun.ToString();
-                clsType.User.IdNumber = ArgSabun.ToString();
+                clsType.User.Sabun = ArgSabun;
+                clsType.User.IdNumber = ArgSabun;
                 clsType.User.JobName = dt.Rows[i]["Name"].ToString().Trim();
-                clsType.User.BuseName = dt.Rows[i]["Buse"].ToString().Trim();
+                clsType.User.BuseName = dt.Rows[i]["DEPT"].ToString().Trim();
 
                 dt.Dispose();
                 dt = null;

@@ -147,6 +147,7 @@
             this.Controls.Add(this.panJikwon);
             this.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Name = "FrmPassChange";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "비밀번호 변경";
             this.Load += new System.EventHandler(this.FrmPassChange_Load);
             this.panJikwon.ResumeLayout(false);

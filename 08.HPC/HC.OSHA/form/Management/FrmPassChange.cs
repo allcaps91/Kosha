@@ -14,7 +14,6 @@ namespace HC_OSHA
 {
     public partial class FrmPassChange : Form
     {
-        public int FnID = 0;
         public string FstrLicense = "";
         public FrmPassChange()
         {
@@ -32,21 +31,18 @@ namespace HC_OSHA
             DataTable dt = null;
             int i = 0;
 
-            FnID = Int32.Parse(clsType.User.IdNumber);
-
-
             Cursor.Current = Cursors.WaitCursor;
 
             try
             {
                 SQL = "";
-                SQL = "SELECT * FROM HIC_USERMST ";
-                SQL = SQL + ComNum.VBLF + "Where Licno = '" + FstrLicense + "' ";
-                SQL = SQL + ComNum.VBLF + "  And Sabun = " + FnID + " ";
+                SQL = "SELECT * FROM HIC_USERS ";
+                SQL = SQL + ComNum.VBLF + "Where SWLicense = '" + FstrLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "  And USERID = '" + clsType.User.IdNumber  + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (dt.Rows.Count > 0)
                 {
-                    lblSabunInfo.Text = FnID.ToString() + " ";
+                    lblSabunInfo.Text = clsType.User.IdNumber + " ";
                     lblSabunInfo.Text += dt.Rows[i]["Name"].ToString().Trim();
                     lblSabunInfo.Text += " 비밀번호 변경";
                 }
@@ -127,11 +123,12 @@ namespace HC_OSHA
             try
             {
                 SQL = "";
-                SQL += ComNum.VBLF + " UPDATE HIC_USERMST SET ";
-                SQL += ComNum.VBLF + "        Password      = '" + clsAES.DeAES(strPass1) + "', ";
-                SQL += ComNum.VBLF + "        PassChange    = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' ";
-                SQL += ComNum.VBLF + "  WHERE LicNo         = '" + FstrLicense + "'";
-                SQL += ComNum.VBLF + "    AND Sabun         = "  + FnID + " ";
+                SQL += ComNum.VBLF + " UPDATE HIC_USERS SET ";
+                SQL += ComNum.VBLF + "        PASSHASH256   = '" + clsAES.AES(strPass1) + "', ";
+                SQL += ComNum.VBLF + "        MODIFIED      = SYSDATE, ";
+                SQL += ComNum.VBLF + "        MODIFIEDUSER  = '" + clsType.User.IdNumber + "' ";
+                SQL += ComNum.VBLF + "  WHERE SWLicense     = '" + FstrLicense + "'";
+                SQL += ComNum.VBLF + "    AND UserID        = '"  + clsType.User.IdNumber + "' ";
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
                 if (SqlErr != "")
@@ -143,6 +140,7 @@ namespace HC_OSHA
 
                 ComFunc.MsgBox("변경되었습니다.", "알림");
                 Cursor.Current = Cursors.Default;
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -150,7 +148,6 @@ namespace HC_OSHA
                 Cursor.Current = Cursors.Default;
                 return;
             }
-
         }
     }
 }

@@ -148,7 +148,7 @@ namespace HcAdmin
                     SQL += ComNum.VBLF + "         ISACTIVE, ISDELETED, JIKMU, PASSHASH256,CERTNO,SEQ_WORD,";
                     SQL += ComNum.VBLF + "         LTDUSER,MODIFIED, MODIFIEDUSER, CREATED, CREATEDUSER) ";
                     SQL += ComNum.VBLF + " VALUES ('" + txtLicno.Text.Trim() + "', ";
-                    SQL += ComNum.VBLF + "         '1','관리자','관리자','관리자', ";
+                    SQL += ComNum.VBLF + "         '1','관리자','관리자','NURSE', ";
                     SQL += ComNum.VBLF + "         '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
                     SQL += ComNum.VBLF + "         '','Y','N','" + strJikmu + "', ";
                     SQL += ComNum.VBLF + "         '" + strNewPass + "','','','',";
@@ -159,7 +159,7 @@ namespace HcAdmin
                     SQL =  " UPDATE HIC_USERS ";
                     SQL += "    SET NAME          = '관리자', ";
                     SQL += "        DEPT          = '관리자', ";
-                    SQL += "        ROLE          = '관리자', ";
+                    SQL += "        ROLE          = 'NURSE', ";
                     SQL +=  "       InDate        = '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
                     SQL +=  "       TesaDate      = '', ";
                     SQL += "        MODIFIED = SYSDATE, MODIFIEDUSER = '1' ";
