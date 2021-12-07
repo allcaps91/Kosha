@@ -1,12 +1,12 @@
 namespace HC.OSHA.Repository
 {
     using System.Collections.Generic;
+    using ComBase;
     using ComBase.Mvc;
     using HC.Core.Service;
     using HC.OSHA.Dto;
     using HC_Core.Service;
-
-
+    
     /// <summary>
     /// 
     /// </summary>
@@ -16,29 +16,38 @@ namespace HC.OSHA.Repository
         public HC_OSHA_CARD9_2 FindOne(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER FROM HIC_OSHA_CARD9_2 A                          ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                                                               ");
-            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                                         ");
-            parameter.AppendSql("INNER JOIN HIC_USERS C                                                               ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                                                         ");
-            parameter.AppendSql("WHERE ID = :ID");
-
+            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER FROM HIC_OSHA_CARD9_2 A   ");
+            parameter.AppendSql("INNER JOIN HIC_USERS B                    ");
+            parameter.AppendSql("ON A.CREATEDUSER = B.USERID               ");
+            parameter.AppendSql("INNER JOIN HIC_USERS C                    ");
+            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID              ");
+            parameter.AppendSql("WHERE A.ID = :ID                          ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1           ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2           ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3           ");
             parameter.Add("ID", id);
-
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
             return ExecuteReaderSingle<HC_OSHA_CARD9_2>(parameter);
         }
         public List<HC_OSHA_CARD9_2> FindAll(long siteId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER FROM HIC_OSHA_CARD9_2 A                          ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                                                               ");
-            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                                         ");
-            parameter.AppendSql("INNER JOIN HIC_USERS C                                                               ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                                                         ");
-            parameter.AppendSql("WHERE SITE_ID = :SITE_ID   ORDER BY STARTDATE  DESC           ");
-
+            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER FROM HIC_OSHA_CARD9_2 A  ");
+            parameter.AppendSql("INNER JOIN HIC_USERS B                     ");
+            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                ");
+            parameter.AppendSql("INNER JOIN HIC_USERS C                     ");
+            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID               ");
+            parameter.AppendSql("WHERE A.SITE_ID = :SITE_ID                 ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1            ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2            ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3            ");
+            parameter.AppendSql("ORDER BY STARTDATE  DESC ");
             parameter.Add("SITE_ID", siteId);
-          //  parameter.Add("EndDate", yyyy_MM_dd);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_CARD9_2>(parameter);
 
@@ -48,42 +57,44 @@ namespace HC.OSHA.Repository
             dto.ID = GetSequenceNextVal("HC_OSHA_CARD_ID_SEQ");
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO HIC_OSHA_CARD9_2                                                 ");
-            parameter.AppendSql("(                                                                           ");
-            parameter.AppendSql("  ID,                                                                       ");
-            parameter.AppendSql("  SITE_ID,                                                                  ");
-            parameter.AppendSql("  ESTIMATE_ID,                                                              ");
-            parameter.AppendSql("  WORKNAME,                                                                 ");
-            parameter.AppendSql("  STARTDATE,                                                                ");
-            parameter.AppendSql("  ENDDATE,                                                                  ");
-            parameter.AppendSql("  CONTENT,                                                                  ");
-            parameter.AppendSql("  GRADE1,                                                                   ");
-            parameter.AppendSql("  NAME1,                                                                    ");
-            parameter.AppendSql("  GRADE2,                                                                   ");
-            parameter.AppendSql("  NAME2,                                                                    ");
-            parameter.AppendSql("  MODIFIED,                                                                 ");
-            parameter.AppendSql("  MODIFIEDUSER,                                                             ");
-            parameter.AppendSql("  CREATED,                                                                  ");
-            parameter.AppendSql("  CREATEDUSER                                                              ");
-            parameter.AppendSql(")                                                                           ");
-            parameter.AppendSql("VALUES                                                                      ");
-            parameter.AppendSql("(                                                                           ");
-            parameter.AppendSql("  :ID,                                                                      ");
-            parameter.AppendSql("  :SITE_ID,                                                                 ");
-            parameter.AppendSql("  :ESTIMATE_ID,                                                             ");
-            parameter.AppendSql("  :WORKNAME,                                                                ");
-            parameter.AppendSql("  :STARTDATE,                                                               ");
-            parameter.AppendSql("  :ENDDATE,                                                                 ");
-            parameter.AppendSql("  :CONTENT,                                                                 ");
-            parameter.AppendSql("  :GRADE1,                                                                  ");
-            parameter.AppendSql("  :NAME1,                                                                   ");
-            parameter.AppendSql("  :GRADE2,                                                                  ");
-            parameter.AppendSql("  :NAME2,                                                                   ");
-            parameter.AppendSql("  SYSTIMESTAMP,                                                                ");
-            parameter.AppendSql("  :MODIFIEDUSER,                                                            ");
-            parameter.AppendSql("  SYSTIMESTAMP,                                                                 ");
-            parameter.AppendSql("  :CREATEDUSER                                                            ");
-            parameter.AppendSql(")                                                                           ");
+            parameter.AppendSql("INSERT INTO HIC_OSHA_CARD9_2          ");
+            parameter.AppendSql("(                                     ");
+            parameter.AppendSql("  ID,                                 ");
+            parameter.AppendSql("  SITE_ID,                            ");
+            parameter.AppendSql("  ESTIMATE_ID,                        ");
+            parameter.AppendSql("  WORKNAME,                           ");
+            parameter.AppendSql("  STARTDATE,                          ");
+            parameter.AppendSql("  ENDDATE,                            ");
+            parameter.AppendSql("  CONTENT,                            ");
+            parameter.AppendSql("  GRADE1,                             ");
+            parameter.AppendSql("  NAME1,                              ");
+            parameter.AppendSql("  GRADE2,                             ");
+            parameter.AppendSql("  NAME2,                              ");
+            parameter.AppendSql("  MODIFIED,                           ");
+            parameter.AppendSql("  MODIFIEDUSER,                       ");
+            parameter.AppendSql("  CREATED,                            ");
+            parameter.AppendSql("  CREATEDUSER,                        ");
+            parameter.AppendSql("  SWLICENSE                           ");
+            parameter.AppendSql(")                                     ");
+            parameter.AppendSql("VALUES                                ");
+            parameter.AppendSql("(                                     ");
+            parameter.AppendSql("  :ID,                                ");
+            parameter.AppendSql("  :SITE_ID,                           ");
+            parameter.AppendSql("  :ESTIMATE_ID,                       ");
+            parameter.AppendSql("  :WORKNAME,                          ");
+            parameter.AppendSql("  :STARTDATE,                         ");
+            parameter.AppendSql("  :ENDDATE,                           ");
+            parameter.AppendSql("  :CONTENT,                           ");
+            parameter.AppendSql("  :GRADE1,                            ");
+            parameter.AppendSql("  :NAME1,                             ");
+            parameter.AppendSql("  :GRADE2,                            ");
+            parameter.AppendSql("  :NAME2,                             ");
+            parameter.AppendSql("  SYSTIMESTAMP,                       ");
+            parameter.AppendSql("  :MODIFIEDUSER,                      ");
+            parameter.AppendSql("  SYSTIMESTAMP,                       ");
+            parameter.AppendSql("  :CREATEDUSER,                       ");
+            parameter.AppendSql("  :SWLICENSE                          ");
+            parameter.AppendSql(")                                     ");
             parameter.Add("ID", dto.ID);
             parameter.Add("SITE_ID", dto.SITE_ID);
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
@@ -97,12 +108,10 @@ namespace HC.OSHA.Repository
             parameter.Add("NAME2", dto.NAME2);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
-
-
             DataSyncService.Instance.Insert("HIC_OSHA_CARD9_2", dto.ID);
-
 
             return FindOne(dto.ID);
         }
@@ -110,20 +119,20 @@ namespace HC.OSHA.Repository
         public HC_OSHA_CARD9_2 Update(HC_OSHA_CARD9_2 dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_CARD9_2                                                      ");
-            parameter.AppendSql("SET                                                                         ");
-            parameter.AppendSql("  WORKNAME = :WORKNAME,                                                     ");
-            parameter.AppendSql("  STARTDATE = :STARTDATE,                                                   ");
-            parameter.AppendSql("  ENDDATE = :ENDDATE,                                                       ");
-            parameter.AppendSql("  CONTENT = :CONTENT,                                                       ");
-            parameter.AppendSql("  GRADE1 = :GRADE1,                                                         ");
-            parameter.AppendSql("  NAME1 = :NAME1,                                                           ");
-            parameter.AppendSql("  GRADE2 = :GRADE2,                                                         ");
-            parameter.AppendSql("  NAME2 = :NAME2,                                                           ");
-            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,                                                     ");
-            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER                                             ");
-
-            parameter.AppendSql("WHERE ID = :ID                                                              ");
+            parameter.AppendSql("UPDATE HIC_OSHA_CARD9_2                     ");
+            parameter.AppendSql("SET                                         ");
+            parameter.AppendSql("  WORKNAME = :WORKNAME,                     ");
+            parameter.AppendSql("  STARTDATE = :STARTDATE,                   ");
+            parameter.AppendSql("  ENDDATE = :ENDDATE,                       ");
+            parameter.AppendSql("  CONTENT = :CONTENT,                       ");
+            parameter.AppendSql("  GRADE1 = :GRADE1,                         ");
+            parameter.AppendSql("  NAME1 = :NAME1,                           ");
+            parameter.AppendSql("  GRADE2 = :GRADE2,                         ");
+            parameter.AppendSql("  NAME2 = :NAME2,                           ");
+            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,                  ");
+            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER              ");
+            parameter.AppendSql("WHERE ID = :ID                              ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", dto.ID);
             parameter.Add("WORKNAME", dto.WORKNAME);
             parameter.Add("STARTDATE", dto.STARTDATE);
@@ -134,26 +143,25 @@ namespace HC.OSHA.Repository
             parameter.Add("GRADE2", dto.GRADE2);
             parameter.Add("NAME2", dto.NAME2);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
-
             DataSyncService.Instance.Update("HIC_OSHA_CARD9_2", dto.ID);
 
             return FindOne(dto.ID);
         }
 
-
         public void Delete(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE FROM HIC_OSHA_CARD9_2                                                   ");
-            parameter.AppendSql("WHERE ID = :ID                                                              ");
+            parameter.AppendSql("DELETE FROM HIC_OSHA_CARD9_2          ");
+            parameter.AppendSql("WHERE ID = :ID                        ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE          ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
 
             DataSyncService.Instance.Delete("HIC_OSHA_CARD9_2", id);
-
         }
-
     }
 }
