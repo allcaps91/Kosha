@@ -32,7 +32,9 @@
             parameter.AppendSql("UPDATE HIC_OSHA_DATASYNC SET ISSYNC='Y', MESSAGE=''");
             parameter.AppendSql(" , UPLOADDATE = SYSTIMESTAMP ");
             parameter.AppendSql("   WHERE ID = :ID         ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
         }
         public void FaildSync(long id, string message)
@@ -48,7 +50,9 @@
             parameter.AppendSql(" , MESSAGE = :MESSAGE");
             parameter.AppendSql(" , UPLOADDATE = SYSTIMESTAMP ");
             parameter.AppendSql("WHERE ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("MESSAGE", message);
             ExecuteNonQuery(parameter);
         }
@@ -60,11 +64,13 @@
             parameter.AppendSql("WHERE TABLENAME = :tableName ");
             parameter.AppendSql("AND TABLEKEY = :tableKey ");
             parameter.AppendSql("AND CREATEDUSER = :createdUser ");
+            parameter.AppendSql("AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("tableKey", tableKey);
             parameter.Add("tableName", tableName);
             parameter.Add("newTableKey", newTableKey);
             parameter.Add("createdUser", createdUser);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
         }
         public void UpdateNewKey(long id, string newTableKey)
@@ -73,8 +79,10 @@
             parameter.AppendSql("UPDATE HIC_OSHA_DATASYNC ");
             parameter.AppendSql("SET NEWTABLEKEY = :newTableKey ");
             parameter.AppendSql("WHERE id = :id ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("id", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("newTableKey", newTableKey);
             ExecuteNonQuery(parameter);
         }
@@ -86,11 +94,13 @@
             parameter.AppendSql("WHERE REPORT_ID = :REPORTID ");
             parameter.AppendSql("AND SITE_ID = :SITE_ID ");
             parameter.AppendSql("AND ISDOCTOR = :ISDOCTOR ");
+            parameter.AppendSql("AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("NEW_REPORTID", newReportId);
             parameter.Add("REPORTID", reportId);
             parameter.Add("SITE_ID", siteId);
             parameter.Add("ISDOCTOR", isDoctor);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
 
         }
@@ -99,9 +109,11 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_OSHA_DATASYNC WHERE ISSYNC ='N'   ");
             parameter.AppendSql("AND CREATEDUSER = :CREATEDUSER ");
+            parameter.AppendSql("AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY ID, TABLENAME ");
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
-                //parameter.AppendSql("   SELECT* FROM HIC_OSHA_DATASYNC A  ");
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+            //parameter.AppendSql("   SELECT* FROM HIC_OSHA_DATASYNC A  ");
             //parameter.AppendSql("   INNER JOIN(SELECT max(ID) AS ID FROM HIC_OSHA_DATASYNC  ");
             //parameter.AppendSql("             WHERE ISSYNC = 'N'  ");
             //parameter.AppendSql("             GROUP BY TABLEKEY, tablename  ");
@@ -117,7 +129,8 @@
             {
                 MParameter parameter = CreateParameter();
                 parameter.AppendSql("DELETE FROM HIC_OSHA_DATASYNC ");
-
+                parameter.AppendSql("WHERE  SWLICENSE = :SWLICENSE ");
+                parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
                 ExecuteNonQuery(parameter);
             }
       
@@ -127,7 +140,9 @@
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_OSHA_DATASYNC ");
             parameter.AppendSql("WHERE ID = :ID");
+            parameter.AppendSql("AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<DataSyncDto>(parameter);
         }
@@ -139,9 +154,11 @@
             parameter.AppendSql("AND CREATEDUSER = :CREATEDUSER");
             parameter.AppendSql("AND TABLEKEY = :TABLEKEY");
             parameter.AppendSql("AND DMLTYPE = 'I' ");
+            parameter.AppendSql("AND SWLICENSE = :SWLICENSE ");
             parameter.Add("TABLENAME", tableName);
             parameter.Add("CREATEDUSER", createdUser);
             parameter.Add("TABLEKEY", tableKey);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<DataSyncDto>(parameter);
         }
@@ -151,22 +168,28 @@
             parameter.AppendSql("SELECT * FROM HIC_OSHA_DATASYNC ");
             parameter.AppendSql("WHERE TABLENAME = :TABLENAME");
             parameter.AppendSql("AND TABLEKEY = :TABLEKEY");
+            parameter.AppendSql("AND SWLICENSE = :SWLICENSE ");
             parameter.Add("TABLENAME", tableName);
             parameter.Add("TABLEKEY", tableKey);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<DataSyncDto>(parameter);
         }
         public List<DataSyncDto> FindAll()
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT * FROM HIC_OSHA_DATASYNC ");            
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_DATASYNC ");
+            parameter.AppendSql(" WHERE SWLICENSE = :SWLICENSE ");
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<DataSyncDto>(parameter);
         }
         public List<DataSyncDto> FindAllByUserId(string userId)
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_OSHA_DATASYNC  WHERE CREATEDUSER = :USERID");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("USERID", userId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<DataSyncDto>(parameter);
         }
       
@@ -185,7 +208,9 @@
             parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                          ");
             parameter.AppendSql("INNER JOIN USER_TAB_COMMENTS C                                       ");
             parameter.AppendSql("ON A.TABLENAME = C.TABLE_NAME                                       ");
-            parameter.AppendSql("WHERE 1=1                                  ");
+            parameter.AppendSql("WHERE A.SWLICENSE = :SWLICENSE1                             ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE3 ");
             parameter.AppendSql("AND A.CREATEDUSER = :CREATEDUSER           ");
             parameter.AppendSql("AND A.CREATED >= TO_TIMESTAMP(:STARTDATE, 'YYYY-MM-DD HH24:MI:SS')         ");
             parameter.AppendSql("AND A.CREATED <= TO_TIMESTAMP(:ENDDATE, 'YYYY-MM-DD HH24:MI:SS')         ");
@@ -197,6 +222,9 @@
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
             if (!isSync.IsNullOrEmpty())
             {
                 parameter.Add("ISSYNC", isSync);
@@ -219,6 +247,7 @@
             parameter.AppendSql("  , ISSYNC");
             parameter.AppendSql("  , CREATED");
             parameter.AppendSql("  , CREATEDUSER");
+            parameter.AppendSql("  , SWLICENSE");
             parameter.AppendSql(") VALUES ( ");
             parameter.AppendSql("    :ID");
             parameter.AppendSql("  , :TABLENAME");
@@ -236,6 +265,7 @@
             }
                 
             parameter.AppendSql("  , :CREATEDUSER");
+            parameter.AppendSql("  , :SWLICENSE");
             parameter.AppendSql(") ");
 
             parameter.Add("ID", dto.ID);
@@ -244,6 +274,7 @@
             parameter.Add("NEWTABLEKEY", dto.NEWTABLEKEY);
             parameter.Add("DMLTYPE", dto.DMLTYPE);
             parameter.Add("ISSYNC", dto.ISSYNC);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (dto.CREATED != null)
             {
                 parameter.Add("CREATED", dto.CREATED);
@@ -350,8 +381,8 @@
             parameter.AppendSql("          HP,                                                                             ");
             parameter.AppendSql("          EMAIL,                                                                          ");
             parameter.AppendSql("          JUMIN,                                                                          ");
-            parameter.AppendSql("          PANO,                                                                            ");
-            parameter.AppendSql("          ISMANAGEOSHA                                                                            ");
+            parameter.AppendSql("          PANO,                                                                           ");
+            parameter.AppendSql("          ISMANAGEOSHA                                                                    ");
             parameter.AppendSql("       )                                                                                  ");
             parameter.AppendSql("       AS                                                                                 ");
             parameter.AppendSql("          SELECT A.PTNO AS ID,                                                            ");
@@ -411,7 +442,8 @@
             parameter.AppendSql("   GBGUKGO,                                            ");
             parameter.AppendSql("   DELDATE,                                            ");
             parameter.AppendSql("   GBDAEHANG,                                          ");
-            parameter.AppendSql("   JEPUMLIST                                           ");
+            parameter.AppendSql("   JEPUMLIST,                                          ");
+            parameter.AppendSql("   SWLICENSE                                           ");
             parameter.AppendSql(")                                                      ");
             parameter.AppendSql("   AS                                                  ");
             parameter.AppendSql("SELECT A.CODE AS ID                                    ");
@@ -435,6 +467,7 @@
             parameter.AppendSql("     , A.DELDATE                                       ");
             parameter.AppendSql("     , A.GBDAEHANG                                     ");
             parameter.AppendSql("     , A.JEPUMLIST                                     ");
+            parameter.AppendSql("     , A.SWLICENSE                                     ");
             parameter.AppendSql("  FROM HIC_LTD A                                       ");
             parameter.AppendSql("  LEFT OUTER JOIN HIC_CODE B                           ");
             parameter.AppendSql("          ON A.JISA = B.CODE                           ");
@@ -442,6 +475,7 @@
             //parameter.AppendSql("  LEFT OUTER JOIN HIC_OSHA_CONTRACT C                  ");
             //parameter.AppendSql("          ON A.CODE = C.OSHA_SITE_ID                   ");
             parameter.AppendSql(" WHERE A.GBDAEHANG = 'Y'                               ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             //parameter.AppendSql("   AND (C.TERMINATEDATE IS NULL OR TO_DATE(C.TERMINATEDATE, 'YYYY-MM-DD') >= SYSDATE)  ");
             //parameter.AppendSql("   UNION ALL                                                                                                     ");
             //parameter.AppendSql("   SELECT A.CODE AS ID,                                                                                          ");
@@ -469,6 +503,8 @@
             //parameter.AppendSql("             HIC_CODE B                                                                                          ");
             //parameter.AppendSql("          ON A.JISA = B.CODE AND B.GUBUN = '21'                                                                  ");
             //parameter.AppendSql("    WHERE A.CODE = 42399                                                                              ");
+
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 

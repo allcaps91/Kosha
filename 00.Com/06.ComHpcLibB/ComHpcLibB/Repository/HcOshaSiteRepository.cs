@@ -17,7 +17,9 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_OSHA_SITE WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReaderSingle<HC_OSHA_SITE>(parameter);
 
         }
@@ -32,7 +34,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("UPDATE HIC_OSHA_SITE   ");
             parameter.AppendSql("SET ISPARENTCHARGE = :ISPARENTCHARGE , MODIFIED = SYSTIMESTAMP, MODIFIEDUSER  = :MODIFIEDUSER    ");
             parameter.AppendSql("WHERE ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("ISPARENTCHARGE", ISPARENTCHARGE);
             parameter.Add("MODIFIEDUSER", clsType.User.Sabun);
 
@@ -44,7 +48,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("UPDATE HIC_OSHA_SITE   ");
             parameter.AppendSql("SET ISQUARTERCHARGE = :ISQUARTERCHARGE , MODIFIED = SYSTIMESTAMP, MODIFIEDUSER  = :MODIFIEDUSER   ");
             parameter.AppendSql("WHERE ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("ISQUARTERCHARGE", ISQUARTERCHARGE);
             parameter.Add("MODIFIEDUSER", clsType.User.Sabun);
 
@@ -57,7 +63,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("UPDATE HIC_OSHA_SITE       ");
             parameter.AppendSql("SET ISACTIVE = 'N', MODIFIED = SYSTIMESTAMP, MODIFIEDUSER  = :MODIFIEDUSER        ");
             parameter.AppendSql("WHERE ID = :ID             ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("MODIFIEDUSER", clsType.User.Sabun);
            
             ExecuteNonQuery(parameter);
@@ -69,7 +77,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("UPDATE HIC_OSHA_SITE       ");
             parameter.AppendSql("SET ISACTIVE = 'Y', ISPARENTCHARGE = 'Y', MODIFIED = SYSTIMESTAMP, MODIFIEDUSER  = :MODIFIEDUSER        ");
             parameter.AppendSql("WHERE ID = :ID             ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("MODIFIEDUSER", clsType.User.Sabun);
 
             ExecuteNonQuery(parameter);
@@ -81,6 +91,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("INSERT INTO HIC_OSHA_SITE");
             parameter.AppendSql("(");
             parameter.AppendSql("    ID");
+            parameter.AppendSql("  , SWLICENSE");
             parameter.AppendSql("  , ISACTIVE");
             parameter.AppendSql("  , TASKNAME");
             parameter.AppendSql("  , PARENTSITE_ID");
@@ -93,6 +104,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  , CREATEDUSER");
             parameter.AppendSql(") VALUES ( ");
             parameter.AppendSql("    :ID");
+            parameter.AppendSql("  , :SWLICENSE");
             parameter.AppendSql("  , 'Y'");
             parameter.AppendSql("  , :TASKNAME");
             parameter.AppendSql("  , 0"  );
@@ -104,12 +116,11 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  , SYSTIMESTAMP");
             parameter.AppendSql("  , :CREATEDUSER");
             parameter.AppendSql(") ");
-
             parameter.Add("ID", view.ID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("TASKNAME", "사업장 등록");
             parameter.Add("MODIFIEDUSER", clsType.User.Sabun);
             parameter.Add("CREATEDUSER", clsType.User.Sabun);
-
 
             ExecuteNonQuery(parameter);
         }
@@ -124,8 +135,9 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("   ,MODIFIED = SYSTIMESTAMP");
             parameter.AppendSql("   ,MODIFIEDUSER = :MODIFIEDUSER");
             parameter.AppendSql("WHERE ID = :ID");
-
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("PARENTSITE_ID", parentSiteId);
             parameter.Add("MODIFIEDUSER", clsType.User.Sabun);
             ExecuteNonQuery(parameter);
@@ -136,8 +148,10 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("SET ");
             parameter.AppendSql("    HASCHILD = 'Y'       ");
             parameter.AppendSql("WHERE ID = :PARENTSITE_ID");
-            
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
+
             parameter.Add("PARENTSITE_ID", parentSiteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
         }
@@ -150,15 +164,19 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("  , PARENTSITE_ID = null ");
             parameter.AppendSql("  , ISPARENTCHARGE ='Y' ");
             parameter.AppendSql("WHERE ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
             parameter = CreateParameter();
             parameter.AppendSql("SELECT count(*) FROM HIC_OSHA_SITE       ");     
             parameter.AppendSql("WHERE PARENTSITE_ID = :PARENTSITE_ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("PARENTSITE_ID", parentSiteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             long count = ExecuteScalar<long>(parameter);
             if(count <= 0)
@@ -169,8 +187,10 @@ namespace ComHpcLibB.Repository
                 parameter.AppendSql("SET ");
                 parameter.AppendSql("    HASCHILD = 'N'       ");
                 parameter.AppendSql("WHERE ID = :PARENTSITE_ID");
+                parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
                 parameter.Add("PARENTSITE_ID", parentSiteId);
+                parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
                 ExecuteNonQuery(parameter);
             }

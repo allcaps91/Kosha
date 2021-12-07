@@ -1,11 +1,11 @@
 namespace HC.OSHA.Repository
 {
     using System.Collections.Generic;
+    using ComBase;
     using ComBase.Mvc;
     using HC.Core.Service;
     using HC.OSHA.Dto;
     using HC_Core.Service;
-
 
     /// <summary>
     /// 
@@ -16,38 +16,50 @@ namespace HC.OSHA.Repository
         public HC_OSHA_CARD17 FindOne(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER FROM HIC_OSHA_CARD17 A                          ");
+            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER FROM HIC_OSHA_CARD17 A     ");
             parameter.AppendSql("INNER JOIN HIC_USERS B                                                               ");
-            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                                         ");
+            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                                          ");
             parameter.AppendSql("INNER JOIN HIC_USERS C                                                               ");
             parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                                                         ");
-            parameter.AppendSql("WHERE ID = :ID");
+            parameter.AppendSql("WHERE ID = :ID ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1        ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2        ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3        ");
 
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_OSHA_CARD17>(parameter);
         }
         public List<HC_OSHA_CARD17> FindAll(long siteId, string startDate, string endDate)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER, D.CODENAME AS EDUTYPE, E.CODENAME AS EDUUSAGE  FROM HIC_OSHA_CARD17 A                          ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                                                               ");
-            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                                         ");
-            parameter.AppendSql("INNER JOIN HIC_USERS C                                                               ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                                                         ");
+            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER, D.CODENAME AS EDUTYPE, E.CODENAME AS EDUUSAGE  FROM HIC_OSHA_CARD17 A  ");
+            parameter.AppendSql("INNER JOIN HIC_USERS B                                                        ");
+            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                                   ");
+            parameter.AppendSql("INNER JOIN HIC_USERS C                                                        ");
+            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                                                  ");
             parameter.AppendSql("INNER JOIN HIC_CODES D                                                        ");
-            parameter.AppendSql("ON D.CODE = A.EDUTYPE                                                        ");
-            parameter.AppendSql("AND D.GROUPCODE = 'SITE_CARD_EDUTYPE'                                                        ");
+            parameter.AppendSql("ON D.CODE = A.EDUTYPE                                                         ");
+            parameter.AppendSql("AND D.GROUPCODE = 'SITE_CARD_EDUTYPE'                                         ");
             parameter.AppendSql("INNER JOIN HIC_CODES E                                                        ");
             parameter.AppendSql("ON E.CODE = A.EDUUSAGE                                                        ");
-            parameter.AppendSql("AND E.GROUPCODE = 'SITE_CARD_EDUUSAGE'                                                        ");
-            parameter.AppendSql("WHERE SITE_ID = :SITE_ID                                ");
-            parameter.AppendSql("AND EDUDATE BETWEEN :STARTDATE AND :ENDDATE                     ");
-            parameter.AppendSql("ORDER BY A.EDUDATE                        ");
+            parameter.AppendSql("AND E.GROUPCODE = 'SITE_CARD_EDUUSAGE'                                        ");
+            parameter.AppendSql("WHERE A.SITE_ID = :SITE_ID                                                    ");
+            parameter.AppendSql("  AND A.EDUDATE BETWEEN :STARTDATE AND :ENDDATE                               ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1        ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2        ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3        ");
+            parameter.AppendSql("ORDER BY A.EDUDATE                     ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("STARTDATE", startDate);
             parameter.Add("ENDDATE", endDate);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_CARD17>(parameter);
 
@@ -55,23 +67,29 @@ namespace HC.OSHA.Repository
         public List<HC_OSHA_CARD17> FindAll(long siteId, string year)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER, D.CODENAME AS EDUTYPE, E.CODENAME AS EDUUSAGE  FROM HIC_OSHA_CARD17 A                          ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                                                               ");
-            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                                         ");
-            parameter.AppendSql("INNER JOIN HIC_USERS C                                                               ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                                                         ");
-            parameter.AppendSql("INNER JOIN HIC_CODES D                                                        ");
-            parameter.AppendSql("ON D.CODE = A.EDUTYPE                                                        ");
-            parameter.AppendSql("AND D.GROUPCODE = 'SITE_CARD_EDUTYPE'                                                        ");
-            parameter.AppendSql("INNER JOIN HIC_CODES E                                                        ");
-            parameter.AppendSql("ON E.CODE = A.EDUUSAGE                                                        ");
-            parameter.AppendSql("AND E.GROUPCODE = 'SITE_CARD_EDUUSAGE'                                                        ");
-            parameter.AppendSql("WHERE SITE_ID = :SITE_ID                                ");
-            parameter.AppendSql("AND YEAR = :YEAR                     ");
-            parameter.AppendSql("ORDER BY A.EDUDATE                        ");
+            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER, D.CODENAME AS EDUTYPE, E.CODENAME AS EDUUSAGE  FROM HIC_OSHA_CARD17 A ");
+            parameter.AppendSql("INNER JOIN HIC_USERS B                             ");
+            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                        ");
+            parameter.AppendSql("INNER JOIN HIC_USERS C                             ");
+            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                       ");
+            parameter.AppendSql("INNER JOIN HIC_CODES D                             ");
+            parameter.AppendSql("ON D.CODE = A.EDUTYPE                              ");
+            parameter.AppendSql("AND D.GROUPCODE = 'SITE_CARD_EDUTYPE'              ");
+            parameter.AppendSql("INNER JOIN HIC_CODES E                             ");
+            parameter.AppendSql("ON E.CODE = A.EDUUSAGE                             ");
+            parameter.AppendSql("AND E.GROUPCODE = 'SITE_CARD_EDUUSAGE'             ");
+            parameter.AppendSql("WHERE A.SITE_ID = :SITE_ID                         ");
+            parameter.AppendSql("  AND A.YEAR = :YEAR                               ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1        ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2        ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3        ");
+            parameter.AppendSql("ORDER BY A.EDUDATE                     ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("YEAR", year);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_CARD17>(parameter);
 
@@ -81,12 +99,12 @@ namespace HC.OSHA.Repository
             dto.ID = GetSequenceNextVal("HC_OSHA_CARD_ID_SEQ");
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO HIC_OSHA_CARD17                                                  ");
+            parameter.AppendSql("INSERT INTO HIC_OSHA_CARD17                                                 ");
             parameter.AppendSql("(                                                                           ");
             parameter.AppendSql("  ID,                                                                       ");
-            parameter.AppendSql("  SITE_ID,                                                                   ");
+            parameter.AppendSql("  SITE_ID,                                                                  ");
             parameter.AppendSql("  ESTIMATE_ID,                                                              ");
-            parameter.AppendSql("  YEAR,                                                              ");
+            parameter.AppendSql("  YEAR,                                                                     ");
             parameter.AppendSql("  EDUDATE,                                                                  ");
             parameter.AppendSql("  EDUTYPE,                                                                  ");
             parameter.AppendSql("  EDUPLACE,                                                                 ");
@@ -98,14 +116,15 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  MODIFIED,                                                                 ");
             parameter.AppendSql("  MODIFIEDUSER,                                                             ");
             parameter.AppendSql("  CREATED,                                                                  ");
-            parameter.AppendSql("  CREATEDUSER                                                              ");
+            parameter.AppendSql("  CREATEDUSER,                                                              ");
+            parameter.AppendSql("  SWLICENSE                                                                 ");
             parameter.AppendSql(")                                                                           ");
             parameter.AppendSql("VALUES                                                                      ");
             parameter.AppendSql("(                                                                           ");
             parameter.AppendSql("  :ID,                                                                      ");
-            parameter.AppendSql("  :SITE_ID,                                                                  ");
+            parameter.AppendSql("  :SITE_ID,                                                                 ");
             parameter.AppendSql("  :ESTIMATE_ID,                                                             ");
-            parameter.AppendSql("  :YEAR,                                                             ");
+            parameter.AppendSql("  :YEAR,                                                                    ");
             parameter.AppendSql("  :EDUDATE,                                                                 ");
             parameter.AppendSql("  :EDUTYPE,                                                                 ");
             parameter.AppendSql("  :EDUPLACE,                                                                ");
@@ -114,10 +133,11 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  :TARGETCOUNT,                                                             ");
             parameter.AppendSql("  :ACTCOUNT,                                                                ");
             parameter.AppendSql("  :CONTENT,                                                                 ");
-            parameter.AppendSql("  SYSTIMESTAMP,                                                                ");
+            parameter.AppendSql("  SYSTIMESTAMP,                                                             ");
             parameter.AppendSql("  :MODIFIEDUSER,                                                            ");
-            parameter.AppendSql("  SYSTIMESTAMP,                                                                 ");
-            parameter.AppendSql("  :CREATEDUSER                                                            ");
+            parameter.AppendSql("  SYSTIMESTAMP,                                                             ");
+            parameter.AppendSql("  :CREATEDUSER,                                                             ");
+            parameter.AppendSql("  :SWLICENSE                                                                ");
             parameter.AppendSql(")                                                                           ");
             parameter.Add("ID", dto.ID);
             parameter.Add("SITE_ID", dto.SITE_ID);
@@ -133,6 +153,7 @@ namespace HC.OSHA.Repository
             parameter.Add("CONTENT", dto.CONTENT);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Insert("HIC_OSHA_CARD17", dto.ID);
@@ -142,10 +163,10 @@ namespace HC.OSHA.Repository
         public HC_OSHA_CARD17 Update(HC_OSHA_CARD17 dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_CARD17                                                       ");
+            parameter.AppendSql("UPDATE HIC_OSHA_CARD17                                                      ");
             parameter.AppendSql("SET                                                                         ");
             parameter.AppendSql("  EDUDATE = :EDUDATE,                                                       ");
-            parameter.AppendSql("  YEAR = :YEAR,                                                       ");
+            parameter.AppendSql("  YEAR = :YEAR,                                                             ");
             parameter.AppendSql("  EDUTYPE = :EDUTYPE,                                                       ");
             parameter.AppendSql("  EDUPLACE = :EDUPLACE,                                                     ");
             parameter.AppendSql("  EDUUSAGE = :EDUUSAGE,                                                     ");
@@ -153,10 +174,10 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  TARGETCOUNT = :TARGETCOUNT,                                               ");
             parameter.AppendSql("  ACTCOUNT = :ACTCOUNT,                                                     ");
             parameter.AppendSql("  CONTENT = :CONTENT,                                                       ");
-            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,                                                     ");
-            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER                                             ");
-
+            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,                                                  ");
+            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER                                              ");
             parameter.AppendSql("WHERE ID = :ID                                                              ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", dto.ID);
             parameter.Add("EDUDATE", dto.EDUDATE);
             parameter.Add("YEAR", dto.YEAR);
@@ -168,6 +189,7 @@ namespace HC.OSHA.Repository
             parameter.Add("ACTCOUNT", dto.ACTCOUNT);
             parameter.Add("CONTENT", dto.CONTENT);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Update("HIC_OSHA_CARD17", dto.ID);
@@ -177,9 +199,11 @@ namespace HC.OSHA.Repository
         public void Delete(long id )
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE FROM HIC_OSHA_CARD17                                                   ");
-            parameter.AppendSql("WHERE ID = :ID                                                              ");
+            parameter.AppendSql("DELETE FROM HIC_OSHA_CARD17                  ");
+            parameter.AppendSql("WHERE ID = :ID                               ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Delete("HIC_OSHA_CARD17", id);
