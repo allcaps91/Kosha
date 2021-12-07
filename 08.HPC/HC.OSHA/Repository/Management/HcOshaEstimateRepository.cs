@@ -1,10 +1,10 @@
 namespace HC.OSHA.Repository
 {
     using System.Collections.Generic;
+    using ComBase;
     using ComBase.Mvc;
     using HC.Core.Service;
     using HC.OSHA.Dto;
-
 
     /// <summary>
     /// 보건관리전문 견적 쿼리
@@ -15,18 +15,16 @@ namespace HC.OSHA.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_OSHA_ESTIMATE    ");
-            parameter.AppendSql("WHERE ID = :ID");
+            parameter.AppendSql("WHERE ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
-
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             HC_OSHA_ESTIMATE dto = ExecuteReaderSingle<HC_OSHA_ESTIMATE>(parameter);
             return dto;
-
         }
-
 
         public HC_OSHA_ESTIMATE Insert(HC_OSHA_ESTIMATE dto)
         {
-
             long id = GetSequenceNextVal("HC_OSHA_ESTIMATE_ID_SEQ");
 
             MParameter parameter = CreateParameter();
@@ -34,13 +32,13 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("(                              ");
             parameter.AppendSql(" ID, OSHA_SITE_ID, ESTIMATEDATE, STARTDATE, WORKERTOTALCOUNT, OFFICIALFEE, SITEFEE,    ");
             parameter.AppendSql(" MONTHLYFEE, FEETYPE, PRINTDATE, SENDMAILDATE, ISDELETED, REMARK, EXCELPATH, MODIFIED, MODIFIEDUSER, CREATED, CREATEDUSER  ");
-            parameter.AppendSql(" ,BLUEMALE, BLUEFEMALE, WHITEMALE, WHITEFEMALE ");
+            parameter.AppendSql(" ,BLUEMALE, BLUEFEMALE, WHITEMALE, WHITEFEMALE, SWLICENSE ");
             parameter.AppendSql(") ");
             parameter.AppendSql("VALUES ");
             parameter.AppendSql("(");
             parameter.AppendSql(" :ID, :OSHA_SITE_ID, :ESTIMATEDATE, :STARTDATE, :WORKERTOTALCOUNT, :OFFICIALFEE, :SITEFEE, ");
             parameter.AppendSql(" :MONTHLYFEE, :FEETYPE, :PRINTDATE, :SENDMAINDATE, 'N', :REMARK, :EXCELPATH, SYSTIMESTAMP, :MODIFIEDUSER, SYSTIMESTAMP, :CREATEDUSER,  ");
-            parameter.AppendSql(" :BLUEMALE, :BLUEFEMALE, :WHITEMALE, :WHITEFEMALE      ");
+            parameter.AppendSql(" :BLUEMALE, :BLUEFEMALE, :WHITEMALE, :WHITEFEMALE, :SWLICENSE ");
             parameter.AppendSql(") ");
 
             parameter.Add("ID", id);
@@ -63,6 +61,7 @@ namespace HC.OSHA.Repository
 
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
@@ -81,6 +80,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql(", WHITEMALE= :WHITEMALE   ");
             parameter.AppendSql(", WHITEFEMALE =:WHITEFEMALE   ");
             parameter.AppendSql("WHERE ID = :ID    ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ESTIMATEDATE", dto.ESTIMATEDATE);
             parameter.Add("STARTDATE", dto.STARTDATE);
@@ -102,6 +102,7 @@ namespace HC.OSHA.Repository
 
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("ID", dto.ID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
@@ -114,8 +115,10 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("SET  ");
             parameter.AppendSql("PRINTDATE = SYSTIMESTAMP");
             parameter.AppendSql("WHERE ID = :ID    ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", dto.ID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
@@ -129,8 +132,10 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("SET  ");
             parameter.AppendSql("SENDMAILDATE = SYSTIMESTAMP");
             parameter.AppendSql("WHERE ID = :ID    ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", dto.ID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
@@ -142,8 +147,11 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("UPDATE  HIC_OSHA_ESTIMATE    ");
             parameter.AppendSql("SET ISDELETED = 'Y'     ");
             parameter.AppendSql("WHERE ID = :ID     ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", dto.ID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
             ExecuteNonQuery(parameter);
         }
 
@@ -156,17 +164,17 @@ namespace HC.OSHA.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("  select max(a.id) from hic_osha_estimate a ");
-
-            parameter.AppendSql("inner join HIC_OSHA_CONTRACT B");
-
-
-            parameter.AppendSql("ON A.id = b.estimate_id where A.isdeleted = 'N' AND B.ISCONTRACT = 'Y' and A.osha_site_id = :siteId");
-
+            parameter.AppendSql("inner join HIC_OSHA_CONTRACT B ");
+            parameter.AppendSql("ON A.id = b.estimate_id ");
+            parameter.AppendSql("where A.isdeleted = 'N' AND B.ISCONTRACT = 'Y' ");
+            parameter.AppendSql("  and A.osha_site_id = :siteId ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2 ");
             parameter.Add("siteId", siteId);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+
             return ExecuteScalar<long>(parameter);
-            
-
-
         }
     }
 }

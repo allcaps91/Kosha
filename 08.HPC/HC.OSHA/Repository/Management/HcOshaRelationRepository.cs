@@ -1,4 +1,5 @@
 ﻿using ComBase.Controls;
+using ComBase;
 using ComBase.Mvc;
 using ComBase.Mvc.Utils;
 using HC.Core.Service;
@@ -22,14 +23,14 @@ namespace HC.OSHA.Repository.StatusReport
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT  *  ");
             parameter.AppendSql("  FROM HIC_OSHA_RELATION");
-            parameter.AppendSql(" WHERE ID = :ID");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             HC_OSHA_RELATION dto = ExecuteReaderSingle<HC_OSHA_RELATION>(parameter);
             return dto;
         }
-
-  
 
         public List<HC_OSHA_RELATION_MODEL> FindAll(long parentId)
         {
@@ -40,8 +41,14 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("   INNER JOIN HC_SITE_VIEW C   ");
             parameter.AppendSql("   ON A.PARENT_ID = C.ID   ");
             parameter.AppendSql(" WHERE A.PARENT_ID = :PARENT_ID   ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3 ");
 
             parameter.Add("PARENT_ID", parentId);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_RELATION_MODEL>(parameter);
         }
@@ -53,8 +60,14 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("   ON A.CHILD_ID = B.ID   ");
             parameter.AppendSql("   INNER JOIN HC_SITE_VIEW C   ");
             parameter.AppendSql("   ON A.PARENT_ID = C.ID   ");
+            parameter.AppendSql("   WHERE A.SWLICENSE = :SWLICENSE1 ");
+            parameter.AppendSql("     AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("     AND C.SWLICENSE = :SWLICENSE3 ");
             parameter.AppendSql("   ORDER BY C.NAME, B.NAME");
-            
+
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_RELATION_MODEL>(parameter);
         }
@@ -63,7 +76,10 @@ namespace HC.OSHA.Repository.StatusReport
             MParameter parameter = CreateParameter();
             parameter.AppendSql("DELETE FROM HIC_OSHA_RELATION   ");
             parameter.AppendSql("WHERE ID = :ID             ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
+
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Delete("HIC_OSHA_RELATION", id);
@@ -78,10 +94,12 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("    ID");
             parameter.AppendSql("  , PARENT_ID");
             parameter.AppendSql("  , CHILD_ID");
+            parameter.AppendSql("  , SWLICENSE");
             parameter.AppendSql(") VALUES ( ");
             parameter.AppendSql("    :ID");
             parameter.AppendSql("  , :PARENT_ID");
             parameter.AppendSql("  , :CHILD_ID");
+            parameter.AppendSql("  , :SWLICENSE ");
             parameter.AppendSql(") ");
 
             parameter.Add("ID", item.ID);
@@ -90,10 +108,9 @@ namespace HC.OSHA.Repository.StatusReport
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Insert("HIC_OSHA_RELATION", item.ID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return FindOne(item.ID);
         }
-
-        
     }
 }

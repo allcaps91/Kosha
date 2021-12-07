@@ -2,12 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
+    using ComBase;
     using ComBase.Mvc;
     using HC.Core.Service;
     using HC.OSHA.Dto;
     using HC.OSHA.Model;
     using HC_Core.Service;
-
 
     /// <summary>
     /// 
@@ -21,7 +21,6 @@
             MParameter parameter = CreateParameter();
            // parameter.AppendSql("SELECT TO_CHAR(B.CREATED,'YYYY-MM-DD') AS CREATED,  C.ID AS SITEID,  C.NAME AS SITENAME, TO_CHAR(A.VISITDATETIME, 'YYYY-MM-DD') AS VISITDATE, VISITUSERNAME, SUM(B.WORKERCOUNT) AS WORKERCOUNT, B.UNITPRICE, SUM(b.totalprice) AS TOTALPRICE, B.ISDELETED         ");
             parameter.AppendSql("SELECT TO_CHAR(B.CREATED,'YYYY-MM-DD') AS CREATED,  C.ID AS SITEID,  C.NAME AS SITENAME, TO_CHAR(A.VISITDATETIME, 'YYYY-MM-DD') AS VISITDATE, VISITUSERNAME, B.WORKERCOUNT AS WORKERCOUNT, B.UNITPRICE, b.totalprice AS TOTALPRICE, B.ISDELETED         ");
-
             parameter.AppendSql("FROM HIC_OSHA_VISIT  A         ");
             parameter.AppendSql("INNER JOIN HIC_OSHA_VISIT_PRICE B         ");
             parameter.AppendSql("ON A.ID = B.VISIT_ID         ");
@@ -29,7 +28,9 @@
             parameter.AppendSql("ON A.SITE_ID = C.ID         ");
             parameter.AppendSql("WHERE 1=1         ");
             parameter.AppendSql("AND A.ISPRECHARGE = 'N'        ");
-
+            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE1 ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE3 ");
             if (!isHistory)
             {
                 parameter.AppendSql("AND A.ISDELETED = 'N'         ");
@@ -52,6 +53,9 @@
 
             parameter.Add("STARTDATE", startDate);
             parameter.Add("ENDDATE", endDate);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
 
             if (siteId > 0)
             {
