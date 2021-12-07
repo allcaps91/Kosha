@@ -1,4 +1,5 @@
 ﻿using ComBase.Controls;
+using ComBase;
 using ComBase.Mvc;
 using HC.Core.Service;
 using HC.OSHA.Dto;
@@ -27,10 +28,16 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("   AND A.VISITRESERVEDATE >= TO_DATE(:startDate,'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND A.VISITRESERVEDATE <= TO_DATE(:endDate,'YYYY-MM-DD')    ");
             parameter.AppendSql("   AND A.isdeleted = 'N'    ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE1 ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE3 ");
             parameter.AppendSql("   GROUP BY B.NAME, A.SITE_ID    ");
             parameter.AppendSql("   ORDER BY B.NAME, A.SITE_ID    ");
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
             return ExecuteReader<CHARGE_MODEL>(parameter);
         }
 
@@ -61,6 +68,10 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  AND A.ISDELETED = 'N'                                            ");
             parameter.AppendSql("  AND A.VISITRESERVEDATE >= TO_DATE(:startDate,'YYYY-MM-DD')       ");
             parameter.AppendSql("  AND A.VISITRESERVEDATE <= TO_DATE(:endDate, 'YYYY-MM-DD')        ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3 ");
+            parameter.AppendSql("  AND E.SWLICENSE = :SWLICENSE4 ");
             parameter.AppendSql("UNION ALL                                                          ");
             parameter.AppendSql("SELECT A.ID AS SCHEDULE_ID, A.VISITRESERVEDATE, B.ID AS VISIT_ID, A.SITE_ID, BB.PARENTSITE_ID AS PARENT_SITE_ID, A.ESTIMATE_ID, AA.NAME AS SITE_NAME, B.VISITDATETIME, B.VISITUSERNAME, B.ISPRECHARGE, C.WORKERCOUNT, C.UNITPRICE, C.UNITTOTALPRICE, C.TOTALPRICE, C.ID AS VISIT_PRICE_ID,  ");
             parameter.AppendSql("         E.ID, E.WRTNO,  E.CHARGEDATE, E.WORKERCOUNT AS E_WORKERCOUNT, E.UNITPRICE AS E_UNITPRICE, E.TOTALPRICE AS E_TOTALPRICE, E.ISCOMPLETE, E.ISVISIT, E.CREATED , E.CREATEDUSER, E.REMARK   ");
@@ -79,14 +90,32 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("AND E.ISDELETED = 'N'                                              ");
             parameter.AppendSql("WHERE A.SITE_ID = (select ID from HIC_OSHA_SITE                    ");
             parameter.AppendSql("                     where PARENTSITE_ID = :SITE_ID                ");
+            parameter.AppendSql("                       AND SWLICENSE = :SWLICENSE5                 ");
             parameter.AppendSql("                 )                                                 ");
             parameter.AppendSql("AND A.ISDELETED = 'N'                                              ");
             parameter.AppendSql("AND A.VISITRESERVEDATE >=  TO_DATE(:startDate,'YYYY-MM-DD')        ");
             parameter.AppendSql("AND A.VISITRESERVEDATE <=  TO_DATE(:endDate, 'YYYY-MM-DD')         ");
-            
+            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE6 ");
+            parameter.AppendSql("AND AA.SWLICENSE = :SWLICENSE7 ");
+            parameter.AppendSql("AND BB.SWLICENSE = :SWLICENSE8 ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE9 ");
+            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSEA ");
+            parameter.AppendSql("AND E.SWLICENSE = :SWLICENSEB ");
+
             parameter.Add("SITE_ID", siteId);
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE4", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE5", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE6", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE7", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE8", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE9", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSEA", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSEB", clsType.HosInfo.SwLicense);
             return ExecuteReader<CHARGE_MODEL>(parameter);
         }
 
@@ -97,9 +126,10 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("    SET ");
             parameter.AppendSql("       WRTNO = :WRTNO ");
             parameter.AppendSql("WHERE ID = :ID ");
-
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
             parameter.Add("WRTNO", wrtNo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
         }
@@ -126,6 +156,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  , MODIFIEDUSER");
             parameter.AppendSql("  , CREATED");
             parameter.AppendSql("  , CREATEDUSER");
+            parameter.AppendSql("  , SWLICENSE");
             parameter.AppendSql(") VALUES ( ");
             parameter.AppendSql("    :ID");
             parameter.AppendSql("  , :SITE_ID");
@@ -144,6 +175,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  , :MODIFIEDUSER");
             parameter.AppendSql("  , SYSTIMESTAMP");
             parameter.AppendSql("  , :CREATEDUSER");
+            parameter.AppendSql("  , :SWLICENSE");
             parameter.AppendSql(") ");
 
             parameter.Add("ID", dto.ID);
@@ -160,13 +192,12 @@ namespace HC.OSHA.Repository
             parameter.Add("REMARK", dto.REMARK);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
             return dto.ID;
         }
-
-      
 
         public void Delete(long id)
         {
@@ -177,9 +208,11 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("      , MODIFIED =  SYSTIMESTAMP");
             parameter.AppendSql("      , MODIFIEDUSER = :MODIFIEDUSER");
             parameter.AppendSql("WHERE ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
         }
@@ -221,6 +254,11 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("                 AND F.BUSE = 4                                                            ");
             parameter.AppendSql("         WHERE B.BDATE >= TO_DATE(:startDate, 'YYYY-MM-DD')                                ");
             parameter.AppendSql("           AND B.BDATE <= TO_DATE(:endDate, 'YYYY-MM-DD')                                  ");
+            parameter.AppendSql("           AND A.SWLICENSE = :SWLICENSE1                                                   ");
+            parameter.AppendSql("           AND B.SWLICENSE = :SWLICENSE2                                                   ");
+            parameter.AppendSql("           AND D.SWLICENSE = :SWLICENSE3                                                   ");
+            parameter.AppendSql("           AND E.SWLICENSE = :SWLICENSE4                                                   ");
+            parameter.AppendSql("           AND F.SWLICENSE = :SWLICENSE5                                                   ");
             parameter.AppendSql("        ORDER BY B.BDATE, B.WRTNO,B.GEACODE                                                ");
             parameter.AppendSql("  ) A LEFT OUTER JOIN (                                                                    ");
             parameter.AppendSql("        SELECT TO_CHAR(A.SEND_DATE, 'YYYY-MM-DD') AS SENDDATE                              ");
@@ -237,6 +275,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("                 WHERE SEND_TYPE = 'CHARGE'                                                ");
             parameter.AppendSql("                   AND SEND_DATE >= TO_DATE(:startDate, 'YYYY-MM-DD')                      ");
             parameter.AppendSql("                   AND SEND_DATE <= TO_DATE(:endDate, 'YYYY-MM-DD')                        ");
+            parameter.AppendSql("                   AND SWLICENSE = :SWLICENSE6                                                   ");
             parameter.AppendSql("          ) A LEFT OUTER JOIN HIC_USERS B                                                  ");
             parameter.AppendSql("                           ON A.SEND_USER = TRIM(B.USERID)                                 ");
             parameter.AppendSql("         WHERE NUM = 1                                                                     ");
@@ -245,6 +284,12 @@ namespace HC.OSHA.Repository
 
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE4", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE5", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE6", clsType.HosInfo.SwLicense);
             return ExecuteReader<ChargeDocumentModel>(parameter);
         }
     }

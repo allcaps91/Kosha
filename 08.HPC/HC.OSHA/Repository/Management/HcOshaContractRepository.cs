@@ -1,28 +1,27 @@
 namespace HC.OSHA.Repository
 {
     using System.Collections.Generic;
+    using ComBase;
     using ComBase.Mvc;
     using HC.Core.Service;
     using HC.OSHA.Dto;
     using HC_Core.Service;
-
 
     /// <summary>
     /// 
     /// </summary>
     public class HcOshaContractRepository : BaseRepository
     {
-      
-
         public List<HC_OSHA_CONTRACT> FindAllByEstimateId(long siteId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("        SELECT * FROM HIC_OSHA_CONTRACT   ");
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_CONTRACT   ");
             parameter.AppendSql("WHERE OSHA_SITE_ID = :siteId   ");
             parameter.AppendSql("AND ISDELETED = 'N'   ");
+            parameter.AppendSql("AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("ORDER BY ESTIMATE_ID ASC   ");
             parameter.Add("siteId", siteId);
-
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HC_OSHA_CONTRACT>(parameter);
         }
         public HC_OSHA_CONTRACT FindByEstimateId(long estimateId)
@@ -31,19 +30,26 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("SELECT * FROM HIC_OSHA_CONTRACT    ");
             parameter.AppendSql("WHERE ESTIMATE_ID = :ESTIMATE_ID");
             parameter.AppendSql("AND ISDELETED = 'N' ");
+            parameter.AppendSql("AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ESTIMATE_ID", estimateId);
-
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             HC_OSHA_CONTRACT dto = ExecuteReaderSingle<HC_OSHA_CONTRACT>(parameter);
             return dto;
-
         }
    
         public HC_OSHA_CONTRACT FindByMaxContract(long siteId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("   SELECT * FROM HIC_OSHA_CONTRACT ");
-            parameter.AppendSql("   WHERE ESTIMATE_ID = (SELECT MAX(ESTIMATE_ID) FROM HIC_OSHA_CONTRACT  WHERE OSHA_SITE_ID = :SITEID AND ISDELETED = 'N') ");
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_CONTRACT ");
+            parameter.AppendSql("WHERE ESTIMATE_ID = (SELECT MAX(ESTIMATE_ID) FROM HIC_OSHA_CONTRACT  ");
+            parameter.AppendSql("      WHERE OSHA_SITE_ID = :SITEID    ");
+            parameter.AppendSql("         AND SWLICENSE = :SWLICENSE1 ");
+            parameter.AppendSql("         AND ISDELETED = 'N') ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE2 ");
+
             parameter.Add("SITEID", siteId);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_OSHA_CONTRACT>(parameter); 
         }
@@ -62,11 +68,12 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("AND CONTRACTSTARTDATE <= :date1");
             parameter.AppendSql("AND CONTRACTENDDATE >= :date2 ");
             parameter.AppendSql("AND ISDELETED = 'N' ");
-
+            parameter.AppendSql("AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("date1", yyyy_MM_dd);
             parameter.Add("date2", yyyy_MM_dd);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             HC_OSHA_CONTRACT dto = ExecuteReaderSingle<HC_OSHA_CONTRACT>(parameter);
             return dto;
@@ -78,155 +85,158 @@ namespace HC.OSHA.Repository
 
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_OSHA_CONTRACT    ");
-            parameter.AppendSql("WHERE ESTIMATE_ID = :ESTIMATE_ID");            
+            parameter.AppendSql("WHERE ESTIMATE_ID = :ESTIMATE_ID");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
-
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             HC_OSHA_CONTRACT saved = ExecuteReaderSingle<HC_OSHA_CONTRACT>(parameter);
             if (saved != null)
             {
                 parameter = CreateParameter();
                 parameter.AppendSql("DELETE  FROM HIC_OSHA_CONTRACT    ");
                 parameter.AppendSql("WHERE ESTIMATE_ID = :ESTIMATE_ID");
+                parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
                 parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
+                parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
                 ExecuteNonQuery(parameter);
             }
 
             parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO HIC_OSHA_CONTRACT                                                ");
-            parameter.AppendSql("(                                                                           ");
-            parameter.AppendSql("  ESTIMATE_ID,                                                              ");
-            parameter.AppendSql("  OSHA_SITE_ID,                                                             ");
-            parameter.AppendSql("  CONTRACTDATE,                                                             ");
-            parameter.AppendSql("  TERMINATEDATE,                                                             ");
-            parameter.AppendSql("  SPECIALCONTRACT,                                                             ");
-            parameter.AppendSql("  WORKERTOTALCOUNT,                                                         ");
-            parameter.AppendSql("  WORKERWHITEMALECOUNT,                                                     ");
-            parameter.AppendSql("  WORKERWHITEFEMALECOUNT,                                                   ");
-            parameter.AppendSql("  WORKERBLUEMALECOUNT,                                                      ");
-            parameter.AppendSql("  WORKERBLUEFEMALECOUNT,                                                    ");
-            parameter.AppendSql("  MANAGEWORKERCOUNT,                                                        ");
-            parameter.AppendSql("  MANAGEDOCTOR,                                                             ");
-            parameter.AppendSql("  MANAGEDOCTORSTARTDATE,                                                    ");
-            parameter.AppendSql("  MANAGEDOCTORCOUNT,                                                        ");
-            parameter.AppendSql("  MANAGENURSE,                                                              ");
-            parameter.AppendSql("  MANAGENURSESTARTDATE,                                                     ");
-            parameter.AppendSql("  MANAGENURSECOUNT,                                                         ");
-            parameter.AppendSql("  MANAGEENGINEER,                                                           ");
-            parameter.AppendSql("  MANAGEENGINEERSTARTDATE,                                                  ");
-            parameter.AppendSql("  MANAGEENGINEERCOUNT,                                                      ");
-            parameter.AppendSql("  VISITWEEK,                                                                ");
-            parameter.AppendSql("  VISITDAY,                                                                 ");
-            parameter.AppendSql("  COMMISSION,                                                               ");
-            parameter.AppendSql("  DECLAREDAY,                                                               ");
-            parameter.AppendSql("  CONTRACTSTARTDATE,                                                        ");
-            parameter.AppendSql("  CONTRACTENDDATE,                                                          ");
-            parameter.AppendSql("  POSITION,                                                                 ");
-            parameter.AppendSql("  ISROTATION,                                                               ");
-            parameter.AppendSql("  ISPRODUCTTYPE,                                                            ");
-            parameter.AppendSql("  ISLABOR,                                                                  ");
-            parameter.AppendSql("  BuildingType,                                                             ");
-            parameter.AppendSql("  WORKSTARTTIME,                                                            ");
-            parameter.AppendSql("  WORKENDTIME,                                                              ");
-            parameter.AppendSql("  WORKMEETTIME,                                                             ");
-            parameter.AppendSql("  WORKROTATIONTIME,                                                         ");
-            parameter.AppendSql("  WORKLUANCHTIME,                                                           ");
-            parameter.AppendSql("  WORKRESTTIME,                                                             ");
-            parameter.AppendSql("  WORKEDUTIME,                                                              ");
-            parameter.AppendSql("  WORKETCTIME,                                                              ");
-            parameter.AppendSql("  ISCONTRACT,                                                               ");
-            parameter.AppendSql("  ISWEM,                                                                    ");
-            parameter.AppendSql("  ISWEMDATA,                                                                ");
-            parameter.AppendSql("  ISCOMMITTEE,                                                              ");
-            parameter.AppendSql("  ISSKELETON,                                                               ");
-            parameter.AppendSql("  ISSKELETONDATE,                                                           ");
-            parameter.AppendSql("  ISSPACEPROGRAM,                                                           ");
-            parameter.AppendSql("  ISSPACEPROGRAMDATE,                                                       ");
-            parameter.AppendSql("  ISEARPROGRAM,                                                             ");
-            parameter.AppendSql("  ISEARPROGRAMDATE,                                                         ");
-            parameter.AppendSql("  ISSTRESS,                                                                 ");
-            parameter.AppendSql("  ISSTRESSDATE,                                                             ");
-            parameter.AppendSql("  ISBRAINTEST,                                                              ");
-            parameter.AppendSql("  ISBRAINTESTDATE,                                                          ");
-            parameter.AppendSql("  ISSPECIAL,                                                                ");
-            parameter.AppendSql("  ISSPECIALDATA,                                                            ");
-            parameter.AppendSql("  REMARK       ,                                                            ");
-            parameter.AppendSql("  ISDELETED,                                                                ");
-            parameter.AppendSql("  MODIFIED,                                                                 ");
-            parameter.AppendSql("  MODIFIEDUSER,                                                             ");
-            parameter.AppendSql("  CREATED,                                                                  ");
-            parameter.AppendSql("  CREATEDUSER                                                               ");
-
-            parameter.AppendSql(")                                                                           ");
-            parameter.AppendSql("VALUES                                                                      ");
-            parameter.AppendSql("(                                                                           ");
-            parameter.AppendSql("  :ESTIMATE_ID,                                                             ");
-            parameter.AppendSql("  :OSHA_SITE_ID,                                                            ");
-            parameter.AppendSql("  :CONTRACTDATE,                                                            ");
-            parameter.AppendSql("  :TERMINATEDATE,                                                            ");
-            parameter.AppendSql("  :SPECIALCONTRACT,                                                            ");
-            parameter.AppendSql("  :WORKERTOTALCOUNT,                                                        ");
-            parameter.AppendSql("  :WORKERWHITEMALECOUNT,                                                    ");
-            parameter.AppendSql("  :WORKERWHITEFEMALECOUNT,                                                  ");
-            parameter.AppendSql("  :WORKERBLUEMALECOUNT,                                                     ");
-            parameter.AppendSql("  :WORKERBLUEFEMALECOUNT,                                                   ");
-            parameter.AppendSql("  :MANAGEWORKERCOUNT,                                                       ");
-            parameter.AppendSql("  :MANAGEDOCTOR,                                                            ");
-            parameter.AppendSql("  :MANAGEDOCTORSTARTDATE,                                                   ");
-            parameter.AppendSql("  :MANAGEDOCTORCOUNT,                                                       ");
-            parameter.AppendSql("  :MANAGENURSE,                                                             ");
-            parameter.AppendSql("  :MANAGENURSESTARTDATE,                                                    ");
-            parameter.AppendSql("  :MANAGENURSECOUNT,                                                        ");
-            parameter.AppendSql("  :MANAGEENGINEER,                                                          ");
-            parameter.AppendSql("  :MANAGEENGINEERSTARTDATE,                                                 ");
-            parameter.AppendSql("  :MANAGEENGINEERCOUNT,                                                     ");
-            parameter.AppendSql("  :VISITWEEK,                                                               ");
-            parameter.AppendSql("  :VISITDAY,                                                                ");
-            parameter.AppendSql("  :COMMISSION,                                                              ");
-            parameter.AppendSql("  :DECLAREDAY,                                                              ");
-            parameter.AppendSql("  :CONTRACTSTARTDATE,                                                       ");
-            parameter.AppendSql("  :CONTRACTENDDATE,                                                         ");
-            parameter.AppendSql("  :POSITION,                                                                ");
-            parameter.AppendSql("  :ISROTATION,                                                              ");
-            parameter.AppendSql("  :ISPRODUCTTYPE,                                                           ");
-            parameter.AppendSql("  :ISLABOR,                                                                 ");
-            parameter.AppendSql("  :BUILDINGTYPE,                                                             ");
-            parameter.AppendSql("  :WORKSTARTTIME,                                                           ");
-            parameter.AppendSql("  :WORKENDTIME,                                                             ");
-            parameter.AppendSql("  :WORKMEETTIME,                                                            ");
-            parameter.AppendSql("  :WORKROTATIONTIME,                                                        ");
-            parameter.AppendSql("  :WORKLUANCHTIME,                                                          ");
-            parameter.AppendSql("  :WORKRESTTIME,                                                            ");
-            parameter.AppendSql("  :WORKEDUTIME,                                                             ");
-            parameter.AppendSql("  :WORKETCTIME,                                                             ");
-            parameter.AppendSql("  :ISCONTRACT,                                                              ");
-            parameter.AppendSql("  :ISWEM,                                                                   ");
-            parameter.AppendSql("  :ISWEMDATA,                                                               ");
-            parameter.AppendSql("  :ISCOMMITTEE,                                                             ");
-            parameter.AppendSql("  :ISSKELETON,                                                              ");
-            parameter.AppendSql("  :ISSKELETONDATE,                                                          ");
-            parameter.AppendSql("  :ISSPACEPROGRAM,                                                          ");
-            parameter.AppendSql("  :ISSPACEPROGRAMDATE,                                                      ");
-            parameter.AppendSql("  :ISEARPROGRAM,                                                            ");
-            parameter.AppendSql("  :ISEARPROGRAMDATE,                                                        ");
-            parameter.AppendSql("  :ISSTRESS,                                                                ");
-            parameter.AppendSql("  :ISSTRESSDATE,                                                            ");
-            parameter.AppendSql("  :ISBRAINTEST,                                                             ");
-            parameter.AppendSql("  :ISBRAINTESTDATE,                                                         ");
-            parameter.AppendSql("  :ISSPECIAL,                                                               ");
-            parameter.AppendSql("  :ISSPECIALDATA,                                                           ");
-            parameter.AppendSql("  :REMARK,                                                           ");
-            parameter.AppendSql("  'N',                                                                      ");
-            parameter.AppendSql("  SYSTIMESTAMP,                                                             ");
-            parameter.AppendSql("  :MODIFIEDUSER,                                                            ");
-            parameter.AppendSql("  SYSTIMESTAMP,                                                             ");
-            parameter.AppendSql("  :CREATEDUSER                                                              ");         
-            parameter.AppendSql(")                                                                           ");
+            parameter.AppendSql("INSERT INTO HIC_OSHA_CONTRACT           ");
+            parameter.AppendSql("(                                       ");
+            parameter.AppendSql("  ESTIMATE_ID,                          ");
+            parameter.AppendSql("  OSHA_SITE_ID,                         ");
+            parameter.AppendSql("  CONTRACTDATE,                         ");
+            parameter.AppendSql("  TERMINATEDATE,                        ");
+            parameter.AppendSql("  SPECIALCONTRACT,                      ");
+            parameter.AppendSql("  WORKERTOTALCOUNT,                     ");
+            parameter.AppendSql("  WORKERWHITEMALECOUNT,                 ");
+            parameter.AppendSql("  WORKERWHITEFEMALECOUNT,               ");
+            parameter.AppendSql("  WORKERBLUEMALECOUNT,                  ");
+            parameter.AppendSql("  WORKERBLUEFEMALECOUNT,                ");
+            parameter.AppendSql("  MANAGEWORKERCOUNT,                    ");
+            parameter.AppendSql("  MANAGEDOCTOR,                         ");
+            parameter.AppendSql("  MANAGEDOCTORSTARTDATE,                ");
+            parameter.AppendSql("  MANAGEDOCTORCOUNT,                    ");
+            parameter.AppendSql("  MANAGENURSE,                          ");
+            parameter.AppendSql("  MANAGENURSESTARTDATE,                 ");
+            parameter.AppendSql("  MANAGENURSECOUNT,                     ");
+            parameter.AppendSql("  MANAGEENGINEER,                       ");
+            parameter.AppendSql("  MANAGEENGINEERSTARTDATE,              ");
+            parameter.AppendSql("  MANAGEENGINEERCOUNT,                  ");
+            parameter.AppendSql("  VISITWEEK,                            ");
+            parameter.AppendSql("  VISITDAY,                             ");
+            parameter.AppendSql("  COMMISSION,                           ");
+            parameter.AppendSql("  DECLAREDAY,                           ");
+            parameter.AppendSql("  CONTRACTSTARTDATE,                    ");
+            parameter.AppendSql("  CONTRACTENDDATE,                      ");
+            parameter.AppendSql("  POSITION,                             ");
+            parameter.AppendSql("  ISROTATION,                           ");
+            parameter.AppendSql("  ISPRODUCTTYPE,                        ");
+            parameter.AppendSql("  ISLABOR,                              ");
+            parameter.AppendSql("  BuildingType,                         ");
+            parameter.AppendSql("  WORKSTARTTIME,                        ");
+            parameter.AppendSql("  WORKENDTIME,                          ");
+            parameter.AppendSql("  WORKMEETTIME,                         ");
+            parameter.AppendSql("  WORKROTATIONTIME,                     ");
+            parameter.AppendSql("  WORKLUANCHTIME,                       ");
+            parameter.AppendSql("  WORKRESTTIME,                         ");
+            parameter.AppendSql("  WORKEDUTIME,                          ");
+            parameter.AppendSql("  WORKETCTIME,                          ");
+            parameter.AppendSql("  ISCONTRACT,                           ");
+            parameter.AppendSql("  ISWEM,                                ");
+            parameter.AppendSql("  ISWEMDATA,                            ");
+            parameter.AppendSql("  ISCOMMITTEE,                          ");
+            parameter.AppendSql("  ISSKELETON,                           ");
+            parameter.AppendSql("  ISSKELETONDATE,                       ");
+            parameter.AppendSql("  ISSPACEPROGRAM,                       ");
+            parameter.AppendSql("  ISSPACEPROGRAMDATE,                   ");
+            parameter.AppendSql("  ISEARPROGRAM,                         ");
+            parameter.AppendSql("  ISEARPROGRAMDATE,                     ");
+            parameter.AppendSql("  ISSTRESS,                             ");
+            parameter.AppendSql("  ISSTRESSDATE,                         ");
+            parameter.AppendSql("  ISBRAINTEST,                          ");
+            parameter.AppendSql("  ISBRAINTESTDATE,                      ");
+            parameter.AppendSql("  ISSPECIAL,                            ");
+            parameter.AppendSql("  ISSPECIALDATA,                        ");
+            parameter.AppendSql("  REMARK,                               ");
+            parameter.AppendSql("  ISDELETED,                            ");
+            parameter.AppendSql("  MODIFIED,                             ");
+            parameter.AppendSql("  MODIFIEDUSER,                         ");
+            parameter.AppendSql("  CREATED,                              ");
+            parameter.AppendSql("  CREATEDUSER,                          ");
+            parameter.AppendSql("  SWLICENSE                             ");
+            parameter.AppendSql(")                                       ");
+            parameter.AppendSql("VALUES                                  ");
+            parameter.AppendSql("(                                       ");
+            parameter.AppendSql("  :ESTIMATE_ID,                         ");
+            parameter.AppendSql("  :OSHA_SITE_ID,                        ");
+            parameter.AppendSql("  :CONTRACTDATE,                        ");
+            parameter.AppendSql("  :TERMINATEDATE,                       ");
+            parameter.AppendSql("  :SPECIALCONTRACT,                     ");
+            parameter.AppendSql("  :WORKERTOTALCOUNT,                    ");
+            parameter.AppendSql("  :WORKERWHITEMALECOUNT,                ");
+            parameter.AppendSql("  :WORKERWHITEFEMALECOUNT,              ");
+            parameter.AppendSql("  :WORKERBLUEMALECOUNT,                 ");
+            parameter.AppendSql("  :WORKERBLUEFEMALECOUNT,               ");
+            parameter.AppendSql("  :MANAGEWORKERCOUNT,                   ");
+            parameter.AppendSql("  :MANAGEDOCTOR,                        ");
+            parameter.AppendSql("  :MANAGEDOCTORSTARTDATE,               ");
+            parameter.AppendSql("  :MANAGEDOCTORCOUNT,                   ");
+            parameter.AppendSql("  :MANAGENURSE,                         ");
+            parameter.AppendSql("  :MANAGENURSESTARTDATE,                ");
+            parameter.AppendSql("  :MANAGENURSECOUNT,                    ");
+            parameter.AppendSql("  :MANAGEENGINEER,                      ");
+            parameter.AppendSql("  :MANAGEENGINEERSTARTDATE,             ");
+            parameter.AppendSql("  :MANAGEENGINEERCOUNT,                 ");
+            parameter.AppendSql("  :VISITWEEK,                           ");
+            parameter.AppendSql("  :VISITDAY,                            ");
+            parameter.AppendSql("  :COMMISSION,                          ");
+            parameter.AppendSql("  :DECLAREDAY,                          ");
+            parameter.AppendSql("  :CONTRACTSTARTDATE,                   ");
+            parameter.AppendSql("  :CONTRACTENDDATE,                     ");
+            parameter.AppendSql("  :POSITION,                            ");
+            parameter.AppendSql("  :ISROTATION,                          ");
+            parameter.AppendSql("  :ISPRODUCTTYPE,                       ");
+            parameter.AppendSql("  :ISLABOR,                             ");
+            parameter.AppendSql("  :BUILDINGTYPE,                        ");
+            parameter.AppendSql("  :WORKSTARTTIME,                       ");
+            parameter.AppendSql("  :WORKENDTIME,                         ");
+            parameter.AppendSql("  :WORKMEETTIME,                        ");
+            parameter.AppendSql("  :WORKROTATIONTIME,                    ");
+            parameter.AppendSql("  :WORKLUANCHTIME,                      ");
+            parameter.AppendSql("  :WORKRESTTIME,                        ");
+            parameter.AppendSql("  :WORKEDUTIME,                         ");
+            parameter.AppendSql("  :WORKETCTIME,                         ");
+            parameter.AppendSql("  :ISCONTRACT,                          ");
+            parameter.AppendSql("  :ISWEM,                               ");
+            parameter.AppendSql("  :ISWEMDATA,                           ");
+            parameter.AppendSql("  :ISCOMMITTEE,                         ");
+            parameter.AppendSql("  :ISSKELETON,                          ");
+            parameter.AppendSql("  :ISSKELETONDATE,                      ");
+            parameter.AppendSql("  :ISSPACEPROGRAM,                      ");
+            parameter.AppendSql("  :ISSPACEPROGRAMDATE,                  ");
+            parameter.AppendSql("  :ISEARPROGRAM,                        ");
+            parameter.AppendSql("  :ISEARPROGRAMDATE,                    ");
+            parameter.AppendSql("  :ISSTRESS,                            ");
+            parameter.AppendSql("  :ISSTRESSDATE,                        ");
+            parameter.AppendSql("  :ISBRAINTEST,                         ");
+            parameter.AppendSql("  :ISBRAINTESTDATE,                     ");
+            parameter.AppendSql("  :ISSPECIAL,                           ");
+            parameter.AppendSql("  :ISSPECIALDATA,                       ");
+            parameter.AppendSql("  :REMARK,                              ");
+            parameter.AppendSql("  'N',                                  ");
+            parameter.AppendSql("  SYSTIMESTAMP,                         ");
+            parameter.AppendSql("  :MODIFIEDUSER,                        ");
+            parameter.AppendSql("  SYSTIMESTAMP,                         ");
+            parameter.AppendSql("  :CREATEDUSER,                         ");
+            parameter.AppendSql("  :SWLICENSE                            ");
+            parameter.AppendSql(")                                       ");
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
             parameter.Add("OSHA_SITE_ID", dto.OSHA_SITE_ID);
             parameter.Add("CONTRACTDATE", dto.CONTRACTDATE);
             parameter.Add("TERMINATEDATE", dto.TERMINATEDATE);
             parameter.Add("SPECIALCONTRACT", dto.SPECIALCONTRACT);
-            
             parameter.Add("WORKERTOTALCOUNT", dto.WORKERTOTALCOUNT);
             parameter.Add("WORKERWHITEMALECOUNT", dto.WORKERWHITEMALECOUNT);
             parameter.Add("WORKERWHITEFEMALECOUNT", dto.WORKERWHITEFEMALECOUNT);
@@ -280,6 +290,7 @@ namespace HC.OSHA.Repository
             parameter.Add("REMARK", dto.REMARK);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
@@ -352,6 +363,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER                                              ");
             
             parameter.AppendSql("WHERE ESTIMATE_ID = :ESTIMATE_ID                                                              ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
             parameter.Add("CONTRACTDATE", dto.CONTRACTDATE);
@@ -410,6 +422,7 @@ namespace HC.OSHA.Repository
             parameter.Add("ISDELETED", dto.ISDELETED);
             parameter.Add("REMARK", dto.REMARK);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
@@ -421,10 +434,12 @@ namespace HC.OSHA.Repository
         public bool Delete(long estimateId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_CONTRACT                                               ");
-            parameter.AppendSql("SET ISDELETED = 'Y'                                                        ");
-            parameter.AppendSql("WHERE ESTIMATE_ID = :ESTIMATE_ID                                           ");  
+            parameter.AppendSql("UPDATE HIC_OSHA_CONTRACT                     ");
+            parameter.AppendSql("SET ISDELETED = 'Y'                          ");
+            parameter.AppendSql("WHERE ESTIMATE_ID = :ESTIMATE_ID             ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE                 ");
             parameter.Add("ESTIMATE_ID", estimateId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             int count = ExecuteNonQuery(parameter);
 
             DataSyncService.Instance.Delete("HIC_OSHA_CONTRACT", estimateId);

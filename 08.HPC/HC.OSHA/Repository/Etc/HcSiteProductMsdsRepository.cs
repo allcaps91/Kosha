@@ -1,13 +1,13 @@
 namespace HC.OSHA.Repository
 {
     using System.Collections.Generic;
+    using ComBase;
     using ComBase.Mvc;
     using HC_Core.Service;
     using HC.OSHA.Dto;
     using HC.OSHA.Model;
     using HC.Core.Service;
-
-
+    
     /// <summary>
     /// 荤诀厘 力前 MSDS包府
     /// </summary>
@@ -24,8 +24,12 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("ON A.MSDS_ID = B.ID                    ");
             parameter.AppendSql("INNER JOIN HIC_USERS C                  ");
             parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID           ");
-            parameter.AppendSql("WHERE A.SITE_PRODUCT_ID = :SITE_PRODUCT_ID            ");
+            parameter.AppendSql("WHERE A.SITE_PRODUCT_ID = :SITE_PRODUCT_ID  ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE2 ");
             parameter.Add("SITE_PRODUCT_ID", site_product_id);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_SITE_PRODUCT_MSDS_MODEL>(parameter);
 
@@ -34,7 +38,9 @@ namespace HC.OSHA.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_SITE_PRODUCT_MSDS WHERE ID = :ID");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReaderSingle<HC_SITE_PRODUCT_MSDS>(parameter);
         }
         public HC_SITE_PRODUCT_MSDS Insert(HC_SITE_PRODUCT_MSDS dto)
@@ -42,34 +48,37 @@ namespace HC.OSHA.Repository
             MParameter parameter = CreateParameter();
 
             dto.ID = GetSequenceNextVal("HC_SITE_PRODUCT_MSDS_ID_SEQ");
-            parameter.AppendSql("INSERT INTO HIC_SITE_PRODUCT_MSDS                                            ");
-            parameter.AppendSql("(                                                                           ");
-            parameter.AppendSql("  ID,                                                                      ");
-            parameter.AppendSql("  SITE_PRODUCT_ID,                                                          ");
-            parameter.AppendSql("  MSDS_ID,                                                                  ");
-            parameter.AppendSql("  QTY,                                                                      ");
-            parameter.AppendSql("  MODIFIED,                                                                 ");
-            parameter.AppendSql("  MODIFIEDUSER,                                                              ");
-            parameter.AppendSql("  CREATED,                                                                  ");
-            parameter.AppendSql("  CREATEDUSER                                                              ");
-            parameter.AppendSql(")                                                                           ");
-            parameter.AppendSql("VALUES                                                                      ");
-            parameter.AppendSql("(                                                                           ");
-            parameter.AppendSql("  :ID,                                                         ");
-            parameter.AppendSql("  :SITE_PRODUCT_ID,                                                         ");
-            parameter.AppendSql("  :MSDS_ID,                                                                 ");
-            parameter.AppendSql("  :QTY,                                                                     ");
-            parameter.AppendSql("  SYSTIMESTAMP,                                                                ");
-            parameter.AppendSql("  :MODIFIEDUSER,                                                             ");
-            parameter.AppendSql("  SYSTIMESTAMP,                                                                 ");
-            parameter.AppendSql("  :CREATEDUSER                                                             ");
-            parameter.AppendSql(")                                                                           ");
+            parameter.AppendSql("INSERT INTO HIC_SITE_PRODUCT_MSDS   ");
+            parameter.AppendSql("(                         ");
+            parameter.AppendSql("  ID,                     ");
+            parameter.AppendSql("  SITE_PRODUCT_ID,        ");
+            parameter.AppendSql("  MSDS_ID,                ");
+            parameter.AppendSql("  QTY,                    ");
+            parameter.AppendSql("  MODIFIED,               ");
+            parameter.AppendSql("  MODIFIEDUSER,           ");
+            parameter.AppendSql("  CREATED,                ");
+            parameter.AppendSql("  CREATEDUSER,            ");
+            parameter.AppendSql("  SWLICENSE               ");
+            parameter.AppendSql(")                         ");
+            parameter.AppendSql("VALUES                    ");
+            parameter.AppendSql("(                         ");
+            parameter.AppendSql("  :ID,                    ");
+            parameter.AppendSql("  :SITE_PRODUCT_ID,       ");
+            parameter.AppendSql("  :MSDS_ID,               ");
+            parameter.AppendSql("  :QTY,                   ");
+            parameter.AppendSql("  SYSTIMESTAMP,           ");
+            parameter.AppendSql("  :MODIFIEDUSER,          ");
+            parameter.AppendSql("  SYSTIMESTAMP,           ");
+            parameter.AppendSql("  :CREATEDUSER,           ");
+            parameter.AppendSql("  :SWLICENSE              ");
+            parameter.AppendSql(")                         ");
             parameter.Add("ID", dto.ID);
             parameter.Add("SITE_PRODUCT_ID", dto.SITE_PRODUCT_ID);
             parameter.Add("MSDS_ID", dto.MSDS_ID);
             parameter.Add("QTY", dto.QTY);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Insert("HIC_SITE_PRODUCT_MSDS", dto.ID);
@@ -79,16 +88,18 @@ namespace HC.OSHA.Repository
         public void Update(HC_SITE_PRODUCT_MSDS dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_SITE_PRODUCT_MSDS                                                 ");
-            parameter.AppendSql("SET                                                                         ");
-            parameter.AppendSql("  QTY = :QTY,                                                               ");
-            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,                                                     ");
-            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER                                               ");
-            parameter.AppendSql("WHERE ID = :ID                                                               ");
-           
+            parameter.AppendSql("UPDATE HIC_SITE_PRODUCT_MSDS        ");
+            parameter.AppendSql("SET                                 ");
+            parameter.AppendSql("  QTY = :QTY,                       ");
+            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,          ");
+            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER      ");
+            parameter.AppendSql("WHERE ID = :ID                      ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE        ");
+
             parameter.Add("ID", dto.ID);
             parameter.Add("QTY", dto.QTY);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Update("HIC_SITE_PRODUCT_MSDS", dto.ID);
         }
@@ -96,10 +107,12 @@ namespace HC.OSHA.Repository
         public void Delete(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE FROM HIC_SITE_PRODUCT_MSDS                                            ");
-            parameter.AppendSql("WHERE ID = :ID                                    ");            
+            parameter.AppendSql("DELETE FROM HIC_SITE_PRODUCT_MSDS   ");
+            parameter.AppendSql("WHERE ID = :ID                      ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE        ");
             parameter.Add("ID", id);
             ExecuteNonQuery(parameter);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             DataSyncService.Instance.Delete("HIC_SITE_PRODUCT_MSDS", id);
         }

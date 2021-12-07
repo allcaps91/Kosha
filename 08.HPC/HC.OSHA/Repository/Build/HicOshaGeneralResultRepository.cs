@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using ComBase;
     using ComBase.Controls;
     using ComBase.Mvc;
     using HC.Core.Dto;
@@ -32,9 +33,11 @@
             parameter.AppendSql("       ) AS JEPDATE                                 ");
             parameter.AppendSql("  FROM HIC_OSHA_GENEAL_RESULT A                     ");
             parameter.AppendSql(" WHERE SITE_ID = :SITE_ID                           ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE                       ");
             parameter.AppendSql("ORDER BY YEAR DESC                                  ");
 
             parameter.Add("SITE_ID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HIC_OSHA_GENEAL_RESULT>(parameter);
         }
@@ -172,9 +175,10 @@
             parameter.AppendSql("DELETE FROM HIC_OSHA_GENEAL_RESULT   ");
             parameter.AppendSql("   WHERE SITE_ID = :SITE_ID     ");
             parameter.AppendSql("   AND YEAR = :YEAR   ");
-
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("SITE_ID", SITE_ID);
             parameter.Add("YEAR", YEAR);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
         }
 
@@ -189,7 +193,7 @@
             parameter.AppendSql("  , C2COUNT");
             parameter.AppendSql("  , TOTALCOUNT");
             parameter.AppendSql("  , CREATED");
-
+            parameter.AppendSql("  , SWLICENSE");
             parameter.AppendSql(") VALUES ( ");
             parameter.AppendSql("   :YEAR");
             parameter.AppendSql("  , :SITE_ID");
@@ -197,6 +201,7 @@
             parameter.AppendSql("  , :C2COUNT");
             parameter.AppendSql("  , :TOTALCOUNT");
             parameter.AppendSql("  , SYSTIMESTAMP");
+            parameter.AppendSql("  , :SWLICENSE");
             parameter.AppendSql(") ");
 
             parameter.Add("YEAR", dto.YEAR);
@@ -204,6 +209,7 @@
             parameter.Add("D2COUNT", dto.D2COUNT);
             parameter.Add("C2COUNT", dto.C2COUNT);
             parameter.Add("TOTALCOUNT", dto.TOTALCOUNT);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
         }
     }

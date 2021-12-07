@@ -1,6 +1,7 @@
 ﻿namespace HC.OSHA.Repository
 {
     using System.Collections.Generic;
+    using ComBase;
     using ComBase.Controls;
     using ComBase.Mvc;
     using HC.Core.Dto;
@@ -19,9 +20,11 @@
             parameter.AppendSql("DELETE FROM HIC_OSHA_PANJEONG   ");
             parameter.AppendSql("   WHERE SITE_ID = :SITE_ID     ");
             parameter.AppendSql("   AND YEAR = :YEAR   ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("SITE_ID", SITE_ID);
             parameter.Add("YEAR", YEAR);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
         }
 
@@ -49,6 +52,7 @@
             parameter.AppendSql("  , INJA                       ");
             parameter.AppendSql("  , JIPYO                      ");
             parameter.AppendSql("  , CREATED                    ");
+            parameter.AppendSql("  , SWLICENSE                  ");
             parameter.AppendSql(") VALUES (                     ");
             parameter.AppendSql("    :WORKER_ID                 ");
             parameter.AppendSql("  , :SITE_ID                   ");
@@ -68,6 +72,7 @@
             parameter.AppendSql("  , :INJA                      ");
             parameter.AppendSql("  , :JIPYO                     ");
             parameter.AppendSql("  , SYSTIMESTAMP               ");
+            parameter.AppendSql("  , :SWLICENSE                 ");
             parameter.AppendSql(")                              ");
 
             parameter.Add("WORKER_ID", dto.WORKER_ID);
@@ -87,6 +92,7 @@
             parameter.Add("TASK", dto.TASK);
             parameter.Add("INJA", dto.INJA);
             parameter.Add("JIPYO", dto.JIPYO);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
         }

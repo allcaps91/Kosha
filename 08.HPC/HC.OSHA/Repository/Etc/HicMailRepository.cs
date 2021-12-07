@@ -2,13 +2,13 @@ namespace HC.OSHA.Repository
 {
     using System;
     using System.Collections.Generic;
+    using ComBase;
     using ComBase.Controls;
     using ComBase.Mvc;
     using HC.Core.Service;
     using HC.OSHA.Dto;
     using HC_Core.Service;
-
-
+    
     /// <summary>
     /// 
     /// </summary>
@@ -30,7 +30,8 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  , SEND_TYPE                   ");
             parameter.AppendSql("  , CREATED                     ");
             parameter.AppendSql("  , CREATEDUSER                 ");
-            parameter.AppendSql("  , WRTNO                       ");
+            parameter.AppendSql("  , WRTNO,                      ");
+            parameter.AppendSql("  , SWLICENSE                   ");
             parameter.AppendSql(") VALUES (                      ");
             parameter.AppendSql("    :ID                         ");
             parameter.AppendSql("  , :SITE_ID                    ");
@@ -39,7 +40,8 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  , :SEND_TYPE                  ");
             parameter.AppendSql("  , SYSTIMESTAMP                ");
             parameter.AppendSql("  , :CREATEDUSER                ");
-            parameter.AppendSql("  , :WRTNO                      ");
+            parameter.AppendSql("  , :WRTNO,                     ");
+            parameter.AppendSql("  , :SWLICENSE                  ");
             parameter.AppendSql(")                               ");
 
             parameter.Add("ID", item.ID);
@@ -48,7 +50,7 @@ namespace HC.OSHA.Repository
             parameter.Add("SEND_TYPE", item.SEND_TYPE);
             parameter.Add("CREATEDUSER", item.SEND_USER);
             parameter.Add("WRTNO", item.WRTNO);
-
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             DataSyncService.Instance.Insert("HIC_OSHA_MAIL_SEND", item.ID);
 
             return ExecuteNonQuery(parameter);
@@ -68,11 +70,14 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("               ON A.SEND_USER = TRIM(B.USERID)");
             parameter.AppendSql(" WHERE SITE_ID      = :SITE_ID               ");
             parameter.AppendSql("   AND SEND_TYPE    = :SEND_TYPE             ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE1             ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE2             ");
             parameter.AppendSql("ORDER BY SEND_DATE DESC                      ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("SEND_TYPE", type);
-
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
             return ExecuteReader<HIC_OSHA_MAIL_SEND>(parameter);
         }
 
@@ -84,11 +89,12 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("     , A.SEND_DATE             ");
             parameter.AppendSql("     , A.SEND_USER             ");
             parameter.AppendSql("     , A.SEND_TYPE             ");
-            //parameter.AppendSql("     , B.USERNAME              ");
             parameter.AppendSql("  FROM HIC_OSHA_MAIL_SEND A    ");
             parameter.AppendSql(" WHERE ID = :ID                ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE   ");
 
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HIC_OSHA_MAIL_SEND>(parameter);
         }

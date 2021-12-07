@@ -3,12 +3,12 @@
     using System;
     using System.Collections.Generic;
     using ComBase.Controls;
+    using ComBase;
     using ComBase.Mvc;
     using HC.Core.Dto;
     using HC.Core.Service;
     using HC.OSHA.Dto;
-
-
+    
     /// <summary>
     /// 
     /// </summary>
@@ -35,9 +35,11 @@
             parameter.AppendSql("       ) AS JEPDATE                                 ");
             parameter.AppendSql("  FROM HIC_OSHA_SPECIAL_RESULT A                    ");
             parameter.AppendSql(" WHERE SITE_ID = :SITE_ID                           ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE                        ");
             parameter.AppendSql("ORDER BY YEAR DESC                                  ");
             
             parameter.Add("SITE_ID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HIC_OSHA_SPECIAL_RESULT>(parameter);
 
@@ -49,9 +51,11 @@
             parameter.AppendSql("DELETE FROM HIC_OSHA_SPECIAL_RESULT   ");
             parameter.AppendSql("   WHERE SITE_ID = :SITE_ID     ");
             parameter.AppendSql("   AND YEAR = :YEAR   ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("SITE_ID", SITE_ID);
             parameter.Add("YEAR", YEAR);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
         }
 
@@ -71,7 +75,7 @@
             parameter.AppendSql("  , CNCOUNT");
             parameter.AppendSql("  , TOTALCOUNT");
             parameter.AppendSql("  , CREATED");
-
+            parameter.AppendSql("  , SWLICENSE");
             parameter.AppendSql(") VALUES ( ");
             parameter.AppendSql("   :YEAR");
             parameter.AppendSql("  , :SITE_ID");
@@ -83,6 +87,7 @@
             parameter.AppendSql("  , :CNCOUNT");
             parameter.AppendSql("  , :TOTALCOUNT");
             parameter.AppendSql("  , SYSTIMESTAMP");
+            parameter.AppendSql("  , :SWLICENSE");
             parameter.AppendSql(") ");
 
             parameter.Add("YEAR", dto.YEAR);
@@ -94,6 +99,7 @@
             parameter.Add("DNCOUNT", dto.DNCOUNT);
             parameter.Add("CNCOUNT", dto.CNCOUNT);
             parameter.Add("TOTALCOUNT", dto.TOTALCOUNT);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
         }
 
