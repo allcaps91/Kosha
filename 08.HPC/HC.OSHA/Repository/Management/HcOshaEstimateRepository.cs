@@ -168,11 +168,10 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("ON A.id = b.estimate_id ");
             parameter.AppendSql("where A.isdeleted = 'N' AND B.ISCONTRACT = 'Y' ");
             parameter.AppendSql("  and A.osha_site_id = :siteId ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE ");
             parameter.Add("siteId", siteId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteScalar<long>(parameter);
         }

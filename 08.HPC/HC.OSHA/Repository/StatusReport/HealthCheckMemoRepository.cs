@@ -41,12 +41,11 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  INNER JOIN HIC_USERS B ");
             parameter.AppendSql("  ON A.CREATEDUSER = B.USERID ");
             parameter.AppendSql(" WHERE A.WORKER_ID = :WORKER_ID ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY A.CREATED  DESC ");
             parameter.Add("WORKER_ID", workerId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return  ExecuteReader<HIC_OSHA_PATIENT_MEMO>(parameter);
         }
 
@@ -64,13 +63,12 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  INNER JOIN HIC_USERS B                              ");
             parameter.AppendSql("          ON A.CREATEDUSER = B.USERID                 ");
             parameter.AppendSql(" WHERE A.WORKER_ID = :WORKER_ID                       ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE1                      ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE2                      ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE                      ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE                      ");
             parameter.AppendSql("ORDER BY A.CREATED  DESC                              ");
 
             parameter.Add("WORKER_ID", workerId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HIC_OSHA_PATIENT_REMARK>(parameter);
         }

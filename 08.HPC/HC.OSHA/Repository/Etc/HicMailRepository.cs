@@ -70,14 +70,13 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("               ON A.SEND_USER = TRIM(B.USERID)");
             parameter.AppendSql(" WHERE SITE_ID      = :SITE_ID               ");
             parameter.AppendSql("   AND SEND_TYPE    = :SEND_TYPE             ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE1             ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE2             ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE             ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE             ");
             parameter.AppendSql("ORDER BY SEND_DATE DESC                      ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("SEND_TYPE", type);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HIC_OSHA_MAIL_SEND>(parameter);
         }
 

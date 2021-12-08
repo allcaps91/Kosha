@@ -198,22 +198,18 @@
             startDate += " 00:00:00";
             endDate += " 23:59:59";
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME as CREATEDUSERNAME, C.COMMENTS FROM HIC_OSHA_DATASYNC A  ");
-       //     parameter.AppendSql(" INNER JOIN(SELECT max(ID) AS ID FROM HIC_OSHA_DATASYNC                    ");
-       ////     parameter.AppendSql("                        WHERE ISSYNC = 'N'                               ");
-       //     parameter.AppendSql("                         GROUP BY TABLEKEY, tablename                  ");
-       //     parameter.AppendSql("                   ) BB                                               ");
-       //     parameter.AppendSql("        ON A.Id = BB.ID                                             ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                                              ");
-            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                          ");
-            parameter.AppendSql("INNER JOIN USER_TAB_COMMENTS C                                       ");
-            parameter.AppendSql("ON A.TABLENAME = C.TABLE_NAME                                       ");
-            parameter.AppendSql("WHERE A.SWLICENSE = :SWLICENSE1                             ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE3 ");
-            parameter.AppendSql("AND A.CREATEDUSER = :CREATEDUSER           ");
-            parameter.AppendSql("AND A.CREATED >= TO_TIMESTAMP(:STARTDATE, 'YYYY-MM-DD HH24:MI:SS')         ");
-            parameter.AppendSql("AND A.CREATED <= TO_TIMESTAMP(:ENDDATE, 'YYYY-MM-DD HH24:MI:SS')         ");
+            parameter.AppendSql("SELECT A.*, B.NAME as CREATEDUSERNAME,C.COMMENTS ");
+            parameter.AppendSql("  FROM HIC_OSHA_DATASYNC A ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS B ");
+            parameter.AppendSql("             ON A.CREATEDUSER = B.USERID ");
+            parameter.AppendSql("       INNER JOIN USER_TAB_COMMENTS C ");
+            parameter.AppendSql("             ON A.TABLENAME = C.TABLE_NAME ");
+            parameter.AppendSql(" WHERE A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND A.CREATEDUSER = :CREATEDUSER ");
+            parameter.AppendSql("   AND A.CREATED >= TO_TIMESTAMP(:STARTDATE, 'YYYY-MM-DD HH24:MI:SS') ");
+            parameter.AppendSql("   AND A.CREATED <= TO_TIMESTAMP(:ENDDATE, 'YYYY-MM-DD HH24:MI:SS') ");
             if (!isSync.IsNullOrEmpty())
             {
                 parameter.AppendSql("AND A.ISSYNC = :ISSYNC     ");
@@ -222,9 +218,7 @@
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (!isSync.IsNullOrEmpty())
             {
                 parameter.Add("ISSYNC", isSync);

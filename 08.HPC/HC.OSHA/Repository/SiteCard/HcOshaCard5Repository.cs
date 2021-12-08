@@ -34,11 +34,11 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("     , MAX(JOINCOUNT) AS JOINCOUNT               ");
             parameter.AppendSql("     , MAX(QUITCOUNT) AS QUITCOUNT               ");
             parameter.AppendSql("  FROM HIC_OSHA_CARD5                            ");
-            parameter.AppendSql(" WHERE SWLICENSE = :SWLICENSE1                   ");
+            parameter.AppendSql(" WHERE SWLICENSE = :SWLICENSE                   ");
             parameter.AppendSql("   AND ESTIMATE_ID IN (                          ");
             parameter.AppendSql("        SELECT ID                                ");
             parameter.AppendSql("          FROM HIC_OSHA_ESTIMATE                 ");
-            parameter.AppendSql("         WHERE SWLICENSE = :SWLICENSE2           ");
+            parameter.AppendSql("         WHERE SWLICENSE = :SWLICENSE           ");
             parameter.AppendSql("           AND OSHA_SITE_ID = :SITE_ID           ");
             parameter.AppendSql("   )                                             ");
             parameter.AppendSql("   AND REGISTERDATE BETWEEN :START_DATE          ");
@@ -49,8 +49,7 @@ namespace HC.OSHA.Repository
             parameter.Add("SITE_ID", siteId);
             parameter.Add("START_DATE", year +"-01-01");
             parameter.Add("END_DATE", year + "-12-31");
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_CARD5>(parameter);
         }
@@ -64,15 +63,13 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("INNER JOIN HIC_USERS C                   ");
             parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID             ");
             parameter.AppendSql("WHERE A.ESTIMATE_ID = :ESTIMATE_ID       ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1          ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2          ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3          ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE          ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE          ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE          ");
             parameter.AppendSql("ORDER BY REGISTERDATE DESC               ");
 
             parameter.Add("ESTIMATE_ID", estimateId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_CARD5>(parameter);
 

@@ -26,12 +26,11 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("ON C.ID = B.MSDS_ID                    ");
             parameter.AppendSql("WHERE 1=1      ");
             parameter.AppendSql(" AND A.SITE_ID = :SITE_ID     ");
-            parameter.AppendSql(" AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql(" AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql(" AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("ORDER BY A.ID, B.MSDS_ID                     ");
             parameter.Add("SITE_ID", siteId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HC_SITE_MSDS_MODEL>(parameter);
         }
     }

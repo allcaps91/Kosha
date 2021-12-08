@@ -34,17 +34,17 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("            WHERE A.ISDELETED= 'N'                                                          ");
             parameter.AppendSql("            AND B.ISDELETED= 'N'                                                            ");
             parameter.AppendSql("            AND B.ISCONTRACT = 'Y'                                                          ");
-            parameter.AppendSql("            AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("            AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("            AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("            AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("            GROUP BY B.OSHA_SITE_ID                                                         ");
             parameter.AppendSql("            ) D                                                                             ");
             parameter.AppendSql("ON C.ID = D.ID                                                                              ");
             parameter.AppendSql("WHERE 1 = 1                                                                           ");
             parameter.AppendSql("AND BB.ISACTIVE = 'Y'                                                                 ");
-            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE3 ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE4 ");
-            parameter.AppendSql("AND BB.SWLICENSE = :SWLICENSE5 ");
-            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE6 ");
+            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("AND BB.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE ");
             if (nameOrCode.NotEmpty())
             {
                 if (nameOrCode.IsNumeric())
@@ -77,12 +77,7 @@ namespace HC.OSHA.Repository
                 parameter.AppendSql("AND BB.ISPARENTCHARGE = 'Y' ");
             }
             parameter.AppendSql("ORDER BY B.NAME, B.ID                                                                       ");
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE4", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE5", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE6", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<OSHA_PRICE>(parameter);
         }
@@ -107,12 +102,11 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  INNER JOIN HIC_USERS B");
             parameter.AppendSql("ON A.MODIFIEDUSER = B.USERID");
             parameter.AppendSql(" WHERE ID = :ID ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
 
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<OSHA_PRICE>(parameter);
         }
@@ -137,11 +131,10 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  INNER JOIN HIC_USERS B");
             parameter.AppendSql("  ON A.MODIFIEDUSER = B.USERID");
             parameter.AppendSql("  WHERE ID = ( SELECT max(id) FROM HIC_OSHA_PRICE WHERE ESTIMATE_ID = :ID AND ISDELETED ='N') ");
-            parameter.AppendSql("    AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("    AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("    AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("    AND B.SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", estimateId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<OSHA_PRICE>(parameter);
         }
@@ -169,18 +162,16 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("   AND ID = (SELECT MAX(ID)                                         ");
             parameter.AppendSql("               FROM HIC_OSHA_PRICE                                  ");
             parameter.AppendSql("              WHERE 1 = 1                                           ");
-            parameter.AppendSql("                AND SWLICENSE = :SWLICENSE1                         ");
+            parameter.AppendSql("                AND SWLICENSE = :SWLICENSE                         ");
             parameter.AppendSql("                AND ISDELETED = 'N'                                 ");
             parameter.AppendSql("                AND ESTIMATE_ID IN (SELECT ID FROM HIC_OSHA_ESTIMATE");
             parameter.AppendSql("                                     WHERE OSHA_SITE_ID = :SITE_ID) ");
             parameter.AppendSql("            )                                                       ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE3 ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE ");
 
             parameter.Add("SITE_ID", siteId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<OSHA_PRICE>(parameter);
         }
@@ -208,15 +199,13 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("               INNER JOIN HIC_OSHA_ESTIMATE B   ");
             parameter.AppendSql("               ON A.ESTIMATE_ID = B.ID   ");
             parameter.AppendSql("               WHERE B.OSHA_SITE_ID = :SITE_ID   ");
-            parameter.AppendSql("               AND SWLICENSE = :SWLICENSE1 ");
+            parameter.AppendSql("               AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("               AND A.ISDELETED = 'N'   ");
             parameter.AppendSql("               AND B.ISDELETED = 'N'    ) ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE3 ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
             parameter.Add("SITE_ID", siteId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<OSHA_PRICE>(parameter);
         }
@@ -246,10 +235,10 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  INNER JOIN HIC_OSHA_SITE D    ");
             parameter.AppendSql("  ON C.OSHA_SITE_ID = D.ID  ");
             parameter.AppendSql("  WHERE ESTIMATE_ID = :ID ");
-            parameter.AppendSql("    AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("    AND B.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("    AND C.SWLICENSE = :SWLICENSE3 ");
-            parameter.AppendSql("    AND D.SWLICENSE = :SWLICENSE4 ");
+            parameter.AppendSql("    AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("    AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("    AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("    AND D.SWLICENSE = :SWLICENSE ");
 
             if (isDeleted.NotEmpty())
             {
@@ -262,10 +251,7 @@ namespace HC.OSHA.Repository
             {
                 parameter.Add("ISDELETED", isDeleted);
             }
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE4", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<OSHA_PRICE>(parameter);
         }
@@ -284,8 +270,8 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("                                ON A.ESTIMATE_ID = B.ID    ");
             parameter.AppendSql("                             WHERE A.ISDELETED = 'N'    ");
             parameter.AppendSql("                               AND B.ISDELETED ='N' ");
-            parameter.AppendSql("                               AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("                               AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("                               AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                               AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("                            GROUP BY B.OSHA_SITE_ID    ");
             parameter.AppendSql("                            ) BB    ");
             parameter.AppendSql("                 ON A.ID = BB.ID    ");
@@ -299,19 +285,14 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("    AND C.ISDELETED = 'N' ");
             parameter.AppendSql("    AND E.ISDELETED = 'N' ");
             parameter.AppendSql("    AND A.ISPARENTCHARGE = 'N' ");
-            parameter.AppendSql("    AND A.SWLICENSE = :SWLICENSE3 ");
-            parameter.AppendSql("    AND B.SWLICENSE = :SWLICENSE4 ");
-            parameter.AppendSql("    AND C.SWLICENSE = :SWLICENSE5 ");
-            parameter.AppendSql("    AND E.SWLICENSE = :SWLICENSE6 ");
+            parameter.AppendSql("    AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("    AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("    AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("    AND E.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("  ORDER BY B.NAME ");
             
             parameter.Add("PARENTSITE_ID", parentSiteId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE4", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE5", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE6", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<OSHA_PRICE>(parameter);
         }

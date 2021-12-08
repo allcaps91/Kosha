@@ -25,11 +25,10 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("INNER JOIN HIC_USERS C                  ");
             parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID           ");
             parameter.AppendSql("WHERE A.SITE_PRODUCT_ID = :SITE_PRODUCT_ID  ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE ");
             parameter.Add("SITE_PRODUCT_ID", site_product_id);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_SITE_PRODUCT_MSDS_MODEL>(parameter);
 

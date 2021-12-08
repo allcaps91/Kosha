@@ -43,13 +43,12 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("SELECT * FROM HIC_OSHA_CONTRACT ");
             parameter.AppendSql("WHERE ESTIMATE_ID = (SELECT MAX(ESTIMATE_ID) FROM HIC_OSHA_CONTRACT  ");
             parameter.AppendSql("      WHERE OSHA_SITE_ID = :SITEID    ");
-            parameter.AppendSql("         AND SWLICENSE = :SWLICENSE1 ");
+            parameter.AppendSql("         AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("         AND ISDELETED = 'N') ");
-            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("SITEID", siteId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_OSHA_CONTRACT>(parameter); 
         }

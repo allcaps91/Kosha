@@ -28,9 +28,9 @@
             parameter.AppendSql("ON A.SITE_ID = C.ID         ");
             parameter.AppendSql("WHERE 1=1         ");
             parameter.AppendSql("AND A.ISPRECHARGE = 'N'        ");
-            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE3 ");
+            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE ");
             if (!isHistory)
             {
                 parameter.AppendSql("AND A.ISDELETED = 'N'         ");
@@ -53,9 +53,7 @@
 
             parameter.Add("STARTDATE", startDate);
             parameter.Add("ENDDATE", endDate);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             if (siteId > 0)
             {

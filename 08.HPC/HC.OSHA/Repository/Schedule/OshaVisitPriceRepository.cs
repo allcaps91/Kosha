@@ -47,9 +47,9 @@ namespace HC.OSHA.Repository.Schedule
             parameter.AppendSql("    SELECT * FROM HIC_OSHA_VISIT_PRICE ");
             parameter.AppendSql("    WHERE ID = (SELECT MAX(ID) FROM HIC_OSHA_VISIT_PRICE   ");
             parameter.AppendSql("          WHERE VISIT_ID = :VISIT_ID                       ");
-            parameter.AppendSql("            AND SWLICENSE = :SWLICENSE1                    ");
+            parameter.AppendSql("            AND SWLICENSE = :SWLICENSE                    ");
             parameter.AppendSql("            AND ISDELETED = 'N' )                          ");
-            parameter.AppendSql("      AND SWLICENSE = :SWLICENSE2                          ");
+            parameter.AppendSql("      AND SWLICENSE = :SWLICENSE                          ");
             parameter.Add("VISIT_ID", visitId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReaderSingle<OSHA_VISIT_PRICE>(parameter);
@@ -65,14 +65,13 @@ namespace HC.OSHA.Repository.Schedule
             parameter.AppendSql("    AND B.ISDELETED = 'N'                   ");
             parameter.AppendSql("    AND A.VISITDATETIME >= :startDate       ");
             parameter.AppendSql("    AND A.VISITDATETIME <= :endDate         ");
-            parameter.AppendSql("    AND A.SWLICENSE = :SWLICENSE1           ");
-            parameter.AppendSql("    AND B.SWLICENSE = :SWLICENSE2           ");
+            parameter.AppendSql("    AND A.SWLICENSE = :SWLICENSE           ");
+            parameter.AppendSql("    AND B.SWLICENSE = :SWLICENSE           ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<OSHA_VISIT_PRICE>(parameter);
         }
@@ -101,13 +100,12 @@ namespace HC.OSHA.Repository.Schedule
             parameter.AppendSql("ON A.ID = B.VISIT_ID ");     
             parameter.AppendSql("WHERE A.ESTIMATE_ID = :estimateId ");
             parameter.AppendSql("AND A.ISDELETED = 'N' ");
-            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("ORDER BY B.CREATED DESC, B.ID DESC ");
 
             parameter.Add("estimateId", estimateId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<OshaVisitPriceModel>(parameter);
 

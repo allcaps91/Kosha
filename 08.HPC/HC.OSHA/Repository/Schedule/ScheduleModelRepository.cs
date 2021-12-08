@@ -37,8 +37,8 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("WHERE                              ");
             parameter.AppendSql("	A.VISITRESERVEDATE BETWEEN TO_DATE(:visitStartDate , 'YYYY-MM-DD') AND TO_DATE(:visitEndDate, 'YYYY-MM-DD')  ");
             parameter.AppendSql("	AND A.ISDELETED ='N'            ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE1   ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE2   ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE   ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE   ");
             if (siteIdOrname.NotEmpty())
             {
                 if (siteIdOrname.IsNumeric())
@@ -61,8 +61,8 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("	on a.id = b.schedule_id                 ");
             parameter.AppendSql("	where a.isdeleted = 'N'                 ");
             parameter.AppendSql("	and b.isdeleted = 'N'                   ");
-            parameter.AppendSql("   AND a.SWLICENSE = :SWLICENSE3           ");
-            parameter.AppendSql("   AND b.SWLICENSE = :SWLICENSE4           ");
+            parameter.AppendSql("   AND a.SWLICENSE = :SWLICENSE           ");
+            parameter.AppendSql("   AND b.SWLICENSE = :SWLICENSE           ");
             parameter.AppendSql("	)                                       ");
             parameter.AppendSql(" UNION ALL                                 ");
             parameter.AppendSql("	SELECT A.ID AS SCHEDULE_ID,  C.NAME, A.SITE_ID, A.VISITRESERVEDATE, B.VISITUSERNAME  , B.ID AS VISIT_ID, A.DEPARTUREDATETIME , B.ISPRECHARGE         ");
@@ -90,9 +90,9 @@ namespace HC.OSHA.Repository
             }
             parameter.AppendSql("	AND B.ISPRECHARGE = 'Y'          ");
             parameter.AppendSql("	AND B.ISDELETED = 'N'          ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE5   ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE6   ");
-            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE7   ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE   ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE   ");
+            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE   ");
 
             parameter.AppendSql("ORDER BY VISITRESERVEDATE, DEPARTUREDATETIME                                                                  ");
 
@@ -106,13 +106,7 @@ namespace HC.OSHA.Repository
             {
                  parameter.AddLikeStatement ("siteIdOrname", siteIdOrname); 
             }
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE4", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE5", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE6", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE7", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<UnvisitSiteModel>(parameter);
         }
@@ -137,9 +131,9 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("WHERE                                                                                                                    ");
             parameter.AppendSql("	B.VISITDATETIME BETWEEN TO_DATE(:visitStartDate, 'YYYY-MM-DD') AND TO_DATE(:visitEndDate, 'YYYY-MM-DD')               ");
             parameter.AppendSql("	AND B.ISPRECHARGE ='N'       ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE3 ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE ");
             if (siteIdOrname.NotEmpty())
             {
                 if (siteIdOrname.IsNumeric())
@@ -168,9 +162,7 @@ namespace HC.OSHA.Repository
             {
                 parameter.AddLikeStatement("siteIdOrname", siteIdOrname);
             }
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<VisitSiteModel>(parameter);
         }
@@ -195,9 +187,9 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("	B.VISITDATETIME BETWEEN TO_DATE(:visitStartDate, 'YYYY-MM-DD') AND TO_DATE(:visitEndDate, 'YYYY-MM-DD')               ");
             parameter.AppendSql("	AND B.ISPRECHARGE ='Y'       ");
             parameter.AppendSql("	AND B.ISDELETED ='N'       ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE3 ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE ");
             if (visitUserId.NotEmpty())
             {
                 parameter.AppendSql("	AND	B.VISITUSER= :visitUserId ");
@@ -206,9 +198,7 @@ namespace HC.OSHA.Repository
 
             parameter.Add("visitStartDate", visitStartDate);
             parameter.Add("visitEndDate", visitEndDate);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (visitUserId.NotEmpty())
             {
                 parameter.Add("visitUserId", visitUserId);
@@ -249,17 +239,15 @@ namespace HC.OSHA.Repository
             }
 
             if (model.VisitUser.NotEmpty()) { parameter.AppendSql("	AND	A.VISITUSERID = :visitUserId "); }
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3 ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("ORDER BY A.EVENTSTARTDATETIME ");
 
             parameter.Add("startDate", model.StartDate);
             parameter.Add("endDate", model.EndDate);
             if (model.VisitUser.NotEmpty()) { parameter.Add("visitUserId", model.VisitUser); }
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<CalendarEventModel>(parameter);
         }

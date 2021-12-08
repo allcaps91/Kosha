@@ -24,13 +24,12 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("AND B.ISDELETED = 'N'                                          ");
             parameter.AppendSql("WHERE A.OSHA_SITE_ID = :ID                                     ");
             parameter.AppendSql("AND A.ISDELETED = 'N'                                          ");
-            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE1                                  ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE2                                  ");
+            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE                                  ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE                                  ");
             parameter.AppendSql("ORDER BY A.ESTIMATEDATE DESC                                   ");
 
             parameter.Add("ID", id);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_ESTIMATE_MODEL>(parameter);
         }
@@ -48,14 +47,13 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("AND B.ISDELETED = 'N'                                          ");
             parameter.AppendSql("WHERE A.OSHA_SITE_ID = :ID                                     ");
             parameter.AppendSql("AND A.ISDELETED = 'N'                                          ");
-            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE1                                  ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE2                                  ");
+            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE                                  ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE                                  ");
             //parameter.AppendSql("AND B.ISCONTRACT = 'Y'                                          ");
             parameter.AppendSql("ORDER BY A.ESTIMATEDATE DESC                                   ");
 
             parameter.Add("ID", id);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_ESTIMATE_MODEL>(parameter);
         }
@@ -68,12 +66,11 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("AND B.ISDELETED = 'N'                                          ");
             parameter.AppendSql("WHERE A.ID = :ID                                               ");
             parameter.AppendSql("AND A.ISDELETED = 'N'                                          ");
-            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE1                                  ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE2                                  ");
+            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE                                  ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE                                  ");
 
             parameter.Add("ID", id);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_ESTIMATE_MODEL>(parameter);
         }

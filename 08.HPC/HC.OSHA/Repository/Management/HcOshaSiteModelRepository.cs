@@ -26,11 +26,10 @@
             parameter.AppendSql("INNER JOIN HC_SITE_VIEW B ");
             parameter.AppendSql("ON A.ID = B.ID       ");
             parameter.AppendSql("WHERE A.PARENTSITE_ID = :ID      ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HC_OSHA_SITE_MODEL>(parameter);
         }
         public HC_OSHA_SITE_MODEL FindById(long id, string userId)
@@ -42,12 +41,11 @@
             parameter.AppendSql("LEFT OUTER JOIN HC_SITE_VIEW C ");
             parameter.AppendSql("ON A.PARENTSITE_ID = C.ID       ");
             parameter.AppendSql("WHERE A.ID = :ID     ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_OSHA_SITE_MODEL>(parameter);
 
@@ -122,9 +120,9 @@
             parameter.AppendSql("                  ON C.OSHA_SITE_ID = A.ID                              ");
             parameter.AppendSql("                 AND C.ISDELETED = 'N'                                 ");
             parameter.AppendSql("         WHERE 1=1                                                      ");
-            parameter.AppendSql("           AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("           AND B.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("           AND C.SWLICENSE = :SWLICENSE3 ");
+            parameter.AppendSql("           AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("           AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("           AND C.SWLICENSE = :SWLICENSE ");
 
             if (role == Role.DOCTOR)
             {
@@ -147,9 +145,7 @@
             parameter.AppendSql("ORDER BY A.NAME                                        ");
 
             parameter.Add("USERID", userId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_SITE_MODEL>(parameter);
         }
@@ -183,7 +179,7 @@
                 parameter.AppendSql(" (                         ");
                 parameter.AppendSql(" SELECT SITE_ID FROM HIC_OSHA_SCHEDULE  ");
                 parameter.AppendSql(" WHERE VISITUSERID = :USERID   ");
-                parameter.AppendSql("   AND SWLICENSE = :SWLICENSE1 ");
+                parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
                 parameter.AppendSql(" AND VISITRESERVEDATE = TO_DATE('" + DateTime.Now.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD')");
                 parameter.AppendSql(" AND ISDELETED = 'N'  ");
                 parameter.AppendSql(" ) AA  ");
@@ -204,16 +200,13 @@
                 parameter.AppendSql("AND C.MANAGEENGINEER= :USERID ");
             }
             parameter.AppendSql("AND A.ISACTIVE ='Y' ");
-            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE3 ");
-            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE4 ");
+            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE ");
 
             parameter.AppendSql("ORDER BY B.NAME   ");
             parameter.AddLikeStatement("ID", id);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE4", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             if (userId.NotEmpty())
             {
@@ -300,9 +293,9 @@
                 parameter.AppendSql("AND C.MANAGEENGINEER= :USERID ");
             }
             parameter.AppendSql("AND A.ISACTIVE ='Y' ");
-            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE3 ");
+            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE ");
 
             parameter.AppendSql("ORDER BY NAME   ");
             parameter.AddLikeStatement("NAME", name);
@@ -310,9 +303,7 @@
             {
                 parameter.Add("USERID", userId);
             }
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_SITE_MODEL>(parameter);
 

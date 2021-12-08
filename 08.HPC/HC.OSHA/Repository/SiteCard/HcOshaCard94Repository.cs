@@ -22,13 +22,11 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("INNER JOIN HIC_USERS C                 ");
             parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID           ");
             parameter.AppendSql("WHERE A.ID = :ID                       ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1        ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2        ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3        ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE        ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE        ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE        ");
             parameter.Add("ID", id);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReaderSingle<HC_OSHA_CARD9_4>(parameter);
         }
         public List<HC_OSHA_CARD9_4> FindAll(long siteId, string yyyy_mm_dd)
@@ -41,16 +39,14 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID           ");
             parameter.AppendSql("WHERE A.SITE_ID = :SITE_ID             ");
             parameter.AppendSql("  AND A.EndDate <= :EndDate            ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1        ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2        ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3        ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE        ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE        ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE        ");
             parameter.AppendSql("ORDER BY STARTDATE                     ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("EndDate", yyyy_mm_dd);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_CARD9_4>(parameter);
         }

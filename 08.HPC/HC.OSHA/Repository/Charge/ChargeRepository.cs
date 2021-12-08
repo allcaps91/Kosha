@@ -82,31 +82,31 @@ namespace HC.OSHA.Repository
         public void DeleteVisitPreCharge(string startDate, string endDate, long siteId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("      SELECT  B.ID, B.VISIT_ID FROM  HIC_OSHA_VISIT A       ");
-            parameter.AppendSql(" INNER JOIN HIC_OSHA_VISIT_PRICE B                           ");
-            parameter.AppendSql(" ON A.ID = B.VISIT_ID                                        ");
-            parameter.AppendSql(" WHERE A.ISDELETED = 'N'                                     ");
-            parameter.AppendSql(" AND A.SITE_ID = :SITE_ID                                    ");
-            parameter.AppendSql(" AND B.ISDELETED = 'N'                                       ");
-            parameter.AppendSql(" AND A.ISPRECHARGE = 'Y'                                     ");
-            parameter.AppendSql(" AND A.VISITDATETIME >= TO_DATE(:startDate, 'YYYY-MM-DD')    ");
-            parameter.AppendSql(" AND A.VISITDATETIME <= TO_DATE(:endDate, 'YYYY-MM-DD')      ");
-            parameter.AppendSql(" AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql(" AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("SELECT B.ID, B.VISIT_ID ");
+            parameter.AppendSql("  FROM HIC_OSHA_VISIT A ");
+            parameter.AppendSql("       INNER JOIN HIC_OSHA_VISIT_PRICE B ");
+            parameter.AppendSql("             ON A.ID = B.VISIT_ID ");
+            parameter.AppendSql(" WHERE A.ISDELETED = 'N' ");
+            parameter.AppendSql("   AND A.SITE_ID = :SITE_ID ");
+            parameter.AppendSql("   AND B.ISDELETED = 'N' ");
+            parameter.AppendSql("   AND A.ISPRECHARGE = 'Y' ");
+            parameter.AppendSql("   AND A.VISITDATETIME >= TO_DATE(:startDate, 'YYYY-MM-DD') ");
+            parameter.AppendSql("   AND A.VISITDATETIME <= TO_DATE(:endDate, 'YYYY-MM-DD') ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
             parameter.Add("SITE_ID", siteId);
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             List<OSHA_VISIT_PRICE> list = ExecuteReader<OSHA_VISIT_PRICE>(parameter);
 
             foreach (OSHA_VISIT_PRICE price in list)
             {
                 parameter = CreateParameter();
-                parameter.AppendSql("   UPDATE HIC_OSHA_VISIT   ");
-                parameter.AppendSql("   SET ISDELETED='Y' ");
-                parameter.AppendSql("   WHERE ID = :VISIT_ID ");
-                parameter.AppendSql("     AND SWLICENSE = :SWLICENSE ");
+                parameter.AppendSql("UPDATE HIC_OSHA_VISIT   ");
+                parameter.AppendSql("  SET ISDELETED='Y' ");
+                parameter.AppendSql("WHERE ID = :VISIT_ID ");
+                parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
                 parameter.Add("VISIT_ID", price.VISIT_ID);
                 parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
                 ExecuteNonQuery(parameter);
@@ -124,22 +124,22 @@ namespace HC.OSHA.Repository
         public long GetVisitCount(string startDate, string endDate, long siteId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("            SELECT COUNT(*) AS VISITCOUNT FROM HIC_OSHA_VISIT A  ");
-            parameter.AppendSql("INNER JOIN HIC_OSHA_VISIT_PRICE B       ");
-            parameter.AppendSql("ON A.ID = B.VISIT_ID                     ");
-            parameter.AppendSql(" WHERE A.ISDELETED = 'N'                 ");
-            parameter.AppendSql(" AND B.ISDELETED = 'N'                   ");
-            parameter.AppendSql(" AND A.ISFEE = 'Y'                       ");
-            parameter.AppendSql(" AND A.VISITDATETIME >= :startDate       ");
-            parameter.AppendSql(" AND A.VISITDATETIME <= :endDate         ");
-            parameter.AppendSql(" AND A.SITE_ID = :siteId                 ");
-            parameter.AppendSql(" AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql(" AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("SELECT COUNT(*) AS VISITCOUNT ");
+            parameter.AppendSql("  FROM HIC_OSHA_VISIT A ");
+            parameter.AppendSql("       INNER JOIN HIC_OSHA_VISIT_PRICE B ");
+            parameter.AppendSql("             ON A.ID = B.VISIT_ID ");
+            parameter.AppendSql("  WHERE A.ISDELETED = 'N' ");
+            parameter.AppendSql("    AND B.ISDELETED = 'N' ");
+            parameter.AppendSql("    AND A.ISFEE = 'Y' ");
+            parameter.AppendSql("    AND A.VISITDATETIME >= :startDate ");
+            parameter.AppendSql("    AND A.VISITDATETIME <= :endDate ");
+            parameter.AppendSql("    AND A.SITE_ID = :siteId ");
+            parameter.AppendSql("    AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("    AND B.SWLICENSE = :SWLICENSE ");
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);
             parameter.Add("siteId", siteId);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteScalar<long>(parameter);
         }
@@ -301,95 +301,76 @@ namespace HC.OSHA.Repository
         public long GetQuarterTotalPrice(long siteId, string startDate, string endDate)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("  SELECT B.TOTALPRICE FROM HIC_OSHA_VISIT A    ");
-            parameter.AppendSql("  INNER JOIN HIC_OSHA_VISIT_PRICE B            ");
-            parameter.AppendSql("  ON A.ID = B.VISIT_ID                           ");
-            parameter.AppendSql("  WHERE A.ISDELETED = 'N'                    ");
-            parameter.AppendSql("  AND B.ISDELETED = 'N'                 ");
-            parameter.AppendSql("  AND A.ISPRECHARGE = 'N'                  ");
-            parameter.AppendSql("  AND A.SITE_ID = :SITE_ID                       ");
-            parameter.AppendSql("  AND VISITDATETIME >= :startDate   ");
-            parameter.AppendSql("  AND VISITDATETIME <= :endDate   ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2 ");
+            parameter.AppendSql("SELECT B.TOTALPRICE ");
+            parameter.AppendSql("  FROM HIC_OSHA_VISIT A ");
+            parameter.AppendSql("       INNER JOIN HIC_OSHA_VISIT_PRICE B ");
+            parameter.AppendSql("             ON A.ID = B.VISIT_ID ");
+            parameter.AppendSql(" WHERE A.ISDELETED = 'N' ");
+            parameter.AppendSql("   AND B.ISDELETED = 'N' ");
+            parameter.AppendSql("   AND A.ISPRECHARGE = 'N' ");
+            parameter.AppendSql("   AND A.SITE_ID = :SITE_ID ");
+            parameter.AppendSql("   AND VISITDATETIME >= :startDate ");
+            parameter.AppendSql("   AND VISITDATETIME <= :endDate ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteScalar<long>(parameter);
         }
 
         public List<ChargeSiteModel> FindByYear(string startDate, string endDate, bool isParent, bool isQuaterCharge)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.SITEID                                                                          ");
-            parameter.AppendSql("     , A.PARENTSITE_ID                                                                   ");
-            parameter.AppendSql("     , A.SITENAME                                                                        ");
-            parameter.AppendSql("     , A.ESTIMATE_ID                                                                     ");
-            parameter.AppendSql("     , A.CONTRACTDATE                                                                    ");
-            parameter.AppendSql("     , A.UNITPRICE                                                                       ");
-            parameter.AppendSql("     , A.TOTALPRICE                                                                      ");
-            parameter.AppendSql("     , A.DAMNAME                                                                         ");
-            parameter.AppendSql("     , A.WRTNO                                                                           ");
-            parameter.AppendSql("     , A.BDATE                                                                           ");
-            parameter.AppendSql("     , A.RANK                                                                            ");
-            parameter.AppendSql("  FROM                                                                                   ");
-            parameter.AppendSql("  (                                                                                      ");
-            parameter.AppendSql("        SELECT A.ID as SITEID                                                            ");
-            parameter.AppendSql("             , A.PARENTSITE_ID                                                           ");
-            parameter.AppendSql("             , B.NAME as SITENAME                                                        ");
-            parameter.AppendSql("             , D.ESTIMATE_ID                                                             ");
-            parameter.AppendSql("             , D.CONTRACTDATE                                                            ");
-            parameter.AppendSql("             , E.UNITPRICE                                                               ");
-            parameter.AppendSql("             , E.TOTALPRICE                                                              ");
-            parameter.AppendSql("             , F.NAME as DAMNAME                                                         ");
-            parameter.AppendSql("             , (SELECT MAX(WRTNO) FROM HIC_MISU_MST                                      ");
-            parameter.AppendSql("                 WHERE Bdate >= TO_DATE(:START_DATE, 'YYYY-MM-DD')                       ");
-            parameter.AppendSql("                   AND Bdate <= TO_DATE(:END_DATE, 'YYYY-MM-DD')                         ");
-            parameter.AppendSql("                   AND MISUJONG = '1'                                                    ");
-            parameter.AppendSql("                   AND GJONG = '82'                                                      ");
-            parameter.AppendSql("                   AND LTDCODE = A.ID                                                    ");
-            parameter.AppendSql("                   AND SWLICENSE = :SWLICENSE1                                           ");
-            parameter.AppendSql("               ) AS WRTNO                                                                ");
-            parameter.AppendSql("             , (SELECT To_CHAR(MAX(BDATE), 'YYYY-MM-DD') FROM HIC_MISU_MST               ");
-            parameter.AppendSql("                 WHERE Bdate >= TO_DATE(:START_DATE, 'YYYY-MM-DD')                       ");
-            parameter.AppendSql("                   AND Bdate <= TO_DATE(:END_DATE, 'YYYY-MM-DD')                         ");
-            parameter.AppendSql("                   AND MISUJONG = '1'                                                    ");
-            parameter.AppendSql("                   AND GJONG = '82'                                                      ");
-            parameter.AppendSql("                   AND LTDCODE = A.ID                                                    ");
-            parameter.AppendSql("                   AND SWLICENSE = :SWLICENSE2                                           ");
-            parameter.AppendSql("               ) AS BDATE                                                                ");
-            parameter.AppendSql("             , ROW_NUMBER() OVER (PARTITION BY A.ID ORDER BY D.CONTRACTDATE DESC) AS RANK");
-            parameter.AppendSql("          FROM HIC_OSHA_SITE A                                                           ");
-            parameter.AppendSql("          INNER JOIN HC_SITE_VIEW B                                                      ");
-            parameter.AppendSql("                  ON A.ID = B.ID                                                         ");
+            parameter.AppendSql("SELECT A.SITEID,A.PARENTSITE_ID,A.SITENAME,A.ESTIMATE_ID,A.CONTRACTDATE,");
+            parameter.AppendSql("       A.UNITPRICE,A.TOTALPRICE,A.DAMNAME,A.WRTNO,A.BDATE,A.RANK ");
+            parameter.AppendSql("  FROM ( ");
+            parameter.AppendSql("       SELECT A.ID as SITEID,A.PARENTSITE_ID,B.NAME as SITENAME,D.ESTIMATE_ID,");
+            parameter.AppendSql("              D.CONTRACTDATE,E.UNITPRICE,E.TOTALPRICE,F.NAME as DAMNAME,");
+            parameter.AppendSql("              (SELECT MAX(WRTNO) FROM HIC_MISU_MST ");
+            parameter.AppendSql("                WHERE Bdate >= TO_DATE(:START_DATE, 'YYYY-MM-DD') ");
+            parameter.AppendSql("                  AND Bdate <= TO_DATE(:END_DATE, 'YYYY-MM-DD') ");
+            parameter.AppendSql("                  AND MISUJONG = '1' ");
+            parameter.AppendSql("                  AND GJONG = '82' ");
+            parameter.AppendSql("                  AND LTDCODE = A.ID ");
+            parameter.AppendSql("                  AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("               ) AS WRTNO, ");
+            parameter.AppendSql("              (SELECT To_CHAR(MAX(BDATE), 'YYYY-MM-DD') FROM HIC_MISU_MST ");
+            parameter.AppendSql("                 WHERE Bdate >= TO_DATE(:START_DATE, 'YYYY-MM-DD') ");
+            parameter.AppendSql("                   AND Bdate <= TO_DATE(:END_DATE, 'YYYY-MM-DD') ");
+            parameter.AppendSql("                   AND MISUJONG = '1' ");
+            parameter.AppendSql("                   AND GJONG = '82' ");
+            parameter.AppendSql("                   AND LTDCODE = A.ID ");
+            parameter.AppendSql("                   AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("               ) AS BDATE, ");
+            parameter.AppendSql("               ROW_NUMBER() OVER (PARTITION BY A.ID ORDER BY D.CONTRACTDATE DESC) AS RANK ");
+            parameter.AppendSql("          FROM HIC_OSHA_SITE A  ");
+            parameter.AppendSql("          INNER JOIN HC_SITE_VIEW B ");
+            parameter.AppendSql("                  ON A.ID = B.ID ");
             //승진이엔지(43607) 국고 Y로 되어 있어서 주석처리함
             //     parameter.AppendSql("   AND B.GBGUKGO = 'N'     ");
-            parameter.AppendSql("          INNER JOIN HIC_OSHA_ESTIMATE C                                                 ");
-            parameter.AppendSql("                  ON C.OSHA_SITE_ID = A.ID                                               ");
-            parameter.AppendSql("          INNER JOIN HIC_OSHA_CONTRACT D                                                 ");
-            parameter.AppendSql("                  ON d.estimate_id = C.Id                                                ");
-            parameter.AppendSql("                 AND D.ISCONTRACT = 'Y'                                                  ");
-            parameter.AppendSql("          INNER JOIN (SELECT * FROM HIC_OSHA_PRICE                                       ");
-            parameter.AppendSql("                       WHERE ID IN (SELECT MAX(ID) FROM HIC_OSHA_PRICE                   ");
-            parameter.AppendSql("                             WHERE ISDELETED ='N' AND SWLICENSE = :SWLICENSE3            ");
-            parameter.AppendSql("                             GROUP BY ESTIMATE_ID)) E                                    ");
-            parameter.AppendSql("                  ON E.ESTIMATE_ID = C.ID                                                ");
-            parameter.AppendSql("          LEFT OUTER JOIN HIC_USERS F                                                    ");
-            parameter.AppendSql("                       ON F.USERID = D.MANAGEENGINEER                                    ");
-            parameter.AppendSql("         WHERE 1 = 1                                                                     ");
-            parameter.AppendSql("           AND A.SWLICENSE = :SWLICENSE4                                                 ");
-            //parameter.AppendSql("        --   and D.CONTRACTDATE >= '2021-01-01'                                        ");
-            parameter.AppendSql("           and D.CONTRACTDATE <= :END_DATE                                               ");
-            parameter.AppendSql("           AND A.ISACTIVE='Y'                                                            ");
-            parameter.AppendSql("           AND D.ISCONTRACT='Y'                                                          ");
-            //parameter.AppendSql("   AND B.GBGUKGO ='N'    ");
+            parameter.AppendSql("          INNER JOIN HIC_OSHA_ESTIMATE C ");
+            parameter.AppendSql("                  ON C.OSHA_SITE_ID = A.ID ");
+            parameter.AppendSql("          INNER JOIN HIC_OSHA_CONTRACT D ");
+            parameter.AppendSql("                  ON d.estimate_id = C.Id ");
+            parameter.AppendSql("                 AND D.ISCONTRACT = 'Y' ");
+            parameter.AppendSql("          INNER JOIN (SELECT * FROM HIC_OSHA_PRICE ");
+            parameter.AppendSql("                       WHERE ID IN (SELECT MAX(ID) FROM HIC_OSHA_PRICE ");
+            parameter.AppendSql("                             WHERE ISDELETED ='N' AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                             GROUP BY ESTIMATE_ID)) E ");
+            parameter.AppendSql("                  ON E.ESTIMATE_ID = C.ID ");
+            parameter.AppendSql("          LEFT OUTER JOIN HIC_USERS F ");
+            parameter.AppendSql("                       ON F.USERID = D.MANAGEENGINEER ");
+            parameter.AppendSql("         WHERE 1 = 1 ");
+            parameter.AppendSql("           AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("           and D.CONTRACTDATE <= :END_DATE ");
+            parameter.AppendSql("           AND A.ISACTIVE='Y' ");
+            parameter.AppendSql("           AND D.ISCONTRACT='Y' ");
     
             if (isParent)
             {
-                //parameter.AppendSql("   AND A.PARENTSITE_ID IS NULL  ");
                 parameter.AppendSql("   AND A.ISPARENTCHARGE = 'Y'  ");
             }
             else
@@ -412,10 +393,7 @@ namespace HC.OSHA.Repository
 
             parameter.Add("START_DATE", startDate);
             parameter.Add("END_DATE", endDate);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE4", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<ChargeSiteModel>(parameter);
 

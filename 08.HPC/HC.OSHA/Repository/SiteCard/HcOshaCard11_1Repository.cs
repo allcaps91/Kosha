@@ -23,14 +23,12 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("INNER JOIN HIC_USERS C                                                               ");
             parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                                                         ");
             parameter.AppendSql("WHERE A.ID = :ID");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3 ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_OSHA_CARD11_1>(parameter);
         }
@@ -43,16 +41,14 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("INNER JOIN HIC_USERS C                                                               ");
             parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                                                         ");
             parameter.AppendSql("WHERE A.SITE_ID = :SITE_ID AND A.YEAR = :YEAR                                        ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE1 ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE2 ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE3 ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("ORDER BY PUBLISHDATE DESC                                                            ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("YEAR", YEAR);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_CARD11_1>(parameter);
 
