@@ -202,8 +202,7 @@
             parameter.AppendSql("AND A.ISACTIVE ='Y' ");
             parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE ");
-
+            if (userId.NotEmpty()) { parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE "); }
             parameter.AppendSql("ORDER BY B.NAME   ");
             parameter.AddLikeStatement("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);

@@ -27,6 +27,7 @@ namespace HS_OSHA
             if (READ_Licno_Disk() == false) this.Close();
             if (READ_Licno_Server() == false) this.Close();
 
+            clsType.ClearUser(); //사용자 정보 초기화
             GuideMsg_Display();
 
             clsDB.GetDbInfo();
@@ -202,22 +203,20 @@ namespace HS_OSHA
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            int nSabun = 0;
-
-            if (txtIdNumber.Text.Trim() == "admin")
+            if (txtIdNumber.Text.Trim() == "admin") 
             {
                 if (txtPassword.Text.Trim() == VB.Pstr(clsType.HosInfo.SwLicInfo, "{}", 4))
                 {
-                    clsType.User.Sabun = "admin";
+                    clsType.User.Sabun = "1";
                     clsType.User.IdNumber = "1";
                     clsType.User.JobName = "관리자";
-                    clsType.User.BuseName = "관리자";
-                } else {
+                    clsType.User.BuseName = "OSHA";
+                }
+                else {
                     ComFunc.MsgBox("관리자 비밀번호 오류 입니다", "알림");
                     Cursor.Current = Cursors.Default;
                     return;
                 }
-
             } else {
                 if (Set_UserInfo(txtIdNumber.Text.Trim(), txtPassword.Text.Trim()) == false)
                 {

@@ -139,7 +139,8 @@ namespace ComBase.Mvc
                 //  실서버일경우만 로그 남김
                 //if(clsDB.DbCon.strDbIp.Equals("192.168.100.31"))
                 //{
-                //    clsDB.SaveSqlLog(generateSql, clsDB.DbCon);
+                      //clsDB.SaveSqlLog(generateSql, clsDB.DbCon);
+                      System.IO.File.WriteAllText(@"C:\Temp\sqltext.txt", generateSql);
                 //}
             }
         }

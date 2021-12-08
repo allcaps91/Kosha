@@ -108,8 +108,6 @@
             this.질병유소견자대행빌드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LeftPanel = new System.Windows.Forms.Panel();
-            this.oshaSiteEstimateList = new HC_OSHA.OshaSiteEstimateList();
-            this.oshaSiteLastTree = new HC_OSHA.OshaSiteLastTree();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.TabContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -117,6 +115,8 @@
             this.Mnu_OtherAllClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_AllTabClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_TabPopup = new System.Windows.Forms.ToolStripMenuItem();
+            this.oshaSiteEstimateList = new HC_OSHA.OshaSiteEstimateList();
+            this.oshaSiteLastTree = new HC_OSHA.OshaSiteLastTree();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.LeftPanel.SuspendLayout();
@@ -749,6 +749,68 @@
             this.LeftPanel.Size = new System.Drawing.Size(199, 817);
             this.LeftPanel.TabIndex = 9;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1264, 847);
+            this.tabControl1.TabIndex = 10;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControl1_ControlRemoved);
+            this.tabControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseUp);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.LeftPanel);
+            this.tabPage1.Controls.Add(this.panFrame);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(1256, 817);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "사업장 현황";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // TabContextMenu
+            // 
+            this.TabContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Mnu_TabClose,
+            this.Mnu_OtherAllClose,
+            this.Mnu_AllTabClose,
+            this.Mnu_TabPopup});
+            this.TabContextMenu.Name = "TabContextMenu";
+            this.TabContextMenu.Size = new System.Drawing.Size(215, 92);
+            // 
+            // Mnu_TabClose
+            // 
+            this.Mnu_TabClose.Name = "Mnu_TabClose";
+            this.Mnu_TabClose.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_TabClose.Text = "탭닫기";
+            this.Mnu_TabClose.Click += new System.EventHandler(this.Mnu_TabClose_Click);
+            // 
+            // Mnu_OtherAllClose
+            // 
+            this.Mnu_OtherAllClose.Name = "Mnu_OtherAllClose";
+            this.Mnu_OtherAllClose.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_OtherAllClose.Text = "이탭을 제외하고 모두닫기";
+            this.Mnu_OtherAllClose.Click += new System.EventHandler(this.Mnu_OtherAllClose_Click);
+            // 
+            // Mnu_AllTabClose
+            // 
+            this.Mnu_AllTabClose.Name = "Mnu_AllTabClose";
+            this.Mnu_AllTabClose.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_AllTabClose.Text = "모든 탭 닫기";
+            this.Mnu_AllTabClose.Click += new System.EventHandler(this.Mnu_AllTabClose_Click);
+            // 
+            // Mnu_TabPopup
+            // 
+            this.Mnu_TabPopup.Name = "Mnu_TabPopup";
+            this.Mnu_TabPopup.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_TabPopup.Text = "팝업으로 보기";
+            this.Mnu_TabPopup.Click += new System.EventHandler(this.Mnu_TabPopup_Click);
+            // 
             // oshaSiteEstimateList
             // 
             this.oshaSiteEstimateList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -856,68 +918,6 @@
             this.oshaSiteLastTree.TabIndex = 0;
             this.oshaSiteLastTree.NodeClick += new HC_OSHA.OshaSiteLastTree.SiteTreeViewNodeMouseClickEventHandler(this.OshaSiteLastTree_NodeClick);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 24);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1264, 847);
-            this.tabControl1.TabIndex = 10;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            this.tabControl1.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControl1_ControlRemoved);
-            this.tabControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseUp);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.LeftPanel);
-            this.tabPage1.Controls.Add(this.panFrame);
-            this.tabPage1.Location = new System.Drawing.Point(4, 26);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1256, 817);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "사업장 현황";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // TabContextMenu
-            // 
-            this.TabContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Mnu_TabClose,
-            this.Mnu_OtherAllClose,
-            this.Mnu_AllTabClose,
-            this.Mnu_TabPopup});
-            this.TabContextMenu.Name = "TabContextMenu";
-            this.TabContextMenu.Size = new System.Drawing.Size(215, 92);
-            // 
-            // Mnu_TabClose
-            // 
-            this.Mnu_TabClose.Name = "Mnu_TabClose";
-            this.Mnu_TabClose.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_TabClose.Text = "탭닫기";
-            this.Mnu_TabClose.Click += new System.EventHandler(this.Mnu_TabClose_Click);
-            // 
-            // Mnu_OtherAllClose
-            // 
-            this.Mnu_OtherAllClose.Name = "Mnu_OtherAllClose";
-            this.Mnu_OtherAllClose.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_OtherAllClose.Text = "이탭을 제외하고 모두닫기";
-            this.Mnu_OtherAllClose.Click += new System.EventHandler(this.Mnu_OtherAllClose_Click);
-            // 
-            // Mnu_AllTabClose
-            // 
-            this.Mnu_AllTabClose.Name = "Mnu_AllTabClose";
-            this.Mnu_AllTabClose.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_AllTabClose.Text = "모든 탭 닫기";
-            this.Mnu_AllTabClose.Click += new System.EventHandler(this.Mnu_AllTabClose_Click);
-            // 
-            // Mnu_TabPopup
-            // 
-            this.Mnu_TabPopup.Name = "Mnu_TabPopup";
-            this.Mnu_TabPopup.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_TabPopup.Text = "팝업으로 보기";
-            this.Mnu_TabPopup.Click += new System.EventHandler(this.Mnu_TabPopup_Click);
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -927,6 +927,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Dashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "대시보드";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Dashboard_FormClosed);
             this.Load += new System.EventHandler(this.Dashboard_Load);

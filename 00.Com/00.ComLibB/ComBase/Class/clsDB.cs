@@ -3432,6 +3432,8 @@ namespace ComBase
                         command.Parameters.Add(parameter);
                     }
                 }
+                // Log 
+                System.IO.File.WriteAllText(@"C:\temp\sql.txt", mParameter.SQL);
                 rowCount = command.ExecuteNonQuery();
             }
 
