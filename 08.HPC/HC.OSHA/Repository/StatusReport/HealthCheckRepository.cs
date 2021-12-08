@@ -1,4 +1,5 @@
-﻿using ComBase.Controls;
+﻿using ComBase;
+using ComBase.Controls;
 using ComBase.Mvc;
 using ComBase.Mvc.Utils;
 using HC.Core.Service;
@@ -72,6 +73,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("                            , OPINION                                                                           ");
             parameter.AppendSql("                         FROM HIC_OSHA_PANJEONG                                                                 ");
             parameter.AppendSql("                        WHERE SITE_ID = :SITE_ID                                                                ");
+            parameter.AppendSql("                          AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("                       GROUP BY WORKER_ID, PANJEONG, ISSPECIAL, OPINION                                         ");
             parameter.AppendSql("                 ) B ON A.ID = B.WORKER_ID                                                                      ");
             if (reportId > 0)
@@ -83,6 +85,8 @@ namespace HC.OSHA.Repository.StatusReport
             }
             
             parameter.AppendSql("                WHERE A.SITEID = :SITE_ID                                                                       ");
+            parameter.AppendSql("                  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                  AND C.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("               UNION                                                                                            ");
             parameter.AppendSql("               SELECT A.ID AS WORKER_ID                                                                         ");
             parameter.AppendSql("                    , A.*                                                                                       ");
@@ -101,6 +105,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("                            , OPINION                                                                           ");
             parameter.AppendSql("                         FROM HIC_OSHA_PANJEONG                                                                 ");
             parameter.AppendSql("                        WHERE SITE_ID IN (SELECT CHILD_ID FROM HIC_OSHA_RELATION WHERE PARENT_ID= :SITE_ID     )");
+            parameter.AppendSql("                          AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("                       GROUP BY WORKER_ID, PANJEONG, ISSPECIAL, OPINION                                         ");
             parameter.AppendSql("                 ) B ON A.ID = B.WORKER_ID                                                                      ");
             if (reportId > 0)
@@ -113,7 +118,8 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("               WHERE A.SITEID IN (SELECT CHILD_ID FROM HIC_OSHA_RELATION WHERE PARENT_ID = :SITE_ID     )      ");
             parameter.AppendSql("         )                                                                                                      ");
             parameter.AppendSql("        WHERE 1=1                                                                                               ");
-
+            parameter.AppendSql("          AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("          AND C.SWLICENSE = :SWLICENSE ");
             if (isManageOsha == "Y")
             {
                 parameter.AppendSql("   AND ISMANAGEOSHA = :ISMANAGEOSHA                               ");
@@ -144,6 +150,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("                   ON A.SITEID    = B.SITE_ID                                  ");
             parameter.AppendSql("                  AND A.WORKER_ID = B.WORKER_ID                                ");
             parameter.AppendSql(" WHERE 1 = 1                                                                   ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("   AND A.RANK < 3                                                              ");
             if (!isEnd)
             {
@@ -153,15 +160,12 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql(" ORDER BY A.NAME, A.PANO, A.YEAR DESC                                           ");
 
             parameter.Add("SITE_ID", siteId);
-
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             if (isManageOsha == "Y")
             {
                 parameter.Add("ISMANAGEOSHA", isManageOsha);
             }
-
-
-
 
             if (!name.IsNullOrEmpty())
             {
@@ -195,9 +199,10 @@ namespace HC.OSHA.Repository.StatusReport
         internal List<HealthCheckWorkerModel> FindNewWorker(long siteId, string name, string dept, string panjeong, string isManageOsha, long reportId, bool isEnd, DateTime dtm)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT CHILD_ID FROM HIC_OSHA_RELATION WHERE PARENT_ID = :SITE_ID");
+            parameter.AppendSql("SELECT CHILD_ID FROM HIC_OSHA_RELATION WHERE PARENT_ID = :SITE_ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("SITE_ID", siteId);
-
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             List<Dictionary<string, object>> childList = ExecuteReader(parameter);
 
             List<long> siteList = new List<long>();
@@ -468,9 +473,12 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql(" ON A.MODIFIEDUSER = B.USERID ");
             parameter.AppendSql(" WHERE A.WORKER_ID = :ID");
             parameter.AppendSql(" AND A.ISDELETED = 'N' ");
+            parameter.AppendSql(" AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY A.CHARTDATE DESC, A.CHARTTIME DESC ");
 
             parameter.Add("ID", worker_id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HealthCheckDto>(parameter);
         }
@@ -484,10 +492,12 @@ namespace HC.OSHA.Repository.StatusReport
             {
                 parameter.AppendSql("    AND A.ISDELETED = 'N'          ");
             }
-            parameter.AppendSql("    AND A.REPORT_ID = :REPORTID    ");
+            parameter.AppendSql("   AND A.REPORT_ID = :REPORTID    ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY A.CHARTDATE, A.CHARTTIME ");
 
             parameter.Add("REPORTID", reprotid);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HealthCheckDto>(parameter);
         }
@@ -498,9 +508,11 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql(" WHERE ");
             parameter.AppendSql(" A.ISDELETED = 'N' ");
             parameter.AppendSql(" AND A.REPORT_ID = :REPORTID ");
+            parameter.AppendSql(" AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY A.CHARTDATE, A.CHARTTIME");
 
             parameter.Add("REPORTID", reprotid);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HealthCheckDto>(parameter);
         }
@@ -510,9 +522,12 @@ namespace HC.OSHA.Repository.StatusReport
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT  *  ");
             parameter.AppendSql("  FROM HIC_OSHA_HEALTHCHECK A");
-            parameter.AppendSql(" WHERE A.ID = :ID");
+            parameter.AppendSql(" WHERE A.ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
             HealthCheckDto dto = ExecuteReaderSingle<HealthCheckDto>(parameter);
             return dto;
         }
@@ -522,7 +537,7 @@ namespace HC.OSHA.Repository.StatusReport
         public HealthCheckDto Update(HealthCheckDto dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_HEALTHCHECK");
+            parameter.AppendSql("UPDATE HIC_OSHA_HEALTHCHECK ");
             parameter.AppendSql("    SET ");         
             parameter.AppendSql("       name = :name");
             parameter.AppendSql("      , dept = :dept");
@@ -542,9 +557,9 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("      , CHARTDATE = :CHARTDATE");
             parameter.AppendSql("      , CHARTTIME = :CHARTTIME");
             parameter.AppendSql("      , MODIFIED = systimestamp");
-            parameter.AppendSql("      , MODIFIEDUSER = :MODIFIEDUSER");
-
+            parameter.AppendSql("      , MODIFIEDUSER = :MODIFIEDUSER ");
             parameter.AppendSql("WHERE ID = :ID                     ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("id", dto.id);      
             parameter.Add("name", dto.name);
@@ -564,7 +579,8 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.Add("EXAM", dto.EXAM);
             parameter.Add("CHARTDATE", dto.CHARTDATE);
             parameter.Add("CHARTTIME", dto.CHARTTIME);
-          
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
             if (dto.MODIFIEDUSER.IsNullOrEmpty())
             {
                 parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
@@ -585,7 +601,7 @@ namespace HC.OSHA.Repository.StatusReport
             dto.id = GetSequenceNextVal("HC_OSHA_HEALTHCHECK_ID_SEQ");
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO HIC_OSHA_HEALTHCHECK");
+            parameter.AppendSql("INSERT INTO HIC_OSHA_HEALTHCHECK ");
             parameter.AppendSql("(");
             parameter.AppendSql("    id");
             parameter.AppendSql("  , worker_id");
@@ -614,7 +630,8 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , MODIFIED");
             parameter.AppendSql("  , MODIFIEDUSER");
             parameter.AppendSql("  , CREATED");
-            parameter.AppendSql("  , CREATEDUSER");
+            parameter.AppendSql("  , CREATEDUSER ");
+            parameter.AppendSql("  , SWLICENSE ");
             parameter.AppendSql(") VALUES ( ");
             parameter.AppendSql("    :id");
             parameter.AppendSql("  , :worker_id");
@@ -643,7 +660,8 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , SYSTIMESTAMP");
             parameter.AppendSql("  , :MODIFIEDUSER");
             parameter.AppendSql("  , SYSTIMESTAMP");
-            parameter.AppendSql("  , :CREATEDUSER");
+            parameter.AppendSql("  , :CREATEDUSER ");
+            parameter.AppendSql("  , :SWLICENSE ");
             parameter.AppendSql(") ");
 
             parameter.Add("id", dto.id);
@@ -670,6 +688,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.Add("ISDOCTOR", dto.ISDOCTOR);
             parameter.Add("CHARTDATE", dto.CHARTDATE);
             parameter.Add("CHARTTIME", dto.CHARTTIME);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             if (dto.CREATEDUSER.IsNullOrEmpty())
             {
@@ -694,7 +713,9 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("UPDATE HIC_OSHA_HEALTHCHECK    ");
             parameter.AppendSql("SET ISDELETED = 'Y'  ");
             parameter.AppendSql("WHERE ID = :ID  ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Delete("HIC_OSHA_HEALTHCHECK", id);
@@ -706,9 +727,11 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("UPDATE HIC_OSHA_HEALTHCHECK    ");
             parameter.AppendSql("   SET ISDELETED = :ISDELETED  ");
             parameter.AppendSql(" WHERE ID = :ID                ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE   ");
 
             parameter.Add("ID", id);
             parameter.Add("ISDELETED", isDeleted);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Delete("HIC_OSHA_HEALTHCHECK", id);

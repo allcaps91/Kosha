@@ -1,4 +1,5 @@
-﻿using ComBase.Controls;
+﻿using ComBase;
+using ComBase.Controls;
 using ComBase.Mvc;
 using HC.Core.Service;
 using HC.OSHA.Dto;
@@ -14,13 +15,14 @@ namespace HC.OSHA.Repository.StatusReport
         internal List<HIC_OSHA_WORKER_END> FindByWorker(HIC_OSHA_WORKER_END worker)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT *                       ");
-            parameter.AppendSql("  FROM HIC_OSHA_WORKER_END A   ");
-            parameter.AppendSql(" WHERE A.SITE_ID   = :SITE_ID  ");
-            parameter.AppendSql("   AND A.WORKER_ID = :WORKER_ID");
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_WORKER_END ");
+            parameter.AppendSql(" WHERE SITE_ID   = :SITE_ID  ");
+            parameter.AppendSql("   AND WORKER_ID = :WORKER_ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("SITE_ID", worker.SITE_ID);
             parameter.Add("WORKER_ID", worker.WORKER_ID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HIC_OSHA_WORKER_END>(parameter);
         }
@@ -41,6 +43,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , END_DATE                     ");
             parameter.AppendSql("  , CREATED                      ");
             parameter.AppendSql("  , CREATEDUSER                  ");
+            parameter.AppendSql("  , SWLICENSE                    ");
             parameter.AppendSql(") VALUES (                       ");
             parameter.AppendSql("    :ID                          ");
             parameter.AppendSql("  , :SITE_ID                     ");
@@ -49,6 +52,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , :END_DATE                    ");
             parameter.AppendSql("  , SYSTIMESTAMP                 ");
             parameter.AppendSql("  , :CREATEDUSER                 ");
+            parameter.AppendSql("  , :SWLICENSE                   ");
             parameter.AppendSql(")                                ");
 
             parameter.Add("ID", item.ID);
@@ -57,6 +61,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.Add("WORKER_ID", item.WORKER_ID);
             parameter.Add("END_DATE", item.END_DATE);
             parameter.Add("CREATEDUSER", item.CREATEDUSER);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             DataSyncService.Instance.Insert("HIC_OSHA_WORKER_END", item.ID);
 
@@ -66,15 +71,17 @@ namespace HC.OSHA.Repository.StatusReport
         internal int Update(HIC_OSHA_WORKER_END item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_WORKER_END        ");
-            parameter.AppendSql("   SET END_DATE     = :END_DATE   ");
-            parameter.AppendSql("     , CREATED      = SYSTIMESTAMP");
-            parameter.AppendSql("     , CREATEDUSER  = :CREATEDUSER");
-            parameter.AppendSql(" WHERE ID = :ID                   ");
+            parameter.AppendSql("UPDATE HIC_OSHA_WORKER_END ");
+            parameter.AppendSql("   SET END_DATE     = :END_DATE, ");
+            parameter.AppendSql("       CREATED      = SYSTIMESTAMP, ");
+            parameter.AppendSql("       CREATEDUSER  = :CREATEDUSER ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", item.ID);
             parameter.Add("END_DATE", item.END_DATE);
             parameter.Add("CREATEDUSER", item.CREATEDUSER);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             DataSyncService.Instance.Update("HIC_OSHA_WORKER_END", item.ID);
 
@@ -84,11 +91,12 @@ namespace HC.OSHA.Repository.StatusReport
         internal HIC_OSHA_WORKER_END FindOne(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT *                       ");
-            parameter.AppendSql("  FROM HIC_OSHA_WORKER_END A   ");
-            parameter.AppendSql(" WHERE A.ID        = :ID       ");
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_WORKER_END ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HIC_OSHA_WORKER_END>(parameter);
         }
@@ -104,11 +112,12 @@ namespace HC.OSHA.Repository.StatusReport
         internal int Delete(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("DELETE                         ");
-            parameter.AppendSql("  FROM HIC_OSHA_WORKER_END A   ");
-            parameter.AppendSql(" WHERE A.ID        = :ID       ");
+            parameter.AppendSql("DELETE FROM HIC_OSHA_WORKER_END ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             DataSyncService.Instance.Delete("HIC_OSHA_WORKER_END", id);
 
             return ExecuteNonQuery(parameter);

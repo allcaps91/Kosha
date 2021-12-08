@@ -1,4 +1,5 @@
-﻿using ComBase.Mvc;
+﻿using ComBase;
+using ComBase.Mvc;
 using ComBase.Mvc.Utils;
 using HC.Core.Service;
 using HC.OSHA.Dto;
@@ -34,34 +35,42 @@ namespace HC_OSHA.Repository.StatusReport
             parameter.AppendSql("SUM(DECODE(PANJENGR9, '1', '1', '0')) ETC_C6,SUM(DECODE(PANJENGR12, '1', '1', '0')) ETC_C7,SUM(DECODE(PANJENGR11, '1', '1', '0')) ETC_C8,SUM(DECODE(PANJENGR10, '1', '1', '0')) ETC_C9,    ");
             parameter.AppendSql("SUM(DECODE(PANJENGU4, '1', '1', '0')) ETC_D1    ");
             parameter.AppendSql("FROM ADMIN.HIC_RES_BOHUM1 WHERE WRTNO = :WRTNO; ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("WRTNO", WRTNO);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<SangDamGeneralCountModel>(parameter);
         }
 
         public List<SangDamDnCnCountModel> FindCnDnCount(long id)
         {
-              MParameter parameter = CreateParameter();
-              parameter.AppendSql("              SELECT AA.WORKER_ID, SUM(DECODE(PANJEONG, 'CN', '1', '0')) CNCOUNT, SUM(DECODE(PANJEONG, 'DN', '1', '0')) DNCOUNT FROM HIC_OSHA_PANJEONG AA        ");
-              parameter.AppendSql("  INNER JOIN(                                                                                                                                                    ");
-              parameter.AppendSql("  SELECT D.WORKER_ID, MAX(D.YEAR) AS YEAR FROM HIC_OSHA_REPORT_DOCTOR A                                                                                          ");
-              parameter.AppendSql("  INNER JOIN HIC_OSHA_HEALTHCHECK B                                                                                                                              ");
-              parameter.AppendSql("  ON A.ID = B.REPORT_ID                                                                                                                                          ");
-              parameter.AppendSql("  INNER JOIN HC_SITE_WORKER_VIEW C                                                                                                                               ");
-              parameter.AppendSql("  ON B.WORKER_ID = C.ID                                                                                                                                          ");
-              parameter.AppendSql("  INNER JOIN HIC_OSHA_PANJEONG D                                                                                                                                 ");
-              parameter.AppendSql("  ON B.WORKER_ID = D.WORKER_ID                                                                                                                                   ");
-              parameter.AppendSql("  WHERE A.ID = :id                                                                                                                                               ");
-              parameter.AppendSql("  AND B.ISDELETED = 'N'                                                                                                                                          ");
-              parameter.AppendSql("  GROUP BY D.WORKER_ID                                                                                                                                           ");
-              parameter.AppendSql("  ) BB                                                                                                                                                           ");
-              parameter.AppendSql("  ON AA.WORKER_ID = BB.WORKER_ID                                                                                                                                 ");
-              parameter.AppendSql("  AND AA.YEAR = BB.YEAR                                                                                                                                          ");
-              parameter.AppendSql("  GROUP BY AA.WORKER_ID                                                                                                                                          ");
-
-
+            MParameter parameter = CreateParameter();
+            parameter.AppendSql("  SELECT AA.WORKER_ID, SUM(DECODE(PANJEONG, 'CN', '1', '0')) CNCOUNT, SUM(DECODE(PANJEONG, 'DN', '1', '0')) DNCOUNT ");
+            parameter.AppendSql("  FROM HIC_OSHA_PANJEONG AA ");
+            parameter.AppendSql("  INNER JOIN( ");
+            parameter.AppendSql("        SELECT D.WORKER_ID, MAX(D.YEAR) AS YEAR ");
+            parameter.AppendSql("          FROM  HIC_OSHA_REPORT_DOCTOR A ");
+            parameter.AppendSql("          INNER JOIN HIC_OSHA_HEALTHCHECK B ");
+            parameter.AppendSql("                ON A.ID = B.REPORT_ID ");
+            parameter.AppendSql("          INNER JOIN HC_SITE_WORKER_VIEW C ");
+            parameter.AppendSql("                ON B.WORKER_ID = C.ID ");
+            parameter.AppendSql("          INNER JOIN HIC_OSHA_PANJEONG D ");
+            parameter.AppendSql("                ON B.WORKER_ID = D.WORKER_ID ");
+            parameter.AppendSql("         WHERE A.ID = :id ");
+            parameter.AppendSql("           AND B.ISDELETED = 'N' ");
+            parameter.AppendSql("           AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("           AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("           AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("           AND D.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("         GROUP BY D.WORKER_ID  ");
+            parameter.AppendSql("  ) BB ");
+            parameter.AppendSql("       ON AA.WORKER_ID = BB.WORKER_ID ");
+            parameter.AppendSql("    AND AA.YEAR = BB.YEAR ");
+            parameter.AppendSql("    AND AA.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  GROUP BY AA.WORKER_ID ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<SangDamDnCnCountModel>(parameter);
         }
@@ -69,37 +78,44 @@ namespace HC_OSHA.Repository.StatusReport
         public List<SandDamTongbun> FindSpecialReport(long id,string JEPDATE)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("               SELECT B.TONGBUN,    ");
-            parameter.AppendSql("      SUM(DECODE(PANJENG, '5', '1', '0')) D1,  SUM(DECODE(PANJENG, '6', '1', '0')) D2  ,  SUM(DECODE(PANJENG, '3', '1', '0')) C1, SUM(DECODE(PANJENG, '7', '1', '0')) 미판정1, SUM(DECODE(PANJENG, '9', '1', '0')) 미판정2, SUM(DECODE(PANJENG, 'A', '1', '0')) 미판정3   ");
-            parameter.AppendSql("      FROM ADMIN.HIC_SPC_PANJENG A   ");
-            parameter.AppendSql("      RIGHT OUTER JOIN ADMIN.HIC_MCODE B   ");
-            parameter.AppendSql("      ON A.MCODE = B.CODE   ");
-            parameter.AppendSql("      INNER JOIN   ");
-            parameter.AppendSql("      (");
-            parameter.AppendSql("      SELECT MAX(D.WRTNO) as WRTNO, B.ID, B.WORKER_ID, C.PANO FROM HIC_OSHA_REPORT_DOCTOR A   ");
-            parameter.AppendSql("      INNER JOIN HIC_OSHA_HEALTHCHECK B   ");
-            parameter.AppendSql("      ON A.ID = B.REPORT_ID   ");
-            parameter.AppendSql("      INNER JOIN HC_SITE_WORKER_VIEW C   ");
-            parameter.AppendSql("      ON B.WORKER_ID = C.ID   ");
-            parameter.AppendSql("      INNER JOIN HIC_JEPSU D   ");
-            parameter.AppendSql("      ON C.PANO = D.PANO   ");
-            parameter.AppendSql("      WHERE A.ID = :ID   ");
-            parameter.AppendSql("   AND D.JEPDATE >= :JEPDATE   ");
-            parameter.AppendSql("   AND B.ISDELETED = 'N'   ");
-            parameter.AppendSql("   AND D.deldate is NUll   ");
-            parameter.AppendSql("   AND D.ltdcode is not null   ");
-            parameter.AppendSql("   AND D.GBINWON IN('21','22','23','31','32','64','65','66','67','68')   ");
-            parameter.AppendSql("   AND D.GjJong IN('11','12','14','41','42','23')     ");
-            parameter.AppendSql("      GROUP BY B.ID, B.WORKER_ID, C.PANO   ");
-            parameter.AppendSql("      ) C   ");
-            parameter.AppendSql("      ON A.WRTNO = C.WRTNO   ");
-            parameter.AppendSql("      WHERE A.DELDATE IS NULL   ");
-            parameter.AppendSql("      AND B.TongBun <> '16'   ");
-            parameter.AppendSql("      GROUP BY B.TONGBUN   ");
-            parameter.AppendSql("      ORDER BY B.TONGBUN   ");
+            parameter.AppendSql("SELECT B.TONGBUN, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENG, '5', '1', '0')) D1,SUM(DECODE(PANJENG, '6', '1', '0')) D2, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENG, '3', '1', '0')) C1,SUM(DECODE(PANJENG, '7', '1', '0')) 미판정1, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENG, '9', '1', '0')) 미판정2,SUM(DECODE(PANJENG, 'A', '1', '0')) 미판정3 ");
+            parameter.AppendSql("  FROM ADMIN.HIC_SPC_PANJENG A ");
+            parameter.AppendSql("       RIGHT OUTER JOIN ADMIN.HIC_MCODE B ");
+            parameter.AppendSql("             ON A.MCODE = B.CODE ");
+            parameter.AppendSql("      INNER JOIN (");
+            parameter.AppendSql("            SELECT MAX(D.WRTNO) as WRTNO, B.ID, B.WORKER_ID, C.PANO "); 
+            parameter.AppendSql("              FROM HIC_OSHA_REPORT_DOCTOR A ");
+            parameter.AppendSql("                   INNER JOIN HIC_OSHA_HEALTHCHECK B  ");
+            parameter.AppendSql("                         ON A.ID = B.REPORT_ID  ");
+            parameter.AppendSql("                   INNER JOIN HC_SITE_WORKER_VIEW C ");
+            parameter.AppendSql("                         ON B.WORKER_ID = C.ID  ");
+            parameter.AppendSql("                   INNER JOIN HIC_JEPSU D   ");
+            parameter.AppendSql("                         ON C.PANO = D.PANO   ");
+            parameter.AppendSql("             WHERE A.ID = :ID   ");
+            parameter.AppendSql("               AND D.JEPDATE >= :JEPDATE   ");
+            parameter.AppendSql("               AND B.ISDELETED = 'N'   ");
+            parameter.AppendSql("               AND D.deldate is NUll   ");
+            parameter.AppendSql("               AND D.ltdcode is not null   ");
+            parameter.AppendSql("               AND D.GBINWON IN('21','22','23','31','32','64','65','66','67','68')   ");
+            parameter.AppendSql("               AND D.GjJong IN('11','12','14','41','42','23')     ");
+            parameter.AppendSql("               AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("               AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("               AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("               AND D.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("             GROUP BY B.ID, B.WORKER_ID, C.PANO   ");
+            parameter.AppendSql("      ) C ");
+            parameter.AppendSql("        ON A.WRTNO = C.WRTNO  ");
+            parameter.AppendSql("WHERE A.DELDATE IS NULL ");
+            parameter.AppendSql("  AND B.TongBun <> '16' ");
+            parameter.AppendSql("GROUP BY B.TONGBUN ");
+            parameter.AppendSql("ORDER BY B.TONGBUN ");
 
             parameter.Add("ID", id);
             parameter.Add("JEPDATE", JEPDATE);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<SandDamTongbun>(parameter);
         }
@@ -119,63 +135,69 @@ namespace HC_OSHA.Repository.StatusReport
             }
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT SUM(DECODE(PANJENGU1,'1','1','0'))       AS PANJENGU1                      ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR3, '1', '1', '0'))    AS PANJENGR3                      ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGU2, '1', '1', '0'))    AS PANJENGU2                      ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR6, '1', '1', '0'))    AS PANJENGR6                      ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGU3, '1', '1', '0'))    AS PANJENGU3                      ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR4, '1', '1', '0'))    AS PANJENGR4                      ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR5, '1','1','0'))      AS PANJENGR5                      ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR1, '1', '1', '0'))    AS ETC_C1                         ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR2, '1', '1', '0'))    AS ETC_C2                         ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR5, '1', '1', '0'))    AS ETC_C3                         ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR7, '1', '1', '0'))    AS ETC_C4                         ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR8, '1', '1', '0'))    AS ETC_C5                         ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR9, '1', '1', '0'))    AS ETC_C6                         ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR12, '1', '1', '0'))   AS ETC_C7                         ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR11, '1', '1', '0'))   AS ETC_C8                         ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGR10, '1', '1', '0'))   AS ETC_C9                         ");
-            parameter.AppendSql("     , SUM(DECODE(PANJENGU4, '1', '1', '0'))    AS ETC_D1                         ");
-            parameter.AppendSql("  FROM ADMIN.HIC_RES_BOHUM1 A                                               ");
-            parameter.AppendSql("  INNER JOIN                                                                      ");
-            parameter.AppendSql("  (                                                                               ");
-            parameter.AppendSql("        SELECT MAX(D.WRTNO) AS WRTNO                                              ");
-            parameter.AppendSql("             , B.ID                                                               ");
-            parameter.AppendSql("             , B.WORKER_ID                                                        ");
-            parameter.AppendSql("             , C.PANO                                                             ");
-            parameter.AppendSql("          FROM " + tableName + " A                                                 ");
-            parameter.AppendSql("          INNER JOIN HIC_OSHA_HEALTHCHECK B                                       ");
-            parameter.AppendSql("                  ON A.ID = B.REPORT_ID                                           ");
-            parameter.AppendSql("          INNER JOIN HC_SITE_WORKER_VIEW C                                        ");
-            parameter.AppendSql("                  ON B.WORKER_ID = C.ID                                           ");
-            parameter.AppendSql("          INNER JOIN HIC_JEPSU D                                                  ");
-            parameter.AppendSql("                  ON C.PANO = D.PANO                                              ");
-            parameter.AppendSql("         WHERE A.ID         = :ID                                                 ");
-            parameter.AppendSql("           AND D.JEPDATE    >= :JEPDATE                                           ");
-            parameter.AppendSql("           AND B.ISDELETED  = 'N'                                                 ");
-            parameter.AppendSql("           AND D.DELDATE    IS NULL                                               ");
-            parameter.AppendSql("           AND D.LTDCODE    IS NOT NULL                                           ");
-            parameter.AppendSql("           AND D.GBINWON    IN ('21','22','23','31','32','64','65','66','67','68')");
-            parameter.AppendSql("           AND D.GJJONG     IN ('11','12','14','41','42','23')                    ");
-            parameter.AppendSql("        GROUP BY B.ID, B.WORKER_ID, C.PANO                                        ");
-            parameter.AppendSql("  ) B                                                                             ");
-            parameter.AppendSql("  ON A.WRTNO = B.WRTNO                                                            ");
+            parameter.AppendSql("SELECT SUM(DECODE(PANJENGU1,'1','1','0'))       AS PANJENGU1, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR3, '1', '1', '0'))    AS PANJENGR3, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGU2, '1', '1', '0'))    AS PANJENGU2, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR6, '1', '1', '0'))    AS PANJENGR6, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGU3, '1', '1', '0'))    AS PANJENGU3, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR4, '1', '1', '0'))    AS PANJENGR4, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR5, '1','1','0'))      AS PANJENGR5, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR1, '1', '1', '0'))    AS ETC_C1, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR2, '1', '1', '0'))    AS ETC_C2, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR5, '1', '1', '0'))    AS ETC_C3, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR7, '1', '1', '0'))    AS ETC_C4, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR8, '1', '1', '0'))    AS ETC_C5, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR9, '1', '1', '0'))    AS ETC_C6, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR12, '1', '1', '0'))   AS ETC_C7, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR11, '1', '1', '0'))   AS ETC_C8, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGR10, '1', '1', '0'))   AS ETC_C9, ");
+            parameter.AppendSql("       SUM(DECODE(PANJENGU4, '1', '1', '0'))    AS ETC_D1, ");
+            parameter.AppendSql("  FROM ADMIN.HIC_RES_BOHUM1 A ");
+            parameter.AppendSql("       INNER JOIN ( ");
+            parameter.AppendSql("             SELECT MAX(D.WRTNO) AS WRTNO,B.ID,B.WORKER_ID,C.PANO ");
+            parameter.AppendSql("               FROM " + tableName + " A ");
+            parameter.AppendSql("                    INNER JOIN HIC_OSHA_HEALTHCHECK B ");
+            parameter.AppendSql("                          ON A.ID = B.REPORT_ID ");
+            parameter.AppendSql("                    INNER JOIN HC_SITE_WORKER_VIEW C ");
+            parameter.AppendSql("                          ON B.WORKER_ID = C.ID ");
+            parameter.AppendSql("                    INNER JOIN HIC_JEPSU D ");
+            parameter.AppendSql("                          ON C.PANO = D.PANO ");
+            parameter.AppendSql("              WHERE A.ID         = :ID ");
+            parameter.AppendSql("                AND D.JEPDATE    >= :JEPDATE ");
+            parameter.AppendSql("                AND B.ISDELETED  = 'N' ");
+            parameter.AppendSql("                AND D.DELDATE    IS NULL ");
+            parameter.AppendSql("                AND D.LTDCODE    IS NOT NULL ");
+            parameter.AppendSql("                AND D.GBINWON    IN ('21','22','23','31','32','64','65','66','67','68') ");
+            parameter.AppendSql("                AND D.GJJONG     IN ('11','12','14','41','42','23') ");
+            parameter.AppendSql("                AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                AND D.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("              GROUP BY B.ID, B.WORKER_ID, C.PANO ");
+            parameter.AppendSql("       ) B ");
+            parameter.AppendSql("         ON A.WRTNO = B.WRTNO ");
 
             parameter.Add("ID", id);
             parameter.Add("JEPDATE", JEPDATE);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             SangDamGeneralCountModel model = ExecuteReaderSingle<SangDamGeneralCountModel>(parameter);
 
             parameter = CreateParameter();
-            parameter.AppendSql("     select count(*) from (    SELECT COUNT(B.WORKER_ID) as COUNT FROM HIC_OSHA_REPORT_DOCTOR A  ");
-            parameter.AppendSql(" INNER JOIN HIC_OSHA_HEALTHCHECK B      ");
-            parameter.AppendSql(" ON A.ID = B.REPORT_ID                  ");
-            parameter.AppendSql(" WHERE B.REPORT_ID = :ID                 ");
-            parameter.AppendSql(" AND B.ISDELETED = 'N'                   ");
-            parameter.AppendSql(" AND B.ISDOCTOR = 'Y'                   ");
-            parameter.AppendSql(" AND A.ISDELETED = 'N'                   ");
-            parameter.AppendSql(" GROUP BY B.WORKER_ID           )           ");
+            parameter.AppendSql("SELECT count(*) from ( ");
+            parameter.AppendSql("       SELECT COUNT(B.WORKER_ID) as COUNT ");
+            parameter.AppendSql("         FROM HIC_OSHA_REPORT_DOCTOR A ");
+            parameter.AppendSql("              INNER JOIN HIC_OSHA_HEALTHCHECK B ");
+            parameter.AppendSql("                    ON A.ID = B.REPORT_ID ");
+            parameter.AppendSql("        WHERE B.REPORT_ID = :ID ");
+            parameter.AppendSql("          AND B.ISDELETED = 'N' ");
+            parameter.AppendSql("          AND B.ISDOCTOR = 'Y'  ");
+            parameter.AppendSql("          AND A.ISDELETED = 'N' ");
+            parameter.AppendSql("          AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("          AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("        GROUP BY B.WORKER_ID ) ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             long count = ExecuteScalar<long>(parameter);
             model.SANGDAMCOUNT = count;
 
@@ -185,10 +207,13 @@ namespace HC_OSHA.Repository.StatusReport
         public List<HealthCheckDto> FindSangDamExamCount(long reportId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT WORKER_ID, bpl, bpr, bst, dan, WEIGHT, BMI, ALCHOL, SMOKE FROM HIC_OSHA_HEALTHCHECK A  ");
-            parameter.AppendSql(" WHERE REPORT_ID = :ID                 ");
-            parameter.AppendSql(" AND ISDELETED = 'N'                   ");
-            parameter.AppendSql(" AND ISDOCTOR = 'Y'                   ");
+            parameter.AppendSql(" SELECT WORKER_ID, bpl, bpr, bst, dan, WEIGHT, BMI, ALCHOL, SMOKE ");
+            parameter.AppendSql("   FROM HIC_OSHA_HEALTHCHECK A  ");
+            parameter.AppendSql("  WHERE REPORT_ID = :ID ");
+            parameter.AppendSql("    AND ISDELETED = 'N' ");
+            parameter.AppendSql("    AND ISDOCTOR = 'Y'  ");
+            parameter.AppendSql("    AND SWLICENSE = :SWLICENSE ");
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HealthCheckDto>(parameter);
         }
 
@@ -200,24 +225,29 @@ namespace HC_OSHA.Repository.StatusReport
         public SangDamExamCountModel FindSangDamExamCount2(long reportId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT sum(decode(bpl,null, 0, 1)) as BpCount ,  sum(decode(bst, null, 0, 1)) AS BstCount, sum(decode(dan, null, 0, 1)) AS DanCount, sum(decode(BMI, null, 0, 1)) as BMICount ");
-            parameter.AppendSql(" FROM HIC_OSHA_HEALTHCHECK ");
-            parameter.AppendSql(" WHERE REPORT_ID = :ID                 ");
-            parameter.AppendSql(" AND ISDELETED = 'N'                   ");
-            parameter.AppendSql(" AND ISDOCTOR = 'Y'                   ");
-            parameter.Add("ID", reportId); 
+            parameter.AppendSql("SELECT sum(decode(bpl,null, 0, 1)) as BpCount,sum(decode(bst, null, 0, 1)) AS BstCount, ");
+            parameter.AppendSql("        sum(decode(dan, null, 0, 1)) AS DanCount,sum(decode(BMI, null, 0, 1)) as BMICount ");
+            parameter.AppendSql("  FROM HIC_OSHA_HEALTHCHECK ");
+            parameter.AppendSql("WHERE REPORT_ID = :ID  ");
+            parameter.AppendSql("  AND ISDELETED = 'N'  ");
+            parameter.AppendSql("  AND ISDOCTOR = 'Y'   ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
+            parameter.Add("ID", reportId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReaderSingle<SangDamExamCountModel>(parameter);
         }
         public List<SangDamOutExamCountModel> FindSangDamOutExamCount(long reportId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT NAME, EXAM ");
-            parameter.AppendSql(" FROM HIC_OSHA_HEALTHCHECK ");
-            parameter.AppendSql(" WHERE REPORT_ID = :ID                 ");
-            parameter.AppendSql(" AND ISDELETED = 'N'                   ");
-            parameter.AppendSql(" AND ISDOCTOR = 'Y'                   ");
-            parameter.AppendSql(" AND EXAM IS NOT NULL                   ");
+            parameter.AppendSql("SELECT NAME, EXAM ");
+            parameter.AppendSql("  FROM HIC_OSHA_HEALTHCHECK ");
+            parameter.AppendSql(" WHERE REPORT_ID = :ID ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND ISDOCTOR = 'Y'  ");
+            parameter.AppendSql("   AND EXAM IS NOT NULL ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", reportId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<SangDamOutExamCountModel>(parameter);
         }
@@ -225,32 +255,42 @@ namespace HC_OSHA.Repository.StatusReport
         public List<SangDamVitalCountModel> FindSangDamVital(long reportId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("            SELECT COUNT(*) COUNT FROM HIC_OSHA_HEALTHCHECK        "); 
-            parameter.AppendSql("WHERE REPORT_ID = :ID                                              ");
-            parameter.AppendSql("AND ISDELETED = 'N'                                                ");
-            parameter.AppendSql("UNION ALL                                                          ");
-            parameter.AppendSql("SELECT COUNT(*) BPCOUNT FROM HIC_OSHA_HEALTHCHECK                  ");
-            parameter.AppendSql("WHERE REPORT_ID =:ID                                              ");
-            parameter.AppendSql("AND ISDELETED = 'N'                                                ");
-            parameter.AppendSql("AND(BPL IS NOT NULL OR BPR IS NOT NULL)                            ");
-            parameter.AppendSql("UNION ALL                                                          ");
-            parameter.AppendSql("SELECT COUNT(*) BSTCOUNT FROM HIC_OSHA_HEALTHCHECK                 ");
-            parameter.AppendSql("WHERE REPORT_ID =:ID                                               ");
-            parameter.AppendSql("AND ISDELETED = 'N'                                                ");
-            parameter.AppendSql("AND BST IS NOT NULL                                                ");
-            parameter.AppendSql("UNION ALL                                                          ");
-            parameter.AppendSql("SELECT COUNT(*) DANCOUNT FROM HIC_OSHA_HEALTHCHECK                 ");
-            parameter.AppendSql("WHERE REPORT_ID = :ID                                               ");
-            parameter.AppendSql("AND ISDELETED = 'N'                                                ");
-            parameter.AppendSql("AND DAN IS NOT NULL                                                ");
-            parameter.AppendSql("UNION ALL                                                          ");
-            parameter.AppendSql("SELECT COUNT(*) BMICOUNT FROM HIC_OSHA_HEALTHCHECK                 ");
-            parameter.AppendSql("WHERE REPORT_ID =:ID                                              ");
-            parameter.AppendSql("AND ISDELETED = 'N'                                                ");
-            parameter.AppendSql("AND BMI IS NOT NULL"                               );
+            parameter.AppendSql("SELECT COUNT(*) COUNT ");
+            parameter.AppendSql("  FROM HIC_OSHA_HEALTHCHECK "); 
+            parameter.AppendSql(" WHERE REPORT_ID = :ID ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("UNION ALL ");
+            parameter.AppendSql("SELECT COUNT(*) BPCOUNT ");
+            parameter.AppendSql("  FROM HIC_OSHA_HEALTHCHECK ");
+            parameter.AppendSql(" WHERE REPORT_ID =:ID ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND (BPL IS NOT NULL OR BPR IS NOT NULL) ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("UNION ALL ");
+            parameter.AppendSql("SELECT COUNT(*) BSTCOUNT ");
+            parameter.AppendSql("  FROM HIC_OSHA_HEALTHCHECK ");
+            parameter.AppendSql(" WHERE REPORT_ID =:ID ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND BST IS NOT NULL ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("UNION ALL ");
+            parameter.AppendSql("SELECT COUNT(*) DANCOUNT ");
+            parameter.AppendSql("  FROM HIC_OSHA_HEALTHCHECK ");
+            parameter.AppendSql(" WHERE REPORT_ID = :ID ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND DAN IS NOT NULL ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("UNION ALL ");
+            parameter.AppendSql("SELECT COUNT(*) BMICOUNT ");
+            parameter.AppendSql("  FROM HIC_OSHA_HEALTHCHECK ");
+            parameter.AppendSql(" WHERE REPORT_ID =:ID ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND BMI IS NOT NULL ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", reportId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<SangDamVitalCountModel>(parameter);
         }
- 
-    }
+     }
 }

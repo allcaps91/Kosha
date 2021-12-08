@@ -1,4 +1,5 @@
-﻿using ComBase.Mvc;
+﻿using ComBase;
+using ComBase.Mvc;
 using ComBase.Controls;
 using HC_OSHA.Model.Schedule;
 using System;
@@ -27,7 +28,7 @@ namespace HC_OSHA.Repository.Schedule
             parameter.AppendSql("             , A.VISITMANAGERID AS VISITUSERID2                                            ");
             parameter.AppendSql("             , C.NAME AS ViSITUSERNAME2                                                    ");
             parameter.AppendSql("             , C.ROLE AS VISITUSERROLE2                                                    ");
-            parameter.AppendSql("          FROM ADMIN.HIC_OSHA_SCHEDULE A                                             ");
+            parameter.AppendSql("          FROM ADMIN.HIC_OSHA_SCHEDULE A                                                   ");
             parameter.AppendSql("          INNER JOIN HC_SITE_VIEW AA                                                       ");
             parameter.AppendSql("                  ON A.SITE_ID = AA.ID                                                     ");
             parameter.AppendSql("          LEFT OUTER JOIN HIC_USERS B                                                      ");
@@ -36,7 +37,10 @@ namespace HC_OSHA.Repository.Schedule
             parameter.AppendSql("                       ON A.VISITMANAGERID = C.USERID                                      ");
             parameter.AppendSql("         WHERE A.ISDELETED = 'N'                                                           ");
             parameter.AppendSql("           AND TO_CHAR(A.VISITRESERVEDATE,'YYYY-MM') = :MONTH                              ");
-
+            parameter.AppendSql("           AND A.SWLICENSE = :SWLICENSE1                                                   ");
+            parameter.AppendSql("           AND AA.SWLICENSE = :SWLICENSE2                                                  ");
+            parameter.AppendSql("           AND B.SWLICENSE = :SWLICENSE3                                                   ");
+            parameter.AppendSql("           AND C.SWLICENSE = :SWLICENSE4                                                   ");
             if (siteId > 0)
             {
                 parameter.AppendSql(" AND AA.ID = :SITEID ");
@@ -57,12 +61,21 @@ namespace HC_OSHA.Repository.Schedule
             parameter.AppendSql("                     , SITE_ID                                                             ");
             parameter.AppendSql("                  FROM HIC_OSHA_MAIL_SEND                                                  ");
             parameter.AppendSql("                 WHERE SEND_TYPE = 'VISIT'                                                 ");
-            parameter.AppendSql("          ) A LEFT OUTER JOIN HIC_USERS B                                                   ");
-            parameter.AppendSql("                           ON A.SEND_USER = TRIM(B.USERID)                                  ");
+            parameter.AppendSql("                   AND SWLICENSE = :SWLICENSE5                                             ");
+            parameter.AppendSql("          ) A LEFT OUTER JOIN HIC_USERS B                                                  ");
+            parameter.AppendSql("                           ON A.SEND_USER = TRIM(B.USERID)                                 ");
             parameter.AppendSql("         WHERE NUM = 1                                                                     ");
+            parameter.AppendSql("           AND B.SWLICENSE = :SWLICENSE6                                                   ");
             parameter.AppendSql("  ) B ON A.SITEID = B.SITE_ID                                                              ");
 
             parameter.Add("MONTH", month);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE3", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE4", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE5", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE6", clsType.HosInfo.SwLicense);
+
             return ExecuteReader<VisitDocumentModel>(parameter);
         }
 

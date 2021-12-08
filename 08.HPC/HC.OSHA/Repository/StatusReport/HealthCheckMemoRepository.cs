@@ -1,4 +1,5 @@
 ﻿using ComBase.Controls;
+using ComBase;
 using ComBase.Mvc;
 using ComBase.Mvc.Utils;
 using HC.Core.Dto;
@@ -23,9 +24,11 @@ namespace HC.OSHA.Repository.StatusReport
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT  *  ");
             parameter.AppendSql("  FROM HIC_OSHA_PATIENT_MEMO A");
-            parameter.AppendSql(" WHERE A.ID = :ID");
+            parameter.AppendSql(" WHERE A.ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             HIC_OSHA_PATIENT_MEMO dto = ExecuteReaderSingle<HIC_OSHA_PATIENT_MEMO>(parameter);
             return dto;
         }
@@ -33,34 +36,42 @@ namespace HC.OSHA.Repository.StatusReport
         public List<HIC_OSHA_PATIENT_MEMO> FindAll(string workerId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT  A.*, to_char(A.Created, 'YYYY-MM-dd') as WRITEDATE, B.name as WriteName  ");
+            parameter.AppendSql("SELECT  A.*, to_char(A.Created, 'YYYY-MM-dd') as WRITEDATE, B.name as WriteName ");
             parameter.AppendSql("  FROM HIC_OSHA_PATIENT_MEMO A ");
             parameter.AppendSql("  INNER JOIN HIC_USERS B ");
             parameter.AppendSql("  ON A.CREATEDUSER = B.USERID ");
-            
-            parameter.AppendSql(" WHERE A.WORKER_ID = :WORKER_ID");
+            parameter.AppendSql(" WHERE A.WORKER_ID = :WORKER_ID ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE1 ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE2 ");
             parameter.AppendSql(" ORDER BY A.CREATED  DESC ");
             parameter.Add("WORKER_ID", workerId);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
             return  ExecuteReader<HIC_OSHA_PATIENT_MEMO>(parameter);
         }
 
         public List<HIC_OSHA_PATIENT_REMARK> FindRemarkAll(string workerId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.ID                                         ");
-            parameter.AppendSql("     , A.SITE_ID                                    ");
-            parameter.AppendSql("     , A.WORKER_ID                                  ");
-            parameter.AppendSql("     , A.REMARK                                     ");
-            parameter.AppendSql("     , TO_CHAR(A.CREATED, 'YYYY-MM-dd') AS WRITEDATE");
-            parameter.AppendSql("     , A.CREATEDUSER                                ");
-            parameter.AppendSql("     , B.NAME AS WRITENAME                          ");
-            parameter.AppendSql("  FROM HIC_OSHA_PATIENT_REMARK A                    ");
-            parameter.AppendSql("  INNER JOIN HIC_USERS B                            ");
-            parameter.AppendSql("          ON A.CREATEDUSER = B.USERID               ");
-            parameter.AppendSql(" WHERE A.WORKER_ID = :WORKER_ID                     ");
-            parameter.AppendSql("ORDER BY A.CREATED  DESC                            ");
+            parameter.AppendSql("SELECT A.ID                                           ");
+            parameter.AppendSql("     , A.SITE_ID                                      ");
+            parameter.AppendSql("     , A.WORKER_ID                                    ");
+            parameter.AppendSql("     , A.REMARK                                       ");
+            parameter.AppendSql("     , TO_CHAR(A.CREATED, 'YYYY-MM-dd') AS WRITEDATE  ");
+            parameter.AppendSql("     , A.CREATEDUSER                                  ");
+            parameter.AppendSql("     , B.NAME AS WRITENAME                            ");
+            parameter.AppendSql("  FROM HIC_OSHA_PATIENT_REMARK A                      ");
+            parameter.AppendSql("  INNER JOIN HIC_USERS B                              ");
+            parameter.AppendSql("          ON A.CREATEDUSER = B.USERID                 ");
+            parameter.AppendSql(" WHERE A.WORKER_ID = :WORKER_ID                       ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE1                      ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE2                      ");
+            parameter.AppendSql("ORDER BY A.CREATED  DESC                              ");
 
             parameter.Add("WORKER_ID", workerId);
+            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+
             return ExecuteReader<HIC_OSHA_PATIENT_REMARK>(parameter);
         }
 
@@ -68,8 +79,10 @@ namespace HC.OSHA.Repository.StatusReport
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("DELETE FROM HIC_OSHA_PATIENT_MEMO   ");
-            parameter.AppendSql("WHERE ID = :ID             ");
+            parameter.AppendSql("WHERE ID = :ID               ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Delete("HIC_OSHA_PATIENT_MEMO", id);
@@ -87,18 +100,20 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , MEMO                           ");
             parameter.AppendSql("  , CREATED                        ");
             parameter.AppendSql("  , CREATEDUSER                    ");
+            parameter.AppendSql("  , SWLICENSE                      ");
             parameter.AppendSql(") VALUES (                         ");
             parameter.AppendSql("    :ID                            ");
             parameter.AppendSql("  , :WORKER_ID                     ");
             parameter.AppendSql("  , :MEMO                          ");
             parameter.AppendSql("  , SYSTIMESTAMP                   ");
             parameter.AppendSql("  , :CREATEDUSER                   ");
+            parameter.AppendSql("  , :SWLICENSE                     ");
             parameter.AppendSql(")                                  ");
 
             parameter.Add("ID", item.ID);
             parameter.Add("WORKER_ID", item.WORKER_ID);
             parameter.Add("MEMO", item.MEMO);
-          
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (item.CREATEDUSER.IsNullOrEmpty())
             {
                 parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
@@ -119,7 +134,7 @@ namespace HC.OSHA.Repository.StatusReport
             item.ID = GetSequenceNextVal("HIC_OSHA_PATIENT_REMARK_SEQ");
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO HIC_OSHA_PATIENT_REMARK");
+            parameter.AppendSql("INSERT INTO HIC_OSHA_PATIENT_REMARK ");
             parameter.AppendSql("(                                  ");
             parameter.AppendSql("    ID                             ");
             parameter.AppendSql("  , SITE_ID                        ");
@@ -127,6 +142,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , REMARK                         ");
             parameter.AppendSql("  , CREATED                        ");
             parameter.AppendSql("  , CREATEDUSER                    ");
+            parameter.AppendSql("  , SWLICENSE                      ");
             parameter.AppendSql(") VALUES (                         ");
             parameter.AppendSql("    :ID                            ");
             parameter.AppendSql("  , :SITE_ID                       ");
@@ -134,12 +150,14 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , :REMARK                        ");
             parameter.AppendSql("  , SYSTIMESTAMP                   ");
             parameter.AppendSql("  , :CREATEDUSER                   ");
+            parameter.AppendSql("  , :SWLICENSE                     ");
             parameter.AppendSql(")                                  ");
 
             parameter.Add("ID", item.ID);
             parameter.Add("SITE_ID", item.SITE_ID);
             parameter.Add("WORKER_ID", item.WORKER_ID);
             parameter.Add("REMARK", item.REMARK);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             if (item.CREATEDUSER.IsNullOrEmpty())
             {
@@ -162,8 +180,10 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("SELECT *                           ");
             parameter.AppendSql("  FROM HIC_OSHA_PATIENT_REMARK A   ");
             parameter.AppendSql(" WHERE A.ID = :ID                  ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             HIC_OSHA_PATIENT_REMARK dto = ExecuteReaderSingle<HIC_OSHA_PATIENT_REMARK>(parameter);
             return dto;
         }
@@ -173,8 +193,9 @@ namespace HC.OSHA.Repository.StatusReport
             MParameter parameter = CreateParameter();
             parameter.AppendSql("DELETE FROM HIC_OSHA_PATIENT_REMARK   ");
             parameter.AppendSql("WHERE ID = :ID             ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
-
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Delete("HIC_OSHA_PATIENT_REMARK", id);
         }
@@ -186,9 +207,11 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("   SET REMARK      = ''            ");
             parameter.AppendSql("     , CREATEDUSER = :CREATEDUSER  ");
             parameter.AppendSql(" WHERE ID = :ID                    ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", memoDto.ID);
             parameter.Add("CREATEDUSER", memoDto.WORKER_ID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Update("HIC_OSHA_PATIENT_MEMO", memoDto.ID);

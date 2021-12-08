@@ -1,4 +1,5 @@
-﻿using ComBase.Mvc;
+﻿using ComBase;
+using ComBase.Mvc;
 using HC.Core.Dto;
 using HC.Core.Service;
 using HC.OSHA.Dto;
@@ -17,10 +18,11 @@ namespace HC.OSHA.Repository.StatusReport
         public StatusReportNurseDto FindOne(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT * FROM HIC_OSHA_REPORT_NURSE    ");
-            parameter.AppendSql("WHERE ID = :ID");
-      
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_REPORT_NURSE ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             SiteStatusDto siteStatusdto = ExecuteReaderSingle<SiteStatusDto>(parameter);
 
@@ -36,13 +38,15 @@ namespace HC.OSHA.Repository.StatusReport
         public void UpdateSign(long id, string base64Image)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_REPORT_NURSE");
-            parameter.AppendSql("    SET ");
-            parameter.AppendSql("       SITEMANAGERSIGN = :SITEMANAGERSIGN");
+            parameter.AppendSql("UPDATE HIC_OSHA_REPORT_NURSE ");
+            parameter.AppendSql("   SET SITEMANAGERSIGN = :SITEMANAGERSIGN ");
             parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
             parameter.Add("SITEMANAGERSIGN", base64Image);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
             ExecuteNonQuery(parameter);
 
             DataSyncService.Instance.Update("HIC_OSHA_REPORT_NURSE", id);
@@ -51,27 +55,32 @@ namespace HC.OSHA.Repository.StatusReport
         public void UpdateSangdamSign(long id, string base64Image)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_REPORT_NURSE");
-            parameter.AppendSql("    SET ");
-            parameter.AppendSql("       SANGDAMSIGN = :SANGDAMSIGN");
+            parameter.AppendSql("UPDATE HIC_OSHA_REPORT_NURSE ");
+            parameter.AppendSql("   SET SANGDAMSIGN = :SANGDAMSIGN ");
             parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
             parameter.Add("SANGDAMSIGN", base64Image);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
             ExecuteNonQuery(parameter);
-
-
             DataSyncService.Instance.Update("HIC_OSHA_REPORT_NURSE", id);
         }
         public StatusReportNurseDto FindLast(long siteId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT* FROM HIC_OSHA_REPORT_NURSE ");
-            parameter.AppendSql("WHERE SITE_ID = :SITE_ID AND VISITDATE = (SELECT MAX(VISITDATE) FROM HIC_OSHA_REPORT_NURSE    ");
-            parameter.AppendSql("                                     WHERE SITE_ID = :SITE_ID AND ISDELETED = 'N' )    ");
-            parameter.AppendSql("AND ISDELETED = 'N'    ");
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_REPORT_NURSE ");
+            parameter.AppendSql(" WHERE SITE_ID = :SITE_ID ");
+            parameter.AppendSql("   AND VISITDATE = (SELECT MAX(VISITDATE) FROM HIC_OSHA_REPORT_NURSE ");
+            parameter.AppendSql("                     WHERE SITE_ID = :SITE_ID ");
+            parameter.AppendSql("                       AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                       AND ISDELETED = 'N' ) ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("SITE_ID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             SiteStatusDto siteStatusdto = ExecuteReaderSingle<SiteStatusDto>(parameter);
 
@@ -88,14 +97,19 @@ namespace HC.OSHA.Repository.StatusReport
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT A.ID, To_DATE(A.VISITDATE, 'YYYY-MM-DD') AS VISITDATE, B.NAME, SUBSTR(A.VISITDATE,0,4)  AS VISITYEAR FROM HIC_OSHA_REPORT_NURSE A   ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                   ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = B.USERID                ");
-            parameter.AppendSql("WHERE A.SITE_ID = :SITE_ID                     ");
-            parameter.AppendSql("AND A.ISDELETED = 'N'                         ");
-            parameter.AppendSql("ORDER BY A.VISITDATE DESC          ");
+            parameter.AppendSql("SELECT A.ID, To_DATE(A.VISITDATE, 'YYYY-MM-DD') AS VISITDATE, B.NAME, ");
+            parameter.AppendSql("       SUBSTR(A.VISITDATE,0,4)  AS VISITYEAR ");
+            parameter.AppendSql("  FROM HIC_OSHA_REPORT_NURSE A ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS B ");
+            parameter.AppendSql("             ON A.MODIFIEDUSER = B.USERID ");
+            parameter.AppendSql(" WHERE A.SITE_ID = :SITE_ID ");
+            parameter.AppendSql("   AND A.ISDELETED = 'N' ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" ORDER BY A.VISITDATE DESC ");
 
             parameter.Add("SITE_ID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<VisitDateModel>(parameter);
 
@@ -104,14 +118,16 @@ namespace HC.OSHA.Repository.StatusReport
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT VISITDATE, ID FROM HIC_OSHA_REPORT_NURSE                      ");
-            parameter.AppendSql("WHERE SITE_ID = :SITE_ID                      ");
-            parameter.AppendSql("AND ISDELETED = 'N'                      ");
-            parameter.AppendSql("AND SUBSTR(VISITDATE,0,4) = :YEAR                      ");
-            parameter.AppendSql("ORDER BY VISITDATE DESC                      ");
+            parameter.AppendSql("SELECT VISITDATE, ID FROM HIC_OSHA_REPORT_NURSE ");
+            parameter.AppendSql(" WHERE SITE_ID = :SITE_ID ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND SUBSTR(VISITDATE,0,4) = :YEAR ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" ORDER BY VISITDATE DESC ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("YEAR", year);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<VisitDateModel>(parameter);
 
@@ -119,20 +135,20 @@ namespace HC.OSHA.Repository.StatusReport
         public List<VisitDateModel> FindVisitDate(long siteId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT VISITDATE, ID FROM HIC_OSHA_REPORT_NURSE    ");
-            parameter.AppendSql("WHERE SITE_ID = :SITE_ID");
-            parameter.AppendSql("AND ISDELETED = 'N' ");
+            parameter.AppendSql("SELECT VISITDATE, ID FROM HIC_OSHA_REPORT_NURSE ");
+            parameter.AppendSql(" WHERE SITE_ID = :SITE_ID ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("SITE_ID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<VisitDateModel>(parameter);
-
         }
 
         public StatusReportNurseDto Update(StatusReportNurseDto dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_REPORT_NURSE");
-            parameter.AppendSql("    SET ");
+            parameter.AppendSql("UPDATE HIC_OSHA_REPORT_NURSE SET ");
             parameter.AppendSql("       CURRENTWORKERCOUNT = :CURRENTWORKERCOUNT");
             parameter.AppendSql("      , SITENAME = :SITENAME");
             parameter.AppendSql("      , EXTDATA = :EXTDATA");
@@ -169,8 +185,9 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("      , ISDELETED = :ISDELETED");
             parameter.AppendSql("      , MODIFIED = SYSTIMESTAMP");
             parameter.AppendSql("      , MODIFIEDUSER = :MODIFIEDUSER");
-            parameter.AppendSql("      , DEPTNAME = :DEPTNAME");
+            parameter.AppendSql("      , DEPTNAME = :DEPTNAME ");
             parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", dto.ID);
             parameter.Add("CURRENTWORKERCOUNT", dto.SiteStatusDto.CURRENTWORKERCOUNT);
@@ -210,6 +227,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.Add("ISDELETED", dto.ISDELETED);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("DEPTNAME", dto.SiteStatusDto.DEPTNAME);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
@@ -229,11 +247,14 @@ namespace HC.OSHA.Repository.StatusReport
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("UPDATE HIC_OSHA_REPORT_NURSE ");
-            parameter.AppendSql("SET ID = :newId ");
-            parameter.AppendSql("WHERE ID = :oldId ");
+            parameter.AppendSql("   SET ID = :newId ");
+            parameter.AppendSql(" WHERE ID = :oldId ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("newId", newId);
             parameter.Add("oldId", oldId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
             ExecuteNonQuery(parameter);
         }
         public StatusReportNurseDto Insert(StatusReportNurseDto dto)
@@ -241,8 +262,7 @@ namespace HC.OSHA.Repository.StatusReport
             dto.ID = GetSequenceNextVal("HC_OSHA_REPORT_ID_SEQ");
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO HIC_OSHA_REPORT_NURSE");
-            parameter.AppendSql("(");
+            parameter.AppendSql("INSERT INTO HIC_OSHA_REPORT_NURSE ( ");
             parameter.AppendSql("    ID ");
             parameter.AppendSql("  , SITE_ID");
             parameter.AppendSql("  , ESTIMATE_ID");
@@ -288,7 +308,8 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , MODIFIEDUSER");
             parameter.AppendSql("  , CREATED");
             parameter.AppendSql("  , CREATEDUSER");
-            parameter.AppendSql("  , DEPTNAME");
+            parameter.AppendSql("  , DEPTNAME ");
+            parameter.AppendSql("  , SWLICENSE ");
             parameter.AppendSql(") VALUES ( ");
             parameter.AppendSql("    :ID ");       
             parameter.AppendSql("  , :SITE_ID");
@@ -335,7 +356,8 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , :MODIFIEDUSER");
             parameter.AppendSql("  , SYSTIMESTAMP");
             parameter.AppendSql("  , :CREATEDUSER");
-            parameter.AppendSql("  , :DEPTNAME");
+            parameter.AppendSql("  , :DEPTNAME ");
+            parameter.AppendSql("  , :SWLICENSE ");
             parameter.AppendSql(") ");
 
             parameter.Add("ID", dto.ID);
@@ -381,6 +403,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.Add("NURSENAME", dto.NURSENAME);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("DEPTNAME", dto.SiteStatusDto.DEPTNAME);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (dto.CREATEDUSER!= null){
                 parameter.Add("CREATEDUSER", dto.CREATEDUSER);
             }
@@ -404,14 +427,16 @@ namespace HC.OSHA.Repository.StatusReport
 
             MParameter parameter = CreateParameter();
             parameter.AppendSql("UPDATE HIC_OSHA_REPORT_NURSE");
-            parameter.AppendSql("    SET    ");
-            parameter.AppendSql("        OPINION = :OPINION");
-            parameter.AppendSql("      , MODIFIED = SYSTIMESTAMP");
-            parameter.AppendSql("      , MODIFIEDUSER = :MODIFIEDUSER");
-            parameter.AppendSql(" WHERE ID = :ID");
+            parameter.AppendSql("   SET OPINION = :OPINION, ");
+            parameter.AppendSql("       MODIFIED = SYSTIMESTAMP, ");
+            parameter.AppendSql("       MODIFIEDUSER = :MODIFIEDUSER ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+
             parameter.Add("OPINION", html);
             parameter.Add("ID", id);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId); ;
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
@@ -420,12 +445,14 @@ namespace HC.OSHA.Repository.StatusReport
         public void Delete(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_REPORT_NURSE    ");
-            parameter.AppendSql("SET ISDELETED = 'Y'  ");
-            parameter.AppendSql("  ,MODIFIED = SYSTIMESTAMP  ");
-            parameter.AppendSql("  ,MODIFIEDUSER = :MODIFIEDUSER  ");
-            parameter.AppendSql("WHERE ID = :ID  ");
+            parameter.AppendSql("UPDATE HIC_OSHA_REPORT_NURSE ");
+            parameter.AppendSql("   SET ISDELETED = 'Y', ");
+            parameter.AppendSql("       MODIFIED = SYSTIMESTAMP, ");
+            parameter.AppendSql("       MODIFIEDUSER = :MODIFIEDUSER ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
 
             ExecuteNonQuery(parameter);

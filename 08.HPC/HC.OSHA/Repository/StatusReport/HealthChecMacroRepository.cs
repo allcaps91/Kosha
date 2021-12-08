@@ -1,4 +1,5 @@
-﻿using ComBase.Controls;
+﻿using ComBase;
+using ComBase.Controls;
 using ComBase.Mvc;
 using HC_Core.Dto;
 using HC.Core.Service;
@@ -21,7 +22,9 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("SELECT *   ");
             parameter.AppendSql("  FROM HIC_OSHA_HEALTHCHECK_MACROWORD  ");
             parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<WorkerHealthCheckMacrowordDto>(parameter);
 
@@ -35,6 +38,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql(" WHERE 1=1 ");
             parameter.AppendSql(" AND  A.GUBUN = :gubun ");
             parameter.AppendSql(" AND  A.MACROTYPE = :macroType ");
+            parameter.AppendSql(" AND  A.SWLICENSE = :SWLICENSE ");
             if (macroType == "0")
             {
                 parameter.AppendSql(" AND  A.CREATEDUSER = :userId ");
@@ -44,10 +48,10 @@ namespace HC.OSHA.Repository.StatusReport
             {
                 parameter.Add("userId", userId);
             }
-
         
             parameter.Add("gubun", gubun);
             parameter.Add("macroType", macroType);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader <WorkerHealthCheckMacrowordDto>(parameter);
 
@@ -65,12 +69,14 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("      , MODIFIED = SYSTIMESTAMP");
             parameter.AppendSql("      , MODIFIEDUSER = :MODIFIEDUSER");
             parameter.AppendSql("     WHERE ID =:ID");
+            parameter.AppendSql("       AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", item.ID);
             parameter.Add("SUGESSTION", item.SUGESSTION);
             parameter.Add("TITLE", item.TITLE);
             parameter.Add("CONTENT", item.CONTENT);
             parameter.Add("DISPSEQ", item.DISPSEQ);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (item.MODIFIEDUSER.IsNullOrEmpty())
             {
                 parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
@@ -79,8 +85,6 @@ namespace HC.OSHA.Repository.StatusReport
             {
                 parameter.Add("MODIFIEDUSER", item.MODIFIEDUSER);
             }
-         
-
 
             ExecuteNonQuery(parameter);
             
@@ -94,7 +98,9 @@ namespace HC.OSHA.Repository.StatusReport
             MParameter parameter = CreateParameter();
             parameter.AppendSql("DELETE FROM HIC_OSHA_HEALTHCHECK_MACROWORD   ");
             parameter.AppendSql("WHERE ID = :ID             ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Delete("HIC_OSHA_HEALTHCHECK_MACROWORD", id);
@@ -116,7 +122,8 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , MODIFIED");
             parameter.AppendSql("  , MODIFIEDUSER");
             parameter.AppendSql("  , CREATED");
-            parameter.AppendSql("  , CREATEDUSER");
+            parameter.AppendSql("  , CREATEDUSER ");
+            parameter.AppendSql("  , SWLICENSE ");
             parameter.AppendSql(") VALUES ( ");
             parameter.AppendSql("    :ID");
             parameter.AppendSql("  , :TITLE");
@@ -128,7 +135,8 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , SYSTIMESTAMP");
             parameter.AppendSql("  , :MODIFIEDUSER");
             parameter.AppendSql("  , SYSTIMESTAMP");
-            parameter.AppendSql("  , :CREATEDUSER");
+            parameter.AppendSql("  , :CREATEDUSER ");
+            parameter.AppendSql("  , :SWLICENSE ");
             parameter.AppendSql(") ");
 
             parameter.Add("ID", item.ID);
@@ -138,6 +146,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.Add("DISPSEQ", item.DISPSEQ);
             parameter.Add("GUBUN", item.GUBUN);
             parameter.Add("MACROTYPE", item.MACROTYPE);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (item.CREATEDUSER.IsNullOrEmpty())
             {
                 parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
@@ -149,7 +158,6 @@ namespace HC.OSHA.Repository.StatusReport
                 parameter.Add("CREATEDUSER", item.CREATEDUSER);
             }
 
-
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Insert("HIC_OSHA_HEALTHCHECK_MACROWORD", item.ID);
 
@@ -157,4 +165,3 @@ namespace HC.OSHA.Repository.StatusReport
         }
     }
 }
-
