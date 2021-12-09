@@ -98,16 +98,9 @@
             this.그룹코드관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mSD코드관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.사용자관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuNotebookManager = new System.Windows.Forms.ToolStripMenuItem();
-            this.노트북으로DB가져오기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.원내서버로DB올리기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuMig = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuBuild = new System.Windows.Forms.ToolStripMenuItem();
-            this.일반검진표빌드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.특수검진표빌드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.질병유소견자대행빌드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LeftPanel = new System.Windows.Forms.Panel();
+            this.oshaSiteEstimateList = new HC_OSHA.OshaSiteEstimateList();
+            this.oshaSiteLastTree = new HC_OSHA.OshaSiteLastTree();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.TabContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -115,8 +108,6 @@
             this.Mnu_OtherAllClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_AllTabClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_TabPopup = new System.Windows.Forms.ToolStripMenuItem();
-            this.oshaSiteEstimateList = new HC_OSHA.OshaSiteEstimateList();
-            this.oshaSiteLastTree = new HC_OSHA.OshaSiteLastTree();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.LeftPanel.SuspendLayout();
@@ -151,11 +142,7 @@
             this.MenuChargeGroup,
             this.통계및대장ToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.MenuBaseCode,
-            this.MenuNotebookManager,
-            this.MenuMig,
-            this.MenuBuild,
-            this.ryToolStripMenuItem});
+            this.MenuBaseCode});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -667,77 +654,6 @@
             this.사용자관리ToolStripMenuItem.Text = "사용자 관리";
             this.사용자관리ToolStripMenuItem.Click += new System.EventHandler(this.사용자관리ToolStripMenuItem_Click);
             // 
-            // MenuNotebookManager
-            // 
-            this.MenuNotebookManager.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.노트북으로DB가져오기ToolStripMenuItem,
-            this.원내서버로DB올리기ToolStripMenuItem});
-            this.MenuNotebookManager.Name = "MenuNotebookManager";
-            this.MenuNotebookManager.Size = new System.Drawing.Size(103, 20);
-            this.MenuNotebookManager.Text = "노트북 DB 관리";
-            // 
-            // 노트북으로DB가져오기ToolStripMenuItem
-            // 
-            this.노트북으로DB가져오기ToolStripMenuItem.Name = "노트북으로DB가져오기ToolStripMenuItem";
-            this.노트북으로DB가져오기ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.노트북으로DB가져오기ToolStripMenuItem.Text = "노트북으로 DB 가져오기";
-            this.노트북으로DB가져오기ToolStripMenuItem.Click += new System.EventHandler(this.노트북으로DB가져오기ToolStripMenuItem_Click);
-            // 
-            // 원내서버로DB올리기ToolStripMenuItem
-            // 
-            this.원내서버로DB올리기ToolStripMenuItem.Name = "원내서버로DB올리기ToolStripMenuItem";
-            this.원내서버로DB올리기ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.원내서버로DB올리기ToolStripMenuItem.Text = "원내서버로 DB 올리기";
-            this.원내서버로DB올리기ToolStripMenuItem.Click += new System.EventHandler(this.원내서버로DB올리기ToolStripMenuItem_Click);
-            // 
-            // MenuMig
-            // 
-            this.MenuMig.Name = "MenuMig";
-            this.MenuMig.Size = new System.Drawing.Size(91, 20);
-            this.MenuMig.Text = "마이그레이션";
-            this.MenuMig.Visible = false;
-            this.MenuMig.Click += new System.EventHandler(this.마이그레이션ToolStripMenuItem_Click);
-            // 
-            // MenuBuild
-            // 
-            this.MenuBuild.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.일반검진표빌드ToolStripMenuItem,
-            this.특수검진표빌드ToolStripMenuItem,
-            this.질병유소견자대행빌드ToolStripMenuItem});
-            this.MenuBuild.Name = "MenuBuild";
-            this.MenuBuild.Size = new System.Drawing.Size(67, 20);
-            this.MenuBuild.Text = "대행빌드";
-            this.MenuBuild.Visible = false;
-            // 
-            // 일반검진표빌드ToolStripMenuItem
-            // 
-            this.일반검진표빌드ToolStripMenuItem.Name = "일반검진표빌드ToolStripMenuItem";
-            this.일반검진표빌드ToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.일반검진표빌드ToolStripMenuItem.Text = "일반검진표빌드";
-            this.일반검진표빌드ToolStripMenuItem.Click += new System.EventHandler(this.일반검진표빌드ToolStripMenuItem_Click);
-            // 
-            // 특수검진표빌드ToolStripMenuItem
-            // 
-            this.특수검진표빌드ToolStripMenuItem.Name = "특수검진표빌드ToolStripMenuItem";
-            this.특수검진표빌드ToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.특수검진표빌드ToolStripMenuItem.Text = "특수검진표빌드";
-            this.특수검진표빌드ToolStripMenuItem.Click += new System.EventHandler(this.특수검진표빌드ToolStripMenuItem_Click);
-            // 
-            // 질병유소견자대행빌드ToolStripMenuItem
-            // 
-            this.질병유소견자대행빌드ToolStripMenuItem.Name = "질병유소견자대행빌드ToolStripMenuItem";
-            this.질병유소견자대행빌드ToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.질병유소견자대행빌드ToolStripMenuItem.Text = "질병유소견자대행 빌드";
-            this.질병유소견자대행빌드ToolStripMenuItem.Click += new System.EventHandler(this.질병유소견자대행빌드ToolStripMenuItem_Click);
-            // 
-            // ryToolStripMenuItem
-            // 
-            this.ryToolStripMenuItem.Name = "ryToolStripMenuItem";
-            this.ryToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.ryToolStripMenuItem.Text = "테테테테";
-            this.ryToolStripMenuItem.Visible = false;
-            this.ryToolStripMenuItem.Click += new System.EventHandler(this.ryToolStripMenuItem_Click);
-            // 
             // LeftPanel
             // 
             this.LeftPanel.Controls.Add(this.oshaSiteEstimateList);
@@ -748,68 +664,6 @@
             this.LeftPanel.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.LeftPanel.Size = new System.Drawing.Size(199, 817);
             this.LeftPanel.TabIndex = 9;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 24);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1264, 847);
-            this.tabControl1.TabIndex = 10;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            this.tabControl1.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControl1_ControlRemoved);
-            this.tabControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseUp);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.LeftPanel);
-            this.tabPage1.Controls.Add(this.panFrame);
-            this.tabPage1.Location = new System.Drawing.Point(4, 26);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1256, 817);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "사업장 현황";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // TabContextMenu
-            // 
-            this.TabContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Mnu_TabClose,
-            this.Mnu_OtherAllClose,
-            this.Mnu_AllTabClose,
-            this.Mnu_TabPopup});
-            this.TabContextMenu.Name = "TabContextMenu";
-            this.TabContextMenu.Size = new System.Drawing.Size(215, 92);
-            // 
-            // Mnu_TabClose
-            // 
-            this.Mnu_TabClose.Name = "Mnu_TabClose";
-            this.Mnu_TabClose.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_TabClose.Text = "탭닫기";
-            this.Mnu_TabClose.Click += new System.EventHandler(this.Mnu_TabClose_Click);
-            // 
-            // Mnu_OtherAllClose
-            // 
-            this.Mnu_OtherAllClose.Name = "Mnu_OtherAllClose";
-            this.Mnu_OtherAllClose.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_OtherAllClose.Text = "이탭을 제외하고 모두닫기";
-            this.Mnu_OtherAllClose.Click += new System.EventHandler(this.Mnu_OtherAllClose_Click);
-            // 
-            // Mnu_AllTabClose
-            // 
-            this.Mnu_AllTabClose.Name = "Mnu_AllTabClose";
-            this.Mnu_AllTabClose.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_AllTabClose.Text = "모든 탭 닫기";
-            this.Mnu_AllTabClose.Click += new System.EventHandler(this.Mnu_AllTabClose_Click);
-            // 
-            // Mnu_TabPopup
-            // 
-            this.Mnu_TabPopup.Name = "Mnu_TabPopup";
-            this.Mnu_TabPopup.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_TabPopup.Text = "팝업으로 보기";
-            this.Mnu_TabPopup.Click += new System.EventHandler(this.Mnu_TabPopup_Click);
             // 
             // oshaSiteEstimateList
             // 
@@ -918,6 +772,68 @@
             this.oshaSiteLastTree.TabIndex = 0;
             this.oshaSiteLastTree.NodeClick += new HC_OSHA.OshaSiteLastTree.SiteTreeViewNodeMouseClickEventHandler(this.OshaSiteLastTree_NodeClick);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1264, 847);
+            this.tabControl1.TabIndex = 10;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControl1_ControlRemoved);
+            this.tabControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseUp);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.LeftPanel);
+            this.tabPage1.Controls.Add(this.panFrame);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(1256, 817);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "사업장 현황";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // TabContextMenu
+            // 
+            this.TabContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Mnu_TabClose,
+            this.Mnu_OtherAllClose,
+            this.Mnu_AllTabClose,
+            this.Mnu_TabPopup});
+            this.TabContextMenu.Name = "TabContextMenu";
+            this.TabContextMenu.Size = new System.Drawing.Size(215, 92);
+            // 
+            // Mnu_TabClose
+            // 
+            this.Mnu_TabClose.Name = "Mnu_TabClose";
+            this.Mnu_TabClose.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_TabClose.Text = "탭닫기";
+            this.Mnu_TabClose.Click += new System.EventHandler(this.Mnu_TabClose_Click);
+            // 
+            // Mnu_OtherAllClose
+            // 
+            this.Mnu_OtherAllClose.Name = "Mnu_OtherAllClose";
+            this.Mnu_OtherAllClose.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_OtherAllClose.Text = "이탭을 제외하고 모두닫기";
+            this.Mnu_OtherAllClose.Click += new System.EventHandler(this.Mnu_OtherAllClose_Click);
+            // 
+            // Mnu_AllTabClose
+            // 
+            this.Mnu_AllTabClose.Name = "Mnu_AllTabClose";
+            this.Mnu_AllTabClose.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_AllTabClose.Text = "모든 탭 닫기";
+            this.Mnu_AllTabClose.Click += new System.EventHandler(this.Mnu_AllTabClose_Click);
+            // 
+            // Mnu_TabPopup
+            // 
+            this.Mnu_TabPopup.Name = "Mnu_TabPopup";
+            this.Mnu_TabPopup.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_TabPopup.Text = "팝업으로 보기";
+            this.Mnu_TabPopup.Click += new System.EventHandler(this.Mnu_TabPopup_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -990,9 +906,7 @@
         private System.Windows.Forms.ToolStripMenuItem 근골격계지원대장ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 장비사용대장ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 정보자료제공ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem MenuMig;
         private System.Windows.Forms.ToolStripMenuItem 청구빌드ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem MenuBuild;
         private System.Windows.Forms.ToolStripMenuItem 검진결과ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 일반검진결과표ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 특수검진결과표ToolStripMenuItem1;
@@ -1000,15 +914,8 @@
         private System.Windows.Forms.ToolStripMenuItem 특수질병유소견자사후관리ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 대행질병유소견자사후관리ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 사업장별유소견자현황ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 일반검진표빌드ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 특수검진표빌드ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 질병유소견자대행빌드ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 일반검진가접수자명단ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 사업장등록ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem MenuNotebookManager;
-        private System.Windows.Forms.ToolStripMenuItem 노트북으로DB가져오기ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 원내서버로DB올리기ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 검진출장스케쥴ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 일반검진접수명단ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 차검진대상자ToolStripMenuItem;

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -148,7 +149,7 @@ namespace HcAdmin
                     SQL += ComNum.VBLF + "         ISACTIVE, ISDELETED, JIKMU, PASSHASH256,CERTNO,SEQ_WORD,";
                     SQL += ComNum.VBLF + "         LTDUSER,MODIFIED, MODIFIEDUSER, CREATED, CREATEDUSER) ";
                     SQL += ComNum.VBLF + " VALUES ('" + txtLicno.Text.Trim() + "', ";
-                    SQL += ComNum.VBLF + "         '1','관리자','관리자','NURSE', ";
+                    SQL += ComNum.VBLF + "         '1','관리자','OSHA','NURSE', ";
                     SQL += ComNum.VBLF + "         '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
                     SQL += ComNum.VBLF + "         '','Y','N','" + strJikmu + "', ";
                     SQL += ComNum.VBLF + "         '" + strNewPass + "','','','',";
@@ -158,7 +159,7 @@ namespace HcAdmin
                 {
                     SQL =  " UPDATE HIC_USERS ";
                     SQL += "    SET NAME          = '관리자', ";
-                    SQL += "        DEPT          = '관리자', ";
+                    SQL += "        DEPT          = 'OSHA', ";
                     SQL += "        ROLE          = 'NURSE', ";
                     SQL +=  "       InDate        = '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
                     SQL +=  "       TesaDate      = '', ";
@@ -429,6 +430,27 @@ namespace HcAdmin
             System.IO.File.WriteAllText(@"C:\Windows\System32\acledit392io87.dll", strPcData);
 
             ComFunc.MsgBox("PC에 해당회사로 라이선스가 설정되었습니다.", "알림");
+        }
+
+        private void 헬스소프트실행ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string strNewData = "";
+            string strPcData = "";
+
+            // 라이선스 정보를 PC에 저장
+            strNewData = txtLicno.Text.Trim() + "{}";
+            strNewData += txtSangho.Text.Trim() + "{}";
+            strNewData += dptEDate.Value.ToString("yyyy-MM-dd") + "{}";
+            strNewData += txtAdminpass.Text.Trim() + "{}";
+
+            // 프로그램 실행
+            strPcData = clsAES.AES(strNewData);
+            System.IO.File.WriteAllText(@"C:\Windows\System32\acledit392io87.dll", strPcData);
+
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = @"C:\Program Files (x86)\HSMain\HS_OSHA.exe";
+            startInfo.Arguments = null;
+            Process.Start(startInfo);
         }
     }
 }

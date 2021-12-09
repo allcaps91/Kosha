@@ -55,21 +55,13 @@ namespace HC_OSHA
             {
                 MenuBaseCode.Enabled = false;
                 MenuChargeGroup.Enabled = false;
-                MenuNotebookManager.Enabled = true;
 
                 this.Text = "보건관리전문 오프라인(로컬 DATABASE 사용중)";
-            }
-            else
-            {
-                MenuNotebookManager.Enabled = false;
             }
 
             if (HC.Core.Service.CommonService.Instance.Session.UserId == "800594")
             {
-                MenuMig.Visible = true;
-                MenuBuild.Visible = true;
-                MenuNotebookManager.Visible = true;
-                MenuNotebookManager.Enabled = true;
+
             }
 
             HC_CODE hicCode = codeService.FindActiveCodeByGroupAndCode("PDF_PATH", "OSHA_ESTIMATE", "OSHA");

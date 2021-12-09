@@ -72,6 +72,7 @@
             this.txtSangho = new System.Windows.Forms.TextBox();
             this.SS1 = new FarPoint.Win.Spread.FpSpread();
             this.SS1_Sheet1 = new FarPoint.Win.Spread.SheetView();
+            this.헬스소프트실행ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -86,7 +87,8 @@
             this.신규발급ToolStripMenuItem,
             this.저장ToolStripMenuItem,
             this.삭제ToolStripMenuItem,
-            this.pC저장ToolStripMenuItem});
+            this.pC저장ToolStripMenuItem,
+            this.헬스소프트실행ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -559,6 +561,13 @@
             this.SS1_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SS1_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
+            // 헬스소프트실행ToolStripMenuItem
+            // 
+            this.헬스소프트실행ToolStripMenuItem.Name = "헬스소프트실행ToolStripMenuItem";
+            this.헬스소프트실행ToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
+            this.헬스소프트실행ToolStripMenuItem.Text = "헬스소프트실행";
+            this.헬스소프트실행ToolStripMenuItem.Click += new System.EventHandler(this.헬스소프트실행ToolStripMenuItem_Click);
+            // 
             // FrmLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
@@ -634,5 +643,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtDbConnect;
         private System.Windows.Forms.ToolStripMenuItem pC저장ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 헬스소프트실행ToolStripMenuItem;
     }
 }
