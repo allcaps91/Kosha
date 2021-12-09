@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.FlatFocusIndicatorRenderer flatFocusIndicatorRenderer1 = new FarPoint.Win.Spread.FlatFocusIndicatorRenderer();
+            FarPoint.Win.Spread.FlatFocusIndicatorRenderer flatFocusIndicatorRenderer2 = new FarPoint.Win.Spread.FlatFocusIndicatorRenderer();
+            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer5 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
+            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer6 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
             FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer1 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
             FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer2 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
-            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer3 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
-            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer4 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
             this.panTitle = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panSub04 = new System.Windows.Forms.Panel();
@@ -146,7 +146,6 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtSangho = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCode = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.panSub05 = new System.Windows.Forms.Panel();
             this.panSub06 = new System.Windows.Forms.Panel();
@@ -186,6 +185,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtViewCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtCode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panTitle.SuspendLayout();
             this.panSub04.SuspendLayout();
@@ -207,7 +207,6 @@
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtInWon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
             this.panSub05.SuspendLayout();
             this.panSub06.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -700,6 +699,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtCode);
             this.groupBox1.Controls.Add(this.txtKiho);
             this.groupBox1.Controls.Add(this.txtBuildNo);
             this.groupBox1.Controls.Add(this.txtJSaupno);
@@ -770,7 +770,6 @@
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.txtSangho);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtCode);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 29);
@@ -1630,23 +1629,6 @@
             this.label3.Text = "사업장명";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtCode
-            // 
-            this.txtCode.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.txtCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCode.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtCode.Location = new System.Drawing.Point(105, 19);
-            this.txtCode.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(167, 25);
-            this.txtCode.TabIndex = 1;
-            this.txtCode.Tag = "CODE";
-            this.txtCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // label2
             // 
             this.label2.AutoEllipsis = true;
@@ -1907,12 +1889,12 @@
             // 
             this.SSTax.AccessibleDescription = "";
             this.SSTax.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SSTax.FocusRenderer = flatFocusIndicatorRenderer1;
+            this.SSTax.FocusRenderer = flatFocusIndicatorRenderer2;
             this.SSTax.HorizontalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSTax.HorizontalScrollBar.Name = "";
-            flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSTax.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SSTax.HorizontalScrollBar.TabIndex = 121;
+            flatScrollBarRenderer5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSTax.HorizontalScrollBar.Renderer = flatScrollBarRenderer5;
+            this.SSTax.HorizontalScrollBar.TabIndex = 123;
             this.SSTax.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSTax.Location = new System.Drawing.Point(3, 30);
             this.SSTax.Name = "SSTax";
@@ -1923,9 +1905,9 @@
             this.SSTax.TabIndex = 6;
             this.SSTax.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSTax.VerticalScrollBar.Name = "";
-            flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSTax.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SSTax.VerticalScrollBar.TabIndex = 122;
+            flatScrollBarRenderer6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSTax.VerticalScrollBar.Renderer = flatScrollBarRenderer6;
+            this.SSTax.VerticalScrollBar.TabIndex = 124;
             this.SSTax.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SSTax_Sheet1
@@ -2013,6 +1995,7 @@
             this.btnNew.TabIndex = 51;
             this.btnNew.Text = "신 규(&N)";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnSave
             // 
@@ -2084,12 +2067,12 @@
             // 
             this.SSList.AccessibleDescription = "";
             this.SSList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SSList.FocusRenderer = flatFocusIndicatorRenderer1;
+            this.SSList.FocusRenderer = flatFocusIndicatorRenderer2;
             this.SSList.HorizontalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSList.HorizontalScrollBar.Name = "";
-            flatScrollBarRenderer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSList.HorizontalScrollBar.Renderer = flatScrollBarRenderer3;
-            this.SSList.HorizontalScrollBar.TabIndex = 119;
+            flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSList.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
+            this.SSList.HorizontalScrollBar.TabIndex = 121;
             this.SSList.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.Location = new System.Drawing.Point(2, 2);
             this.SSList.Name = "SSList";
@@ -2100,10 +2083,11 @@
             this.SSList.TabIndex = 2;
             this.SSList.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSList.VerticalScrollBar.Name = "";
-            flatScrollBarRenderer4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSList.VerticalScrollBar.Renderer = flatScrollBarRenderer4;
-            this.SSList.VerticalScrollBar.TabIndex = 120;
+            flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSList.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
+            this.SSList.VerticalScrollBar.TabIndex = 122;
             this.SSList.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
+            this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
             // 
             // SSList_Sheet1
             // 
@@ -2187,6 +2171,17 @@
             this.label1.TabIndex = 53;
             this.label1.Text = "사업장명";
             // 
+            // txtCode
+            // 
+            this.txtCode.Location = new System.Drawing.Point(105, 22);
+            this.txtCode.MaxLength = 6;
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(167, 25);
+            this.txtCode.TabIndex = 3;
+            this.txtCode.Tag = "CODE";
+            this.txtCode.Text = "txtCode";
+            this.txtCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmHcLtdCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -2230,7 +2225,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtInWon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
             this.panSub05.ResumeLayout(false);
             this.panSub06.ResumeLayout(false);
             this.panSub06.PerformLayout();
@@ -2332,7 +2326,6 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtSangho;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown txtCode;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panSub05;
         private System.Windows.Forms.Panel panSub06;
@@ -2409,5 +2402,6 @@
         private System.Windows.Forms.TextBox txtViewCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtKiho;
+        private System.Windows.Forms.TextBox txtCode;
     }
 }

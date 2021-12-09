@@ -2,6 +2,7 @@ namespace ComHpcLibB.Repository
 {
     using System;
     using System.Collections.Generic;
+    using ComBase;
     using ComBase.Mvc;
     using ComHpcLibB.Dto;
 
@@ -23,12 +24,13 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT LTDCODE,BUSE,DAMNAME,DAMJIK,TEL,HPHONE,EMAIL,REMARK,ROWID AS RID  ");
-            parameter.AppendSql("  FROM ADMIN.HIC_LTD_TAX                                     ");
-            parameter.AppendSql(" WHERE 1 = 1                                                       ");
-            parameter.AppendSql("  AND LTDCODE  =:LTDCODE                                           ");
-
+            parameter.AppendSql("SELECT LTDCODE,BUSE,DAMNAME,DAMJIK,TEL,HPHONE,EMAIL,REMARK,ROWID AS RID ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_TAX ");
+            parameter.AppendSql(" WHERE 1 = 1 ");
+            parameter.AppendSql("   AND LTDCODE = :LTDCODE ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("LTDCODE", strKeyWord);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HIC_LTD_TAX>(parameter);
         }
@@ -37,11 +39,13 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE ADMIN.HIC_LTD_TAX    ");
-            parameter.AppendSql(" WHERE ROWID =:RID                ");
+            parameter.AppendSql("DELETE ADMIN.HIC_LTD_TAX  ");
+            parameter.AppendSql(" WHERE ROWID =:RID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             #region Query 변수대입
             parameter.Add("RID", rOWID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             #endregion
 
             return ExecuteNonQuery(parameter);
@@ -51,9 +55,10 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT         DAMNAME,TEL,HPHONE,EMAIL   ");
-            parameter.AppendSql("  FROM         ADMIN.HIC_LTD_TAX    ");
-            parameter.AppendSql(" WHERE         LTDCODE = :LTDCODE         ");
+            parameter.AppendSql("SELECT DAMNAME,TEL,HPHONE,EMAIL ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_TAX ");
+            parameter.AppendSql(" WHERE LTDCODE = :LTDCODE ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             if (gJONG == "83")
             {
@@ -73,6 +78,7 @@ namespace ComHpcLibB.Repository
             }
 
             parameter.Add("LTDCODE", txtLtdCode);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HIC_LTD_TAX>(parameter);
         }
@@ -81,36 +87,35 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT            DAMNAME,TEL,HPHONE,EMAIL         ");
-            parameter.AppendSql("FROM              ADMIN.HIC_LTD_TAX          ");
+            parameter.AppendSql("SELECT DAMNAME,TEL,HPHONE,EMAIL ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_TAX ");
             
             if(DLTD > 0)
             {
-                parameter.AppendSql("WHERE         LTDCODE = :DLTD                  ");
+                parameter.AppendSql("WHERE LTDCODE = :DLTD ");
             }
             else
             {
-                parameter.AppendSql("WHERE         LTDCODE = :LTDCODE               ");
+                parameter.AppendSql("WHERE LTDCODE = :LTDCODE ");
             }
 
             if(GJONG == "83")
             {
-                parameter.AppendSql("AND           BUSE='1'                         ");  // 종검
+                parameter.AppendSql(" AND BUSE='1' ");  // 종검
             }
             else if(GJONG == "81")
             {
-                parameter.AppendSql("AND           BUSE='3'                         ");  // 측정
+                parameter.AppendSql(" AND BUSE='3' ");  // 측정
             }
             else if (GJONG == "82")
             {
-                parameter.AppendSql("AND           BUSE='4'                         ");  // 보건관리대행
+                parameter.AppendSql(" AND BUSE='4' ");  // 보건관리대행
             }
             else
             {
-                parameter.AppendSql("AND           BUSE='2'                         ");  // 일반건진
+                parameter.AppendSql(" AND BUSE='2' ");  // 일반건진
             }
-
-
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             if (DLTD > 0)
             {
@@ -120,6 +125,8 @@ namespace ComHpcLibB.Repository
             {
                 parameter.Add("LTDCODE", LTDCODE);
             }
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
             return ExecuteReader<HIC_LTD_TAX>(parameter);
         }
 
@@ -138,6 +145,7 @@ namespace ComHpcLibB.Repository
             parameter.AppendSql("      ,JOBSABUN= :JOBSABUN         ");
             parameter.AppendSql("      ,ENTTIME = SYSDATE           ");
             parameter.AppendSql(" WHERE ROWID   = :RID              ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             #region Query 변수대입
             parameter.Add("BUSE",     item.BUSE);
@@ -149,6 +157,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("REMARK",   item.REMARK);
             parameter.Add("JOBSABUN", item.JOBSABUN);
             parameter.Add("RID",      item.RID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             #endregion
 
             return ExecuteNonQuery(parameter);
@@ -157,10 +166,10 @@ namespace ComHpcLibB.Repository
         public int Insert(HIC_LTD_TAX item)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" INSERT INTO ADMIN.HIC_LTD_TAX (                                                 ");
-            parameter.AppendSql("        LTDCODE,BUSE,DAMNAME,DAMJIK,TEL,HPHONE,EMAIL,REMARK,JOBSABUN,ENTTIME           ");
-            parameter.AppendSql(") VALUES (                                                                             ");
-            parameter.AppendSql("       :LTDCODE,:BUSE,:DAMNAME,:DAMJIK,:TEL,:HPHONE,:EMAIL,:REMARK,:JOBSABUN,SYSDATE  )");
+            parameter.AppendSql(" INSERT INTO ADMIN.HIC_LTD_TAX (LTDCODE,BUSE,DAMNAME,DAMJIK,TEL,");
+            parameter.AppendSql("         HPHONE,EMAIL,REMARK,JOBSABUN,ENTTIME,SWLICENSE) ");
+            parameter.AppendSql(" VALUES (:LTDCODE,:BUSE,:DAMNAME,:DAMJIK,:TEL, ");
+            parameter.AppendSql("        :HPHONE,:EMAIL,:REMARK,:JOBSABUN,SYSDATE,:SWLICENSE ) ");
 
             #region Query 변수대입
             parameter.Add("LTDCODE",  item.LTDCODE);
@@ -172,6 +181,7 @@ namespace ComHpcLibB.Repository
             parameter.Add("EMAIL",    item.EMAIL);
             parameter.Add("REMARK",   item.REMARK);
             parameter.Add("JOBSABUN", item.JOBSABUN);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             #endregion
 
             return ExecuteNonQuery(parameter);

@@ -416,7 +416,19 @@ namespace ComHpcLibB
             clsSpread cSpd = new clsSpread();
             cSpd.Spread_All_Clear(SSTax);
             cSpd.Dispose();
+            txtCode.Enabled = true;
         }
 
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            Screen_Clear();
+            txtCode.Text = ComQuery.GetSequencesNoEx(clsDB.DbCon, "HC_LTD_SEQ").ToString();
+            txtCode.Enabled = false;
+        }
+
+        private void SSList_CellClick(object sender, CellClickEventArgs e)
+        {
+
+        }
     }
 }

@@ -436,6 +436,12 @@
     <Compile Include="form\HcAdmin\frmHcHemsSCode.Designer.cs">
       <DependentUpon>frmHcHemsSCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\HcAdmin\frmHcLtdCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\HcAdmin\frmHcLtdCode.designer.cs">
+      <DependentUpon>frmHcLtdCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\HcAdmin\frmHcLtdMCode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -453,12 +459,6 @@
     </Compile>
     <Compile Include="form\HcAdmin\frmHcGroupExam.Designer.cs">
       <DependentUpon>frmHcGroupExam.cs</DependentUpon>
-    </Compile>
-    <Compile Include="form\HcAdmin\frmHcLtdCode.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\HcAdmin\frmHcLtdCode.Designer.cs">
-      <DependentUpon>frmHcLtdCode.cs</DependentUpon>
     </Compile>
     <Compile Include="form\HcAdmin\frmHcMatterEntry.cs">
       <SubType>Form</SubType>
@@ -2067,6 +2067,9 @@
     <EmbeddedResource Include="form\HcAdmin\frmHcHemsSCode.resx">
       <DependentUpon>frmHcHemsSCode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form\HcAdmin\frmHcLtdCode.resx">
+      <DependentUpon>frmHcLtdCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\HcAdmin\frmHcLtdMCode.resx">
       <DependentUpon>frmHcLtdMCode.cs</DependentUpon>
     </EmbeddedResource>
@@ -2075,9 +2078,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\HcAdmin\frmHcGroupExam.resx">
       <DependentUpon>frmHcGroupExam.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="form\HcAdmin\frmHcLtdCode.resx">
-      <DependentUpon>frmHcLtdCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\HcAdmin\frmHcMatterEntry.resx">
       <DependentUpon>frmHcMatterEntry.cs</DependentUpon>
@@ -3130,6 +3130,7 @@
     <None Include="Resources\직인.JPG" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="form\HcAdmin\HC_Admin.csproj" />
     <Content Include="Resources\html\bootstrap.min.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
