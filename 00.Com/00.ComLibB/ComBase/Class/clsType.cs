@@ -21,6 +21,14 @@
             /// </summary>
             public static string BuseName = "";    //사용자 부서명 
             /// <summary>
+            /// 직무구분
+            /// </summary>
+            public static string Jikmu = "";     //직무구분    //
+            /// <summary>
+            /// 관계사 사용자
+            /// </summary>
+            public static string LtdUser = "";    //관계사 사용자   //
+            /// <summary>
             /// 오더권한
             /// </summary>
             public static string CanOrd = "";    //오더권한     //

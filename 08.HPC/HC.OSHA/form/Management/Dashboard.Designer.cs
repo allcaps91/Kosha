@@ -176,6 +176,7 @@
             // 
             // 사업장등록ToolStripMenuItem
             // 
+            this.사업장등록ToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.사업장등록ToolStripMenuItem.Name = "사업장등록ToolStripMenuItem";
             this.사업장등록ToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.사업장등록ToolStripMenuItem.Text = "사업장 정보 관리";

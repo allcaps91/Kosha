@@ -30,7 +30,8 @@ namespace HC_OSHA
         public delegate void ExitDelegate();
         public event ExitDelegate exitDelegate;
         public bool IsTest = false;
-
+        public bool FbCodeManager = false;  //코드관리 여부
+        public bool FbLtdUser = false;      //관계사 사용자 여부
 
         /// <summary>
         /// 실행중인 폼
@@ -40,6 +41,19 @@ namespace HC_OSHA
         public Dashboard()
         {
             InitializeComponent();
+            if (VB.Mid(clsType.User.Jikmu, 3, 1)=="Y") FbCodeManager = true;
+            if (clsType.User.LtdUser != "") FbLtdUser = true;
+            if (FbCodeManager == false)
+            {
+                MenuBaseCode.Visible = false;  //코드관리
+                사업장등록ToolStripMenuItem.Visible = false; //거래처코드
+            }
+            if (FbLtdUser == true)
+            {
+                MenuBaseCode.Visible = false;  //코드관리
+                사업장등록ToolStripMenuItem.Visible = false; //거래처코드
+                toolStripMenuItem1.Visible = false;  //비밀번호변경
+            }
         }
 
         public Dashboard(MainFormMessage pform)

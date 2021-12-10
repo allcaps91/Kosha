@@ -211,6 +211,8 @@ namespace HS_OSHA
                     clsType.User.IdNumber = "1";
                     clsType.User.JobName = "관리자";
                     clsType.User.BuseName = "OSHA";
+                    clsType.User.Jikmu = "YYYYYYNNNNNNNNN";
+                    clsType.User.LtdUser = "";
                 }
                 else {
                     ComFunc.MsgBox("관리자 비밀번호 오류 입니다", "알림");
@@ -243,7 +245,7 @@ namespace HS_OSHA
             try
             {
                 SQL = "";
-                SQL = "SELECT Name,DEPT,PASSHASH256 FROM HIC_USERS ";
+                SQL = "SELECT Name,DEPT,JIKMU,LTDUSER,PASSHASH256 FROM HIC_USERS ";
                 SQL = SQL + ComNum.VBLF + "Where SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
                 SQL = SQL + ComNum.VBLF + "  And USERID = '" + ArgSabun + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -271,6 +273,8 @@ namespace HS_OSHA
                 clsType.User.IdNumber = ArgSabun;
                 clsType.User.JobName = dt.Rows[i]["Name"].ToString().Trim();
                 clsType.User.BuseName = dt.Rows[i]["DEPT"].ToString().Trim();
+                clsType.User.Jikmu = dt.Rows[i]["JIKMU"].ToString().Trim();
+                clsType.User.LtdUser = dt.Rows[i]["LTDUSER"].ToString().Trim();
 
                 dt.Dispose();
                 dt = null;

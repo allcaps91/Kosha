@@ -15,16 +15,19 @@ namespace HC_OSHA
     public partial class UsermstForm : Form
     {
         static bool FbNew = false;
-        static int FnJobSabun = 0;
-        static string FstrLicno = "1234-1234-1234";
+        static string FstrJobSabun = clsType.User.IdNumber;
+        static string FstrLicno = clsType.HosInfo.SwLicense;
 
         public UsermstForm()
         {
             InitializeComponent();
 
-            FstrLicno = clsType.HosInfo.SwLicense;
-            FnJobSabun = Int32.Parse(clsType.User.IdNumber);
-
+            //관리자만 비밀번호 초기화, 삭제 가능
+            if (FstrJobSabun != "1")
+            {
+                비밀번호초기화ToolStripMenuItem.Visible = false;
+                삭제ToolStripMenuItem1.Visible = false;
+            } 
             Screen_Clear();
             List_Search();
         }
@@ -58,8 +61,8 @@ namespace HC_OSHA
             txtLtdcode.Text = "";
             lblLtdname.Text = "";
 
-            삭제ToolStripMenuItem1.Visible = false;
-            비밀번호초기화ToolStripMenuItem.Visible = false;
+            삭제ToolStripMenuItem1.Enabled = false;
+            비밀번호초기화ToolStripMenuItem.Enabled = false;
             txtID.Enabled = false;
             FbNew = false;
         }
@@ -372,11 +375,13 @@ namespace HC_OSHA
                 dt.Dispose();
                 dt = null;
 
-                if (strUserID != "1")
+                삭제ToolStripMenuItem1.Enabled = true;
+                if (clsType.User.IdNumber == "1")
                 {
-                    삭제ToolStripMenuItem1.Visible = true;
-                    if (clsType.User.Sabun == "admin") 비밀번호초기화ToolStripMenuItem.Visible = true;
+                    비밀번호초기화ToolStripMenuItem.Visible = true;
+                    비밀번호초기화ToolStripMenuItem.Enabled = true;
                 }
+
                 Cursor.Current = Cursors.Default;
                 txtName.Focus();
 
