@@ -53,6 +53,7 @@
             this.SSList_Sheet1});
             this.SSList.Size = new System.Drawing.Size(200, 650);
             this.SSList.TabIndex = 0;
+            this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
             this.SSList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellDoubleClick);
             this.SSList.SetActiveViewport(0, -1, -1);
             // 
@@ -123,12 +124,12 @@
             // 
             // OshaSiteEstimateList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panBody);
             this.Controls.Add(this.panSpace);
             this.Controls.Add(this.panTitle);
-            this.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "OshaSiteEstimateList";
             this.Size = new System.Drawing.Size(200, 688);

@@ -78,5 +78,9 @@ namespace HC_OSHA
 
         }
 
+        private void SSList_CellClick(object sender, CellClickEventArgs e)
+        {
+
+        }
     }
 }

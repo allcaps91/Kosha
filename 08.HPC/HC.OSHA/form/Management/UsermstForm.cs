@@ -376,7 +376,7 @@ namespace HC_OSHA
                 dt = null;
 
                 삭제ToolStripMenuItem1.Enabled = true;
-                if (clsType.User.IdNumber == "1")
+                if (clsType.User.IdNumber == "1") //관리자
                 {
                     비밀번호초기화ToolStripMenuItem.Visible = true;
                     비밀번호초기화ToolStripMenuItem.Enabled = true;
@@ -454,6 +454,11 @@ namespace HC_OSHA
         }
 
         private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void txtLtdcode_TextChanged(object sender, EventArgs e)
         {
 
         }
