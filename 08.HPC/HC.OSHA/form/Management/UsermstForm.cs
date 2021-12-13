@@ -81,6 +81,30 @@ namespace HC_OSHA
         {
 
         }
+        private void eKeyPress(object sender, KeyPressEventArgs e)
+        {
+            string strLtdName = null;
+
+            if (sender == txtLtdcode && e.KeyChar == (char)13)
+            {
+                if (txtLtdcode.Text.Trim() == "")
+                {
+                    lblLtdname.Text = "";
+                    return;
+                }
+
+                strLtdName = GET_LtdName(txtLtdcode.Text.Trim());
+
+                if (strLtdName == null)
+                {
+                    txtLtdcode.Text = "";
+                    lblLtdname.Text = "";
+                    MessageBox.Show("관계사 코드가 등록 않됨");
+                    return;
+                }
+                lblLtdname.Text = strLtdName;
+            }
+        }
 
         private void 신규ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -220,11 +244,6 @@ namespace HC_OSHA
 
         }
 
-        private void 명단조회ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void List_Search()
         {
             string SQL = "";
@@ -358,7 +377,12 @@ namespace HC_OSHA
                     dtpInDate.Text = dt.Rows[0]["InDate"].ToString().Trim();
                     txtTesaDate.Text = dt.Rows[0]["TesaDate"].ToString().Trim();
                     strJikmu = dt.Rows[0]["JIKMU"].ToString().Trim();
-
+                    txtLtdcode.Text = dt.Rows[0]["LtdUser"].ToString().Trim();
+                    if (txtLtdcode.Text != "")
+                    {
+                        chkLtduser.Checked = true;
+                        lblLtdname.Text = GET_LtdName(txtLtdcode.Text.Trim());
+                    }
                     if (VB.Left(strJikmu,1)=="Y") chkJik01.Checked = true;
                     if (VB.Mid(strJikmu, 2, 1) == "Y") chkJik02.Checked = true;
                     if (VB.Mid(strJikmu, 3, 1) == "Y") chkJik03.Checked = true;
@@ -451,6 +475,37 @@ namespace HC_OSHA
                 return;
             }
 
+        }
+
+        private string GET_LtdName(string ArgCode)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            string strReturn = "";
+            DataTable dt = null;
+            int i = 0;
+
+            try
+            {
+                SQL = "SELECT SANGHO FROM HIC_LTD ";
+                SQL = SQL + "WHERE SWLicense='" + FstrLicno + "' ";
+                SQL = SQL + "  AND Code = " + ArgCode + " ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0) strReturn = dt.Rows[0]["SANGHO"].ToString().Trim();
+                dt.Dispose();
+                dt = null;
+                return strReturn;
+            }
+            catch (Exception ex)
+            {
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                }
+                ComFunc.MsgBox(ex.Message);
+                return strReturn;
+            }
         }
 
         private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

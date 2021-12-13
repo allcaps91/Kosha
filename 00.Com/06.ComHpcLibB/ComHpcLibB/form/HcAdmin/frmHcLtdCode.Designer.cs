@@ -73,6 +73,7 @@
             this.txtBoRemark = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCode = new System.Windows.Forms.TextBox();
             this.txtKiho = new System.Windows.Forms.TextBox();
             this.txtBuildNo = new System.Windows.Forms.TextBox();
             this.txtJSaupno = new System.Windows.Forms.TextBox();
@@ -185,7 +186,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtViewCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panTitle.SuspendLayout();
             this.panSub04.SuspendLayout();
@@ -778,6 +778,17 @@
             this.groupBox1.TabIndex = 133;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "사업장 공통정보";
+            // 
+            // txtCode
+            // 
+            this.txtCode.Location = new System.Drawing.Point(105, 22);
+            this.txtCode.MaxLength = 6;
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(167, 25);
+            this.txtCode.TabIndex = 3;
+            this.txtCode.Tag = "CODE";
+            this.txtCode.Text = "txtCode";
+            this.txtCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtKiho
             // 
@@ -1894,7 +1905,7 @@
             this.SSTax.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSTax.HorizontalScrollBar.Renderer = flatScrollBarRenderer5;
-            this.SSTax.HorizontalScrollBar.TabIndex = 123;
+            this.SSTax.HorizontalScrollBar.TabIndex = 127;
             this.SSTax.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSTax.Location = new System.Drawing.Point(3, 30);
             this.SSTax.Name = "SSTax";
@@ -1907,7 +1918,7 @@
             this.SSTax.VerticalScrollBar.Name = "";
             flatScrollBarRenderer6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSTax.VerticalScrollBar.Renderer = flatScrollBarRenderer6;
-            this.SSTax.VerticalScrollBar.TabIndex = 124;
+            this.SSTax.VerticalScrollBar.TabIndex = 128;
             this.SSTax.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SSTax_Sheet1
@@ -1995,7 +2006,7 @@
             this.btnNew.TabIndex = 51;
             this.btnNew.Text = "신 규(&N)";
             this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            this.btnNew.Click += new System.EventHandler(this.eBtnClick);
             // 
             // btnSave
             // 
@@ -2072,7 +2083,7 @@
             this.SSList.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSList.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SSList.HorizontalScrollBar.TabIndex = 121;
+            this.SSList.HorizontalScrollBar.TabIndex = 125;
             this.SSList.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.Location = new System.Drawing.Point(2, 2);
             this.SSList.Name = "SSList";
@@ -2085,7 +2096,7 @@
             this.SSList.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSList.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SSList.VerticalScrollBar.TabIndex = 122;
+            this.SSList.VerticalScrollBar.TabIndex = 126;
             this.SSList.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
             // 
@@ -2170,17 +2181,6 @@
             this.label1.Size = new System.Drawing.Size(60, 17);
             this.label1.TabIndex = 53;
             this.label1.Text = "사업장명";
-            // 
-            // txtCode
-            // 
-            this.txtCode.Location = new System.Drawing.Point(105, 22);
-            this.txtCode.MaxLength = 6;
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(167, 25);
-            this.txtCode.TabIndex = 3;
-            this.txtCode.Tag = "CODE";
-            this.txtCode.Text = "txtCode";
-            this.txtCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmHcLtdCode
             // 

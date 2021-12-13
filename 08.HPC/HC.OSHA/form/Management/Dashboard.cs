@@ -50,6 +50,14 @@ namespace HC_OSHA
             }
             if (FbLtdUser == true)
             {
+                일정관리ToolStripMenuItem.Visible = false; //일정관리
+                상태보고서의사용ToolStripMenuItem.Visible = false;
+                상태보고서간호사용ToolStripMenuItem.Visible = false;
+                상태보고서산업위생기사용ToolStripMenuItem.Visible = false;
+                출장일지인쇄ToolStripMenuItem.Visible = false;
+                수입일보인쇄ToolStripMenuItem.Visible = false;
+                검진결과ToolStripMenuItem.Visible = false;
+                MenuChargeGroup.Visible = false;
                 MenuBaseCode.Visible = false;  //코드관리
                 사업장등록ToolStripMenuItem.Visible = false; //거래처코드
                 toolStripMenuItem1.Visible = false;  //비밀번호변경
@@ -64,19 +72,6 @@ namespace HC_OSHA
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            //출장 노트북
-            if(DataSyncService.Instance.IsLocalDB == true)
-            {
-                MenuBaseCode.Enabled = false;
-                MenuChargeGroup.Enabled = false;
-
-                this.Text = "보건관리전문 오프라인(로컬 DATABASE 사용중)";
-            }
-
-            if (HC.Core.Service.CommonService.Instance.Session.UserId == "800594")
-            {
-
-            }
 
             HC_CODE hicCode = codeService.FindActiveCodeByGroupAndCode("PDF_PATH", "OSHA_ESTIMATE", "OSHA");
             if(hicCode.CodeName.NotEmpty()){

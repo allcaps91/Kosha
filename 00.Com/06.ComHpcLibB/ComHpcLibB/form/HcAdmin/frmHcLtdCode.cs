@@ -232,6 +232,12 @@ namespace ComHpcLibB
             {
                 SSTax.AddRows(1);
             }
+            else if (sender == btnNew)
+            {
+                Screen_Clear();
+                txtCode.Text = ComQuery.GetSequencesNoEx(clsDB.DbCon, "HC_LTD_SEQ").ToString();
+                txtCode.Enabled = false;
+            }
             else if (sender == btnDelete)
             {
                 //HIC_LTD item = panMain.GetData<HIC_LTD>();
@@ -417,13 +423,6 @@ namespace ComHpcLibB
             cSpd.Spread_All_Clear(SSTax);
             cSpd.Dispose();
             txtCode.Enabled = true;
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            Screen_Clear();
-            txtCode.Text = ComQuery.GetSequencesNoEx(clsDB.DbCon, "HC_LTD_SEQ").ToString();
-            txtCode.Enabled = false;
         }
 
         private void SSList_CellClick(object sender, CellClickEventArgs e)

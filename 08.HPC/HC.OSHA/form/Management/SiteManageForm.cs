@@ -64,9 +64,9 @@ namespace HC_OSHA
         }
         private void SiteMangerForm_Load(object sender, EventArgs e)
         {
-            if (DataSyncService.Instance.IsLocalDB == true)
+            // 관계사 직원
+            if (clsType.User.LtdUser != "")
             {
-             
                 BtnDeleteContract.Enabled = false;
                 BtnDeleteEstimate.Enabled = false;
                 BtnSaveEstimate.Enabled = false;
@@ -74,7 +74,6 @@ namespace HC_OSHA
                 BtnDeletePrice.Enabled = false;
                 BtnNewPrice.Enabled = false;
                 btnNewEstimate.Enabled = false;
-                               
             }
             sitePriceManageForm.Dock = DockStyle.Fill;
             sitePriceManageForm.FormBorderStyle = FormBorderStyle.None;

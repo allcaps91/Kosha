@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.CellType.TextCellType textCellType1 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType2 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType3 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType4 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType5 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType6 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType7 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType8 = new FarPoint.Win.Spread.CellType.TextCellType();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -235,7 +235,7 @@
             this.txtLtdcode.Name = "txtLtdcode";
             this.txtLtdcode.Size = new System.Drawing.Size(55, 25);
             this.txtLtdcode.TabIndex = 23;
-            this.txtLtdcode.TextChanged += new System.EventHandler(this.txtLtdcode_TextChanged);
+            this.txtLtdcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.eKeyPress);
             // 
             // label9
             // 
@@ -566,23 +566,23 @@
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "성명";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "부서명";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 3).Value = "권한";
-            textCellType1.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(0).CellType = textCellType1;
+            textCellType5.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(0).CellType = textCellType5;
             this.SS1_Sheet1.Columns.Get(0).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(0).Label = "사번";
             this.SS1_Sheet1.Columns.Get(0).Width = 56F;
-            textCellType2.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(1).CellType = textCellType2;
+            textCellType6.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(1).CellType = textCellType6;
             this.SS1_Sheet1.Columns.Get(1).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(1).Label = "성명";
             this.SS1_Sheet1.Columns.Get(1).Width = 80F;
-            textCellType3.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(2).CellType = textCellType3;
+            textCellType7.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(2).CellType = textCellType7;
             this.SS1_Sheet1.Columns.Get(2).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(2).Label = "부서명";
             this.SS1_Sheet1.Columns.Get(2).Width = 73F;
-            textCellType4.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(3).CellType = textCellType4;
+            textCellType8.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(3).CellType = textCellType8;
             this.SS1_Sheet1.Columns.Get(3).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(3).Label = "권한";
             this.SS1_Sheet1.Columns.Get(3).Width = 69F;
@@ -654,6 +654,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UsermstForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "사용자 등록";
             this.Load += new System.EventHandler(this.Frm사용자등록_Load);
             this.panel2.ResumeLayout(false);
