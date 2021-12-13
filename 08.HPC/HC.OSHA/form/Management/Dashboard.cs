@@ -50,6 +50,8 @@ namespace HC_OSHA
             }
             if (FbLtdUser == true)
             {
+                사업장관리ToolStripMenuItem.Visible = false;
+                사업장등록ToolStripMenuItem.Visible = false; //거래처코드
                 일정관리ToolStripMenuItem.Visible = false; //일정관리
                 상태보고서의사용ToolStripMenuItem.Visible = false;
                 상태보고서간호사용ToolStripMenuItem.Visible = false;
@@ -59,7 +61,6 @@ namespace HC_OSHA
                 검진결과ToolStripMenuItem.Visible = false;
                 MenuChargeGroup.Visible = false;
                 MenuBaseCode.Visible = false;  //코드관리
-                사업장등록ToolStripMenuItem.Visible = false; //거래처코드
                 toolStripMenuItem1.Visible = false;  //비밀번호변경
             }
         }
@@ -81,9 +82,7 @@ namespace HC_OSHA
                     di.Create();
                 }
             }
-
             SiteManageForm form = new SiteManageForm();
-            //SiteWorkerForm form = new SiteWorkerForm();
             form.TopLevel = false;
             form.Dock = DockStyle.Fill;
             form.FormBorderStyle = FormBorderStyle.None;

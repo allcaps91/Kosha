@@ -118,6 +118,8 @@ namespace HC.Core.Repository
             parameter.AppendSql("   AND DEPT ='OSHA' "); 
             parameter.AppendSql("   AND ISACTIVE='Y' ");
             parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+            //관계사 사용자
+            if (clsType.User.LtdUser != "") parameter.AppendSql(" AND USERID='" + clsType.User.IdNumber + "' ");
             parameter.AppendSql("  ORDER BY NAME ");
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HC_USER>(parameter);

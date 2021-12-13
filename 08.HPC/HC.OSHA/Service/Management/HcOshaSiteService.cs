@@ -3,6 +3,7 @@ namespace HC.OSHA.Service
     using System.Collections.Generic;
     using HC.OSHA.Repository;
     using HC.OSHA.Model;
+    using ComBase;
     using ComBase.Mvc.Utils;
     using HC.Core.Dto;
     using HC.Core.Repository;
@@ -67,11 +68,16 @@ namespace HC.OSHA.Service
             List<HC_OSHA_SITE_MODEL> list = null;
             HC_USER user = hcUsersRepository.FindOne(userId);
             Role role = Role.ENGINEER;
+
             if (user!= null)
             {
                 role = (Role)Enum.Parse(typeof(Role), user.Role);
             }
-            if (name.IsNumeric())
+            if (clsType.User.LtdUser != "") //고객사 사용자
+            {
+                list = hcOshaSiteModelRepository.FindByLtduser();
+            }
+            else if (name.IsNumeric())
             {
                 list = hcOshaSiteModelRepository.FindById(name, userId, role, isOsha, isSchedule);
             }

@@ -67,6 +67,8 @@ namespace HC_OSHA
             // 관계사 직원
             if (clsType.User.LtdUser != "")
             {
+                BtnLastContract.Enabled = false;
+                BtnSaveContract.Enabled = false;
                 BtnDeleteContract.Enabled = false;
                 BtnDeleteEstimate.Enabled = false;
                 BtnSaveEstimate.Enabled = false;
