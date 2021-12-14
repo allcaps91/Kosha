@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EDB201B5-62A7-4812-B963-034F5CFE0679}</ProjectGuid>
+    <ProjectGuid>{3FE1E31C-6671-4EA1-8D76-8B923BE00B8A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>HS_OSHA</RootNamespace>
     <AssemblyName>HS_OSHA</AssemblyName>
