@@ -651,14 +651,6 @@
       <Project>{12E278B5-6009-411D-98EC-6A3484945336}</Project>
       <Name>ComPmpaLibB</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\05.SUP\04.SupEnds\SupEnds\SupEnds.csproj">
-      <Project>{c7f19f90-d266-426d-8d58-90871c92e456}</Project>
-      <Name>SupEnds</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\05.SUP\05.SupXray\SupXray\SupXray.csproj">
-      <Project>{a28fff65-6064-42d3-bbf9-0d5a2b91ee2f}</Project>
-      <Name>SupXray</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\close.png" />

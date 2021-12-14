@@ -151,8 +151,9 @@ namespace HC_Main
         XrayDetailService xrayDetailService = null;
         ExamSpecmstService examSpecmstService = null;
 
-        frmHcPermission frmHcPermission = null;     //동의서 폼
-        frmViewResult FrmViewResult = null;         //OCS 검사 폼
+        frmHcPermission frmHcPermission = null;         //동의서 폼
+        frmHcEmrPermission frmHcEmrPermission = null;   //전자동의서 폼
+        frmViewResult FrmViewResult = null;             //OCS 검사 폼
 
         public frmHaJepMain()
         {
@@ -229,6 +230,8 @@ namespace HC_Main
             examSpecmstService = new ExamSpecmstService();
 
             frmHcPermission = new frmHcPermission("HEA");
+            frmHcEmrPermission = new frmHcEmrPermission("HEA");
+            
 
             haExjong = heaExjongService.FindAll();
             cboJONG.SetItems(haExjong, "NAME", "CODE", "", "");
@@ -1236,6 +1239,7 @@ namespace HC_Main
                     if (item2.IsNullOrEmpty())
                     {
                         frmHcPermission.CellDblClicked(3);
+                        //frmHcEmrPermission.CellDblClicked(3);
                     }
                 }
             }
@@ -2689,6 +2693,7 @@ namespace HC_Main
                 string[] strDeptCode = { "HR", "TO" };
                 //frmHcPermission.SetDisplay(pat.PTNO, cboYear.Text, dtpSDate.Text, "TO");
                 frmHcPermission.SetDisplay(pat.PTNO, VB.Left(dtpSDate.Text, 4), dtpSDate.Text, strDeptCode, txtSName.Text);
+                //frmHcEmrPermission.SetDisplay(pat.PTNO, VB.Left(dtpSDate.Text, 4), dtpSDate.Text, strDeptCode);
             }
 
             panSub01.Enabled = false;
@@ -4455,9 +4460,8 @@ namespace HC_Main
                         }
                     }
                 }
-
                 //공단검진 대상자는 가접수가 되어 있으면 일반검진 자동접수 함  2013-03-29
-                if (FstrGBSTS != "D" && FstrGBSTS != "0" && chkGongDan.Checked)
+                if (FstrGBSTS != "D" && FstrGBSTS != "0" && chkGongDan.Checked && clsType.User.IdNumber.To<long>() != 28048)
                 {
                     if (!Read_Hic_GaJepsu(txtPtno.Text, cboYear.Text))
                     {
@@ -4925,6 +4929,39 @@ namespace HC_Main
 
                 Cursor.Current = Cursors.Default;
 
+                //동시진행동의서 변경
+                //if (dtpSDate.Text == DateTime.Now.ToShortDateString() && FstrGBSTS != "0" && FstrGBSTS != "D" && chkGongDan.Checked)
+                //{
+                //    if (nHJ.WRTNO > 0)
+                //    {
+                //        if (comHpcLibBService.GetHicPrivacyAccept(nHJ.PTNO, "D53", "TO").IsNullOrEmpty())
+                //        {
+                //            HIC_CONSENT nHC = new HIC_CONSENT
+                //            {
+                //                SDATE = nHJ.SDATE,
+                //                BDATE = nHJ.JEPDATE,
+                //                PTNO = nHJ.PTNO,
+                //                WRTNO = nHJ.WRTNO,
+                //                PANO = nHJ.PANO,
+                //                SNAME = nHJ.SNAME,
+                //                DEPTCODE = "TO",
+                //                FORMCODE = "D53",
+                //                PAGECNT = 1,
+                //                ENTSABUN = clsType.User.IdNumber.To<long>()
+                //            };
+
+                //            if (!hicConsentService.Insert(nHC))
+                //            {
+                //                MessageBox.Show("전자동의서 등록시 오류가 발생함.", "오류");
+                //                Cursor.Current = Cursors.Default;
+                //                return;
+                //            }
+
+                //            //frmHcEmrPermission.CellDblClicked(3);
+                //        }
+                //    }
+                //}
+
                 //건강검진 동시진행 동의서
                 if (FstrGBSTS != "0" && chkGongDan.Checked)
                 {
@@ -4932,6 +4969,7 @@ namespace HC_Main
                     if (item2.IsNullOrEmpty())
                     {
                         frmHcPermission.CellDblClicked(3);
+                        //frmHcEmrPermission.CellDblClicked(3);
                     }
                 }
 
@@ -4984,6 +5022,7 @@ namespace HC_Main
                             }
 
                             frmHcPermission.CellDblClicked(0);
+                            //frmHcEmrPermission.CellDblClicked(0);
                         }
                     }
                 }
@@ -6239,6 +6278,8 @@ namespace HC_Main
             panPAT.AddRequiredControl(txtHphone);
 
             themTabForm(frmHcPermission, this.panPerm);
+            //themTabForm(frmHcEmrPermission, this.panPerm);
+            
 
             string strWaitPcNo = string.Empty;
 
@@ -6538,6 +6579,7 @@ namespace HC_Main
             btnResReciept.Enabled = false;
 
             frmHcPermission.Screen_Clear();
+            //frmHcEmrPermission.Screen_Clear();
 
             HaJEPSU = new HEA_JEPSU();
             HaGrpCD = new HEA_GROUPCODE();

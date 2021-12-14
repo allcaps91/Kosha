@@ -1803,7 +1803,7 @@
             this.SS10.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS10.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SS10.HorizontalScrollBar.TabIndex = 852;
+            this.SS10.HorizontalScrollBar.TabIndex = 856;
             this.SS10.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never;
             this.SS10.Location = new System.Drawing.Point(0, 26);
             this.SS10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1817,7 +1817,7 @@
             this.SS10.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS10.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SS10.VerticalScrollBar.TabIndex = 853;
+            this.SS10.VerticalScrollBar.TabIndex = 857;
             this.SS10.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never;
             // 
             // SS10_Sheet1
@@ -2536,7 +2536,7 @@
             this.ssGroup.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ssGroup.HorizontalScrollBar.Renderer = flatScrollBarRenderer3;
-            this.ssGroup.HorizontalScrollBar.TabIndex = 1015;
+            this.ssGroup.HorizontalScrollBar.TabIndex = 1019;
             this.ssGroup.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never;
             this.ssGroup.Location = new System.Drawing.Point(1, 49);
             this.ssGroup.Name = "ssGroup";
@@ -2549,7 +2549,7 @@
             this.ssGroup.VerticalScrollBar.Name = "";
             flatScrollBarRenderer4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ssGroup.VerticalScrollBar.Renderer = flatScrollBarRenderer4;
-            this.ssGroup.VerticalScrollBar.TabIndex = 1016;
+            this.ssGroup.VerticalScrollBar.TabIndex = 1020;
             this.ssGroup.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // ssGroup_Sheet1
@@ -2824,7 +2824,7 @@
             this.ssETC.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ssETC.HorizontalScrollBar.Renderer = flatScrollBarRenderer5;
-            this.ssETC.HorizontalScrollBar.TabIndex = 997;
+            this.ssETC.HorizontalScrollBar.TabIndex = 1001;
             this.ssETC.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never;
             this.ssETC.Location = new System.Drawing.Point(3, 28);
             this.ssETC.Name = "ssETC";
@@ -2837,7 +2837,7 @@
             this.ssETC.VerticalScrollBar.Name = "";
             flatScrollBarRenderer6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ssETC.VerticalScrollBar.Renderer = flatScrollBarRenderer6;
-            this.ssETC.VerticalScrollBar.TabIndex = 998;
+            this.ssETC.VerticalScrollBar.TabIndex = 1002;
             this.ssETC.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // ssETC_Sheet1

@@ -183,6 +183,7 @@ namespace HC_Main
         #region 개인별 검진 History 연계
         string FsHisJepDate;
         string FsHisPtNo;
+        string FsHisYear;
         #endregion
 
         public frmHcJepMain()
@@ -3250,7 +3251,7 @@ namespace HC_Main
                 //동의서 보기
                 string[] strDeptCode = { "HR", "TO" };
                 frmHcPermission.SetDisplay(pat.PTNO, cboYear.Text, dtpJepDate.Text, strDeptCode, txtSName.Text);
-                //frmHcEmrPermission.SetDisplay(pat.PTNO, cboYear.Text, dtpJepDate.Text, "HR");
+                //frmHcEmrPermission.SetDisplay(pat.PTNO, cboYear.Text, dtpJepDate.Text, strDeptCode);
 
             }
             
@@ -3326,14 +3327,16 @@ namespace HC_Main
             }
         }
 
-        public void PatHis_Value(string sPtNo, string sJepDate)
+        public void PatHis_Value(string sPtNo, string sJepDate, string strYear)
         {
             FsHisPtNo = sPtNo;
             FsHisJepDate = sJepDate;
+            FsHisYear = strYear;
 
             if (!FsHisPtNo.IsNullOrEmpty())
             {
-                cboYear.Text = VB.Left(FsHisJepDate, 4);
+                //cboYear.Text = VB.Left(FsHisJepDate, 4);
+                cboYear.Text = FsHisYear;
                 dtpJepDate.Text = FsHisJepDate;
                 txtPtno.Text = FsHisPtNo;
                 eTxtKeyDown(txtPtno, new KeyEventArgs(Keys.Enter));
@@ -3362,7 +3365,8 @@ namespace HC_Main
 
                 if (!FsHisPtNo.IsNullOrEmpty())
                 {
-                    cboYear.Text = VB.Left(FsHisJepDate, 4);
+                    //cboYear.Text = VB.Left(FsHisJepDate, 4);
+                    cboYear.Text = FsHisYear;
                     dtpJepDate.Text = FsHisJepDate;
                     txtPtno.Text = FsHisPtNo;
                     eTxtKeyDown(txtPtno, new KeyEventArgs(Keys.Enter));
@@ -5333,6 +5337,7 @@ namespace HC_Main
                     if (hicPatientService.GetPrivacyNewByPtno(txtPtno.Text).IsNullOrEmpty())
                     {
                         frmHcPermission.CellDblClicked(0);
+                        //frmHcEmrPermission.CellDblClicked(0);
 
                         //frmHcEmrConset_Rec = new frmHcEmrConset_Rec(FnWRTNO,"NUR");
                         //frmHcEmrConset_Rec.Show();
@@ -5386,7 +5391,7 @@ namespace HC_Main
 
         /// <summary>
         /// 검진 바코드증 출력
-        /// </summary>
+        /// </summary>btnJepView
         /// <param name="list"></param>
         /// <param name="nIdx"></param>
         /// <param name="nHJ"></param>
@@ -8409,10 +8414,11 @@ namespace HC_Main
 
                     TextBox txtJuso1 = (Controls.Find("txtJuso1" + i.ToString(), true)[0] as TextBox);
                     txtJuso1.Text = VB.Pstr(clsHcVariable.GstrValue, "|", 2).Trim();
+                    TextBox txtJuso2 = (Controls.Find("txtJuso2" + i.ToString(), true)[0] as TextBox);
                     txtJuso2.Text = "";
 
                     FstrBuildNo = VB.Pstr(clsHcVariable.GstrValue, "|", 5).Trim();
-                    txtJuso2.Focus();
+
                 }
                 else
                 {
