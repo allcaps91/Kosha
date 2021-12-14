@@ -337,7 +337,7 @@ namespace HC_Main
                         {
                             btnSave.Enabled = true;
                             btnDelete.Enabled = true;
-                            hicCharttransService.UpdatebyWrtno(FnWRTNO, DateTime.Today.ToString(),strTrList, clsPublic.GstrSysTime, clsType.User.Sabun,"");
+                            hicCharttransService.UpdatebyWrtno(FnWRTNO, clsPublic.GstrSysDate, strTrList, clsPublic.GstrSysTime, clsType.User.Sabun,"");
                         }
                         
                     }

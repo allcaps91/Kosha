@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menu_00 = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_01 = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_02 = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_03 = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +41,6 @@
             this.menu_07 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panMain = new System.Windows.Forms.Panel();
-            this.menu_00 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,11 +62,18 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // menu_00
+            // 
+            this.menu_00.Name = "menu_00";
+            this.menu_00.Size = new System.Drawing.Size(58, 20);
+            this.menu_00.Text = "종료(&X)";
+            // 
             // menu_01
             // 
             this.menu_01.Name = "menu_01";
             this.menu_01.Size = new System.Drawing.Size(103, 20);
             this.menu_01.Text = "내시경예약관리";
+            this.menu_01.Visible = false;
             // 
             // menu_02
             // 
@@ -91,6 +98,7 @@
             this.menu_04.Name = "menu_04";
             this.menu_04.Size = new System.Drawing.Size(135, 20);
             this.menu_04.Text = "내시경 검체장부 관리";
+            this.menu_04.Visible = false;
             // 
             // menu_05
             // 
@@ -124,12 +132,6 @@
             this.panMain.Padding = new System.Windows.Forms.Padding(3);
             this.panMain.Size = new System.Drawing.Size(1090, 613);
             this.panMain.TabIndex = 266;
-            // 
-            // menu_00
-            // 
-            this.menu_00.Name = "menu_00";
-            this.menu_00.Size = new System.Drawing.Size(58, 20);
-            this.menu_00.Text = "종료(&X)";
             // 
             // frmHaEndo_Main
             // 

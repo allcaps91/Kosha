@@ -42,9 +42,9 @@ namespace HC_Main.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("DELETE KOSMOS_PMPA.SIMRI_ORDER WHERE ROWID =:ROWID    ");
+            parameter.AppendSql("DELETE KOSMOS_PMPA.SIMRI_ORDER WHERE ROWID =:RID    ");
 
-            parameter.Add("ROWID", argRowid);
+            parameter.Add("RID", argRowid);
 
             ExecuteNonQuery(parameter);
         }

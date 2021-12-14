@@ -1,6 +1,5 @@
 ﻿using ComBase;
 using ComHpcLibB;
-using SupEnds;
 using System;
 using System.Windows.Forms;
 using ComSupLibB.SupInfc;
@@ -14,10 +13,10 @@ namespace HC_Main
         string mPara1 = "";
 
         clsHcFunc cHF = null;
-        frmSupEndsSCH01 FrmSupEndsSCH01 = null;
+        //frmSupEndsSCH01 FrmSupEndsSCH01 = null;
         frmHaEmergencyNarcoticManageList FrmHaEmergencyNarcoticManageList = null;
         frmHaPsychotropicMedSend FrmHaPsychotropicMedSend = null;
-        frmSupEndsVIEW02 FrmSupEndsVIEW02 = null;
+        //frmSupEndsVIEW02 FrmSupEndsVIEW02 = null;
         frmEnvironmentOrderView FrmEnvironmentOrderView = null;
         frmComSupADRReport FrmComSupADRReport = null;
         frmSupDrstInfoEntryNew FrmSupDrstInfoEntryNew = null;
@@ -101,22 +100,22 @@ namespace HC_Main
 
             else if (sender == menu_01)   //
             {
-                if (FrmSupEndsSCH01 == null)
-                {
-                    themTabForm(FrmSupEndsSCH01, this.panMain);
-                }
-                else
-                {
-                    if (FormIsExist(FrmSupEndsSCH01) == true)
-                    {
-                        FormVisiable(FrmSupEndsSCH01);
-                    }
-                    else
-                    {
-                        FrmSupEndsSCH01 = new frmSupEndsSCH01();
-                        themTabForm(FrmSupEndsSCH01, this.panMain);
-                    }
-                }
+                //if (FrmSupEndsSCH01 == null)
+                //{
+                //    themTabForm(FrmSupEndsSCH01, this.panMain);
+                //}
+                //else
+                //{
+                //    if (FormIsExist(FrmSupEndsSCH01) == true)
+                //    {
+                //        FormVisiable(FrmSupEndsSCH01);
+                //    }
+                //    else
+                //    {
+                //        FrmSupEndsSCH01 = new frmSupEndsSCH01();
+                //        themTabForm(FrmSupEndsSCH01, this.panMain);
+                //    }
+                //}
             }
             else if (sender == menu_02)   //
             {
@@ -142,14 +141,14 @@ namespace HC_Main
             }
             else if (sender == menu_04)   //내시경 검체장부 관리
             {
-                if (cHF.OpenForm_Check("frmSupEndsVIEW02") == true)
-                {
-                    return;
-                }
+                //if (cHF.OpenForm_Check("frmSupEndsVIEW02") == true)
+                //{
+                //    return;
+                //}
 
-                FrmSupEndsVIEW02 = new frmSupEndsVIEW02();
-                FrmSupEndsVIEW02.ShowDialog();
-                cHF.fn_ClearMemory(FrmSupEndsVIEW02);
+                //FrmSupEndsVIEW02 = new frmSupEndsVIEW02();
+                //FrmSupEndsVIEW02.ShowDialog();
+                //cHF.fn_ClearMemory(FrmSupEndsVIEW02);
             }
             else if (sender == menu_05)   //환경 미생물 오더확인
             {
@@ -245,26 +244,26 @@ namespace HC_Main
         private void eFormLoad(object sender, EventArgs e)
         {
 
-            if (FrmSupEndsSCH01 == null)
-            {
-                FrmSupEndsSCH01 = new frmSupEndsSCH01();
-                themTabForm(FrmSupEndsSCH01, this.panMain);
-            }
-            else
-            {
-                if (FormIsExist(FrmSupEndsSCH01) == true)
-                {
-                    FormVisiable(FrmSupEndsSCH01);
-                }
-                else
-                {
-                    if (FrmSupEndsSCH01 == null)
-                    {
-                        FrmSupEndsSCH01 = new frmSupEndsSCH01();
-                    }
-                    themTabForm(FrmSupEndsSCH01, this.panMain);
-                }
-            }
+            //if (FrmSupEndsSCH01 == null)
+            //{
+            //    FrmSupEndsSCH01 = new frmSupEndsSCH01();
+            //    themTabForm(FrmSupEndsSCH01, this.panMain);
+            //}
+            //else
+            //{
+            //    if (FormIsExist(FrmSupEndsSCH01) == true)
+            //    {
+            //        FormVisiable(FrmSupEndsSCH01);
+            //    }
+            //    else
+            //    {
+            //        if (FrmSupEndsSCH01 == null)
+            //        {
+            //            FrmSupEndsSCH01 = new frmSupEndsSCH01();
+            //        }
+            //        themTabForm(FrmSupEndsSCH01, this.panMain);
+            //    }
+            //}
         }
 
         void eFormActivated(object sender, EventArgs e)

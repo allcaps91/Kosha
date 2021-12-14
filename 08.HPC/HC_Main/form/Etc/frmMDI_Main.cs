@@ -5,7 +5,7 @@ using ComHpcLibB.Dto;
 using ComHpcLibB.Service;
 using ComMedLibB;
 using ComLibB;
-using SupXray;
+using ComSupLibB.SupXray;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -410,7 +410,7 @@ namespace HC_Main
                     return;
                 }
 
-                FrmHcEmrConset_Rec = new frmHcEmrConset_Rec(0,"NUR");
+                FrmHcEmrConset_Rec = new frmHcEmrConset_Rec(0,"NUR","","");
                 FrmHcEmrConset_Rec.StartPosition = FormStartPosition.CenterScreen;
                 FrmHcEmrConset_Rec.ShowDialog();
                 cHF.fn_ClearMemory(FrmHcEmrConset_Rec);
