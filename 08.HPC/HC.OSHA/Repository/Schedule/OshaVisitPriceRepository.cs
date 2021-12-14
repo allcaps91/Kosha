@@ -18,25 +18,23 @@ namespace HC.OSHA.Repository.Schedule
         public List<VisitPriceModel> FindByYear(long estimateId, string startYear, string endYear)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.VISITDATETIME               ");
-            parameter.AppendSql("     , B.*                           ");
-            parameter.AppendSql("  FROM HIC_OSHA_VISIT A              ");
-            parameter.AppendSql("  INNER JOIN HIC_OSHA_VISIT_PRICE B  ");
-            parameter.AppendSql("          ON A.ID = B.VISIT_ID       ");
-            parameter.AppendSql(" WHERE 1 = 1                         ");
-            parameter.AppendSql("   AND A.SITE_ID = :SITE_ID          ");
-            parameter.AppendSql("   AND A.VisitDateTime >= :START_YEAR");
-            parameter.AppendSql("   AND A.VisitDateTime <= :END_YEAR  ");
-            parameter.AppendSql("   AND B.ISDELETED = 'N'             ");
-            parameter.AppendSql("   AND A.SWLICENSE1 = :SWLICENSE     ");
-            parameter.AppendSql("   AND B.SWLICENSE2 = :SWLICENSE     ");
-            parameter.AppendSql("ORDER BY A.VISITDATETIME             ");
+            parameter.AppendSql("SELECT A.VISITDATETIME, B.* "); 
+            parameter.AppendSql("  FROM HIC_OSHA_VISIT A ");
+            parameter.AppendSql("  INNER JOIN HIC_OSHA_VISIT_PRICE B ");
+            parameter.AppendSql("          ON A.ID = B.VISIT_ID ");
+            parameter.AppendSql(" WHERE 1 = 1 ");
+            parameter.AppendSql("   AND A.SITE_ID = :SITE_ID ");
+            parameter.AppendSql("   AND A.VisitDateTime >= :START_YEAR ");
+            parameter.AppendSql("   AND A.VisitDateTime <= :END_YEAR ");
+            parameter.AppendSql("   AND B.ISDELETED = 'N' ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" ORDER BY A.VISITDATETIME ");
 
             parameter.Add("SITE_ID", estimateId);
             parameter.Add("START_YEAR", startYear);
             parameter.Add("END_YEAR", endYear);
-            parameter.Add("SWLICENSE1", clsType.HosInfo.SwLicense);
-            parameter.Add("SWLICENSE2", clsType.HosInfo.SwLicense);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<VisitPriceModel>(parameter);
         }

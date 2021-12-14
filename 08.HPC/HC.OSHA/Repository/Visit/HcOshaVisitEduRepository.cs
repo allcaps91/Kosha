@@ -32,7 +32,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("SELECT A.EDUDATE, B.NAME, C.CODENAME AS EDUTYPE,  A.TITLE, A.TARGET,");
             parameter.AppendSql("       A.LOCATION, D.NAME AS EDUUSERNAME ");
             parameter.AppendSql("  FROM HIC_OSHA_VISIT_EDU A ");
-            parameter.AppendSql("       INNER JOIN HIC_SITE_VIEW B ");
+            parameter.AppendSql("       INNER JOIN HC_SITE_VIEW B ");
             parameter.AppendSql("             ON A.SITE_ID = B.ID ");
             parameter.AppendSql("       INNER JOIN HIC_CODES C ");
             parameter.AppendSql("             ON A.EDUTYPE = C.CODE ");
@@ -42,6 +42,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql(" WHERE A.EDUDATE BETWEEN :startDate AND  :endDate ");
             parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("   AND D.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY A.EDUDATE DESC ");
 

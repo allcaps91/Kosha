@@ -79,5 +79,11 @@ namespace HcAdmin
             Frm안내문등록 form = new Frm안내문등록();
             form.Show();
         }
+
+        private void 서버업로드ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUpload form = new FrmUpload();
+            form.Show();
+        }
     }
 }

@@ -71,6 +71,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmUpload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpload.Designer.cs">
+      <DependentUpon>FrmUpload.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm안내문등록.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmUpload.resx">
+      <DependentUpon>FrmUpload.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm안내문등록.resx">
       <DependentUpon>Frm안내문등록.cs</DependentUpon>
     </EmbeddedResource>

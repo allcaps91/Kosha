@@ -7,7 +7,6 @@
     using HC.Core.Model;
     using HC.Core.Service;
 
-
     /// <summary>
     /// 일반검진 수검자
     /// </summary>
@@ -74,23 +73,22 @@
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("   SELECT a.WRTNO,a.SName,b.Jumin2,TO_CHAR(a.JepDate, 'YYYY-MM-DD') JepDate,a.Sex,a.Age   ");
-            parameter.AppendSql("   FROM HIC_JEPSU a                                                    ");
-            parameter.AppendSql("   RIGHT OUTER JOIN HIC_PATIENT b                                   ");
-            parameter.AppendSql("   ON a.pano = b.pano                                           ");
-            parameter.AppendSql("   LEFT OUTER JOIN HIC_RESULT C                                        ");
-            parameter.AppendSql("   ON A.WRTNO = C.WRTNO                                                     ");
-            parameter.AppendSql("   AND C.EXCODE IN('A101','A102')                                       ");
-            parameter.AppendSql("   WHERE a.JepDate  >= TO_DATE( :startDate , 'YYYY-MM-DD')    ");
-            parameter.AppendSql("   AND a.JepDate <= TO_DATE( :endDate, 'YYYY-MM-DD')                  ");
-            parameter.AppendSql("   AND a.DelDate IS NULL                                        ");
-            parameter.AppendSql("   AND a.GjYear = :year                                             ");
-            parameter.AppendSql("   AND a.LtdCode =  :siteId                                     ");
-            parameter.AppendSql("   AND a.GjJong IN('11','21','22','23','24','25','26','30','41')     ");
-            parameter.AppendSql("   AND a.PanjengDate IS NOT NULL   "); // 판정완료
-            parameter.AppendSql("   GROUP BY a.WRTNO ,a.SNAME, Jumin2, TO_CHAR(a.JepDate, 'YYYY-MM-DD'), a.Sex, a.age   ");
-            parameter.AppendSql("   ORDER BY a.SName,a.Age                                      ");
-
+            parameter.AppendSql("SELECT a.WRTNO,a.SName,b.Jumin2,TO_CHAR(a.JepDate, 'YYYY-MM-DD') JepDate,a.Sex,a.Age ");
+            parameter.AppendSql("  FROM HIC_JEPSU a ");
+            parameter.AppendSql("       RIGHT OUTER JOIN HIC_PATIENT b ");
+            parameter.AppendSql("             ON a.pano = b.pano ");
+            parameter.AppendSql("       LEFT  OUTER JOIN HIC_RESULT C ");
+            parameter.AppendSql("             ON A.WRTNO = C.WRTNO ");
+            parameter.AppendSql("             AND C.EXCODE IN('A101','A102') ");
+            parameter.AppendSql(" WHERE a.JepDate  >= TO_DATE( :startDate , 'YYYY-MM-DD') ");
+            parameter.AppendSql("   AND a.JepDate <= TO_DATE( :endDate, 'YYYY-MM-DD') ");
+            parameter.AppendSql("   AND a.DelDate IS NULL ");
+            parameter.AppendSql("   AND a.GjYear = :year ");
+            parameter.AppendSql("   AND a.LtdCode = :siteId ");
+            parameter.AppendSql("   AND a.GjJong IN('11','21','22','23','24','25','26','30','41') ");
+            parameter.AppendSql("   AND a.PanjengDate IS NOT NULL "); // 판정완료
+            parameter.AppendSql("  GROUP BY a.WRTNO ,a.SNAME, Jumin2, TO_CHAR(a.JepDate, 'YYYY-MM-DD'), a.Sex, a.age ");
+            parameter.AppendSql("  ORDER BY a.SName,a.Age ");
 
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);
@@ -112,22 +110,21 @@
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("   SELECT a.WRTNO,a.SName,b.Jumin2,TO_CHAR(a.SDate, 'YYYY-MM-DD')  as JEPDATE ,a.Sex,a.Age   ");
-            parameter.AppendSql("   FROM HEA_JEPSU a                                                    ");
-            parameter.AppendSql("   RIGHT OUTER JOIN HIC_PATIENT b                                   ");
-            parameter.AppendSql("   ON a.pano = b.pano                                           ");
-            parameter.AppendSql("   LEFT OUTER JOIN HEA_RESULT C                                        ");
-            parameter.AppendSql("   ON A.WRTNO = C.WRTNO                                                     ");
-            parameter.AppendSql("   AND C.EXCODE IN('A101','A102')                                       ");
-            parameter.AppendSql("   WHERE a.SDate  >= TO_DATE( :startDate , 'YYYY-MM-DD')    ");
-            parameter.AppendSql("   AND a.SDate <= TO_DATE( :endDate, 'YYYY-MM-DD')                  ");
-            parameter.AppendSql("   AND a.DelDate IS NULL                                        ");
-            parameter.AppendSql("   AND a.LtdCode =  :siteId                                     ");
-            parameter.AppendSql("   AND a.GjJong IN('11','21','22','23','24','25','26','30','41')     ");
-            parameter.AppendSql("   AND a.DrSabun > 0   "); // 판정완료
-            parameter.AppendSql("   GROUP BY a.WRTNO ,a.SNAME, Jumin2, TO_CHAR(a.SDate, 'YYYY-MM-DD'), a.Sex, a.age   ");
-            parameter.AppendSql("   ORDER BY a.SName,a.Age                                      ");
-
+            parameter.AppendSql("SELECT a.WRTNO,a.SName,b.Jumin2,TO_CHAR(a.SDate, 'YYYY-MM-DD')  as JEPDATE ,a.Sex,a.Age ");
+            parameter.AppendSql("  FROM HEA_JEPSU a ");
+            parameter.AppendSql("       RIGHT OUTER JOIN HIC_PATIENT b ");
+            parameter.AppendSql("             ON a.pano = b.pano ");
+            parameter.AppendSql("       LEFT  OUTER JOIN HEA_RESULT C ");
+            parameter.AppendSql("             ON A.WRTNO = C.WRTNO ");
+            parameter.AppendSql("             AND C.EXCODE IN('A101','A102') ");
+            parameter.AppendSql(" WHERE a.SDate  >= TO_DATE( :startDate , 'YYYY-MM-DD') ");
+            parameter.AppendSql("   AND a.SDate <= TO_DATE( :endDate, 'YYYY-MM-DD') ");
+            parameter.AppendSql("   AND a.DelDate IS NULL ");
+            parameter.AppendSql("   AND a.LtdCode =  :siteId ");
+            parameter.AppendSql("   AND a.GjJong IN('11','21','22','23','24','25','26','30','41') ");
+            parameter.AppendSql("   AND a.DrSabun > 0 "); // 판정완료
+            parameter.AppendSql(" GROUP BY a.WRTNO ,a.SNAME, Jumin2, TO_CHAR(a.SDate, 'YYYY-MM-DD'), a.Sex, a.age ");
+            parameter.AppendSql(" ORDER BY a.SName,a.Age ");
 
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);
@@ -135,8 +132,6 @@
 
             return ExecuteReader<HealthCarePatientModel>(parameter);
         }
-
-
     }
 }
 

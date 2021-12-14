@@ -63,6 +63,7 @@ namespace HC_OSHA
                 MenuBaseCode.Visible = false;  //코드관리
                 toolStripMenuItem1.Visible = false;  //비밀번호변경
             }
+            보건교육지원대장ToolStripMenuItem1.Enabled = true;
         }
 
         public Dashboard(MainFormMessage pform)
@@ -762,6 +763,21 @@ namespace HC_OSHA
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new FrmPassChange().Show();
+        }
+
+        private void 산재현황대장ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 사업장현황ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 개인별상담대장ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

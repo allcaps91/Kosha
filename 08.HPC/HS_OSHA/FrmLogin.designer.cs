@@ -36,6 +36,7 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtGuide = new System.Windows.Forms.TextBox();
             this.lblSangho = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblLicno
@@ -48,6 +49,7 @@
             this.lblLicno.Size = new System.Drawing.Size(135, 24);
             this.lblLicno.TabIndex = 5;
             this.lblLicno.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblLicno.Click += new System.EventHandler(this.lblLicno_Click);
             // 
             // btnExit
             // 
@@ -116,6 +118,18 @@
             this.lblSangho.TabIndex = 11;
             this.lblSangho.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Location = new System.Drawing.Point(50, 150);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(93, 26);
+            this.btnUpdate.TabIndex = 12;
+            this.btnUpdate.Text = "업데이트";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -123,6 +137,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(464, 260);
             this.ControlBox = false;
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lblSangho);
             this.Controls.Add(this.txtGuide);
             this.Controls.Add(this.txtPassword);
@@ -148,5 +163,6 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtGuide;
         private System.Windows.Forms.Label lblSangho;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

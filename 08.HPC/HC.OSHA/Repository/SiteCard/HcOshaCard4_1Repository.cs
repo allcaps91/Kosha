@@ -17,23 +17,20 @@ namespace HC.OSHA.Repository
         public HC_OSHA_CARD4_1 FindByEstimate(long estimateId, string year)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER FROM HIC_OSHA_CARD4_1 A    ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                                                               ");
-            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                                          ");
-            parameter.AppendSql("INNER JOIN HIC_USERS C                                                               ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                                                         ");
-            parameter.AppendSql("WHERE A.SWLICENSE = :SWLICENSE                                 ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE                                 ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE                                 ");
-            parameter.AppendSql("  AND A.ID = (                                                  ");
-            parameter.AppendSql("SELECT max(id) FROM HIC_OSHA_CARD4_1 A                          ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                                          ");
-            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                     ");
-            parameter.AppendSql("INNER JOIN HIC_USERS C                                          ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                                    ");
-            parameter.AppendSql("WHERE A.ESTIMATE_ID = :estimateId                               ");
-            parameter.AppendSql("AND YEAR = :YEAR                                                ");
-            parameter.AppendSql("AND SWLICENSE = :SWLICENSE )                                   ");
+            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER ");
+            parameter.AppendSql("  FROM HIC_OSHA_CARD4_1 A ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS B ");
+            parameter.AppendSql("             ON A.CREATEDUSER = B.USERID ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS C ");
+            parameter.AppendSql("             ON A.MODIFIEDUSER = C.USERID ");
+            parameter.AppendSql(" WHERE A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND A.ID = ( ");
+            parameter.AppendSql("       SELECT max(id) FROM HIC_OSHA_CARD4_1 ");
+            parameter.AppendSql("        WHERE ESTIMATE_ID = :estimateId ");
+            parameter.AppendSql("          AND YEAR = :YEAR ");
+            parameter.AppendSql("          AND SWLICENSE = :SWLICENSE ) ");
 
             parameter.Add("estimateId", estimateId);
             parameter.Add("YEAR", year);
@@ -46,15 +43,16 @@ namespace HC.OSHA.Repository
         public HC_OSHA_CARD4_1 FindOne(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER FROM HIC_OSHA_CARD4_1 A    ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                                                               ");
-            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                                                          ");
-            parameter.AppendSql("INNER JOIN HIC_USERS C                                                               ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                                                         ");
-            parameter.AppendSql("WHERE A.ID = :ID                                                ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE                                 ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE                                 ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE                                 ");
+            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER ");
+            parameter.AppendSql("  FROM HIC_OSHA_CARD4_1 A    ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS B ");
+            parameter.AppendSql("             ON A.CREATEDUSER = B.USERID ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS C ");
+            parameter.AppendSql("             ON A.MODIFIEDUSER = C.USERID ");
+            parameter.AppendSql(" WHERE A.ID = :ID ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);

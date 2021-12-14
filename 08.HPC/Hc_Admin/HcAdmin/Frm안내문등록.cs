@@ -49,8 +49,8 @@ namespace HcAdmin
                 if (chkNew.Checked == true)
                 {
                     SQL += ComNum.VBLF + " INSERT INTO LICMSG ";
-                    SQL += ComNum.VBLF + "        (Remark, EntTime) ";
-                    SQL += ComNum.VBLF + " VALUES ('" + txtRemark.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "        (Gubun,Remark, EntTime) ";
+                    SQL += ComNum.VBLF + " VALUES ('2','" + txtRemark.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + strTime + "') ";
                 }
                 else
@@ -58,6 +58,7 @@ namespace HcAdmin
                     SQL += ComNum.VBLF + " UPDATE LICMSG ";
                     SQL += ComNum.VBLF + "    SET Remark   = '" + txtRemark.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        EntTime  = '" + strTime + "' ";
+                    SQL += ComNum.VBLF + "  WHERE Gubun='2' ";
                 }
                 SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
 
@@ -90,7 +91,8 @@ namespace HcAdmin
 
             try
             {
-                SQL = "SELECT Remark FROM LICMSG";
+                SQL =  "SELECT Remark FROM LICMSG ";
+                SQL += " WHERE Gubun='2' ";
                 dt = clsDbMySql.GetDataTable(SQL);
 
                 if (dt.Rows.Count > 0)

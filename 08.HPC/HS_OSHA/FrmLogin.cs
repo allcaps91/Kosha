@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;
+using static System.IO.Directory;
+using System.Diagnostics;
 
 namespace HS_OSHA
 {
@@ -294,6 +297,49 @@ namespace HS_OSHA
         }
 
         private void txtGuide_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Ftpedt ftpedt = new Ftpedt();
+            string strMsgBackup = txtGuide.Text.Trim();
+
+            txtGuide.Text = "업데이트 서버에서 파일을 다운로드 중 입니다.";
+            txtGuide.Text += ComNum.VBLF + "  소요시간: 약 1~2분 입니다.";
+
+            if (ftpedt.FtpConnetBatch("115.68.23.223", "dhson", "@thsehdgml#") == false)
+            {
+                txtGuide.Text = strMsgBackup;
+                ComFunc.MsgBox("업데이트 서버에 접속이 불가능합니다.", "알림");
+                return;
+            }
+
+            if (Directory.Exists(@"c:\temp\HsMainUpdate") ==false)
+            {
+                DirectoryInfo di = Directory.CreateDirectory(@"c:\temp\HsMainUpdate");
+            }
+            string strLocalPath = @"c:\temp\HsMainUpdate";
+            string strFileNm = "HsMainUpdate.exe";
+            string strServerPath = "/update";
+            if (ftpedt.FtpDownloadBatch(strLocalPath, strFileNm, strServerPath,true)==false)
+            {
+                txtGuide.Text = strMsgBackup;
+                ComFunc.MsgBox("업데이트 다운로드 실패", "알림");
+                return;
+            }
+            ftpedt.FtpDisConnetBatch();
+
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = @"c:\temp\HsMainUpdate\HsMainUpdate.exe";
+            startInfo.Arguments = null;
+            Process.Start(startInfo);
+
+            this.Close();
+        }
+
+        private void lblLicno_Click(object sender, EventArgs e)
         {
 
         }

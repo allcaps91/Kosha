@@ -37,6 +37,7 @@
             this.CmdLogin = new System.Windows.Forms.Button();
             this.TxtPass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.서버업로드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panLogin.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +47,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.닫기ToolStripMenuItem,
             this.라이선스ToolStripMenuItem,
-            this.안내문등록ToolStripMenuItem});
+            this.안내문등록ToolStripMenuItem,
+            this.서버업로드ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -131,6 +133,13 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "관리자의 비밀번호를 입력하세요";
             // 
+            // 서버업로드ToolStripMenuItem
+            // 
+            this.서버업로드ToolStripMenuItem.Name = "서버업로드ToolStripMenuItem";
+            this.서버업로드ToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.서버업로드ToolStripMenuItem.Text = "서버업로드";
+            this.서버업로드ToolStripMenuItem.Click += new System.EventHandler(this.서버업로드ToolStripMenuItem_Click);
+            // 
             // FrmMainform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
@@ -164,6 +173,7 @@
         private System.Windows.Forms.TextBox TxtPass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem 안내문등록ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 서버업로드ToolStripMenuItem;
     }
 }
 
