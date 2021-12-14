@@ -30,12 +30,12 @@
         {
             this.txtOldVer = new System.Windows.Forms.TextBox();
             this.lblLTD02 = new System.Windows.Forms.Label();
-            this.txtNewVer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuild = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblMsg = new System.Windows.Forms.Label();
             this.btnFileSend = new System.Windows.Forms.Button();
+            this.txtNewVer = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtOldVer
@@ -44,7 +44,7 @@
             this.txtOldVer.Location = new System.Drawing.Point(132, 8);
             this.txtOldVer.Name = "txtOldVer";
             this.txtOldVer.Size = new System.Drawing.Size(106, 25);
-            this.txtOldVer.TabIndex = 4;
+            this.txtOldVer.TabIndex = 1;
             this.txtOldVer.Tag = "";
             this.txtOldVer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -59,16 +59,6 @@
             this.lblLTD02.TabIndex = 141;
             this.lblLTD02.Text = "변경 전 버전";
             this.lblLTD02.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtNewVer
-            // 
-            this.txtNewVer.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtNewVer.Location = new System.Drawing.Point(132, 41);
-            this.txtNewVer.Name = "txtNewVer";
-            this.txtNewVer.Size = new System.Drawing.Size(106, 25);
-            this.txtNewVer.TabIndex = 0;
-            this.txtNewVer.Tag = "";
-            this.txtNewVer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -127,17 +117,25 @@
             this.btnFileSend.UseVisualStyleBackColor = true;
             this.btnFileSend.Click += new System.EventHandler(this.btnFileSend_Click);
             // 
+            // txtNewVer
+            // 
+            this.txtNewVer.Location = new System.Drawing.Point(132, 41);
+            this.txtNewVer.Name = "txtNewVer";
+            this.txtNewVer.Size = new System.Drawing.Size(105, 25);
+            this.txtNewVer.TabIndex = 2;
+            this.txtNewVer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FrmUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(253, 188);
             this.ControlBox = false;
+            this.Controls.Add(this.txtNewVer);
             this.Controls.Add(this.btnFileSend);
             this.Controls.Add(this.lblMsg);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnBuild);
-            this.Controls.Add(this.txtNewVer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtOldVer);
             this.Controls.Add(this.lblLTD02);
@@ -156,11 +154,11 @@
 
         private System.Windows.Forms.TextBox txtOldVer;
         private System.Windows.Forms.Label lblLTD02;
-        private System.Windows.Forms.TextBox txtNewVer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBuild;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblMsg;
         private System.Windows.Forms.Button btnFileSend;
+        private System.Windows.Forms.TextBox txtNewVer;
     }
 }

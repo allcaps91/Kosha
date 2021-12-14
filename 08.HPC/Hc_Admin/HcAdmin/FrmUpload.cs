@@ -162,27 +162,28 @@ namespace HcAdmin
                 return;
             }
 
-            lblMsg.Text = "업데이트 서버로 파일 전송";
-
-            Ftpedt ftp = new Ftpedt();
-            if (ftp.FtpConnetBatch("115.68.23.223", "dhson", "@thsehdgml#") == false)
-            {
-                ComFunc.MsgBox("서버에 접속이 불가능합니다.", "알림");
-                return;
-            }
-
-            string strLocalPath = @"C:\Kosha\Setup\Update";
-            string strFileNm = "HsMainUpdate.exe";
-            string strServerPath = "/update";
-            if (ftp.FtpUploadBatch(strLocalPath, strFileNm, strServerPath, true) == false)
-            {
-                ComFunc.MsgBox("업데이트 파일 전송 실패", "알림");
-                return;
-            }
-            ftp.FtpDisConnetBatch();
-
             // 버전정보를 서버에 저장
             if (UPDATE_VerInfo() == false) return;
+
+            lblMsg.Text = "업데이트 서버로 파일 전송";
+
+            using (Ftpedt FtpedtX = new Ftpedt())
+            {
+                if (FtpedtX.FtpConnetBatch("115.68.23.223", "dhson", "@thsehdgml#")==false)
+                {
+                    FtpedtX.Dispose();
+                    ComFunc.MsgBox("서버에 접속이 불가능합니다.", "알림");
+                    return;
+                }
+                string strLocalPath = @"C:\Kosha\Setup\Update";
+                string strFileNm = "HsMainUpdate.exe";
+                string strServerPath = "/update";
+                if (FtpedtX.FtpUploadBatch(strLocalPath + "\\" + strFileNm, strFileNm, strServerPath)==false) 
+                {
+                    ComFunc.MsgBox("업데이트 파일 전송 실패", "알림");
+                    return;
+                }
+            }
 
             ComFunc.MsgBox("전송 완료", "알림");
         }
