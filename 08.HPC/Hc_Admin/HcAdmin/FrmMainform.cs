@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Diagnostics;
 
 namespace HcAdmin
 {
@@ -84,6 +86,14 @@ namespace HcAdmin
         {
             FrmUpload form = new FrmUpload();
             form.Show();
+        }
+
+        private void 설치파일만들기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = @"C:\헬스소프트\InstallFactory 2.70\InstFact.exe";
+            startInfo.Arguments = null;
+            Process.Start(startInfo);
         }
     }
 }

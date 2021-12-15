@@ -35,16 +35,17 @@
             this.lblMsg = new System.Windows.Forms.Label();
             this.txtNewVer = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSend = new System.Windows.Forms.Button();
             this.btnSetupFile = new System.Windows.Forms.Button();
             this.btnFileCopy = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSend = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtOldVer
             // 
+            this.txtOldVer.Enabled = false;
             this.txtOldVer.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtOldVer.Location = new System.Drawing.Point(132, 8);
             this.txtOldVer.Name = "txtOldVer";
@@ -121,6 +122,18 @@
             this.panel1.Size = new System.Drawing.Size(294, 157);
             this.panel1.TabIndex = 148;
             // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(15, 123);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(261, 25);
+            this.btnSend.TabIndex = 4;
+            this.btnSend.Text = "4. 업데이트 설치파일 서버전송";
+            this.btnSend.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
             // btnSetupFile
             // 
             this.btnSetupFile.Location = new System.Drawing.Point(15, 85);
@@ -163,18 +176,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "1. 소스를 수정 후 빌드를 한다.";
             // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(15, 123);
-            this.btnSend.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(261, 25);
-            this.btnSend.TabIndex = 4;
-            this.btnSend.Text = "4. 업데이트 설치파일 서버전송";
-            this.btnSend.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
-            // 
             // FrmUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -210,7 +211,6 @@
         private System.Windows.Forms.Label lblMsg;
         private System.Windows.Forms.TextBox txtNewVer;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnServerSend;
         private System.Windows.Forms.Button btnSetupFile;
         private System.Windows.Forms.Button btnFileCopy;
         private System.Windows.Forms.Label label3;

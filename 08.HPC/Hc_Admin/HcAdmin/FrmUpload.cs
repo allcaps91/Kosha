@@ -115,11 +115,16 @@ namespace HcAdmin
                 ComFunc.MsgBox("버전정보가 공란입니다.", "오류");
                 return;
             }
+            if (VB.L(txtNewVer.Text.Trim(),";")==1 || VB.Left(txtNewVer.Text,4)!="Ver=")
+            {
+                ComFunc.MsgBox("신규 버전정보 형식 오류입니다.", "오류");
+                return;
+            }
 
             lblMsg.Text = "파일을 복사 중";
 
             // 1. 업데이트 목록 폴더의 기존 내용은 삭제
-            DirectoryInfo d1 = new DirectoryInfo(@"C:\Kosha\Setup\Update\UpdateFiles");
+            DirectoryInfo d1 = new DirectoryInfo(@"C:\헬스소프트\UpdateFiles");
             FileInfo[] files = d1.GetFiles();
             foreach (FileInfo file in files)
             {
@@ -128,7 +133,7 @@ namespace HcAdmin
 
             // 2. 최근 1주일이내 변경된 파일만 Update Files 목록에 복사
             DateTime strGdate = DateTime.Now.AddDays(-7);
-            string strCopyPath = @"C:\Kosha\Setup\Update\UpdateFiles\";
+            string strCopyPath = @"C:\헬스소프트\UpdateFiles\";
             DirectoryInfo d2 = new DirectoryInfo(@"C:\Kosha\08.HPC\HS_OSHA\bin\Release");
             FileInfo[] files2 = d2.GetFiles();
             foreach (FileInfo file in files2)
@@ -140,7 +145,7 @@ namespace HcAdmin
             }
 
             // 3. 버전정보 파일을 생성
-            string strVerPath = @"C:\Kosha\Setup\Update\UpdateFiles\VerInfo.txt";
+            string strVerPath = @"C:\헬스소프트\UpdateFiles\VerInfo.txt";
             System.IO.File.WriteAllText(strVerPath, txtNewVer.Text.Trim());
 
             strVerPath = @"C:\Kosha\08.HPC\HS_OSHA\bin\Release\VerInfo.txt";
@@ -155,7 +160,7 @@ namespace HcAdmin
 
             //업데이트 파일생성
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = @"C:\Kosha\Setup\InstallFactory 2.70\InstFact.exe";
+            startInfo.FileName = @"C:\헬스소프트\InstallFactory 2.70\InstFact.exe";
             startInfo.Arguments = null;
             Process.Start(startInfo);
 
@@ -243,7 +248,7 @@ namespace HcAdmin
             try
             {
                 Ftpedt ftpedt = new Ftpedt();
-                string strLocalPath = @"C:\Kosha\Setup\Update\";
+                string strLocalPath = @"C:\헬스소프트\";
                 string strFileNm = "HsMainUpdate.exe";
                 string strServerPath = "/update";
                 ftpedt.FtpUpload("115.68.23.223", "dhson", "@thsehdgml#", strLocalPath + strFileNm, strFileNm, strServerPath); //TODO 윤조연 FTP 계정 정리
