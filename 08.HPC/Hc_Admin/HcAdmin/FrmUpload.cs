@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
-using static System.IO.Directory;
 using System.Diagnostics;
 
 namespace HcAdmin
 {
     public partial class FrmUpload : Form
     {
+        bool FbNew = false;
+
         public FrmUpload()
         {
             InitializeComponent();
@@ -36,28 +37,6 @@ namespace HcAdmin
 
         private void btnBuild_Click(object sender, EventArgs e)
         {
-            if (txtOldVer.Text==txtNewVer.Text)
-            {
-                ComFunc.MsgBox("버전정보가 변경되지 않았습니다.", "오류");
-                return;
-            }
-            if (txtNewVer.Text.Trim()=="")
-            {
-                ComFunc.MsgBox("버전정보가 공란입니다.", "오류");
-                return;
-            }
-
-            //버전정보를 PC에 저장
-            string strVerPath = @"C:\Kosha\08.HPC\HS_OSHA\bin\Release\VerInfo.txt";
-            System.IO.File.WriteAllText(strVerPath,txtNewVer.Text.Trim());
-
-            //업데이트 파일생성
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = @"C:\Kosha\Setup\InstallFactory 2.70\InstFact.exe";
-            startInfo.Arguments = null;
-            Process.Start(startInfo);
-
-            btnFileSend.Enabled = true;
 
         }
         // 서버에서 버전정보를 읽음 //
@@ -83,8 +62,14 @@ namespace HcAdmin
                 SQL += " WHERE Gubun='1' ";
                 dt = clsDbMySql.GetDataTable(SQL);
 
-                strVerInfo = "";
-                if (dt.Rows.Count > 0) strVerInfo = dt.Rows[0]["Remark"].ToString().Trim();
+                if (dt.Rows.Count == 0)
+                {
+                    FbNew = true;
+                }
+                else
+                {
+                    strVerInfo = dt.Rows[0]["Remark"].ToString().Trim();
+                }
 
                 dt.Dispose();
                 dt = null;
@@ -108,11 +93,109 @@ namespace HcAdmin
             }
         }
 
+        private void FrmUpload_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMsg_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFileCopy_Click(object sender, EventArgs e)
+        {
+            if (txtOldVer.Text == txtNewVer.Text)
+            {
+                ComFunc.MsgBox("버전정보가 변경되지 않았습니다.", "오류");
+                return;
+            }
+            if (txtNewVer.Text.Trim() == "")
+            {
+                ComFunc.MsgBox("버전정보가 공란입니다.", "오류");
+                return;
+            }
+
+            lblMsg.Text = "파일을 복사 중";
+
+            // 1. 업데이트 목록 폴더의 기존 내용은 삭제
+            DirectoryInfo d1 = new DirectoryInfo(@"C:\Kosha\Setup\Update\UpdateFiles");
+            FileInfo[] files = d1.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                file.Delete();
+            }
+
+            // 2. 최근 1주일이내 변경된 파일만 Update Files 목록에 복사
+            DateTime strGdate = DateTime.Now.AddDays(-7);
+            string strCopyPath = @"C:\Kosha\Setup\Update\UpdateFiles\";
+            DirectoryInfo d2 = new DirectoryInfo(@"C:\Kosha\08.HPC\HS_OSHA\bin\Release");
+            FileInfo[] files2 = d2.GetFiles();
+            foreach (FileInfo file in files2)
+            {
+                if (file.LastWriteTime >= strGdate)
+                {
+                    file.CopyTo(strCopyPath + file.Name, true);
+                }
+            }
+
+            // 3. 버전정보 파일을 생성
+            string strVerPath = @"C:\Kosha\Setup\Update\UpdateFiles\VerInfo.txt";
+            System.IO.File.WriteAllText(strVerPath, txtNewVer.Text.Trim());
+
+            strVerPath = @"C:\Kosha\08.HPC\HS_OSHA\bin\Release\VerInfo.txt";
+            System.IO.File.WriteAllText(strVerPath, txtNewVer.Text.Trim());
+
+            lblMsg.Text = "파일을 복사 완료";
+        }
+
+        private void btnSetupFile_Click(object sender, EventArgs e)
+        {
+            lblMsg.Text = "업데이트 설치파일 생성 중";
+
+            //업데이트 파일생성
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = @"C:\Kosha\Setup\InstallFactory 2.70\InstFact.exe";
+            startInfo.Arguments = null;
+            Process.Start(startInfo);
+
+            lblMsg.Text = "업데이트 설치파일 생성 완료";
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            string strLocalFile = @"C:\Kosha\Setup\Update\HsMainUpdate.exe";
+
+            //파일이 있는지 점검
+            FileInfo fileInfo = new FileInfo(strLocalFile);
+            if (fileInfo.Exists == false)
+            {
+                ComFunc.MsgBox("업데이트 파일이 없습니다.", "오류");
+                return;
+            }
+
+            // 버전정보를 서버에 저장
+            if (UPDATE_VerInfo() == false) return;
+
+            lblMsg.Text = "업데이트 설치파일 전송 중";
+
+            // 설치파일을 서버로 전송
+            if (Server_Send() == false)
+            {
+                lblMsg.Text = "";
+                ComFunc.MsgBox("파일 서버로 전송 오류", "오류");
+                return;
+            }
+
+            lblMsg.Text = "업데이트 설치파일 전송 완료";
+        }
+
         // 서버에 버전정보를 저장 //
         private bool UPDATE_VerInfo()
         {
             string SQL = string.Empty;
             bool SqlErr;
+            string strTime = DateTime.Now.ToString("yyyy-MM-dd mm:ss");
 
             Cursor.Current = Cursors.WaitCursor;
 
@@ -125,8 +208,17 @@ namespace HcAdmin
 
             try
             {
-                SQL =  "UPDATE LICMSG SET Remark='" + txtNewVer.Text.Trim() + "' ";
-                SQL += " WHERE Gubun='1' ";
+                if (FbNew == true)
+                {
+                    SQL = "INSERT INTO LICMSG (Gubun,Remark,EntTime) ";
+                    SQL += " VALUES ('1','" + txtNewVer.Text.Trim() + "','" + strTime + "') ";
+                }
+                else
+                {
+                    SQL = "UPDATE LICMSG SET Remark='" + txtNewVer.Text.Trim() + "', ";
+                    SQL = SQL + "       EntTime='" + strTime + "' ";
+                    SQL = SQL + " WHERE Gubun='1' ";
+                }
                 SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
                 if (SqlErr == false)
                 {
@@ -145,52 +237,24 @@ namespace HcAdmin
             }
         }
 
-        private void FrmUpload_Load(object sender, EventArgs e)
+        // 업데이트 설치파일을 서버로 전송
+        private bool Server_Send()
         {
-
-        }
-
-        private void btnFileSend_Click(object sender, EventArgs e)
-        {
-            string strLocalFile = @"C:\Kosha\Setup\Update\HsMainUpdate.exe";
-
-            //파일이 있는지 점검
-            FileInfo fileInfo = new FileInfo(strLocalFile);
-            if (fileInfo.Exists==false)
+            try
             {
-                ComFunc.MsgBox("업데이트 파일이 없습니다.", "오류");
-                return;
-            }
-
-            // 버전정보를 서버에 저장
-            if (UPDATE_VerInfo() == false) return;
-
-            lblMsg.Text = "업데이트 서버로 파일 전송";
-
-            using (Ftpedt FtpedtX = new Ftpedt())
-            {
-                if (FtpedtX.FtpConnetBatch("115.68.23.223", "dhson", "@thsehdgml#")==false)
-                {
-                    FtpedtX.Dispose();
-                    ComFunc.MsgBox("서버에 접속이 불가능합니다.", "알림");
-                    return;
-                }
-                string strLocalPath = @"C:\Kosha\Setup\Update";
+                Ftpedt ftpedt = new Ftpedt();
+                string strLocalPath = @"C:\Kosha\Setup\Update\";
                 string strFileNm = "HsMainUpdate.exe";
                 string strServerPath = "/update";
-                if (FtpedtX.FtpUploadBatch(strLocalPath + "\\" + strFileNm, strFileNm, strServerPath)==false) 
-                {
-                    ComFunc.MsgBox("업데이트 파일 전송 실패", "알림");
-                    return;
-                }
+                ftpedt.FtpUpload("115.68.23.223", "dhson", "@thsehdgml#", strLocalPath + strFileNm, strFileNm, strServerPath); //TODO 윤조연 FTP 계정 정리
+                ftpedt.Dispose();
+                return true;
             }
-
-            ComFunc.MsgBox("전송 완료", "알림");
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
-        private void lblMsg_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

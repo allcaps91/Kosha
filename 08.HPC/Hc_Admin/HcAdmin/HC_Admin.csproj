@@ -41,6 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\00.Com\00.ComLibB\ComDbB\obj\Debug\ComDbB.dll</HintPath>
     </Reference>
+    <Reference Include="edtFTPnet">
+      <HintPath>..\..\..\Dll모음\edtFTPnet.dll</HintPath>
+    </Reference>
     <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
     <Reference Include="FarPoint.Excel, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
     <Reference Include="FarPoint.Localization, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />

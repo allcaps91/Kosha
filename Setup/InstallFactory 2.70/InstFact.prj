@@ -3,7 +3,7 @@ XPos=649
 YPos=185
 
 [Project]
-ActiveProject=Project3
+ActiveProject=Project2
 Project1=Demo Project
 Project2=HSMain 설치
 Project3=HSMain 업데이트
@@ -130,9 +130,9 @@ MiscFile46=C:\이양재자료\WinPcap\Packet.dll,{WinDir}\system32,3,2,0,0,0
 Shortcut1=헬스소프트,C:\Kosha\08.HPC\HS_OSHA\bin\Release\HS_OSHA.exe,{DeskTop},{ProgramFiles}\HSMain,,
 [Project3]
 Title=헬스소프트 업데이트
-SourceFolder=C:\Kosha\08.HPC\HS_OSHA\bin\Release
+SourceFolder=C:\Kosha\Setup\Update\UpdateFiles
 DefInstallFolder={ProgramFiles}\HsMain
-ForceInstallFolder=0
+ForceInstallFolder=1
 OutputFolder=C:\Kosha\Setup\Update
 OutputFilename=HsMainUpdate
 Language=0
@@ -168,7 +168,7 @@ SilentToolArg=
 HideWizardWindow=0
 DeleteSilentTool=0
 RunApp=1
-RunAppPath=C:\Kosha\08.HPC\HS_OSHA\bin\Release\HS_OSHA.exe
+RunAppPath=C:\Kosha\Setup\Update\UpdateFiles\HS_OSHA.exe
 RunAppArg=
 AllowCancelRunApp=1
 Uninstall=0

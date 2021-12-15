@@ -23,6 +23,8 @@ namespace HS_OSHA
         public static string FstrSangho = "";
         public static string FstrPassword = "";
         public static string FstrEndDate = "";
+        public static string FstrNewVer = "";
+        public static string FstrOldVer = "";
 
         public FrmLogin()
         {
@@ -35,6 +37,7 @@ namespace HS_OSHA
 
             clsDB.GetDbInfo();
             clsDB.DbCon = clsDB.DBConnect_Cloud();
+
         }
 
         private void txtIdNumber_TextChanged(object sender, EventArgs e)
@@ -75,6 +78,13 @@ namespace HS_OSHA
 
                 clsType.HosInfo.SwLicense = VB.Pstr(strNewData, "{}", 1);
                 clsType.HosInfo.SwLicInfo = strNewData;
+
+                // 버전정보를 읽음
+                if (System.IO.File.Exists(@"C:\Program Files (x86)\HSMain\VerInfo.txt") == true)
+                    FstrOldVer = System.IO.File.ReadAllText(@"C:\Program Files (x86)\HSMain\VerInfo.txt");
+                if (System.IO.File.Exists(@"C:\Program Files\HSMain\VerInfo.txt") == true)
+                    FstrOldVer = System.IO.File.ReadAllText(@"C:\Program Files\HSMain\VerInfo.txt");
+
                 return true;
             }
             else
@@ -105,9 +115,8 @@ namespace HS_OSHA
 
             try
             {
-                SQL = "";
                 SQL = "SELECT * FROM LICMST ";
-                SQL = SQL + ComNum.VBLF + "Where Licno = '" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + "Where Licno = '" + clsType.HosInfo.SwLicense + "' ";
                 dt = clsDbMySql.GetDataTable(SQL);
 
                 strNewData = "";
@@ -178,17 +187,14 @@ namespace HS_OSHA
                 SQL = "SELECT * FROM LICMSG ";
 
                 dt = clsDbMySql.GetDataTable(SQL);
-
-                if (dt.Rows.Count > 0)
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    txtGuide.Text = dt.Rows[0]["Remark"].ToString();
+                    if (dt.Rows[i]["Gubun"].ToString()=="1") FstrNewVer= dt.Rows[i]["Remark"].ToString();
+                    if (dt.Rows[i]["Gubun"].ToString() == "2") txtGuide.Text = dt.Rows[i]["Remark"].ToString();
                 }
-
                 dt.Dispose();
                 dt = null;
-
                 Cursor.Current = Cursors.Default;
-
             }
             catch (Exception ex)
             {
@@ -206,6 +212,14 @@ namespace HS_OSHA
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            //버전정보가 틀리면 자동 업데이트
+            if (FstrOldVer != FstrNewVer)
+            {
+                ComFunc.MsgBox("프로그램이 업데이트 됩니다.");
+                btnUpdate_Click();
+                return;
+            }
+
             if (txtIdNumber.Text.Trim() == "admin") 
             {
                 if (txtPassword.Text.Trim() == VB.Pstr(clsType.HosInfo.SwLicInfo, "{}", 4))
@@ -301,7 +315,7 @@ namespace HS_OSHA
 
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnUpdate_Click()
         {
             Ftpedt ftpedt = new Ftpedt();
             string strMsgBackup = txtGuide.Text.Trim();
