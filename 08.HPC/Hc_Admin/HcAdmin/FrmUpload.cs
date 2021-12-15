@@ -169,7 +169,7 @@ namespace HcAdmin
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            string strLocalFile = @"C:\Kosha\Setup\Update\HsMainUpdate.exe";
+            string strLocalFile = @"C:\헬스소프트\HsMainUpdate.exe";
 
             //파일이 있는지 점검
             FileInfo fileInfo = new FileInfo(strLocalFile);
