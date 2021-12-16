@@ -56,32 +56,10 @@ namespace HC.OSHA.Repository
         {
             MParameter parameter = CreateParameter();
             dto.ID = GetSequenceNextVal("HC_OSHA_SHARED_ID_SEQ");
-            parameter.AppendSql("INSERT INTO HIC_OSHA_CONTRACT_MANAGER  ");
-            parameter.AppendSql("(                     ");
-            parameter.AppendSql("  ID,                 ");
-            parameter.AppendSql("  ESTIMATE_ID,        ");
-            parameter.AppendSql("  WORKER_ROLE,        ");
-            parameter.AppendSql("  NAME,               ");
-            parameter.AppendSql("  DEPT,               ");
-            parameter.AppendSql("  TEL,                ");
-            parameter.AppendSql("  HP,                 ");
-            parameter.AppendSql("  EMAIL,              ");
-            parameter.AppendSql("  ISDELETED,          ");
-            parameter.AppendSql("  SWLICENSE           ");
-            parameter.AppendSql(")                     ");
-            parameter.AppendSql("VALUES                ");
-            parameter.AppendSql("(                     ");
-            parameter.AppendSql("  :ID,                ");
-            parameter.AppendSql("  :ESTIMATE_ID,       ");
-            parameter.AppendSql("  :WORKER_ROLE,       ");
-            parameter.AppendSql("  :NAME,              ");
-            parameter.AppendSql("  :DEPT,              ");
-            parameter.AppendSql("  :TEL,               ");
-            parameter.AppendSql("  :HP,                ");
-            parameter.AppendSql("  :EMAIL,             ");
-            parameter.AppendSql("  'N',                ");
-            parameter.AppendSql("  :SWLICENSE          ");
-            parameter.AppendSql(")                     ");
+            parameter.AppendSql("INSERT INTO HIC_OSHA_CONTRACT_MANAGER ");
+            parameter.AppendSql("(ID,ESTIMATE_ID,WORKER_ROLE,NAME,DEPT,TEL,HP,EMAIL,ISDELETED,SWLICENSE) ");
+            parameter.AppendSql("VALUES (:ID,:ESTIMATE_ID,:WORKER_ROLE,:NAME,:DEPT,:TEL,:HP,:EMAIL,");
+            parameter.AppendSql("        'N',:SWLICENSE) ");
             parameter.Add("ID", dto.ID);
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
             parameter.Add("WORKER_ROLE", dto.WORKER_ROLE);
@@ -90,7 +68,7 @@ namespace HC.OSHA.Repository
             parameter.Add("TEL", dto.TEL);
             parameter.Add("HP", dto.HP);
             parameter.Add("EMAIL", dto.EMAIL);
-            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Insert("HIC_OSHA_CONTRACT_MANAGER", dto.ID);

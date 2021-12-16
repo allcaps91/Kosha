@@ -28,6 +28,7 @@ namespace HcAdmin
 
             string strVerPath = @"C:\Kosha\08.HPC\HS_OSHA\bin\Release\VerInfo.txt";
             if (System.IO.File.Exists(strVerPath) == true) txtNewVer.Text = System.IO.File.ReadAllText(strVerPath);
+            txtNewVer.Text = VB.Pstr(txtNewVer.Text, ";", 1);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -74,8 +75,8 @@ namespace HcAdmin
                 dt.Dispose();
                 dt = null;
 
-                txtOldVer.Text = "Ver=1.0.0;";
-                if (strVerInfo != "") txtOldVer.Text = strVerInfo;
+                txtOldVer.Text = "Ver=1.0.0";
+                if (strVerInfo != "") txtOldVer.Text = VB.Pstr(strVerInfo, ";", 1);
                 Cursor.Current = Cursors.Default;
                 return;
             }
@@ -115,7 +116,7 @@ namespace HcAdmin
                 ComFunc.MsgBox("버전정보가 공란입니다.", "오류");
                 return;
             }
-            if (VB.L(txtNewVer.Text.Trim(),";")==1 || VB.Left(txtNewVer.Text,4)!="Ver=")
+            if (VB.L(txtNewVer.Text.Trim(),".")!=3 || VB.Left(txtNewVer.Text,4)!="Ver=")
             {
                 ComFunc.MsgBox("신규 버전정보 형식 오류입니다.", "오류");
                 return;
@@ -152,6 +153,7 @@ namespace HcAdmin
             System.IO.File.WriteAllText(strVerPath, txtNewVer.Text.Trim());
 
             lblMsg.Text = "파일을 복사 완료";
+            ComFunc.MsgBox("파일 복사 완료", "확인");
         }
 
         private void btnSetupFile_Click(object sender, EventArgs e)
@@ -193,6 +195,7 @@ namespace HcAdmin
             }
 
             lblMsg.Text = "업데이트 설치파일 전송 완료";
+            ComFunc.MsgBox("서버 전송 완료", "확인");
         }
 
         // 서버에 버전정보를 저장 //

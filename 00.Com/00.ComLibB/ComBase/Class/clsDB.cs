@@ -3432,8 +3432,10 @@ namespace ComBase
                         command.Parameters.Add(parameter);
                     }
                 }
-                // Log 
-                System.IO.File.WriteAllText(@"C:\temp\sql.txt", mParameter.SQL);
+                // Log File.AppendAllText
+                // System.IO.File.WriteAllText(@"C:\temp\sql.txt", mParameter.SQL);
+                System.IO.File.AppendAllText(@"C:\temp\sql.txt","Time = " + DateTime.Now.ToString("yyyy-MM=dd hh:mm:ss"));
+                System.IO.File.AppendAllText(@"C:\temp\sql.txt", mParameter.SQL);
                 rowCount = command.ExecuteNonQuery();
             }
 
