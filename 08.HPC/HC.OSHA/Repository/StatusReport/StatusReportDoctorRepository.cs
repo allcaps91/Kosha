@@ -62,9 +62,10 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  FROM HIC_OSHA_REPORT_DOCTOR A ");
             parameter.AppendSql("       INNER JOIN HIC_USERS B ");
             parameter.AppendSql("             ON A.MODIFIEDUSER = B.USERID ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" WHERE A.SITE_ID = :SITE_ID ");
             parameter.AppendSql("   AND A.ISDELETED = 'N' ");
-            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY A.VISITDATE DESC ");
 
             parameter.Add("SITE_ID", siteId);

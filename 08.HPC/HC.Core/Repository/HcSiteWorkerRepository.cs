@@ -203,15 +203,14 @@ namespace HC.Core.Repository
         public List<HC_SITE_WORKER> FindWorkerRole(long siteId)
         {
             MParameter parameter = CreateParameter();
-            //parameter.AppendSql("SELECT A.* FROM HIC_SITE_WORKER A                                            ");
-            parameter.AppendSql("SELECT A.* FROM HC_SITE_WORKER_VIEW A                                            ");
-            parameter.AppendSql("INNER JOIN HIC_CODES B                                                        ");
-            parameter.AppendSql("ON A.WORKER_ROLE = B.CODE                                                   ");
-            parameter.AppendSql("AND B.CODE <> 'EMP_ROLE' AND B.ISDELETED ='N'                               ");
-            parameter.AppendSql("WHERE A.SITEID = :SITEID                                                                ");
-      //      parameter.AppendSql("AND A.ISDELETED = 'N'                                                               ");
-
+            parameter.AppendSql("SELECT A.* FROM HC_SITE_WORKER_VIEW A ");
+            parameter.AppendSql("       INNER JOIN HIC_CODES B ");
+            parameter.AppendSql("             ON A.WORKER_ROLE = B.CODE ");
+            parameter.AppendSql("             AND B.CODE <> 'EMP_ROLE' AND B.ISDELETED ='N' ");
+            parameter.AppendSql(" WHERE A.SITEID = :SITEID ");
+            parameter.AppendSql("   AND A.SWLICENSE=:SWLICENSE ");
             parameter.Add("SITEID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_SITE_WORKER>(parameter);
 
@@ -229,20 +228,20 @@ namespace HC.Core.Repository
         public List<HC_SITE_WORKER> FindWorkerByRole(long siteId, string worker_role)
         {
             MParameter parameter = CreateParameter();
-            //parameter.AppendSql("SELECT A.* FROM HIC_SITE_WORKER A                                            ");
-            parameter.AppendSql("SELECT A.* FROM HC_SITE_WORKER_VIEW A                                            ");
-            parameter.AppendSql("INNER JOIN HIC_CODES B                                                        ");
-            parameter.AppendSql("ON A.WORKER_ROLE = B.CODE                                                   ");
+            parameter.AppendSql("SELECT A.* FROM HC_SITE_WORKER_VIEW A ");
+            parameter.AppendSql("       INNER JOIN HIC_CODES B ");
+            parameter.AppendSql("          ON A.WORKER_ROLE = B.CODE ");
             if (worker_role.NotEmpty())
             {
-                parameter.AppendSql("AND B.CODE =:worker_role                                                    ");
+                parameter.AppendSql("     AND B.CODE =:worker_role ");
             }
             
-            parameter.AppendSql("AND B.ISDELETED ='N'                                                          ");
-            parameter.AppendSql("WHERE A.SITEID = :SITEID                                                     ");
-    //        parameter.AppendSql("AND A.ISDELETED = 'N'                                                               ");
+            parameter.AppendSql("         AND B.ISDELETED ='N' ");
+            parameter.AppendSql(" WHERE A.SITEID = :SITEID ");
+            parameter.AppendSql("   AND A.SWLICENSE=:SWLICENSE ");
 
             parameter.Add("SITEID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (worker_role.NotEmpty())
             {
                 parameter.Add("worker_role", worker_role);

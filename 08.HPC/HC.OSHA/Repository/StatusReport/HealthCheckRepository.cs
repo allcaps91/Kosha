@@ -32,97 +32,61 @@ namespace HC.OSHA.Repository.StatusReport
         public List<HealthCheckWorkerModel> FindWorker(long siteId, string name, string dept, string panjeong, string isManageOsha, long reportId, bool isEnd)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*                                                                                                      ");
-            parameter.AppendSql("     , B.END_DATE                                                                                               ");
-            parameter.AppendSql("  FROM                                                                                                          ");
-            parameter.AppendSql("  (                                                                                                             ");
-            parameter.AppendSql("       SELECT WORKER_ID                                                                                         ");
-            parameter.AppendSql("            , ID                                                                                                ");
-            parameter.AppendSql("            , PTNO                                                                                              ");
-            parameter.AppendSql("            , SITEID                                                                                            ");
-            parameter.AppendSql("            , NAME                                                                                              ");
-            parameter.AppendSql("            , WORKER_ROLE                                                                                       ");
-            parameter.AppendSql("            , DEPT                                                                                              ");
-            parameter.AppendSql("            , TEL                                                                                               ");
-            parameter.AppendSql("            , HP                                                                                                ");
-            parameter.AppendSql("            , EMAIL                                                                                             ");
-            parameter.AppendSql("            , JUMIN                                                                                             ");
-            parameter.AppendSql("            , PANO                                                                                              ");
-            parameter.AppendSql("            , YEAR                                                                                              ");
-            parameter.AppendSql("            , PANJEONG                                                                                          ");
-            parameter.AppendSql("            , ISSPECIAL                                                                                         ");
-            parameter.AppendSql("            , ISMANAGEOSHA2 AS ISMANAGEOSHA                                                                     ");
-            parameter.AppendSql("            , OPINION AS PANNAME                                                                                ");
-            parameter.AppendSql("            , DENSE_RANK() OVER (PARTITION BY WORKER_ID ORDER BY YEAR DESC) AS RANK                             ");
-            parameter.AppendSql("         FROM                                                                                                   ");
-            parameter.AppendSql("         (                                                                                                      ");
-            parameter.AppendSql("               SELECT A.ID AS WORKER_ID                                                                         ");
-            parameter.AppendSql("                    , A.*                                                                                       ");
-            parameter.AppendSql("                    , B.YEAR                                                                                    ");
-            parameter.AppendSql("                    , B.PANJEONG                                                                                ");
-            parameter.AppendSql("                    , B.ISSPECIAL                                                                               ");
-            parameter.AppendSql("                    , A.ISMANAGEOSHA AS ISMANAGEOSHA2                                                           ");
-            parameter.AppendSql("                    , B.OPINION                                                                                 ");
-            parameter.AppendSql("                 FROM HC_SITE_WORKER_VIEW A                                                                     ");
-            parameter.AppendSql("                 LEFT OUTER JOIN                                                                                ");
-            parameter.AppendSql("                 (                                                                                              ");
-            parameter.AppendSql("                       SELECT MAX(YEAR) AS YEAR                                                                 ");
-            parameter.AppendSql("                            , WORKER_ID                                                                         ");
-            parameter.AppendSql("                            , PANJEONG                                                                          ");
-            parameter.AppendSql("                            , ISSPECIAL                                                                         ");
-            parameter.AppendSql("                            , OPINION                                                                           ");
-            parameter.AppendSql("                         FROM HIC_OSHA_PANJEONG                                                                 ");
-            parameter.AppendSql("                        WHERE SITE_ID = :SITE_ID                                                                ");
-            parameter.AppendSql("                          AND SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("                       GROUP BY WORKER_ID, PANJEONG, ISSPECIAL, OPINION                                         ");
-            parameter.AppendSql("                 ) B ON A.ID = B.WORKER_ID                                                                      ");
+            parameter.AppendSql("SELECT A.*,B.END_DATE ");
+            parameter.AppendSql("  FROM (SELECT WORKER_ID,ID,PTNO,SITEID,NAME,WORKER_ROLE,DEPT,TEL,HP,EMAIL,JUMIN,PANO, ");
+            parameter.AppendSql("               YEAR,PANJEONG,ISSPECIAL,ISMANAGEOSHA2 AS ISMANAGEOSHA,OPINION AS PANNAME, ");
+            parameter.AppendSql("               DENSE_RANK() OVER (PARTITION BY WORKER_ID ORDER BY YEAR DESC) AS RANK ");
+            parameter.AppendSql("          FROM (SELECT A.ID AS WORKER_ID,A.*,B.YEAR,B.PANJEONG,B.ISSPECIAL, ");
+            parameter.AppendSql("                       A.ISMANAGEOSHA AS ISMANAGEOSHA2,B.OPINION ");
+            parameter.AppendSql("                  FROM HC_SITE_WORKER_VIEW A ");
+            parameter.AppendSql("                       LEFT OUTER JOIN ( ");
+            parameter.AppendSql("                            SELECT MAX(YEAR) AS YEAR,WORKER_ID,PANJEONG,ISSPECIAL,OPINION ");
+            parameter.AppendSql("                              FROM HIC_OSHA_PANJEONG ");
+            parameter.AppendSql("                             WHERE SITE_ID = :SITE_ID ");
+            parameter.AppendSql("                               AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                             GROUP BY WORKER_ID, PANJEONG, ISSPECIAL, OPINION) B ");
+            parameter.AppendSql("                             ON A.ID = B.WORKER_ID ");
             if (reportId > 0)
             {
-                parameter.AppendSql("                 INNER JOIN HIC_OSHA_HEALTHCHECK C                                                              ");
-                parameter.AppendSql("                         ON A.ID = C.WORKER_ID                                                                  ");
-                parameter.AppendSql("                        AND C.ISDELETED = 'N'                                                                   ");
-                parameter.AppendSql("                        AND C.REPORT_ID = :reportId                                                             ");
+                parameter.AppendSql("                   INNER JOIN HIC_OSHA_HEALTHCHECK C ");
+                parameter.AppendSql("                         ON A.ID = C.WORKER_ID ");
+                parameter.AppendSql("                        AND C.ISDELETED = 'N' ");
+                parameter.AppendSql("                        AND C.SWLICENSE = :SWLICENSE ");
+                parameter.AppendSql("                        AND C.REPORT_ID = :reportId  ");
             }
             
-            parameter.AppendSql("                WHERE A.SITEID = :SITE_ID                                                                       ");
-            parameter.AppendSql("                  AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("                  AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                 WHERE A.SITEID = :SITE_ID                                                                       ");
+            parameter.AppendSql("                   AND A.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("               UNION                                                                                            ");
-            parameter.AppendSql("               SELECT A.ID AS WORKER_ID                                                                         ");
-            parameter.AppendSql("                    , A.*                                                                                       ");
-            parameter.AppendSql("                    , B.YEAR                                                                                    ");
-            parameter.AppendSql("                    , B.PANJEONG                                                                                ");
-            parameter.AppendSql("                    , B.ISSPECIAL                                                                               ");
-            parameter.AppendSql("                    , A.ISMANAGEOSHA AS ISMANAGEOSHA2                                                           ");
-            parameter.AppendSql("                    , B.OPINION                                                                                 ");
-            parameter.AppendSql("                 FROM HC_SITE_WORKER_VIEW A                                                                     ");
-            parameter.AppendSql("                 LEFT OUTER JOIN                                                                                ");
-            parameter.AppendSql("                 (                                                                                              ");
-            parameter.AppendSql("                       SELECT MAX(YEAR) AS YEAR                                                                 ");
-            parameter.AppendSql("                            , WORKER_ID                                                                         ");
-            parameter.AppendSql("                            , PANJEONG                                                                          ");
-            parameter.AppendSql("                            , ISSPECIAL                                                                         ");
-            parameter.AppendSql("                            , OPINION                                                                           ");
-            parameter.AppendSql("                         FROM HIC_OSHA_PANJEONG                                                                 ");
-            parameter.AppendSql("                        WHERE SITE_ID IN (SELECT CHILD_ID FROM HIC_OSHA_RELATION WHERE PARENT_ID= :SITE_ID     )");
-            parameter.AppendSql("                          AND SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("                       GROUP BY WORKER_ID, PANJEONG, ISSPECIAL, OPINION                                         ");
-            parameter.AppendSql("                 ) B ON A.ID = B.WORKER_ID                                                                      ");
+            parameter.AppendSql("               SELECT A.ID AS WORKER_ID,A.*,B.YEAR,B.PANJEONG,B.ISSPECIAL, ");
+            parameter.AppendSql("                      A.ISMANAGEOSHA AS ISMANAGEOSHA2,B.OPINION ");
+            parameter.AppendSql("                 FROM HC_SITE_WORKER_VIEW A ");
+            parameter.AppendSql("                      LEFT OUTER JOIN ( ");
+            parameter.AppendSql("                           SELECT MAX(YEAR) AS YEAR,WORKER_ID,PANJEONG,ISSPECIAL,OPINION ");
+            parameter.AppendSql("                             FROM HIC_OSHA_PANJEONG                                                                 ");
+            parameter.AppendSql("                            WHERE SITE_ID IN (SELECT CHILD_ID FROM HIC_OSHA_RELATION ");
+            parameter.AppendSql("                                               WHERE PARENT_ID= :SITE_ID ");
+            parameter.AppendSql("                                                 AND SWLICENSE = :SWLICENSE) ");
+            parameter.AppendSql("                              AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                            GROUP BY WORKER_ID, PANJEONG, ISSPECIAL, OPINION) B ");
+            parameter.AppendSql("                            ON A.ID = B.WORKER_ID ");
             if (reportId > 0)
             {
-                parameter.AppendSql("                 INNER JOIN HIC_OSHA_HEALTHCHECK C                                                              ");
-                parameter.AppendSql("                         ON A.ID = C.WORKER_ID                                                                  ");
-                parameter.AppendSql("                        AND C.ISDELETED = 'N'                                                                   ");
-                parameter.AppendSql("                        AND C.REPORT_ID = :reportId                                                             ");
+                parameter.AppendSql("                 INNER JOIN HIC_OSHA_HEALTHCHECK C ");
+                parameter.AppendSql("                         ON A.ID = C.WORKER_ID ");
+                parameter.AppendSql("                        AND C.ISDELETED = 'N' ");
+                parameter.AppendSql("                        AND C.SWLICENSE = :SWLICENSE ");
+                parameter.AppendSql("                        AND C.REPORT_ID = :reportId ");
             }
-            parameter.AppendSql("               WHERE A.SITEID IN (SELECT CHILD_ID FROM HIC_OSHA_RELATION WHERE PARENT_ID = :SITE_ID     )      ");
+            parameter.AppendSql("               WHERE A.SITEID IN (SELECT CHILD_ID FROM HIC_OSHA_RELATION ");
+            parameter.AppendSql("                                   WHERE PARENT_ID = :SITE_ID ");
+            parameter.AppendSql("                                     AND SWLICENSE = :SWLICENSE) ");
+
             parameter.AppendSql("         )                                                                                                      ");
             parameter.AppendSql("        WHERE 1=1                                                                                               ");
-            parameter.AppendSql("          AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("          AND C.SWLICENSE = :SWLICENSE ");
             if (isManageOsha == "Y")
             {
-                parameter.AppendSql("   AND ISMANAGEOSHA = :ISMANAGEOSHA                               ");
+                parameter.AppendSql("   AND ISMANAGEOSHA = :ISMANAGEOSHA ");
             }
 
             if (!name.IsNullOrEmpty())
@@ -146,18 +110,18 @@ namespace HC.OSHA.Repository.StatusReport
                 parameter.AppendSql("   AND panjeong = :panjeong ");
             }
 
-            parameter.AppendSql("  ) A LEFT OUTER JOIN HIC_OSHA_WORKER_END B                                    ");
-            parameter.AppendSql("                   ON A.SITEID    = B.SITE_ID                                  ");
-            parameter.AppendSql("                  AND A.WORKER_ID = B.WORKER_ID                                ");
-            parameter.AppendSql(" WHERE 1 = 1                                                                   ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("   AND A.RANK < 3                                                              ");
+            parameter.AppendSql("  ) A LEFT OUTER JOIN HIC_OSHA_WORKER_END B  ");
+            parameter.AppendSql("                   ON A.SITEID    = B.SITE_ID ");
+            parameter.AppendSql("                  AND A.WORKER_ID = B.WORKER_ID ");
+            parameter.AppendSql("                  AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" WHERE 1 = 1 ");
+            parameter.AppendSql("   AND A.RANK < 3 ");
             if (!isEnd)
             {
-                parameter.AppendSql("    AND (B.END_DATE IS NULL OR B.END_DATE >= SYSDATE)                      ");
+                parameter.AppendSql("    AND (B.END_DATE IS NULL OR B.END_DATE >= SYSDATE) ");
             }
 
-            parameter.AppendSql(" ORDER BY A.NAME, A.PANO, A.YEAR DESC                                           ");
+            parameter.AppendSql(" ORDER BY A.NAME, A.PANO, A.YEAR DESC ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);

@@ -64,6 +64,18 @@ namespace HC_OSHA
                 toolStripMenuItem1.Visible = false;  //비밀번호변경
             }
             보건교육지원대장ToolStripMenuItem1.Enabled = true;
+
+            //미완성 프로그램 감추기
+            검진결과ToolStripMenuItem.Visible = false;
+            작업환경측정관리ToolStripMenuItem.Visible = false;
+            업무관리ToolStripMenuItem.Visible = false;
+            사업장현황ToolStripMenuItem.Visible = false;
+            개인별상담대장ToolStripMenuItem.Visible = false;
+            사업장별상담대장ToolStripMenuItem.Visible = false;
+            수령증발급대장ToolStripMenuItem.Visible = false;
+            근골격계지원대장ToolStripMenuItem.Visible = false;
+            정보자료제공ToolStripMenuItem.Visible = false;
+            장비사용대장간호사ToolStripMenuItem.Visible = false;
         }
 
         public Dashboard(MainFormMessage pform)
