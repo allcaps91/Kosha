@@ -475,7 +475,7 @@ namespace HcAdmin
                 SQL += " ID,CODE,GROUPCODE,GROUPCODENAME,CODENAME,SORTSEQ,EXTEND1,EXTEND2,";
                 SQL += " DESCRIPTION,MODIFIED,MODIFIEDUSER,ISACTIVE,ISDELETED,PROGRAM,SWLICENSE ) ";
                 SQL += "SELECT HC_CODE_ID_SEQ.NEXTVAL,CODE,GROUPCODE,GROUPCODENAME,CODENAME,SORTSEQ,EXTEND1,EXTEND2,";
-                SQL += "        DESCRIPTION,MODIFIED,MODIFIEDUSER,ISACTIVE,ISDELETED,PROGRAM,'" + txtLicno.Text.Trim() + "' ";
+                SQL += "        DESCRIPTION,MODIFIED,'1',ISACTIVE,ISDELETED,PROGRAM,'" + txtLicno.Text.Trim() + "' ";
                 SQL += "  FROM HIC_CODES ";
                 SQL += " WHERE SWLICENSE='3M52-85P5-8855' "; //데모용 기본자료
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
