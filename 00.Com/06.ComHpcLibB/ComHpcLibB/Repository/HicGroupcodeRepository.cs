@@ -25,12 +25,13 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT Code,Name,YName                 ");
-            parameter.AppendSql("  FROM " + ComNum.DB_PMPA + "HIC_GROUPCODE                  ");
-            parameter.AppendSql("  WHERE 1 = 1                                          ");
-            parameter.AppendSql("   AND Code IN (" + argSql + ")                       ");
-            parameter.AppendSql(" ORDER BY Code                                         ");
-
+            parameter.AppendSql("SELECT Code,Name,YName ");
+            parameter.AppendSql("  FROM HIC_GROUPCODE ");
+            parameter.AppendSql("  WHERE 1 = 1 ");
+            parameter.AppendSql("   AND Code IN (" + argSql + ") ");
+            parameter.AppendSql("   AND SWLICENSE=:SWLICENSE ");
+            parameter.AppendSql(" ORDER BY Code ");
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HIC_GROUPCODE>(parameter);
         }
 
@@ -38,18 +39,21 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql(" SELECT CODE,NAME,HANG,JONG,GBSELECT,GBSUGA,SDATE, GBAM, GBSELF, EXAMNAME, GBPRINT, UCODE, YNAME             ");
-            parameter.AppendSql("      ,DELDATE, REMARK,GBDENT,REEXAM,GBSUNAP,GBNOTADDPAN,GBSANGDAM,GBGUBUN1, ENTDATE, ROWID AS RID      ");
-            parameter.AppendSql("   FROM " + ComNum.DB_PMPA + "HIC_GROUPCODE            ");
-            parameter.AppendSql("  WHERE 1 = 1                                          ");
+            parameter.AppendSql(" SELECT CODE,NAME,HANG,JONG,GBSELECT,GBSUGA,SDATE, GBAM, GBSELF,");
+            parameter.AppendSql("        EXAMNAME, GBPRINT, UCODE, YNAME,DELDATE, REMARK,GBDENT,REEXAM,GBSUNAP,");
+            parameter.AppendSql("        GBNOTADDPAN,GBSANGDAM,GBGUBUN1, ENTDATE, ROWID AS RID ");
+            parameter.AppendSql("   FROM HIC_GROUPCODE ");
+            parameter.AppendSql("  WHERE 1 = 1 ");
             if (!argJong.Equals("**"))
             {
-                parameter.AppendSql("    AND JONG =:JONG                                ");
+                parameter.AppendSql("    AND JONG =:JONG ");
             }
-            parameter.AppendSql("    AND DELDATE IS NULL                                ");
-            parameter.AppendSql("  ORDER BY Code                                        ");
+            parameter.AppendSql("    AND DELDATE IS NULL ");
+            parameter.AppendSql("    AND SWLICENSE=:SWLICENSE ");
+            parameter.AppendSql("  ORDER BY Code ");
 
             parameter.Add("JONG", argJong, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HIC_GROUPCODE>(parameter);
         }
@@ -58,8 +62,8 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql(" SELECT CODE,NAME,GBSELECT,GBSUGA,GBAM                             ");
-            parameter.AppendSql("   FROM " + ComNum.DB_PMPA + "HIC_GROUPCODE                        ");
+            parameter.AppendSql(" SELECT CODE,NAME,GBSELECT,GBSUGA,GBAM ");
+            parameter.AppendSql("   FROM HIC_GROUPCODE ");
             parameter.AppendSql("  WHERE 1 = 1                                                      ");
             parameter.AppendSql("    AND (DELDATE IS NULL OR DELDATE > TO_DATE(:SDATE, 'YYYY-MM-DD')) ");
             parameter.AppendSql("    AND (SDATE IS NULL OR SDATE <= TO_DATE(:SDATE, 'YYYY-MM-DD'))    ");

@@ -34,6 +34,7 @@
             this.저장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pC저장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.기본정보생성ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkEnd = new System.Windows.Forms.CheckBox();
             this.TxtViewSangho = new System.Windows.Forms.TextBox();
@@ -88,6 +89,7 @@
             this.저장ToolStripMenuItem,
             this.삭제ToolStripMenuItem,
             this.pC저장ToolStripMenuItem,
+            this.기본정보생성ToolStripMenuItem,
             this.헬스소프트실행ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -130,6 +132,13 @@
             this.pC저장ToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.pC저장ToolStripMenuItem.Text = "PC저장";
             this.pC저장ToolStripMenuItem.Click += new System.EventHandler(this.pC저장ToolStripMenuItem_Click);
+            // 
+            // 기본정보생성ToolStripMenuItem
+            // 
+            this.기본정보생성ToolStripMenuItem.Name = "기본정보생성ToolStripMenuItem";
+            this.기본정보생성ToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.기본정보생성ToolStripMenuItem.Text = "기본정보생성";
+            this.기본정보생성ToolStripMenuItem.Click += new System.EventHandler(this.기본정보생성ToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -391,7 +400,7 @@
             this.txtLicno.Name = "txtLicno";
             this.txtLicno.Size = new System.Drawing.Size(131, 25);
             this.txtLicno.TabIndex = 140;
-            this.txtLicno.Tag = "MAILCODE";
+            this.txtLicno.Tag = "";
             this.txtLicno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblLTD02
@@ -566,7 +575,7 @@
             this.헬스소프트실행ToolStripMenuItem.Name = "헬스소프트실행ToolStripMenuItem";
             this.헬스소프트실행ToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
             this.헬스소프트실행ToolStripMenuItem.Text = "헬스소프트실행";
-            this.헬스소프트실행ToolStripMenuItem.Click += new System.EventHandler(this.헬스소프트실행ToolStripMenuItem_Click);
+            this.헬스소프트실행ToolStripMenuItem.Click += new System.EventHandler(this.헬스소프트실행ToolStripMenuItem_Click_1);
             // 
             // FrmLicense
             // 
@@ -643,6 +652,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtDbConnect;
         private System.Windows.Forms.ToolStripMenuItem pC저장ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 기본정보생성ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 헬스소프트실행ToolStripMenuItem;
     }
 }

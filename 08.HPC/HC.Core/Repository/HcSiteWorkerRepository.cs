@@ -206,6 +206,7 @@ namespace HC.Core.Repository
             parameter.AppendSql("SELECT A.* FROM HC_SITE_WORKER_VIEW A ");
             parameter.AppendSql("       INNER JOIN HIC_CODES B ");
             parameter.AppendSql("             ON A.WORKER_ROLE = B.CODE ");
+            parameter.AppendSql("             AND B.SWLICENSE=:SWLICENSE ");
             parameter.AppendSql("             AND B.CODE <> 'EMP_ROLE' AND B.ISDELETED ='N' ");
             parameter.AppendSql(" WHERE A.SITEID = :SITEID ");
             parameter.AppendSql("   AND A.SWLICENSE=:SWLICENSE ");
@@ -231,6 +232,7 @@ namespace HC.Core.Repository
             parameter.AppendSql("SELECT A.* FROM HC_SITE_WORKER_VIEW A ");
             parameter.AppendSql("       INNER JOIN HIC_CODES B ");
             parameter.AppendSql("          ON A.WORKER_ROLE = B.CODE ");
+            parameter.AppendSql("          AND B.SWLICENSE=:SWLICENSE ");
             if (worker_role.NotEmpty())
             {
                 parameter.AppendSql("     AND B.CODE =:worker_role ");

@@ -31,7 +31,7 @@ namespace HC.OSHA.Repository
 
             parameter.Add("ESTIMATE_ID", estimateId);
             parameter.Add("YEAR", year);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_CARD4_2>(parameter);
 
@@ -52,7 +52,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql(" ORDER BY ID DESC                           ");
 
             parameter.Add("ID", id);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_OSHA_CARD4_2>(parameter);
 
@@ -97,7 +97,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  SYSTIMESTAMP,                   ");
             parameter.AppendSql("  :CREATEDUSER                    ");
             parameter.AppendSql(")                                 ");
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("ID", dto.ID);
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
             parameter.Add("YEAR", dto.YEAR);
@@ -143,7 +143,7 @@ namespace HC.OSHA.Repository
             parameter.Add("REMARK", dto.REMARK);
             parameter.Add("WORKDESC", dto.WORKDESC);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
@@ -159,7 +159,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("WHERE ID = :ID                      ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE        ");
             parameter.Add("ID", id);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Delete("HIC_OSHA_CARD4_2", id);

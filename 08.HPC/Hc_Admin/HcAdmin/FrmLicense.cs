@@ -1,4 +1,5 @@
 ﻿using ComBase;
+using ComDbB;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,7 +42,7 @@ namespace HcAdmin
             string strChkHic3 = "N";
 
             bool SqlErr;
-            
+
             if (dptSDate.Text == "") { ComFunc.MsgBox("발급일자가 공란입니다."); dptSDate.Focus(); return; }
             if (txtLicCnt.Text == "") { ComFunc.MsgBox("라이선스 수량이 공란입니다."); txtLicCnt.Focus(); return; }
             if (int.Parse(txtLicCnt.Text) == 0) { ComFunc.MsgBox("라이선스 수량이 공란입니다."); txtLicCnt.Focus(); return; }
@@ -144,7 +145,7 @@ namespace HcAdmin
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (dt.Rows.Count == 0)
                 {
-                    SQL  = ComNum.VBLF + " INSERT INTO HIC_USERS ";
+                    SQL = ComNum.VBLF + " INSERT INTO HIC_USERS ";
                     SQL += ComNum.VBLF + "        (SWLICENSE, USERID, NAME, DEPT, ROLE, INDATE, TESADATE,";
                     SQL += ComNum.VBLF + "         ISACTIVE, ISDELETED, JIKMU, PASSHASH256,CERTNO,SEQ_WORD,";
                     SQL += ComNum.VBLF + "         LTDUSER,MODIFIED, MODIFIEDUSER, CREATED, CREATEDUSER) ";
@@ -157,14 +158,14 @@ namespace HcAdmin
                 }
                 else
                 {
-                    SQL =  " UPDATE HIC_USERS ";
+                    SQL = " UPDATE HIC_USERS ";
                     SQL += "    SET NAME          = '관리자', ";
                     SQL += "        DEPT          = 'OSHA', ";
                     SQL += "        ROLE          = 'NURSE', ";
-                    SQL +=  "       InDate        = '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
-                    SQL +=  "       TesaDate      = '', ";
+                    SQL += "       InDate        = '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
+                    SQL += "       TesaDate      = '', ";
                     SQL += "        MODIFIED = SYSDATE, MODIFIEDUSER = '1' ";
-                    SQL +=  " WHERE SWLICENSE     = '" + txtLicno.Text.Trim() + "'";
+                    SQL += " WHERE SWLICENSE     = '" + txtLicno.Text.Trim() + "'";
                     SQL += "    AND USERID        = '1' ";
                 }
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -187,7 +188,7 @@ namespace HcAdmin
         }
 
         private void List_Search()
-        { 
+        {
             string SQL = "";
             DataTable dt = null;
             int i = 0;
@@ -432,7 +433,7 @@ namespace HcAdmin
             ComFunc.MsgBox("PC에 해당회사로 라이선스가 설정되었습니다.", "알림");
         }
 
-        private void 헬스소프트실행ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 헬스소프트실행ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             string strNewData = "";
             string strPcData = "";
@@ -451,6 +452,53 @@ namespace HcAdmin
             startInfo.FileName = @"C:\Program Files (x86)\HSMain\HS_OSHA.exe";
             startInfo.Arguments = null;
             Process.Start(startInfo);
+        }
+
+        private void 기본정보생성ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string SQL = string.Empty;
+            string SqlErr = string.Empty;
+            int intRowAffected = 0; //변경된 Row 받는 변수
+            DataTable dt = null;
+
+            //데모용 라이선스는 생성 불가
+            if (txtLicno.Text.Trim() == "3M52-85P5-8855") { ComFunc.MsgBox("이 라이선스는 기준 Data임으로 생성 불가함."); return; }
+            if (txtLicno.Text.Trim() == "") { ComFunc.MsgBox("라이선스번호가 공란입니다."); return; }
+
+            SQL = "SELECT COUNT(*) CNT FROM HIC_CODES WHERE SWLICENSE='" + txtLicno.Text.Trim() + "'";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+
+            if (VB.Val(dt.Rows[0]["CNT"].ToString()) == 0)
+            { 
+                //데모용 라이선스의 정보를 복사
+                SQL = "INSERT INTO HIC_CODES (";
+                SQL += " ID,CODE,GROUPCODE,GROUPCODENAME,CODENAME,SORTSEQ,EXTEND1,EXTEND2,";
+                SQL += " DESCRIPTION,MODIFIED,MODIFIEDUSER,ISACTIVE,ISDELETED,PROGRAM,SWLICENSE ) ";
+                SQL += "SELECT HC_CODE_ID_SEQ.NEXTVAL,CODE,GROUPCODE,GROUPCODENAME,CODENAME,SORTSEQ,EXTEND1,EXTEND2,";
+                SQL += "        DESCRIPTION,MODIFIED,MODIFIEDUSER,ISACTIVE,ISDELETED,PROGRAM,'" + txtLicno.Text.Trim() + "' ";
+                SQL += "  FROM HIC_CODES ";
+                SQL += " WHERE SWLICENSE='3M52-85P5-8855' "; //데모용 기본자료
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+            }
+
+            SQL = "SELECT COUNT(*) CNT FROM HIC_LTD WHERE SWLICENSE='" + txtLicno.Text.Trim() + "'";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+
+            if (VB.Val(dt.Rows[0]["CNT"].ToString()) == 0)
+            {
+                dt.Dispose();
+                dt = null;
+
+                SQL = "INSERT INTO HIC_LTD (CODE,SANGHO,NAME,TEL,FAX,EMAIL,MAILCODE,JUSO,HTEL,";
+                SQL += " GBCHUKJENG,GBDAEHANG,GBJONGGUM,GBGUKGO,SWLICENSE ) ";
+                SQL += " VALUES (HC_LTD_SEQ.NEXTVAL,'" + txtSangho.Text.Trim() + "','";
+                SQL += txtSangho.Text.Trim() + "','" + txtTel.Text.Trim() + "','','";
+                SQL += txtEmail.Text.Trim() + "','','" + txtJuso.Text.Trim() + "','";
+                SQL += txtTel.Text.Trim() + "','N','Y','Y','N','" + txtLicno.Text.Trim() + "') ";
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+            }
+
+            ComFunc.MsgBox("복사 완료", "알림");
         }
     }
 }

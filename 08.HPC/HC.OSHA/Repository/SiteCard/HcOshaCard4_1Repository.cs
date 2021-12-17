@@ -34,7 +34,7 @@ namespace HC.OSHA.Repository
 
             parameter.Add("estimateId", estimateId);
             parameter.Add("YEAR", year);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_OSHA_CARD4_1>(parameter);
 
@@ -55,7 +55,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_OSHA_CARD4_1>(parameter);
 
@@ -89,7 +89,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  :CREATEDUSER                                                              ");
             parameter.AppendSql(")                                                                           ");
             parameter.Add("ID", dto.ID);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
             parameter.Add("TASKDIAGRAM", dto.TASKDIAGRAM);
             parameter.Add("YEAR", dto.YEAR);
@@ -116,7 +116,7 @@ namespace HC.OSHA.Repository
             parameter.Add("TASKDIAGRAM", dto.TASKDIAGRAM);
             parameter.Add("YEAR", dto.YEAR);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Update("HIC_OSHA_CARD4_1", dto.ID);
@@ -131,7 +131,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("WHERE ID = :ID                            ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE              ");
             parameter.Add("ID", id);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Delete("HIC_OSHA_CARD4_1", id);
         }

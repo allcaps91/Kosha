@@ -86,7 +86,7 @@ namespace HC_OSHA
             InitializeComponent();
             mCallForm = pform;
         }
-
+        
         private void Dashboard_Load(object sender, EventArgs e)
         {
 
@@ -98,6 +98,7 @@ namespace HC_OSHA
                     di.Create();
                 }
             }
+            string ss = clsType.HosInfo.SwLicense; 
             SiteManageForm form = new SiteManageForm();
             form.TopLevel = false;
             form.Dock = DockStyle.Fill;

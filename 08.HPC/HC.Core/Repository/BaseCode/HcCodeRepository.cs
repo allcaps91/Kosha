@@ -16,7 +16,8 @@ namespace HC.Core.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_CODES ");
-
+            parameter.AppendSql(" WHERE SWLICENSE=:SWLICENSE ");
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HC_CODE>(parameter);
         }
 
@@ -36,10 +37,11 @@ namespace HC.Core.Repository
             parameter.AppendSql(" WHERE A.GROUPCODE = 'GROUP'  ");
             parameter.AppendSql("   AND A.ISDELETED = 'N' ");
             parameter.AppendSql("   AND A.PROGRAM = :program ");
+            parameter.AppendSql("   AND A.SWLICENSE=:SWLICENSE ");
             parameter.AppendSql("ORDER BY A.SORTSEQ  ");
 
             parameter.Add("program", program);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_CODE>(parameter);
         }
@@ -59,11 +61,12 @@ namespace HC.Core.Repository
             parameter.AppendSql("            AND B.SWLICENSE=:SWLICENSE ");
             parameter.AppendSql(" WHERE A.GROUPCODE = :GROUPCODE ");
             parameter.AppendSql("   AND A.PROGRAM = :program ");
+            parameter.AppendSql("   AND A.SWLICENSE=:SWLICENSE ");
             parameter.AppendSql(" ORDER BY A.SORTSEQ ");
 
             parameter.Add("GROUPCODE", groupCode);
             parameter.Add("program", program);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicInfo);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_CODE>(parameter);
         }
@@ -73,9 +76,10 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("INSERT INTO HIC_CODES    ");
             parameter.AppendSql("(ID, CODE, CODENAME, GROUPCODE, GROUPCODENAME, SORTSEQ, EXTEND1, EXTEND2, ISACTIVE, ");
-            parameter.AppendSql(" ISDELETED, DESCRIPTION, MODIFIED, MODIFIEDUSER, PROGRAM) ");
+            parameter.AppendSql(" ISDELETED, DESCRIPTION, MODIFIED, MODIFIEDUSER, PROGRAM,SWLICENSE) ");
             parameter.AppendSql("VALUES (HC_CODE_ID_SEQ.NEXTVAL, :CODE, :CODENAME, :GROUPCODE, :GROUPCODENAME, :SORTSEQ, ");
-            parameter.AppendSql(" :EXTEND1, :EXTEND2, :ISACTIVE, 'N', :DESCRIPTION, SYSTIMESTAMP, :MODIFIEDUSER, :PROGRAM) ");
+            parameter.AppendSql(" :EXTEND1, :EXTEND2, :ISACTIVE, 'N', :DESCRIPTION, SYSTIMESTAMP, :MODIFIEDUSER,");
+            parameter.AppendSql(" :PROGRAM,:SWLICENSE) ");
             
             parameter.Add("CODE", code.Code);
             parameter.Add("CODENAME", code.CodeName);
@@ -88,6 +92,7 @@ namespace HC.Core.Repository
             parameter.Add("ISACTIVE", code.IsActive);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("PROGRAM",code.Program);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
         }
         public void Update(HC_CODE code)
@@ -99,6 +104,8 @@ namespace HC.Core.Repository
             parameter.AppendSql("    EXTEND2 = :EXTEND2, ISACTIVE = :ISACTIVE, DESCRIPTION = :DESCRIPTION, ");
             parameter.AppendSql("    MODIFIED = SYSTIMESTAMP, MODIFIEDUSER = :MODIFIEDUSER ");
             parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE=:SWLICENSE ");
+
             parameter.Add("CODE", code.Code);
             parameter.Add("CODENAME", code.CodeName);
             parameter.Add("GROUPCODE", code.GroupCode);
@@ -110,6 +117,7 @@ namespace HC.Core.Repository
             parameter.Add("ISACTIVE", code.IsActive);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("ID", code.Id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
         }
 
@@ -121,8 +129,10 @@ namespace HC.Core.Repository
             parameter.AppendSql("   AND ISACTIVE = 'Y' ");
             parameter.AppendSql("   AND ISDELETED = 'N' ");
             parameter.AppendSql("   AND PROGRAM = :program ");
+            parameter.AppendSql("   AND SWLICENSE=:SWLICENSE ");
             parameter.Add("GROUPCODE", argGrpCD);
             parameter.Add("program", argPgrCD);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HC_CODE>(parameter);
         }
 
@@ -131,8 +141,10 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("DELETE FROM HIC_CODES ");            
             parameter.AppendSql("WHERE ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE=:SWLICENSE ");
 
             parameter.Add("ID", code.Id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             ExecuteNonQuery(parameter);
         }
 
@@ -149,9 +161,11 @@ namespace HC.Core.Repository
             parameter.AppendSql("   AND ISACTIVE = 'Y' ");
             parameter.AppendSql("   AND ISDELETED = 'N' ");
             parameter.AppendSql("   AND PROGRAM = :program ");
+            parameter.AppendSql("   AND SWLICENSE=:SWLICENSE ");
             parameter.AppendSql(" ORDER BY SORTSEQ ");
             parameter.Add("GROUPCODE", groupCode);
             parameter.Add("program", program);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HC_CODE>(parameter);
         }
         public HC_CODE FindActiveCodeByGroupAndCode(string groupCode, string code, string program)
@@ -163,9 +177,11 @@ namespace HC.Core.Repository
             parameter.AppendSql("  AND ISACTIVE = 'Y' ");
             parameter.AppendSql("  AND ISDELETED = 'N' ");
             parameter.AppendSql("  AND PROGRAM = :program ");
+            parameter.AppendSql("   AND SWLICENSE=:SWLICENSE ");
             parameter.Add("GROUPCODE", groupCode);
             parameter.Add("CODE", code);
             parameter.Add("program", program);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReaderSingle< HC_CODE>(parameter);
         }
         public HC_CODE FindActiveCodeByGroupAndCodeAndCodeName(string groupCode, string code, string codeName, string program)
@@ -177,11 +193,13 @@ namespace HC.Core.Repository
             parameter.AppendSql("   AND CODENAME = :CODENAME ");
             parameter.AppendSql("   AND ISDELETED = 'N' ");
             parameter.AppendSql("   AND PROGRAM = :program ");
+            parameter.AppendSql("   AND SWLICENSE=:SWLICENSE ");
 
             parameter.Add("GROUPCODE", groupCode);
             parameter.Add("CODE", code);
             parameter.Add("CODENAME", codeName);
             parameter.Add("program", program);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReaderSingle<HC_CODE>(parameter);
         }
     }

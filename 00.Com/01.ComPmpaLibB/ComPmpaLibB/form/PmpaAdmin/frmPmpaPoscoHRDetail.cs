@@ -357,8 +357,9 @@ namespace ComPmpaLibB
 
             SQL = "";
             SQL += ComNum.VBLF + " SELECT Code, Name, YName ";
-            SQL += ComNum.VBLF + "   FROM " + ComNum.DB_PMPA + "HIC_GROUPCODE ";
+            SQL += ComNum.VBLF + "   FROM HIC_GROUPCODE ";
             SQL += ComNum.VBLF + "  WHERE Code IN (" + strSql + ") ";
+            SQL += ComNum.VBLF + "    AND SWLICENSE='" + clsType.HosInfo.SwLicense + "' ";
             SQL += ComNum.VBLF + "ORDER BY Code ";
             SqlErr = clsDB.GetDataTable(ref DtDisp, SQL, clsDB.DbCon);
 

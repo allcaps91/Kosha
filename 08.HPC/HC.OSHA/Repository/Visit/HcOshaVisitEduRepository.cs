@@ -38,6 +38,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("       INNER JOIN HIC_CODES C ");
             parameter.AppendSql("             ON A.EDUTYPE = C.CODE ");
             parameter.AppendSql("             AND C.GROUPCODE = 'VISIT_EDU_TYPE' ");
+            parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("       INNER JOIN HIC_USERS D ");
             parameter.AppendSql("             ON A.EDUUSERID = D.USERID ");
             parameter.AppendSql("             AND D.SWLICENSE = :SWLICENSE ");

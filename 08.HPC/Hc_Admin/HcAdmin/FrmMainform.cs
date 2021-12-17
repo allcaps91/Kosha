@@ -1,4 +1,5 @@
 ﻿using ComBase;
+using ComDbB;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -63,6 +64,9 @@ namespace HcAdmin
                 라이선스ToolStripMenuItem.Enabled = true;
                 안내문등록ToolStripMenuItem.Enabled = true;
                 panLogin.Visible = false;
+
+                clsDB.GetDbInfo();
+                clsDB.DbCon = clsDB.DBConnect_Cloud();
             }
             else
             {
