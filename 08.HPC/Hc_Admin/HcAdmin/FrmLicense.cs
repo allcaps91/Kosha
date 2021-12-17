@@ -490,12 +490,26 @@ namespace HcAdmin
                 dt = null;
 
                 SQL = "INSERT INTO HIC_LTD (CODE,SANGHO,NAME,TEL,FAX,EMAIL,MAILCODE,JUSO,HTEL,";
-                SQL += " GBCHUKJENG,GBDAEHANG,GBJONGGUM,GBGUKGO,SWLICENSE ) ";
+                SQL += " GBCHUKJENG,GBDAEHANG,GBJONGGUM,GBGUKGO,JISA,SWLICENSE ) ";
                 SQL += " VALUES (HC_LTD_SEQ.NEXTVAL,'" + txtSangho.Text.Trim() + "','";
                 SQL += txtSangho.Text.Trim() + "','" + txtTel.Text.Trim() + "','','";
                 SQL += txtEmail.Text.Trim() + "','','" + txtJuso.Text.Trim() + "','";
-                SQL += txtTel.Text.Trim() + "','N','Y','Y','N','" + txtLicno.Text.Trim() + "') ";
+                SQL += txtTel.Text.Trim() + "','N','Y','Y','N','0719','" + txtLicno.Text.Trim() + "') ";
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+
+                SQL = "SELECT CODE FROM HIC_LTD ";
+                SQL += " WHERE SWLICENSE='" + txtLicno.Text.Trim() + "'";
+                SQL += "   AND SANGHO='" + txtSangho.Text.Trim() + "' ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+
+                if (dt.Rows[0]["CODE"].ToString() != "")
+                {
+                    SQL = "INSERT INTO HIC_OSHA_SITE (ID,ISACTIVE,TASKNAME,PARENTSITE_ID,HASCHILD,ISPARENTCHARGE,";
+                    SQL += " ISQUARTERCHARGE,MODIFIED,MODIFIEDUSER,CREATED,CREATEDUSER,SWLICENSE ) ";
+                    SQL += " VALUES (" + dt.Rows[0]["CODE"].ToString() + ",'Y','사업장 등록',0,'N','Y',";
+                    SQL += "         'N',SYSTIMESTAMP,'1',SYSTIMESTAMP,'1','" + txtLicno.Text.Trim() + "') ";
+                    SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+                }
             }
 
             ComFunc.MsgBox("복사 완료", "알림");
