@@ -603,10 +603,6 @@
             this.ssDoc_Sheet1.ColumnCount = 27;
             this.ssDoc_Sheet1.RowCount = 43;
             this.ssDoc_Sheet1.Cells.Get(0, 1).ColumnSpan = 25;
-            this.ssDoc_Sheet1.Cells.Get(0, 1).Value = "진료역량 고도화와 안전한 의료서비스로 지역민의 건강을 책임지는 지역거점병원";
-            this.ssDoc_Sheet1.Cells.Get(1, 1).ColumnSpan = 7;
-            this.ssDoc_Sheet1.Cells.Get(1, 1).RowSpan = 3;
-            this.ssDoc_Sheet1.Cells.Get(1, 1).StyleName = "Empty49310637251846811308290";
             this.ssDoc_Sheet1.Cells.Get(1, 8).StyleName = "Font16637251846811338215";
             this.ssDoc_Sheet1.Cells.Get(1, 9).StyleName = "Font16637251846811338215";
             this.ssDoc_Sheet1.Cells.Get(1, 10).StyleName = "Font16637251846811338215";
@@ -625,10 +621,12 @@
             this.ssDoc_Sheet1.Cells.Get(1, 23).StyleName = "Font16637251846811338215";
             this.ssDoc_Sheet1.Cells.Get(1, 24).StyleName = "Font16637251846811338215";
             this.ssDoc_Sheet1.Cells.Get(1, 25).StyleName = "Font16637251846811338215";
-            this.ssDoc_Sheet1.Cells.Get(2, 8).ColumnSpan = 18;
+            this.ssDoc_Sheet1.Cells.Get(2, 2).ColumnSpan = 18;
+            this.ssDoc_Sheet1.Cells.Get(2, 2).Font = new System.Drawing.Font("바탕", 11F);
+            this.ssDoc_Sheet1.Cells.Get(2, 2).Locked = false;
+            this.ssDoc_Sheet1.Cells.Get(2, 2).Value = "(우) 37761 경북 포항시 남구 새천년대로 476, 3층(대잠동 학림빌딩)";
             this.ssDoc_Sheet1.Cells.Get(2, 8).Font = new System.Drawing.Font("바탕", 11F);
             this.ssDoc_Sheet1.Cells.Get(2, 8).Locked = false;
-            this.ssDoc_Sheet1.Cells.Get(2, 8).Value = "(우) 37761 경북 포항시 남구 대잠동길 17  Tel. 054-260-8193";
             this.ssDoc_Sheet1.Cells.Get(2, 9).StyleName = "Font16637251846811338215";
             this.ssDoc_Sheet1.Cells.Get(2, 10).StyleName = "Font16637251846811338215";
             this.ssDoc_Sheet1.Cells.Get(2, 11).StyleName = "Font16637251846811338215";
@@ -646,10 +644,12 @@
             this.ssDoc_Sheet1.Cells.Get(2, 23).StyleName = "Font16637251846811338215";
             this.ssDoc_Sheet1.Cells.Get(2, 24).StyleName = "Font16637251846811338215";
             this.ssDoc_Sheet1.Cells.Get(2, 25).StyleName = "Font16637251846811338215";
-            this.ssDoc_Sheet1.Cells.Get(3, 8).ColumnSpan = 18;
+            this.ssDoc_Sheet1.Cells.Get(3, 2).ColumnSpan = 18;
+            this.ssDoc_Sheet1.Cells.Get(3, 2).Font = new System.Drawing.Font("바탕", 11F);
+            this.ssDoc_Sheet1.Cells.Get(3, 2).Locked = false;
+            this.ssDoc_Sheet1.Cells.Get(3, 2).Value = "Tel. 010-8412-7380 Fax. 054-000-0000 보건대행팀  사장 이윤호  담당자 홍길동";
             this.ssDoc_Sheet1.Cells.Get(3, 8).Font = new System.Drawing.Font("바탕", 11F);
             this.ssDoc_Sheet1.Cells.Get(3, 8).Locked = false;
-            this.ssDoc_Sheet1.Cells.Get(3, 8).Value = "Fax. 054-260-8190  건강증진센터  부장 김동열  담당자 이재인";
             this.ssDoc_Sheet1.Cells.Get(3, 9).StyleName = "Font806637251846812086262";
             this.ssDoc_Sheet1.Cells.Get(3, 10).StyleName = "Font806637251846812086262";
             this.ssDoc_Sheet1.Cells.Get(3, 11).StyleName = "Font806637251846812086262";
@@ -700,7 +700,7 @@
             this.ssDoc_Sheet1.Cells.Get(6, 4).StyleName = "Font2658637251846813442595";
             this.ssDoc_Sheet1.Cells.Get(6, 5).ColumnSpan = 8;
             this.ssDoc_Sheet1.Cells.Get(6, 5).StyleName = "Font2658637251846813442595";
-            this.ssDoc_Sheet1.Cells.Get(6, 5).Value = "포성건 2018 -     ";
+            this.ssDoc_Sheet1.Cells.Get(6, 5).Value = "대한건 2021 -     ";
             this.ssDoc_Sheet1.Cells.Get(6, 6).StyleName = "Font2658637251846813442595";
             this.ssDoc_Sheet1.Cells.Get(6, 7).StyleName = "Font2658637251846813442595";
             this.ssDoc_Sheet1.Cells.Get(6, 8).StyleName = "Font2658637251846813442595";
@@ -1954,7 +1954,6 @@
             this.ssDoc_Sheet1.Cells.Get(29, 5).CellType = textCellType129;
             this.ssDoc_Sheet1.Cells.Get(29, 5).ColumnSpan = 4;
             this.ssDoc_Sheet1.Cells.Get(29, 5).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
-            this.ssDoc_Sheet1.Cells.Get(29, 5).Value = "하나은행";
             this.ssDoc_Sheet1.Cells.Get(29, 5).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.ssDoc_Sheet1.Cells.Get(29, 6).Border = complexBorder130;
             textCellType130.MaxLength = 32000;
@@ -1976,7 +1975,6 @@
             this.ssDoc_Sheet1.Cells.Get(29, 9).CellType = textCellType133;
             this.ssDoc_Sheet1.Cells.Get(29, 9).ColumnSpan = 7;
             this.ssDoc_Sheet1.Cells.Get(29, 9).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
-            this.ssDoc_Sheet1.Cells.Get(29, 9).Value = "505-910012-68904";
             this.ssDoc_Sheet1.Cells.Get(29, 9).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.ssDoc_Sheet1.Cells.Get(29, 10).Border = complexBorder134;
             textCellType134.MaxLength = 32000;
@@ -2013,7 +2011,7 @@
             this.ssDoc_Sheet1.Cells.Get(29, 16).CellType = textCellType140;
             this.ssDoc_Sheet1.Cells.Get(29, 16).ColumnSpan = 4;
             this.ssDoc_Sheet1.Cells.Get(29, 16).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
-            this.ssDoc_Sheet1.Cells.Get(29, 16).Value = "포항성모병원";
+            this.ssDoc_Sheet1.Cells.Get(29, 16).Value = "이윤호";
             this.ssDoc_Sheet1.Cells.Get(29, 16).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.ssDoc_Sheet1.Cells.Get(29, 17).Border = complexBorder141;
             textCellType141.MaxLength = 32000;
@@ -2106,7 +2104,7 @@
             this.ssDoc_Sheet1.Cells.Get(38, 1).ColumnSpan = 18;
             this.ssDoc_Sheet1.Cells.Get(38, 1).RowSpan = 3;
             this.ssDoc_Sheet1.Cells.Get(38, 1).StyleName = "Text91637251846827746096";
-            this.ssDoc_Sheet1.Cells.Get(38, 1).Value = "포 항 성 모 병 원 장";
+            this.ssDoc_Sheet1.Cells.Get(38, 1).Value = "대한보건환경연구소(주)";
             this.ssDoc_Sheet1.Cells.Get(38, 2).StyleName = "Text183637251846827795910";
             this.ssDoc_Sheet1.Cells.Get(38, 3).StyleName = "Text183637251846827795910";
             this.ssDoc_Sheet1.Cells.Get(38, 4).StyleName = "Text183637251846827795910";
