@@ -645,10 +645,7 @@ namespace HC_OSHA
             {
                 spread.ActiveSheet.RowCount = 0;
 
-                string fileName = @"C:\PSMHEXE\exenet\견적서.xlsx";
-                SSEstimate.ActiveSheet.OpenExcel(fileName, 0);
-
-                //SSEstimate.ActiveSheet.OpenExcel(@filePath, 0);
+                SSEstimate.ActiveSheet.OpenExcel(@filePath, 0);
 
                 SSEstimate.ActiveSheet.RowCount = 50;
                 SSEstimate.ActiveSheet.ColumnCount = 10;
