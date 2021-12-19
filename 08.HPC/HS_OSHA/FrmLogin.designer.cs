@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.lblLicno = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -43,18 +42,17 @@
             this.lblLicno.BackColor = System.Drawing.Color.Transparent;
             this.lblLicno.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblLicno.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblLicno.Location = new System.Drawing.Point(12, 3);
+            this.lblLicno.Location = new System.Drawing.Point(11, 36);
             this.lblLicno.Name = "lblLicno";
             this.lblLicno.Size = new System.Drawing.Size(135, 24);
             this.lblLicno.TabIndex = 5;
             this.lblLicno.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblLicno.Click += new System.EventHandler(this.lblLicno_Click);
             // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(249, 145);
+            this.btnExit.Location = new System.Drawing.Point(498, 43);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(145, 26);
             this.btnExit.TabIndex = 3;
@@ -66,7 +64,7 @@
             // 
             this.btnLogin.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Location = new System.Drawing.Point(249, 113);
+            this.btnLogin.Location = new System.Drawing.Point(498, 9);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(145, 26);
             this.btnLogin.TabIndex = 2;
@@ -76,53 +74,54 @@
             // 
             // txtIdNumber
             // 
-            this.txtIdNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtIdNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIdNumber.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIdNumber.Location = new System.Drawing.Point(254, 46);
+            this.txtIdNumber.Location = new System.Drawing.Point(352, 10);
             this.txtIdNumber.Name = "txtIdNumber";
-            this.txtIdNumber.Size = new System.Drawing.Size(140, 18);
+            this.txtIdNumber.Size = new System.Drawing.Size(140, 25);
             this.txtIdNumber.TabIndex = 0;
             // 
             // txtPassword
             // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtPassword.Location = new System.Drawing.Point(254, 70);
+            this.txtPassword.Location = new System.Drawing.Point(352, 44);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(140, 18);
+            this.txtPassword.Size = new System.Drawing.Size(140, 25);
             this.txtPassword.TabIndex = 1;
             // 
             // txtGuide
             // 
-            this.txtGuide.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtGuide.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtGuide.Location = new System.Drawing.Point(50, 190);
+            this.txtGuide.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtGuide.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtGuide.Location = new System.Drawing.Point(4, 323);
             this.txtGuide.Multiline = true;
             this.txtGuide.Name = "txtGuide";
             this.txtGuide.ReadOnly = true;
             this.txtGuide.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtGuide.Size = new System.Drawing.Size(373, 58);
+            this.txtGuide.Size = new System.Drawing.Size(641, 74);
             this.txtGuide.TabIndex = 10;
-            this.txtGuide.TextChanged += new System.EventHandler(this.txtGuide_TextChanged);
             // 
             // lblSangho
             // 
             this.lblSangho.BackColor = System.Drawing.Color.Transparent;
             this.lblSangho.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblSangho.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblSangho.Location = new System.Drawing.Point(254, 9);
+            this.lblSangho.Location = new System.Drawing.Point(11, 10);
             this.lblSangho.Name = "lblSangho";
             this.lblSangho.Size = new System.Drawing.Size(201, 18);
             this.lblSangho.TabIndex = 11;
-            this.lblSangho.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblSangho.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(464, 260);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = global::HS_OSHA.Properties.Resources.login_bakImg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ClientSize = new System.Drawing.Size(650, 401);
             this.ControlBox = false;
             this.Controls.Add(this.lblSangho);
             this.Controls.Add(this.txtGuide);
@@ -131,10 +130,11 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lblLicno);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "보건관리전문 프로그램";
-            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

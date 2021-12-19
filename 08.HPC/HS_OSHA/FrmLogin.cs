@@ -1,19 +1,9 @@
 ﻿using ComBase;
-using ComDbB;
 using HC_OSHA;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using System.IO;
-using static System.IO.Directory;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace HS_OSHA
 {
@@ -29,6 +19,7 @@ namespace HS_OSHA
         public FrmLogin()
         {
             InitializeComponent();
+            SetEvent();
             if (READ_Licno_Disk() == false) this.Close();
             if (READ_Licno_Server() == false) this.Close();
 
@@ -40,14 +31,28 @@ namespace HS_OSHA
 
         }
 
-        private void txtIdNumber_TextChanged(object sender, EventArgs e)
+        private void SetEvent()
         {
-
+            this.Load += new EventHandler(eFormload);
+            this.txtIdNumber.KeyDown += new KeyEventHandler(eTxtKeyDown);
+            this.txtPassword.KeyDown += new KeyEventHandler(eTxtKeyDown);
         }
 
-        private void FrmLogin_Load(object sender, EventArgs e)
+        private void eTxtKeyDown(object sender, KeyEventArgs e)
         {
+            if (sender == txtIdNumber || sender == txtPassword)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SendKeys.Send("{TAB}");
+                }
+            }
+        }
 
+        private void eFormload(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtIdNumber;
+            txtIdNumber.Focus();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -310,11 +315,6 @@ namespace HS_OSHA
             }
         }
 
-        private void txtGuide_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnUpdate_Click()
         {
             Ftpedt ftpedt = new Ftpedt();
@@ -339,9 +339,5 @@ namespace HS_OSHA
             this.Close();
         }
 
-        private void lblLicno_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
