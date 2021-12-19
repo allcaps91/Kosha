@@ -112,58 +112,54 @@
         {
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT DISTINCT B.*,  A.ISACTIVE, A.PARENTSITE_ID as PARENTSITE_ID, A.HASCHILD FROM HIC_OSHA_SITE A ");
+            parameter.AppendSql("SELECT DISTINCT B.*,  A.ISACTIVE, A.PARENTSITE_ID as PARENTSITE_ID, A.HASCHILD ");
+            parameter.AppendSql("  FROM HIC_OSHA_SITE A ");
             if (isOSha)
             {
-                parameter.AppendSql("INNER JOIN HC_SITE_VIEW B ");
+                parameter.AppendSql("   INNER JOIN HC_SITE_VIEW B ");
             }
             else
             {
-                parameter.AppendSql("RIGHT OUTER JOIN HC_SITE_VIEW B ");
+                parameter.AppendSql("   RIGHT OUTER JOIN HC_SITE_VIEW B ");
             }
 
-            parameter.AppendSql("ON A.ID = B.ID       ");
+            parameter.AppendSql("        ON A.ID = B.ID ");
+            parameter.AppendSql("        AND B.SWLICENSE = :SWLICENSE ");
             if (userId.NotEmpty())
             {
-                parameter.AppendSql("AND A.ISACTIVE = 'Y' ");
-            }
-            if (userId.NotEmpty())
-            {
-                parameter.AppendSql(" INNER JOIN HIC_OSHA_CONTRACT C ");
-                parameter.AppendSql(" ON C.OSHA_SITE_ID = A.ID ");
+                parameter.AppendSql("    INNER JOIN HIC_OSHA_CONTRACT C ");
+                parameter.AppendSql("          ON C.OSHA_SITE_ID = A.ID ");
+                parameter.AppendSql("          AND C.SWLICENSE = :SWLICENSE ");
             }
             if (userId.NotEmpty() && isSchedule)
             {
-                parameter.AppendSql(" INNER JOIN        ");
-                parameter.AppendSql(" (                         ");
-                parameter.AppendSql(" SELECT SITE_ID FROM HIC_OSHA_SCHEDULE  ");
-                parameter.AppendSql(" WHERE VISITUSERID = :USERID   ");
-                parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
-                parameter.AppendSql(" AND VISITRESERVEDATE = TO_DATE('" + DateTime.Now.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD')");
-                parameter.AppendSql(" AND ISDELETED = 'N'  ");
-                parameter.AppendSql(" ) AA  ");
-                parameter.AppendSql(" ON A.ID = AA.SITE_ID  ");
+                parameter.AppendSql("   INNER JOIN ( ");
+                parameter.AppendSql("         SELECT SITE_ID FROM HIC_OSHA_SCHEDULE  ");
+                parameter.AppendSql("          WHERE VISITUSERID = :USERID ");
+                parameter.AppendSql("            AND SWLICENSE = :SWLICENSE ");
+                parameter.AppendSql("            AND VISITRESERVEDATE = TO_DATE('" + DateTime.Now.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD') ");
+                parameter.AppendSql("            AND ISDELETED = 'N' ");
+                parameter.AppendSql("         ) AA ");
+                parameter.AppendSql("         ON A.ID = AA.SITE_ID ");
             }
             parameter.AppendSql("WHERE B.ID LIKE :ID     ");
 
             if (userId.NotEmpty() && role == Role.DOCTOR)
             {
-                parameter.AppendSql("AND C.MANAGEDOCTOR = :USERID ");
+                parameter.AppendSql("  AND C.MANAGEDOCTOR = :USERID ");
             }
             else if (userId.NotEmpty() && role == Role.NURSE)
             {
-                parameter.AppendSql("AND C.MANAGENURSE= :USERID ");
+                parameter.AppendSql("  AND C.MANAGENURSE= :USERID ");
             }
             else if (userId.NotEmpty() && role == Role.ENGINEER)
             {
-                parameter.AppendSql("AND C.MANAGEENGINEER= :USERID ");
+                parameter.AppendSql("  AND C.MANAGEENGINEER= :USERID ");
             }
-            parameter.AppendSql("AND A.ISACTIVE ='Y' ");
-            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE ");
-            if (userId.NotEmpty()) { parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE "); }
-
-            parameter.AppendSql("ORDER BY B.NAME   ");
+            parameter.AppendSql("  AND A.ISACTIVE ='Y' ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            
+            parameter.AppendSql(" ORDER BY B.NAME   ");
             parameter.AddLikeStatement("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
@@ -178,13 +174,14 @@
         public List<HC_OSHA_SITE_MODEL> FindByLtduser()
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT DISTINCT B.*,  A.ISACTIVE, A.PARENTSITE_ID as PARENTSITE_ID, A.HASCHILD FROM HIC_OSHA_SITE A ");
-            parameter.AppendSql("INNER JOIN HC_SITE_VIEW B ");
-            parameter.AppendSql("      ON A.ID = B.ID ");
-            parameter.AppendSql("AND B.ID='" + clsType.User.LtdUser + "' ");
-            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("ORDER BY B.NAME ");
+            parameter.AppendSql("SELECT DISTINCT B.*,  A.ISACTIVE, A.PARENTSITE_ID as PARENTSITE_ID, A.HASCHILD ");
+            parameter.AppendSql("  FROM HIC_OSHA_SITE A ");
+            parameter.AppendSql("       INNER JOIN HC_SITE_VIEW B ");
+            parameter.AppendSql("             ON A.ID = B.ID ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("             AND B.ID='" + clsType.User.LtdUser + "' ");
+            parameter.AppendSql("WHERE A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" ORDER BY B.NAME ");
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_OSHA_SITE_MODEL>(parameter);
