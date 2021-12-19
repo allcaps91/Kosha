@@ -106,11 +106,6 @@ namespace HcAdmin
 
         private void btnFileCopy_Click(object sender, EventArgs e)
         {
-            if (txtOldVer.Text == txtNewVer.Text)
-            {
-                ComFunc.MsgBox("버전정보가 변경되지 않았습니다.", "오류");
-                return;
-            }
             if (txtNewVer.Text.Trim() == "")
             {
                 ComFunc.MsgBox("버전정보가 공란입니다.", "오류");

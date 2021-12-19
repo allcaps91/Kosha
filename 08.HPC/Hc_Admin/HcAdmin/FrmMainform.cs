@@ -94,6 +94,19 @@ namespace HcAdmin
 
         private void 설치파일만들기ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //파일 복사
+            string strDest = "";
+            string strSource = "";
+
+            strSource = @"C:\Kosha\08.HPC\Hc_Admin\HcAdmin\bin\Release\HcAdmin.exe";
+            strDest = @"C:\Kosha\08.HPC\HS_OSHA\bin\Release\HcAdmin.exe";
+            System.IO.File.Copy(strSource, strDest, true);
+
+            strSource = @"C:\Kosha\08.HPC\HS_SETUP\obj\Release\HS_SETUP.exe";
+            strDest = @"C:\Kosha\08.HPC\HS_OSHA\bin\Release\HS_SETUP.exe";
+            System.IO.File.Copy(strSource, strDest, true);
+
+            //설치파일 만들기
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = @"C:\헬스소프트\InstallFactory 2.70\InstFact.exe";
             startInfo.Arguments = null;

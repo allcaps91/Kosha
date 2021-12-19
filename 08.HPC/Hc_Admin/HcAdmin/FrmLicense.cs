@@ -449,7 +449,7 @@ namespace HcAdmin
             System.IO.File.WriteAllText(@"C:\Windows\System32\acledit392io87.dll", strPcData);
 
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = @"C:\Program Files (x86)\HSMain\HS_OSHA.exe";
+            startInfo.FileName = @"C:\HealthSoft\HSMain\HS_OSHA.exe";
             startInfo.Arguments = null;
             Process.Start(startInfo);
         }
