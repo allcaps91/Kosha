@@ -630,7 +630,7 @@ namespace HC_OSHA
         private void BtnLoadExcel_Click(object sender, EventArgs e)
         {
             SSEstimate.ActiveSheet.RowCount = 0;
-            string fileName = @"C:\PSMH\견적서.xlsx";
+            string fileName = @"C:\PSMHEXE\exenet\견적서.xlsx";
             SSEstimate.ActiveSheet.OpenExcel(fileName, 0);
 
             SSEstimate.ActiveSheet.RowCount = 50;
