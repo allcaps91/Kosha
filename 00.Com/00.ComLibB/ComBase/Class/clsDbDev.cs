@@ -15,7 +15,7 @@ namespace ComBase
 
         private static OracleCommand cmd = null;
 
-        public static string strDbIniFile = @"C:\HealthSoft\HSMain\psmh.ini";
+        public static string strDbIniFile = @"C:\PSMHEXE\exenet\psmh.ini";
         public static string strSource = "PSMH_DEV";
         public static string strDbIp = "";
         public static string strDbPort = "";
@@ -28,7 +28,7 @@ namespace ComBase
         {
             string strPassWord = "";
 
-            //string strFIleNm = @"C:\HealthSoft\HSMain\psmh.ini";
+            //string strFIleNm = @"C:\PSMHEXE\exenet\psmh.ini";
             //FileInfo pRevEmrFile = new FileInfo(strFIleNm);
             //if (pRevEmrFile.Exists == false)
             //{

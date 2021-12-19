@@ -25,8 +25,8 @@ namespace ComDbB
         public OracleConnection Con = null;
         public OracleTransaction Trs = null;
 
-        public string strDbIniFile = @"C:\HealthSoft\HSMain\psmh.ini";
-        public string strDevDbIniFile = @"C:\HealthSoft\HSMain\psmhDev.ini";
+        public string strDbIniFile = @"C:\PSMHEXE\exenet\psmh.ini";
+        public string strDevDbIniFile = @"C:\PSMHEXE\exenet\psmhDev.ini";
         public string strSource = "PSMH";
         public string strDbIp = "";
         public string strDbPort = "";
