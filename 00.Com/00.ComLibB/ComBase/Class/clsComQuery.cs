@@ -3717,7 +3717,7 @@ namespace ComBase
                 dt.Dispose();
                 dt = null;
 
-                string strFile = @"C:\PSMHEXE\exenet\psmhDev.ini";
+                string strFile = @"C:\HealthSoft\HSMain\psmhDev.ini";
                 FileInfo fileInfo = new FileInfo(strFile);
                 if (fileInfo.Exists)
                 {
