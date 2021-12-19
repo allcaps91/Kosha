@@ -85,8 +85,8 @@ namespace HS_OSHA
                 clsType.HosInfo.SwLicInfo = strNewData;
 
                 // 버전정보를 읽음
-                if (System.IO.File.Exists(@"C:\HealthSoft\HSMain\VerInfo.txt") == true)
-                    FstrOldVer = System.IO.File.ReadAllText(@"C:\HealthSoft\HSMain\VerInfo.txt");
+                if (System.IO.File.Exists(@"C:\PSMHEXE\Debug\VerInfo.txt") == true)
+                    FstrOldVer = System.IO.File.ReadAllText(@"C:\PSMHEXE\Debug\VerInfo.txt");
 
                 return true;
             }
