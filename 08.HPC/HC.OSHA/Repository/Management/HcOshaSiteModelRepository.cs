@@ -22,12 +22,14 @@
         public List<HC_OSHA_SITE_MODEL> FindChild(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT DISTINCT B.*,  A.ISACTIVE, A.PARENTSITE_ID as PARENTSITE_ID, A.HASCHILD FROM HIC_OSHA_SITE A ");
-            parameter.AppendSql("INNER JOIN HC_SITE_VIEW B ");
-            parameter.AppendSql("ON A.ID = B.ID       ");
-            parameter.AppendSql("WHERE A.PARENTSITE_ID = :ID      ");
+            parameter.AppendSql("SELECT DISTINCT B.*,  A.ISACTIVE, A.PARENTSITE_ID as PARENTSITE_ID, A.HASCHILD ");
+            parameter.AppendSql( " FROM HIC_OSHA_SITE A ");
+            parameter.AppendSql("       INNER JOIN HC_SITE_VIEW B ");
+            parameter.AppendSql("              ON A.ID = B.ID ");
+            parameter.AppendSql("              AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("WHERE A.PARENTSITE_ID = :ID ");
             parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE ");
+            
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HC_OSHA_SITE_MODEL>(parameter);
@@ -35,94 +37,51 @@
         public HC_OSHA_SITE_MODEL FindById(long id, string userId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT B.*, A.ISACTIVE,  A.PARENTSITE_ID, C.NAME AS PARENTSITE_NAME FROM HIC_OSHA_SITE A ");
-            parameter.AppendSql("INNER JOIN HC_SITE_VIEW B ");
-            parameter.AppendSql("ON A.ID = B.ID       ");
-            parameter.AppendSql("LEFT OUTER JOIN HC_SITE_VIEW C ");
-            parameter.AppendSql("ON A.PARENTSITE_ID = C.ID       ");
-            parameter.AppendSql("WHERE A.ID = :ID     ");
+            parameter.AppendSql("SELECT B.*, A.ISACTIVE,  A.PARENTSITE_ID, C.NAME AS PARENTSITE_NAME ");
+            parameter.AppendSql("  FROM HIC_OSHA_SITE A ");
+            parameter.AppendSql("       INNER JOIN HC_SITE_VIEW B ");
+            parameter.AppendSql("             ON A.ID = B.ID ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("        LEFT OUTER JOIN HC_SITE_VIEW C ");
+            parameter.AppendSql("             ON A.PARENTSITE_ID = C.ID ");
+            parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("WHERE A.ID = :ID ");
             parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_OSHA_SITE_MODEL>(parameter);
-
-            //MParameter parameter = CreateParameter();
-            //parameter.AppendSql("SELECT * FROM HC_SITE_VIEW ");
-            //parameter.AppendSql("WHERE ID LIKE :ID     ");
-            //parameter.AddLikeStatement("ID", id);
-            //return ExecuteReaderSingle<HC_OSHA_SITE_MODEL>(parameter);
         }
         public List<HC_OSHA_SITE_MODEL> FIndByUserId(string userId, Role role)
         {
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*                                                              ");
-            //parameter.AppendSql("     , (                                                                ");
-            //parameter.AppendSql("            SELECT WORKERTOTALCOUNT                                     ");
-            //parameter.AppendSql("              FROM HIC_OSHA_PRICE                                       ");
-            //parameter.AppendSql("             WHERE ESTIMATE_ID = (                                      ");
-            //parameter.AppendSql("                    SELECT ESTIMATE_ID                                  ");
-            //parameter.AppendSql("                      FROM HIC_OSHA_CONTRACT                            ");
-            //parameter.AppendSql("                     WHERE OSHA_SITE_ID = A.ID                          ");
-            //parameter.AppendSql("                       AND ISDELETED != 'Y'                             ");
-            //parameter.AppendSql("                       AND ESTIMATE_ID = (SELECT MAX(ESTIMATE_ID)       ");
-            //parameter.AppendSql("                                            FROM HIC_OSHA_CONTRACT      ");
-            //parameter.AppendSql("                                           WHERE OSHA_SITE_ID = A.ID    ");
-            //parameter.AppendSql("                                             AND ISDELETED != 'Y')      ");
-            //parameter.AppendSql("               )                                                        ");
-            //parameter.AppendSql("               AND ID = (                                               ");
-            //parameter.AppendSql("                    SELECT MAX(ID)                                      ");
-            //parameter.AppendSql("                      FROM HIC_OSHA_PRICE                               ");
-            //parameter.AppendSql("                     WHERE ESTIMATE_ID = (                              ");
-            //parameter.AppendSql("                        SELECT ESTIMATE_ID                              ");
-            //parameter.AppendSql("                          FROM HIC_OSHA_CONTRACT                        ");
-            //parameter.AppendSql("                         WHERE OSHA_SITE_ID = A.ID                      ");
-            //parameter.AppendSql("                           AND ISDELETED != 'Y'                         ");
-            //parameter.AppendSql("                           AND ESTIMATE_ID = (SELECT MAX(ESTIMATE_ID)   ");
-            //parameter.AppendSql("                                                FROM HIC_OSHA_CONTRACT  ");
-            //parameter.AppendSql("                                               WHERE OSHA_SITE_ID = A.ID");
-            //parameter.AppendSql("                                                 AND ISDELETED != 'Y')  ");
-            //parameter.AppendSql("                                     )                                  ");
-            //parameter.AppendSql("               )                                                        ");
-            //parameter.AppendSql("      ) AS WORKERTOTALCOUNT                                             ");
-            parameter.AppendSql("  FROM                                                                  ");
-            parameter.AppendSql("  (                                                                     ");
-            parameter.AppendSql("        SELECT DISTINCT                                                 ");
-            parameter.AppendSql("               B.*                                                      ");
-            parameter.AppendSql("             , A.ISACTIVE                                               ");
-            parameter.AppendSql("             , A.ID AS SITE_ID                                          ");
-            parameter.AppendSql("             , A.PARENTSITE_ID as PARENTSITE_ID                         ");
-            parameter.AppendSql("             , A.HASCHILD                                               ");
-            parameter.AppendSql("             , DECODE(C.VISITWEEK, '첫째주', 1                             ");
-            parameter.AppendSql("                                 , '둘째주', 2                             ");
-            parameter.AppendSql("                                 , '셋째주', 3                             ");
-            parameter.AppendSql("                                 , '넷째주', 4, 5) as VISITWEEK            ");
-            parameter.AppendSql("             , DECODE(C.VISITDAY, '월', 1                                ");
-            parameter.AppendSql("                                , '화', 2                                ");
-            parameter.AppendSql("                                , '수', 3                                ");
-            parameter.AppendSql("                                , '목', 4                                ");
-            parameter.AppendSql("                                , '금', 5                                ");
-            parameter.AppendSql("                                , '토', 6, 7)  as VISITDAY               ");
-            parameter.AppendSql("             , C.MANAGEENGINEERCOUNT                                    ");
-            parameter.AppendSql("             , C.MANAGEDOCTORCOUNT                                      ");
-            parameter.AppendSql("             , C.MANAGENURSECOUNT                                       ");
-            parameter.AppendSql("             , C.MANAGEENGINEERSTARTDATE                                ");
-            parameter.AppendSql("             , C.MANAGEDOCTORSTARTDATE                                  ");
-            parameter.AppendSql("             , C.MANAGENURSESTARTDATE                                   ");
-            parameter.AppendSql("             , C.WORKERTOTALCOUNT                                               ");
-            parameter.AppendSql("          FROM HIC_OSHA_SITE A                                          ");
-            parameter.AppendSql("          INNER JOIN HC_SITE_VIEW B                                     ");
-            parameter.AppendSql("                  ON A.ID = B.ID                                        ");
-            parameter.AppendSql("          INNER JOIN HIC_OSHA_CONTRACT C                                ");
-            parameter.AppendSql("                  ON C.OSHA_SITE_ID = A.ID                              ");
-            parameter.AppendSql("                 AND C.ISDELETED = 'N'                                 ");
-            parameter.AppendSql("         WHERE 1=1                                                      ");
+            parameter.AppendSql("SELECT A.* FROM ( ");
+            parameter.AppendSql("       SELECT DISTINCT B.*,A.ISACTIVE,A.ID AS SITE_ID,A.PARENTSITE_ID as PARENTSITE_ID,A.HASCHILD, ");
+            parameter.AppendSql("               DECODE(C.VISITWEEK, '첫째주', 1, ");
+            parameter.AppendSql("                                   '둘째주', 2, ");
+            parameter.AppendSql("                                   '셋째주', 3, ");
+            parameter.AppendSql("                                   '넷째주', 4, 5) as VISITWEEK, ");
+            parameter.AppendSql("               DECODE(C.VISITDAY, '월', 1, ");
+            parameter.AppendSql("                                  '화', 2,  ");
+            parameter.AppendSql("                                  '수', 3,  ");
+            parameter.AppendSql("                                  '목', 4,  ");
+            parameter.AppendSql("                                  '금', 5,  ");
+            parameter.AppendSql("                                  '토', 6, 7)  as VISITDAY, ");
+            parameter.AppendSql("               C.MANAGEENGINEERCOUNT,C.MANAGEDOCTORCOUNT,C.MANAGENURSECOUNT,");
+            parameter.AppendSql("               C.MANAGEENGINEERSTARTDATE,C.MANAGEDOCTORSTARTDATE,C.MANAGENURSESTARTDATE,");
+            parameter.AppendSql("               C.WORKERTOTALCOUNT ");
+            parameter.AppendSql("          FROM HIC_OSHA_SITE A ");
+            parameter.AppendSql("               INNER JOIN HC_SITE_VIEW B ");
+            parameter.AppendSql("                     ON A.ID = B.ID ");
+            parameter.AppendSql("                     AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("               INNER JOIN HIC_OSHA_CONTRACT C ");
+            parameter.AppendSql("                     ON C.OSHA_SITE_ID = A.ID ");
+            parameter.AppendSql("                     AND C.ISDELETED = 'N' ");
+            parameter.AppendSql("                     AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("         WHERE 1=1 ");
             parameter.AppendSql("           AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("           AND B.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("           AND C.SWLICENSE = :SWLICENSE ");
 
             if (role == Role.DOCTOR)
             {
