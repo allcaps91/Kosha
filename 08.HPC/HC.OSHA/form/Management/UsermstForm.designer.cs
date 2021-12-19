@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.CellType.TextCellType textCellType5 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType6 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType7 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType8 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType1 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType2 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType3 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType4 = new FarPoint.Win.Spread.CellType.TextCellType();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -79,6 +79,7 @@
             this.txtViewName = new System.Windows.Forms.TextBox();
             this.btnView = new System.Windows.Forms.Button();
             this.chkTejik = new System.Windows.Forms.CheckBox();
+            this.btnSign = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -88,6 +89,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnSign);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
@@ -110,7 +112,7 @@
             this.panel2.Controls.Add(this.txtName);
             this.panel2.Controls.Add(this.txtSabun);
             this.panel2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.panel2.Location = new System.Drawing.Point(383, 27);
+            this.panel2.Location = new System.Drawing.Point(361, 27);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(330, 485);
@@ -474,7 +476,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 27);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(725, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(697, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -492,7 +494,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
-            this.menuStrip2.Size = new System.Drawing.Size(725, 27);
+            this.menuStrip2.Size = new System.Drawing.Size(697, 27);
             this.menuStrip2.TabIndex = 3;
             this.menuStrip2.Text = "menuStrip2";
             this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
@@ -566,23 +568,23 @@
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "성명";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "부서명";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 3).Value = "권한";
-            textCellType5.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(0).CellType = textCellType5;
+            textCellType1.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(0).CellType = textCellType1;
             this.SS1_Sheet1.Columns.Get(0).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(0).Label = "사번";
             this.SS1_Sheet1.Columns.Get(0).Width = 56F;
-            textCellType6.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(1).CellType = textCellType6;
+            textCellType2.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(1).CellType = textCellType2;
             this.SS1_Sheet1.Columns.Get(1).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(1).Label = "성명";
             this.SS1_Sheet1.Columns.Get(1).Width = 80F;
-            textCellType7.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(2).CellType = textCellType7;
+            textCellType3.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(2).CellType = textCellType3;
             this.SS1_Sheet1.Columns.Get(2).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(2).Label = "부서명";
             this.SS1_Sheet1.Columns.Get(2).Width = 73F;
-            textCellType8.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(3).CellType = textCellType8;
+            textCellType4.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(3).CellType = textCellType4;
             this.SS1_Sheet1.Columns.Get(3).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(3).Label = "권한";
             this.SS1_Sheet1.Columns.Get(3).Width = 69F;
@@ -637,11 +639,21 @@
             this.chkTejik.Text = "퇴직자제외";
             this.chkTejik.UseVisualStyleBackColor = true;
             // 
+            // btnSign
+            // 
+            this.btnSign.Location = new System.Drawing.Point(233, 203);
+            this.btnSign.Name = "btnSign";
+            this.btnSign.Size = new System.Drawing.Size(77, 29);
+            this.btnSign.TabIndex = 87;
+            this.btnSign.Text = "사인등록";
+            this.btnSign.UseVisualStyleBackColor = true;
+            this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
+            // 
             // UsermstForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 526);
+            this.ClientSize = new System.Drawing.Size(697, 526);
             this.Controls.Add(this.chkTejik);
             this.Controls.Add(this.btnView);
             this.Controls.Add(this.txtViewName);
@@ -718,5 +730,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblLTD02;
+        private System.Windows.Forms.Button btnSign;
     }
 }

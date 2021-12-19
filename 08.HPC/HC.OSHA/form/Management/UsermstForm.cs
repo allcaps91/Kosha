@@ -1,5 +1,13 @@
 ﻿using ComBase;
+using ComBase.Controls;
+using ComBase.Mvc.Enums;
+using ComBase.Mvc.Spread;
+using ComBase.Mvc.Utils;
 using ComDbB;
+using HC_Core;
+using HC.Core.Dto;
+using HC.Core.Repository;
+using HC.Core.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +22,11 @@ namespace HC_OSHA
 {
     public partial class UsermstForm : Form
     {
+        private HC_USER selectSignUser = null;
+        private HcUserSignRepository hcUserSignRepository;
+        HcViewUserService hcViewUserService;
+        HcUserService hcUserService;
+
         static bool FbNew = false;
         static string FstrJobSabun = clsType.User.IdNumber;
         static string FstrLicno = clsType.HosInfo.SwLicense;
@@ -21,6 +34,10 @@ namespace HC_OSHA
         public UsermstForm()
         {
             InitializeComponent();
+
+            hcViewUserService = new HcViewUserService();
+            hcUserService = new HcUserService();
+            hcUserSignRepository = new HcUserSignRepository();
 
             //관리자만 비밀번호 초기화, 삭제 가능
             if (FstrJobSabun != "1")
@@ -517,6 +534,37 @@ namespace HC_OSHA
         {
 
         }
+
+        private void btnSign_Click(object sender, EventArgs e)
+        {
+            SignPadForm form = new SignPadForm(true);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                Save(form.Base64Image);
+            }
+
+        }
+
+        public void Save(string base64)
+        {
+            HIC_USERSIGN dto = new HIC_USERSIGN();
+            dto.USERID = txtID.Text.Trim();
+            dto.IMAGEBASE64 = base64;
+            HIC_USERSIGN saved = hcUserSignRepository.FindOne(dto.USERID);
+            if (saved == null)
+            {
+                hcUserSignRepository.Insert(dto);
+            }
+            else
+            {
+                hcUserSignRepository.Update(dto);
+            }
+            MessageUtil.Info("서명이 저장되었습니다");
+
+        }
+
+
     }
 }
 
