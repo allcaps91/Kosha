@@ -119,7 +119,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = global::HS_OSHA.Properties.Resources.login_bakImg;
+            this.BackgroundImage = global::HS_OSHA.Properties.Resources.login_bakImg1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(650, 401);
             this.ControlBox = false;
