@@ -723,7 +723,6 @@
             this.BtnLoadExcel.TabIndex = 67;
             this.BtnLoadExcel.Text = "견적서 test";
             this.BtnLoadExcel.UseVisualStyleBackColor = true;
-            this.BtnLoadExcel.Visible = false;
             this.BtnLoadExcel.Click += new System.EventHandler(this.BtnLoadExcel_Click);
             // 
             // SSEstimate
@@ -817,7 +816,7 @@
             // OshaSiteEstimateList
             // 
             this.OshaSiteEstimateList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OshaSiteEstimateList.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.OshaSiteEstimateList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             hC_ESTIMATE_MODEL1.ComboDisplay = null;
             hC_ESTIMATE_MODEL1.CONTRACTDATE = null;
             hC_ESTIMATE_MODEL1.CONTRACTENDDATE = null;

@@ -104,7 +104,7 @@ namespace HC_OSHA.Migration
                         //견적생성
                         HC_OSHA_ESTIMATE dto = new HC_OSHA_ESTIMATE();
                         dto.OSHA_SITE_ID = model.ID;
-                        dto.EXCELPATH = @""C:\PSMHEXE\exenet\견적서.xlsx";
+                        dto.EXCELPATH = @"C:\PSMHEXE\exenet\견적서.xlsx";
                         HC_OSHA_ESTIMATE saved =  hcOshaEstimateService.Save(dto);
                         estimateId = saved.ID;
                          

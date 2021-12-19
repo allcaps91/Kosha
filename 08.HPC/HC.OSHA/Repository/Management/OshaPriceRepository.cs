@@ -258,39 +258,39 @@ namespace HC.OSHA.Repository
         public List<OSHA_PRICE> FindAllByParent(long parentSiteId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.ID as SITE_ID, C.ID AS ESTIMATE_ID, B.NAME AS SITE_NAME, D.ID, D.WORKERTOTALCOUNT,");
-            parameter.AppendSql("       UNITPRICE, UNITTOTALPRICE, TOTALPRICE, ISBILL, ISFIX ");
-            parameter.AppendSql("  FROM HIC_OSHA_SITE A ");
-            parameter.AppendSql("       INNER JOIN HC_SITE_VIEW B ");
-            parameter.AppendSql("             ON A.ID = B.ID ");
-            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("       INNER JOIN HIC_OSHA_ESTIMATE C ");
-            parameter.AppendSql("             ON A.ID = C.OSHA_SITE_ID ");
-            parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("       LEFT OUTER JOIN (SELECT A.* FROM HIC_OSHA_PRICE A ");
-            parameter.AppendSql("                               INNER JOIN (SELECT MAX(A.ID) AS ID ");
-            parameter.AppendSql("                                             FROM  HIC_OSHA_PRICE A ");
-            parameter.AppendSql("                                                   INNER JOIN HIC_OSHA_ESTIMATE B ");
-            parameter.AppendSql("                                                         ON A.ESTIMATE_ID = B.ID ");
-            parameter.AppendSql("                                                         AND B.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("                                             WHERE A.ISDELETED = 'N' ");
-            parameter.AppendSql("                                               AND B.ISDELETED ='N' ");
-            parameter.AppendSql("                                               AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("                                            GROUP BY B.OSHA_SITE_ID) BB ");
-            parameter.AppendSql("                                    ON A.ID = BB.ID) D ");
-            parameter.AppendSql("            ON D.ESTIMATE_ID = C.ID ");
-            parameter.AppendSql("      INNER JOIN HIC_OSHA_CONTRACT E ");
-            parameter.AppendSql("            ON e.estimate_id = C.ID ");
-            parameter.AppendSql("            ANd E.OSHA_SITE_ID = C.OSHA_SITE_ID ");
-            parameter.AppendSql("            AND E.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql(" WHERE A.PARENTSITE_ID = :PARENTSITE_ID ");
-            parameter.AppendSql("    AND A.ISACTIVE = 'Y' ");
+            parameter.AppendSql("SELECT A.ID as SITE_ID, C.ID AS ESTIMATE_ID, B.NAME AS SITE_NAME, D.ID, D.WORKERTOTALCOUNT, UNITPRICE, UNITTOTALPRICE, TOTALPRICE, ISBILL, ISFIX ");
+            parameter.AppendSql("FROM HIC_OSHA_SITE A ");
+            parameter.AppendSql("INNER JOIN HC_SITE_VIEW B ");
+            parameter.AppendSql("ON A.ID = B.ID ");
+            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("INNER JOIN HIC_OSHA_ESTIMATE C ");
+            parameter.AppendSql("ON A.ID = C.OSHA_SITE_ID ");
+            parameter.AppendSql("AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("LEFT OUTER JOIN (SELECT A.* FROM HIC_OSHA_PRICE A    ");
+            parameter.AppendSql("                 INNER JOIN (SELECT MAX(A.ID) AS ID FROM  HIC_OSHA_PRICE A    ");
+            parameter.AppendSql("                             INNER JOIN HIC_OSHA_ESTIMATE B    ");
+            parameter.AppendSql("                                ON A.ESTIMATE_ID = B.ID    ");
+            parameter.AppendSql("                                AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                             WHERE A.ISDELETED = 'N'    ");
+            parameter.AppendSql("                               AND B.ISDELETED ='N' ");
+            parameter.AppendSql("                               AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("                            GROUP BY B.OSHA_SITE_ID    ");
+            parameter.AppendSql("                            ) BB    ");
+            parameter.AppendSql("                 ON A.ID = BB.ID    ");
+            parameter.AppendSql("                 ) D    ");
+            parameter.AppendSql("ON D.ESTIMATE_ID = C.ID ");
+            parameter.AppendSql("INNER JOIN HIC_OSHA_CONTRACT E ");
+            parameter.AppendSql("ON e.estimate_id = C.ID ");
+            parameter.AppendSql("ANd E.OSHA_SITE_ID = C.OSHA_SITE_ID ");
+            parameter.AppendSql("AND E.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("WHERE A.PARENTSITE_ID = :PARENTSITE_ID ");
+            parameter.AppendSql("AND A.ISACTIVE = 'Y' ");
             parameter.AppendSql("    AND C.ISDELETED = 'N' ");
             parameter.AppendSql("    AND E.ISDELETED = 'N' ");
             parameter.AppendSql("    AND A.ISPARENTCHARGE = 'N' ");
             parameter.AppendSql("    AND A.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("  ORDER BY B.NAME ");
-            
+
             parameter.Add("PARENTSITE_ID", parentSiteId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
