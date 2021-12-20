@@ -57,21 +57,19 @@
         internal List<HC_OSHA_CARD19> FindAll(long siteId, string contractStartDate, string contractendDate)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*                                              ");
-            parameter.AppendSql("     , B.NAME AS CREATEDUSER                            ");
-            parameter.AppendSql("     , C.NAME AS MODIFIEDUSER                           ");
-            parameter.AppendSql("  FROM HIC_OSHA_CARD19 A                                ");
-            parameter.AppendSql("  INNER JOIN HIC_USERS B                                ");
-            parameter.AppendSql("          ON A.CREATEDUSER = B.USERID                   ");
-            parameter.AppendSql("  INNER JOIN HIC_USERS C                                ");
-            parameter.AppendSql("          ON A.MODIFIEDUSER = C.USERID                  ");
-            parameter.AppendSql(" WHERE A.SITE_ID  = :SITE_ID                            ");
-            parameter.AppendSql("   AND A.REGDATE >= TO_DATE(:START_DATE, 'YYYY-MM-DD')  ");
-            parameter.AppendSql("   AND A.REGDATE <= TO_DATE(:END_DATE, 'YYYY-MM-DD')    ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE                        ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE                        ");
-            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE                        ");
-            parameter.AppendSql("ORDER BY REGDATE                                        ");
+            parameter.AppendSql("SELECT A.*,B.NAME AS CREATEDUSER,C.NAME AS MODIFIEDUSER ");
+            parameter.AppendSql("  FROM HIC_OSHA_CARD19 A ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS B ");
+            parameter.AppendSql("             ON A.CREATEDUSER = B.USERID ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS C ");
+            parameter.AppendSql("             ON A.MODIFIEDUSER = C.USERID ");
+            parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" WHERE A.SITE_ID  = :SITE_ID ");
+            parameter.AppendSql("   AND A.REGDATE >= TO_DATE(:START_DATE, 'YYYY-MM-DD') ");
+            parameter.AppendSql("   AND A.REGDATE <= TO_DATE(:END_DATE, 'YYYY-MM-DD') ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("ORDER BY REGDATE ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("START_DATE", string.Concat(contractStartDate, "-01-01"));

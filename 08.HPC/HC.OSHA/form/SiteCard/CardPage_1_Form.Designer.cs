@@ -1655,7 +1655,7 @@
             this.SSCard_Sheet1.Cells.Get(3, 10).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(3, 10).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(3, 10).RowSpan = 6;
-            this.SSCard_Sheet1.Cells.Get(3, 10).Value = "포항성모병원";
+            this.SSCard_Sheet1.Cells.Get(3, 10).Value = "데모용";
             this.SSCard_Sheet1.Cells.Get(3, 10).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(3, 11).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.SSCard_Sheet1.Cells.Get(3, 11).Border = complexBorder57;

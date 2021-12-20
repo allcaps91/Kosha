@@ -1,4 +1,5 @@
-﻿using ComBase.Controls;
+﻿using ComBase;
+using ComBase.Controls;
 using ComBase.Mvc.Enums;
 using ComBase.Mvc.Spread;
 using ComBase.Mvc.Utils;
@@ -140,6 +141,7 @@ namespace HC_OSHA
         public void Clear()
         {
             SSCard.ActiveSheet.Cells[3, 1].Value = "";
+            SSCard.ActiveSheet.Cells[3, 10].Value = "";
             SSCard.ActiveSheet.Cells[3, 14].Value = "";
             SSCard.ActiveSheet.Cells[5, 14].Value = "";
             SSCard.ActiveSheet.Cells[7, 14].Value = "";
@@ -261,6 +263,7 @@ namespace HC_OSHA
             string year = contract.CONTRACTSTARTDATE.Substring(0, 4);
 
             SSCard.ActiveSheet.Cells[3, 1].Value = year;
+            SSCard.ActiveSheet.Cells[3, 10].Value = clsType.HosInfo.strNameKor;
 
             if (contract.MANAGEDOCTOR!=null)
                 SSCard.ActiveSheet.Cells[3,14].Value = hcUsersRepository.FindOne(contract.MANAGEDOCTOR).Name;

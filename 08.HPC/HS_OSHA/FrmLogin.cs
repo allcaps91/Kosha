@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.IO;
 
 namespace HS_OSHA
 {
@@ -15,6 +16,7 @@ namespace HS_OSHA
         public static string FstrEndDate = "";
         public static string FstrNewVer = "";
         public static string FstrOldVer = "";
+        public int intDelay = 0;
 
         public FrmLogin()
         {
@@ -28,7 +30,7 @@ namespace HS_OSHA
 
             clsDB.GetDbInfo();
             clsDB.DbCon = clsDB.DBConnect_Cloud();
-
+            timer1.Enabled = false;
         }
 
         private void SetEvent()
@@ -129,6 +131,7 @@ namespace HS_OSHA
                     strNewData += dt.Rows[0]["Sangho"].ToString().Trim() + "{}";
                     strNewData += dt.Rows[0]["EDate"].ToString().Trim() + "{}";
                     strNewData += dt.Rows[0]["AdminPass"].ToString().Trim() + "{}";
+                    clsType.HosInfo.strNameKor = dt.Rows[0]["Sangho"].ToString().Trim();
                 }
 
                 dt.Dispose();
@@ -315,13 +318,17 @@ namespace HS_OSHA
 
         private void btnUpdate_Click()
         {
+            string folderPath = @"C:\temp";
+            if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
+
+            timer1.Enabled = false;
             Ftpedt ftpedt = new Ftpedt();
             string strMsgBackup = txtGuide.Text.Trim();
 
-            txtGuide.Text = "업데이트 서버에서 파일을 다운로드 중 입니다.";
-            txtGuide.Text += ComNum.VBLF + "  소요시간: 약 1~2분 입니다.";
+            txtGuide.Text = ComNum.VBLF + "     업데이트 서버에서 파일을 다운로드 중 입니다.";
+            txtGuide.Text += ComNum.VBLF + "        ( 소요시간: 약 1~2분 입니다. )";
 
-            string strLocalPath = @"c:\temp\HsMainUpdate";
+            string strLocalPath = @"c:\temp\HsMainUpdate.exe";
             string strFileNm = "HsMainUpdate.exe";
             string strServerPath = "/update";
 
@@ -329,13 +336,29 @@ namespace HS_OSHA
             FtpedtX.FtpDownload("115.68.23.223", "dhson", "@thsehdgml#", strLocalPath, strFileNm, strServerPath);
             FtpedtX = null;
 
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = @"c:\temp\HsMainUpdate\HsMainUpdate.exe";
-            startInfo.Arguments = null;
-            Process.Start(startInfo);
+            intDelay = 0;
+            timer1.Enabled = true;
 
-            this.Close();
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            intDelay++;
+
+            if (intDelay == 2)
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                Process process = new Process();
+                startInfo.FileName = @"c:\temp\HsMainUpdate.exe";
+                startInfo.CreateNoWindow = false;
+                startInfo.UseShellExecute = false;
+                process.StartInfo = startInfo;
+                process.Start();
+
+            } else if (intDelay >= 5) {
+                timer1.Enabled = false;
+                this.Close();
+            }
+        }
     }
 }
