@@ -195,7 +195,7 @@ namespace HS_OSHA
                 dt = clsDbMySql.GetDataTable(SQL);
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    if (dt.Rows[i]["Gubun"].ToString()=="1") FstrNewVer= dt.Rows[i]["Remark"].ToString();
+                    if (dt.Rows[i]["Gubun"].ToString() == "1") FstrNewVer = dt.Rows[i]["Remark"].ToString();
                     if (dt.Rows[i]["Gubun"].ToString() == "2") txtGuide.Text = dt.Rows[i]["Remark"].ToString();
                 }
                 dt.Dispose();
