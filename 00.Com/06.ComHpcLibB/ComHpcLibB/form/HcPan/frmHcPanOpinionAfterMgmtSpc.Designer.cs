@@ -276,7 +276,7 @@
             this.SS1.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS1.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SS1.HorizontalScrollBar.TabIndex = 118;
+            this.SS1.HorizontalScrollBar.TabIndex = 120;
             this.SS1.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SS1.Location = new System.Drawing.Point(315, 113);
             this.SS1.Name = "SS1";
@@ -289,7 +289,7 @@
             this.SS1.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS1.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SS1.VerticalScrollBar.TabIndex = 119;
+            this.SS1.VerticalScrollBar.TabIndex = 121;
             this.SS1.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SS1_Sheet1
@@ -462,7 +462,7 @@
             this.ssList.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ssList.HorizontalScrollBar.Renderer = flatScrollBarRenderer3;
-            this.ssList.HorizontalScrollBar.TabIndex = 123;
+            this.ssList.HorizontalScrollBar.TabIndex = 125;
             this.ssList.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never;
             this.ssList.Location = new System.Drawing.Point(0, 0);
             this.ssList.Name = "ssList";
@@ -475,7 +475,7 @@
             this.ssList.VerticalScrollBar.Name = "";
             flatScrollBarRenderer4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ssList.VerticalScrollBar.Renderer = flatScrollBarRenderer4;
-            this.ssList.VerticalScrollBar.TabIndex = 124;
+            this.ssList.VerticalScrollBar.TabIndex = 126;
             this.ssList.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // ssList_Sheet1
