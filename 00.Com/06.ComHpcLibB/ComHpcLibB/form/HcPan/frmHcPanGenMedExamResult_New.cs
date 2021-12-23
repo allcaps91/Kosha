@@ -1798,6 +1798,11 @@ namespace ComHpcLibB
         {
             txtLtdCode.Text = codeAndName;
         }
+
+        private void btnLtdCode_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
    

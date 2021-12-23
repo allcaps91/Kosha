@@ -1051,7 +1051,7 @@
             this.SSList.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSList.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SSList.HorizontalScrollBar.TabIndex = 95;
+            this.SSList.HorizontalScrollBar.TabIndex = 97;
             this.SSList.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never;
             this.SSList.Location = new System.Drawing.Point(0, 0);
             this.SSList.Name = "SSList";
@@ -1064,7 +1064,7 @@
             this.SSList.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSList.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SSList.VerticalScrollBar.TabIndex = 96;
+            this.SSList.VerticalScrollBar.TabIndex = 98;
             this.SSList.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SSList_Sheet1
@@ -1204,6 +1204,7 @@
             this.btnLtdCode.Size = new System.Drawing.Size(31, 25);
             this.btnLtdCode.TabIndex = 32;
             this.btnLtdCode.UseVisualStyleBackColor = false;
+            this.btnLtdCode.Click += new System.EventHandler(this.btnLtdCode_Click);
             // 
             // txtLtdCode
             // 

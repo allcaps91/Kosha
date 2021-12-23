@@ -801,5 +801,17 @@ namespace HC_OSHA
         {
             this.Close();
         }
+
+        private void 뇌심혈관계발병위험도평가ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmExcelUpload1 form = new FrmExcelUpload1();
+            form.Show();
+        }
+
+        private void 질병유소견자사후관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmExcelUpload2 form = new FrmExcelUpload2();
+            form.Show();
+        }
     }
 }
