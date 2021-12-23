@@ -1580,7 +1580,7 @@ namespace ComHpcLibB
                 {
                     SS1.ActiveSheet.Cells[42, 15].Text = " 작성일자 : " + VB.Left(txtPrtDate.Text, 4) + "년 " + VB.Mid(txtPrtDate.Text, 6, 2) + "월 " + VB.Right(txtPrtDate.Text, 2) + "일";
                 }
-                SS1.ActiveSheet.Cells[44, 15].Text = VB.Space(1) + "건진기관명 : 포항성모병원";
+                SS1.ActiveSheet.Cells[44, 15].Text = VB.Space(1) + "건진기관명 : 대한보건환경연구소";
                 SS1.ActiveSheet.Cells[49, 15].Text = VB.Space(1) + "사 업 주 : " + VB.Left(list2.DAEPYO + VB.Space(10), 15).Trim() + "   (서명 또는 인)";
                 SS1.ActiveSheet.Cells[51, 15].Text = VB.Space(1) + "고용노동부 : " + hb.READ_HIC_CODE("02", list2.GWANSE);
                 SS1.ActiveSheet.Cells[53, 15].Text = VB.Space(1) + "지방고용노동청(지청)장   귀하";

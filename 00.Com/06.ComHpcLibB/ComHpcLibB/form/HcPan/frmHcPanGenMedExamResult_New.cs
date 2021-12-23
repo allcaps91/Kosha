@@ -1475,7 +1475,7 @@ namespace ComHpcLibB
                 SS1.ActiveSheet.Cells[36, 18].Text = "작성일자 : " + VB.Left(txtPrtDate.Text, 4) + "년 " + VB.Mid(txtPrtDate.Text, 6, 2) + "월 " + VB.Right(txtPrtDate.Text, 2) + "일";
             }
             SS1.ActiveSheet.Cells[39, 18].Text = "건강진단기관명";
-            SS1.ActiveSheet.Cells[40, 18].Text = "포항성모병원";
+            SS1.ActiveSheet.Cells[40, 18].Text = "대한보건환경연구소";
             SS1.ActiveSheet.Cells[44, 18].Text = "(서명 또는 인)";
         }
 

@@ -824,7 +824,7 @@ namespace ComHpcLibB
             //SS1_Sheet1.Cells.Get(FnRow - 1, 7).ColumnSpan = 2;
             SS1_Sheet1.Cells.Get(FnRow - 1, 7).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             SS1_Sheet1.Cells.Get(FnRow - 1, 7).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
-            SS1_Sheet1.Cells.Get(FnRow - 1, 7).Value = "  ▶검진기관: 포 항 성 모 병 원";
+            SS1_Sheet1.Cells.Get(FnRow - 1, 7).Value = "  ▶검진기관: 대한보건환경연구소";
             for (int i = 0; i < FnDoctCnt; i++)
             {
                 FnRow += 1;
