@@ -514,5 +514,10 @@ namespace HcAdmin
 
             ComFunc.MsgBox("복사 완료", "알림");
         }
+
+        private void BtnSearch_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

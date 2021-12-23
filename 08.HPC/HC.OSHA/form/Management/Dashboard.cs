@@ -64,6 +64,7 @@ namespace HC_OSHA
                 toolStripMenuItem1.Visible = false;  //비밀번호변경
             }
             보건교육지원대장ToolStripMenuItem1.Enabled = true;
+            //검진결과ToolStripMenuItem.Visible = false;
 
             //미완성 프로그램 감추기
             if (clsType.User.IdNumber != "1")

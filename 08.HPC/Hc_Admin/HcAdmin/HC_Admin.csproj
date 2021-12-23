@@ -75,6 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrnExcekTest1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrnExcekTest1.Designer.cs">
+      <DependentUpon>FrnExcekTest1.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmUpload.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrnExcekTest1.resx">
+      <DependentUpon>FrnExcekTest1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmUpload.resx">
       <DependentUpon>FrmUpload.cs</DependentUpon>
     </EmbeddedResource>

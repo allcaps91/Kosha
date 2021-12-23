@@ -100,5 +100,11 @@ namespace HcAdmin
             startInfo.Arguments = null;
             Process.Start(startInfo);
         }
+
+        private void 엑셀업로드ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmExcelTest1 form = new FrmExcelTest1();
+            form.Show();
+        }
     }
 }

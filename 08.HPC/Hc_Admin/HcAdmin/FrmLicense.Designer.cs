@@ -35,6 +35,7 @@
             this.삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pC저장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.기본정보생성ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.헬스소프트실행ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkEnd = new System.Windows.Forms.CheckBox();
             this.TxtViewSangho = new System.Windows.Forms.TextBox();
@@ -73,7 +74,6 @@
             this.txtSangho = new System.Windows.Forms.TextBox();
             this.SS1 = new FarPoint.Win.Spread.FpSpread();
             this.SS1_Sheet1 = new FarPoint.Win.Spread.SheetView();
-            this.헬스소프트실행ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -139,6 +139,13 @@
             this.기본정보생성ToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.기본정보생성ToolStripMenuItem.Text = "기본정보생성";
             this.기본정보생성ToolStripMenuItem.Click += new System.EventHandler(this.기본정보생성ToolStripMenuItem_Click);
+            // 
+            // 헬스소프트실행ToolStripMenuItem
+            // 
+            this.헬스소프트실행ToolStripMenuItem.Name = "헬스소프트실행ToolStripMenuItem";
+            this.헬스소프트실행ToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
+            this.헬스소프트실행ToolStripMenuItem.Text = "헬스소프트실행";
+            this.헬스소프트실행ToolStripMenuItem.Click += new System.EventHandler(this.헬스소프트실행ToolStripMenuItem_Click_1);
             // 
             // panel1
             // 
@@ -216,6 +223,7 @@
             this.BtnSearch.TabIndex = 85;
             this.BtnSearch.Text = "검색(&F)";
             this.BtnSearch.UseVisualStyleBackColor = true;
+            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click_1);
             // 
             // panel3
             // 
@@ -569,13 +577,6 @@
             this.SS1_Sheet1.FilterBarHeaderStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SS1_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SS1_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
-            // 
-            // 헬스소프트실행ToolStripMenuItem
-            // 
-            this.헬스소프트실행ToolStripMenuItem.Name = "헬스소프트실행ToolStripMenuItem";
-            this.헬스소프트실행ToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
-            this.헬스소프트실행ToolStripMenuItem.Text = "헬스소프트실행";
-            this.헬스소프트실행ToolStripMenuItem.Click += new System.EventHandler(this.헬스소프트실행ToolStripMenuItem_Click_1);
             // 
             // FrmLicense
             // 
