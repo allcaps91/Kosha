@@ -30,7 +30,7 @@ namespace ComDbB
         public string strSource = "PSMH";
         public string strDbIp = "";
         public string strDbPort = "";
-        public string strUser = "KOSMOS_PMPA";
+        public string strUser = "ADMIN";
         public string strPassWord = "";
         public string strDbOption = "";
 

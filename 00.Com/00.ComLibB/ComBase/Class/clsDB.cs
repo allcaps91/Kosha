@@ -30,7 +30,7 @@ namespace ComBase
         public static string strSource = "PSMH";
         public static string strDbIp = "";
         public static string strDbPort = "";
-        public static string strUser = "KOSMOS_PMPA";
+        public static string strUser = "ADMIN";
         public static string strPassWord = "";
         public static string strDbOption = "";
 
