@@ -165,6 +165,7 @@
             this.btnJob3.TabIndex = 131;
             this.btnJob3.Text = "DB에 저장";
             this.btnJob3.UseVisualStyleBackColor = true;
+            this.btnJob3.Click += new System.EventHandler(this.btnJob3_Click);
             // 
             // btnJob2
             // 
@@ -319,7 +320,7 @@
             this.SS1.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS1.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SS1.HorizontalScrollBar.TabIndex = 206;
+            this.SS1.HorizontalScrollBar.TabIndex = 208;
             this.SS1.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SS1.Location = new System.Drawing.Point(4, 360);
             this.SS1.Name = "SS1";
@@ -332,7 +333,7 @@
             this.SS1.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS1.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SS1.VerticalScrollBar.TabIndex = 207;
+            this.SS1.VerticalScrollBar.TabIndex = 209;
             this.SS1.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SS1_Sheet1
@@ -475,7 +476,7 @@
             this.SS1_Sheet1.SheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SS1_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
-            // FrmExcelUpload2
+            // FrmExcelUpload3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -497,7 +498,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnJob1);
             this.Controls.Add(this.SSExcel);
-            this.Name = "FrmExcelUpload2";
+            this.Name = "FrmExcelUpload3";
             this.Text = "질병 유소견자 사후관리 업로드";
             ((System.ComponentModel.ISupportInitialize)(this.SSConv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSConv_Sheet1)).EndInit();

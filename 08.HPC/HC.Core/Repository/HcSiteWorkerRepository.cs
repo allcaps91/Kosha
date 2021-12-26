@@ -186,15 +186,7 @@ namespace HC.Core.Repository
             }
             if (!name.IsNullOrEmpty())
             {
-                if (name.IsNumeric())
-                {
-                    parameter.AppendSql("AND PTNO LIKE :NAME ");
-                }
-                else
-                {
-                    parameter.AppendSql("AND NAME LIKE :NAME ");
-                }
-              
+                parameter.AppendSql("AND NAME LIKE :NAME ");
             }
             if (!dept.IsNullOrEmpty())
             {
@@ -206,15 +198,7 @@ namespace HC.Core.Repository
 
             if (!name.IsNullOrEmpty())
             {
-                if (name.IsNumeric())
-                {
-                    parameter.AddLikeStatement("NAME", name);
-                }
-                else
-                {
-                    parameter.AddLikeStatement("NAME", name);
-                }
-                
+                parameter.AddLikeStatement("NAME", name);
             }
             if (!dept.IsNullOrEmpty())
             {
@@ -224,10 +208,6 @@ namespace HC.Core.Repository
             {
                 parameter.Add("WORKER_ROLE", workerRole);
             }
-            //    if (!workerRole.IsNullOrEmpty())
-            //    {
-            //        parameter.AppendSql("AND WORKER_ROLE = :WORKER_ROLE                                                               ");
-            //    }
             return ExecuteReader<HC_SITE_WORKER>(parameter);
 
         }

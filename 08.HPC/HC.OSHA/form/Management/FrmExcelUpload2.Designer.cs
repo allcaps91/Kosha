@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.CellType.TextCellType textCellType10 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.NumberCellType numberCellType2 = new FarPoint.Win.Spread.CellType.NumberCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType11 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.FlatFocusIndicatorRenderer flatFocusIndicatorRenderer2 = new FarPoint.Win.Spread.FlatFocusIndicatorRenderer();
-            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer3 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
-            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer4 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType12 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType13 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType14 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType15 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType16 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType17 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType18 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType1 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.NumberCellType numberCellType1 = new FarPoint.Win.Spread.CellType.NumberCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType2 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.FlatFocusIndicatorRenderer flatFocusIndicatorRenderer1 = new FarPoint.Win.Spread.FlatFocusIndicatorRenderer();
+            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer1 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
+            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer2 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType3 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType4 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType5 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType6 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType7 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType8 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType9 = new FarPoint.Win.Spread.CellType.TextCellType();
             this.TxtLtdcode = new System.Windows.Forms.TextBox();
             this.BtnSearchSite = new System.Windows.Forms.Button();
             this.btnJob4 = new System.Windows.Forms.Button();
@@ -107,6 +107,7 @@
             this.cboBangi.Name = "cboBangi";
             this.cboBangi.Size = new System.Drawing.Size(52, 20);
             this.cboBangi.TabIndex = 136;
+            this.cboBangi.SelectedIndexChanged += new System.EventHandler(this.cboBangi_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -119,6 +120,7 @@
             this.label5.TabIndex = 135;
             this.label5.Text = "반기";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // cboYear
             // 
@@ -127,6 +129,7 @@
             this.cboYear.Name = "cboYear";
             this.cboYear.Size = new System.Drawing.Size(58, 20);
             this.cboYear.TabIndex = 134;
+            this.cboYear.SelectedIndexChanged += new System.EventHandler(this.cboYear_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -139,6 +142,7 @@
             this.label4.TabIndex = 133;
             this.label4.Text = "검진년도";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // lblLTD02
             // 
@@ -151,6 +155,7 @@
             this.lblLTD02.TabIndex = 132;
             this.lblLTD02.Text = "회사";
             this.lblLTD02.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblLTD02.Click += new System.EventHandler(this.lblLTD02_Click);
             // 
             // btnJob3
             // 
@@ -184,6 +189,7 @@
             this.label3.TabIndex = 129;
             this.label3.Text = "엑셀파일을 표준서식 변환 설정값";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // SSConv
             // 
@@ -196,6 +202,7 @@
             this.SSConv_Sheet1});
             this.SSConv.Size = new System.Drawing.Size(428, 605);
             this.SSConv.TabIndex = 128;
+            this.SSConv.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSConv_CellClick);
             // 
             // SSConv_Sheet1
             // 
@@ -213,22 +220,22 @@
             this.SSConv_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "엑셀칼럼번호";
             this.SSConv_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "엑셀 칼럼 데이타";
             this.SSConv_Sheet1.ColumnHeader.Rows.Get(0).Height = 43F;
-            textCellType10.ReadOnly = true;
-            this.SSConv_Sheet1.Columns.Get(0).CellType = textCellType10;
+            textCellType1.ReadOnly = true;
+            this.SSConv_Sheet1.Columns.Get(0).CellType = textCellType1;
             this.SSConv_Sheet1.Columns.Get(0).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SSConv_Sheet1.Columns.Get(0).Label = "표순서식 제목";
             this.SSConv_Sheet1.Columns.Get(0).Locked = true;
             this.SSConv_Sheet1.Columns.Get(0).Width = 121F;
-            numberCellType2.DecimalPlaces = 0;
-            numberCellType2.MaximumValue = 10000000D;
-            numberCellType2.MinimumValue = 0D;
-            this.SSConv_Sheet1.Columns.Get(1).CellType = numberCellType2;
+            numberCellType1.DecimalPlaces = 0;
+            numberCellType1.MaximumValue = 10000000D;
+            numberCellType1.MinimumValue = 0D;
+            this.SSConv_Sheet1.Columns.Get(1).CellType = numberCellType1;
             this.SSConv_Sheet1.Columns.Get(1).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SSConv_Sheet1.Columns.Get(1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSConv_Sheet1.Columns.Get(1).Label = "엑셀칼럼번호";
             this.SSConv_Sheet1.Columns.Get(1).Width = 57F;
-            textCellType11.ReadOnly = true;
-            this.SSConv_Sheet1.Columns.Get(2).CellType = textCellType11;
+            textCellType2.ReadOnly = true;
+            this.SSConv_Sheet1.Columns.Get(2).CellType = textCellType2;
             this.SSConv_Sheet1.Columns.Get(2).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SSConv_Sheet1.Columns.Get(2).Label = "엑셀 칼럼 데이타";
             this.SSConv_Sheet1.Columns.Get(2).Locked = true;
@@ -252,6 +259,7 @@
             this.label2.TabIndex = 127;
             this.label2.Text = "등록할 엑셀파일";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -264,6 +272,7 @@
             this.label1.TabIndex = 126;
             this.label1.Text = "서버 DB용 표준 서식";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnJob1
             // 
@@ -285,6 +294,7 @@
             this.SSExcel_Sheet1});
             this.SSExcel.Size = new System.Drawing.Size(713, 284);
             this.SSExcel.TabIndex = 123;
+            this.SSExcel.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSExcel_CellClick);
             // 
             // SSExcel_Sheet1
             // 
@@ -310,12 +320,12 @@
             // SS1
             // 
             this.SS1.AccessibleDescription = "SS1, Sheet1, Row 0, Column 0, ";
-            this.SS1.FocusRenderer = flatFocusIndicatorRenderer2;
+            this.SS1.FocusRenderer = flatFocusIndicatorRenderer1;
             this.SS1.HorizontalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SS1.HorizontalScrollBar.Name = "";
-            flatScrollBarRenderer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SS1.HorizontalScrollBar.Renderer = flatScrollBarRenderer3;
-            this.SS1.HorizontalScrollBar.TabIndex = 204;
+            flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SS1.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
+            this.SS1.HorizontalScrollBar.TabIndex = 206;
             this.SS1.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SS1.Location = new System.Drawing.Point(2, 357);
             this.SS1.Name = "SS1";
@@ -326,10 +336,11 @@
             this.SS1.TabIndex = 140;
             this.SS1.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SS1.VerticalScrollBar.Name = "";
-            flatScrollBarRenderer4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SS1.VerticalScrollBar.Renderer = flatScrollBarRenderer4;
-            this.SS1.VerticalScrollBar.TabIndex = 205;
+            flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SS1.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
+            this.SS1.VerticalScrollBar.TabIndex = 207;
             this.SS1.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
+            this.SS1.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SS1_CellClick);
             this.SS1.SetViewportLeftColumn(0, 0, 2);
             this.SS1.SetActiveViewport(0, 0, -1);
             // 
@@ -387,53 +398,53 @@
             this.SS1_Sheet1.ColumnHeader.DefaultStyle.Parent = "ColumnHeaderFlat";
             this.SS1_Sheet1.ColumnHeader.DefaultStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SS1_Sheet1.ColumnHeader.Rows.Get(0).Height = 41F;
-            this.SS1_Sheet1.Columns.Get(0).CellType = textCellType12;
+            this.SS1_Sheet1.Columns.Get(0).CellType = textCellType3;
             this.SS1_Sheet1.Columns.Get(0).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS1_Sheet1.Columns.Get(0).Label = "소속";
             this.SS1_Sheet1.Columns.Get(0).Locked = true;
             this.SS1_Sheet1.Columns.Get(0).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(0).Width = 74F;
-            this.SS1_Sheet1.Columns.Get(1).CellType = textCellType13;
+            this.SS1_Sheet1.Columns.Get(1).CellType = textCellType4;
             this.SS1_Sheet1.Columns.Get(1).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(1).Label = "성명";
             this.SS1_Sheet1.Columns.Get(1).Locked = true;
             this.SS1_Sheet1.Columns.Get(1).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(1).Width = 62F;
-            this.SS1_Sheet1.Columns.Get(2).CellType = textCellType14;
+            this.SS1_Sheet1.Columns.Get(2).CellType = textCellType5;
             this.SS1_Sheet1.Columns.Get(2).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(2).Label = "생년월일";
             this.SS1_Sheet1.Columns.Get(2).Locked = true;
             this.SS1_Sheet1.Columns.Get(2).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(2).Width = 61F;
-            this.SS1_Sheet1.Columns.Get(3).CellType = textCellType15;
+            this.SS1_Sheet1.Columns.Get(3).CellType = textCellType6;
             this.SS1_Sheet1.Columns.Get(3).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(3).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(3).Label = "검진일";
             this.SS1_Sheet1.Columns.Get(3).Locked = true;
             this.SS1_Sheet1.Columns.Get(3).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(3).Width = 76F;
-            this.SS1_Sheet1.Columns.Get(4).CellType = textCellType16;
+            this.SS1_Sheet1.Columns.Get(4).CellType = textCellType7;
             this.SS1_Sheet1.Columns.Get(4).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(4).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(4).Label = "검진병원";
             this.SS1_Sheet1.Columns.Get(4).Locked = true;
             this.SS1_Sheet1.Columns.Get(4).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(4).Width = 80F;
-            textCellType17.Multiline = true;
-            textCellType17.WordWrap = true;
-            this.SS1_Sheet1.Columns.Get(5).CellType = textCellType17;
+            textCellType8.Multiline = true;
+            textCellType8.WordWrap = true;
+            this.SS1_Sheet1.Columns.Get(5).CellType = textCellType8;
             this.SS1_Sheet1.Columns.Get(5).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(5).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS1_Sheet1.Columns.Get(5).Label = "나이";
             this.SS1_Sheet1.Columns.Get(5).Locked = true;
             this.SS1_Sheet1.Columns.Get(5).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(5).Width = 35F;
-            textCellType18.Multiline = true;
-            textCellType18.WordWrap = true;
-            this.SS1_Sheet1.Columns.Get(6).CellType = textCellType18;
+            textCellType9.Multiline = true;
+            textCellType9.WordWrap = true;
+            this.SS1_Sheet1.Columns.Get(6).CellType = textCellType9;
             this.SS1_Sheet1.Columns.Get(6).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(6).Label = "성별";
             this.SS1_Sheet1.Columns.Get(6).Locked = true;
@@ -499,6 +510,7 @@
             this.Controls.Add(this.SSExcel);
             this.Name = "FrmExcelUpload2";
             this.Text = "뇌.심혈관계 발병 위험도 평가";
+            this.Load += new System.EventHandler(this.FrmExcelUpload2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SSConv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSConv_Sheet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSExcel)).EndInit();

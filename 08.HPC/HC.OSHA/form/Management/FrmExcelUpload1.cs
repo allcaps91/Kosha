@@ -25,13 +25,13 @@ using System.Windows.Forms;
 
 namespace HC_OSHA
 {
-    public partial class FrmExcelUpload2 : Form
+    public partial class FrmExcelUpload1 : Form
     {
         private HcSiteWorkerService hcSiteWorkerService;
         private HcSiteWorkerRepository hcSiteWorkerRepository;
         private int[] FnCol = new int[1000];
 
-        public FrmExcelUpload2()
+        public FrmExcelUpload1()
         {
             InitializeComponent();
             hcSiteWorkerService = new HcSiteWorkerService();
@@ -42,9 +42,7 @@ namespace HC_OSHA
         private void Screen_Set()
         {
             int i = 0;
-            int nYear = 0;
             string strTitle = "";
-            nYear = Int32.Parse(DateTime.Now.ToString("yyyy"));
 
             TxtLtdcode.Text = "";
 
@@ -53,17 +51,10 @@ namespace HC_OSHA
                 FnCol[i] = 0;
             }
 
-            for (i = 0; i < 5; i++)
-            {
-                cboYear.Items.Add(nYear.ToString());
-                nYear--;
-            }
-            cboYear.SelectedIndex = 0;
-
-            cboBangi.Items.Add("전체");
-            cboBangi.Items.Add("상반기");
-            cboBangi.Items.Add("하반기");
-            cboBangi.SelectedIndex = 0;
+            btnJob1.Enabled = true;
+            btnJob2.Enabled = false;
+            btnJob3.Enabled = false;
+            btnJob4.Enabled = false;
 
             SS1_Sheet1.RowCount = 0;
             SSConv_Sheet1.RowCount = 0;
@@ -75,11 +66,6 @@ namespace HC_OSHA
                 SSConv_Sheet1.Cells[i, 0].Text = strTitle;
                 SSConv_Sheet1.Cells[i, 1].Value = (i + 1);
             }
-
-            btnJob1.Enabled = true;
-            btnJob2.Enabled = false;
-            btnJob3.Enabled = false;
-            btnJob4.Enabled = false;
         }
 
         private void btnJob1_Click(object sender, EventArgs e)
@@ -90,8 +76,6 @@ namespace HC_OSHA
             bool bBlank = false;
 
             if (TxtLtdcode.Text.Trim() == "") { ComFunc.MsgBox("회사코드가 공란입니다."); return; }
-            if (cboYear.Text.Trim() == "") { ComFunc.MsgBox("검진년도가 공란입니다."); return; }
-            if (cboBangi.Text.Trim() == "") { ComFunc.MsgBox("반기 구분이 공란입니다."); return; }
 
             OpenFileDialog dialog = new OpenFileDialog();
             DialogResult result = dialog.ShowDialog();
@@ -131,7 +115,7 @@ namespace HC_OSHA
         private void btnJob4_Click(object sender, EventArgs e)
         {
             string strData = "";
-            int nCol=0;
+            int nCol = 0;
 
             for (int i = 0; i < SSConv_Sheet1.RowCount; i++)
             {
@@ -150,31 +134,8 @@ namespace HC_OSHA
                     }
 
                 }
-            }    
+            }
             btnJob2.Enabled = true;
-        }
-
-        private void BtnSearchSite_Click(object sender, EventArgs e)
-        {
-            SiteListForm form = new SiteListForm();
-
-            TxtLtdcode.Text = "";
-            HC_SITE_VIEW siteView = form.Search(TxtLtdcode.Text);
-            if (siteView == null)
-            {
-                DialogResult result = form.ShowDialog();
-                siteView = form.SelectedSite;
-            }
-            else
-            {
-                form.Close();
-            }
-
-            if (siteView != null)
-            {
-                TxtLtdcode.Text = siteView.ID.ToString() + "." + siteView.NAME;
-            }
-
         }
 
         private void btnJob2_Click(object sender, EventArgs e)
@@ -188,7 +149,7 @@ namespace HC_OSHA
             string strNewData = "";
 
             //변경값을 변수에 저장
-            for (i=0; i < SSConv_Sheet1.RowCount; i++)
+            for (i = 0; i < SSConv_Sheet1.RowCount; i++)
             {
                 FnCol[i] = 0;
                 if (SSConv_Sheet1.Cells[i, 1].Text.Trim() != "")
@@ -217,9 +178,8 @@ namespace HC_OSHA
                 {
                     // 엑셀파일의 처음 3칼럼 모두 공란이면 연속 Data로 처리
                     bMultyLine = true;
-                    if (SSExcel_Sheet1.Cells[i, 0].Text.Trim() !="") bMultyLine = false;
+                    if (SSExcel_Sheet1.Cells[i, 0].Text.Trim() != "") bMultyLine = false;
                     if (SSExcel_Sheet1.Cells[i, 1].Text.Trim() != "") bMultyLine = false;
-                    if (SSExcel_Sheet1.Cells[i, 2].Text.Trim() != "") bMultyLine = false;
 
                     for (j = 0; j < SSConv_Sheet1.RowCount; j++)
                     {
@@ -230,9 +190,9 @@ namespace HC_OSHA
                             {
                                 if (bMultyLine == true)
                                 {
-                                    strNewData = SS1_Sheet1.Cells[nRow-1, j].Text.ToString();
+                                    strNewData = SS1_Sheet1.Cells[nRow - 1, j].Text.ToString();
                                     strNewData = strNewData + ComNum.VBLF + strData;
-                                    SS1_Sheet1.Cells[nRow-1, j].Text = strNewData;
+                                    SS1_Sheet1.Cells[nRow - 1, j].Text = strNewData;
                                 }
                                 else
                                 {
@@ -240,7 +200,7 @@ namespace HC_OSHA
                                 }
 
                             }
-                            
+
                         }
                     }
                 }
@@ -257,45 +217,32 @@ namespace HC_OSHA
             btnJob3.Enabled = true;
         }
 
-        // 서버 DB에 저장
         private void btnJob3_Click(object sender, EventArgs e)
         {
             string strID = "";
             long nLtdCode = 0;
             string strName = "";
             string strBirth = "";
+            string strBuse = "";
             string SQL = "";
             string SqlErr = "";
-            string strYear = "";
-            string strJinDate = "";
-            string strHosName = "";
-            string strAge = "";
-            string strSex = "";
-            string strResult = "";
             int intRowAffected = 0;
 
             nLtdCode = long.Parse(VB.Pstr(TxtLtdcode.Text, ".", 1));
-            strYear = cboYear.Text.Trim();
             HC_SITE_WORKER worker = new HC_SITE_WORKER();
 
-            for (int i=0; i < SS1_Sheet1.RowCount; i++)
+            for (int i = 0; i < SS1_Sheet1.RowCount; i++)
             {
-                strName = SS1_Sheet1.Cells[i, 1].Text.ToString();
-                strBirth = SS1_Sheet1.Cells[i, 2].Text.ToString();
+                strName = SS1_Sheet1.Cells[i, 0].Text.ToString();
+                strBirth = SS1_Sheet1.Cells[i, 1].Text.ToString();
                 if (VB.Len(strBirth) > 6) strBirth = VB.Left(strBirth, 6);
-
-                // 구분자를 {$}로 결과를 한개로 묶음
-                strResult = "";
-                for (int j = 7; j < SS1_Sheet1.ColumnCount; j++) 
-                {
-                    strResult += SS1_Sheet1.Cells[i, j].Text.ToString().Trim() + "{$}";
-                }
+                strBuse = SS1_Sheet1.Cells[i, 2].Text.ToString();
 
                 // 사원이 없으면 신규등록함
                 worker.ID = "";
                 worker.SITEID = nLtdCode;
                 worker.NAME = strName;
-                worker.DEPT = "";
+                worker.DEPT = strBuse;
                 worker.TEL = "";
                 worker.ISDELETED = "N";
                 worker.JUMIN = strBirth;
@@ -303,167 +250,42 @@ namespace HC_OSHA
                 worker.PTNO = "";
                 worker.WORKER_ROLE = "EMP_ROLE";
                 worker.IPSADATE = "";
-                HC_SITE_WORKER saved = hcSiteWorkerRepository.FindOneByBirth(nLtdCode,strName,strBirth);
+                HC_SITE_WORKER saved = hcSiteWorkerRepository.FindOneByBirth(nLtdCode, strName, strBirth);
                 if (saved == null)
                 {
                     saved = hcSiteWorkerRepository.Insert(worker);
                 }
                 else
                 {
+                    saved = hcSiteWorkerRepository.Update(worker);
                     worker.ID = saved.ID;
                 }
 
-                strID = worker.ID;
-                strJinDate = SS1_Sheet1.Cells[i, 3].Text.ToString().Trim();
-                strHosName = SS1_Sheet1.Cells[i, 4].Text.ToString().Trim();
-                strAge = SS1_Sheet1.Cells[i, 5].Text.ToString().Trim();
-                strSex = SS1_Sheet1.Cells[i, 6].Text.ToString().Trim();
-                
-                // 뇌심혈관 결과 DB에 저장
-                if (Exist_Ltd_Result2(nLtdCode,strYear,strID)==false)
-                {
-                    try
-                    {
-                        SQL = "";
-                        SQL += " INSERT INTO HIC_LTD_RESULT2 (SITEID,ID,NAME,BIRTH,YEAR,JINDATE, ";
-                        SQL += " HOSNAME,AGE,SEX,RESULT,JOBSABUN,ENTTIME,SWLICENSE) ";
-                        SQL += " VALUES (" + nLtdCode + ",'" + strID + "','" + strName + "','";
-                        SQL +=  strBirth + "','" + strYear + "','";
-                        SQL +=  strJinDate + "','" + strHosName + "', "; //검진일,검진병원
-                        SQL +=  strAge + ",'" + strSex + "','";  //나이,성별
-                        SQL +=  strResult + "','" + clsType.User.IdNumber + "',";
-                        SQL +=  "SYSTIMESTAMP,'" + clsType.HosInfo.SwLicense + "') ";
-                        SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
-
-                        if (SqlErr != "")
-                        {
-                            ComFunc.MsgBox("뇌심혈관 결과 등록 실패", "알림");
-                            Cursor.Current = Cursors.Default;
-                            return;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        ComFunc.MsgBox(ex.Message);
-                        return;
-                    }
-                }
             }
             ComFunc.MsgBox("서버로 전송 완료", "알림");
             Screen_Set();
         }
 
-        // 년도 및 사원번호로 금년도 등록여부 점검
-        bool Exist_Ltd_Result2(long nLtdCode, string strYear, string strID)
+        private void button1_Click(object sender, EventArgs e)
         {
-            string SQL = "";
-            string SqlErr = "";
-            DataTable dt = null;
-            int i = 0;
+            SiteListForm form = new SiteListForm();
 
-            Cursor.Current = Cursors.WaitCursor;
-
-            try
+            TxtLtdcode.Text = "";
+            HC_SITE_VIEW siteView = form.Search(TxtLtdcode.Text);
+            if (siteView == null)
             {
-                SQL = "";
-                SQL = "SELECT ID  FROM HIC_LTD_RESULT2 ";
-                SQL = SQL + ComNum.VBLF + "WHERE SITEID=" + nLtdCode + " ";
-                SQL = SQL + ComNum.VBLF + "  AND ID='" + strID + "' ";
-                SQL = SQL + ComNum.VBLF + "  AND YEAR = '" + strYear + "' ";
-                SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
-                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
-
-                if (dt.Rows.Count > 0)
-                {
-                    dt.Dispose();
-                    dt = null;
-                    return true;
-                }
-                else
-                {
-                    dt.Dispose();
-                    dt = null;
-                    return false;
-                }
+                DialogResult result = form.ShowDialog();
+                siteView = form.SelectedSite;
             }
-            catch (Exception ex)
+            else
             {
-                if (dt != null)
-                {
-                    dt.Dispose();
-                    dt = null;
-                    return false;
-                }
-
-                ComFunc.MsgBox(ex.Message);
-                return false;
+                form.Close();
             }
-        }
 
-        private void FrmExcelUpload2_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblLTD02_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TxtLtdcode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboYear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboBangi_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SSExcel_CellClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SS1_CellClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SSConv_CellClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
-        {
-
+            if (siteView != null)
+            {
+                TxtLtdcode.Text = siteView.ID.ToString() + "." + siteView.NAME;
+            }
         }
     }
-
 }

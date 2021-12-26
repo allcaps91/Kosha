@@ -111,23 +111,18 @@ namespace HC_OSHA
             SpreadComboBoxData comboBoxData = codeService.GetSpreadComboBoxData("WORKER_ROLE", "OSHA");
             
             SSWorkerList.Initialize(new SpreadOption() { IsRowSelectColor = false });
-            //성별.나이 추가해야함            
-            SSWorkerList.AddColumnText("등록번호", nameof(HC_SITE_WORKER.ID), 80, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
-            SSWorkerList.AddColumnText("PTNO", nameof(HC_SITE_WORKER.PTNO), 70, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsVisivle = false, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending }) ;
+            SSWorkerList.AddColumnText("등록번호", nameof(HC_SITE_WORKER.ID), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
+            //SSWorkerList.AddColumnText("PTNO", nameof(HC_SITE_WORKER.PTNO), 70, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsVisivle = false, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending }) ;
             SSWorkerList.AddColumnText("이름", nameof(HC_SITE_WORKER.NAME), 75, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
             SSWorkerList.AddColumnText("부서", nameof(HC_SITE_WORKER.DEPT), 140, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnComboBox("직책", nameof(HC_SITE_WORKER.WORKER_ROLE), 150, IsReadOnly.N, comboBoxData, new SpreadCellTypeOption { IsSort = false });
-            SSWorkerList.AddColumnText("주민번호", nameof(HC_SITE_WORKER.JUMIN), 128, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
-            SSWorkerList.AddColumnText("전화", nameof(HC_SITE_WORKER.TEL), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });            
-            SSWorkerList.AddColumnText("휴대폰", nameof(HC_SITE_WORKER.HP), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
-            SSWorkerList.AddColumnText("이메일", nameof(HC_SITE_WORKER.EMAIL), 200, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
-        //    SSWorkerList.AddColumnText("입사일", nameof(HC_SITE_WORKER.IPSADATE), 85, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
-        //    SSWorkerList.AddColumnCheckBox("퇴사여부", nameof(HC_SITE_WORKER.ISRETIRE), 35, new CheckBoxStringCellType { IsHeaderCheckBox = false, CheckedValue="Y", UnCheckedValue="N"}, new SpreadCellTypeOption { IsSort = false,  });
+            SSWorkerList.AddColumnText("생년월일", nameof(HC_SITE_WORKER.JUMIN), 128, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            //SSWorkerList.AddColumnText("전화", nameof(HC_SITE_WORKER.TEL), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });            
+            //SSWorkerList.AddColumnText("휴대폰", nameof(HC_SITE_WORKER.HP), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            //SSWorkerList.AddColumnText("이메일", nameof(HC_SITE_WORKER.EMAIL), 200, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnButton("삭제", 60, new SpreadCellTypeOption { ButtonText = "삭제" }).ButtonClick += SSWorkerListDelete_ButtonClick;
-            
 
             SSWorkerList.SetDataSource(new List<HC_SITE_WORKER>());
-
 
             List<HC_CODE> roles = codeService.FindActiveCodeByGroupCode("WORKER_ROLE", "OSHA");
             CboRole.SetItems(roles, "CodeName", "Code", "전체", "", AddComboBoxPosition.Top);
@@ -138,25 +133,52 @@ namespace HC_OSHA
 
         private void SSWorkerListDelete_ButtonClick(object sender, FarPoint.Win.Spread.EditorNotifyEventArgs e)
         {
+            string strID = "";
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+
+            
             HC_SITE_WORKER dto =  SSWorkerList.GetRowData(e.Row) as HC_SITE_WORKER;
             if(dto.ID != null)
             {
-                if (!dto.ID.IsNumeric())
+                SQL = "";
+                SQL = "SELECT ID  FROM HIC_LTD_RESULT2 ";
+                SQL = SQL + ComNum.VBLF + "WHERE SITEID=" + base.SelectedSite.ID + " ";
+                SQL = SQL + ComNum.VBLF + "  AND ID='" + dto.ID + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0)
                 {
-                    SSWorkerList.DeleteRow(e.Row);
+                    dt.Dispose();
+                    dt = null;
+                    MessageUtil.Alert("뇌심혈관질환 발병위험도 자료가 있어 삭제할 수 없습니다");
+                    return;
                 }
-                else
+                dt.Dispose();
+                dt = null;
+
+                SQL = "";
+                SQL = "SELECT ID  FROM HIC_OSHA_HEALTHCHECK ";
+                SQL = SQL + ComNum.VBLF + "WHERE SITE_ID=" + base.SelectedSite.ID + " ";
+                SQL = SQL + ComNum.VBLF + "  AND WORKER_ID='" + dto.ID + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0)
                 {
-                    MessageUtil.Alert("삭제할 수 없습니다");
+                    dt.Dispose();
+                    dt = null;
+                    MessageUtil.Alert("근로자 상담내역 자료가 있어 삭제할 수 없습니다");
+                    return;
                 }
+                dt.Dispose();
+                dt = null;
+
             }
             else
             {
                 SSWorkerList.DeleteRow(e.Row);
             }
-      
-            
-           
         }
 
         private void Search()
@@ -192,17 +214,12 @@ namespace HC_OSHA
 
                         }
                     }
-                
-                    
-                    
                 }
                 SSWorkerList.SetDataSource(list);
 
                 SetDeptCombo();
             }
         }
-
-    
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -215,39 +232,23 @@ namespace HC_OSHA
                 if (SSWorkerList.Validate())
                 {
                     IList<HC_SITE_WORKER> list = SSWorkerList.GetEditbleData<HC_SITE_WORKER>();
-                    //bool isValidJumin = false;
-                    //foreach(HC_SITE_WORKER dto in list)
-                    //{
-                    //    if(dto.RowStatus == ComBase.Mvc.RowStatus.Insert)
-                    //    {
-                    //        //string jumin = dto.JUMIN.Replace("-", "");
-                    //        //if (jumin.Length == 13)
-                    //        //{
-                    //        //    string result = ComFunc.JuminNoCheck(clsDB.DbCon, jumin.Substring(0, 6), jumin.Substring(6, 7));
+                    bool isValidJumin = false;
+                    foreach (HC_SITE_WORKER dto in list)
+                    {
+                        if (dto.RowStatus == ComBase.Mvc.RowStatus.Insert)
+                        {
+                            if (VB.Len(dto.JUMIN) !=6)
+                            {
+                                MessageUtil.Alert("생년월일 6자리 형식으로 입력하세요.");
+                                break;
+                            }
+                        }
+                        isValidJumin = true;
+                    }
+                    if (isValidJumin == false) return;
 
-                    //        //    if (!result.IsNullOrEmpty())
-                    //        //    {
-                    //        //        MessageUtil.Alert(result);
-                    //        //        break;
-                    //        //    }
-                    //        //}
-                    //        //else
-                    //        //{
-                    //        //    isValidJumin = false;
-                    //        //    MessageUtil.Alert("주민번호가 유효하지 않습니다");
-                    //        //    break;
-                    //        //}
-                           
-                    //    }
-                    //    isValidJumin = true;
-                    //}
-                    //if (isValidJumin == false)
-                    //{
-                    //    return;
-                    //}
                     if (list.Count > 0)
                     {
-                        
                         if (hcSiteWorkerService.Save(base.SelectedSite.ID, list))
                         {
                             Search();
