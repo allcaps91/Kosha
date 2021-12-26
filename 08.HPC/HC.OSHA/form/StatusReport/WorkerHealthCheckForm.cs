@@ -706,7 +706,6 @@ namespace HC_OSHA.StatusReport
                     try
                     {
                         frmHcPanOpinionAfterMgmtGenSpc form = new frmHcPanOpinionAfterMgmtGenSpc();
-                        //form.eSpdDClick(SSHealthCheck, new CellClickEventArgs(null, 0, 0, 0, 0, MouseButtons.Left, false, false, false)); 
                         //근로자 건강상담관리(SSCard), 질병유소견자 대행(SSHealthCheck)
                         form.SetSpread(SSCard, SSHealthCheck, receiptList[receiptList.Count - 1].JEPDATE, receiptList[0].JEPDATE, receiptList[0].SiteId.ToString(), "", worker.Pano);
 

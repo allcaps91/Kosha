@@ -18,27 +18,59 @@ namespace HC.Core.Repository
         public HC_SITE_WORKER FindOneByPano(string pano)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT * FROM HC_SITE_WORKER_VIEW WHERE PANO = :PANO            ");
+            parameter.AppendSql(" SELECT * FROM HC_SITE_WORKER_VIEW ");
+            parameter.AppendSql(" WHERE PANO = :PANO ");
+            parameter.AppendSql("   AND SWLICENSE=:SWLICENSE ");
             parameter.Add("PANO", pano);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_SITE_WORKER>(parameter);
         }
         public HC_SITE_WORKER FindOne(string ID)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT * FROM HC_SITE_WORKER_VIEW WHERE ID = :ID            ");
+            parameter.AppendSql(" SELECT * FROM HC_SITE_WORKER_VIEW ");
+            parameter.AppendSql("  WHERE ID = :ID ");
+            parameter.AppendSql("    AND SWLICENSE=:SWLICENSE ");
             parameter.Add("ID", ID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_SITE_WORKER>(parameter);
         }
         public HC_SITE_WORKER FindByJumin(string jumin)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT * FROM HC_SITE_WORKER_VIEW WHERE JUMIN = :JUMIN            ");
+            parameter.AppendSql(" SELECT * FROM HC_SITE_WORKER_VIEW ");
+            parameter.AppendSql(" WHERE JUMIN = :JUMIN ");
+            parameter.AppendSql("   AND SWLICENSE=:SWLICENSE ");
             parameter.Add("JUMIN", jumin);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_SITE_WORKER>(parameter);
         }
+        /// <summary>
+        /// 회사코드, 성명, 생년월일로 직원명단 찾기
+        /// </summary>
+        /// <param name="siteid"></param>
+        /// <param name="name"></param>
+        /// <param name="birth"></param>
+        /// <returns></returns>
+        public HC_SITE_WORKER FindOneByBirth(long siteid,string name,string birth)
+        {
+            MParameter parameter = CreateParameter();
+            parameter.AppendSql(" SELECT * FROM HC_SITE_WORKER_VIEW ");
+            parameter.AppendSql(" WHERE SITEID = :SITEID ");
+            parameter.AppendSql("   AND NAME = :NAME ");
+            parameter.AppendSql("   AND JUMIN = :BIRTH ");
+            parameter.AppendSql("   AND SWLICENSE=:SWLICENSE ");
+            parameter.Add("SITEID", siteid);
+            parameter.Add("NAME", name);
+            parameter.Add("BIRTH", birth);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
+            return ExecuteReaderSingle<HC_SITE_WORKER>(parameter);
+        }
+
         //public HC_SITE_WORKER FindOne(long id)
         //{
         //    MParameter parameter = CreateParameter();
@@ -58,8 +90,8 @@ namespace HC.Core.Repository
         //    parameter.AppendSql(" FROM HC_SITE_WORKER  A                                                 ");
         //    parameter.AppendSql(" WHERE ID = :ID                                                                ");
         //    parameter.AppendSql(" AND ISDELETED = 'N'                                                               ");
-           
-   
+
+
         //    parameter.Add("ID", id);
 
         //    return ExecuteReaderSingle<HC_SITE_WORKER>(parameter);
@@ -97,12 +129,13 @@ namespace HC.Core.Repository
         public List<HC_SITE_WORKER> FindAllGroupByDept(long siteId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT DEPT FROM HC_SITE_WORKER_VIEW                                                  ");
-            parameter.AppendSql(" WHERE SITEID = :SITEID                                                                ");
-       //     parameter.AppendSql(" AND ISDELETED = 'N'                                                               ");
+            parameter.AppendSql(" SELECT DEPT FROM HC_SITE_WORKER_VIEW  ");
+            parameter.AppendSql(" WHERE SITEID = :SITEID ");
+            parameter.AppendSql("   AND SWLICENSE=:SWLICENSE ");
             parameter.AppendSql(" GROUP BY DEPT  ");
 
             parameter.Add("SITEID", siteId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_SITE_WORKER>(parameter);
 
@@ -112,13 +145,14 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
             
             parameter.AppendSql("SELECT * FROM HC_SITE_WORKER_VIEW  ");
-            parameter.AppendSql("WHERE SITEID = :SITEID                                                                ");
-    //        parameter.AppendSql("AND ISDELETED = 'N'                                                               ");
-            parameter.AppendSql("AND NAME = :NAME ");
-            parameter.AppendSql("AND WORKER_ROLE = :ROLE ");
+            parameter.AppendSql("WHERE SITEID = :SITEID ");
+            parameter.AppendSql("  AND NAME = :NAME ");
+            parameter.AppendSql("  AND WORKER_ROLE = :ROLE ");
+            parameter.AppendSql("  AND SWLICENSE=:SWLICENSE ");
             parameter.Add("SITEID", siteId);
             parameter.Add("NAME", name);
             parameter.Add("ROLE", role);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_SITE_WORKER>(parameter);
 
@@ -128,13 +162,13 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
 
             parameter.AppendSql("SELECT * FROM HC_SITE_WORKER_VIEW  ");
-            parameter.AppendSql("WHERE SITEID = :SITEID                                                                ");
-       //     parameter.AppendSql("AND ISDELETED = 'N'                                                               ");
-            parameter.AppendSql("AND NAME = :NAME   ");
-           
+            parameter.AppendSql("WHERE SITEID = :SITEID ");
+            parameter.AppendSql("  AND NAME = :NAME  ");
+            parameter.AppendSql("  AND SWLICENSE=:SWLICENSE ");
+
             parameter.Add("SITEID", siteId);
             parameter.Add("NAME", name);
-         
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_SITE_WORKER>(parameter);
 
@@ -144,10 +178,11 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
         
             parameter.AppendSql("SELECT * FROM HC_SITE_WORKER_VIEW  ");
-            parameter.AppendSql("WHERE SITEID = :SITEID                                                                ");
+            parameter.AppendSql("WHERE SITEID = :SITEID ");
+            parameter.AppendSql("  AND SWLICENSE=:SWLICENSE ");
             if (!workerRole.IsNullOrEmpty())
             {
-                parameter.AppendSql("AND WORKER_ROLE = :WORKER_ROLE                                                               ");
+                parameter.AppendSql("AND WORKER_ROLE = :WORKER_ROLE ");
             }
             if (!name.IsNullOrEmpty())
             {
@@ -165,9 +200,10 @@ namespace HC.Core.Repository
             {
                 parameter.AppendSql("AND DEPT = :DEPT ");
             }
-            parameter.AppendSql(" ORDER BY NAME                                                           ");
+            parameter.AppendSql(" ORDER BY NAME ");
             parameter.Add("SITEID", siteId);
-            
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
             if (!name.IsNullOrEmpty())
             {
                 if (name.IsNumeric())
@@ -219,10 +255,13 @@ namespace HC.Core.Repository
         public List<HC_SITE_WORKER> FindWorker(string worker_role)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.* FROM HC_SITE_WORKER_VIEW A                                            ");
-            parameter.AppendSql("WHERE A.WORKER_ROLE  = :WORKER_ROL                                                 ");
+            parameter.AppendSql("SELECT A.* FROM HC_SITE_WORKER_VIEW A ");
+            parameter.AppendSql("WHERE A.WORKER_ROLE  = :WORKER_ROL ");
+            parameter.AppendSql("  AND A.SWLICENSE=:SWLICENSE ");
 
             parameter.Add("WORKER_ROL", worker_role);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
             return ExecuteReader<HC_SITE_WORKER>(parameter);
         }
 
@@ -255,19 +294,7 @@ namespace HC.Core.Repository
         public HC_SITE_WORKER Insert(HC_SITE_WORKER dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT SEQ_WORD        ");
-            parameter.AppendSql("  FROM HIC_USERS       ");
-            parameter.AppendSql(" WHERE USERID = :USERID");
-            
-            parameter.Add("USERID", CommonService.Instance.Session.UserId);
-
-            string word = ExecuteScalar<string>(parameter);
-            if(word.Empty())
-            {
-                word = "P";
-            }
-
-            dto.ID = string.Concat(word, "-", GetSequenceNextVal("HC_SITE_WORKER_ID_SEQ"));
+            dto.ID = GetSequenceNextVal("HC_SITE_WORKER_ID_SEQ").ToString();
             parameter = CreateParameter();
             parameter.AppendSql("INSERT INTO HIC_SITE_WORKER  ");
             parameter.AppendSql("(                            ");
@@ -288,7 +315,8 @@ namespace HC.Core.Repository
             parameter.AppendSql("  MODIFIED,                  ");
             parameter.AppendSql("  MODIFIEDUSER,              ");
             parameter.AppendSql("  CREATED,                   ");
-            parameter.AppendSql("  CREATEDUSER                ");
+            parameter.AppendSql("  CREATEDUSER,               ");
+            parameter.AppendSql("  SWLICENSE                  "); 
             parameter.AppendSql(")                            ");
             parameter.AppendSql("VALUES                       ");
             parameter.AppendSql("(                            ");
@@ -309,7 +337,8 @@ namespace HC.Core.Repository
             parameter.AppendSql("  SYSTIMESTAMP,              ");
             parameter.AppendSql("  :MODIFIEDUSER,             ");
             parameter.AppendSql("  SYSTIMESTAMP,              ");
-            parameter.AppendSql("  :CREATEDUSER               ");
+            parameter.AppendSql("  :CREATEDUSER,              ");
+            parameter.AppendSql("  :SWLICENSE                 ");
             parameter.AppendSql(")                            ");
             parameter.Add("ID", dto.ID);
             parameter.Add("SITEID", dto.SITEID);
@@ -326,6 +355,8 @@ namespace HC.Core.Repository
             parameter.Add("ISRETIRE", dto.ISRETIRE);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
             ExecuteNonQuery(parameter);
 
             DataSyncService.Instance.Insert("HIC_SITE_WORKER", dto.ID);
@@ -335,14 +366,14 @@ namespace HC.Core.Repository
         public void UpdatePatientWorkerRole(HC_SITE_WORKER dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_PATIENT                                                       ");
-            parameter.AppendSql("SET WORKER_ROLE = :WORKER_ROLE                                           ");
-            parameter.AppendSql(", EMAIL = :EMAIL                                                 ");
-            parameter.AppendSql(", BuseName = :BuseName                                           ");
-            parameter.AppendSql(", TEL = :TEL                                                    ");
-            parameter.AppendSql(", HPHONE = :HPHONE                                            ");
-            parameter.AppendSql(",  ISMANAGEOSHA = :ISMANAGEOSHA                                   ");
-            parameter.AppendSql("WHERE PTNO = :PTNO                                                ");
+            parameter.AppendSql("UPDATE HIC_PATIENT ");
+            parameter.AppendSql("SET WORKER_ROLE = :WORKER_ROLE ");
+            parameter.AppendSql(", EMAIL = :EMAIL ");
+            parameter.AppendSql(", BuseName = :BuseName ");
+            parameter.AppendSql(", TEL = :TEL ");
+            parameter.AppendSql(", HPHONE = :HPHONE ");
+            parameter.AppendSql(",  ISMANAGEOSHA = :ISMANAGEOSHA ");
+            parameter.AppendSql("WHERE PTNO = :PTNO ");
             parameter.Add("PTNO", dto.PTNO);
             parameter.Add("WORKER_ROLE", dto.WORKER_ROLE);
             parameter.Add("EMAIL", dto.EMAIL);
@@ -351,29 +382,30 @@ namespace HC.Core.Repository
             parameter.Add("HPHONE", dto.HP);
             parameter.Add("ISMANAGEOSHA", dto.ISMANAGEOSHA);
             ExecuteNonQuery(parameter);
+
             DataSyncService.Instance.Update("HIC_PATIENT", dto.ID);
         }
         public HC_SITE_WORKER Update(HC_SITE_WORKER dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_SITE_WORKER                                                       ");
-            parameter.AppendSql("SET                                                                         ");
-            parameter.AppendSql("  NAME = :NAME,                                                             ");
-            parameter.AppendSql("  WORKER_ROLE = :WORKER_ROLE,                                               ");
-            parameter.AppendSql("  DEPT = :DEPT,                                                             ");
-            parameter.AppendSql("  TEL = :TEL,                                                               ");
-            parameter.AppendSql("  JUMIN = :JUMIN,                                                               ");
-            parameter.AppendSql("  HP = :HP,                                                                 ");
-            parameter.AppendSql("  EMAIL = :EMAIL,                                                           ");
-            parameter.AppendSql("  PTNO = :PTNO,                                                           ");
-            parameter.AppendSql("  PANO = :PANO,                                                           ");
-            parameter.AppendSql("  IPSADATE = :IPSADATE,                                                           ");
-            parameter.AppendSql("  ISRETIRE = :ISRETIRE,                                                      ");
-            parameter.AppendSql("  ISMANAGEOSHA = :ISMANAGEOSHA,                                                      ");
+            parameter.AppendSql("UPDATE HIC_SITE_WORKER ");
+            parameter.AppendSql("SET ");
+            parameter.AppendSql("  NAME = :NAME, ");
+            parameter.AppendSql("  WORKER_ROLE = :WORKER_ROLE, ");
+            parameter.AppendSql("  DEPT = :DEPT, ");
+            parameter.AppendSql("  TEL = :TEL,  ");
+            parameter.AppendSql("  JUMIN = :JUMIN, ");
+            parameter.AppendSql("  HP = :HP, ");
+            parameter.AppendSql("  EMAIL = :EMAIL, ");
+            parameter.AppendSql("  PTNO = :PTNO, ");
+            parameter.AppendSql("  PANO = :PANO, ");
+            parameter.AppendSql("  IPSADATE = :IPSADATE, ");
+            parameter.AppendSql("  ISRETIRE = :ISRETIRE, ");
+            parameter.AppendSql("  ISMANAGEOSHA = :ISMANAGEOSHA,");
             
-            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,                                                  ");
-            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER                                              ");
-            parameter.AppendSql("WHERE ID = :ID                                                              ");
+            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP, ");
+            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER ");
+            parameter.AppendSql("WHERE ID = :ID ");
             parameter.Add("ID", dto.ID);
             parameter.Add("NAME", dto.NAME);
             parameter.Add("WORKER_ROLE", dto.WORKER_ROLE);
@@ -399,15 +431,18 @@ namespace HC.Core.Repository
         public void Delete(string id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE  HIC_SITE_WORKER                                                 ");
-            parameter.AppendSql("SET ISDELETED = 'Y',                                                   ");
-            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,                                             ");
-            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER                                         ");
-            parameter.AppendSql("WHERE ID = :ID                                                         ");
+            parameter.AppendSql("UPDATE  HIC_SITE_WORKER ");
+            parameter.AppendSql("SET ISDELETED = 'Y', ");
+            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP, ");
+            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER ");
+            parameter.AppendSql("WHERE ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE=:SWLICENSE ");
+
             parameter.Add("ID", id);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
 
             DataSyncService.Instance.Delete("HIC_SITE_WORKER", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 

@@ -9,6 +9,7 @@ using HC.Core.Common.Interface;
 using HC.Core.Dto;
 using HC.Core.Model;
 using HC.Core.Service;
+using HC.Core.Repository;
 using HC.OSHA.Model;
 using HC.OSHA.Service;
 using HC_Core;
@@ -26,19 +27,33 @@ namespace HC_OSHA
 {
     public partial class FrmExcelUpload2 : Form
     {
+        private HcSiteWorkerService hcSiteWorkerService;
+        private HcSiteWorkerRepository hcSiteWorkerRepository;
+        private int[] FnCol = new int[1000];
+
         public FrmExcelUpload2()
         {
             InitializeComponent();
+            hcSiteWorkerService = new HcSiteWorkerService();
+            hcSiteWorkerRepository = new HcSiteWorkerRepository();
             Screen_Set();
         }
 
         private void Screen_Set()
         {
+            int i = 0;
             int nYear = 0;
             string strTitle = "";
             nYear = Int32.Parse(DateTime.Now.ToString("yyyy"));
 
-            for (int i = 0; i < 5; i++)
+            TxtLtdcode.Text = "";
+
+            for (i = 0; i < 1000; i++)
+            {
+                FnCol[i] = 0;
+            }
+
+            for (i = 0; i < 5; i++)
             {
                 cboYear.Items.Add(nYear.ToString());
                 nYear--;
@@ -59,12 +74,16 @@ namespace HC_OSHA
             SSConv_Sheet1.RowCount = 0;
             SSConv_Sheet1.RowCount = SS1_Sheet1.ColumnCount;
 
-            for (int i = 0; i < SS1_Sheet1.ColumnCount; i++)
+            for (i = 0; i < SS1_Sheet1.ColumnCount; i++)
             {
                 strTitle = SS1_Sheet1.ColumnHeader.Cells[0, i].Value.ToString();
                 SSConv_Sheet1.Cells[i, 0].Text = strTitle;
                 SSConv_Sheet1.Cells[i, 1].Value = (i + 1);
             }
+            btnJob1.Enabled = true;
+            btnJob2.Enabled = false;
+            btnJob3.Enabled = false;
+            btnJob4.Enabled = false;
         }
 
         private void btnJob1_Click(object sender, EventArgs e)
@@ -73,6 +92,10 @@ namespace HC_OSHA
             int nBlankLine = 0;
             int nRowCount = 0;
             bool bBlank = false;
+
+            if (TxtLtdcode.Text.Trim() == "") { ComFunc.MsgBox("회사코드가 공란입니다."); return; }
+            if (cboYear.Text.Trim() == "") { ComFunc.MsgBox("검진년도가 공란입니다."); return; }
+            if (cboBangi.Text.Trim() == "") { ComFunc.MsgBox("반기 구분이 공란입니다."); return; }
 
             OpenFileDialog dialog = new OpenFileDialog();
             DialogResult result = dialog.ShowDialog();
@@ -112,7 +135,7 @@ namespace HC_OSHA
         private void btnJob4_Click(object sender, EventArgs e)
         {
             string strData = "";
-            int nCol = 0;
+            int nCol=0;
 
             for (int i = 0; i < SSConv_Sheet1.RowCount; i++)
             {
@@ -121,13 +144,17 @@ namespace HC_OSHA
 
             for (int i = 0; i < SSConv_Sheet1.RowCount; i++)
             {
-                nCol = Int32.Parse(SSConv_Sheet1.Cells[i, 1].Value.ToString());
-                if (nCol > 0)
+                if (SSConv_Sheet1.Cells[i, 1].Text.Trim() != "")
                 {
-                    strData = SSExcel_Sheet1.Cells[1, nCol - 1].Text.ToString();
-                    SSConv_Sheet1.Cells[i, 2].Text = strData;
+                    nCol = Int32.Parse(SSConv_Sheet1.Cells[i, 1].Value.ToString());
+                    if (nCol > 0)
+                    {
+                        strData = SSExcel_Sheet1.Cells[1, nCol - 1].Text.ToString();
+                        SSConv_Sheet1.Cells[i, 2].Text = strData;
+                    }
+
                 }
-            }
+            }    
             btnJob2.Enabled = true;
         }
 
@@ -135,7 +162,8 @@ namespace HC_OSHA
         {
             SiteListForm form = new SiteListForm();
 
-            HC_SITE_VIEW siteView = form.Search(TxtSiteIdOrName.Text);
+            TxtLtdcode.Text = "";
+            HC_SITE_VIEW siteView = form.Search(TxtLtdcode.Text);
             if (siteView == null)
             {
                 DialogResult result = form.ShowDialog();
@@ -148,26 +176,38 @@ namespace HC_OSHA
 
             if (siteView != null)
             {
-                TxtSiteIdOrName.Text = siteView.ID.ToString() + "." + siteView.NAME;
+                TxtLtdcode.Text = siteView.ID.ToString() + "." + siteView.NAME;
             }
 
         }
 
         private void btnJob2_Click(object sender, EventArgs e)
         {
+            int i;
+            int j;
             string strData = "";
-            int nCol = 0;
             int nRow = 0;
-            int nBlankLines = 0;
             bool isBlankLine = false;
+            bool bMultyLine = false;
+            string strNewData = "";
+
+            //변경값을 변수에 저장
+            for (i=0; i < SSConv_Sheet1.RowCount; i++)
+            {
+                FnCol[i] = 0;
+                if (SSConv_Sheet1.Cells[i, 1].Text.Trim() != "")
+                {
+                    FnCol[i] = Int32.Parse(SSConv_Sheet1.Cells[i, 1].Value.ToString());
+                }
+            }
 
             SS1_Sheet1.RowCount = 0;
             SS1_Sheet1.RowCount = SSExcel_Sheet1.RowCount;
 
-            for (int i = 1; i < SSExcel_Sheet1.RowCount; i++)
+            for (i = 1; i < SSExcel_Sheet1.RowCount; i++)
             {
                 isBlankLine = true;
-                for (int j = 0; j < SSConv_Sheet1.RowCount; j++)
+                for (j = 0; j < SSConv_Sheet1.RowCount; j++)
                 {
                     if (SSExcel_Sheet1.Cells[i, j].Text.ToString() != "")
                     {
@@ -179,22 +219,191 @@ namespace HC_OSHA
                 // 공란줄은 제외
                 if (isBlankLine == false)
                 {
-                    for (int j = 0; j < SSConv_Sheet1.RowCount; j++)
+                    // 엑셀파일의 처음 3칼럼 모두 공란이면 연속 Data로 처리
+                    bMultyLine = true;
+                    if (SSExcel_Sheet1.Cells[i, 0].Text.Trim() !="") bMultyLine = false;
+                    if (SSExcel_Sheet1.Cells[i, 1].Text.Trim() != "") bMultyLine = false;
+                    if (SSExcel_Sheet1.Cells[i, 2].Text.Trim() != "") bMultyLine = false;
+
+                    for (j = 0; j < SSConv_Sheet1.RowCount; j++)
                     {
-                        nCol = Int32.Parse(SSConv_Sheet1.Cells[j, 1].Value.ToString());
-                        if (nCol > 0)
+                        if (FnCol[j] > 0)
                         {
-                            strData = SSExcel_Sheet1.Cells[i, nCol - 1].Text.ToString();
-                            SS1_Sheet1.Cells[nRow, j].Text = strData;
+                            strData = SSExcel_Sheet1.Cells[i, FnCol[j] - 1].Text.ToString();
+                            if (strData != "")
+                            {
+                                if (bMultyLine == true)
+                                {
+                                    strNewData = SS1_Sheet1.Cells[nRow-1, j].Text.ToString();
+                                    strNewData = strNewData + ComNum.VBLF + strData;
+                                    SS1_Sheet1.Cells[nRow-1, j].Text = strNewData;
+                                }
+                                else
+                                {
+                                    SS1_Sheet1.Cells[nRow, j].Text = strData;
+                                }
+
+                            }
+                            
                         }
                     }
-                    nRow++;
                 }
+                if (bMultyLine == false) nRow++;
             }
             SS1_Sheet1.RowCount = nRow;
+
+            // 셀의 높이를 조정
+            for (i = 0; i < SS1_Sheet1.RowCount; i++)
+            {
+                SS1_Sheet1.Rows[i].Height = SS1_Sheet1.Rows[i].GetPreferredHeight();
+            }
+
             btnJob3.Enabled = true;
         }
 
-    }
-}
+        // 서버 DB에 저장
+        private void btnJob3_Click(object sender, EventArgs e)
+        {
+            string strID = "";
+            long nLtdCode = 0;
+            string strName = "";
+            string strBirth = "";
+            string SQL = "";
+            string SqlErr = "";
+            string strYear = "";
+            string strJinDate = "";
+            string strHosName = "";
+            string strAge = "";
+            string strSex = "";
+            string strResult = "";
+            int intRowAffected = 0;
 
+            nLtdCode = long.Parse(VB.Pstr(TxtLtdcode.Text, ".", 1));
+            strYear = cboYear.Text.Trim();
+            HC_SITE_WORKER worker = new HC_SITE_WORKER();
+
+            for (int i=0; i < SS1_Sheet1.RowCount; i++)
+            {
+                strName = SS1_Sheet1.Cells[i, 1].Text.ToString();
+                strBirth = SS1_Sheet1.Cells[i, 2].Text.ToString();
+                if (VB.Len(strBirth) > 6) strBirth = VB.Left(strBirth, 6);
+
+                // 구분자를 {$}로 결과를 한개로 묶음
+                strResult = "";
+                for (int j = 7; j < SS1_Sheet1.ColumnCount; j++) 
+                {
+                    strResult += SS1_Sheet1.Cells[i, j].Text.ToString().Trim() + "{$}";
+                }
+
+                // 사원이 없으면 신규등록함
+                worker.ID = "";
+                worker.SITEID = nLtdCode;
+                worker.NAME = strName;
+                worker.DEPT = "";
+                worker.TEL = "";
+                worker.ISDELETED = "N";
+                worker.JUMIN = strBirth;
+                worker.PANO = 0;
+                worker.PTNO = "";
+                worker.WORKER_ROLE = "EMP_ROLE";
+                worker.IPSADATE = "";
+                HC_SITE_WORKER saved = hcSiteWorkerRepository.FindOneByBirth(nLtdCode,strName,strBirth);
+                if (saved == null)
+                {
+                    saved = hcSiteWorkerRepository.Insert(worker);
+                }
+                else
+                {
+                    worker.ID = saved.ID;
+                }
+
+                strID = worker.ID;
+                strJinDate = SS1_Sheet1.Cells[i, 3].Text.ToString().Trim();
+                strHosName = SS1_Sheet1.Cells[i, 4].Text.ToString().Trim();
+                strAge = SS1_Sheet1.Cells[i, 5].Text.ToString().Trim();
+                strSex = SS1_Sheet1.Cells[i, 6].Text.ToString().Trim();
+                
+                // 뇌심혈관 결과 DB에 저장
+                if (Exist_Ltd_Result2(nLtdCode,strYear,strID)==false)
+                {
+                    try
+                    {
+                        SQL = "";
+                        SQL += " INSERT INTO HIC_LTD_RESULT2 (SITEID,ID,NAME,BIRTH,YEAR,JINDATE, ";
+                        SQL += " HOSNAME,AGE,SEX,RESULT,JOBSABUN,ENTTIME,SWLICENSE) ";
+                        SQL += " VALUES (" + nLtdCode + ",'" + strID + "','" + strName + "','";
+                        SQL +=  strBirth + "','" + strYear + "','";
+                        SQL +=  strJinDate + "','" + strHosName + "', "; //검진일,검진병원
+                        SQL +=  strAge + ",'" + strSex + "','";  //나이,성별
+                        SQL +=  strResult + "','" + clsType.User.IdNumber + "',";
+                        SQL +=  "SYSTIMESTAMP,'" + clsType.HosInfo.SwLicense + "') ";
+                        SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+
+                        if (SqlErr != "")
+                        {
+                            ComFunc.MsgBox("뇌심혈관 결과 등록 실패", "알림");
+                            Cursor.Current = Cursors.Default;
+                            return;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ComFunc.MsgBox(ex.Message);
+                        return;
+                    }
+                }
+            }
+            ComFunc.MsgBox("서버로 전송 완료", "알림");
+            Screen_Set();
+        }
+
+        // 년도 및 사원번호로 금년도 등록여부 점검
+        bool Exist_Ltd_Result2(long nLtdCode, string strYear, string strID)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            int i = 0;
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            try
+            {
+                SQL = "";
+                SQL = "SELECT ID  FROM HIC_LTD_RESULT2 ";
+                SQL = SQL + ComNum.VBLF + "WHERE SITEID=" + nLtdCode + " ";
+                SQL = SQL + ComNum.VBLF + "  AND ID='" + strID + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND YEAR = '" + strYear + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+
+                if (dt.Rows.Count > 0)
+                {
+                    dt.Dispose();
+                    dt = null;
+                    return true;
+                }
+                else
+                {
+                    dt.Dispose();
+                    dt = null;
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                    return false;
+                }
+
+                ComFunc.MsgBox(ex.Message);
+                return false;
+            }
+        }
+
+    }
+
+}

@@ -218,17 +218,17 @@
     <Compile Include="form\Etc\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\Management\FrmExcelUpload3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Management\FrmExcelUpload3.Designer.cs">
+      <DependentUpon>FrmExcelUpload3.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Management\FrmExcelUpload2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="form\Management\FrmExcelUpload2.Designer.cs">
       <DependentUpon>FrmExcelUpload2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="form\Management\FrmExcelUpload1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\Management\FrmExcelUpload1.Designer.cs">
-      <DependentUpon>FrmExcelUpload1.cs</DependentUpon>
     </Compile>
     <Compile Include="form\Management\FrmPassChange.cs">
       <SubType>Form</SubType>
@@ -837,11 +837,11 @@
     <EmbeddedResource Include="form\Etc\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form\Management\FrmExcelUpload3.resx">
+      <DependentUpon>FrmExcelUpload3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\Management\FrmExcelUpload2.resx">
       <DependentUpon>FrmExcelUpload2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="form\Management\FrmExcelUpload1.resx">
-      <DependentUpon>FrmExcelUpload1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Management\FrmPassChange.resx">
       <DependentUpon>FrmPassChange.cs</DependentUpon>

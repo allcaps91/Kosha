@@ -24,9 +24,11 @@ using System.Windows.Forms;
 
 namespace HC_OSHA
 {
-    public partial class FrmExcelUpload1 : Form
+    public partial class FrmExcelUpload3 : Form
     {
-        public FrmExcelUpload1()
+        int[] nCol = new int[1000];
+
+        public FrmExcelUpload3()
         {
             InitializeComponent();
             Screen_Set();
@@ -34,11 +36,18 @@ namespace HC_OSHA
 
         private void Screen_Set()
         {
+            int i = 0;
             int nYear = 0;
             string strTitle = "";
             nYear = Int32.Parse(DateTime.Now.ToString("yyyy"));
 
-            for (int i = 0; i < 5; i++)
+            
+            for (i = 0; i < 1000; i++)
+            {
+                nCol[i] = 0;
+            }
+
+            for (i = 0; i < 5; i++)
             {
                 cboYear.Items.Add(nYear.ToString());
                 nYear--;
@@ -59,7 +68,7 @@ namespace HC_OSHA
             SSConv_Sheet1.RowCount = 0;
             SSConv_Sheet1.RowCount = SS1_Sheet1.ColumnCount;
 
-            for (int i = 0; i < SS1_Sheet1.ColumnCount; i++)
+            for (i = 0; i < SS1_Sheet1.ColumnCount; i++)
             {
                 strTitle = SS1_Sheet1.ColumnHeader.Cells[0, i].Value.ToString();
                 SSConv_Sheet1.Cells[i, 0].Text = strTitle;
@@ -74,6 +83,10 @@ namespace HC_OSHA
             int nRowCount = 0;
             bool bBlank = false;
 
+            if (TxtLtdcode.Text.Trim() == "") { ComFunc.MsgBox("회사코드가 공란입니다."); return; }
+            if (cboYear.Text.Trim() == "") { ComFunc.MsgBox("검진년도가 공란입니다."); return; }
+            if (cboBangi.Text.Trim() == "") { ComFunc.MsgBox("반기 구분이 공란입니다."); return; }
+
             OpenFileDialog dialog = new OpenFileDialog();
             DialogResult result = dialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -87,9 +100,9 @@ namespace HC_OSHA
                 for (int i = 0; i < SSExcel_Sheet1.RowCount; i++)
                 {
                     bBlank = true;
-                    for(int j=0;j<SSExcel_Sheet1.ColumnCount; j++)
+                    for (int j = 0; j < SSExcel_Sheet1.ColumnCount; j++)
                     {
-                        if (SSExcel_Sheet1.Cells[i, j].Text!="")
+                        if (SSExcel_Sheet1.Cells[i, j].Text != "")
                         {
                             bBlank = false;
                             nRowCount = i;
@@ -99,9 +112,9 @@ namespace HC_OSHA
                     if (bBlank == true)
                     {
                         nBlankLine++;
-                        if (nBlankLine>5)
+                        if (nBlankLine > 5)
                         {
-                            SSExcel_Sheet1.RowCount = nRowCount+1;
+                            SSExcel_Sheet1.RowCount = nRowCount + 1;
                             break;
                         }
                     }
@@ -112,7 +125,7 @@ namespace HC_OSHA
         private void btnJob4_Click(object sender, EventArgs e)
         {
             string strData = "";
-            int nCol = 0;
+            int nCol=0;
 
             for (int i = 0; i < SSConv_Sheet1.RowCount; i++)
             {
@@ -121,26 +134,25 @@ namespace HC_OSHA
 
             for (int i = 0; i < SSConv_Sheet1.RowCount; i++)
             {
-                nCol = Int32.Parse(SSConv_Sheet1.Cells[i, 1].Value.ToString());
-                if (nCol > 0)
+                if (SSConv_Sheet1.Cells[i, 1].Text.Trim() != "")
                 {
-                    strData = SSExcel_Sheet1.Cells[1, nCol - 1].Text.ToString();
-                    SSConv_Sheet1.Cells[i, 2].Text = strData;
+                    nCol = Int32.Parse(SSConv_Sheet1.Cells[i, 1].Value.ToString());
+                    if (nCol > 0)
+                    {
+                        strData = SSExcel_Sheet1.Cells[1, nCol - 1].Text.ToString();
+                        SSConv_Sheet1.Cells[i, 2].Text = strData;
+                    }
+
                 }
-            }
+            }    
             btnJob2.Enabled = true;
-        }
-
-        private void FrmExcelUpload1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void BtnSearchSite_Click(object sender, EventArgs e)
         {
             SiteListForm form = new SiteListForm();
 
-            HC_SITE_VIEW siteView = form.Search(TxtSiteIdOrName.Text);
+            HC_SITE_VIEW siteView = form.Search(TxtLtdcode.Text);
             if (siteView == null)
             {
                 DialogResult result = form.ShowDialog();
@@ -153,28 +165,39 @@ namespace HC_OSHA
 
             if (siteView != null)
             {
-                TxtSiteIdOrName.Text = siteView.ID.ToString() + "." + siteView.NAME;
+                TxtLtdcode.Text = siteView.ID.ToString() + "." + siteView.NAME;
             }
+
         }
 
-        // 표준서식으로 변환
         private void btnJob2_Click(object sender, EventArgs e)
         {
+            int i;
+            int j;
             string strData = "";
-            int nCol = 0;
             int nRow = 0;
-            int nBlankLines = 0;
             bool isBlankLine = false;
+            bool bMultyLine = false;
+            string strNewData = "";
+
+            //변경값을 변수에 저장
+            for (i=0; i < SSConv_Sheet1.RowCount; i++)
+            {
+                if (SSConv_Sheet1.Cells[i, 1].Text.Trim() != "")
+                {
+                    nCol[i] = Int32.Parse(SSConv_Sheet1.Cells[i, 1].Value.ToString());
+                }
+            }
 
             SS1_Sheet1.RowCount = 0;
             SS1_Sheet1.RowCount = SSExcel_Sheet1.RowCount;
 
-            for (int i = 1; i < SSExcel_Sheet1.RowCount;i++)
+            for (i = 1; i < SSExcel_Sheet1.RowCount; i++)
             {
                 isBlankLine = true;
-                for (int j = 0; j < SSConv_Sheet1.RowCount; j++)
+                for (j = 0; j < SSConv_Sheet1.RowCount; j++)
                 {
-                    if (SSExcel_Sheet1.Cells[i,j].Text.ToString() != "")
+                    if (SSExcel_Sheet1.Cells[i, j].Text.ToString() != "")
                     {
                         isBlankLine = false;
                         break;
@@ -184,20 +207,47 @@ namespace HC_OSHA
                 // 공란줄은 제외
                 if (isBlankLine == false)
                 {
-                    for (int j= 0; j < SSConv_Sheet1.RowCount; j++)
+                    // 엑셀파일의 처음 3칼럼 모두 공란이면 연속 Data로 처리
+                    bMultyLine = true;
+                    if (SSExcel_Sheet1.Cells[i, 0].Text.Trim() !="") bMultyLine = false;
+                    if (SSExcel_Sheet1.Cells[i, 1].Text.Trim() != "") bMultyLine = false;
+                    if (SSExcel_Sheet1.Cells[i, 2].Text.Trim() != "") bMultyLine = false;
+
+                    for (j = 0; j < SSConv_Sheet1.RowCount; j++)
                     {
-                        nCol = Int32.Parse(SSConv_Sheet1.Cells[j, 1].Value.ToString());
-                        if (nCol > 0)
+                        if (nCol[j] > 0)
                         {
-                            strData = SSExcel_Sheet1.Cells[i, nCol - 1].Text.ToString();
-                            SS1_Sheet1.Cells[nRow, j].Text = strData;
+                            strData = SSExcel_Sheet1.Cells[i, nCol[j] - 1].Text.ToString();
+                            if (strData != "")
+                            {
+                                if (bMultyLine == true)
+                                {
+                                    strNewData = SS1_Sheet1.Cells[nRow-1, j].Text.ToString();
+                                    strNewData = strNewData + ComNum.VBLF + strData;
+                                    SS1_Sheet1.Cells[nRow-1, j].Text = strNewData;
+                                }
+                                else
+                                {
+                                    SS1_Sheet1.Cells[nRow, j].Text = strData;
+                                }
+
+                            }
+                            
                         }
                     }
-                    nRow++;
                 }
+                if (bMultyLine == false) nRow++;
             }
             SS1_Sheet1.RowCount = nRow;
+
+            // 셀의 높이를 조정
+            for (i = 0; i < SS1_Sheet1.RowCount; i++)
+            {
+                SS1_Sheet1.Rows[i].Height = SS1_Sheet1.Rows[i].GetPreferredHeight();
+            }
+
             btnJob3.Enabled = true;
         }
     }
 }
+

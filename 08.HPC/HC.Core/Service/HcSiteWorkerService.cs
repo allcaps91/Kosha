@@ -135,9 +135,13 @@ namespace HC.Core.Service
         {
             return hcSiteWorkerRepository.FindOneByPano(pano);
         }
+        public HC_SITE_WORKER FindOneByBirth(long siteid,string name,string birth)
+        {
+            return hcSiteWorkerRepository.FindOneByBirth(siteid, name, birth);
+        }
         //public List<HC_SITE_WORKER> FindAll(long siteId, string dept)
         //{
-           
+
         //    List<HC_SITE_WORKER> list = this.hcSiteWorkerRepository.FindAll(siteId, dept);
         //    foreach(HC_SITE_WORKER worker in list)
         //    {
@@ -146,12 +150,12 @@ namespace HC.Core.Service
         //        {
         //            worker.JUMIN = jumin.Substring(0, 6) + "-" + jumin.Substring(7, 1);
         //        }
-                
+
 
         //    }
         //    return list;
         //}
-    
+
 
         public List<HC_SITE_WORKER> FindAll(long siteId, string name, string dept, string workerRole)
         {

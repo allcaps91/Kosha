@@ -804,13 +804,13 @@ namespace HC_OSHA
 
         private void 뇌심혈관계발병위험도평가ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmExcelUpload1 form = new FrmExcelUpload1();
+            FrmExcelUpload2 form = new FrmExcelUpload2();
             form.Show();
         }
 
         private void 질병유소견자사후관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmExcelUpload2 form = new FrmExcelUpload2();
+            FrmExcelUpload3 form = new FrmExcelUpload3();
             form.Show();
         }
     }
