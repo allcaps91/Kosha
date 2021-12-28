@@ -371,18 +371,12 @@ namespace HC_OSHA
                             MessageUtil.Alert(ex.Message);
                             clsDB.setRollbackTran(clsDB.DbCon);
                         }
-
-
-
-            
                     }
                     if (sender != null)
                     {
 
                         OshaSiteEstimateList.SearhAndDoubleClik(oshaSiteLastTree.GetSite.ID, true);
                     }
-                        
-
                 }
             }
         }

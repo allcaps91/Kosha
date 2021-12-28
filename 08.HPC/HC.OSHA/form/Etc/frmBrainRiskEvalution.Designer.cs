@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.NamedStyle namedStyle1 = new FarPoint.Win.Spread.NamedStyle("Color341637214498074922131", "DataAreaDefault");
-            FarPoint.Win.Spread.NamedStyle namedStyle2 = new FarPoint.Win.Spread.NamedStyle("Text419637214498074962021", "DataAreaDefault");
-            FarPoint.Win.Spread.CellType.TextCellType textCellType1 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.NamedStyle namedStyle3 = new FarPoint.Win.Spread.NamedStyle("Static535637214498075021855");
-            FarPoint.Win.Spread.CellType.TextCellType textCellType2 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.NamedStyle namedStyle4 = new FarPoint.Win.Spread.NamedStyle("Static582637214498075041803");
-            FarPoint.Win.Spread.CellType.TextCellType textCellType3 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.TipAppearance tipAppearance1 = new FarPoint.Win.Spread.TipAppearance();
+            FarPoint.Win.Spread.NamedStyle namedStyle5 = new FarPoint.Win.Spread.NamedStyle("Color341637214498074922131", "DataAreaDefault");
+            FarPoint.Win.Spread.NamedStyle namedStyle6 = new FarPoint.Win.Spread.NamedStyle("Text419637214498074962021", "DataAreaDefault");
+            FarPoint.Win.Spread.CellType.TextCellType textCellType4 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.NamedStyle namedStyle7 = new FarPoint.Win.Spread.NamedStyle("Static535637214498075021855");
+            FarPoint.Win.Spread.CellType.TextCellType textCellType5 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.NamedStyle namedStyle8 = new FarPoint.Win.Spread.NamedStyle("Static582637214498075041803");
+            FarPoint.Win.Spread.CellType.TextCellType textCellType6 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.TipAppearance tipAppearance2 = new FarPoint.Win.Spread.TipAppearance();
             this.panTitle = new System.Windows.Forms.Panel();
             this.LblSite = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
@@ -45,14 +45,7 @@
             this.SSList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.panSearch = new System.Windows.Forms.Panel();
             this.BtnSearch = new System.Windows.Forms.Button();
-            this.ChkMore = new System.Windows.Forms.CheckBox();
             this.BtnExportExcel = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.DtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.DtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.TxtSiteIdOrName = new System.Windows.Forms.TextBox();
-            this.BtnSearchSite = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CboYear = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -61,8 +54,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
             this.panSearch.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,49 +116,49 @@
             // 
             // SSList
             // 
-            this.SSList.AccessibleDescription = "";
+            this.SSList.AccessibleDescription = "SSList, Sheet1, Row 0, Column 0, 1";
             this.SSList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SSList.Location = new System.Drawing.Point(0, 0);
             this.SSList.Name = "SSList";
-            namedStyle1.Font = new System.Drawing.Font("굴림", 9F);
-            namedStyle1.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle1.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle1.Parent = "DataAreaDefault";
-            namedStyle1.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            textCellType1.MaxLength = 32000;
-            namedStyle2.CellType = textCellType1;
-            namedStyle2.Font = new System.Drawing.Font("굴림", 9F);
-            namedStyle2.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle2.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle2.Parent = "DataAreaDefault";
-            namedStyle2.Renderer = textCellType1;
-            namedStyle2.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            textCellType2.Static = true;
-            namedStyle3.CellType = textCellType2;
-            namedStyle3.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
-            namedStyle3.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle3.Renderer = textCellType2;
-            namedStyle3.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
-            textCellType3.Static = true;
-            namedStyle4.CellType = textCellType3;
-            namedStyle4.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
-            namedStyle4.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle4.Renderer = textCellType3;
-            namedStyle4.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            namedStyle5.Font = new System.Drawing.Font("굴림", 9F);
+            namedStyle5.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle5.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle5.Parent = "DataAreaDefault";
+            namedStyle5.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            textCellType4.MaxLength = 32000;
+            namedStyle6.CellType = textCellType4;
+            namedStyle6.Font = new System.Drawing.Font("굴림", 9F);
+            namedStyle6.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle6.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle6.Parent = "DataAreaDefault";
+            namedStyle6.Renderer = textCellType4;
+            namedStyle6.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            textCellType5.Static = true;
+            namedStyle7.CellType = textCellType5;
+            namedStyle7.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
+            namedStyle7.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle7.Renderer = textCellType5;
+            namedStyle7.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            textCellType6.Static = true;
+            namedStyle8.CellType = textCellType6;
+            namedStyle8.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            namedStyle8.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle8.Renderer = textCellType6;
+            namedStyle8.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSList.NamedStyles.AddRange(new FarPoint.Win.Spread.NamedStyle[] {
-            namedStyle1,
-            namedStyle2,
-            namedStyle3,
-            namedStyle4});
+            namedStyle5,
+            namedStyle6,
+            namedStyle7,
+            namedStyle8});
             this.SSList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSList_Sheet1});
             this.SSList.Size = new System.Drawing.Size(1029, 522);
             this.SSList.TabIndex = 4;
             this.SSList.TabStripRatio = 0.6D;
-            tipAppearance1.BackColor = System.Drawing.SystemColors.Info;
-            tipAppearance1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            tipAppearance1.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.SSList.TextTipAppearance = tipAppearance1;
+            tipAppearance2.BackColor = System.Drawing.SystemColors.Info;
+            tipAppearance2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            tipAppearance2.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.SSList.TextTipAppearance = tipAppearance2;
             this.SSList.SetViewportLeftColumn(0, 0, 4);
             this.SSList.SetActiveViewport(0, 0, -1);
             // 
@@ -194,7 +185,7 @@
             this.SSList_Sheet1.ColumnFooter.Columns.Default.SortIndicator = FarPoint.Win.Spread.Model.SortIndicator.None;
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).Value = "소속";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "성명";
-            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "주민번호";
+            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "생년월일";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 3).Value = "검진일";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 4).Value = "검진병원";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 5).Value = "나이";
@@ -259,7 +250,7 @@
             this.SSList_Sheet1.Columns.Get(1).Label = "성명";
             this.SSList_Sheet1.Columns.Get(1).StyleName = "Static582637214498075041803";
             this.SSList_Sheet1.Columns.Get(1).Width = 58F;
-            this.SSList_Sheet1.Columns.Get(2).Label = "주민번호";
+            this.SSList_Sheet1.Columns.Get(2).Label = "생년월일";
             this.SSList_Sheet1.Columns.Get(2).StyleName = "Static535637214498075021855";
             this.SSList_Sheet1.Columns.Get(2).Width = 63F;
             this.SSList_Sheet1.Columns.Get(3).Label = "검진일";
@@ -410,10 +401,7 @@
             // panSearch
             // 
             this.panSearch.Controls.Add(this.BtnSearch);
-            this.panSearch.Controls.Add(this.ChkMore);
             this.panSearch.Controls.Add(this.BtnExportExcel);
-            this.panSearch.Controls.Add(this.groupBox3);
-            this.panSearch.Controls.Add(this.groupBox2);
             this.panSearch.Controls.Add(this.groupBox1);
             this.panSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panSearch.Location = new System.Drawing.Point(0, 47);
@@ -425,7 +413,7 @@
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(713, 24);
+            this.BtnSearch.Location = new System.Drawing.Point(134, 23);
             this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(75, 28);
@@ -434,19 +422,9 @@
             this.BtnSearch.UseVisualStyleBackColor = true;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
-            // ChkMore
-            // 
-            this.ChkMore.AutoSize = true;
-            this.ChkMore.Location = new System.Drawing.Point(623, 29);
-            this.ChkMore.Name = "ChkMore";
-            this.ChkMore.Size = new System.Drawing.Size(84, 21);
-            this.ChkMore.TabIndex = 122;
-            this.ChkMore.Text = "종검 보기";
-            this.ChkMore.UseVisualStyleBackColor = true;
-            // 
             // BtnExportExcel
             // 
-            this.BtnExportExcel.Location = new System.Drawing.Point(794, 25);
+            this.BtnExportExcel.Location = new System.Drawing.Point(215, 24);
             this.BtnExportExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnExportExcel.Name = "BtnExportExcel";
             this.BtnExportExcel.Size = new System.Drawing.Size(75, 28);
@@ -454,71 +432,6 @@
             this.BtnExportExcel.Text = "엑셀파일생성";
             this.BtnExportExcel.UseVisualStyleBackColor = true;
             this.BtnExportExcel.Click += new System.EventHandler(this.BtnExportExcel_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.DtpEndDate);
-            this.groupBox3.Controls.Add(this.DtpStartDate);
-            this.groupBox3.Location = new System.Drawing.Point(376, 6);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(241, 54);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "작업기간";
-            // 
-            // DtpEndDate
-            // 
-            this.DtpEndDate.CustomFormat = "yyyy-MM-dd";
-            this.DtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpEndDate.Location = new System.Drawing.Point(120, 22);
-            this.DtpEndDate.Name = "DtpEndDate";
-            this.DtpEndDate.Size = new System.Drawing.Size(108, 25);
-            this.DtpEndDate.TabIndex = 4;
-            // 
-            // DtpStartDate
-            // 
-            this.DtpStartDate.CustomFormat = "yyyy-MM-dd";
-            this.DtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpStartDate.Location = new System.Drawing.Point(6, 22);
-            this.DtpStartDate.Name = "DtpStartDate";
-            this.DtpStartDate.Size = new System.Drawing.Size(108, 25);
-            this.DtpStartDate.TabIndex = 3;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.TxtSiteIdOrName);
-            this.groupBox2.Controls.Add(this.BtnSearchSite);
-            this.groupBox2.Location = new System.Drawing.Point(125, 6);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(220, 54);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "회사명(코드)";
-            this.groupBox2.Visible = false;
-            // 
-            // TxtSiteIdOrName
-            // 
-            this.TxtSiteIdOrName.Location = new System.Drawing.Point(6, 21);
-            this.TxtSiteIdOrName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TxtSiteIdOrName.Name = "TxtSiteIdOrName";
-            this.TxtSiteIdOrName.Size = new System.Drawing.Size(127, 25);
-            this.TxtSiteIdOrName.TabIndex = 0;
-            // 
-            // BtnSearchSite
-            // 
-            this.BtnSearchSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSearchSite.Location = new System.Drawing.Point(139, 20);
-            this.BtnSearchSite.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.BtnSearchSite.Name = "BtnSearchSite";
-            this.BtnSearchSite.Size = new System.Drawing.Size(75, 28);
-            this.BtnSearchSite.TabIndex = 120;
-            this.BtnSearchSite.Text = "검색";
-            this.BtnSearchSite.UseVisualStyleBackColor = true;
-            this.BtnSearchSite.Click += new System.EventHandler(this.BtnSearchSite_Click);
             // 
             // groupBox1
             // 
@@ -540,7 +453,6 @@
             this.CboYear.Name = "CboYear";
             this.CboYear.Size = new System.Drawing.Size(87, 25);
             this.CboYear.TabIndex = 0;
-            this.CboYear.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // frmBrainRiskEvalution
             // 
@@ -561,10 +473,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).EndInit();
             this.panSearch.ResumeLayout(false);
-            this.panSearch.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -577,16 +485,9 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panBody;
         private System.Windows.Forms.Panel panSearch;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox TxtSiteIdOrName;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox CboYear;
-        private System.Windows.Forms.DateTimePicker DtpEndDate;
-        private System.Windows.Forms.DateTimePicker DtpStartDate;
         private System.Windows.Forms.Button BtnExportExcel;
-        private System.Windows.Forms.Button BtnSearchSite;
-        private System.Windows.Forms.CheckBox ChkMore;
         private FarPoint.Win.Spread.FpSpread SSList;
         private FarPoint.Win.Spread.SheetView SSList_Sheet1;
         private System.Windows.Forms.Button BtnSearch;

@@ -1,5 +1,6 @@
 namespace HC.Core.Repository
 {
+    using ComBase; 
     using ComBase.Controls;
     using ComBase.Mvc;
     using ComHpcLibB.Model;
@@ -15,16 +16,17 @@ namespace HC.Core.Repository
         public HC_SITE_VIEW FindById(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*                                ");
-            parameter.AppendSql("     , B.NAME AS BIZUPJONGNAME            ");
-            parameter.AppendSql("  FROM HC_SITE_VIEW A                     ");
-            parameter.AppendSql("  LEFT OUTER JOIN HIC_CODE B              ");
-            parameter.AppendSql("               ON TRIM(CODE) = A.BIZUPJONG");
-            parameter.AppendSql("              AND GUBUN      = '01'");
-            parameter.AppendSql(" WHERE ID = :ID                           ");
-
+            parameter.AppendSql("SELECT A.*, B.NAME AS BIZUPJONGNAME ");
+            parameter.AppendSql("  FROM HC_SITE_VIEW A ");
+            parameter.AppendSql("       LEFT OUTER JOIN HIC_CODE B ");
+            parameter.AppendSql("            ON TRIM(CODE) = A.BIZUPJONG ");
+            parameter.AppendSql("            AND GUBUN = '01' ");
+            parameter.AppendSql("            AND SWLICENSE=:SWLICENSE ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE=:SWLICENSE ");
 
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_SITE_VIEW>(parameter);
         }
@@ -33,19 +35,20 @@ namespace HC.Core.Repository
         public List<HC_SITE_VIEW> FindAllByName(string name, string userId, Role role)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT B.* FROM HIC_OSHA_SITE  A   ");
-            parameter.AppendSql(" INNER JOIN HC_SITE_VIEW B       ");
-            parameter.AppendSql(" ON A.ID = B.ID                  ");
+            parameter.AppendSql("SELECT B.* FROM HIC_OSHA_SITE A ");
+            parameter.AppendSql("      INNER JOIN HC_SITE_VIEW B ");
+            parameter.AppendSql("            ON A.ID = B.ID ");
+            parameter.AppendSql("            AND SWLICENSE=:SWLICENSE ");
             if (userId!="all" & userId != "")
             {
                 parameter.AppendSql(" INNER JOIN HIC_OSHA_CONTRACT C ");
-                parameter.AppendSql(" ON C.OSHA_SITE_ID = A.ID ");
-               
+                parameter.AppendSql("       ON C.OSHA_SITE_ID = A.ID ");
+                parameter.AppendSql("       AND C.SWLICENSE=:SWLICENSE ");
             }
+            parameter.AppendSql(" WHERE A.SWLICENSE=:SWLICENSE ");
             if (name.NotEmpty())
             {
-                parameter.AppendSql(" WHERE B.NAME LIKE :NAME       ");
-
+                parameter.AppendSql(" AND B.NAME LIKE :NAME ");
             }
 
             if (userId != "all" & userId != "")
@@ -64,37 +67,35 @@ namespace HC.Core.Repository
                     parameter.AppendSql("AND C.MANAGEENGINEER= :USERID ");
                 }
             }
-
-       
-
             parameter.AppendSql(" ORDER BY NAME ");
 
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (userId != "all" & userId != "")
             {
-           
                 parameter.Add("USERID", userId);
             }
             if (name.NotEmpty())
             {
                 parameter.AddLikeStatement("NAME", name);
             }
-
-                return ExecuteReader<HC_SITE_VIEW>(parameter);
+            return ExecuteReader<HC_SITE_VIEW>(parameter);
         }
 
         public List<HC_SITE_VIEW> FindAllById(string id, string userId, Role role)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT DISTINCT B.* FROM HIC_OSHA_SITE A   ");
-            parameter.AppendSql(" INNER JOIN HC_SITE_VIEW  B       ");
-            parameter.AppendSql(" ON A.ID = B.ID                  ");
-
+            parameter.AppendSql(" SELECT DISTINCT B.* FROM HIC_OSHA_SITE A ");
+            parameter.AppendSql("        INNER JOIN HC_SITE_VIEW  B ");
+            parameter.AppendSql("              ON A.ID = B.ID ");
+            parameter.AppendSql("              AND B.SWLICENSE=:SWLICENSE ");
             if (userId.NotEmpty() && userId != "all")
             {
                 parameter.AppendSql(" INNER JOIN HIC_OSHA_CONTRACT C ");
-                parameter.AppendSql(" ON C.OSHA_SITE_ID = A.ID ");
+                parameter.AppendSql("       ON C.OSHA_SITE_ID = A.ID ");
+                parameter.AppendSql("       AND C.SWLICENSE=:SWLICENSE ");
             }
             parameter.AppendSql(" WHERE 1 =1      ");
+            parameter.AppendSql("   AND A.SWLICENSE=:SWLICENSE ");
             if (userId != "all")
             {
                 if (id.NotEmpty())
@@ -128,15 +129,11 @@ namespace HC.Core.Repository
                 }
                  
             }
-     
-
-     
-
             parameter.AppendSql(" ORDER BY NAME ");
-            
+
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (userId != "all" )
             {
-        
                 parameter.Add("USERID", userId);
                 if (id.NotEmpty())
                 {
@@ -150,13 +147,8 @@ namespace HC.Core.Repository
                     parameter.AddLikeStatement("ID", id);
                 }
             }
-          
 
             return ExecuteReader<HC_SITE_VIEW>(parameter);
         }
-
-        
-
-
     }
 }

@@ -61,6 +61,7 @@
             this.SSExcel_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.SS1 = new FarPoint.Win.Spread.FpSpread();
             this.SS1_Sheet1 = new FarPoint.Win.Spread.SheetView();
+            this.btnJob5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SSConv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSConv_Sheet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSExcel)).BeginInit();
@@ -92,9 +93,9 @@
             // btnJob4
             // 
             this.btnJob4.Enabled = false;
-            this.btnJob4.Location = new System.Drawing.Point(945, -3);
+            this.btnJob4.Location = new System.Drawing.Point(1051, -3);
             this.btnJob4.Name = "btnJob4";
-            this.btnJob4.Size = new System.Drawing.Size(86, 36);
+            this.btnJob4.Size = new System.Drawing.Size(86, 33);
             this.btnJob4.TabIndex = 137;
             this.btnJob4.Text = "설정값 점검";
             this.btnJob4.UseVisualStyleBackColor = true;
@@ -185,7 +186,7 @@
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(722, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(217, 26);
+            this.label3.Size = new System.Drawing.Size(192, 26);
             this.label3.TabIndex = 129;
             this.label3.Text = "엑셀파일을 표준서식 변환 설정값";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -325,7 +326,7 @@
             this.SS1.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS1.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SS1.HorizontalScrollBar.TabIndex = 206;
+            this.SS1.HorizontalScrollBar.TabIndex = 220;
             this.SS1.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SS1.Location = new System.Drawing.Point(2, 357);
             this.SS1.Name = "SS1";
@@ -338,7 +339,7 @@
             this.SS1.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS1.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SS1.VerticalScrollBar.TabIndex = 207;
+            this.SS1.VerticalScrollBar.TabIndex = 221;
             this.SS1.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SS1.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SS1_CellClick);
             this.SS1.SetViewportLeftColumn(0, 0, 2);
@@ -372,7 +373,7 @@
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 9).Value = "BMI";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 10).Value = "허리둘레";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 11).Value = "수축기혈압";
-            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 12).Value = "이완기혈랍";
+            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 12).Value = "이완기혈압";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 13).Value = "혈당";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 14).Value = "당화혈색소";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 15).Value = "총콜레스테롤";
@@ -380,17 +381,17 @@
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 17).Value = "LDL";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 18).Value = "중성지방";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 19).Value = "단백뇨";
-            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 20).Value = "클레아티닌";
+            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 20).Value = "크레아티닌";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 21).Value = "사구체여과율(GFR)";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 22).Value = "흉부X선";
-            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 23).Value = "10년이내 심외혈관 발병 확율(%)";
+            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 23).Value = "10년이내 심뇌혈관 발병 확률(%)";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 24).Value = "심뇌혈관나이";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 25).Value = "심뇌혈관발생위험";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 26).Value = "검진결과 평가";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 27).Value = "1단계";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 28).Value = "2단계";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 29).Value = "발병위험도평가";
-            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 30).Value = "업묻적합성판정";
+            this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 30).Value = "업무적합성판정";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 31).Value = "개선의견";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 32).Value = "최종평가";
             this.SS1_Sheet1.ColumnHeader.DefaultStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
@@ -450,7 +451,7 @@
             this.SS1_Sheet1.Columns.Get(6).Locked = true;
             this.SS1_Sheet1.Columns.Get(6).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(6).Width = 35F;
-            this.SS1_Sheet1.Columns.Get(23).Label = "10년이내 심외혈관 발병 확율(%)";
+            this.SS1_Sheet1.Columns.Get(23).Label = "10년이내 심뇌혈관 발병 확률(%)";
             this.SS1_Sheet1.Columns.Get(23).Width = 77F;
             this.SS1_Sheet1.Columns.Get(25).Label = "심뇌혈관발생위험";
             this.SS1_Sheet1.Columns.Get(25).Width = 127F;
@@ -458,7 +459,7 @@
             this.SS1_Sheet1.Columns.Get(26).Width = 96F;
             this.SS1_Sheet1.Columns.Get(29).Label = "발병위험도평가";
             this.SS1_Sheet1.Columns.Get(29).Width = 120F;
-            this.SS1_Sheet1.Columns.Get(30).Label = "업묻적합성판정";
+            this.SS1_Sheet1.Columns.Get(30).Label = "업무적합성판정";
             this.SS1_Sheet1.Columns.Get(30).Width = 92F;
             this.SS1_Sheet1.Columns.Get(31).Label = "개선의견";
             this.SS1_Sheet1.Columns.Get(31).Width = 91F;
@@ -486,11 +487,23 @@
             this.SS1_Sheet1.SheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SS1_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
+            // btnJob5
+            // 
+            this.btnJob5.Enabled = false;
+            this.btnJob5.Location = new System.Drawing.Point(920, -1);
+            this.btnJob5.Name = "btnJob5";
+            this.btnJob5.Size = new System.Drawing.Size(117, 31);
+            this.btnJob5.TabIndex = 141;
+            this.btnJob5.Text = "표준서식 칼럼 찾기";
+            this.btnJob5.UseVisualStyleBackColor = true;
+            this.btnJob5.Click += new System.EventHandler(this.btnJob5_Click);
+            // 
             // FrmExcelUpload2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 651);
+            this.Controls.Add(this.btnJob5);
             this.Controls.Add(this.SS1);
             this.Controls.Add(this.TxtLtdcode);
             this.Controls.Add(this.BtnSearchSite);
@@ -544,5 +557,6 @@
         private FarPoint.Win.Spread.SheetView SSExcel_Sheet1;
         private FarPoint.Win.Spread.FpSpread SS1;
         private FarPoint.Win.Spread.SheetView SS1_Sheet1;
+        private System.Windows.Forms.Button btnJob5;
     }
 }

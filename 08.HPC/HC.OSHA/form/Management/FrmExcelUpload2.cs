@@ -73,13 +73,13 @@ namespace HC_OSHA
             {
                 strTitle = SS1_Sheet1.ColumnHeader.Cells[0, i].Value.ToString();
                 SSConv_Sheet1.Cells[i, 0].Text = strTitle;
-                SSConv_Sheet1.Cells[i, 1].Value = (i + 1);
             }
 
             btnJob1.Enabled = true;
             btnJob2.Enabled = false;
             btnJob3.Enabled = false;
             btnJob4.Enabled = false;
+            btnJob5.Enabled = false;
         }
 
         private void btnJob1_Click(object sender, EventArgs e)
@@ -126,6 +126,7 @@ namespace HC_OSHA
                     }
                 }
             }
+            btnJob5.Enabled = true;
         }
 
         private void btnJob4_Click(object sender, EventArgs e)
@@ -262,6 +263,7 @@ namespace HC_OSHA
         {
             string strID = "";
             long nLtdCode = 0;
+            string strBuse = "";
             string strName = "";
             string strBirth = "";
             string SQL = "";
@@ -280,6 +282,7 @@ namespace HC_OSHA
 
             for (int i=0; i < SS1_Sheet1.RowCount; i++)
             {
+                strBuse = SS1_Sheet1.Cells[i, 0].Text.ToString();
                 strName = SS1_Sheet1.Cells[i, 1].Text.ToString();
                 strBirth = SS1_Sheet1.Cells[i, 2].Text.ToString();
                 if (VB.Len(strBirth) > 6) strBirth = VB.Left(strBirth, 6);
@@ -318,16 +321,18 @@ namespace HC_OSHA
                 strHosName = SS1_Sheet1.Cells[i, 4].Text.ToString().Trim();
                 strAge = SS1_Sheet1.Cells[i, 5].Text.ToString().Trim();
                 strSex = SS1_Sheet1.Cells[i, 6].Text.ToString().Trim();
-                
+                if (strSex == "M") strSex = "남";
+                if (strSex == "F") strSex = "여";
+
                 // 뇌심혈관 결과 DB에 저장
                 if (Exist_Ltd_Result2(nLtdCode,strYear,strID)==false)
                 {
                     try
                     {
                         SQL = "";
-                        SQL += " INSERT INTO HIC_LTD_RESULT2 (SITEID,ID,NAME,BIRTH,YEAR,JINDATE, ";
+                        SQL += " INSERT INTO HIC_LTD_RESULT2 (SITEID,ID,BUSE,NAME,BIRTH,YEAR,JINDATE, ";
                         SQL += " HOSNAME,AGE,SEX,RESULT,JOBSABUN,ENTTIME,SWLICENSE) ";
-                        SQL += " VALUES (" + nLtdCode + ",'" + strID + "','" + strName + "','";
+                        SQL += " VALUES (" + nLtdCode + ",'" + strID + "','" + strBuse + "','" + strName + "','";
                         SQL +=  strBirth + "','" + strYear + "','";
                         SQL +=  strJinDate + "','" + strHosName + "', "; //검진일,검진병원
                         SQL +=  strAge + ",'" + strSex + "','";  //나이,성별
@@ -463,6 +468,111 @@ namespace HC_OSHA
         private void SSConv_CellClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnJob5_Click(object sender, EventArgs e)
+        {
+            string strHead = "";
+            string strData = "";
+            int nCol = 0;
+            bool bOK = false;
+
+            // 엑셀파일 1번줄이 제목인지 확인
+            strHead = SSExcel_Sheet1.Cells[0, 0].Text.ToString();
+            strHead += SSExcel_Sheet1.Cells[0, 1].Text.ToString();
+            if (strHead == "") { ComFunc.MsgBox("엑셀파일 1번줄이 제목줄이 아님", "오류"); return; }
+
+            // 변환정보 Clear
+            for (int i = 0; i < SSConv_Sheet1.RowCount; i++)
+            {
+                SSConv_Sheet1.Cells[i, 1].Value = "";
+                SSConv_Sheet1.Cells[i, 2].Value = "";
+            }
+
+            //엑셀파일에서 표준파일 헤드정보를 찾음
+            for (int i = 0; i < SSConv_Sheet1.RowCount; i++)
+            {
+                strHead = VB.Replace(SSConv_Sheet1.Cells[i, 0].Text.Trim(), " ", "");
+                for (int j=0;j<SSExcel_Sheet1.ColumnCount;j++)
+                {
+                    bOK = false;
+                    strData = VB.Replace(SSExcel_Sheet1.Cells[0, j].Text.ToString()," ","");
+                    if (strHead == strData) bOK = true;
+                    if (strHead == "소속")
+                    {
+                        if (strData == "부서명") bOK = true;
+                    }
+                    if (strHead == "검진일")
+                    {
+                        if (strData == "검진일자") bOK = true;
+                    }
+                    if (strHead == "생년월일")
+                    {
+                        if (strData == "주민번호") bOK = true;
+                    }
+                    if (strHead == "허리둘레")
+                    {
+                        if (strData == "복부둘레") bOK = true;
+                    }
+                    if (strHead == "수축기혈압")
+                    {
+                        if (strData == "혈압(최고)1차") bOK = true;
+                    }
+                    if (strHead == "이완기혈압")
+                    {
+                        if (strData == "혈압(최저)1차") bOK = true;
+                    }
+                    if (strHead == "혈당")
+                    {
+                        if (strData == "공복혈당") bOK = true;
+                    }
+                    if (strHead == "HDL")
+                    {
+                        if (strData == "HDL콜레스테롤") bOK = true;
+                    }
+                    if (strHead == "LDL")
+                    {
+                        if (strData == "LDL-콜레스테롤") bOK = true;
+                    }
+                    if (strHead == "중성지방")
+                    {
+                        if (strData == "트리글리세라이드") bOK = true;
+                    }
+                    if (strHead == "BMI")
+                    {
+                        if (strData == "체질량지수") bOK = true;
+                    }
+                    if (strHead == "단백뇨")
+                    {
+                        if (strData == "요단백(단백뇨)(10-1)") bOK = true;
+                    }
+                    if (strHead == "사구체여과율(GFR)")
+                    {
+                        if (strData == "GFR") bOK = true;
+                    }
+                    if (strHead == "흉부X선")
+                    {
+                        if (strData == "흉부-X선") bOK = true;
+                        if (strData == "ChestPA") bOK = true;
+                    }
+                    if (strHead == "10년이내심뇌혈관발병확률(%)")
+                    {
+                        if (strData == "향후10년이내에심뇌혈관질환이발생활확률") bOK = true;
+                    }
+
+                    if (bOK==true)
+                    {
+                        SSConv_Sheet1.Cells[i, 1].Value = (j+1);
+                        break;
+                    }
+
+                }
+            }
+            btnJob4.Enabled = true;
         }
     }
 

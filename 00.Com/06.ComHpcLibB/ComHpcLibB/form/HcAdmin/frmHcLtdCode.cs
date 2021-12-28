@@ -325,6 +325,7 @@ namespace ComHpcLibB
             }
             else if (sender == btnSave)
             {
+                txtCode.Enabled = true;
                 HIC_LTD item = panMain.GetData<HIC_LTD>();
                 IList<HIC_LTD_TAX> item2 = SSTax.GetEditbleData<HIC_LTD_TAX>();
                 int result = 0;

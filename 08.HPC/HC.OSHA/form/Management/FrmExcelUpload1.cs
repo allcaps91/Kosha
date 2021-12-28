@@ -198,9 +198,7 @@ namespace HC_OSHA
                                 {
                                     SS1_Sheet1.Cells[nRow, j].Text = strData;
                                 }
-
                             }
-
                         }
                     }
                 }
