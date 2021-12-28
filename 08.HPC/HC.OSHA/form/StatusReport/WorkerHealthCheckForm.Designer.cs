@@ -473,7 +473,7 @@
             this.SSHealthCheck.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSHealthCheck.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SSHealthCheck.HorizontalScrollBar.TabIndex = 137;
+            this.SSHealthCheck.HorizontalScrollBar.TabIndex = 144;
             this.SSHealthCheck.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSHealthCheck.Location = new System.Drawing.Point(0, 0);
             this.SSHealthCheck.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
@@ -487,7 +487,7 @@
             this.SSHealthCheck.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSHealthCheck.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SSHealthCheck.VerticalScrollBar.TabIndex = 138;
+            this.SSHealthCheck.VerticalScrollBar.TabIndex = 145;
             this.SSHealthCheck.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SSHealthCheck_Sheet1

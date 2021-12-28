@@ -1,7 +1,9 @@
 ﻿using ComBase;
 using ComBase.Controls;
 using ComBase.Mvc.Enums;
+using ComBase.Mvc.Spread;
 using ComBase.Mvc.Utils;
+using ComDbB;
 using ComHpcLibB;
 using ComHpcLibB.Dto;
 using ComHpcLibB.Model;
@@ -19,6 +21,7 @@ using HC.OSHA.Service.StatusReport;
 using HC_Core;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -71,22 +74,15 @@ namespace HC_OSHA.StatusReport
             DtpWorkerEndDate.SetOptions(new DateTimePickerOption { DataField = "END_DATE", DataBaseFormat = DateTimeType.YYYY_MM_DD, DisplayFormat = DateTimeType.YYYY_MM_DD });
 
             SSWorkerList.Initialize(new SpreadOption() { IsRowSelectColor = true });
-            SSWorkerList.AddColumnText("등록번호", nameof(HealthCheckWorkerModel.Worker_ID), 67, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.Always });
-            SSWorkerList.AddColumnText("이름", nameof(HealthCheckWorkerModel.Name), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true});
-            SSWorkerList.AddColumnText("성별(연령)", nameof(HealthCheckWorkerModel.AgeAndGender), 43, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.None });
-            SSWorkerList.AddColumnText("부서", nameof(HealthCheckWorkerModel.Dept), 78, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, WordWrap=true, IsMulti=true });
+            SSWorkerList.AddColumnText("등록번호", nameof(HealthCheckWorkerModel.Worker_ID), 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.Always });
+            SSWorkerList.AddColumnText("이름", nameof(HealthCheckWorkerModel.Name), 70, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true});
+            SSWorkerList.AddColumnText("성별(연령)", nameof(HealthCheckWorkerModel.AgeAndGender), 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.None });
+            SSWorkerList.AddColumnText("부서", nameof(HealthCheckWorkerModel.Dept), 68, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, WordWrap=true, IsMulti=true });
             SSWorkerList.AddColumnText("건강구분", nameof(HealthCheckWorkerModel.Panjeong), 49, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, WordWrap = true });
             SSWorkerList.AddColumnText("검진년도", nameof(HealthCheckWorkerModel.Year), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("검진소견", nameof(HealthCheckWorkerModel.PanName), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
             SSWorkerList.AddColumnText("검진", nameof(HealthCheckWorkerModel.IsSpecial), 50, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
        
-            //SSHealthCare.Initialize(new SpreadOption() { IsRowSelectColor = true });
-            //SSHealthCare.AddColumnText("사업장명", nameof(HealthCareReciptModel.SiteName), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            //SSHealthCare.AddColumnText("이름", nameof(HealthCareReciptModel.NAME), 55, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            //SSHealthCare.AddColumnText("검진일", nameof(HealthCareReciptModel.JEPDATE), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            //SSHealthCare.AddColumnText("검진종류", nameof(HealthCareReciptModel.EXNAME), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            //SSHealthCare.SetDataSource(new List<HealthCareReciptModel>());
-
             SSMemo.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true });
             SSMemo.AddColumnText("메모", nameof(HIC_OSHA_PATIENT_MEMO.MEMO), 347, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true });
             SSMemo.AddColumnText("작성일", nameof(HIC_OSHA_PATIENT_MEMO.WriteDate), 117, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true });
@@ -125,7 +121,91 @@ namespace HC_OSHA.StatusReport
             SSCard.ShowRow(0, 0, FarPoint.Win.Spread.VerticalPosition.Top);
         }
 
-     
+        // 자회사 정보를 읽음
+        private string READ_Relation_LTD(long SiteID)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            string strLTD = "";
+
+            strLTD = SiteID.ToString();
+
+            try
+            {
+                SQL = "";
+                SQL = "SELECT CHILD_ID FROM HIC_OSHA_RELATION ";
+                SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "   AND  PARENT_ID = " + strLTD + " ";
+                SQL = SQL + ComNum.VBLF + "ORDER BY CHILD_ID ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        strLTD = strLTD + "," + dt.Rows[i]["USERID"].ToString().Trim();
+                    }
+                }
+
+                dt.Dispose();
+                dt = null;
+                return strLTD;
+            }
+            catch (Exception ex)
+            {
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                }
+                ComFunc.MsgBox(ex.Message);
+                return strLTD;
+            }
+        }
+
+        // 마지막 연도의 판정 정보를 읽음
+        private string Get_Last_Panjeng(string strID, string strJong)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            string strResult = "";
+
+            try
+            {
+                SQL = "";
+                SQL = "SELECT YEAR,GONGJENG,SEX,AGE,GGUBUN,SOGEN FROM HIC_LTD_RESULT3 ";
+                SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "   AND  ID = '" + strID + "' ";
+                SQL = SQL + ComNum.VBLF + "   AND  JONG = '" + strJong + "' ";
+                SQL = SQL + ComNum.VBLF + "ORDER BY YEAR DESC ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0)
+                {
+                    strResult = strID + "{}" + dt.Rows[0]["YEAR"].ToString().Trim() + "{}"; //(1),(2)
+                    strResult = strResult + dt.Rows[0]["GONGJENG"].ToString().Trim() + "{}"; //(3)
+                    strResult = strResult + dt.Rows[0]["SEX"].ToString().Trim() + "{}"; //(4)
+                    strResult = strResult + dt.Rows[0]["AGE"].ToString().Trim() + "{}"; //(5)
+                    strResult = strResult + dt.Rows[0]["GGUBUN"].ToString().Trim() + "{}"; //(6)
+                    strResult = strResult + dt.Rows[0]["SOGEN"].ToString().Trim() + "{}"; //(7)
+                }
+
+                dt.Dispose();
+                dt = null;
+                return strResult;
+            }
+            catch (Exception ex)
+            {
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                }
+                ComFunc.MsgBox(ex.Message);
+                return "";
+            }
+        }
+
         private void SearchMacro()
         {
 
@@ -169,9 +249,163 @@ namespace HC_OSHA.StatusReport
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            bool bOK = false;
+
+            int i = 0;
+            int nRow = 0;
+            string strSiteList = "";
+            string dept = "";
+            string panjeong = "";
+            long reportId = 0;
+
+            string strID = "";
+            string strName = "";
+            string strDept = "";
+            string strIpsaDate = "";
+            string strTesaDate = "";
+            string strPanjeng1 = "";
+            string strPanjeng2 = "";
+            string strPanjeng = "";
+
+            if (CboDept.SelectedItem != null)
+            {
+                dept = CboDept.SelectedItem.ToString();
+            }
+            if (CboPanjeong.SelectedItem != null)
+            {
+                panjeong = CboPanjeong.SelectedItem.ToString();
+            }
+
+            if (ChkSangDam.Checked)
+            {
+                if (StatusReportNurseDto != null)
+                {
+                    reportId = StatusReportNurseDto.ID;
+                }
+                else if (StatusReportDoctorDto != null)
+                {
+                    reportId = StatusReportDoctorDto.ID;
+                }
+            }
+            // 조회할 관계회사 목록을 생성
+            strSiteList = READ_Relation_LTD(base.SelectedSite.ID);
+            try
+            {
+                SQL = "SELECT ID,NAME,DEPT,WORKER_ROLE,IPSADATE,TESADATE,ISMANAGEOSHA ";
+                SQL = SQL + ComNum.VBLF + " FROM HIC_SITE_WORKER ";
+                SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "   AND  SITEID IN (" + strSiteList + ") ";
+                //이름검색
+                if(txtSearchName.Text.Trim()!="") SQL = SQL + ComNum.VBLF + " AND NAME LIKE '%" + txtSearchName.Text.Trim() + "%' ";
+                //중점관리대상자
+                if (ChkSearchIsManageOsha.Checked == true) SQL = SQL + ComNum.VBLF + " AND ISMANAGEOSHA='Y' ";
+                //부서별 조회
+                if (dept != "전체") SQL = SQL + ComNum.VBLF + " AND DEPT='" + dept + "' ";
+                //상담자 명단 조회
+                if (reportId > 0)
+                {
+                    SQL = SQL + ComNum.VBLF + " AND ID IN (SELECT WORKER_ID FROM HIC_OSHA_HEALTHCHECK ";
+                    SQL = SQL + ComNum.VBLF + "             WHERE REPORT_ID=" + reportId + " ";
+                    SQL = SQL + ComNum.VBLF + "               AND SWLicense='" + clsType.HosInfo.SwLicense + "') ";
+                }
+                SQL = SQL + ComNum.VBLF + "ORDER BY NAME ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0)
+                {
+                    SSWorkerList_Sheet1.RowCount = dt.Rows.Count;
+                    for (i = 0; i < dt.Rows.Count; i++)
+                    {
+                        strID = dt.Rows[i]["ID"].ToString().Trim();
+                        strName = dt.Rows[i]["NAME"].ToString().Trim();
+                        strDept = dt.Rows[i]["DEPT"].ToString().Trim();
+                        strIpsaDate = dt.Rows[i]["IPSADATE"].ToString().Trim();
+                        strTesaDate = dt.Rows[i]["TESADATE"].ToString().Trim();
+                        strPanjeng1 = Get_Last_Panjeng(strID, "특수");
+                        strPanjeng2 = Get_Last_Panjeng(strID, "일반");
+                        bOK = false;
+                        if (panjeong != null)
+                        {
+                            if (panjeong == "A")
+                            {
+                                if (VB.Pstr(strPanjeng1, "{}", 6)==panjeong)
+                                {
+                                    strPanjeng = strPanjeng1;
+                                    bOK = true;
+                                }
+                                else if (VB.Pstr(strPanjeng2, "{}", 6)==panjeong) 
+                                {
+                                    strPanjeng = strPanjeng2;
+                                    bOK = true;
+                                }
+                            }
+                            else if (VB.InStr(VB.Pstr(strPanjeng1, "{}", 6), panjeong) > 0)
+                            {
+                                strPanjeng = strPanjeng1;
+                                bOK = true;
+                            }
+                            else if (VB.InStr(VB.Pstr(strPanjeng2, "{}", 6), panjeong) > 0)
+                            {
+                                strPanjeng = strPanjeng2;
+                                bOK = true;
+                            }
+                        }
+                        else
+                        {
+                            if (strPanjeng1 != "")
+                            {
+                                strPanjeng = strPanjeng1;
+                                bOK = true;
+                            }
+                            else if (strPanjeng2 != "")
+                            {
+                                strPanjeng = strPanjeng2;
+                                bOK = true;
+                            }
+                        }
+                        if (bOK == true)
+                        {
+                            SSWorkerList_Sheet1.Cells[nRow, 0].Text = strID;
+                            SSWorkerList_Sheet1.Cells[nRow, 1].Text = strName;
+                            SSWorkerList_Sheet1.Cells[nRow, 2].Text = VB.Pstr(strPanjeng, "{}", 4) + "(" + VB.Pstr(strPanjeng, "{}", 5) + ")"; //성별(연령)
+                            SSWorkerList_Sheet1.Cells[nRow, 3].Text = VB.Pstr(strPanjeng, "{}", 3); //부서
+                            SSWorkerList_Sheet1.Cells[nRow, 4].Text = VB.Pstr(strPanjeng, "{}", 6); //건강구분
+                            SSWorkerList_Sheet1.Cells[nRow, 5].Text = VB.Pstr(strPanjeng, "{}", 2); //년도
+                            SSWorkerList_Sheet1.Cells[nRow, 6].Text = VB.Pstr(strPanjeng, "{}", 7); //검진소견
+                            SSWorkerList_Sheet1.Cells[nRow, 7].Text = dt.Rows[i]["ISMANAGEOSHA"].ToString().Trim();
+                            if (dt.Rows[i]["ISMANAGEOSHA"].ToString().Trim() == "Y")
+                            {
+                                SSWorkerList.ActiveSheet.Rows[nRow].BackColor = Color.FromArgb(237, 211, 237);
+                            }
+                            else
+                            {
+                                SSWorkerList.ActiveSheet.Rows[nRow].BackColor = Color.White;
+                            }
+                            nRow++;
+                        }
+                    }
+                }
+                SSWorkerList_Sheet1.RowCount = nRow;
+                LblCount.Text = "총: " + nRow + " 명";
+
+                dt.Dispose();
+                dt = null;
+            }
+            catch (Exception ex)
+            {
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                }
+                ComFunc.MsgBox(ex.Message);
+            }
             //Init();
-            Search();
+           // Search();
         }
+
         public void SetPanjeong()
         {
             CboPanjeong.Items.Clear();
@@ -362,7 +596,7 @@ namespace HC_OSHA.StatusReport
             base.SelectedSite = siteModel;
             SetDept();
             SetPanjeong();
-            Search();
+            // Search();
         }
         /// <summary>
         /// 상담이력 조회
@@ -543,7 +777,7 @@ namespace HC_OSHA.StatusReport
 
         private void CboDept_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Search();
+            // Search();
         }
 
         private void SSHistory_CellDoubleClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
@@ -641,13 +875,22 @@ namespace HC_OSHA.StatusReport
 
             if (NotSaved)
             {
-                if(MessageUtil.Confirm("상담(지도)내요 또는 상담 후 건의사항이 변경되었습니다 저장하겠습니까? ") == DialogResult.Yes){
+                if(MessageUtil.Confirm("상담(지도)내용 또는 상담 후 건의사항이 변경되었습니다 저장하겠습니까? ") == DialogResult.Yes){
                     btnSave.PerformClick();
                 }
             }
 
-            HealthCheckWorkerModel worker = SSWorkerList.GetRowData(e.Row) as HealthCheckWorkerModel;
-            SELECTED_WORKED = worker;// hcSiteWorkerService.hcSiteWorkerRepository.FindOne(worker.ID);
+            HealthCheckWorkerModel worker = new HealthCheckWorkerModel();
+            worker.Worker_ID = SSWorkerList_Sheet1.Cells[e.Row, 0].Text.Trim();
+            worker.Name = SSWorkerList_Sheet1.Cells[e.Row, 1].Text.Trim();
+            worker.Gender = VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 1);
+            worker.Age = Int32.Parse(VB.Pstr(VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 2),")",1));
+            worker.Dept = SSWorkerList_Sheet1.Cells[e.Row, 3].Text.Trim();
+            worker.SITEID = base.SelectedSite.ID;
+            worker.END_DATE = null;
+            worker.IsManageOsha = SSWorkerList_Sheet1.Cells[e.Row, 7].Text.Trim();
+
+            SELECTED_WORKED = worker;
             DtpWorkerEndDate.SetValue(null);
 
             HealthCheckDto dto = new HealthCheckDto();
@@ -674,98 +917,144 @@ namespace HC_OSHA.StatusReport
             SearchMemo(worker.Worker_ID);
             SearchRemark(worker.Worker_ID);
 
-            //검진이력(접수내역)
-            //List<HealthCareReciptModel> receiptList = healthCareReceiptService.FindHealthCareByPano(worker.Pano);
-            //SSHealthCare.SetDataSource(receiptList);
+            SSHealthCheck.ActiveSheet.RowCount = 0;
+            ClearSScard();
 
-            //SSHealthCheckList.ActiveSheet.RowCount = receiptList.Count;
-            //for(int i= 0; i < receiptList.Count; i++)
+            //질병유소견자 
+            SSHealthCheck_Show(worker.Worker_ID); 
+
+            //List<HealthCareReciptModel> receiptList = healthCareReceiptService.FindHealthCareByPano(worker.Pano);
+            //if (receiptList != null)
             //{
-            //    HIC_RES_BOHUM1 first = healthCareService.GetFirstExaminationQuestionnaire(receiptList[i].WRTNO);
-            //    if(first != null)
+            //    if (receiptList.Count >= 1)
             //    {
-            //        SSHealthCheckList.ActiveSheet.Cells[i, 0].Value = receiptList[i].JEPDATE;
-            //        SSHealthCheckList.ActiveSheet.Cells[i, 1].Value = first.HEIGHT; 
-            //        SSHealthCheckList.ActiveSheet.Cells[i, 2].Value = first.WEIGHT;
-            //        if(first.T_SMOKE1 == "1")
+            //        try
             //        {
-            //            SSHealthCheckList.ActiveSheet.Cells[i, 3].Value = "유";
+            //            frmHcPanOpinionAfterMgmtGenSpc form = new frmHcPanOpinionAfterMgmtGenSpc();
+            //            //근로자 건강상담관리(SSCard), 질병유소견자 대행(SSHealthCheck)
+            //            form.SetSpread(SSCard, SSHealthCheck, receiptList[receiptList.Count - 1].JEPDATE, receiptList[0].JEPDATE, receiptList[0].SiteId.ToString(), "", worker.Pano);
+
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            Log.Error(ex);
+            //            MessageUtil.Alert("질병유소견자(대행) 정보를 가져오는중 오류가 발생하였습니다");
+            //        }
+
+            //        try
+            //        {
+            //            SetPatient(receiptList[0]);
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            Log.Error(ex);
+            //            MessageUtil.Alert("근로자 건강 상담 및 사후정보를 가져오는중 오류가 발생하였습니다");
+            //        }
+
+            //        try
+            //        {
+            //            List<WrtnoAndYear> wrtNoList = new List<WrtnoAndYear>();
+            //            for (int i = 0; i < receiptList.Count; i++)
+            //            {
+            //                HealthCareReciptModel model = receiptList[i];
+            //                if (model.UCodes.IsNullOrEmpty() == false)
+            //                {
+            //                    //일반특수 최대 3건의 wrtno 구하기
+            //                    WrtnoAndYear year = new WrtnoAndYear();
+            //                    year.WRTNO = model.WRTNO;
+            //                    year.YEAR = model.JEPDATE.Substring(0, 4);
+            //                    wrtNoList.Add(year);
+            //                    if (wrtNoList.Count == 3)
+            //                    {
+            //                        break;
+            //                    }
+            //                }
+            //            }
+            //            if (wrtNoList.Count > 0)
+            //            {
+            //                int count = wrtNoList.Count;
+            //                if (count > 3)
+            //                {
+            //                    count = 3;
+            //                }
+            //                //청력 오디오그램
+            //                for (int row = 1; row <= count; row++)
+            //                {
+
+            //                    SetAudioGram(row, wrtNoList[row - 1]);
+            //                }
+            //            }
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            Log.Error(ex);
+            //            MessageUtil.Alert("청력 오디오그램 가져오는중 오류가 발생하였습니다");
             //        }
             //    }
             //}
+        }
 
-            SSHealthCheck.ActiveSheet.RowCount = 0;
-            ClearSScard();
-         
-            List<HealthCareReciptModel> receiptList = healthCareReceiptService.FindHealthCareByPano(worker.Pano);
-            //SSHealthCare.SetDataSource(receiptList);
-            if (receiptList != null)
+        //질병유소견자 
+        private void SSHealthCheck_Show(string strWorkId)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            int i = 0;
+
+            SSHealthCheck_Sheet1.RowCount = 0;
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            try
             {
-                if (receiptList.Count >= 1)
+                SQL = "SELECT GONGJENG,NAME,SEX,AGE,GUNSOK,YUHE,GGUBUN,SOGEN,SAHU,";
+                SQL = SQL + ComNum.VBLF + " UPMU,YEAR,JINDATE,JIPYO  ";
+                SQL = SQL + ComNum.VBLF + "  FROM HIC_LTD_RESULT3 ";
+                SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "   AND ID='" + strWorkId + "' ";
+                SQL = SQL + ComNum.VBLF + " ORDER BY YEAR DESC,JINDATE DESC,JONG ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0)
                 {
-                    try
-                    {
-                        frmHcPanOpinionAfterMgmtGenSpc form = new frmHcPanOpinionAfterMgmtGenSpc();
-                        //근로자 건강상담관리(SSCard), 질병유소견자 대행(SSHealthCheck)
-                        form.SetSpread(SSCard, SSHealthCheck, receiptList[receiptList.Count - 1].JEPDATE, receiptList[0].JEPDATE, receiptList[0].SiteId.ToString(), "", worker.Pano);
+                    SSHealthCheck_Sheet1.RowCount = dt.Rows.Count;
+                    SSHealthCheck_Sheet1.SetRowHeight(-1, ComNum.SPDROWHT);
 
-                    }
-                    catch (Exception ex)
+                    for (i = 0; i < dt.Rows.Count; i++)
                     {
-                        Log.Error(ex);
-                        MessageUtil.Alert("질병유소견자(대행) 정보를 가져오는중 오류가 발생하였습니다");
-                    }
-
-                    try
-                    {
-                        SetPatient(receiptList[0]);
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error(ex);
-                        MessageUtil.Alert("근로자 건강 상담 및 사후정보를 가져오는중 오류가 발생하였습니다");
-                    }
-
-                    try
-                    {
-                        List<WrtnoAndYear> wrtNoList = new List<WrtnoAndYear>();
-                        for (int i = 0; i < receiptList.Count; i++)
-                        {
-                            HealthCareReciptModel model = receiptList[i];
-                            if (model.UCodes.IsNullOrEmpty() == false)
-                            {
-                                //일반특수 최대 3건의 wrtno 구하기
-                                WrtnoAndYear year = new WrtnoAndYear();
-                                year.WRTNO = model.WRTNO;
-                                year.YEAR = model.JEPDATE.Substring(0, 4);
-                                wrtNoList.Add(year);
-                                if (wrtNoList.Count == 3)
-                                {
-                                    break;
-                                }
-                            }
-                        }
-                        if (wrtNoList.Count > 0)
-                        {
-                            int count = wrtNoList.Count;
-                            if (count > 3)
-                            {
-                                count = 3;
-                            }
-                            //청력 오디오그램
-                            for (int row = 1; row <= count; row++)
-                            {
-
-                                SetAudioGram(row, wrtNoList[row - 1]);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error(ex);
-                        MessageUtil.Alert("청력 오디오그램 가져오는중 오류가 발생하였습니다");
+                        SSHealthCheck_Sheet1.Cells[i, 0].Text = dt.Rows[i]["GONGJENG"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 1].Text = dt.Rows[i]["NAME"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 2].Text = dt.Rows[i]["SEX"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 3].Text = dt.Rows[i]["AGE"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 4].Text = dt.Rows[i]["GUNSOK"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 5].Text = dt.Rows[i]["YUHE"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 6].Text = dt.Rows[i]["JIPYO"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 7].Text = dt.Rows[i]["GGUBUN"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 8].Text = dt.Rows[i]["SOGEN"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 9].Text = dt.Rows[i]["SAHU"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 10].Text = dt.Rows[i]["UPMU"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 11].Text = dt.Rows[i]["YEAR"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 12].Text = dt.Rows[i]["JINDATE"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Rows[i].Height = SSHealthCheck_Sheet1.Rows[i].GetPreferredHeight();
                     }
                 }
+
+                dt.Dispose();
+                dt = null;
+
+                Cursor.Current = Cursors.Default;
+
+            }
+            catch (Exception ex)
+            {
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                }
+
+                ComFunc.MsgBox(ex.Message);
+                Cursor.Current = Cursors.Default;
             }
         }
 
@@ -1129,7 +1418,7 @@ namespace HC_OSHA.StatusReport
 
         private void CboPanjeong_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Search();
+            // Search();
         }
 
         private void ssMacroSugesstionList_CellDoubleClick(object sender, CellClickEventArgs e)
@@ -1290,14 +1579,14 @@ namespace HC_OSHA.StatusReport
 
         private void ChkSangDam_CheckedChanged(object sender, EventArgs e)
         {
-            Search();
+            //Search();
         }
 
         private void txtSearchName_TextChanged(object sender, EventArgs e)
         {
             if (txtSearchName.Text.Length <= 0)
             {
-                Search();
+                //Search();
             }
         }
     }

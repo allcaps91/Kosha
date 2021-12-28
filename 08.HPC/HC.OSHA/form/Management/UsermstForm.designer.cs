@@ -33,6 +33,7 @@
             FarPoint.Win.Spread.CellType.TextCellType textCellType3 = new FarPoint.Win.Spread.CellType.TextCellType();
             FarPoint.Win.Spread.CellType.TextCellType textCellType4 = new FarPoint.Win.Spread.CellType.TextCellType();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSign = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -79,7 +80,6 @@
             this.txtViewName = new System.Windows.Forms.TextBox();
             this.btnView = new System.Windows.Forms.Button();
             this.chkTejik = new System.Windows.Forms.CheckBox();
-            this.btnSign = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -118,6 +118,16 @@
             this.panel2.Size = new System.Drawing.Size(330, 485);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // btnSign
+            // 
+            this.btnSign.Location = new System.Drawing.Point(233, 203);
+            this.btnSign.Name = "btnSign";
+            this.btnSign.Size = new System.Drawing.Size(77, 29);
+            this.btnSign.TabIndex = 87;
+            this.btnSign.Text = "사인등록";
+            this.btnSign.UseVisualStyleBackColor = true;
+            this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
             // 
             // label10
             // 
@@ -638,16 +648,6 @@
             this.chkTejik.TabIndex = 8;
             this.chkTejik.Text = "퇴직자제외";
             this.chkTejik.UseVisualStyleBackColor = true;
-            // 
-            // btnSign
-            // 
-            this.btnSign.Location = new System.Drawing.Point(233, 203);
-            this.btnSign.Name = "btnSign";
-            this.btnSign.Size = new System.Drawing.Size(77, 29);
-            this.btnSign.TabIndex = 87;
-            this.btnSign.Text = "사인등록";
-            this.btnSign.UseVisualStyleBackColor = true;
-            this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
             // 
             // UsermstForm
             // 
