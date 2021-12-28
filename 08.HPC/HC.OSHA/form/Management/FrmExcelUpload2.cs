@@ -502,74 +502,88 @@ namespace HC_OSHA
                     bOK = false;
                     strData = VB.Replace(SSExcel_Sheet1.Cells[0, j].Text.ToString()," ","");
                     if (strHead == strData) bOK = true;
-                    if (strHead == "소속")
+                    if (bOK==false && strHead == "소속")
                     {
                         if (strData == "부서명") bOK = true;
+                        if (strData == "부서") bOK = true;
                     }
-                    if (strHead == "검진일")
+                    if (bOK == false && strHead == "검진일")
                     {
                         if (strData == "검진일자") bOK = true;
+                        if (strData == "검사일") bOK = true;
                     }
-                    if (strHead == "생년월일")
+                    if (bOK == false && strHead == "생년월일")
                     {
                         if (strData == "주민번호") bOK = true;
                     }
-                    if (strHead == "허리둘레")
+                    if (bOK == false && strHead == "허리둘레")
                     {
                         if (strData == "복부둘레") bOK = true;
                     }
-                    if (strHead == "수축기혈압")
+                    if (bOK == false && strHead == "수축기혈압")
                     {
                         if (strData == "혈압(최고)1차") bOK = true;
+                        if (strData == "혈압") bOK = true;
                     }
-                    if (strHead == "이완기혈압")
+                    if (bOK == false && strHead == "이완기혈압")
                     {
                         if (strData == "혈압(최저)1차") bOK = true;
                     }
-                    if (strHead == "혈당")
+                    if (bOK == false && strHead == "혈당")
                     {
                         if (strData == "공복혈당") bOK = true;
                     }
-                    if (strHead == "HDL")
+                    if (bOK == false && strHead == "총콜레스테롤")
+                    {
+                        if (strData == "T-Chol") bOK = true;
+                    }
+                    if (bOK == false && strHead == "HDL")
                     {
                         if (strData == "HDL콜레스테롤") bOK = true;
+                        if (strData == "HDL-C") bOK = true;
                     }
-                    if (strHead == "LDL")
+                    if (bOK == false && strHead == "LDL")
                     {
                         if (strData == "LDL-콜레스테롤") bOK = true;
+                        if (strData == "LDL-C") bOK = true;
                     }
-                    if (strHead == "중성지방")
+                    if (bOK == false && strHead == "중성지방")
                     {
                         if (strData == "트리글리세라이드") bOK = true;
+                        if (strData == "TG") bOK = true;
                     }
-                    if (strHead == "BMI")
+                    if (bOK == false && strHead == "BMI")
                     {
                         if (strData == "체질량지수") bOK = true;
                     }
-                    if (strHead == "단백뇨")
+                    if (bOK == false && strHead == "단백뇨")
                     {
                         if (strData == "요단백(단백뇨)(10-1)") bOK = true;
                     }
-                    if (strHead == "사구체여과율(GFR)")
+                    if (bOK == false && strHead == "사구체여과율(GFR)")
                     {
                         if (strData == "GFR") bOK = true;
                     }
-                    if (strHead == "흉부X선")
+                    if (bOK == false && strHead == "흉부X선")
                     {
                         if (strData == "흉부-X선") bOK = true;
                         if (strData == "ChestPA") bOK = true;
+                        if (strData == "흉부") bOK = true;
                     }
-                    if (strHead == "10년이내심뇌혈관발병확률(%)")
+                    if (bOK == false && strHead == "10년이내심뇌혈관발병확률(%)")
                     {
                         if (strData == "향후10년이내에심뇌혈관질환이발생활확률") bOK = true;
+                        if (strData == "사유") bOK = true;
                     }
-
+                    if (bOK == false && strHead == "최종평가")
+                    {
+                        if (strData == "소견") bOK = true;
+                    }
                     if (bOK==true)
                     {
                         SSConv_Sheet1.Cells[i, 1].Value = (j+1);
                         break;
                     }
-
                 }
             }
             btnJob4.Enabled = true;

@@ -53,21 +53,30 @@ namespace HC_OSHA
                 FnCol[i] = 0;
             }
 
-            for (i = 0; i < 5; i++)
-            {
-                cboYear.Items.Add(nYear.ToString());
-                nYear--;
+            if (cboYear.Items.Count == 0)
+            { 
+                for (i = 0; i < 5; i++)
+                {
+                    cboYear.Items.Add(nYear.ToString());
+                    nYear--;
+                }
             }
             cboYear.SelectedIndex = 0;
 
-            cboBangi.Items.Add("전체");
-            cboBangi.Items.Add("상반기");
-            cboBangi.Items.Add("하반기");
+            if (cboBangi.Items.Count == 0)
+            {
+                cboBangi.Items.Add("전체");
+                cboBangi.Items.Add("상반기");
+                cboBangi.Items.Add("하반기");
+            }
             cboBangi.SelectedIndex = 0;
 
-            cboJong.Items.Add("특수");
-            cboJong.Items.Add("일반");
-            cboJong.Items.Add("배치전");
+            if (cboJong.Items.Count == 0)
+            {
+                cboJong.Items.Add("특수");
+                cboJong.Items.Add("일반");
+                cboJong.Items.Add("배치전");
+            }
             cboJong.SelectedIndex = 0;
 
             SS1_Sheet1.RowCount = 0;
@@ -209,7 +218,7 @@ namespace HC_OSHA
             for (i = 1; i < SSExcel_Sheet1.RowCount; i++)
             {
                 isBlankLine = true;
-                for (j = 0; j < 3; j++)
+                for (j = 0; j < SSExcel_Sheet1.ColumnCount; j++)
                 {
                     if (SSExcel_Sheet1.Cells[i, j].Text.ToString() != "")
                     {
@@ -270,6 +279,18 @@ namespace HC_OSHA
                                             }
 
                                         }
+                                        else if (strData == "정상" || strData == "필요없음")
+                                        {
+                                            strNewData = SS1_Sheet1.Cells[nRow - 1, j].Text.ToString();
+                                            if (VB.InStr(strNewData, strData) == 0)
+                                            {
+                                                strNewData = SS1_Sheet1.Cells[nRow - 1, j].Text.ToString();
+                                                strNewData = strNewData + "," + ComNum.VBLF + strData;
+                                                SS1_Sheet1.Cells[nRow - 1, j].Text = strNewData;
+                                            }
+
+                                        }
+
                                         else
                                         {
                                             strNewData = SS1_Sheet1.Cells[nRow - 1, j].Text.ToString();
@@ -351,64 +372,62 @@ namespace HC_OSHA
             strMsg = "";
             for (int i = 0; i < SS1_Sheet1.RowCount; i++)
             {
-                strName = SS1_Sheet1.Cells[i, 1].Text.ToString();
-                strSex = SS1_Sheet1.Cells[i, 2].Text.ToString();
-                strAge = SS1_Sheet1.Cells[i, 3].Text.ToString();
+                strName = SS1_Sheet1.Cells[i, 1].Text.ToString().Trim();
+                strSex = SS1_Sheet1.Cells[i, 2].Text.ToString().Trim();
+                strAge = SS1_Sheet1.Cells[i, 3].Text.ToString().Trim();
                 strJinDate = SS1_Sheet1.Cells[i, 11].Text.ToString().Trim();
                 strBirth = SS1_Sheet1.Cells[i, 12].Text.ToString().Trim();
 
-                //생년월일이 공란인것만 찾음
-                if (strBirth == "")
+                if (strName != "" && strSex != "" && strAge != "")
                 {
-                    SQL = "";
-                    SQL = "SELECT ID,BIRTH,JINDATE FROM HIC_LTD_RESULT2 ";
-                    SQL = SQL + ComNum.VBLF + "WHERE SITEID=" + nLtdCode + " ";
-                    SQL = SQL + ComNum.VBLF + "  AND YEAR = '" + strYear + "' ";
-                    SQL = SQL + ComNum.VBLF + "  AND NAME='" + strName + "' ";
-                    SQL = SQL + ComNum.VBLF + "  AND SEX = '" + strSex + "' ";
-                    SQL = SQL + ComNum.VBLF + "  AND Age = " + strAge + " ";
-                    SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
-                    SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
-                    if (dt.Rows.Count > 0)
-                    {
-                        SS1_Sheet1.Cells[i, 11].Text = dt.Rows[0]["JINDATE"].ToString().Trim();
-                        SS1_Sheet1.Cells[i, 12].Text = dt.Rows[0]["BIRTH"].ToString().Trim();
-                        strJinDate = SS1_Sheet1.Cells[i, 11].Text.ToString();
-                        strBirth = SS1_Sheet1.Cells[i, 12].Text.ToString();
-                    }
-                    dt.Dispose();
-                    dt = null;
-
-                    // 직원정보에서 동명2인이 없으면 생년월일을 자동 가져옴
+                    //생년월일이 공란인것만 찾음
                     if (strBirth == "")
                     {
-                        SQL = "SELECT ID,JUMIN FROM HIC_SITE_WORKER ";
+                        SQL = "";
+                        SQL = "SELECT ID,BIRTH,JINDATE FROM HIC_LTD_RESULT2 ";
                         SQL = SQL + ComNum.VBLF + "WHERE SITEID=" + nLtdCode + " ";
+                        SQL = SQL + ComNum.VBLF + "  AND YEAR = '" + strYear + "' ";
                         SQL = SQL + ComNum.VBLF + "  AND NAME='" + strName + "' ";
+                        SQL = SQL + ComNum.VBLF + "  AND SEX = '" + strSex + "' ";
+                        SQL = SQL + ComNum.VBLF + "  AND AGE = " + strAge + " ";
                         SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
                         SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
-                        if (dt.Rows.Count > 1)
+                        if (dt.Rows.Count > 0)
                         {
-                            dt.Dispose();
-                            dt = null;
-                            strMsg = strMsg + (i + 1).ToString() + "번줄 " + strName + " " + strSex + " ";
-                            strMsg = strMsg + strAge + " 동명이인이 있어 저장 불가" + ComNum.VBLF;
-                        }
-                        else if (dt.Rows.Count == 1)
-                        { 
-                            SS1_Sheet1.Cells[i, 12].Text = dt.Rows[0]["JUMIN"].ToString().Trim();
+                            SS1_Sheet1.Cells[i, 11].Text = dt.Rows[0]["JINDATE"].ToString().Trim();
+                            SS1_Sheet1.Cells[i, 12].Text = dt.Rows[0]["BIRTH"].ToString().Trim();
+                            strJinDate = SS1_Sheet1.Cells[i, 11].Text.ToString();
                             strBirth = SS1_Sheet1.Cells[i, 12].Text.ToString();
-                        }
-                        else if (dt.Rows.Count == 0)
-                        {
-                            dt.Dispose();
-                            dt = null;
-
-                            strMsg = strMsg + (i + 1).ToString() + "번줄 " + strName + " " + strSex + " ";
-                            strMsg = strMsg + strAge + " 직원명단에 없어 저장 불가" + ComNum.VBLF;
                         }
                         dt.Dispose();
                         dt = null;
+
+                        // 직원정보에서 동명2인이 없으면 생년월일을 자동 가져옴
+                        if (strBirth == "")
+                        {
+                            SQL = "SELECT ID,JUMIN FROM HIC_SITE_WORKER ";
+                            SQL = SQL + ComNum.VBLF + "WHERE SITEID=" + nLtdCode + " ";
+                            SQL = SQL + ComNum.VBLF + "  AND NAME='" + strName + "' ";
+                            SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+                            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                            if (dt.Rows.Count > 1)
+                            {
+                                strMsg = strMsg + (i + 1).ToString() + "번줄 " + strName + " " + strSex + " ";
+                                strMsg = strMsg + strAge + " 동명이인이 있어 저장 불가" + ComNum.VBLF;
+                            }
+                            else if (dt.Rows.Count == 1)
+                            {
+                                SS1_Sheet1.Cells[i, 12].Text = dt.Rows[0]["JUMIN"].ToString().Trim();
+                                strBirth = SS1_Sheet1.Cells[i, 12].Text.ToString();
+                            }
+                            else if (dt.Rows.Count == 0)
+                            {
+                                strMsg = strMsg + (i + 1).ToString() + "번줄 " + strName + " " + strSex + " ";
+                                strMsg = strMsg + strAge + " 직원명단에 없어 저장 불가" + ComNum.VBLF;
+                            }
+                            dt.Dispose();
+                            dt = null;
+                        }
                     }
                 }
             }
@@ -423,9 +442,9 @@ namespace HC_OSHA
             for (int i = 0; i < SS1_Sheet1.RowCount; i++)
             {
                 strGongjeng = SS1_Sheet1.Cells[i, 0].Text.ToString();
-                strName = SS1_Sheet1.Cells[i, 1].Text.ToString();
-                strSex = SS1_Sheet1.Cells[i, 2].Text.ToString();
-                strAge = SS1_Sheet1.Cells[i, 3].Text.ToString();
+                strName = SS1_Sheet1.Cells[i, 1].Text.ToString().Trim();
+                strSex = SS1_Sheet1.Cells[i, 2].Text.ToString().Trim();
+                strAge = SS1_Sheet1.Cells[i, 3].Text.ToString().Trim();
                 strGunsok = SS1_Sheet1.Cells[i, 4].Text.ToString();
                 strYuhe = SS1_Sheet1.Cells[i, 5].Text.ToString();
                 strJipyo = SS1_Sheet1.Cells[i, 6].Text.ToString();
@@ -439,57 +458,60 @@ namespace HC_OSHA
                 if (strSex == "M") strSex = "남";
                 if (strSex == "F") strSex = "여";
 
-                // 사원이 없으면 신규등록함
-                worker.ID = "";
-                worker.SITEID = nLtdCode;
-                worker.NAME = strName;
-                worker.DEPT = "";
-                worker.TEL = "";
-                worker.ISDELETED = "N";
-                worker.JUMIN = strBirth;
-                worker.PANO = 0;
-                worker.PTNO = "";
-                worker.WORKER_ROLE = "EMP_ROLE";
-                worker.IPSADATE = "";
-                HC_SITE_WORKER saved = hcSiteWorkerRepository.FindOneByBirth(nLtdCode, strName, strBirth);
-                if (saved == null)
+                if (strName != "" && strSex != "" && strAge != "")
                 {
-                    saved = hcSiteWorkerRepository.Insert(worker);
-                }
-                else
-                {
-                    worker.ID = saved.ID;
-                }
-
-                strID = worker.ID;
-
-                // 유질환자 사후관리
-                if (Exist_Ltd_Result3(nLtdCode, strYear,strBangi, strID) == false)
-                {
-                    try
+                    // 사원이 없으면 신규등록함
+                    worker.ID = "";
+                    worker.SITEID = nLtdCode;
+                    worker.NAME = strName;
+                    worker.DEPT = "";
+                    worker.TEL = "";
+                    worker.ISDELETED = "N";
+                    worker.JUMIN = strBirth;
+                    worker.PANO = 0;
+                    worker.PTNO = "";
+                    worker.WORKER_ROLE = "EMP_ROLE";
+                    worker.IPSADATE = "";
+                    HC_SITE_WORKER saved = hcSiteWorkerRepository.FindOneByBirth(nLtdCode, strName, strBirth);
+                    if (saved == null)
                     {
-                        SQL = "";
-                        SQL += " INSERT INTO HIC_LTD_RESULT3 (SITEID,JONG,YEAR,BANGI,ID,NAME,BIRTH,JINDATE, ";
-                        SQL += " SEX,AGE,GUNSOK,YUHE,JIPYO,GGUBUN,SOGEN,SAHU,UPMU,JOBSABUN,ENTTIME,SWLICENSE) ";
-                        SQL += " VALUES (" + nLtdCode + ",'" + strJong + "','" + strYear + "','" + strBangi + "','";
-                        SQL += strID + "','" + strName + "','" + strBirth + "','" + strJinDate + "','";
-                        SQL += strSex + "'," + strAge + ",'" + strGunsok + "','" + strYuhe + "','";
-                        SQL += strJipyo + "','" + strGGubun + "','" + strSogen + "','" + strSahu + "','";
-                        SQL += strUpmu + "','" + clsType.User.IdNumber + "',";
-                        SQL += "SYSTIMESTAMP,'" + clsType.HosInfo.SwLicense + "') ";
-                        SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+                        saved = hcSiteWorkerRepository.Insert(worker);
+                    }
+                    else
+                    {
+                        worker.ID = saved.ID;
+                    }
 
-                        if (SqlErr != "")
+                    strID = worker.ID;
+
+                    // 유질환자 사후관리
+                    if (Exist_Ltd_Result3(nLtdCode, strYear, strBangi, strID) == false)
+                    {
+                        try
                         {
-                            ComFunc.MsgBox("유질환자 사후관리 등록 실패", "알림");
-                            Cursor.Current = Cursors.Default;
+                            SQL = "";
+                            SQL += " INSERT INTO HIC_LTD_RESULT3 (SITEID,JONG,YEAR,BANGI,ID,NAME,BIRTH,JINDATE, ";
+                            SQL += " SEX,AGE,GUNSOK,YUHE,JIPYO,GGUBUN,SOGEN,SAHU,UPMU,JOBSABUN,ENTTIME,SWLICENSE) ";
+                            SQL += " VALUES (" + nLtdCode + ",'" + strJong + "','" + strYear + "','" + strBangi + "','";
+                            SQL += strID + "','" + strName + "','" + strBirth + "','" + strJinDate + "','";
+                            SQL += strSex + "'," + strAge + ",'" + strGunsok + "','" + strYuhe + "','";
+                            SQL += strJipyo + "','" + strGGubun + "','" + strSogen + "','" + strSahu + "','";
+                            SQL += strUpmu + "','" + clsType.User.IdNumber + "',";
+                            SQL += "SYSTIMESTAMP,'" + clsType.HosInfo.SwLicense + "') ";
+                            SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+
+                            if (SqlErr != "")
+                            {
+                                ComFunc.MsgBox("유질환자 사후관리 등록 실패", "알림");
+                                Cursor.Current = Cursors.Default;
+                                return;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            ComFunc.MsgBox(ex.Message);
                             return;
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        ComFunc.MsgBox(ex.Message);
-                        return;
                     }
                 }
             }
@@ -572,16 +594,22 @@ namespace HC_OSHA
                 {
                     bOK = false;
                     strData = VB.Replace(SSExcel_Sheet1.Cells[0, j].Text.ToString(), " ", "");
+                    strData = VB.Replace(strData, "\n", "");
                     if (strHead == strData) bOK = true;
-                    if (strHead == "공정")
+                    if (bOK==false && strHead == "공정")
                     {
                         if (strData == "공정(부서)") bOK = true;
                     }
-                    if (strHead == "근속연수")
+                    if (bOK == false && strHead == "근속연수")
                     {
                         if (strData == "근속년수") bOK = true;
                     }
-                    if (strHead == "사후관리소견")
+                    if (bOK == false && strHead == "검진소견")
+                    {
+                        if (strData == "건강진단결과") bOK = true;
+                    }
+
+                    if (bOK == false && strHead == "사후관리소견")
                     {
                         if (strData == "사후관리내용") bOK = true;
                     }
