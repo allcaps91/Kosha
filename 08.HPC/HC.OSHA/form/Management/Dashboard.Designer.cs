@@ -52,6 +52,7 @@
             this.출장일지인쇄ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.수입일보인쇄ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.뇌심혈관계발병위험도평가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.질병유소견자사후관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.검진결과ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,7 +113,7 @@
             this.Mnu_OtherAllClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_AllTabClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_TabPopup = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.LeftPanel.SuspendLayout();
@@ -300,6 +301,13 @@
             this.toolStripMenuItem2.Size = new System.Drawing.Size(79, 20);
             this.toolStripMenuItem2.Text = "엑셀업로드";
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(233, 22);
+            this.toolStripMenuItem3.Text = "직원명단 업로드";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
             // 뇌심혈관계발병위험도평가ToolStripMenuItem
             // 
             this.뇌심혈관계발병위험도평가ToolStripMenuItem.Name = "뇌심혈관계발병위험도평가ToolStripMenuItem";
@@ -444,6 +452,7 @@
             // 업무관리ToolStripMenuItem
             // 
             this.업무관리ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem4,
             this.건강증진프로그램ToolStripMenuItem,
             this.직무스트레스평가ToolStripMenuItem,
             this.뇌심혈관발병위험도평가ToolStripMenuItem,
@@ -875,12 +884,12 @@
             this.Mnu_TabPopup.Text = "팝업으로 보기";
             this.Mnu_TabPopup.Click += new System.EventHandler(this.Mnu_TabPopup_Click);
             // 
-            // toolStripMenuItem3
+            // toolStripMenuItem4
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(233, 22);
-            this.toolStripMenuItem3.Text = "직원명단 업로드";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(206, 22);
+            this.toolStripMenuItem4.Text = "사후관리소견서";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // Dashboard
             // 
@@ -990,5 +999,6 @@
         private System.Windows.Forms.ToolStripMenuItem 뇌심혈관계발병위험도평가ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 질병유소견자사후관리ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
     }
 }

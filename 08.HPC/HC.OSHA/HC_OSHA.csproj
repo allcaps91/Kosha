@@ -206,6 +206,12 @@
     <Compile Include="form\DataSync\StartImport.Designer.cs">
       <DependentUpon>StartImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\Etc\FrmSahusogen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Etc\FrmSahusogen.Designer.cs">
+      <DependentUpon>FrmSahusogen.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Etc\frmBrainRiskEvalution.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -440,6 +446,11 @@
     <Compile Include="Model\Visit\DailyReportVisitModel.cs" />
     <Compile Include="Model\Visit\VisitPriceModel.cs" />
     <Compile Include="form\Migration\MigrationRepository.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Repository\Build\HicOshaGeneralResultRepository.cs" />
     <Compile Include="Repository\Build\HicOshaPanjengRepository.cs" />
     <Compile Include="Repository\Build\HicOshaSpecialResultRepository.cs" />
@@ -837,6 +848,9 @@
     <EmbeddedResource Include="form\DataSync\StartImport.resx">
       <DependentUpon>StartImport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form\Etc\FrmSahusogen.resx">
+      <DependentUpon>FrmSahusogen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\Etc\frmBrainRiskEvalution.resx">
       <DependentUpon>frmBrainRiskEvalution.cs</DependentUpon>
     </EmbeddedResource>
@@ -1036,6 +1050,10 @@
       <DependentUpon>VIsitDocumentBatchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="HC_OSHA.snk" />

@@ -819,5 +819,13 @@ namespace HC_OSHA
             FrmExcelUpload1 form = new FrmExcelUpload1();
             form.Show();
         }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            FrmSahusogen form = new FrmSahusogen();
+            form.Show();
+            //CreateForm(form, menuName: (sender as ToolStripMenuItem).Text);
+            //(form as ISelectSite).Select(oshaSiteLastTree.GetSite);
+        }
     }
 }

@@ -91,8 +91,6 @@
             this.SSCard = new FarPoint.Win.Spread.FpSpread();
             this.SSCard_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.SSHealthCheck = new FarPoint.Win.Spread.FpSpread();
-            this.SSHealthCheck_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.RdoMacro2Type2 = new System.Windows.Forms.RadioButton();
@@ -180,14 +178,14 @@
             this.CboPanjeong = new System.Windows.Forms.ComboBox();
             this.PanBottom = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.SSHealthCheck = new FarPoint.Win.Spread.FpSpread();
+            this.SSHealthCheck_Sheet1 = new FarPoint.Win.Spread.SheetView();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SSCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSCard_Sheet1)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SSHealthCheck)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SSHealthCheck_Sheet1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -207,6 +205,8 @@
             this.PanSearch.SuspendLayout();
             this.PanBottom.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SSHealthCheck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SSHealthCheck_Sheet1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -463,43 +463,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "질병유소견자(대행)";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // SSHealthCheck
-            // 
-            this.SSHealthCheck.AccessibleDescription = "SSHealthCheck, Sheet1, Row 0, Column 0, ";
-            this.SSHealthCheck.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SSHealthCheck.FocusRenderer = flatFocusIndicatorRenderer1;
-            this.SSHealthCheck.HorizontalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
-            this.SSHealthCheck.HorizontalScrollBar.Name = "";
-            flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSHealthCheck.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SSHealthCheck.HorizontalScrollBar.TabIndex = 144;
-            this.SSHealthCheck.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
-            this.SSHealthCheck.Location = new System.Drawing.Point(0, 0);
-            this.SSHealthCheck.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.SSHealthCheck.Name = "SSHealthCheck";
-            this.SSHealthCheck.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
-            this.SSHealthCheck_Sheet1});
-            this.SSHealthCheck.Size = new System.Drawing.Size(999, 376);
-            this.SSHealthCheck.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Office2013;
-            this.SSHealthCheck.TabIndex = 165;
-            this.SSHealthCheck.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
-            this.SSHealthCheck.VerticalScrollBar.Name = "";
-            flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSHealthCheck.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SSHealthCheck.VerticalScrollBar.TabIndex = 145;
-            this.SSHealthCheck.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
-            // 
-            // SSHealthCheck_Sheet1
-            // 
-            this.SSHealthCheck_Sheet1.Reset();
-            this.SSHealthCheck_Sheet1.SheetName = "Sheet1";
-            // Formulas and custom names must be loaded with R1C1 reference style
-            this.SSHealthCheck_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1;
-            this.SSHealthCheck_Sheet1.ColumnCount = 14;
-            this.SSHealthCheck_Sheet1.RowCount = 50;
-            this.SSHealthCheck_Sheet1.Models = ((FarPoint.Win.Spread.SheetView.DocumentModels)(resources.GetObject("SSHealthCheck_Sheet1.Models")));
-            this.SSHealthCheck_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
             // tabPage2
             // 
@@ -1612,6 +1575,43 @@
             this.panel3.Size = new System.Drawing.Size(1007, 230);
             this.panel3.TabIndex = 169;
             // 
+            // SSHealthCheck
+            // 
+            this.SSHealthCheck.AccessibleDescription = "SSHealthCheck, Sheet1, Row 0, Column 0, ";
+            this.SSHealthCheck.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SSHealthCheck.FocusRenderer = flatFocusIndicatorRenderer1;
+            this.SSHealthCheck.HorizontalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
+            this.SSHealthCheck.HorizontalScrollBar.Name = "";
+            flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSHealthCheck.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
+            this.SSHealthCheck.HorizontalScrollBar.TabIndex = 189;
+            this.SSHealthCheck.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
+            this.SSHealthCheck.Location = new System.Drawing.Point(0, 0);
+            this.SSHealthCheck.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.SSHealthCheck.Name = "SSHealthCheck";
+            this.SSHealthCheck.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
+            this.SSHealthCheck_Sheet1});
+            this.SSHealthCheck.Size = new System.Drawing.Size(999, 376);
+            this.SSHealthCheck.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Office2013;
+            this.SSHealthCheck.TabIndex = 167;
+            this.SSHealthCheck.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
+            this.SSHealthCheck.VerticalScrollBar.Name = "";
+            flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSHealthCheck.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
+            this.SSHealthCheck.VerticalScrollBar.TabIndex = 190;
+            this.SSHealthCheck.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
+            // 
+            // SSHealthCheck_Sheet1
+            // 
+            this.SSHealthCheck_Sheet1.Reset();
+            this.SSHealthCheck_Sheet1.SheetName = "Sheet1";
+            // Formulas and custom names must be loaded with R1C1 reference style
+            this.SSHealthCheck_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1;
+            this.SSHealthCheck_Sheet1.ColumnCount = 14;
+            this.SSHealthCheck_Sheet1.RowCount = 50;
+            this.SSHealthCheck_Sheet1.Models = ((FarPoint.Win.Spread.SheetView.DocumentModels)(resources.GetObject("SSHealthCheck_Sheet1.Models")));
+            this.SSHealthCheck_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
+            // 
             // WorkerHealthCheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1631,8 +1631,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.SSCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSCard_Sheet1)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SSHealthCheck)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SSHealthCheck_Sheet1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1657,6 +1655,8 @@
             this.PanSearch.PerformLayout();
             this.PanBottom.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SSHealthCheck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SSHealthCheck_Sheet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1697,8 +1697,6 @@
         private System.Windows.Forms.DateTimePicker DtpChartDate;
         private System.Windows.Forms.Button btnMacro;
         private System.Windows.Forms.TextBox txtWorkerId;
-        private FarPoint.Win.Spread.FpSpread SSHealthCheck;
-        private FarPoint.Win.Spread.SheetView SSHealthCheck_Sheet1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage3;
@@ -1756,5 +1754,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.DateTimePicker DtpWorkerEndDate;
         private System.Windows.Forms.CheckBox ChkEnd;
+        private FarPoint.Win.Spread.FpSpread SSHealthCheck;
+        private FarPoint.Win.Spread.SheetView SSHealthCheck_Sheet1;
     }
 }

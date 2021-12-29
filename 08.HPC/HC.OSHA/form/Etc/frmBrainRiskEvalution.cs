@@ -57,7 +57,7 @@ namespace HC_OSHA.form.Etc
             SSList.Initialize(new SpreadOption() { IsRowSelectColor = true });
             SSList.AddColumnText("소속", nameof(BranRiskEvalutionModel.COL1), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false});
             SSList.AddColumnText("성명", nameof(BranRiskEvalutionModel.COL2), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSList.AddColumnText("주민번호", nameof(BranRiskEvalutionModel.COL3), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("생년월일", nameof(BranRiskEvalutionModel.COL3), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("검진일", nameof(BranRiskEvalutionModel.COL4), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("검진병원", nameof(BranRiskEvalutionModel.COL5), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("나이", nameof(BranRiskEvalutionModel.COL6), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
