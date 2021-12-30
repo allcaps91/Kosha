@@ -298,7 +298,7 @@ namespace HC_OSHA
                 worker.ID = "";
                 worker.SITEID = nLtdCode;
                 worker.NAME = strName;
-                worker.DEPT = "";
+                worker.DEPT = strBuse;
                 worker.TEL = "";
                 worker.ISDELETED = "N";
                 worker.JUMIN = strBirth;
