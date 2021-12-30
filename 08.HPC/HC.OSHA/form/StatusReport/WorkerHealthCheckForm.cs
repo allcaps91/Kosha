@@ -327,7 +327,7 @@ namespace HC_OSHA.StatusReport
                         strPanjeng1 = Get_Last_Panjeng(strID, "특수");
                         strPanjeng2 = Get_Last_Panjeng(strID, "일반");
                         bOK = false;
-                        if (panjeong != null)
+                        if (panjeong != "")
                         {
                             if (panjeong == "A")
                             {
@@ -365,7 +365,13 @@ namespace HC_OSHA.StatusReport
                                 strPanjeng = strPanjeng2;
                                 bOK = true;
                             }
+                            else
+                            {
+                                strPanjeng = "";
+                                bOK = true;
+                            }
                         }
+
                         if (bOK == true)
                         {
                             SSWorkerList_Sheet1.Cells[nRow, 0].Text = strID;
@@ -872,8 +878,13 @@ namespace HC_OSHA.StatusReport
             HealthCheckWorkerModel worker = new HealthCheckWorkerModel();
             worker.Worker_ID = SSWorkerList_Sheet1.Cells[e.Row, 0].Text.Trim();
             worker.Name = SSWorkerList_Sheet1.Cells[e.Row, 1].Text.Trim();
-            worker.Gender = VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 1);
-            worker.Age = Int32.Parse(VB.Pstr(VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 2),")",1));
+            worker.Gender = "";
+            worker.Age = 0;
+            if (VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 1)!= "")
+            {
+                worker.Gender = VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 1);
+                worker.Age = Int32.Parse(VB.Pstr(VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 2), ")", 1));
+            }
             worker.Dept = SSWorkerList_Sheet1.Cells[e.Row, 3].Text.Trim();
             worker.SITEID = base.SelectedSite.ID;
             worker.END_DATE = SSWorkerList_Sheet1.Cells[e.Row, 8].Text.Trim();
