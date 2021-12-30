@@ -290,6 +290,7 @@ namespace HC.Core.Repository
             parameter.AppendSql("  PANO,                      ");
             parameter.AppendSql("  PTNO,                      ");
             parameter.AppendSql("  IPSADATE,                  ");
+            parameter.AppendSql("  END_DATE,                  ");
             parameter.AppendSql("  ISDELETED,                 ");
             parameter.AppendSql("  ISRETIRE,                  ");
             parameter.AppendSql("  MODIFIED,                  ");
@@ -312,6 +313,7 @@ namespace HC.Core.Repository
             parameter.AppendSql("  :PANO,                     ");
             parameter.AppendSql("  :PTNO,                     ");
             parameter.AppendSql("  :IPSADATE,                 ");
+            parameter.AppendSql("  :END_DATE,                 ");
             parameter.AppendSql("  'N',                       ");
             parameter.AppendSql("  :ISRETIRE,                 ");
             parameter.AppendSql("  SYSTIMESTAMP,              ");
@@ -332,6 +334,7 @@ namespace HC.Core.Repository
             parameter.Add("PANO", dto.PANO);
             parameter.Add("PTNO", dto.PTNO);
             parameter.Add("IPSADATE", dto.IPSADATE);
+            parameter.Add("END_DATE", dto.END_DATE);
             parameter.Add("ISRETIRE", dto.ISRETIRE);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
@@ -380,9 +383,9 @@ namespace HC.Core.Repository
             parameter.AppendSql("  PTNO = :PTNO, ");
             parameter.AppendSql("  PANO = :PANO, ");
             parameter.AppendSql("  IPSADATE = :IPSADATE, ");
+            parameter.AppendSql("  END_DATE = :END_DATE, ");
             parameter.AppendSql("  ISRETIRE = :ISRETIRE, ");
             parameter.AppendSql("  ISMANAGEOSHA = :ISMANAGEOSHA,");
-            
             parameter.AppendSql("  MODIFIED = SYSTIMESTAMP, ");
             parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER ");
             parameter.AppendSql("WHERE ID = :ID ");
@@ -397,6 +400,7 @@ namespace HC.Core.Repository
             parameter.Add("PTNO", dto.PTNO);
             parameter.Add("PANO", dto.PANO);
             parameter.Add("IPSADATE", dto.IPSADATE);
+            parameter.Add("END_DATE", dto.END_DATE);
             parameter.Add("ISRETIRE", dto.ISRETIRE);
             parameter.Add("ISMANAGEOSHA", dto.ISMANAGEOSHA);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);

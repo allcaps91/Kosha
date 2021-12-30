@@ -112,11 +112,11 @@ namespace HC_OSHA
             
             SSWorkerList.Initialize(new SpreadOption() { IsRowSelectColor = false });
             SSWorkerList.AddColumnText("등록번호", nameof(HC_SITE_WORKER.ID), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
-            //SSWorkerList.AddColumnText("PTNO", nameof(HC_SITE_WORKER.PTNO), 70, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsVisivle = false, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending }) ;
             SSWorkerList.AddColumnText("이름", nameof(HC_SITE_WORKER.NAME), 75, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
             SSWorkerList.AddColumnText("부서", nameof(HC_SITE_WORKER.DEPT), 140, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnComboBox("직책", nameof(HC_SITE_WORKER.WORKER_ROLE), 150, IsReadOnly.N, comboBoxData, new SpreadCellTypeOption { IsSort = false });
-            SSWorkerList.AddColumnText("생년월일", nameof(HC_SITE_WORKER.JUMIN), 128, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSWorkerList.AddColumnText("생년월일", nameof(HC_SITE_WORKER.JUMIN), 120, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSWorkerList.AddColumnText("퇴사일자", nameof(HC_SITE_WORKER.END_DATE), 120, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             //SSWorkerList.AddColumnText("전화", nameof(HC_SITE_WORKER.TEL), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });            
             //SSWorkerList.AddColumnText("휴대폰", nameof(HC_SITE_WORKER.HP), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             //SSWorkerList.AddColumnText("이메일", nameof(HC_SITE_WORKER.EMAIL), 200, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
@@ -153,6 +153,22 @@ namespace HC_OSHA
                     dt.Dispose();
                     dt = null;
                     MessageUtil.Alert("뇌심혈관질환 발병위험도 자료가 있어 삭제할 수 없습니다");
+                    return;
+                }
+                dt.Dispose();
+                dt = null;
+
+                SQL = "";
+                SQL = "SELECT ID  FROM HIC_LTD_RESULT3 ";
+                SQL = SQL + ComNum.VBLF + "WHERE SITEID=" + base.SelectedSite.ID + " ";
+                SQL = SQL + ComNum.VBLF + "  AND ID='" + dto.ID + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0)
+                {
+                    dt.Dispose();
+                    dt = null;
+                    MessageUtil.Alert("유질환 사후관리 자료가 있어 삭제할 수 없습니다");
                     return;
                 }
                 dt.Dispose();

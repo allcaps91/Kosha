@@ -49,11 +49,6 @@ namespace HC.OSHA.Service.StatusReport
         /// <param name="dto"></param>
         public void Save(HealthCheckDto dto)
         {
-            //if(dto.worker_id <= 0)
-            //{
-            //    //hcSiteWorkerService.Save
-            //}
-
             if (dto.id <= 0)
             {
                 healthCheckRepository.Insert(dto);
@@ -62,8 +57,6 @@ namespace HC.OSHA.Service.StatusReport
             {
                 healthCheckRepository.Update(dto);
             }
-
-
         }
 
         /// <summary>

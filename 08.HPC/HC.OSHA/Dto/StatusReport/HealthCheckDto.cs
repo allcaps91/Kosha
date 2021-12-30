@@ -130,7 +130,7 @@ namespace HC.OSHA.Dto.StatusReport
         /// <summary>
         ///
         /// <summary>
-        public DateTime? END_DATE { get; set; }
+        public string END_DATE { get; set; }
         public string REMARK { get; set; }
         /// <summary>
         ///

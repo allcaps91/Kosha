@@ -33,11 +33,9 @@ namespace HC.OSHA.Model
 
         public string REMARK { get; set; }
 
-        public DateTime? END_DATE { get; set; }
+        public string END_DATE { get; set; }
 
         public long SITEID { get; set; }
-
-
 
         public string PANJENGR1 { get; set; }
         public string PANJENGR2 { get; set; }

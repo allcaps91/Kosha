@@ -82,7 +82,8 @@ namespace HC_OSHA.StatusReport
             SSWorkerList.AddColumnText("검진년도", nameof(HealthCheckWorkerModel.Year), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("검진소견", nameof(HealthCheckWorkerModel.PanName), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
             SSWorkerList.AddColumnText("검진", nameof(HealthCheckWorkerModel.IsSpecial), 50, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-       
+            SSWorkerList.AddColumnText("퇴사일자", nameof(HealthCheckWorkerModel.END_DATE), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+
             SSMemo.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true });
             SSMemo.AddColumnText("메모", nameof(HIC_OSHA_PATIENT_MEMO.MEMO), 347, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true });
             SSMemo.AddColumnText("작성일", nameof(HIC_OSHA_PATIENT_MEMO.WriteDate), 117, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true });
@@ -294,7 +295,7 @@ namespace HC_OSHA.StatusReport
             strSiteList = READ_Relation_LTD(base.SelectedSite.ID);
             try
             {
-                SQL = "SELECT ID,NAME,DEPT,WORKER_ROLE,IPSADATE,TESADATE,ISMANAGEOSHA ";
+                SQL = "SELECT ID,NAME,DEPT,WORKER_ROLE,IPSADATE,END_DATE,ISMANAGEOSHA ";
                 SQL = SQL + ComNum.VBLF + " FROM HIC_SITE_WORKER ";
                 SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND  SITEID IN (" + strSiteList + ") ";
@@ -322,7 +323,7 @@ namespace HC_OSHA.StatusReport
                         strName = dt.Rows[i]["NAME"].ToString().Trim();
                         strDept = dt.Rows[i]["DEPT"].ToString().Trim();
                         strIpsaDate = dt.Rows[i]["IPSADATE"].ToString().Trim();
-                        strTesaDate = dt.Rows[i]["TESADATE"].ToString().Trim();
+                        strTesaDate = dt.Rows[i]["END_DATE"].ToString().Trim();
                         strPanjeng1 = Get_Last_Panjeng(strID, "특수");
                         strPanjeng2 = Get_Last_Panjeng(strID, "일반");
                         bOK = false;
@@ -375,6 +376,7 @@ namespace HC_OSHA.StatusReport
                             SSWorkerList_Sheet1.Cells[nRow, 5].Text = VB.Pstr(strPanjeng, "{}", 2); //년도
                             SSWorkerList_Sheet1.Cells[nRow, 6].Text = VB.Pstr(strPanjeng, "{}", 7); //검진소견
                             SSWorkerList_Sheet1.Cells[nRow, 7].Text = dt.Rows[i]["ISMANAGEOSHA"].ToString().Trim();
+                            SSWorkerList_Sheet1.Cells[nRow, 8].Text = strTesaDate;
                             if (dt.Rows[i]["ISMANAGEOSHA"].ToString().Trim() == "Y")
                             {
                                 SSWorkerList.ActiveSheet.Rows[nRow].BackColor = Color.FromArgb(237, 211, 237);
@@ -653,8 +655,6 @@ namespace HC_OSHA.StatusReport
                     return;
                 }
             }
-            
-        
 
             HealthCheckDto dto = panHealthCheck.GetData<HealthCheckDto>();
             if (dto.worker_id.IsNullOrEmpty())
@@ -691,29 +691,18 @@ namespace HC_OSHA.StatusReport
                 HIC_OSHA_WORKER_END worker = new HIC_OSHA_WORKER_END
                 {
                     SITE_ID = SELECTED_WORKED.SITEID,
-                    PANO = SELECTED_WORKED.Pano.To<long>(0),
+                    ID = dto.worker_id,
                     WORKER_ID = dto.worker_id,
                     END_DATE = DtpWorkerEndDate.Checked ? (DateTime?)DtpWorkerEndDate.Value : null,
                     CREATEDUSER = clsType.User.Sabun
                 };
-
-                List<HIC_OSHA_WORKER_END> list = workerEndRepository.FindByWorker(worker);
-                if(list != null && list.Count > 0)
-                {
-                    worker.ID = list[0].ID;
-                    workerEndRepository.Update(worker);
-                }
-                else
-                {
-                    workerEndRepository.Insert(worker);
-                }
+                workerEndRepository.Update(worker);
 
                 //  퇴직자인경우 데이터를 저장하지 않는다.
                 if(worker.END_DATE.NotEmpty())
                 {
                     return;
                 }
-
 
                 if (TxtMemo.Text.NotEmpty())
                 {
@@ -887,7 +876,7 @@ namespace HC_OSHA.StatusReport
             worker.Age = Int32.Parse(VB.Pstr(VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 2),")",1));
             worker.Dept = SSWorkerList_Sheet1.Cells[e.Row, 3].Text.Trim();
             worker.SITEID = base.SelectedSite.ID;
-            worker.END_DATE = null;
+            worker.END_DATE = SSWorkerList_Sheet1.Cells[e.Row, 8].Text.Trim();
             worker.IsManageOsha = SSWorkerList_Sheet1.Cells[e.Row, 7].Text.Trim();
 
             SELECTED_WORKED = worker;
@@ -1193,8 +1182,6 @@ namespace HC_OSHA.StatusReport
             //SSCard.ActiveSheet.Cells[8, 3].Value = clsHcMain.Biman_Gesan(patient.WRTNO);
             SSCard.ActiveSheet.Cells[8, 3].Value = exResult.BMI;
 
-
-
             HIC_RES_BOHUM1 hicResult = healthCareService.GetFirstExaminationQuestionnaire(patient.WRTNO);
             string gajok = "무";
             for (int i = 1; i <= 6; i++)
@@ -1347,7 +1334,6 @@ namespace HC_OSHA.StatusReport
                     Clear();
                 }
             }
-            
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)

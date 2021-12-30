@@ -24,6 +24,7 @@ namespace HC.Core.Dto
         public string PTNO { get; set; }
         public long PANO { get; set; }
         public string IPSADATE { get; set; }
+        public string END_DATE { get; set; }
 
         /// <summary>
         /// 

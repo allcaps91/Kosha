@@ -12,7 +12,7 @@ namespace HC.OSHA.Dto
     /// </summary>
     public class HIC_OSHA_WORKER_END : BaseDto
     {
-        public long ID { get; set; }
+        public string ID { get; set; }
         public long SITE_ID { get; set; }
         public long PANO { get; set; }
         public string WORKER_ID { get; set; }

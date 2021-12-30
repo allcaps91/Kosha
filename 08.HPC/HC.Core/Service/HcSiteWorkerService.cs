@@ -206,16 +206,7 @@ namespace HC.Core.Service
                     }
                     else if (dto.RowStatus == ComBase.Mvc.RowStatus.Update)
                     {
-                        //  시퀸스발생이 변경되므로 수정
-                        if(!dto.ID.IsNumeric())
-                        {
-                            hcSiteWorkerRepository.Update(dto);
-                        }
-                        else
-                        {
-                            hcSiteWorkerRepository.UpdatePatientWorkerRole(dto);
-                        }
-                        
+                        hcSiteWorkerRepository.Update(dto);
                     }
                     else if (dto.RowStatus == ComBase.Mvc.RowStatus.Delete)
                     {

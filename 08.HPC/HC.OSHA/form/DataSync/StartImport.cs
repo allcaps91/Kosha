@@ -279,7 +279,6 @@ namespace HC_OSHA
                             //  길광호 추가
                             HIC_OSHA_PATIENT_REMARK(dto);
                             HIC_OSHA_MAIL_SEND(dto);
-                            HIC_OSHA_WORKER_END(dto);
                         }
                         catch (Exception ex)
                         {
@@ -711,72 +710,6 @@ namespace HC_OSHA
                             if (dto.DMLTYPE == "D")
                             {
                                 repo.DeleteRemark(ora7Saved.ID);
-                            }
-                        }
-                    }
-
-                }
-                dataSyncRepository.CompleteSync(dto.ID);
-            }
-        }
-
-        private void HIC_OSHA_WORKER_END(DataSyncDto dto)
-        {
-            if (dto.TABLENAME == "HIC_OSHA_WORKER_END")
-            {
-                DataSyncService.Instance.ConnectNotebook();
-
-                WorkerEndRepository repo = new WorkerEndRepository();
-                HIC_OSHA_WORKER_END saved = repo.FindOne(long.Parse(dto.TABLEKEY));
-                DataSyncService.Instance.ConnectOra7();
-                if (saved != null)
-                {
-
-                    if (dto.DMLTYPE == "I")
-                    {
-                        HIC_OSHA_WORKER_END newDto = repo.InsertAndSelect(saved);
-                        UpdateNewKey(dto.TABLEKEY, newDto.ID.ToString(), dto.TABLENAME, dto.CREATEDUSER);
-
-                        dataSyncRepository.UpdateMemoWorker(saved.WORKER_ID, dto.CREATEDUSER);
-                    }
-                    else if (dto.DMLTYPE == "U")
-                    {
-                        DataSyncDto tmp = dataSyncRepository.FindOne(dto.ID); //dto id는 서버에서 발급된 번호
-
-                        if (tmp.NEWTABLEKEY.IsNullOrEmpty())
-                        {
-                            repo.Update(saved);
-                        }
-                    }
-                    else if (dto.DMLTYPE == "D")
-                    {
-                        DataSyncDto tmp = dataSyncRepository.FindOne(dto.ID); //dto id는 서버에서 발급된 번호
-
-                        if (tmp.NEWTABLEKEY.IsNullOrEmpty())
-                        {
-                            repo.Delete(saved.ID);
-                        }
-                        else
-                        {
-                            repo.Delete(tmp.NEWTABLEKEY.To<long>(0));
-                        }
-                    }
-                }
-                else if (saved == null && dto.DMLTYPE == "D")
-                {
-                    DataSyncDto tmp = dataSyncRepository.FindOne(dto.ID);
-                    if (!tmp.NEWTABLEKEY.IsNullOrEmpty())
-                    {
-                        repo.Delete(tmp.NEWTABLEKEY.To<long>(0));
-                    }
-                    else
-                    {
-                        HIC_OSHA_WORKER_END ora7Saved = repo.FindOne(tmp.TABLEKEY.To<long>(0));
-                        if (ora7Saved != null)
-                        {
-                            if (dto.DMLTYPE == "D")
-                            {
-                                repo.Delete(ora7Saved.ID);
                             }
                         }
                     }
