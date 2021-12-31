@@ -76,7 +76,7 @@ namespace ComBase.Mvc.Utils
             {
                 throw new MTSException("보내는 메일주소가 없습니다"); 
             }
-            mail.From = new MailAddress(this.SenderMailAddress, "포항성모병원");
+            mail.From = new MailAddress(this.SenderMailAddress, "대한보건환경연구소");
 
             foreach (string receiverMail in ReciverMailSddress)
             {

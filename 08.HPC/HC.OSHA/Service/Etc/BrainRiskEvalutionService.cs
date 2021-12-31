@@ -88,7 +88,7 @@
             model.COL2 = patient.SNAME;
             model.COL3 = jumin.Substring(0, 6) + "-" + jumin.Substring(7, 1);
             model.COL4 = patient.JEPDATE;
-            model.COL5 = "포항성모병원";
+            model.COL5 = " ABC 병원 ";
             model.COL6 = patient.AGE.ToString();
             model.COL7 = patient.SEX;
             model.COL56 = jumin;

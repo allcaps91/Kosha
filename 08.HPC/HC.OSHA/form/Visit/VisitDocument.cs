@@ -56,13 +56,15 @@ namespace HC_OSHA.form.Visit
             
                 string year = yearAndMonth.Substring(0, 4);
                 string month = yearAndMonth.Substring(5, 2);
-                ssDoc.ActiveSheet.Cells[6, 5].Value = "포성건 " + year + " - " + docNumber + "호";
+                //ssDoc.ActiveSheet.Cells[6, 5].Value = "포성건 " + year + " - " + docNumber + "호";
+                ssDoc.ActiveSheet.Cells[6, 5].Value = "대보연 " + year + " - " + docNumber + "호";
                 ssDoc.ActiveSheet.Cells[8, 5].Value = executeDate;
                 ssDoc.ActiveSheet.Cells[10, 5].Value = siteName + " 대표이사";
                 ssDoc.ActiveSheet.Cells[14, 5].Value = year + "년 " + month + "월 " + "보건관리전문기관 방문일정 안내";
                 ssDoc.ActiveSheet.Cells[21, 5].Value = "3. 위 관련으로 " + month + "월 일정을 아래와 같이 보내드리오니 직원 여러분의 많은 참여";
 
-                chargeEmailModel.Title = "포항성모병원 " + year + "년 " + month + "월 보건관리전문기관 방문일정 안내";
+                //chargeEmailModel.Title = "포항성모병원 " + year + "년 " + month + "월 보건관리전문기관 방문일정 안내";
+                chargeEmailModel.Title = "대한보건환경연구소 " + year + "년 " + month + "월 보건관리전문기관 방문일정 안내";
 
                 chargeEmailModel.Content = "<html><body> 1. 귀사의 무궁한 발전과 무재해를 기원합니다 <br>";
                 chargeEmailModel.Content = chargeEmailModel.Content + "2. 관련근거 : 고용노동부 예규 제439호 4조 2항 <br>";

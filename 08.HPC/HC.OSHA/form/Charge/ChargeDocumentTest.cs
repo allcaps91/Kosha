@@ -54,13 +54,15 @@ namespace HC_OSHA
             ChargeEmailModel chargeEmailModel = new ChargeEmailModel();
             string year = yearAndMonth.Substring(0, 4);
             string month = yearAndMonth.Substring(5, 2);
-            ssDoc.ActiveSheet.Cells[6, 5].Value = "포성건 " + year + " - " + docNumber + "호";
+            //ssDoc.ActiveSheet.Cells[6, 5].Value = "포성건 " + year + " - " + docNumber + "호";
+            ssDoc.ActiveSheet.Cells[6, 5].Value = "대보연 " + year + " - " + docNumber + "호";
             ssDoc.ActiveSheet.Cells[8, 5].Value = executeDate.Replace("-",".");
 
             ssDoc.ActiveSheet.Cells[10, 5].Value = siteName +" 대표이사";
             ssDoc.ActiveSheet.Cells[14, 5].Value = year + "년 " + month + "월 " + "보건관리전문기관 위탁 수수료 청구";
-            
-            chargeEmailModel.Title = "포항성모병원 " + year + "년 " + month + "월 위탁 수수료 청구 공문 안내";
+
+            //chargeEmailModel.Title = "포항성모병원 " + year + "년 " + month + "월 위탁 수수료 청구 공문 안내";
+            chargeEmailModel.Title = "대한보건환경연구소 " + year + "년 " + month + "월 위탁 수수료 청구 공문 안내";
 
             ssDoc.ActiveSheet.Cells[21, 4].Text = "3. 위 관련으로 당원에서 실시한 " + year + "년 " + month + "월 보건관리 위탁수수료를 아래와";
 

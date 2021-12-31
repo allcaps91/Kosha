@@ -458,9 +458,13 @@ namespace HC_OSHA
 
         private void RdoISHOSPITAL_0_Click(object sender, EventArgs e)
         {
-            TxtHOSPITALNAME.Text = "(재)포항성모병원";
-            TxtADDRESS.Text = "포항시 남구 대잠동길 17";
-            TxtTel.Text = "(☏289-4658)";
+            //TxtHOSPITALNAME.Text = "(재)포항성모병원";
+            //TxtADDRESS.Text = "포항시 남구 대잠동길 17";
+            //TxtTel.Text = "(☏289-4658)";
+
+            TxtHOSPITALNAME.Text = "";
+            TxtADDRESS.Text = "";
+            TxtTel.Text = "";
         }
     }
 }
