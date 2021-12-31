@@ -45,8 +45,14 @@ namespace HC.Core.Repository
         public List<HC_USER> FindDoctors()
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT * FROM HIC_USERS WHERE ISDELETED = 'N' AND ROLE = 'DOCTOR' AND ISACTIVE='Y' ORDER BY NAME                            ");
+            parameter.AppendSql("SELECT * FROM HIC_USERS ");
+            parameter.AppendSql(" WHERE ISDELETED = 'N' ");
+            parameter.AppendSql("   AND ROLE = 'DOCTOR' ");
+            parameter.AppendSql("   AND ISACTIVE='Y' ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" ORDER BY NAME ");
 
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HC_USER>(parameter);
         }
         public List<HC_USER> FindNurse()

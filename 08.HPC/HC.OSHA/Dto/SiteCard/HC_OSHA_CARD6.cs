@@ -16,6 +16,11 @@ namespace HC.OSHA.Dto
 		public long ID { get; set; } 
 
         /// <summary>
+        /// 산업기사가 레포트에서 작성한 번호
+        /// </summary>
+        public long REPORT_ID { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
 		public long ESTIMATE_ID { get; set; } 

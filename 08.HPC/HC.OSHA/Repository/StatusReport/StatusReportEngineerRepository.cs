@@ -137,7 +137,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("       WEMDATE2 = :WEMDATE2, ");
             parameter.AppendSql("       WEMDATEREMARK = :WEMDATEREMARK, ");
             parameter.AppendSql("       WEMHARMFULFACTORS = :WEMHARMFULFACTORS, ");
-            parameter.AppendSql("       WEMEXPORSURE = :WEMEXPORSURE. ");
+            parameter.AppendSql("       WEMEXPORSURE = :WEMEXPORSURE, ");
             parameter.AppendSql("       WEMEXPORSURE1 = :WEMEXPORSURE1, ");
             parameter.AppendSql("       WEMEXPORSUREREMARK = :WEMEXPORSUREREMARK, ");
             parameter.AppendSql("       WORKCONTENT = :WORKCONTENT, ");

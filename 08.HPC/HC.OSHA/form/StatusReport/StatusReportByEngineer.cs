@@ -158,7 +158,7 @@ namespace HC_OSHA
             ckEditor.Clear();
             card19List.Clear();
             TxtENGINEERNAME.Text = clsType.User.UserName;
-
+            DtpAccDate.Value = DateTimePicker.MinimumDateTime;
             if (SelectedSite != null)
             {
                 ContentTitle.TitleText = "보건관리상태보고서 산업위생기사 - " + base.SelectedSite.NAME ;
@@ -227,29 +227,26 @@ namespace HC_OSHA
       //      ChkAccNone.Checked = true;
       //      CboVisitYear.Text = "";
       //      CboVisitDate.Text = "";
-
-
         }
         /// <summary>
         /// 산업재해 사업장 관리카드 저장
         /// </summary>
-        private void SaveCard6()
+        private void SaveCard6(long report_id)
         {
             HcOshaCard6Service service = new HcOshaCard6Service();
             HC_OSHA_CARD6 dto = new HC_OSHA_CARD6();
-            if (DtpAccDate.Checked)
+            service.DeleteByReportid(report_id); //기존의 내용을 삭제
+            if (TxtAccName.Text.Trim()!="")
             {
                 dto.ESTIMATE_ID = base.SelectedEstimate.ID;
-
+                dto.REPORT_ID = report_id;
                 dto.ACC_DATE = DateUtil.DateTimeToStrig(DtpAccDate.Value, DateTimeType.YYYY_MM_DD);
                 dto.REMARK = TxtAccRemark.GetValue();
                 dto.IND_ACC_TYPE = CboAccType.GetValue();
                 dto.NAME = TxtAccName.GetValue();
                 dto.ILLNAME = TxtAcIllName.GetValue();
                 service.Save(dto);
-
             }
-      
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -329,7 +326,7 @@ namespace HC_OSHA
                     Log.Error(ex);
                 }
 
-                SaveCard6();
+                SaveCard6(saved.ID);
 
                 ckEditor.SetStatusReportEngineerDto(saved);
 

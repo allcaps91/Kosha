@@ -39,6 +39,10 @@ namespace HC.OSHA.Service
             return list;
             
         }
+        public void DeleteByReportid(long report_id)
+        {
+            hcOshaCard6Repository.DeleteByReportid(report_id);
+        }
 
         public void Save(HC_OSHA_CARD6 dto)
         {
