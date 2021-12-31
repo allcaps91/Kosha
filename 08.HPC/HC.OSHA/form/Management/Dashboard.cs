@@ -609,13 +609,7 @@ namespace HC_OSHA
 
         private void 수입일보인쇄ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //IncomeReport form = new IncomeReport();
-            //form.SelectedSite = base.SelectedSite;
-            //form.SelectedEstimate = base.SelectedEstimate;
-            //CreateForm(form);
-            //(form as ISelectSite).Select(oshaSiteLastTree.GetSite);
             new IncomeReport().Show();
-
         }
 
         private void ryToolStripMenuItem_Click(object sender, EventArgs e)

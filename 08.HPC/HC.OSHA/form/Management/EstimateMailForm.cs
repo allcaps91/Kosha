@@ -30,7 +30,6 @@ namespace HC_OSHA
             mailForm.SMTP_PASSWORD = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail_password", "OSHA").CodeName;
         }
         
-
         private void MailForm_SendMailClick(object sender, EventArgs e)
         {
             if(sender is Exception)
@@ -44,8 +43,6 @@ namespace HC_OSHA
                 MessageUtil.Info("메일을 전송하였습니다");
                 this.DialogResult = DialogResult.OK;
             }
-            
-
         }
 
         private void mailForm_Load(object sender, EventArgs e)

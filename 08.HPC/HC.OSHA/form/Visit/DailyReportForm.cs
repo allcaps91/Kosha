@@ -1,4 +1,5 @@
 ﻿using HC.OSHA.Service;
+using ComBase;
 using HC_Core;
 using HC_OSHA.Service.Visit;
 using System;
@@ -29,14 +30,24 @@ namespace HC_OSHA.Visit
         private ScheduleModelRepository scheduleModelRepository;
         public DailyReportForm()
         {
+            string strGPath = "";
+            string strNow = DateTime.Now.ToString("yyyy-MM-dd");
+
             InitializeComponent();
             dailyVisitReportService = new DailyVisitReportService();
             scheduleModelRepository = new ScheduleModelRepository();
             SSList.ShowRow(0, 0, FarPoint.Win.Spread.VerticalPosition.Top);
+
+            //작업일자 기준으로 결재정보를 읽음
+            strGPath = Get_Approve_Path(strNow);
+
+            SSList.ActiveSheet.Cells[2, 27].Text = VB.Pstr(strGPath, ",", 1);
+            SSList.ActiveSheet.Cells[2, 30].Text = VB.Pstr(strGPath, ",", 2);
+            SSList.ActiveSheet.Cells[2, 33].Text = VB.Pstr(strGPath, ",", 3);
+
         }
         public void Clear()
         {
-
             int rowIndex = 8;
             //for (int i = rowIndex; i < 22; i++)
             for (int i = rowIndex; i < 24; i++)
@@ -73,25 +84,19 @@ namespace HC_OSHA.Visit
         }
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            Clear();
+            string strGPath = "";
 
+            Clear();
 
             string date = DtpVisitDate.Value.ToString("yyyy-MM-dd");
 
-            if(date.Left(4).To<int>(0) < 2021)
-            {
-                SSList.ActiveSheet.Cells[2, 29].Text = "계  장";
-            }
-            else
-            {
-                SSList.ActiveSheet.Cells[2, 29].Text = "팀  장";
-            }
+            //작업일자 기준으로 결재정보를 읽음
+            strGPath = Get_Approve_Path(date);
 
-            if (Convert.ToDateTime(date) >= Convert.ToDateTime("2021-09-06"))
-            {
-                SSList.ActiveSheet.Cells[2, 29].Text = "책  임";
-            }
-        
+            SSList.ActiveSheet.Cells[2, 27].Text = VB.Pstr(strGPath, ",", 1);
+            SSList.ActiveSheet.Cells[2, 30].Text = VB.Pstr(strGPath, ",", 2);
+            SSList.ActiveSheet.Cells[2, 33].Text = VB.Pstr(strGPath, ",", 3);
+
             string title = "◎출장일:" + date.Substring(0, 4) + "년 " + date.Substring(5, 2) + "월 " + date.Substring(8, 2) + "일(" + DateUtil.ToDayOfWeek(DtpVisitDate.Value).Substring(0, 1) + ")";
 
             SSList.ActiveSheet.Cells[4, 0].Value = title;
@@ -242,5 +247,40 @@ namespace HC_OSHA.Visit
             }
             
         }
+        // 특정일자를 기준으로 결재 경로명을 찾기
+        public string Get_Approve_Path(string strGDate)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            string strResult = "";
+            DataTable dt = null;
+
+            strResult = "";
+            try
+            {
+                SQL = "";
+                SQL = "SELECT * FROM HIC_CODES ";
+                SQL = SQL + ComNum.VBLF + "WHERE SWLICENSE = '" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND GROUPCODE = 'OSHA_APPROVE_PATH1' ";
+                SQL = SQL + ComNum.VBLF + "  AND ISDELETED = 'N' ";
+                SQL = SQL + ComNum.VBLF + "  AND CODE<='" + strGDate + "' ";
+                SQL = SQL + ComNum.VBLF + "ORDER BY CODE DESC ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0) strResult = dt.Rows[0]["CODENAME"].ToString().Trim();
+                dt.Dispose();
+                dt = null;
+            }
+            catch (Exception ex)
+            {
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                }
+                ComFunc.MsgBox(ex.Message);
+            }
+            return strResult;
+        }
+
     }
 }

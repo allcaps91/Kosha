@@ -61,6 +61,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("INSERT INTO HIC_OSHA_CARD6             ");
             parameter.AppendSql("(                                      ");
             parameter.AppendSql("  ID,                                  ");
+            parameter.AppendSql("  REPORT_ID,                           ");
             parameter.AppendSql("  ESTIMATE_ID,                         ");
             parameter.AppendSql("  IND_ACC_TYPE,                        ");
             parameter.AppendSql("  NAME,                                ");
@@ -75,6 +76,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("VALUES                                 ");
             parameter.AppendSql("(                                      ");
             parameter.AppendSql("  :ID,                                 ");
+            parameter.AppendSql("  :REPORT_ID,                          ");
             parameter.AppendSql("  :ESTIMATE_ID,                        ");
             parameter.AppendSql("  :IND_ACC_TYPE,                       ");
             parameter.AppendSql("  :NAME,                               ");
@@ -83,10 +85,11 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  :APPROVE_DATE,                       ");
             parameter.AppendSql("  :REQUEST_DATE,                       ");
             parameter.AppendSql("  :ILLNAME,                            ");
-            parameter.AppendSql("  :REMARK                              ");
+            parameter.AppendSql("  :REMARK,                             ");
             parameter.AppendSql("  :SWLICENSE                           ");
             parameter.AppendSql(")                                      ");
             parameter.Add("ID", dto.ID);
+            parameter.Add("REPORT_ID", dto.REPORT_ID);
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
             parameter.Add("IND_ACC_TYPE", dto.IND_ACC_TYPE);
             parameter.Add("NAME", dto.NAME);
@@ -146,5 +149,19 @@ namespace HC.OSHA.Repository
 
             DataSyncService.Instance.Delete("HIC_OSHA_CARD6", id);
         }
+
+        public void DeleteByReportid(long report_id)
+        {
+            MParameter parameter = CreateParameter();
+            parameter.AppendSql("DELETE FROM HIC_OSHA_CARD6      ");
+            parameter.AppendSql("WHERE REPORT_ID = :REPORT_ID    ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE    ");
+            parameter.Add("REPORT_ID", report_id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+            ExecuteNonQuery(parameter);
+
+            // DataSyncService.Instance.Delete("HIC_OSHA_CARD6", id);
+        }
+
     }
 }
