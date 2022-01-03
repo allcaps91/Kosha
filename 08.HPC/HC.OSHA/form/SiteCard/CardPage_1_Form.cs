@@ -574,5 +574,9 @@ namespace HC_OSHA
             Print();
         }
 
+        private void SSCard_CellClick(object sender, CellClickEventArgs e)
+        {
+
+        }
     }
 }

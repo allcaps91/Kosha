@@ -58,7 +58,7 @@
             this.SSList.Name = "SSList";
             this.SSList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSList_Sheet1});
-            this.SSList.Size = new System.Drawing.Size(793, 483);
+            this.SSList.Size = new System.Drawing.Size(703, 371);
             this.SSList.TabIndex = 9;
             this.SSList.SetActiveViewport(0, -1, -1);
             // 
@@ -97,7 +97,7 @@
             this.panSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panSearch.Location = new System.Drawing.Point(0, 35);
             this.panSearch.Name = "panSearch";
-            this.panSearch.Size = new System.Drawing.Size(993, 44);
+            this.panSearch.Size = new System.Drawing.Size(903, 44);
             this.panSearch.TabIndex = 7;
             // 
             // ChkIsHisotry
@@ -193,14 +193,14 @@
             this.formTItle1.Location = new System.Drawing.Point(0, 0);
             this.formTItle1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.formTItle1.Name = "formTItle1";
-            this.formTItle1.Size = new System.Drawing.Size(993, 35);
+            this.formTItle1.Size = new System.Drawing.Size(903, 35);
             this.formTItle1.TabIndex = 8;
             this.formTItle1.TitleText = "수입통계";
             // 
             // BtnClose
             // 
             this.BtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnClose.Location = new System.Drawing.Point(908, 2);
+            this.BtnClose.Location = new System.Drawing.Point(818, 2);
             this.BtnClose.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnClose.Name = "BtnClose";
             this.BtnClose.Size = new System.Drawing.Size(75, 28);
@@ -231,21 +231,11 @@
             hC_OSHA_SITE_MODEL1.ISACTIVE = null;
             hC_OSHA_SITE_MODEL1.LABOR = null;
             hC_OSHA_SITE_MODEL1.LASTMODIFIED = null;
-            hC_OSHA_SITE_MODEL1.MANAGEDOCTORCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGEDOCTORSTARTDATE = null;
-            hC_OSHA_SITE_MODEL1.MANAGEENGINEERCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGEENGINEERSTARTDATE = null;
-            hC_OSHA_SITE_MODEL1.MANAGENURSECOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGENURSESTARTDATE = null;
             hC_OSHA_SITE_MODEL1.NAME = null;
             hC_OSHA_SITE_MODEL1.PARENTSITE_ID = ((long)(0));
             hC_OSHA_SITE_MODEL1.PARENTSITE_NAME = null;
             hC_OSHA_SITE_MODEL1.RowStatus = ComBase.Mvc.RowStatus.None;
-            hC_OSHA_SITE_MODEL1.SITE_ID = ((long)(0));
             hC_OSHA_SITE_MODEL1.TEL = null;
-            hC_OSHA_SITE_MODEL1.VISITDAY = ((long)(0));
-            hC_OSHA_SITE_MODEL1.VISITWEEK = ((long)(0));
-            hC_OSHA_SITE_MODEL1.WORKERTOTALCOUNT = ((long)(0));
             hC_OSHA_SITE_MODEL1.zTemp1 = null;
             hC_OSHA_SITE_MODEL1.zTemp10 = null;
             hC_OSHA_SITE_MODEL1.zTemp11 = null;
@@ -271,7 +261,7 @@
             this.oshaSiteLastTree1.Location = new System.Drawing.Point(0, 79);
             this.oshaSiteLastTree1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.oshaSiteLastTree1.Name = "oshaSiteLastTree1";
-            this.oshaSiteLastTree1.Size = new System.Drawing.Size(200, 483);
+            this.oshaSiteLastTree1.Size = new System.Drawing.Size(200, 371);
             this.oshaSiteLastTree1.TabIndex = 85;
             this.oshaSiteLastTree1.NodeClick += new HC_OSHA.OshaSiteLastTree.SiteTreeViewNodeMouseClickEventHandler(this.oshaSiteLastTree1_NodeClick);
             // 
@@ -279,7 +269,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 562);
+            this.ClientSize = new System.Drawing.Size(903, 450);
             this.Controls.Add(this.TxtSiteName);
             this.Controls.Add(this.SSList);
             this.Controls.Add(this.oshaSiteLastTree1);

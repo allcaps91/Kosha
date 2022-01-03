@@ -345,7 +345,7 @@ namespace HS_OSHA
         {
             intDelay++;
 
-            if (intDelay == 2)
+            if (intDelay == 3)
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 Process process = new Process();
@@ -355,7 +355,7 @@ namespace HS_OSHA
                 process.StartInfo = startInfo;
                 process.Start();
 
-            } else if (intDelay >= 5) {
+            } else if (intDelay >= 6) {
                 timer1.Enabled = false;
                 this.Close();
             }

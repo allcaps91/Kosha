@@ -46,7 +46,7 @@ namespace HC_OSHA
             if (FbCodeManager == false)
             {
                 MenuBaseCode.Visible = false;  //코드관리
-                사업장등록ToolStripMenuItem.Visible = false; //거래처코드
+                //사업장등록ToolStripMenuItem.Visible = false; //거래처코드
             }
             if (FbLtdUser == true)
             {
@@ -609,7 +609,13 @@ namespace HC_OSHA
 
         private void 수입일보인쇄ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //IncomeReport form = new IncomeReport();
+            //form.SelectedSite = base.SelectedSite;
+            //form.SelectedEstimate = base.SelectedEstimate;
+            //CreateForm(form);
+            //(form as ISelectSite).Select(oshaSiteLastTree.GetSite);
             new IncomeReport().Show();
+
         }
 
         private void ryToolStripMenuItem_Click(object sender, EventArgs e)

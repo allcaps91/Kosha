@@ -44,12 +44,10 @@ namespace HC_OSHA.Visit
             SSList.ActiveSheet.Cells[2, 27].Text = VB.Pstr(strGPath, ",", 1);
             SSList.ActiveSheet.Cells[2, 30].Text = VB.Pstr(strGPath, ",", 2);
             SSList.ActiveSheet.Cells[2, 33].Text = VB.Pstr(strGPath, ",", 3);
-
         }
         public void Clear()
         {
             int rowIndex = 8;
-            //for (int i = rowIndex; i < 22; i++)
             for (int i = rowIndex; i < 24; i++)
             {
                 SSList.ActiveSheet.Cells[i, 0].Value = "";
@@ -61,12 +59,10 @@ namespace HC_OSHA.Visit
                 SSList.ActiveSheet.Cells[i, 32].Value = "";
             }
             SSList.ActiveSheet.ActiveRowIndex = 0;
-     //       SSList.ShowCell(0, 0, 0, 0, FarPoint.Win.Spread.VerticalPosition.Top,FarPoint.Win.Spread.HorizontalPosition.Left);
             SSList.ShowRow(0, 0, FarPoint.Win.Spread.VerticalPosition.Top);
 
 
             //6칸식
-            //for(int i=25; i< SSList.RowCount(); i++)
             for (int i = 27; i < SSList.RowCount(); i++)
             {
                 SSList.ActiveSheet.Cells[i, 1].Value = "";
@@ -74,13 +70,6 @@ namespace HC_OSHA.Visit
                 SSList.ActiveSheet.Cells[i, 7].Value = "";
                 SSList.ActiveSheet.Cells[i, 18].Value = "";
             }
-
-
-            //SSList.ActiveSheet.Rows.Add(10, 1);
-
-
-
-
         }
         private void BtnSearch_Click(object sender, EventArgs e)
         {
@@ -96,7 +85,7 @@ namespace HC_OSHA.Visit
             SSList.ActiveSheet.Cells[2, 27].Text = VB.Pstr(strGPath, ",", 1);
             SSList.ActiveSheet.Cells[2, 30].Text = VB.Pstr(strGPath, ",", 2);
             SSList.ActiveSheet.Cells[2, 33].Text = VB.Pstr(strGPath, ",", 3);
-
+        
             string title = "◎출장일:" + date.Substring(0, 4) + "년 " + date.Substring(5, 2) + "월 " + date.Substring(8, 2) + "일(" + DateUtil.ToDayOfWeek(DtpVisitDate.Value).Substring(0, 1) + ")";
 
             SSList.ActiveSheet.Cells[4, 0].Value = title;
@@ -122,16 +111,6 @@ namespace HC_OSHA.Visit
                 SSList.ActiveSheet.Cells[rowIndex, 32].Value = list[i].VISITDOCTORNAME;
                 ++rowIndex;
             }
-
-            //if(rowIndex <= 28)
-            //{
-            //    for (int i = rowIndex+1; i < 28; i++)
-            //    {
-            //        SSList_Sheet1.Rows.Get(i).Visible = false;
-            //    }
-            //}
-
-
 
             List<DailyReportVisitModel> visitList = dailyVisitReportService.DailyReportRepository.FindVisitList(date);
             //rowIndex = 25;
@@ -218,9 +197,6 @@ namespace HC_OSHA.Visit
                     SSList.ActiveSheet.Rows[j].Visible = false;
                 }
             }
-
-        
-
         }
         private void SSList_CellClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
         {
@@ -247,6 +223,7 @@ namespace HC_OSHA.Visit
             }
             
         }
+
         // 특정일자를 기준으로 결재 경로명을 찾기
         public string Get_Approve_Path(string strGDate)
         {

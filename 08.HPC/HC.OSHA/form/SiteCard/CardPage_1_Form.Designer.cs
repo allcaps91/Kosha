@@ -1506,6 +1506,7 @@
             tipAppearance1.ForeColor = System.Drawing.SystemColors.InfoText;
             this.SSCard.TextTipAppearance = tipAppearance1;
             this.SSCard.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
+            this.SSCard.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSCard_CellClick);
             // 
             // SSCard_Sheet1
             // 
@@ -5430,6 +5431,7 @@
             this.SSCard_Sheet1.Cells.Get(37, 4).CellType = textCellType175;
             this.SSCard_Sheet1.Cells.Get(37, 4).ColumnSpan = 4;
             this.SSCard_Sheet1.Cells.Get(37, 4).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.SSCard_Sheet1.Cells.Get(37, 4).Value = "포항성모병원";
             this.SSCard_Sheet1.Cells.Get(37, 4).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(37, 5).Border = complexBorder704;
             textCellType176.MaxLength = 32000;

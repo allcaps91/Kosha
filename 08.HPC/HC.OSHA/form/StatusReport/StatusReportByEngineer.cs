@@ -227,6 +227,8 @@ namespace HC_OSHA
       //      ChkAccNone.Checked = true;
       //      CboVisitYear.Text = "";
       //      CboVisitDate.Text = "";
+
+
         }
         /// <summary>
         /// 산업재해 사업장 관리카드 저장
@@ -247,6 +249,7 @@ namespace HC_OSHA
                 dto.ILLNAME = TxtAcIllName.GetValue();
                 service.Save(dto);
             }
+      
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
