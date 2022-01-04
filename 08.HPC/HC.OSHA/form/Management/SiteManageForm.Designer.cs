@@ -333,7 +333,7 @@
             this.PanEstimate.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanEstimate.Location = new System.Drawing.Point(3, 3);
             this.PanEstimate.Name = "PanEstimate";
-            this.PanEstimate.Size = new System.Drawing.Size(1217, 227);
+            this.PanEstimate.Size = new System.Drawing.Size(1080, 227);
             this.PanEstimate.TabIndex = 1;
             // 
             // BtnDeleteParent
@@ -642,10 +642,10 @@
             // 
             // BtnSaveEstimate
             // 
-            this.BtnSaveEstimate.Location = new System.Drawing.Point(898, 7);
+            this.BtnSaveEstimate.Location = new System.Drawing.Point(890, 7);
             this.BtnSaveEstimate.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSaveEstimate.Name = "BtnSaveEstimate";
-            this.BtnSaveEstimate.Size = new System.Drawing.Size(75, 28);
+            this.BtnSaveEstimate.Size = new System.Drawing.Size(89, 28);
             this.BtnSaveEstimate.TabIndex = 11;
             this.BtnSaveEstimate.Text = "저장(&S)";
             this.BtnSaveEstimate.UseVisualStyleBackColor = true;
@@ -661,7 +661,7 @@
             // 
             // BtnDeleteEstimate
             // 
-            this.BtnDeleteEstimate.Location = new System.Drawing.Point(817, 7);
+            this.BtnDeleteEstimate.Location = new System.Drawing.Point(809, 8);
             this.BtnDeleteEstimate.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnDeleteEstimate.Name = "BtnDeleteEstimate";
             this.BtnDeleteEstimate.Size = new System.Drawing.Size(75, 28);
@@ -672,7 +672,7 @@
             // 
             // btnNewEstimate
             // 
-            this.btnNewEstimate.Location = new System.Drawing.Point(725, 7);
+            this.btnNewEstimate.Location = new System.Drawing.Point(717, 8);
             this.btnNewEstimate.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnNewEstimate.Name = "btnNewEstimate";
             this.btnNewEstimate.Size = new System.Drawing.Size(86, 28);
@@ -723,6 +723,7 @@
             this.BtnLoadExcel.TabIndex = 67;
             this.BtnLoadExcel.Text = "견적서 test";
             this.BtnLoadExcel.UseVisualStyleBackColor = true;
+            this.BtnLoadExcel.Visible = false;
             this.BtnLoadExcel.Click += new System.EventHandler(this.BtnLoadExcel_Click);
             // 
             // SSEstimate
@@ -784,7 +785,7 @@
             // BtnSiteConfitm
             // 
             this.BtnSiteConfitm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSiteConfitm.Location = new System.Drawing.Point(1125, 5);
+            this.BtnSiteConfitm.Location = new System.Drawing.Point(988, 5);
             this.BtnSiteConfitm.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSiteConfitm.Name = "BtnSiteConfitm";
             this.BtnSiteConfitm.Size = new System.Drawing.Size(75, 28);
@@ -867,7 +868,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1231, 965);
+            this.tabControl1.Size = new System.Drawing.Size(1094, 965);
             this.tabControl1.TabIndex = 34;
             // 
             // tabPage2
@@ -876,7 +877,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 32);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1223, 929);
+            this.tabPage2.Size = new System.Drawing.Size(1086, 929);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "사업장 현황";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -904,7 +905,7 @@
             this.PanContract.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanContract.Location = new System.Drawing.Point(3, 3);
             this.PanContract.Name = "PanContract";
-            this.PanContract.Size = new System.Drawing.Size(1217, 923);
+            this.PanContract.Size = new System.Drawing.Size(1080, 923);
             this.PanContract.TabIndex = 32;
             this.PanContract.Paint += new System.Windows.Forms.PaintEventHandler(this.PanContract_Paint);
             // 
@@ -2111,6 +2112,7 @@
             this.label20.TabIndex = 59;
             this.label20.Text = "총원";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
             // label17
             // 
@@ -2243,7 +2245,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 32);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1223, 929);
+            this.tabPage3.Size = new System.Drawing.Size(1086, 929);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "계   약";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -2255,7 +2257,7 @@
             this.panBottmo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panBottmo.Location = new System.Drawing.Point(3, 406);
             this.panBottmo.Name = "panBottmo";
-            this.panBottmo.Size = new System.Drawing.Size(1217, 520);
+            this.panBottmo.Size = new System.Drawing.Size(1080, 520);
             this.panBottmo.TabIndex = 68;
             // 
             // SSChildPrice
@@ -2267,7 +2269,7 @@
             this.SSChildPrice.Name = "SSChildPrice";
             this.SSChildPrice.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSChildPrice_Sheet1});
-            this.SSChildPrice.Size = new System.Drawing.Size(1217, 466);
+            this.SSChildPrice.Size = new System.Drawing.Size(1080, 466);
             this.SSChildPrice.TabIndex = 68;
             this.SSChildPrice.Change += new FarPoint.Win.Spread.ChangeEventHandler(this.SSChildPrice_Change);
             // 
@@ -2306,7 +2308,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1217, 54);
+            this.panel2.Size = new System.Drawing.Size(1080, 54);
             this.panel2.TabIndex = 70;
             // 
             // label65
@@ -2388,7 +2390,7 @@
             this.panTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panTop.Location = new System.Drawing.Point(3, 3);
             this.panTop.Name = "panTop";
-            this.panTop.Size = new System.Drawing.Size(1217, 403);
+            this.panTop.Size = new System.Drawing.Size(1080, 403);
             this.panTop.TabIndex = 69;
             // 
             // SSPrice
@@ -2400,7 +2402,7 @@
             this.SSPrice.Name = "SSPrice";
             this.SSPrice.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSPrice_Sheet1});
-            this.SSPrice.Size = new System.Drawing.Size(1217, 322);
+            this.SSPrice.Size = new System.Drawing.Size(1080, 322);
             this.SSPrice.TabIndex = 67;
             this.SSPrice.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSPrice_CellDoubleClick);
             // 
@@ -2446,7 +2448,7 @@
             this.PanPrice.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanPrice.Location = new System.Drawing.Point(0, 0);
             this.PanPrice.Name = "PanPrice";
-            this.PanPrice.Size = new System.Drawing.Size(1217, 81);
+            this.PanPrice.Size = new System.Drawing.Size(1080, 81);
             this.PanPrice.TabIndex = 0;
             // 
             // ChkQuarterCharge
@@ -2512,7 +2514,7 @@
             // 
             // BtnNewPrice
             // 
-            this.BtnNewPrice.Location = new System.Drawing.Point(980, 40);
+            this.BtnNewPrice.Location = new System.Drawing.Point(822, 41);
             this.BtnNewPrice.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnNewPrice.Name = "BtnNewPrice";
             this.BtnNewPrice.Size = new System.Drawing.Size(75, 28);
@@ -2543,7 +2545,7 @@
             // 
             // BtnDeletePrice
             // 
-            this.BtnDeletePrice.Location = new System.Drawing.Point(1061, 40);
+            this.BtnDeletePrice.Location = new System.Drawing.Point(903, 41);
             this.BtnDeletePrice.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnDeletePrice.Name = "BtnDeletePrice";
             this.BtnDeletePrice.Size = new System.Drawing.Size(75, 28);
@@ -2554,7 +2556,7 @@
             // 
             // BtnSavePrice
             // 
-            this.BtnSavePrice.Location = new System.Drawing.Point(1142, 40);
+            this.BtnSavePrice.Location = new System.Drawing.Point(984, 41);
             this.BtnSavePrice.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSavePrice.Name = "BtnSavePrice";
             this.BtnSavePrice.Size = new System.Drawing.Size(75, 28);
@@ -2648,7 +2650,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 32);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1223, 929);
+            this.tabPage1.Size = new System.Drawing.Size(1086, 929);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "견   적 ";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -2711,7 +2713,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 32);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1223, 929);
+            this.tabPage5.Size = new System.Drawing.Size(1086, 929);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "원하청 현황";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2721,7 +2723,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 32);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1223, 929);
+            this.tabPage4.Size = new System.Drawing.Size(1086, 929);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "원청 현황";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -2733,7 +2735,7 @@
             this.formTItle1.Location = new System.Drawing.Point(0, 0);
             this.formTItle1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.formTItle1.Name = "formTItle1";
-            this.formTItle1.Size = new System.Drawing.Size(1447, 33);
+            this.formTItle1.Size = new System.Drawing.Size(1310, 33);
             this.formTItle1.TabIndex = 5;
             this.formTItle1.TitleText = "사업장 견적 및 계약";
             this.formTItle1.Load += new System.EventHandler(this.formTItle1_Load);
@@ -2821,7 +2823,7 @@
             this.panTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panTab.Location = new System.Drawing.Point(216, 33);
             this.panTab.Name = "panTab";
-            this.panTab.Size = new System.Drawing.Size(1231, 965);
+            this.panTab.Size = new System.Drawing.Size(1094, 965);
             this.panTab.TabIndex = 36;
             // 
             // panLeft
@@ -2838,7 +2840,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1447, 998);
+            this.ClientSize = new System.Drawing.Size(1310, 998);
             this.Controls.Add(this.panTab);
             this.Controls.Add(this.panLeft);
             this.Controls.Add(this.lblSitename);

@@ -41,7 +41,6 @@ namespace HC.OSHA.Service
             if (dto.ID == 0)
             {
                return  hcOshaEstimateRepository.Insert(dto);
-
             }
             else
             {

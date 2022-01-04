@@ -104,17 +104,16 @@ namespace HC_OSHA
                 strChar = Convert.ToChar(strPass1.Substring(i, 1));
                 if (strChar >= '0' && strChar <= '9') nCnt1++;
                 if (strChar >= 'a' && strChar <= 'z') nCnt2++;
-                if (strChar >= 'A' && strChar <= 'Z') nCnt3++;
-                if (strChar == '!' || strChar == '@') nCnt4++;
-                if (strChar == '#' || strChar == '$') nCnt4++;
-                if (strChar == '%' || strChar == '^') nCnt4++;
-                if (strChar == '&' || strChar == '*') nCnt4++;
-                if (strChar == '(' || strChar == ')') nCnt4++;
+                if (strChar >= 'A' && strChar <= 'Z') nCnt2++;
+                if (strChar == '!' || strChar == '@') nCnt3++;
+                if (strChar == '#' || strChar == '$') nCnt3++;
+                if (strChar == '%' || strChar == '^') nCnt3++;
+                if (strChar == '&' || strChar == '*') nCnt3++;
+                if (strChar == '(' || strChar == ')') nCnt3++;
             }
             if (nCnt1 == 0) { ComFunc.MsgBox("0~9 숫자가 1글자도 포함이 안됨"); return; }
-            if (nCnt2 == 0) { ComFunc.MsgBox("a~z 영어 소문자 1글자도 포함이 안됨"); return; }
-            if (nCnt3 == 0) { ComFunc.MsgBox("A~Z 영어 대문자 1글자도 포함이 안됨"); return; }
-            if (nCnt4 == 0) { ComFunc.MsgBox("특수문자 !@#$%^&*() 1글자도 포함이 안됨"); return; }
+            if (nCnt2 == 0) { ComFunc.MsgBox("영문자가 1글자도 포함이 안됨"); return; }
+            if (nCnt3 == 0) { ComFunc.MsgBox("특수문자 !@#$%^&*() 1글자도 포함이 안됨"); return; }
 
             Cursor.Current = Cursors.WaitCursor;
 

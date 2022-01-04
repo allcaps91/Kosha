@@ -128,7 +128,7 @@ namespace HcAdmin
             }
 
             // 2. 최근 1주일이내 변경된 파일만 Update Files 목록에 복사
-            DateTime strGdate = DateTime.Now.AddDays(-7);
+            DateTime strGdate = DateTime.Now.AddDays(-20);
             string strCopyPath = @"C:\헬스소프트\UpdateFiles\";
             DirectoryInfo d2 = new DirectoryInfo(@"C:\PSMHEXE\Debug");
             FileInfo[] files2 = d2.GetFiles();

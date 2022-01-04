@@ -1268,6 +1268,7 @@
             this.dtpSelDate.Size = new System.Drawing.Size(204, 25);
             this.dtpSelDate.TabIndex = 24;
             this.dtpSelDate.Tag = "SELDATE";
+            this.dtpSelDate.ValueChanged += new System.EventHandler(this.dtpSelDate_ValueChanged);
             // 
             // label17
             // 
@@ -1905,7 +1906,7 @@
             this.SSTax.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSTax.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SSTax.HorizontalScrollBar.TabIndex = 129;
+            this.SSTax.HorizontalScrollBar.TabIndex = 133;
             this.SSTax.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSTax.Location = new System.Drawing.Point(3, 30);
             this.SSTax.Name = "SSTax";
@@ -1918,7 +1919,7 @@
             this.SSTax.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSTax.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SSTax.VerticalScrollBar.TabIndex = 130;
+            this.SSTax.VerticalScrollBar.TabIndex = 134;
             this.SSTax.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SSTax_Sheet1
@@ -2084,7 +2085,7 @@
             this.SSList.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSList.HorizontalScrollBar.Renderer = flatScrollBarRenderer3;
-            this.SSList.HorizontalScrollBar.TabIndex = 127;
+            this.SSList.HorizontalScrollBar.TabIndex = 131;
             this.SSList.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.Location = new System.Drawing.Point(2, 2);
             this.SSList.Name = "SSList";
@@ -2097,7 +2098,7 @@
             this.SSList.VerticalScrollBar.Name = "";
             flatScrollBarRenderer4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSList.VerticalScrollBar.Renderer = flatScrollBarRenderer4;
-            this.SSList.VerticalScrollBar.TabIndex = 128;
+            this.SSList.VerticalScrollBar.TabIndex = 132;
             this.SSList.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
             // 

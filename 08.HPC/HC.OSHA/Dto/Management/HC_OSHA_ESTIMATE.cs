@@ -27,13 +27,13 @@ namespace HC.OSHA.Dto
         /// <summary>
         /// 惯青老
         /// </summary>
-    //    [MTSNotEmpty]
+        ///    [MTSNotEmpty]
         public string ESTIMATEDATE { get; set; }
 
         /// <summary>
         /// 诀公矫累老
         /// </summary>
-    //    [MTSNotEmpty]
+        /// [MTSNotEmpty]
         public string STARTDATE { get; set; }
 
         /// <summary>

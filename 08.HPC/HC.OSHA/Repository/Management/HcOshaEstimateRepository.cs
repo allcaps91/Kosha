@@ -28,11 +28,12 @@ namespace HC.OSHA.Repository
             long id = GetSequenceNextVal("HC_OSHA_ESTIMATE_ID_SEQ");
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO HIC_OSHA_ESTIMATE    ");
+            parameter.AppendSql("INSERT INTO HIC_OSHA_ESTIMATE ");
             parameter.AppendSql("(                              ");
             parameter.AppendSql(" ID, OSHA_SITE_ID, ESTIMATEDATE, STARTDATE, WORKERTOTALCOUNT, OFFICIALFEE, SITEFEE,    ");
-            parameter.AppendSql(" MONTHLYFEE, FEETYPE, PRINTDATE, SENDMAILDATE, ISDELETED, REMARK, EXCELPATH, MODIFIED, MODIFIEDUSER, CREATED, CREATEDUSER  ");
-            parameter.AppendSql(" ,BLUEMALE, BLUEFEMALE, WHITEMALE, WHITEFEMALE, SWLICENSE ");
+            parameter.AppendSql(" MONTHLYFEE, FEETYPE, PRINTDATE, SENDMAILDATE, ISDELETED, REMARK,");
+            parameter.AppendSql(" EXCELPATH, MODIFIED, MODIFIEDUSER, CREATED, CREATEDUSER,");
+            parameter.AppendSql(" BLUEMALE, BLUEFEMALE, WHITEMALE, WHITEFEMALE, SWLICENSE ");
             parameter.AppendSql(") ");
             parameter.AppendSql("VALUES ");
             parameter.AppendSql("(");
