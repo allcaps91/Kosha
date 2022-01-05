@@ -59,7 +59,7 @@ namespace HC_OSHA.form.Visit
             
                 string year = yearAndMonth.Substring(0, 4);
                 string month = yearAndMonth.Substring(5, 2);
-                ssDoc.ActiveSheet.Cells[6, 5].Value = "포성건 " + year + " - " + docNumber + "호";
+                ssDoc.ActiveSheet.Cells[6, 5].Value = "대한 " + year + " - " + docNumber + "호";
                 ssDoc.ActiveSheet.Cells[8, 5].Value = executeDate;
                 ssDoc.ActiveSheet.Cells[10, 5].Value = siteName + " 대표이사";
                 ssDoc.ActiveSheet.Cells[14, 5].Value = year + "년 " + month + "월 " + "보건관리전문기관 방문일정 안내";
