@@ -793,6 +793,7 @@ namespace HC_OSHA
 
                 HC_OSHA_ESTIMATE dto = hcOshaEstimateService.FindById(base.SelectedEstimate.ID);
                 PanEstimate.SetData(dto);
+                NumSITEFEE.Value = dto.SITEFEE;
 
                 //원청
                 HC_OSHA_SITE_MODEL parent = hcOShaSiteService.FindById(dto.OSHA_SITE_ID);
