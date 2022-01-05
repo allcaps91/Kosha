@@ -55,8 +55,8 @@ namespace ComHpcLibB
             SSTax.AddColumn("D",            "",                           50, FpSpreadCellType.CheckBoxCellType);
             Column column = SSTax.AddColumn("구분", nameof(HIC_LTD_TAX.BUSE), 72, FpSpreadCellType.ComboBoxCellType);
             ComboBoxCellType comboBoxCell = column.CellType as ComboBoxCellType;
-            comboBoxCell.Items = new string[] { "종검", "일반", "측정", "대행" };
-            comboBoxCell.ItemData = new string[] { "1", "2", "3", "4" };
+            comboBoxCell.Items = new string[] { "종검", "일반", "측정", "대행", "보건" };
+            comboBoxCell.ItemData = new string[] { "1", "2", "3", "4", "5" };
 
             SSTax.AddColumn("담당자",       nameof(HIC_LTD_TAX.DAMNAME),  78, FpSpreadCellType.TextCellType, new SpreadCellTypeOption { Aligen = CellHorizontalAlignment.Left });
             SSTax.AddColumn("직책",         nameof(HIC_LTD_TAX.DAMJIK),   84, FpSpreadCellType.TextCellType, new SpreadCellTypeOption { Aligen = CellHorizontalAlignment.Left });
@@ -149,11 +149,18 @@ namespace ComHpcLibB
                 {
                     item.JUMIN = clsAES.DeAES(item.JUMIN);
                 }
-                
+
+                txtCode.Enabled = true;
                 panMain.SetData(item);
 
                 //세금계산서 정보
                 SSTax.DataSource = hicLtdTaxService.ViewData(item.CODE.ToString().Trim());
+
+                txtCode.Enabled = false;
+                btnNew.Enabled = false;
+                btnSave.Enabled = true;
+                btnDelete.Enabled = true;
+                btnCancel.Enabled = true;
             }
         }
 
@@ -187,6 +194,11 @@ namespace ComHpcLibB
                 panMain.SetData(item);
                 //세금계산서 정보
                 SSTax.DataSource = hicLtdTaxService.ViewData(txtCode.Text.Trim());
+
+                btnNew.Enabled = false;
+                btnSave.Enabled = true;
+                btnDelete.Enabled = true;
+                btnCancel.Enabled = true;
             }
             else if (sender == txtDLtd && e.KeyChar == (char)13)
             {
@@ -202,13 +214,13 @@ namespace ComHpcLibB
 
         private void Search_List(string strKeyWord)
         {
-            if (strKeyWord == "")
-            {
-                if (ComFunc.MsgBoxQ("찾는 단어가 없을 경우 조회시간이 오래걸립니다. 그래도 조회하시겠습니까?", "확인", MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    return;
-                }
-            }
+            //if (strKeyWord == "")
+            //{
+            //    if (ComFunc.MsgBoxQ("찾는 단어가 없을 경우 조회시간이 오래걸립니다. 그래도 조회하시겠습니까?", "확인", MessageBoxDefaultButton.Button2) == DialogResult.No)
+            //    {
+            //        return;
+            //    }
+            //}
 
             SSList.DataSource = hicLtdService.ViewLtd(strKeyWord);
         }
@@ -235,8 +247,12 @@ namespace ComHpcLibB
             else if (sender == btnNew)
             {
                 Screen_Clear();
+                txtCode.Enabled = true;
                 txtCode.Text = ComQuery.GetSequencesNoEx(clsDB.DbCon, "HC_LTD_SEQ").ToString();
                 txtCode.Enabled = false;
+                btnNew.Enabled = false;
+                btnSave.Enabled = true;
+                btnCancel.Enabled = true;
             }
             else if (sender == btnDelete)
             {
@@ -288,27 +304,27 @@ namespace ComHpcLibB
 
                 //GetCount 형식 SingleQuery 예제
                 //일반건진에 자료가 발생되었는지 점검
-                long nCNT1 = hicLtdService.GetHicCount(item.CODE);
+                //long nCNT1 = hicLtdService.GetHicCount(item.CODE);
                 //종합검진에 자료가 발생되었는지 점검
-                long nCNT2 = hicLtdService.GetHeaCount(item.CODE);
+                //long nCNT2 = hicLtdService.GetHeaCount(item.CODE);
                 //미수Data에 자료가 있는지 점검
-                long nCNT3 = hicLtdService.GetMisuCount(item.CODE);
+                //long nCNT3 = hicLtdService.GetMisuCount(item.CODE);
                 
-                long nTOT = nCNT1 + nCNT2 + nCNT3;
+                //long nTOT = nCNT1 + nCNT2 + nCNT3;
 
-                if (nTOT > 0)
-                {
-                    StringBuilder strMst = new StringBuilder();
+                //if (nTOT > 0)
+                //{
+                //    StringBuilder strMst = new StringBuilder();
 
-                    strMst.AppendLine("코드를 삭제하면 삭제한 회사와 관련된 자료를 조회 시");
-                    strMst.AppendLine("오류가 발생합니다.");
-                    strMst.AppendLine("그래도 삭제 하시겠습니까?");
+                //    strMst.AppendLine("코드를 삭제하면 삭제한 회사와 관련된 자료를 조회 시");
+                //    strMst.AppendLine("오류가 발생합니다.");
+                //    strMst.AppendLine("그래도 삭제 하시겠습니까?");
 
-                    if (ComFunc.MsgBoxQ(strMst.ToString(), "작업확인", MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
+                //    if (ComFunc.MsgBoxQ(strMst.ToString(), "작업확인", MessageBoxDefaultButton.Button2) == DialogResult.No)
+                //    {
+                //        return;
+                //    }
+                //}
 
                 item.DELDATE = DateTime.Now;
 
@@ -325,14 +341,17 @@ namespace ComHpcLibB
             }
             else if (sender == btnSave)
             {
-                txtCode.Enabled = true;
+                btnSave.Enabled = false;
+
                 HIC_LTD item = panMain.GetData<HIC_LTD>();
+                item.CODE = long.Parse(txtCode.Text.Trim());
                 IList<HIC_LTD_TAX> item2 = SSTax.GetEditbleData<HIC_LTD_TAX>();
                 int result = 0;
 
                 //Data Error Check
                 if (!hicLtdService.DataCheck(item))
                 {
+                    btnSave.Enabled = true;
                     return;
                 }
 
@@ -341,6 +360,7 @@ namespace ComHpcLibB
                     if (!panMain.RequiredValidate())
                     {
                         MessageBox.Show("필수 입력항목이 누락되었습니다.");
+                        btnSave.Enabled = true;
                         return;
                     }
 
@@ -348,6 +368,7 @@ namespace ComHpcLibB
                     {
                         item.JUMIN = clsAES.AES(item.JUMIN.Trim());
                     }
+
 
                     if (item.RID == null || item.RID == "")
                     {
@@ -366,25 +387,27 @@ namespace ComHpcLibB
                     {
                         hicLtdService.InactiveOsha(item.CODE);
                     }
-                       
+
 
                     //세금계산서 정보 입력
-                    for (int i = 0; i < item2.Count; i++)
-                    {
-                        //작업자 사번입력
-                        item2[i].JOBSABUN = clsType.User.IdNumber.To<long>();
+                    if (item2 != null)
+                    { 
+                        for (int i = 0; i < item2.Count; i++)
+                        {
+                            //작업자 사번입력
+                            item2[i].JOBSABUN = clsType.User.IdNumber.To<long>();
 
-                        if (!item2[i].RID.IsNullOrEmpty())
-                        {
-                            result = hicLtdTaxService.UpDate(item2[i]);
-                        }
-                        else
-                        {
-                            item2[i].LTDCODE = txtCode.Text.To<long>();
-                            result = hicLtdTaxService.Insert(item2[i]);
+                            if (!item2[i].RID.IsNullOrEmpty())
+                            {
+                                result = hicLtdTaxService.UpDate(item2[i]);
+                            }
+                            else
+                            {
+                                item2[i].LTDCODE = txtCode.Text.To<long>();
+                                result = hicLtdTaxService.Insert(item2[i]);
+                            }
                         }
                     }
-
                     HIC_LTD_TAX item3 = new HIC_LTD_TAX();
 
                     for (int i = 0; i < SSTax.ActiveSheet.RowCount; i++)
@@ -403,7 +426,6 @@ namespace ComHpcLibB
                         Screen_Clear();
                         return;
                     }
-
                 }
             }
         }
@@ -423,7 +445,11 @@ namespace ComHpcLibB
             clsSpread cSpd = new clsSpread();
             cSpd.Spread_All_Clear(SSTax);
             cSpd.Dispose();
-            txtCode.Enabled = true;
+            txtCode.Enabled = false;
+            btnNew.Enabled = true;
+            btnSave.Enabled = false;
+            btnCancel.Enabled = false;
+            btnDelete.Enabled = false;
         }
 
         private void SSList_CellClick(object sender, CellClickEventArgs e)
@@ -432,6 +458,11 @@ namespace ComHpcLibB
         }
 
         private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpSelDate_ValueChanged(object sender, EventArgs e)
         {
 
         }

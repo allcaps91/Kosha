@@ -237,7 +237,6 @@ namespace HC_OSHA
             ChkISSPECIAL.SetOptions(new CheckBoxOption { DataField = nameof(HC_OSHA_CONTRACT.ISSPECIAL), CheckValue = "Y", UnCheckValue = "N" });
             TxtISSPECIALDATA.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CONTRACT.ISSPECIALDATA) });
 
-
             PanContract.SetData(new HC_OSHA_CONTRACT());
         }
 
@@ -328,7 +327,6 @@ namespace HC_OSHA
                     }
                     dto = hcOshaEstimateService.Save(dto);
                     PanEstimate.SetData(dto);
-                
                     MessageUtil.Info("견적을 저장하였습니다");
                     OpenExcel(SSEstimate, dto.EXCELPATH, dto);
 
@@ -372,10 +370,23 @@ namespace HC_OSHA
                             clsDB.setRollbackTran(clsDB.DbCon);
                         }
                     }
+
                     if (sender != null)
                     {
-
                         OshaSiteEstimateList.SearhAndDoubleClik(oshaSiteLastTree.GetSite.ID, true);
+                    }
+
+                    // 사업장현황에 견적내용을 표시
+                    if (NumContractWORKERTOTALCOUNT.Value == 0)
+                    {
+                        //DtpCONTRACTSTARTDATE.Value = DtpSTARTDATE.Value;
+                        NumCOMMISSION.Value = NumSITEFEE.Value;
+                        NumWORKERWHITEMALECOUNT.Value = long.Parse(TxtWhiteMale.Text.Trim());
+                        NumWORKERWHITEFEMALECOUNT.Value = long.Parse(TxtWhiteFeMale.Text.Trim());
+                        NumWORKERBLUEMALECOUNT.Value = long.Parse(TxtBlueMale.Text.Trim());
+                        NumWORKERBLUEFEMALECOUNT.Value = long.Parse(TxtBlueFeMale.Text.Trim());
+                        NumContractWORKERTOTALCOUNT.Value = NumWORKERTOTALCOUNT.Value;
+                        NumMANAGEWORKERCOUNT.Value = NumWORKERTOTALCOUNT.Value;
                     }
                 }
             }
@@ -1069,7 +1080,7 @@ namespace HC_OSHA
                     OSHA_PRICE dto = PanPrice.GetData<OSHA_PRICE>();
                     dto.ESTIMATE_ID = SelectedEstimate.ID;
 
-                    OSHA_PRICE saved = oshaPriceService.Save(dto);               
+                    OSHA_PRICE saved = oshaPriceService.Save(dto);
 
                     PanPrice.SetData(saved);
 
@@ -1377,6 +1388,18 @@ namespace HC_OSHA
                 }
             }
            
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+            DtpCONTRACTSTARTDATE.Value = DtpSTARTDATE.Value;
+            NumCOMMISSION.Value = NumSITEFEE.Value;
+            NumWORKERWHITEMALECOUNT.Value = long.Parse(TxtWhiteMale.Text.Trim());
+            NumWORKERWHITEFEMALECOUNT.Value = long.Parse(TxtWhiteFeMale.Text.Trim());
+            NumWORKERBLUEMALECOUNT.Value = long.Parse(TxtBlueMale.Text.Trim());
+            NumWORKERBLUEFEMALECOUNT.Value = long.Parse(TxtBlueFeMale.Text.Trim());
+            NumContractWORKERTOTALCOUNT.Value = NumWORKERTOTALCOUNT.Value;
+
         }
 
         //private void NumUNITTOTALPRICE_KeyUp(object sender, KeyEventArgs e)

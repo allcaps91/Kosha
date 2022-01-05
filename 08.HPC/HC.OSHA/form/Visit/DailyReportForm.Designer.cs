@@ -4213,7 +4213,7 @@
             this.contentTitle1.Location = new System.Drawing.Point(0, 35);
             this.contentTitle1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.contentTitle1.Name = "contentTitle1";
-            this.contentTitle1.Size = new System.Drawing.Size(749, 38);
+            this.contentTitle1.Size = new System.Drawing.Size(702, 38);
             this.contentTitle1.TabIndex = 92;
             this.contentTitle1.TitleText = "";
             // 
@@ -4633,7 +4633,7 @@
             namedStyle56});
             this.SSList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSList_Sheet1});
-            this.SSList.Size = new System.Drawing.Size(705, 564);
+            this.SSList.Size = new System.Drawing.Size(673, 564);
             this.SSList.TabIndex = 93;
             this.SSList.TabStripRatio = 0.6D;
             tipAppearance1.BackColor = System.Drawing.SystemColors.Info;
@@ -4642,7 +4642,6 @@
             this.SSList.TextTipAppearance = tipAppearance1;
             this.SSList.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
-            this.SSList.SetViewportTopRow(0, 0, 45);
             // 
             // SSList_Sheet1
             // 
@@ -4683,7 +4682,7 @@
             this.SSList_Sheet1.Cells.Get(2, 26).Font = new System.Drawing.Font("돋움", 9F);
             this.SSList_Sheet1.Cells.Get(2, 26).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSList_Sheet1.Cells.Get(2, 26).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
-            this.SSList_Sheet1.Cells.Get(2, 26).Value = "담  당";
+            this.SSList_Sheet1.Cells.Get(2, 26).Value = "담당";
             this.SSList_Sheet1.Cells.Get(2, 26).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSList_Sheet1.Cells.Get(2, 27).BackColor = System.Drawing.Color.White;
             this.SSList_Sheet1.Cells.Get(2, 27).Border = complexBorder43;
@@ -4703,7 +4702,7 @@
             this.SSList_Sheet1.Cells.Get(2, 29).Font = new System.Drawing.Font("돋움", 9F);
             this.SSList_Sheet1.Cells.Get(2, 29).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSList_Sheet1.Cells.Get(2, 29).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
-            this.SSList_Sheet1.Cells.Get(2, 29).Value = ",실장";
+            this.SSList_Sheet1.Cells.Get(2, 29).Value = "부장";
             this.SSList_Sheet1.Cells.Get(2, 29).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSList_Sheet1.Cells.Get(2, 30).BackColor = System.Drawing.Color.White;
             this.SSList_Sheet1.Cells.Get(2, 30).Border = complexBorder46;
@@ -5374,7 +5373,7 @@
             this.SSList_Sheet1.Cells.Get(8, 0).ColumnSpan = 6;
             this.SSList_Sheet1.Cells.Get(8, 0).Font = new System.Drawing.Font("돋움", 8F);
             this.SSList_Sheet1.Cells.Get(8, 0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
-            this.SSList_Sheet1.Cells.Get(8, 0).Value = "(주)우주";
+            this.SSList_Sheet1.Cells.Get(8, 0).Value = "선린상사";
             this.SSList_Sheet1.Cells.Get(8, 0).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSList_Sheet1.Cells.Get(8, 1).Border = complexBorder152;
             this.SSList_Sheet1.Cells.Get(8, 1).Font = new System.Drawing.Font("돋움", 8F);
@@ -5402,7 +5401,7 @@
             this.SSList_Sheet1.Cells.Get(8, 6).ColumnSpan = 13;
             this.SSList_Sheet1.Cells.Get(8, 6).Font = new System.Drawing.Font("돋움", 8F);
             this.SSList_Sheet1.Cells.Get(8, 6).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
-            this.SSList_Sheet1.Cells.Get(8, 6).Value = "포항시 남구 대송명 일동리";
+            this.SSList_Sheet1.Cells.Get(8, 6).Value = "포항시 남구 대송명 솔들리 880";
             this.SSList_Sheet1.Cells.Get(8, 6).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSList_Sheet1.Cells.Get(8, 7).Border = complexBorder158;
             this.SSList_Sheet1.Cells.Get(8, 7).Font = new System.Drawing.Font("돋움", 9F);
@@ -5559,7 +5558,7 @@
             this.SSList_Sheet1.Cells.Get(9, 6).ColumnSpan = 13;
             this.SSList_Sheet1.Cells.Get(9, 6).Font = new System.Drawing.Font("돋움", 8F);
             this.SSList_Sheet1.Cells.Get(9, 6).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
-            this.SSList_Sheet1.Cells.Get(9, 6).Value = "대구광역시 달서구 라온프라이빛 ";
+            this.SSList_Sheet1.Cells.Get(9, 6).Value = "대구광역시 달서구 라온프라이빛 33길 53 ";
             this.SSList_Sheet1.Cells.Get(9, 6).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSList_Sheet1.Cells.Get(9, 7).Border = complexBorder193;
             this.SSList_Sheet1.Cells.Get(9, 7).Font = new System.Drawing.Font("돋움", 9F);
@@ -8235,7 +8234,7 @@
             this.SSList_Sheet1.Cells.Get(27, 7).Font = new System.Drawing.Font("돋움", 8F);
             this.SSList_Sheet1.Cells.Get(27, 7).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SSList_Sheet1.Cells.Get(27, 7).RowSpan = 6;
-            this.SSList_Sheet1.Cells.Get(27, 7).Value = "(주)포전산업 99:99 - 99:99";
+            this.SSList_Sheet1.Cells.Get(27, 7).Value = "(주)덕구온찬 99:99 - 99:99";
             this.SSList_Sheet1.Cells.Get(27, 7).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSList_Sheet1.Cells.Get(27, 8).Border = complexBorder753;
             textCellType67.Multiline = true;
@@ -19990,14 +19989,14 @@
             // 
             this.DtpVisitDate.CustomFormat = "";
             this.DtpVisitDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpVisitDate.Location = new System.Drawing.Point(124, 40);
+            this.DtpVisitDate.Location = new System.Drawing.Point(122, 37);
             this.DtpVisitDate.Name = "DtpVisitDate";
             this.DtpVisitDate.Size = new System.Drawing.Size(113, 25);
             this.DtpVisitDate.TabIndex = 95;
             // 
             // BtnPrint
             // 
-            this.BtnPrint.Location = new System.Drawing.Point(650, 38);
+            this.BtnPrint.Location = new System.Drawing.Point(590, 34);
             this.BtnPrint.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnPrint.Name = "BtnPrint";
             this.BtnPrint.Size = new System.Drawing.Size(75, 28);
@@ -20012,7 +20011,7 @@
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(22, 40);
+            this.label4.Location = new System.Drawing.Point(20, 37);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(3);
             this.label4.Size = new System.Drawing.Size(96, 25);
@@ -20027,13 +20026,13 @@
             this.formTItle1.Location = new System.Drawing.Point(0, 0);
             this.formTItle1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.formTItle1.Name = "formTItle1";
-            this.formTItle1.Size = new System.Drawing.Size(749, 35);
+            this.formTItle1.Size = new System.Drawing.Size(702, 35);
             this.formTItle1.TabIndex = 98;
             this.formTItle1.TitleText = "보건관리대행출장일지";
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(569, 38);
+            this.BtnSearch.Location = new System.Drawing.Point(509, 34);
             this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(75, 28);
@@ -20046,7 +20045,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 637);
+            this.ClientSize = new System.Drawing.Size(702, 637);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.SSList);
             this.Controls.Add(this.label4);

@@ -69,7 +69,7 @@ namespace HC_OSHA
                         //if (cardPage1Service.Save(list, base.SelectedSite.ID, base.SelectedEstimate.ID, base.GetCurrentYear()))
                         if (cardPage1Service.Save(list, base.SelectedSite.ID, base.SelectedEstimate.ID, base.SelectedEstimate.CONTRACTSTARTDATE.Left(4)))
                         {
-                         //   MessageUtil.Info("저장하였습니다");
+                           // MessageUtil.Info("저장하였습니다");
                             Search();
                             LogService.Instance.Task(base.SelectedSite.ID, TaskName.SITE_CARD_1);
 
@@ -574,5 +574,9 @@ namespace HC_OSHA
             Print();
         }
 
+        private void SSCard_CellClick(object sender, CellClickEventArgs e)
+        {
+
+        }
     }
 }
