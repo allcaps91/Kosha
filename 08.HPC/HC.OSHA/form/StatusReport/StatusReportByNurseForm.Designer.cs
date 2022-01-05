@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            HC.OSHA.Model.HC_OSHA_SITE_MODEL hC_OSHA_SITE_MODEL1 = new HC.OSHA.Model.HC_OSHA_SITE_MODEL();
+            HC.OSHA.Model.HC_OSHA_SITE_MODEL hC_OSHA_SITE_MODEL7 = new HC.OSHA.Model.HC_OSHA_SITE_MODEL();
             this.TabReport = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.SSReportList = new FarPoint.Win.Spread.FpSpread();
@@ -39,6 +39,7 @@
             this.TxtMemo = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.GrpPerformContent = new System.Windows.Forms.GroupBox();
+            this.BtnInfo = new System.Windows.Forms.Button();
             this.BtnLoadCount = new System.Windows.Forms.Button();
             this.TxtOshaData = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
@@ -155,7 +156,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ContentTitle = new ComBase.Mvc.UserControls.ContentTitle();
             this.btnExit = new System.Windows.Forms.Button();
-            this.BtnInfo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.TabReport.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -192,7 +192,7 @@
             this.TabReport.Location = new System.Drawing.Point(0, 39);
             this.TabReport.Name = "TabReport";
             this.TabReport.SelectedIndex = 0;
-            this.TabReport.Size = new System.Drawing.Size(1578, 841);
+            this.TabReport.Size = new System.Drawing.Size(1370, 710);
             this.TabReport.TabIndex = 111;
             this.TabReport.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -204,7 +204,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1570, 811);
+            this.tabPage1.Size = new System.Drawing.Size(1362, 680);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "보건관리상태보고서";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -244,59 +244,60 @@
             // oshaSiteList1
             // 
             this.oshaSiteList1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            hC_OSHA_SITE_MODEL1.ADDRESS = null;
-            hC_OSHA_SITE_MODEL1.BIZCREATEDATE = null;
-            hC_OSHA_SITE_MODEL1.BIZJIDOWON = null;
-            hC_OSHA_SITE_MODEL1.BIZJONG = null;
-            hC_OSHA_SITE_MODEL1.BIZKIHO = null;
-            hC_OSHA_SITE_MODEL1.BIZNUMBER = null;
-            hC_OSHA_SITE_MODEL1.BIZTYPE = null;
-            hC_OSHA_SITE_MODEL1.CEONAME = null;
-            hC_OSHA_SITE_MODEL1.ComboDisplay = null;
-            hC_OSHA_SITE_MODEL1.EMAIL = null;
-            hC_OSHA_SITE_MODEL1.FAX = null;
-            hC_OSHA_SITE_MODEL1.HASCHILD = null;
-            hC_OSHA_SITE_MODEL1.ID = ((long)(0));
-            hC_OSHA_SITE_MODEL1.INDUSTRIALNUMBER = null;
-            hC_OSHA_SITE_MODEL1.INSURANCE = null;
-            hC_OSHA_SITE_MODEL1.ISACTIVE = null;
-            hC_OSHA_SITE_MODEL1.LABOR = null;
-            hC_OSHA_SITE_MODEL1.LASTMODIFIED = null;
-            hC_OSHA_SITE_MODEL1.MANAGEDOCTORCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGEDOCTORSTARTDATE = null;
-            hC_OSHA_SITE_MODEL1.MANAGEENGINEERCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGEENGINEERSTARTDATE = null;
-            hC_OSHA_SITE_MODEL1.MANAGENURSECOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGENURSESTARTDATE = null;
-            hC_OSHA_SITE_MODEL1.NAME = null;
-            hC_OSHA_SITE_MODEL1.PARENTSITE_ID = ((long)(0));
-            hC_OSHA_SITE_MODEL1.PARENTSITE_NAME = null;
-            hC_OSHA_SITE_MODEL1.RowStatus = ComBase.Mvc.RowStatus.None;
-            hC_OSHA_SITE_MODEL1.TEL = null;
-            hC_OSHA_SITE_MODEL1.VISITDAY = ((long)(0));
-            hC_OSHA_SITE_MODEL1.VISITWEEK = ((long)(0));
-            hC_OSHA_SITE_MODEL1.WORKERTOTALCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.zTemp1 = null;
-            hC_OSHA_SITE_MODEL1.zTemp10 = null;
-            hC_OSHA_SITE_MODEL1.zTemp11 = null;
-            hC_OSHA_SITE_MODEL1.zTemp12 = null;
-            hC_OSHA_SITE_MODEL1.zTemp13 = null;
-            hC_OSHA_SITE_MODEL1.zTemp14 = null;
-            hC_OSHA_SITE_MODEL1.zTemp15 = null;
-            hC_OSHA_SITE_MODEL1.zTemp16 = null;
-            hC_OSHA_SITE_MODEL1.zTemp17 = null;
-            hC_OSHA_SITE_MODEL1.zTemp18 = null;
-            hC_OSHA_SITE_MODEL1.zTemp19 = null;
-            hC_OSHA_SITE_MODEL1.zTemp2 = null;
-            hC_OSHA_SITE_MODEL1.zTemp20 = null;
-            hC_OSHA_SITE_MODEL1.zTemp3 = null;
-            hC_OSHA_SITE_MODEL1.zTemp4 = null;
-            hC_OSHA_SITE_MODEL1.zTemp5 = null;
-            hC_OSHA_SITE_MODEL1.zTemp6 = null;
-            hC_OSHA_SITE_MODEL1.zTemp7 = null;
-            hC_OSHA_SITE_MODEL1.zTemp8 = null;
-            hC_OSHA_SITE_MODEL1.zTemp9 = null;
-            this.oshaSiteList1.GetSite = hC_OSHA_SITE_MODEL1;
+            hC_OSHA_SITE_MODEL7.ADDRESS = null;
+            hC_OSHA_SITE_MODEL7.BIZCREATEDATE = null;
+            hC_OSHA_SITE_MODEL7.BIZJIDOWON = null;
+            hC_OSHA_SITE_MODEL7.BIZJONG = null;
+            hC_OSHA_SITE_MODEL7.BIZKIHO = null;
+            hC_OSHA_SITE_MODEL7.BIZNUMBER = null;
+            hC_OSHA_SITE_MODEL7.BIZTYPE = null;
+            hC_OSHA_SITE_MODEL7.CEONAME = null;
+            hC_OSHA_SITE_MODEL7.ComboDisplay = null;
+            hC_OSHA_SITE_MODEL7.EMAIL = null;
+            hC_OSHA_SITE_MODEL7.FAX = null;
+            hC_OSHA_SITE_MODEL7.HASCHILD = null;
+            hC_OSHA_SITE_MODEL7.ID = ((long)(0));
+            hC_OSHA_SITE_MODEL7.INDUSTRIALNUMBER = null;
+            hC_OSHA_SITE_MODEL7.INSURANCE = null;
+            hC_OSHA_SITE_MODEL7.ISACTIVE = null;
+            hC_OSHA_SITE_MODEL7.LABOR = null;
+            hC_OSHA_SITE_MODEL7.LASTMODIFIED = null;
+            hC_OSHA_SITE_MODEL7.MANAGEDOCTORCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL7.MANAGEDOCTORSTARTDATE = null;
+            hC_OSHA_SITE_MODEL7.MANAGEENGINEERCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL7.MANAGEENGINEERSTARTDATE = null;
+            hC_OSHA_SITE_MODEL7.MANAGENURSECOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL7.MANAGENURSESTARTDATE = null;
+            hC_OSHA_SITE_MODEL7.NAME = null;
+            hC_OSHA_SITE_MODEL7.PARENTSITE_ID = ((long)(0));
+            hC_OSHA_SITE_MODEL7.PARENTSITE_NAME = null;
+            hC_OSHA_SITE_MODEL7.RowStatus = ComBase.Mvc.RowStatus.None;
+            hC_OSHA_SITE_MODEL7.SITE_ID = ((long)(0));
+            hC_OSHA_SITE_MODEL7.TEL = null;
+            hC_OSHA_SITE_MODEL7.VISITDAY = ((long)(0));
+            hC_OSHA_SITE_MODEL7.VISITWEEK = ((long)(0));
+            hC_OSHA_SITE_MODEL7.WORKERTOTALCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL7.zTemp1 = null;
+            hC_OSHA_SITE_MODEL7.zTemp10 = null;
+            hC_OSHA_SITE_MODEL7.zTemp11 = null;
+            hC_OSHA_SITE_MODEL7.zTemp12 = null;
+            hC_OSHA_SITE_MODEL7.zTemp13 = null;
+            hC_OSHA_SITE_MODEL7.zTemp14 = null;
+            hC_OSHA_SITE_MODEL7.zTemp15 = null;
+            hC_OSHA_SITE_MODEL7.zTemp16 = null;
+            hC_OSHA_SITE_MODEL7.zTemp17 = null;
+            hC_OSHA_SITE_MODEL7.zTemp18 = null;
+            hC_OSHA_SITE_MODEL7.zTemp19 = null;
+            hC_OSHA_SITE_MODEL7.zTemp2 = null;
+            hC_OSHA_SITE_MODEL7.zTemp20 = null;
+            hC_OSHA_SITE_MODEL7.zTemp3 = null;
+            hC_OSHA_SITE_MODEL7.zTemp4 = null;
+            hC_OSHA_SITE_MODEL7.zTemp5 = null;
+            hC_OSHA_SITE_MODEL7.zTemp6 = null;
+            hC_OSHA_SITE_MODEL7.zTemp7 = null;
+            hC_OSHA_SITE_MODEL7.zTemp8 = null;
+            hC_OSHA_SITE_MODEL7.zTemp9 = null;
+            this.oshaSiteList1.GetSite = hC_OSHA_SITE_MODEL7;
             this.oshaSiteList1.Location = new System.Drawing.Point(3, 4);
             this.oshaSiteList1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.oshaSiteList1.Name = "oshaSiteList1";
@@ -307,6 +308,7 @@
             // 
             // PanStatausReportNurse
             // 
+            this.PanStatausReportNurse.AutoScroll = true;
             this.PanStatausReportNurse.Controls.Add(this.label3);
             this.PanStatausReportNurse.Controls.Add(this.TxtMemo);
             this.PanStatausReportNurse.Controls.Add(this.panel2);
@@ -441,6 +443,16 @@
             this.GrpPerformContent.TabIndex = 116;
             this.GrpPerformContent.TabStop = false;
             this.GrpPerformContent.Text = "2. 업무수행내용";
+            // 
+            // BtnInfo
+            // 
+            this.BtnInfo.Location = new System.Drawing.Point(934, 341);
+            this.BtnInfo.Name = "BtnInfo";
+            this.BtnInfo.Size = new System.Drawing.Size(75, 36);
+            this.BtnInfo.TabIndex = 340;
+            this.BtnInfo.Text = "불러오기";
+            this.BtnInfo.UseVisualStyleBackColor = true;
+            this.BtnInfo.Click += new System.EventHandler(this.BtnInfo_Click);
             // 
             // BtnLoadCount
             // 
@@ -1526,7 +1538,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1570, 811);
+            this.tabPage3.Size = new System.Drawing.Size(1362, 680);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = " 종합의견";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1791,7 +1803,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1570, 811);
+            this.tabPage2.Size = new System.Drawing.Size(1362, 680);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "근로자 건강상담";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1803,14 +1815,14 @@
             this.ContentTitle.Location = new System.Drawing.Point(0, 0);
             this.ContentTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ContentTitle.Name = "ContentTitle";
-            this.ContentTitle.Size = new System.Drawing.Size(1578, 39);
+            this.ContentTitle.Size = new System.Drawing.Size(1370, 39);
             this.ContentTitle.TabIndex = 110;
             this.ContentTitle.TitleText = "보건관리상태보고서 간호사 - 사업장을 선택하세요";
             // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(1483, 3);
+            this.btnExit.Location = new System.Drawing.Point(1275, 3);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 28);
@@ -1819,21 +1831,11 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // BtnInfo
-            // 
-            this.BtnInfo.Location = new System.Drawing.Point(934, 341);
-            this.BtnInfo.Name = "BtnInfo";
-            this.BtnInfo.Size = new System.Drawing.Size(75, 36);
-            this.BtnInfo.TabIndex = 340;
-            this.BtnInfo.Text = "불러오기";
-            this.BtnInfo.UseVisualStyleBackColor = true;
-            this.BtnInfo.Click += new System.EventHandler(this.BtnInfo_Click);
-            // 
             // StatusReportByNurseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1578, 880);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.TabReport);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.ContentTitle);
