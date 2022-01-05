@@ -576,8 +576,13 @@ namespace HC_OSHA
                 string visitdate = dtpVisitDate.Substring(0, 4) + "-" + dtpVisitDate.Substring(4, 2) + "-" + dtpVisitDate.Substring(6, 2);
 
                 HcEstimateModelRepository repo = new HcEstimateModelRepository();
-                long estimateId = hcOshaContractRepository.FindByDate(base.SelectedSite.ID, visitdate).ESTIMATE_ID;
-                this.SelectedEstimate = repo.FindByEstimateId(estimateId);
+                HC_OSHA_CONTRACT contract = hcOshaContractRepository.FindByDate(base.SelectedSite.ID, visitdate);
+                if (contract == null)
+                {
+                    MessageUtil.Alert("방문일자가 계약일자에 해당되지 않습니다.");
+                    return;
+                }
+                this.SelectedEstimate = repo.FindByEstimateId(contract.ESTIMATE_ID);
             }
         }
 

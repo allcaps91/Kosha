@@ -175,15 +175,7 @@ namespace HC_OSHA
             NumWORKERBLUEFEMALECOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.WORKERBLUEFEMALECOUNT), Min = 0 });
             NumContractWORKERTOTALCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.WORKERTOTALCOUNT), Min = 0 });
 
-            //   CommonService.Instance.GetDoctors().SetComboBox(CboManageDoctor);
-            //  CommonService.Instance.GetNurse().SetComboBox(CboManageNurse);
-            // CommonService.Instance.GetEngineerByOsha().SetComboBox(CboMANAGEENGINEER);
-            //    CboMANAGEENGINEER.SetItems()
-            //    CboManageDoctor.SetItems()
             //담당요원및방문주기
-
-            
-       
             engineerList = hcUsersService.GetEngineerByOsha();
             doctorList = hcUsersService.GetDoctors();
             nurseList = hcUsersService.GetNurse();
@@ -202,9 +194,6 @@ namespace HC_OSHA
             NumMANAGEENGINEERCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.MANAGEENGINEERCOUNT), Min = 0 });
             NumMANAGEWORKERCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.MANAGEWORKERCOUNT), Min = 0 });
             //사업장업무일정
-            //DtpWORKSTARTTIME.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_CONTRACT.WORKSTARTTIME), DataBaseFormat = DateTimeType.HH_MM, DisplayFormat = DateTimeType.HH_MM });
-           // DtpWORKENDTIME.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_CONTRACT.WORKENDTIME), DataBaseFormat = DateTimeType.HH_MM, DisplayFormat = DateTimeType.HH_MM });
-//DtpWORKMEETTIME.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_CONTRACT.WORKMEETTIME), DataBaseFormat = DateTimeType.HH_MM, DisplayFormat = DateTimeType.HH_MM });
             TxtWORKROTATIONTIME.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CONTRACT.WORKROTATIONTIME) });
             TxtWORKLUANCHTIME.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CONTRACT.WORKLUANCHTIME) });
             TxtWORKRESTTIME.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CONTRACT.WORKRESTTIME) });
@@ -760,8 +749,6 @@ namespace HC_OSHA
 
         }
 
-
-
         private void BtnSearchParent_Click(object sender, EventArgs e)
         {
             if (base.SelectedSite != null)
@@ -842,7 +829,7 @@ namespace HC_OSHA
                     SetCombo(contract.MANAGENURSE);
                     SetCombo(contract.MANAGEENGINEER);
                     PanContract.SetData(contract);
-                   DtpDECLAREDAY.SetValue(contract.DECLAREDAY);
+                    DtpDECLAREDAY.SetValue(contract.DECLAREDAY);
                     GetContractManager();
                 }
                 else
@@ -910,10 +897,6 @@ namespace HC_OSHA
                     CboMANAGEENGINEER.SetOptions(new ComboBoxOption { DataField = nameof(HC_OSHA_CONTRACT.MANAGEENGINEER), });
                     CboMANAGEENGINEER.SetItems(engineerList, "Name", "UserId");
                 }
-
-            
-        
-              
             }
         }
         private void InitForm()
@@ -938,9 +921,6 @@ namespace HC_OSHA
                 }
             }
         }
-
-
-
 
         /// <summary>
         /// 단가
@@ -982,8 +962,6 @@ namespace HC_OSHA
             SSChildPrice.AddColumnText("계약금액", nameof(OSHA_PRICE.TOTALPRICE), 90, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSChildPrice.AddColumnCheckBox("정액여부", nameof(OSHA_PRICE.ISFIX), 60,  new CheckBoxFlagEnumCellType<IsFix>());
             SSChildPrice.AddColumnCheckBox("계산서인원단가", nameof(OSHA_PRICE.ISBILL),  112, new CheckBoxFlagEnumCellType<IsBill>());
-
-
         }
 
         private void SearchPrice()
@@ -1240,8 +1218,6 @@ namespace HC_OSHA
         private void NumSITEFEE_ValueChanged(object sender, EventArgs e)
         {
             SetFee();
-
-
         }
         private void SetFee()
         {
@@ -1298,11 +1274,7 @@ namespace HC_OSHA
 
                     MessageUtil.Info("PDF 저장하였습니다");
                 }
-
-             
             }
-
-          
         }
 
         private void BtnSaveChildPrice_Click(object sender, EventArgs e)
@@ -1399,7 +1371,7 @@ namespace HC_OSHA
             NumWORKERBLUEMALECOUNT.Value = long.Parse(TxtBlueMale.Text.Trim());
             NumWORKERBLUEFEMALECOUNT.Value = long.Parse(TxtBlueFeMale.Text.Trim());
             NumContractWORKERTOTALCOUNT.Value = NumWORKERTOTALCOUNT.Value;
-
+            NumMANAGEWORKERCOUNT.Value = NumWORKERTOTALCOUNT.Value;
         }
 
         //private void NumUNITTOTALPRICE_KeyUp(object sender, KeyEventArgs e)

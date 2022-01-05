@@ -368,6 +368,8 @@ namespace HC_OSHA
                 return;
             }
 
+            Cursor.Current = Cursors.WaitCursor;
+
             // 검진일자, 생년월일 자동 찾기
             strMsg = "";
             for (int i = 0; i < SS1_Sheet1.RowCount; i++)
@@ -435,6 +437,7 @@ namespace HC_OSHA
             // 등록번호를 찾지 못하면 오류 처리
             if (strMsg != "")
             {
+                Cursor.Current = Cursors.Default;
                 ComFunc.MsgBox(strMsg, "알림");
                 return;
             }
@@ -509,12 +512,14 @@ namespace HC_OSHA
                         }
                         catch (Exception ex)
                         {
+                            Cursor.Current = Cursors.Default;
                             ComFunc.MsgBox(ex.Message);
                             return;
                         }
                     }
                 }
             }
+            Cursor.Current = Cursors.Default;
             ComFunc.MsgBox("서버로 전송 완료", "알림");
             Screen_Set();
         }
@@ -577,7 +582,7 @@ namespace HC_OSHA
             // 엑셀파일 1번줄이 제목인지 확인
             strHead = SSExcel_Sheet1.Cells[0, 0].Text.ToString();
             strHead += SSExcel_Sheet1.Cells[0, 1].Text.ToString();
-            if (strHead == "") { ComFunc.MsgBox("엑셀파일 1번줄이 제목줄이 아님", "오류"); return; }
+            if (strHead == "") { ComFunc.MsgBox("엑셀파일 1번줄 제목줄이 아님", "오류"); return; }
 
             // 변환정보 Clear
             for (int i = 0; i < SSConv_Sheet1.RowCount; i++)
@@ -622,7 +627,6 @@ namespace HC_OSHA
                 }
             }
             btnJob4.Enabled = true;
-
         }
     }
 }

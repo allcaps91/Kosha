@@ -712,6 +712,7 @@
             this.NumSITEFEE.Name = "NumSITEFEE";
             this.NumSITEFEE.Size = new System.Drawing.Size(109, 25);
             this.NumSITEFEE.TabIndex = 58;
+            this.NumSITEFEE.Tag = "SITEFEE";
             this.NumSITEFEE.ValueChanged += new System.EventHandler(this.NumSITEFEE_ValueChanged);
             // 
             // BtnLoadExcel

@@ -68,8 +68,8 @@ namespace HC_OSHA.StatusReport
             txtSearchName.SetExecuteButton(btnSearch);
             panHealthCheck.SetEnterKey();
 
-            rdoMale.SetOptions(new RadioButtonOption { DataField = nameof(HealthCheckDto.gender), CheckValue = "M", UnCheckValue = "F" });
-            rdoFemale.SetOptions(new RadioButtonOption { DataField = nameof(HealthCheckDto.gender), CheckValue = "F", UnCheckValue = "M" });
+            rdoMale.SetOptions(new RadioButtonOption { DataField = nameof(HealthCheckDto.gender), CheckValue = "남", UnCheckValue = "여" });
+            rdoFemale.SetOptions(new RadioButtonOption { DataField = nameof(HealthCheckDto.gender), CheckValue = "여", UnCheckValue = "남" });
 
             DtpWorkerEndDate.SetOptions(new DateTimePickerOption { DataField = "END_DATE", DataBaseFormat = DateTimeType.YYYY_MM_DD, DisplayFormat = DateTimeType.YYYY_MM_DD });
 
@@ -291,6 +291,9 @@ namespace HC_OSHA.StatusReport
                     reportId = StatusReportDoctorDto.ID;
                 }
             }
+
+            Cursor.Current = Cursors.WaitCursor;
+
             // 조회할 관계회사 목록을 생성
             strSiteList = READ_Relation_LTD(base.SelectedSite.ID);
             try
@@ -395,6 +398,8 @@ namespace HC_OSHA.StatusReport
                         }
                     }
                 }
+                Cursor.Current = Cursors.Default;
+
                 SSWorkerList_Sheet1.RowCount = nRow;
                 LblCount.Text = "총: " + nRow + " 명";
 
@@ -408,10 +413,9 @@ namespace HC_OSHA.StatusReport
                     dt.Dispose();
                     dt = null;
                 }
+                Cursor.Current = Cursors.Default;
                 ComFunc.MsgBox(ex.Message);
             }
-            //Init();
-           // Search();
         }
 
         public void SetPanjeong()
@@ -483,8 +487,6 @@ namespace HC_OSHA.StatusReport
             {
                 CboDept.SelectedIndex = 0;
             }
-
-
         }
 
         private void Search()
