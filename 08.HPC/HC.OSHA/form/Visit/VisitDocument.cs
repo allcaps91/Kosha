@@ -28,6 +28,7 @@ namespace HC_OSHA.form.Visit
     {
         private HC_CODE pdfPath = null;
         SpreadPrint print = null;
+
         public VisitDocument()
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace HC_OSHA.form.Visit
             pdfPath = codeService.FindActiveCodeByGroupAndCode("PDF_PATH", "OSHA_ESTIMATE", "OSHA");
            
         }
+
         public void clear()
         {
             ssDoc.ActiveSheet.Cells[28, 2].Value = "-";
@@ -47,6 +49,7 @@ namespace HC_OSHA.form.Visit
             ssDoc.ActiveSheet.Cells[28, 13].Value = "-";
             ssDoc.ActiveSheet.Cells[29, 13].Value = "-";
         }
+
         public ChargeEmailModel Print(List<VisitDocumentModel> list, string yearAndMonth, string executeDate, long siteId, string siteName, bool isPdf, string docNumber, string exportPath="" )
         {
             ChargeEmailModel chargeEmailModel = new ChargeEmailModel();
@@ -161,6 +164,7 @@ namespace HC_OSHA.form.Visit
             return chargeEmailModel;
 
         }
+
         //public void SendMail(Dictionary<string, string> receiverMailList = null)
         //{
         //    foreach(KeyValuePair<string, string> item in receiverMailList)
@@ -195,6 +199,7 @@ namespace HC_OSHA.form.Visit
                 
         //    }
         //}
+
         private void btnPrint_Click(object sender, EventArgs e)
         {
             for(int i=0; i<2; i++)
@@ -219,7 +224,6 @@ namespace HC_OSHA.form.Visit
             }
       
         }
-
 
         //private void VisitDocument_Load(object sender, EventArgs e)
         //{
