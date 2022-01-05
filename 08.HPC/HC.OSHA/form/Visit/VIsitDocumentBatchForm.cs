@@ -109,7 +109,7 @@ namespace HC_OSHA.form.Visit
 
             long siteId = 0;
 
-            List<HC_SITE_WORKER> workers = hcSiteWorkerRepository.FindWorker( "HEALTH_ROLE");
+            List<HC_SITE_WORKER> workers = hcSiteWorkerRepository.FindWorker("HEALTH_ROLE");
 
             for (int i=0; i< SSList.ActiveSheet.RowCount; i++)
             {
