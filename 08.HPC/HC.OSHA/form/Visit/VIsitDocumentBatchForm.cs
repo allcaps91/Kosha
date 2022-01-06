@@ -12,8 +12,10 @@ using HC_OSHA.Model.Schedule;
 using HC_OSHA.Service.Schedule;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace HC_OSHA.form.Visit
 {
@@ -45,6 +47,7 @@ namespace HC_OSHA.form.Visit
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            long nESTIMATE_ID = 0;
             SSList.ActiveSheet.RowCount = 0;
             string month = CboMonth.GetValue();
             List<VisitDocumentModel> list = visitDocumentService.VisitDocumentRepository.FindScheduleByMonth(month);
@@ -70,6 +73,7 @@ namespace HC_OSHA.form.Visit
 
                 SSList.ActiveSheet.Cells[rowIndex, 9].Text = list[i].SENDDATE;
                 SSList.ActiveSheet.Cells[rowIndex, 10].Text = list[i].SENDNAME;
+                SSList.ActiveSheet.Cells[rowIndex, 11].Value = list[i].ESTIMATE_ID;
 
                 if (COlumnIndex == 0)
                 {
@@ -115,6 +119,7 @@ namespace HC_OSHA.form.Visit
             {
                 
                 siteId = SSList.ActiveSheet.Cells[i, 1].Value.To<long>(0);
+                nESTIMATE_ID = SSList.ActiveSheet.Cells[i, 11].Value.To<long>(0);
 
                 //List<HC_SITE_WORKER> workers = hcSiteWorkerRepository.FindWorkerByRole(siteId, "HEALTH_ROLE");
 
@@ -122,7 +127,8 @@ namespace HC_OSHA.form.Visit
                 //{
                 //    email += worker.NAME + ", mail: " + worker.EMAIL + "\n";
                 //}
-                List<string> mailList = GetEmail(workers, siteId);
+                //List<string> mailList = GetEmail(workers, siteId);
+                List<string> mailList = GetEmail(nESTIMATE_ID);
                 if (mailList.Count == 1)
                 {
                     SSList.ActiveSheet.Cells[i, 7].Text = mailList[0];
@@ -136,19 +142,58 @@ namespace HC_OSHA.form.Visit
                 SSList.ActiveSheet.Rows[i].Height = SSList.ActiveSheet.Rows[i].GetPreferredHeight();
             }
         }
-        private List<string> GetEmail(List<HC_SITE_WORKER> workers, long siteId)
+
+        private List<string> GetEmail_OLD(List<HC_SITE_WORKER> workers, long siteId)
         {
+            string strEMail = "";
             List<string> list = new List<string>();
             string email = string.Empty;
             foreach (HC_SITE_WORKER worker in workers)
             {
-                if(worker.SITEID == siteId)
+                if (worker.SITEID == siteId)
                 {
-                    email = worker.NAME + "," + worker.EMAIL + "\n";
-                    list.Add(email);
+                    strEMail = "";
+                    if (strEMail!="")
+                    {
+                        email = worker.NAME + "," + strEMail + "\n";
+                        list.Add(email);
+                    }
                 }
-                
+
             }
+            return list;
+        }
+
+        private List<string> GetEmail(long ESTIMATE_ID)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            string strEMail = "";
+            List<string> list = new List<string>();
+            string email = string.Empty;
+
+            SQL = "";
+            SQL = "SELECT NAME,EMAIL FROM HIC_OSHA_CONTRACT_MANAGER ";
+            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID=" + ESTIMATE_ID + " ";
+            SQL = SQL + ComNum.VBLF + "  AND WORKER_ROLE='HEALTH_ROLE' ";
+            SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0)
+            {
+                for (int i=0; i<dt.Rows.Count; i++)
+                {
+                    strEMail = dt.Rows[0]["EMAIL"].ToString().Trim();
+                    if (strEMail!="")
+                    {
+                        email = dt.Rows[0]["NAME"].ToString().Trim() + "," + strEMail + "\n";
+                        list.Add(email);
+                    }
+                }
+            }
+            dt.Dispose();
+            dt = null;
+
             return list;
         }
         private void btnClose_Click(object sender, EventArgs e)
@@ -247,7 +292,7 @@ namespace HC_OSHA.form.Visit
                         //            mailCount++;
                         //        }
                         //    }
-                        //    receiverMailList.Add(siteId , mailList);
+                        //    receiverMailList.Add(siteId, mailList);
                         //}
                         List<string> mailList = new List<string>();
                         string email = SSList.ActiveSheet.Cells[i, 7].Text;
@@ -296,6 +341,7 @@ namespace HC_OSHA.form.Visit
                 {
                     Dictionary<long, ChargeEmailModel> exportPdfList = new Dictionary<long, ChargeEmailModel>();
                     exportPdfList = Print(true);
+                    Thread.Sleep(3000);
                     SendMail(receiverMailList, exportPdfList);
                 }
                 else
@@ -396,22 +442,20 @@ namespace HC_OSHA.form.Visit
         {
             try
             {
-             
                 if (TxtDocNumber.GetValue().IsNullOrEmpty())
                 {
                     MessageUtil.Alert("문서번호를 입력하세요");
                     return;
                 }
                 Cursor.Current = Cursors.WaitCursor;
-                FolderBrowserDialog dialog = new FolderBrowserDialog();
-                DialogResult result = dialog.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    string path = dialog.SelectedPath;
-                   
-
-                    Print(true, path);
-                }
+                //FolderBrowserDialog dialog = new FolderBrowserDialog();
+                //DialogResult result = dialog.ShowDialog();
+                //if (result == DialogResult.OK)
+                //{
+                // string path = dialog.SelectedPath;
+                string path = @"C:\temp";
+                Print(true, path);
+                //}
                 MessageUtil.Info("PDF 저장 완료");
             }
             catch(Exception ex)
@@ -421,8 +465,6 @@ namespace HC_OSHA.form.Visit
                
                 MessageUtil.Alert(ex.Message);
             }
-          
-                
         }
     }
 }

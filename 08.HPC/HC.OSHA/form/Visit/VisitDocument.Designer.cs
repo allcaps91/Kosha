@@ -3263,7 +3263,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(686, 83);
+            this.btnPrint.Location = new System.Drawing.Point(698, 45);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrint.TabIndex = 94;
@@ -3281,7 +3281,7 @@
             this.ssDoc.ButtonDrawMode = FarPoint.Win.Spread.ButtonDrawModes.CurrentCell;
             this.ssDoc.Font = new System.Drawing.Font("돋움", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ssDoc.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
-            this.ssDoc.Location = new System.Drawing.Point(0, 109);
+            this.ssDoc.Location = new System.Drawing.Point(0, 74);
             this.ssDoc.Name = "ssDoc";
             namedStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(229)))), ((int)(((byte)(241)))));
             namedStyle35.Font = new System.Drawing.Font("맑은 고딕", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));

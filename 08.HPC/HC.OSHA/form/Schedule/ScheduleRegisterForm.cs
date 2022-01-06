@@ -386,7 +386,11 @@ namespace HC_OSHA
                         BtnSearchUnVisit.PerformClick();
                         //  BtnSearchSchedule.PerformClick();
                         SearchScheduleList();
-                        //    MessageUtil.Info(saved.SITE_NAME + " 일정이 저장되었습니다");
+                        MessageUtil.Info(saved.SITE_NAME + " 일정이 저장되었습니다");
+                    }
+                    else
+                    {
+                        MessageUtil.Info("자료에 오류가 있어 저장 불가");
                     }
                 }
                 catch(Exception ex)

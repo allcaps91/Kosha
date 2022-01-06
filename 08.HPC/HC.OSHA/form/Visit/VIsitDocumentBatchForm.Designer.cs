@@ -34,6 +34,7 @@
             FarPoint.Win.Spread.CellType.TextCellType textCellType2 = new FarPoint.Win.Spread.CellType.TextCellType();
             FarPoint.Win.Spread.CellType.TextCellType textCellType3 = new FarPoint.Win.Spread.CellType.TextCellType();
             FarPoint.Win.Spread.CellType.TextCellType textCellType4 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.GeneralCellType generalCellType1 = new FarPoint.Win.Spread.CellType.GeneralCellType();
             this.TxtDocNumber = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -154,7 +155,7 @@
             this.SSList_Sheet1.SheetName = "Sheet1";
             // Formulas and custom names must be loaded with R1C1 reference style
             this.SSList_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1;
-            this.SSList_Sheet1.ColumnCount = 11;
+            this.SSList_Sheet1.ColumnCount = 12;
             this.SSList_Sheet1.RowCount = 0;
             this.SSList_Sheet1.ActiveColumnIndex = -1;
             this.SSList_Sheet1.ActiveRowIndex = -1;
@@ -174,6 +175,7 @@
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 8).Value = "Email2";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 9).Value = "메일 발송일";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 10).Value = "발송자";
+            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 11).Value = "계약ID";
             this.SSList_Sheet1.ColumnHeader.Rows.Get(0).Height = 43F;
             this.SSList_Sheet1.Columns.Get(0).CellType = checkBoxCellType2;
             this.SSList_Sheet1.Columns.Get(0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
@@ -210,6 +212,9 @@
             this.SSList_Sheet1.Columns.Get(10).CellType = textCellType4;
             this.SSList_Sheet1.Columns.Get(10).Label = "발송자";
             this.SSList_Sheet1.Columns.Get(10).Width = 80F;
+            generalCellType1.ReadOnly = true;
+            this.SSList_Sheet1.Columns.Get(11).CellType = generalCellType1;
+            this.SSList_Sheet1.Columns.Get(11).Label = "계약ID";
             this.SSList_Sheet1.FilterBarHeaderStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SSList_Sheet1.FilterBarHeaderStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SSList_Sheet1.FilterBarHeaderStyle.Parent = "RowHeaderDefaultEnhanced";
@@ -219,7 +224,7 @@
             // 
             // btnPRint
             // 
-            this.btnPRint.Location = new System.Drawing.Point(1111, 9);
+            this.btnPRint.Location = new System.Drawing.Point(1028, 11);
             this.btnPRint.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnPRint.Name = "btnPRint";
             this.btnPRint.Size = new System.Drawing.Size(75, 28);
@@ -242,7 +247,7 @@
             // 
             // btnSendMail
             // 
-            this.btnSendMail.Location = new System.Drawing.Point(1188, 9);
+            this.btnSendMail.Location = new System.Drawing.Point(1105, 11);
             this.btnSendMail.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnSendMail.Name = "btnSendMail";
             this.btnSendMail.Size = new System.Drawing.Size(75, 28);
@@ -280,7 +285,7 @@
             // 
             // BtnExportPdf
             // 
-            this.BtnExportPdf.Location = new System.Drawing.Point(1034, 9);
+            this.BtnExportPdf.Location = new System.Drawing.Point(951, 11);
             this.BtnExportPdf.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnExportPdf.Name = "BtnExportPdf";
             this.BtnExportPdf.Size = new System.Drawing.Size(75, 28);

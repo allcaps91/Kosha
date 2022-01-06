@@ -57,8 +57,8 @@ namespace HC_OSHA.form.Visit
                 string year = yearAndMonth.Substring(0, 4);
                 string month = yearAndMonth.Substring(5, 2);
                 ssDoc.ActiveSheet.Cells[35, 3].Value = "대한 " + year + " - " + docNumber + "호" + "(" + executeDate + ")";
-                ssDoc_old.ActiveSheet.Cells[7, 4].Value = siteName + " 대표이사";
-                ssDoc_old.ActiveSheet.Cells[10, 4].Value = year + "년 " + month + "월 " + "보건관리전문기관 방문일정 안내";
+                ssDoc.ActiveSheet.Cells[7, 4].Value = siteName + " 대표이사";
+                ssDoc.ActiveSheet.Cells[10, 4].Value = year + "년 " + month + "월 " + "보건관리전문기관 방문일정 안내";
                 
                 chargeEmailModel.Title = "대한보건환경연구소 " + year + "년 " + month + "월 보건관리전문기관 방문일정 안내";
 
@@ -76,28 +76,28 @@ namespace HC_OSHA.form.Visit
                     string day = date + "(" + dayOfWeek.Substring(0, 1) + ")";
                     if (list[j].visitUserRole == "DOCTOR")
                     {
-                        if (ssDoc_old.ActiveSheet.Cells[18, 4].Value.Equals("-"))
+                        if (ssDoc.ActiveSheet.Cells[18, 4].Value.Equals("-"))
                         {
-                            ssDoc_old.ActiveSheet.Cells[18, 4].Value = day + list[j].visitUserName;
+                            ssDoc.ActiveSheet.Cells[18, 4].Value = day + list[j].visitUserName;
                         }
                     }
                     if (list[j].visitUserRole == "NURSE")
                     {
-                        if (ssDoc_old.ActiveSheet.Cells[18, 14].Value.Equals("-"))
+                        if (ssDoc.ActiveSheet.Cells[18, 14].Value.Equals("-"))
                         {
-                            ssDoc_old.ActiveSheet.Cells[18, 14].Value = day + list[j].visitUserName;
+                            ssDoc.ActiveSheet.Cells[18, 14].Value = day + list[j].visitUserName;
                         }
                     }
                     if (list[j].visitUserRole == "ENGINEER")
                     {
-                        if (ssDoc_old.ActiveSheet.Cells[18, 24].Value.Equals("-"))
+                        if (ssDoc.ActiveSheet.Cells[18, 24].Value.Equals("-"))
                         {
-                            ssDoc_old.ActiveSheet.Cells[18, 24].Value = day + list[j].visitUserName;
+                            ssDoc.ActiveSheet.Cells[18, 24].Value = day + list[j].visitUserName;
                         }
                     }
                 }
                 Log.Error(4);
-                print = new SpreadPrint(ssDoc_old, PrintStyle.STANDARD_APPROVAL);
+                print = new SpreadPrint(ssDoc, PrintStyle.STANDARD_APPROVAL);
                 if (isPdf)
                 {
 

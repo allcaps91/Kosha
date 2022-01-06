@@ -449,9 +449,6 @@ namespace HC_OSHA
                           MessageUtil.Info("저장하였습니다.");
                         //     OshaSiteEstimateList.Searh(oshaSiteLastTree.GetSite.ID);
                     }
-
-                
-
             }
 
         }
@@ -786,14 +783,17 @@ namespace HC_OSHA
 
         private void OshaSiteEstimateList_CellDoubleClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
         {
+            long nSiteFee = 0;
+
             Application.DoEvents();
             base.SelectedEstimate = OshaSiteEstimateList.GetEstimateModel;
             if (OshaSiteEstimateList.GetEstimateModel != null)
             {
 
                 HC_OSHA_ESTIMATE dto = hcOshaEstimateService.FindById(base.SelectedEstimate.ID);
+                nSiteFee = dto.SITEFEE;
                 PanEstimate.SetData(dto);
-                NumSITEFEE.Value = dto.SITEFEE;
+                NumSITEFEE.Value = nSiteFee;
 
                 //원청
                 HC_OSHA_SITE_MODEL parent = hcOShaSiteService.FindById(dto.OSHA_SITE_ID);

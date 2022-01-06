@@ -14,6 +14,7 @@ namespace HC_OSHA.Model.Schedule
         public long Id { get; set; }
         public string SiteName { get; set; }
         public long SiteId { get; set; }
+        public long ESTIMATE_ID { get; set; }
         public string VisitReserveDate { get; set; }
         public string visitUserId { get; set; }
         public string visitUserName { get; set; }
