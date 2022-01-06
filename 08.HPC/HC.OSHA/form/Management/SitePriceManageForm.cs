@@ -88,10 +88,6 @@ namespace HC_OSHA.form.Management
             {
                 foreach(OSHA_PRICE dto in list)
                 {
-                    if(dto.SITE_ID == 10494)
-                    {
-                        string x = "";
-                    }
                     List<OSHA_PRICE> childPrice = oshaPriceService.OshaPriceRepository.FindAllByParent(dto.SITE_ID);
                     foreach (OSHA_PRICE child in childPrice)
                     {

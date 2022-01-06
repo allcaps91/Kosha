@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 namespace HS_OSHA
 {
@@ -236,6 +237,7 @@ namespace HS_OSHA
                     clsType.User.BuseName = "OSHA";
                     clsType.User.Jikmu = "YYYYYYNNNNNNNNN";
                     clsType.User.LtdUser = "";
+                    clsType.User.PassWord = "";
                 }
                 else {
                     ComFunc.MsgBox("관리자 비밀번호 오류 입니다", "알림");
@@ -298,6 +300,7 @@ namespace HS_OSHA
                 clsType.User.BuseName = dt.Rows[i]["DEPT"].ToString().Trim();
                 clsType.User.Jikmu = dt.Rows[i]["JIKMU"].ToString().Trim();
                 clsType.User.LtdUser = dt.Rows[i]["LTDUSER"].ToString().Trim();
+                clsType.User.PassWord = strPassword;
 
                 dt.Dispose();
                 dt = null;
@@ -336,6 +339,8 @@ namespace HS_OSHA
             FtpedtX.FtpDownload("115.68.23.223", "dhson", "@thsehdgml#", strLocalPath, strFileNm, strServerPath);
             FtpedtX = null;
 
+            Thread.Sleep(10000);
+
             intDelay = 0;
             timer1.Enabled = true;
 
@@ -345,20 +350,44 @@ namespace HS_OSHA
         {
             intDelay++;
 
-            if (intDelay == 20)
+            if (intDelay >= 5)
             {
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-                Process process = new Process();
-                startInfo.FileName = @"c:\temp\HsMainUpdate.exe";
-                startInfo.CreateNoWindow = false;
-                startInfo.UseShellExecute = false;
-                process.StartInfo = startInfo;
-                process.Start();
-
-            } else if (intDelay >= 25) {
                 timer1.Enabled = false;
+
+                //ProcessStartInfo startInfo = new ProcessStartInfo();
+                //Process process = new Process();
+                //startInfo.FileName = @"c:\temp\HsMainUpdate.exe";
+                //startInfo.CreateNoWindow = false;
+                //startInfo.UseShellExecute = false;
+                //process.StartInfo = startInfo;
+                //process.Start();
+
+                string strFileName = @"c:\temp\HsMainUpdate.exe";
+                System.Diagnostics.Process.Start(strFileName);
+
+                //3초 대기
+                Thread.Sleep(3000);
+
                 this.Close();
+
             }
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            Process process = new Process();
+            startInfo.FileName = @"c:\temp\HsMainUpdate.exe";
+            startInfo.CreateNoWindow = false;
+            startInfo.UseShellExecute = false;
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string strFileName = @"c:\temp\HsMainUpdate.exe";
+            System.Diagnostics.Process.Start(strFileName);
         }
     }
 }

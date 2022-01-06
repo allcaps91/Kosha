@@ -143,27 +143,6 @@ namespace HC_OSHA.form.Visit
             }
         }
 
-        private List<string> GetEmail_OLD(List<HC_SITE_WORKER> workers, long siteId)
-        {
-            string strEMail = "";
-            List<string> list = new List<string>();
-            string email = string.Empty;
-            foreach (HC_SITE_WORKER worker in workers)
-            {
-                if (worker.SITEID == siteId)
-                {
-                    strEMail = "";
-                    if (strEMail!="")
-                    {
-                        email = worker.NAME + "," + strEMail + "\n";
-                        list.Add(email);
-                    }
-                }
-
-            }
-            return list;
-        }
-
         private List<string> GetEmail(long ESTIMATE_ID)
         {
             string SQL = "";
@@ -341,7 +320,7 @@ namespace HC_OSHA.form.Visit
                 {
                     Dictionary<long, ChargeEmailModel> exportPdfList = new Dictionary<long, ChargeEmailModel>();
                     exportPdfList = Print(true);
-                    Thread.Sleep(3000);
+                    Thread.Sleep(2000);
                     SendMail(receiverMailList, exportPdfList);
                 }
                 else
@@ -448,15 +427,15 @@ namespace HC_OSHA.form.Visit
                     return;
                 }
                 Cursor.Current = Cursors.WaitCursor;
-                //FolderBrowserDialog dialog = new FolderBrowserDialog();
-                //DialogResult result = dialog.ShowDialog();
-                //if (result == DialogResult.OK)
-                //{
-                // string path = dialog.SelectedPath;
-                string path = @"C:\temp";
-                Print(true, path);
-                //}
-                MessageUtil.Info("PDF 저장 완료");
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                DialogResult result = dialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    string path = dialog.SelectedPath;
+                    Print(true, path);
+                    Thread.Sleep(2000);
+                    MessageUtil.Info("PDF 저장 완료");
+                }
             }
             catch(Exception ex)
             {

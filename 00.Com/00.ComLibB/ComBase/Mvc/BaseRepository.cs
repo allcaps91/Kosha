@@ -143,7 +143,7 @@ namespace ComBase.Mvc
                 //System.IO.File.WriteAllText(@"C:\Temp\sqltext.txt", generateSql);
                 if (clsType.User.IdNumber=="1")
                 {
-                    System.IO.File.AppendAllText(@"C:\temp\sql_" + DateTime.Now.ToString("yyyyMMdd") + ".txt", ComNum.VBLF + ComNum.VBLF + mParameter.SQL);
+                    //System.IO.File.AppendAllText(@"C:\temp\sql_" + DateTime.Now.ToString("yyyyMMdd") + ".txt", ComNum.VBLF + ComNum.VBLF + mParameter.SQL);
                 }
                 //}
             }

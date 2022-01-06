@@ -115,7 +115,6 @@ namespace HC_OSHA
 
             if (base.SelectedSite != null && base.SelectedEstimate != null)
             {
-                //List<HC_OSHA_CARD3> list = cardPage1Service.FindAll(base.SelectedEstimate.ID, base.GetCurrentYear());
                 List<HC_OSHA_CARD3> list = cardPage1Service.FindAll(base.SelectedEstimate.ID, base.SelectedEstimate.CONTRACTSTARTDATE.Left(4));
                 SSList.SetDataSource(list);
                 GetSSCard(list);
@@ -351,18 +350,43 @@ namespace HC_OSHA
             {
                 SSCard.ActiveSheet.Cells[18, 25].Value = "○";
             }
+            //노동조합대표
             List<HC_OSHA_CONTRACT_MANAGER_MODEL> LABOR_ROLE_LIST = new HcOshaContractManagerService().hcOshaContractManagerRepository.FindContractManagerByRole(base.SelectedEstimate.ID, "LABOR_ROLE");
             if (LABOR_ROLE_LIST.Count > 0)
             {
                 HC_OSHA_CONTRACT_MANAGER_MODEL LABOR_ROLE = LABOR_ROLE_LIST[0];
                 if (LABOR_ROLE != null)
                 {
-                    SSCard.ActiveSheet.Cells[18, 26].Value = LABOR_ROLE.NAME;//노동조합대표
+                    if (LABOR_ROLE.DEPT == "")
+                    {
+                        SSCard.ActiveSheet.Cells[21, 3].Value = LABOR_ROLE.NAME;
+                    }
+                    else
+                    {
+                        SSCard.ActiveSheet.Cells[21, 3].Value = LABOR_ROLE.NAME + "(" + LABOR_ROLE.DEPT + ")";
+                    }
+                }
+            }
+            //명예안전감독관
+            List<HC_OSHA_CONTRACT_MANAGER_MODEL> LABOR1_ROLE_LIST = new HcOshaContractManagerService().hcOshaContractManagerRepository.FindContractManagerByRole(base.SelectedEstimate.ID, "SAFE1_ROLE");
+            if (LABOR1_ROLE_LIST.Count > 0)
+            {
+                HC_OSHA_CONTRACT_MANAGER_MODEL LABOR_ROLE = LABOR1_ROLE_LIST[0];
+                if (LABOR_ROLE != null)
+                {
+                    if (LABOR_ROLE.DEPT == "")
+                    {
+                        SSCard.ActiveSheet.Cells[21, 18].Value = LABOR_ROLE.NAME;
+                    }
+                    else
+                    {
+                        SSCard.ActiveSheet.Cells[21, 18].Value = LABOR_ROLE.NAME + "(" + LABOR_ROLE.DEPT + ")";
+                    }
                 }
             }
 
             //  사업장 업무일정
-            if(contract.VISITWEEK.NotEmpty() && contract.VISITDAY.NotEmpty())
+            if (contract.VISITWEEK.NotEmpty() && contract.VISITDAY.NotEmpty())
             {
                 SSCard.ActiveSheet.Cells[20, 0].Value = string.Concat(contract.VISITWEEK, ", ", contract.VISITDAY);
             }

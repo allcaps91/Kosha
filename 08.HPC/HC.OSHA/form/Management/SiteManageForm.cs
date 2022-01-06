@@ -954,7 +954,6 @@ namespace HC_OSHA
             SSPrice.AddColumnText("생성일시", nameof(OSHA_PRICE.MODIFIED), 163, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSPrice.AddColumnText("사용자", nameof(OSHA_PRICE.MODIFIEDUSER), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
 
-
             SSChildPrice.Initialize(new SpreadOption() { IsRowSelectColor = false, ColumnHeaderHeight = 35 });
             SSChildPrice.AddColumnText("사업장명", nameof(OSHA_PRICE.SITE_NAME), 180, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });            
             SSChildPrice.AddColumnText("인원", nameof(OSHA_PRICE.WORKERTOTALCOUNT), 70, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });

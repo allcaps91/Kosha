@@ -166,6 +166,7 @@ namespace HC_OSHA
                 if (SiteTreeView.Nodes.Count > 0)
                 {
                     SiteTreeView.Nodes[0].EnsureVisible();
+                    BtnSearch.Text = "검색(&S)" + "\n(" + SiteTreeView.Nodes.Count + ")";
                 }
 
             }

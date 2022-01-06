@@ -46,7 +46,6 @@ namespace HC_OSHA
             if (FbCodeManager == false)
             {
                 MenuBaseCode.Visible = false;  //코드관리
-                //사업장등록ToolStripMenuItem.Visible = false; //거래처코드
             }
             if (FbLtdUser == true)
             {
@@ -66,6 +65,21 @@ namespace HC_OSHA
             보건교육지원대장ToolStripMenuItem1.Enabled = true;
             //검진결과ToolStripMenuItem.Visible = false;
 
+            //비밀번호가 1234이면 업무 제한
+            if (clsType.User.PassWord=="1234")
+            {
+                사업장ToolStripMenuItem.Visible = false;
+                일정관리ToolStripMenuItem.Visible = false;
+                상태보고서ToolStripMenuItem.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                검진결과ToolStripMenuItem.Visible = false;
+                통계및대장ToolStripMenuItem.Visible = false;
+                MenuChargeGroup.Visible = false;
+                MenuBaseCode.Visible = false;  //코드관리
+                toolStripMenuItem1.Visible = true;  //비밀번호변경
+
+                ComFunc.MsgBox("비밀번호를 변경 후 사용하세요!", "알림");
+            }
             //미완성 프로그램 감추기
             if (clsType.User.IdNumber != "1")
             {
@@ -826,6 +840,11 @@ namespace HC_OSHA
             form.Show();
             //CreateForm(form, menuName: (sender as ToolStripMenuItem).Text);
             //(form as ISelectSite).Select(oshaSiteLastTree.GetSite);
+        }
+
+        private void oshaSiteLastTree_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

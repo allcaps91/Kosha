@@ -7,7 +7,6 @@ namespace ComHpcLibB.Repository
     using ComHpcLibB.Dto;
     using ComHpcLibB.Model;
 
-
     /// <summary>
     /// 
     /// </summary>
@@ -21,7 +20,6 @@ namespace ComHpcLibB.Repository
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReaderSingle<HC_OSHA_SITE>(parameter);
-
         }
 
         /// <summary>
@@ -60,9 +58,9 @@ namespace ComHpcLibB.Repository
         public void InactiveOsha(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_SITE       ");
-            parameter.AppendSql("SET ISACTIVE = 'N', MODIFIED = SYSTIMESTAMP, MODIFIEDUSER  = :MODIFIEDUSER        ");
-            parameter.AppendSql("WHERE ID = :ID             ");
+            parameter.AppendSql("UPDATE HIC_OSHA_SITE ");
+            parameter.AppendSql("SET ISACTIVE = 'N', MODIFIED = SYSTIMESTAMP, MODIFIEDUSER  = :MODIFIEDUSER ");
+            parameter.AppendSql("WHERE ID = :ID ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -74,9 +72,9 @@ namespace ComHpcLibB.Repository
         public void ActiveOsha(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_SITE       ");
-            parameter.AppendSql("SET ISACTIVE = 'Y', ISPARENTCHARGE = 'Y', MODIFIED = SYSTIMESTAMP, MODIFIEDUSER  = :MODIFIEDUSER        ");
-            parameter.AppendSql("WHERE ID = :ID             ");
+            parameter.AppendSql("UPDATE HIC_OSHA_SITE ");
+            parameter.AppendSql("SET ISACTIVE = 'Y', ISPARENTCHARGE = 'Y', MODIFIED = SYSTIMESTAMP, MODIFIEDUSER  = :MODIFIEDUSER ");
+            parameter.AppendSql("WHERE ID = :ID ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -88,8 +86,7 @@ namespace ComHpcLibB.Repository
         public void Insert(HC_SITE_VIEW view)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO HIC_OSHA_SITE");
-            parameter.AppendSql("(");
+            parameter.AppendSql("INSERT INTO HIC_OSHA_SITE ( ");
             parameter.AppendSql("    ID");
             parameter.AppendSql("  , SWLICENSE");
             parameter.AppendSql("  , ISACTIVE");
@@ -128,13 +125,13 @@ namespace ComHpcLibB.Repository
         public void UpdateParentSite(long siteId, long parentSiteId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_SITE            ");
+            parameter.AppendSql("UPDATE HIC_OSHA_SITE ");
             parameter.AppendSql("SET ");
-            parameter.AppendSql("    PARENTSITE_ID = :PARENTSITE_ID");
-            parameter.AppendSql("    ,ISPARENTCHARGE = 'N'         ");
-            parameter.AppendSql("   ,MODIFIED = SYSTIMESTAMP");
-            parameter.AppendSql("   ,MODIFIEDUSER = :MODIFIEDUSER");
-            parameter.AppendSql("WHERE ID = :ID");
+            parameter.AppendSql("    PARENTSITE_ID = :PARENTSITE_ID, ");
+            parameter.AppendSql("    ISPARENTCHARGE = 'N', ");
+            parameter.AppendSql("    MODIFIED = SYSTIMESTAMP, ");
+            parameter.AppendSql("    MODIFIEDUSER = :MODIFIEDUSER ");
+            parameter.AppendSql("WHERE ID = :ID ");
             parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", siteId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -144,10 +141,9 @@ namespace ComHpcLibB.Repository
 
 
             parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_SITE     ");
-            parameter.AppendSql("SET ");
-            parameter.AppendSql("    HASCHILD = 'Y'       ");
-            parameter.AppendSql("WHERE ID = :PARENTSITE_ID");
+            parameter.AppendSql("UPDATE HIC_OSHA_SITE ");
+            parameter.AppendSql("SET HASCHILD = 'Y' ");
+            parameter.AppendSql("WHERE ID = :PARENTSITE_ID ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("PARENTSITE_ID", parentSiteId);
@@ -159,10 +155,9 @@ namespace ComHpcLibB.Repository
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("UPDATE HIC_OSHA_SITE ");
-            parameter.AppendSql("SET ");
-            parameter.AppendSql("    HASCHILD = 'N'  ");
-            parameter.AppendSql("  , PARENTSITE_ID = null ");
-            parameter.AppendSql("  , ISPARENTCHARGE ='Y' ");
+            parameter.AppendSql("SET HASCHILD = 'N', ");
+            parameter.AppendSql("    PARENTSITE_ID = null, ");
+            parameter.AppendSql("    ISPARENTCHARGE ='Y' ");
             parameter.AppendSql("WHERE ID = :ID ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
@@ -172,7 +167,7 @@ namespace ComHpcLibB.Repository
             ExecuteNonQuery(parameter);
 
             parameter = CreateParameter();
-            parameter.AppendSql("SELECT count(*) FROM HIC_OSHA_SITE       ");     
+            parameter.AppendSql("SELECT count(*) FROM HIC_OSHA_SITE ");     
             parameter.AppendSql("WHERE PARENTSITE_ID = :PARENTSITE_ID ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("PARENTSITE_ID", parentSiteId);
@@ -183,10 +178,9 @@ namespace ComHpcLibB.Repository
             {
                 //하청사업장이 없으면 
                 parameter = CreateParameter();
-                parameter.AppendSql("UPDATE HIC_OSHA_SITE    ");
-                parameter.AppendSql("SET ");
-                parameter.AppendSql("    HASCHILD = 'N'       ");
-                parameter.AppendSql("WHERE ID = :PARENTSITE_ID");
+                parameter.AppendSql("UPDATE HIC_OSHA_SITE ");
+                parameter.AppendSql("SET HASCHILD = 'N' ");
+                parameter.AppendSql("WHERE ID = :PARENTSITE_ID ");
                 parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
                 parameter.Add("PARENTSITE_ID", parentSiteId);
@@ -194,38 +188,34 @@ namespace ComHpcLibB.Repository
 
                 ExecuteNonQuery(parameter);
             }
-
-
-            
         }
 
         public int GetMisuTaxUpdate(MISU_TAX item)
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("   UPDATE MISU_TAX SET ");
-
-            parameter.AppendSql("   PUMMOK = :PUMMOK,                     ");
-            parameter.AppendSql("   LTDCODE = :LTDCODE,                   ");
-            parameter.AppendSql("   DAEPYONAME = :DAEPYONAME,                 ");
-            parameter.AppendSql("   UPTAE = :UPTAE,                       ");
-            parameter.AppendSql("   JONGMOK = :JONGMOK,                   ");
-            parameter.AppendSql("   LTDNO = :LTDNO,                      ");
-            parameter.AppendSql("   LTDJUSO = :LTDJUSO,                      ");
-            parameter.AppendSql("   LTDNAME = :LTDNAME,                    ");
-            parameter.AppendSql("   ENTSABUN = :ENTSABUN                  ");
-            parameter.AppendSql("   WHERE MISUNO= :MISUNO                 ");
+            parameter.AppendSql("   PUMMOK = :PUMMOK, ");
+            parameter.AppendSql("   LTDCODE = :LTDCODE, ");
+            parameter.AppendSql("   DAEPYONAME = :DAEPYONAME, ");
+            parameter.AppendSql("   UPTAE = :UPTAE, ");
+            parameter.AppendSql("   JONGMOK = :JONGMOK, ");
+            parameter.AppendSql("   LTDNO = :LTDNO, ");
+            parameter.AppendSql("   LTDJUSO = :LTDJUSO, ");
+            parameter.AppendSql("   LTDNAME = :LTDNAME, ");
+            parameter.AppendSql("   ENTSABUN = :ENTSABUN ");
+            parameter.AppendSql("   WHERE MISUNO= :MISUNO ");
 
             
-            parameter.Add("PUMMOK",             item.PUMMOK         );
-            parameter.Add("LTDCODE",            item.LTDCODE        );
-            parameter.Add("UPTAE",              item.UPTAE          );
-            parameter.Add("DAEPYONAME",         item.DAEPYONAME     );
-            parameter.Add("JONGMOK",            item.JONGMOK        );
-            parameter.Add("LTDNO",              item.LTDNO          );
-            parameter.Add("LTDJUSO",            item.LTDJUSO        );
-            parameter.Add("LTDNAME",            item.LTDNAME, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
-            parameter.Add("ENTSABUN",           item.ENTSABUN       );
-            parameter.Add("MISUNO",             item.MISUNO         );
+            parameter.Add("PUMMOK",item.PUMMOK);
+            parameter.Add("LTDCODE",item.LTDCODE);
+            parameter.Add("UPTAE",item.UPTAE);
+            parameter.Add("DAEPYONAME",item.DAEPYONAME);
+            parameter.Add("JONGMOK",item.JONGMOK);
+            parameter.Add("LTDNO",item.LTDNO);
+            parameter.Add("LTDJUSO",item.LTDJUSO);
+            parameter.Add("LTDNAME",item.LTDNAME, Oracle.ManagedDataAccess.Client.OracleDbType.Char);
+            parameter.Add("ENTSABUN",item.ENTSABUN);
+            parameter.Add("MISUNO",item.MISUNO);
 
             return ExecuteNonQuery(parameter);
         }
