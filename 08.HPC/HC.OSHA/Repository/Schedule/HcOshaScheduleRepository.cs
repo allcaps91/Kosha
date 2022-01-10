@@ -94,10 +94,11 @@ namespace HC.OSHA.Repository
         public HC_OSHA_SCHEDULE FindById(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS SITE_NAME FROM HIC_OSHA_SCHEDULE A ");
-            parameter.AppendSql("      INNER JOIN HC_SITE_VIEW B ");
-            parameter.AppendSql("            ON A.SITE_ID = B.ID ");
-            parameter.AppendSql("            AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("SELECT A.*, B.NAME AS SITE_NAME ");
+            parameter.AppendSql("  FROM HIC_OSHA_SCHEDULE A ");
+            parameter.AppendSql("       INNER JOIN HC_SITE_VIEW B ");
+            parameter.AppendSql("             ON A.SITE_ID = B.ID ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" WHERE A.ID = :ID ");
             parameter.AppendSql("   AND A.ISDELETED ='N' ");
             parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");

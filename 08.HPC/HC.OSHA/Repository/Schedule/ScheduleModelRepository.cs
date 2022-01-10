@@ -30,71 +30,68 @@ namespace HC.OSHA.Repository
         public List<UnvisitSiteModel> FindUnvisitSiteList(string visitUserId, string visitStartDate, string visitEndDate, string siteIdOrname)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.ID AS SCHEDULE_ID, C.NAME, A.SITE_ID, A.VISITRESERVEDATE, A.VISITUSERNAME	, 0 as VISIT_ID	, A.DEPARTUREDATETIME , 'N' AS ISPRECHARGE			");
-            parameter.AppendSql("	FROM HIC_OSHA_SCHEDULE A        ");                   
-            parameter.AppendSql("	INNER JOIN HC_SITE_VIEW C       ");
-            parameter.AppendSql("	ON A.SITE_ID = C.ID	            ");
-            parameter.AppendSql("WHERE                              ");
-            parameter.AppendSql("	A.VISITRESERVEDATE BETWEEN TO_DATE(:visitStartDate , 'YYYY-MM-DD') AND TO_DATE(:visitEndDate, 'YYYY-MM-DD')  ");
-            parameter.AppendSql("	AND A.ISDELETED ='N'            ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE   ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE   ");
+            parameter.AppendSql("SELECT A.ID AS SCHEDULE_ID, C.NAME, A.SITE_ID, A.VISITRESERVEDATE, A.VISITUSERNAME, ");
+            parameter.AppendSql("      0 as VISIT_ID	, A.DEPARTUREDATETIME , 'N' AS ISPRECHARGE ");
+            parameter.AppendSql("	FROM HIC_OSHA_SCHEDULE A ");                   
+            parameter.AppendSql("	     INNER JOIN HC_SITE_VIEW C ");
+            parameter.AppendSql("	           ON A.SITE_ID = C.ID ");
+            parameter.AppendSql("              AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" WHERE A.VISITRESERVEDATE BETWEEN TO_DATE(:visitStartDate , 'YYYY-MM-DD') AND TO_DATE(:visitEndDate, 'YYYY-MM-DD') ");            parameter.AppendSql(" 	AND A.ISDELETED ='N' ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
             if (siteIdOrname.NotEmpty())
             {
                 if (siteIdOrname.IsNumeric())
                 {
-                    parameter.AppendSql("        AND A.SITE_ID  LIKE :siteIdOrname    ");
+                    parameter.AppendSql(" AND A.SITE_ID  LIKE :siteIdOrname ");
                 }
                 else
                 {
-                    parameter.AppendSql("        AND C.NAME  LIKE :siteIdOrname    ");
+                    parameter.AppendSql(" AND C.NAME  LIKE :siteIdOrname ");
                 }
             }
             if (visitUserId.NotEmpty())
             {
-                parameter.AppendSql("	AND	A.VISITUSERID = :visitUserId                                                             ");
+                parameter.AppendSql(" AND A.VISITUSERID = :visitUserId ");
             }
-            parameter.AppendSql("	 AND A.id not in                        ");
-            parameter.AppendSql("	 (                                      ");
-            parameter.AppendSql("	select a.id from HIC_OSHA_SCHEDULE a    ");
-            parameter.AppendSql("	inner join HIC_OSHA_VISIT b             ");
-            parameter.AppendSql("	on a.id = b.schedule_id                 ");
-            parameter.AppendSql("	where a.isdeleted = 'N'                 ");
-            parameter.AppendSql("	and b.isdeleted = 'N'                   ");
-            parameter.AppendSql("   AND a.SWLICENSE = :SWLICENSE           ");
-            parameter.AppendSql("   AND b.SWLICENSE = :SWLICENSE           ");
-            parameter.AppendSql("	)                                       ");
+            parameter.AppendSql("	 AND A.id not in ( ");
+            parameter.AppendSql("	     select a.id from HIC_OSHA_SCHEDULE a ");
+            parameter.AppendSql("	            inner join HIC_OSHA_VISIT b ");
+            parameter.AppendSql("	                  on a.id = b.schedule_id ");
+            parameter.AppendSql("	                  and b.isdeleted = 'N' ");
+            parameter.AppendSql("                     AND b.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("	       where a.isdeleted = 'N' ");
+            parameter.AppendSql("            AND a.SWLICENSE = :SWLICENSE) ");
             parameter.AppendSql(" UNION ALL                                 ");
-            parameter.AppendSql("	SELECT A.ID AS SCHEDULE_ID,  C.NAME, A.SITE_ID, A.VISITRESERVEDATE, B.VISITUSERNAME  , B.ID AS VISIT_ID, A.DEPARTUREDATETIME , B.ISPRECHARGE         ");
-            parameter.AppendSql("	FROM HIC_OSHA_SCHEDULE A          ");
-            parameter.AppendSql("	INNER JOIN HIC_OSHA_VISIT B          ");
-            parameter.AppendSql("	ON A.ID = B.SCHEDULE_ID    AND A.ISDELETED = 'N'          ");
-            parameter.AppendSql("	INNER JOIN HC_SITE_VIEW C          ");
-            parameter.AppendSql("	ON A.SITE_ID = C.ID          ");
-            parameter.AppendSql("	WHERE                         ");
-            parameter.AppendSql("	A.VISITRESERVEDATE BETWEEN TO_DATE(:visitStartDate , 'YYYY-MM-DD') AND TO_DATE(:visitEndDate, 'YYYY-MM-DD')                      ");
+            parameter.AppendSql("	SELECT A.ID AS SCHEDULE_ID,  C.NAME, A.SITE_ID, A.VISITRESERVEDATE, B.VISITUSERNAME,");
+            parameter.AppendSql("          B.ID AS VISIT_ID, A.DEPARTUREDATETIME , B.ISPRECHARGE ");
+            parameter.AppendSql("	  FROM HIC_OSHA_SCHEDULE A ");
+            parameter.AppendSql("	       INNER JOIN HIC_OSHA_VISIT B ");
+            parameter.AppendSql("	             ON A.ID = B.SCHEDULE_ID ");
+            parameter.AppendSql("	             AND B.ISPRECHARGE = 'Y' ");
+            parameter.AppendSql("	             AND B.ISDELETED = 'N' ");
+            parameter.AppendSql("                AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("	       INNER JOIN HC_SITE_VIEW C ");
+            parameter.AppendSql("	             ON A.SITE_ID = C.ID ");
+            parameter.AppendSql("                AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("	WHERE A.VISITRESERVEDATE BETWEEN TO_DATE(:visitStartDate , 'YYYY-MM-DD') AND TO_DATE(:visitEndDate, 'YYYY-MM-DD') ");
+            parameter.AppendSql("     AND A.ISDELETED = 'N' ");
             if (siteIdOrname.NotEmpty())
             {
                 if (siteIdOrname.IsNumeric())
                 {
-                    parameter.AppendSql("        AND A.SITE_ID  LIKE :siteIdOrname    ");
+                    parameter.AppendSql(" AND A.SITE_ID  LIKE :siteIdOrname ");
                 }
                 else
                 {
-                    parameter.AppendSql("        AND C.NAME  LIKE :siteIdOrname    ");
+                    parameter.AppendSql(" AND C.NAME  LIKE :siteIdOrname ");
                 }
             }
             if (visitUserId.NotEmpty())
             {
-                parameter.AppendSql("	AND	A.VISITUSERID = :visitUserId                                                             ");
+                parameter.AppendSql(" AND A.VISITUSERID = :visitUserId ");
             }
-            parameter.AppendSql("	AND B.ISPRECHARGE = 'Y'          ");
-            parameter.AppendSql("	AND B.ISDELETED = 'N'          ");
-            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE   ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE   ");
-            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE   ");
-
-            parameter.AppendSql("ORDER BY VISITRESERVEDATE, DEPARTUREDATETIME                                                                  ");
+            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("ORDER BY VISITRESERVEDATE, DEPARTUREDATETIME ");
 
             parameter.Add("visitStartDate", visitStartDate );
             parameter.Add("visitEndDate", visitEndDate);
@@ -122,35 +119,36 @@ namespace HC.OSHA.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT A.ID AS SCHEDULE_ID, B.ID AS VISIT_ID, C.NAME, A.SITE_ID, B.VISITDATETIME, B.VISITUSERNAME  , B.ISFEE                       ");
-            parameter.AppendSql("	FROM HIC_OSHA_SCHEDULE A                          ");
-            parameter.AppendSql("	INNER JOIN HIC_OSHA_VISIT B                       ");
-            parameter.AppendSql("	ON A.ID = B.SCHEDULE_ID	AND A.ISDELETED ='N'      ");
-            parameter.AppendSql("	INNER JOIN HC_SITE_VIEW C                         ");
-            parameter.AppendSql("	ON A.SITE_ID = C.ID	                              ");
-            parameter.AppendSql("WHERE                                                                                                                    ");
-            parameter.AppendSql("	B.VISITDATETIME BETWEEN TO_DATE(:visitStartDate, 'YYYY-MM-DD') AND TO_DATE(:visitEndDate, 'YYYY-MM-DD')               ");
-            parameter.AppendSql("	AND B.ISPRECHARGE ='N'       ");
+            parameter.AppendSql("SELECT A.ID AS SCHEDULE_ID, B.ID AS VISIT_ID, C.NAME, A.SITE_ID, B.VISITDATETIME,");
+            parameter.AppendSql("       B.VISITUSERNAME  , B.ISFEE ");
+            parameter.AppendSql("  FROM HIC_OSHA_SCHEDULE A ");
+            parameter.AppendSql("	    INNER JOIN HIC_OSHA_VISIT B ");
+            parameter.AppendSql("	          ON A.ID = B.SCHEDULE_ID ");
+            parameter.AppendSql("	          AND B.ISPRECHARGE ='N' ");
+            parameter.AppendSql("	          AND B.ISDELETED = 'N' ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("	    INNER JOIN HC_SITE_VIEW C ");
+            parameter.AppendSql("	          ON A.SITE_ID = C.ID ");
+            parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("WHERE B.VISITDATETIME BETWEEN TO_DATE(:visitStartDate, 'YYYY-MM-DD') AND TO_DATE(:visitEndDate, 'YYYY-MM-DD') ");
+            parameter.AppendSql("	AND A.ISDELETED ='N' ");
             parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE ");
             if (siteIdOrname.NotEmpty())
             {
                 if (siteIdOrname.IsNumeric())
                 {
-                    parameter.AppendSql("        AND A.SITE_ID  LIKE :siteIdOrname    ");
+                    parameter.AppendSql(" AND A.SITE_ID  LIKE :siteIdOrname ");
                 }
                 else
                 {
-                    parameter.AppendSql("        AND C.NAME  LIKE :siteIdOrname    ");
+                    parameter.AppendSql(" AND C.NAME  LIKE :siteIdOrname ");
                 }
             }
             if (visitUserId.NotEmpty())
             {
-                parameter.AppendSql("	AND	B.VISITUSER= :visitUserId                                                             ");
+                parameter.AppendSql(" AND B.VISITUSER= :visitUserId ");
             }
-            parameter.AppendSql("	AND B.ISDELETED = 'N'                                                                          "); 
-            parameter.AppendSql("ORDER BY B.VISITDATETIME DESC, C.NAME                                                                 ");
+            parameter.AppendSql(" ORDER BY B.VISITDATETIME DESC, C.NAME ");
 
             parameter.Add("visitStartDate", visitStartDate);
             parameter.Add("visitEndDate", visitEndDate);
@@ -177,24 +175,24 @@ namespace HC.OSHA.Repository
         {
             MParameter parameter = CreateParameter();
 
-            parameter.AppendSql("SELECT A.ID AS SCHEDULE_ID, B.ID AS VISIT_ID, C.NAME, A.SITE_ID, B.VISITDATETIME, B.VISITUSERNAME                        ");
-            parameter.AppendSql("	FROM HIC_OSHA_SCHEDULE A                                                                                              ");
-            parameter.AppendSql("	INNER JOIN HIC_OSHA_VISIT B                                                                                           ");
-            parameter.AppendSql("	ON A.ID = B.SCHEDULE_ID	AND A.ISDELETED ='N'                                                                          ");
-            parameter.AppendSql("	INNER JOIN HC_SITE_VIEW C                                                                                            ");
-            parameter.AppendSql("	ON A.SITE_ID = C.ID	                                                                                                 ");
-            parameter.AppendSql("WHERE                                                                                                                    ");
-            parameter.AppendSql("	B.VISITDATETIME BETWEEN TO_DATE(:visitStartDate, 'YYYY-MM-DD') AND TO_DATE(:visitEndDate, 'YYYY-MM-DD')               ");
-            parameter.AppendSql("	AND B.ISPRECHARGE ='Y'       ");
-            parameter.AppendSql("	AND B.ISDELETED ='N'       ");
+            parameter.AppendSql("SELECT A.ID AS SCHEDULE_ID, B.ID AS VISIT_ID, C.NAME, A.SITE_ID, B.VISITDATETIME, B.VISITUSERNAME ");
+            parameter.AppendSql("  FROM HIC_OSHA_SCHEDULE A ");
+            parameter.AppendSql("       INNER JOIN HIC_OSHA_VISIT B ");
+            parameter.AppendSql("	          ON A.ID = B.SCHEDULE_ID ");
+            parameter.AppendSql("	          AND B.ISPRECHARGE ='Y' ");
+            parameter.AppendSql("	          AND B.ISDELETED ='N' ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("	    INNER JOIN HC_SITE_VIEW C ");
+            parameter.AppendSql("	          ON A.SITE_ID = C.ID ");
+            parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" WHERE B.VISITDATETIME BETWEEN TO_DATE(:visitStartDate, 'YYYY-MM-DD') AND TO_DATE(:visitEndDate, 'YYYY-MM-DD') ");
+            parameter.AppendSql("	AND A.ISDELETED ='N' ");
             parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE ");
             if (visitUserId.NotEmpty())
             {
-                parameter.AppendSql("	AND	B.VISITUSER= :visitUserId ");
+                parameter.AppendSql(" AND B.VISITUSER= :visitUserId ");
             }
-            parameter.AppendSql("ORDER BY B.VISITDATETIME, C.NAME     ");
+            parameter.AppendSql(" ORDER BY B.VISITDATETIME, C.NAME ");
 
             parameter.Add("visitStartDate", visitStartDate);
             parameter.Add("visitEndDate", visitEndDate);
@@ -215,34 +213,30 @@ namespace HC.OSHA.Repository
         public List<CalendarEventModel> FindCalendarList(CalendarSearchModel model)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.ID AS EVENT_ID, B.ID AS VISIT_ID, C.NAME, A.EVENTSTARTDATETIME, A.VISITUSERNAME, A.VISITMANAGERNAME, A.VISITSTARTTIME, B.ISFEE ");
-            parameter.AppendSql("	FROM HIC_OSHA_SCHEDULE A                 ");
-            parameter.AppendSql("	LEFT OUTER JOIN HIC_OSHA_VISIT B         ");
-            parameter.AppendSql("	ON A.ID = B.SCHEDULE_ID                  ");
-            parameter.AppendSql("	AND B.ISPRECHARGE ='N'                   ");
-            parameter.AppendSql("	INNER JOIN HC_SITE_VIEW C                ");
-            parameter.AppendSql("	ON A.SITE_ID = C.ID                      ");
-            parameter.AppendSql("WHERE                                       ");
-            parameter.AppendSql("   A.EVENTSTARTDATETIME BETWEEN TO_DATE(:startDate, 'YYYY-MM-DD') AND TO_DATE(:endDate, 'YYYY-MM-DD')  ");
-
+            parameter.AppendSql("SELECT A.ID AS EVENT_ID, B.ID AS VISIT_ID, C.NAME, A.EVENTSTARTDATETIME,");
+            parameter.AppendSql("       A.VISITUSERNAME, A.VISITMANAGERNAME, A.VISITSTARTTIME, B.ISFEE ");
+            parameter.AppendSql("  FROM HIC_OSHA_SCHEDULE A ");
+            parameter.AppendSql("	    LEFT  OUTER JOIN HIC_OSHA_VISIT B ");
+            parameter.AppendSql("	          ON A.ID = B.SCHEDULE_ID ");
+            parameter.AppendSql("	          AND B.ISPRECHARGE ='N' ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("	    INNER JOIN HC_SITE_VIEW C ");
+            parameter.AppendSql("	          ON A.SITE_ID = C.ID ");
+            parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" WHERE A.EVENTSTARTDATETIME BETWEEN TO_DATE(:startDate, 'YYYY-MM-DD') AND TO_DATE(:endDate, 'YYYY-MM-DD') ");
+            parameter.AppendSql("   AND A.ISDELETED ='N' ");
             if (model.CalendarSearchType == CalendarSearchType.UNVISIT)
             {
-                parameter.AppendSql("AND B.ID IS NULL                        ");
-                parameter.AppendSql("	AND A.ISDELETED ='N'                 ");
-
+                parameter.AppendSql(" AND B.ID IS NULL ");
             }
             else if (model.CalendarSearchType == CalendarSearchType.VISIT)
             {
-                parameter.AppendSql("AND B.ID IS NOT NULL      ");
-                parameter.AppendSql("AND A.ISDELETED ='N'      ");
-                parameter.AppendSql("AND B.ISDELETED='N'       ");
+                parameter.AppendSql(" AND B.ID IS NOT NULL ");
+                parameter.AppendSql(" AND B.ISDELETED='N' ");
             }
-
             if (model.VisitUser.NotEmpty()) { parameter.AppendSql("	AND	A.VISITUSERID = :visitUserId "); }
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("ORDER BY A.EVENTSTARTDATETIME ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" ORDER BY A.EVENTSTARTDATETIME ");
 
             parameter.Add("startDate", model.StartDate);
             parameter.Add("endDate", model.EndDate);

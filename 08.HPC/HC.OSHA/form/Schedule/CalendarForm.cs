@@ -116,7 +116,6 @@ namespace HC_OSHA
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-
             bound.ReadyCalendar(bound.CurrentCalendarDate);
         }
 

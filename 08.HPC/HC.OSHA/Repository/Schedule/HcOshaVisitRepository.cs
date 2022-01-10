@@ -17,21 +17,21 @@ namespace HC.OSHA.Repository
         public List<HC_OSHA_VISIT> FindLastVisiDate( long siteId, string lastDate, string userId, Role role)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT * FROM HIC_OSHA_VISIT                  ");
-            parameter.AppendSql("WHERE                                         ");
-            parameter.AppendSql("ISDELETED ='N'  AND ISPRECHARGE = 'N'         ");
-            parameter.AppendSql("AND VISITDATETIME >= :lastDate                ");
-            parameter.AppendSql("AND SITE_ID = :SITEID                         ");
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_VISIT ");
+            parameter.AppendSql(" WHERE ISDELETED ='N' ");
+            parameter.AppendSql("   AND ISPRECHARGE = 'N' ");
+            parameter.AppendSql("   AND VISITDATETIME >= :lastDate ");
+            parameter.AppendSql("   AND SITE_ID = :SITEID ");
             if (role == Role.DOCTOR)
             {
-                parameter.AppendSql("AND VISITDOCTOR = :VISITUSER              ");
+                parameter.AppendSql(" AND VISITDOCTOR = :VISITUSER ");
             }
             else
             {
-                parameter.AppendSql("AND VISITUSER = :VISITUSER                ");
+                parameter.AppendSql(" AND VISITUSER = :VISITUSER ");
             }
-            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE                  ");
-            parameter.AppendSql("ORDER BY VISITDATETIME                        ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("ORDER BY VISITDATETIME ");
            
             parameter.Add("lastDate", lastDate);
             parameter.Add("SITEID", siteId);
@@ -44,33 +44,34 @@ namespace HC.OSHA.Repository
         public HC_OSHA_VISIT FindById(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT * FROM HIC_OSHA_VISIT              ");
-            parameter.AppendSql("WHERE ID = :ID  AND ISDELETED = 'N'       ");
-            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_VISIT ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_OSHA_VISIT>(parameter);
-
         }
         public HC_OSHA_VISIT FindByScheduleId(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT * FROM HIC_OSHA_VISIT                      ");
-            parameter.AppendSql("WHERE SCHEDULE_ID = :ID  AND ISDELETED = 'N'      ");
-            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_VISIT ");
+            parameter.AppendSql(" WHERE SCHEDULE_ID = :ID ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<HC_OSHA_VISIT>(parameter);
-
         }
         public List<HC_OSHA_VISIT> FindAllByEstimate(long estimateId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT * FROM HIC_OSHA_VISIT                            ");
-            parameter.AppendSql("WHERE ESTIMATE_ID = :ESTIMATE_ID  AND ISDELETED = 'N'   ");
-            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_VISIT ");
+            parameter.AppendSql(" WHERE ESTIMATE_ID = :ESTIMATE_ID ");
+            parameter.AppendSql("   AND ISDELETED = 'N' ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ESTIMATE_ID", estimateId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
@@ -169,25 +170,25 @@ namespace HC.OSHA.Repository
         public HC_OSHA_VISIT Update(HC_OSHA_VISIT dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_VISIT                                                       ");
-            parameter.AppendSql("SET                                                                         ");
-            parameter.AppendSql("  VISITDATETIME = :VISITDATETIME,                                           ");
-            parameter.AppendSql("  VISITTYPE = :VISITTYPE,                                                   ");
-            parameter.AppendSql("  STARTTIME = :STARTTIME,                                                   ");
-            parameter.AppendSql("  ENDTIME = :ENDTIME,                                                       ");
-            parameter.AppendSql("  TAKEHOUR = :TAKEHOUR,                                                     ");
-            parameter.AppendSql("  TAKEMINUTE = :TAKEMINUTE,                                                 ");
-            parameter.AppendSql("  VISITUSERNAME = :VISITUSERNAME,                                           ");
-            parameter.AppendSql("  VISITUSER = :VISITUSER,                                                   ");
-            parameter.AppendSql("  VISITDOCTORNAME = :VISITDOCTORNAME,                                       ");
-            parameter.AppendSql("  VISITDOCTOR = :VISITDOCTOR,                                               ");
-            parameter.AppendSql("  ISFEE = :ISFEE,                                                           ");
-            parameter.AppendSql("  ISPRECHARGE = :ISPRECHARGE,                                               ");
-            parameter.AppendSql("  ISKUKGO = :ISKUKGO,                                                       ");
-            parameter.AppendSql("  REMARK = :REMARK,                                                         ");
-            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,                                                  ");
-            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER                                              ");
-            parameter.AppendSql("WHERE ID = :ID                                                              ");
+            parameter.AppendSql("UPDATE HIC_OSHA_VISIT ");
+            parameter.AppendSql("SET ");
+            parameter.AppendSql("  VISITDATETIME = :VISITDATETIME, ");
+            parameter.AppendSql("  VISITTYPE = :VISITTYPE, ");
+            parameter.AppendSql("  STARTTIME = :STARTTIME, ");
+            parameter.AppendSql("  ENDTIME = :ENDTIME, ");
+            parameter.AppendSql("  TAKEHOUR = :TAKEHOUR, ");
+            parameter.AppendSql("  TAKEMINUTE = :TAKEMINUTE, ");
+            parameter.AppendSql("  VISITUSERNAME = :VISITUSERNAME, ");
+            parameter.AppendSql("  VISITUSER = :VISITUSER, ");
+            parameter.AppendSql("  VISITDOCTORNAME = :VISITDOCTORNAME, ");
+            parameter.AppendSql("  VISITDOCTOR = :VISITDOCTOR, ");
+            parameter.AppendSql("  ISFEE = :ISFEE, ");
+            parameter.AppendSql("  ISPRECHARGE = :ISPRECHARGE, ");
+            parameter.AppendSql("  ISKUKGO = :ISKUKGO, ");
+            parameter.AppendSql("  REMARK = :REMARK, ");
+            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP, ");
+            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER  ");
+            parameter.AppendSql("WHERE ID = :ID ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", dto.ID);
             parameter.Add("VISITDATETIME", dto.VISITDATETIME);
@@ -217,11 +218,11 @@ namespace HC.OSHA.Repository
         public void Delete(HC_OSHA_VISIT dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_VISIT               ");
-            parameter.AppendSql("SET                                 ");
-            parameter.AppendSql("  ISDELETED = :ISDELETED,           ");
-            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER      ");
-            parameter.AppendSql("WHERE ID = :ID                      ");
+            parameter.AppendSql("UPDATE HIC_OSHA_VISIT ");
+            parameter.AppendSql("SET ");
+            parameter.AppendSql("  ISDELETED = :ISDELETED, ");
+            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER ");
+            parameter.AppendSql("WHERE ID = :ID ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ISDELETED", dto.ISDELETED);
