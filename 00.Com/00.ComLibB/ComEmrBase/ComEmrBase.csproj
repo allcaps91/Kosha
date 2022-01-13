@@ -61,14 +61,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\PSMHEXE\exenet\CefSharp.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="ComBase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5fd482dfae3e94e4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\PSMHEXE\Debug\ComBase.dll</HintPath>
-    </Reference>
-    <Reference Include="ComDbB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e6ce98bd00a5c45b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\PSMHEXE\Debug\ComDbB.dll</HintPath>
-    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DocToolkit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fbe89e604dbf15f7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -2530,6 +2522,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\수혈기록지 참고사항21.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ComBase\ComBase.csproj">
+      <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
+      <Name>ComBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

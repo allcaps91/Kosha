@@ -42,18 +42,6 @@
     <AssemblyOriginatorKeyFile>HC_OSHA_LOCALDB.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ComBase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5fd482dfae3e94e4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\ComBase.dll</HintPath>
-    </Reference>
-    <Reference Include="ComDbB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e6ce98bd00a5c45b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\ComDbB.dll</HintPath>
-    </Reference>
-    <Reference Include="ComHpcLibB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=72d1ae2000e2d89f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\ComHpcLibB.dll</HintPath>
-    </Reference>
     <Reference Include="HC_Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=eb04966b4a247f0d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\PSMHEXE\Debug\HC_Core.dll</HintPath>
@@ -114,6 +102,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="osha %281%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComBase\ComBase.csproj">
+      <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
+      <Name>ComBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\06.ComHpcLibB\ComHpcLibB\ComHpcLibB.csproj">
+      <Project>{9748399a-1223-4361-b341-2bc620eb7b2f}</Project>
+      <Name>ComHpcLibB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

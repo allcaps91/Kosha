@@ -46,10 +46,6 @@
     <AssemblyOriginatorKeyFile>ComBase.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ComDbB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e6ce98bd00a5c45b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\PSMHEXE\Debug\ComDbB.dll</HintPath>
-    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="edtFTPnet, Version=2.2.3.0, Culture=neutral, PublicKeyToken=4b0c991f43097782, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -759,6 +755,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\_53784_2_.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

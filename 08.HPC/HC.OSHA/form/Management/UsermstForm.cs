@@ -538,6 +538,7 @@ namespace HC_OSHA
         private void btnSign_Click(object sender, EventArgs e)
         {
             SignPadForm form = new SignPadForm(true);
+            form.Location = new Point(0, 0);
 
             if (form.ShowDialog() == DialogResult.OK)
             {

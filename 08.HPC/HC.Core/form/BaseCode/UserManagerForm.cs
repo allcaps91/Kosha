@@ -79,8 +79,9 @@ namespace HC_Core
             selectSignUser = SSUserList.GetRowData(e.Row) as HC_USER;
 
             SignPadForm form = new SignPadForm(true);
+            form.Location = new Point(0, 0);
 
-            if(form.ShowDialog() == DialogResult.OK)
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 Save(form.Base64Image);
             }
