@@ -137,7 +137,6 @@ namespace HC_OSHA
             string SQL = "";
             string SqlErr = "";
             DataTable dt = null;
-
             
             HC_SITE_WORKER dto =  SSWorkerList.GetRowData(e.Row) as HC_SITE_WORKER;
             if(dto.ID != null)
@@ -191,10 +190,7 @@ namespace HC_OSHA
                 dt = null;
 
             }
-            else
-            {
-                SSWorkerList.DeleteRow(e.Row);
-            }
+            SSWorkerList.DeleteRow(e.Row);
         }
 
         private void Search()

@@ -2421,6 +2421,7 @@
             hC_OSHA_SITE_MODEL1.PARENTSITE_ID = ((long)(0));
             hC_OSHA_SITE_MODEL1.PARENTSITE_NAME = null;
             hC_OSHA_SITE_MODEL1.RowStatus = ComBase.Mvc.RowStatus.None;
+            hC_OSHA_SITE_MODEL1.SITE_ID = ((long)(0));
             hC_OSHA_SITE_MODEL1.TEL = null;
             hC_OSHA_SITE_MODEL1.VISITDAY = ((long)(0));
             hC_OSHA_SITE_MODEL1.VISITWEEK = ((long)(0));
@@ -2508,6 +2509,7 @@
             this.Controls.Add(this.ContentTitle);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "StatusReportByDoctor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "상태보고서 - 의사";
             this.Load += new System.EventHandler(this.StatusReportByDoctor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

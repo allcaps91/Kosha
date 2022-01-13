@@ -15,7 +15,6 @@ using HC_OSHA.form.Etc;
 using HC_OSHA.form.Report;
 using HC_OSHA.form.Schedule;
 using HC_OSHA.form.Visit;
-using HC_OSHA.Migration;
 using HC_OSHA.StatusReport;
 using HC_OSHA.Visit;
 using System;
@@ -552,7 +551,6 @@ namespace HC_OSHA
 
         private void 마이그레이션ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new MigrationForm().Show();
         }
 
         private void 자동미수형성ToolStripMenuItem_Click(object sender, EventArgs e)

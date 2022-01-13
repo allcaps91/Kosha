@@ -78,43 +78,24 @@ namespace HC_OSHA
             List<HC_USER> doctors = hcUsersService.GetDoctors();
 
             DtpVISITRESERVEDATE.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_SCHEDULE.VISITRESERVEDATE), DisplayFormat = DateTimeType.YYYY_MM_DD, });
-            DtpVISITSTARTTIME.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_SCHEDULE.VISITSTARTTIME), DataBaseFormat = DateTimeType.HH_MM, DisplayFormat = DateTimeType.HH_MM });
-            DtpVISITENDTIME.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_SCHEDULE.VISITENDTIME), DataBaseFormat = DateTimeType.HH_MM, DisplayFormat = DateTimeType.HH_MM });
-
-            DtpDEPARTUREDATETIME.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_SCHEDULE.DEPARTUREDATETIME), DataBaseFormat = DateTimeType.HH_MM, DisplayFormat = DateTimeType.HH_MM });
-            DtpARRIVALTIME.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_SCHEDULE.ARRIVALTIME), DataBaseFormat = DateTimeType.HH_MM, DisplayFormat = DateTimeType.HH_MM });
-            NumWORKERCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_SCHEDULE.WORKERCOUNT), Min = 0 });
-
+            txtVISITTIME.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_SCHEDULE.VISITSTARTTIME) });
             CboVISITUSERID.SetOptions(new ComboBoxOption { DataField = nameof(HC_OSHA_SCHEDULE.VISITUSERID) });
             CboVISITMANAGERID.SetOptions(new ComboBoxOption { DataField = nameof(HC_OSHA_SCHEDULE.VISITMANAGERID) });
-       
             CboVISITUSERID.SetItems(OSHAUsers, "Name", "UserId");
-           
-
-
             CboVISITMANAGERID.SetItems(OSHAUsers, "Name", "UserId", "", "없음", AddComboBoxPosition.Top);
+            TxtREMARK.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_SCHEDULE.REMARK) });
 
             //CboSearchScheduleSite.SetItems(siteList, "Name", "Id", "전체", "", AddComboBoxPosition.Top);
             CboSearchScheduleVisitUserId.SetItems(OSHAUsers, "Name", "UserId", "전체", "", AddComboBoxPosition.Top);
             CboSearchScheduleVisitUserId.SetValue(CommonService.Instance.Session.UserId);
             CboSearchScheduleVisitUserId2.SetItems(OSHAUsers, "Name", "UserId", "전체", "", AddComboBoxPosition.Top);
-
-            TxtREMARK.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_ESTIMATE.REMARK) });
-
-            //TxtINDOCPRINTDATETIME.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_SCHEDULE.INDOCPRINTDATETIME), DisplayFormat = DateTimeType.YYYY_MM_DD_HH_MM, ReadOnly = true });
-            //TxtOUTDOCPRINTDATETIME.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_SCHEDULE.OUTDOCPRINTDATETIME), DisplayFormat = DateTimeType.YYYY_MM_DD_HH_MM, ReadOnly = true });
-            //TxtSENDMAILDATETIME.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_SCHEDULE.SENDMAILDATETIME), DisplayFormat = DateTimeType.YYYY_MM_DD_HH_MM, ReadOnly = true });
             TxtMODIFIED.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_SCHEDULE.MODIFIED),  ReadOnly = true });
             TxtMODIFIEDUSER.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_SCHEDULE.MODIFIEDUSER), ReadOnly = true });
-            
-          
-
 
             //방문내역폼
             DtpVISITDATETIME.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_VISIT.VISITDATETIME), DataBaseFormat = DateTimeType.None, DisplayFormat = DateTimeType.YYYY_MM_DD, });
-            DtpSTARTTIME.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_VISIT.STARTTIME), DataBaseFormat = DateTimeType.HH_MM, DisplayFormat = DateTimeType.HH_MM });
-            DtpENDTIME.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_VISIT.ENDTIME), DataBaseFormat = DateTimeType.HH_MM, DisplayFormat = DateTimeType.HH_MM });
-
+            txtStartTime.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_VISIT.STARTTIME) });
+            txtEndTime.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_VISIT.ENDTIME) });
             TxtTakeHourAndMinute.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_VISIT.TakeHourAndMinute) });
 
             CboVISITUSER.SetOptions(new ComboBoxOption { DataField = nameof(HC_OSHA_VISIT.VISITUSER) });
@@ -205,34 +186,20 @@ namespace HC_OSHA
             AddForm(receiptForm, TabReceipt);
             TabForms.Add(receiptForm);
 
-
             InitalizeForm();
-
 
             //방문예정일 목록
             DateTime currentDate = codeService.CurrentDate;
-           //string startDate = currentDate.ToString("yyyy-MM-dd");
-            //string endDate = currentDate.AddMonths(+1).ToString("yyyy-MM-dd");
-            //  DtpSearchScheduleStart.SetValue(startDate);
-            // DtpSearchScheduleEnd.SetValue(endDate);
             DtpSearchScheduleStart.SetValue(currentDate.GetFirstDate());
             DtpSearchScheduleEnd.SetValue(currentDate.GetLastDate());
-      
-     
 
             SSScheduleList.Initialize(new SpreadOption() { IsRowSelectColor = false });
-            //SSScheduleList.AddColumnDateTime("방문예정일", nameof(HC_OSHA_SCHEDULE.VISITRESERVEDATE), 91, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, mergePolicy = FarPoint.Win.Spread.Model.MergePolicy.Always });
-            //SSScheduleList.AddColumnDateTime("방문예정일", nameof(HC_OSHA_SCHEDULE.VISITRESERVEDATE), 120, IsReadOnly.Y, DateTimeType.YYYY_MM_DD_HH_MM, new SpreadCellTypeOption { IsSort = true, IsShowCalendarButton = false, mergePolicy = FarPoint.Win.Spread.Model.MergePolicy.Always });
             SSScheduleList.AddColumnText("방문예정일", "", 106, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, mergePolicy = FarPoint.Win.Spread.Model.MergePolicy.Always });
-            SSScheduleList.AddColumnText("출발시간", nameof(HC_OSHA_SCHEDULE.DEPARTUREDATETIME), 77, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true });
-            SSScheduleList.AddColumnText("도착시간", nameof(HC_OSHA_SCHEDULE.ARRIVALTIME), 83, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true });
-            SSScheduleList.AddColumnText("방문시간", nameof(HC_OSHA_SCHEDULE.VISITPERIOD), 93, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true });
+            SSScheduleList.AddColumnText("방문시간", nameof(HC_OSHA_SCHEDULE.VISITSTARTTIME), 77, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true });
             SSScheduleList.AddColumnText("회사명", nameof(HC_OSHA_SCHEDULE.SITE_NAME), 161, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, Aligen = FarPoint.Win.Spread.CellHorizontalAlignment.Left });
-            SSScheduleList.AddColumnText("인원", nameof(HC_OSHA_SCHEDULE.WORKERCOUNT), 54, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true });
             SSScheduleList.AddColumnText("방문자", nameof(HC_OSHA_SCHEDULE.VISITUSERNAME), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSScheduleList.AddColumnText("동행자", nameof(HC_OSHA_SCHEDULE.VISITMANAGERNAME), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSScheduleList.AddColumnText("비고사항", nameof(HC_OSHA_SCHEDULE.REMARK), 150, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-           // SSScheduleList.AddColumnText("GBCHANGE", nameof(HC_OSHA_SCHEDULE.GBCHANGE), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false  });
             SearchScheduleList();
         }
 
@@ -351,47 +318,39 @@ namespace HC_OSHA
             {
                 try
                 {
-                    if (panSchedule.Validate<HC_OSHA_SCHEDULE>())
+                    HC_OSHA_SCHEDULE dto = panSchedule.GetData<HC_OSHA_SCHEDULE>();
+                    HC_USER user = CboVISITUSERID.GetSelectedItem() as HC_USER;
+                    dto.VISITUSERID = user.UserId;
+                    dto.VISITUSERNAME = user.Name;
+
+                    user = CboVISITMANAGERID.GetSelectedItem() as HC_USER;
+                    if (user != null)
                     {
-                        HC_OSHA_SCHEDULE dto = panSchedule.GetData<HC_OSHA_SCHEDULE>();
-                        HC_USER user = CboVISITUSERID.GetSelectedItem() as HC_USER;
-                        dto.VISITUSERID = user.UserId;
-                        dto.VISITUSERNAME = user.Name;
+                        dto.VISITMANAGERID = user.UserId;
+                        dto.VISITMANAGERNAME = user.Name;
 
-                        user = CboVISITMANAGERID.GetSelectedItem() as HC_USER;
-                        if (user != null)
+                    }
+                    HC_OSHA_VISIT visit = hcOshaVisitService.FindByScheduleId(dto.ID);
+                    if (visit != null)
+                    {
+                        OSHA_VISIT_PRICE visitPriceDto = oshaVisitPriceService.oshaVisitPriceRepository.FindMaxId(visit.ID);
+                        if (visitPriceDto != null)
                         {
-                            dto.VISITMANAGERID = user.UserId;
-                            dto.VISITMANAGERNAME = user.Name;
-
-                        }
-                        HC_OSHA_VISIT visit = hcOshaVisitService.FindByScheduleId(dto.ID);
-                        if (visit != null)
-                        {
-
-                            OSHA_VISIT_PRICE visitPriceDto = oshaVisitPriceService.oshaVisitPriceRepository.FindMaxId(visit.ID);
-                            if (visitPriceDto != null)
+                            if(visitPriceDto.ISPRECHARGE == "N")
                             {
-                                if(visitPriceDto.ISPRECHARGE == "N")
-                                {
-                                    MessageUtil.Info("수수료가 발생된 일정입니다 수정할 수 없습니다");
-                                    return;
-                                }
+                                MessageUtil.Info("수수료가 발생된 일정입니다 수정할 수 없습니다");
+                                return;
                             }
                         }
-
-                        HC_OSHA_SCHEDULE saved = hcOshaScheduleService.Save(dto);
-
-                        panSchedule.SetData(saved);
-                        BtnSearchUnVisit.PerformClick();
-                        //  BtnSearchSchedule.PerformClick();
-                        SearchScheduleList();
-                        MessageUtil.Info(saved.SITE_NAME + " 일정이 저장되었습니다");
                     }
-                    else
-                    {
-                        MessageUtil.Info("자료에 오류가 있어 저장 불가");
-                    }
+
+                    HC_OSHA_SCHEDULE saved = hcOshaScheduleService.Save(dto);
+
+                    panSchedule.SetData(saved);
+                    BtnSearchUnVisit.PerformClick();
+                    //  BtnSearchSchedule.PerformClick();
+                    SearchScheduleList();
+                    MessageUtil.Info(saved.SITE_NAME + " 일정이 저장되었습니다");
                 }
                 catch(Exception ex)
                 {
@@ -480,6 +439,9 @@ namespace HC_OSHA
         /// <param name="e"></param>
         private void BtnSaveVisit_Click(object sender, EventArgs e)
         {
+            DateTime DtpStartTime;
+            DateTime DtpEndTime;
+
             HC_OSHA_SCHEDULE schedule = panSchedule.GetData<HC_OSHA_SCHEDULE>();
             if(schedule.ID == 0)
             {
@@ -488,12 +450,17 @@ namespace HC_OSHA
             else
             {
                 HC_OSHA_VISIT dto = panVisit.GetData<HC_OSHA_VISIT>();
-                TimeSpan takeTime = DtpENDTIME.Value - DtpSTARTTIME.Value;
+                if (VB.Len(dto.STARTTIME) ==5 && VB.Len(dto.ENDTIME) == 5)
+                {
+                    DtpStartTime = Convert.ToDateTime(DtpVISITDATETIME.Value.ToString("yyyy-MM-dd") + " " + dto.STARTTIME);
+                    DtpEndTime = Convert.ToDateTime(DtpVISITDATETIME.Value.ToString("yyyy-MM-dd") + " " + dto.ENDTIME);
+                    TimeSpan takeTime = DtpEndTime - DtpStartTime;
+                    dto.TAKEHOUR = takeTime.Hours;
+                    dto.TAKEMINUTE = takeTime.Minutes;
+                }
                 dto.ESTIMATE_ID = SelectedEstimate.ID;
                 dto.SITE_ID = SelectedSite.ID;
                 dto.SCHEDULE_ID = schedule.ID;
-                dto.TAKEHOUR = takeTime.Hours;
-                dto.TAKEMINUTE = takeTime.Minutes;
 
                 if (panVisit.Validate<HC_OSHA_VISIT>())
                 {
@@ -1084,15 +1051,24 @@ namespace HC_OSHA
 
         private void ChaneTime()
         {
-            TimeSpan time = DtpENDTIME.Value - DtpSTARTTIME.Value;
-            TxtTakeHourAndMinute.SetValue(Math.Round(time.TotalHours));
+            DateTime DtpStartTime;
+            DateTime DtpEndTime;
 
-            TxtTakeHourAndMinuteText.Text = Math.Round(time.TotalHours) + "시간 ";
-            if (time.Minutes > 0)
+            if (VB.Len(txtStartTime.Text.Trim()) != 5) return;
+            if (VB.Len(txtEndTime.Text.Trim()) != 5) return;
+
+            DtpStartTime = Convert.ToDateTime(DtpVISITDATETIME.Value.ToString("yyyy-MM-dd") + " " + txtStartTime.Text);
+            DtpEndTime = Convert.ToDateTime(DtpVISITDATETIME.Value.ToString("yyyy-MM-dd") + " " + txtEndTime.Text);
+            TimeSpan takeTime = DtpEndTime - DtpStartTime;
+            TxtTakeHourAndMinute.SetValue(Math.Round(takeTime.TotalHours));
+
+            TxtTakeHourAndMinuteText.Text = Math.Round(takeTime.TotalHours) + "시간 ";
+            if (takeTime.Minutes > 0)
             {
-                TxtTakeHourAndMinuteText.Text += time.Minutes + "분";
+                TxtTakeHourAndMinuteText.Text += takeTime.Minutes + "분";
             }
         }
+
         private void NumVisitWORKERCOUNT_ValueChanged(object sender, EventArgs e)
         {
             SetTotalPrice();
@@ -1143,9 +1119,6 @@ namespace HC_OSHA
             // NumVisitTOTALPRICE.SetValue(NumVisitUNITTOALPRICE.GetValue());
         }
 
-
-     
-
         private void BtnGetVisit_Click(object sender, EventArgs e)
         {
             if (base.SelectedSite == null)
@@ -1159,9 +1132,8 @@ namespace HC_OSHA
             else
             {
                 HC_OSHA_SCHEDULE dto = panSchedule.GetData<HC_OSHA_SCHEDULE>();
-                
-                DtpSTARTTIME.SetValue(dto.VISITSTARTTIME);
-                DtpENDTIME.SetValue(dto.VISITENDTIME);
+
+                txtStartTime.Text=dto.VISITSTARTTIME;
                 DtpVISITDATETIME.Value = DtpVISITRESERVEDATE.Value;
 
                 ChaneTime();
@@ -1334,14 +1306,6 @@ namespace HC_OSHA
             //DtpARRIVALTIME.Value = DtpDEPARTUREDATETIME.Value.AddHours(2);
         }
 
-        private void DtpVISITSTARTTIME_ValueChanged(object sender, EventArgs e)
-        {
-
-            //DtpARRIVALTIME.SetValue(start);
-
-            DtpVISITENDTIME.Value = DtpVISITSTARTTIME.Value.AddHours(2);
-        }
-
         private void CboSearchScheduleVisitUserId_SelectedIndexChanged(object sender, EventArgs e)
         {
             SearchScheduleList();
@@ -1381,6 +1345,14 @@ namespace HC_OSHA
             BtnSearchPreVisit.PerformClick();
         }
 
-     
+        private void txtStartTime_TextChanged(object sender, EventArgs e)
+        {
+            ChaneTime();
+        }
+
+        private void txtEndTime_TextChanged(object sender, EventArgs e)
+        {
+            ChaneTime();
+        }
     }
 }

@@ -266,12 +266,6 @@
     <Compile Include="form\Management\UsermstForm.designer.cs">
       <DependentUpon>UsermstForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\Migration\MigrationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\Migration\MigrationForm.Designer.cs">
-      <DependentUpon>MigrationForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="form\Etc\SiteMSDSManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,7 +293,6 @@
     <Compile Include="form\Management\SiteEquipMentForm.Designer.cs">
       <DependentUpon>SiteEquipMentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\Migration\SiteMaxModel.cs" />
     <Compile Include="form\Report\EducationReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,7 +438,6 @@
     <Compile Include="Model\Visit\DailyReportSiteModel.cs" />
     <Compile Include="Model\Visit\DailyReportVisitModel.cs" />
     <Compile Include="Model\Visit\VisitPriceModel.cs" />
-    <Compile Include="form\Migration\MigrationRepository.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -877,9 +869,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Management\UsermstForm.resx">
       <DependentUpon>UsermstForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="form\Migration\MigrationForm.resx">
-      <DependentUpon>MigrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Etc\SiteMSDSManagerForm.resx">
       <DependentUpon>SiteMSDSManagerForm.cs</DependentUpon>

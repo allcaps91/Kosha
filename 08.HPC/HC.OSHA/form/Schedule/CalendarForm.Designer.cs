@@ -32,6 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.formTItle1 = new ComBase.Mvc.UserControls.FormTItle();
             this.panSearch = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CboManager = new System.Windows.Forms.ComboBox();
             this.BtnSearch = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panSearch.SuspendLayout();
             this.SuspendLayout();
@@ -103,6 +103,17 @@
             this.panSearch.Name = "panSearch";
             this.panSearch.Size = new System.Drawing.Size(1264, 49);
             this.panSearch.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(785, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(67, 33);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "인쇄";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
@@ -224,17 +235,6 @@
             this.BtnSearch.UseVisualStyleBackColor = true;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(785, 4);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 33);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "인쇄";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // CalendarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -245,6 +245,7 @@
             this.Controls.Add(this.formTItle1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CalendarForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "방문일정";
             this.Load += new System.EventHandler(this.CalendarForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

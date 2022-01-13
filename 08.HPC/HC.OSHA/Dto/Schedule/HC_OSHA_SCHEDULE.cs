@@ -41,24 +41,6 @@ namespace HC.OSHA.Dto
         public string VISITSTARTTIME { get; set; }
 
         /// <summary>
-        /// 방문종료시간
-        /// </summary>
-        [MTSNotEmpty]
-        public string VISITENDTIME { get; set; }
-
-        public string VISITPERIOD{ get; set; }
-
-        /// <summary>
-        /// 출발시간
-        /// </summary>
-        public string DEPARTUREDATETIME { get; set; } 
-
-        /// <summary>
-        /// 도착시간
-        /// </summary>
-		public string ARRIVALTIME { get; set; }
-
-        /// <summary>
         /// 방문자 이름
         /// </summary>
         public string VISITUSERNAME { get; set; }

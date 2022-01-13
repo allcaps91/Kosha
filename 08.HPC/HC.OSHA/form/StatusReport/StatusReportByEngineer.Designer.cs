@@ -8216,6 +8216,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.ContentTitle);
             this.Name = "StatusReportByEngineer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "상태보고서 산업위생기사";
             this.Load += new System.EventHandler(this.StatusReportByEngineer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

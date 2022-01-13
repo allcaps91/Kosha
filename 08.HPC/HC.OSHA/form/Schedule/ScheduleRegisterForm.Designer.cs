@@ -118,6 +118,8 @@
             this.label23 = new System.Windows.Forms.Label();
             this.NumVisitWORKERCOUNT = new System.Windows.Forms.NumericUpDown();
             this.panVisit = new System.Windows.Forms.Panel();
+            this.txtEndTime = new System.Windows.Forms.TextBox();
+            this.txtStartTime = new System.Windows.Forms.TextBox();
             this.BtnGetVisit = new System.Windows.Forms.Button();
             this.BtnSaveVisit = new System.Windows.Forms.Button();
             this.BtnVisitDelete = new System.Windows.Forms.Button();
@@ -134,9 +136,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.CboVISITUSER = new System.Windows.Forms.ComboBox();
-            this.DtpENDTIME = new System.Windows.Forms.DateTimePicker();
             this.TxtTakeHourAndMinute = new System.Windows.Forms.TextBox();
-            this.DtpSTARTTIME = new System.Windows.Forms.DateTimePicker();
             this.DtpVISITDATETIME = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
             this.TabEduPage = new System.Windows.Forms.TabPage();
@@ -148,29 +148,21 @@
             this.BtnSaveSchedule = new System.Windows.Forms.Button();
             this.BtnDeleteSchedule = new System.Windows.Forms.Button();
             this.panSchedule = new System.Windows.Forms.Panel();
+            this.txtVISITTIME = new System.Windows.Forms.TextBox();
             this.ChkDoctor = new System.Windows.Forms.CheckBox();
             this.LblSiteName = new System.Windows.Forms.Label();
             this.TxtMODIFIEDUSER = new System.Windows.Forms.TextBox();
             this.TxtMODIFIED = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.DtpVISITENDTIME = new System.Windows.Forms.DateTimePicker();
-            this.DtpVISITSTARTTIME = new System.Windows.Forms.DateTimePicker();
-            this.DtpARRIVALTIME = new System.Windows.Forms.DateTimePicker();
-            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.TxtREMARK = new System.Windows.Forms.TextBox();
             this.CboVISITUSERID = new System.Windows.Forms.ComboBox();
             this.CboVISITMANAGERID = new System.Windows.Forms.ComboBox();
-            this.NumWORKERCOUNT = new System.Windows.Forms.NumericUpDown();
-            this.DtpDEPARTUREDATETIME = new System.Windows.Forms.DateTimePicker();
             this.DtpVISITRESERVEDATE = new System.Windows.Forms.DateTimePicker();
             this.contentTitle1 = new ComBase.Mvc.UserControls.ContentTitle();
             this.BtnClose = new System.Windows.Forms.Button();
@@ -211,7 +203,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumVisitWORKERCOUNT)).BeginInit();
             this.panVisit.SuspendLayout();
             this.panSchedule.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumWORKERCOUNT)).BeginInit();
             this.SuspendLayout();
             // 
             // formTItle1
@@ -310,11 +301,21 @@
             hC_OSHA_SITE_MODEL1.ISACTIVE = null;
             hC_OSHA_SITE_MODEL1.LABOR = null;
             hC_OSHA_SITE_MODEL1.LASTMODIFIED = null;
+            hC_OSHA_SITE_MODEL1.MANAGEDOCTORCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL1.MANAGEDOCTORSTARTDATE = null;
+            hC_OSHA_SITE_MODEL1.MANAGEENGINEERCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL1.MANAGEENGINEERSTARTDATE = null;
+            hC_OSHA_SITE_MODEL1.MANAGENURSECOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL1.MANAGENURSESTARTDATE = null;
             hC_OSHA_SITE_MODEL1.NAME = null;
             hC_OSHA_SITE_MODEL1.PARENTSITE_ID = ((long)(0));
             hC_OSHA_SITE_MODEL1.PARENTSITE_NAME = null;
             hC_OSHA_SITE_MODEL1.RowStatus = ComBase.Mvc.RowStatus.None;
+            hC_OSHA_SITE_MODEL1.SITE_ID = ((long)(0));
             hC_OSHA_SITE_MODEL1.TEL = null;
+            hC_OSHA_SITE_MODEL1.VISITDAY = ((long)(0));
+            hC_OSHA_SITE_MODEL1.VISITWEEK = ((long)(0));
+            hC_OSHA_SITE_MODEL1.WORKERTOTALCOUNT = ((long)(0));
             hC_OSHA_SITE_MODEL1.zTemp1 = null;
             hC_OSHA_SITE_MODEL1.zTemp10 = null;
             hC_OSHA_SITE_MODEL1.zTemp11 = null;
@@ -347,7 +348,7 @@
             // oshaSiteEstimateList1
             // 
             this.oshaSiteEstimateList1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.oshaSiteEstimateList1.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.oshaSiteEstimateList1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             hC_ESTIMATE_MODEL1.ComboDisplay = null;
             hC_ESTIMATE_MODEL1.CONTRACTDATE = null;
             hC_ESTIMATE_MODEL1.CONTRACTENDDATE = null;
@@ -398,7 +399,7 @@
             // 
             // oshaSiteEstimateList2
             // 
-            this.oshaSiteEstimateList2.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.oshaSiteEstimateList2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             hC_ESTIMATE_MODEL2.ComboDisplay = null;
             hC_ESTIMATE_MODEL2.CONTRACTDATE = null;
             hC_ESTIMATE_MODEL2.CONTRACTENDDATE = null;
@@ -948,10 +949,10 @@
             this.tabControl1.Controls.Add(this.TabInOut);
             this.tabControl1.Controls.Add(this.TabReceipt);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 248);
+            this.tabControl1.Location = new System.Drawing.Point(0, 218);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1086, 582);
+            this.tabControl1.Size = new System.Drawing.Size(1086, 612);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage2
@@ -960,7 +961,7 @@
             this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(1078, 552);
+            this.tabPage2.Size = new System.Drawing.Size(1078, 582);
             this.tabPage2.TabIndex = 7;
             this.tabPage2.Text = "방문일정 목록";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -974,7 +975,7 @@
             this.SSScheduleList.Name = "SSScheduleList";
             this.SSScheduleList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSScheduleList_Sheet1});
-            this.SSScheduleList.Size = new System.Drawing.Size(1078, 498);
+            this.SSScheduleList.Size = new System.Drawing.Size(1078, 528);
             this.SSScheduleList.TabIndex = 4;
             this.SSScheduleList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSScheduleList_CellDoubleClick);
             // 
@@ -1110,7 +1111,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1078, 552);
+            this.tabPage1.Size = new System.Drawing.Size(1078, 582);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "방문등록";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1136,7 +1137,7 @@
             this.PanPrice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanPrice.Location = new System.Drawing.Point(3, 173);
             this.PanPrice.Name = "PanPrice";
-            this.PanPrice.Size = new System.Drawing.Size(1072, 376);
+            this.PanPrice.Size = new System.Drawing.Size(1072, 406);
             this.PanPrice.TabIndex = 116;
             // 
             // ChkIsPreCharge
@@ -1146,7 +1147,7 @@
             this.ChkIsPreCharge.Location = new System.Drawing.Point(14, 241);
             this.ChkIsPreCharge.Name = "ChkIsPreCharge";
             this.ChkIsPreCharge.Size = new System.Drawing.Size(92, 21);
-            this.ChkIsPreCharge.TabIndex = 127;
+            this.ChkIsPreCharge.TabIndex = 97;
             this.ChkIsPreCharge.Text = "선청구여부";
             this.ChkIsPreCharge.UseVisualStyleBackColor = true;
             // 
@@ -1168,7 +1169,7 @@
             this.NumChargePrice.Name = "NumChargePrice";
             this.NumChargePrice.ReadOnly = true;
             this.NumChargePrice.Size = new System.Drawing.Size(121, 25);
-            this.NumChargePrice.TabIndex = 125;
+            this.NumChargePrice.TabIndex = 96;
             // 
             // label33
             // 
@@ -1264,7 +1265,7 @@
             -2147483648});
             this.NumVisitTOTALPRICE.Name = "NumVisitTOTALPRICE";
             this.NumVisitTOTALPRICE.Size = new System.Drawing.Size(121, 25);
-            this.NumVisitTOTALPRICE.TabIndex = 120;
+            this.NumVisitTOTALPRICE.TabIndex = 95;
             // 
             // label2
             // 
@@ -1324,7 +1325,7 @@
             -2147483648});
             this.NumVisitUNITTOALPRICE.Name = "NumVisitUNITTOALPRICE";
             this.NumVisitUNITTOALPRICE.Size = new System.Drawing.Size(121, 25);
-            this.NumVisitUNITTOALPRICE.TabIndex = 61;
+            this.NumVisitUNITTOALPRICE.TabIndex = 94;
             // 
             // label25
             // 
@@ -1378,7 +1379,7 @@
             -2147483648});
             this.NumVisitUNITPRICE.Name = "NumVisitUNITPRICE";
             this.NumVisitUNITPRICE.Size = new System.Drawing.Size(121, 25);
-            this.NumVisitUNITPRICE.TabIndex = 61;
+            this.NumVisitUNITPRICE.TabIndex = 93;
             this.NumVisitUNITPRICE.ValueChanged += new System.EventHandler(this.NumVisitUNITPRICE_ValueChanged);
             this.NumVisitUNITPRICE.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumVisitUNITPRICE_KeyUp);
             // 
@@ -1412,12 +1413,14 @@
             -2147483648});
             this.NumVisitWORKERCOUNT.Name = "NumVisitWORKERCOUNT";
             this.NumVisitWORKERCOUNT.Size = new System.Drawing.Size(121, 25);
-            this.NumVisitWORKERCOUNT.TabIndex = 61;
+            this.NumVisitWORKERCOUNT.TabIndex = 92;
             this.NumVisitWORKERCOUNT.ValueChanged += new System.EventHandler(this.NumVisitWORKERCOUNT_ValueChanged);
             this.NumVisitWORKERCOUNT.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumVisitWORKERCOUNT_KeyUp);
             // 
             // panVisit
             // 
+            this.panVisit.Controls.Add(this.txtEndTime);
+            this.panVisit.Controls.Add(this.txtStartTime);
             this.panVisit.Controls.Add(this.BtnGetVisit);
             this.panVisit.Controls.Add(this.BtnSaveVisit);
             this.panVisit.Controls.Add(this.BtnVisitDelete);
@@ -1434,9 +1437,7 @@
             this.panVisit.Controls.Add(this.label19);
             this.panVisit.Controls.Add(this.label16);
             this.panVisit.Controls.Add(this.CboVISITUSER);
-            this.panVisit.Controls.Add(this.DtpENDTIME);
             this.panVisit.Controls.Add(this.TxtTakeHourAndMinute);
-            this.panVisit.Controls.Add(this.DtpSTARTTIME);
             this.panVisit.Controls.Add(this.DtpVISITDATETIME);
             this.panVisit.Controls.Add(this.label17);
             this.panVisit.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1445,13 +1446,29 @@
             this.panVisit.Size = new System.Drawing.Size(1072, 170);
             this.panVisit.TabIndex = 113;
             // 
+            // txtEndTime
+            // 
+            this.txtEndTime.Location = new System.Drawing.Point(405, 72);
+            this.txtEndTime.Name = "txtEndTime";
+            this.txtEndTime.Size = new System.Drawing.Size(74, 25);
+            this.txtEndTime.TabIndex = 87;
+            this.txtEndTime.TextChanged += new System.EventHandler(this.txtEndTime_TextChanged);
+            // 
+            // txtStartTime
+            // 
+            this.txtStartTime.Location = new System.Drawing.Point(145, 73);
+            this.txtStartTime.Name = "txtStartTime";
+            this.txtStartTime.Size = new System.Drawing.Size(74, 25);
+            this.txtStartTime.TabIndex = 86;
+            this.txtStartTime.TextChanged += new System.EventHandler(this.txtStartTime_TextChanged);
+            // 
             // BtnGetVisit
             // 
             this.BtnGetVisit.Location = new System.Drawing.Point(524, 3);
             this.BtnGetVisit.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnGetVisit.Name = "BtnGetVisit";
             this.BtnGetVisit.Size = new System.Drawing.Size(75, 28);
-            this.BtnGetVisit.TabIndex = 119;
+            this.BtnGetVisit.TabIndex = 98;
             this.BtnGetVisit.Text = "가져오기";
             this.BtnGetVisit.UseVisualStyleBackColor = true;
             this.BtnGetVisit.Click += new System.EventHandler(this.BtnGetVisit_Click);
@@ -1462,7 +1479,7 @@
             this.BtnSaveVisit.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSaveVisit.Name = "BtnSaveVisit";
             this.BtnSaveVisit.Size = new System.Drawing.Size(75, 28);
-            this.BtnSaveVisit.TabIndex = 87;
+            this.BtnSaveVisit.TabIndex = 100;
             this.BtnSaveVisit.Text = "저장(&S)";
             this.BtnSaveVisit.UseVisualStyleBackColor = true;
             this.BtnSaveVisit.Click += new System.EventHandler(this.BtnSaveVisit_Click);
@@ -1473,7 +1490,7 @@
             this.BtnVisitDelete.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnVisitDelete.Name = "BtnVisitDelete";
             this.BtnVisitDelete.Size = new System.Drawing.Size(75, 28);
-            this.BtnVisitDelete.TabIndex = 88;
+            this.BtnVisitDelete.TabIndex = 99;
             this.BtnVisitDelete.Text = "삭제";
             this.BtnVisitDelete.UseVisualStyleBackColor = true;
             this.BtnVisitDelete.Click += new System.EventHandler(this.BtnVisitDelete_Click);
@@ -1516,7 +1533,7 @@
             this.TxtVisitREMARK.Location = new System.Drawing.Point(145, 135);
             this.TxtVisitREMARK.Name = "TxtVisitREMARK";
             this.TxtVisitREMARK.Size = new System.Drawing.Size(637, 25);
-            this.TxtVisitREMARK.TabIndex = 112;
+            this.TxtVisitREMARK.TabIndex = 91;
             // 
             // CboVISITTYPE
             // 
@@ -1524,7 +1541,7 @@
             this.CboVISITTYPE.Location = new System.Drawing.Point(663, 102);
             this.CboVISITTYPE.Name = "CboVISITTYPE";
             this.CboVISITTYPE.Size = new System.Drawing.Size(121, 25);
-            this.CboVISITTYPE.TabIndex = 108;
+            this.CboVISITTYPE.TabIndex = 90;
             // 
             // label30
             // 
@@ -1560,7 +1577,7 @@
             this.CboVISITDOCTOR.Location = new System.Drawing.Point(406, 103);
             this.CboVISITDOCTOR.Name = "CboVISITDOCTOR";
             this.CboVISITDOCTOR.Size = new System.Drawing.Size(121, 25);
-            this.CboVISITDOCTOR.TabIndex = 106;
+            this.CboVISITDOCTOR.TabIndex = 89;
             // 
             // label26
             // 
@@ -1624,19 +1641,7 @@
             this.CboVISITUSER.Location = new System.Drawing.Point(145, 104);
             this.CboVISITUSER.Name = "CboVISITUSER";
             this.CboVISITUSER.Size = new System.Drawing.Size(121, 25);
-            this.CboVISITUSER.TabIndex = 65;
-            // 
-            // DtpENDTIME
-            // 
-            this.DtpENDTIME.CustomFormat = "HH:mm";
-            this.DtpENDTIME.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpENDTIME.Location = new System.Drawing.Point(406, 73);
-            this.DtpENDTIME.Name = "DtpENDTIME";
-            this.DtpENDTIME.ShowCheckBox = true;
-            this.DtpENDTIME.ShowUpDown = true;
-            this.DtpENDTIME.Size = new System.Drawing.Size(121, 25);
-            this.DtpENDTIME.TabIndex = 103;
-            this.DtpENDTIME.ValueChanged += new System.EventHandler(this.DtpENDTIME_ValueChanged);
+            this.CboVISITUSER.TabIndex = 88;
             // 
             // TxtTakeHourAndMinute
             // 
@@ -1645,18 +1650,6 @@
             this.TxtTakeHourAndMinute.ReadOnly = true;
             this.TxtTakeHourAndMinute.Size = new System.Drawing.Size(121, 25);
             this.TxtTakeHourAndMinute.TabIndex = 96;
-            // 
-            // DtpSTARTTIME
-            // 
-            this.DtpSTARTTIME.CustomFormat = "HH:mm";
-            this.DtpSTARTTIME.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpSTARTTIME.Location = new System.Drawing.Point(145, 73);
-            this.DtpSTARTTIME.Name = "DtpSTARTTIME";
-            this.DtpSTARTTIME.ShowCheckBox = true;
-            this.DtpSTARTTIME.ShowUpDown = true;
-            this.DtpSTARTTIME.Size = new System.Drawing.Size(121, 25);
-            this.DtpSTARTTIME.TabIndex = 102;
-            this.DtpSTARTTIME.ValueChanged += new System.EventHandler(this.DtpSTARTTIME_ValueChanged);
             // 
             // DtpVISITDATETIME
             // 
@@ -1686,7 +1679,7 @@
             this.TabEduPage.Location = new System.Drawing.Point(4, 26);
             this.TabEduPage.Name = "TabEduPage";
             this.TabEduPage.Padding = new System.Windows.Forms.Padding(3);
-            this.TabEduPage.Size = new System.Drawing.Size(1078, 552);
+            this.TabEduPage.Size = new System.Drawing.Size(1078, 582);
             this.TabEduPage.TabIndex = 1;
             this.TabEduPage.Text = "보건교육지원";
             this.TabEduPage.UseVisualStyleBackColor = true;
@@ -1696,7 +1689,7 @@
             this.TabCommitteePage.Location = new System.Drawing.Point(4, 26);
             this.TabCommitteePage.Name = "TabCommitteePage";
             this.TabCommitteePage.Padding = new System.Windows.Forms.Padding(3);
-            this.TabCommitteePage.Size = new System.Drawing.Size(1078, 552);
+            this.TabCommitteePage.Size = new System.Drawing.Size(1078, 582);
             this.TabCommitteePage.TabIndex = 2;
             this.TabCommitteePage.Text = "산업안전보건위원회대장";
             this.TabCommitteePage.UseVisualStyleBackColor = true;
@@ -1706,7 +1699,7 @@
             this.TabInformation.Location = new System.Drawing.Point(4, 26);
             this.TabInformation.Name = "TabInformation";
             this.TabInformation.Padding = new System.Windows.Forms.Padding(3);
-            this.TabInformation.Size = new System.Drawing.Size(1078, 552);
+            this.TabInformation.Size = new System.Drawing.Size(1078, 582);
             this.TabInformation.TabIndex = 3;
             this.TabInformation.Text = "정보자료제공";
             this.TabInformation.UseVisualStyleBackColor = true;
@@ -1716,7 +1709,7 @@
             this.TabAccident.Location = new System.Drawing.Point(4, 26);
             this.TabAccident.Name = "TabAccident";
             this.TabAccident.Padding = new System.Windows.Forms.Padding(3);
-            this.TabAccident.Size = new System.Drawing.Size(1078, 552);
+            this.TabAccident.Size = new System.Drawing.Size(1078, 582);
             this.TabAccident.TabIndex = 4;
             this.TabAccident.Text = "산업재해";
             this.TabAccident.UseVisualStyleBackColor = true;
@@ -1726,7 +1719,7 @@
             this.TabInOut.Location = new System.Drawing.Point(4, 26);
             this.TabInOut.Name = "TabInOut";
             this.TabInOut.Padding = new System.Windows.Forms.Padding(3);
-            this.TabInOut.Size = new System.Drawing.Size(1078, 552);
+            this.TabInOut.Size = new System.Drawing.Size(1078, 582);
             this.TabInOut.TabIndex = 5;
             this.TabInOut.Text = "입퇴사자";
             this.TabInOut.UseVisualStyleBackColor = true;
@@ -1736,7 +1729,7 @@
             this.TabReceipt.Location = new System.Drawing.Point(4, 26);
             this.TabReceipt.Name = "TabReceipt";
             this.TabReceipt.Padding = new System.Windows.Forms.Padding(3);
-            this.TabReceipt.Size = new System.Drawing.Size(1078, 552);
+            this.TabReceipt.Size = new System.Drawing.Size(1078, 582);
             this.TabReceipt.TabIndex = 6;
             this.TabReceipt.Text = "수령증발급";
             this.TabReceipt.UseVisualStyleBackColor = true;
@@ -1767,43 +1760,42 @@
             // 
             this.panSchedule.BackColor = System.Drawing.Color.White;
             this.panSchedule.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panSchedule.Controls.Add(this.txtVISITTIME);
             this.panSchedule.Controls.Add(this.ChkDoctor);
             this.panSchedule.Controls.Add(this.LblSiteName);
             this.panSchedule.Controls.Add(this.TxtMODIFIEDUSER);
             this.panSchedule.Controls.Add(this.TxtMODIFIED);
             this.panSchedule.Controls.Add(this.label14);
             this.panSchedule.Controls.Add(this.label7);
-            this.panSchedule.Controls.Add(this.label6);
-            this.panSchedule.Controls.Add(this.DtpVISITENDTIME);
-            this.panSchedule.Controls.Add(this.DtpVISITSTARTTIME);
-            this.panSchedule.Controls.Add(this.DtpARRIVALTIME);
-            this.panSchedule.Controls.Add(this.label13);
             this.panSchedule.Controls.Add(this.label12);
             this.panSchedule.Controls.Add(this.label11);
             this.panSchedule.Controls.Add(this.label4);
-            this.panSchedule.Controls.Add(this.label1);
-            this.panSchedule.Controls.Add(this.label10);
             this.panSchedule.Controls.Add(this.label9);
             this.panSchedule.Controls.Add(this.label8);
             this.panSchedule.Controls.Add(this.TxtREMARK);
             this.panSchedule.Controls.Add(this.CboVISITUSERID);
             this.panSchedule.Controls.Add(this.CboVISITMANAGERID);
-            this.panSchedule.Controls.Add(this.NumWORKERCOUNT);
-            this.panSchedule.Controls.Add(this.DtpDEPARTUREDATETIME);
             this.panSchedule.Controls.Add(this.DtpVISITRESERVEDATE);
             this.panSchedule.Dock = System.Windows.Forms.DockStyle.Top;
             this.panSchedule.Location = new System.Drawing.Point(0, 38);
             this.panSchedule.Name = "panSchedule";
-            this.panSchedule.Size = new System.Drawing.Size(1086, 210);
+            this.panSchedule.Size = new System.Drawing.Size(1086, 180);
             this.panSchedule.TabIndex = 6;
+            // 
+            // txtVISITTIME
+            // 
+            this.txtVISITTIME.Location = new System.Drawing.Point(390, 48);
+            this.txtVISITTIME.Name = "txtVISITTIME";
+            this.txtVISITTIME.Size = new System.Drawing.Size(74, 25);
+            this.txtVISITTIME.TabIndex = 3;
             // 
             // ChkDoctor
             // 
             this.ChkDoctor.AutoSize = true;
-            this.ChkDoctor.Location = new System.Drawing.Point(518, 114);
+            this.ChkDoctor.Location = new System.Drawing.Point(518, 83);
             this.ChkDoctor.Name = "ChkDoctor";
             this.ChkDoctor.Size = new System.Drawing.Size(123, 21);
-            this.ChkDoctor.TabIndex = 106;
+            this.ChkDoctor.TabIndex = 6;
             this.ChkDoctor.Text = "동행자 의사설정";
             this.ChkDoctor.UseVisualStyleBackColor = true;
             this.ChkDoctor.CheckedChanged += new System.EventHandler(this.ChkDoctor_CheckedChanged);
@@ -1820,7 +1812,7 @@
             // 
             // TxtMODIFIEDUSER
             // 
-            this.TxtMODIFIEDUSER.Location = new System.Drawing.Point(517, 172);
+            this.TxtMODIFIEDUSER.Location = new System.Drawing.Point(517, 141);
             this.TxtMODIFIEDUSER.Name = "TxtMODIFIEDUSER";
             this.TxtMODIFIEDUSER.ReadOnly = true;
             this.TxtMODIFIEDUSER.Size = new System.Drawing.Size(121, 25);
@@ -1829,7 +1821,7 @@
             // 
             // TxtMODIFIED
             // 
-            this.TxtMODIFIED.Location = new System.Drawing.Point(136, 172);
+            this.TxtMODIFIED.Location = new System.Drawing.Point(136, 141);
             this.TxtMODIFIED.Name = "TxtMODIFIED";
             this.TxtMODIFIED.ReadOnly = true;
             this.TxtMODIFIED.Size = new System.Drawing.Size(246, 25);
@@ -1842,7 +1834,7 @@
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label14.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(387, 172);
+            this.label14.Location = new System.Drawing.Point(387, 141);
             this.label14.Name = "label14";
             this.label14.Padding = new System.Windows.Forms.Padding(4);
             this.label14.Size = new System.Drawing.Size(122, 25);
@@ -1857,7 +1849,7 @@
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(9, 172);
+            this.label7.Location = new System.Drawing.Point(9, 141);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(4);
             this.label7.Size = new System.Drawing.Size(121, 25);
@@ -1866,80 +1858,18 @@
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label7.Visible = false;
             // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(517, 48);
-            this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(4);
-            this.label6.Size = new System.Drawing.Size(123, 25);
-            this.label6.TabIndex = 100;
-            this.label6.Text = "방문종료시간";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // DtpVISITENDTIME
-            // 
-            this.DtpVISITENDTIME.CustomFormat = "HH:mm";
-            this.DtpVISITENDTIME.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpVISITENDTIME.Location = new System.Drawing.Point(646, 48);
-            this.DtpVISITENDTIME.Name = "DtpVISITENDTIME";
-            this.DtpVISITENDTIME.ShowCheckBox = true;
-            this.DtpVISITENDTIME.ShowUpDown = true;
-            this.DtpVISITENDTIME.Size = new System.Drawing.Size(121, 25);
-            this.DtpVISITENDTIME.TabIndex = 99;
-            // 
-            // DtpVISITSTARTTIME
-            // 
-            this.DtpVISITSTARTTIME.CustomFormat = "hh:mm";
-            this.DtpVISITSTARTTIME.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpVISITSTARTTIME.Location = new System.Drawing.Point(390, 48);
-            this.DtpVISITSTARTTIME.Name = "DtpVISITSTARTTIME";
-            this.DtpVISITSTARTTIME.ShowCheckBox = true;
-            this.DtpVISITSTARTTIME.ShowUpDown = true;
-            this.DtpVISITSTARTTIME.Size = new System.Drawing.Size(121, 25);
-            this.DtpVISITSTARTTIME.TabIndex = 98;
-            this.DtpVISITSTARTTIME.ValueChanged += new System.EventHandler(this.DtpVISITSTARTTIME_ValueChanged);
-            // 
-            // DtpARRIVALTIME
-            // 
-            this.DtpARRIVALTIME.CustomFormat = "HH:mm";
-            this.DtpARRIVALTIME.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpARRIVALTIME.Location = new System.Drawing.Point(390, 79);
-            this.DtpARRIVALTIME.Name = "DtpARRIVALTIME";
-            this.DtpARRIVALTIME.ShowCheckBox = true;
-            this.DtpARRIVALTIME.ShowUpDown = true;
-            this.DtpARRIVALTIME.Size = new System.Drawing.Size(121, 25);
-            this.DtpARRIVALTIME.TabIndex = 91;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(259, 78);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(4);
-            this.label13.Size = new System.Drawing.Size(123, 25);
-            this.label13.TabIndex = 90;
-            this.label13.Text = "도착시간";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label12
             // 
             this.label12.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label12.Location = new System.Drawing.Point(9, 79);
+            this.label12.Location = new System.Drawing.Point(259, 48);
             this.label12.Name = "label12";
             this.label12.Padding = new System.Windows.Forms.Padding(4);
             this.label12.Size = new System.Drawing.Size(123, 25);
             this.label12.TabIndex = 89;
-            this.label12.Text = "출발시간";
+            this.label12.Text = "방문시간*";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label11
@@ -1948,12 +1878,12 @@
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label11.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(9, 110);
+            this.label11.Location = new System.Drawing.Point(9, 79);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(4);
             this.label11.Size = new System.Drawing.Size(123, 25);
             this.label11.TabIndex = 88;
-            this.label11.Text = "방문자";
+            this.label11.Text = "방문자*";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
@@ -1962,41 +1892,13 @@
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(259, 110);
+            this.label4.Location = new System.Drawing.Point(259, 79);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(4);
             this.label4.Size = new System.Drawing.Size(123, 25);
             this.label4.TabIndex = 87;
             this.label4.Text = "동행자";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(259, 48);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(4);
-            this.label1.Size = new System.Drawing.Size(123, 25);
-            this.label1.TabIndex = 86;
-            this.label1.Text = "방문시작시간";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(517, 79);
-            this.label10.Name = "label10";
-            this.label10.Padding = new System.Windows.Forms.Padding(4);
-            this.label10.Size = new System.Drawing.Size(123, 25);
-            this.label10.TabIndex = 85;
-            this.label10.Text = "인원수";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label9
             // 
@@ -2009,7 +1911,7 @@
             this.label9.Padding = new System.Windows.Forms.Padding(4);
             this.label9.Size = new System.Drawing.Size(123, 25);
             this.label9.TabIndex = 84;
-            this.label9.Text = "방문예정일";
+            this.label9.Text = "방문예정일*";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label8
@@ -2018,7 +1920,7 @@
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(9, 141);
+            this.label8.Location = new System.Drawing.Point(9, 110);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(4);
             this.label8.Size = new System.Drawing.Size(123, 25);
@@ -2028,47 +1930,27 @@
             // 
             // TxtREMARK
             // 
-            this.TxtREMARK.Location = new System.Drawing.Point(136, 141);
+            this.TxtREMARK.Location = new System.Drawing.Point(136, 110);
             this.TxtREMARK.Name = "TxtREMARK";
             this.TxtREMARK.Size = new System.Drawing.Size(631, 25);
-            this.TxtREMARK.TabIndex = 67;
+            this.TxtREMARK.TabIndex = 6;
             // 
             // CboVISITUSERID
             // 
             this.CboVISITUSERID.FormattingEnabled = true;
-            this.CboVISITUSERID.Location = new System.Drawing.Point(136, 110);
+            this.CboVISITUSERID.Location = new System.Drawing.Point(136, 79);
             this.CboVISITUSERID.Name = "CboVISITUSERID";
             this.CboVISITUSERID.Size = new System.Drawing.Size(108, 25);
-            this.CboVISITUSERID.TabIndex = 65;
+            this.CboVISITUSERID.TabIndex = 4;
             // 
             // CboVISITMANAGERID
             // 
             this.CboVISITMANAGERID.FormattingEnabled = true;
-            this.CboVISITMANAGERID.Location = new System.Drawing.Point(390, 111);
+            this.CboVISITMANAGERID.Location = new System.Drawing.Point(390, 80);
             this.CboVISITMANAGERID.Name = "CboVISITMANAGERID";
             this.CboVISITMANAGERID.Size = new System.Drawing.Size(121, 25);
-            this.CboVISITMANAGERID.TabIndex = 63;
+            this.CboVISITMANAGERID.TabIndex = 5;
             this.CboVISITMANAGERID.Click += new System.EventHandler(this.CboVISITMANAGERID_Click);
-            // 
-            // NumWORKERCOUNT
-            // 
-            this.NumWORKERCOUNT.Location = new System.Drawing.Point(647, 79);
-            this.NumWORKERCOUNT.Name = "NumWORKERCOUNT";
-            this.NumWORKERCOUNT.ReadOnly = true;
-            this.NumWORKERCOUNT.Size = new System.Drawing.Size(121, 25);
-            this.NumWORKERCOUNT.TabIndex = 61;
-            // 
-            // DtpDEPARTUREDATETIME
-            // 
-            this.DtpDEPARTUREDATETIME.CustomFormat = "HH:mm";
-            this.DtpDEPARTUREDATETIME.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpDEPARTUREDATETIME.Location = new System.Drawing.Point(136, 78);
-            this.DtpDEPARTUREDATETIME.Name = "DtpDEPARTUREDATETIME";
-            this.DtpDEPARTUREDATETIME.ShowCheckBox = true;
-            this.DtpDEPARTUREDATETIME.ShowUpDown = true;
-            this.DtpDEPARTUREDATETIME.Size = new System.Drawing.Size(108, 25);
-            this.DtpDEPARTUREDATETIME.TabIndex = 34;
-            this.DtpDEPARTUREDATETIME.ValueChanged += new System.EventHandler(this.DtpDEPARTUREDATETIME_ValueChanged);
             // 
             // DtpVISITRESERVEDATE
             // 
@@ -2156,7 +2038,6 @@
             this.panVisit.PerformLayout();
             this.panSchedule.ResumeLayout(false);
             this.panSchedule.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumWORKERCOUNT)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2172,29 +2053,20 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage TabEduPage;
-        private System.Windows.Forms.DateTimePicker DtpDEPARTUREDATETIME;
-        private System.Windows.Forms.NumericUpDown NumWORKERCOUNT;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox TxtREMARK;
         private System.Windows.Forms.ComboBox CboVISITUSERID;
         private System.Windows.Forms.ComboBox CboVISITMANAGERID;
         private System.Windows.Forms.Button BtnDeleteSchedule;
         private System.Windows.Forms.Button BtnSaveSchedule;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker DtpARRIVALTIME;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtMODIFIEDUSER;
         private System.Windows.Forms.TextBox TxtMODIFIED;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker DtpVISITENDTIME;
-        private System.Windows.Forms.DateTimePicker DtpVISITSTARTTIME;
         private System.Windows.Forms.Panel panLeftTop;
         private System.Windows.Forms.Panel panSiteBody;
         private ComBase.Mvc.UserControls.ContentTitle contentTitle2;
@@ -2208,8 +2080,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DateTimePicker DtpENDTIME;
-        private System.Windows.Forms.DateTimePicker DtpSTARTTIME;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button BtnVisitDelete;
         private System.Windows.Forms.Button BtnSaveVisit;
@@ -2305,5 +2175,8 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.TextBox TxtSearchVisitSiteIdOrName;
         private System.Windows.Forms.CheckBox ChkIsPreCharge;
+        private System.Windows.Forms.TextBox txtVISITTIME;
+        private System.Windows.Forms.TextBox txtEndTime;
+        private System.Windows.Forms.TextBox txtStartTime;
     }
 }

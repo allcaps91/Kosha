@@ -29,6 +29,8 @@ namespace HS_OSHA
             clsType.ClearUser(); //사용자 정보 초기화
             GuideMsg_Display();
 
+            Set_LastLoginID();  //최종 로그인 ID를 표시
+
             clsDB.GetDbInfo();
             clsDB.DbCon = clsDB.DBConnect_Cloud();
             timer1.Enabled = false;
@@ -217,6 +219,37 @@ namespace HS_OSHA
 
         }
 
+        // 최근 로그인 성공한 ID를 표시함
+        private void Set_LastLoginID()
+        {
+            string strData = "";
+            string strNewData = "";
+            String strFile = @"C:\ProgramData\HSLastLogin.dat";
+
+            //파일형식: 사원번호{}
+            if (System.IO.File.Exists(strFile) == true)
+            {
+                strData = System.IO.File.ReadAllText(strFile);
+                strNewData = clsAES.DeAES(strData);
+                if (VB.L(strNewData, "{}") == 2)
+                {
+                    txtIdNumber.Text = VB.Pstr(strNewData, "{}", 1);
+                }
+            }
+        }
+
+        // 최근 로그인 성공한 ID를 저장함
+        private void Save_LastLoginID()
+        {
+            string strData = "";
+            string strNewData = "";
+
+            strNewData = txtIdNumber.Text.Trim() + "{}";
+
+            strData = clsAES.AES(strNewData);
+            System.IO.File.WriteAllText(@"C:\ProgramData\HSLastLogin.dat", strData);
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             //버전정보가 틀리면 자동 업데이트
@@ -263,6 +296,8 @@ namespace HS_OSHA
                     return;
                 }
             }
+            // 최근 로그인 ID를 저장함
+            Save_LastLoginID();
 
             // 프로그램 실행
             Dashboard form = new Dashboard();

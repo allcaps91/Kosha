@@ -121,9 +121,6 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  EVENTENDDATETIME,              ");
             parameter.AppendSql("  VISITRESERVEDATE,              ");
             parameter.AppendSql("  VISITSTARTTIME,                ");
-            parameter.AppendSql("  VISITENDTIME,                  ");
-            parameter.AppendSql("  DEPARTUREDATETIME,             ");
-            parameter.AppendSql("  ARRIVALTIME,                   ");
             parameter.AppendSql("  VISITUSERNAME,                 ");
             parameter.AppendSql("  VISITUSERID,                   ");
             parameter.AppendSql("  VISITMANAGERNAME,              ");
@@ -150,9 +147,6 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  :EVENTENDDATETIME,             ");
             parameter.AppendSql("  :VISITRESERVEDATE,             ");
             parameter.AppendSql("  :VISITSTARTTIME,               ");
-            parameter.AppendSql("  :VISITENDTIME,                 ");
-            parameter.AppendSql("  :DEPARTUREDATETIME,            ");
-            parameter.AppendSql("  :ARRIVALTIME,                  ");
             parameter.AppendSql("  :VISITUSERNAME,                ");
             parameter.AppendSql("  :VISITUSERID,                  ");
             parameter.AppendSql("  :VISITMANAGERNAME,             ");
@@ -177,9 +171,6 @@ namespace HC.OSHA.Repository
             parameter.Add("EVENTENDDATETIME", dto.EVENTENDDATETIME);
             parameter.Add("VISITRESERVEDATE", dto.VISITRESERVEDATE);
             parameter.Add("VISITSTARTTIME", dto.VISITSTARTTIME);
-            parameter.Add("VISITENDTIME", dto.VISITENDTIME);
-            parameter.Add("DEPARTUREDATETIME", dto.DEPARTUREDATETIME);
-            parameter.Add("ARRIVALTIME", dto.ARRIVALTIME);
             parameter.Add("VISITUSERNAME", dto.VISITUSERNAME);
             parameter.Add("VISITUSERID", dto.VISITUSERID);
             parameter.Add("VISITMANAGERNAME", dto.VISITMANAGERNAME);
@@ -209,9 +200,6 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  EVENTENDDATETIME = :EVENTENDDATETIME, ");
             parameter.AppendSql("  VISITRESERVEDATE = :VISITRESERVEDATE,");
             parameter.AppendSql("  VISITSTARTTIME = :VISITSTARTTIME,");
-            parameter.AppendSql("  VISITENDTIME = :VISITENDTIME,");
-            parameter.AppendSql("  DEPARTUREDATETIME = :DEPARTUREDATETIME,");
-            parameter.AppendSql("  ARRIVALTIME = :ARRIVALTIME,");
             parameter.AppendSql("  VISITUSERNAME = :VISITUSERNAME,");
             parameter.AppendSql("  VISITUSERID = :VISITUSERID,");
             parameter.AppendSql("  VISITMANAGERNAME = :VISITMANAGERNAME,");
@@ -232,9 +220,6 @@ namespace HC.OSHA.Repository
             parameter.Add("EVENTENDDATETIME", dto.EVENTENDDATETIME);
             parameter.Add("VISITRESERVEDATE", dto.VISITRESERVEDATE);
             parameter.Add("VISITSTARTTIME", dto.VISITSTARTTIME);
-            parameter.Add("VISITENDTIME", dto.VISITENDTIME);
-            parameter.Add("DEPARTUREDATETIME", dto.DEPARTUREDATETIME);
-            parameter.Add("ARRIVALTIME", dto.ARRIVALTIME);
             parameter.Add("VISITUSERNAME", dto.VISITUSERNAME);
             parameter.Add("VISITUSERID", dto.VISITUSERID);
             parameter.Add("VISITMANAGERNAME", dto.VISITMANAGERNAME);

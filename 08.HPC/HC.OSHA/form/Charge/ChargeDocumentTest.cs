@@ -15,7 +15,6 @@ using HC_Core;
 using HC_OSHA.form.Charge;
 using HC_OSHA.form.Etc;
 using HC_OSHA.form.Visit;
-using HC_OSHA.Migration;
 using HC_OSHA.Model.Schedule;
 using HC_OSHA.StatusReport;
 using HC_OSHA.Visit;

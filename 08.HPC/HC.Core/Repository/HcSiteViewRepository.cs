@@ -38,7 +38,7 @@ namespace HC.Core.Repository
             parameter.AppendSql("SELECT B.* FROM HIC_OSHA_SITE A ");
             parameter.AppendSql("      INNER JOIN HC_SITE_VIEW B ");
             parameter.AppendSql("            ON A.ID = B.ID ");
-            parameter.AppendSql("            AND SWLICENSE=:SWLICENSE ");
+            parameter.AppendSql("            AND B.SWLICENSE=:SWLICENSE ");
             if (userId!="all" & userId != "")
             {
                 parameter.AppendSql(" INNER JOIN HIC_OSHA_CONTRACT C ");
@@ -67,7 +67,7 @@ namespace HC.Core.Repository
                     parameter.AppendSql("AND C.MANAGEENGINEER= :USERID ");
                 }
             }
-            parameter.AppendSql(" ORDER BY NAME ");
+            parameter.AppendSql(" ORDER BY B.NAME ");
 
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (userId != "all" & userId != "")
@@ -129,7 +129,7 @@ namespace HC.Core.Repository
                 }
                  
             }
-            parameter.AppendSql(" ORDER BY NAME ");
+            parameter.AppendSql(" ORDER BY B.NAME ");
 
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             if (userId != "all" )
