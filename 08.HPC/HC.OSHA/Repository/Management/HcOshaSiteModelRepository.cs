@@ -29,7 +29,8 @@
             parameter.AppendSql("              AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("WHERE A.PARENTSITE_ID = :ID ");
             parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
-            
+            parameter.AppendSql("  AND B.DELDATE IS NULL ");
+
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReader<HC_OSHA_SITE_MODEL>(parameter);
@@ -47,6 +48,7 @@
             parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("WHERE A.ID = :ID ");
             parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND B.DELDATE IS NULL ");
 
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -82,7 +84,7 @@
             parameter.AppendSql("                     AND C.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("         WHERE 1=1 ");
             parameter.AppendSql("           AND A.SWLICENSE = :SWLICENSE ");
-
+            parameter.AppendSql("           AND B.DELDATE IS NULL ");
             if (role == Role.DOCTOR)
             {
                 parameter.AppendSql("AND C.MANAGEDOCTOR = :USERID ");
@@ -125,6 +127,7 @@
 
             parameter.AppendSql("        ON A.ID = B.ID ");
             parameter.AppendSql("        AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("        AND B.DELDATE IS NULL ");
             if (userId.NotEmpty())
             {
                 parameter.AppendSql("    INNER JOIN HIC_OSHA_CONTRACT C ");
@@ -203,6 +206,7 @@
 
             parameter.AppendSql("   ON A.ID = B.ID ");
             parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND B.DELDATE IS NULL ");
 
             // 관계사 사용자는 무조건 자기 사업장만 표시
             if (clsType.User.LtdUser != "")
