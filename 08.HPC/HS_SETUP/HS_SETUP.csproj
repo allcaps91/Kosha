@@ -55,14 +55,6 @@
     <AssemblyOriginatorKeyFile>HS_SETUP.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ComBase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5fd482dfae3e94e4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\ComBase.dll</HintPath>
-    </Reference>
-    <Reference Include="ComDbB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e6ce98bd00a5c45b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\ComDbB.dll</HintPath>
-    </Reference>
     <Reference Include="MySql.Data, Version=8.0.27.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\PSMHEXE\Debug\MySql.Data.dll</HintPath>
@@ -126,6 +118,16 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComBase\ComBase.csproj">
+      <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
+      <Name>ComBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

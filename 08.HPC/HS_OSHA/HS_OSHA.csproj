@@ -58,42 +58,6 @@
     <AssemblyOriginatorKeyFile>HS_OSHA.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ComBase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5fd482dfae3e94e4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\ComBase.dll</HintPath>
-    </Reference>
-    <Reference Include="ComDbB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e6ce98bd00a5c45b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\ComDbB.dll</HintPath>
-    </Reference>
-    <Reference Include="ComHpcLibB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=72d1ae2000e2d89f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\ComHpcLibB.dll</HintPath>
-    </Reference>
-    <Reference Include="ComLibB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ddd7957e79a043b1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\ComLibB.dll</HintPath>
-    </Reference>
-    <Reference Include="ComMedLibB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=20382577f657473d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\ComMedLibB.dll</HintPath>
-    </Reference>
-    <Reference Include="ComPmpaLibB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c7de4da13905badb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\ComPmpaLibB.dll</HintPath>
-    </Reference>
-    <Reference Include="HC_Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=eb04966b4a247f0d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\HC_Core.dll</HintPath>
-    </Reference>
-    <Reference Include="HC_Measurement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ccee827a02c3cc38, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\HC_Measurement.dll</HintPath>
-    </Reference>
-    <Reference Include="HC_OSHA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=47afb9b6fe2d0123, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PSMHEXE\Debug\HC_OSHA.dll</HintPath>
-    </Reference>
     <Reference Include="MySql.Data, Version=8.0.27.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\PSMHEXE\Debug\MySql.Data.dll</HintPath>
@@ -170,6 +134,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\login_bakImg1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComBase\ComBase.csproj">
+      <Project>{15fb9ab6-b58a-4808-8fc4-772ea4da8e18}</Project>
+      <Name>ComBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComDbB\ComDbB.csproj">
+      <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
+      <Name>ComDbB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComEmrBase\ComEmrBase.csproj">
+      <Project>{58342dc4-90ad-47da-b4a4-b055b43107b0}</Project>
+      <Name>ComEmrBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\00.ComLibB\ComLibB\ComLibB.csproj">
+      <Project>{ab53a3ef-d2e1-40a3-abad-df1753372966}</Project>
+      <Name>ComLibB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\01.ComPmpaLibB\ComPmpaLibB\ComPmpaLibB.csproj">
+      <Project>{12e278b5-6009-411d-98ec-6a3484945336}</Project>
+      <Name>ComPmpaLibB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\03.ComMedLibB\ComMedLibB\ComMedLibB.csproj">
+      <Project>{0329e1c6-0e9a-4daa-9708-e71d44b36633}</Project>
+      <Name>ComMedLibB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Com\06.ComHpcLibB\ComHpcLibB\ComHpcLibB.csproj">
+      <Project>{9748399a-1223-4361-b341-2bc620eb7b2f}</Project>
+      <Name>ComHpcLibB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HC.Core\HC_Core.csproj">
+      <Project>{64291242-9ff4-4f20-bc59-5235b9b7463b}</Project>
+      <Name>HC_Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HC.OSHA\HC_OSHA.csproj">
+      <Project>{4b15b3c6-a091-46de-9049-7365eea34fe7}</Project>
+      <Name>HC_OSHA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HC_Measurement\HC_Measurement.csproj">
+      <Project>{e20cabde-5e97-4fd8-8a02-5da3a5c16247}</Project>
+      <Name>HC_Measurement</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

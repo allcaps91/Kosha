@@ -15,6 +15,7 @@ using HC_Core;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace HC_OSHA.StatusReport
@@ -367,6 +368,8 @@ namespace HC_OSHA.StatusReport
         private void BtnSign_Click(object sender, EventArgs e)
         {
             SignPadForm form = new SignPadForm(false);
+            form.Location = new Point(0, 0);
+
             if (form.ShowDialog() == DialogResult.OK)
             {
                 string image = form.Base64Image;
