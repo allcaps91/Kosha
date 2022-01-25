@@ -43,7 +43,7 @@ namespace HC.OSHA.Repository
 
             MParameter parameter = CreateParameter();
             parameter.AppendSql("INSERT INTO HIC_OSHA_VISIT_INFORMATION ");
-            parameter.AppendSql("  (ID,SITE_ID,REGDATE,REGUSERID,REGUSERID,REGUSERNAME, ");
+            parameter.AppendSql("  (ID,SITE_ID,REGDATE,REGUSERID,REGUSERNAME, ");
             parameter.AppendSql("   INFORMATIONTYPE,REMARK,SWLICENSE) ");
             parameter.AppendSql(" VALUES ");
             parameter.AppendSql(" (:ID,:SITE_ID,:REGDATE,:REGUSERID,:REGUSERNAME, ");

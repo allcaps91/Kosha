@@ -56,11 +56,11 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("   SELECT A.PARENT_ID, C.NAME AS PARENT_NAME, A.CHILD_ID, B.NAME AS CHILD_NAME from HIC_OSHA_RELATION A   ");
             parameter.AppendSql("   INNER JOIN HC_SITE_VIEW B   ");
             parameter.AppendSql("   ON A.CHILD_ID = B.ID   ");
+            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("   INNER JOIN HC_SITE_VIEW C   ");
             parameter.AppendSql("   ON A.PARENT_ID = C.ID   ");
+            parameter.AppendSql("   AND C.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("   WHERE A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("     AND B.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("     AND C.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("   ORDER BY C.NAME, B.NAME");
 
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -101,10 +101,11 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.Add("ID", item.ID);
             parameter.Add("PARENT_ID", item.PARENT_ID);
             parameter.Add("CHILD_ID", item.CHILD_ID);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
             DataSyncService.Instance.Insert("HIC_OSHA_RELATION", item.ID);
-            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+            
 
             return FindOne(item.ID);
         }

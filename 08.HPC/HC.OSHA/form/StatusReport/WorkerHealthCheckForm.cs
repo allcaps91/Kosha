@@ -91,7 +91,7 @@ namespace HC_OSHA.StatusReport
             SSMemo.AddColumnButton("삭제", 60, new SpreadCellTypeOption { ButtonText = "삭제" }).ButtonClick += WorkerHealthCheckForm_ButtonClick;
 
             SSHistory.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true, ColumnHeaderHeight = 20  });
-            SSHistory.AddColumnText("일자 및 시간", nameof(HealthCheckDto.WriteDateString), 117, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSHistory.AddColumnText("상담일자", nameof(HealthCheckDto.WriteDateString), 117, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSHistory.AddColumnText("상담(지도) 내용", nameof(HealthCheckDto.content), 300, IsReadOnly.N , new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = true, Aligen = CellHorizontalAlignment.General });
             SSHistory.AddColumnText("상담후 건의사항", nameof(HealthCheckDto.suggestion), 300, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = true, Aligen = CellHorizontalAlignment.General });
             SSHistory.AddColumnText("혈압", nameof(HealthCheckDto.bp), 60, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false,  IsMulti = true, WordWrap = true, Aligen = CellHorizontalAlignment.Center });
@@ -144,7 +144,7 @@ namespace HC_OSHA.StatusReport
                 {
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        strLTD = strLTD + "," + dt.Rows[i]["USERID"].ToString().Trim();
+                        strLTD = strLTD + "," + dt.Rows[i]["CHILD_ID"].ToString().Trim();
                     }
                 }
 
@@ -301,9 +301,11 @@ namespace HC_OSHA.StatusReport
                 SQL = "SELECT ID,NAME,DEPT,WORKER_ROLE,IPSADATE,END_DATE,ISMANAGEOSHA ";
                 SQL = SQL + ComNum.VBLF + " FROM HIC_SITE_WORKER ";
                 SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
-                SQL = SQL + ComNum.VBLF + "   AND  SITEID IN (" + strSiteList + ") ";
+                SQL = SQL + ComNum.VBLF + "   AND SITEID IN (" + strSiteList + ") ";
+                SQL = SQL + ComNum.VBLF + "   AND ISDELETED='N' ";
+                if (ChkEnd.Checked==false) SQL = SQL + ComNum.VBLF + " AND END_DATE IS NULL ";
                 //이름검색
-                if(txtSearchName.Text.Trim()!="") SQL = SQL + ComNum.VBLF + " AND NAME LIKE '%" + txtSearchName.Text.Trim() + "%' ";
+                if (txtSearchName.Text.Trim()!="") SQL = SQL + ComNum.VBLF + " AND NAME LIKE '%" + txtSearchName.Text.Trim() + "%' ";
                 //중점관리대상자
                 if (ChkSearchIsManageOsha.Checked == true) SQL = SQL + ComNum.VBLF + " AND ISMANAGEOSHA='Y' ";
                 //부서별 조회
@@ -619,7 +621,7 @@ namespace HC_OSHA.StatusReport
             foreach (HealthCheckDto healthCheckDto in list)
             {
                 //healthCheckDto.WriteDate = DateUtil.stringToDateTime(healthCheckDto.CHARTDATE + healthCheckDto.CHARTTIME, DateTimeType.YYYYMMDDHHMM);
-                healthCheckDto.WriteDate = DateUtil.stringToDateTime(healthCheckDto.CHARTDATE + healthCheckDto.CHARTTIME, DateTimeType.YYYYMMDDHHMM);
+                healthCheckDto.WriteDate = DateUtil.stringToDateTime(healthCheckDto.CHARTDATE, DateTimeType.YYYYMMDD);
                 healthCheckDto.WriteDateString = DateUtil.DateTimeToStrig(healthCheckDto.WriteDate, DateTimeType.YYYY_MM_DD_HH_MM); // healthCheckDto.CHARTDATE + " " + healthCheckDto.CHARTTIME;
                 if(healthCheckDto.bpl.IsNullOrEmpty() && healthCheckDto.bpr.IsNullOrEmpty())
                 {
@@ -676,7 +678,6 @@ namespace HC_OSHA.StatusReport
                 dto.site_id = base.SelectedSite.ID;
                 
                 dto.CHARTDATE = DateUtil.DateTimeToStrig(DtpChartDate.Value, DateTimeType.YYYYMMDD);
-                dto.CHARTTIME = DateUtil.DateTimeToStrig(dtpChartTIme.Value, DateTimeType.HHMM);
                 if(StatusReportDoctorDto != null)
                 {
                     dto.REPORT_ID = StatusReportDoctorDto.ID;
@@ -696,14 +697,14 @@ namespace HC_OSHA.StatusReport
                 healthCheckService.Save(dto);
 
                 //  퇴직자정보 저장
-                HIC_OSHA_WORKER_END worker = new HIC_OSHA_WORKER_END
-                {
-                    SITE_ID = SELECTED_WORKED.SITEID,
-                    ID = dto.worker_id,
-                    WORKER_ID = dto.worker_id,
-                    END_DATE = DtpWorkerEndDate.Checked ? (DateTime?)DtpWorkerEndDate.Value : null,
-                    CREATEDUSER = clsType.User.Sabun
-                };
+                HIC_OSHA_WORKER_END worker = new HIC_OSHA_WORKER_END();
+                worker.SITE_ID = SELECTED_WORKED.SITEID;
+                worker.ID = dto.worker_id;
+                worker.WORKER_ID = dto.worker_id;
+                worker.END_DATE = null;
+                if (DtpWorkerEndDate.Checked) worker.END_DATE = DateUtil.DateTimeToStrig(DtpWorkerEndDate.Value, DateTimeType.YYYYMMDD);
+                worker.CREATEDUSER = clsType.User.Sabun;
+
                 workerEndRepository.Update(worker);
 
                 //  퇴직자인경우 데이터를 저장하지 않는다.
@@ -781,16 +782,8 @@ namespace HC_OSHA.StatusReport
         {
             HealthCheckDto dto = SSHistory.GetRowData(e.Row) as HealthCheckDto;
 
-            if (dto.CREATEDUSER != CommonService.Instance.Session.UserId)
-            {
-                MessageUtil.Alert("수정 권한이 없습니다");
-            }
-            else 
-            {
-                SetHealthCheckData(dto);
-                DtpChartDate.Value = DateUtil.stringToDateTime(dto.CHARTDATE + dto.CHARTTIME, DateTimeType.YYYYMMDDHHMM);
-                dtpChartTIme.Value = DateUtil.stringToDateTime(dto.CHARTDATE + dto.CHARTTIME, DateTimeType.YYYYMMDDHHMM);
-            }
+            SetHealthCheckData(dto);
+            DtpChartDate.Value = DateUtil.stringToDateTime(dto.CHARTDATE, DateTimeType.YYYYMMDD);
             
         }
 
@@ -1587,6 +1580,16 @@ namespace HC_OSHA.StatusReport
             {
                 //Search();
             }
+        }
+
+        private void SSHistory_CellClick(object sender, CellClickEventArgs e)
+        {
+
+        }
+
+        private void SSWorkerList_CellClick_1(object sender, CellClickEventArgs e)
+        {
+
         }
     }
 }

@@ -97,6 +97,7 @@
             this.장비사용대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.정보자료제공ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.장비사용대장간호사ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.사업장계약금액ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuBaseCode = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCode = new System.Windows.Forms.ToolStripMenuItem();
@@ -580,7 +581,8 @@
             this.근골격계지원대장ToolStripMenuItem,
             this.장비사용대장ToolStripMenuItem,
             this.정보자료제공ToolStripMenuItem,
-            this.장비사용대장간호사ToolStripMenuItem});
+            this.장비사용대장간호사ToolStripMenuItem,
+            this.사업장계약금액ToolStripMenuItem});
             this.통계및대장ToolStripMenuItem.Name = "통계및대장ToolStripMenuItem";
             this.통계및대장ToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.통계및대장ToolStripMenuItem.Text = "통계 및 대장";
@@ -657,6 +659,13 @@
             this.장비사용대장간호사ToolStripMenuItem.Name = "장비사용대장간호사ToolStripMenuItem";
             this.장비사용대장간호사ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.장비사용대장간호사ToolStripMenuItem.Text = "장비사용대장(간호사)";
+            // 
+            // 사업장계약금액ToolStripMenuItem
+            // 
+            this.사업장계약금액ToolStripMenuItem.Name = "사업장계약금액ToolStripMenuItem";
+            this.사업장계약금액ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.사업장계약금액ToolStripMenuItem.Text = "사업장 계약금액";
+            this.사업장계약금액ToolStripMenuItem.Click += new System.EventHandler(this.사업장계약금액ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -1002,5 +1011,6 @@
         private System.Windows.Forms.ToolStripMenuItem 질병유소견자사후관리ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem 사업장계약금액ToolStripMenuItem;
     }
 }

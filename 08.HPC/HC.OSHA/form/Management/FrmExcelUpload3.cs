@@ -488,7 +488,7 @@ namespace HC_OSHA
                     strID = worker.ID;
 
                     // 유질환자 사후관리
-                    if (Exist_Ltd_Result3(nLtdCode, strYear, strBangi, strID) == false)
+                    if (Exist_Ltd_Result3(nLtdCode, strYear,strJong, strBangi, strID) == false)
                     {
                         try
                         {
@@ -525,7 +525,7 @@ namespace HC_OSHA
         }
 
         // 년도,반기 및 사원번호로 금년도 등록여부 점검
-        bool Exist_Ltd_Result3(long nLtdCode, string strYear,string strBangi, string strID)
+        bool Exist_Ltd_Result3(long nLtdCode, string strYear,string strJong, string strBangi, string strID)
         {
             string SQL = "";
             string SqlErr = "";
@@ -541,6 +541,7 @@ namespace HC_OSHA
                 SQL = SQL + ComNum.VBLF + "WHERE SITEID=" + nLtdCode + " ";
                 SQL = SQL + ComNum.VBLF + "  AND ID='" + strID + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND YEAR = '" + strYear + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND Jong = '" + strJong + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND Bangi = '" + strBangi + "' ";
                 SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

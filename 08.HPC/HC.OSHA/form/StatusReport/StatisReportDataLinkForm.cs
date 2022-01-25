@@ -1,4 +1,5 @@
-﻿using ComBase.Controls;
+﻿using ComBase;
+using ComBase.Controls;
 using ComBase.Mvc.Enums;
 using ComBase.Mvc.Spread;
 using ComBase.Mvc.Utils;
@@ -11,6 +12,8 @@ using HC_Core;
 using HC_OSHA.StatusReport;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Threading.Tasks;
 
 namespace HC_OSHA
 {
@@ -26,11 +29,6 @@ namespace HC_OSHA
         private HicJepsuLtdService hicJepsuLtdService;
         private HicJepsuResSpecialLtdService hicJepsuResSpecialLtdService;
         HcOshaVisitInformationService hcOshaVisitInformationService;
-
-        //일반검진표
-        //frmHcPanGenMedExamResult_New frmHcPanGenMedExamResult_New;
-        //특수검진표
-        //frmHcPanSpcDiagnosisResultReport frmHcPanSpcDiagnosisResultReport;
 
         HicOshaGeneralResultRepository hicOshaGeneralResultRepository;
         HicOshaSpecialResultRepository hicOshaSpecialResultRepository;
@@ -66,8 +64,8 @@ namespace HC_OSHA
             SSGeneralHealthCare.AddColumnText("년도", nameof(HIC_OSHA_GENEAL_RESULT.YEAR), 40, IsReadOnly.Y, new SpreadCellTypeOption { });
             SSGeneralHealthCare.AddColumnText("총대상자수", nameof(HIC_OSHA_GENEAL_RESULT.TOTALCOUNT), 40, IsReadOnly.Y, new SpreadCellTypeOption { });
             SSGeneralHealthCare.AddColumnText("D2", nameof(HIC_OSHA_GENEAL_RESULT.D2COUNT), 40, IsReadOnly.Y, new SpreadCellTypeOption { });
-            SSGeneralHealthCare.AddColumnText("C2", nameof(HIC_OSHA_GENEAL_RESULT.C2COUNT), 40, IsReadOnly.Y, new SpreadCellTypeOption { });
-            SSGeneralHealthCare.AddColumnButton("", 70, new SpreadCellTypeOption { ButtonText = "적용" }).ButtonClick += StatisReportDataLinkForm_ButtonClick2; ;
+            SSGeneralHealthCare.AddColumnText("C", nameof(HIC_OSHA_GENEAL_RESULT.C2COUNT), 40, IsReadOnly.Y, new SpreadCellTypeOption { });
+            SSGeneralHealthCare.AddColumnButton("적용", 70, new SpreadCellTypeOption { ButtonText = "적용" }).ButtonClick += StatisReportDataLinkForm_ButtonClick2; ;
 
             SSSpecialHealthCheckList.Initialize(new SpreadOption() { IsRowSelectColor = false });
             SSSpecialHealthCheckList.AddColumnText("년도", nameof(HIC_OSHA_SPECIAL_RESULT.YEAR), 40, IsReadOnly.Y, new SpreadCellTypeOption { });
@@ -78,14 +76,14 @@ namespace HC_OSHA
             SSSpecialHealthCheckList.AddColumnText("C2", nameof(HIC_OSHA_SPECIAL_RESULT.C2COUNT), 40, IsReadOnly.Y, new SpreadCellTypeOption { });
             SSSpecialHealthCheckList.AddColumnText("DN", nameof(HIC_OSHA_SPECIAL_RESULT.DNCOUNT), 40, IsReadOnly.Y, new SpreadCellTypeOption { });
             SSSpecialHealthCheckList.AddColumnText("CN", nameof(HIC_OSHA_SPECIAL_RESULT.CNCOUNT), 40, IsReadOnly.Y, new SpreadCellTypeOption { });
-            SSSpecialHealthCheckList.AddColumnButton("", 70, new SpreadCellTypeOption { ButtonText = "적용" }).ButtonClick += StatisReportDataLinkForm_ButtonClick3;
+            SSSpecialHealthCheckList.AddColumnButton("적용", 70, new SpreadCellTypeOption { ButtonText = "적용" }).ButtonClick += StatisReportDataLinkForm_ButtonClick3;
         }
 
         private void StatisReportDataLinkForm_ButtonClick3(object sender, FarPoint.Win.Spread.EditorNotifyEventArgs e)
         {
             HIC_OSHA_SPECIAL_RESULT dto = SSSpecialHealthCheckList.GetRowData(e.Row) as HIC_OSHA_SPECIAL_RESULT;
             dto.SITE_ID = siteStatusControl.getCommonForm().SelectedSite.ID;
-            dto.JEPDATE = hicOshaGeneralResultRepository.FindBySpecialMinJepDate(dto.SITE_ID, dto.YEAR);
+            //dto.JEPDATE = hicOshaGeneralResultRepository.FindBySpecialMinJepDate(dto.SITE_ID, dto.YEAR);
 
             DESEASE_COUNT_MODEL model = new DESEASE_COUNT_MODEL();
             model.D2 = dto.D2COUNT;
@@ -94,7 +92,7 @@ namespace HC_OSHA
             model.C1 = dto.C1COUNT;
             model.CN = dto.CNCOUNT;
             model.DN = dto.DNCOUNT;
-            model.JEPDATE = dto.JEPDATE;
+            model.JEPDATE = null;  //dto.JEPDATE;
             model.SpecialTotalCount = dto.TOTALCOUNT;
             siteStatusControl.SetSpecialCount(model);
         }
@@ -103,13 +101,13 @@ namespace HC_OSHA
         {
             HIC_OSHA_GENEAL_RESULT dto = SSGeneralHealthCare.GetRowData(e.Row) as HIC_OSHA_GENEAL_RESULT;
             dto.SITE_ID = siteStatusControl.getCommonForm().SelectedSite.ID;
-            dto.JEPDATE = hicOshaGeneralResultRepository.FindByMinJepDate(dto.SITE_ID, dto.YEAR);
+            //dto.JEPDATE = hicOshaGeneralResultRepository.FindByMinJepDate(dto.SITE_ID, dto.YEAR);
 
             DESEASE_COUNT_MODEL model = new DESEASE_COUNT_MODEL();
             model.D2 = dto.D2COUNT;
             model.C2 = dto.C2COUNT;
             model.GeneralTotalCount = dto.TOTALCOUNT;
-            model.JEPDATE = dto.JEPDATE;
+            model.JEPDATE = null;  //dto.JEPDATE;
             siteStatusControl.SetGeneralCount(model);
         }
 
@@ -189,24 +187,181 @@ namespace HC_OSHA
         /// </summary>
         private  void GetSpecailHealthCheck()
         {
-            string startYear = DateTime.Now.AddYears(-5).ToString("yyyy");
-            string endYear = DateTime.Now.ToString("yyyy");
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            int i = 0;
+            long nCnt = 0;
+            string strNewData = "";
+            string strOldData = "";
+            string strGGubun = "";
+            long nTotCnt = 0;
+            long nD1 = 0;
+            long nC1 = 0;
+            long nD2 = 0;
+            long nC2 = 0;
+            long nDN = 0;
+            long nCN = 0;
 
-            //List<HIC_OSHA_SPECIAL_RESULT> list = hicOshaSpecialResultRepository.FindAll(siteStatusControl.getCommonForm().SelectedSite.ID);
-            List<HIC_OSHA_SPECIAL_RESULT> list = hicOshaSpecialResultRepository.FindAllNew(siteStatusControl.getCommonForm().SelectedSite.ID, startYear, endYear);
-            SSSpecialHealthCheckList.SetDataSource(list);
+            List<HIC_OSHA_SPECIAL_RESULT> list = new List<HIC_OSHA_SPECIAL_RESULT>();
+            HIC_OSHA_SPECIAL_RESULT dto = new HIC_OSHA_SPECIAL_RESULT();
+
+            string startYear = DateTime.Now.AddYears(-5).ToString("yyyy");
+
+            try
+            {
+                SQL = "SELECT YEAR,GGUBUN,COUNT(*) AS CNT ";
+                SQL = SQL + ComNum.VBLF + " FROM HIC_LTD_RESULT3 ";
+                SQL = SQL + ComNum.VBLF + "WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND SITEID=" + siteStatusControl.getCommonForm().SelectedSite.ID + " ";
+                SQL = SQL + ComNum.VBLF + "  AND JONG='특수' ";
+                SQL = SQL + ComNum.VBLF + "  AND YEAR>='" + startYear + "' ";
+                SQL = SQL + ComNum.VBLF + "GROUP BY YEAR,GGUBUN ";
+                SQL = SQL + ComNum.VBLF + "ORDER BY YEAR DESC,GGUBUN ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0)
+                {
+                    for (i = 0; i < dt.Rows.Count; i++)
+                    {
+                        strNewData = dt.Rows[i]["YEAR"].ToString().Trim();
+                        nCnt = long.Parse(dt.Rows[i]["CNT"].ToString());
+                        if (strOldData == "") strOldData = strNewData;
+                        if (strOldData != strNewData)
+                        {
+                            dto.YEAR = strOldData;
+                            dto.TOTALCOUNT = nTotCnt;
+                            dto.C1COUNT = nC1;
+                            dto.C2COUNT = nC2;
+                            dto.D1COUNT = nD1;
+                            dto.D2COUNT = nD2;
+                            dto.CNCOUNT = nCN;
+                            dto.DNCOUNT = nDN;
+                            list.Add(dto);
+
+                            strOldData = strNewData;
+                            nC2 = 0;
+                            nD2 = 0;
+                            nC1 = 0;
+                            nD1 = 0;
+                            nCN = 0;
+                            nDN = 0;
+                        }
+                        strGGubun = dt.Rows[i]["GGUBUN"].ToString().Trim();
+                        nTotCnt += nCnt;
+                        if (VB.InStr(strGGubun, "D1") > 0) nD1 += nCnt;
+                        if (VB.InStr(strGGubun, "C1") > 0) nC1 += nCnt;
+                        if (VB.InStr(strGGubun, "D2") > 0) nD2 += nCnt;
+                        if (VB.InStr(strGGubun, "C2") > 0) nC2 += nCnt;
+                        if (VB.InStr(strGGubun, "DN") > 0) nDN += nCnt;
+                        if (VB.InStr(strGGubun, "CN") > 0) nCN += nCnt;
+                    }
+
+                    dto.YEAR = strNewData;
+                    dto.TOTALCOUNT = nTotCnt;
+                    dto.C1COUNT = nC1;
+                    dto.C2COUNT = nC2;
+                    dto.D1COUNT = nD1;
+                    dto.D2COUNT = nD2;
+                    dto.CNCOUNT = nCN;
+                    dto.DNCOUNT = nDN;
+                    list.Add(dto);
+                }
+
+                dt.Dispose();
+                dt = null;
+
+                SSSpecialHealthCheckList.SetDataSource(list);
+            }
+            catch (Exception ex)
+            {
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                }
+
+                ComFunc.MsgBox(ex.Message);
+            }
         }
 
         /// <summary>
-        /// 속도문제로 빌드 방식으로 변경함.
+        /// 일반건강검진 유소견자 수
         /// </summary>
         private void GetGeneralHealthCheck()
         {
-            //일반검진 접수명단
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            long nCnt = 0;
+            int i = 0;
+            string strNewData = "";
+            string strOldData = "";
+            string strGGubun = "";
+            long nTotCnt = 0;
+            long nD2 = 0;
+            long nC2 = 0;
+
+            List<HIC_OSHA_GENEAL_RESULT> list = new List<HIC_OSHA_GENEAL_RESULT>();
+            HIC_OSHA_GENEAL_RESULT dto = new HIC_OSHA_GENEAL_RESULT();
+
             string startYear = DateTime.Now.AddYears(-5).ToString("yyyy");
-            string endYear = DateTime.Now.ToString("yyyy");
-            List<HIC_OSHA_GENEAL_RESULT> list = hicOshaGeneralResultRepository.FindAllNew(siteStatusControl.getCommonForm().SelectedSite.ID, startYear, endYear);
-            SSGeneralHealthCare.SetDataSource(list);
+
+            try
+            {
+                SQL = "SELECT YEAR,GGUBUN,COUNT(*) AS CNT ";
+                SQL = SQL + ComNum.VBLF + " FROM HIC_LTD_RESULT3 ";
+                SQL = SQL + ComNum.VBLF + "WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND SITEID=" + siteStatusControl.getCommonForm().SelectedSite.ID + " ";
+                SQL = SQL + ComNum.VBLF + "  AND JONG='일반' ";
+                SQL = SQL + ComNum.VBLF + "  AND YEAR>='" + startYear + "' ";
+                SQL = SQL + ComNum.VBLF + "GROUP BY YEAR,GGUBUN ";
+                SQL = SQL + ComNum.VBLF + "ORDER BY YEAR DESC,GGUBUN ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0)
+                {
+                    for (i = 0; i < dt.Rows.Count; i++)
+                    {
+                        strNewData = dt.Rows[i]["YEAR"].ToString().Trim();
+                        nCnt = long.Parse(dt.Rows[i]["CNT"].ToString());
+                        if (strOldData == "") strOldData = strNewData;
+                        if (strOldData != strNewData)
+                        {
+                            dto.YEAR = strOldData;
+                            dto.TOTALCOUNT = nTotCnt;
+                            dto.D2COUNT = nD2;
+                            dto.C2COUNT = nC2;
+                            list.Add(dto);
+                            strOldData = strNewData;
+                            nC2 = 0;
+                            nD2 = 0;
+                        }
+                        strGGubun = dt.Rows[i]["GGUBUN"].ToString().Trim();
+                        nTotCnt += nCnt;
+                        if (VB.InStr(strGGubun, "C") > 0) nC2 += nCnt;
+                        if (VB.InStr(strGGubun, "D2") > 0) nD2 += nCnt; 
+                    }
+                    dto.YEAR = strNewData;
+                    dto.TOTALCOUNT = nTotCnt;
+                    dto.D2COUNT = nD2;
+                    dto.C2COUNT = nC2;
+                    list.Add(dto);
+                }
+
+                dt.Dispose();
+                dt = null;
+
+                SSGeneralHealthCare.SetDataSource(list);
+            }
+            catch (Exception ex)
+            {
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                }
+
+                ComFunc.MsgBox(ex.Message);
+            }
         }
 
         private void SSHealthCareJepsuList_CellDoubleClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
@@ -317,7 +472,5 @@ namespace HC_OSHA
         {
             GetSpecailHealthCheck();
         }
-
-     
     }
 }

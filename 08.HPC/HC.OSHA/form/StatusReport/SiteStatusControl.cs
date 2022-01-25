@@ -263,5 +263,117 @@ namespace HC_OSHA.StatusReport
             NumSpecialDNCount.SetValue(0);
             NumSpecialCNCount.SetValue(0);
         }
+
+        private void btnDate_Click(object sender, EventArgs e)
+        {
+            long nSITE_ID = getCommonForm().SelectedSite.ID;
+            string strVisitdate = VisitDate;
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            bool bOK = false;
+
+            int i = 0;
+            int nRow = 0;
+            string strDate1 = "";
+            string strDate2 = "";
+            string strDate3 = "";
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            try
+            {
+                SQL = "SELECT VISITRESERVEDATE,GENERALHEALTHCHECKDATE,SPECIALHEALTHCHECKDATE,WEMDATE ";
+                SQL = SQL + ComNum.VBLF + " FROM HIC_OSHA_REPORT_NURSE ";
+                SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "   AND SITE_ID = " + nSITE_ID + " ";
+                SQL = SQL + ComNum.VBLF + "   AND VISITDATE>='" + strVisitdate.Substring(0, 4) + "0101' ";
+                SQL = SQL + ComNum.VBLF + "   AND VISITDATE<='" + strVisitdate.Substring(0, 4) + "1231' ";
+                SQL = SQL + ComNum.VBLF + "   AND ISDELETED='N' ";
+                SQL = SQL + ComNum.VBLF + "   AND (GENERALHEALTHCHECKDATE IS NOT NULL OR ";
+                SQL = SQL + ComNum.VBLF + "        SPECIALHEALTHCHECKDATE IS NOT NULL OR ";
+                SQL = SQL + ComNum.VBLF + "        WEMDATE IS NOT NULL) ";
+                SQL = SQL + ComNum.VBLF + "UNION ALL ";
+                SQL = SQL + ComNum.VBLF + "SELECT VISITRESERVEDATE,GENERALHEALTHCHECKDATE,SPECIALHEALTHCHECKDATE,WEMDATE ";
+                SQL = SQL + ComNum.VBLF + " FROM HIC_OSHA_REPORT_DOCTOR ";
+                SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "   AND SITE_ID = " + nSITE_ID + " ";
+                SQL = SQL + ComNum.VBLF + "   AND VISITDATE>='" + strVisitdate.Substring(0, 4) + "0101' ";
+                SQL = SQL + ComNum.VBLF + "   AND VISITDATE<='" + strVisitdate.Substring(0, 4) + "1231' ";
+                SQL = SQL + ComNum.VBLF + "   AND ISDELETED='N' ";
+                SQL = SQL + ComNum.VBLF + "   AND (GENERALHEALTHCHECKDATE IS NOT NULL OR ";
+                SQL = SQL + ComNum.VBLF + "        SPECIALHEALTHCHECKDATE IS NOT NULL OR ";
+                SQL = SQL + ComNum.VBLF + "        WEMDATE IS NOT NULL) ";
+                SQL = SQL + ComNum.VBLF + "UNION ALL ";
+                SQL = SQL + ComNum.VBLF + "SELECT VISITRESERVEDATE,'' GENERALHEALTHCHECKDATE,'' SPECIALHEALTHCHECKDATE,WEMDATE ";
+                SQL = SQL + ComNum.VBLF + " FROM HIC_OSHA_REPORT_ENGINEER ";
+                SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "   AND SITE_ID = " + nSITE_ID + " ";
+                SQL = SQL + ComNum.VBLF + "   AND VISITDATE>='" + strVisitdate.Substring(0, 4) + "0101' ";
+                SQL = SQL + ComNum.VBLF + "   AND VISITDATE<='" + strVisitdate.Substring(0, 4) + "1231' ";
+                SQL = SQL + ComNum.VBLF + "   AND ISDELETED='N' ";
+                SQL = SQL + ComNum.VBLF + "   AND  WEMDATE IS NOT NULL ";
+                SQL = SQL + ComNum.VBLF + " ORDER BY VISITRESERVEDATE DESC ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                strDate1 = "";
+                strDate2 = "";
+                strDate3 = "";
+                if (dt.Rows.Count > 0)
+                {
+                    for (i = 0; i < dt.Rows.Count; i++)
+                    {
+                        //일반검진(예정)일
+                        if (strDate1 == "")
+                        {
+                            if (dt.Rows[i]["GENERALHEALTHCHECKDATE"].ToString().Substring(0, 4) == strVisitdate.Substring(0, 4))
+                            {
+                                strDate1 = dt.Rows[i]["GENERALHEALTHCHECKDATE"].ToString().Trim();
+                            }
+                        }
+
+                        //특수검진(예정)일
+                        if (strDate2 == "")
+                        {
+                            if (dt.Rows[i]["SPECIALHEALTHCHECKDATE"].ToString().Substring(0, 4) == strVisitdate.Substring(0, 4))
+                            {
+                                strDate2 = dt.Rows[i]["SPECIALHEALTHCHECKDATE"].ToString().Trim();
+                            }
+                        }
+
+                        //작업환경측정(예정)일
+                        if (strDate3 == "")
+                        {
+                            if (dt.Rows[i]["WEMDATE"].ToString().Substring(0, 4) == strVisitdate.Substring(0, 4))
+                            {
+                                strDate3 = dt.Rows[i]["WEMDATE"].ToString().Trim();
+                            }
+                        }
+
+                        if (strDate1 != "" && strDate2 != "" && strDate3 != "") break;
+                    }
+                }
+                Cursor.Current = Cursors.Default;
+
+                DtpGeneralHealthCheckDate.SetValue(null);
+                DtpSpecialHealthCheckDate.SetValue(null);
+                DtpWEMDate.SetValue(null);
+                if (strDate1 != "") DtpGeneralHealthCheckDate.SetValue(strDate1);
+                if (strDate2 != "") DtpSpecialHealthCheckDate.SetValue(strDate2);
+                if (strDate3 != "") DtpWEMDate.SetValue(strDate3);
+
+                dt.Dispose();
+                dt = null;
+            }
+            catch (Exception ex)
+            {
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                }
+                Cursor.Current = Cursors.Default;
+                ComFunc.MsgBox(ex.Message);
+            }
+        }
     }
 }

@@ -470,24 +470,6 @@ namespace HC_OSHA.StatusReport
                     SearchReport();
                 }
 
-                //if (MessageUtil.Confirm(dto.ID + "번 상태보고서를 삭제하시겠습니까 ?") == DialogResult.Yes)
-                //{
-                //    this.statusReportDoctorService.StatusReportDoctorRepository.Delete(dto.ID);
-                //    //if (CboVisitYear.Items.Count > 0)
-                //    //{
-                //    //    CboVisitYear.SelectedIndex = 0;
-                //    //}
-                //    //else
-                //    //{
-                //    //    CboVisitDate.Items.Clear();
-                //    //    CboVisitDate.Text = "";
-                //    //}
-                //    //CboVisitYear.Text = "";
-                //    //CboVisitDate.Text = "";
-                //    Clear();
-
-                //    SearchReport();
-                //}
             }
         }
 
@@ -726,5 +708,6 @@ namespace HC_OSHA.StatusReport
             informationForm.Width = 900;
             informationForm.Show(this);
         }
+
     }
 }

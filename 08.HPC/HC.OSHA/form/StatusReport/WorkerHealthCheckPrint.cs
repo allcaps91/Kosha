@@ -125,10 +125,7 @@ namespace HC_OSHA.StatusReport
             {
                 SSCard.ActiveSheet.RowCount++;
                 SSView.ActiveSheet.RowCount++;
-                //SSCard.ActiveSheet.Cells[row, 0].Value = list[i].CHARTDATE.Substring(0, 4) + "\r\n" + list[i].CHARTDATE.Substring(4, 2) + "\r\n" + list[i].CHARTDATE.Substring(6, 2);
-                //SSCard.ActiveSheet.Cells[row, 0].Value = SSCard.ActiveSheet.Cells[row, 0].Value + "\r\n" + list[i].CHARTTIME.Substring(0, 2) + ":" + list[i].CHARTTIME.Substring(2, 2);
                 SSCard.ActiveSheet.Cells[row, 0].Value = list[i].CHARTDATE.Substring(0, 4) + "-" + list[i].CHARTDATE.Substring(4, 2) + "-" + list[i].CHARTDATE.Substring(6, 2);
-                SSCard.ActiveSheet.Cells[row, 0].Value = SSCard.ActiveSheet.Cells[row, 0].Value + " " + list[i].CHARTTIME.Substring(0, 2) + ":" + list[i].CHARTTIME.Substring(2, 2);
                 SSCard.ActiveSheet.Cells[row, 0].ColumnSpan = 1;
 
                 SSCard.ActiveSheet.Cells[row, 1].Value = list[i].name;

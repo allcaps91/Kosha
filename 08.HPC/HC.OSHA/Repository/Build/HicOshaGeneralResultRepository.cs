@@ -132,19 +132,15 @@
         internal DateTime? FindByMinJepDate(long siteId, string year)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT MIN(JEPDATE) AS JEPDATE                                                  ");
-            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU A                                                  ");
-            parameter.AppendSql(" WHERE 1 = 1                                                                    ");
-            parameter.AppendSql("   AND A.JEPDATE BETWEEN TO_DATE(:START_DATE, 'YYYY-MM-DD')                     ");
-            parameter.AppendSql("                     AND TO_DATE(:END_DATE, 'YYYY-MM-DD')                       ");
-            parameter.AppendSql("   AND A.GJCHASU = '1'                                                          ");
-            parameter.AppendSql("   AND A.LTDCODE = :SITE_ID                                                     ");
-            parameter.AppendSql("   AND A.DELDATE IS NULL                                                        ");
-            parameter.AppendSql("   AND A.GBINWON IN ('21', '22', '23', '31', '32', '64', '65', '66', '67', '68')");
+            parameter.AppendSql("SELECT MIN(JINDATE) AS JEPDATE ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_RESULT3 A ");
+            parameter.AppendSql(" WHERE A.YEAR = :YEAR ");
+            parameter.AppendSql("   AND A.JINDATE IS NOT NULL ");
+            parameter.AppendSql("   AND A.JONG='일반' ");
+            parameter.AppendSql("   AND A.SITEID = :SITE_ID ");
 
             parameter.Add("SITE_ID", siteId);
-            parameter.Add("START_DATE", string.Concat(year, "-01-01"));
-            parameter.Add("END_DATE", string.Concat(year, "-12-01"));
+            parameter.Add("YEAR", year);
 
             return ExecuteScalar<DateTime?>(parameter);
         }
@@ -152,19 +148,15 @@
         internal DateTime? FindBySpecialMinJepDate(long siteId, string year)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT MIN(JEPDATE) AS JEPDATE                                 ");
-            parameter.AppendSql("  FROM ADMIN.HIC_JEPSU A                                 ");
-            parameter.AppendSql(" WHERE 1 = 1                                                   ");
-            parameter.AppendSql("   AND A.JEPDATE BETWEEN TO_DATE(:START_DATE, 'YYYY-MM-DD')    ");
-            parameter.AppendSql("                     AND TO_DATE(:END_DATE, 'YYYY-MM-DD')      ");
-            parameter.AppendSql("   AND A.UCODES IS NOT NULL                                    ");
-            parameter.AppendSql("   AND A.LTDCODE = :SITE_ID                                    ");
-            parameter.AppendSql("   AND A.DELDATE IS NULL                                       ");
-            parameter.AppendSql("   AND A.GJJONG IN ('11','12','14','23','41','42')             ");
+            parameter.AppendSql("SELECT MIN(JINDATE) AS JEPDATE ");
+            parameter.AppendSql("  FROM ADMIN.HIC_LTD_RESULT3 A ");
+            parameter.AppendSql(" WHERE A.YEAR = :YEAR ");
+            parameter.AppendSql("   AND A.JINDATE IS NOT NULL ");
+            parameter.AppendSql("   AND A.JONG='일반' ");
+            parameter.AppendSql("   AND A.SITEID = :SITE_ID ");
 
             parameter.Add("SITE_ID", siteId);
-            parameter.Add("START_DATE", string.Concat(year, "-01-01"));
-            parameter.Add("END_DATE", string.Concat(year, "-12-01"));
+            parameter.Add("YEAR", year);
 
             return ExecuteScalar<DateTime?>(parameter);
         }

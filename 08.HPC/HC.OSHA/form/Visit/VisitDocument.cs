@@ -5,7 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using ComBase;
 using ComBase.Controls;
@@ -27,6 +29,9 @@ namespace HC_OSHA.form.Visit
     public partial class VisitDocument : Form
     {
         private HC_CODE pdfPath = null;
+        int[] nP1 = new int[6] { 0, 0, 0, 0, 0, 0 };
+        int[] nP2 = new int[6] { 0, 0, 0, 0, 0, 0 };
+        private HC_CODE excelPath = null;
         SpreadPrint print = null;
 
         public VisitDocument()
@@ -34,17 +39,85 @@ namespace HC_OSHA.form.Visit
             InitializeComponent();
             HcCodeService codeService = new HcCodeService();
             pdfPath = codeService.FindActiveCodeByGroupAndCode("PDF_PATH", "OSHA_ESTIMATE", "OSHA");
-           
+            excelPath = codeService.FindActiveCodeByGroupAndCode("EXCEL_PATH", "OSHA_ESTIMATE", "OSHA");
+            OpenExcelFile();
         }
 
+        public bool OpenExcelFile()
+        {
+            string s = "";
+            ssDoc.ActiveSheet.RowCount = 0;
+            string fileName = excelPath.CodeName + "\\일정공문양식.xlsx";
+            //FileInfo생성
+            FileInfo fi = new FileInfo(fileName);
+            //FileInfo.Exists로 파일 존재유무 확인 "
+            if (fi.Exists)
+            {
+                ssDoc.ActiveSheet.OpenExcel(fileName, 0);
+                Thread.Sleep(2000);
+            }
+            else
+            {
+                return false;
+            }
+
+            ssDoc.ActiveSheet.RowCount = 36;
+            ssDoc.ActiveSheet.ColumnCount = 38;
+
+            ////// RowCount 찾기
+            //for (int i = ssDoc.ActiveSheet.RowCount - 1; i >= 20; i--)
+            //{
+            //    s = "";
+            //    for (int j = 1; j < ssDoc.ActiveSheet.ColumnCount - 1; j++)
+            //    {
+            //        s += ssDoc.ActiveSheet.Cells[i, j].ToString().Trim();
+            //    }
+            //    ssDoc.ActiveSheet.RowCount = i + 1;
+            //    if (s != "") break;
+            //}
+
+            //// ColumnCount 찾기
+            //for (int i = ssDoc.ActiveSheet.ColumnCount - 1; i >= 5; i--)
+            //{
+            //    s = "";
+            //    for (int j = 1; j < ssDoc.ActiveSheet.RowCount - 1; j++)
+            //    {
+            //        s += ssDoc.ActiveSheet.Cells[j, i].ToString().Trim();
+            //    }
+            //    ssDoc.ActiveSheet.ColumnCount = i + 1;
+            //    if (s != "") break;
+            //}
+
+            //일정공문의 글자위치를 저장
+            for (int i = 0; i < ssDoc.ActiveSheet.RowCount; i++)
+            {
+                for (int c = 0; c < ssDoc.ActiveSheet.ColumnCount; c++)
+                {
+                    if (ssDoc.ActiveSheet.Cells[i, c].Value != null)
+                    {
+                        if (ssDoc.ActiveSheet.Cells[i, c].Value.Equals("~{수신}")) { nP1[0] = i; nP2[0] = c; }
+                        if (ssDoc.ActiveSheet.Cells[i, c].Value.Equals("~{제목}")) { nP1[1] = i; nP2[1] = c; }
+                        if (ssDoc.ActiveSheet.Cells[i, c].Value.Equals("~{의사}")) { nP1[2] = i; nP2[2] = c; }
+                        if (ssDoc.ActiveSheet.Cells[i, c].Value.Equals("~{간호사}")) { nP1[3] = i; nP2[3] = c; }
+                        if (ssDoc.ActiveSheet.Cells[i, c].Value.Equals("~{산업위생}")) { nP1[4] = i; nP2[4] = c; }
+                        if (ssDoc.ActiveSheet.Cells[i, c].Value.Equals("~{문서번호}")) { nP1[5] = i; nP2[5] = c; }
+                    }
+                }
+            }
+            for (int i=0;i<5;i++)
+            {
+                if (nP1[i] == 0 && nP2[i] == 0) return false;
+            }
+            return true;
+        }
         public void clear()
         {
-            ssDoc.ActiveSheet.Cells[18, 4].Value = "-";
+            //의사
+            ssDoc.ActiveSheet.Cells[nP1[2], nP2[2]].Value = "-";
             //간호사
-            ssDoc.ActiveSheet.Cells[18, 14].Value = "-";
-
+            ssDoc.ActiveSheet.Cells[nP1[3], nP2[3]].Value = "-";
             //산업기사ㅣ
-            ssDoc.ActiveSheet.Cells[18, 24].Value = "-";
+            ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value = "-";
         }
 
         public ChargeEmailModel Print(List<VisitDocumentModel> list, string yearAndMonth, string executeDate, long siteId, string siteName, bool isPdf, string docNumber, string exportPath="" )
@@ -56,9 +129,9 @@ namespace HC_OSHA.form.Visit
             
                 string year = yearAndMonth.Substring(0, 4);
                 string month = yearAndMonth.Substring(5, 2);
-                ssDoc.ActiveSheet.Cells[35, 3].Value = "대한 " + year + " - " + docNumber + "호" + "(" + executeDate + ")";
-                ssDoc.ActiveSheet.Cells[7, 4].Value = siteName + " 대표이사";
-                ssDoc.ActiveSheet.Cells[10, 4].Value = year + "년 " + month + "월 " + "보건관리전문기관 방문일정 안내";
+                ssDoc.ActiveSheet.Cells[nP1[5], nP2[5]].Value = "대한 " + year + " - " + docNumber + "호" + "(" + executeDate + ")";
+                ssDoc.ActiveSheet.Cells[nP1[0], nP2[0]].Value = siteName + " 대표이사";
+                ssDoc.ActiveSheet.Cells[nP1[1], nP2[1]].Value = year + "년 " + month + "월 " + "보건관리전문기관 방문일정 안내";
                 
                 chargeEmailModel.Title = "대한보건환경연구소 " + year + "년 " + month + "월 보건관리전문기관 방문일정 안내";
 
@@ -66,33 +139,31 @@ namespace HC_OSHA.form.Visit
                 chargeEmailModel.Content = chargeEmailModel.Content + "2. 관련근거 : 고용노동부 예규 제439호 4조 2항 <br>";
                 chargeEmailModel.Content = chargeEmailModel.Content + "3. "+ month + "월 일정을 첨부와 같이 보내드리오니 직원 여러분의 많은 참여 부탁드립니다 ";
                 chargeEmailModel.Content = chargeEmailModel.Content + "</body></html>";
-
                 Log.Error(exportPath);
                 for (int j = 0; j < list.Count; j++)
                 {
-                    //string date = DateUtil.stringToDateTime(list[j].VisitReserveDate, ComBase.Controls.DateTimeType.YYYY_MM_DD).ToString("M/d");
                     string date = list[j].VisitReserveDate.Substring(5, 2) + "/" + list[j].VisitReserveDate.Substring(8, 2);
                     string dayOfWeek = DateUtil.ToDayOfWeek(list[j].VisitReserveDate, ComBase.Controls.DateTimeType.YYYY_MM_DD);
                     string day = date + "(" + dayOfWeek.Substring(0, 1) + ")";
                     if (list[j].visitUserRole == "DOCTOR")
                     {
-                        if (ssDoc.ActiveSheet.Cells[18, 4].Value.Equals("-"))
+                        if (ssDoc.ActiveSheet.Cells[nP1[2], nP2[2]].Value.Equals("-"))
                         {
-                            ssDoc.ActiveSheet.Cells[18, 4].Value = day + list[j].visitUserName;
+                            ssDoc.ActiveSheet.Cells[nP1[2], nP2[2]].Value = day + list[j].visitUserName;
                         }
                     }
                     if (list[j].visitUserRole == "NURSE")
                     {
-                        if (ssDoc.ActiveSheet.Cells[18, 14].Value.Equals("-"))
+                        if (ssDoc.ActiveSheet.Cells[nP1[3], nP2[3]].Value.Equals("-"))
                         {
-                            ssDoc.ActiveSheet.Cells[18, 14].Value = day + list[j].visitUserName;
+                            ssDoc.ActiveSheet.Cells[nP1[3], nP2[3]].Value = day + list[j].visitUserName;
                         }
                     }
                     if (list[j].visitUserRole == "ENGINEER")
                     {
-                        if (ssDoc.ActiveSheet.Cells[18, 24].Value.Equals("-"))
+                        if (ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value.Equals("-"))
                         {
-                            ssDoc.ActiveSheet.Cells[18, 24].Value = day + list[j].visitUserName;
+                            ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value = day + list[j].visitUserName;
                         }
                     }
                 }

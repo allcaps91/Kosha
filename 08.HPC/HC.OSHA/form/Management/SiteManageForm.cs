@@ -16,7 +16,6 @@ using HC.OSHA.Model;
 using HC.OSHA.Service;
 using HC_Core;
 using HC_Core.Service;
-using HC_OSHA.form.Management;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -621,9 +620,9 @@ namespace HC_OSHA
         private void BtnLoadExcel_Click(object sender, EventArgs e)
         {
             SSEstimate.ActiveSheet.RowCount = 0;
-            string fileName = @"C:\PSMHEXE\exenet\견적서.xlsx";
+            HC_CODE excelPath = codeService.FindActiveCodeByGroupAndCode("EXCEL_PATH", "OSHA_ESTIMATE", "OSHA");
+            string fileName = excelPath.CodeName + "\\견적서.xlsx";
             SSEstimate.ActiveSheet.OpenExcel(fileName, 0);
-
             SSEstimate.ActiveSheet.RowCount = 50;
             SSEstimate.ActiveSheet.ColumnCount = 10;
 
@@ -636,13 +635,12 @@ namespace HC_OSHA
             {
                 spread.ActiveSheet.RowCount = 0;
 
-                string fileName = @"C:\PSMHEXE\exenet\견적서.xlsx";
+                HC_CODE excelPath = codeService.FindActiveCodeByGroupAndCode("EXCEL_PATH", "OSHA_ESTIMATE", "OSHA");
+                string fileName = excelPath.CodeName + "\\견적서.xlsx";
                 SSEstimate.ActiveSheet.OpenExcel(fileName, 0);
 
-                //SSEstimate.ActiveSheet.OpenExcel(@filePath, 0);
-
-                SSEstimate.ActiveSheet.RowCount = 50;
-                SSEstimate.ActiveSheet.ColumnCount = 10;
+                SSEstimate.ActiveSheet.RowCount = 32;
+                SSEstimate.ActiveSheet.ColumnCount = 7;
                 SSEstimate.ActiveSheet.ColumnHeader.RowCount = 0;
                 SSEstimate.ActiveSheet.RowHeader.ColumnCount = 0;
 

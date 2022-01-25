@@ -67,6 +67,7 @@ namespace HC.Core.Repository
                     parameter.AppendSql("AND C.MANAGEENGINEER= :USERID ");
                 }
             }
+            parameter.AppendSql("   AND B.DelDate IS NULL ");
             parameter.AppendSql(" ORDER BY B.NAME ");
 
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -129,6 +130,7 @@ namespace HC.Core.Repository
                 }
                  
             }
+            parameter.AppendSql("   AND B.DelDate IS NULL ");
             parameter.AppendSql(" ORDER BY B.NAME ");
 
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);

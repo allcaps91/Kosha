@@ -51,7 +51,6 @@ namespace HC.OSHA.Repository
             parameter.Add("CREATEDUSER", item.SEND_USER);
             parameter.Add("WRTNO", item.WRTNO);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
-            DataSyncService.Instance.Insert("HIC_OSHA_MAIL_SEND", item.ID);
 
             return ExecuteNonQuery(parameter);
         }

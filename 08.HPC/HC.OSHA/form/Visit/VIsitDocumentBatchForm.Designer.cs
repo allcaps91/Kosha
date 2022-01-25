@@ -50,6 +50,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.CboMonth = new System.Windows.Forms.ComboBox();
             this.BtnExportPdf = new System.Windows.Forms.Button();
+            this.btnAttach = new System.Windows.Forms.Button();
+            this.txtAttach = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
@@ -60,7 +62,7 @@
             // 
             this.TxtDocNumber.Location = new System.Drawing.Point(256, 11);
             this.TxtDocNumber.Name = "TxtDocNumber";
-            this.TxtDocNumber.Size = new System.Drawing.Size(121, 25);
+            this.TxtDocNumber.Size = new System.Drawing.Size(105, 25);
             this.TxtDocNumber.TabIndex = 107;
             // 
             // label15
@@ -97,7 +99,7 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(383, 11);
+            this.label2.Location = new System.Drawing.Point(367, 11);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(4);
             this.label2.Size = new System.Drawing.Size(75, 25);
@@ -109,17 +111,17 @@
             // 
             this.DtpDate.CustomFormat = "yyyy-MM-dd";
             this.DtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpDate.Location = new System.Drawing.Point(464, 11);
+            this.DtpDate.Location = new System.Drawing.Point(448, 12);
             this.DtpDate.Name = "DtpDate";
             this.DtpDate.Size = new System.Drawing.Size(108, 25);
             this.DtpDate.TabIndex = 110;
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(578, 9);
+            this.BtnSearch.Location = new System.Drawing.Point(562, 11);
             this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearch.Name = "BtnSearch";
-            this.BtnSearch.Size = new System.Drawing.Size(75, 28);
+            this.BtnSearch.Size = new System.Drawing.Size(68, 28);
             this.BtnSearch.TabIndex = 111;
             this.BtnSearch.Text = "검색";
             this.BtnSearch.UseVisualStyleBackColor = true;
@@ -141,11 +143,11 @@
             this.SSList.AccessibleDescription = "SSList, Sheet1, Row 0, Column 0, ";
             this.SSList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SSList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SSList.Location = new System.Drawing.Point(0, 91);
+            this.SSList.Location = new System.Drawing.Point(0, 98);
             this.SSList.Name = "SSList";
             this.SSList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSList_Sheet1});
-            this.SSList.Size = new System.Drawing.Size(1264, 780);
+            this.SSList.Size = new System.Drawing.Size(1264, 773);
             this.SSList.TabIndex = 114;
             this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
             // 
@@ -224,7 +226,7 @@
             // 
             // btnPRint
             // 
-            this.btnPRint.Location = new System.Drawing.Point(1028, 11);
+            this.btnPRint.Location = new System.Drawing.Point(1100, 8);
             this.btnPRint.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnPRint.Name = "btnPRint";
             this.btnPRint.Size = new System.Drawing.Size(75, 28);
@@ -247,7 +249,7 @@
             // 
             // btnSendMail
             // 
-            this.btnSendMail.Location = new System.Drawing.Point(1105, 11);
+            this.btnSendMail.Location = new System.Drawing.Point(1177, 8);
             this.btnSendMail.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnSendMail.Name = "btnSendMail";
             this.btnSendMail.Size = new System.Drawing.Size(75, 28);
@@ -259,6 +261,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.txtAttach);
+            this.panel1.Controls.Add(this.btnAttach);
             this.panel1.Controls.Add(this.CboMonth);
             this.panel1.Controls.Add(this.BtnExportPdf);
             this.panel1.Controls.Add(this.label15);
@@ -272,7 +276,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 38);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1264, 53);
+            this.panel1.Size = new System.Drawing.Size(1264, 60);
             this.panel1.TabIndex = 118;
             // 
             // CboMonth
@@ -285,7 +289,7 @@
             // 
             // BtnExportPdf
             // 
-            this.BtnExportPdf.Location = new System.Drawing.Point(951, 11);
+            this.BtnExportPdf.Location = new System.Drawing.Point(1023, 8);
             this.BtnExportPdf.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnExportPdf.Name = "BtnExportPdf";
             this.BtnExportPdf.Size = new System.Drawing.Size(75, 28);
@@ -293,6 +297,25 @@
             this.BtnExportPdf.Text = "PDF 저장";
             this.BtnExportPdf.UseVisualStyleBackColor = true;
             this.BtnExportPdf.Click += new System.EventHandler(this.BtnExportPdf_Click);
+            // 
+            // btnAttach
+            // 
+            this.btnAttach.Location = new System.Drawing.Point(636, 12);
+            this.btnAttach.Name = "btnAttach";
+            this.btnAttach.Size = new System.Drawing.Size(70, 26);
+            this.btnAttach.TabIndex = 126;
+            this.btnAttach.Text = "첨부파일";
+            this.btnAttach.UseVisualStyleBackColor = true;
+            this.btnAttach.Click += new System.EventHandler(this.btnAttach_Click);
+            // 
+            // txtAttach
+            // 
+            this.txtAttach.Location = new System.Drawing.Point(712, 3);
+            this.txtAttach.Multiline = true;
+            this.txtAttach.Name = "txtAttach";
+            this.txtAttach.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAttach.Size = new System.Drawing.Size(305, 51);
+            this.txtAttach.TabIndex = 127;
             // 
             // VIsitDocumentBatchForm
             // 
@@ -333,5 +356,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BtnExportPdf;
         private System.Windows.Forms.ComboBox CboMonth;
+        private System.Windows.Forms.TextBox txtAttach;
+        private System.Windows.Forms.Button btnAttach;
     }
 }

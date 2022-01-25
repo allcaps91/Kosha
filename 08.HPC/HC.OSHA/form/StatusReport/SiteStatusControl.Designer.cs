@@ -78,6 +78,8 @@
             this.label28 = new System.Windows.Forms.Label();
             this.TxtWEMHarmfulFactors = new System.Windows.Forms.TextBox();
             this.panSiteSatus = new System.Windows.Forms.Panel();
+            this.TxtDeptName = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
             this.autoCompleteMacro1 = new HC_Core.AutoCompleteMacro();
             this.TxtExtData = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
@@ -89,8 +91,7 @@
             this.BtnDataLink = new System.Windows.Forms.Button();
             this.NumGeneralTotalCount = new System.Windows.Forms.NumericUpDown();
             this.NumSpecialTotalCount = new System.Windows.Forms.NumericUpDown();
-            this.label31 = new System.Windows.Forms.Label();
-            this.TxtDeptName = new System.Windows.Forms.TextBox();
+            this.btnDate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NumCurrentWorkerCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumNewWorkerCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumRetireWorkerCount)).BeginInit();
@@ -745,6 +746,7 @@
             // 
             // panSiteSatus
             // 
+            this.panSiteSatus.Controls.Add(this.btnDate);
             this.panSiteSatus.Controls.Add(this.TxtDeptName);
             this.panSiteSatus.Controls.Add(this.label31);
             this.panSiteSatus.Controls.Add(this.autoCompleteMacro1);
@@ -812,6 +814,27 @@
             this.panSiteSatus.Name = "panSiteSatus";
             this.panSiteSatus.Size = new System.Drawing.Size(1280, 210);
             this.panSiteSatus.TabIndex = 173;
+            // 
+            // TxtDeptName
+            // 
+            this.TxtDeptName.Location = new System.Drawing.Point(600, 6);
+            this.TxtDeptName.Name = "TxtDeptName";
+            this.TxtDeptName.Size = new System.Drawing.Size(260, 25);
+            this.TxtDeptName.TabIndex = 185;
+            // 
+            // label31
+            // 
+            this.label31.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label31.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label31.Location = new System.Drawing.Point(515, 6);
+            this.label31.Name = "label31";
+            this.label31.Padding = new System.Windows.Forms.Padding(3);
+            this.label31.Size = new System.Drawing.Size(83, 25);
+            this.label31.TabIndex = 184;
+            this.label31.Text = "부서명";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoCompleteMacro1
             // 
@@ -933,26 +956,17 @@
             this.NumSpecialTotalCount.Size = new System.Drawing.Size(78, 25);
             this.NumSpecialTotalCount.TabIndex = 153;
             // 
-            // label31
+            // btnDate
             // 
-            this.label31.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label31.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label31.Location = new System.Drawing.Point(515, 6);
-            this.label31.Name = "label31";
-            this.label31.Padding = new System.Windows.Forms.Padding(3);
-            this.label31.Size = new System.Drawing.Size(83, 25);
-            this.label31.TabIndex = 184;
-            this.label31.Text = "부서명";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // TxtDeptName
-            // 
-            this.TxtDeptName.Location = new System.Drawing.Point(600, 6);
-            this.TxtDeptName.Name = "TxtDeptName";
-            this.TxtDeptName.Size = new System.Drawing.Size(260, 25);
-            this.TxtDeptName.TabIndex = 185;
+            this.btnDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDate.Location = new System.Drawing.Point(424, 150);
+            this.btnDate.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnDate.Name = "btnDate";
+            this.btnDate.Size = new System.Drawing.Size(80, 27);
+            this.btnDate.TabIndex = 186;
+            this.btnDate.Text = "불러오기";
+            this.btnDate.UseVisualStyleBackColor = true;
+            this.btnDate.Click += new System.EventHandler(this.btnDate_Click);
             // 
             // SiteStatusControl
             // 
@@ -1053,5 +1067,6 @@
         private HC_Core.AutoCompleteMacro autoCompleteMacro1;
         private System.Windows.Forms.TextBox TxtDeptName;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Button btnDate;
     }
 }

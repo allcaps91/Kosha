@@ -130,6 +130,7 @@
             this.panSearch.Name = "panSearch";
             this.panSearch.Size = new System.Drawing.Size(1264, 42);
             this.panSearch.TabIndex = 1;
+            this.panSearch.Paint += new System.Windows.Forms.PaintEventHandler(this.panSearch_Paint);
             // 
             // CboRole
             // 

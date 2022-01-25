@@ -11,5 +11,6 @@ namespace HC_OSHA.form.Charge
         public string PdfFileName { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+        public string AttachFileName { get; set; }
     }
 }

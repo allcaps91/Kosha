@@ -18,15 +18,17 @@ namespace HC.OSHA.Repository
         public List<OSHA_PRICE> FindAllBySite(string nameOrCode, string gbGukgo, bool isParent)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("  SELECT B.ID AS SITE_ID, B.NAME AS SITE_NAME, B.GBGUKGO, A.CONTRACTDATE,  A.contractstartdate , A.contractenddate , C.* FROM HIC_OSHA_CONTRACT A     ");
-            parameter.AppendSql("INNER JOIN HC_SITE_VIEW B                                                                   ");
-            parameter.AppendSql("ON A.OSHA_SITE_ID = B.ID                                                                    ");
-            parameter.AppendSql("AND A.ISCONTRACT = 'Y'                                                                      ");
-            parameter.AppendSql("INNER JOIN HIC_OSHA_SITE BB                                                                 ");
-            parameter.AppendSql("ON B.ID = BB.ID                                                                             ");
-            parameter.AppendSql("INNER JOIN HIC_OSHA_PRICE C                                                                 ");
-            parameter.AppendSql("ON C.ESTIMATE_ID = A.ESTIMATE_ID                                                            ");
-            parameter.AppendSql("AND C.ISDELETED = 'N'                                                                       ");
+            parameter.AppendSql("SELECT B.ID AS SITE_ID, B.NAME AS SITE_NAME, B.GBGUKGO, A.CONTRACTDATE,  A.contractstartdate,");
+            parameter.AppendSql("       A.contractenddate, C.* ");
+            parameter.AppendSql("  FROM HIC_OSHA_CONTRACT A ");
+            parameter.AppendSql("       INNER JOIN HC_SITE_VIEW B ");
+            parameter.AppendSql("             ON A.OSHA_SITE_ID = B.ID ");
+            parameter.AppendSql("             AND A.ISCONTRACT = 'Y' ");
+            parameter.AppendSql("       INNER JOIN HIC_OSHA_SITE BB ");
+            parameter.AppendSql("             ON B.ID = BB.ID ");
+            parameter.AppendSql("       INNER JOIN HIC_OSHA_PRICE C ");
+            parameter.AppendSql("             ON C.ESTIMATE_ID = A.ESTIMATE_ID ");
+            parameter.AppendSql("             AND C.ISDELETED = 'N' ");
             parameter.AppendSql("INNER JOIN(                                                                                 ");
             parameter.AppendSql("            SELECT MAX(A.ID) AS ID FROM  HIC_OSHA_PRICE A                                   ");
             parameter.AppendSql("            INNER JOIN HIC_OSHA_CONTRACT B                                                  ");

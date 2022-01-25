@@ -519,7 +519,6 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("      , BMI = :BMI");
             parameter.AppendSql("      , EXAM = :EXAM");
             parameter.AppendSql("      , CHARTDATE = :CHARTDATE");
-            parameter.AppendSql("      , CHARTTIME = :CHARTTIME");
             parameter.AppendSql("      , MODIFIED = systimestamp");
             parameter.AppendSql("      , MODIFIEDUSER = :MODIFIEDUSER ");
             parameter.AppendSql("WHERE ID = :ID                     ");
@@ -542,7 +541,6 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.Add("BMI", dto.BMI);
             parameter.Add("EXAM", dto.EXAM);
             parameter.Add("CHARTDATE", dto.CHARTDATE);
-            parameter.Add("CHARTTIME", dto.CHARTTIME);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             if (dto.MODIFIEDUSER.IsNullOrEmpty())
@@ -590,7 +588,6 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , BREPORT_ID");
             parameter.AppendSql("  , ISDOCTOR");
             parameter.AppendSql("  , CHARTDATE");
-            parameter.AppendSql("  , CHARTTIME");            
             parameter.AppendSql("  , MODIFIED");
             parameter.AppendSql("  , MODIFIEDUSER");
             parameter.AppendSql("  , CREATED");
@@ -620,7 +617,6 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , :BREPORT_ID");
             parameter.AppendSql("  , :ISDOCTOR");
             parameter.AppendSql("  , :CHARTDATE");
-            parameter.AppendSql("  , :CHARTTIME");
             parameter.AppendSql("  , SYSTIMESTAMP");
             parameter.AppendSql("  , :MODIFIEDUSER");
             parameter.AppendSql("  , SYSTIMESTAMP");
@@ -651,7 +647,6 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.Add("BREPORT_ID", dto.REPORT_ID);
             parameter.Add("ISDOCTOR", dto.ISDOCTOR);
             parameter.Add("CHARTDATE", dto.CHARTDATE);
-            parameter.Add("CHARTTIME", dto.CHARTTIME);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             if (dto.CREATEDUSER.IsNullOrEmpty())

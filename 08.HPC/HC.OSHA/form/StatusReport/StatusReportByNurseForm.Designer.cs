@@ -305,6 +305,7 @@
             this.oshaSiteList1.TabIndex = 114;
             this.oshaSiteList1.CellDoubleClick += new HC_OSHA.OshaSiteList.CellDoubleClickEventHandler(this.oshaSiteList1_CellDoubleClick);
             this.oshaSiteList1.CellClick += new HC_OSHA.OshaSiteList.CellDoubleClickEventHandler(this.oshaSiteList1_CellClick);
+            this.oshaSiteList1.Load += new System.EventHandler(this.oshaSiteList1_Load);
             // 
             // PanStatausReportNurse
             // 

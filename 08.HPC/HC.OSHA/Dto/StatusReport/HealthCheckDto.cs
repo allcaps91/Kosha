@@ -124,7 +124,6 @@ namespace HC.OSHA.Dto.StatusReport
         public string MODIFIEDUSER { get; set; }
 
         public string CHARTDATE { get; set; }
-        public string CHARTTIME { get; set; }
         public string WriteDateString { get; set; }
         public DateTime? WriteDate { get; set; }
         /// <summary>

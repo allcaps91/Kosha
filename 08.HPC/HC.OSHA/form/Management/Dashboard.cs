@@ -84,7 +84,6 @@ namespace HC_OSHA
             {
                 검진결과ToolStripMenuItem.Visible = false;
                 작업환경측정관리ToolStripMenuItem.Visible = false;
-                업무관리ToolStripMenuItem.Visible = false;
                 사업장현황ToolStripMenuItem.Visible = false;
                 개인별상담대장ToolStripMenuItem.Visible = false;
                 사업장별상담대장ToolStripMenuItem.Visible = false;
@@ -92,6 +91,13 @@ namespace HC_OSHA
                 근골격계지원대장ToolStripMenuItem.Visible = false;
                 정보자료제공ToolStripMenuItem.Visible = false;
                 장비사용대장간호사ToolStripMenuItem.Visible = false;
+
+                건강증진프로그램ToolStripMenuItem.Visible = false;
+                직무스트레스평가ToolStripMenuItem.Visible = false;
+                근골격계유해요인조사ToolStripMenuItem.Visible = false;
+                청력보존프로그램ToolStripMenuItem1.Visible = false;
+                밀폐공간프로그램ToolStripMenuItem.Visible = false;
+                기업건강증진지수EHPToolStripMenuItem.Visible = false;
             }
         }
 
@@ -454,7 +460,8 @@ namespace HC_OSHA
             VIsitDocumentBatchForm form = new VIsitDocumentBatchForm();
             form.SelectedSite = base.SelectedSite;
             form.SelectedEstimate = base.SelectedEstimate;
-            CreateForm(form, menuName: (sender as ToolStripMenuItem).Text);
+            form.Show();
+            //CreateForm(form, menuName: (sender as ToolStripMenuItem).Text);
         }
 
         private void 사업장관리카드ToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -843,6 +850,12 @@ namespace HC_OSHA
         private void oshaSiteLastTree_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void 사업장계약금액ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SitePriceManageForm form = new SitePriceManageForm();
+            form.Show();
         }
     }
 }

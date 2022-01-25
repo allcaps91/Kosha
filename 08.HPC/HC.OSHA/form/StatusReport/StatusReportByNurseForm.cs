@@ -75,9 +75,6 @@ namespace HC_OSHA
             workerHealthCheckForm.Show();
             tabPage2.Controls.Add(workerHealthCheckForm);
 
-
-       
-
             DtpVisitDate.SetOptions(new DateTimePickerOption { DataField = nameof(StatusReportNurseDto.VISITDATE), DataBaseFormat = DateTimeType.YYYYMMDD, DisplayFormat = DateTimeType.YYYY_MM_DD });
             DtpVisitReserveDate.SetOptions(new DateTimePickerOption { DataField = nameof(StatusReportNurseDto.VISITRESERVEDATE), DataBaseFormat = DateTimeType.YYYYMMDD, DisplayFormat = DateTimeType.YYYY_MM_DD });
             TxtSITEMANAGERGRADE.SetOptions(new TextBoxOption { DataField = nameof(StatusReportNurseDto.SITEMANAGERGRADE) });
@@ -716,9 +713,7 @@ namespace HC_OSHA
                     model.CheckboxText = chk.Text;
                     if (chk.Checked)
                     {
-
                         model.IsChecked = "Y";
-                   
                     }
                     else
                     {
@@ -812,6 +807,11 @@ namespace HC_OSHA
 
             informationForm.Width = 900;
             informationForm.Show(this);
+        }
+
+        private void oshaSiteList1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

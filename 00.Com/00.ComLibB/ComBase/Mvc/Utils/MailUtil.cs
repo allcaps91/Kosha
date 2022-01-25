@@ -12,18 +12,19 @@ using System.Windows.Forms;
 namespace ComBase.Mvc.Utils
 {
 
-    //구글사용시 https://myaccount.google.com/lesssecureapps 허용으로 해야함ㄴ
+    //구글사용시 https://myaccount.google.com/lesssecureapps 허용으로 해야함
     public class MailUtil
     {
         private string SMTP_URL = "smtp.gmail.com";
         private int SMTP_PORT = 587;
        // private string SMTP_URL = "smtp.mailplug.co.kr";
-      //  private int SMTP_PORT = 465;
+       //  private int SMTP_PORT = 465;
 
         /// <summary>
         /// 보내는사람
         /// </summary>
         public string SenderMailAddress { get; set; }
+        public string SenderMail { get; set; }
         /// <summary>
         /// 받는사람 목록
         /// </summary>
@@ -76,7 +77,7 @@ namespace ComBase.Mvc.Utils
             {
                 throw new MTSException("보내는 메일주소가 없습니다"); 
             }
-            mail.From = new MailAddress(this.SenderMailAddress, "대한보건환경연구소");
+            mail.From = new MailAddress(this.SenderMailAddress,this.SenderMail);
 
             foreach (string receiverMail in ReciverMailSddress)
             {
@@ -93,11 +94,6 @@ namespace ComBase.Mvc.Utils
             }
            
             smtpClient.Send(mail);
-           // smtpClient.SendAsync(mail, true);
-
-
-
-
         }
         public void Dispose()
         {

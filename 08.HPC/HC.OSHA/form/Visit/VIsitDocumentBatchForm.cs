@@ -374,12 +374,22 @@ namespace HC_OSHA.form.Visit
 
                             List<string> attach = new List<string>();
                             attach.Add(chargeEmailModel.PdfFileName);
-
+                            //교육자료등 첨부
+                            txtAttach.Text = txtAttach.Text.Trim();
+                            if (txtAttach.Text !="")
+                            {
+                                if (VB.Pstr(txtAttach.Text, ";", 1).Trim() != "") attach.Add(VB.Pstr(txtAttach.Text, ";", 1).Trim());
+                                if (VB.Pstr(txtAttach.Text, ";", 2).Trim() != "") attach.Add(VB.Pstr(txtAttach.Text, ";", 2).Trim());
+                                if (VB.Pstr(txtAttach.Text, ";", 3).Trim() != "") attach.Add(VB.Pstr(txtAttach.Text, ";", 3).Trim());
+                                if (VB.Pstr(txtAttach.Text, ";", 4).Trim() != "") attach.Add(VB.Pstr(txtAttach.Text, ";", 4).Trim());
+                                if (VB.Pstr(txtAttach.Text, ";", 5).Trim() != "") attach.Add(VB.Pstr(txtAttach.Text, ";", 5).Trim());
+                            }
                             mailUtil.Subject = chargeEmailModel.Title;
                             mailUtil.Body = chargeEmailModel.Content;
                             mailUtil.Attachments = attach;
                             mailUtil.ReciverMailSddress = recever;
                             mailUtil.SenderMailAddress = mail;
+                            mailUtil.SenderMail = VB.Pstr(clsType.HosInfo.SwLicInfo, "{}", 2);
                             mailUtil.IsBodyHtml = true;
                             mailUtil.SendMaill();
 
@@ -443,6 +453,16 @@ namespace HC_OSHA.form.Visit
                 Cursor.Current = Cursors.Default;
                
                 MessageUtil.Alert(ex.Message);
+            }
+        }
+
+        private void btnAttach_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            DialogResult result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                txtAttach.Text += dialog.FileName + ";";
             }
         }
     }

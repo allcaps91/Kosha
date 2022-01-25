@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HC_OSHA.form.Management
+namespace HC_OSHA
 {
     public partial class SitePriceManageForm : CommonForm
     {
@@ -79,10 +79,7 @@ namespace HC_OSHA.form.Management
         private void Search()
         {
             string gbGukgo = "";
-            if (RdoGbGukgo.Checked)
-            {
-                gbGukgo = "Y";
-            }
+            if (RdoGbGukgo.Checked) gbGukgo = "Y";
             List<OSHA_PRICE> list = oshaPriceService.FindAll(TxtNameOrCode.Text, gbGukgo, isParent);
             if (isParent)
             {
@@ -102,6 +99,11 @@ namespace HC_OSHA.form.Management
             SSPrice.SetDataSource(list);
 
             lblCount.Text = "총: " + list.Count + " 건";
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

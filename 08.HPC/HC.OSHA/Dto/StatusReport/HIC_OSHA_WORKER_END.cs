@@ -16,7 +16,7 @@ namespace HC.OSHA.Dto
         public long SITE_ID { get; set; }
         public long PANO { get; set; }
         public string WORKER_ID { get; set; }
-        public DateTime? END_DATE { get; set; }
+        public string END_DATE { get; set; }
         /// <summary>
         ///
         /// <summary>

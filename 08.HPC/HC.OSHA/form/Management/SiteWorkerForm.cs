@@ -306,6 +306,11 @@ namespace HC_OSHA
         {
 
         }
+
+        private void panSearch_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 
