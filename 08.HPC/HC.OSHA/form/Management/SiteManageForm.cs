@@ -45,6 +45,7 @@ namespace HC_OSHA
         List<HC_USER> doctorList;
         List<HC_USER> nurseList;
         List<HC_USER> engineerList;
+        string excelSetValue = "";
         SitePriceManageForm sitePriceManageForm;
         SitePriceManageForm sitePriceManageForm2; //원청현황
         public SiteManageForm()
@@ -131,14 +132,72 @@ namespace HC_OSHA
             TxtSENDMAILDATE.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_ESTIMATE.SENDMAILDATE) });
             TxtPRINTDATE.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_ESTIMATE.PRINTDATE)});
 
-            estimateExcelPath = codeService.FindActiveCodeByGroupAndCode("EXCEL_PATH", "OSHA_ESTIMATE", "OSHA");
+            //엑셀 견적서 서식을 읽어 시트에 셋팅
+            //estimateExcelPath = codeService.FindActiveCodeByGroupAndCode("EXCEL_PATH", "OSHA_ESTIMATE", "OSHA");
             HC_OSHA_ESTIMATE dto = new HC_OSHA_ESTIMATE();
-            dto.EXCELPATH = estimateExcelPath.CodeName;
+            string fileName = @"C:\PSMHEXE\견적서\견적서.xlsx";
+            SSEstimate.ActiveSheet.OpenExcel(fileName, 0);
+
+            string str = "";
+            int nMaxRows = 0;
+            int nMaxCols = 0;
+
+            //RowCount 설정
+            for (int i=100;i>5;i--)
+            {
+                str = "";
+                for (int j=0;j<20;j++)
+                {
+                    str += SSEstimate.ActiveSheet.Cells[i, j].Text.Trim();
+                }
+                if (str != "")
+                {
+                    nMaxRows = i + 1;
+                    break;
+                }
+            }
+
+            //ColumnCount 설정
+            for (int i = 100; i > 5; i--)
+            {
+                str = "";
+                for (int j = 0; j < nMaxRows; j++)
+                {
+                    str += SSEstimate.ActiveSheet.Cells[j, i].Text.Trim();
+                }
+                if (str != "")
+                {
+                    nMaxCols = i + 1;
+                    break;
+                }
+            }
+
+            //구하지 못하였으면 오류
+            if (nMaxRows == 0 || nMaxCols == 0) return;
+
+            SSEstimate.ActiveSheet.RowCount = nMaxRows;
+            SSEstimate.ActiveSheet.ColumnCount = nMaxCols;
+            SSEstimate.ActiveSheet.ColumnHeader.RowCount = 0;
+            SSEstimate.ActiveSheet.RowHeader.ColumnCount = 0;
+
+            //값을 대체할 위치를 찾음
+            excelSetValue = "";
+            for (int i=0;i< SSEstimate.ActiveSheet.RowCount;i++)
+            {
+                for (int j=0;j< SSEstimate.ActiveSheet.ColumnCount;j++)
+                {
+                    str = SSEstimate.ActiveSheet.Cells[i, j].Text.Trim();
+                    if (VB.Left(str,1)=="~")
+                    {
+                        excelSetValue += str + ";" + i + ";" + j + "{}";
+                    }
+                }
+            }
+
             dto.ESTIMATEDATE = DateUtil.TodayAsYYYY_MM_DD();
 
             PanEstimate.SetData(dto);
-
-            OpenExcel(SSEstimate, estimateExcelPath.CodeName, dto);
+            ExcelDataSet(dto);
 
         }
 
@@ -300,7 +359,7 @@ namespace HC_OSHA
                 HC_OSHA_ESTIMATE dto = PanEstimate.GetData<HC_OSHA_ESTIMATE>();
             
                 dto.OSHA_SITE_ID = SelectedSite.ID;
-                dto.EXCELPATH = estimateExcelPath.CodeName;
+                dto.EXCELPATH = estimateExcelPath.CodeName + "\\견적서.xlsx";
 
                 if (dto.OSHA_SITE_ID == 0)
                 {
@@ -316,7 +375,7 @@ namespace HC_OSHA
                     dto = hcOshaEstimateService.Save(dto);
                     PanEstimate.SetData(dto);
                     MessageUtil.Info("견적을 저장하였습니다");
-                    OpenExcel(SSEstimate, dto.EXCELPATH, dto);
+                    ExcelDataSet(dto); //견적서
 
                     //원청사업장
                     if (TxtParentSiteName.Text.NotEmpty())
@@ -619,113 +678,43 @@ namespace HC_OSHA
 
         private void BtnLoadExcel_Click(object sender, EventArgs e)
         {
-            SSEstimate.ActiveSheet.RowCount = 0;
-            HC_CODE excelPath = codeService.FindActiveCodeByGroupAndCode("EXCEL_PATH", "OSHA_ESTIMATE", "OSHA");
-            string fileName = excelPath.CodeName + "\\견적서.xlsx";
-            SSEstimate.ActiveSheet.OpenExcel(fileName, 0);
-            SSEstimate.ActiveSheet.RowCount = 50;
-            SSEstimate.ActiveSheet.ColumnCount = 10;
-
         }
 
-        //엑셀 셀 서식에서 text로 변경후 텍스트 줄바꿈켜주면 멀티라인 자동으로
-        private void OpenExcel(FpSpread spread, string filePath, HC_OSHA_ESTIMATE dto)
+        private void ExcelDataSet(HC_OSHA_ESTIMATE dto)
         {
-            if (filePath.NotEmpty())
+            long nCnt = 0;
+            string strData = "";
+            string strGubun = "";
+            int nRow = 0;
+            int nCol = 0;
+
+            if (dto.ID <= 0) return;
+            if (excelSetValue == "") return;
+
+            nCnt = VB.L(excelSetValue, "{}");
+            for (int i=1;i<nCnt;i++)
             {
-                spread.ActiveSheet.RowCount = 0;
+                strData = VB.Pstr(excelSetValue, "{}", i);
+                strGubun = VB.Pstr(strData, ";", 1);
+                nRow = Int32.Parse(VB.Pstr(strData, ";", 2));
+                nCol = Int32.Parse(VB.Pstr(strData, ";", 3));
 
-                HC_CODE excelPath = codeService.FindActiveCodeByGroupAndCode("EXCEL_PATH", "OSHA_ESTIMATE", "OSHA");
-                string fileName = excelPath.CodeName + "\\견적서.xlsx";
-                SSEstimate.ActiveSheet.OpenExcel(fileName, 0);
-
-                SSEstimate.ActiveSheet.RowCount = 32;
-                SSEstimate.ActiveSheet.ColumnCount = 7;
-                SSEstimate.ActiveSheet.ColumnHeader.RowCount = 0;
-                SSEstimate.ActiveSheet.RowHeader.ColumnCount = 0;
-
-                if (dto.ID <= 0)
-                {
-                    return;
-                }
-                for (int i = 0; i < SSEstimate.ActiveSheet.RowCount; i++)
-                {
-                    for (int c = 0; c < SSEstimate.ActiveSheet.ColumnCount; c++)
-                    {
-                        if (SSEstimate.ActiveSheet.Cells[i, c].Value != null)
-                        {
-                            if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~PublishDate"))
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = DateUtil.ToKorean(dto.ESTIMATEDATE, DateTimeType.YYYY_MM_DD); 
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~SiteName"))
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = SelectedSite.NAME;
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~StartDate"))
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = DateUtil.ToKorean(dto.STARTDATE, DateTimeType.YYYY_MM_DD) + " 부터";
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~Title"))
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = dto.STARTDATE.Substring(0,4) + "년 보건관리업무 수수료 견적";
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~FEE_NOTICE")) //공표수수료
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = NumberUtil.Comma(dto.OFFICIALFEE) + "원";
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~SITEFEE")) //적용수수료
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = NumberUtil.Comma(dto.SITEFEE) + "원";
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~WorkerCount")) //근로자수
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = NumberUtil.Comma(dto.WORKERTOTALCOUNT) + "명";
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~CalText")) //계산식
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = NumberUtil.Comma(dto.WORKERTOTALCOUNT) + "명" + " * " + NumberUtil.Comma(dto.SITEFEE) + "원";
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~TotalFee")) //
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = NumberUtil.Comma(dto.SITEFEE * dto.WORKERTOTALCOUNT) + "원";
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~Year"))
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = new DateTime().Year + "년";
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~Today"))
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = DateUtil.ToKorean(); 
-                            }
-                           
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~BlueMale"))
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = dto.BLUEMALE;
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~BlueFeMale"))
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = dto.BLUEFEMALE;
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~WhiteMale"))
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = dto.WHITEMALE;
-                            }
-                            else if (SSEstimate.ActiveSheet.Cells[i, c].Value.Equals("~WhiteFeMale"))
-                            {
-                                SSEstimate.ActiveSheet.Cells[i, c].Value = dto.WHITEFEMALE;
-                            }
-                        }
-
-                    }
-
-                }
+                if (strGubun== "~PublishDate") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = DateUtil.ToKorean(dto.ESTIMATEDATE, DateTimeType.YYYY_MM_DD);
+                if (strGubun == "~SiteName") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = SelectedSite.NAME;
+                if (strGubun == "~StartDate") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = DateUtil.ToKorean(dto.STARTDATE, DateTimeType.YYYY_MM_DD) + " 부터";
+                if (strGubun == "~Title") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = dto.STARTDATE.Substring(0, 4) + "년 보건관리업무 수수료 견적";
+                if (strGubun == "~FEE_NOTICE") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = NumberUtil.Comma(dto.OFFICIALFEE) + "원";
+                if (strGubun == "~SITEFEE") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = NumberUtil.Comma(dto.SITEFEE) + "원";
+                if (strGubun == "~WorkerCount") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = NumberUtil.Comma(dto.WORKERTOTALCOUNT) + "명";
+                if (strGubun == "~CalText") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = NumberUtil.Comma(dto.WORKERTOTALCOUNT) + "명" + " * " + NumberUtil.Comma(dto.SITEFEE) + "원";
+                if (strGubun == "~TotalFee") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = NumberUtil.Comma(dto.SITEFEE * dto.WORKERTOTALCOUNT) + "원";
+                if (strGubun == "~Year") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = new DateTime().Year + "년";
+                if (strGubun == "~Today") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = DateUtil.ToKorean();
+                if (strGubun == "~BlueMale") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = dto.BLUEMALE;
+                if (strGubun == "~BlueFeMale") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = dto.BLUEFEMALE;
+                if (strGubun == "~WhiteMale") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = dto.WHITEMALE;
+                if (strGubun == "~WhiteFeMale") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = dto.WHITEFEMALE;
             }
-            else
-            {
-                MessageUtil.Alert("엑셀 파일경로가 없습니다");
-            }
-
         }
 
         private void BtnPrintEstimate_Click(object sender, EventArgs e)
@@ -805,18 +794,8 @@ namespace HC_OSHA
                     }
                 }
 
-                if (dto.EXCELPATH != null)
-                {
-                    OpenExcel(SSEstimate, dto.EXCELPATH, dto);
-                }
-                else
-                {
-                   // HC_CODE estimateExcelPath = codeService.FindActiveCodeByGroupAndCode("EXCEL_PATH", "OSHA_ESTIMATE");
-                    dto.EXCELPATH = estimateExcelPath.CodeName;
-                    OpenExcel(SSEstimate, estimateExcelPath.CodeName, dto);
-
-                }
-
+                //견적서
+                if (dto.ID > 0) ExcelDataSet(dto);
 
                 //계약정보
                 HC_OSHA_CONTRACT contract = hcOshaContractService.FindByEstimateId(dto.ID);

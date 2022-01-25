@@ -47,46 +47,61 @@ namespace HC_OSHA.form.Visit
         {
             string s = "";
             ssDoc.ActiveSheet.RowCount = 0;
-            string fileName = excelPath.CodeName + "\\일정공문양식.xlsx";
+            string fileName = @"C:\PSMHEXE\견적서\일정공문양식.xlsx";
             //FileInfo생성
             FileInfo fi = new FileInfo(fileName);
             //FileInfo.Exists로 파일 존재유무 확인 "
             if (fi.Exists)
             {
                 ssDoc.ActiveSheet.OpenExcel(fileName, 0);
-                Thread.Sleep(2000);
+                Thread.Sleep(200);
             }
             else
             {
                 return false;
             }
 
-            ssDoc.ActiveSheet.RowCount = 36;
-            ssDoc.ActiveSheet.ColumnCount = 38;
+            string str = "";
+            int nMaxRows = 0;
+            int nMaxCols = 0;
 
-            ////// RowCount 찾기
-            //for (int i = ssDoc.ActiveSheet.RowCount - 1; i >= 20; i--)
-            //{
-            //    s = "";
-            //    for (int j = 1; j < ssDoc.ActiveSheet.ColumnCount - 1; j++)
-            //    {
-            //        s += ssDoc.ActiveSheet.Cells[i, j].ToString().Trim();
-            //    }
-            //    ssDoc.ActiveSheet.RowCount = i + 1;
-            //    if (s != "") break;
-            //}
+            //RowCount 설정
+            for (int i = 100; i > 5; i--)
+            {
+                str = "";
+                for (int j = 0; j < 20; j++)
+                {
+                    str += ssDoc.ActiveSheet.Cells[i, j].Text.Trim();
+                }
+                if (str != "")
+                {
+                    nMaxRows = i + 1;
+                    break;
+                }
+            }
 
-            //// ColumnCount 찾기
-            //for (int i = ssDoc.ActiveSheet.ColumnCount - 1; i >= 5; i--)
-            //{
-            //    s = "";
-            //    for (int j = 1; j < ssDoc.ActiveSheet.RowCount - 1; j++)
-            //    {
-            //        s += ssDoc.ActiveSheet.Cells[j, i].ToString().Trim();
-            //    }
-            //    ssDoc.ActiveSheet.ColumnCount = i + 1;
-            //    if (s != "") break;
-            //}
+            //ColumnCount 설정
+            for (int i = 100; i > 5; i--)
+            {
+                str = "";
+                for (int j = 0; j < nMaxRows; j++)
+                {
+                    str += ssDoc.ActiveSheet.Cells[j, i].Text.Trim();
+                }
+                if (str != "")
+                {
+                    nMaxCols = i + 1;
+                    break;
+                }
+            }
+
+            //구하지 못하였으면 오류
+            if (nMaxRows == 0 || nMaxCols == 0) { return false; }
+
+            ssDoc.ActiveSheet.RowCount = nMaxRows;
+            ssDoc.ActiveSheet.ColumnCount = nMaxCols;
+            ssDoc.ActiveSheet.ColumnHeader.RowCount = 0;
+            ssDoc.ActiveSheet.RowHeader.ColumnCount = 0;
 
             //일정공문의 글자위치를 저장
             for (int i = 0; i < ssDoc.ActiveSheet.RowCount; i++)
@@ -103,10 +118,6 @@ namespace HC_OSHA.form.Visit
                         if (ssDoc.ActiveSheet.Cells[i, c].Value.Equals("~{문서번호}")) { nP1[5] = i; nP2[5] = c; }
                     }
                 }
-            }
-            for (int i=0;i<5;i++)
-            {
-                if (nP1[i] == 0 && nP2[i] == 0) return false;
             }
             return true;
         }
