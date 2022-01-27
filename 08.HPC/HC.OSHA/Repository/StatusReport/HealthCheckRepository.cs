@@ -449,17 +449,27 @@ namespace HC.OSHA.Repository.StatusReport
         public List<HealthCheckDto> FindAll(long siteId, long reprotid, string startDate, string endDate, bool isDelete)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT A.*                        ");
-            parameter.AppendSql("   FROM HIC_OSHA_HEALTHCHECK A     ");
-            parameter.AppendSql("  WHERE 1 = 1                      ");
+            parameter.AppendSql("SELECT A.*  ");
+            parameter.AppendSql("  FROM HIC_OSHA_HEALTHCHECK A ");
+            parameter.AppendSql(" WHERE 1 = 1 ");
+            if (siteId>0 && startDate != "" && endDate != "")
+            {
+                parameter.AppendSql(" AND SITE_ID = :siteId ");
+                parameter.AppendSql(" AND CHARTDATE >= :startDate ");
+                parameter.AppendSql(" AND CHARTDATE <= :endDate ");
+            } else {
+                parameter.AppendSql(" AND A.REPORT_ID = :REPORTID ");
+            }
             if(!isDelete)
             {
-                parameter.AppendSql("    AND A.ISDELETED = 'N'          ");
+                parameter.AppendSql(" AND A.ISDELETED = 'N' ");
             }
-            parameter.AppendSql("   AND A.REPORT_ID = :REPORTID    ");
             parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY A.CHARTDATE, A.CHARTTIME ");
 
+            parameter.Add("siteId", siteId);
+            parameter.Add("startDate", startDate);
+            parameter.Add("endDate", endDate);
             parameter.Add("REPORTID", reprotid);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 

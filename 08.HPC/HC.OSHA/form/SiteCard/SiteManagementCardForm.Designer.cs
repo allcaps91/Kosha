@@ -87,7 +87,7 @@
             // oshaSiteEstimateList1
             // 
             this.oshaSiteEstimateList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.oshaSiteEstimateList1.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.oshaSiteEstimateList1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             hC_ESTIMATE_MODEL1.ComboDisplay = null;
             hC_ESTIMATE_MODEL1.CONTRACTDATE = null;
             hC_ESTIMATE_MODEL1.CONTRACTENDDATE = null;
@@ -124,6 +124,7 @@
             this.oshaSiteEstimateList1.Size = new System.Drawing.Size(194, 352);
             this.oshaSiteEstimateList1.TabIndex = 4;
             this.oshaSiteEstimateList1.CellDoubleClick += new HC_OSHA.OshaSiteEstimateList.CellDoubleClickEventHandler(this.oshaSiteEstimateList1_CellDoubleClick);
+            this.oshaSiteEstimateList1.Load += new System.EventHandler(this.oshaSiteEstimateList1_Load);
             // 
             // oshaSiteList1
             // 
@@ -157,6 +158,7 @@
             hC_OSHA_SITE_MODEL1.PARENTSITE_ID = ((long)(0));
             hC_OSHA_SITE_MODEL1.PARENTSITE_NAME = null;
             hC_OSHA_SITE_MODEL1.RowStatus = ComBase.Mvc.RowStatus.None;
+            hC_OSHA_SITE_MODEL1.SITE_ID = ((long)(0));
             hC_OSHA_SITE_MODEL1.TEL = null;
             hC_OSHA_SITE_MODEL1.VISITDAY = ((long)(0));
             hC_OSHA_SITE_MODEL1.VISITWEEK = ((long)(0));

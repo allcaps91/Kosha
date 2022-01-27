@@ -395,7 +395,7 @@ namespace HC_OSHA
                 browser.ExecuteScriptAsync("save()");
 
                 SearchReport();
-              //  Clear();
+                //  Clear();
                 MessageUtil.Info("저장하였습니다");
                 for (int i = 0; i < SSReportList.ActiveSheet.RowCount; i++)
                 {

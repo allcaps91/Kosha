@@ -32,6 +32,20 @@ namespace HC.OSHA.Repository.StatusReport
             return dto;
         }
 
+        public SiteStatusDto FindOneNurse(long id)
+        {
+            MParameter parameter = CreateParameter();
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_REPORT_NURSE ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+            parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
+            SiteStatusDto dto = ExecuteReaderSingle<SiteStatusDto>(parameter);
+
+            return dto;
+        }
+
         public StatusReportDoctorDto FindLast(long siteId)
         {
             MParameter parameter = CreateParameter();

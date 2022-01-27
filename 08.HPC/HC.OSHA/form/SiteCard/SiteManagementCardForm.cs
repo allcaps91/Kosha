@@ -323,6 +323,11 @@ namespace HC_OSHA
         public void Select(IEstimateModel estimateModel)
         {
         }
+
+        private void oshaSiteEstimateList1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

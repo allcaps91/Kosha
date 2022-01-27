@@ -388,7 +388,7 @@ namespace HS_OSHA
             FtpedtX.FtpDownload("115.68.23.223", "dhson", "@thsehdgml#", strLocalPath, strFileNm, strServerPath);
             FtpedtX = null;
 
-            Thread.Sleep(10000);
+            Thread.Sleep(20000);
 
             intDelay = 0;
             timer1.Enabled = true;
@@ -415,7 +415,7 @@ namespace HS_OSHA
                 System.Diagnostics.Process.Start(strFileName);
 
                 //3초 대기
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
 
                 this.Close();
 

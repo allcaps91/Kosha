@@ -99,6 +99,9 @@ namespace HC_OSHA.StatusReport
 
         private void Search()
         {
+            string strStartDate = "";
+            string strEndDate = "";
+
             if (SelectedSite == null)
             {
                 MessageUtil.Alert("사업장 정보가 없습니다");
@@ -108,12 +111,16 @@ namespace HC_OSHA.StatusReport
             if (statusReportNurseDto != null)
             {
                 reprotid = statusReportNurseDto.ID;
+                strStartDate = statusReportNurseDto.VISITDATE;
+                strEndDate = statusReportNurseDto.VISITDATE;
             }
             else if (statusReportDoctorDto != null)
             {
                 reprotid = statusReportDoctorDto.ID;
+                strStartDate = statusReportDoctorDto.VISITDATE;
+                strEndDate = statusReportDoctorDto.VISITDATE;
             }
-            List<HealthCheckDto> list = healthCheckService.healthCheckRepository.FindAll(SelectedSite.ID, reprotid, DtpStartDate.Value.ToString("yyyyMMdd"), DtpEndDate.Value.ToString("yyyyMMdd"), ChkDel.Checked);
+            List<HealthCheckDto> list = healthCheckService.healthCheckRepository.FindAll(SelectedSite.ID, reprotid, strStartDate, strEndDate, ChkDel.Checked);
 
             LblCount.Text = "총 : " + list.Count + " 건";
 

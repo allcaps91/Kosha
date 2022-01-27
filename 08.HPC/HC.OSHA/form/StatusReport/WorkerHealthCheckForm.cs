@@ -1344,7 +1344,6 @@ namespace HC_OSHA.StatusReport
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-        //  Cursor.Current = Cursors.WaitCursor;
             if (base.SelectedSite == null)
             {
                 return;

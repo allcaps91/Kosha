@@ -12,7 +12,9 @@ using HC.OSHA.Dto.StatusReport;
 using HC.OSHA.Model;
 using HC.OSHA.Repository;
 using HC.OSHA.Repository.StatusReport;
+using HC.OSHA.Service;
 using HC.OSHA.Service.StatusReport;
+using HC_OSHA.StatusReport;
 using HC_Core;
 using HC_OSHA.form.StatusReport;
 using HC_OSHA.Model.StatussReport;
@@ -532,7 +534,7 @@ namespace HC_OSHA.StatusReport
             SQL = SQL + ComNum.VBLF + "  AND SWLicense='" + clsType.HosInfo.SwLicense + "' ";
             SQL = SQL + ComNum.VBLF + "ORDER BY ID DESC ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
-            if (dt.Rows.Count > 0) nNurseId = long.Parse(dt.Rows[0]["USERID"].ToString());
+            if (dt.Rows.Count > 0) nNurseId = long.Parse(dt.Rows[0]["ID"].ToString());
             dt.Dispose();
             dt = null;
 
@@ -764,6 +766,38 @@ namespace HC_OSHA.StatusReport
         private void oshaSiteList1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnSaup_Click(object sender, EventArgs e)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            string strVisitDate = DtpVisitDate.GetValue();
+            long nNurseId = 0;
+
+            StatusReportDoctorDto dto = PanStatausReportDoctor.GetData<StatusReportDoctorDto>();
+            if (dto.ID == 0) return;
+
+            //의사,간호사 REPORT_ID를 찾음
+            SQL = "SELECT ID FROM HIC_OSHA_REPORT_NURSE ";
+            SQL = SQL + ComNum.VBLF + "WHERE SITE_ID=" + base.SelectedSite.ID + " ";
+            SQL = SQL + ComNum.VBLF + "  AND VISITDATE='" + strVisitDate + "' ";
+            SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
+            SQL = SQL + ComNum.VBLF + "  AND SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+            SQL = SQL + ComNum.VBLF + "ORDER BY ID DESC ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0) nNurseId = long.Parse(dt.Rows[0]["ID"].ToString());
+            dt.Dispose();
+            dt = null;
+            if (nNurseId == 0) return;
+
+            SiteStatusDto siteStatusDto = statusReportDoctorService.StatusReportDoctorRepository.FindOneNurse(nNurseId);
+
+            if (siteStatusDto != null)
+            {
+                siteStatusControl.SetData(siteStatusDto);
+            }
         }
     }
 }
