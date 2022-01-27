@@ -233,8 +233,6 @@
             this.txtReceiveEmail = new System.Windows.Forms.TextBox();
             this.label56 = new System.Windows.Forms.Label();
             this.txtHalthManager = new System.Windows.Forms.TextBox();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.formTItle1 = new ComBase.Mvc.UserControls.FormTItle();
             this.oshaSiteLastTree = new HC_OSHA.OshaSiteLastTree();
             this.lblSitename = new System.Windows.Forms.Label();
@@ -863,8 +861,6 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ItemSize = new System.Drawing.Size(100, 28);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -2710,26 +2706,6 @@
             this.txtHalthManager.Size = new System.Drawing.Size(98, 25);
             this.txtHalthManager.TabIndex = 57;
             // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 32);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1086, 929);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "원하청 현황";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 32);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1086, 929);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "원청 현황";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
             // formTItle1
             // 
             this.formTItle1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -3108,7 +3084,6 @@
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Button BtnPdf;
         private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.TabPage tabPage4;
         private FarPoint.Win.Spread.FpSpread SSChildPrice;
         private FarPoint.Win.Spread.SheetView SSChildPrice_Sheet1;
         private System.Windows.Forms.Panel panel2;
@@ -3122,7 +3097,6 @@
         private System.Windows.Forms.DateTimePicker DtpDECLAREDAY;
         private System.Windows.Forms.DateTimePicker DtpTERMINATEDATE;
         private System.Windows.Forms.Label lblSitename;
-        private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Panel panTab;
         private System.Windows.Forms.Panel panLeft;
         private System.Windows.Forms.Button BtnDeleteParent;

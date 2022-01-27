@@ -854,6 +854,10 @@ namespace HC_OSHA
 
         private void 사업장계약금액ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void 사업장계약금액ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             SitePriceManageForm form = new SitePriceManageForm();
             form.Show();
         }

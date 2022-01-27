@@ -184,7 +184,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("       WEMDATE = :WEMDATE, ");          
             parameter.AppendSql("       WEMEXPORSURE = :WEMEXPORSURE, ");
             parameter.AppendSql("       WEMEXPORSUREREMARK = :WEMEXPORSUREREMARK, ");
-            parameter.AppendSql("       WEMHARMFULFACTORS = :WEMHARMFULFACTORS. ");
+            parameter.AppendSql("       WEMHARMFULFACTORS = :WEMHARMFULFACTORS, ");
             parameter.AppendSql("       PERFORMCONTENT = :PERFORMCONTENT, ");
             parameter.AppendSql("       SITEMANAGERNAME = :SITEMANAGERNAME, ");
             parameter.AppendSql("       SITEMANAGERGRADE = :SITEMANAGERGRADE, ");

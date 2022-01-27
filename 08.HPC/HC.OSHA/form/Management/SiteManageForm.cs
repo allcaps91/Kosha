@@ -46,8 +46,8 @@ namespace HC_OSHA
         List<HC_USER> nurseList;
         List<HC_USER> engineerList;
         string excelSetValue = "";
-        SitePriceManageForm sitePriceManageForm;
-        SitePriceManageForm sitePriceManageForm2; //원청현황
+        //SitePriceManageForm sitePriceManageForm;
+        //SitePriceManageForm sitePriceManageForm2; //원청현황
         public SiteManageForm()
         {
             InitializeComponent();
@@ -59,8 +59,8 @@ namespace HC_OSHA
             oshaPriceService = new OshaPriceService();
             hcSiteWorkerService = new HcSiteWorkerService();
             hcUsersService = new HcUserService();
-            sitePriceManageForm = new SitePriceManageForm();
-            sitePriceManageForm2 = new SitePriceManageForm(true);
+            //sitePriceManageForm = new SitePriceManageForm();
+            //sitePriceManageForm2 = new SitePriceManageForm(true);
         }
         private void SiteMangerForm_Load(object sender, EventArgs e)
         {
@@ -77,17 +77,17 @@ namespace HC_OSHA
                 BtnNewPrice.Enabled = false;
                 btnNewEstimate.Enabled = false;
             }
-            sitePriceManageForm.Dock = DockStyle.Fill;
-            sitePriceManageForm.FormBorderStyle = FormBorderStyle.None;
-            sitePriceManageForm.TopLevel = false;
-            sitePriceManageForm.Show();
-            tabPage5.Controls.Add(sitePriceManageForm);
+            //sitePriceManageForm.Dock = DockStyle.Fill;
+            //sitePriceManageForm.FormBorderStyle = FormBorderStyle.None;
+            //sitePriceManageForm.TopLevel = false;
+            //sitePriceManageForm.Show();
+            //tabPage5.Controls.Add(sitePriceManageForm);
 
-            sitePriceManageForm2.Dock = DockStyle.Fill;
-            sitePriceManageForm2.FormBorderStyle = FormBorderStyle.None;
-            sitePriceManageForm2.TopLevel = false;
-            sitePriceManageForm2.Show();
-            tabPage4.Controls.Add(sitePriceManageForm2);
+            //sitePriceManageForm2.Dock = DockStyle.Fill;
+            //sitePriceManageForm2.FormBorderStyle = FormBorderStyle.None;
+            //sitePriceManageForm2.TopLevel = false;
+            //sitePriceManageForm2.Show();
+            //tabPage4.Controls.Add(sitePriceManageForm2);
 
             SpreadComboBoxData comboBoxData = codeService.GetSpreadComboBoxData("WORKER_ROLE", "OSHA");
 
