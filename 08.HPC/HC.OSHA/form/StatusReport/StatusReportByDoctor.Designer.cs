@@ -34,6 +34,7 @@
             this.SSReportList = new FarPoint.Win.Spread.FpSpread();
             this.SSReportList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.PanStatausReportDoctor = new System.Windows.Forms.Panel();
+            this.BtnSaup = new System.Windows.Forms.Button();
             this.BtnOpinion = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -195,7 +196,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ContentTitle = new ComBase.Mvc.UserControls.ContentTitle();
             this.btnExit = new System.Windows.Forms.Button();
-            this.BtnSaup = new System.Windows.Forms.Button();
+            this.btnBogen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.TabReport.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -317,6 +318,17 @@
             this.PanStatausReportDoctor.Name = "PanStatausReportDoctor";
             this.PanStatausReportDoctor.Size = new System.Drawing.Size(1325, 904);
             this.PanStatausReportDoctor.TabIndex = 112;
+            // 
+            // BtnSaup
+            // 
+            this.BtnSaup.Location = new System.Drawing.Point(338, 8);
+            this.BtnSaup.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.BtnSaup.Name = "BtnSaup";
+            this.BtnSaup.Size = new System.Drawing.Size(145, 28);
+            this.BtnSaup.TabIndex = 216;
+            this.BtnSaup.Text = "사업장현황 가져오기";
+            this.BtnSaup.UseVisualStyleBackColor = true;
+            this.BtnSaup.Click += new System.EventHandler(this.BtnSaup_Click);
             // 
             // BtnOpinion
             // 
@@ -506,6 +518,7 @@
             // 
             // GrpPerformContent
             // 
+            this.GrpPerformContent.Controls.Add(this.btnBogen);
             this.GrpPerformContent.Controls.Add(this.BtnInfo);
             this.GrpPerformContent.Controls.Add(this.textBox1);
             this.GrpPerformContent.Controls.Add(this.ChkIsEduKind7);
@@ -2222,7 +2235,7 @@
             // ChkIsEduKind1
             // 
             this.ChkIsEduKind1.AutoSize = true;
-            this.ChkIsEduKind1.Location = new System.Drawing.Point(360, 57);
+            this.ChkIsEduKind1.Location = new System.Drawing.Point(393, 57);
             this.ChkIsEduKind1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ChkIsEduKind1.Name = "ChkIsEduKind1";
             this.ChkIsEduKind1.Size = new System.Drawing.Size(113, 21);
@@ -2488,16 +2501,16 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // BtnSaup
+            // btnBogen
             // 
-            this.BtnSaup.Location = new System.Drawing.Point(338, 8);
-            this.BtnSaup.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
-            this.BtnSaup.Name = "BtnSaup";
-            this.BtnSaup.Size = new System.Drawing.Size(145, 28);
-            this.BtnSaup.TabIndex = 216;
-            this.BtnSaup.Text = "사업장현황 가져오기";
-            this.BtnSaup.UseVisualStyleBackColor = true;
-            this.BtnSaup.Click += new System.EventHandler(this.BtnSaup_Click);
+            this.btnBogen.Location = new System.Drawing.Point(359, 52);
+            this.btnBogen.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnBogen.Name = "btnBogen";
+            this.btnBogen.Size = new System.Drawing.Size(26, 29);
+            this.btnBogen.TabIndex = 340;
+            this.btnBogen.Text = "?";
+            this.btnBogen.UseVisualStyleBackColor = true;
+            this.btnBogen.Click += new System.EventHandler(this.btnBogen_Click);
             // 
             // StatusReportByDoctor
             // 
@@ -2729,5 +2742,6 @@
         private System.Windows.Forms.CheckBox ChkIsEduKind7;
         private System.Windows.Forms.Button BtnInfo;
         private System.Windows.Forms.Button BtnSaup;
+        private System.Windows.Forms.Button btnBogen;
     }
 }

@@ -113,7 +113,6 @@ namespace HC_OSHA
         private void SSSWorkerList_DeleteButtonClick(object sender, FarPoint.Win.Spread.EditorNotifyEventArgs e)
         {
             SSWorkerList.DeleteRow(e.Row);
-            //SSWorkerList.GetRowData(e.Row) as HC_OSHA_CONTRACT
         }
         /// <summary>
         /// 견적 입력폼 
@@ -306,7 +305,6 @@ namespace HC_OSHA
             }
         }
 
-
         private void SetSiteInfo(HC_OSHA_SITE_MODEL model)
         {
             TxtOshaSiteId.Text = model.ID.ToString();
@@ -426,7 +424,6 @@ namespace HC_OSHA
                     // 사업장현황에 견적내용을 표시
                     if (NumContractWORKERTOTALCOUNT.Value == 0)
                     {
-                        //DtpCONTRACTSTARTDATE.Value = DtpSTARTDATE.Value;
                         NumCOMMISSION.Value = NumSITEFEE.Value;
                         NumWORKERWHITEMALECOUNT.Value = long.Parse(TxtWhiteMale.Text.Trim());
                         NumWORKERWHITEFEMALECOUNT.Value = long.Parse(TxtWhiteFeMale.Text.Trim());
@@ -441,6 +438,7 @@ namespace HC_OSHA
 
         private void BtnSaveContract_Click(object sender, EventArgs e)
         {
+
             if (SelectedSite == null)
             {
                 MessageUtil.Alert("사업장을 선택하세요");
@@ -473,40 +471,32 @@ namespace HC_OSHA
                 if (SelectedEstimate == null)
                 {
                      MessageUtil.Alert("견적 정보가 없습니다 견적을 먼저 저장하세요");
-                    return;
-                  //   BtnEstimateSave_Click(null, new EventArgs());
+                     return;
                 }
 
-                //if (RdoIsContract_N.Checked)
-                //{
-                //    if(DtpTERMINATEDATE.Checked == false)
-                //    {
-                //        MessageUtil.Alert("계약 해지일을 설정하세요");
-                //    }
-                //}
-                    if (PanContract.Validate<HC_OSHA_CONTRACT>())
+                ManageDoctorCount_AutoSet(); //방문주기 자동설정
+
+                if (PanContract.Validate<HC_OSHA_CONTRACT>())
+                {
+                    HC_OSHA_CONTRACT contract = PanContract.GetData<HC_OSHA_CONTRACT>();
+                    HC_OSHA_ESTIMATE estimate = PanEstimate.GetData<HC_OSHA_ESTIMATE> () ;
+                    contract.ESTIMATE_ID = estimate.ID;
+                    contract.OSHA_SITE_ID = SelectedSite.ID;
+
+                    hcOshaContractService.Save(contract);
+
+                    OshaSiteEstimateList.Searh(oshaSiteLastTree.GetSite.ID, false);
+
+                    IList<HC_OSHA_CONTRACT_MANAGER_MODEL> list = SSWorkerList.GetEditbleData<HC_OSHA_CONTRACT_MANAGER_MODEL>();
+                    if (list != null)
                     {
-                        HC_OSHA_CONTRACT contract = PanContract.GetData<HC_OSHA_CONTRACT>();
-                    //contract.ESTIMATE_ID = SelectedEstimate.ID;
-                        HC_OSHA_ESTIMATE estimate = PanEstimate.GetData<HC_OSHA_ESTIMATE> () ;
-                        contract.ESTIMATE_ID = estimate.ID;
-                        contract.OSHA_SITE_ID = SelectedSite.ID;
+                        hcOshaContractManagerService.Save(list);
 
-                        hcOshaContractService.Save(contract);
+                        GetContractManager();
 
-                        OshaSiteEstimateList.Searh(oshaSiteLastTree.GetSite.ID, false);
-
-                        IList<HC_OSHA_CONTRACT_MANAGER_MODEL> list = SSWorkerList.GetEditbleData<HC_OSHA_CONTRACT_MANAGER_MODEL>();
-                        if (list != null)
-                        {
-                            hcOshaContractManagerService.Save(list);
-
-                            GetContractManager();
-
-                        }
-                          MessageUtil.Info("저장하였습니다.");
-                        //     OshaSiteEstimateList.Searh(oshaSiteLastTree.GetSite.ID);
                     }
+                    MessageUtil.Info("저장하였습니다.");
+                }
             }
 
         }
@@ -1351,6 +1341,24 @@ namespace HC_OSHA
             NumMANAGEWORKERCOUNT.Value = NumWORKERTOTALCOUNT.Value;
         }
 
+        private void NumMANAGEWORKERCOUNT_ValueChanged(object sender, EventArgs e)
+        {
+            ManageDoctorCount_AutoSet();
+        }
+
+        private void ManageDoctorCount_AutoSet()
+        {
+            if (NumMANAGEWORKERCOUNT.Value >= 100)
+            {
+                NumMANAGEDOCTORCOUNT.SetValue(3);
+                NumMANAGEENGINEERCOUNT.SetValue(2);
+            }
+            else
+            {
+                NumMANAGEDOCTORCOUNT.SetValue(6);
+                NumMANAGEENGINEERCOUNT.SetValue(3);
+            }
+        }
         //private void NumUNITTOTALPRICE_KeyUp(object sender, KeyEventArgs e)
         //{
         //    double unitPrice = oshaPriceService.GetUnitPrice(NumPriceWORKERTOTALCOUNT.GetValue(), NumUNITTOTALPRICE.GetValue());

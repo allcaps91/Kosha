@@ -813,5 +813,10 @@ namespace HC_OSHA
         {
 
         }
+
+        private void siteStatusControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

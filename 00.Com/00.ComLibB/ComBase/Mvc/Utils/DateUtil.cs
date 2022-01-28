@@ -16,7 +16,7 @@ namespace ComBase.Mvc.Utils
     {
 
         /// <summary>
-        /// 문자열을 DateTim으로 변환
+        /// 문자열을 DateTime으로 변환
         /// </summary>
         /// <param name="dateTime"></param>
         /// <param name="DateTimeType"></param>

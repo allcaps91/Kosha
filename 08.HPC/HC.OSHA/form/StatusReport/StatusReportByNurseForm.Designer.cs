@@ -1458,6 +1458,7 @@
             this.siteStatusControl.Size = new System.Drawing.Size(1280, 211);
             this.siteStatusControl.TabIndex = 0;
             this.siteStatusControl.VisitDate = null;
+            this.siteStatusControl.Load += new System.EventHandler(this.siteStatusControl_Load);
             // 
             // DtpVisitDate
             // 

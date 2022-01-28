@@ -21,6 +21,7 @@ using HC_Core.Macroword;
 using HC_OSHA.StatusReport;
 using Newtonsoft.Json;
 using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -801,6 +802,33 @@ namespace HC_OSHA
             }
         
 
+        }
+
+        private void btnBogen_Click(object sender, EventArgs e)
+        {
+            string SQL = string.Empty;
+            string SqlErr = "";
+            string strDate = "";
+            DataTable dt = new DataTable();
+
+            DtpOSHADATE.SetValue(null);
+            if (base.SelectedSite.ID == 0) return;
+
+            string strYear = DateUtil.DateTimeToStrig(DtpVisitDate.Value, DateTimeType.YYYY);
+
+            SQL = "SELECT * FROM HIC_OSHA_CARD7_1 ";
+            SQL += ComNum.VBLF + "WHERE SITE_ID = " + base.SelectedSite.ID + " ";
+            SQL += ComNum.VBLF + "  AND SWLICENSE = '" + clsType.HosInfo.SwLicense + "' ";
+            SQL += ComNum.VBLF + "  AND YEAR = '" + strYear + "' ";
+            SQL += ComNum.VBLF + "ORDER BY MEETDATE DESC ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0)
+            {
+                DtpOSHADATE.Value = DateUtil.stringToDateTime(dt.Rows[0]["MEETDATE"].ToString(), DateTimeType.YYYY_MM_DD);
+                TxtOSHACONTENT.Text = dt.Rows[0]["CONTENT"].ToString().Trim();
+            }
+            dt.Dispose();
+            dt = null;
         }
     }
 }

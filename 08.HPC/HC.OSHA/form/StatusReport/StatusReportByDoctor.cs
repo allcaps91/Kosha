@@ -177,6 +177,7 @@ namespace HC_OSHA.StatusReport
             PanStatausReportDoctor.SetData(new StatusReportDoctorDto());
             siteStatusControl.Initialize(this, DtpVisitDate.GetValue());
             GrpPerformContent.Initialize();
+            dateTimePicker1.SetValue(null);
             //TxtOPINION.Text = "";
 
             TxtDoctorNAME.Text = clsType.User.UserName;// CommonService.Instance.Session.UserName;
@@ -768,6 +769,7 @@ namespace HC_OSHA.StatusReport
 
         }
 
+        //간호사가 입력한 사업장현황을 가져오기
         private void BtnSaup_Click(object sender, EventArgs e)
         {
             string SQL = "";
@@ -792,6 +794,7 @@ namespace HC_OSHA.StatusReport
             dt = null;
             if (nNurseId == 0) return;
 
+            //간호사가 입력한 사업장현황을 읽어 표시함
             SiteStatusDto siteStatusDto = statusReportDoctorService.StatusReportDoctorRepository.FindOneNurse(nNurseId);
 
             if (siteStatusDto != null)
@@ -799,5 +802,31 @@ namespace HC_OSHA.StatusReport
                 siteStatusControl.SetData(siteStatusDto);
             }
         }
+
+        private void btnBogen_Click(object sender, EventArgs e)
+        {
+            string SQL = string.Empty;
+            string SqlErr = "";
+            DataTable dt = new DataTable();
+
+            dateTimePicker1.SetValue(null);
+            if (base.SelectedSite.ID == 0) return;
+
+            string strYear = DateUtil.DateTimeToStrig(DtpVisitDate.Value, DateTimeType.YYYY);
+
+            SQL = "SELECT * FROM HIC_OSHA_CARD7_1 ";
+            SQL += ComNum.VBLF + "WHERE SITE_ID = " + base.SelectedSite.ID + " ";
+            SQL += ComNum.VBLF + "  AND SWLICENSE = '" + clsType.HosInfo.SwLicense + "' ";
+            SQL += ComNum.VBLF + "  AND YEAR = '" + strYear + "' ";
+            SQL += ComNum.VBLF + "ORDER BY MEETDATE DESC ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0)
+            {
+                dateTimePicker1.Value = DateUtil.stringToDateTime(dt.Rows[0]["MEETDATE"].ToString(), DateTimeType.YYYY_MM_DD);
+            }
+            dt.Dispose();
+            dt = null;
+        }
     }
 }
+

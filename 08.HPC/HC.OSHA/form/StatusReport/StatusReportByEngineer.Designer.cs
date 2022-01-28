@@ -531,6 +531,7 @@
             this.TxtMemo = new System.Windows.Forms.TextBox();
             this.panStatusReportEngineerDto = new System.Windows.Forms.Panel();
             this.GrpPerformContent = new System.Windows.Forms.GroupBox();
+            this.btnBogen = new System.Windows.Forms.Button();
             this.TxtWEMDateRemark = new System.Windows.Forms.TextBox();
             this.DtpWEMDate2 = new System.Windows.Forms.DateTimePicker();
             this.panEduTypeJson = new System.Windows.Forms.Panel();
@@ -6293,6 +6294,7 @@
             // 
             // GrpPerformContent
             // 
+            this.GrpPerformContent.Controls.Add(this.btnBogen);
             this.GrpPerformContent.Controls.Add(this.TxtWEMDateRemark);
             this.GrpPerformContent.Controls.Add(this.DtpWEMDate2);
             this.GrpPerformContent.Controls.Add(this.panEduTypeJson);
@@ -6330,6 +6332,17 @@
             this.GrpPerformContent.TabIndex = 116;
             this.GrpPerformContent.TabStop = false;
             this.GrpPerformContent.Text = "2. 업무수행내용";
+            // 
+            // btnBogen
+            // 
+            this.btnBogen.Location = new System.Drawing.Point(1143, 133);
+            this.btnBogen.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnBogen.Name = "btnBogen";
+            this.btnBogen.Size = new System.Drawing.Size(75, 29);
+            this.btnBogen.TabIndex = 263;
+            this.btnBogen.Text = "가져오기";
+            this.btnBogen.UseVisualStyleBackColor = true;
+            this.btnBogen.Click += new System.EventHandler(this.btnBogen_Click);
             // 
             // TxtWEMDateRemark
             // 
@@ -6585,7 +6598,7 @@
             // 
             this.TxtOSHACONTENT.Location = new System.Drawing.Point(561, 134);
             this.TxtOSHACONTENT.Name = "TxtOSHACONTENT";
-            this.TxtOSHACONTENT.Size = new System.Drawing.Size(655, 25);
+            this.TxtOSHACONTENT.Size = new System.Drawing.Size(576, 25);
             this.TxtOSHACONTENT.TabIndex = 228;
             // 
             // label17
@@ -6606,7 +6619,7 @@
             // 
             this.DtpOSHADATE.Checked = false;
             this.DtpOSHADATE.CustomFormat = "yyyy-MM-dd";
-            this.DtpOSHADATE.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DtpOSHADATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DtpOSHADATE.Location = new System.Drawing.Point(308, 134);
             this.DtpOSHADATE.Name = "DtpOSHADATE";
             this.DtpOSHADATE.ShowCheckBox = true;
@@ -9118,5 +9131,6 @@
         private System.Windows.Forms.Button BtnManageOshaCard19;
         private System.Windows.Forms.TextBox TxtWEMDateRemark;
         private System.Windows.Forms.DateTimePicker DtpWEMDate2;
+        private System.Windows.Forms.Button btnBogen;
     }
 }

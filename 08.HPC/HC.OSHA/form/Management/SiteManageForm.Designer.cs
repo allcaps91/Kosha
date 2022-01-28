@@ -1299,6 +1299,7 @@
             this.NumMANAGEWORKERCOUNT.Name = "NumMANAGEWORKERCOUNT";
             this.NumMANAGEWORKERCOUNT.Size = new System.Drawing.Size(121, 25);
             this.NumMANAGEWORKERCOUNT.TabIndex = 72;
+            this.NumMANAGEWORKERCOUNT.ValueChanged += new System.EventHandler(this.NumMANAGEWORKERCOUNT_ValueChanged);
             // 
             // label41
             // 
