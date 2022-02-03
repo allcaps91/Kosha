@@ -111,14 +111,14 @@ namespace HC_OSHA.StatusReport
             if (statusReportNurseDto != null)
             {
                 reprotid = statusReportNurseDto.ID;
-                strStartDate = statusReportNurseDto.VISITDATE;
-                strEndDate = statusReportNurseDto.VISITDATE;
+                strStartDate = VB.Left(statusReportNurseDto.VISITDATE,6) + "01";
+                strEndDate = VB.Left(statusReportNurseDto.VISITDATE,6) + "31";
             }
             else if (statusReportDoctorDto != null)
             {
                 reprotid = statusReportDoctorDto.ID;
-                strStartDate = statusReportDoctorDto.VISITDATE;
-                strEndDate = statusReportDoctorDto.VISITDATE;
+                strStartDate = VB.Left(statusReportDoctorDto.VISITDATE,6) + "01";
+                strEndDate = VB.Left(statusReportDoctorDto.VISITDATE,6) + "31";
             }
             List<HealthCheckDto> list = healthCheckService.healthCheckRepository.FindAll(SelectedSite.ID, reprotid, strStartDate, strEndDate, ChkDel.Checked);
 

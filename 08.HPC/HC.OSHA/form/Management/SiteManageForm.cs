@@ -357,7 +357,7 @@ namespace HC_OSHA
                 HC_OSHA_ESTIMATE dto = PanEstimate.GetData<HC_OSHA_ESTIMATE>();
             
                 dto.OSHA_SITE_ID = SelectedSite.ID;
-                dto.EXCELPATH = estimateExcelPath.CodeName + "\\견적서.xlsx";
+                dto.EXCELPATH = @"C:\PSMHEXE\견적서\견적서.xlsx";
 
                 if (dto.OSHA_SITE_ID == 0)
                 {
@@ -1351,11 +1351,13 @@ namespace HC_OSHA
             if (NumMANAGEWORKERCOUNT.Value >= 100)
             {
                 NumMANAGEDOCTORCOUNT.SetValue(3);
+                NumMANAGENURSECOUNT.SetValue(1);
                 NumMANAGEENGINEERCOUNT.SetValue(2);
             }
             else
             {
                 NumMANAGEDOCTORCOUNT.SetValue(6);
+                NumMANAGENURSECOUNT.SetValue(1);
                 NumMANAGEENGINEERCOUNT.SetValue(3);
             }
         }
