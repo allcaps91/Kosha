@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HC_Measurement", "..\08.HPC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HC_OSHA", "..\08.HPC\HC.OSHA\HC_OSHA.csproj", "{4B15B3C6-A091-46DE-9049-7365EEA34FE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HC_Admin", "..\08.HPC\Hc_Admin\HcAdmin\HC_Admin.csproj", "{491D5DCC-81EB-457C-A383-163F3BBBBDFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HS_SETUP", "..\08.HPC\HS_SETUP\HS_SETUP.csproj", "{FDE3BC6E-5DFD-4E67-9C86-A0ED123ADDD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{4B15B3C6-A091-46DE-9049-7365EEA34FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B15B3C6-A091-46DE-9049-7365EEA34FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B15B3C6-A091-46DE-9049-7365EEA34FE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{491D5DCC-81EB-457C-A383-163F3BBBBDFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{491D5DCC-81EB-457C-A383-163F3BBBBDFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{491D5DCC-81EB-457C-A383-163F3BBBBDFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491D5DCC-81EB-457C-A383-163F3BBBBDFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDE3BC6E-5DFD-4E67-9C86-A0ED123ADDD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE3BC6E-5DFD-4E67-9C86-A0ED123ADDD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE3BC6E-5DFD-4E67-9C86-A0ED123ADDD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE3BC6E-5DFD-4E67-9C86-A0ED123ADDD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
