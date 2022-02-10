@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HS_SETUP", "..\08.HPC\HS_SE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComPmpaLibB", "..\00.Com\01.ComPmpaLibB\ComPmpaLibB\ComPmpaLibB.csproj", "{12E278B5-6009-411D-98EC-6A3484945336}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HealthSoft Setup", "..\02.Setup\HealthSoft Setup\HealthSoft Setup.vdproj", "{74DAA831-6A1A-44F3-8B88-0F379D2D0E69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,8 @@ Global
 		{12E278B5-6009-411D-98EC-6A3484945336}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12E278B5-6009-411D-98EC-6A3484945336}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12E278B5-6009-411D-98EC-6A3484945336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74DAA831-6A1A-44F3-8B88-0F379D2D0E69}.Debug|Any CPU.ActiveCfg = Debug
+		{74DAA831-6A1A-44F3-8B88-0F379D2D0E69}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
