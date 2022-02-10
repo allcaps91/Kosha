@@ -26,7 +26,7 @@ namespace HcAdmin
         private void button1_Click(object sender, EventArgs e)
         {
             SSExcel.ActiveSheet.RowCount = 0;
-            string fileName = @"C:\HealthSoft\exenet\견적서.xlsx";
+            string fileName = @"C:\헬스소프트\견적서.xlsx";
             SSExcel.ActiveSheet.OpenExcel(fileName, 0);
 
         }
