@@ -28,7 +28,7 @@ namespace ComBase
            Log.Info("==========={}  GLobal UnhandledException 이벤트 및 로그설정 =========== " , AppDomain.CurrentDomain.FriendlyName);
            try
            {         
-               String folderName = "C:\\PSMHEXE\\LOG";
+               String folderName = "C:\\HealthSoft\\LOG";
                DirectoryInfo di = new DirectoryInfo(folderName);
                DateTime today = DateTime.Now;
                foreach (FileInfo file in di.GetFiles())
@@ -63,7 +63,7 @@ namespace ComBase
                     g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
                 }
 
-                string fullpath = "C:\\PSMHEXE\\LOG\\screenshot_" + DateTime.Now.ToString("yyyy-MM-dd.HHmmss") +".jpg";
+                string fullpath = "C:\\HealthSoft\\LOG\\screenshot_" + DateTime.Now.ToString("yyyy-MM-dd.HHmmss") +".jpg";
 
                 bitmap.Save(fullpath, ImageFormat.Jpeg);
             }

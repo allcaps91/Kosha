@@ -9,7 +9,7 @@ namespace ComEmrBase
     public class clsScanPublic
     {
 
-        public static string gClintPath = @"C:\PSMHEXE";
+        public static string gClintPath = @"C:\HealthSoft";
         public static int gPosition = 0;
         public static string gstrOCRNO= string.Empty;
 
@@ -28,11 +28,11 @@ namespace ComEmrBase
         public static string gstrScanFold= string.Empty;
         public static string gServerPathbackup = @"backupdata\";
 
-        public static string gClientMoveLLPath = @"C:\PSMHEXE\ScanData\MoveLL\";
-        public static string gClientMoveRRPath = @"C:\PSMHEXE\ScanData\MoveRR\";
-        public static string gClientOcrPath = @"\C:\PSMHEXE\ScanData\Ocr\";
-        public static string gClientScanJobPath = @"C:\PSMHEXE\ScanData\ScanJob\";
-        public static string gClientScanPath = @"C:\PSMHEXE\ScanData\Scan\";
+        public static string gClientMoveLLPath = @"C:\HealthSoft\ScanData\MoveLL\";
+        public static string gClientMoveRRPath = @"C:\HealthSoft\ScanData\MoveRR\";
+        public static string gClientOcrPath = @"\C:\HealthSoft\ScanData\Ocr\";
+        public static string gClientScanJobPath = @"C:\HealthSoft\ScanData\ScanJob\";
+        public static string gClientScanPath = @"C:\HealthSoft\ScanData\Scan\";
 
         //public static string gClientMoveLLPath = @"\ScanData\MoveLL\";
         //public static string gClientMoveRRPath = @"\ScanData\MoveRR\";
@@ -117,10 +117,10 @@ namespace ComEmrBase
 
         public static void getOcrRect()
         {
-            gOCR.X = (int)(VB.Val(ComFunc.ReadINI(@"C:\PSMHEXE\ocr.ini", "RECT", "X")));
-            gOCR.Y = (int)(VB.Val(ComFunc.ReadINI(@"C:\PSMHEXE\ocr.ini", "RECT", "Y")));
-            gOCR.Width = (int)(VB.Val(ComFunc.ReadINI(@"C:\PSMHEXE\ocr.ini", "RECT", "Width")));
-            gOCR.Height = (int)(VB.Val(ComFunc.ReadINI(@"C:\PSMHEXE\ocr.ini", "RECT", "Height")));
+            gOCR.X = (int)(VB.Val(ComFunc.ReadINI(@"C:\HealthSoft\ocr.ini", "RECT", "X")));
+            gOCR.Y = (int)(VB.Val(ComFunc.ReadINI(@"C:\HealthSoft\ocr.ini", "RECT", "Y")));
+            gOCR.Width = (int)(VB.Val(ComFunc.ReadINI(@"C:\HealthSoft\ocr.ini", "RECT", "Width")));
+            gOCR.Height = (int)(VB.Val(ComFunc.ReadINI(@"C:\HealthSoft\ocr.ini", "RECT", "Height")));
         }
 
         //서버정보 가져오기

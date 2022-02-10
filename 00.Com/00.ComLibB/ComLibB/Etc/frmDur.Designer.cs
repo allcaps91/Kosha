@@ -32,12 +32,12 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pgbar = new System.Windows.Forms.ProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblButtom = new System.Windows.Forms.Label();
             this.btnConnect = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pgbar = new System.Windows.Forms.ProgressBar();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -64,6 +64,13 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(286, 124);
             this.panel2.TabIndex = 5;
+            // 
+            // pgbar
+            // 
+            this.pgbar.Location = new System.Drawing.Point(0, 87);
+            this.pgbar.Name = "pgbar";
+            this.pgbar.Size = new System.Drawing.Size(286, 13);
+            this.pgbar.TabIndex = 8;
             // 
             // panel1
             // 
@@ -94,6 +101,7 @@
             this.btnConnect.TabIndex = 6;
             this.btnConnect.Text = "동기화";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // groupBox1
             // 
@@ -118,13 +126,6 @@
             this.label1.Size = new System.Drawing.Size(146, 25);
             this.label1.TabIndex = 5;
             this.label1.Text = "매일 오후 12:30";
-            // 
-            // pgbar
-            // 
-            this.pgbar.Location = new System.Drawing.Point(0, 87);
-            this.pgbar.Name = "pgbar";
-            this.pgbar.Size = new System.Drawing.Size(286, 13);
-            this.pgbar.TabIndex = 8;
             // 
             // frmDur
             // 

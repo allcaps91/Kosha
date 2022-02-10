@@ -75,7 +75,7 @@ namespace HS_OSHA
 
             //C:\Windows\System32\acledit392io87.dll
             //파일형식: 라이선스번호{}회사명{}종료일자{}관리자비번{}
-            string strLicFile = @"C:\Windows\System32\acledit392io87.dll";
+            string strLicFile = @"C:\HealthSoft\acledit392io87.dll";
             if (System.IO.File.Exists(strLicFile) == true)
             {
                 strPcData = System.IO.File.ReadAllText(strLicFile);
@@ -90,8 +90,8 @@ namespace HS_OSHA
                 clsType.HosInfo.SwLicInfo = strNewData;
 
                 // 버전정보를 읽음
-                if (System.IO.File.Exists(@"C:\PSMHEXE\Debug\VerInfo.txt") == true)
-                    FstrOldVer = System.IO.File.ReadAllText(@"C:\PSMHEXE\Debug\VerInfo.txt");
+                if (System.IO.File.Exists(@"C:\HealthSoft\VerInfo.txt") == true)
+                    FstrOldVer = System.IO.File.ReadAllText(@"C:\HealthSoft\VerInfo.txt");
 
                 return true;
             }
@@ -146,7 +146,7 @@ namespace HS_OSHA
                     {
                         clsType.HosInfo.SwLicInfo = strNewData;
                         strPcData = clsAES.AES(strNewData);
-                        System.IO.File.WriteAllText(@"C:\Windows\System32\acledit392io87.dll", strPcData);
+                        System.IO.File.WriteAllText(@"C:\HealthSoft\acledit392io87.dll", strPcData);
                     }
                 }
 
@@ -224,7 +224,7 @@ namespace HS_OSHA
         {
             string strData = "";
             string strNewData = "";
-            String strFile = @"C:\ProgramData\HSLastLogin.dat";
+            String strFile = @"C:\HealthSoft\HSLastLogin.dat";
 
             //파일형식: 사원번호{}
             if (System.IO.File.Exists(strFile) == true)
@@ -247,7 +247,7 @@ namespace HS_OSHA
             strNewData = txtIdNumber.Text.Trim() + "{}";
 
             strData = clsAES.AES(strNewData);
-            System.IO.File.WriteAllText(@"C:\ProgramData\HSLastLogin.dat", strData);
+            System.IO.File.WriteAllText(@"C:\HealthSoft\HSLastLogin.dat", strData);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -414,7 +414,7 @@ namespace HS_OSHA
                 string strFileName = @"c:\temp\HsMainUpdate.exe";
                 System.Diagnostics.Process.Start(strFileName);
 
-                //3초 대기
+                //2초 대기
                 Thread.Sleep(2000);
 
                 this.Close();

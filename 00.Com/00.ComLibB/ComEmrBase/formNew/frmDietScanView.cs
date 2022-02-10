@@ -193,7 +193,7 @@ namespace ComEmrBase
                 frmScanImageView = null;
             }
 
-            string mstrViewPath = @"C:\PSMHEXE\ScanTmp\Formname" + "\\" + ComQuery.CurrentDateTime(clsDB.DbCon, "D");
+            string mstrViewPath = @"C:\HealthSoft\ScanTmp\Formname" + "\\" + ComQuery.CurrentDateTime(clsDB.DbCon, "D");
             if (Directory.Exists(mstrViewPath))
             {
                 clsImgcvt.DelAllFile(mstrViewPath);

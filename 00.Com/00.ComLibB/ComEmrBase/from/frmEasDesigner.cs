@@ -283,13 +283,13 @@ namespace ComEmrBase
             // clsEmrChart.SetEmrPatInfoEas(clsDB.DbCon, strEmrNo);
 
             Log.Debug("동의서 인쇄 시작 formNo:{}, updateNo:{}", formNo, updateNo);
-            String folderName = "C:\\PSMHEXE\\pdfprint";
+            String folderName = "C:\\HealthSoft\\pdfprint";
             DirectoryInfo di = new DirectoryInfo(folderName);
             if (!di.Exists)
             {
                 di.Create();
             }
-            string pdfFileName = @"C:\PSMHEXE\pdfprint\" + formNo + "_" + "version_" + "_" + VB.Format(DateTime.Now, "yyyyMMHHhhmmss.fff") + ".pdf";
+            string pdfFileName = @"C:\HealthSoft\pdfprint\" + formNo + "_" + "version_" + "_" + VB.Format(DateTime.Now, "yyyyMMHHhhmmss.fff") + ".pdf";
             //CefSharp.PdfPrintSettings printSettings = null;
 
             //printSettings = GetPrintSettingByPatientEmpty();
@@ -421,7 +421,7 @@ namespace ComEmrBase
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             Preview(this.formNo, this.updateNo);
-            //string pdfFileName = @"C:\PSMHEXE\pdfprint\" + formNo +"_"+ VB.Format(DateTime.Now, "yyyyMMHHhhmmss.fff") + ".pdf";
+            //string pdfFileName = @"C:\HealthSoft\pdfprint\" + formNo +"_"+ VB.Format(DateTime.Now, "yyyyMMHHhhmmss.fff") + ".pdf";
             //Print(formNo, updateNo , 0);
 
         }

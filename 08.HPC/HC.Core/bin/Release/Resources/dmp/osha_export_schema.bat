@@ -1,0 +1,1 @@
+exp ADMIN/hospital@ora7 tables=HIC_USERS file='Resources\dmp\hic_schema.dmp'

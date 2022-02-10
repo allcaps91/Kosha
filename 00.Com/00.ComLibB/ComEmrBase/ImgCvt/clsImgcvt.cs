@@ -38,7 +38,7 @@ namespace ComEmrBase
         /// </summary>
         public static Graphics mGraphics = null;
 
-        public const string strPath = @"C:\PSMHEXE\IMGCVT\";
+        public const string strPath = @"C:\HealthSoft\IMGCVT\";
 
         /// <summary>
         /// 서식지 코드
@@ -65,7 +65,7 @@ namespace ComEmrBase
 
             try
             {
-                DelAllFile(@"C:\PSMHEXE\IMGCVT");
+                DelAllFile(@"C:\HealthSoft\IMGCVT");
                 CreateSaveFolder();
 
                 Cursor.Current = Cursors.WaitCursor;
@@ -90,8 +90,8 @@ namespace ComEmrBase
                     }
                     #endregion
 
-                    DelAllFile(@"C:\PSMHEXE\IMGCVT");
-                    DelAllFile(@"C:\PSMHEXE\IMGCVT\PostScan");
+                    DelAllFile(@"C:\HealthSoft\IMGCVT");
+                    DelAllFile(@"C:\HealthSoft\IMGCVT\PostScan");
 
                     switch (i + 1)
                     {
@@ -377,7 +377,7 @@ namespace ComEmrBase
                             #endregion
                     }
 
-                    string[] dirs = Directory.GetFiles(@"C:\PSMHEXE\IMGCVT\", "*.tif");
+                    string[] dirs = Directory.GetFiles(@"C:\HealthSoft\IMGCVT\", "*.tif");
                     if (dirs.Length > 0 && strTREATNO.Equals("0") == false)
                     {
                         if (string.IsNullOrWhiteSpace(strOutDate))
@@ -621,7 +621,7 @@ namespace ComEmrBase
         /// </summary>
         public static void CreateSaveFolder()
         {
-            string strPath = @"C:\PSMHEXE\IMGCVT\";
+            string strPath = @"C:\HealthSoft\IMGCVT\";
             //if (Directory.Exists(strPath))
             //{
             //    clsScan.DeleteFoldAll(strPath);
@@ -634,9 +634,9 @@ namespace ComEmrBase
                     Directory.CreateDirectory(strPath);
                 }
 
-                if (Directory.Exists(@"C:\PSMHEXE\IMGCVT\PostScan") == false)
+                if (Directory.Exists(@"C:\HealthSoft\IMGCVT\PostScan") == false)
                 {
-                    Directory.CreateDirectory(@"C:\PSMHEXE\IMGCVT\PostScan");
+                    Directory.CreateDirectory(@"C:\HealthSoft\IMGCVT\PostScan");
                 }
             }
 
@@ -2245,7 +2245,7 @@ namespace ComEmrBase
 
                 //ftpedt.SetServerDirectory("/");
 
-                string strPathL = @"C:\PSMHEXE\IMGCVT\PostScan\";
+                string strPathL = @"C:\HealthSoft\IMGCVT\PostScan\";
                 while (reader.Read())
                 {
                     int PageCnt = (int)VB.Val(reader.GetValue(4).ToString().Trim());
@@ -2272,11 +2272,11 @@ namespace ComEmrBase
                         {
                             if (File.Exists(strLocal))
                             {
-                                strPathR = @"C:\PSMHEXE\IMGCVT\PostScan\" + strFile;
+                                strPathR = @"C:\HealthSoft\IMGCVT\PostScan\" + strFile;
                                 mBitmap = new Bitmap(strPathR);
                             }
 
-                            TifSave(@"C:\PSMHEXE\IMGCVT\" + strPtno + "_" + strSdate + "_" + strClinCode + "_" + gstrFormcode + "_" + PageNum.ToString("0000") + ".tif");
+                            TifSave(@"C:\HealthSoft\IMGCVT\" + strPtno + "_" + strSdate + "_" + strClinCode + "_" + gstrFormcode + "_" + PageNum.ToString("0000") + ".tif");
                             //mBitmap.Dispose();
 
                             rtnVal = true;
@@ -11588,7 +11588,7 @@ namespace ComEmrBase
                 while(reader.Read())
                 {
                     string strPtno = reader.GetValue(0).ToString().Trim();
-                    string strPath = @"C:\PSMHEXE\IMGCVT\PostScan\" + strPtno + ".jpg";
+                    string strPath = @"C:\HealthSoft\IMGCVT\PostScan\" + strPtno + ".jpg";
                     string strPathR = "/data/ocs_etc/" + reader.GetValue(4).ToString().Trim();
                     string strGBFTP = reader.GetValue(2).ToString().Trim();
                     string strSPath = reader.GetValue(3).ToString().Trim();
@@ -11613,7 +11613,7 @@ namespace ComEmrBase
                     }
                     else
                     {
-                        strPathR = @"C:\PSMHEXE\IMGCVT\PostScan\" + strPtno + "resize.jpg";
+                        strPathR = @"C:\HealthSoft\IMGCVT\PostScan\" + strPtno + "resize.jpg";
                         ResizeJpg(strPathR, 600, 800);
                         if (File.Exists(strPathR))
                         {
@@ -11621,8 +11621,8 @@ namespace ComEmrBase
                         }
                     }
 
-                    ////TifSave(@"C:\PSMHEXE\IMGCVT\" + strPtno  + "_" + strDate + "_" + strClinCode + "_" + gstrFormcode + "_" + PageNum.ToString("0000") + ".tif", true);
-                    SaveJpeg(@"C:\PSMHEXE\IMGCVT\" + strPtno + "_" + strDate + "_" + strClinCode + "_" + gstrFormcode + "_" + PageNum.ToString("0000") + ".tif", mBitmap, 50);
+                    ////TifSave(@"C:\HealthSoft\IMGCVT\" + strPtno  + "_" + strDate + "_" + strClinCode + "_" + gstrFormcode + "_" + PageNum.ToString("0000") + ".tif", true);
+                    SaveJpeg(@"C:\HealthSoft\IMGCVT\" + strPtno + "_" + strDate + "_" + strClinCode + "_" + gstrFormcode + "_" + PageNum.ToString("0000") + ".tif", mBitmap, 50);
 
                     File.Delete(strPath);
                     if (strPathR.IndexOf("resize.jpg") != -1)

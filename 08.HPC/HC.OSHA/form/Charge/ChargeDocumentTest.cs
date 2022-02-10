@@ -76,13 +76,13 @@ namespace HC_OSHA
            FarPoint.Win.Spread.CellType.ImageCellType dojang = new FarPoint.Win.Spread.CellType.ImageCellType();
             dojang.Style = FarPoint.Win.RenderStyle.Normal;
             ssDoc.ActiveSheet.Cells[37, 19].CellType = dojang;
-            ssDoc.ActiveSheet.Cells[37, 19].Value = Image.FromFile(@"C:\PSMHEXE\exenet\Resources\dojang.png");
+            ssDoc.ActiveSheet.Cells[37, 19].Value = Image.FromFile(@"C:\HealthSoft\exenet\Resources\dojang.png");
 
 
             FarPoint.Win.Spread.CellType.ImageCellType logo = new FarPoint.Win.Spread.CellType.ImageCellType();
             logo.Style = FarPoint.Win.RenderStyle.Normal;
             ssDoc.ActiveSheet.Cells[1, 1].CellType = logo;
-            ssDoc.ActiveSheet.Cells[1, 1].Value = Image.FromFile(@"C:\PSMHEXE\exenet\Resources\logo.png");
+            ssDoc.ActiveSheet.Cells[1, 1].Value = Image.FromFile(@"C:\HealthSoft\exenet\Resources\logo.png");
 
             print = new SpreadPrint(ssDoc, PrintStyle.STANDARD_APPROVAL);
             if (isPdf)

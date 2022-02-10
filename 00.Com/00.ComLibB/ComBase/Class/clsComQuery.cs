@@ -29,7 +29,7 @@ namespace ComBase
 
             try
             {
-                clsType.SvrInfo.strClient = @"C:\PSMHEXE";
+                clsType.SvrInfo.strClient = @"C:\HealthSoft";
 
                 string strAPLDATE = ComQuery.CurrentDateTime(clsDB.DbCon, "D");
                 //자동로그아웃 시간//프로그램 이전 버전 읽기
@@ -3717,7 +3717,7 @@ namespace ComBase
                 dt.Dispose();
                 dt = null;
 
-                string strFile = @"C:\PSMHEXE\exenet\psmhDev.ini";
+                string strFile = @"C:\HealthSoft\exenet\psmhDev.ini";
                 FileInfo fileInfo = new FileInfo(strFile);
                 if (fileInfo.Exists)
                 {

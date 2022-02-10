@@ -72,7 +72,7 @@ namespace ComEmrBase
             this.UPDATE_URL = HOST_URL + "/write/$formNo?formDataId=$formDataId&isWinform=1&updateNo=$updateNo"; // 수정
             this.WRITE_URL = HOST_URL + "/write/$formNo?formDataId=0&ptNo=$ptNo&medDrCd=$medDrCd&medDeptCd=$medDeptCd&medFrDate=$medFrDate&medFrTime=$medFrTime&inOutCls=$inOutCls&isWinform=1&updateNo=$updateNo";
 
-            this.PdfFolderPath =  "C:\\PSMHEXE\\pdfprint";
+            this.PdfFolderPath =  "C:\\HealthSoft\\pdfprint";
             PrinterName = string.Empty;
 
           //  easDesigner = new frmEasDesigner(this);
@@ -244,7 +244,7 @@ namespace ComEmrBase
             {
                 di.Create();
             }
-            string pdfFileName = @"C:\PSMHEXE\pdfprint\" + formNo + "_" + "version_" + "_" + VB.Format(DateTime.Now, "yyyyMMHHhhmmss.fff") + ".pdf";
+            string pdfFileName = @"C:\HealthSoft\pdfprint\" + formNo + "_" + "version_" + "_" + VB.Format(DateTime.Now, "yyyyMMHHhhmmss.fff") + ".pdf";
             return pdfFileName;
         }
 

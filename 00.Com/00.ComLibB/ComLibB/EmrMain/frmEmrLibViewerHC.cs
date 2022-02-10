@@ -476,7 +476,7 @@ namespace ComLibB
             string strFORMAUTHTEL = dt.Rows[0]["FORMAUTHTEL"].ToString().Trim();
             dt.Dispose();
 
-            string strUpdateIniFile = @"C:\PSMHEXE\PSMHAutoUpdate.ini";
+            string strUpdateIniFile = @"C:\HealthSoft\PSMHAutoUpdate.ini";
             clsIniFile myIniFile = new clsIniFile(strUpdateIniFile);
             double dblVerClt = myIniFile.ReadValue("DEFAULT_UPDATE_LIST", strAssName, 0);
 

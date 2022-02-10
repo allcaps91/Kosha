@@ -1298,7 +1298,7 @@ namespace ComLibB
             clsImgcvt.GetPatIpdInfo(clsDB.DbCon, strPano, strInOutCls, strInDate, strDeptCode, ref strTreatNo, ref strOutDate);
 
             clsImgcvt.CreateSaveFolder();
-            clsScan.DeleteFoldAll(@"C:\PSMHEXE\IMGCVT");
+            clsScan.DeleteFoldAll(@"C:\HealthSoft\IMGCVT");
 
             if (clsImgcvt.IsDRUGCvt(clsDB.DbCon, strTreatNo, strBdate, strDrugName))
             {
@@ -1332,7 +1332,7 @@ namespace ComLibB
             clsImgcvt.DRUGInfo.TREATNO = strTreatNo;
             clsImgcvt.DRUGInfo.DRUGNAME = strDrugName;
 
-            string[] dirs = Directory.GetFiles(@"C:\PSMHEXE\IMGCVT", "*.tif");
+            string[] dirs = Directory.GetFiles(@"C:\HealthSoft\IMGCVT", "*.tif");
             if (dirs.Length > 0 && strTreatNo.Equals("0") == false)
             {
                 if (string.IsNullOrWhiteSpace(strOutDate))
@@ -1348,7 +1348,7 @@ namespace ComLibB
                 {
                     ComFunc.MsgBoxEx(this, "복약상담회신서가 변환 도중 오류가 발생했습니다 재변환해주세요.");
                 }
-                clsScan.DeleteFoldAll(@"C:\PSMHEXE\IMGCVT");
+                clsScan.DeleteFoldAll(@"C:\HealthSoft\IMGCVT");
             }
         }
     }

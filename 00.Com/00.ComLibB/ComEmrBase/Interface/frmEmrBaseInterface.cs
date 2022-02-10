@@ -55,7 +55,7 @@ namespace ComEmrBase
         /// <summary>
         /// 이미지 변환 경로
         /// </summary>
-        private string InterfacePath = "C:\\PSMHEXE\\Interface";
+        private string InterfacePath = "C:\\HealthSoft\\Interface";
 
         /// <summary>
         /// 저장용 
@@ -3917,7 +3917,7 @@ namespace ComEmrBase
         #region EMGFILE_DBToFile
         private void EMGFILE_DBToFile(string ArgFileName, string ArgROWID, string ViewerExe = "")
         {
-            string FolderPath = "C:\\PSMHEXE\\EMG";
+            string FolderPath = "C:\\HealthSoft\\EMG";
             if (Directory.Exists(FolderPath) == false)
             {
                 Directory.CreateDirectory(FolderPath);
@@ -4519,7 +4519,7 @@ namespace ComEmrBase
             string strRowid = ss2_Sheet1.Cells[e.Row, 5].Text.Trim();
             if (ss2_Sheet1.Cells[e.Row, 4].Text.Trim().NotEmpty())
             {
-                EMGFILE_DBToFile("C:\\PSMHEXE\\EMG\\EMG_0.jpg", strRowid, "1");
+                EMGFILE_DBToFile("C:\\HealthSoft\\EMG\\EMG_0.jpg", strRowid, "1");
             }
         }
     }

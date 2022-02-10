@@ -25,9 +25,9 @@ namespace ComPmpaLibB
     {
 
         //QR코드 dll / 함수 선언
-        [DllImport("C:\\PSMHEXE\\exenet\\ECS_MEDI_MkBar.dll")]
+        [DllImport("C:\\HealthSoft\\exenet\\ECS_MEDI_MkBar.dll")]
         private static extern Int32 ECS_MakeBarcode(string strInfo);    //Barcode 생성
-        [DllImport("C:\\PSMHEXE\\exenet\\ECS_MEDI_MkBar.dll")]
+        [DllImport("C:\\HealthSoft\\exenet\\ECS_MEDI_MkBar.dll")]
         private static extern Int32 ECS_MakeBarcode2File(string strBARCODE, string strFilePath);    //Barcode 생성
 
         //QR코드 생성 배열 선언
@@ -4203,17 +4203,17 @@ namespace ComPmpaLibB
 
                 if (strBARCODE != "" && clsPmpaPb.GstrMobileSunap != "OK")
                 {
-                    intRet = ECS_MakeBarcode2File(strBARCODE, "C:\\PSMHEXE\\YAK_BARCODE.BMP");
+                    intRet = ECS_MakeBarcode2File(strBARCODE, "C:\\HealthSoft\\YAK_BARCODE.BMP");
 
                     if (intRet == 0)
                     {
-                        //imgTemp = Image.FromFile("C:\\PSMHEXE\\YAK_BARCODE.BMP");
+                        //imgTemp = Image.FromFile("C:\\HealthSoft\\YAK_BARCODE.BMP");
                         ////ComFunc.Delay(1500);
                         ////20mm : 1,100 / 1,100
                         //ssSpread_Sheet1.Cells[44, 15].Value = imgTemp;
 
                         //================================================================================================
-                        Bitmap image1 = (Bitmap)Image.FromFile("C:\\PSMHEXE\\YAK_BARCODE.BMP", true);
+                        Bitmap image1 = (Bitmap)Image.FromFile("C:\\HealthSoft\\YAK_BARCODE.BMP", true);
                         Bitmap newImage = new Bitmap(image1.Width, image1.Height, PixelFormat.Format24bppRgb);
                         Graphics graphics_1 = Graphics.FromImage(newImage);
                         graphics_1.CompositingQuality = CompositingQuality.HighQuality;

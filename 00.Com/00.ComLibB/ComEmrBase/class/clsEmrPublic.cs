@@ -30,8 +30,8 @@ namespace ComEmrBase
         public static string gstrSERVERPATH1 = string.Empty;
         public static string gstrSERVERPATH2 = string.Empty;
 
-        public static string gCltImgPathS = @"C:\PSMHEXE\scanimage";
-        public static string gCltImgPathD = @"C:\PSMHEXE\downimage";
+        public static string gCltImgPathS = @"C:\HealthSoft\scanimage";
+        public static string gCltImgPathD = @"C:\HealthSoft\downimage";
 
         public static string AdmFormNo = string.Empty; //입원기록지 코드
         public static string ProgFormNo = string.Empty; //경과기록 코드

@@ -68,7 +68,7 @@ namespace minidump
                 ClientPointers = 1
             };
 
-            using (var fs = new FileStream("C:\\PSMHEXE\\LOG\\"+fileName, FileMode.Create)) {
+            using (var fs = new FileStream("C:\\HealthSoft\\LOG\\"+fileName, FileMode.Create)) {
                 // MINIDUMP_TYPE.MiniDumpWithFullMemory gives more info, but dump file size will be very large
                 MiniDumpWriteDump(proc.Handle, (uint)proc.Id, fs.SafeFileHandle.DangerousGetHandle(),
                     (int)MINIDUMP_TYPE.MiniDumpNormal, ref info, IntPtr.Zero, IntPtr.Zero);

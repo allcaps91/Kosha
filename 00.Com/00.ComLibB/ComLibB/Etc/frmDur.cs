@@ -1662,5 +1662,10 @@ namespace ComLibB
             Rdr.Close();
             conn.Close();
         }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

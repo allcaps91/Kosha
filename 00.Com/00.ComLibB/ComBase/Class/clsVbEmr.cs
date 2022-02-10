@@ -26,7 +26,7 @@ namespace ComBase
         /// <param name="strStyle"></param>
         public static void EXECUTE_NewTextEmrView(string strPtNo, string strIdNumber = "", string strPassWord = "", string strStyle = "vbNormalFocus")
         {
-            FileInfo nFILE = new FileInfo("C:\\PSMHEXE\\exenet\\EmrViewExe.exe");
+            FileInfo nFILE = new FileInfo("C:\\HealthSoft\\exenet\\EmrViewExe.exe");
             if (nFILE.Exists == false)
             {
                 ComFunc.MsgBox("EmrViewExe.exe가 설치되지 않았습니다.", "오류");
@@ -77,7 +77,7 @@ namespace ComBase
             }
 
             strStyle = strStyle.Replace("vb", "");
-            VB.Shell("C:\\PSMHEXE\\exenet\\EmrViewExe.exe " + clsAES.AES(strIdNumber + "/" + strPassWord + "/" + strPtNo + "/"), strStyle);
+            VB.Shell("C:\\HealthSoft\\exenet\\EmrViewExe.exe " + clsAES.AES(strIdNumber + "/" + strPassWord + "/" + strPtNo + "/"), strStyle);
 
         }
 
@@ -387,7 +387,7 @@ namespace ComBase
                 }
             }
              
-            string dirPath = "C:\\PSMHEXE\\LOG\\" + DateTime.Now.ToShortDateString() + "_EMRLog.log";
+            string dirPath = "C:\\HealthSoft\\LOG\\" + DateTime.Now.ToShortDateString() + "_EMRLog.log";
             if (strPara != "")
             {
                 File.AppendAllText(dirPath, DateTime.Now + " " + strPtNo + "," + strIdNumber + "," + strPara);               

@@ -230,7 +230,7 @@ namespace ComEmrBase
             string SqlErr = ""; //에러문 받는 변수
             DataTable dt = null;
 
-            string strClientPath = @"C:\PSMHEXE\TextEmr\EmrOld\DownImage\";
+            string strClientPath = @"C:\HealthSoft\TextEmr\EmrOld\DownImage\";
             //string FtpPathB = "/emr1/mento/tomcat/webapps/Emr/images/mts/emrimages/";
             string FtpPathS = "/emr1/mento/tomcat/webapps/Emr/images/mts/emrimages/";
             string BImage = "";

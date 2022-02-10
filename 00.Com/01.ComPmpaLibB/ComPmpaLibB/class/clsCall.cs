@@ -14,35 +14,35 @@ namespace ComPmpaLibB
     public class clsCall
     {
         //창구설정조회
-        [DllImport("C:\\PSMHEXE\\exenet\\ProjectDllClient.dll", CharSet = CharSet.Ansi)]
+        [DllImport("C:\\HealthSoft\\exenet\\ProjectDllClient.dll", CharSet = CharSet.Ansi)]
         public static extern string DLL_DeskInfo(string DeskIP, string StaffID, string StaffName);
 
         //창구정보조회
-        [DllImport("C:\\PSMHEXE\\exenet\\ProjectDllClient.dll", CharSet = CharSet.Ansi)]
+        [DllImport("C:\\HealthSoft\\exenet\\ProjectDllClient.dll", CharSet = CharSet.Ansi)]
         public static extern string DLL_DeskSend(int ZoneID, int GroupID, int DeskID);
 
         //발권
-        [DllImport("C:\\PSMHEXE\\exenet\\ProjectDllClient.dll")]
+        [DllImport("C:\\HealthSoft\\exenet\\ProjectDllClient.dll")]
         public static extern string DLL_KioskOCSSend(int ZoneID, int GroupID, int iDiv, string sPatInfo, string sPatName, string sDesc);
 
         //호출
-        [DllImport("C:\\PSMHEXE\\exenet\\ProjectDllClient.dll", CharSet = CharSet.Ansi)]
+        [DllImport("C:\\HealthSoft\\exenet\\ProjectDllClient.dll", CharSet = CharSet.Ansi)]
         public static extern string DLL_CallNextTicket(int ZoneID, int GroupID, int DeskID, string StaffID, string StaffName);
 
         //재호출
-        [DllImport("C:\\PSMHEXE\\exenet\\ProjectDllClient.dll")]
+        [DllImport("C:\\HealthSoft\\exenet\\ProjectDllClient.dll")]
         public static extern string DLL_ReCall(int ZoneID, int GroupID, int DeskID, string StaffID, string StaffName, string TicketID);
 
         //지정호출
-        [DllImport("C:\\PSMHEXE\\exenet\\ProjectDllClient.dll", CharSet = CharSet.Ansi)]
+        [DllImport("C:\\HealthSoft\\exenet\\ProjectDllClient.dll", CharSet = CharSet.Ansi)]
         public static extern string DLL_NumCall(int ZoneID, int GroupID, int DeskID, string StaffID, string StaffName, int TicketNO);
 
         //부재시작
-        [DllImport("C:\\PSMHEXE\\exenet\\ProjectDllClient.dll")]
+        [DllImport("C:\\HealthSoft\\exenet\\ProjectDllClient.dll")]
         public static extern string DLL_CallerIdleStart(int ZoneID, int GroupID, int DeskID, string StaffID, string StaffName, int IdleID, string IdleRemark);
 
         //부재종료
-        [DllImport("C:\\PSMHEXE\\exenet\\ProjectDllClient.dll")]
+        [DllImport("C:\\HealthSoft\\exenet\\ProjectDllClient.dll")]
         public static extern string DLL_CallerIdleEnd(int ZoneID, int GroupID, int DeskID, string StaffID, string StaffName);
 
         /// <summary>

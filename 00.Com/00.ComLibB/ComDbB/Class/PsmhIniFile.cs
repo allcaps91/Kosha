@@ -60,11 +60,11 @@ namespace ComDbB
             //It Fills the Table with the Sections and the Sections+Keys
             //If any error ocurs, it throws an exception "Error reading" and the "real" exception like a InnerException
             if (myFileReaded == true) return (true);
-            if (!File.Exists(myIniFileName))
-            {
-                FileStream myNewFile = File.Create(myIniFileName);
-                myNewFile.Close();
-            }
+            if (!File.Exists(myIniFileName)) return (true);
+           // {
+           //     FileStream myNewFile = File.Create(myIniFileName);
+           //     myNewFile.Close();
+           // }
             string line = "";
             long lineCount = 0;
             myFileLines = new SortedList();

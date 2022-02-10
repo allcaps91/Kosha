@@ -241,7 +241,7 @@ namespace ComBase
                 dt.Dispose();
                 dt = null;
 
-                string strUpdateIniFile = @"C:\PSMHEXE\PSMHAutoUpdate.ini";
+                string strUpdateIniFile = @"C:\HealthSoft\PSMHAutoUpdate.ini";
                 clsIniFile myIniFile = new clsIniFile(strUpdateIniFile);
                 double dblVerClt = myIniFile.ReadValue("DEFAULT_UPDATE_LIST", strAssName, 0);
 
@@ -266,10 +266,10 @@ namespace ComBase
         /// </summary>
         public static void SetFormSkin(PsmhDb pDbCon, Form pForm)
         {
-            string strClient = @"C:\PSMHEXE";
-            if (File.Exists(strClient + "\\Icon\\psmhexe.ico") == true)
+            string strClient = @"C:\HealthSoft";
+            if (File.Exists(strClient + "\\Icon\\HealthSoft.ico") == true)
             {
-                pForm.Icon = new System.Drawing.Icon(strClient + "\\Icon\\psmhexe.ico");
+                pForm.Icon = new System.Drawing.Icon(strClient + "\\Icon\\HealthSoft.ico");
             }
 
             //3가지중에서 선택을 한다
@@ -3562,7 +3562,7 @@ namespace ComBase
         /// </summary>
         public static void CheckAndCreateFold()
         {
-            string strMentorsoft = @"C:\PSMHEXE";
+            string strMentorsoft = @"C:\HealthSoft";
 
             try
             {
@@ -5392,7 +5392,7 @@ namespace ComBase
                 return;
             }
 
-            string strEXEName = @"C:\PSMHEXE";
+            string strEXEName = @"C:\HealthSoft";
             string SQL = "";
             string SqlErr = ""; //에러문 받는 변수
             int intRowAffected = 0; //변경된 Row 받는 변수

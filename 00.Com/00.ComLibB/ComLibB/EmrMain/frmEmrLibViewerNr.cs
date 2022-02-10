@@ -516,7 +516,7 @@ namespace ComLibB
             string strFORMAUTHTEL = dt.Rows[0]["FORMAUTHTEL"].ToString().Trim();
             dt.Dispose();
 
-            string strUpdateIniFile = @"C:\PSMHEXE\PSMHAutoUpdate.ini";
+            string strUpdateIniFile = @"C:\HealthSoft\PSMHAutoUpdate.ini";
             clsIniFile myIniFile = new clsIniFile(strUpdateIniFile);
             double dblVerClt = myIniFile.ReadValue("DEFAULT_UPDATE_LIST", strAssName, 0);
 
@@ -1913,9 +1913,9 @@ namespace ComLibB
             {
                 using (WebClient webClient = new WebClient())
                 {
-                    webClient.DownloadFile("http://221.157.239.2/content/board/down.php?a_tablename=board_13&filename=CPR+%EB%B0%9C%EC%83%9D+%EB%B3%B4%EA%B3%A0%EC%84%9C.xlsx", @"C:\PSMHEXE\CPR발생보고서.xlsx");
+                    webClient.DownloadFile("http://221.157.239.2/content/board/down.php?a_tablename=board_13&filename=CPR+%EB%B0%9C%EC%83%9D+%EB%B3%B4%EA%B3%A0%EC%84%9C.xlsx", @"C:\HealthSoft\CPR발생보고서.xlsx");
                 }
-                Process.Start(@"C:\PSMHEXE\CPR발생보고서.xlsx");
+                Process.Start(@"C:\HealthSoft\CPR발생보고서.xlsx");
                 return;
             }
             #endregion

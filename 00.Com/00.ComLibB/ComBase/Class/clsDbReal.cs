@@ -15,7 +15,7 @@ namespace ComBase
 
         private static OracleCommand cmd = null;
 
-        public static string strDbIniFile = @"C:\PSMHEXE\exenet\psmh.ini";
+        public static string strDbIniFile = @"C:\HealthSoft\exenet\psmh.ini";
         public static string strSource = "ORA7";
         public static string strDbIp = "";
         public static string strDbPort = "";

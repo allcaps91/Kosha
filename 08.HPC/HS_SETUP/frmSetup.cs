@@ -89,7 +89,7 @@ namespace HS_SETUP
                 }
 
                 strPcData = clsAES.AES(strNewData);
-                System.IO.File.WriteAllText(@"C:\Windows\System32\acledit392io87.dll", strPcData);
+                System.IO.File.WriteAllText(@"C:\HealthSoft\acledit392io87.dll", strPcData);
 
                 WRITE_ETC_PCMST(); //설치내역
 

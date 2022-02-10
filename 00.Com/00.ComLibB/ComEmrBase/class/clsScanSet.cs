@@ -65,28 +65,28 @@ namespace ComEmrBase
         /// </summary>
         public static void ReadScanSet()
         {
-            ScanSetType.SourceName = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SourceName");
-            ScanSetType.SelectFeeder = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SelectFeeder");
-            ScanSetType.EnableDuplex = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "EnableDuplex");
-            ScanSetType.SetPixelType = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetPixelType");
+            ScanSetType.SourceName = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SourceName");
+            ScanSetType.SelectFeeder = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SelectFeeder");
+            ScanSetType.EnableDuplex = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "EnableDuplex");
+            ScanSetType.SetPixelType = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetPixelType");
             //        .SetBitDepth = ReadIni("SCANSET", "SetBitDepth")
-            ScanSetType.SetResolution = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetResolution");
-            ScanSetType.SetPaperSize = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetPaperSize");
-            ScanSetType.SetBlankSize = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetBlankSize");
-            ScanSetType.SetFront = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetFront");
-            ScanSetType.SetRear = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetRear");
+            ScanSetType.SetResolution = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetResolution");
+            ScanSetType.SetPaperSize = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetPaperSize");
+            ScanSetType.SetBlankSize = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetBlankSize");
+            ScanSetType.SetFront = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetFront");
+            ScanSetType.SetRear = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetRear");
 
 
-            //ScanSetType.SetRegionLeft = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetRegionLeft");
-            //ScanSetType.SetRegionTop = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetRegionTop");
-            //ScanSetType.SetRegionWidth = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetRegionWidth");
-            //ScanSetType.SetRegionHeight = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetRegionHeight");
-            //ScanSetType.SetFileFormat = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetFileFormat");
-            //ScanSetType.SetFileAppendFlag = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetFileAppendFlag");
-            //ScanSetType.SetJpegQuality = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetJpegQuality");
-            //ScanSetType.SetHideUI = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetHideUI");
-            //ScanSetType.SetIndicators = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetIndicators");
-            //ScanSetType.SetAutoDeskew = ComFunc.ReadINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetAutoDeskew");
+            //ScanSetType.SetRegionLeft = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetRegionLeft");
+            //ScanSetType.SetRegionTop = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetRegionTop");
+            //ScanSetType.SetRegionWidth = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetRegionWidth");
+            //ScanSetType.SetRegionHeight = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetRegionHeight");
+            //ScanSetType.SetFileFormat = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetFileFormat");
+            //ScanSetType.SetFileAppendFlag = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetFileAppendFlag");
+            //ScanSetType.SetJpegQuality = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetJpegQuality");
+            //ScanSetType.SetHideUI = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetHideUI");
+            //ScanSetType.SetIndicators = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetIndicators");
+            //ScanSetType.SetAutoDeskew = ComFunc.ReadINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetAutoDeskew");
         }
 
         /// <summary>
@@ -94,15 +94,15 @@ namespace ComEmrBase
         /// </summary>
         public static void WriteScanSet()
         {
-            ComFunc.WriteINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SourceName", clsScanSet.ScanSetType.SourceName);
-            ComFunc.WriteINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SelectFeeder", clsScanSet.ScanSetType.SelectFeeder);
-            ComFunc.WriteINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "EnableDuplex", clsScanSet.ScanSetType.EnableDuplex);
-            ComFunc.WriteINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetPixelType", clsScanSet.ScanSetType.SetPixelType);
-            ComFunc.WriteINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetResolution", clsScanSet.ScanSetType.SetResolution);
-            ComFunc.WriteINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetPaperSize", clsScanSet.ScanSetType.SetPaperSize);
-            ComFunc.WriteINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetBlankSize", clsScanSet.ScanSetType.SetBlankSize);
-            ComFunc.WriteINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetFront", clsScanSet.ScanSetType.SetFront);
-            ComFunc.WriteINI(@"C:\PSMHEXE\SCANEZTWAINSET.INI", "SCANSET", "SetRear", clsScanSet.ScanSetType.SetRear);
+            ComFunc.WriteINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SourceName", clsScanSet.ScanSetType.SourceName);
+            ComFunc.WriteINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SelectFeeder", clsScanSet.ScanSetType.SelectFeeder);
+            ComFunc.WriteINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "EnableDuplex", clsScanSet.ScanSetType.EnableDuplex);
+            ComFunc.WriteINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetPixelType", clsScanSet.ScanSetType.SetPixelType);
+            ComFunc.WriteINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetResolution", clsScanSet.ScanSetType.SetResolution);
+            ComFunc.WriteINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetPaperSize", clsScanSet.ScanSetType.SetPaperSize);
+            ComFunc.WriteINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetBlankSize", clsScanSet.ScanSetType.SetBlankSize);
+            ComFunc.WriteINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetFront", clsScanSet.ScanSetType.SetFront);
+            ComFunc.WriteINI(@"C:\HealthSoft\SCANEZTWAINSET.INI", "SCANSET", "SetRear", clsScanSet.ScanSetType.SetRear);
         }
     }
 }

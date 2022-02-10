@@ -140,7 +140,7 @@ namespace ComBase
 
                 Cursor.Current = Cursors.Default;
                 string strCurDate = ComQuery.CurrentDateTime(clsDB.DbCon, "D");
-                string mstrViewPathInit = @"C:\PSMHEXE\ScanTmp\Formname";
+                string mstrViewPathInit = @"C:\HealthSoft\ScanTmp\Formname";
                 string mstrViewPath = mstrViewPathInit + "\\" + strCurDate;
 
                 #region FILE DOWNLOAD => VIEW

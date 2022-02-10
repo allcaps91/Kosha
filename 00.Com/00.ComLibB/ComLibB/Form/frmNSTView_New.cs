@@ -1062,7 +1062,7 @@ namespace ComLibB
                 clsImgcvt.NEW_PohangTreatInterface(clsDB.DbCon, this, clsPat.PATi.Pano);
                 clsImgcvt.GetPatIpdInfo(clsDB.DbCon, clsPat.PATi.Pano, "I", clsPat.PATi.InDate, clsPat.PATi.DeptCode, ref strTreatNo, ref strOutDate);
                 clsImgcvt.CreateSaveFolder();
-                clsScan.DeleteFoldAll(@"C:\PSMHEXE\IMGCVT");
+                clsScan.DeleteFoldAll(@"C:\HealthSoft\IMGCVT");
 
                 if (clsImgcvt.IsNSTCvt(clsDB.DbCon, strTreatNo, strBDate))
                 {
@@ -1175,7 +1175,7 @@ namespace ComLibB
                 clsImgcvt.NSTInfo.REQUESTDATE = strBDate;
                 clsImgcvt.NSTInfo.TREATNO = strTreatNo;
 
-                string[] dirs = Directory.GetFiles(@"C:\PSMHEXE\IMGCVT", "*.tif");
+                string[] dirs = Directory.GetFiles(@"C:\HealthSoft\IMGCVT", "*.tif");
                 if (dirs.Length > 0 && strTreatNo.Equals("0") == false)
                 {
                     if (string.IsNullOrWhiteSpace(strOutDate))
@@ -1193,7 +1193,7 @@ namespace ComLibB
                     }
                 }
 
-                clsScan.DeleteFoldAll(@"C:\PSMHEXE\IMGCVT");
+                clsScan.DeleteFoldAll(@"C:\HealthSoft\IMGCVT");
             }
 
             Cursor.Current = Cursors.Default;

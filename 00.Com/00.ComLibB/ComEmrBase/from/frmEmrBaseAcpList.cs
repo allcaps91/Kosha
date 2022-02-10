@@ -353,13 +353,13 @@ namespace ComEmrBase
             //treeView1.
 
 
-            string basePath = @"C:\PSMHEXE\EmrImageTmp\Update";
+            string basePath = @"C:\HealthSoft\EmrImageTmp\Update";
             if (Directory.Exists(basePath) == false)
             {
                 Directory.CreateDirectory(basePath);
             }
 
-            basePath = @"C:\PSMHEXE\EmrImageTmp\New";
+            basePath = @"C:\HealthSoft\EmrImageTmp\New";
             if (Directory.Exists(basePath) == false)
             {
                 Directory.CreateDirectory(basePath);

@@ -1163,7 +1163,7 @@ namespace ComLibB
             try
             {
                 string strServerFileName = GetDownloadName(ssList_Sheet1.Cells[ssList_Sheet1.ActiveRowIndex, 1].Text.Trim() + (sender == btnSearchUpload ? "_OCS" : "_PAT"), sender == btnSearchUpload ? true : false);
-                string strFileName = @"C:\PSMHEXE\exenet\" + strServerFileName;
+                string strFileName = @"C:\HealthSoft\exenet\" + strServerFileName;
 
                 if (strServerFileName.Length == 0)
                 {
@@ -1631,7 +1631,7 @@ namespace ComLibB
             try
             {
                 string strServerFileName = GetDownloadName_2(ssList_Sheet1.Cells[ssList_Sheet1.ActiveRowIndex, 1].Text.Trim() + (sender == btnSearchUpload_1 ? "_OCS1" : "_PAT1"), sender == btnSearchUpload_1 ? true : false);
-                string strFileName = @"C:\PSMHEXE\exenet\" + strServerFileName;
+                string strFileName = @"C:\HealthSoft\exenet\" + strServerFileName;
 
                 if (strServerFileName.Length == 0)
                 {

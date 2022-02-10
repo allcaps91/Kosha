@@ -1076,7 +1076,7 @@ namespace ComLibB
                 }
                 if (dt.Rows.Count > 0)
                 {
-                    Dir_Check(@"C:\PSMHEXE\YAK_IMAGE\");
+                    Dir_Check(@"C:\HealthSoft\YAK_IMAGE\");
 
                     for (i = 0; i < dt.Rows.Count; i++)
                     {
@@ -1137,7 +1137,7 @@ namespace ComLibB
                             string strHostFile = "";
                             string strHost = "";
 
-                            strFile = @"C:\PSMHEXE\YAK_IMAGE\" + strSuCode.Trim().Replace("/", "__").ToUpper();
+                            strFile = @"C:\HealthSoft\YAK_IMAGE\" + strSuCode.Trim().Replace("/", "__").ToUpper();
                             strHostFile = "/data/YAK_IMAGE/" + strSuCode.Trim().Replace("/", "__").ToUpper();
                             strHost = "/data/YAK_IMAGE/";
 
@@ -3980,7 +3980,7 @@ namespace ComLibB
                 }
                 if (dt.Rows.Count > 0)
                 {
-                    Dir_Check(@"C:\PSMHEXE\YAK_IMAGE\");
+                    Dir_Check(@"C:\HealthSoft\YAK_IMAGE\");
 
                     for (i = 0; i < dt.Rows.Count; i++)
                     {
@@ -4041,7 +4041,7 @@ namespace ComLibB
                             string strHostFile = "";
                             string strHost = "";
 
-                            strFile = @"C:\PSMHEXE\YAK_IMAGE\" + strSuCode.Trim().Replace("/", "__").ToUpper();
+                            strFile = @"C:\HealthSoft\YAK_IMAGE\" + strSuCode.Trim().Replace("/", "__").ToUpper();
                             strHostFile = "/data/YAK_IMAGE/" + strSuCode.Trim().Replace("/", "__").ToUpper();
                             strHost = "/data/YAK_IMAGE/";
 

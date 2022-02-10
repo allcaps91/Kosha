@@ -1714,7 +1714,7 @@ namespace ComLibB
             int ChartCopyForm = Application.OpenForms.Cast<Form>().Where(f => f.Name.Equals("frmEmrJobChartCopy")).Count();
             if (ChartCopyForm == 0)
             {
-                string mstrViewPath = @"C:\PSMHEXE\ScanTmp\Formname\\" + strCurDate;
+                string mstrViewPath = @"C:\HealthSoft\ScanTmp\Formname\\" + strCurDate;
                 if (Directory.Exists(mstrViewPath))
                 {
                     clsImgcvt.DelAllFile(mstrViewPath);

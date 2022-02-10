@@ -1,0 +1,9 @@
+C:\Kosha\00.Com\00.ComLibB\ComDbB\bin\Release\ComDbB.dll.config
+C:\Kosha\00.Com\00.ComLibB\ComDbB\bin\Release\ComDbB.dll
+C:\Kosha\00.Com\00.ComLibB\ComDbB\bin\Release\ComDbB.pdb
+C:\Kosha\00.Com\00.ComLibB\ComDbB\bin\Release\Oracle.ManagedDataAccess.dll
+C:\Kosha\00.Com\00.ComLibB\ComDbB\obj\Release\ComDbB.csprojAssemblyReference.cache
+C:\Kosha\00.Com\00.ComLibB\ComDbB\obj\Release\ComDbB.csproj.CoreCompileInputs.cache
+C:\Kosha\00.Com\00.ComLibB\ComDbB\obj\Release\ComDbB.csproj.CopyComplete
+C:\Kosha\00.Com\00.ComLibB\ComDbB\obj\Release\ComDbB.dll
+C:\Kosha\00.Com\00.ComLibB\ComDbB\obj\Release\ComDbB.pdb

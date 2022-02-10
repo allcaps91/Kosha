@@ -25,8 +25,8 @@ namespace ComBase
         public static PsmhDb DbCon = null;  //기본 연결 객체
         public static PsmhDb DbConErr = null;  //에러 로그 연결 객체
 
-        public static string strDbIniFile = @"C:\PSMHEXE\exenet\psmh.ini";
-        public static string strDevDbIniFile = @"C:\PSMHEXE\exenet\psmhDev.ini";
+        public static string strDbIniFile = @"C:\HealthSoft\exenet\psmh.ini";
+        public static string strDevDbIniFile = @"C:\HealthSoft\exenet\psmhDev.ini";
         public static string strSource = "PSMH";
         public static string strDbIp = "";
         public static string strDbPort = "";

@@ -1,0 +1,469 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='./print.css' rel='stylesheet' />
+    <link href='./opinion.css' rel='stylesheet' />
+    <script src='./js/jquery-3.4.1.min.js'></script>
+    <script src='./js/statusReportByNurse.js'></script>
+    <script src='./js/statusReport.js'></script>
+</head>
+  <body>
+
+      <div id="footer" class="page-footer">
+      </div>
+
+      <div class="page">
+          <div class="section">
+              <div class="title">( <span id="month_text"></span> )월 보건관리상태보고서</div>
+              <table class="header text-center">
+                  <tr>
+                      <td rowspan=2 style="width: 10px;line-height: 5.79mm; ">결재</td>
+                      <td style="height:10px">담 당</td>
+                      <td id="osha1"></td>
+                      <td id="osha2"></td>
+                      <td class="blank4"></td>
+
+                  </tr>
+                  <tr>
+                      <td class="blank"></td>
+                      <td class="blank"></td>
+                      <td class="blank"></td>
+                      <td class="blank blank4"></td>
+
+                  </tr>
+              </table>
+          </div>
+
+          <div class="section">
+              <table style="width:100%">
+                  <tr>
+                      <td class="text-left" style="font-weight: bold;font-size: 10pt;border-top: 0;border-left: 1px solid transparent;border-right: 1px solid transparent;">1. 사업장 현황</td>
+                      <td class="text-right" style="font-weight: bold;font-size: 10pt;border-top: 0;border-left: 1px solid transparent;border-right: 1px solid transparent;">사업장명: <span id="SITENAME"></span> <span id="DEPTNAME"></span></td>
+                  </tr>
+
+                  <tr>
+                      <td class="text-center" style="width:180px">근로자 인원현황(현재기준)</td>
+                      <td>
+                          <table border="0" class='no-border'>
+                              <tr>
+                                  <td>• 현재인원:</td>
+                                  <td id="CURRENTWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>(채용:</td>
+                                  <td id="NEWWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>퇴직:</td>
+                                  <td id="RETIREWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>작업변경:</td>
+                                  <td id="CHANGEWORKERCOUNT"></td>
+                                  <td>명)</td>
+                              </tr>
+                          </table>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="text-center" style="width:180px">산업재해발생현황(현재기준)</td>
+                      <td>
+                          <table border="0" class='no-border'>
+                              <tr>
+                                  <td>• 재해자수:</td>
+                                  <td id="ACCIDENTWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>(사망:</td>
+                                  <td id="DEADWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>부상:</td>
+                                  <td id="INJURYWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>업무상질병:</td>
+                                  <td id="BIZDISEASEWORKERCOUNT"></td>
+                                  <td>명)</td>
+                              </tr>
+                          </table>
+                      </td>
+                  </tr>
+                  <tr>
+                      <table style="width:100%">
+                          <tr>
+                              <td rowspan="3" style="width:73px;text-align:center">건강진단<br />실시현황</td>
+                              <td style="width:100px; text-align:center">일반건강진단</td>
+                              <td>
+                                  <table border="0" class='no-border'>
+                                      <tr>
+                                          <td>• 검진(예정)일:</td>
+                                          <td id="GENERALHEALTHCHECKDATE"></td>
+                                          <td>대상자수:</td>
+                                          <td id="GENERALTOTALCOUNT"></td>
+                                          <td>유소견자수:</td>
+                                          <td></td>
+                                          <td>D2:</td>
+                                          <td id="GENERALD2COUNT"></td>
+                                          <td>C2:</td>
+                                          <td id="GENERALC2COUNT"></td>
+                                      </tr>
+                                  </table>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">특수건강진단</td>
+                              <td>
+                                  <table border="0" class='no-border'>
+                                      <tr>
+                                          <td>• 검진(예정)일:</td>
+                                          <td id="SPECIALHEALTHCHECKDATE"></td>
+                                          <td>대상자수:</td>
+                                          <td id="SPECIALTOTALCOUNT"></td>
+                                          <td>유소견자수:</td>
+                                          <td id="SPECIALD1COUNT"></td>
+                                          <td id="SPECIALDNCOUNT"></td>
+                                          <td id="SPECIALD2COUNT"></td>
+                                          
+                                          <td id="SPECIALC1COUNT"></td>
+                                          <td id="SPECIALCNCOUNT"></td>
+                                          <td id="SPECIALC2COUNT"></td>
+                                          
+                                      </tr>
+                                  </table>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">타 병원 진단</td>
+                              <td>
+                                  <table border="0" class='no-border'>
+                                      <tr>
+                                          <td id="EXTDATA"></td>
+                                      </tr>
+                                  </table>
+                              </td>
+                          </tr>
+                      </table>
+                  </tr>
+                  <tr>
+                      <table style="width:100%" border="0">
+                          <tr>
+                              <td rowspan="3" style="width:180px;text-align:center; border-top: 0;">작업환경측정현황</td>
+                              <td style="border-top:0">
+                                  <table border="0" class='no-border'>
+                                      <tr>
+                                          <td>• 측정(예정)일:</td>
+                                          <td id="WEMDATE"></td>
+                                          <td>• 노출기준:</td>
+                                          <td><input type="checkbox" id="WEMEXPORSURE" />미만 <input type="checkbox" id="WEMEXPORSURE2" />초과  <span id="WEMEXPORSUREREMARK"></span>   </td>
+                                      </tr>
+                                  </table>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <table border="0" class='no-border'>
+                                      <tr>
+                                          <td style="width:110px">• 주요유해인자:</td>
+                                          <td id="WEMHARMFULFACTORS" style="word-break: break-all;"></td>
+                                      </tr>
+                                  </table>
+                              </td>
+                          </tr>
+                      </table>
+                  </tr>
+              </table>
+          </div>
+
+          <div class="section">
+              <table style="width:100%; height:600px">
+                  <thead>
+                      <tr>
+                          <th colspan=6 class="text-left">2. 업무수행내용</th>
+                      </tr>
+                  </thead>
+
+                  <tr class="text-center b-gray">
+                      <td style="width:13%">구분</td>
+                      <td style="width:32%">업무수행항목</td>
+                      <td style="width:5%">수행여부</td>
+                      <td style="width:13%">구분</td>
+                      <td style="width:32%">업무수행항목</td>
+                      <td style="width:5%">수행여부</td>
+                  </tr>
+
+                  <tr class="text-center" id="section2-nurse">
+                      <td colspan="3" style="padding:0">
+                          <table style="width:100%; height:100%">
+
+                              <tr style="height: 48px;">
+                                  <td class="section2-nurse-left">1.보건관리<br>계획</td>
+                                  <td class="text-left" style="border-top:0;">보건관리계획수립.실시지도</td>
+                                  <td id="IsOshaPlan" class="section2-nurse-check">-</td>
+                              </tr>
+
+                              <tr>
+                                  <td class="section2-nurse-left">2.일반<br>위생관리</td>
+                                  <td class="text-left section2-nurse-perform">일반환경위생관리지도</td>
+                                  <td id="IsOshaGeneral" class="section2-nurse-check">-</td>
+                              </tr>
+
+
+
+                              <tr>
+                                  <td rowspan="4" class="section2-nurse-left">3.유해물질관리</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">MSDS 게시,교육 실시지도</td>
+                                  <td id="IsMsds" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">안전보건표지,경고표지설치 지도</td>
+                                  <td id="IsMsdsInstall" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">노출근로자 특수건강진단 의뢰</td>
+                                  <td id="IsMsdsSpeacial" class="section2-nurse-check">-</td>
+                              </tr>
+
+                              <tr>
+                                  <td rowspan="4" class="section2-nurse-left">4.건강진단<br>관리</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">건강진단 계획수립,실시지도</td>
+                                  <td id="IsHcPlan" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">배치전,후 건강진단 관리</td>
+                                  <td id="IsHcManage" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">건강진단결과 설명</td>
+                                  <td id="IsHcExplain" class="section2-nurse-check">-</td>
+                              </tr>
+
+                              <tr>
+                                  <td rowspan="5" class="section2-nurse-left">5.질병관리</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">건강이상자,질병유소견자 관리</td>
+                                  <td id="IsDesease" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">만성질환자 관리</td>
+                                  <td id="IsDesease2" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">산업재해근로자 건강확인지도</td>
+                                  <td id="IsDeseaseCheck" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">외래진료(임상검사) 안내,지도</td>
+                                  <td id="IsDeseaseCheck2" class="section2-nurse-check">-</td>
+                              </tr>
+
+                              <tr>
+                                  <td rowspan="3" class="section2-nurse-left">6.응급처치</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">응급의료체계 구축,활용</td>
+                                  <td id="IsEmergency" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">응급처치 물품유지 및 관리지도</td>
+                                  <td id="IsEmergencyManage" class="section2-nurse-check">-</td>
+                              </tr>
+
+                              <tr>
+                                  <td rowspan="3" class="section2-nurse-left">7.직업병<br>관리</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">직업병 예방(재발방지)지도</td>
+                                  <td id="IsJobManage" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">직업병 유소견자 조치,건의</td>
+                                  <td id="IsJobManage2" class="section2-nurse-check">-</td>
+                              </tr>
+
+                              <tr>
+                                  <td rowspan="3" class="section2-nurse-left">8.산업안전<br>보건위원회</td>
+                              </tr>
+                              <tr>
+                                  <td rowspan="2" class="text-left section2-nurse-perform">산업안전보건위원회 운영지도</td>
+                                  <td rowspan="2" id="IsCommite" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                              </tr>
+                              <tr>
+                                  <td rowspan="3" class="section2-nurse-left" style="border-bottom: 0;">8.보호구<br>관리</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">보호구 적격품 선정지도</td>
+                                  <td id="IsProtection1" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform" style="border-bottom: 0;">보호구지급,착용,관리방법지도</td>
+                                  <td id="IsProtection2" class="section2-nurse-check" style="border-bottom: 0;">-</td>
+                              </tr>
+                          </table>
+                      </td>
+                      <td colspan="3" style="padding:0">
+                          <table style="width:100%; height:100%">
+
+                              <tr>
+                                  <td rowspan="2" class="section2-nurse-left">10.안전보건<br>교육</td>
+                                  <td class="text-left section2-nurse-perform">안전보건교육실시 확인,지도</td>
+                                  <td id="IsEdu" class="section2-nurse-check">-</td>
+                              </tr>
+
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">
+                                      •보건교육실시 <input id="IsEdutypey" type="checkbox" />정기 <input id="IsEdutypen" type="checkbox" />기타
+                                      <br>
+                                      <input id="IsEduKind1" type="checkbox" />집체 <input id="IsEduKind2" type="checkbox" />소그룹<input id="IsEduKind3" type="checkbox" />개별
+                                      <br>
+                                      <input id="IsEduKind4" type="checkbox" />강의식 <input id="IsEduKind5" type="checkbox" />상담식<input id="IsEduKind6" type="checkbox" />실습식
+                                      <br>
+                                      <span id="IsEduCount"> 참석자: 10명</span>
+                                      <br>
+                                      <span id="IsEduTitle" style="word-break: break-all;">주제: </span>
+                                  </td>
+                                  <td class="section2-nurse-check">-</td>
+                              </tr>
+
+
+                              <tr>
+                                  <td rowspan="3" class="section2-nurse-left">11.건강증진</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">흡연,음주,비만 등 <br>생활습관개선 지도</td>
+                                  <td id="IsHealth1" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">건강증진활동 실시지도</td>
+                                  <td id="IsHealth2" class="section2-nurse-check">-</td>
+                              </tr>
+
+                              <tr>
+                                  <td rowspan="4" class="section2-nurse-left">12.작업관련 <br>질환관리</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">뇌심혈관질환 위험도 관리지도</td>
+                                  <td id="IsDe1" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">직무스트레스 관리(평가)지도</td>
+                                  <td id="IsDe2" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">근골격계질환 관리(조사)지도</td>
+                                  <td id="IsDe3" class="section2-nurse-check">-</td>
+                              </tr>
+
+                              <tr>
+                                  <td rowspan="4" class="section2-nurse-left">13.유해<br>요인관리</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">청력보존프로그램 운영지도</td>
+                                  <td id="IsHe1" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">호흡기보호프로그램 운영지도</td>
+                                  <td id="IsHe2" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">밀폐공간보건작업프로그램지도</td>
+                                  <td id="IsHe3" class="section2-nurse-check">-</td>
+                              </tr>
+
+                              <tr>
+                                  <td rowspan="4" class="section2-nurse-left">14.건강<br>상담</td>
+                              </tr>
+                              <tr>
+                                  <td id="SangdamCount" class="text-left" style="border-bottom:0;width:60%;border-top:0;"> •총 상담인원</td>
+                                  <td rowspan="3" class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left" style="border-bottom:0;width:60%;border-top:0;">
+                                      <input id="IsSangdam1" type="checkbox" />고혈압 <input id="IsSangdam2" type="checkbox" />당뇨 <input id="IsSangdam3" type="checkbox" />기타
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">
+                                      <input id="IsSangdam4" type="checkbox" />소음 <input id="IsSangdam5" type="checkbox" />분진 <input id="IsSangdam6" type="checkbox" />화학적인자
+                                  </td>
+                              </tr>
+
+                              <tr>
+                                  <td rowspan="3" class="section2-nurse-left">15.혈압측정<br>간이검사</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform">
+                                      <span id="CheckCount1"></span><span id="CheckCount2" style="margin-left:8px"></span>
+                                  </td>
+                                  <td rowspan=2 class="section2-nurse-check">-</td>
+                              </tr>
+                              <tr>
+                                  <td class="text-left section2-nurse-perform"><span id="CheckCount3"></span><span id="CheckCount4" style="margin-left:8px"></span></td>
+                              </tr>
+
+                              <tr>
+                                  <td rowspan="2" class="section2-nurse-left" style="border-bottom: 0;">16.보건정보<br>자료보급</td>
+                              </tr>
+                              <tr style="height: 51px;" ">
+                                  <td id="OshaData" class="text-left section2-nurse-perform" style="border-bottom: 0;word-break: break-all;"></td>
+                                  <td class="section2-nurse-check" style="border-bottom: 0;">-</td>
+                              </tr>
+
+
+                          </table>
+                      </td>
+                  </tr>
+
+              </table>
+          </div>
+
+          <!-- 4. 종합의견-->
+          <div class="section" style="page-break-inside:avoid;">
+              <table style="width:100%;">
+                 
+                      <tr>
+                          <th colspan=6 class="text-left" >3. 종합의견</th>
+                      </tr>
+                  
+                  <tr>
+                      <td id="opinionSection"></td>
+                  </tr>
+              </table>
+          </div>
+          <div class="section">
+              <table style="width:100%">
+                  <tr>
+                      <td class="text-center" width="10%">사업장확인</td>
+                      <td style="padding-left:10px" width="20%">
+                          직위 : <span id="SITEMANAGERGRADE"></span>
+
+                      </td>
+                      <td style="padding-left:10px">
+                          성명 :<span id="SITEMANAGERNAME"> </span><span> (서명)</span>
+                          <img id="siteManagerSign" src="" class="sign-image" />
+                      </td>
+
+                      <td class="text-center" width="10%">보건관리자</td>
+                      <td style="padding-left:10px">
+                          간호사 :<span id="NURSENAME"></span><span> (서명)</span>
+                          <img id="userSign" src="" class="sign-image" />
+                      </td>
+
+                  </tr>
+                  <tr>
+                      <td class="text-center">방문일자</td>
+                      <td id="VISITDATE" style="padding-left:10px" colspan=2></td>
+                      <td class="text-center">방문예정일</td>
+                      <td id="VISITRESERVEDATE" style="padding-left:10px" colspan=2></td>
+                  </tr>
+              </table>
+
+          </div>
+      </div>
+
+
+  </body>
+</html>

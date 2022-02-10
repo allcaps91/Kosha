@@ -40,9 +40,9 @@ namespace ComLibB
             //폼 기본값 세팅 등
             ComFunc.SetFormInit(clsDB.DbCon, this, "Y", "Y", "Y");
 
-            imgClose = ComFunc.FileToImage (@"C:\PSMHEXE\icon\close.png");
-            imgOpen = ComFunc.FileToImage (@"C:\PSMHEXE\icon\open.png");
-            imgPage = ComFunc.FileToImage (@"C:\PSMHEXE\icon\page.png");
+            imgClose = ComFunc.FileToImage (@"C:\HealthSoft\icon\close.png");
+            imgOpen = ComFunc.FileToImage (@"C:\HealthSoft\icon\open.png");
+            imgPage = ComFunc.FileToImage (@"C:\HealthSoft\icon\page.png");
 
             SetMenu ();
         }

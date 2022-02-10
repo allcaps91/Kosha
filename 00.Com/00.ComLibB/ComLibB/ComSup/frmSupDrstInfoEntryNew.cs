@@ -1160,13 +1160,13 @@ namespace ComLibB
                     //약사진 Display
                     #region GoSub Screen_Display_Image
 
-                    Dir_Check("C:\\PSMHEXE\\YAK_IMAGE\\");
+                    Dir_Check("C:\\HealthSoft\\YAK_IMAGE\\");
 
                     string strFile = "";
                     string strHostFile = "";
                     string strHost = "";
 
-                    strFile = "C:\\PSMHEXE\\YAK_IMAGE\\" + strCode.Trim().Replace("/", "__").ToUpper();
+                    strFile = "C:\\HealthSoft\\YAK_IMAGE\\" + strCode.Trim().Replace("/", "__").ToUpper();
                     strHostFile = "/data/YAK_IMAGE/" + strCode.Trim().Replace("/", "__").ToUpper();
                     strHost = "/data/YAK_IMAGE/";
 
@@ -2603,7 +2603,7 @@ namespace ComLibB
                     string strHostFile = "";
                     string strHost = "";
 
-                    strFile = @"C:\PSMHEXE\YAK_IMAGE\" + txtSuNext.Text.Trim().Replace("/", "__").ToUpper();
+                    strFile = @"C:\HealthSoft\YAK_IMAGE\" + txtSuNext.Text.Trim().Replace("/", "__").ToUpper();
                     strHostFile = "/data/YAK_IMAGE/" + txtSuNext.Text.Trim().Replace("/", "__").ToUpper();
                     strHost = "/data/YAK_IMAGE/";
 
@@ -4358,7 +4358,7 @@ namespace ComLibB
                 string SqlErr = "";
                 int intRowAffected = 0;
 
-                strFile = @"C:\PSMHEXE\YAK_IMAGE\" + txtSuNext.Text.Trim().Replace("/", "__").ToUpper();
+                strFile = @"C:\HealthSoft\YAK_IMAGE\" + txtSuNext.Text.Trim().Replace("/", "__").ToUpper();
                 strHostFile = "/data/YAK_IMAGE/" + txtSuNext.Text.Trim().Replace("/", "__").ToUpper();
                 strHost = "/data/YAK_IMAGE/";
 

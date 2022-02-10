@@ -436,8 +436,8 @@ namespace ComEmrBase
         {
             using (Ftpedt FtpedtX = new Ftpedt())
             {
-                string strFile = @"C:\PSMHEXE\Manual_Emr_Suga.pdf";
-                string strHost = "/psnfs/psmhexe/manual";
+                string strFile = @"C:\HealthSoft\Manual_Emr_Suga.pdf";
+                string strHost = "/psnfs/HealthSoft/manual";
                 string strHostFile = "Manual_Emr_Suga.pdf";
 
                 if (FtpedtX.FtpDownload("192.168.100.35", "pcnfs", "pcnfs1", strFile, strHostFile, strHost) == true)

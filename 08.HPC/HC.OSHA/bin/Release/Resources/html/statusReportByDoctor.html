@@ -1,0 +1,463 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='./print.css' rel='stylesheet' />
+    <link href='./opinion.css' rel='stylesheet' />
+    <script src='./js/jquery-3.4.1.min.js'></script>
+    <script src='./js/statusReportByDoctor.js'></script>
+    <script src='./js/statusReport.js'></script>
+  </head>
+  <body>
+      <div id="footer" class="page-footer">
+      </div>
+      <div class="page">
+          <div class="section">
+              <div class="title">( <span id="month_text"></span> )월 보건관리상태보고서(의사용)</div>
+              <table class="header text-center">
+                  <tr>
+                      <td rowspan=2 style="width: 10px;line-height: 5.79mm; ">결재</td>
+                      <td style="height:10px">담 당</td>
+                      <td id="osha1"></td>
+                      <td id="osha2"></td>
+                      <td class="blank4"></td>
+                  </tr>
+                  <tr>
+                      <td class="blank "></td>
+                      <td class="blank"></td>
+                      <td class="blank"></td>
+                      <td class="blank blank4"></td>
+                  </tr>
+              </table>
+          </div>
+
+          <div class="section">
+              <table style="width:100%">
+
+                  <tr>
+                      <td class="text-left" style="font-weight: bold;font-size: 10pt;border-top: 0;border-left: 1px solid transparent;border-right: 1px solid transparent;">1. 사업장 현황</td>
+                      <td class="text-right" style="font-weight: bold;font-size: 10pt;border-top: 0;border-left: 1px solid transparent;border-right: 1px solid transparent;">사업장명: <span id="SITENAME"></span> <span id="DEPTNAME"></span></td>
+
+                  </tr>
+                  <tr>
+                      <td class="text-center" style="width:180px">근로자 인원현황(현재기준)</td>
+                      <td>
+                          <table border="0" class='no-border'>
+                              <tr>
+                                  <td>• 현재인원:</td>
+                                  <td id="CURRENTWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>(채용:</td>
+                                  <td id="NEWWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>퇴직:</td>
+                                  <td id="RETIREWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>작업변경:</td>
+                                  <td id="CHANGEWORKERCOUNT"></td>
+                                  <td>명)</td>
+                              </tr>
+                          </table>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="text-center" style="width:180px">산업재해발생현황(현재기준)</td>
+                      <td>
+                          <table border="0" class='no-border'>
+                              <tr>
+                                  <td>• 재해자수:</td>
+                                  <td id="ACCIDENTWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>(사망:</td>
+                                  <td id="DEADWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>부상:</td>
+                                  <td id="INJURYWORKERCOUNT"></td>
+                                  <td>명,</td>
+                                  <td>업무상질병:</td>
+                                  <td id="BIZDISEASEWORKERCOUNT"></td>
+                                  <td>명)</td>
+                              </tr>
+                          </table>
+                      </td>
+                  </tr>
+                  <tr>
+                      <table style="width:100%">
+                          <tr>
+                              <td rowspan="3" style="width:73px;text-align:center">건강진단 <br />실시현황</td>
+                              <td style="width:100px; text-align:center">일반건강진단</td>
+                              <td>
+                                  <table border="0" class='no-border'>
+                                      <tr>
+                                          <td>• 검진(예정)일:</td>
+                                          <td id="GENERALHEALTHCHECKDATE"></td>
+                                          <td>대상자수:</td>
+                                          <td id="GENERALTOTALCOUNT"></td>
+                                          <td>유소견자수:</td>
+                                          <td></td>
+                                          <td>D2:</td>
+                                          <td id="GENERALD2COUNT"></td>
+                                          <td>C2:</td>
+                                          <td id="GENERALC2COUNT"></td>
+                                      </tr>
+                                  </table>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">특수건강진단</td>
+                              <td>
+                                  <table border="0" class='no-border'>
+                                      <tr>
+                                          <td>• 검진(예정)일:</td>
+                                          <td id="SPECIALHEALTHCHECKDATE"></td>
+                                          <td>대상자수:</td>
+                                          <td id="SPECIALTOTALCOUNT"></td>
+                                          <td>유소견자수:</td>
+
+
+                                          <td id="SPECIALD1COUNT"></td>
+                                          <td id="SPECIALDNCOUNT"></td>
+                                          <td id="SPECIALD2COUNT"></td>
+
+                                          <td id="SPECIALC1COUNT"></td>
+                                          <td id="SPECIALCNCOUNT"></td>
+                                          <td id="SPECIALC2COUNT"></td>
+
+
+
+
+                                      </tr>
+                                  </table>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">타 병원 진단</td>
+                              <td>
+                                  <table border="0" class='no-border'>
+                                      <tr>
+                                          <td id="EXTDATA"></td>
+                                      </tr>
+                                  </table>
+                              </td>
+                          </tr>
+                      </table>
+                  </tr>
+                  <tr>
+                      <table style="width:100%" border="0">
+                          <tr>
+                              <td rowspan="3" style="width:180px;text-align:center; border-top: 0;">작업환경측정현황</td>
+                              <td style="border-top:0">
+                                  <table border="0" class='no-border'>
+                                      <tr>
+                                          <td style="width:110px;">• 측정(예정)일:</td>
+                                          <td id="WEMDATE" style="width:70px;"></td>
+                                          <td style="width:110px;"> 주요유해인자:</td>
+                                          <td id="WEMHARMFULFACTORS" style="word-break: break-all;"></td>
+                                      </tr>
+                                  </table>
+                              </td>
+                          </tr>
+
+                      </table>
+                  </tr>
+              </table>
+          </div>
+
+          <div class="section">
+              <table style="width:100%;">
+                  <thead>
+                      <tr>
+                          <th colspan=6 class="text-left">2. 업무수행내용</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td class="text-center" style="width:170px">구분</td>
+                          <td class="text-center">업 무 수 행 내 용</td>
+                      </tr>
+                      <tr>
+                          <td class="text-center">보건담당자 업무지도</td>
+                          <td class="">
+                              <span>• 주요내용: </span><span id="mainContent"></span>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="text-center">산업안전보건위원회</td>
+                          <td>
+                              <span>• 개최(예정)일:</span><span id="sDate"></span> <input type="checkbox" id="sSupport" />운영지도,지원
+                          </td>
+                      </tr>
+                      <tr>
+                          <td rowspan="2" class="text-center">작 업 환 경 관 리</td>
+                          <td>
+                              <span>• 측정결과확인:</span> <span>노출기준</span>
+                              <input type="checkbox" id="chk41" />미만<input type="checkbox" id="chk42" />초과(<span id="chk42Content"></span>)
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <input type="checkbox" id="chk43" /><span>일반환경위생관리</span>
+                              <input type="checkbox" id="chk44" /><span>유해환경관리</span>
+                              <input type="checkbox" id="chk45" /><span>보호구관리  </span>
+                              <br /><input type="checkbox" id="chk46" /><span>작업장순회점검지도</span>(<span id="chk46Content"></span>)
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="padding:0">
+                              <table width="100%" style="height:165px; ">
+                                  <tr style="height: 110px;">
+                                      <td class="text-center" rowspan="3" style="width:20px; border:0">건강관리</td>
+                                      <td class="text-center" style="width:40px; border-top:0">건강<br />상담</td>
+                                      <td class="text-center" style="border-right:0;border-top:0">총<span id="hCcount"></span>명</td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="2" style="border-right:0;text-align: center;"> 혈압측정,간이검사</td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="2" style="border-bottom:0;border-right:0;text-align: center"> 외래진료,검사의뢰</td>
+                                  </tr>
+                              </table>
+                          </td>
+                          <td style="padding:0">
+                              <table width="100%" style="height:55px">
+                                  <tr>
+                                      <td rowspan="2" class="text-center" style="width:50px;border:0">업무상<br>질병<br>(건수)
+									  <!--div id="etcDNCN" style="font-weight:bold">DN:,CN:</div--></td>
+                                      <td class="text-center" style="width:35px;border-top: 0;">D1</td>
+                                      <td rowspan="2" class="text-center" style="width:20px;border-top: 0;border-bottom:0px;">소<br />음</td>
+                                      <td class="no-border text-center" style="width:50px;" id="noiseD1"></td>
+                                      <td rowspan="2" class="text-center" style="width:20px;border-top: 0;border-bottom:0px;">분<br />진</td>
+                                      <td class="no-border text-center" style="width:50px;" id="bunD1"></td>
+                                      <td rowspan="2" class="text-center" style="width:30px;border-top: 0;border-bottom:0px;">유기화합물</td>
+                                      <td class="no-border text-center" style="width:50px;" id="mD1"></td>
+
+                                      <td rowspan="2" class="text-center" style="width:30px;border-top: 0;border-bottom:0px;">금<br />속<br />류</td>
+                                      <td class="text-center" style="border-top: 0;width:50px;" id="goldD1"></td>
+                                      <td rowspan="2" class="text-center" style="width:20px;border-top: 0;border-bottom:0px;">기<br />타</td>
+                                      <td class="text-center" style="border-top: 0;width:50px;" id="etcD1"></td>
+                                      <td class="text-center" style="width:20px;border-top: 0;">DN</td>
+                                      <td class="no-border text-center" style="border-top: 0;" id="etcDN"></td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-center" style="border-bottom: 0px;">C1</td>
+                                      <td class="text-center" style="border-bottom: 0px;" id="noiseC1"></td>
+                                      <td class="text-center" style="border-bottom: 0px;" id="bunC1"></td>
+                                      <td class="text-center" style="border-bottom: 0px;" id="mC1"></td>
+                                      <td class="text-center" style="border-bottom: 0px;" id="goldC1"></td>
+                                      <td class="text-center" style="border-bottom: 0px;" id="etcC1"></td>
+                                      <td class="text-center" style="border-bottom: 0px;" style="width:20px;">CN</td>
+                                      <td class="text-center" style="border-bottom: 0px;" style="width:40px;" id="etcCN"></td>
+                                  </tr>
+                              </table>
+                              <table width="100%" style="height:55px">
+                                  <tr>
+                                      <td rowspan="2" class="text-center" style="width:50px;border-bottom:0;border-left:0">일반질병<br />(건수)</td>
+                                      <td class="text-center" style="width:35px">D2</td>
+                                      <td rowspan="2" class="text-center" style="border-bottom:0; width:20px;">고<br />혈<br />압</td>
+                                      <td id="aD1" class="text-center" style="width:50px;"></td>
+                                      <td rowspan="2" class="text-center" style="border-bottom:0; width:20px">당<br />뇨</td>
+                                      <td class=" text-center" id="bD1" style="width:50px"></td>
+                                      <td rowspan="2" class="text-center" style="border-bottom:0; width:30px">이상지질</td>
+                                      <td class=" text-center" id="cD1" style="width:50px"></td>
+                                      <td rowspan="2" class="text-center" style="border-bottom:0; width:30px">간장<br>질환</td>
+                                      <td id="dD1" class="text-center" style="width:50px"></td>
+                                      <td rowspan="2" class="text-center" style="border-bottom:0; width:20px">기<br />타</td>
+                                      <td id="eD1" class="text-center" style=" border-right:0px;"></td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-center no-border">C,C2</td>
+                                      <td class="no-border text-center" id="aC1"></td>
+                                      <td class="no-border text-center" id="bC1"></td>
+                                      <td class="no-border text-center" id="cC1"></td>
+                                      <td class="no-border text-center" id="dC1"></td>
+                                      <td class="no-border text-center" id="eC1"></td>
+                                  </tr>
+                              </table>
+                              <table width="100%" style="height:55px">
+                                  <tr>
+                                      <td style="width:68px;border-bottom:0;border-left:0; text-align:center">
+                                          총<span id="ppCount"> 11 </span>건
+                                      </td>
+                                      <td style="border-bottom:0;border-left:0;border-right:0">
+                                          혈압&nbsp;<span id="ppa"></span>&nbsp;건
+                                      </td>
+                                      <td style="border-bottom:0;border-left:0;border-right:0">
+                                          혈당&nbsp;<span id="ppb"></span>&nbsp;건
+                                      </td>
+                                      <td style="border-bottom:0;border-left:0;border-right:0">
+                                          단백뇨&nbsp;<span id="ppc"></span>&nbsp;건
+                                      </td>
+                                      <td style="border-bottom:0;border-left:0;border-right:0">
+                                          체지방&nbsp;<span id="ppd"></span>&nbsp;건
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="border-bottom:0;border-left:0;text-align:center">
+                                          총<span id="qqCount"> 11 </span>명
+                                      </td>
+                                      <td colspan="4" style="border-bottom:0;border-left:0">
+                                          내용&nbsp: <span id="qqContent" style="white-space: pre-line;"></span>
+                                      </td>
+                                  </tr>
+                              </table>
+                          </td>
+
+                      </tr>
+                      <tr>
+                          <td class="text-center" style="padding:0">
+                              <table width=100%>
+                                  <tr style="height:70px">
+                                      <td rowspan="2" style="width:100px; border-top:0;border-bottom:0; border-left:0;">검진결과유소견자사후관리</td>
+                                      <td style="border-right:0;border-top:0">조치지도</td>
+                                  </tr>
+                                  <tr>
+                                      <td style="border-bottom:0">이행지도</td>
+                                  </tr>
+                              </table>
+
+                          </td>
+                          <td style="padding:0">
+                              <table width=100%>
+                                  <tr style="height:70px">
+                                      <td style="border-left:0;border-right:0;border-top:0">
+                                          <span><input type="checkbox" id="chk1" />근무중치료</span><span><input type="checkbox" id="chk2" />추적검사</span>
+                                          <span><input type="checkbox" id="chk3" />보호구착용</span><span><input type="checkbox" id="chk4" />조건부근무</span>(<span id="chk4Content"></span>)
+                                          <br>
+                                          <span><input type="checkbox" id="chk5" />근로시간단축</span><span><input type="checkbox" id="chk6" />작업전환</span>
+                                          <span><input type="checkbox" id="chk7" />근로제한</span><span><input type="checkbox" id="chk8" />기타</span>(<span id="chk8Content"></span>)
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="border-left:0; border-bottom:0">• 이행확인결과 <span id="chkContent"></span></td>
+                                  </tr>
+                              </table>
+                          </td>
+                      <tr>
+                          <td class="text-center">건 강 증 진 지 도</td>
+                          <td class="">
+                              <span>• 생활습관개선지도: </span>
+                              <span><input id="chk10" type="checkbox" />흡연</span>
+                              <span><input id="chk11" type="checkbox" />음주</span>
+                              <span><input id="chk12" type="checkbox" />운동</span>
+                              <span><input id="chk13" type="checkbox" />영양</span>
+                              <span><input id="chk14" type="checkbox" />비만</span>
+                              <!--<br>
+                            <span><input id="chk15" type="checkbox" />작업관련성질환예방</span>
+                            (<span id="chk15Content"></span>)
+                                -->
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="text-center">응 급 처 치 관 리</td>
+                          <td class="">
+                              <span><input id="chk20" type="checkbox" />응급의료체계 구축,활용 </span>
+                              <span><input id="chk21" type="checkbox" />응급처치지도 </span>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="text-center">업무상질병관리</td>
+                          <td class="">
+                              <span><input id="chk31" type="checkbox" />업무상질병 예방지도</span>
+                              <span><input id="chk32" type="checkbox" />업무상발생 원인조사 </span>
+                              <br>
+                              <span><input id="chk33" type="checkbox" />재발방지지도    </span>
+                              <span><input id="chk34" type="checkbox" />사후조치 결과확인</span>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="text-center">
+                              보 건 교 육
+                              <p>
+                                  <span><input id="bogunRadio_Y" type="checkbox" />정기</span>
+                                  <span><input id="bogunRadio_N" type="checkbox" />기타</span>
+                              </p>
+
+                          </td>
+                          <td style="padding:0">
+                              <table width=100%>
+                                  <tr>
+                                      <td style="border:0">
+                                          <span>• 참석자:</span> <span id="bogun3"></span>
+                                          <span>• 장소:</span> <span id="bogun4"></span>
+                                          <span>• 교육자료:</span> <span id="bogun5"></span>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="border-left:0">
+                                          <span>• 교육주제:</span> <span id="bogun6"></span>
+
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="border-left:0; border-bottom: 0;">
+                                          <span><input type="checkbox" id="bogunchk1" />개별</span>
+                                          <span><input type="checkbox" id="bogunchk2" />소그룹</span>
+                                          <span><input type="checkbox" id="bogunchk3" />집체교육</span>
+                                          <span><input type="checkbox" id="bogunchk4" />강의식</span>
+                                          <span><input type="checkbox" id="bogunchk5" />상담식</span>
+                                          <span><input type="checkbox" id="bogunchk6" />기타</span><span id="bogunchk6Content"></span>
+                                      </td>
+                                  </tr>
+                              </table>
+                          </td>
+                      <tr>
+                          <td class="text-center">보건정보자료보급</td>
+                          <td class="">
+                              <span>• 내용 :  </span>
+                              <span id="bogun7"></span>
+                          </td>
+                      </tr>
+                      </tr>
+                      </tr>
+                  </tbody>
+
+              </table>
+          </div>
+
+          <!-- 3. 종합의견-->
+          <div class="section" style="page-break-inside:avoid;">
+              <table style="width:100%; " >
+                  
+                      <tr>
+                          <th colspan=6 class="text-left" style="">3. 종합의견</th>
+                      </tr>
+                 
+                  <tr>
+                      <td id="opinionSection" style="white-space: pre-line;border: 1px solid black;padding: 5px;">c</td>
+                  </tr>
+              </table>
+          </div>
+          <div class="section">
+              <table style="width:100%">
+                  <tr>
+                      <td class="text-center" width="10%">사업장확인</td>
+                      <td style="padding-left:10px" width="20%">
+                          직위 : <span id="SITEMANAGERGRADE"></span>
+
+                      </td>
+                      <td style="padding-left:10px">
+                          성명 :<span id="SITEMANAGERNAME"> </span><span> (서명)</span>
+                          <img id="siteManagerSign" src="" class="sign-image" />
+                      </td>
+
+                      <td class="text-center" width="10%">보건관리자</td>
+                      <td style="padding-left:10px">
+                          의사 :<span id="DOCTORNAME"></span><span> (서명)</span>
+                          <img id="userSign" src="" class="sign-image" />
+                      </td>
+
+                  </tr>
+                  <tr>
+                      <td class="text-center">방문일자</td>
+                      <td id="VISITDATE" style="padding-left:10px" colspan=2></td>
+                      <td class="text-center">방문예정일</td>
+                      <td id="VISITRESERVEDATE" style="padding-left:10px" colspan=2></td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+
+
+  </body>
+</html>

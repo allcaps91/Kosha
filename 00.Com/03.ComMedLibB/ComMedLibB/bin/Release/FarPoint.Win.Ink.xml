@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FarPoint.Win.Ink</name>
+    </assembly>
+    <members>
+        <member name="T:FarPoint.Win.Ink.InkNotation">
+            <summary>
+            Ink Notation class - Internal use
+            </summary>
+        </member>
+        <member name="F:FarPoint.Win.Ink.InkNotation.InkNotationSave">
+            <summary>
+            InkNotationSave event handler
+            </summary>
+        </member>
+        <member name="F:FarPoint.Win.Ink.InkNotation.InkNotationClear">
+            <summary>
+            InkNotationClear event handler
+            </summary>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkNotation.#ctor">
+            <summary>
+            InkNotation default constructor that uses the active row and column pane
+            </summary>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkNotation.#ctor(System.Int32,System.Int32)">
+            <summary>
+            InkNotation constructor that specifies row and column pane
+            </summary>
+            <param name="rowPane"></param>
+            <param name="columnPane"></param>
+        </member>
+        <member name="P:FarPoint.Win.Ink.InkNotation.RowPaneIndex">
+            <summary>
+            RowPaneIndex
+            </summary>
+        </member>
+        <member name="P:FarPoint.Win.Ink.InkNotation.ColumnPaneIndex">
+            <summary>
+            ColumnPaneIndex
+            </summary>
+        </member>
+        <member name="P:FarPoint.Win.Ink.InkNotation.InkRectangle">
+            <summary>
+            InkRectangle
+            </summary>
+        </member>
+        <member name="P:FarPoint.Win.Ink.InkNotation.InkImage">
+            <summary>
+            InkImage
+            </summary>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkNotation.SetInkRectangle(System.Drawing.Rectangle)">
+            <summary>
+            SetInkRectangle
+            </summary>
+            <param name="inkRect"></param>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkNotation.OnInkMode(System.Object,System.EventArgs)">
+            <summary>
+            OnInkMode
+            </summary>
+            <param name="o"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkNotation.OnEraseMode(System.Object,System.EventArgs)">
+            <summary>
+            OnEraseMode
+            </summary>
+            <param name="o"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkNotation.OnNotationSave(System.Object,System.EventArgs)">
+            <summary>
+            OnNotationSave
+            </summary>
+            <param name="o"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkNotation.OnNotationClear(System.Object,System.EventArgs)">
+            <summary>
+            OnNotationClear
+            </summary>
+            <param name="o"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:FarPoint.Win.Ink.InkProxy">
+            <summary>
+            InkProxy class
+            </summary>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkProxy.#ctor">
+            <summary>
+            InkProxy default constructor
+            </summary>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkProxy.InkStartNotation(System.Windows.Forms.Control,System.Int32,System.Int32,System.Drawing.Color,System.Int32,System.EventHandler,System.EventHandler)">
+            <summary>
+            InkStartNotation
+            </summary>
+            <param name="parent"></param>
+            <param name="rowPane"></param>
+            <param name="columnPane"></param>
+            <param name="inkBackColor"></param>
+            <param name="alphaBlend"></param>
+            <param name="onInkNotationExit"></param>
+            <param name="onInkNotationSave"></param>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkProxy.InkStopNotation">
+            <summary>
+            InkStopNotation
+            </summary>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkProxy.InkSetNotationRectangle(System.Drawing.Rectangle)">
+            <summary>
+            InkSetNotationRectangle
+            </summary>
+            <param name="inkRect"></param>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkProxy.InkGetColumnPaneIndex">
+            <summary>
+            InkGetColumnPaneIndex
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkProxy.InkGetRowPaneIndex">
+            <summary>
+            InkGetRowPaneIndex
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkProxy.InkGetInkRectangle">
+            <summary>
+            InkGetInkRectangle
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkProxy.InkGetInkImage">
+            <summary>
+            InkGetInkImage
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkProxy.InkGetControl">
+            <summary>
+            InkGetControl
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FarPoint.Win.Ink.InkProxy.InkInvalidate">
+            <summary>
+            InkInvalidate
+            </summary>
+        </member>
+    </members>
+</doc>

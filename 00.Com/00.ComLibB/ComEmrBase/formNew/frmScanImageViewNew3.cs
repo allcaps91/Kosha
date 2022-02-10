@@ -88,8 +88,8 @@ namespace ComEmrBase
         frmScanPageView fScanPageView = null;
         #endregion
 
-        //private string mstrViewPath = @"C:\PSMHEXE\temp\mhdrerm\";
-        public string mstrViewPathInit = @"C:\PSMHEXE\ScanTmp\Formname"; // clsType.gSvrInfo.strClient + "\\ScanTmp\\" + clsCommon.gstrEXENAME.Replace(".EXE", "");
+        //private string mstrViewPath = @"C:\HealthSoft\temp\mhdrerm\";
+        public string mstrViewPathInit = @"C:\HealthSoft\ScanTmp\Formname"; // clsType.gSvrInfo.strClient + "\\ScanTmp\\" + clsCommon.gstrEXENAME.Replace(".EXE", "");
         public string mstrViewPath = string.Empty;
 
 

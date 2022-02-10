@@ -11,8 +11,8 @@ namespace ComBase
     /// Description : FTP 
     /// Author : 박웅규
     /// Create Date : 2017.07.19
-    /// 참조 : C:\PSMHEXE\exenet\edtFTPnet.dll
-    /// N:\차세대 의료정보시스템\4-0 개발단계\4-5 개발 툴\PSMHEXE\exenet\edtFTPnet.dll
+    /// 참조 : C:\HealthSoft\exenet\edtFTPnet.dll
+    /// N:\차세대 의료정보시스템\4-0 개발단계\4-5 개발 툴\HealthSoft\exenet\edtFTPnet.dll
     /// </summary>
     /// <history>
     /// </history>
@@ -45,8 +45,8 @@ namespace ComBase
         //bool ftpCon = FtpedtX.FtpConnetBatch("192.168.100.35", "pcnfs", "pcnfs1");
         //if (ftpCon == true)
         //{
-        //    FtpedtX.FtpUploadBatch(@"C:\PSMHEXE\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/psmhexe/exenet"); //파일업로드
-        //    FtpedtX.FtpDownloadBatch(@"C:\PSMHEXE\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/psmhexe/exenet"); //파일다운로드
+        //    FtpedtX.FtpUploadBatch(@"C:\HealthSoft\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/HealthSoft/exenet"); //파일업로드
+        //    FtpedtX.FtpDownloadBatch(@"C:\HealthSoft\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/HealthSoft/exenet"); //파일다운로드
         //    FtpedtX.FtpDisConnetBatch();
         //}
         //FtpedtX = null;
@@ -539,7 +539,7 @@ namespace ComBase
                                 int intPort = 21, bool blnReplace = true)
         {
             //Ftpedt FtpedtX = new Ftpedt();
-            //FtpedtX.FtpUpload("192.168.100.35", "pcnfs", "pcnfs1", @"C:\PSMHEXE\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/psmhexe/exenet");
+            //FtpedtX.FtpUpload("192.168.100.35", "pcnfs", "pcnfs1", @"C:\HealthSoft\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/HealthSoft/exenet");
             //FtpedtX = null;
             FTPConnection ftpConnection1 = new FTPConnection();
 
@@ -601,7 +601,7 @@ namespace ComBase
                                 string strIMGPATH, string strITEMVALUE, int intPort = 21, bool blnReplace = true)
         {
             //Ftpedt FtpedtX = new Ftpedt();
-            //FtpedtX.FtpUpload("192.168.100.35", "pcnfs", "pcnfs1", @"C:\PSMHEXE\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/psmhexe/exenet");
+            //FtpedtX.FtpUpload("192.168.100.35", "pcnfs", "pcnfs1", @"C:\HealthSoft\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/HealthSoft/exenet");
             //FtpedtX = null;
             FTPConnection ftpConnection1 = new FTPConnection();
 
@@ -672,7 +672,7 @@ namespace ComBase
                                 int intPort = 21, bool blnReplace = true)
         {
             //Ftpedt FtpedtX = new Ftpedt();
-            //FtpedtX.FtpDownload("192.168.100.35", "pcnfs", "pcnfs1", @"C:\PSMHEXE\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/psmhexe/exenet");
+            //FtpedtX.FtpDownload("192.168.100.35", "pcnfs", "pcnfs1", @"C:\HealthSoft\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/HealthSoft/exenet");
             //FtpedtX = null;
             if (blnReplace == false)
             {
@@ -748,7 +748,7 @@ namespace ComBase
                                 int intPort = 21, bool blnReplace = true)
         {
             //Ftpedt FtpedtX = new Ftpedt();
-            //FtpedtX.FtpDownload("192.168.100.35", "pcnfs", "pcnfs1", @"C:\PSMHEXE\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/psmhexe/exenet");
+            //FtpedtX.FtpDownload("192.168.100.35", "pcnfs", "pcnfs1", @"C:\HealthSoft\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/HealthSoft/exenet");
             //FtpedtX = null;
             if (blnReplace == false)
             {
@@ -873,7 +873,7 @@ namespace ComBase
                                 int intPort = 21)
         {
             //Ftpedt FtpedtX = new Ftpedt();
-            //FtpedtX.FtpDownload("192.168.100.35", "pcnfs", "pcnfs1", @"C:\PSMHEXE\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/psmhexe/exenet");
+            //FtpedtX.FtpDownload("192.168.100.35", "pcnfs", "pcnfs1", @"C:\HealthSoft\exenet\edtFTPnet.dll",  "edtFTPnet.dll", "/psnfs/HealthSoft/exenet");
             //FtpedtX = null;
 
             Stream strFileStream = null;

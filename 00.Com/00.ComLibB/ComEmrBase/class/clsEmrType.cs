@@ -26,7 +26,7 @@ namespace ComEmrBase
 
         public static void InitEmrSvrInfo()
         {
-            EmrSvrInfo.EmrClient = @"C:\PSMHEXE\TextEmr";           //프로그램 기본 위치
+            EmrSvrInfo.EmrClient = @"C:\HealthSoft\TextEmr";           //프로그램 기본 위치
             EmrSvrInfo.EmrFtpSvrIp = "192.168.100.33";              //
             EmrSvrInfo.EmrFtpPort = "21";                           //
             EmrSvrInfo.EmrFtpUser = "emr";                          //

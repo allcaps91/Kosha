@@ -26,7 +26,7 @@ namespace HcAdmin
             txtNewVer.Text = "";
             READ_VerInfo_Server();
 
-            string strVerPath = @"C:\PSMHEXE\Debug\VerInfo.txt";
+            string strVerPath = @"C:\HealthSoft\VerInfo.txt";
             if (System.IO.File.Exists(strVerPath) == true) txtNewVer.Text = System.IO.File.ReadAllText(strVerPath);
             txtNewVer.Text = VB.Pstr(txtNewVer.Text, ";", 1);
         }
@@ -130,7 +130,7 @@ namespace HcAdmin
             // 2. 최근 1주일이내 변경된 파일만 Update Files 목록에 복사
             DateTime strGdate = DateTime.Now.AddDays(-20);
             string strCopyPath = @"C:\헬스소프트\UpdateFiles\";
-            DirectoryInfo d2 = new DirectoryInfo(@"C:\PSMHEXE\Debug");
+            DirectoryInfo d2 = new DirectoryInfo(@"C:\헬스소프트\Debug");
             FileInfo[] files2 = d2.GetFiles();
             foreach (FileInfo file in files2)
             {
@@ -144,7 +144,7 @@ namespace HcAdmin
             string strVerPath = @"C:\헬스소프트\UpdateFiles\VerInfo.txt";
             System.IO.File.WriteAllText(strVerPath, txtNewVer.Text.Trim());
 
-            strVerPath = @"C:\PSMHEXE\Debug\VerInfo.txt";
+            strVerPath = @"C:\HealthSoft\VerInfo.txt";
             System.IO.File.WriteAllText(strVerPath, txtNewVer.Text.Trim());
 
             lblMsg.Text = "파일을 복사 완료";
@@ -157,7 +157,7 @@ namespace HcAdmin
 
             //업데이트 파일생성
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = @"C:\헬스소프트\InstallFactory 2.70\InstFact.exe";
+            startInfo.FileName = @"C:\헬스소프트\0.SETUP\2.InstallFactory 2.70\InstFact.exe";
             startInfo.Arguments = null;
             Process.Start(startInfo);
 

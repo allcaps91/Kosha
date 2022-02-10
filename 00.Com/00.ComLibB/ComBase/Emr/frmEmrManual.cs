@@ -19,8 +19,8 @@ namespace ComBase
         {
             using (Ftpedt FtpedtX = new Ftpedt())
             {
-                string strFile = @"C:\PSMHEXE\Emr_Manul.pdf";
-                string strHost = "/psnfs/psmhexe/manual";
+                string strFile = @"C:\HealthSoft\Emr_Manul.pdf";
+                string strHost = "/psnfs/HealthSoft/manual";
                 string strHostFile = "Manual_Emr_Doctor.pdf";
 
                 if (FtpedtX.FtpDownload("192.168.100.35", "pcnfs", "pcnfs1", strFile, strHostFile, strHost) == true)

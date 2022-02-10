@@ -1,0 +1,726 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+FarPoint.Win.Spread.Design
+</name>
+</assembly>
+<members>
+<member name="T:FarPoint.Win.Spread.Design.CellTypeDlgV3">
+ <summary>
+ Represents the Cell Type Dialog for Spread Designer.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.IsBarCodeDataValid(System.String,FarPoint.Win.Spread.CellType.BarCodeCellType@)">
+ <summary>
+ check input data valid
+ </summary>
+ <param name="newText"> input data</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.Ct_barcode_ValueTextBox_TextChanged(System.Object,System.EventArgs)">
+ <summary>
+ Handler barcode value TextBox TextChanged event.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.Ct_barcode_FixLengthNumericUpDown_ValueChanged(System.Object,System.EventArgs)">
+ <summary>
+ Handler barcode FixLength NumericUpDown ValueChanged event.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.Ct_barcode_CheckDigitCheckBox_CheckedChanged(System.Object,System.EventArgs)">
+ <summary>
+ Handle barcode check digit CheckBox Checked Changed event.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.CopybarcodeDetailsDlgValue(FarPoint.Win.Spread.Design.BarcodeDetailsDlg@,FarPoint.Win.Spread.Design.BarcodeDetailsDlg@)">
+ <summary>
+ Copy barcodeDetailsDlg setting Value
+ </summary>
+ <param name="copyFromDlg"></param>
+ <param name="copyToDlg"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.Ct_barcode_DetailsButton_Click(System.Object,System.EventArgs)">
+ <summary>
+ Handler barcode details button click event.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.SetCellSize(FarPoint.Win.Spread.Cell@)">
+ <summary>
+ Sets cell size corresponding the size of barcode size
+ </summary>
+ <param name="cell"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.TypeRadio_Click(System.Object,System.EventArgs)">
+ <summary>
+ Handler barcode type radion button click event
+ </summary>
+ <param name="sender"></param>
+ <param name="arg"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.Ct_barcode_TabGeneral_Enter(System.Object,System.EventArgs)">
+ <summary>
+Handler ct_barcode_TabGeneral enter event
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.BarcodePreview">
+ <summary>
+ draw barcode preview
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.#ctor(FarPoint.Win.Spread.FpSpread)">
+ <summary>
+ Creates a new Cell Type dialog.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.#ctor">
+ <summary>
+ Creates a new Cell Type dialog.
+ </summary>
+</member>
+<member name="P:FarPoint.Win.Spread.Design.CellTypeDlgV3.CellTypeIndex">
+ <summary>
+ Gets or sets the cell type index.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.InitValues(FarPoint.Win.Spread.CellType.ICellType,System.Object)">
+ <summary>
+ Sets the initial values to the cell type dialog.
+ </summary>
+ <param name="celltype">Cell Type</param>
+ <param name="data">Data</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.SetInitValues(FarPoint.Win.Spread.CellType.ICellType,System.Object)">
+ <summary>
+ Sets the initial values to the cell type dialog.
+ </summary>
+ <param name="celltype">Cell Type</param>
+ <param name="data">Data</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.ApplyCellType(FarPoint.Win.Spread.CellType.ICellType,System.Boolean)">
+ <summary>
+ Applies the cell type in the cell type dialog.
+ </summary>
+ <param name="ct">Cell Type</param>
+ <param name="locked">Whether the cell is locked</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CellTypeDlgV3.ApplyData(System.Object)">
+ <summary>
+ Applies the data in the cell type dialog.
+ </summary>
+ <param name="data">Data</param>
+</member>
+<member name="T:FarPoint.Win.Spread.Design.DropDownCalendar">
+ <summary>
+ Represents the drop-down calendar in the Spread Designer.
+ </summary>
+</member>
+<member name="E:FarPoint.Win.Spread.Design.DropDownCalendar.CloseUp">
+ <summary>
+ Occurs when the user closes the drop-down calendar.
+ </summary>
+ <param name="sender">Object that fires the event</param>
+ <param name="e">Event data</param>
+</member>
+<member name="E:FarPoint.Win.Spread.Design.DropDownCalendar.ValueChanged">
+ <summary>
+ Occurs when the user changes the value in the drop-down calendar.
+ </summary>
+ <param name="sender">Object that fires the event</param>
+ <param name="e">Event data</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DropDownCalendar.#ctor(System.Int32,System.Int32)">
+ <summary>
+ Creates a new drop-down calendar.
+ </summary>
+ <param name="x">X coordinate</param>
+ <param name="y">Y coordinate</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DropDownCalendar.GetDateSelected">
+ <summary>
+ Gets the date selected from the drop-down calendar.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DropDownCalendar.GetPreferredSize">
+ <summary>
+ Gets the maximum (preferred) size.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DropDownCalendar.GetSubEditorControl">
+ <summary>
+ Gets the subeditor control in the drop-down calendar.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DropDownCalendar.GetValue">
+ <summary>
+ Gets the value in the drop-down calendar.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DropDownCalendar.SetValue(System.Object)">
+ <summary>
+ Sets the value in the drop-down calendar.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DropDownCalendar.OnKeyDown(System.Windows.Forms.KeyEventArgs)">
+ <summary>
+ Raises the KeyDown event.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DropDownCalendar.OnDeactivate(System.EventArgs)">
+ <summary>
+ Raises the Deactivate event.
+ </summary>
+</member>
+<member name="T:FarPoint.Win.Spread.Design.CustomDropCellType">
+ <summary>
+ Represents the custom drop cell type.
+ </summary>
+</member>
+<member name="E:FarPoint.Win.Spread.Design.CustomDropCellType.ValueChanged">
+ <summary>
+ Occurs when the user changes the value of the custom drop cell type.
+ </summary>
+ <param name="sender">Object that fires the event</param>
+ <param name="e">Event data</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CustomDropCellType.#ctor(System.Int32,System.Int32)">
+ <summary>
+ Creates a new custom drop cell type.
+ </summary>
+ <param name="x">X coordinate</param>
+ <param name="y">Y coordinate</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CustomDropCellType.SetNewLocation(System.Int32,System.Int32)">
+ <summary>
+ Sets the new location for the custom drop cell type.
+ </summary>
+ <param name="x">X coordinate</param>
+ <param name="y">Y coordinate</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CustomDropCellType.PaintCell(System.Drawing.Graphics,System.Drawing.Rectangle,FarPoint.Win.Spread.Appearance,System.Object,System.Boolean,System.Boolean,System.Single)">
+ <summary>
+ Paints the cell for the custom drop cell type.
+ </summary>
+ <param name="g">Graphics device</param>
+ <param name="r">Rectangle bounding the cell</param>
+ <param name="appearance">Appearance object with display settings</param>
+ <param name="value">Value in the cell</param>
+ <param name="isSelected">Whether the cell is selected</param>
+ <param name="isLocked">Whether the cell is locked</param>
+ <param name="zoomFactor">Zoom factor</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CustomDropCellType.StartEditing(System.EventArgs,System.Boolean,System.Boolean)">
+ <summary>
+ Occurs when the user starts edit mode in the cell.
+ </summary>
+ <param name="e">EventArgs object with event data</param>
+ <param name="selectAll">Whether all are selected</param>
+ <param name="autoClipboard">Whether to handle the shortcut keys for Clipboard actions</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CustomDropCellType.SetEditorValue(System.Object)">
+ <summary>
+ Sets the editor value.
+ </summary>
+ <param name="value">Object with value</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.CustomDropCellType.StopEditing">
+ <summary>
+ Occurs when the user stops edit mode in the cell.
+ </summary>
+</member>
+<member name="T:FarPoint.Win.Spread.Design.ExternalDialogs">
+ <summary>
+ Represents the dialogs that can be used external to Spread Designer.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.ExternalDialogs.SpreadSettingsEditor(FarPoint.Win.Spread.FpSpread,System.String,System.String)">
+ <summary>
+ Represents the Spread settings editor dialog for the specified FarPoint Spread.
+ </summary>
+ <param name="spread">FarPoint Spread</param>
+ <param name="helpFile">File name, including path if necessary, for the help file</param>
+ <param name="topic">Help topic within the help file</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.ExternalDialogs.BorderEditor(FarPoint.Win.Spread.FpSpread)">
+ <summary>
+ Represents the border editor dialog for the specified FarPoint Spread.
+ </summary>
+ <param name="spread">FarPoint Spread</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.ExternalDialogs.CellTypeEditor(FarPoint.Win.Spread.FpSpread)">
+ <summary>
+ Represents the cell type editor dialog for the specified FarPoint Spread.
+ </summary>
+ <param name="spread">FarPoint Spread</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.ExternalDialogs.CellTypeEditor(FarPoint.Win.Spread.FpSpread,FarPoint.Win.Spread.Design.DesignerMain.CellTypeEnum)">
+ <summary>
+ Represents the cell type editor dialog for the specified FarPoint Spread.
+ </summary>
+ <param name="spread">FarPoint Spread</param>
+ <param name="DefaultCellType">Celltype enum to load if celltype of select cell is nothing </param>
+</member>
+<member name="T:FarPoint.Win.Spread.Design.SpreadCellDescriptionProvider">
+ <summary>
+ The primary purpose of SpreadCellDescriptionProvider class is: dynamic add Editor attribute for Text property
+ of FarPoint.Win.Spread.Cell class in design time. Supports multiline string of Text property in property grid of header editor.
+ </summary>
+</member>
+<member name="T:FarPoint.Win.Spread.Design.SpreadCellDescriptionProvider.SpreadCellTextPropertyDescriptor">
+ <summary>
+ A custom PropertyDescriptor for provide editor to Text property of Cell class.
+ </summary>
+</member>
+<member name="P:FarPoint.Win.Spread.Design.TextRotationControl.Title">
+ <summary>
+ Setter and Getter group box text. 
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="P:FarPoint.Win.Spread.Design.TextRotationControl.DegreeText">
+ <summary>
+ Setter and Getter degrees lable text.
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="P:FarPoint.Win.Spread.Design.TextRotationControl.RotationText">
+ <summary>
+ Setter and Getter clock text.
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="P:FarPoint.Win.Spread.Design.TextRotationControl.Value">
+ <summary>
+ Getter clock value.
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.TextRotationControl.Clock_ValueChanged(System.Object,System.EventArgs)">
+ <summary>
+ Clock value changed hanlder.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.TextRotationControl.numericUpDown_ValueChanged(System.Object,System.EventArgs)">
+ <summary>
+ NumericUpdown value changed handelr.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.TextRotationControl.numericUpDown_KeyUp(System.Object,System.Windows.Forms.KeyEventArgs)">
+ <summary>
+ Numeric key up handler
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpColumnConfig.#ctor">
+ <summary>
+ Initializes a new instance of the FpColumnConfig class.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpColumnConfig.OnActive">
+ <summary>
+ Called when activate the user control.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpColumnConfig.ModifyColumnsName(System.Int32,System.Boolean)">
+ <summary>
+ Change columns name when insert or delete a column.
+ </summary>
+ <param name="index">The index of begin column of maybe change columns name</param>
+ <param name="isInsert">If set to true, is insert column.</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpColumnConfig.FpSpread1_EditChange(System.Object,FarPoint.Win.Spread.EditorNotifyEventArgs)">
+ <summary>
+ Handles the EditChange event of the FpSpread1 control. FpSpread1 is config Spread of IDE Spread.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpColumnConfig.FpSpread1_ButtonClicked(System.Object,FarPoint.Win.Spread.EditorNotifyEventArgs)">
+ <summary>
+ Handles the ButtonClicked event of the FpSpread1 control for set visible property of the columns.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpDataSourceConfig.#ctor">
+ <summary>
+ Initializes a new instance of the FpDataSourceConfig class.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpDataSourceConfig.OnActive">
+ <summary>
+ Called when activate the user control.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpGroupBarTitleBarConfig.#ctor">
+ <summary>
+ Initializes a new instance of the FpGroupBarTitleBarConfig class.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpGroupBarTitleBarConfig.OnActive">
+ <summary>
+ Called when activate the user control.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpHeaderFooterConfig.#ctor">
+ <summary>
+ Initializes a new instance of the FpHeaderFooterConfig class.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpHeaderFooterConfig.OnActive">
+ <summary>
+ Called when activate the user control.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpOperationModeConfig.#ctor">
+ <summary>
+ Initializes a new instance of the FpOperationModeConfig class.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpOperationModeConfig.OnActive">
+ <summary>
+ Called when activate the user control.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpSkinConfig.#ctor">
+ <summary>
+ Initializes a new instance of the FpSkinConfig class.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpSkinConfig.OnActive">
+ <summary>
+ Called when activate the user control.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpTabStripScrollBarConfig.#ctor">
+ <summary>
+ Initializes a new instance of the FpTabStripScrollBar class.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpTabStripScrollBarConfig.OnActive">
+ <summary>
+ Called when activate the user control.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpTabStripScrollBarConfig.Label_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+ <summary>
+ Paints a highlighted line from the end of a Label control Text to the Width of the control to make
+ the Label look more like a separator.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.StepBase.Active(FarPoint.Win.Spread.Design.IWizardController)">
+ <summary>
+ Activate the user control.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.StepBase.Inactive">
+ <summary>
+ Inactivate the user control.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.StepBase.OnActive">
+ <summary>
+ Called when activate the user control.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.StepBase.OnInactive">
+ <summary>
+ Called when inactivate the user control.
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.ExpandRowGroup(FarPoint.Win.Spread.RangeGroupInfo)">
+ <summary>
+ Expand a row group by group information
+ </summary>
+ <param name="grpInfo"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.ExpandColumnGroup(FarPoint.Win.Spread.RangeGroupInfo)">
+ <summary>
+ Expands a column group by group infor
+ </summary>
+ <param name="grpInfo"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.ProcessExpandColumnGroups(FarPoint.Win.Spread.RangeGroupInfo)">
+ <summary>
+ Processes expand column groups.
+ </summary>
+ <param name="grpInfo"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.Collapse(FarPoint.Win.Spread.RangeGroupInfo,System.Boolean)">
+ <summary>
+ Collapses a row group or a column group
+ </summary>
+ <param name="grpInfo"></param>
+ <param name="row"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.ProcessExpandRowGroups(FarPoint.Win.Spread.RangeGroupInfo)">
+ <summary>
+ Processes expand row groups
+ </summary>
+ <param name="grpInfo"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.ExpandGroup">
+ <summary>
+ Expands group
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.CollapseRowGroup(FarPoint.Win.Spread.RangeGroupInfo)">
+ <summary>
+ Collapse group.
+ </summary>
+ <param name="grpInfo"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.CollpaseColumnGroup(FarPoint.Win.Spread.RangeGroupInfo)">
+ <summary>
+ Collapses column group
+ </summary>
+ <param name="grpInfo"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.ProcessCollpaseColumnGroups(FarPoint.Win.Spread.RangeGroupInfo)">
+ <summary>
+ Process collapse column group
+ </summary>
+ <param name="grpInfo"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.ProcessCollpaseRowGroups(FarPoint.Win.Spread.RangeGroupInfo)">
+ <summary>
+ Processes collapse row groups
+ </summary>
+ <param name="grpInfo"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.CollapseGroup">
+ <summary>
+ This method will be called to procecess collapses group function
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.Group">
+ <summary>
+ This method will be called whenther user click buton group on toolbar
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.UnGroup">
+ <summary>
+ This method will be called whenther user click button group on tool bar.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.IsRowSelected(FarPoint.Win.Spread.SheetView)">
+ <summary>
+ Return false if there was a rows selection
+ </summary>
+ <param name="sHView"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.IsColumnSelected(FarPoint.Win.Spread.SheetView)">
+ <summary>
+ Returns true if there was a columns selection
+ </summary>
+ <param name="sHView"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.HasGroup">
+ <summary>
+ Returns true if there was a selection in designer control
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.GetCellTypeSetting(System.Object)">
+ <summary>
+ Returns celltype setting by celltype.
+ </summary>
+ <param name="cellType"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.GetPluginCellTypeName(System.String)">
+ <summary>
+ Returns plugin cell type name by full type.
+ </summary>
+ <param name="type"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.GetPluginCellType(System.String)">
+ <summary>
+ Returns plugin celltype by name
+ </summary>
+ <param name="name"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.MenuContext_Barcode_Click(System.Object,System.EventArgs)">
+ <summary>
+ Handler barcode menu context click event.
+ </summary>
+ <param name="sender"></param>
+ <param name="arg"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.menu_Celltypes_Barcode_Click(System.Object,System.EventArgs)">
+ <summary>
+ Handler barcode cell type click event
+ </summary>
+ <param name="sender"></param>
+ <param name="arg"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.menuFile_PrintPDF_Click(System.Object,System.EventArgs)">
+ <summary>
+ Handler  print PDF menu click event
+ </summary>
+ <param name="sender"></param>
+ <param name="arg"></param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.GetIndentSpace(System.Drawing.Font)">
+ <summary>
+ Returns the width of 4 characters corresponding selected font.
+ </summary>
+ <param name="font"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="P:FarPoint.Win.Spread.Design.DesignerMain.IsShowPropertyGridValue">
+ <summary>
+ Get or set visible status of PropertyGrid panel
+ </summary>
+</member>
+<member name="P:FarPoint.Win.Spread.Design.DesignerMain.IsResizedShowPropertyGrid">
+ <summary>
+ Get or set visible status of PropertyGrid panel with current size
+ </summary>
+</member>
+<member name="P:FarPoint.Win.Spread.Design.DesignerMain.IsShowPropertyGrid">
+ <summary>
+ Determine current PropertyGrid panel visible status
+ </summary>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.ToCellHorizontalAlignment(FarPoint.Win.HorizontalAlignment)">
+ <summary>
+ Converts a FarPoint.Win.Spread.CellHorizontalAlignment value to the corresponding FarPoint.Win.HorizontalAlignment value.
+ </summary>
+ <param name="alignment">FarPoint.Win.Spread.CellHorizontalAlignment value</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.ToHorizontalAlignment(FarPoint.Win.Spread.CellHorizontalAlignment)">
+ <summary>
+ Converts a FarPoint.Win.Spread.CellHorizontalAlignment value to the corresponding FarPoint.Win.HorizontalAlignment value.
+ </summary>
+ <param name="alignment">FarPoint.Win.Spread.CellHorizontalAlignment value</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.ToVerticalAlignment(FarPoint.Win.Spread.CellVerticalAlignment)">
+ <summary>
+ Converts a FarPoint.Win.Spread.CellVerticalAlignment value to the corresponding FarPoint.Win.VerticalAlignment value.
+ </summary>
+ <param name="alignment">FarPoint.Win.Spread.CellVerticalAlignment</param>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.AddChart(System.Type,FarPoint.Win.Chart.ChartViewType,System.Boolean)">
+ <summary>
+ Adds a chart to the SheetView. The chart data comes from the current selection in the SheetView.
+ If there is no selection, the data comes from the active cell.
+ If there is only one selection, the chart is created from that selection.
+ If there are many selections, the chart is created from all the selections.
+ The chart is aligned in the center of the SheetView.
+ </summary>
+ <param name="seriesType">Indicates which chart type will be added.</param>
+ <param name="showLegend">if set to <c>true</c> the new chart will have a default legend area. Otherwise, there is no legend area.</param>
+ <returns></returns>
+ <remarks>The current selection will be cleared after this function is called.</remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.DesignerMain.IsRibbonItemEnableChange(System.Object,System.Boolean)">
+ <summary>
+ Check if Ribbon.Enable is difference to the value by itself and childs
+ </summary>
+ <param name="ribbon"></param>
+ <param name="value"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpSpreadDesigner.Show(FarPoint.Win.Spread.FpSpread)">
+ <summary>
+ Display SpreadDesigner for the specific FpSpread control.
+ </summary>
+ <param name="spread">FpSpread object</param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpSpreadDesigner.Show(FarPoint.Win.Spread.FpSpread,System.Windows.Forms.IWin32Window)">
+ <summary>
+ Display SpreadDesigner for the specific FpSpread control.
+ </summary>
+ <param name="spread">FpSpread object</param>
+ <param name="owner">Any object that implements System.Windows.Forms.IWin32Window that represents the top-level window that will own the SpreadDesigner form</param>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpSpreadDesigner.ShowDialog(FarPoint.Win.Spread.FpSpread)">
+ <summary>
+ Display SpreadDesigner form as a modal dialog box for the specific FpSpread control.
+ </summary>
+ <param name="spread">FpSpread object</param>
+ <returns>One of the System.Windows.Forms.DialogResult values</returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpSpreadDesigner.ShowDialog(FarPoint.Win.Spread.FpSpread,System.Windows.Forms.IWin32Window)">
+ <summary>
+  Display SpreadDesigner form as a modal dialog box for the specific FpSpread control.
+ </summary>
+ <param name="spread">FpSpread object</param>
+ <param name="owner">Any object that implements System.Windows.Forms.IWin32Window that represents the top-level window that will own the SpreadDesigner form</param>
+ <returns>One of the System.Windows.Forms.DialogResult values</returns>
+ <remarks></remarks>
+</member>
+<member name="M:FarPoint.Win.Spread.Design.FpSpreadDesigner.#ctor">
+ <summary>
+ Initializes a new instance of the FpSpreadDesigner component.
+ </summary>
+ <remarks></remarks>
+</member>
+</members>
+</doc>

@@ -47,7 +47,7 @@ namespace HC_OSHA.form.Visit
         {
             string s = "";
             ssDoc.ActiveSheet.RowCount = 0;
-            string fileName = @"C:\PSMHEXE\견적서\일정공문양식.xlsx";
+            string fileName = @"C:\HealthSoft\엑셀서식\일정공문양식.xlsx";
             //FileInfo생성
             FileInfo fi = new FileInfo(fileName);
             //FileInfo.Exists로 파일 존재유무 확인 "

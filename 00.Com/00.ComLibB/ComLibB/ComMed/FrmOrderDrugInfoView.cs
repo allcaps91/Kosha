@@ -587,9 +587,9 @@ namespace ComLibB
                 clsDB.SaveSqlErrLog(ex.Message, SQL, clsDB.DbCon); //에러로그 저장
             }
             
-            Dir_Check(@"C:\PSMHEXE\YAK_IMAGE\");
+            Dir_Check(@"C:\HealthSoft\YAK_IMAGE\");
 
-            strFile = @"C:\PSMHEXE\YAK_IMAGE\" + strSucode.Trim().Replace("/", "__").ToUpper();
+            strFile = @"C:\HealthSoft\YAK_IMAGE\" + strSucode.Trim().Replace("/", "__").ToUpper();
             strHostFile = "/data/YAK_IMAGE/" + strSucode.Trim().Replace("/", "__").ToUpper();
             strHost = "/data/YAK_IMAGE/";
 

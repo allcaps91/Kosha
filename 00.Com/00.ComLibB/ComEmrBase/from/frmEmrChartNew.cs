@@ -6880,13 +6880,13 @@ namespace ComEmrBase
             //clsEmrChart.SetChartHead(clsDB.DbCon, usFormTopMenuEvent, pAcp);
 
             //clsEmrFunc.DeleteImageJobFoldAll();
-            string strDir = "C:\\PSMHEXE\\EmrImageTmp\\New";
+            string strDir = "C:\\HealthSoft\\EmrImageTmp\\New";
             if (Directory.Exists(strDir) == false)
             {
                 Directory.CreateDirectory(strDir);
             }
 
-            strDir = "C:\\PSMHEXE\\EmrImageTmp\\Update";
+            strDir = "C:\\HealthSoft\\EmrImageTmp\\Update";
             if (Directory.Exists(strDir) == false)
             {
                 Directory.CreateDirectory(strDir);
@@ -7580,7 +7580,7 @@ namespace ComEmrBase
                             Cursor.Current = Cursors.Default;
                         }
 
-                        string basePath = @"C:\PSMHEXE\EmrImageTmp\Update";
+                        string basePath = @"C:\HealthSoft\EmrImageTmp\Update";
                         foreach (DataRow row in dt.Rows)
                         {
                             string itemName = row["ITEMNAME"].ToString();
@@ -7693,7 +7693,7 @@ namespace ComEmrBase
                                         if (dt == null)
                                             return;
 
-                                        string basePath = @"C:\PSMHEXE\EmrImageTmp\Update";
+                                        string basePath = @"C:\HealthSoft\EmrImageTmp\Update";
                                         foreach (DataRow row in dt.Rows)
                                         {
                                             string itemName = row["ITEMNAME"].ToString();
@@ -7763,7 +7763,7 @@ namespace ComEmrBase
                                     if (dt == null)
                                         return;
 
-                                    string basePath = @"C:\PSMHEXE\EmrImageTmp\Update";
+                                    string basePath = @"C:\HealthSoft\EmrImageTmp\Update";
                                     foreach (DataRow row in dt.Rows)
                                     {
                                         string itemName = row["ITEMNAME"].ToString();

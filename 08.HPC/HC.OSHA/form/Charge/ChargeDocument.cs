@@ -63,7 +63,7 @@ namespace HC_OSHA
 
             FarPoint.Win.Spread.CellType.ImageCellType t = new FarPoint.Win.Spread.CellType.ImageCellType();
             //// Load an image file and set it to BackgroundImage property.
-            FarPoint.Win.Picture p = new FarPoint.Win.Picture(Image.FromFile("c:\\psmhexe\\test.bmp"), FarPoint.Win.RenderStyle.Stretch);
+            FarPoint.Win.Picture p = new FarPoint.Win.Picture(Image.FromFile("c:\\HealthSoft\\test.bmp"), FarPoint.Win.RenderStyle.Stretch);
            
 
             ssDoc.ActiveSheet.Cells[6, 5].CellType = t;

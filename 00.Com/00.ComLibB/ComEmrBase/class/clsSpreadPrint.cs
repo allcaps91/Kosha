@@ -981,11 +981,11 @@ namespace ComEmrBase
 
             if (clsType.HosInfo.strIMAGEUSE == "1")
             {
-                if (File.Exists(@"C:\PSMHEXE\exenet\hsplog.png"))
+                if (File.Exists(@"C:\HealthSoft\exenet\hsplog.png"))
                 {
 
                     Image pThumbnail;
-                    using (Image ImagesX = new Bitmap(Image.FromFile(@"C:\PSMHEXE\exenet\hsplog.png")))   //'병원 로고
+                    using (Image ImagesX = new Bitmap(Image.FromFile(@"C:\HealthSoft\exenet\hsplog.png")))   //'병원 로고
                     {
                         pThumbnail = ImagesX.GetThumbnailImage(160, 35, delegate { return false; }, new IntPtr());
                     }

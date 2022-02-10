@@ -361,9 +361,9 @@ namespace ComPmpaLibB
         {
             try
             {
-                if (File.Exists("C:\\PSMHEXE\\YAK_BARCODE.BMP") == true)
+                if (File.Exists("C:\\HealthSoft\\YAK_BARCODE.BMP") == true)
                 {
-                    File.Delete("C:\\PSMHEXE\\YAK_BARCODE.BMP");
+                    File.Delete("C:\\HealthSoft\\YAK_BARCODE.BMP");
                     ComFunc.Delay(500);
                 }
             }

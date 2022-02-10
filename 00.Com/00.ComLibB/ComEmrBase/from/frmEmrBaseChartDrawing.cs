@@ -55,7 +55,7 @@ namespace ComEmrBase
             lblDate.Text = ComFunc.FormatStrToDate(mCHARTDATE, "D");
             lblFormName.Text = mFORMNAME;
             //TODO : 주석제거해야함
-            //ComFunc.DeleteFoldAll(@"C:\PSMHEXE\\TabletImage\\");
+            //ComFunc.DeleteFoldAll(@"C:\HealthSoft\\TabletImage\\");
 
             penCanvas.InitForm();
             LoadImage();
@@ -64,12 +64,12 @@ namespace ComEmrBase
         private void LoadImage()
         {
             Image[] ImageOrg = new Image[1];
-            Image ImageOrg1 = Image.FromFile(@"C:\PSMHEXE\FormToImage\" + mEMRNO.ToString() + ".tif", true);
+            Image ImageOrg1 = Image.FromFile(@"C:\HealthSoft\FormToImage\" + mEMRNO.ToString() + ".tif", true);
 
             ImageOrg[0] = ImageOrg1;
             //ImageOrg[0] = CropImage(ImageOrg1, IMG_X1, IMG_Y1, IMG_X2, IMG_Y2, ImageOrg1.RawFormat);
 
-            penCanvas.SetChartInfo(mEMRNO, @"C:\PSMHEXE", ImageOrg, null, true);
+            penCanvas.SetChartInfo(mEMRNO, @"C:\HealthSoft", ImageOrg, null, true);
             ImageOrg1.Dispose(); 
             ImageOrg1 = null;
             if (mMODE == "V")

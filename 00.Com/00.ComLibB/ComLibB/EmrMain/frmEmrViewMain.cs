@@ -953,7 +953,7 @@ namespace ComLibB
             UnloadSubForm();
 
             string strCurDate = ComQuery.CurrentDateTime(clsDB.DbCon, "D");
-            string mstrViewPath = @"C:\PSMHEXE\ScanTmp\Formname\\" + strCurDate;
+            string mstrViewPath = @"C:\HealthSoft\ScanTmp\Formname\\" + strCurDate;
 
             #region 당일 스캔 이미지 지우기
             if (Directory.Exists(mstrViewPath))
