@@ -432,6 +432,7 @@ namespace HEALTHSOFT
             FtpedtX.FtpDownload("115.68.23.223", "dhson", "@thsehdgml#", strLocalPath, strFileNm, strServerPath);
             FtpedtX = null;
 
+            //테스트
             Thread.Sleep(20000);
 
             intDelay = 0;
