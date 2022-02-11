@@ -58,18 +58,10 @@ namespace HEALTHSOFT
             {
                 timer1.Enabled = false;
 
-                //ProcessStartInfo startInfo = new ProcessStartInfo();
-                //Process process = new Process();
-                //startInfo.FileName = @"c:\temp\HsMainUpdate.exe";
-                //startInfo.CreateNoWindow = false;
-                //startInfo.UseShellExecute = false;
-                //process.StartInfo = startInfo;
-                //process.Start();
-
                 string strFileName = @"c:\temp\HsMainUpdate.exe";
                 System.Diagnostics.Process.Start(strFileName);
 
-                //3초 대기
+                //2초 대기
                 Thread.Sleep(2000);
 
                 this.Close();
@@ -138,6 +130,14 @@ namespace HEALTHSOFT
                     return;
                 }
             }
+
+            // OLD버전 작업폴더 삭제
+            DirectoryInfo di = new DirectoryInfo(@"C:\PSMHEXE");
+            if (di.Exists == true)
+            {
+                di.Delete(true);
+            }
+
             // 최근 로그인 ID를 저장함
             Save_LastLoginID();
 
@@ -171,9 +171,8 @@ namespace HEALTHSOFT
             clsType.HosInfo.SwLicense = "";
             clsType.HosInfo.SwLicInfo = "";
 
-            //C:\Windows\System32\acledit392io87.dll
             //파일형식: 라이선스번호{}회사명{}종료일자{}관리자비번{}
-            string strLicFile = @"C:\Windows\System32\acledit392io87.dll";
+            string strLicFile = @"C:\HealthSoft\acledit392io87.dll";
             if (System.IO.File.Exists(strLicFile) == true)
             {
                 strPcData = System.IO.File.ReadAllText(strLicFile);
@@ -188,8 +187,8 @@ namespace HEALTHSOFT
                 clsType.HosInfo.SwLicInfo = strNewData;
 
                 // 버전정보를 읽음
-                if (System.IO.File.Exists(@"C:\PSMHEXE\Debug\VerInfo.txt") == true)
-                    FstrOldVer = System.IO.File.ReadAllText(@"C:\PSMHEXE\Debug\VerInfo.txt");
+                if (System.IO.File.Exists(@"C:\HealthSoft\VerInfo.txt") == true)
+                    FstrOldVer = System.IO.File.ReadAllText(@"C:\HealthSoft\VerInfo.txt");
 
                 return true;
             }
@@ -244,7 +243,7 @@ namespace HEALTHSOFT
                     {
                         clsType.HosInfo.SwLicInfo = strNewData;
                         strPcData = clsAES.AES(strNewData);
-                        System.IO.File.WriteAllText(@"C:\Windows\System32\acledit392io87.dll", strPcData);
+                        System.IO.File.WriteAllText(@"C:\HealthSoft\acledit392io87.dll", strPcData);
                     }
                 }
 
@@ -322,7 +321,7 @@ namespace HEALTHSOFT
         {
             string strData = "";
             string strNewData = "";
-            String strFile = @"C:\ProgramData\HSLastLogin.dat";
+            String strFile = @"C:\HealthSoft\HSLastLogin.dat";
 
             //파일형식: 사원번호{}
             if (System.IO.File.Exists(strFile) == true)
@@ -345,7 +344,7 @@ namespace HEALTHSOFT
             strNewData = txtIdNumber.Text.Trim() + "{}";
 
             strData = clsAES.AES(strNewData);
-            System.IO.File.WriteAllText(@"C:\ProgramData\HSLastLogin.dat", strData);
+            System.IO.File.WriteAllText(@"C:\HealthSoft\HSLastLogin.dat", strData);
         }
 
         private bool Set_UserInfo(string ArgSabun, string argPassword)
@@ -440,5 +439,9 @@ namespace HEALTHSOFT
 
         }
 
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

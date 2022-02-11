@@ -88,15 +88,35 @@ namespace HcAdmin
 
         private void 서버업로드ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //필요없는 파일 삭제
+            //DirectoryInfo d1 = new DirectoryInfo(@"C:\헬스소프트\Debug");
+            //FileInfo[] files = d1.GetFiles();
+            //foreach (FileInfo file in files)
+            //{
+            //    //if (VB.Right(file.Name.ToLower(), 11) == ".exe.config") file.Delete();
+            //    //if (VB.Right(file.Name.ToLower(), 13) == ".exe.manifest") file.Delete();
+            //    if (VB.Right(file.Name.ToLower(), 11) == ".dll.config") file.Delete();
+            //    if (VB.Right(file.Name.ToLower(), 4) == ".pdb") file.Delete();
+            //}
+
             FrmUpload form = new FrmUpload();
             form.Show();
         }
 
         private void 설치파일만들기ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ////필요없는 파일 삭제
+            //DirectoryInfo d1 = new DirectoryInfo(@"C:\헬스소프트\Debug");
+            //FileInfo[] files = d1.GetFiles();
+            //foreach (FileInfo file in files)
+            //{
+            //    if (VB.Right(file.Name.ToLower(), 11) == ".dll.config") file.Delete();
+            //    if (VB.Right(file.Name.ToLower(), 4) == ".pdb") file.Delete();
+            //}
+
             //설치파일 만들기
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = @"C:\헬스소프트\InstallFactory 2.70\InstFact.exe";
+            startInfo.FileName = @"C:\헬스소프트\0.SETUP\2.InstallFactory 2.70\InstFact.exe";
             startInfo.Arguments = null;
             Process.Start(startInfo);
         }
@@ -105,6 +125,21 @@ namespace HcAdmin
         {
             FrmExcelTest1 form = new FrmExcelTest1();
             form.Show();
+        }
+
+        private void 특정폴더삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string strPath = @"C:\PSMHEXE";
+            DirectoryInfo di = new DirectoryInfo(strPath);
+            if (di.Exists == true)
+            {
+                di.Delete(true);
+                ComFunc.MsgBox("삭제 완료");
+            }
+            else
+            {
+                ComFunc.MsgBox(strPath +" 폴더가 없습니다.");
+            }
         }
     }
 }

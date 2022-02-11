@@ -120,7 +120,7 @@ namespace HcAdmin
             lblMsg.Text = "파일을 복사 중";
 
             // 1. 업데이트 목록 폴더의 기존 내용은 삭제
-            DirectoryInfo d1 = new DirectoryInfo(@"C:\헬스소프트\UpdateFiles");
+            DirectoryInfo d1 = new DirectoryInfo(@"C:\헬스소프트\0.SETUP\1.UpdateFiles");
             FileInfo[] files = d1.GetFiles();
             foreach (FileInfo file in files)
             {
@@ -129,7 +129,7 @@ namespace HcAdmin
 
             // 2. 최근 1주일이내 변경된 파일만 Update Files 목록에 복사
             DateTime strGdate = DateTime.Now.AddDays(-20);
-            string strCopyPath = @"C:\헬스소프트\UpdateFiles\";
+            string strCopyPath = @"C:\헬스소프트\0.SETUP\1.UpdateFiles\";
             DirectoryInfo d2 = new DirectoryInfo(@"C:\헬스소프트\Debug");
             FileInfo[] files2 = d2.GetFiles();
             foreach (FileInfo file in files2)
@@ -141,7 +141,7 @@ namespace HcAdmin
             }
 
             // 3. 버전정보 파일을 생성
-            string strVerPath = @"C:\헬스소프트\UpdateFiles\VerInfo.txt";
+            string strVerPath = @"C:\헬스소프트\0.SETUP\1.UpdateFiles\VerInfo.txt";
             System.IO.File.WriteAllText(strVerPath, txtNewVer.Text.Trim());
 
             strVerPath = @"C:\HealthSoft\VerInfo.txt";

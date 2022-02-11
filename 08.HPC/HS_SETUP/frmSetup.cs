@@ -139,7 +139,8 @@ namespace HS_SETUP
                     SQL = "INSERT INTO ETC_PCMST (MacAddr,IpAddr,PcUser,WinVer,SWLICENSE,FirstTime,LastTime) ";
                     SQL = SQL + "VALUES ('" + FstrMac + "','" + FstrIP + "','" + FstrUser + "','" + strWinVer + "','";
                     SQL = SQL + txtLicense.Text.Trim() + "','" + strNow + "','" + strNow + "') ";
-                } else
+                }
+                else
                 {
                     SQL = "UPDATE ETC_PCMST SET ";
                     SQL = SQL + " IpAddr='" + FstrIP + "',";
@@ -208,7 +209,7 @@ namespace HS_SETUP
             }
             else if (6 == v.Major && v.Minor == 2)
             {
-                return  "Windows 10";
+                return "Windows 10";
             }
             else
             {

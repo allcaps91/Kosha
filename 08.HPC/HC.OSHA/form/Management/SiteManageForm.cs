@@ -134,7 +134,7 @@ namespace HC_OSHA
             //엑셀 견적서 서식을 읽어 시트에 셋팅
             //estimateExcelPath = codeService.FindActiveCodeByGroupAndCode("EXCEL_PATH", "OSHA_ESTIMATE", "OSHA");
             HC_OSHA_ESTIMATE dto = new HC_OSHA_ESTIMATE();
-            string fileName = @"C:\헬스소프트\견적서.xlsx";
+            string fileName = @"C:\HealthSoft\엑셀서식\견적서.xlsx";
             SSEstimate.ActiveSheet.OpenExcel(fileName, 0);
 
             string str = "";
@@ -357,7 +357,7 @@ namespace HC_OSHA
                 HC_OSHA_ESTIMATE dto = PanEstimate.GetData<HC_OSHA_ESTIMATE>();
             
                 dto.OSHA_SITE_ID = SelectedSite.ID;
-                dto.EXCELPATH = @"C:\헬스소프트\견적서.xlsx";
+                dto.EXCELPATH = @"C:\HealthSoft\엑셀서식\견적서.xlsx";
 
                 if (dto.OSHA_SITE_ID == 0)
                 {

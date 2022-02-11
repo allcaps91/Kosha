@@ -428,7 +428,7 @@ namespace HcAdmin
             strNewData += txtAdminpass.Text.Trim() + "{}";
 
             strPcData = clsAES.AES(strNewData);
-            System.IO.File.WriteAllText(@"C:\Windows\System32\acledit392io87.dll", strPcData);
+            System.IO.File.WriteAllText(@"C:\HealthSoft\acledit392io87.dll", strPcData);
 
             ComFunc.MsgBox("PC에 해당회사로 라이선스가 설정되었습니다.", "알림");
         }
@@ -446,7 +446,7 @@ namespace HcAdmin
 
             // 프로그램 실행
             strPcData = clsAES.AES(strNewData);
-            System.IO.File.WriteAllText(@"C:\Windows\System32\acledit392io87.dll", strPcData);
+            System.IO.File.WriteAllText(@"C:\HealthSoft\acledit392io87.dll", strPcData);
 
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = @"C:\PMPAEXE\Debug\HS_OSHA.exe";
