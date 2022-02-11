@@ -89,15 +89,15 @@ namespace HcAdmin
         private void 서버업로드ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //필요없는 파일 삭제
-            //DirectoryInfo d1 = new DirectoryInfo(@"C:\헬스소프트\Debug");
-            //FileInfo[] files = d1.GetFiles();
-            //foreach (FileInfo file in files)
-            //{
-            //    //if (VB.Right(file.Name.ToLower(), 11) == ".exe.config") file.Delete();
-            //    //if (VB.Right(file.Name.ToLower(), 13) == ".exe.manifest") file.Delete();
-            //    if (VB.Right(file.Name.ToLower(), 11) == ".dll.config") file.Delete();
-            //    if (VB.Right(file.Name.ToLower(), 4) == ".pdb") file.Delete();
-            //}
+            DirectoryInfo d1 = new DirectoryInfo(@"C:\헬스소프트\Debug");
+            FileInfo[] files = d1.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                //if (VB.Right(file.Name.ToLower(), 11) == ".exe.config") file.Delete();
+                //if (VB.Right(file.Name.ToLower(), 13) == ".exe.manifest") file.Delete();
+                if (VB.Right(file.Name.ToLower(), 11) == ".dll.config") file.Delete();
+                if (VB.Right(file.Name.ToLower(), 4) == ".pdb") file.Delete();
+            }
 
             FrmUpload form = new FrmUpload();
             form.Show();
@@ -105,14 +105,14 @@ namespace HcAdmin
 
         private void 설치파일만들기ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ////필요없는 파일 삭제
-            //DirectoryInfo d1 = new DirectoryInfo(@"C:\헬스소프트\Debug");
-            //FileInfo[] files = d1.GetFiles();
-            //foreach (FileInfo file in files)
-            //{
-            //    if (VB.Right(file.Name.ToLower(), 11) == ".dll.config") file.Delete();
-            //    if (VB.Right(file.Name.ToLower(), 4) == ".pdb") file.Delete();
-            //}
+            //필요없는 파일 삭제
+            DirectoryInfo d1 = new DirectoryInfo(@"C:\헬스소프트\Debug");
+            FileInfo[] files = d1.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                if (VB.Right(file.Name.ToLower(), 11) == ".dll.config") file.Delete();
+                if (VB.Right(file.Name.ToLower(), 4) == ".pdb") file.Delete();
+            }
 
             //설치파일 만들기
             ProcessStartInfo startInfo = new ProcessStartInfo();
