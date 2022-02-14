@@ -421,7 +421,7 @@ namespace HEALTHSOFT
             string strMsgBackup = txtGuide.Text.Trim();
 
             txtGuide.Text = ComNum.VBLF + "     업데이트 서버에서 파일을 다운로드 중 입니다.";
-            txtGuide.Text += ComNum.VBLF + "        ( 소요시간: 약 1~2분 입니다. )";
+            txtGuide.Text += ComNum.VBLF + "        ( 소요시간: 약4~5분 입니다. )";
 
             string strLocalPath = @"c:\temp\HsMainUpdate.exe";
             string strFileNm = "HsMainUpdate.exe";

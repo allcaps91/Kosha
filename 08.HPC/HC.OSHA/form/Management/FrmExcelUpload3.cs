@@ -347,6 +347,7 @@ namespace HC_OSHA
             string strMsg = "";
             
             int intRowAffected = 0;
+            int nSS4_Rows = 0;
             DataTable dt = null;
 
             nLtdCode = long.Parse(VB.Pstr(TxtLtdcode.Text, ".", 1));
@@ -404,16 +405,18 @@ namespace HC_OSHA
                         dt.Dispose();
                         dt = null;
 
-                        // 직원정보에서 동명2인이 없으면 생년월일을 자동 가져옴
+                        // 직원정보에서 동명이인이 없으면 생년월일을 자동 가져옴
                         if (strBirth == "")
                         {
                             SQL = "SELECT ID,JUMIN FROM HIC_SITE_WORKER ";
                             SQL = SQL + ComNum.VBLF + "WHERE SITEID=" + nLtdCode + " ";
                             SQL = SQL + ComNum.VBLF + "  AND NAME='" + strName + "' ";
+                            SQL = SQL + ComNum.VBLF + "  AND JUMIN <> '000000' ";
                             SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
                             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                             if (dt.Rows.Count > 1)
                             {
+                                nSS4_Rows++;
                                 strMsg = strMsg + (i + 1).ToString() + "번줄 " + strName + " " + strSex + " ";
                                 strMsg = strMsg + strAge + " 동명이인이 있어 저장 불가" + ComNum.VBLF;
                             }
@@ -424,6 +427,7 @@ namespace HC_OSHA
                             }
                             else if (dt.Rows.Count == 0)
                             {
+                                nSS4_Rows++;
                                 strMsg = strMsg + (i + 1).ToString() + "번줄 " + strName + " " + strSex + " ";
                                 strMsg = strMsg + strAge + " 직원명단에 없어 저장 불가" + ComNum.VBLF;
                             }
@@ -437,10 +441,22 @@ namespace HC_OSHA
             // 등록번호를 찾지 못하면 오류 처리
             if (strMsg != "")
             {
+                string sMsg = "";
+                sMsg = "정상적인 자료는 업로드를 하시겠습니까?" + "\r\n";
+                sMsg += "-< 오류내역 >-" + "\r\n";
+                sMsg += strMsg;
+
                 Cursor.Current = Cursors.Default;
-                ComFunc.MsgBox(strMsg, "알림");
-                return;
+                if (MessageBox.Show(sMsg, "확인", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
             }
+
+            //오류 보관용 시트를 Clear
+            SS4_Sheet1.RowCount = 0;
+            SS4_Sheet1.RowCount = nSS4_Rows;
+            nSS4_Rows = 0;
 
             for (int i = 0; i < SS1_Sheet1.RowCount; i++)
             {
@@ -461,7 +477,16 @@ namespace HC_OSHA
                 if (strSex == "M") strSex = "남";
                 if (strSex == "F") strSex = "여";
 
-                if (strName != "" && strSex != "" && strAge != "")
+                // 전송오류는 별도 엑셀파일로 저장하기 위해 별도 보관함
+                if (strBirth=="")
+                {
+                    for (int j=0; j < SS1_Sheet1.ColumnCount; j++)
+                    {
+                        SS4_Sheet1.Cells[nSS4_Rows, j].Text=SS1_Sheet1.Cells[i, j].Text;
+                    }
+                    nSS4_Rows++;
+                }
+                else 
                 {
                     // 사원이 없으면 신규등록함
                     worker.ID = "";
@@ -520,7 +545,18 @@ namespace HC_OSHA
                 }
             }
             Cursor.Current = Cursors.Default;
-            ComFunc.MsgBox("서버로 전송 완료", "알림");
+            if (strMsg == "")
+            {
+                ComFunc.MsgBox("서버로 전송 완료", "알림");
+            }
+            else
+            {
+                string strPath = @"C:\Temp\업로드오류_";
+                strPath += VB.Pstr(TxtLtdcode.Text, ".", 2) + "_" + cboYear.Text.Trim() + "_";
+                strPath += cboJong.Text.Trim() + ".xls";
+                SS4.SaveExcel(strPath, FarPoint.Excel.ExcelSaveFlags.SaveCustomColumnHeaders | FarPoint.Excel.ExcelSaveFlags.DataOnly);
+                ComFunc.MsgBox("전송 오류 내역은 Temp 폴더에 저장됨", "알림");
+            }
             Screen_Set();
         }
 

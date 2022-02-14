@@ -3175,8 +3175,6 @@ namespace ComBase
             }
         }
 
-
-
         /// <summary>
         /// DataReader 쿼리 수행
         /// </summary>
