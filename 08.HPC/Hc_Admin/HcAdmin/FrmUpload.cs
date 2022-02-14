@@ -144,7 +144,7 @@ namespace HcAdmin
             string strVerPath = @"C:\헬스소프트\0.SETUP\1.UpdateFiles\VerInfo.txt";
             System.IO.File.WriteAllText(strVerPath, txtNewVer.Text.Trim());
 
-            strVerPath = @"C:\HealthSoft\VerInfo.txt";
+            strVerPath = @"C:\헬스소프트\Debug\VerInfo.txt";
             System.IO.File.WriteAllText(strVerPath, txtNewVer.Text.Trim());
 
             lblMsg.Text = "파일을 복사 완료";
