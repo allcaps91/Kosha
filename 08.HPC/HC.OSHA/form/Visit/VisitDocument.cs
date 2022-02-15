@@ -158,24 +158,15 @@ namespace HC_OSHA.form.Visit
                     string day = date + "(" + dayOfWeek.Substring(0, 1) + ")";
                     if (list[j].visitUserRole == "DOCTOR")
                     {
-                        if (ssDoc.ActiveSheet.Cells[nP1[2], nP2[2]].Value.Equals("-"))
-                        {
-                            ssDoc.ActiveSheet.Cells[nP1[2], nP2[2]].Value = day + list[j].visitUserName;
-                        }
+                        ssDoc.ActiveSheet.Cells[nP1[2], nP2[2]].Value = day + list[j].visitUserName;
                     }
                     if (list[j].visitUserRole == "NURSE")
                     {
-                        if (ssDoc.ActiveSheet.Cells[nP1[3], nP2[3]].Value.Equals("-"))
-                        {
-                            ssDoc.ActiveSheet.Cells[nP1[3], nP2[3]].Value = day + list[j].visitUserName;
-                        }
+                        ssDoc.ActiveSheet.Cells[nP1[3], nP2[3]].Value = day + list[j].visitUserName;
                     }
                     if (list[j].visitUserRole == "ENGINEER")
                     {
-                        if (ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value.Equals("-"))
-                        {
-                            ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value = day + list[j].visitUserName;
-                        }
+                        ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value = day + list[j].visitUserName;
                     }
                 }
                 Log.Error(4);
