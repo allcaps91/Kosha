@@ -31,16 +31,15 @@
             FarPoint.Win.Spread.FlatFocusIndicatorRenderer flatFocusIndicatorRenderer2 = new FarPoint.Win.Spread.FlatFocusIndicatorRenderer();
             FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer3 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
             FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer4 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType6 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType7 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType8 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType9 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.NumberCellType numberCellType2 = new FarPoint.Win.Spread.CellType.NumberCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType10 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType16 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType17 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType18 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType19 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.NumberCellType numberCellType4 = new FarPoint.Win.Spread.CellType.NumberCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType20 = new FarPoint.Win.Spread.CellType.TextCellType();
             this.SS1 = new FarPoint.Win.Spread.FpSpread();
             this.SS1_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.TxtLtdcode = new System.Windows.Forms.TextBox();
-            this.BtnSearchSite = new System.Windows.Forms.Button();
             this.lblLTD02 = new System.Windows.Forms.Label();
             this.btnJob3 = new System.Windows.Forms.Button();
             this.btnJob2 = new System.Windows.Forms.Button();
@@ -53,6 +52,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.SSConv = new FarPoint.Win.Spread.FpSpread();
             this.SSConv_Sheet1 = new FarPoint.Win.Spread.SheetView();
+            this.btnJob5 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SS1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SS1_Sheet1)).BeginInit();
@@ -70,7 +70,7 @@
             this.SS1.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS1.HorizontalScrollBar.Renderer = flatScrollBarRenderer3;
-            this.SS1.HorizontalScrollBar.TabIndex = 222;
+            this.SS1.HorizontalScrollBar.TabIndex = 224;
             this.SS1.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SS1.Location = new System.Drawing.Point(-3, 359);
             this.SS1.Name = "SS1";
@@ -83,7 +83,7 @@
             this.SS1.VerticalScrollBar.Name = "";
             flatScrollBarRenderer4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS1.VerticalScrollBar.Renderer = flatScrollBarRenderer4;
-            this.SS1.VerticalScrollBar.TabIndex = 223;
+            this.SS1.VerticalScrollBar.TabIndex = 225;
             this.SS1.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SS1.SetViewportLeftColumn(0, 0, 2);
             this.SS1.SetActiveViewport(0, 0, -1);
@@ -112,21 +112,21 @@
             this.SS1_Sheet1.ColumnHeader.DefaultStyle.Parent = "ColumnHeaderFlat";
             this.SS1_Sheet1.ColumnHeader.DefaultStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SS1_Sheet1.ColumnHeader.Rows.Get(0).Height = 41F;
-            this.SS1_Sheet1.Columns.Get(0).CellType = textCellType6;
+            this.SS1_Sheet1.Columns.Get(0).CellType = textCellType16;
             this.SS1_Sheet1.Columns.Get(0).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS1_Sheet1.Columns.Get(0).Label = "이름";
             this.SS1_Sheet1.Columns.Get(0).Locked = true;
             this.SS1_Sheet1.Columns.Get(0).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(0).Width = 86F;
-            this.SS1_Sheet1.Columns.Get(1).CellType = textCellType7;
+            this.SS1_Sheet1.Columns.Get(1).CellType = textCellType17;
             this.SS1_Sheet1.Columns.Get(1).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(1).Label = "생년월일";
             this.SS1_Sheet1.Columns.Get(1).Locked = true;
             this.SS1_Sheet1.Columns.Get(1).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(1).Width = 80F;
-            this.SS1_Sheet1.Columns.Get(2).CellType = textCellType8;
+            this.SS1_Sheet1.Columns.Get(2).CellType = textCellType18;
             this.SS1_Sheet1.Columns.Get(2).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SS1_Sheet1.Columns.Get(2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(2).Label = "부서";
@@ -162,17 +162,6 @@
             this.TxtLtdcode.Name = "TxtLtdcode";
             this.TxtLtdcode.Size = new System.Drawing.Size(130, 25);
             this.TxtLtdcode.TabIndex = 153;
-            // 
-            // BtnSearchSite
-            // 
-            this.BtnSearchSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSearchSite.Location = new System.Drawing.Point(270, 9);
-            this.BtnSearchSite.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.BtnSearchSite.Name = "BtnSearchSite";
-            this.BtnSearchSite.Size = new System.Drawing.Size(50, 26);
-            this.BtnSearchSite.TabIndex = 152;
-            this.BtnSearchSite.Text = "검색";
-            this.BtnSearchSite.UseVisualStyleBackColor = true;
             // 
             // lblLTD02
             // 
@@ -276,9 +265,9 @@
             // btnJob4
             // 
             this.btnJob4.Enabled = false;
-            this.btnJob4.Location = new System.Drawing.Point(738, -1);
+            this.btnJob4.Location = new System.Drawing.Point(816, 5);
             this.btnJob4.Name = "btnJob4";
-            this.btnJob4.Size = new System.Drawing.Size(86, 36);
+            this.btnJob4.Size = new System.Drawing.Size(86, 30);
             this.btnJob4.TabIndex = 157;
             this.btnJob4.Text = "설정값 점검";
             this.btnJob4.UseVisualStyleBackColor = true;
@@ -291,9 +280,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(515, 5);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(217, 26);
+            this.label3.Size = new System.Drawing.Size(140, 26);
             this.label3.TabIndex = 156;
-            this.label3.Text = "엑셀파일을 표준서식 변환 설정값";
+            this.label3.Text = "표준서식 변환 설정값";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // SSConv
@@ -305,7 +294,7 @@
             this.SSConv.Name = "SSConv";
             this.SSConv.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSConv_Sheet1});
-            this.SSConv.Size = new System.Drawing.Size(359, 605);
+            this.SSConv.Size = new System.Drawing.Size(386, 605);
             this.SSConv.TabIndex = 155;
             // 
             // SSConv_Sheet1
@@ -324,26 +313,26 @@
             this.SSConv_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "엑셀칼럼번호";
             this.SSConv_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "엑셀 칼럼 데이타";
             this.SSConv_Sheet1.ColumnHeader.Rows.Get(0).Height = 43F;
-            textCellType9.ReadOnly = true;
-            this.SSConv_Sheet1.Columns.Get(0).CellType = textCellType9;
+            textCellType19.ReadOnly = true;
+            this.SSConv_Sheet1.Columns.Get(0).CellType = textCellType19;
             this.SSConv_Sheet1.Columns.Get(0).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SSConv_Sheet1.Columns.Get(0).Label = "표순서식 제목";
             this.SSConv_Sheet1.Columns.Get(0).Locked = true;
             this.SSConv_Sheet1.Columns.Get(0).Width = 102F;
-            numberCellType2.DecimalPlaces = 0;
-            numberCellType2.MaximumValue = 10000000D;
-            numberCellType2.MinimumValue = 0D;
-            this.SSConv_Sheet1.Columns.Get(1).CellType = numberCellType2;
+            numberCellType4.DecimalPlaces = 0;
+            numberCellType4.MaximumValue = 10000000D;
+            numberCellType4.MinimumValue = 0D;
+            this.SSConv_Sheet1.Columns.Get(1).CellType = numberCellType4;
             this.SSConv_Sheet1.Columns.Get(1).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SSConv_Sheet1.Columns.Get(1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSConv_Sheet1.Columns.Get(1).Label = "엑셀칼럼번호";
             this.SSConv_Sheet1.Columns.Get(1).Width = 57F;
-            textCellType10.ReadOnly = true;
-            this.SSConv_Sheet1.Columns.Get(2).CellType = textCellType10;
+            textCellType20.ReadOnly = true;
+            this.SSConv_Sheet1.Columns.Get(2).CellType = textCellType20;
             this.SSConv_Sheet1.Columns.Get(2).Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SSConv_Sheet1.Columns.Get(2).Label = "엑셀 칼럼 데이타";
             this.SSConv_Sheet1.Columns.Get(2).Locked = true;
-            this.SSConv_Sheet1.Columns.Get(2).Width = 140F;
+            this.SSConv_Sheet1.Columns.Get(2).Width = 168F;
             this.SSConv_Sheet1.FilterBarHeaderStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SSConv_Sheet1.FilterBarHeaderStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SSConv_Sheet1.FilterBarHeaderStyle.Parent = "RowHeaderDefaultEnhanced";
@@ -352,10 +341,21 @@
             this.SSConv_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SSConv_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
+            // btnJob5
+            // 
+            this.btnJob5.Enabled = false;
+            this.btnJob5.Location = new System.Drawing.Point(670, 3);
+            this.btnJob5.Name = "btnJob5";
+            this.btnJob5.Size = new System.Drawing.Size(140, 31);
+            this.btnJob5.TabIndex = 159;
+            this.btnJob5.Text = "표준서식 칼럼 찾기";
+            this.btnJob5.UseVisualStyleBackColor = true;
+            this.btnJob5.Click += new System.EventHandler(this.btnJob5_Click);
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(326, 9);
+            this.button1.Location = new System.Drawing.Point(327, 9);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(48, 26);
@@ -368,14 +368,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 651);
+            this.ClientSize = new System.Drawing.Size(914, 651);
+            this.Controls.Add(this.btnJob5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnJob4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SSConv);
             this.Controls.Add(this.SS1);
             this.Controls.Add(this.TxtLtdcode);
-            this.Controls.Add(this.BtnSearchSite);
             this.Controls.Add(this.lblLTD02);
             this.Controls.Add(this.btnJob3);
             this.Controls.Add(this.btnJob2);
@@ -403,7 +403,6 @@
         private FarPoint.Win.Spread.FpSpread SS1;
         private FarPoint.Win.Spread.SheetView SS1_Sheet1;
         private System.Windows.Forms.TextBox TxtLtdcode;
-        private System.Windows.Forms.Button BtnSearchSite;
         private System.Windows.Forms.Label lblLTD02;
         private System.Windows.Forms.Button btnJob3;
         private System.Windows.Forms.Button btnJob2;
@@ -416,6 +415,7 @@
         private System.Windows.Forms.Label label3;
         private FarPoint.Win.Spread.FpSpread SSConv;
         private FarPoint.Win.Spread.SheetView SSConv_Sheet1;
+        private System.Windows.Forms.Button btnJob5;
         private System.Windows.Forms.Button button1;
     }
 }

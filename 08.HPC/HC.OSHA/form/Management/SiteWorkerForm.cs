@@ -241,39 +241,36 @@ namespace HC_OSHA
             }
             else
             {
-                if (SSWorkerList.Validate())
+                IList<HC_SITE_WORKER> list = SSWorkerList.GetEditbleData<HC_SITE_WORKER>();
+                bool isValidJumin = false;
+                foreach (HC_SITE_WORKER dto in list)
                 {
-                    IList<HC_SITE_WORKER> list = SSWorkerList.GetEditbleData<HC_SITE_WORKER>();
-                    bool isValidJumin = false;
-                    foreach (HC_SITE_WORKER dto in list)
+                    if (dto.RowStatus == ComBase.Mvc.RowStatus.Insert)
                     {
-                        if (dto.RowStatus == ComBase.Mvc.RowStatus.Insert)
+                        if (VB.Len(dto.JUMIN) !=6)
                         {
-                            if (VB.Len(dto.JUMIN) !=6)
-                            {
-                                MessageUtil.Alert("생년월일 6자리 형식으로 입력하세요.");
-                                break;
-                            }
+                            MessageUtil.Alert("생년월일 6자리 형식으로 입력하세요.");
+                            break;
                         }
-                        isValidJumin = true;
                     }
-                    if (isValidJumin == false) return;
+                    isValidJumin = true;
+                }
+                if (isValidJumin == false) return;
 
-                    if (list.Count > 0)
+                if (list.Count > 0)
+                {
+                    if (hcSiteWorkerService.Save(base.SelectedSite.ID, list))
                     {
-                        if (hcSiteWorkerService.Save(base.SelectedSite.ID, list))
-                        {
-                            Search();
-                        }
-                        else
-                        {
-                            MessageUtil.Error("트랜잭션 오류로 저장 할 수 없습니다");
-                        }
+                        Search();
                     }
                     else
                     {
-                        MessageUtil.Info("저장할 데이타가 없습니다");
+                        MessageUtil.Error("트랜잭션 오류로 저장 할 수 없습니다");
                     }
+                }
+                else
+                {
+                    MessageUtil.Info("저장할 데이타가 없습니다");
                 }
             }
         }

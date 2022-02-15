@@ -55,6 +55,7 @@ namespace HC_OSHA
             btnJob2.Enabled = false;
             btnJob3.Enabled = false;
             btnJob4.Enabled = false;
+            btnJob5.Enabled = false;
 
             SS1_Sheet1.RowCount = 0;
             SSConv_Sheet1.RowCount = 0;
@@ -84,7 +85,7 @@ namespace HC_OSHA
                 strFileName = dialog.FileName;
                 SSExcel.ActiveSheet.RowCount = 0;
                 SSExcel.ActiveSheet.OpenExcel(strFileName, 0);
-                btnJob4.Enabled = true;
+                btnJob5.Enabled = true;
 
                 // 공란만 있는 Row는 제거
                 for (int i = 0; i < SSExcel_Sheet1.RowCount; i++)
@@ -235,6 +236,24 @@ namespace HC_OSHA
                 strBirth = SS1_Sheet1.Cells[i, 1].Text.ToString();
                 if (VB.Len(strBirth) > 6) strBirth = VB.Left(strBirth, 6);
                 strBuse = SS1_Sheet1.Cells[i, 2].Text.ToString();
+                if (strName=="")
+                {
+                    ComFunc.MsgBox((i+1) + "번줄 이름이 공란입니다.", "오류");
+                    return;
+                }
+                if (strBirth.IsNumeric()==false)
+                {
+                    ComFunc.MsgBox((i + 1) + "번줄 생년월일이 숫자가 아닙니다.", "오류");
+                    return;
+                }
+            }
+
+            for (int i = 0; i < SS1_Sheet1.RowCount; i++)
+            {
+                strName = SS1_Sheet1.Cells[i, 0].Text.ToString();
+                strBirth = SS1_Sheet1.Cells[i, 1].Text.ToString();
+                if (VB.Len(strBirth) > 6) strBirth = VB.Left(strBirth, 6);
+                strBuse = SS1_Sheet1.Cells[i, 2].Text.ToString();
 
                 // 사원이 없으면 신규등록함
                 worker.ID = "";
@@ -256,7 +275,6 @@ namespace HC_OSHA
                 else
                 {
                     saved = hcSiteWorkerRepository.Update(worker);
-                    worker.ID = saved.ID;
                 }
 
             }
@@ -284,6 +302,60 @@ namespace HC_OSHA
             {
                 TxtLtdcode.Text = siteView.ID.ToString() + "." + siteView.NAME;
             }
+        }
+
+        private void btnJob5_Click(object sender, EventArgs e)
+        {
+            string strHead = "";
+            string strData = "";
+            int nCol = 0;
+            bool bOK = false;
+
+            // 엑셀파일 1번줄이 제목인지 확인
+            strHead = SSExcel_Sheet1.Cells[0, 0].Text.ToString();
+            strHead += SSExcel_Sheet1.Cells[0, 1].Text.ToString();
+            if (strHead == "") { ComFunc.MsgBox("엑셀파일 1번줄 제목줄이 아님", "오류"); return; }
+
+            // 변환정보 Clear
+            for (int i = 0; i < SSConv_Sheet1.RowCount; i++)
+            {
+                SSConv_Sheet1.Cells[i, 1].Value = "";
+                SSConv_Sheet1.Cells[i, 2].Value = "";
+            }
+
+            //엑셀파일에서 표준파일 헤드정보를 찾음
+            for (int i = 0; i < SSConv_Sheet1.RowCount; i++)
+            {
+                strHead = VB.Replace(SSConv_Sheet1.Cells[i, 0].Text.Trim(), " ", "");
+                for (int j = 0; j < SSExcel_Sheet1.ColumnCount; j++)
+                {
+                    bOK = false;
+                    strData = VB.Replace(SSExcel_Sheet1.Cells[0, j].Text.ToString(), " ", "");
+                    strData = VB.Replace(strData, "\n", "");
+                    if (strHead == strData) bOK = true;
+                    if (bOK == false && strHead == "이름")
+                    {
+                        if (strData == "성명") bOK = true;
+                    }
+                    if (bOK == false && strHead == "생년월일")
+                    {
+                        if (strData == "주민등록") bOK = true;
+                        if (strData == "주민번호") bOK = true;
+                        if (strData == "주민등록번호") bOK = true;
+                    }
+                    if (bOK == false && strHead == "부서")
+                    {
+                        if (strData == "공정") bOK = true;
+                        if (strData == "공정(부서)") bOK = true;
+                    }
+                    if (bOK == true)
+                    {
+                        SSConv_Sheet1.Cells[i, 1].Value = (j + 1);
+                        break;
+                    }
+                }
+            }
+            btnJob4.Enabled = true;
         }
     }
 }
