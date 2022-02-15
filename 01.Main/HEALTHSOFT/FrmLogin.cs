@@ -27,17 +27,9 @@ namespace HEALTHSOFT
         {
             InitializeComponent();
             SetEvent();
-            if (READ_Licno_Disk() == false) this.Close();
-            if (READ_Licno_Server() == false) this.Close();
-
-            clsType.ClearUser(); //사용자 정보 초기화
-            GuideMsg_Display();
-
-            Set_LastLoginID();  //최종 로그인 ID를 표시
-
-            clsDB.GetDbInfo();
-            clsDB.DbCon = clsDB.DBConnect_Cloud();
-            timer1.Enabled = false;
+            
+            //생성자에서 폼로드시 필요한 이벤트만 정의
+            //폼로드 후 라이선스 및 사용자세팅 정의 eFormload 이후 ...
         }
 
         private void SetEvent()
@@ -159,6 +151,27 @@ namespace HEALTHSOFT
 
         private void eFormload(object sender, EventArgs e)
         {
+            if (READ_Licno_Disk() == false)
+            {
+                this.Close();
+                return;
+            }
+
+            if (READ_Licno_Server() == false)
+            {
+                this.Close();
+                return;
+            }
+
+            clsType.ClearUser(); //사용자 정보 초기화
+            GuideMsg_Display();
+
+            Set_LastLoginID();  //최종 로그인 ID를 표시
+
+            clsDB.GetDbInfo();
+            clsDB.DbCon = clsDB.DBConnect_Cloud();
+            timer1.Enabled = false;
+
             this.ActiveControl = txtIdNumber;
             txtIdNumber.Focus();
         }
