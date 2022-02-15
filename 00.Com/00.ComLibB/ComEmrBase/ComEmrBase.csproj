@@ -64,15 +64,15 @@
     <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DocToolkit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fbe89e604dbf15f7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\PSMHEXE\exenet\DocToolkit.dll</HintPath>
+      <HintPath>..\..\..\..\헬스소프트\Debug\DocToolkit.dll</HintPath>
     </Reference>
     <Reference Include="DrawTools, Version=2.0.0.0, Culture=neutral, PublicKeyToken=18ff167e0c443fe8, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\PSMHEXE\exenet\DrawTools.dll</HintPath>
+      <HintPath>..\..\..\..\헬스소프트\Debug\DrawTools.dll</HintPath>
     </Reference>
     <Reference Include="edtFTPnet, Version=2.2.3.0, Culture=neutral, PublicKeyToken=4b0c991f43097782, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\PSMHEXE\Debug\edtFTPnet.dll</HintPath>
+      <HintPath>..\..\..\..\헬스소프트\Debug\edtFTPnet.dll</HintPath>
     </Reference>
     <Reference Include="FarPoint.CalcEngine, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
     <Reference Include="FarPoint.Excel, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
@@ -87,8 +87,9 @@
       <HintPath>..\..\..\..\PSMHEXE\exenet\FormPrinting15.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.Win.PluginInputMan, Version=10.40.20171.0, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
-    <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\PSMHEXE\exenet\itextsharp.dll</HintPath>
+    <Reference Include="itextsharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\헬스소프트\Debug\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="KP-ImageViewerV2, Version=1.5.1.0, Culture=neutral, PublicKeyToken=90238a1ca3010956, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -2532,6 +2533,10 @@
       <Project>{8385746c-582c-4520-b68c-8f62a7f2cd08}</Project>
       <Name>ComDbB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\..\..\헬스소프트\Debug\DocToolkit.dll" />
+    <Analyzer Include="..\..\..\..\헬스소프트\Debug\DrawTools.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
