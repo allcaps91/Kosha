@@ -30,7 +30,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  , SEND_TYPE                   ");
             parameter.AppendSql("  , CREATED                     ");
             parameter.AppendSql("  , CREATEDUSER                 ");
-            parameter.AppendSql("  , WRTNO,                      ");
+            parameter.AppendSql("  , WRTNO                       ");
             parameter.AppendSql("  , SWLICENSE                   ");
             parameter.AppendSql(") VALUES (                      ");
             parameter.AppendSql("    :ID                         ");
@@ -40,7 +40,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  , :SEND_TYPE                  ");
             parameter.AppendSql("  , SYSTIMESTAMP                ");
             parameter.AppendSql("  , :CREATEDUSER                ");
-            parameter.AppendSql("  , :WRTNO,                     ");
+            parameter.AppendSql("  , :WRTNO                      ");
             parameter.AppendSql("  , :SWLICENSE                  ");
             parameter.AppendSql(")                               ");
 

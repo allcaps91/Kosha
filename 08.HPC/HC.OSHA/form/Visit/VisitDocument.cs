@@ -158,15 +158,37 @@ namespace HC_OSHA.form.Visit
                     string day = date + "(" + dayOfWeek.Substring(0, 1) + ")";
                     if (list[j].visitUserRole == "DOCTOR")
                     {
-                        ssDoc.ActiveSheet.Cells[nP1[2], nP2[2]].Value = day + list[j].visitUserName;
+                        if (ssDoc.ActiveSheet.Cells[nP1[2], nP2[2]].Value == "-")
+                        {
+                            ssDoc.ActiveSheet.Cells[nP1[2], nP2[2]].Value = day + list[j].visitUserName;
+                        }
+                        else
+                        {
+                            ssDoc.ActiveSheet.Cells[nP1[2], nP2[2]].Value += "\n" + day + list[j].visitUserName;
+                        }
                     }
                     if (list[j].visitUserRole == "NURSE")
                     {
-                        ssDoc.ActiveSheet.Cells[nP1[3], nP2[3]].Value = day + list[j].visitUserName;
+                        if (ssDoc.ActiveSheet.Cells[nP1[3], nP2[3]].Value=="-")
+                        {
+                            ssDoc.ActiveSheet.Cells[nP1[3], nP2[3]].Value = day + list[j].visitUserName;
+                        }
+                        else
+                        {
+                            ssDoc.ActiveSheet.Cells[nP1[3], nP2[3]].Value += "\n" + day + list[j].visitUserName;
+                        }
+                        
                     }
                     if (list[j].visitUserRole == "ENGINEER")
                     {
-                        ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value = day + list[j].visitUserName;
+                        if (ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value=="-")
+                        {
+                            ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value = day + list[j].visitUserName;
+                        }
+                        else
+                        {
+                            ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value += "\n" + day + list[j].visitUserName;
+                        }
                     }
                 }
                 Log.Error(4);
