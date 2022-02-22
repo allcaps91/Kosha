@@ -86,6 +86,7 @@ namespace HC.OSHA.Service
                         TEL = model.TEL,
                         HP = model.HP,
                         EMAIL = model.EMAIL,
+                        EMAILSEND = model.EMAILSEND,
                         ISDELETED = "N"
                     };
 

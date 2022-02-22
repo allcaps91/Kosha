@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.CellType.CheckBoxCellType checkBoxCellType1 = new FarPoint.Win.Spread.CellType.CheckBoxCellType();
-            FarPoint.Win.Spread.CellType.CheckBoxCellType checkBoxCellType2 = new FarPoint.Win.Spread.CellType.CheckBoxCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType1 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType2 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType3 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType4 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.GeneralCellType generalCellType1 = new FarPoint.Win.Spread.CellType.GeneralCellType();
+            FarPoint.Win.Spread.CellType.CheckBoxCellType checkBoxCellType5 = new FarPoint.Win.Spread.CellType.CheckBoxCellType();
+            FarPoint.Win.Spread.CellType.CheckBoxCellType checkBoxCellType6 = new FarPoint.Win.Spread.CellType.CheckBoxCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType9 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType10 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType11 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType12 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.GeneralCellType generalCellType3 = new FarPoint.Win.Spread.CellType.GeneralCellType();
             this.TxtDocNumber = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,10 +48,11 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSendMail = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtAttach = new System.Windows.Forms.TextBox();
+            this.btnAttach = new System.Windows.Forms.Button();
             this.CboMonth = new System.Windows.Forms.ComboBox();
             this.BtnExportPdf = new System.Windows.Forms.Button();
-            this.btnAttach = new System.Windows.Forms.Button();
-            this.txtAttach = new System.Windows.Forms.TextBox();
+            this.CboManager = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
@@ -60,10 +61,10 @@
             // 
             // TxtDocNumber
             // 
-            this.TxtDocNumber.Location = new System.Drawing.Point(256, 11);
+            this.TxtDocNumber.Location = new System.Drawing.Point(214, 11);
             this.TxtDocNumber.Name = "TxtDocNumber";
-            this.TxtDocNumber.Size = new System.Drawing.Size(105, 25);
-            this.TxtDocNumber.TabIndex = 107;
+            this.TxtDocNumber.Size = new System.Drawing.Size(70, 25);
+            this.TxtDocNumber.TabIndex = 1;
             // 
             // label15
             // 
@@ -74,7 +75,7 @@
             this.label15.Location = new System.Drawing.Point(5, 11);
             this.label15.Name = "label15";
             this.label15.Padding = new System.Windows.Forms.Padding(4);
-            this.label15.Size = new System.Drawing.Size(67, 25);
+            this.label15.Size = new System.Drawing.Size(57, 25);
             this.label15.TabIndex = 106;
             this.label15.Text = "방문월";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -85,10 +86,10 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(175, 11);
+            this.label1.Location = new System.Drawing.Point(140, 11);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(4);
-            this.label1.Size = new System.Drawing.Size(75, 25);
+            this.label1.Size = new System.Drawing.Size(70, 25);
             this.label1.TabIndex = 108;
             this.label1.Text = "문서번호";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -99,10 +100,10 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(367, 11);
+            this.label2.Location = new System.Drawing.Point(289, 13);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(4);
-            this.label2.Size = new System.Drawing.Size(75, 25);
+            this.label2.Size = new System.Drawing.Size(70, 25);
             this.label2.TabIndex = 109;
             this.label2.Text = "시행일자";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -111,18 +112,18 @@
             // 
             this.DtpDate.CustomFormat = "yyyy-MM-dd";
             this.DtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpDate.Location = new System.Drawing.Point(448, 12);
+            this.DtpDate.Location = new System.Drawing.Point(362, 14);
             this.DtpDate.Name = "DtpDate";
-            this.DtpDate.Size = new System.Drawing.Size(108, 25);
-            this.DtpDate.TabIndex = 110;
+            this.DtpDate.Size = new System.Drawing.Size(104, 25);
+            this.DtpDate.TabIndex = 2;
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(562, 11);
+            this.BtnSearch.Location = new System.Drawing.Point(600, 12);
             this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearch.Name = "BtnSearch";
-            this.BtnSearch.Size = new System.Drawing.Size(68, 28);
-            this.BtnSearch.TabIndex = 111;
+            this.BtnSearch.Size = new System.Drawing.Size(90, 28);
+            this.BtnSearch.TabIndex = 4;
             this.BtnSearch.Text = "검색";
             this.BtnSearch.UseVisualStyleBackColor = true;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
@@ -165,7 +166,7 @@
             this.SSList_Sheet1.ColumnFooterSheetCornerStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SSList_Sheet1.ColumnFooterSheetCornerStyle.Parent = "CornerFooterDefaultEnhanced";
             this.SSList_Sheet1.ColumnFooterSheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).CellType = checkBoxCellType1;
+            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).CellType = checkBoxCellType5;
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "코드";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "회사명";
@@ -179,7 +180,7 @@
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 10).Value = "발송자";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 11).Value = "계약ID";
             this.SSList_Sheet1.ColumnHeader.Rows.Get(0).Height = 43F;
-            this.SSList_Sheet1.Columns.Get(0).CellType = checkBoxCellType2;
+            this.SSList_Sheet1.Columns.Get(0).CellType = checkBoxCellType6;
             this.SSList_Sheet1.Columns.Get(0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSList_Sheet1.Columns.Get(0).Width = 32F;
             this.SSList_Sheet1.Columns.Get(1).AllowAutoSort = true;
@@ -198,24 +199,24 @@
             this.SSList_Sheet1.Columns.Get(5).Width = 184F;
             this.SSList_Sheet1.Columns.Get(6).Label = "4차방문";
             this.SSList_Sheet1.Columns.Get(6).Width = 184F;
-            textCellType1.WordWrap = true;
-            this.SSList_Sheet1.Columns.Get(7).CellType = textCellType1;
+            textCellType9.WordWrap = true;
+            this.SSList_Sheet1.Columns.Get(7).CellType = textCellType9;
             this.SSList_Sheet1.Columns.Get(7).Label = "Email";
             this.SSList_Sheet1.Columns.Get(7).Width = 227F;
-            textCellType2.WordWrap = true;
-            this.SSList_Sheet1.Columns.Get(8).CellType = textCellType2;
+            textCellType10.WordWrap = true;
+            this.SSList_Sheet1.Columns.Get(8).CellType = textCellType10;
             this.SSList_Sheet1.Columns.Get(8).Label = "Email2";
             this.SSList_Sheet1.Columns.Get(8).Width = 220F;
-            textCellType3.BackgroundImage = new FarPoint.Win.Picture(null, FarPoint.Win.RenderStyle.Normal, System.Drawing.Color.Empty, 0, FarPoint.Win.HorizontalAlignment.Center, FarPoint.Win.VerticalAlignment.Center);
-            this.SSList_Sheet1.Columns.Get(9).CellType = textCellType3;
+            textCellType11.BackgroundImage = new FarPoint.Win.Picture(null, FarPoint.Win.RenderStyle.Normal, System.Drawing.Color.Empty, 0, FarPoint.Win.HorizontalAlignment.Center, FarPoint.Win.VerticalAlignment.Center);
+            this.SSList_Sheet1.Columns.Get(9).CellType = textCellType11;
             this.SSList_Sheet1.Columns.Get(9).Label = "메일 발송일";
             this.SSList_Sheet1.Columns.Get(9).Width = 100F;
-            textCellType4.BackgroundImage = new FarPoint.Win.Picture(null, FarPoint.Win.RenderStyle.Normal, System.Drawing.Color.Empty, 0, FarPoint.Win.HorizontalAlignment.Center, FarPoint.Win.VerticalAlignment.Center);
-            this.SSList_Sheet1.Columns.Get(10).CellType = textCellType4;
+            textCellType12.BackgroundImage = new FarPoint.Win.Picture(null, FarPoint.Win.RenderStyle.Normal, System.Drawing.Color.Empty, 0, FarPoint.Win.HorizontalAlignment.Center, FarPoint.Win.VerticalAlignment.Center);
+            this.SSList_Sheet1.Columns.Get(10).CellType = textCellType12;
             this.SSList_Sheet1.Columns.Get(10).Label = "발송자";
             this.SSList_Sheet1.Columns.Get(10).Width = 80F;
-            generalCellType1.ReadOnly = true;
-            this.SSList_Sheet1.Columns.Get(11).CellType = generalCellType1;
+            generalCellType3.ReadOnly = true;
+            this.SSList_Sheet1.Columns.Get(11).CellType = generalCellType3;
             this.SSList_Sheet1.Columns.Get(11).Label = "계약ID";
             this.SSList_Sheet1.FilterBarHeaderStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SSList_Sheet1.FilterBarHeaderStyle.NoteIndicatorColor = System.Drawing.Color.Red;
@@ -226,10 +227,10 @@
             // 
             // btnPRint
             // 
-            this.btnPRint.Location = new System.Drawing.Point(1100, 8);
+            this.btnPRint.Location = new System.Drawing.Point(1118, 8);
             this.btnPRint.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnPRint.Name = "btnPRint";
-            this.btnPRint.Size = new System.Drawing.Size(75, 28);
+            this.btnPRint.Size = new System.Drawing.Size(56, 28);
             this.btnPRint.TabIndex = 115;
             this.btnPRint.Text = "인쇄";
             this.btnPRint.UseVisualStyleBackColor = true;
@@ -249,7 +250,7 @@
             // 
             // btnSendMail
             // 
-            this.btnSendMail.Location = new System.Drawing.Point(1177, 8);
+            this.btnSendMail.Location = new System.Drawing.Point(1180, 8);
             this.btnSendMail.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnSendMail.Name = "btnSendMail";
             this.btnSendMail.Size = new System.Drawing.Size(75, 28);
@@ -261,6 +262,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.CboManager);
             this.panel1.Controls.Add(this.txtAttach);
             this.panel1.Controls.Add(this.btnAttach);
             this.panel1.Controls.Add(this.CboMonth);
@@ -279,28 +281,18 @@
             this.panel1.Size = new System.Drawing.Size(1264, 60);
             this.panel1.TabIndex = 118;
             // 
-            // CboMonth
+            // txtAttach
             // 
-            this.CboMonth.FormattingEnabled = true;
-            this.CboMonth.Location = new System.Drawing.Point(76, 11);
-            this.CboMonth.Name = "CboMonth";
-            this.CboMonth.Size = new System.Drawing.Size(91, 25);
-            this.CboMonth.TabIndex = 119;
-            // 
-            // BtnExportPdf
-            // 
-            this.BtnExportPdf.Location = new System.Drawing.Point(1023, 8);
-            this.BtnExportPdf.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.BtnExportPdf.Name = "BtnExportPdf";
-            this.BtnExportPdf.Size = new System.Drawing.Size(75, 28);
-            this.BtnExportPdf.TabIndex = 118;
-            this.BtnExportPdf.Text = "PDF 저장";
-            this.BtnExportPdf.UseVisualStyleBackColor = true;
-            this.BtnExportPdf.Click += new System.EventHandler(this.BtnExportPdf_Click);
+            this.txtAttach.Location = new System.Drawing.Point(770, 3);
+            this.txtAttach.Multiline = true;
+            this.txtAttach.Name = "txtAttach";
+            this.txtAttach.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAttach.Size = new System.Drawing.Size(260, 51);
+            this.txtAttach.TabIndex = 127;
             // 
             // btnAttach
             // 
-            this.btnAttach.Location = new System.Drawing.Point(636, 12);
+            this.btnAttach.Location = new System.Drawing.Point(694, 12);
             this.btnAttach.Name = "btnAttach";
             this.btnAttach.Size = new System.Drawing.Size(70, 26);
             this.btnAttach.TabIndex = 126;
@@ -308,14 +300,32 @@
             this.btnAttach.UseVisualStyleBackColor = true;
             this.btnAttach.Click += new System.EventHandler(this.btnAttach_Click);
             // 
-            // txtAttach
+            // CboMonth
             // 
-            this.txtAttach.Location = new System.Drawing.Point(712, 3);
-            this.txtAttach.Multiline = true;
-            this.txtAttach.Name = "txtAttach";
-            this.txtAttach.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAttach.Size = new System.Drawing.Size(305, 51);
-            this.txtAttach.TabIndex = 127;
+            this.CboMonth.FormattingEnabled = true;
+            this.CboMonth.Location = new System.Drawing.Point(66, 11);
+            this.CboMonth.Name = "CboMonth";
+            this.CboMonth.Size = new System.Drawing.Size(71, 25);
+            this.CboMonth.TabIndex = 0;
+            // 
+            // BtnExportPdf
+            // 
+            this.BtnExportPdf.Location = new System.Drawing.Point(1040, 8);
+            this.BtnExportPdf.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.BtnExportPdf.Name = "BtnExportPdf";
+            this.BtnExportPdf.Size = new System.Drawing.Size(72, 28);
+            this.BtnExportPdf.TabIndex = 118;
+            this.BtnExportPdf.Text = "PDF 저장";
+            this.BtnExportPdf.UseVisualStyleBackColor = true;
+            this.BtnExportPdf.Click += new System.EventHandler(this.BtnExportPdf_Click);
+            // 
+            // CboManager
+            // 
+            this.CboManager.FormattingEnabled = true;
+            this.CboManager.Location = new System.Drawing.Point(472, 12);
+            this.CboManager.Name = "CboManager";
+            this.CboManager.Size = new System.Drawing.Size(122, 25);
+            this.CboManager.TabIndex = 3;
             // 
             // VIsitDocumentBatchForm
             // 
@@ -358,5 +368,6 @@
         private System.Windows.Forms.ComboBox CboMonth;
         private System.Windows.Forms.TextBox txtAttach;
         private System.Windows.Forms.Button btnAttach;
+        private System.Windows.Forms.ComboBox CboManager;
     }
 }

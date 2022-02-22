@@ -24,6 +24,7 @@ namespace HC_OSHA.form.Visit
     /// </summary>
     public partial class VIsitDocumentBatchForm : CommonForm
     {
+        private HcUserService hcUsersService;
         private VisitDocument visitDocumentForm = null;
         private VisitDocumentService visitDocumentService;
         private HcSiteWorkerRepository hcSiteWorkerRepository;
@@ -37,12 +38,17 @@ namespace HC_OSHA.form.Visit
         public VIsitDocumentBatchForm()
         {
             InitializeComponent();
+            hcUsersService = new HcUserService();
             visitDocumentService = new VisitDocumentService();
             visitDocumentForm = new VisitDocument();
             hcSiteWorkerRepository = new HcSiteWorkerRepository();
 
             hcUsersRepository = new HcUsersRepository();
             hicMailRepository = new HicMailRepository();
+
+            List<HC_USER> OSHAUsers = hcUsersService.GetOsha();
+            CboManager.SetItems(OSHAUsers, "Name", "UserId", "전체", "", AddComboBoxPosition.Top);
+            CboManager.SetValue(CommonService.Instance.Session.UserId);
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -50,67 +56,131 @@ namespace HC_OSHA.form.Visit
             long nESTIMATE_ID = 0;
             SSList.ActiveSheet.RowCount = 0;
             string month = CboMonth.GetValue();
+            string visitUser = CboManager.GetValue();
             List<VisitDocumentModel> list = visitDocumentService.VisitDocumentRepository.FindScheduleByMonth(month);
             VisitDocumentModel addedModel = null;
             int rowIndex = 0;
-            int COlumnIndex = 0;
+
+            int k = 0;
+            long nOldSiteId = -1;
+            string strList = "";
+            bool bOK = false;
             for(int i=0; i<list.Count; i++)
             {
-                if(i==0 || addedModel.SiteId != list[i].SiteId)
+                if (nOldSiteId == -1 || nOldSiteId != list[i].SiteId)
                 {
-                    rowIndex = SSList.ActiveSheet.RowCount;
-                    SSList.ActiveSheet.Rows.Add(rowIndex, 1);
-                    addedModel = list[i];
-                    COlumnIndex = 0;
-                }
-                else
-                {
-                    COlumnIndex += 1;
-                }
-
-                SSList.ActiveSheet.Cells[rowIndex, 1].Text = list[i].SiteId.ToString();
-                SSList.ActiveSheet.Cells[rowIndex, 2].Text = list[i].SiteName;
-
-                SSList.ActiveSheet.Cells[rowIndex, 9].Text = list[i].SENDDATE;
-                SSList.ActiveSheet.Cells[rowIndex, 10].Text = list[i].SENDNAME;
-                SSList.ActiveSheet.Cells[rowIndex, 11].Value = list[i].ESTIMATE_ID;
-
-                if (COlumnIndex == 0)
-                {
-                    SSList.ActiveSheet.Cells[rowIndex, 3].Text =  list[i].VisitReserveDate.Substring(5) + " " + list[i].visitUserName;
-                    if (!list[i].visitUserName2.IsNullOrEmpty())
+                    if (bOK == true)
                     {
-                        SSList.ActiveSheet.Cells[rowIndex, 3].Text += " , "+list[i].visitUserName2;
+                        rowIndex = SSList.ActiveSheet.RowCount;
+                        SSList.ActiveSheet.Rows.Add(rowIndex, 1);
+
+                        k = Int32.Parse(VB.Pstr(strList, ",", 1));
+                        SSList.ActiveSheet.Cells[rowIndex, 1].Text = list[k].SiteId.ToString();
+                        SSList.ActiveSheet.Cells[rowIndex, 2].Text = list[k].SiteName;
+
+                        SSList.ActiveSheet.Cells[rowIndex, 9].Text = list[k].SENDDATE;
+                        SSList.ActiveSheet.Cells[rowIndex, 10].Text = list[k].SENDNAME;
+                        SSList.ActiveSheet.Cells[rowIndex, 11].Value = list[k].ESTIMATE_ID;
+
+                        SSList.ActiveSheet.Cells[rowIndex, 3].Text = list[k].VisitReserveDate.Substring(5) + " " + list[k].visitUserName;
+                        if (!list[k].visitUserName2.IsNullOrEmpty())
+                        {
+                            SSList.ActiveSheet.Cells[rowIndex, 3].Text += " , " + list[k].visitUserName2;
+                        }
+
+                        if (VB.Pstr(strList, ",", 2) != "")
+                        {
+                            k = Int32.Parse(VB.Pstr(strList, ",", 2));
+                            SSList.ActiveSheet.Cells[rowIndex, 4].Text = list[k].VisitReserveDate.Substring(5) + " " + list[k].visitUserName;
+                            if (!list[k].visitUserName2.IsNullOrEmpty())
+                            {
+                                SSList.ActiveSheet.Cells[rowIndex, 4].Text += " , " + list[k].visitUserName2;
+                            }
+                        }
+
+                        if (VB.Pstr(strList, ",", 3) != "")
+                        {
+                            k = Int32.Parse(VB.Pstr(strList, ",", 3));
+                            SSList.ActiveSheet.Cells[rowIndex, 5].Text = list[k].VisitReserveDate.Substring(5) + " " + list[k].visitUserName;
+                            if (!list[k].visitUserName2.IsNullOrEmpty())
+                            {
+                                SSList.ActiveSheet.Cells[rowIndex, 5].Text += " , " + list[k].visitUserName2;
+                            }
+                        }
+
+                        if (VB.Pstr(strList, ",", 4) != "")
+                        {
+                            k = Int32.Parse(VB.Pstr(strList, ",", 4));
+                            SSList.ActiveSheet.Cells[rowIndex, 6].Text = list[k].VisitReserveDate.Substring(5) + " " + list[k].visitUserName;
+                            if (!list[k].visitUserName2.IsNullOrEmpty())
+                            {
+                                SSList.ActiveSheet.Cells[rowIndex, 6].Text += " , " + list[k].visitUserName2;
+                            }
+                        }
                     }
+
+                    strList = "";
+                    bOK = false;
+                    nOldSiteId = list[i].SiteId;
                 }
-                else if (COlumnIndex == 1)
-                {
-                    SSList.ActiveSheet.Cells[rowIndex, 4].Text = list[i].VisitReserveDate.Substring(5) + " " + list[i].visitUserName;
-                    if (!list[i].visitUserName2.IsNullOrEmpty())
-                    {
-                        SSList.ActiveSheet.Cells[rowIndex, 4].Text += " , " + list[i].visitUserName2;
-                    }
+
+                strList = strList + i.ToString() + ",";
+                if (visitUser=="" || visitUser == list[i].visitUserId) bOK = true;
+
+                //if (i==0 || addedModel.SiteId != list[i].SiteId)
+                //{
+                //    rowIndex = SSList.ActiveSheet.RowCount;
+                //    SSList.ActiveSheet.Rows.Add(rowIndex, 1);
+                //    addedModel = list[i];
+                //    COlumnIndex = 0;
+                //}
+                //else
+                //{
+                //    COlumnIndex += 1;
+                //}
+
+                //SSList.ActiveSheet.Cells[rowIndex, 1].Text = list[i].SiteId.ToString();
+                //SSList.ActiveSheet.Cells[rowIndex, 2].Text = list[i].SiteName;
+
+                //SSList.ActiveSheet.Cells[rowIndex, 9].Text = list[i].SENDDATE;
+                //SSList.ActiveSheet.Cells[rowIndex, 10].Text = list[i].SENDNAME;
+                //SSList.ActiveSheet.Cells[rowIndex, 11].Value = list[i].ESTIMATE_ID;
+
+                //if (COlumnIndex == 0)
+                //{
+                //    SSList.ActiveSheet.Cells[rowIndex, 3].Text =  list[i].VisitReserveDate.Substring(5) + " " + list[i].visitUserName;
+                //    if (!list[i].visitUserName2.IsNullOrEmpty())
+                //    {
+                //        SSList.ActiveSheet.Cells[rowIndex, 3].Text += " , "+list[i].visitUserName2;
+                //    }
+                //}
+                //else if (COlumnIndex == 1)
+                //{
+                //    SSList.ActiveSheet.Cells[rowIndex, 4].Text = list[i].VisitReserveDate.Substring(5) + " " + list[i].visitUserName;
+                //    if (!list[i].visitUserName2.IsNullOrEmpty())
+                //    {
+                //        SSList.ActiveSheet.Cells[rowIndex, 4].Text += " , " + list[i].visitUserName2;
+                //    }
                     
-                }
-                else if (COlumnIndex == 2)
-                {
-                    SSList.ActiveSheet.Cells[rowIndex, 5].Text = list[i].VisitReserveDate.Substring(5) + " " + list[i].visitUserName;
-                    if (!list[i].visitUserName2.IsNullOrEmpty())
-                    {
-                        SSList.ActiveSheet.Cells[rowIndex, 5].Text += " , " + list[i].visitUserName2;
-                    }
+                //}
+                //else if (COlumnIndex == 2)
+                //{
+                //    SSList.ActiveSheet.Cells[rowIndex, 5].Text = list[i].VisitReserveDate.Substring(5) + " " + list[i].visitUserName;
+                //    if (!list[i].visitUserName2.IsNullOrEmpty())
+                //    {
+                //        SSList.ActiveSheet.Cells[rowIndex, 5].Text += " , " + list[i].visitUserName2;
+                //    }
                     
-                }
-                else if (COlumnIndex == 3)
-                {
-                    SSList.ActiveSheet.Cells[rowIndex, 6].Text = list[i].VisitReserveDate.Substring(5) + " " + list[i].visitUserName;
-                    if (!list[i].visitUserName2.IsNullOrEmpty())
-                    {
-                        SSList.ActiveSheet.Cells[rowIndex, 6].Text += " , " + list[i].visitUserName2;
-                    }
-                }
+                //}
+                //else if (COlumnIndex == 3)
+                //{
+                //    SSList.ActiveSheet.Cells[rowIndex, 6].Text = list[i].VisitReserveDate.Substring(5) + " " + list[i].visitUserName;
+                //    if (!list[i].visitUserName2.IsNullOrEmpty())
+                //    {
+                //        SSList.ActiveSheet.Cells[rowIndex, 6].Text += " , " + list[i].visitUserName2;
+                //    }
+                //}
             }
-
             long siteId = 0;
 
             List<HC_SITE_WORKER> workers = hcSiteWorkerRepository.FindWorker("HEALTH_ROLE");
@@ -121,13 +191,6 @@ namespace HC_OSHA.form.Visit
                 siteId = SSList.ActiveSheet.Cells[i, 1].Value.To<long>(0);
                 nESTIMATE_ID = SSList.ActiveSheet.Cells[i, 11].Value.To<long>(0);
 
-                //List<HC_SITE_WORKER> workers = hcSiteWorkerRepository.FindWorkerByRole(siteId, "HEALTH_ROLE");
-
-                //foreach(HC_SITE_WORKER worker in workers)
-                //{
-                //    email += worker.NAME + ", mail: " + worker.EMAIL + "\n";
-                //}
-                //List<string> mailList = GetEmail(workers, siteId);
                 List<string> mailList = GetEmail(nESTIMATE_ID);
                 if (mailList.Count == 1)
                 {
@@ -141,6 +204,8 @@ namespace HC_OSHA.form.Visit
 
                 SSList.ActiveSheet.Rows[i].Height = SSList.ActiveSheet.Rows[i].GetPreferredHeight();
             }
+            BtnSearch.Text = "검색";
+            if (SSList.ActiveSheet.RowCount > 0) BtnSearch.Text = "검색(" + SSList.ActiveSheet.RowCount + "건)";
         }
 
         private List<string> GetEmail(long ESTIMATE_ID)
@@ -155,17 +220,18 @@ namespace HC_OSHA.form.Visit
             SQL = "";
             SQL = "SELECT NAME,EMAIL FROM HIC_OSHA_CONTRACT_MANAGER ";
             SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID=" + ESTIMATE_ID + " ";
-            SQL = SQL + ComNum.VBLF + "  AND WORKER_ROLE='HEALTH_ROLE' ";
+            SQL = SQL + ComNum.VBLF + "  AND (EMAILSEND='Y' OR EMAILSEND='y') ";
+            SQL = SQL + ComNum.VBLF + "  AND EMAIL IS NOT NULL ";
             SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
             if (dt.Rows.Count > 0)
             {
                 for (int i=0; i<dt.Rows.Count; i++)
                 {
-                    strEMail = dt.Rows[0]["EMAIL"].ToString().Trim();
+                    strEMail = dt.Rows[i]["EMAIL"].ToString().Trim();
                     if (strEMail!="")
                     {
-                        email = dt.Rows[0]["NAME"].ToString().Trim() + "," + strEMail + "\n";
+                        email = dt.Rows[i]["NAME"].ToString().Trim() + "," + strEMail + "\n";
                         list.Add(email);
                     }
                 }
@@ -230,6 +296,7 @@ namespace HC_OSHA.form.Visit
                     List<VisitDocumentModel> list = visitDocumentService.VisitDocumentRepository.FindScheduleByMonth(month, siteId);
                     ChargeEmailModel chargeEmailModel = visitDocumentForm.Print(list, month, DateUtil.DateTimeToStrig(DtpDate.Value, DateTimeType.YYYY_MM_DD), siteId, siteName, isPdf, TxtDocNumber.Text, exportPath);
                     exportPdfList.Add(siteId, chargeEmailModel);
+                    Thread.Sleep(2000);
                 }
             }
             if(checkedCount == 0)
@@ -259,20 +326,6 @@ namespace HC_OSHA.form.Visit
                         int mailCount = 0;
                         long siteId = SSList.ActiveSheet.Cells[i, 1].Value.To<long>(0);
                         string siteName = SSList.ActiveSheet.Cells[i, 2].Value.ToString();
-                        //List<HC_SITE_WORKER> list = hcSiteWorkerRepository.FindWorkerByRole(siteId, "HEALTH_ROLE");
-                        //if (list.Count > 0)
-                        //{
-                        //    List<string> mailList = new List<string>();
-                        //    foreach (HC_SITE_WORKER worker in list)
-                        //    {
-                        //        if (worker.EMAIL.NotEmpty())
-                        //        {
-                        //            mailList.Add(worker.EMAIL);
-                        //            mailCount++;
-                        //        }
-                        //    }
-                        //    receiverMailList.Add(siteId, mailList);
-                        //}
                         List<string> mailList = new List<string>();
                         string email = SSList.ActiveSheet.Cells[i, 7].Text;
                         var emailArray = email.Split(',');
@@ -307,7 +360,7 @@ namespace HC_OSHA.form.Visit
                         if (mailCount == 0)
                         {
                             isStop = true;
-                            MessageUtil.Alert(siteName + "보건 담당자 이메일이 없습니다.  메일발송이 취소되었습니다. 근로자 등록에서 보건담당자를 지정하세요");
+                            MessageUtil.Alert(siteName + "담당자 이메일이 없습니다.  메일발송이 취소되었습니다.");
                             break;
                         }
                     }

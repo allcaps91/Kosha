@@ -30,6 +30,7 @@ namespace HC.OSHA.Dto
         public string TEL { get; set; }
         public string HP { get; set; }
         public string EMAIL { get; set; }
+        public string EMAILSEND { get; set; }
 
         /// <summary>
         /// 

@@ -98,7 +98,8 @@ namespace HC_OSHA
             SSWorkerList.AddColumnText("전화", nameof(HC_OSHA_CONTRACT_MANAGER_MODEL.TEL), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("휴대폰", nameof(HC_OSHA_CONTRACT_MANAGER_MODEL.HP), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("이메일", nameof(HC_OSHA_CONTRACT_MANAGER_MODEL.EMAIL), 168, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
-            SSWorkerList.AddColumnButton("", 50, new SpreadCellTypeOption { IsSort = false, ButtonText = "삭제" }).ButtonClick += SSSWorkerList_DeleteButtonClick;
+            SSWorkerList.AddColumnText("메일전송", nameof(HC_OSHA_CONTRACT_MANAGER_MODEL.EMAILSEND), 80, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSWorkerList.AddColumnButton("삭제", 50, new SpreadCellTypeOption { IsSort = false, ButtonText = "삭제" }).ButtonClick += SSSWorkerList_DeleteButtonClick;
 
             SSWorkerList.SetDataSource(new List<HC_OSHA_CONTRACT_MANAGER_MODEL>());
 

@@ -57,8 +57,8 @@ namespace HC.OSHA.Repository
             MParameter parameter = CreateParameter();
             dto.ID = GetSequenceNextVal("HC_OSHA_SHARED_ID_SEQ");
             parameter.AppendSql("INSERT INTO HIC_OSHA_CONTRACT_MANAGER ");
-            parameter.AppendSql("(ID,ESTIMATE_ID,WORKER_ROLE,NAME,DEPT,TEL,HP,EMAIL,ISDELETED,SWLICENSE) ");
-            parameter.AppendSql("VALUES (:ID,:ESTIMATE_ID,:WORKER_ROLE,:NAME,:DEPT,:TEL,:HP,:EMAIL,");
+            parameter.AppendSql("(ID,ESTIMATE_ID,WORKER_ROLE,NAME,DEPT,TEL,HP,EMAIL,EMAILSEND,ISDELETED,SWLICENSE) ");
+            parameter.AppendSql("VALUES (:ID,:ESTIMATE_ID,:WORKER_ROLE,:NAME,:DEPT,:TEL,:HP,:EMAIL,:EMAILSEND,");
             parameter.AppendSql("        'N',:SWLICENSE) ");
             parameter.Add("ID", dto.ID);
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
@@ -68,6 +68,7 @@ namespace HC.OSHA.Repository
             parameter.Add("TEL", dto.TEL);
             parameter.Add("HP", dto.HP);
             parameter.Add("EMAIL", dto.EMAIL);
+            parameter.Add("EMAILSEND", dto.EMAILSEND);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
@@ -100,6 +101,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("      ,TEL = :TEL                      ");
             parameter.AppendSql("      ,HP = :HP                        ");
             parameter.AppendSql("      ,EMAIL = :EMAIL                  ");
+            parameter.AppendSql("      ,EMAILSEND = :EMAILSEND          ");
             parameter.AppendSql("WHERE ID = :ID                         ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
@@ -110,6 +112,7 @@ namespace HC.OSHA.Repository
             parameter.Add("TEL", dto.TEL);
             parameter.Add("HP", dto.HP);
             parameter.Add("EMAIL", dto.EMAIL);
+            parameter.Add("EMAILSEND", dto.EMAILSEND);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);

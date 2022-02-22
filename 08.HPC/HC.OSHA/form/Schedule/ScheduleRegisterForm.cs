@@ -1354,5 +1354,10 @@ namespace HC_OSHA
         {
             ChaneTime();
         }
+
+        private void panSchedule_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

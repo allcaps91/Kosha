@@ -51,7 +51,11 @@ namespace HC.OSHA.Model
         /// </summary>
 		public string EMAIL { get; set; }
 
-        
+        /// <summary>
+        /// 
+        /// </summary>
+		public string EMAILSEND { get; set; }
+
         public HC_OSHA_CONTRACT_MANAGER_MODEL()
         {
         }

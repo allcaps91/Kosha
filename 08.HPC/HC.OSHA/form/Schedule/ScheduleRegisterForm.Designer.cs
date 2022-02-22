@@ -1781,6 +1781,7 @@
             this.panSchedule.Name = "panSchedule";
             this.panSchedule.Size = new System.Drawing.Size(1086, 180);
             this.panSchedule.TabIndex = 6;
+            this.panSchedule.Paint += new System.Windows.Forms.PaintEventHandler(this.panSchedule_Paint);
             // 
             // txtVISITTIME
             // 
