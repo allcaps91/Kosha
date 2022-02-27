@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Data;
 
 namespace HC_OSHA.StatusReport
 {
@@ -187,8 +188,6 @@ namespace HC_OSHA.StatusReport
                     //사업장 서명
                     browser.ExecuteScriptAsync("setSiteSign('" + statusReportEngineerDto.SITEMANAGERSIGN + "')");
                 }
-
-                    
             }
         }
         public void LoadStatusReportNurseDto()
@@ -319,29 +318,38 @@ namespace HC_OSHA.StatusReport
                 EstimateMailForm form = new EstimateMailForm();
                 form.GetMailForm().SenderMailAddress = sendMailAddress.CodeName;
                 form.GetMailForm().AttachmentsList.Add(pdfFileName);
-
-                HcSiteWorkerRepository hcSiteWorkerRepository = new HcSiteWorkerRepository();
-                List<HC_SITE_WORKER> list = hcSiteWorkerRepository.FindWorkerByRole(this.siteId, "HEALTH_ROLE");
-                if (list.Count > 0)
+                form.set_SiteId(this.siteId);
+                //보낼 메일을 찾기
+                long estimateID = 0;
+                if (statusReportEngineerDto != null)
                 {
-                    foreach (HC_SITE_WORKER worker in list)
+                    estimateID = statusReportEngineerDto.ESTIMATE_ID;
+                }
+                else if (statusReportNurseDto != null)
+                {
+                    estimateID = statusReportNurseDto.ESTIMATE_ID;
+                }
+                else if (statusReportDoctorDto != null)
+                {
+                    estimateID = statusReportDoctorDto.ESTIMATE_ID;
+                }
+
+                string strMailList = GetEmail(estimateID);
+                if (strMailList != "")
+                {
+                    for (int i=1;i<=VB.L(strMailList,",");i++)
                     {
-                        if (!worker.EMAIL.IsNullOrEmpty())
-                        {
-                            form.GetMailForm().ReciverMailSddress.Add(worker.EMAIL);
-                        }
+                        form.GetMailForm().ReciverMailSddress.Add(VB.Pstr(strMailList, ",", i).Trim());
                     }
                 }
-                else
-                {
-                    //MessageUtil.Alert(siteName + "보건 담당자 이메일이 없습니다. 메일발송이 취소되었습니다");
-                    // return;
-                }
+                form.GetMailForm().RefreshReceiver();
+                form.GetMailForm().Subject = title;
+                form.GetMailForm().Body = title;
 
-                //            form.GetMailForm().AttachmentsList.Add(pdfFileName);
+                //  form.GetMailForm().AttachmentsList.Add(pdfFileName);
                 DialogResult result = form.ShowDialog();
 
-                if(result == DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
                     HIC_OSHA_MAIL_SEND mail = new HIC_OSHA_MAIL_SEND
                     {
@@ -363,6 +371,47 @@ namespace HC_OSHA.StatusReport
             {
                 Cursor.Current = Cursors.Default;
             }
+        }
+
+        private string GetEmail(long ESTIMATE_ID)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            string strEMail = "";
+            string strList = "";
+            string email = string.Empty;
+
+            SQL = "";
+            SQL = "SELECT NAME,EMAIL FROM HIC_OSHA_CONTRACT_MANAGER ";
+            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID=" + ESTIMATE_ID + " ";
+            SQL = SQL + ComNum.VBLF + "  AND (EMAILSEND='Y' OR EMAILSEND='y') ";
+            SQL = SQL + ComNum.VBLF + "  AND WORKER_ROLE='HEALTH_ROLE' ";
+            SQL = SQL + ComNum.VBLF + "  AND EMAIL IS NOT NULL ";
+            SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    strEMail = dt.Rows[i]["EMAIL"].ToString().Trim();
+                    if (strEMail != "")
+                    {
+                        if (strList == "")
+                        {
+                            strList = strEMail;
+                        }
+                        else
+                        {
+                            strList += "," + strEMail;
+                        }
+                    }
+                }
+            }
+            dt.Dispose();
+            dt = null;
+
+            return strList;
         }
 
         private void BtnSign_Click(object sender, EventArgs e)

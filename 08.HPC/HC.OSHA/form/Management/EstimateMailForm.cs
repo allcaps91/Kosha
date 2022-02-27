@@ -1,4 +1,5 @@
-﻿using ComBase.Mvc.UserControls;
+﻿using ComBase;
+using ComBase.Mvc.UserControls;
 using ComBase.Mvc.Utils;
 using HC.Core.Dto;
 using HC.OSHA.Dto;
@@ -18,7 +19,7 @@ namespace HC_OSHA
 
     public partial class EstimateMailForm : CommonForm
     {
-      
+        private long siteId = 0;
         public MailForm GetMailForm()
         {
             return this.mailForm;
@@ -29,7 +30,12 @@ namespace HC_OSHA
             mailForm.SMTP_USERID = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail_user", "OSHA").CodeName;
             mailForm.SMTP_PASSWORD = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail_password", "OSHA").CodeName;
         }
-        
+
+        public void set_SiteId(long siteId)
+        {
+            this.siteId = siteId;
+        }
+
         private void MailForm_SendMailClick(object sender, EventArgs e)
         {
             if(sender is Exception)
@@ -45,25 +51,23 @@ namespace HC_OSHA
             }
         }
 
-        private void mailForm_Load(object sender, EventArgs e)
-        {
-      
-        }
-
         private void mailForm_ReceiverListClick(object sender, EventArgs e)
         {
-       
-            SiteWorkerPopupForm form = new SiteWorkerPopupForm();
-            form.SelectedSite = base.SelectedSite;
+            string mailList = "";
+            SiteManagerPopupForm form = new SiteManagerPopupForm();
+            form.set_siteId(siteId);
             form.ShowDialog();
 
-
-            this.mailForm.ReciverMailSddress.Clear();
-            foreach (HC_SITE_WORKER worker in form.GetWorker())
+            mailList = form.GetWorker();
+            if (mailList != "")
             {
-               this.mailForm.ReciverMailSddress.Add(worker.EMAIL);
+                mailForm.ReciverMailSddress.Clear();
+                for (int i=1;i<= VB.L(mailList, ","); i++)
+                {
+                    mailForm.ReciverMailSddress.Add(VB.Pstr(mailList, ",", i));
+                }
+                mailForm.RefreshReceiver();
             }
-            this.mailForm.RefreshReceiver();
         }
     }
 }

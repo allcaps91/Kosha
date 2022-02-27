@@ -48,6 +48,7 @@
             this.mailForm1.SMTP_USERID = null;
             this.mailForm1.Subject = null;
             this.mailForm1.TabIndex = 0;
+            this.mailForm1.Load += new System.EventHandler(this.mailForm1_Load);
             // 
             // ScheduleMailForm
             // 

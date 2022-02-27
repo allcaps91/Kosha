@@ -51,7 +51,6 @@ namespace HC_OSHA
             SSWorkerList.AddColumnText("이름", nameof(HC_SITE_WORKER.NAME), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
             SSWorkerList.AddColumnText("부서", nameof(HC_SITE_WORKER.DEPT), 140, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnComboBox("직책", nameof(HC_SITE_WORKER.WORKER_ROLE), 150, IsReadOnly.Y, comboBoxData, new SpreadCellTypeOption { IsSort = false });
-        //    SSWorkerList.AddColumnText("주민", nameof(HC_SITE_WORKER.JUMIN), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("전화", nameof(HC_SITE_WORKER.TEL), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("휴대폰", nameof(HC_SITE_WORKER.HP), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("이메일", nameof(HC_SITE_WORKER.EMAIL), 150, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
@@ -77,7 +76,6 @@ namespace HC_OSHA
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
             SetSelect();
-
         }
 
      
@@ -112,6 +110,11 @@ namespace HC_OSHA
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             Search();
+        }
+
+        private void awd_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

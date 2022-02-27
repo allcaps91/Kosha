@@ -527,17 +527,17 @@ namespace HC_OSHA.StatusReport
             StatusReportDoctorDto dto = PanStatausReportDoctor.GetData<StatusReportDoctorDto>();
             if (dto.ID == 0) return;
 
-            //의사,간호사 REPORT_ID를 찾음
-            SQL = "SELECT ID FROM HIC_OSHA_REPORT_NURSE ";
-            SQL = SQL + ComNum.VBLF + "WHERE SITE_ID=" + base.SelectedSite.ID + " ";
-            SQL = SQL + ComNum.VBLF + "  AND VISITDATE='" + strVisitDate + "' ";
-            SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
-            SQL = SQL + ComNum.VBLF + "  AND SWLicense='" + clsType.HosInfo.SwLicense + "' ";
-            SQL = SQL + ComNum.VBLF + "ORDER BY ID DESC ";
-            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
-            if (dt.Rows.Count > 0) nNurseId = long.Parse(dt.Rows[0]["ID"].ToString());
-            dt.Dispose();
-            dt = null;
+            ////의사,간호사 REPORT_ID를 찾음
+            //SQL = "SELECT ID FROM HIC_OSHA_REPORT_NURSE ";
+            //SQL = SQL + ComNum.VBLF + "WHERE SITE_ID=" + base.SelectedSite.ID + " ";
+            //SQL = SQL + ComNum.VBLF + "  AND VISITDATE='" + strVisitDate + "' ";
+            //SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
+            //SQL = SQL + ComNum.VBLF + "  AND SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+            //SQL = SQL + ComNum.VBLF + "ORDER BY ID DESC ";
+            //SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            //if (dt.Rows.Count > 0) nNurseId = long.Parse(dt.Rows[0]["ID"].ToString());
+            //dt.Dispose();
+            //dt = null;
 
             //상담건수, 혈압, 혈당 등 검사 건수
             SQL = "SELECT COUNT(*) as TotCount,sum(decode(bpl,null, 0, 1)) as BpCount,sum(decode(bst, null, 0, 1)) AS BstCount, ";
@@ -545,8 +545,8 @@ namespace HC_OSHA.StatusReport
             SQL = SQL + ComNum.VBLF + "   sum(decode(EXAM, null, 0, 1)) AS ExamCount ";
             SQL = SQL + ComNum.VBLF + " FROM HIC_OSHA_HEALTHCHECK ";
             SQL = SQL + ComNum.VBLF + "WHERE SITE_ID=" + base.SelectedSite.ID + " ";
-            if (nNurseId == 0) SQL = SQL + ComNum.VBLF + " AND REPORT_ID = " + dto.ID + " ";
-            if (nNurseId > 0) SQL = SQL + ComNum.VBLF + "  AND REPORT_ID IN (" + dto.ID + "," + nNurseId + ") ";
+            SQL = SQL + ComNum.VBLF + " AND REPORT_ID = " + dto.ID + " ";
+            //if (nNurseId > 0) SQL = SQL + ComNum.VBLF + "  AND REPORT_ID IN (" + dto.ID + "," + nNurseId + ") ";
             SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
             SQL = SQL + ComNum.VBLF + "  AND SWLicense='" + clsType.HosInfo.SwLicense + "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -566,8 +566,8 @@ namespace HC_OSHA.StatusReport
             SQL = "SELECT COUNT(*) as TotCount ";
             SQL = SQL + ComNum.VBLF + " FROM HIC_OSHA_HEALTHCHECK ";
             SQL = SQL + ComNum.VBLF + "WHERE SITE_ID=" + base.SelectedSite.ID + " ";
-            if (nNurseId == 0) SQL = SQL + ComNum.VBLF + " AND REPORT_ID = " + dto.ID + " ";
-            if (nNurseId > 0) SQL = SQL + ComNum.VBLF + "  AND REPORT_ID IN (" + dto.ID + "," + nNurseId + ") ";
+            SQL = SQL + ComNum.VBLF + "  AND REPORT_ID = " + dto.ID + " ";
+            //if (nNurseId > 0) SQL = SQL + ComNum.VBLF + "  AND REPORT_ID IN (" + dto.ID + "," + nNurseId + ") ";
             SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
             SQL = SQL + ComNum.VBLF + "  AND (bpl IS NOT NULL OR bst IS NOT NULL OR dan IS NOT NULL OR BMI IS NOT NULL) ";
             SQL = SQL + ComNum.VBLF + "  AND SWLicense='" + clsType.HosInfo.SwLicense + "' ";

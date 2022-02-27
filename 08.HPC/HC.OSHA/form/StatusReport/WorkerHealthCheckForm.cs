@@ -437,8 +437,6 @@ namespace HC_OSHA.StatusReport
             CboPanjeong.Items.Add("CN");
             CboPanjeong.Items.Add("DN");
             CboPanjeong.Items.Add("확진검사대상");
-
-           
         }
         public void Init()
         {
@@ -673,6 +671,21 @@ namespace HC_OSHA.StatusReport
                 return;
             }
            
+            // 상담내역은 본인만 수정 가능함
+            if (dto.id > 0)
+            {
+                if (dto.ISDOCTOR == "Y" && StatusReportDoctorDto == null)
+                {
+                    MessageUtil.Alert("의사 상담내역은 의사만 수정이 가능합니다.");
+                    return;
+                }
+                if (dto.ISDOCTOR == "N" && StatusReportNurseDto == null)
+                {
+                    MessageUtil.Alert("간호사 상담내역은 간호사만 수정이 가능합니다.");
+                    return;
+                }
+            }
+
             if (panHealthCheck.Validate<HealthCheckDto>())
             {
                 dto.site_id = base.SelectedSite.ID;
@@ -739,6 +752,7 @@ namespace HC_OSHA.StatusReport
         public void Clear()
         {
             //  this.worker = null;
+            labelMsg.Text = "";
             HealthCheckDto dto = panHealthCheck.GetData<HealthCheckDto>();
             if (dto != null)
             {
@@ -785,6 +799,43 @@ namespace HC_OSHA.StatusReport
             SetHealthCheckData(dto);
             DtpChartDate.Value = DateUtil.stringToDateTime(dto.CHARTDATE, DateTimeType.YYYYMMDD);
             
+            // 간호사가 작성한 근로자 상담내역을 의사가 클릭한 경우
+            // 1.상담일이 오늘이고 의사가 작성한 오늘 상담내역이 없으면 저장 시 의사상담으로 신규 등록함
+            if (dto.ISDOCTOR != "Y" && StatusReportDoctorDto != null)
+            {
+                if (dto.CHARTDATE== DateTime.Now.ToString("yyyyMMdd"))
+                {
+                    //의사 상담이 없으면
+                    if (Doctor_Sangdam_Check(StatusReportDoctorDto.ID, dto.worker_id)==false)
+                    {
+                        dto.id = 0;
+                        dto.REPORT_ID = StatusReportDoctorDto.ID;
+                        dto.ISDOCTOR = "Y";
+                        labelMsg.Text = "▶의사상담으로 복사됨";
+                    }
+                }
+            }
+        }
+
+        // 오늘 의사상담이 있는지 점검
+        private bool Doctor_Sangdam_Check(long reportId,string  workerId)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            bool bOK = false;
+
+            SQL = "SELECT ID FROM HIC_OSHA_HEALTHCHECK ";
+            SQL = SQL + ComNum.VBLF + "WHERE WORKER_ID='" + workerId + "' ";
+            SQL = SQL + ComNum.VBLF + "  AND REPORT_ID=" + reportId + " ";
+            SQL = SQL + ComNum.VBLF + "  AND ISDELETED = 'N' ";
+            SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0) bOK = true;
+            dt.Dispose();
+            dt = null;
+
+            return bOK;
         }
 
         private void btnMacro_Click(object sender, EventArgs e)
@@ -1359,7 +1410,6 @@ namespace HC_OSHA.StatusReport
             form.SetStatusReportNurseDto(StatusReportNurseDto, SelectedSite);
             form.SetStatusReportDoctorDto(StatusReportDoctorDto, SelectedSite);
             form.Show();
-
             
         }
 

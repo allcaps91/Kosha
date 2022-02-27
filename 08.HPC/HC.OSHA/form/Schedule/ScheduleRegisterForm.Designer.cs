@@ -1090,7 +1090,7 @@
             this.BtnSearchSchedule.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearchSchedule.Name = "BtnSearchSchedule";
             this.BtnSearchSchedule.Size = new System.Drawing.Size(75, 28);
-            this.BtnSearchSchedule.TabIndex = 106;
+            this.BtnSearchSchedule.TabIndex = 110;
             this.BtnSearchSchedule.Text = "검색";
             this.BtnSearchSchedule.UseVisualStyleBackColor = true;
             this.BtnSearchSchedule.Click += new System.EventHandler(this.BtnSearchSchedule_Click);
@@ -1788,7 +1788,7 @@
             this.txtVISITTIME.Location = new System.Drawing.Point(390, 48);
             this.txtVISITTIME.Name = "txtVISITTIME";
             this.txtVISITTIME.Size = new System.Drawing.Size(74, 25);
-            this.txtVISITTIME.TabIndex = 3;
+            this.txtVISITTIME.TabIndex = 1;
             // 
             // ChkDoctor
             // 
@@ -1796,7 +1796,7 @@
             this.ChkDoctor.Location = new System.Drawing.Point(518, 83);
             this.ChkDoctor.Name = "ChkDoctor";
             this.ChkDoctor.Size = new System.Drawing.Size(123, 21);
-            this.ChkDoctor.TabIndex = 6;
+            this.ChkDoctor.TabIndex = 4;
             this.ChkDoctor.Text = "동행자 의사설정";
             this.ChkDoctor.UseVisualStyleBackColor = true;
             this.ChkDoctor.CheckedChanged += new System.EventHandler(this.ChkDoctor_CheckedChanged);
@@ -1934,7 +1934,7 @@
             this.TxtREMARK.Location = new System.Drawing.Point(136, 110);
             this.TxtREMARK.Name = "TxtREMARK";
             this.TxtREMARK.Size = new System.Drawing.Size(631, 25);
-            this.TxtREMARK.TabIndex = 6;
+            this.TxtREMARK.TabIndex = 5;
             // 
             // CboVISITUSERID
             // 
@@ -1942,7 +1942,7 @@
             this.CboVISITUSERID.Location = new System.Drawing.Point(136, 79);
             this.CboVISITUSERID.Name = "CboVISITUSERID";
             this.CboVISITUSERID.Size = new System.Drawing.Size(108, 25);
-            this.CboVISITUSERID.TabIndex = 4;
+            this.CboVISITUSERID.TabIndex = 2;
             // 
             // CboVISITMANAGERID
             // 
@@ -1950,7 +1950,7 @@
             this.CboVISITMANAGERID.Location = new System.Drawing.Point(390, 80);
             this.CboVISITMANAGERID.Name = "CboVISITMANAGERID";
             this.CboVISITMANAGERID.Size = new System.Drawing.Size(121, 25);
-            this.CboVISITMANAGERID.TabIndex = 5;
+            this.CboVISITMANAGERID.TabIndex = 3;
             this.CboVISITMANAGERID.Click += new System.EventHandler(this.CboVISITMANAGERID_Click);
             // 
             // DtpVISITRESERVEDATE
@@ -1960,7 +1960,7 @@
             this.DtpVISITRESERVEDATE.Location = new System.Drawing.Point(136, 48);
             this.DtpVISITRESERVEDATE.Name = "DtpVISITRESERVEDATE";
             this.DtpVISITRESERVEDATE.Size = new System.Drawing.Size(108, 25);
-            this.DtpVISITRESERVEDATE.TabIndex = 2;
+            this.DtpVISITRESERVEDATE.TabIndex = 0;
             // 
             // contentTitle1
             // 

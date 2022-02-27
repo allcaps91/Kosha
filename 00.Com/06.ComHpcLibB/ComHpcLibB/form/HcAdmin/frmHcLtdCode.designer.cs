@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.FlatFocusIndicatorRenderer flatFocusIndicatorRenderer1 = new FarPoint.Win.Spread.FlatFocusIndicatorRenderer();
+            FarPoint.Win.Spread.FlatFocusIndicatorRenderer flatFocusIndicatorRenderer2 = new FarPoint.Win.Spread.FlatFocusIndicatorRenderer();
+            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer5 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
+            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer6 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
             FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer1 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
             FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer2 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
-            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer3 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
-            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer4 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
             this.panTitle = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panSub04 = new System.Windows.Forms.Panel();
@@ -396,7 +396,7 @@
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(625, 187);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl2.TabIndex = 0;
+            this.tabControl2.TabIndex = 42;
             // 
             // tabPage3
             // 
@@ -421,7 +421,7 @@
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtRemark.Size = new System.Drawing.Size(481, 111);
-            this.txtRemark.TabIndex = 201;
+            this.txtRemark.TabIndex = 40;
             this.txtRemark.Tag = "REMARK";
             this.txtRemark.Text = "txtRemark";
             // 
@@ -443,7 +443,7 @@
             this.txtChulNotSayu.Location = new System.Drawing.Point(128, 3);
             this.txtChulNotSayu.Name = "txtChulNotSayu";
             this.txtChulNotSayu.Size = new System.Drawing.Size(481, 25);
-            this.txtChulNotSayu.TabIndex = 199;
+            this.txtChulNotSayu.TabIndex = 39;
             this.txtChulNotSayu.Tag = "CHULNOTSAYU";
             this.txtChulNotSayu.Text = "txtChulNotSayu";
             // 
@@ -487,7 +487,7 @@
             this.txtHaRemark.Name = "txtHaRemark";
             this.txtHaRemark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtHaRemark.Size = new System.Drawing.Size(484, 85);
-            this.txtHaRemark.TabIndex = 203;
+            this.txtHaRemark.TabIndex = 43;
             this.txtHaRemark.Tag = "HAREMARK";
             this.txtHaRemark.Text = "txtHaRemark";
             // 
@@ -515,7 +515,7 @@
             0});
             this.txtFAmt.Name = "txtFAmt";
             this.txtFAmt.Size = new System.Drawing.Size(85, 25);
-            this.txtFAmt.TabIndex = 201;
+            this.txtFAmt.TabIndex = 42;
             this.txtFAmt.Tag = "FAMT";
             this.txtFAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -530,7 +530,7 @@
             0});
             this.txtMAmt.Name = "txtMAmt";
             this.txtMAmt.Size = new System.Drawing.Size(85, 25);
-            this.txtMAmt.TabIndex = 200;
+            this.txtMAmt.TabIndex = 41;
             this.txtMAmt.Tag = "MAMT";
             this.txtMAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -643,7 +643,7 @@
             this.txtChRemark.Name = "txtChRemark";
             this.txtChRemark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtChRemark.Size = new System.Drawing.Size(486, 143);
-            this.txtChRemark.TabIndex = 207;
+            this.txtChRemark.TabIndex = 44;
             this.txtChRemark.Tag = "CHREMARK";
             this.txtChRemark.Text = "txtChRemark";
             // 
@@ -680,7 +680,7 @@
             this.txtBoRemark.Name = "txtBoRemark";
             this.txtBoRemark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtBoRemark.Size = new System.Drawing.Size(484, 140);
-            this.txtBoRemark.TabIndex = 205;
+            this.txtBoRemark.TabIndex = 45;
             this.txtBoRemark.Tag = "BOREMARK";
             this.txtBoRemark.Text = "txtBoRemark";
             // 
@@ -785,7 +785,7 @@
             this.txtCode.MaxLength = 6;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(167, 25);
-            this.txtCode.TabIndex = 3;
+            this.txtCode.TabIndex = 0;
             this.txtCode.Tag = "CODE";
             this.txtCode.Text = "txtCode";
             this.txtCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -796,7 +796,7 @@
             this.txtKiho.MaxLength = 8;
             this.txtKiho.Name = "txtKiho";
             this.txtKiho.Size = new System.Drawing.Size(218, 25);
-            this.txtKiho.TabIndex = 23;
+            this.txtKiho.TabIndex = 21;
             this.txtKiho.Tag = "KIHO";
             this.txtKiho.Text = "txtKiho";
             this.txtKiho.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -816,7 +816,7 @@
             this.txtJSaupno.Location = new System.Drawing.Point(378, 416);
             this.txtJSaupno.Name = "txtJSaupno";
             this.txtJSaupno.Size = new System.Drawing.Size(218, 25);
-            this.txtJSaupno.TabIndex = 34;
+            this.txtJSaupno.TabIndex = 35;
             this.txtJSaupno.Tag = "JSAUPNO";
             this.txtJSaupno.Text = "txtJSaupno";
             this.txtJSaupno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -841,7 +841,7 @@
             this.dtpDelDate.Name = "dtpDelDate";
             this.dtpDelDate.ShowCheckBox = true;
             this.dtpDelDate.Size = new System.Drawing.Size(204, 25);
-            this.dtpDelDate.TabIndex = 35;
+            this.dtpDelDate.TabIndex = 36;
             this.dtpDelDate.Tag = "DELDATE";
             // 
             // label34
@@ -876,7 +876,7 @@
             this.rdoSchool3.Location = new System.Drawing.Point(103, 1);
             this.rdoSchool3.Name = "rdoSchool3";
             this.rdoSchool3.Size = new System.Drawing.Size(66, 19);
-            this.rdoSchool3.TabIndex = 2;
+            this.rdoSchool3.TabIndex = 34;
             this.rdoSchool3.Text = "중/고등";
             this.rdoSchool3.UseVisualStyleBackColor = true;
             // 
@@ -887,7 +887,7 @@
             this.rdoSchool2.Location = new System.Drawing.Point(54, 1);
             this.rdoSchool2.Name = "rdoSchool2";
             this.rdoSchool2.Size = new System.Drawing.Size(49, 19);
-            this.rdoSchool2.TabIndex = 1;
+            this.rdoSchool2.TabIndex = 33;
             this.rdoSchool2.Text = "초등";
             this.rdoSchool2.UseVisualStyleBackColor = true;
             // 
@@ -899,7 +899,7 @@
             this.rdoSchool1.Location = new System.Drawing.Point(3, 1);
             this.rdoSchool1.Name = "rdoSchool1";
             this.rdoSchool1.Size = new System.Drawing.Size(49, 19);
-            this.rdoSchool1.TabIndex = 0;
+            this.rdoSchool1.TabIndex = 32;
             this.rdoSchool1.TabStop = true;
             this.rdoSchool1.Text = "없음";
             this.rdoSchool1.UseVisualStyleBackColor = true;
@@ -928,7 +928,7 @@
             0});
             this.txtInWon.Name = "txtInWon";
             this.txtInWon.Size = new System.Drawing.Size(218, 25);
-            this.txtInWon.TabIndex = 32;
+            this.txtInWon.TabIndex = 30;
             this.txtInWon.Tag = "INWON";
             this.txtInWon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -937,7 +937,7 @@
             this.txtJepumList.Location = new System.Drawing.Point(700, 381);
             this.txtJepumList.Name = "txtJepumList";
             this.txtJepumList.Size = new System.Drawing.Size(204, 25);
-            this.txtJepumList.TabIndex = 33;
+            this.txtJepumList.TabIndex = 31;
             this.txtJepumList.Tag = "JEPUMLIST";
             this.txtJepumList.Text = "txtJepumList";
             // 
@@ -961,7 +961,7 @@
             this.cboGyumo.Location = new System.Drawing.Point(105, 381);
             this.cboGyumo.Name = "cboGyumo";
             this.cboGyumo.Size = new System.Drawing.Size(167, 25);
-            this.cboGyumo.TabIndex = 31;
+            this.cboGyumo.TabIndex = 29;
             this.cboGyumo.Tag = "GYUMOGBN";
             // 
             // label30
@@ -997,7 +997,7 @@
             this.cboArmy.Location = new System.Drawing.Point(378, 345);
             this.cboArmy.Name = "cboArmy";
             this.cboArmy.Size = new System.Drawing.Size(218, 25);
-            this.cboArmy.TabIndex = 29;
+            this.cboArmy.TabIndex = 27;
             this.cboArmy.Tag = "ARMY_HSP";
             // 
             // label29
@@ -1033,7 +1033,7 @@
             this.cboJisa.Location = new System.Drawing.Point(105, 345);
             this.cboJisa.Name = "cboJisa";
             this.cboJisa.Size = new System.Drawing.Size(167, 25);
-            this.cboJisa.TabIndex = 28;
+            this.cboJisa.TabIndex = 26;
             this.cboJisa.Tag = "JISA";
             // 
             // label27
@@ -1056,7 +1056,7 @@
             this.cboNodong.Location = new System.Drawing.Point(105, 309);
             this.cboNodong.Name = "cboNodong";
             this.cboNodong.Size = new System.Drawing.Size(167, 25);
-            this.cboNodong.TabIndex = 25;
+            this.cboNodong.TabIndex = 23;
             this.cboNodong.Tag = "GWANSE";
             // 
             // label26
@@ -1079,7 +1079,7 @@
             this.cboUpjong.Location = new System.Drawing.Point(105, 273);
             this.cboUpjong.Name = "cboUpjong";
             this.cboUpjong.Size = new System.Drawing.Size(167, 25);
-            this.cboUpjong.TabIndex = 22;
+            this.cboUpjong.TabIndex = 20;
             this.cboUpjong.Tag = "UPJONG";
             // 
             // label25
@@ -1102,7 +1102,7 @@
             this.cboJido.Location = new System.Drawing.Point(378, 309);
             this.cboJido.Name = "cboJido";
             this.cboJido.Size = new System.Drawing.Size(218, 25);
-            this.cboJido.TabIndex = 26;
+            this.cboJido.TabIndex = 24;
             this.cboJido.Tag = "JIDOWON";
             // 
             // label24
@@ -1125,7 +1125,7 @@
             this.dtpNegoDate.Name = "dtpNegoDate";
             this.dtpNegoDate.ShowCheckBox = true;
             this.dtpNegoDate.Size = new System.Drawing.Size(204, 25);
-            this.dtpNegoDate.TabIndex = 30;
+            this.dtpNegoDate.TabIndex = 28;
             this.dtpNegoDate.Tag = "NEGODATE";
             // 
             // label23
@@ -1148,7 +1148,7 @@
             this.dtpGyeDate.Name = "dtpGyeDate";
             this.dtpGyeDate.ShowCheckBox = true;
             this.dtpGyeDate.Size = new System.Drawing.Size(204, 25);
-            this.dtpGyeDate.TabIndex = 27;
+            this.dtpGyeDate.TabIndex = 25;
             this.dtpGyeDate.Tag = "GYEDATE";
             // 
             // label22
@@ -1170,7 +1170,7 @@
             this.txtUpso.MaxLength = 50;
             this.txtUpso.Name = "txtUpso";
             this.txtUpso.Size = new System.Drawing.Size(204, 25);
-            this.txtUpso.TabIndex = 21;
+            this.txtUpso.TabIndex = 19;
             this.txtUpso.Tag = "YOUNGUPSO";
             this.txtUpso.Text = "txtUpso";
             this.txtUpso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1194,7 +1194,7 @@
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(218, 25);
-            this.txtEmail.TabIndex = 14;
+            this.txtEmail.TabIndex = 12;
             this.txtEmail.Tag = "EMAIL";
             this.txtEmail.Text = "txtEmail";
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1209,7 +1209,7 @@
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(92, 25);
             this.label20.TabIndex = 171;
-            this.label20.Text = "E-Mail";
+            this.label20.Text = "*E-Mail";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtJongmok
@@ -1217,7 +1217,7 @@
             this.txtJongmok.Location = new System.Drawing.Point(378, 237);
             this.txtJongmok.Name = "txtJongmok";
             this.txtJongmok.Size = new System.Drawing.Size(218, 25);
-            this.txtJongmok.TabIndex = 20;
+            this.txtJongmok.TabIndex = 18;
             this.txtJongmok.Tag = "JONGMOK";
             this.txtJongmok.Text = "TxtJongmok";
             this.txtJongmok.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1232,7 +1232,7 @@
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(92, 25);
             this.label18.TabIndex = 170;
-            this.label18.Text = "종목";
+            this.label18.Text = "*종목";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtUptae
@@ -1241,7 +1241,7 @@
             this.txtUptae.MaxLength = 15;
             this.txtUptae.Name = "txtUptae";
             this.txtUptae.Size = new System.Drawing.Size(167, 25);
-            this.txtUptae.TabIndex = 19;
+            this.txtUptae.TabIndex = 17;
             this.txtUptae.Tag = "UPTAE";
             this.txtUptae.Text = "txtUptae";
             this.txtUptae.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1256,7 +1256,7 @@
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(92, 25);
             this.label19.TabIndex = 167;
-            this.label19.Text = "업태";
+            this.label19.Text = "*업태";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dtpSelDate
@@ -1266,7 +1266,7 @@
             this.dtpSelDate.Name = "dtpSelDate";
             this.dtpSelDate.ShowCheckBox = true;
             this.dtpSelDate.Size = new System.Drawing.Size(204, 25);
-            this.dtpSelDate.TabIndex = 24;
+            this.dtpSelDate.TabIndex = 22;
             this.dtpSelDate.Tag = "SELDATE";
             this.dtpSelDate.ValueChanged += new System.EventHandler(this.dtpSelDate_ValueChanged);
             // 
@@ -1289,7 +1289,7 @@
             this.txtHtel.MaxLength = 50;
             this.txtHtel.Name = "txtHtel";
             this.txtHtel.Size = new System.Drawing.Size(204, 25);
-            this.txtHtel.TabIndex = 18;
+            this.txtHtel.TabIndex = 16;
             this.txtHtel.Tag = "HTEL";
             this.txtHtel.Text = "txtHtel";
             this.txtHtel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1304,7 +1304,7 @@
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(92, 25);
             this.label16.TabIndex = 163;
-            this.label16.Text = "담당자번호";
+            this.label16.Text = "*담당자번호";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtBoJik
@@ -1313,7 +1313,7 @@
             this.txtBoJik.MaxLength = 50;
             this.txtBoJik.Name = "txtBoJik";
             this.txtBoJik.Size = new System.Drawing.Size(218, 25);
-            this.txtBoJik.TabIndex = 17;
+            this.txtBoJik.TabIndex = 15;
             this.txtBoJik.Tag = "BOJIK";
             this.txtBoJik.Text = "txtBoJik";
             this.txtBoJik.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1337,7 +1337,7 @@
             this.txtBoName.MaxLength = 50;
             this.txtBoName.Name = "txtBoName";
             this.txtBoName.Size = new System.Drawing.Size(167, 25);
-            this.txtBoName.TabIndex = 16;
+            this.txtBoName.TabIndex = 14;
             this.txtBoName.Tag = "BONAME";
             this.txtBoName.Text = "txtBoName";
             this.txtBoName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1352,7 +1352,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(92, 25);
             this.label15.TabIndex = 159;
-            this.label15.Text = "보건담당";
+            this.label15.Text = "*보건담당";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtFax
@@ -1361,7 +1361,7 @@
             this.txtFax.MaxLength = 50;
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(204, 25);
-            this.txtFax.TabIndex = 15;
+            this.txtFax.TabIndex = 13;
             this.txtFax.Tag = "FAX";
             this.txtFax.Text = "txtFax";
             this.txtFax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1376,7 +1376,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(92, 25);
             this.label13.TabIndex = 157;
-            this.label13.Text = "FAX번호";
+            this.label13.Text = "*FAX번호";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtTel
@@ -1385,7 +1385,7 @@
             this.txtTel.MaxLength = 50;
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(204, 25);
-            this.txtTel.TabIndex = 12;
+            this.txtTel.TabIndex = 10;
             this.txtTel.Tag = "TEL";
             this.txtTel.Text = "txtTel";
             this.txtTel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1400,7 +1400,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(92, 25);
             this.label12.TabIndex = 155;
-            this.label12.Text = "전화번호";
+            this.label12.Text = "*전화번호";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtJumin
@@ -1409,7 +1409,7 @@
             this.txtJumin.MaxLength = 50;
             this.txtJumin.Name = "txtJumin";
             this.txtJumin.Size = new System.Drawing.Size(218, 25);
-            this.txtJumin.TabIndex = 11;
+            this.txtJumin.TabIndex = 9;
             this.txtJumin.Tag = "JUMIN";
             this.txtJumin.Text = "txtJumin";
             this.txtJumin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1433,7 +1433,7 @@
             this.txtHems.MaxLength = 15;
             this.txtHems.Name = "txtHems";
             this.txtHems.Size = new System.Drawing.Size(167, 25);
-            this.txtHems.TabIndex = 13;
+            this.txtHems.TabIndex = 11;
             this.txtHems.Tag = "HEMSNO";
             this.txtHems.Text = "txtHems";
             this.txtHems.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1456,7 +1456,7 @@
             this.txtSanKiho.Location = new System.Drawing.Point(378, 93);
             this.txtSanKiho.Name = "txtSanKiho";
             this.txtSanKiho.Size = new System.Drawing.Size(218, 25);
-            this.txtSanKiho.TabIndex = 8;
+            this.txtSanKiho.TabIndex = 6;
             this.txtSanKiho.Tag = "SANKIHO";
             this.txtSanKiho.Text = "txtSanKiho";
             this.txtSanKiho.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1480,7 +1480,7 @@
             this.txtGesiNo.MaxLength = 15;
             this.txtGesiNo.Name = "txtGesiNo";
             this.txtGesiNo.Size = new System.Drawing.Size(204, 25);
-            this.txtGesiNo.TabIndex = 9;
+            this.txtGesiNo.TabIndex = 7;
             this.txtGesiNo.Tag = "GESINO";
             this.txtGesiNo.Text = "txtGesiNo";
             this.txtGesiNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1504,7 +1504,7 @@
             this.txtDaepyo.MaxLength = 50;
             this.txtDaepyo.Name = "txtDaepyo";
             this.txtDaepyo.Size = new System.Drawing.Size(167, 25);
-            this.txtDaepyo.TabIndex = 10;
+            this.txtDaepyo.TabIndex = 8;
             this.txtDaepyo.Tag = "DAEPYO";
             this.txtDaepyo.Text = "txtDaepyo";
             this.txtDaepyo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1519,7 +1519,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 25);
             this.label7.TabIndex = 145;
-            this.label7.Text = "대표자명";
+            this.label7.Text = "*대표자명";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtSaupNo
@@ -1528,7 +1528,7 @@
             this.txtSaupNo.MaxLength = 15;
             this.txtSaupNo.Name = "txtSaupNo";
             this.txtSaupNo.Size = new System.Drawing.Size(167, 25);
-            this.txtSaupNo.TabIndex = 7;
+            this.txtSaupNo.TabIndex = 5;
             this.txtSaupNo.Tag = "SAUPNO";
             this.txtSaupNo.Text = "txtSaupNo";
             this.txtSaupNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1543,7 +1543,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 25);
             this.label6.TabIndex = 143;
-            this.label6.Text = "사업자번호";
+            this.label6.Text = "*사업자번호";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtJuDetail
@@ -1551,7 +1551,7 @@
             this.txtJuDetail.Location = new System.Drawing.Point(656, 57);
             this.txtJuDetail.Name = "txtJuDetail";
             this.txtJuDetail.Size = new System.Drawing.Size(248, 25);
-            this.txtJuDetail.TabIndex = 6;
+            this.txtJuDetail.TabIndex = 4;
             this.txtJuDetail.Tag = "JUSODETAIL";
             this.txtJuDetail.Text = "txtJuDetail";
             // 
@@ -1560,7 +1560,7 @@
             this.txtJuso.Location = new System.Drawing.Point(378, 57);
             this.txtJuso.Name = "txtJuso";
             this.txtJuso.Size = new System.Drawing.Size(272, 25);
-            this.txtJuso.TabIndex = 5;
+            this.txtJuso.TabIndex = 3;
             this.txtJuso.Tag = "JUSO";
             this.txtJuso.Text = "txtJuso";
             // 
@@ -1574,7 +1574,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 25);
             this.label5.TabIndex = 140;
-            this.label5.Text = "도로명주소";
+            this.label5.Text = "*도로명주소";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnHelp
@@ -1592,7 +1592,7 @@
             this.txtMail.MaxLength = 6;
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(139, 25);
-            this.txtMail.TabIndex = 4;
+            this.txtMail.TabIndex = 2;
             this.txtMail.Tag = "MAILCODE";
             this.txtMail.Text = "txtMail";
             this.txtMail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1607,7 +1607,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 25);
             this.label4.TabIndex = 137;
-            this.label4.Text = "우편번호";
+            this.label4.Text = "*우편번호";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtName
@@ -1615,7 +1615,7 @@
             this.txtName.Location = new System.Drawing.Point(656, 21);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(248, 25);
-            this.txtName.TabIndex = 3;
+            this.txtName.TabIndex = 1;
             this.txtName.Tag = "NAME";
             this.txtName.Text = "txtName";
             // 
@@ -1624,7 +1624,7 @@
             this.txtSangho.Location = new System.Drawing.Point(378, 21);
             this.txtSangho.Name = "txtSangho";
             this.txtSangho.Size = new System.Drawing.Size(272, 25);
-            this.txtSangho.TabIndex = 2;
+            this.txtSangho.TabIndex = 0;
             this.txtSangho.Tag = "SANGHO";
             this.txtSangho.Text = "txtSangho";
             // 
@@ -1638,7 +1638,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 25);
             this.label3.TabIndex = 134;
-            this.label3.Text = "사업장명";
+            this.label3.Text = "*사업장명";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -1651,7 +1651,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 25);
             this.label2.TabIndex = 132;
-            this.label2.Text = "사업장코드";
+            this.label2.Text = "*사업장코드";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panSub05
@@ -1772,7 +1772,7 @@
             this.txtTaxRemark.Name = "txtTaxRemark";
             this.txtTaxRemark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtTaxRemark.Size = new System.Drawing.Size(905, 340);
-            this.txtTaxRemark.TabIndex = 202;
+            this.txtTaxRemark.TabIndex = 50;
             this.txtTaxRemark.Tag = "TAX_REMARK";
             this.txtTaxRemark.Text = "txtTaxRemark";
             // 
@@ -1816,7 +1816,7 @@
             0});
             this.txtDLtd.Name = "txtDLtd";
             this.txtDLtd.Size = new System.Drawing.Size(98, 25);
-            this.txtDLtd.TabIndex = 197;
+            this.txtDLtd.TabIndex = 49;
             this.txtDLtd.Tag = "DLTD";
             this.txtDLtd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1838,7 +1838,7 @@
             this.txtTaxJuDetail.Location = new System.Drawing.Point(673, 21);
             this.txtTaxJuDetail.Name = "txtTaxJuDetail";
             this.txtTaxJuDetail.Size = new System.Drawing.Size(232, 25);
-            this.txtTaxJuDetail.TabIndex = 148;
+            this.txtTaxJuDetail.TabIndex = 48;
             this.txtTaxJuDetail.Tag = "TAX_JUSODETAIL";
             this.txtTaxJuDetail.Text = "txtTaxJuDetail";
             // 
@@ -1847,7 +1847,7 @@
             this.txtTaxJuso.Location = new System.Drawing.Point(377, 21);
             this.txtTaxJuso.Name = "txtTaxJuso";
             this.txtTaxJuso.Size = new System.Drawing.Size(290, 25);
-            this.txtTaxJuso.TabIndex = 147;
+            this.txtTaxJuso.TabIndex = 47;
             this.txtTaxJuso.Tag = "TAX_JUSO";
             this.txtTaxJuso.Text = "txtTaxJuso";
             // 
@@ -1879,7 +1879,7 @@
             this.txtTaxMail.MaxLength = 6;
             this.txtTaxMail.Name = "txtTaxMail";
             this.txtTaxMail.Size = new System.Drawing.Size(139, 25);
-            this.txtTaxMail.TabIndex = 144;
+            this.txtTaxMail.TabIndex = 46;
             this.txtTaxMail.Tag = "TAX_MAILCODE";
             this.txtTaxMail.Text = "txtTaxMail";
             this.txtTaxMail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1901,12 +1901,12 @@
             // 
             this.SSTax.AccessibleDescription = "";
             this.SSTax.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SSTax.FocusRenderer = flatFocusIndicatorRenderer1;
+            this.SSTax.FocusRenderer = flatFocusIndicatorRenderer2;
             this.SSTax.HorizontalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSTax.HorizontalScrollBar.Name = "";
-            flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSTax.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SSTax.HorizontalScrollBar.TabIndex = 133;
+            flatScrollBarRenderer5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSTax.HorizontalScrollBar.Renderer = flatScrollBarRenderer5;
+            this.SSTax.HorizontalScrollBar.TabIndex = 135;
             this.SSTax.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSTax.Location = new System.Drawing.Point(3, 30);
             this.SSTax.Name = "SSTax";
@@ -1917,9 +1917,9 @@
             this.SSTax.TabIndex = 6;
             this.SSTax.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSTax.VerticalScrollBar.Name = "";
-            flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSTax.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SSTax.VerticalScrollBar.TabIndex = 134;
+            flatScrollBarRenderer6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSTax.VerticalScrollBar.Renderer = flatScrollBarRenderer6;
+            this.SSTax.VerticalScrollBar.TabIndex = 136;
             this.SSTax.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SSTax_Sheet1
@@ -2004,7 +2004,7 @@
             this.btnNew.Location = new System.Drawing.Point(518, 1);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(82, 37);
-            this.btnNew.TabIndex = 51;
+            this.btnNew.TabIndex = 46;
             this.btnNew.Text = "신 규(&N)";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.eBtnClick);
@@ -2080,12 +2080,12 @@
             // 
             this.SSList.AccessibleDescription = "";
             this.SSList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SSList.FocusRenderer = flatFocusIndicatorRenderer1;
+            this.SSList.FocusRenderer = flatFocusIndicatorRenderer2;
             this.SSList.HorizontalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSList.HorizontalScrollBar.Name = "";
-            flatScrollBarRenderer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSList.HorizontalScrollBar.Renderer = flatScrollBarRenderer3;
-            this.SSList.HorizontalScrollBar.TabIndex = 131;
+            flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSList.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
+            this.SSList.HorizontalScrollBar.TabIndex = 133;
             this.SSList.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.Location = new System.Drawing.Point(2, 2);
             this.SSList.Name = "SSList";
@@ -2096,9 +2096,9 @@
             this.SSList.TabIndex = 2;
             this.SSList.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSList.VerticalScrollBar.Name = "";
-            flatScrollBarRenderer4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSList.VerticalScrollBar.Renderer = flatScrollBarRenderer4;
-            this.SSList.VerticalScrollBar.TabIndex = 132;
+            flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSList.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
+            this.SSList.VerticalScrollBar.TabIndex = 134;
             this.SSList.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
             // 

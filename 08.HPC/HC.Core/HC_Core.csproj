@@ -84,6 +84,12 @@
       <DependentUpon>AutoCompleteMacro.cs</DependentUpon>
     </Compile>
     <Compile Include="Dto\AutoCompleteCode.cs" />
+    <Compile Include="form\SiteManagerPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\SiteManagerPopupForm.Designer.cs">
+      <DependentUpon>SiteManagerPopupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\AutoCompleteFeeModel.cs" />
     <Compile Include="Dto\BaseCode\HIC_USERSIGN.cs" />
     <Compile Include="Dto\DataSync\DataSyncDto.cs" />
@@ -238,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\CommonForm.resx">
       <DependentUpon>CommonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\SiteManagerPopupForm.resx">
+      <DependentUpon>SiteManagerPopupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Macroword\MacrowordCkeditorForm.resx">
       <DependentUpon>MacrowordCkeditorForm.cs</DependentUpon>

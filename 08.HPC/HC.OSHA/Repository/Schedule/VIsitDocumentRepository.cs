@@ -16,7 +16,7 @@ namespace HC_OSHA.Repository.Schedule
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM ( ");
-            parameter.AppendSql("        SELECT A.ID, A.ESTIMATE_ID,AA.NAME AS SITENAME,AA.ID AS SITEID,");
+            parameter.AppendSql("        SELECT A.ID, A.ESTIMATE_ID,AA.NAME AS SITENAME,AA.ID AS SITEID,A.SENDMAIL,");
             parameter.AppendSql("               A.VISITRESERVEDATE, A.VISITUSERID, B.name AS VISITUSERNAME,");
             parameter.AppendSql("               B.ROLE AS VISITUSERROLE, A.VISITMANAGERID AS VISITUSERID2,");
             parameter.AppendSql("               C.NAME AS ViSITUSERNAME2, C.ROLE AS VISITUSERROLE2 ");

@@ -128,7 +128,6 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  REMARK,                        ");
             parameter.AppendSql("  INDOCPRINTDATETIME,            ");
             parameter.AppendSql("  OUTDOCPRINTDATETIME,           ");
-            parameter.AppendSql("  SENDMAILDATETIME,              ");
             parameter.AppendSql("  GBCHANGE,                      ");
             parameter.AppendSql("  WORKERCOUNT,                   ");
             parameter.AppendSql("  ISDELETED,                     ");
@@ -154,7 +153,6 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  :REMARK,                       ");
             parameter.AppendSql("  :INDOCPRINTDATETIME,           ");
             parameter.AppendSql("  :OUTDOCPRINTDATETIME,          ");
-            parameter.AppendSql("  :SENDMAILDATETIME,             ");
             parameter.AppendSql("  :GBCHANGE,                     ");
             parameter.AppendSql("  :WORKERCOUNT,                  ");
             parameter.AppendSql("  'N',                           ");
@@ -180,7 +178,6 @@ namespace HC.OSHA.Repository
             parameter.Add("WORKERCOUNT", dto.WORKERCOUNT);
             parameter.Add("INDOCPRINTDATETIME", dto.INDOCPRINTDATETIME);
             parameter.Add("OUTDOCPRINTDATETIME", dto.OUTDOCPRINTDATETIME);
-            parameter.Add("SENDMAILDATETIME", dto.SENDMAILDATETIME);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -207,7 +204,6 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  REMARK = :REMARK,");
             parameter.AppendSql("  INDOCPRINTDATETIME = :INDOCPRINTDATETIME,");
             parameter.AppendSql("  OUTDOCPRINTDATETIME = :OUTDOCPRINTDATETIME,");
-            parameter.AppendSql("  SENDMAILDATETIME = :SENDMAILDATETIME,");
             parameter.AppendSql("  GBCHANGE = :GBCHANGE,");
             parameter.AppendSql("  WORKERCOUNT = :WORKERCOUNT,");
             parameter.AppendSql("  ISDELETED = :ISDELETED,");
@@ -227,7 +223,6 @@ namespace HC.OSHA.Repository
             parameter.Add("REMARK", dto.REMARK);
             parameter.Add("INDOCPRINTDATETIME", dto.INDOCPRINTDATETIME);
             parameter.Add("OUTDOCPRINTDATETIME", dto.OUTDOCPRINTDATETIME);
-            parameter.Add("SENDMAILDATETIME", dto.SENDMAILDATETIME);
             parameter.Add("GBCHANGE", dto.GBCHANGE);
             parameter.Add("WORKERCOUNT", dto.WORKERCOUNT);
             parameter.Add("ISDELETED", dto.ISDELETED);
@@ -235,7 +230,6 @@ namespace HC.OSHA.Repository
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
-            DataSyncService.Instance.Update("HIC_OSHA_SCHEDULE", dto.ID);
             return FindById(dto.ID);
         }
 
@@ -250,8 +244,7 @@ namespace HC.OSHA.Repository
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
-
-            DataSyncService.Instance.Delete("HIC_OSHA_SCHEDULE", id);
         }
+
     }
 }

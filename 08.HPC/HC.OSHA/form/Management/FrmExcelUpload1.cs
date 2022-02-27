@@ -65,7 +65,7 @@ namespace HC_OSHA
             {
                 strTitle = SS1_Sheet1.ColumnHeader.Cells[0, i].Value.ToString();
                 SSConv_Sheet1.Cells[i, 0].Text = strTitle;
-                SSConv_Sheet1.Cells[i, 1].Value = (i + 1);
+                SSConv_Sheet1.Cells[i, 1].Value = "";
             }
         }
 
@@ -148,6 +148,7 @@ namespace HC_OSHA
             bool isBlankLine = false;
             bool bMultyLine = false;
             string strNewData = "";
+            string strTemp = "";
 
             //변경값을 변수에 저장
             for (i = 0; i < SSConv_Sheet1.RowCount; i++)
@@ -189,6 +190,18 @@ namespace HC_OSHA
                             strData = SSExcel_Sheet1.Cells[i, FnCol[j] - 1].Text.ToString();
                             if (strData != "")
                             {
+                                //생년월일 형식변경
+                                if (j==1 && VB.Len(strData)==10)  //1961-03-01
+                                {
+                                    strTemp = VB.Mid(strData, 3, 2) + VB.Mid(strData, 6, 2) + VB.Right(strData, 2);
+                                    strData = strTemp;
+                                }
+                                if (j == 1 && VB.Len(strData) == 8)  //19610301
+                                {
+                                    strTemp = VB.Mid(strData, 3, 2) + VB.Mid(strData, 5, 2) + VB.Right(strData, 2);
+                                    strData = strTemp;
+                                }
+
                                 if (bMultyLine == true)
                                 {
                                     strNewData = SS1_Sheet1.Cells[nRow - 1, j].Text.ToString();
@@ -356,6 +369,11 @@ namespace HC_OSHA
                 }
             }
             btnJob4.Enabled = true;
+        }
+
+        private void SSConv_CellClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
+        {
+
         }
     }
 }

@@ -957,7 +957,7 @@
             this.BtnSaveContract.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSaveContract.Name = "BtnSaveContract";
             this.BtnSaveContract.Size = new System.Drawing.Size(75, 28);
-            this.BtnSaveContract.TabIndex = 79;
+            this.BtnSaveContract.TabIndex = 83;
             this.BtnSaveContract.Text = "저장(&S)";
             this.BtnSaveContract.UseVisualStyleBackColor = true;
             this.BtnSaveContract.Click += new System.EventHandler(this.BtnSaveContract_Click);
@@ -1021,7 +1021,7 @@
             this.TxtISSPECIALDATA.Location = new System.Drawing.Point(162, 152);
             this.TxtISSPECIALDATA.Name = "TxtISSPECIALDATA";
             this.TxtISSPECIALDATA.Size = new System.Drawing.Size(536, 25);
-            this.TxtISSPECIALDATA.TabIndex = 77;
+            this.TxtISSPECIALDATA.TabIndex = 73;
             // 
             // label44
             // 
@@ -1089,7 +1089,7 @@
             this.ChkISSPECIAL.Location = new System.Drawing.Point(11, 154);
             this.ChkISSPECIAL.Name = "ChkISSPECIAL";
             this.ChkISSPECIAL.Size = new System.Drawing.Size(131, 21);
-            this.ChkISSPECIAL.TabIndex = 73;
+            this.ChkISSPECIAL.TabIndex = 72;
             this.ChkISSPECIAL.Text = "특별관리물질취급";
             this.ChkISSPECIAL.UseVisualStyleBackColor = true;
             // 
@@ -1099,7 +1099,7 @@
             this.ChkISBRAINTEST.Location = new System.Drawing.Point(10, 123);
             this.ChkISBRAINTEST.Name = "ChkISBRAINTEST";
             this.ChkISBRAINTEST.Size = new System.Drawing.Size(196, 21);
-            this.ChkISBRAINTEST.TabIndex = 73;
+            this.ChkISBRAINTEST.TabIndex = 70;
             this.ChkISBRAINTEST.Text = "뇌심혈관질환위험도평가대상";
             this.ChkISBRAINTEST.UseVisualStyleBackColor = true;
             // 
@@ -1109,7 +1109,7 @@
             this.ChkISSTRESS.Location = new System.Drawing.Point(362, 83);
             this.ChkISSTRESS.Name = "ChkISSTRESS";
             this.ChkISSTRESS.Size = new System.Drawing.Size(162, 21);
-            this.ChkISSTRESS.TabIndex = 74;
+            this.ChkISSTRESS.TabIndex = 76;
             this.ChkISSTRESS.Text = "직무스트레스평가 대상";
             this.ChkISSTRESS.UseVisualStyleBackColor = true;
             // 
@@ -1129,7 +1129,7 @@
             this.ChkISEARPROGRAM.Location = new System.Drawing.Point(10, 88);
             this.ChkISEARPROGRAM.Name = "ChkISEARPROGRAM";
             this.ChkISEARPROGRAM.Size = new System.Drawing.Size(162, 21);
-            this.ChkISEARPROGRAM.TabIndex = 73;
+            this.ChkISEARPROGRAM.TabIndex = 68;
             this.ChkISEARPROGRAM.Text = "청력보존프로그램 대상";
             this.ChkISEARPROGRAM.UseVisualStyleBackColor = true;
             // 
@@ -1139,7 +1139,7 @@
             this.ChkISSKELETON.Location = new System.Drawing.Point(10, 56);
             this.ChkISSKELETON.Name = "ChkISSKELETON";
             this.ChkISSKELETON.Size = new System.Drawing.Size(193, 21);
-            this.ChkISSKELETON.TabIndex = 73;
+            this.ChkISSKELETON.TabIndex = 66;
             this.ChkISSKELETON.Text = "근골격계 유해요인조사 대상";
             this.ChkISSKELETON.UseVisualStyleBackColor = true;
             // 
@@ -1149,7 +1149,7 @@
             this.ChkISWEM.Location = new System.Drawing.Point(10, 26);
             this.ChkISWEM.Name = "ChkISWEM";
             this.ChkISWEM.Size = new System.Drawing.Size(136, 21);
-            this.ChkISWEM.TabIndex = 72;
+            this.ChkISWEM.TabIndex = 65;
             this.ChkISWEM.Text = "작업환경측정 대상";
             this.ChkISWEM.UseVisualStyleBackColor = true;
             // 
@@ -1159,7 +1159,7 @@
             this.ChkISCOMMITTEE.Location = new System.Drawing.Point(362, 23);
             this.ChkISCOMMITTEE.Name = "ChkISCOMMITTEE";
             this.ChkISCOMMITTEE.Size = new System.Drawing.Size(175, 21);
-            this.ChkISCOMMITTEE.TabIndex = 71;
+            this.ChkISCOMMITTEE.TabIndex = 74;
             this.ChkISCOMMITTEE.Text = "산업안전보건위원회 설치";
             this.ChkISCOMMITTEE.UseVisualStyleBackColor = true;
             // 
@@ -1180,21 +1180,21 @@
             this.TxtISWEMDATA.Location = new System.Drawing.Point(165, 23);
             this.TxtISWEMDATA.Name = "TxtISWEMDATA";
             this.TxtISWEMDATA.Size = new System.Drawing.Size(106, 25);
-            this.TxtISWEMDATA.TabIndex = 67;
+            this.TxtISWEMDATA.TabIndex = 66;
             // 
             // TxtISBRAINTESTDATE
             // 
             this.TxtISBRAINTESTDATE.Location = new System.Drawing.Point(271, 119);
             this.TxtISBRAINTESTDATE.Name = "TxtISBRAINTESTDATE";
             this.TxtISBRAINTESTDATE.Size = new System.Drawing.Size(85, 25);
-            this.TxtISBRAINTESTDATE.TabIndex = 67;
+            this.TxtISBRAINTESTDATE.TabIndex = 71;
             // 
             // TxtISEARPROGRAMDATE
             // 
             this.TxtISEARPROGRAMDATE.Location = new System.Drawing.Point(271, 85);
             this.TxtISEARPROGRAMDATE.Name = "TxtISEARPROGRAMDATE";
             this.TxtISEARPROGRAMDATE.Size = new System.Drawing.Size(85, 25);
-            this.TxtISEARPROGRAMDATE.TabIndex = 67;
+            this.TxtISEARPROGRAMDATE.TabIndex = 69;
             // 
             // TxtISSKELETONDATE
             // 
@@ -1208,14 +1208,14 @@
             this.TxtISSTRESSDATE.Location = new System.Drawing.Point(623, 82);
             this.TxtISSTRESSDATE.Name = "TxtISSTRESSDATE";
             this.TxtISSTRESSDATE.Size = new System.Drawing.Size(75, 25);
-            this.TxtISSTRESSDATE.TabIndex = 68;
+            this.TxtISSTRESSDATE.TabIndex = 77;
             // 
             // TxtISSPACEPROGRAMDATE
             // 
             this.TxtISSPACEPROGRAMDATE.Location = new System.Drawing.Point(623, 50);
             this.TxtISSPACEPROGRAMDATE.Name = "TxtISSPACEPROGRAMDATE";
             this.TxtISSPACEPROGRAMDATE.Size = new System.Drawing.Size(75, 25);
-            this.TxtISSPACEPROGRAMDATE.TabIndex = 68;
+            this.TxtISSPACEPROGRAMDATE.TabIndex = 75;
             // 
             // SSWorkerList
             // 
@@ -1226,7 +1226,7 @@
             this.SSWorkerList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSWorkerList_Sheet1});
             this.SSWorkerList.Size = new System.Drawing.Size(955, 184);
-            this.SSWorkerList.TabIndex = 66;
+            this.SSWorkerList.TabIndex = 64;
             this.SSWorkerList.SetActiveViewport(0, -1, -1);
             // 
             // SSWorkerList_Sheet1
@@ -1272,7 +1272,7 @@
             this.groupBox11.Location = new System.Drawing.Point(10, 243);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(431, 180);
-            this.groupBox11.TabIndex = 63;
+            this.groupBox11.TabIndex = 43;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "담당요원 및 방문주기";
             // 
@@ -1298,7 +1298,7 @@
             0});
             this.NumMANAGEWORKERCOUNT.Name = "NumMANAGEWORKERCOUNT";
             this.NumMANAGEWORKERCOUNT.Size = new System.Drawing.Size(121, 25);
-            this.NumMANAGEWORKERCOUNT.TabIndex = 72;
+            this.NumMANAGEWORKERCOUNT.TabIndex = 50;
             this.NumMANAGEWORKERCOUNT.ValueChanged += new System.EventHandler(this.NumMANAGEWORKERCOUNT_ValueChanged);
             // 
             // label41
@@ -1325,7 +1325,7 @@
             0});
             this.NumMANAGEENGINEERCOUNT.Name = "NumMANAGEENGINEERCOUNT";
             this.NumMANAGEENGINEERCOUNT.Size = new System.Drawing.Size(71, 25);
-            this.NumMANAGEENGINEERCOUNT.TabIndex = 70;
+            this.NumMANAGEENGINEERCOUNT.TabIndex = 49;
             // 
             // NumMANAGENURSECOUNT
             // 
@@ -1337,7 +1337,7 @@
             0});
             this.NumMANAGENURSECOUNT.Name = "NumMANAGENURSECOUNT";
             this.NumMANAGENURSECOUNT.Size = new System.Drawing.Size(71, 25);
-            this.NumMANAGENURSECOUNT.TabIndex = 69;
+            this.NumMANAGENURSECOUNT.TabIndex = 46;
             // 
             // label32
             // 
@@ -1372,7 +1372,7 @@
             this.DtpMANAGEDOCTORSTARTDATE.Location = new System.Drawing.Point(224, 47);
             this.DtpMANAGEDOCTORSTARTDATE.Name = "DtpMANAGEDOCTORSTARTDATE";
             this.DtpMANAGEDOCTORSTARTDATE.Size = new System.Drawing.Size(107, 25);
-            this.DtpMANAGEDOCTORSTARTDATE.TabIndex = 66;
+            this.DtpMANAGEDOCTORSTARTDATE.TabIndex = 42;
             // 
             // DtpMANAGEENGINEERSTARTDATE
             // 
@@ -1381,7 +1381,7 @@
             this.DtpMANAGEENGINEERSTARTDATE.Location = new System.Drawing.Point(224, 108);
             this.DtpMANAGEENGINEERSTARTDATE.Name = "DtpMANAGEENGINEERSTARTDATE";
             this.DtpMANAGEENGINEERSTARTDATE.Size = new System.Drawing.Size(107, 25);
-            this.DtpMANAGEENGINEERSTARTDATE.TabIndex = 65;
+            this.DtpMANAGEENGINEERSTARTDATE.TabIndex = 48;
             // 
             // DtpMANAGENURSESTARTDATE
             // 
@@ -1390,7 +1390,7 @@
             this.DtpMANAGENURSESTARTDATE.Location = new System.Drawing.Point(224, 77);
             this.DtpMANAGENURSESTARTDATE.Name = "DtpMANAGENURSESTARTDATE";
             this.DtpMANAGENURSESTARTDATE.Size = new System.Drawing.Size(107, 25);
-            this.DtpMANAGENURSESTARTDATE.TabIndex = 64;
+            this.DtpMANAGENURSESTARTDATE.TabIndex = 45;
             // 
             // label31
             // 
@@ -1412,7 +1412,7 @@
             this.CboMANAGEENGINEER.Location = new System.Drawing.Point(86, 107);
             this.CboMANAGEENGINEER.Name = "CboMANAGEENGINEER";
             this.CboMANAGEENGINEER.Size = new System.Drawing.Size(121, 25);
-            this.CboMANAGEENGINEER.TabIndex = 45;
+            this.CboMANAGEENGINEER.TabIndex = 47;
             // 
             // CboManageNurse
             // 
@@ -1497,7 +1497,7 @@
             this.TxtWORKMEETTIME.Location = new System.Drawing.Point(409, 24);
             this.TxtWORKMEETTIME.Name = "TxtWORKMEETTIME";
             this.TxtWORKMEETTIME.Size = new System.Drawing.Size(84, 25);
-            this.TxtWORKMEETTIME.TabIndex = 85;
+            this.TxtWORKMEETTIME.TabIndex = 58;
             this.TxtWORKMEETTIME.Tag = "WORKMEETTIME";
             // 
             // TxtWORKENDTIME
@@ -1505,7 +1505,7 @@
             this.TxtWORKENDTIME.Location = new System.Drawing.Point(243, 24);
             this.TxtWORKENDTIME.Name = "TxtWORKENDTIME";
             this.TxtWORKENDTIME.Size = new System.Drawing.Size(84, 25);
-            this.TxtWORKENDTIME.TabIndex = 84;
+            this.TxtWORKENDTIME.TabIndex = 57;
             this.TxtWORKENDTIME.Tag = "WORKENDTIME";
             // 
             // TxtWORKSTARTTIME
@@ -1513,7 +1513,7 @@
             this.TxtWORKSTARTTIME.Location = new System.Drawing.Point(72, 24);
             this.TxtWORKSTARTTIME.Name = "TxtWORKSTARTTIME";
             this.TxtWORKSTARTTIME.Size = new System.Drawing.Size(84, 25);
-            this.TxtWORKSTARTTIME.TabIndex = 83;
+            this.TxtWORKSTARTTIME.TabIndex = 56;
             this.TxtWORKSTARTTIME.Tag = "WORKSTARTTIME";
             // 
             // label27
@@ -1533,35 +1533,35 @@
             this.TxtWORKETCTIME.Location = new System.Drawing.Point(72, 200);
             this.TxtWORKETCTIME.Name = "TxtWORKETCTIME";
             this.TxtWORKETCTIME.Size = new System.Drawing.Size(433, 25);
-            this.TxtWORKETCTIME.TabIndex = 48;
+            this.TxtWORKETCTIME.TabIndex = 63;
             // 
             // TxtWORKEDUTIME
             // 
             this.TxtWORKEDUTIME.Location = new System.Drawing.Point(73, 165);
             this.TxtWORKEDUTIME.Name = "TxtWORKEDUTIME";
             this.TxtWORKEDUTIME.Size = new System.Drawing.Size(349, 25);
-            this.TxtWORKEDUTIME.TabIndex = 48;
+            this.TxtWORKEDUTIME.TabIndex = 62;
             // 
             // TxtWORKRESTTIME
             // 
             this.TxtWORKRESTTIME.Location = new System.Drawing.Point(73, 131);
             this.TxtWORKRESTTIME.Name = "TxtWORKRESTTIME";
             this.TxtWORKRESTTIME.Size = new System.Drawing.Size(432, 25);
-            this.TxtWORKRESTTIME.TabIndex = 48;
+            this.TxtWORKRESTTIME.TabIndex = 61;
             // 
             // TxtWORKLUANCHTIME
             // 
             this.TxtWORKLUANCHTIME.Location = new System.Drawing.Point(72, 98);
             this.TxtWORKLUANCHTIME.Name = "TxtWORKLUANCHTIME";
             this.TxtWORKLUANCHTIME.Size = new System.Drawing.Size(433, 25);
-            this.TxtWORKLUANCHTIME.TabIndex = 48;
+            this.TxtWORKLUANCHTIME.TabIndex = 60;
             // 
             // TxtWORKROTATIONTIME
             // 
             this.TxtWORKROTATIONTIME.Location = new System.Drawing.Point(72, 63);
             this.TxtWORKROTATIONTIME.Name = "TxtWORKROTATIONTIME";
             this.TxtWORKROTATIONTIME.Size = new System.Drawing.Size(433, 25);
-            this.TxtWORKROTATIONTIME.TabIndex = 48;
+            this.TxtWORKROTATIONTIME.TabIndex = 59;
             // 
             // label26
             // 
@@ -1695,7 +1695,7 @@
             this.DtpTERMINATEDATE.Name = "DtpTERMINATEDATE";
             this.DtpTERMINATEDATE.ShowCheckBox = true;
             this.DtpTERMINATEDATE.Size = new System.Drawing.Size(107, 25);
-            this.DtpTERMINATEDATE.TabIndex = 82;
+            this.DtpTERMINATEDATE.TabIndex = 3;
             // 
             // DtpDECLAREDAY
             // 
@@ -1704,7 +1704,7 @@
             this.DtpDECLAREDAY.Location = new System.Drawing.Point(810, 23);
             this.DtpDECLAREDAY.Name = "DtpDECLAREDAY";
             this.DtpDECLAREDAY.Size = new System.Drawing.Size(108, 25);
-            this.DtpDECLAREDAY.TabIndex = 81;
+            this.DtpDECLAREDAY.TabIndex = 4;
             this.DtpDECLAREDAY.Tag = "";
             // 
             // label53
@@ -1724,7 +1724,7 @@
             this.TxtSPECIALCONTRACT.Location = new System.Drawing.Point(503, 61);
             this.TxtSPECIALCONTRACT.Name = "TxtSPECIALCONTRACT";
             this.TxtSPECIALCONTRACT.Size = new System.Drawing.Size(415, 25);
-            this.TxtSPECIALCONTRACT.TabIndex = 78;
+            this.TxtSPECIALCONTRACT.TabIndex = 8;
             // 
             // NumCOMMISSION
             // 
@@ -1736,7 +1736,7 @@
             0});
             this.NumCOMMISSION.Name = "NumCOMMISSION";
             this.NumCOMMISSION.Size = new System.Drawing.Size(71, 25);
-            this.NumCOMMISSION.TabIndex = 61;
+            this.NumCOMMISSION.TabIndex = 7;
             // 
             // label39
             // 
@@ -1755,14 +1755,14 @@
             this.TxtVISITWEEK.Location = new System.Drawing.Point(70, 59);
             this.TxtVISITWEEK.Name = "TxtVISITWEEK";
             this.TxtVISITWEEK.Size = new System.Drawing.Size(66, 25);
-            this.TxtVISITWEEK.TabIndex = 75;
+            this.TxtVISITWEEK.TabIndex = 5;
             // 
             // TxtVISITDAY
             // 
             this.TxtVISITDAY.Location = new System.Drawing.Point(172, 60);
             this.TxtVISITDAY.Name = "TxtVISITDAY";
             this.TxtVISITDAY.Size = new System.Drawing.Size(62, 25);
-            this.TxtVISITDAY.TabIndex = 74;
+            this.TxtVISITDAY.TabIndex = 6;
             // 
             // label38
             // 
@@ -1831,7 +1831,7 @@
             this.DtpCONTRACTENDDATE.Location = new System.Drawing.Point(403, 23);
             this.DtpCONTRACTENDDATE.Name = "DtpCONTRACTENDDATE";
             this.DtpCONTRACTENDDATE.Size = new System.Drawing.Size(105, 25);
-            this.DtpCONTRACTENDDATE.TabIndex = 68;
+            this.DtpCONTRACTENDDATE.TabIndex = 2;
             // 
             // DtpCONTRACTSTARTDATE
             // 
@@ -1840,7 +1840,7 @@
             this.DtpCONTRACTSTARTDATE.Location = new System.Drawing.Point(281, 23);
             this.DtpCONTRACTSTARTDATE.Name = "DtpCONTRACTSTARTDATE";
             this.DtpCONTRACTSTARTDATE.Size = new System.Drawing.Size(107, 25);
-            this.DtpCONTRACTSTARTDATE.TabIndex = 67;
+            this.DtpCONTRACTSTARTDATE.TabIndex = 1;
             // 
             // label33
             // 
@@ -1862,7 +1862,7 @@
             this.DtpCONTRACTDATE.Location = new System.Drawing.Point(70, 23);
             this.DtpCONTRACTDATE.Name = "DtpCONTRACTDATE";
             this.DtpCONTRACTDATE.Size = new System.Drawing.Size(126, 25);
-            this.DtpCONTRACTDATE.TabIndex = 32;
+            this.DtpCONTRACTDATE.TabIndex = 0;
             // 
             // label1
             // 
@@ -1959,7 +1959,7 @@
             this.RdoBUILDINGTYPE_1.Location = new System.Drawing.Point(70, 20);
             this.RdoBUILDINGTYPE_1.Name = "RdoBUILDINGTYPE_1";
             this.RdoBUILDINGTYPE_1.Size = new System.Drawing.Size(52, 21);
-            this.RdoBUILDINGTYPE_1.TabIndex = 1;
+            this.RdoBUILDINGTYPE_1.TabIndex = 13;
             this.RdoBUILDINGTYPE_1.TabStop = true;
             this.RdoBUILDINGTYPE_1.Text = "임대";
             this.RdoBUILDINGTYPE_1.UseVisualStyleBackColor = true;
@@ -2027,7 +2027,7 @@
             this.RdoPosition_3.Location = new System.Drawing.Point(240, 20);
             this.RdoPosition_3.Name = "RdoPosition_3";
             this.RdoPosition_3.Size = new System.Drawing.Size(52, 21);
-            this.RdoPosition_3.TabIndex = 3;
+            this.RdoPosition_3.TabIndex = 12;
             this.RdoPosition_3.TabStop = true;
             this.RdoPosition_3.Text = "기타";
             this.RdoPosition_3.UseVisualStyleBackColor = true;
@@ -2038,7 +2038,7 @@
             this.RdoPosition_2.Location = new System.Drawing.Point(166, 20);
             this.RdoPosition_2.Name = "RdoPosition_2";
             this.RdoPosition_2.Size = new System.Drawing.Size(65, 21);
-            this.RdoPosition_2.TabIndex = 2;
+            this.RdoPosition_2.TabIndex = 11;
             this.RdoPosition_2.TabStop = true;
             this.RdoPosition_2.Text = "도심내";
             this.RdoPosition_2.UseVisualStyleBackColor = true;
@@ -2049,7 +2049,7 @@
             this.RdoPosition_1.Location = new System.Drawing.Point(77, 20);
             this.RdoPosition_1.Name = "RdoPosition_1";
             this.RdoPosition_1.Size = new System.Drawing.Size(78, 21);
-            this.RdoPosition_1.TabIndex = 1;
+            this.RdoPosition_1.TabIndex = 10;
             this.RdoPosition_1.TabStop = true;
             this.RdoPosition_1.Text = "농공단지";
             this.RdoPosition_1.UseVisualStyleBackColor = true;
@@ -2060,7 +2060,7 @@
             this.RdoPosition_0.Location = new System.Drawing.Point(10, 20);
             this.RdoPosition_0.Name = "RdoPosition_0";
             this.RdoPosition_0.Size = new System.Drawing.Size(52, 21);
-            this.RdoPosition_0.TabIndex = 0;
+            this.RdoPosition_0.TabIndex = 9;
             this.RdoPosition_0.TabStop = true;
             this.RdoPosition_0.Text = "공단";
             this.RdoPosition_0.UseVisualStyleBackColor = true;
@@ -2096,7 +2096,7 @@
             0});
             this.NumContractWORKERTOTALCOUNT.Name = "NumContractWORKERTOTALCOUNT";
             this.NumContractWORKERTOTALCOUNT.Size = new System.Drawing.Size(52, 25);
-            this.NumContractWORKERTOTALCOUNT.TabIndex = 60;
+            this.NumContractWORKERTOTALCOUNT.TabIndex = 55;
             // 
             // label20
             // 
@@ -2147,7 +2147,7 @@
             0});
             this.NumWORKERWHITEFEMALECOUNT.Name = "NumWORKERWHITEFEMALECOUNT";
             this.NumWORKERWHITEFEMALECOUNT.Size = new System.Drawing.Size(52, 25);
-            this.NumWORKERWHITEFEMALECOUNT.TabIndex = 53;
+            this.NumWORKERWHITEFEMALECOUNT.TabIndex = 52;
             // 
             // NumWORKERBLUEFEMALECOUNT
             // 
@@ -2159,7 +2159,7 @@
             0});
             this.NumWORKERBLUEFEMALECOUNT.Name = "NumWORKERBLUEFEMALECOUNT";
             this.NumWORKERBLUEFEMALECOUNT.Size = new System.Drawing.Size(52, 25);
-            this.NumWORKERBLUEFEMALECOUNT.TabIndex = 58;
+            this.NumWORKERBLUEFEMALECOUNT.TabIndex = 54;
             // 
             // label15
             // 
@@ -2223,7 +2223,7 @@
             0});
             this.NumWORKERWHITEMALECOUNT.Name = "NumWORKERWHITEMALECOUNT";
             this.NumWORKERWHITEMALECOUNT.Size = new System.Drawing.Size(52, 25);
-            this.NumWORKERWHITEMALECOUNT.TabIndex = 49;
+            this.NumWORKERWHITEMALECOUNT.TabIndex = 51;
             // 
             // NumWORKERBLUEMALECOUNT
             // 
@@ -2235,7 +2235,7 @@
             0});
             this.NumWORKERBLUEMALECOUNT.Name = "NumWORKERBLUEMALECOUNT";
             this.NumWORKERBLUEMALECOUNT.Size = new System.Drawing.Size(52, 25);
-            this.NumWORKERBLUEMALECOUNT.TabIndex = 55;
+            this.NumWORKERBLUEMALECOUNT.TabIndex = 53;
             // 
             // tabPage3
             // 

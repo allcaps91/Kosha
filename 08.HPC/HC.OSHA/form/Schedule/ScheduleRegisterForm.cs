@@ -348,7 +348,6 @@ namespace HC_OSHA
 
                     panSchedule.SetData(saved);
                     BtnSearchUnVisit.PerformClick();
-                    //  BtnSearchSchedule.PerformClick();
                     SearchScheduleList();
                     MessageUtil.Info(saved.SITE_NAME + " 일정이 저장되었습니다");
                 }

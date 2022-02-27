@@ -271,6 +271,7 @@ namespace HC.Core.Repository
             return ExecuteReader<HC_SITE_WORKER>(parameter);
 
         }
+
         public HC_SITE_WORKER Insert(HC_SITE_WORKER dto)
         {
             MParameter parameter = CreateParameter();

@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Data;
 
 namespace HC_OSHA.StatusReport
 {
@@ -108,6 +109,8 @@ namespace HC_OSHA.StatusReport
                 return;
             }
             long reprotid = 0;
+            strStartDate = "";
+            strEndDate = "";
             if (statusReportNurseDto != null)
             {
                 reprotid = statusReportNurseDto.ID;
@@ -120,7 +123,8 @@ namespace HC_OSHA.StatusReport
                 strStartDate = VB.Left(statusReportDoctorDto.VISITDATE,6) + "01";
                 strEndDate = VB.Left(statusReportDoctorDto.VISITDATE,6) + "31";
             }
-            List<HealthCheckDto> list = healthCheckService.healthCheckRepository.FindAll(SelectedSite.ID, reprotid, strStartDate, strEndDate, ChkDel.Checked);
+            //List<HealthCheckDto> list = healthCheckService.healthCheckRepository.FindAll(SelectedSite.ID, reprotid, strStartDate, strEndDate, ChkDel.Checked);
+            List<HealthCheckDto> list = healthCheckService.healthCheckRepository.FindAll(0, reprotid, "", "", ChkDel.Checked);
 
             LblCount.Text = "총 : " + list.Count + " 건";
 
@@ -543,15 +547,17 @@ namespace HC_OSHA.StatusReport
                 }
              
                 long siteId = 0;
+                long estimateID = 0;
               
                 if (this.statusReportDoctorDto != null)
                 {
                     siteId = statusReportDoctorDto.SITE_ID;
-
+                    estimateID = statusReportDoctorDto.ESTIMATE_ID;
                 }
                 else if (this.statusReportNurseDto != null)
                 {
                     siteId = statusReportNurseDto.SITE_ID;
+                    estimateID = statusReportNurseDto.ESTIMATE_ID;
                 }
 
                 Cursor.Current = Cursors.WaitCursor;
@@ -568,22 +574,21 @@ namespace HC_OSHA.StatusReport
 
                 HC_CODE sendMailAddress = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail", "OSHA");
                 EstimateMailForm form = new EstimateMailForm();
+                form.set_SiteId(siteId);
                 form.GetMailForm().SenderMailAddress = sendMailAddress.CodeName;
                 form.GetMailForm().AttachmentsList.Add(pdfFileName);
 
-                HcSiteWorkerRepository hcSiteWorkerRepository = new HcSiteWorkerRepository();
-                List<HC_SITE_WORKER> list = hcSiteWorkerRepository.FindWorkerByRole(siteId, "HEALTH_ROLE");
-                if (list.Count > 0)
-                {
-                    foreach (HC_SITE_WORKER worker in list)
+                string strMailList = GetEmail(estimateID);
+                if (strMailList != "")
+                { 
+                    for (int i = 1; i <= VB.L(strMailList, ","); i++)
                     {
-                        if (!worker.EMAIL.IsNullOrEmpty())
-                        {
-                            form.GetMailForm().ReciverMailSddress.Add(worker.EMAIL);
-                        }
-
+                        form.GetMailForm().ReciverMailSddress.Add(VB.Pstr(strMailList, ",", i).Trim());
                     }
+                    form.GetMailForm().RefreshReceiver();
                 }
+                form.GetMailForm().Subject = title;
+                form.GetMailForm().Body = title;
 
                 DialogResult result = form.ShowDialog();
                 
@@ -604,12 +609,52 @@ namespace HC_OSHA.StatusReport
             catch (Exception ex)
             {
                 MessageUtil.Alert(ex.Message);
-
             }
             finally
             {
                 Cursor.Current = Cursors.Default;
             }
+        }
+
+        private string GetEmail(long ESTIMATE_ID)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            string strEMail = "";
+            string strList = "";
+            string email = string.Empty;
+
+            SQL = "";
+            SQL = "SELECT NAME,EMAIL FROM HIC_OSHA_CONTRACT_MANAGER ";
+            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID=" + ESTIMATE_ID + " ";
+            SQL = SQL + ComNum.VBLF + "  AND (EMAILSEND='Y' OR EMAILSEND='y') ";
+            SQL = SQL + ComNum.VBLF + "  AND WORKER_ROLE='HEALTH_ROLE' ";
+            SQL = SQL + ComNum.VBLF + "  AND EMAIL IS NOT NULL ";
+            SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    strEMail = dt.Rows[i]["EMAIL"].ToString().Trim();
+                    if (strEMail != "")
+                    {
+                        if (strList == "")
+                        {
+                            strList = strEMail;
+                        }
+                        else
+                        {
+                            strList += "," + strEMail;
+                        }
+                    }
+                }
+            }
+            dt.Dispose();
+            dt = null;
+
+            return strList;
         }
 
         private void SSView_ButtonClicked(object sender, EditorNotifyEventArgs e)
@@ -635,6 +680,11 @@ namespace HC_OSHA.StatusReport
         private void ChkDel_Click(object sender, EventArgs e)
         {
             Search();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

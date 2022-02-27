@@ -51,7 +51,6 @@
             this.mailForm.TabIndex = 0;
             this.mailForm.SendMailClick += new ComBase.Mvc.UserControls.MailForm.SendMailClickEventHandler(this.MailForm_SendMailClick);
             this.mailForm.ReceiverListClick += new ComBase.Mvc.UserControls.MailForm.ReceiverListClickEventHandler(this.mailForm_ReceiverListClick);
-            this.mailForm.Load += new System.EventHandler(this.mailForm_Load);
             // 
             // EstimateMailForm
             // 
@@ -61,7 +60,6 @@
             this.Controls.Add(this.mailForm);
             this.Name = "EstimateMailForm";
             this.Text = "메일 발송";
-            this.Load += new System.EventHandler(this.mailForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 

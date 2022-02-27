@@ -16,5 +16,10 @@ namespace HC_OSHA
         {
             InitializeComponent();
         }
+
+        private void mailForm1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
