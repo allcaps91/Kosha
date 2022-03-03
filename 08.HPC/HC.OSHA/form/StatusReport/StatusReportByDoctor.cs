@@ -268,10 +268,13 @@ namespace HC_OSHA.StatusReport
 
                     if (dto.ID > 0)
                     {
-                        if (statusReportDoctorService.IsGranted(dto.ID) == false)
+                        if (clsType.User.IdNumber != "170301" && clsType.User.IdNumber != "1")
                         {
-                            MessageUtil.Alert("수정 권한이 없습니다");
-                            return;
+                            if (statusReportDoctorService.IsGranted(dto.ID) == false)
+                            {
+                                MessageUtil.Alert("수정 권한이 없습니다");
+                                return;
+                            }
                         }
                     }
 

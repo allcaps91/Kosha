@@ -31,7 +31,6 @@ namespace HC_OSHA
             inOutEmployeeForm = new InOutEmployeeForm();
             accForm = new IndustrialAccidentForm();
 
-
             SSCard.ActiveSheet.ActiveRowIndex = 0;
             SSCard.ShowRow(0, 0, FarPoint.Win.Spread.VerticalPosition.Top);
         }

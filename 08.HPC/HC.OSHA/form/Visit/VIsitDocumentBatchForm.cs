@@ -1,6 +1,11 @@
 ﻿using ComBase;
 using ComBase.Controls;
 using ComBase.Mvc.Utils;
+using ComBase.Mvc.Enums;
+using ComBase.Mvc.Spread;
+using FarPoint.Win.Spread;
+using FarPoint.Win.Spread.CellType;
+using FarPoint.Win.Spread.Model;
 using HC.Core.Dto;
 using HC.Core.Repository;
 using HC.Core.Service;
@@ -49,6 +54,24 @@ namespace HC_OSHA.form.Visit
             List<HC_USER> OSHAUsers = hcUsersService.GetOsha();
             CboManager.SetItems(OSHAUsers, "Name", "UserId", "전체", "", AddComboBoxPosition.Top);
             CboManager.SetValue(CommonService.Instance.Session.UserId);
+
+            SSList.Initialize(new SpreadOption() { IsRowSelectColor = true });
+            SSList.AddColumnCheckBox("", "", 30, new CheckBoxBooleanCellType());
+            SSList.AddColumnText("코드", "", 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("회사명", "", 130, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("방문1", "", 150, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("방문2", "", 150, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("방문3", "", 150, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("방문4", "", 150, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("방문5", "", 150, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("메일1", "", 220, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("메일2", "", 220, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("메일3", "", 220, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("메일4", "", 220, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("메일발송일", "", 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("발송자", "", 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("계약", "", 50, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("IDs", "", 50,  IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)

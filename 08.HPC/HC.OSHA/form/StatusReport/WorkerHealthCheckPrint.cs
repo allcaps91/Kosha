@@ -188,6 +188,8 @@ namespace HC_OSHA.StatusReport
                 SSView.ActiveSheet.Cells[row, 3].Text = SSCard.ActiveSheet.Cells[row, 3].Text;
                 SSView.ActiveSheet.Cells[row, 4].Text = SSCard.ActiveSheet.Cells[row, 4].Text;
                 SSView.ActiveSheet.Cells[row, 6].Text = SSCard.ActiveSheet.Cells[row, 6].Text;
+                SSView.ActiveSheet.Cells[row, 4].HorizontalAlignment = CellHorizontalAlignment.Left;
+                SSView.ActiveSheet.Cells[row, 6].HorizontalAlignment = CellHorizontalAlignment.Left;
                 SSView.ActiveSheet.Cells[row, 9].Text = list[i].IsDeleted;
                 SSView.ActiveSheet.Cells[row, 10].Text = list[i].id.ToString();
 

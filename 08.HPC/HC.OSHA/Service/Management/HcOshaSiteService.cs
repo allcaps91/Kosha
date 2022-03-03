@@ -69,7 +69,7 @@ namespace HC.OSHA.Service
             HC_USER user = hcUsersRepository.FindOne(userId);
             Role role = Role.ENGINEER;
 
-            if (user!= null)
+           if (user!= null)
             {
                 role = (Role)Enum.Parse(typeof(Role), user.Role);
             }

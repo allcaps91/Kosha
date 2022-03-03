@@ -1380,10 +1380,26 @@ namespace HC_OSHA.StatusReport
         {
             if(SelectedSite != null)
             {
-                if(MessageUtil.Confirm("삭제 하시겠습니까?") == DialogResult.Yes)
+                HealthCheckDto dto = panHealthCheck.GetData<HealthCheckDto>();
+
+                // 상담내역은 본인만 삭제 가능함
+                if (dto.id > 0)
+                {
+                    if (dto.ISDOCTOR == "Y" && StatusReportDoctorDto == null)
+                    {
+                        MessageUtil.Alert("의사 상담내역은 의사만 삭제가 가능합니다.");
+                        return;
+                    }
+                    if (dto.ISDOCTOR == "N" && StatusReportNurseDto == null)
+                    {
+                        MessageUtil.Alert("간호사 상담내역은 간호사만 삭제가 가능합니다.");
+                        return;
+                    }
+                }
+
+                if (MessageUtil.Confirm("삭제 하시겠습니까?") == DialogResult.Yes)
                 {
 
-                    HealthCheckDto dto = panHealthCheck.GetData<HealthCheckDto>();
                     healthCheckService.healthCheckRepository.Delete(dto.id);
 
                     SearchHistory(SELECTED_WORKED.Worker_ID);

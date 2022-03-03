@@ -770,7 +770,9 @@
             this.SSView_Sheet1.Cells.Get(1, 8).CellType = textCellType35;
             this.SSView_Sheet1.Cells.Get(1, 8).Value = "삭제";
             this.SSView_Sheet1.Cells.Get(2, 4).ColumnSpan = 2;
+            this.SSView_Sheet1.Cells.Get(2, 4).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SSView_Sheet1.Cells.Get(2, 6).ColumnSpan = 2;
+            this.SSView_Sheet1.Cells.Get(2, 6).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SSView_Sheet1.ColumnFooter.Columns.Default.SortIndicator = FarPoint.Win.Spread.Model.SortIndicator.None;
             this.SSView_Sheet1.ColumnFooterSheetCornerStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SSView_Sheet1.ColumnFooterSheetCornerStyle.NoteIndicatorColor = System.Drawing.Color.Red;

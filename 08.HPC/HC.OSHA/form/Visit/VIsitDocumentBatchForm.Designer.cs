@@ -171,7 +171,7 @@
             this.SSList_Sheet1.ColumnFooterSheetCornerStyle.Parent = "CornerFooterDefaultEnhanced";
             this.SSList_Sheet1.ColumnFooterSheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).CellType = checkBoxCellType1;
-            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).Value = false;
+            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).Value = "False";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "코드";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "회사명";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 3).Value = "방문1";
