@@ -38,22 +38,22 @@ namespace HC_OSHA
 
             SSCard.ActiveSheet.DefaultStyle.Border = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
 
-
             TxtTASK.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CARD4_2.TASK) });
             TxtTASKUNIT.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CARD4_2.TASKUNIT) });
             TxtMSDS.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CARD4_2.MSDS) });
-            TxtWorkerCount.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CARD4_2.WORKERCOUNT) }); 
+            TxtWorkerCount.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CARD4_2.WORKERCOUNT) });
+            NumRANK.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CARD4_2.RANK), Min = 0, });
             TxtWORKDESC.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CARD4_2.WORKDESC) });
             TxtREMARK.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CARD4_2.REMARK) });
 
             SSList.Initialize(new SpreadOption() { IsRowSelectColor = false , RowHeightAuto = true});
-            SSList.AddColumnText("부서또는 공정", nameof(HC_OSHA_CARD4_2.TASK), 130, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSList.AddColumnText("단위 작업 장소", nameof(HC_OSHA_CARD4_2.TASKUNIT), 130, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("순위", nameof(HC_OSHA_CARD4_2.RANK), 40, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("부서또는 공정", nameof(HC_OSHA_CARD4_2.TASK), 120, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("단위 작업 장소", nameof(HC_OSHA_CARD4_2.TASKUNIT), 120, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("유해인자", nameof(HC_OSHA_CARD4_2.MSDS), 200, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, WordWrap = true, IsMulti = true });
             SSList.AddColumnText("근로자수", nameof(HC_OSHA_CARD4_2.WORKERCOUNT), 37, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("작업내용", nameof(HC_OSHA_CARD4_2.WORKDESC), 130, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, WordWrap = true, IsMulti = true });
             SSList.AddColumnText("비고", nameof(HC_OSHA_CARD4_2.REMARK), 130, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, WordWrap = true, IsMulti = true });
-
         }
 
         private void ClearCard()
@@ -61,7 +61,6 @@ namespace HC_OSHA
             SSCard.ActiveSheet.RowCount = 20;
             for (int i = 2; i < SSCard.ActiveSheet.RowCount; i++)
             {
-            //    string xx = SSCard_Sheet1.Cells[i, 15].Text;
                 SSCard.ActiveSheet.Cells[i, 0].Text = "";
                 SSCard.ActiveSheet.Cells[i, 1].Text = "";
                 SSCard.ActiveSheet.Cells[i, 2].Text = "";
@@ -88,28 +87,16 @@ namespace HC_OSHA
 
             ClearCard();
 
-            //List<HC_OSHA_CARD4_2> list = hcOshaCard4_2Service.hcOshaCard4_2Repository.FindByEstimateId(base.SelectedEstimate.ID, base.GetCurrentYear());
             List<HC_OSHA_CARD4_2> list = hcOshaCard4_2Service.hcOshaCard4_2Repository.FindByEstimateId(base.SelectedEstimate.ID, base.SelectedEstimate.CONTRACTSTARTDATE.Left(4));
             if (list.Count > 0)
             {
                 int row = 2;
                 SSList.SetDataSource(list);
 
-
                 SSCard.ActiveSheet.RowCount = list.Count + row;
         
                 for (int i = 0; i < list.Count; i++)
                 {
-                  
-                    //  SSCard.ActiveSheet.Cells[i + 2, 0]
-                    //     row += i;
-                    //SSCard.ActiveSheet.Cells[i + 2, 0].Value = list[i].TASK;
-                    //SSCard.ActiveSheet.Cells[i + 2, 4].Value = list[i].TASKUNIT;
-                    //SSCard.ActiveSheet.Cells[i + 2, 7].Value = list[i].MSDS;
-                    //SSCard.ActiveSheet.Cells[i + 2, 12].Value = list[i].WORKERCOUNT;
-                    //SSCard.ActiveSheet.Cells[i + 2, 15].Value = list[i].WORKDESC;
-                    //SSCard.ActiveSheet.Cells[i + 2, 25].Value = list[i].REMARK;
-
                     SSCard.ActiveSheet.Cells[row + i, 0].Value = list[i].TASK;
                     SSCard.ActiveSheet.Cells[row + i, 1].Value = list[i].TASKUNIT;
                     SSCard.ActiveSheet.Cells[row + i, 2].Value = list[i].MSDS;
@@ -117,7 +104,6 @@ namespace HC_OSHA
                     SSCard.ActiveSheet.Cells[row + i, 4].Value = list[i].WORKDESC;
                     SSCard.ActiveSheet.Cells[row + i, 5].Value = list[i].REMARK;
                     SSCard.ActiveSheet.Rows[row + i].Height = 47;
-                    //SSCard.ActiveSheet.Rows[i].Height = SSCard.ActiveSheet.Rows[i].GetPreferredHeight();
                 }
 
                 if(SSCard.ActiveSheet.RowCount < 24)

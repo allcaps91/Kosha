@@ -87,15 +87,15 @@
             this.SSScheduleList = new FarPoint.Win.Spread.FpSpread();
             this.SSScheduleList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.CboMonth = new System.Windows.Forms.ComboBox();
             this.ChkSearchSchedule = new System.Windows.Forms.CheckBox();
             this.BtnPrintSchedule = new System.Windows.Forms.Button();
-            this.DtpSearchScheduleStart = new System.Windows.Forms.DateTimePicker();
             this.label24 = new System.Windows.Forms.Label();
             this.CboSearchScheduleVisitUserId = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.CboSearchScheduleVisitUserId2 = new System.Windows.Forms.ComboBox();
             this.BtnSearchSchedule = new System.Windows.Forms.Button();
-            this.DtpSearchScheduleEnd = new System.Windows.Forms.DateTimePicker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.PanPrice = new System.Windows.Forms.Panel();
             this.ChkIsPreCharge = new System.Windows.Forms.CheckBox();
@@ -166,6 +166,8 @@
             this.DtpVISITRESERVEDATE = new System.Windows.Forms.DateTimePicker();
             this.contentTitle1 = new ComBase.Mvc.UserControls.ContentTitle();
             this.BtnClose = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TxtVISITPLACE = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tableBody.SuspendLayout();
             this.panLeftTop.SuspendLayout();
@@ -344,6 +346,7 @@
             this.OshaSiteLastTree.Size = new System.Drawing.Size(404, 544);
             this.OshaSiteLastTree.TabIndex = 4;
             this.OshaSiteLastTree.NodeClick += new HC_OSHA.OshaSiteLastTree.SiteTreeViewNodeMouseClickEventHandler(this.OshaSiteLastTree_NodeClick);
+            this.OshaSiteLastTree.Load += new System.EventHandler(this.OshaSiteLastTree_Load);
             // 
             // oshaSiteEstimateList1
             // 
@@ -1002,20 +1005,37 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.CboMonth);
             this.panel1.Controls.Add(this.ChkSearchSchedule);
             this.panel1.Controls.Add(this.BtnPrintSchedule);
-            this.panel1.Controls.Add(this.DtpSearchScheduleStart);
             this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.CboSearchScheduleVisitUserId);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.CboSearchScheduleVisitUserId2);
             this.panel1.Controls.Add(this.BtnSearchSchedule);
-            this.panel1.Controls.Add(this.DtpSearchScheduleEnd);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1078, 54);
             this.panel1.TabIndex = 113;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(437, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 17);
+            this.label1.TabIndex = 116;
+            this.label1.Text = "방문월";
+            // 
+            // CboMonth
+            // 
+            this.CboMonth.FormattingEnabled = true;
+            this.CboMonth.Location = new System.Drawing.Point(486, 16);
+            this.CboMonth.Name = "CboMonth";
+            this.CboMonth.Size = new System.Drawing.Size(84, 25);
+            this.CboMonth.TabIndex = 108;
             // 
             // ChkSearchSchedule
             // 
@@ -1031,7 +1051,7 @@
             // 
             // BtnPrintSchedule
             // 
-            this.BtnPrintSchedule.Location = new System.Drawing.Point(768, 13);
+            this.BtnPrintSchedule.Location = new System.Drawing.Point(677, 16);
             this.BtnPrintSchedule.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnPrintSchedule.Name = "BtnPrintSchedule";
             this.BtnPrintSchedule.Size = new System.Drawing.Size(75, 28);
@@ -1039,15 +1059,6 @@
             this.BtnPrintSchedule.Text = "인쇄";
             this.BtnPrintSchedule.UseVisualStyleBackColor = true;
             this.BtnPrintSchedule.Click += new System.EventHandler(this.BtnPrintSchedule_Click);
-            // 
-            // DtpSearchScheduleStart
-            // 
-            this.DtpSearchScheduleStart.CustomFormat = "yyyy-MM-dd";
-            this.DtpSearchScheduleStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpSearchScheduleStart.Location = new System.Drawing.Point(432, 15);
-            this.DtpSearchScheduleStart.Name = "DtpSearchScheduleStart";
-            this.DtpSearchScheduleStart.Size = new System.Drawing.Size(108, 25);
-            this.DtpSearchScheduleStart.TabIndex = 108;
             // 
             // label24
             // 
@@ -1086,7 +1097,7 @@
             // 
             // BtnSearchSchedule
             // 
-            this.BtnSearchSchedule.Location = new System.Drawing.Point(687, 13);
+            this.BtnSearchSchedule.Location = new System.Drawing.Point(596, 16);
             this.BtnSearchSchedule.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearchSchedule.Name = "BtnSearchSchedule";
             this.BtnSearchSchedule.Size = new System.Drawing.Size(75, 28);
@@ -1094,15 +1105,6 @@
             this.BtnSearchSchedule.Text = "검색";
             this.BtnSearchSchedule.UseVisualStyleBackColor = true;
             this.BtnSearchSchedule.Click += new System.EventHandler(this.BtnSearchSchedule_Click);
-            // 
-            // DtpSearchScheduleEnd
-            // 
-            this.DtpSearchScheduleEnd.CustomFormat = "yyyy-MM-dd";
-            this.DtpSearchScheduleEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpSearchScheduleEnd.Location = new System.Drawing.Point(546, 15);
-            this.DtpSearchScheduleEnd.Name = "DtpSearchScheduleEnd";
-            this.DtpSearchScheduleEnd.Size = new System.Drawing.Size(108, 25);
-            this.DtpSearchScheduleEnd.TabIndex = 109;
             // 
             // tabPage1
             // 
@@ -1760,6 +1762,8 @@
             // 
             this.panSchedule.BackColor = System.Drawing.Color.White;
             this.panSchedule.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panSchedule.Controls.Add(this.TxtVISITPLACE);
+            this.panSchedule.Controls.Add(this.label6);
             this.panSchedule.Controls.Add(this.txtVISITTIME);
             this.panSchedule.Controls.Add(this.ChkDoctor);
             this.panSchedule.Controls.Add(this.LblSiteName);
@@ -1785,7 +1789,7 @@
             // 
             // txtVISITTIME
             // 
-            this.txtVISITTIME.Location = new System.Drawing.Point(390, 48);
+            this.txtVISITTIME.Location = new System.Drawing.Point(344, 48);
             this.txtVISITTIME.Name = "txtVISITTIME";
             this.txtVISITTIME.Size = new System.Drawing.Size(74, 25);
             this.txtVISITTIME.TabIndex = 1;
@@ -1793,7 +1797,7 @@
             // ChkDoctor
             // 
             this.ChkDoctor.AutoSize = true;
-            this.ChkDoctor.Location = new System.Drawing.Point(518, 83);
+            this.ChkDoctor.Location = new System.Drawing.Point(470, 83);
             this.ChkDoctor.Name = "ChkDoctor";
             this.ChkDoctor.Size = new System.Drawing.Size(123, 21);
             this.ChkDoctor.TabIndex = 4;
@@ -1868,7 +1872,7 @@
             this.label12.Location = new System.Drawing.Point(259, 48);
             this.label12.Name = "label12";
             this.label12.Padding = new System.Windows.Forms.Padding(4);
-            this.label12.Size = new System.Drawing.Size(123, 25);
+            this.label12.Size = new System.Drawing.Size(80, 25);
             this.label12.TabIndex = 89;
             this.label12.Text = "방문시간*";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1896,7 +1900,7 @@
             this.label4.Location = new System.Drawing.Point(259, 79);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(4);
-            this.label4.Size = new System.Drawing.Size(123, 25);
+            this.label4.Size = new System.Drawing.Size(80, 25);
             this.label4.TabIndex = 87;
             this.label4.Text = "동행자";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1947,7 +1951,7 @@
             // CboVISITMANAGERID
             // 
             this.CboVISITMANAGERID.FormattingEnabled = true;
-            this.CboVISITMANAGERID.Location = new System.Drawing.Point(390, 80);
+            this.CboVISITMANAGERID.Location = new System.Drawing.Point(344, 80);
             this.CboVISITMANAGERID.Name = "CboVISITMANAGERID";
             this.CboVISITMANAGERID.Size = new System.Drawing.Size(121, 25);
             this.CboVISITMANAGERID.TabIndex = 3;
@@ -1984,6 +1988,27 @@
             this.BtnClose.Text = "닫기";
             this.BtnClose.UseVisualStyleBackColor = true;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label6.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(470, 47);
+            this.label6.Name = "label6";
+            this.label6.Padding = new System.Windows.Forms.Padding(4);
+            this.label6.Size = new System.Drawing.Size(70, 25);
+            this.label6.TabIndex = 106;
+            this.label6.Text = "방문장소";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // TxtVISITPLACE
+            // 
+            this.TxtVISITPLACE.Location = new System.Drawing.Point(546, 47);
+            this.TxtVISITPLACE.Name = "TxtVISITPLACE";
+            this.TxtVISITPLACE.Size = new System.Drawing.Size(128, 25);
+            this.TxtVISITPLACE.TabIndex = 2;
             // 
             // ScheduleRegisterForm
             // 
@@ -2141,8 +2166,6 @@
         private FarPoint.Win.Spread.FpSpread SSScheduleList;
         private FarPoint.Win.Spread.SheetView SSScheduleList_Sheet1;
         private System.Windows.Forms.Button BtnSearchSchedule;
-        private System.Windows.Forms.DateTimePicker DtpSearchScheduleEnd;
-        private System.Windows.Forms.DateTimePicker DtpSearchScheduleStart;
         private System.Windows.Forms.ComboBox CboSearchScheduleVisitUserId2;
         private System.Windows.Forms.ComboBox CboSearchScheduleVisitUserId;
         private System.Windows.Forms.Label label24;
@@ -2179,5 +2202,9 @@
         private System.Windows.Forms.TextBox txtVISITTIME;
         private System.Windows.Forms.TextBox txtEndTime;
         private System.Windows.Forms.TextBox txtStartTime;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox CboMonth;
+        private System.Windows.Forms.TextBox TxtVISITPLACE;
+        private System.Windows.Forms.Label label6;
     }
 }

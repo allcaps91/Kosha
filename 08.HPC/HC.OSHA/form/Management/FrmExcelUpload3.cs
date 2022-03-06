@@ -76,6 +76,7 @@ namespace HC_OSHA
                 cboJong.Items.Add("특수");
                 cboJong.Items.Add("일반");
                 cboJong.Items.Add("배치전");
+                cboJong.Items.Add("배치후");
             }
             cboJong.SelectedIndex = 0;
 

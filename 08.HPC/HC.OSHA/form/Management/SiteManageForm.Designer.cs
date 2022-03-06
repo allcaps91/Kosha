@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            HC.OSHA.Model.HC_ESTIMATE_MODEL hC_ESTIMATE_MODEL1 = new HC.OSHA.Model.HC_ESTIMATE_MODEL();
-            HC.OSHA.Model.HC_OSHA_SITE_MODEL hC_OSHA_SITE_MODEL1 = new HC.OSHA.Model.HC_OSHA_SITE_MODEL();
+            HC.OSHA.Model.HC_ESTIMATE_MODEL hC_ESTIMATE_MODEL2 = new HC.OSHA.Model.HC_ESTIMATE_MODEL();
+            HC.OSHA.Model.HC_OSHA_SITE_MODEL hC_OSHA_SITE_MODEL2 = new HC.OSHA.Model.HC_OSHA_SITE_MODEL();
             this.PanEstimate = new System.Windows.Forms.Panel();
             this.BtnDeleteParent = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -111,6 +111,8 @@
             this.SSWorkerList = new FarPoint.Win.Spread.FpSpread();
             this.SSWorkerList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.TxtVISITPLACE = new System.Windows.Forms.TextBox();
+            this.label66 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.NumMANAGEWORKERCOUNT = new System.Windows.Forms.NumericUpDown();
             this.label41 = new System.Windows.Forms.Label();
@@ -818,36 +820,36 @@
             // 
             this.OshaSiteEstimateList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OshaSiteEstimateList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            hC_ESTIMATE_MODEL1.ComboDisplay = null;
-            hC_ESTIMATE_MODEL1.CONTRACTDATE = null;
-            hC_ESTIMATE_MODEL1.CONTRACTENDDATE = null;
-            hC_ESTIMATE_MODEL1.ContractPeriod = null;
-            hC_ESTIMATE_MODEL1.CONTRACTSTARTDATE = null;
-            hC_ESTIMATE_MODEL1.ESTIMATEDATE = null;
-            hC_ESTIMATE_MODEL1.ID = ((long)(0));
-            hC_ESTIMATE_MODEL1.ISCONTRACT = null;
-            hC_ESTIMATE_MODEL1.RowStatus = ComBase.Mvc.RowStatus.None;
-            hC_ESTIMATE_MODEL1.zTemp1 = null;
-            hC_ESTIMATE_MODEL1.zTemp10 = null;
-            hC_ESTIMATE_MODEL1.zTemp11 = null;
-            hC_ESTIMATE_MODEL1.zTemp12 = null;
-            hC_ESTIMATE_MODEL1.zTemp13 = null;
-            hC_ESTIMATE_MODEL1.zTemp14 = null;
-            hC_ESTIMATE_MODEL1.zTemp15 = null;
-            hC_ESTIMATE_MODEL1.zTemp16 = null;
-            hC_ESTIMATE_MODEL1.zTemp17 = null;
-            hC_ESTIMATE_MODEL1.zTemp18 = null;
-            hC_ESTIMATE_MODEL1.zTemp19 = null;
-            hC_ESTIMATE_MODEL1.zTemp2 = null;
-            hC_ESTIMATE_MODEL1.zTemp20 = null;
-            hC_ESTIMATE_MODEL1.zTemp3 = null;
-            hC_ESTIMATE_MODEL1.zTemp4 = null;
-            hC_ESTIMATE_MODEL1.zTemp5 = null;
-            hC_ESTIMATE_MODEL1.zTemp6 = null;
-            hC_ESTIMATE_MODEL1.zTemp7 = null;
-            hC_ESTIMATE_MODEL1.zTemp8 = null;
-            hC_ESTIMATE_MODEL1.zTemp9 = null;
-            this.OshaSiteEstimateList.GetEstimateModel = hC_ESTIMATE_MODEL1;
+            hC_ESTIMATE_MODEL2.ComboDisplay = null;
+            hC_ESTIMATE_MODEL2.CONTRACTDATE = null;
+            hC_ESTIMATE_MODEL2.CONTRACTENDDATE = null;
+            hC_ESTIMATE_MODEL2.ContractPeriod = null;
+            hC_ESTIMATE_MODEL2.CONTRACTSTARTDATE = null;
+            hC_ESTIMATE_MODEL2.ESTIMATEDATE = null;
+            hC_ESTIMATE_MODEL2.ID = ((long)(0));
+            hC_ESTIMATE_MODEL2.ISCONTRACT = null;
+            hC_ESTIMATE_MODEL2.RowStatus = ComBase.Mvc.RowStatus.None;
+            hC_ESTIMATE_MODEL2.zTemp1 = null;
+            hC_ESTIMATE_MODEL2.zTemp10 = null;
+            hC_ESTIMATE_MODEL2.zTemp11 = null;
+            hC_ESTIMATE_MODEL2.zTemp12 = null;
+            hC_ESTIMATE_MODEL2.zTemp13 = null;
+            hC_ESTIMATE_MODEL2.zTemp14 = null;
+            hC_ESTIMATE_MODEL2.zTemp15 = null;
+            hC_ESTIMATE_MODEL2.zTemp16 = null;
+            hC_ESTIMATE_MODEL2.zTemp17 = null;
+            hC_ESTIMATE_MODEL2.zTemp18 = null;
+            hC_ESTIMATE_MODEL2.zTemp19 = null;
+            hC_ESTIMATE_MODEL2.zTemp2 = null;
+            hC_ESTIMATE_MODEL2.zTemp20 = null;
+            hC_ESTIMATE_MODEL2.zTemp3 = null;
+            hC_ESTIMATE_MODEL2.zTemp4 = null;
+            hC_ESTIMATE_MODEL2.zTemp5 = null;
+            hC_ESTIMATE_MODEL2.zTemp6 = null;
+            hC_ESTIMATE_MODEL2.zTemp7 = null;
+            hC_ESTIMATE_MODEL2.zTemp8 = null;
+            hC_ESTIMATE_MODEL2.zTemp9 = null;
+            this.OshaSiteEstimateList.GetEstimateModel = hC_ESTIMATE_MODEL2;
             this.OshaSiteEstimateList.Location = new System.Drawing.Point(0, 586);
             this.OshaSiteEstimateList.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.OshaSiteEstimateList.Name = "OshaSiteEstimateList";
@@ -1252,6 +1254,8 @@
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.TxtVISITPLACE);
+            this.groupBox11.Controls.Add(this.label66);
             this.groupBox11.Controls.Add(this.label47);
             this.groupBox11.Controls.Add(this.NumMANAGEWORKERCOUNT);
             this.groupBox11.Controls.Add(this.label41);
@@ -1276,6 +1280,25 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "담당요원 및 방문주기";
             // 
+            // TxtVISITPLACE
+            // 
+            this.TxtVISITPLACE.Location = new System.Drawing.Point(291, 145);
+            this.TxtVISITPLACE.Name = "TxtVISITPLACE";
+            this.TxtVISITPLACE.Size = new System.Drawing.Size(125, 25);
+            this.TxtVISITPLACE.TabIndex = 51;
+            // 
+            // label66
+            // 
+            this.label66.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label66.Location = new System.Drawing.Point(224, 144);
+            this.label66.Name = "label66";
+            this.label66.Padding = new System.Windows.Forms.Padding(3);
+            this.label66.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label66.Size = new System.Drawing.Size(66, 25);
+            this.label66.TabIndex = 74;
+            this.label66.Text = "방문장소";
+            this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // label47
             // 
             this.label47.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -1297,7 +1320,7 @@
             0,
             0});
             this.NumMANAGEWORKERCOUNT.Name = "NumMANAGEWORKERCOUNT";
-            this.NumMANAGEWORKERCOUNT.Size = new System.Drawing.Size(121, 25);
+            this.NumMANAGEWORKERCOUNT.Size = new System.Drawing.Size(92, 25);
             this.NumMANAGEWORKERCOUNT.TabIndex = 50;
             this.NumMANAGEWORKERCOUNT.ValueChanged += new System.EventHandler(this.NumMANAGEWORKERCOUNT_ValueChanged);
             // 
@@ -2723,60 +2746,60 @@
             // 
             this.oshaSiteLastTree.Dock = System.Windows.Forms.DockStyle.Top;
             this.oshaSiteLastTree.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            hC_OSHA_SITE_MODEL1.ADDRESS = null;
-            hC_OSHA_SITE_MODEL1.BIZCREATEDATE = null;
-            hC_OSHA_SITE_MODEL1.BIZJIDOWON = null;
-            hC_OSHA_SITE_MODEL1.BIZJONG = null;
-            hC_OSHA_SITE_MODEL1.BIZKIHO = null;
-            hC_OSHA_SITE_MODEL1.BIZNUMBER = null;
-            hC_OSHA_SITE_MODEL1.BIZTYPE = null;
-            hC_OSHA_SITE_MODEL1.CEONAME = null;
-            hC_OSHA_SITE_MODEL1.ComboDisplay = null;
-            hC_OSHA_SITE_MODEL1.EMAIL = null;
-            hC_OSHA_SITE_MODEL1.FAX = null;
-            hC_OSHA_SITE_MODEL1.HASCHILD = null;
-            hC_OSHA_SITE_MODEL1.ID = ((long)(0));
-            hC_OSHA_SITE_MODEL1.INDUSTRIALNUMBER = null;
-            hC_OSHA_SITE_MODEL1.INSURANCE = null;
-            hC_OSHA_SITE_MODEL1.ISACTIVE = null;
-            hC_OSHA_SITE_MODEL1.LABOR = null;
-            hC_OSHA_SITE_MODEL1.LASTMODIFIED = null;
-            hC_OSHA_SITE_MODEL1.MANAGEDOCTORCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGEDOCTORSTARTDATE = null;
-            hC_OSHA_SITE_MODEL1.MANAGEENGINEERCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGEENGINEERSTARTDATE = null;
-            hC_OSHA_SITE_MODEL1.MANAGENURSECOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGENURSESTARTDATE = null;
-            hC_OSHA_SITE_MODEL1.NAME = null;
-            hC_OSHA_SITE_MODEL1.PARENTSITE_ID = ((long)(0));
-            hC_OSHA_SITE_MODEL1.PARENTSITE_NAME = null;
-            hC_OSHA_SITE_MODEL1.RowStatus = ComBase.Mvc.RowStatus.None;
-            hC_OSHA_SITE_MODEL1.SITE_ID = ((long)(0));
-            hC_OSHA_SITE_MODEL1.TEL = null;
-            hC_OSHA_SITE_MODEL1.VISITDAY = ((long)(0));
-            hC_OSHA_SITE_MODEL1.VISITWEEK = ((long)(0));
-            hC_OSHA_SITE_MODEL1.WORKERTOTALCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.zTemp1 = null;
-            hC_OSHA_SITE_MODEL1.zTemp10 = null;
-            hC_OSHA_SITE_MODEL1.zTemp11 = null;
-            hC_OSHA_SITE_MODEL1.zTemp12 = null;
-            hC_OSHA_SITE_MODEL1.zTemp13 = null;
-            hC_OSHA_SITE_MODEL1.zTemp14 = null;
-            hC_OSHA_SITE_MODEL1.zTemp15 = null;
-            hC_OSHA_SITE_MODEL1.zTemp16 = null;
-            hC_OSHA_SITE_MODEL1.zTemp17 = null;
-            hC_OSHA_SITE_MODEL1.zTemp18 = null;
-            hC_OSHA_SITE_MODEL1.zTemp19 = null;
-            hC_OSHA_SITE_MODEL1.zTemp2 = null;
-            hC_OSHA_SITE_MODEL1.zTemp20 = null;
-            hC_OSHA_SITE_MODEL1.zTemp3 = null;
-            hC_OSHA_SITE_MODEL1.zTemp4 = null;
-            hC_OSHA_SITE_MODEL1.zTemp5 = null;
-            hC_OSHA_SITE_MODEL1.zTemp6 = null;
-            hC_OSHA_SITE_MODEL1.zTemp7 = null;
-            hC_OSHA_SITE_MODEL1.zTemp8 = null;
-            hC_OSHA_SITE_MODEL1.zTemp9 = null;
-            this.oshaSiteLastTree.GetSite = hC_OSHA_SITE_MODEL1;
+            hC_OSHA_SITE_MODEL2.ADDRESS = null;
+            hC_OSHA_SITE_MODEL2.BIZCREATEDATE = null;
+            hC_OSHA_SITE_MODEL2.BIZJIDOWON = null;
+            hC_OSHA_SITE_MODEL2.BIZJONG = null;
+            hC_OSHA_SITE_MODEL2.BIZKIHO = null;
+            hC_OSHA_SITE_MODEL2.BIZNUMBER = null;
+            hC_OSHA_SITE_MODEL2.BIZTYPE = null;
+            hC_OSHA_SITE_MODEL2.CEONAME = null;
+            hC_OSHA_SITE_MODEL2.ComboDisplay = null;
+            hC_OSHA_SITE_MODEL2.EMAIL = null;
+            hC_OSHA_SITE_MODEL2.FAX = null;
+            hC_OSHA_SITE_MODEL2.HASCHILD = null;
+            hC_OSHA_SITE_MODEL2.ID = ((long)(0));
+            hC_OSHA_SITE_MODEL2.INDUSTRIALNUMBER = null;
+            hC_OSHA_SITE_MODEL2.INSURANCE = null;
+            hC_OSHA_SITE_MODEL2.ISACTIVE = null;
+            hC_OSHA_SITE_MODEL2.LABOR = null;
+            hC_OSHA_SITE_MODEL2.LASTMODIFIED = null;
+            hC_OSHA_SITE_MODEL2.MANAGEDOCTORCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL2.MANAGEDOCTORSTARTDATE = null;
+            hC_OSHA_SITE_MODEL2.MANAGEENGINEERCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL2.MANAGEENGINEERSTARTDATE = null;
+            hC_OSHA_SITE_MODEL2.MANAGENURSECOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL2.MANAGENURSESTARTDATE = null;
+            hC_OSHA_SITE_MODEL2.NAME = null;
+            hC_OSHA_SITE_MODEL2.PARENTSITE_ID = ((long)(0));
+            hC_OSHA_SITE_MODEL2.PARENTSITE_NAME = null;
+            hC_OSHA_SITE_MODEL2.RowStatus = ComBase.Mvc.RowStatus.None;
+            hC_OSHA_SITE_MODEL2.SITE_ID = ((long)(0));
+            hC_OSHA_SITE_MODEL2.TEL = null;
+            hC_OSHA_SITE_MODEL2.VISITDAY = ((long)(0));
+            hC_OSHA_SITE_MODEL2.VISITWEEK = ((long)(0));
+            hC_OSHA_SITE_MODEL2.WORKERTOTALCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL2.zTemp1 = null;
+            hC_OSHA_SITE_MODEL2.zTemp10 = null;
+            hC_OSHA_SITE_MODEL2.zTemp11 = null;
+            hC_OSHA_SITE_MODEL2.zTemp12 = null;
+            hC_OSHA_SITE_MODEL2.zTemp13 = null;
+            hC_OSHA_SITE_MODEL2.zTemp14 = null;
+            hC_OSHA_SITE_MODEL2.zTemp15 = null;
+            hC_OSHA_SITE_MODEL2.zTemp16 = null;
+            hC_OSHA_SITE_MODEL2.zTemp17 = null;
+            hC_OSHA_SITE_MODEL2.zTemp18 = null;
+            hC_OSHA_SITE_MODEL2.zTemp19 = null;
+            hC_OSHA_SITE_MODEL2.zTemp2 = null;
+            hC_OSHA_SITE_MODEL2.zTemp20 = null;
+            hC_OSHA_SITE_MODEL2.zTemp3 = null;
+            hC_OSHA_SITE_MODEL2.zTemp4 = null;
+            hC_OSHA_SITE_MODEL2.zTemp5 = null;
+            hC_OSHA_SITE_MODEL2.zTemp6 = null;
+            hC_OSHA_SITE_MODEL2.zTemp7 = null;
+            hC_OSHA_SITE_MODEL2.zTemp8 = null;
+            hC_OSHA_SITE_MODEL2.zTemp9 = null;
+            this.oshaSiteLastTree.GetSite = hC_OSHA_SITE_MODEL2;
             this.oshaSiteLastTree.IsCheckbox = false;
             this.oshaSiteLastTree.Location = new System.Drawing.Point(0, 0);
             this.oshaSiteLastTree.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -2848,6 +2871,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SSWorkerList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSWorkerList_Sheet1)).EndInit();
             this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumMANAGEWORKERCOUNT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumMANAGEENGINEERCOUNT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumMANAGENURSECOUNT)).EndInit();
@@ -3106,5 +3130,7 @@
         private System.Windows.Forms.Panel panTop;
         private System.Windows.Forms.CheckBox ChkCharge;
         private System.Windows.Forms.CheckBox ChkQuarterCharge;
+        private System.Windows.Forms.TextBox TxtVISITPLACE;
+        private System.Windows.Forms.Label label66;
     }
 }

@@ -20,6 +20,7 @@ namespace HC.OSHA.Dto
         /// 
         /// </summary>
 		public long ESTIMATE_ID { get; set; }
+
         public string YEAR { get; set; }
         /// <summary>
         /// 
@@ -41,12 +42,17 @@ namespace HC.OSHA.Dto
         /// <summary>
         /// 
         /// </summary>
-		public string WORKERCOUNT { get; set; } 
+		public string WORKERCOUNT { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-		public string REMARK { get; set; } 
+        public long RANK { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string REMARK { get; set; } 
 
         /// <summary>
         /// 

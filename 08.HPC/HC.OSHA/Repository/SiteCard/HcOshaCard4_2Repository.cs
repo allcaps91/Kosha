@@ -17,17 +17,18 @@ namespace HC.OSHA.Repository
         public List<HC_OSHA_CARD4_2> FindByEstimateId(long estimateId, string year)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER FROM HIC_OSHA_CARD4_2 A ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                       ");
-            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                  ");
-            parameter.AppendSql("INNER JOIN HIC_USERS C                       ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                 ");
-            parameter.AppendSql("WHERE A.ESTIMATE_ID = :ESTIMATE_ID           ");
-            parameter.AppendSql("  AND A.YEAR = :YEAR                         ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE              ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE              ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE              ");
-            parameter.AppendSql("ORDER BY TASK                                ");
+            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER ");
+            parameter.AppendSql("  FROM HIC_OSHA_CARD4_2 A ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS B ");
+            parameter.AppendSql("             ON  A.CREATEDUSER = B.USERID ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS C ");
+            parameter.AppendSql("             ON  A.MODIFIEDUSER = C.USERID ");
+            parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" WHERE A.ESTIMATE_ID = :ESTIMATE_ID ");
+            parameter.AppendSql("   AND A.YEAR = :YEAR ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("ORDER BY RANK,TASK ");
 
             parameter.Add("ESTIMATE_ID", estimateId);
             parameter.Add("YEAR", year);
@@ -40,17 +41,17 @@ namespace HC.OSHA.Repository
         public HC_OSHA_CARD4_2 FindOne(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER FROM HIC_OSHA_CARD4_2 A ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                      ");
-            parameter.AppendSql("ON A.CREATEDUSER = B.USERID                 ");
-            parameter.AppendSql("INNER JOIN HIC_USERS C                      ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID                ");
-            parameter.AppendSql("WHERE ID = :ID                              ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE             ");
-            parameter.AppendSql("  AND B.SWLICENSE = :SWLICENSE             ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE             ");
-            parameter.AppendSql(" ORDER BY ID DESC                           ");
-
+            parameter.AppendSql("SELECT A.*, B.NAME AS CREATEDUSER, C.NAME AS MODIFIEDUSER ");
+            parameter.AppendSql("  FROM HIC_OSHA_CARD4_2 A ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS B ");
+            parameter.AppendSql("             ON  A.CREATEDUSER = B.USERID ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS C ");
+            parameter.AppendSql("             ON  A.MODIFIEDUSER = C.USERID ");
+            parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
+            
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
@@ -69,6 +70,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  ID,                             ");
             parameter.AppendSql("  ESTIMATE_ID,                    ");
             parameter.AppendSql("  YEAR,                           ");
+            parameter.AppendSql("  RANK,                           ");
             parameter.AppendSql("  TASK,                           ");
             parameter.AppendSql("  TASKUNIT,                       ");
             parameter.AppendSql("  MSDS,                           ");
@@ -86,6 +88,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  :ID,                            ");
             parameter.AppendSql("  :ESTIMATE_ID,                   ");
             parameter.AppendSql("  :YEAR,                          ");
+            parameter.AppendSql("  :RANK,                          ");
             parameter.AppendSql("  :TASK,                          ");
             parameter.AppendSql("  :TASKUNIT,                      ");
             parameter.AppendSql("  :MSDS,                          ");
@@ -101,6 +104,7 @@ namespace HC.OSHA.Repository
             parameter.Add("ID", dto.ID);
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
             parameter.Add("YEAR", dto.YEAR);
+            parameter.Add("RANK", dto.RANK);
             parameter.Add("TASK", dto.TASK);
             parameter.Add("TASKUNIT", dto.TASKUNIT);
             parameter.Add("MSDS", dto.MSDS);
@@ -123,6 +127,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("UPDATE HIC_OSHA_CARD4_2              ");
             parameter.AppendSql("SET                                  ");
             parameter.AppendSql("  TASK = :TASK,                      ");
+            parameter.AppendSql("  RANK = :RANK,                      ");
             parameter.AppendSql("  YEAR = :YEAR,                      ");
             parameter.AppendSql("  TASKUNIT = :TASKUNIT,              ");
             parameter.AppendSql("  MSDS = :MSDS,                      ");
@@ -135,6 +140,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE         ");
 
             parameter.Add("ID", dto.ID);
+            parameter.Add("RANK", dto.RANK);
             parameter.Add("TASK", dto.TASK);
             parameter.Add("YEAR", dto.YEAR);
             parameter.Add("TASKUNIT", dto.TASKUNIT);

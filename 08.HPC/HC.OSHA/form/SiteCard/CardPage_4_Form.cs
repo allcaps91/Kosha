@@ -1,4 +1,5 @@
-﻿using ComBase.Controls;
+﻿using ComBase;
+using ComBase.Controls;
 using ComHpcLibB.Model;
 using FarPoint.Win.Spread;
 using HC.Core.Common.Interface;
@@ -10,7 +11,9 @@ using HC.OSHA.Service;
 using HC_Core;
 using HC_OSHA.Model.Visit;
 using System;
+using System.Data;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace HC_OSHA
 {
@@ -36,20 +39,30 @@ namespace HC_OSHA
         }
         public void Search()
         {
+            int i = 0;
+            int j = 0;
+            string SQL = "";
+            string SqlErr = "";
+            string strVisit = "";
+            DataTable dt = null;
+            double dblRate;
+            
+            Cursor.Current = Cursors.WaitCursor;
+
             Clear();
-            if(base.SelectedSite == null)
-            {
-                return;
-            }
+            if (base.SelectedSite == null) return;
+
             string year = this.SelectedEstimate.CONTRACTSTARTDATE.Left(4);//  SelectedEstimate GetCurrentYear();
-            string lastYear = (year.To<int>() - 1).ToString();// GetLastYear(year);
-            SSCard.ActiveSheet.Cells[3, 0].Text = lastYear.Substring(2, 2);
+            string year_1 = (year.To<int>() - 1).ToString();// 1년전
+            string year_2 = (year.To<int>() - 2).ToString();// 2년전
+
+            SSCard.ActiveSheet.Cells[3, 0].Text = year_1.Substring(2, 2);
             SSCard.ActiveSheet.Cells[5, 0].Text = year.Substring(2, 2);
 
             List<Dictionary<string, int>> workerInfo = new List<Dictionary<string, int>>();
             List<HC_OSHA_CARD5> list = null;
-            
-            list = hcOshaCard5Service.hcOshaCard5Repository.FindYear(base.SelectedSite.ID, lastYear);
+
+            list = hcOshaCard5Service.hcOshaCard5Repository.FindYear(base.SelectedSite.ID, year_1);
             Darw(list, 3, true);
             Darw(list, 4, false);
 
@@ -60,134 +73,196 @@ namespace HC_OSHA
             //6.산업재해발생현황
             //작년 월별 근로자수
 
-            SSCard.ActiveSheet.Cells[15, 0].Value = lastYear.Substring(2, 2);
-
-            //  금년도 조회
-            string startYear = year + "-01-01 00:00:00";
-            string endYear = year + "-12-31 23:59:59";
-            List<VisitPriceModel> thisYearList = oshaVisitPriceRepository.FindByYear(base.SelectedSite.ID, startYear, endYear);
-
-            //  전년도 조회
-            string lastStartYear = lastYear + "-01-01 00:00:00";
-            string lastEndYear = lastYear + "-12-31 23:59:59";
-            List<VisitPriceModel> lastYearList = oshaVisitPriceRepository.FindByYear(base.SelectedSite.ID, lastStartYear, lastEndYear);
-
-
-            foreach (VisitPriceModel price in lastYearList)
+            long[,] array = new long[26, 5];
+            for (i = 0; i < 26; i++)
             {
-                if (price.VISITDATETIME.Month == 1)  { SSCard.ActiveSheet.Cells[15, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 2)  { SSCard.ActiveSheet.Cells[16, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 3)  { SSCard.ActiveSheet.Cells[17, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 4)  { SSCard.ActiveSheet.Cells[18, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 5)  { SSCard.ActiveSheet.Cells[19, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 6)  { SSCard.ActiveSheet.Cells[20, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 7)  { SSCard.ActiveSheet.Cells[21, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 8)  { SSCard.ActiveSheet.Cells[22, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 9)  { SSCard.ActiveSheet.Cells[23, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 10) { SSCard.ActiveSheet.Cells[24, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 11) { SSCard.ActiveSheet.Cells[25, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 12) { SSCard.ActiveSheet.Cells[26, 4].Value = price.WORKERCOUNT + " 명"; }
+                for (j = 0; j < 5; j++)
+                {
+                    array[i, j] = 0;
+                }
             }
 
-            SSCard.ActiveSheet.Cells[27, 0].Value = year.Substring(2, 2);
-            foreach (VisitPriceModel price in thisYearList)
+            SSCard.ActiveSheet.Cells[15, 0].Value = year_1.Substring(2, 2);
+
+            try
             {
-                if (price.VISITDATETIME.Month == 1)  { SSCard.ActiveSheet.Cells[27, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 2)  { SSCard.ActiveSheet.Cells[28, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 3)  { SSCard.ActiveSheet.Cells[29, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 4)  { SSCard.ActiveSheet.Cells[30, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 5)  { SSCard.ActiveSheet.Cells[31, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 6)  { SSCard.ActiveSheet.Cells[32, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 7)  { SSCard.ActiveSheet.Cells[33, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 8)  { SSCard.ActiveSheet.Cells[34, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 9)  { SSCard.ActiveSheet.Cells[35, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 10) { SSCard.ActiveSheet.Cells[36, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 11) { SSCard.ActiveSheet.Cells[37, 4].Value = price.WORKERCOUNT + " 명"; }
-                if (price.VISITDATETIME.Month == 12) { SSCard.ActiveSheet.Cells[38, 4].Value = price.WORKERCOUNT + " 명"; }
+                SQL = "SELECT VISITDATE,CURRENTWORKERCOUNT,ACCIDENTWORKERCOUNT,DEADWORKERCOUNT,";
+                SQL = SQL + ComNum.VBLF + "      INJURYWORKERCOUNT,BIZDISEASEWORKERCOUNT ";
+                SQL = SQL + ComNum.VBLF + "  FROM HIC_OSHA_REPORT_NURSE ";
+                SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SQL = SQL + ComNum.VBLF + "   AND SITE_ID=" + base.SelectedSite.ID + " ";
+                SQL = SQL + ComNum.VBLF + "   AND VISITDATE>='" + year_2 + "0101' ";
+                SQL = SQL + ComNum.VBLF + "   AND VISITDATE<='" + year + "1231' ";
+                SQL = SQL + ComNum.VBLF + "   AND ISDELETED='N' ";
+                SQL = SQL + ComNum.VBLF + "ORDER BY VISITDATE ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count > 0)
+                {
+                    for (i = 0; i < dt.Rows.Count; i++)
+                    {
+                        strVisit = dt.Rows[i]["VISITDATE"].ToString().Trim();
+                        long cnt1 = long.Parse(dt.Rows[i]["CURRENTWORKERCOUNT"].ToString());
+                        long cnt2 = long.Parse(dt.Rows[i]["ACCIDENTWORKERCOUNT"].ToString());
+                        long cnt3 = long.Parse(dt.Rows[i]["DEADWORKERCOUNT"].ToString());
+                        long cnt4 = long.Parse(dt.Rows[i]["INJURYWORKERCOUNT"].ToString());
+                        long cnt5 = long.Parse(dt.Rows[i]["BIZDISEASEWORKERCOUNT"].ToString());
+
+                        if (VB.Left(strVisit,4)== year_2)
+                        {
+                            //2년전
+                            array[0, 0] += cnt1; //근로자수
+                            array[0, 1] += cnt2; //재해자수계
+                            array[0, 2] += cnt3; //사망
+                            array[0, 3] += cnt4; //부상
+                            array[0, 4] += cnt5; //직업병
+                        }
+
+                        //전년도
+                        if (VB.Left(strVisit,4)==year_1)
+                        {
+                            //1년전
+                            array[1, 0] += cnt1; //근로자수
+                            array[1, 1] += cnt2; //재해자수계
+                            array[1, 2] += cnt3; //사망
+                            array[1, 3] += cnt4; //부상
+                            array[1, 4] += cnt5; //직업병
+                            //전년도 월별
+                            j = Int32.Parse(VB.Mid(strVisit, 5, 2))+1;
+                            array[j, 0] += cnt1; //근로자수
+                            array[j, 1] += cnt2; //재해자수계
+                            array[j, 2] += cnt3; //사망
+                            array[j, 3] += cnt4; //부상
+                            array[j, 4] += cnt5; //직업병
+                        }
+                        //금년도
+                        if (VB.Left(strVisit, 4) == year)
+                        {
+                            //월별
+                            j = Int32.Parse(VB.Mid(strVisit, 5, 2)) + 13;
+                            array[j, 0] += cnt1; //근로자수
+                            array[j, 1] += cnt2; //재해자수계
+                            array[j, 2] += cnt3; //사망
+                            array[j, 3] += cnt4; //부상
+                            array[j, 4] += cnt5; //직업병
+                        }
+                    }
+                }
+
+                dt.Dispose();
+                dt = null;
+
+                //2년전
+                if (array[0, 0]>0)
+                {
+                    SSCard.ActiveSheet.Cells[14, 4].Value = array[0, 0] + " 명";
+                    if (array[0, 1] > 0) SSCard.ActiveSheet.Cells[14, 9].Value = array[0, 1];
+                    if (array[0, 2] > 0) SSCard.ActiveSheet.Cells[14, 12].Value = array[0, 2];
+                    if (array[0, 3] > 0) SSCard.ActiveSheet.Cells[14, 15].Value = array[0, 3];
+                    if (array[0, 4] > 0) SSCard.ActiveSheet.Cells[14, 18].Value = array[0, 4];
+                    if (array[0, 0] > 0)
+                    {
+                        if (array[0, 1] == 0)
+                        {
+                            SSCard.ActiveSheet.Cells[14, 21].Value = "0 %";
+                        }
+                        else
+                        {
+                            dblRate = array[0, 1] / array[0, 0] * 100;
+                            SSCard.ActiveSheet.Cells[14, 21].Value = VB.Format(dblRate, "#0.00") + " %";
+                        }
+                    }
+                }
+
+                //1년전
+                if (array[1, 0] > 0)
+                {
+                    SSCard.ActiveSheet.Cells[15, 4].Value = array[1, 0] + " 명";
+                    if (array[1, 1] > 0) SSCard.ActiveSheet.Cells[15, 9].Value = array[1, 1];
+                    if (array[1, 2] > 0) SSCard.ActiveSheet.Cells[15, 12].Value = array[1, 2];
+                    if (array[1, 3] > 0) SSCard.ActiveSheet.Cells[15, 15].Value = array[1, 3];
+                    if (array[1, 4] > 0) SSCard.ActiveSheet.Cells[15, 18].Value = array[1, 4];
+                    if (array[1, 0] > 0)
+                    {
+                        if (array[1, 1] == 0)
+                        {
+                            SSCard.ActiveSheet.Cells[15, 21].Value = "0 %";
+                        }
+                        else
+                        {
+                            dblRate = array[1, 1] / array[1, 0] * 100;
+                            SSCard.ActiveSheet.Cells[15, 21].Value = VB.Format(dblRate, "#0.00") + " %";
+                        }
+                    }
+                }
+
+                //전년도 월별
+                SSCard.ActiveSheet.Cells[16, 0].Value = year_1.Substring(2, 2);
+                for (i = 0; i < 12; i++)
+                {
+                    if (array[i+2, 0] > 0)
+                    {
+                        SSCard.ActiveSheet.Cells[i+16, 4].Value = array[i + 2, 0] + " 명";
+                        if (array[i + 2, 1] > 0) SSCard.ActiveSheet.Cells[i + 16, 9].Value = array[i + 2, 1];
+                        if (array[i + 2, 2] > 0) SSCard.ActiveSheet.Cells[i + 16, 12].Value = array[i + 2, 2];
+                        if (array[i + 2, 3] > 0) SSCard.ActiveSheet.Cells[i + 16, 15].Value = array[i + 2, 3];
+                        if (array[i + 2, 4] > 0) SSCard.ActiveSheet.Cells[i + 16, 18].Value = array[i + 2, 4];
+                        if (array[i + 2, 0] > 0)
+                        {
+                            if (array[i + 2, 1] == 0)
+                            {
+                                SSCard.ActiveSheet.Cells[i + 16, 21].Value = "0 %";
+                            }
+                            else
+                            {
+                                dblRate = array[i + 2, 1] / array[i + 2, 0] * 100;
+                                SSCard.ActiveSheet.Cells[i + 16, 21].Value = VB.Format(dblRate, "#0.00") + " %";
+                            }
+                        }
+                    }
+                }
+
+                //금년도 월별
+                SSCard.ActiveSheet.Cells[27, 0].Value = year.Substring(2, 2);
+                for (i = 0; i < 12; i++)
+                {
+                    if (array[i + 14, 0] > 0)
+                    {
+                        SSCard.ActiveSheet.Cells[i + 27, 4].Value = array[i + 14, 0] + " 명";
+                        if (array[i + 14, 1] > 0) SSCard.ActiveSheet.Cells[i + 27, 9].Value = array[i + 14, 1];
+                        if (array[i + 14, 2] > 0) SSCard.ActiveSheet.Cells[i + 27, 12].Value = array[i + 14, 2];
+                        if (array[i + 14, 3] > 0) SSCard.ActiveSheet.Cells[i + 27, 15].Value = array[i + 14, 3];
+                        if (array[i + 14, 4] > 0) SSCard.ActiveSheet.Cells[i + 27, 18].Value = array[i + 14, 4];
+                        if (array[i + 14, 0] > 0)
+                        {
+                            if (array[i + 14, 1] == 0)
+                            {
+                                SSCard.ActiveSheet.Cells[i + 27, 21].Value = "0 %";
+                            }
+                            else
+                            {
+                                dblRate = array[i + 14, 1] / array[i + 14, 0] * 100;
+                                SSCard.ActiveSheet.Cells[i + 27, 21].Value = VB.Format(dblRate,"#0.00") + " %";
+                            }
+                        }
+                    }
+                }
+
+                Cursor.Current = Cursors.Default;
+
             }
-
-
-            //재해자수(사망,부상,직업병) - 방문등록의 산업재해 연동
-            HcOshaCard6Repository hcOshaCard6Repository = new HcOshaCard6Repository();
-            List<HC_OSHA_CARD6> accLastYear = hcOshaCard6Repository.FindAllByYear(base.SelectedEstimate.ID, lastStartYear, lastEndYear);
-            string month = "";
-            foreach(HC_OSHA_CARD6 card6 in accLastYear)
+            catch (Exception ex)
             {
-                month = card6.ACC_DATE.Substring(5, 2);
-                if (month == "01") { SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                if (month == "02") { SSCard.ActiveSheet.Cells[16, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                if (month == "03") { SSCard.ActiveSheet.Cells[17, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                if (month == "04") { SSCard.ActiveSheet.Cells[18, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                if (month == "05") { SSCard.ActiveSheet.Cells[19, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                if (month == "06") { SSCard.ActiveSheet.Cells[20, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                if (month == "07") { SSCard.ActiveSheet.Cells[21, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                if (month == "08") { SSCard.ActiveSheet.Cells[22, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                if (month == "09") { SSCard.ActiveSheet.Cells[23, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                if (month == "10") { SSCard.ActiveSheet.Cells[24, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                if (month == "11") { SSCard.ActiveSheet.Cells[25, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                if (month == "12") { SSCard.ActiveSheet.Cells[26, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-            }
-           
-            
-          
+                if (dt != null)
+                {
+                    dt.Dispose();
+                    dt = null;
+                }
 
-            List<HC_OSHA_CARD6> accYear = hcOshaCard6Repository.FindAllByYear(base.SelectedEstimate.ID, startYear, endYear);
-            foreach (HC_OSHA_CARD6 card6 in accYear)
-            {
-                month = card6.ACC_DATE.Substring(5, 2);
-                if (card6.IND_ACC_TYPE != null)
-                {
-                    if (month == "01") { SSCard.ActiveSheet.Cells[27, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                    if (month == "02") { SSCard.ActiveSheet.Cells[28, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                    if (month == "03") { SSCard.ActiveSheet.Cells[29, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                    if (month == "04") { SSCard.ActiveSheet.Cells[30, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                    if (month == "05") { SSCard.ActiveSheet.Cells[31, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                    if (month == "06") { SSCard.ActiveSheet.Cells[32, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                    if (month == "07") { SSCard.ActiveSheet.Cells[33, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                    if (month == "08") { SSCard.ActiveSheet.Cells[34, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                    if (month == "09") { SSCard.ActiveSheet.Cells[35, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                    if (month == "10") { SSCard.ActiveSheet.Cells[36, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                    if (month == "11") { SSCard.ActiveSheet.Cells[37, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                    if (month == "12") { SSCard.ActiveSheet.Cells[38, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value = (int)SSCard.ActiveSheet.Cells[15, GetColmunIndex(int.Parse(card6.IND_ACC_TYPE))].Value + 1; }
-                }
-            
-            }
-
-            //IND_ACC_TYPE 1사망 , 2부상, 3직업병
-            //재해자수 계 구하기, //작년 재해율
-            int IND_ACC_TYPE1 = 0;
-            int IND_ACC_TYPE2 = 0;
-            int IND_ACC_TYPE3 = 0;
-            double total = 0;
-            double workerCount = 0;
-            for (int i = 15; i < 39; i++)
-            {
-                IND_ACC_TYPE1 = (int)SSCard.ActiveSheet.Cells[i, 11].Value;
-                IND_ACC_TYPE2 = (int)SSCard.ActiveSheet.Cells[i, 14].Value;
-                IND_ACC_TYPE3 = (int)SSCard.ActiveSheet.Cells[i, 17].Value;
-                total = IND_ACC_TYPE1 + IND_ACC_TYPE2 + IND_ACC_TYPE3;
-                if (total == 3)
-                {
-                    string x = "l";
-                }
-                SSCard.ActiveSheet.Cells[i, 8].Value = total;
-                
-                string count = SSCard.ActiveSheet.Cells[i, 4].Value.ToString();
-                string[] tmp = count.Split(' ');
-                if (tmp[0].IsNullOrEmpty())
-                {
-                    workerCount = 0;
-                }
-                else
-                {
-                    workerCount = double.Parse(tmp[0]);
-                }
-                if (workerCount > 0 && total > 0)
-                {
-                    SSCard.ActiveSheet.Cells[i, 20].Value = Math.Round((total / workerCount) * 100, 3);
-                }
+                ComFunc.MsgBox(ex.Message);
+                Cursor.Current = Cursors.Default;
             }
         }
+
         private int GetColmunIndex(int IND_ACC_TYPE)
         {
             if (IND_ACC_TYPE == 1)

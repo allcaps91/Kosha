@@ -62,6 +62,14 @@ namespace HC_OSHA
 
         private void ScheduleRegisterForm_Load(object sender, EventArgs e)
         {
+            DateTime dateTime = codeService.CurrentDate;
+            dateTime = dateTime.AddMonths(1);
+            for (int i = 0; i <= 24; i++)
+            {
+                CboMonth.Items.Add(dateTime.AddMonths(-i).ToString("yyyy-MM"));
+            }
+            CboMonth.SelectedIndex = 1;
+
             TxtSearchUnvisitSiteIdOrName.SetExecuteButton(BtnSearchUnVisit);
             TxtSearchVisitSiteIdOrName.SetExecuteButton(BtnSearchVisit);
 
@@ -84,6 +92,7 @@ namespace HC_OSHA
             CboVISITUSERID.SetItems(OSHAUsers, "Name", "UserId");
             CboVISITMANAGERID.SetItems(OSHAUsers, "Name", "UserId", "", "없음", AddComboBoxPosition.Top);
             TxtREMARK.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_SCHEDULE.REMARK) });
+            TxtVISITPLACE.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_SCHEDULE.VISITPLACE) });
 
             //CboSearchScheduleSite.SetItems(siteList, "Name", "Id", "전체", "", AddComboBoxPosition.Top);
             CboSearchScheduleVisitUserId.SetItems(OSHAUsers, "Name", "UserId", "전체", "", AddComboBoxPosition.Top);
@@ -190,8 +199,6 @@ namespace HC_OSHA
 
             //방문예정일 목록
             DateTime currentDate = codeService.CurrentDate;
-            DtpSearchScheduleStart.SetValue(currentDate.GetFirstDate());
-            DtpSearchScheduleEnd.SetValue(currentDate.GetLastDate());
 
             SSScheduleList.Initialize(new SpreadOption() { IsRowSelectColor = false });
             SSScheduleList.AddColumnText("방문예정일", "", 106, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, mergePolicy = FarPoint.Win.Spread.Model.MergePolicy.Always });
@@ -1170,9 +1177,9 @@ namespace HC_OSHA
 
         private void SearchScheduleList()
         {
-            
-            string startDate = DtpSearchScheduleStart.GetValue();
-            string endDate = DtpSearchScheduleEnd.GetValue();
+            string month = CboMonth.GetValue();
+            string startDate = month + "-01";  
+            string endDate = month + "-31";  
             long siteId = 0;
             if (base.SelectedSite != null)
             {
@@ -1355,6 +1362,11 @@ namespace HC_OSHA
         }
 
         private void panSchedule_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void OshaSiteLastTree_Load(object sender, EventArgs e)
         {
 
         }

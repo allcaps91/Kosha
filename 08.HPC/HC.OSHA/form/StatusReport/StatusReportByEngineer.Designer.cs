@@ -2560,7 +2560,7 @@
             this.label121.Name = "label121";
             this.label121.Size = new System.Drawing.Size(135, 17);
             this.label121.TabIndex = 265;
-            this.label121.Text = "국소배기장치 선능 등";
+            this.label121.Text = "국소배기장치 성능 등";
             // 
             // flowLayoutPanel88
             // 
@@ -4917,7 +4917,7 @@
             this.label70.Name = "label70";
             this.label70.Size = new System.Drawing.Size(135, 17);
             this.label70.TabIndex = 283;
-            this.label70.Text = "벌엄송뮬질의 취급 등";
+            this.label70.Text = "발암성물질의 취급 등";
             // 
             // flowLayoutPanel26
             // 

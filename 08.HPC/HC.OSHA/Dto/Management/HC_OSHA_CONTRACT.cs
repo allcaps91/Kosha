@@ -114,12 +114,17 @@ namespace HC.OSHA.Dto
         /// <summary>
         /// 辟公老(林)
         /// </summary>
-		public string VISITWEEK { get; set; } 
+		public string VISITWEEK { get; set; }
+
+        /// <summary>
+        /// 规巩厘家
+        /// </summary>
+        public string VISITPLACE { get; set; }
 
         /// <summary>
         /// 辟公老
         /// </summary>
-		public string VISITDAY { get; set; } 
+        public string VISITDAY { get; set; } 
 
         /// <summary>
         /// 措青荐荐丰

@@ -45,6 +45,11 @@ namespace HC.OSHA.Dto
         /// </summary>
         public string VISITUSERNAME { get; set; }
 
+        /// <summary>
+        /// 방문장소
+        /// </summary>
+        public string VISITPLACE { get; set; }
+
         public long VISIT_ID { get; set; }
 
         /// <summary>

@@ -1217,7 +1217,7 @@
             this.ChkIsMsdsInstall.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ChkIsMsdsInstall.Size = new System.Drawing.Size(222, 21);
             this.ChkIsMsdsInstall.TabIndex = 125;
-            this.ChkIsMsdsInstall.Text = "안전보건표지, 굥고표지설치 지도";
+            this.ChkIsMsdsInstall.Text = "안전보건표지, 경고표지설치 지도";
             this.ChkIsMsdsInstall.UseVisualStyleBackColor = true;
             // 
             // ChkIsMsdsSpeacial

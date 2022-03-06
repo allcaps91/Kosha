@@ -251,6 +251,8 @@ namespace HC_OSHA
             NumMANAGENURSECOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.MANAGENURSECOUNT), Min = 0 });
             NumMANAGEENGINEERCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.MANAGEENGINEERCOUNT), Min = 0 });
             NumMANAGEWORKERCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.MANAGEWORKERCOUNT), Min = 0 });
+            TxtVISITPLACE.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CONTRACT.VISITPLACE) });
+
             //사업장업무일정
             TxtWORKROTATIONTIME.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CONTRACT.WORKROTATIONTIME) });
             TxtWORKLUANCHTIME.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CONTRACT.WORKLUANCHTIME) });

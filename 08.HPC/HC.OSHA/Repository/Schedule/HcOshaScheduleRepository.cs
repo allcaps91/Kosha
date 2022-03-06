@@ -125,6 +125,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  VISITUSERID,                   ");
             parameter.AppendSql("  VISITMANAGERNAME,              ");
             parameter.AppendSql("  VISITMANAGERID,                ");
+            parameter.AppendSql("  VISITPLACE,                    ");
             parameter.AppendSql("  REMARK,                        ");
             parameter.AppendSql("  INDOCPRINTDATETIME,            ");
             parameter.AppendSql("  OUTDOCPRINTDATETIME,           ");
@@ -150,6 +151,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  :VISITUSERID,                  ");
             parameter.AppendSql("  :VISITMANAGERNAME,             ");
             parameter.AppendSql("  :VISITMANAGERID,               ");
+            parameter.AppendSql("  :VISITPLACE,                   ");
             parameter.AppendSql("  :REMARK,                       ");
             parameter.AppendSql("  :INDOCPRINTDATETIME,           ");
             parameter.AppendSql("  :OUTDOCPRINTDATETIME,          ");
@@ -173,6 +175,7 @@ namespace HC.OSHA.Repository
             parameter.Add("VISITUSERID", dto.VISITUSERID);
             parameter.Add("VISITMANAGERNAME", dto.VISITMANAGERNAME);
             parameter.Add("VISITMANAGERID", dto.VISITMANAGERID);
+            parameter.Add("VISITPLACE", dto.VISITPLACE);
             parameter.Add("REMARK", dto.REMARK);
             parameter.Add("GBCHANGE", dto.GBCHANGE);
             parameter.Add("WORKERCOUNT", dto.WORKERCOUNT);
@@ -201,6 +204,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  VISITUSERID = :VISITUSERID,");
             parameter.AppendSql("  VISITMANAGERNAME = :VISITMANAGERNAME,");
             parameter.AppendSql("  VISITMANAGERID = :VISITMANAGERID,");
+            parameter.AppendSql("  VISITPLACE = :VISITPLACE,");
             parameter.AppendSql("  REMARK = :REMARK,");
             parameter.AppendSql("  INDOCPRINTDATETIME = :INDOCPRINTDATETIME,");
             parameter.AppendSql("  OUTDOCPRINTDATETIME = :OUTDOCPRINTDATETIME,");
@@ -220,6 +224,7 @@ namespace HC.OSHA.Repository
             parameter.Add("VISITUSERID", dto.VISITUSERID);
             parameter.Add("VISITMANAGERNAME", dto.VISITMANAGERNAME);
             parameter.Add("VISITMANAGERID", dto.VISITMANAGERID);
+            parameter.Add("VISITPLACE", dto.VISITPLACE);
             parameter.Add("REMARK", dto.REMARK);
             parameter.Add("INDOCPRINTDATETIME", dto.INDOCPRINTDATETIME);
             parameter.Add("OUTDOCPRINTDATETIME", dto.OUTDOCPRINTDATETIME);

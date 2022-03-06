@@ -163,6 +163,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  MODIFIEDUSER,                         ");
             parameter.AppendSql("  CREATED,                              ");
             parameter.AppendSql("  CREATEDUSER,                          ");
+            parameter.AppendSql("  VISITPLACE,                           ");
             parameter.AppendSql("  SWLICENSE                             ");
             parameter.AppendSql(")                                       ");
             parameter.AppendSql("VALUES                                  ");
@@ -228,6 +229,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  :MODIFIEDUSER,                        ");
             parameter.AppendSql("  SYSTIMESTAMP,                         ");
             parameter.AppendSql("  :CREATEDUSER,                         ");
+            parameter.AppendSql("  :VISITPLACE,                          ");
             parameter.AppendSql("  :SWLICENSE                            ");
             parameter.AppendSql(")                                       ");
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
@@ -288,6 +290,7 @@ namespace HC.OSHA.Repository
             parameter.Add("REMARK", dto.REMARK);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("VISITPLACE", dto.VISITPLACE);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
@@ -357,6 +360,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  ISSPECIALDATA = :ISSPECIALDATA, ");
             parameter.AppendSql("  ISDELETED = :ISDELETED, ");
             parameter.AppendSql("  REMARK = :REMARK, ");
+            parameter.AppendSql("  VISITPLACE = :VISITPLACE, ");
             parameter.AppendSql("  MODIFIED = SYSTIMESTAMP, ");
             parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER ");
             
@@ -419,6 +423,7 @@ namespace HC.OSHA.Repository
             parameter.Add("ISSPECIALDATA", dto.ISSPECIALDATA);
             parameter.Add("ISDELETED", dto.ISDELETED);
             parameter.Add("REMARK", dto.REMARK);
+            parameter.Add("VISITPLACE", dto.VISITPLACE);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 

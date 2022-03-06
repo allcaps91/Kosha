@@ -22,13 +22,13 @@ namespace HC.OSHA.Repository.Schedule
             parameter.AppendSql("  FROM HIC_OSHA_VISIT A ");
             parameter.AppendSql("  INNER JOIN HIC_OSHA_VISIT_PRICE B ");
             parameter.AppendSql("          ON A.ID = B.VISIT_ID ");
+            parameter.AppendSql("         AND B.ISDELETED = 'N' ");
+            parameter.AppendSql("         AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" WHERE 1 = 1 ");
             parameter.AppendSql("   AND A.SITE_ID = :SITE_ID ");
             parameter.AppendSql("   AND A.VisitDateTime >= :START_YEAR ");
             parameter.AppendSql("   AND A.VisitDateTime <= :END_YEAR ");
-            parameter.AppendSql("   AND B.ISDELETED = 'N' ");
             parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("   AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY A.VISITDATETIME ");
 
             parameter.Add("SITE_ID", estimateId);
@@ -44,10 +44,10 @@ namespace HC.OSHA.Repository.Schedule
             MParameter parameter = CreateParameter();
             parameter.AppendSql("    SELECT * FROM HIC_OSHA_VISIT_PRICE ");
             parameter.AppendSql("    WHERE ID = (SELECT MAX(ID) FROM HIC_OSHA_VISIT_PRICE   ");
-            parameter.AppendSql("          WHERE VISIT_ID = :VISIT_ID                       ");
-            parameter.AppendSql("            AND SWLICENSE = :SWLICENSE                    ");
-            parameter.AppendSql("            AND ISDELETED = 'N' )                          ");
-            parameter.AppendSql("      AND SWLICENSE = :SWLICENSE                          ");
+            parameter.AppendSql("          WHERE VISIT_ID = :VISIT_ID  ");
+            parameter.AppendSql("            AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("            AND ISDELETED = 'N' ) ");
+            parameter.AppendSql("      AND SWLICENSE = :SWLICENSE ");
             parameter.Add("VISIT_ID", visitId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReaderSingle<OSHA_VISIT_PRICE>(parameter);
@@ -55,16 +55,16 @@ namespace HC.OSHA.Repository.Schedule
         public List<OSHA_VISIT_PRICE> FindVisitPrice(long siteId, string startDate, string endDate)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("    SELECT A.* FROM HIC_OSHA_VISIT A        ");
-            parameter.AppendSql("    INNER JOIN HIC_OSHA_VISIT_PRICE B       ");
-            parameter.AppendSql("    ON A.ID = B.VISIT_ID                    ");
-            parameter.AppendSql("    WHERE A.SITE_ID = :SITE_ID              ");
-            parameter.AppendSql("    AND A.ISDELETED = 'N'                   ");
-            parameter.AppendSql("    AND B.ISDELETED = 'N'                   ");
-            parameter.AppendSql("    AND A.VISITDATETIME >= :startDate       ");
-            parameter.AppendSql("    AND A.VISITDATETIME <= :endDate         ");
-            parameter.AppendSql("    AND A.SWLICENSE = :SWLICENSE           ");
-            parameter.AppendSql("    AND B.SWLICENSE = :SWLICENSE           ");
+            parameter.AppendSql("SELECT A.* FROM HIC_OSHA_VISIT A ");
+            parameter.AppendSql("       INNER JOIN HIC_OSHA_VISIT_PRICE B ");
+            parameter.AppendSql("             ON  A.ID = B.VISIT_ID ");
+            parameter.AppendSql("             AND B.ISDELETED = 'N' ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" WHERE A.SITE_ID = :SITE_ID ");
+            parameter.AppendSql("   AND A.ISDELETED = 'N' ");
+            parameter.AppendSql("   AND A.VISITDATETIME >= :startDate ");
+            parameter.AppendSql("   AND A.VISITDATETIME <= :endDate ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("startDate", startDate);
@@ -78,36 +78,35 @@ namespace HC.OSHA.Repository.Schedule
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_OSHA_VISIT_PRICE ");
-            parameter.AppendSql("WHERE ISDELETED = 'N' ");
-            parameter.AppendSql("AND VISIT_ID = :VISIT_ID ");
-            parameter.AppendSql("AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" WHERE ISDELETED = 'N' ");
+            parameter.AppendSql("   AND VISIT_ID = :VISIT_ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("VISIT_ID", visitId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<OSHA_VISIT_PRICE>(parameter);
-
         }
 
         public List<OshaVisitPriceModel> FindAllByEstimate(long estimateId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.ID, A.VISITDATETIME, A.VISITUSERNAME,  B.*, TO_CHAR(B.CREATED,'YYYY-MM-DD') as CREATED ");
-            parameter.AppendSql("FROM HIC_OSHA_VISIT A ");
-            parameter.AppendSql("INNER JOIN  HIC_OSHA_VISIT_PRICE B ");
-            parameter.AppendSql("ON A.ID = B.VISIT_ID ");     
-            parameter.AppendSql("WHERE A.ESTIMATE_ID = :estimateId ");
-            parameter.AppendSql("AND A.ISDELETED = 'N' ");
-            parameter.AppendSql("AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("SELECT A.ID, A.VISITDATETIME, A.VISITUSERNAME, B.*, TO_CHAR(B.CREATED,'YYYY-MM-DD') as CREATED ");
+            parameter.AppendSql("  FROM HIC_OSHA_VISIT A ");
+            parameter.AppendSql("       INNER JOIN  HIC_OSHA_VISIT_PRICE B ");
+            parameter.AppendSql("             ON  A.ID = B.VISIT_ID ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" WHERE A.ESTIMATE_ID = :estimateId ");
+            parameter.AppendSql("   AND A.ISDELETED = 'N' ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("ORDER BY B.CREATED DESC, B.ID DESC ");
 
             parameter.Add("estimateId", estimateId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<OshaVisitPriceModel>(parameter);
-
         }
+
         public void Insert(OSHA_VISIT_PRICE dto)
         {
             dto.ID = GetSequenceNextVal("HC_OSHA_VISIT_PRICE_ID_SEQ");

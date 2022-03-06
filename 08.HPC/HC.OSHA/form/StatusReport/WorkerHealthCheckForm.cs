@@ -265,11 +265,13 @@ namespace HC_OSHA.StatusReport
             string strID = "";
             string strName = "";
             string strDept = "";
+            string strJumin = "";
             string strIpsaDate = "";
             string strTesaDate = "";
             string strPanjeng1 = "";
             string strPanjeng2 = "";
             string strPanjeng = "";
+            int nAge = 0;
 
             if (CboDept.SelectedItem != null)
             {
@@ -298,7 +300,7 @@ namespace HC_OSHA.StatusReport
             strSiteList = READ_Relation_LTD(base.SelectedSite.ID);
             try
             {
-                SQL = "SELECT ID,NAME,DEPT,WORKER_ROLE,IPSADATE,END_DATE,ISMANAGEOSHA ";
+                SQL = "SELECT ID,NAME,DEPT,WORKER_ROLE,JUMIN,IPSADATE,END_DATE,ISMANAGEOSHA ";
                 SQL = SQL + ComNum.VBLF + " FROM HIC_SITE_WORKER ";
                 SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND SITEID IN (" + strSiteList + ") ";
@@ -327,6 +329,7 @@ namespace HC_OSHA.StatusReport
                         strID = dt.Rows[i]["ID"].ToString().Trim();
                         strName = dt.Rows[i]["NAME"].ToString().Trim();
                         strDept = dt.Rows[i]["DEPT"].ToString().Trim();
+                        strJumin = dt.Rows[i]["JUMIN"].ToString().Trim();
                         strIpsaDate = dt.Rows[i]["IPSADATE"].ToString().Trim();
                         strTesaDate = dt.Rows[i]["END_DATE"].ToString().Trim();
                         strPanjeng1 = Get_Last_Panjeng(strID, "특수");
@@ -382,6 +385,11 @@ namespace HC_OSHA.StatusReport
                             SSWorkerList_Sheet1.Cells[nRow, 0].Text = strID;
                             SSWorkerList_Sheet1.Cells[nRow, 1].Text = strName;
                             SSWorkerList_Sheet1.Cells[nRow, 2].Text = VB.Pstr(strPanjeng, "{}", 4) + "(" + VB.Pstr(strPanjeng, "{}", 5) + ")"; //성별(연령)
+                            if (VB.Pstr(strPanjeng, "{}", 5)=="")
+                            {
+                                nAge = Age_Gesan(strJumin);
+                                if (nAge > 0) SSWorkerList_Sheet1.Cells[nRow, 2].Text = "(" + nAge.ToString() + ")"; //(연령)
+                            }
                             SSWorkerList_Sheet1.Cells[nRow, 3].Text = VB.Pstr(strPanjeng, "{}", 3); //부서
                             SSWorkerList_Sheet1.Cells[nRow, 4].Text = VB.Pstr(strPanjeng, "{}", 6); //건강구분
                             SSWorkerList_Sheet1.Cells[nRow, 5].Text = VB.Pstr(strPanjeng, "{}", 2); //년도
@@ -640,7 +648,7 @@ namespace HC_OSHA.StatusReport
         {
             //if(TxtContent.Text. IsNullOrEmpty() && txtSugesstion.Text.IsNullOrEmpty())
             //{
-            //    MessageUtil.Alert(" 상담내뇽, 상담 후 건의사항 내용이 없습니다");
+            //    MessageUtil.Alert(" 상담내용, 상담 후 건의사항 내용이 없습니다");
             //    return;
             //}
             if (base.SelectedSite == null)
@@ -926,7 +934,7 @@ namespace HC_OSHA.StatusReport
             worker.Name = SSWorkerList_Sheet1.Cells[e.Row, 1].Text.Trim();
             worker.Gender = "";
             worker.Age = 0;
-            if (VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 1)!= "")
+            if (VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 2)!= "")
             {
                 worker.Gender = VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 1);
                 worker.Age = Int32.Parse(VB.Pstr(VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 2), ")", 1));
@@ -1655,6 +1663,25 @@ namespace HC_OSHA.StatusReport
         private void SSWorkerList_CellClick_1(object sender, CellClickEventArgs e)
         {
 
+        }
+
+        // 생년월일 6자리로 오늘 기준 나이를 계산
+        // 근로자는 신생아는 없기 때문에 생년월일 6자리로 나이를 간이 계산함
+        private int Age_Gesan(string strBirth)
+        {
+            int nAge = 0;
+            //생년월일이 오류이면 0살을 Return
+            if (strBirth == "" || strBirth == "000000" || strBirth == "123456")
+            {
+                return 0;
+            }
+
+            int nYear1 = Int32.Parse(DateTime.Now.ToString("yyyy"));
+            int nYear2 = Int32.Parse(VB.Left(strBirth, 2));
+            nAge = nYear1 - (2000 + nYear2);
+            if (nAge < 0) nAge = nYear1 - (1900 + nYear2);
+
+            return nAge;
         }
     }
 }
