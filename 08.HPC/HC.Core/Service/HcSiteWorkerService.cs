@@ -157,13 +157,13 @@ namespace HC.Core.Service
         //}
 
 
-        public List<HC_SITE_WORKER> FindAll(long siteId, string name, string dept, string workerRole)
+        public List<HC_SITE_WORKER> FindAll(long siteId, string name, string dept)
         {
             if(dept == "ÀüÃ¼")
             {
                 dept = string.Empty;
             }
-            return this.hcSiteWorkerRepository.FindAll(siteId, name, dept, workerRole);
+            return this.hcSiteWorkerRepository.FindAll(siteId, name, dept);
         }
         public void Delete(string id)
         {

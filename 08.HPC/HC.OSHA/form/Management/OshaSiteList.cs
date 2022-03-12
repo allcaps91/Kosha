@@ -67,11 +67,11 @@ namespace HC_OSHA
             SSOshaList.Initialize(new SpreadOption() { IsRowSelectColor = true});
             SSOshaList.AddColumnText("코드", nameof(HC_OSHA_SITE_MODEL.ID), 50, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true });
             SSOshaList.AddColumnText("사업장명", nameof(HC_OSHA_SITE_MODEL.NAME), 140, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true,Aligen = FarPoint.Win.Spread.CellHorizontalAlignment.Left,  sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
-
-          //  SSOshaList.Sheets[0].AllowGroup = true;
-           // SSOshaList.Sheets[0].Cells[0,0].
+            
+            //  SSOshaList.Sheets[0].AllowGroup = true;
+            // SSOshaList.Sheets[0].Cells[0,0].
             //  SSOshaList.Sheets[0].GroupBarInfo.Visible = true;
-           // SSOshaList.Sheets[0].SetChildVisible(new CustomSheet(), true);
+            // SSOshaList.Sheets[0].SetChildVisible(new CustomSheet(), true);
 
             if (!DesignMode)
             {

@@ -123,7 +123,6 @@ namespace HC_OSHA.StatusReport
                 strStartDate = VB.Left(statusReportDoctorDto.VISITDATE,6) + "01";
                 strEndDate = VB.Left(statusReportDoctorDto.VISITDATE,6) + "31";
             }
-            //List<HealthCheckDto> list = healthCheckService.healthCheckRepository.FindAll(SelectedSite.ID, reprotid, strStartDate, strEndDate, ChkDel.Checked);
             List<HealthCheckDto> list = healthCheckService.healthCheckRepository.FindAll(0, reprotid, "", "", ChkDel.Checked);
 
             LblCount.Text = "총 : " + list.Count + " 건";
@@ -142,6 +141,7 @@ namespace HC_OSHA.StatusReport
                 SSCard.ActiveSheet.Cells[row, 1].Value = list[i].name;
 
                 SSCard.ActiveSheet.Cells[row, 2].Value = list[i].dept;
+                if (list[i].sabun!="") SSCard.ActiveSheet.Cells[row, 2].Value += "(" + list[i].sabun + ")";
 
                 SSCard.ActiveSheet.Cells[row, 3].Value = list[i].gender + "(" + list[i].age + ")";
                 SSCard.ActiveSheet.Cells[row, 4].ColumnSpan = 2;

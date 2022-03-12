@@ -413,6 +413,7 @@ namespace HC_OSHA
                             SQL = SQL + ComNum.VBLF + "WHERE SITEID=" + nLtdCode + " ";
                             SQL = SQL + ComNum.VBLF + "  AND NAME='" + strName + "' ";
                             SQL = SQL + ComNum.VBLF + "  AND JUMIN <> '000000' ";
+                            SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
                             SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
                             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                             if (dt.Rows.Count > 1)

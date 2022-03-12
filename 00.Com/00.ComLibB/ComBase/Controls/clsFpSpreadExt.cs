@@ -1694,7 +1694,7 @@ namespace ComBase.Controls
         }
 
         /// <summary>
-        /// 현재로우 데이턴
+        /// 현재로우 데이터
         /// </summary>
         /// <param name="fpSpread"></param>
         /// <returns></returns>

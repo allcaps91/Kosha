@@ -22,6 +22,7 @@ namespace HC.OSHA.Model
         public string Jumin { get; set; }
 
         public string Dept { get; set; }
+        public string Sabun { get; set; }
         public string AgeAndGender { get; set; }
 
         public string Year { get; set; }

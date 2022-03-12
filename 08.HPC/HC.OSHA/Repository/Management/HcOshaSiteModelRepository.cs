@@ -277,60 +277,35 @@
             parameter.AppendSql("             ON A.ID = B.ID ");
             parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("             AND B.ISACTIVE='Y' ");
+            parameter.AppendSql("WHERE A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("  AND A.DELDATE IS NULL ");
 
             // 관계사 사용자는 무조건 자기 사업장만 표시
             if (clsType.User.LtdUser != "")
             {
-                parameter.AppendSql("WHERE A.ID='" + clsType.User.LtdUser + "' ");
-                parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
+                parameter.AppendSql(" AND A.ID='" + clsType.User.LtdUser + "' ");
             }
             else
             {
                 if (userId.NotEmpty() && isSChedule)
                 {
-                    parameter.AppendSql(" INNER JOIN (");
-                    parameter.AppendSql("       SELECT SITE_ID FROM HIC_OSHA_SCHEDULE ");
+                    parameter.AppendSql(" AND A.ID IN (SELECT SITE_ID FROM HIC_OSHA_SCHEDULE ");
                     parameter.AppendSql("        WHERE VISITUSERID = :USERID ");
                     parameter.AppendSql("          AND VISITRESERVEDATE = TO_DATE('" + DateTime.Now.ToString("yyyy-MM-dd") + "', 'YYYY-MM-DD') ");
-                    parameter.AppendSql("          AND ISDELETED = 'N'  ");
-                    parameter.AppendSql("          AND SWLICENSE = :SWLICENSE ) AA ");
-                    parameter.AppendSql("       ON A.ID = AA.SITE_ID  ");
+                    parameter.AppendSql("          AND ISDELETED = 'N' ");
+                    parameter.AppendSql("          AND SWLICENSE = :SWLICENSE ) ");
                 }
-                else if (userId.NotEmpty() && role == Role.DOCTOR)
+                else if (userId.NotEmpty())
                 {
-                    parameter.AppendSql(" INNER JOIN (");
-                    parameter.AppendSql("       SELECT OSHA_SITE_ID FROM HIC_OSHA_CONTRACT ");
+                    parameter.AppendSql(" AND A.ID IN (SELECT OSHA_SITE_ID FROM HIC_OSHA_CONTRACT ");
                     parameter.AppendSql("        WHERE CONTRACTSTARTDATE <= '" + DateTime.Now.ToString("yyyy-MM-dd") + "' ");
                     parameter.AppendSql("          AND CONTRACTENDDATE >= '" + DateTime.Now.ToString("yyyy-MM-dd") + "' ");
                     parameter.AppendSql("          AND ISDELETED = 'N'  ");
-                    parameter.AppendSql("          AND MANAGEDOCTOR = :USERID ");
-                    parameter.AppendSql("          AND SWLICENSE = :SWLICENSE ) AA ");
-                    parameter.AppendSql("       ON A.ID = AA.OSHA_SITE_ID  ");
+                    parameter.AppendSql("          AND SWLICENSE = :SWLICENSE ");
+                    if (role == Role.DOCTOR) parameter.AppendSql(" AND MANAGEDOCTOR = :USERID) ");
+                    if (role == Role.NURSE) parameter.AppendSql(" AND MANAGENURSE = :USERID) ");
+                    if (role == Role.ENGINEER) parameter.AppendSql(" AND MANAGEENGINEER = :USERID) ");
                 }
-                else if (userId.NotEmpty() && role == Role.NURSE)
-                {
-                    parameter.AppendSql(" INNER JOIN (");
-                    parameter.AppendSql("       SELECT OSHA_SITE_ID FROM HIC_OSHA_CONTRACT ");
-                    parameter.AppendSql("        WHERE CONTRACTSTARTDATE <= '" + DateTime.Now.ToString("yyyy-MM-dd") + "' ");
-                    parameter.AppendSql("          AND CONTRACTENDDATE >= '" + DateTime.Now.ToString("yyyy-MM-dd") + "' ");
-                    parameter.AppendSql("          AND ISDELETED = 'N'  ");
-                    parameter.AppendSql("          AND MANAGENURSE= :USERID ");
-                    parameter.AppendSql("          AND SWLICENSE = :SWLICENSE ) AA ");
-                    parameter.AppendSql("       ON A.ID = AA.OSHA_SITE_ID  ");
-                }
-                else if (userId.NotEmpty() && role == Role.ENGINEER)
-                {
-                    parameter.AppendSql(" INNER JOIN (");
-                    parameter.AppendSql("       SELECT OSHA_SITE_ID FROM HIC_OSHA_CONTRACT ");
-                    parameter.AppendSql("        WHERE CONTRACTSTARTDATE <= '" + DateTime.Now.ToString("yyyy-MM-dd") + "' ");
-                    parameter.AppendSql("          AND CONTRACTENDDATE >= '" + DateTime.Now.ToString("yyyy-MM-dd") + "' ");
-                    parameter.AppendSql("          AND ISDELETED = 'N'  ");
-                    parameter.AppendSql("          AND MANAGEENGINEER= :USERID ");
-                    parameter.AppendSql("          AND SWLICENSE = :SWLICENSE ) AA ");
-                    parameter.AppendSql("       ON A.ID = AA.OSHA_SITE_ID  ");
-                }
-                parameter.AppendSql("WHERE A.SWLICENSE = :SWLICENSE ");
-                parameter.AppendSql("  AND A.DELDATE IS NULL ");
                 if (name != "") parameter.AppendSql(" AND A.NAME LIKE :NAME ");
             }
             parameter.AppendSql(" ORDER BY A.NAME ");

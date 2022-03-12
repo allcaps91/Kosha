@@ -155,20 +155,20 @@ namespace HC_OSHA
                 if (array[0, 0]>0)
                 {
                     SSCard.ActiveSheet.Cells[14, 4].Value = array[0, 0] + " 명";
-                    if (array[0, 1] > 0) SSCard.ActiveSheet.Cells[14, 9].Value = array[0, 1];
-                    if (array[0, 2] > 0) SSCard.ActiveSheet.Cells[14, 12].Value = array[0, 2];
-                    if (array[0, 3] > 0) SSCard.ActiveSheet.Cells[14, 15].Value = array[0, 3];
-                    if (array[0, 4] > 0) SSCard.ActiveSheet.Cells[14, 18].Value = array[0, 4];
+                    if (array[0, 1] > 0) SSCard.ActiveSheet.Cells[14, 8].Value = array[0, 1];
+                    if (array[0, 2] > 0) SSCard.ActiveSheet.Cells[14, 11].Value = array[0, 2];
+                    if (array[0, 3] > 0) SSCard.ActiveSheet.Cells[14, 14].Value = array[0, 3];
+                    if (array[0, 4] > 0) SSCard.ActiveSheet.Cells[14, 17].Value = array[0, 4];
                     if (array[0, 0] > 0)
                     {
                         if (array[0, 1] == 0)
                         {
-                            SSCard.ActiveSheet.Cells[14, 21].Value = "0 %";
+                            SSCard.ActiveSheet.Cells[14, 20].Value = "0.00 %";
                         }
                         else
                         {
                             dblRate = array[0, 1] / array[0, 0] * 100;
-                            SSCard.ActiveSheet.Cells[14, 21].Value = VB.Format(dblRate, "#0.00") + " %";
+                            SSCard.ActiveSheet.Cells[14, 20].Value = VB.Format(dblRate, "#0.00") + " %";
                         }
                     }
                 }
@@ -177,20 +177,20 @@ namespace HC_OSHA
                 if (array[1, 0] > 0)
                 {
                     SSCard.ActiveSheet.Cells[15, 4].Value = array[1, 0] + " 명";
-                    if (array[1, 1] > 0) SSCard.ActiveSheet.Cells[15, 9].Value = array[1, 1];
-                    if (array[1, 2] > 0) SSCard.ActiveSheet.Cells[15, 12].Value = array[1, 2];
-                    if (array[1, 3] > 0) SSCard.ActiveSheet.Cells[15, 15].Value = array[1, 3];
-                    if (array[1, 4] > 0) SSCard.ActiveSheet.Cells[15, 18].Value = array[1, 4];
+                    if (array[1, 1] > 0) SSCard.ActiveSheet.Cells[15, 8].Value = array[1, 1];
+                    if (array[1, 2] > 0) SSCard.ActiveSheet.Cells[15, 11].Value = array[1, 2];
+                    if (array[1, 3] > 0) SSCard.ActiveSheet.Cells[15, 14].Value = array[1, 3];
+                    if (array[1, 4] > 0) SSCard.ActiveSheet.Cells[15, 17].Value = array[1, 4];
                     if (array[1, 0] > 0)
                     {
                         if (array[1, 1] == 0)
                         {
-                            SSCard.ActiveSheet.Cells[15, 21].Value = "0 %";
+                            SSCard.ActiveSheet.Cells[15, 20].Value = "0.00 %";
                         }
                         else
                         {
                             dblRate = array[1, 1] / array[1, 0] * 100;
-                            SSCard.ActiveSheet.Cells[15, 21].Value = VB.Format(dblRate, "#0.00") + " %";
+                            SSCard.ActiveSheet.Cells[15, 20].Value = VB.Format(dblRate, "#0.00") + " %";
                         }
                     }
                 }
@@ -202,20 +202,20 @@ namespace HC_OSHA
                     if (array[i+2, 0] > 0)
                     {
                         SSCard.ActiveSheet.Cells[i+16, 4].Value = array[i + 2, 0] + " 명";
-                        if (array[i + 2, 1] > 0) SSCard.ActiveSheet.Cells[i + 16, 9].Value = array[i + 2, 1];
-                        if (array[i + 2, 2] > 0) SSCard.ActiveSheet.Cells[i + 16, 12].Value = array[i + 2, 2];
-                        if (array[i + 2, 3] > 0) SSCard.ActiveSheet.Cells[i + 16, 15].Value = array[i + 2, 3];
-                        if (array[i + 2, 4] > 0) SSCard.ActiveSheet.Cells[i + 16, 18].Value = array[i + 2, 4];
+                        if (array[i + 2, 1] > 0) SSCard.ActiveSheet.Cells[i + 16, 8].Value = array[i + 2, 1];
+                        if (array[i + 2, 2] > 0) SSCard.ActiveSheet.Cells[i + 16, 11].Value = array[i + 2, 2];
+                        if (array[i + 2, 3] > 0) SSCard.ActiveSheet.Cells[i + 16, 14].Value = array[i + 2, 3];
+                        if (array[i + 2, 4] > 0) SSCard.ActiveSheet.Cells[i + 16, 17].Value = array[i + 2, 4];
                         if (array[i + 2, 0] > 0)
                         {
                             if (array[i + 2, 1] == 0)
                             {
-                                SSCard.ActiveSheet.Cells[i + 16, 21].Value = "0 %";
+                                SSCard.ActiveSheet.Cells[i + 16, 20].Value = "0.00 %";
                             }
                             else
                             {
                                 dblRate = array[i + 2, 1] / array[i + 2, 0] * 100;
-                                SSCard.ActiveSheet.Cells[i + 16, 21].Value = VB.Format(dblRate, "#0.00") + " %";
+                                SSCard.ActiveSheet.Cells[i + 16, 20].Value = VB.Format(dblRate, "#0.00") + " %";
                             }
                         }
                     }
@@ -228,20 +228,20 @@ namespace HC_OSHA
                     if (array[i + 14, 0] > 0)
                     {
                         SSCard.ActiveSheet.Cells[i + 27, 4].Value = array[i + 14, 0] + " 명";
-                        if (array[i + 14, 1] > 0) SSCard.ActiveSheet.Cells[i + 27, 9].Value = array[i + 14, 1];
-                        if (array[i + 14, 2] > 0) SSCard.ActiveSheet.Cells[i + 27, 12].Value = array[i + 14, 2];
-                        if (array[i + 14, 3] > 0) SSCard.ActiveSheet.Cells[i + 27, 15].Value = array[i + 14, 3];
-                        if (array[i + 14, 4] > 0) SSCard.ActiveSheet.Cells[i + 27, 18].Value = array[i + 14, 4];
+                        if (array[i + 14, 1] > 0) SSCard.ActiveSheet.Cells[i + 27, 8].Value = array[i + 14, 1];
+                        if (array[i + 14, 2] > 0) SSCard.ActiveSheet.Cells[i + 27, 11].Value = array[i + 14, 2];
+                        if (array[i + 14, 3] > 0) SSCard.ActiveSheet.Cells[i + 27, 14].Value = array[i + 14, 3];
+                        if (array[i + 14, 4] > 0) SSCard.ActiveSheet.Cells[i + 27, 17].Value = array[i + 14, 4];
                         if (array[i + 14, 0] > 0)
                         {
                             if (array[i + 14, 1] == 0)
                             {
-                                SSCard.ActiveSheet.Cells[i + 27, 21].Value = "0 %";
+                                SSCard.ActiveSheet.Cells[i + 27, 20].Value = "0.00 %";
                             }
                             else
                             {
                                 dblRate = array[i + 14, 1] / array[i + 14, 0] * 100;
-                                SSCard.ActiveSheet.Cells[i + 27, 21].Value = VB.Format(dblRate,"#0.00") + " %";
+                                SSCard.ActiveSheet.Cells[i + 27, 20].Value = VB.Format(dblRate,"#0.00") + " %";
                             }
                         }
                     }

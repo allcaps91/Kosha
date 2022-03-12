@@ -6959,7 +6959,7 @@
             this.BtnWorker.Name = "BtnWorker";
             this.BtnWorker.Size = new System.Drawing.Size(83, 28);
             this.BtnWorker.TabIndex = 217;
-            this.BtnWorker.Text = "근로자";
+            this.BtnWorker.Text = "성명";
             this.BtnWorker.UseVisualStyleBackColor = true;
             this.BtnWorker.Click += new System.EventHandler(this.BtnWorker_Click);
             // 
@@ -7030,8 +7030,8 @@
             this.label4.Padding = new System.Windows.Forms.Padding(3);
             this.label4.Size = new System.Drawing.Size(83, 25);
             this.label4.TabIndex = 187;
-            this.label4.Text = "직위/성명";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Text = "직위";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TxtSITEMANAGERGRADE
             // 

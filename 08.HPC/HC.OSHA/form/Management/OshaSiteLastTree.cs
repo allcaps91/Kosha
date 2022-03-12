@@ -135,7 +135,6 @@ namespace HC_OSHA
         /// <param name="e"></param>
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-
             //SearchGroupByHistoryDate()
             SearchSite();
         }

@@ -417,6 +417,15 @@ namespace HC_OSHA
             SetSiteStatus();
             SearchReport();
 
+            //보건담당자명 자동 표시
+            if (TxtSITEMANAGERNAME.Text.Trim() == "" && base.SelectedEstimate.ID > 0)
+            {
+                TxtSITEMANAGERGRADE.Text = "보건담당자";
+                TxtSITEMANAGERNAME.Text = GetLtdBogen(base.SelectedEstimate.ID);
+            }
+            //의사 이름 자동 표시
+            if (TxtENGINEERNAME.Text.Trim() == "") TxtENGINEERNAME.Text = clsType.User.JobName;
+
             HIC_OSHA_MEMO memo = statusReportMemoRepository.FindOne(base.SelectedSite.ID);
             if (memo != null)
             {
@@ -427,6 +436,30 @@ namespace HC_OSHA
                 TxtMemo.Text = "";
             }
         }
+
+        //회사 보건관리자 이름 찾기
+        private string GetLtdBogen(long ESTIMATE_ID)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            string strName = "";
+            string email = string.Empty;
+
+            SQL = "";
+            SQL = "SELECT NAME FROM HIC_OSHA_CONTRACT_MANAGER ";
+            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID=" + ESTIMATE_ID + " ";
+            SQL = SQL + ComNum.VBLF + "  AND WORKER_ROLE='HEALTH_ROLE' ";
+            SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
+            SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0) strName = dt.Rows[0]["NAME"].ToString().Trim();
+            dt.Dispose();
+            dt = null;
+
+            return strName;
+        }
+
         private void SearchReport()
         {
 

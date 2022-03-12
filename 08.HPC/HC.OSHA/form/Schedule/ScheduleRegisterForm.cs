@@ -18,6 +18,7 @@ using HC.OSHA.Service.Schedule;
 using HC_Core;
 using HC_Core.Service;
 using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -35,6 +36,7 @@ namespace HC_OSHA
         private HcOshaSiteService hcOshaSiteService;
         private OshaVisitPriceService oshaVisitPriceService = new OshaVisitPriceService();
         private HcOshaContractService hcOshaContractService;
+        ComFunc cf = new ComFunc();
         /// <summary>
         /// 이벤트 고유아이디
         /// </summary>
@@ -277,8 +279,6 @@ namespace HC_OSHA
 
             DtpSearchUnVisitStartDate.SetValue(startDate.GetFirstDate());
             DtpSearchUnVisitEndDate.SetValue(startDate.GetLastDate());
-            //DtpSearchUnVisitStartDate.SetValue(startDate);
-            //DtpSearchUnVisitEndDate.SetValue(startDate);
 
             DtpSearchVisitStartDate.SetValue(startDate.GetFirstDate());
             DtpSearchVisitEndDate.SetValue(startDate.GetLastDate());
@@ -308,7 +308,6 @@ namespace HC_OSHA
             SSPreCharge.AddColumnText("방문일", nameof(VisitSiteModel.VISITDATETIME), 76, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true });
             SSPreCharge.AddColumnText("방문자", nameof(VisitSiteModel.VISITUSERNAME), 76, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true });
             BtnSearchPreVisit.PerformClick();
-
 
         }
         private void BtnSaveSchedule_Click(object sender, EventArgs e)
@@ -813,10 +812,12 @@ namespace HC_OSHA
             oshaSiteEstimateList1.SearhAndDoubleClik(OshaSiteLastTree.GetSite.ID, false);
 
             LblSiteName.Text = OshaSiteLastTree.GetSite.NAME;
+            SET_VisitPlace(base.SelectedSite.ID); //방문장소
 
             SearchVisitPriceList();
 
             SearchScheduleList();
+
         }
 
         private void Clear()
@@ -1178,8 +1179,8 @@ namespace HC_OSHA
         private void SearchScheduleList()
         {
             string month = CboMonth.GetValue();
-            string startDate = month + "-01";  
-            string endDate = month + "-31";  
+            string startDate = month + "-01";
+            string endDate = cf.READ_LASTDAY(clsDB.DbCon,startDate);
             long siteId = 0;
             if (base.SelectedSite != null)
             {
@@ -1370,5 +1371,28 @@ namespace HC_OSHA
         {
 
         }
+
+        //회사 방문장소 표시
+        private void SET_VisitPlace(long siteId)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            string strName = "";
+            string email = string.Empty;
+
+            SQL = "";
+            SQL = "SELECT VISITPLACE FROM HIC_OSHA_CONTRACT ";
+            SQL = SQL + ComNum.VBLF + "WHERE OSHA_SITE_ID=" + siteId + " ";
+            SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
+            SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            SQL = SQL + ComNum.VBLF + "ORDER BY CONTRACTDATE DESC ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            TxtVISITPLACE.Text = "";
+            if (dt.Rows.Count > 0) TxtVISITPLACE.Text = dt.Rows[0]["VISITPLACE"].ToString().Trim();
+            dt.Dispose();
+            dt = null;
+        }
+
     }
 }

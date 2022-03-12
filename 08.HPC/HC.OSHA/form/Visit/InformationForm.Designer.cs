@@ -33,6 +33,7 @@
             this.SSList = new FarPoint.Win.Spread.FpSpread();
             this.SSList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.contentTitle1 = new ComBase.Mvc.UserControls.ContentTitle();
+            this.BtnAdd1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
@@ -108,11 +109,24 @@
             this.contentTitle1.TabIndex = 95;
             this.contentTitle1.TitleText = "정보자료제공 대장";
             // 
+            // BtnAdd1
+            // 
+            this.BtnAdd1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAdd1.Location = new System.Drawing.Point(560, 3);
+            this.BtnAdd1.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.BtnAdd1.Name = "BtnAdd1";
+            this.BtnAdd1.Size = new System.Drawing.Size(75, 28);
+            this.BtnAdd1.TabIndex = 99;
+            this.BtnAdd1.Text = "일괄추가";
+            this.BtnAdd1.UseVisualStyleBackColor = true;
+            this.BtnAdd1.Click += new System.EventHandler(this.BtnAdd1_Click);
+            // 
             // InformationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BtnAdd1);
             this.Controls.Add(this.BtnAdd);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.SSList);
@@ -134,5 +148,6 @@
         private FarPoint.Win.Spread.FpSpread SSList;
         private FarPoint.Win.Spread.SheetView SSList_Sheet1;
         private ComBase.Mvc.UserControls.ContentTitle contentTitle1;
+        private System.Windows.Forms.Button BtnAdd1;
     }
 }

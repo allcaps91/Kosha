@@ -78,6 +78,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.TxtWEMHarmfulFactors = new System.Windows.Forms.TextBox();
             this.panSiteSatus = new System.Windows.Forms.Panel();
+            this.btnDate = new System.Windows.Forms.Button();
             this.TxtDeptName = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.autoCompleteMacro1 = new HC_Core.AutoCompleteMacro();
@@ -91,7 +92,6 @@
             this.BtnDataLink = new System.Windows.Forms.Button();
             this.NumGeneralTotalCount = new System.Windows.Forms.NumericUpDown();
             this.NumSpecialTotalCount = new System.Windows.Forms.NumericUpDown();
-            this.btnDate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NumCurrentWorkerCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumNewWorkerCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumRetireWorkerCount)).BeginInit();
@@ -815,6 +815,18 @@
             this.panSiteSatus.Size = new System.Drawing.Size(1280, 210);
             this.panSiteSatus.TabIndex = 173;
             // 
+            // btnDate
+            // 
+            this.btnDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDate.Location = new System.Drawing.Point(424, 150);
+            this.btnDate.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnDate.Name = "btnDate";
+            this.btnDate.Size = new System.Drawing.Size(80, 27);
+            this.btnDate.TabIndex = 186;
+            this.btnDate.Text = "불러오기";
+            this.btnDate.UseVisualStyleBackColor = true;
+            this.btnDate.Click += new System.EventHandler(this.btnDate_Click);
+            // 
             // TxtDeptName
             // 
             this.TxtDeptName.Location = new System.Drawing.Point(600, 6);
@@ -864,7 +876,7 @@
             this.label30.Padding = new System.Windows.Forms.Padding(3);
             this.label30.Size = new System.Drawing.Size(226, 25);
             this.label30.TabIndex = 181;
-            this.label30.Text = "타병원검진";
+            this.label30.Text = "참고사항";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button3
@@ -955,18 +967,6 @@
             this.NumSpecialTotalCount.Name = "NumSpecialTotalCount";
             this.NumSpecialTotalCount.Size = new System.Drawing.Size(78, 25);
             this.NumSpecialTotalCount.TabIndex = 153;
-            // 
-            // btnDate
-            // 
-            this.btnDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDate.Location = new System.Drawing.Point(424, 150);
-            this.btnDate.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.btnDate.Name = "btnDate";
-            this.btnDate.Size = new System.Drawing.Size(80, 27);
-            this.btnDate.TabIndex = 186;
-            this.btnDate.Text = "불러오기";
-            this.btnDate.UseVisualStyleBackColor = true;
-            this.btnDate.Click += new System.EventHandler(this.btnDate_Click);
             // 
             // SiteStatusControl
             // 

@@ -89,7 +89,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  SYSTIMESTAMP,                  ");
             parameter.AppendSql("  :MODIFIEDUSER,                 ");
             parameter.AppendSql("  SYSTIMESTAMP,                  ");
-            parameter.AppendSql("  :CREATEDUSER.                  ");
+            parameter.AppendSql("  :CREATEDUSER,                  ");
             parameter.AppendSql("  :SWLICENSE                     ");
             parameter.AppendSql(")                                ");
             parameter.Add("ID", dto.ID);

@@ -173,17 +173,13 @@ namespace HC.Core.Repository
             return ExecuteReader<HC_SITE_WORKER>(parameter);
 
         }
-        public List<HC_SITE_WORKER> FindAll(long siteId, string name, string dept, string workerRole)
+        public List<HC_SITE_WORKER> FindAll(long siteId, string name, string dept)
         {
             MParameter parameter = CreateParameter();
         
             parameter.AppendSql("SELECT * FROM HC_SITE_WORKER_VIEW  ");
             parameter.AppendSql("WHERE SITEID = :SITEID ");
             parameter.AppendSql("  AND SWLICENSE=:SWLICENSE ");
-            if (!workerRole.IsNullOrEmpty())
-            {
-                parameter.AppendSql("AND WORKER_ROLE = :WORKER_ROLE ");
-            }
             if (!name.IsNullOrEmpty())
             {
                 parameter.AppendSql("AND NAME LIKE :NAME ");
@@ -203,10 +199,6 @@ namespace HC.Core.Repository
             if (!dept.IsNullOrEmpty())
             {
                 parameter.Add("DEPT", dept);
-            }
-            if (!workerRole.IsNullOrEmpty())
-            {
-                parameter.Add("WORKER_ROLE", workerRole);
             }
             return ExecuteReader<HC_SITE_WORKER>(parameter);
 
@@ -284,6 +276,7 @@ namespace HC.Core.Repository
             parameter.AppendSql("  NAME,                      ");
             parameter.AppendSql("  WORKER_ROLE,               ");
             parameter.AppendSql("  DEPT,                      ");
+            parameter.AppendSql("  SABUN,                     ");
             parameter.AppendSql("  TEL,                       ");
             parameter.AppendSql("  JUMIN,                     ");
             parameter.AppendSql("  HP,                        ");
@@ -307,6 +300,7 @@ namespace HC.Core.Repository
             parameter.AppendSql("  :NAME,                     ");
             parameter.AppendSql("  :WORKER_ROLE,              ");
             parameter.AppendSql("  :DEPT,                     ");
+            parameter.AppendSql("  :SABUN,                    ");
             parameter.AppendSql("  :TEL,                      ");
             parameter.AppendSql("  :JUMIN,                    ");
             parameter.AppendSql("  :HP,                       ");
@@ -328,6 +322,7 @@ namespace HC.Core.Repository
             parameter.Add("NAME", dto.NAME);
             parameter.Add("WORKER_ROLE", dto.WORKER_ROLE);
             parameter.Add("DEPT", dto.DEPT);
+            parameter.Add("SABUN", dto.SABUN);
             parameter.Add("TEL", dto.TEL);
             parameter.Add("JUMIN", dto.JUMIN);
             parameter.Add("HP", dto.HP);
@@ -377,6 +372,7 @@ namespace HC.Core.Repository
             parameter.AppendSql("  NAME = :NAME, ");
             parameter.AppendSql("  WORKER_ROLE = :WORKER_ROLE, ");
             parameter.AppendSql("  DEPT = :DEPT, ");
+            parameter.AppendSql("  SABUN = :SABUN, ");
             parameter.AppendSql("  TEL = :TEL,  ");
             parameter.AppendSql("  JUMIN = :JUMIN, ");
             parameter.AppendSql("  HP = :HP, ");
@@ -394,6 +390,7 @@ namespace HC.Core.Repository
             parameter.Add("NAME", dto.NAME);
             parameter.Add("WORKER_ROLE", dto.WORKER_ROLE);
             parameter.Add("DEPT", dto.DEPT);
+            parameter.Add("SABUN", dto.SABUN);
             parameter.Add("TEL", dto.TEL);
             parameter.Add("JUMIN", dto.JUMIN);
             parameter.Add("HP", dto.HP);

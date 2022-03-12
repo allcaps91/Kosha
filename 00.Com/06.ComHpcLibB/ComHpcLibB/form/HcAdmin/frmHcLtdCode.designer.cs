@@ -141,7 +141,6 @@
             this.txtJuDetail = new System.Windows.Forms.TextBox();
             this.txtJuso = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnHelp = new System.Windows.Forms.Button();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -764,7 +763,6 @@
             this.groupBox1.Controls.Add(this.txtJuDetail);
             this.groupBox1.Controls.Add(this.txtJuso);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.btnHelp);
             this.groupBox1.Controls.Add(this.txtMail);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtName);
@@ -1577,21 +1575,12 @@
             this.label5.Text = "*도로명주소";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnHelp
-            // 
-            this.btnHelp.Image = global::ComHpcLibB.Properties.Resources.find;
-            this.btnHelp.Location = new System.Drawing.Point(246, 56);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(26, 27);
-            this.btnHelp.TabIndex = 139;
-            this.btnHelp.UseVisualStyleBackColor = true;
-            // 
             // txtMail
             // 
             this.txtMail.Location = new System.Drawing.Point(105, 57);
             this.txtMail.MaxLength = 6;
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(139, 25);
+            this.txtMail.Size = new System.Drawing.Size(169, 25);
             this.txtMail.TabIndex = 2;
             this.txtMail.Tag = "MAILCODE";
             this.txtMail.Text = "txtMail";
@@ -1906,7 +1895,7 @@
             this.SSTax.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSTax.HorizontalScrollBar.Renderer = flatScrollBarRenderer5;
-            this.SSTax.HorizontalScrollBar.TabIndex = 135;
+            this.SSTax.HorizontalScrollBar.TabIndex = 137;
             this.SSTax.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSTax.Location = new System.Drawing.Point(3, 30);
             this.SSTax.Name = "SSTax";
@@ -1919,7 +1908,7 @@
             this.SSTax.VerticalScrollBar.Name = "";
             flatScrollBarRenderer6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSTax.VerticalScrollBar.Renderer = flatScrollBarRenderer6;
-            this.SSTax.VerticalScrollBar.TabIndex = 136;
+            this.SSTax.VerticalScrollBar.TabIndex = 138;
             this.SSTax.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SSTax_Sheet1
@@ -2085,7 +2074,7 @@
             this.SSList.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSList.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SSList.HorizontalScrollBar.TabIndex = 133;
+            this.SSList.HorizontalScrollBar.TabIndex = 135;
             this.SSList.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.Location = new System.Drawing.Point(2, 2);
             this.SSList.Name = "SSList";
@@ -2098,7 +2087,7 @@
             this.SSList.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSList.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SSList.VerticalScrollBar.TabIndex = 134;
+            this.SSList.VerticalScrollBar.TabIndex = 136;
             this.SSList.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
             // 
@@ -2322,7 +2311,6 @@
         private System.Windows.Forms.TextBox txtJuDetail;
         private System.Windows.Forms.TextBox txtJuso;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;

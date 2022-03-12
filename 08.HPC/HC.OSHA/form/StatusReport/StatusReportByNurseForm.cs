@@ -26,6 +26,7 @@ using HC_OSHA.Repository.StatusReport;
 using HC_OSHA.StatusReport;
 using Newtonsoft.Json;
 using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -230,6 +231,15 @@ namespace HC_OSHA
           
             SearchReport();
 
+            //보건담당자명 자동 표시
+            if (TxtSITEMANAGERNAME.Text.Trim() == "" && base.SelectedEstimate.ID > 0)
+            {
+                TxtSITEMANAGERGRADE.Text = "보건담당자";
+                TxtSITEMANAGERNAME.Text = GetLtdBogen(base.SelectedEstimate.ID);
+            }
+            //간호사 이름 자동 표시
+            if (TxtNURSENAME.Text.Trim() == "") TxtNURSENAME.Text = clsType.User.JobName;
+
             HIC_OSHA_MEMO memo = statusReportMemoRepository.FindOne(base.SelectedSite.ID);
             if (memo != null)
             {
@@ -258,15 +268,8 @@ namespace HC_OSHA
             if (SelectedSite != null)
             {
                 ContentTitle.TitleText = "보건관리상태보고서 간호사 - " + base.SelectedSite.NAME;
-                HC_SITE_WORKER worker = hcSiteWorkerService.FindHealthRole(SelectedSite.ID);
-                if (worker != null)
-                {
-                    TxtSITEMANAGERGRADE.Text = "보건담당자";
-                    TxtSITEMANAGERNAME.Text = worker.NAME;
-                }
                 siteStatusControl.SetSitName(SelectedSite.NAME);
             }
-          
         }
       
               
@@ -619,7 +622,7 @@ namespace HC_OSHA
                 dto.OPINION = opinion;
                 dto.SITE_ID = SelectedSite.ID;
                 dto.ESTIMATE_ID = SelectedEstimate.ID;
-                dto.NAME = clsType.User.UserName;
+                dto.NAME = clsType.User.JobName;
                 dto.CERT = "간호사";
                 hcOshaCard19Service.Save(dto);
 
@@ -689,14 +692,15 @@ namespace HC_OSHA
                 NumCheckCount2.SetValue(list[2].COUNT); // 혈당
                 NumCheckCount3.Value = list[3].COUNT; // 소변
                 NumCheckCount4.Value = list[4].COUNT; //BMI
-            }
-               
+                if (list[1].COUNT > 0) ChkIsSangdam1.Checked = true;
+                if (list[2].COUNT > 0) ChkIsSangdam2.Checked = true;
+                if (list[3].COUNT > 0) ChkIsSangdam3.Checked = true;
+                if (list[4].COUNT > 0) ChkIsSangdam3.Checked = true;
+            }               
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-          
-           
 
         }
 
@@ -801,7 +805,7 @@ namespace HC_OSHA
             {
                 if (item != null)
                 {
-                    TxtOshaData.Text = item.REMARK;
+                    TxtOshaData.Text += item.REMARK + "/";
                 }
             };
 
@@ -809,14 +813,32 @@ namespace HC_OSHA
             informationForm.Show(this);
         }
 
-        private void oshaSiteList1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void siteStatusControl_Load(object sender, EventArgs e)
         {
 
         }
+        //회사 보건관리자 이름 찾기
+        private string GetLtdBogen(long ESTIMATE_ID)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            string strName = "";
+            string email = string.Empty;
+
+            SQL = "";
+            SQL = "SELECT NAME FROM HIC_OSHA_CONTRACT_MANAGER ";
+            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID=" + ESTIMATE_ID + " ";
+            SQL = SQL + ComNum.VBLF + "  AND WORKER_ROLE='HEALTH_ROLE' ";
+            SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
+            SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0) strName = dt.Rows[0]["NAME"].ToString().Trim();
+            dt.Dispose();
+            dt = null;
+
+            return strName;
+        }
+
     }
 }

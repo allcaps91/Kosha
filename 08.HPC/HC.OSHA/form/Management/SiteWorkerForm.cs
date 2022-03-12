@@ -38,34 +38,6 @@ namespace HC_OSHA
             hcSiteWorkerService = new HcSiteWorkerService();
         
         }
-       
-        private void BtnSearch_Click(object sender, EventArgs e)
-        {
-            if (SelectedSite.ID > 0)
-            {
-                try
-                {
-                    Cursor.Current = Cursors.WaitCursor;
-                    hcSiteWorkerService.CopyHealthCheck(SelectedSite.ID);
-
-                    MessageUtil.Info("근로자 목록이 복사 되었습니다");
-                    
-                    SetDeptCombo();
-
-                    Search();
-                }
-                catch(Exception ex)
-                {
-                    MessageUtil.Alert(ex.Message);
-                }
-                finally
-                {
-                    Cursor.Current = Cursors.Default;
-                }
-               
-            }
-          
-        }
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
@@ -102,31 +74,22 @@ namespace HC_OSHA
             }
             CboDept.SelectedIndex = 0;
 
-
         }
         private void SiteWorkerForm_Load(object sender, EventArgs e)
         {
             TxtNameOrPano.SetExecuteButton(BtnSearch);
 
-            SpreadComboBoxData comboBoxData = codeService.GetSpreadComboBoxData("WORKER_ROLE", "OSHA");
-            
             SSWorkerList.Initialize(new SpreadOption() { IsRowSelectColor = false });
             SSWorkerList.AddColumnText("등록번호", nameof(HC_SITE_WORKER.ID), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
             SSWorkerList.AddColumnText("이름", nameof(HC_SITE_WORKER.NAME), 75, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
             SSWorkerList.AddColumnText("부서", nameof(HC_SITE_WORKER.DEPT), 140, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
-            SSWorkerList.AddColumnComboBox("직책", nameof(HC_SITE_WORKER.WORKER_ROLE), 150, IsReadOnly.N, comboBoxData, new SpreadCellTypeOption { IsSort = false });
+            SSWorkerList.AddColumnText("직책", nameof(HC_SITE_WORKER.WORKER_ROLE), 120, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("생년월일", nameof(HC_SITE_WORKER.JUMIN), 120, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSWorkerList.AddColumnText("사원번호", nameof(HC_SITE_WORKER.SABUN), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("퇴사일자", nameof(HC_SITE_WORKER.END_DATE), 120, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
-            //SSWorkerList.AddColumnText("전화", nameof(HC_SITE_WORKER.TEL), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });            
-            //SSWorkerList.AddColumnText("휴대폰", nameof(HC_SITE_WORKER.HP), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
-            //SSWorkerList.AddColumnText("이메일", nameof(HC_SITE_WORKER.EMAIL), 200, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnButton("삭제", 60, new SpreadCellTypeOption { ButtonText = "삭제" }).ButtonClick += SSWorkerListDelete_ButtonClick;
 
             SSWorkerList.SetDataSource(new List<HC_SITE_WORKER>());
-
-            List<HC_CODE> roles = codeService.FindActiveCodeByGroupCode("WORKER_ROLE", "OSHA");
-            CboRole.SetItems(roles, "CodeName", "Code", "전체", "", AddComboBoxPosition.Top);
-            CboRole.SelectedIndex = 0;
 
             Search();
         }
@@ -177,6 +140,7 @@ namespace HC_OSHA
                 SQL = "SELECT ID  FROM HIC_OSHA_HEALTHCHECK ";
                 SQL = SQL + ComNum.VBLF + "WHERE SITE_ID=" + base.SelectedSite.ID + " ";
                 SQL = SQL + ComNum.VBLF + "  AND WORKER_ID='" + dto.ID + "' ";
+                SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
                 SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
                 if (dt.Rows.Count > 0)
@@ -201,7 +165,7 @@ namespace HC_OSHA
             }
             else
             {
-                List<HC_SITE_WORKER> list = hcSiteWorkerService.FindAll(base.SelectedSite.ID, TxtNameOrPano.Text, CboDept.GetValue(), CboRole.GetValue());
+                List<HC_SITE_WORKER> list = hcSiteWorkerService.FindAll(base.SelectedSite.ID, TxtNameOrPano.Text, CboDept.GetValue());
                 foreach(HC_SITE_WORKER w in list)
                 {//"4909181117528"  91WWPnCPpgbymOHlAtr7zi47D7Kr0cmnt7EAc7t8g0g=
                     if (w.JUMIN != null)

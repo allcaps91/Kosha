@@ -722,7 +722,7 @@
             this.SSView_Sheet1.Cells.Get(1, 2).CellType = textCellType29;
             this.SSView_Sheet1.Cells.Get(1, 2).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSView_Sheet1.Cells.Get(1, 2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
-            this.SSView_Sheet1.Cells.Get(1, 2).Value = "소속\r\n부서\r\n(직종)";
+            this.SSView_Sheet1.Cells.Get(1, 2).Value = "소속\r\n부서\r\n(사번)";
             this.SSView_Sheet1.Cells.Get(1, 2).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSView_Sheet1.Cells.Get(1, 3).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             textCellType30.MaxLength = 32000;

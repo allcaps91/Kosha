@@ -29,8 +29,8 @@ namespace HC_OSHA.form.Visit
     public partial class VisitDocument : Form
     {
         private HC_CODE pdfPath = null;
-        int[] nP1 = new int[7] { 0, 0, 0, 0, 0, 0,0 };
-        int[] nP2 = new int[7] { 0, 0, 0, 0, 0, 0,0 };
+        int[] nP1 = new int[8] { 0, 0, 0, 0, 0, 0,0,0 };
+        int[] nP2 = new int[8] { 0, 0, 0, 0, 0, 0,0,0 };
         private HC_CODE excelPath = null;
         SpreadPrint print = null;
 
@@ -116,6 +116,7 @@ namespace HC_OSHA.form.Visit
                         if (ssDoc.ActiveSheet.Cells[i, c].Value.Equals("~{간호사}")) { nP1[3] = i; nP2[3] = c; }
                         if (ssDoc.ActiveSheet.Cells[i, c].Value.Equals("~{산업위생}")) { nP1[4] = i; nP2[4] = c; }
                         if (ssDoc.ActiveSheet.Cells[i, c].Value.Equals("~{문서번호}")) { nP1[5] = i; nP2[5] = c; }
+                        if (ssDoc.ActiveSheet.Cells[i, c].Value.Equals("~{방문장소}")) { nP1[6] = i; nP2[6] = c; }
                     }
                 }
             }
@@ -129,6 +130,8 @@ namespace HC_OSHA.form.Visit
             ssDoc.ActiveSheet.Cells[nP1[3], nP2[3]].Value = "-";
             //산업기사ㅣ
             ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value = "-";
+            //방문장소
+            ssDoc.ActiveSheet.Cells[nP1[6], nP2[6]].Value = "";
         }
 
         public ChargeEmailModel Print(List<VisitDocumentModel> list, string yearAndMonth, string executeDate, long siteId, string siteName, bool isPdf, string docNumber, string exportPath="" )
@@ -140,13 +143,15 @@ namespace HC_OSHA.form.Visit
             
                 string year = yearAndMonth.Substring(0, 4);
                 string month = yearAndMonth.Substring(5, 2);
+                string strVisit = "";
                 ssDoc.ActiveSheet.Cells[nP1[5], nP2[5]].Value = "대한 " + year + " - " + docNumber + "호" + "(" + executeDate + ")";
                 ssDoc.ActiveSheet.Cells[nP1[0], nP2[0]].Value = siteName + " 대표이사";
                 ssDoc.ActiveSheet.Cells[nP1[1], nP2[1]].Value = year + "년 " + month + "월 " + "보건관리전문기관 방문일정 안내";
                 if (nP1[6] > 0) ssDoc.ActiveSheet.Cells[nP1[6], nP2[6]].Value = clsType.User.JobName; //담당
 
-                chargeEmailModel.Title = "대한보건환경연구소 " + year + "년 " + month + "월 보건관리전문기관 방문일정 안내";
-
+                chargeEmailModel.Title = year + "년 " + month + "월 보건관리전문기관 방문일정 안내";
+                if (clsType.HosInfo.SwLicense == "9555-88P5-8P33") chargeEmailModel.Title = "대한보건환경연구소 " + year + "년 " + month + "월 보건관리전문기관 방문일정 안내";
+                
                 chargeEmailModel.Content = "<html><body> 1. 귀사의 무궁한 발전과 무재해를 기원합니다 <br>";
                 chargeEmailModel.Content = chargeEmailModel.Content + "2. "+ month + "월 일정을 첨부와 같이 보내드리오니 직원 여러분의 많은 참여 부탁드립니다 ";
                 chargeEmailModel.Content = chargeEmailModel.Content + "</body></html>";
@@ -190,8 +195,24 @@ namespace HC_OSHA.form.Visit
                             ssDoc.ActiveSheet.Cells[nP1[4], nP2[4]].Value += "\n" + day + list[j].visitUserName;
                         }
                     }
+
+                    //방문장소
+                    if (!list[j].visitPlace.IsNullOrEmpty())
+                    {
+                        if (VB.InStr(strVisit, day) == 0)
+                        {
+                            if (strVisit == "")
+                            {
+                                strVisit = day + " " + list[j].visitPlace;
+                            }
+                            else
+                            {
+                                strVisit += ", " + day + " " + list[j].visitPlace;
+                            }
+                        }
+                    }
                 }
-                Log.Error(4);
+                ssDoc.ActiveSheet.Cells[nP1[6], nP2[6]].Value = strVisit;
                 print = new SpreadPrint(ssDoc, PrintStyle.STANDARD_APPROVAL);
                 if (isPdf)
                 {

@@ -36,7 +36,7 @@ namespace HC.Core.Dto
         public string GENDER { get; set; }
         public string AgeAndGender { get; set; }
         public int AGE { get; set; }
-        
+        public string SABUN { get; set; }
 
         /// <summary>
         /// 

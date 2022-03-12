@@ -432,13 +432,14 @@ namespace HC.OSHA.Repository.StatusReport
         public List<HealthCheckDto> FindAll(string worker_id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql(" SELECT A.*, B.NAME AS MODIFIEDUSER FROM HIC_OSHA_HEALTHCHECK A ");
-            parameter.AppendSql(" INNER JOIN HIC_USERS B ");
-            parameter.AppendSql(" ON A.MODIFIEDUSER = B.USERID ");
+            parameter.AppendSql(" SELECT A.*, B.NAME AS MODIFIEDUSER ");
+            parameter.AppendSql("   FROM HIC_OSHA_HEALTHCHECK A ");
+            parameter.AppendSql("        INNER JOIN HIC_USERS B ");
+            parameter.AppendSql("              ON  A.MODIFIEDUSER = B.USERID ");
+            parameter.AppendSql("              AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" WHERE A.WORKER_ID = :ID");
-            parameter.AppendSql(" AND A.ISDELETED = 'N' ");
-            parameter.AppendSql(" AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql(" AND B.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND A.ISDELETED = 'N' ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY A.CHARTDATE DESC, A.CHARTTIME DESC ");
 
             parameter.Add("ID", worker_id);
@@ -465,7 +466,7 @@ namespace HC.OSHA.Repository.StatusReport
                 parameter.AppendSql(" AND A.ISDELETED = 'N' ");
             }
             parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql(" ORDER BY A.CHARTDATE, A.CHARTTIME ");
+            parameter.AppendSql(" ORDER BY A.CHARTDATE,A.REPORT_ID, A.NAME ");
 
             parameter.Add("siteId", siteId);
             parameter.Add("startDate", startDate);
@@ -475,15 +476,15 @@ namespace HC.OSHA.Repository.StatusReport
 
             return ExecuteReader<HealthCheckDto>(parameter);
         }
+
         public List<HealthCheckDto> FindAll(long reprotid)
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql(" SELECT A.* FROM HIC_OSHA_HEALTHCHECK A ");
-            parameter.AppendSql(" WHERE ");
-            parameter.AppendSql(" A.ISDELETED = 'N' ");
-            parameter.AppendSql(" AND A.REPORT_ID = :REPORTID ");
-            parameter.AppendSql(" AND SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql(" ORDER BY A.CHARTDATE, A.CHARTTIME");
+            parameter.AppendSql(" WHERE A.REPORT_ID = :REPORTID ");
+            parameter.AppendSql("   AND A.ISDELETED = 'N' ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" ORDER BY A.CHARTDATE, A.CHARTTIME ");
 
             parameter.Add("REPORTID", reprotid);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -517,6 +518,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("      , dept = :dept");
             parameter.AppendSql("      , gender = :gender");
             parameter.AppendSql("      , age = :age");
+            parameter.AppendSql("      , sabun = :sabun");
             parameter.AppendSql("      , content = :content");
             parameter.AppendSql("      , suggestion = :suggestion");
             parameter.AppendSql("      , bpl = :bpl");
@@ -539,6 +541,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.Add("dept", dto.dept);
             parameter.Add("gender", dto.gender);
             parameter.Add("age", dto.age);
+            parameter.Add("sabun", dto.sabun);
             parameter.Add("content", dto.content);
             parameter.Add("suggestion", dto.suggestion);
             parameter.Add("bpl", dto.bpl);
@@ -582,6 +585,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , dept");
             parameter.AppendSql("  , gender");
             parameter.AppendSql("  , age");
+            parameter.AppendSql("  , sabun");
             parameter.AppendSql("  , content");
             parameter.AppendSql("  , suggestion");
             parameter.AppendSql("  , bpl");
@@ -611,6 +615,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.AppendSql("  , :dept");
             parameter.AppendSql("  , :gender");
             parameter.AppendSql("  , :age");
+            parameter.AppendSql("  , :sabun");
             parameter.AppendSql("  , :content");
             parameter.AppendSql("  , :suggestion");
             parameter.AppendSql("  , :bpl");
@@ -641,6 +646,7 @@ namespace HC.OSHA.Repository.StatusReport
             parameter.Add("dept", dto.dept);
             parameter.Add("gender", dto.gender);
             parameter.Add("age", dto.age);
+            parameter.Add("sabun", dto.sabun);
             parameter.Add("content", dto.content);
             parameter.Add("suggestion", dto.suggestion);
             parameter.Add("bpl", dto.bpl);

@@ -236,6 +236,9 @@ namespace HC_OSHA
             string strName = "";
             string strBirth = "";
             string strBuse = "";
+            string strJik = "";
+            string strSabun = "";
+            string strEND_DATE = "";
             string SQL = "";
             string SqlErr = "";
             int intRowAffected = 0;
@@ -249,6 +252,7 @@ namespace HC_OSHA
                 strBirth = SS1_Sheet1.Cells[i, 1].Text.ToString();
                 if (VB.Len(strBirth) > 6) strBirth = VB.Left(strBirth, 6);
                 strBuse = SS1_Sheet1.Cells[i, 2].Text.ToString();
+                strEND_DATE = SS1_Sheet1.Cells[i, 5].Text.ToString();
                 if (strName=="")
                 {
                     ComFunc.MsgBox((i+1) + "번줄 이름이 공란입니다.", "오류");
@@ -259,6 +263,20 @@ namespace HC_OSHA
                     ComFunc.MsgBox((i + 1) + "번줄 생년월일이 숫자가 아닙니다.", "오류");
                     return;
                 }
+                if (strBirth=="000000" || strBirth=="123456" || VB.Len(strBirth)!=6)
+                {
+                    ComFunc.MsgBox((i + 1) + "번줄 생년월일이 이상합니다.", "오류");
+                    return;
+                }
+
+                if (strEND_DATE!="")
+                {
+                    if (VB.Len(strEND_DATE)!=10 || VB.Mid(strEND_DATE,5,1)!="-")
+                    {
+                        ComFunc.MsgBox((i + 1) + "번줄 퇴사일자 형식이 오류입니다.(ex:1993-12-24)", "오류");
+                        return;
+                    }
+                }
             }
 
             for (int i = 0; i < SS1_Sheet1.RowCount; i++)
@@ -267,19 +285,24 @@ namespace HC_OSHA
                 strBirth = SS1_Sheet1.Cells[i, 1].Text.ToString();
                 if (VB.Len(strBirth) > 6) strBirth = VB.Left(strBirth, 6);
                 strBuse = SS1_Sheet1.Cells[i, 2].Text.ToString();
+                strJik = SS1_Sheet1.Cells[i, 3].Text.ToString();
+                strSabun = SS1_Sheet1.Cells[i, 4].Text.ToString();
+                strEND_DATE = SS1_Sheet1.Cells[i, 5].Text.ToString();
 
-                // 사원이 없으면 신규등록함
+                // 사원이 없으면 신규등록, 있으면 업데이트
                 worker.ID = "";
                 worker.SITEID = nLtdCode;
                 worker.NAME = strName;
                 worker.DEPT = strBuse;
+                worker.WORKER_ROLE = strJik;
+                worker.SABUN = strSabun;
                 worker.TEL = "";
                 worker.ISDELETED = "N";
                 worker.JUMIN = strBirth;
                 worker.PANO = 0;
                 worker.PTNO = "";
-                worker.WORKER_ROLE = "EMP_ROLE";
                 worker.IPSADATE = "";
+                worker.END_DATE = strEND_DATE;
                 HC_SITE_WORKER saved = hcSiteWorkerRepository.FindOneByBirth(nLtdCode, strName, strBirth);
                 if (saved == null)
                 {
@@ -358,9 +381,28 @@ namespace HC_OSHA
                     }
                     if (bOK == false && strHead == "부서")
                     {
+                        if (strData == "소속") bOK = true;
                         if (strData == "공정") bOK = true;
                         if (strData == "공정(부서)") bOK = true;
                     }
+                    if (bOK == false && strHead == "직책")
+                    {
+                        if (strData == "직위") bOK = true;
+                    }
+                    if (bOK == false && strHead == "사원번호")
+                    {
+                        if (strData == "사번") bOK = true;
+                        if (strData == "직번") bOK = true;
+
+                    }
+                    if (bOK == false && strHead == "퇴사일자")
+                    {
+                        if (strData == "퇴직일") bOK = true;
+                        if (strData == "퇴사일") bOK = true;
+                        if (strData == "퇴사일자") bOK = true;
+                        if (strData == "퇴직일자") bOK = true;
+                    }
+
                     if (bOK == true)
                     {
                         SSConv_Sheet1.Cells[i, 1].Value = (j + 1);

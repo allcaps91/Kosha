@@ -34,14 +34,14 @@
             this.SSWorkerList = new FarPoint.Win.Spread.FpSpread();
             this.SSWorkerList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.panSearch = new System.Windows.Forms.Panel();
-            this.CboRole = new System.Windows.Forms.ComboBox();
             this.CboDept = new System.Windows.Forms.ComboBox();
             this.BtnSearch = new System.Windows.Forms.Button();
             this.TxtNameOrPano = new System.Windows.Forms.TextBox();
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnAdd = new System.Windows.Forms.Button();
-            this.BtnCopy = new System.Windows.Forms.Button();
             this.contentTitle1 = new ComBase.Mvc.UserControls.ContentTitle();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SSWorkerList)).BeginInit();
@@ -118,13 +118,13 @@
             // 
             this.panSearch.BackColor = System.Drawing.Color.White;
             this.panSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panSearch.Controls.Add(this.CboRole);
+            this.panSearch.Controls.Add(this.label1);
+            this.panSearch.Controls.Add(this.label2);
             this.panSearch.Controls.Add(this.CboDept);
             this.panSearch.Controls.Add(this.BtnSearch);
             this.panSearch.Controls.Add(this.TxtNameOrPano);
             this.panSearch.Controls.Add(this.BtnSave);
             this.panSearch.Controls.Add(this.BtnAdd);
-            this.panSearch.Controls.Add(this.BtnCopy);
             this.panSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panSearch.Location = new System.Drawing.Point(0, 38);
             this.panSearch.Name = "panSearch";
@@ -132,74 +132,53 @@
             this.panSearch.TabIndex = 1;
             this.panSearch.Paint += new System.Windows.Forms.PaintEventHandler(this.panSearch_Paint);
             // 
-            // CboRole
-            // 
-            this.CboRole.FormattingEnabled = true;
-            this.CboRole.Location = new System.Drawing.Point(236, 7);
-            this.CboRole.Name = "CboRole";
-            this.CboRole.Size = new System.Drawing.Size(235, 25);
-            this.CboRole.TabIndex = 19;
-            this.CboRole.SelectedIndexChanged += new System.EventHandler(this.CboRole_SelectedIndexChanged);
-            // 
             // CboDept
             // 
             this.CboDept.FormattingEnabled = true;
-            this.CboDept.Location = new System.Drawing.Point(11, 7);
+            this.CboDept.Location = new System.Drawing.Point(53, 8);
             this.CboDept.Name = "CboDept";
-            this.CboDept.Size = new System.Drawing.Size(210, 25);
-            this.CboDept.TabIndex = 18;
+            this.CboDept.Size = new System.Drawing.Size(203, 25);
+            this.CboDept.TabIndex = 0;
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(607, 4);
+            this.BtnSearch.Location = new System.Drawing.Point(459, 8);
             this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(75, 28);
-            this.BtnSearch.TabIndex = 17;
+            this.BtnSearch.TabIndex = 2;
             this.BtnSearch.Text = "검색";
             this.BtnSearch.UseVisualStyleBackColor = true;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click_1);
             // 
             // TxtNameOrPano
             // 
-            this.TxtNameOrPano.Location = new System.Drawing.Point(501, 6);
+            this.TxtNameOrPano.Location = new System.Drawing.Point(337, 8);
             this.TxtNameOrPano.Name = "TxtNameOrPano";
             this.TxtNameOrPano.Size = new System.Drawing.Size(100, 25);
-            this.TxtNameOrPano.TabIndex = 16;
+            this.TxtNameOrPano.TabIndex = 1;
             // 
             // BtnSave
             // 
-            this.BtnSave.Location = new System.Drawing.Point(1003, 7);
+            this.BtnSave.Location = new System.Drawing.Point(683, 7);
             this.BtnSave.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(75, 28);
-            this.BtnSave.TabIndex = 15;
+            this.BtnSave.TabIndex = 4;
             this.BtnSave.Text = "저 장(&S)";
             this.BtnSave.UseVisualStyleBackColor = true;
             this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(922, 7);
+            this.BtnAdd.Location = new System.Drawing.Point(602, 7);
             this.BtnAdd.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(75, 28);
-            this.BtnAdd.TabIndex = 14;
+            this.BtnAdd.TabIndex = 3;
             this.BtnAdd.Text = "추 가";
             this.BtnAdd.UseVisualStyleBackColor = true;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
-            // 
-            // BtnCopy
-            // 
-            this.BtnCopy.Location = new System.Drawing.Point(748, 7);
-            this.BtnCopy.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.BtnCopy.Name = "BtnCopy";
-            this.BtnCopy.Size = new System.Drawing.Size(75, 28);
-            this.BtnCopy.TabIndex = 12;
-            this.BtnCopy.Text = "가져오기";
-            this.BtnCopy.UseVisualStyleBackColor = true;
-            this.BtnCopy.Visible = false;
-            this.BtnCopy.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // contentTitle1
             // 
@@ -211,6 +190,30 @@
             this.contentTitle1.Size = new System.Drawing.Size(1264, 38);
             this.contentTitle1.TabIndex = 0;
             this.contentTitle1.TitleText = "근로자 목록";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(289, 10);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(3);
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(42, 25);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "성명";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(11, 5);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(3);
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(42, 25);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "부서";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SiteWorkerForm
             // 
@@ -237,7 +240,6 @@
         private System.Windows.Forms.Panel panRight;
         private System.Windows.Forms.Panel panSearch;
         private ComBase.Mvc.UserControls.ContentTitle contentTitle1;
-        private System.Windows.Forms.Button BtnCopy;
         private FarPoint.Win.Spread.FpSpread SSWorkerList;
         private FarPoint.Win.Spread.SheetView SSWorkerList_Sheet1;
         private System.Windows.Forms.Button BtnSave;
@@ -247,6 +249,7 @@
         private System.Windows.Forms.Button BtnSearch;
         private System.Windows.Forms.TextBox TxtNameOrPano;
         private System.Windows.Forms.ComboBox CboDept;
-        private System.Windows.Forms.ComboBox CboRole;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

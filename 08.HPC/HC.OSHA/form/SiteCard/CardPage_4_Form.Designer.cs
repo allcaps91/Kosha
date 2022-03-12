@@ -1266,7 +1266,7 @@
             tipAppearance1.ForeColor = System.Drawing.SystemColors.InfoText;
             this.SSCard.TextTipAppearance = tipAppearance1;
             this.SSCard.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSCard_CellClick);
-            this.SSCard.SetViewportTopRow(0, 0, 13);
+            this.SSCard.SetViewportTopRow(0, 0, 10);
             // 
             // SSCard_Sheet1
             // 

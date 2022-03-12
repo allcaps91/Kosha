@@ -416,7 +416,7 @@
             this.BtnWorker.Name = "BtnWorker";
             this.BtnWorker.Size = new System.Drawing.Size(84, 28);
             this.BtnWorker.TabIndex = 215;
-            this.BtnWorker.Text = "근로자";
+            this.BtnWorker.Text = "성명";
             this.BtnWorker.UseVisualStyleBackColor = true;
             this.BtnWorker.Click += new System.EventHandler(this.BtnWorker_Click);
             // 
@@ -499,8 +499,8 @@
             this.label32.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.label32.Size = new System.Drawing.Size(84, 25);
             this.label32.TabIndex = 141;
-            this.label32.Text = "직위/성명";
-            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label32.Text = "직위";
+            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label35
             // 

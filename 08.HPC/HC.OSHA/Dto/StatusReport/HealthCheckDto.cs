@@ -46,6 +46,10 @@ namespace HC.OSHA.Dto.StatusReport
         /// <summary>
         public long age { get; set; }
         /// <summary>
+        ///성별
+        /// <summary>
+        public string sabun { get; set; }
+        /// <summary>
         ///상담내용
         /// <summary>
         public string content { get; set; }

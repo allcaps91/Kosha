@@ -123,11 +123,4 @@
   <metadata name="SSCard_Sheet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>149, 17</value>
   </metadata>
-  <data name="resource.Value" xml:space="preserve">
-    <value>※ 상담내용은 요점만 간략하게 작성
-※ 상담 후 건의사항 : 해당 근로자에 대한 상담내용에 근거하여 당해 전문기관이 사업주에게 건의한 사항
-    &lt;예&gt; 기계 설비 점검, 근로자에 대한 교육, 정밀검사 실시, 병·의원 의뢰, 사업주에 대한 개선 건의 등을 기재
-※ 위 서식의 형태는 자율적으로 정하여 사용할 수 있음. 다만, 일자 및 시간, 상담 근로자, 성별 등 위의 항목이 모두 
-    포함되어야 함</value>
-  </data>
 </root>

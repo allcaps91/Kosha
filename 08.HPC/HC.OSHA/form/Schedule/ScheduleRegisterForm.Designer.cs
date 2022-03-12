@@ -148,6 +148,8 @@
             this.BtnSaveSchedule = new System.Windows.Forms.Button();
             this.BtnDeleteSchedule = new System.Windows.Forms.Button();
             this.panSchedule = new System.Windows.Forms.Panel();
+            this.TxtVISITPLACE = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtVISITTIME = new System.Windows.Forms.TextBox();
             this.ChkDoctor = new System.Windows.Forms.CheckBox();
             this.LblSiteName = new System.Windows.Forms.Label();
@@ -166,8 +168,6 @@
             this.DtpVISITRESERVEDATE = new System.Windows.Forms.DateTimePicker();
             this.contentTitle1 = new ComBase.Mvc.UserControls.ContentTitle();
             this.BtnClose = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.TxtVISITPLACE = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tableBody.SuspendLayout();
             this.panLeftTop.SuspendLayout();
@@ -522,7 +522,7 @@
             this.label35.Padding = new System.Windows.Forms.Padding(4);
             this.label35.Size = new System.Drawing.Size(58, 25);
             this.label35.TabIndex = 116;
-            this.label35.Text = "상업장";
+            this.label35.Text = "사업장";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TxtSearchUnvisitSiteIdOrName
@@ -681,7 +681,7 @@
             this.label34.Padding = new System.Windows.Forms.Padding(4);
             this.label34.Size = new System.Drawing.Size(58, 25);
             this.label34.TabIndex = 115;
-            this.label34.Text = "상업장";
+            this.label34.Text = "사업장";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TxtSearchVisitSiteIdOrName
@@ -1787,6 +1787,27 @@
             this.panSchedule.TabIndex = 6;
             this.panSchedule.Paint += new System.Windows.Forms.PaintEventHandler(this.panSchedule_Paint);
             // 
+            // TxtVISITPLACE
+            // 
+            this.TxtVISITPLACE.Location = new System.Drawing.Point(546, 47);
+            this.TxtVISITPLACE.Name = "TxtVISITPLACE";
+            this.TxtVISITPLACE.Size = new System.Drawing.Size(128, 25);
+            this.TxtVISITPLACE.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label6.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(470, 47);
+            this.label6.Name = "label6";
+            this.label6.Padding = new System.Windows.Forms.Padding(4);
+            this.label6.Size = new System.Drawing.Size(70, 25);
+            this.label6.TabIndex = 106;
+            this.label6.Text = "방문장소";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // txtVISITTIME
             // 
             this.txtVISITTIME.Location = new System.Drawing.Point(344, 48);
@@ -1988,27 +2009,6 @@
             this.BtnClose.Text = "닫기";
             this.BtnClose.UseVisualStyleBackColor = true;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(470, 47);
-            this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(4);
-            this.label6.Size = new System.Drawing.Size(70, 25);
-            this.label6.TabIndex = 106;
-            this.label6.Text = "방문장소";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // TxtVISITPLACE
-            // 
-            this.TxtVISITPLACE.Location = new System.Drawing.Point(546, 47);
-            this.TxtVISITPLACE.Name = "TxtVISITPLACE";
-            this.TxtVISITPLACE.Size = new System.Drawing.Size(128, 25);
-            this.TxtVISITPLACE.TabIndex = 2;
             // 
             // ScheduleRegisterForm
             // 

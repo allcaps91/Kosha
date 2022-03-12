@@ -151,16 +151,40 @@ namespace HC_OSHA.StatusReport
 
             SearchReport();
 
-            //HIC_OSHA_MEMO memo = statusReportMemoRepository.FindOne(base.SelectedSite.ID);
-            //if (memo != null)
-            //{
-            //    TxtMemo.Text = memo.MEMO;
-            //}
-            //else
-            //{
-            //    TxtMemo.Text = "";
-            //}
+            //보건담당자명 자동 표시
+            if (TxtSITEMANAGERNAME.Text.Trim() == "" && base.SelectedEstimate.ID > 0)
+            {
+                TxtSITEMANAGERGRADE.Text = "보건담당자";
+                TxtSITEMANAGERNAME.Text = GetLtdBogen(base.SelectedEstimate.ID);
+            }
+            //의사 이름 자동 표시
+            if (TxtDoctorNAME.Text.Trim() == "") TxtDoctorNAME.Text = clsType.User.JobName;
+
         }
+
+        //회사 보건관리자 이름 찾기
+        private string GetLtdBogen(long ESTIMATE_ID)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            string strName = "";
+            string email = string.Empty;
+
+            SQL = "";
+            SQL = "SELECT NAME FROM HIC_OSHA_CONTRACT_MANAGER ";
+            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID=" + ESTIMATE_ID + " ";
+            SQL = SQL + ComNum.VBLF + "  AND WORKER_ROLE='HEALTH_ROLE' ";
+            SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
+            SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0) strName = dt.Rows[0]["NAME"].ToString().Trim();
+            dt.Dispose();
+            dt = null;
+
+            return strName;
+        }
+
         private void SearchReport()
         {
             List<VisitDateModel> list = statusReportDoctorService.StatusReportDoctorRepository.FindAll(base.SelectedSite.ID);
@@ -278,7 +302,7 @@ namespace HC_OSHA.StatusReport
                         }
                     }
 
-                     StatusReportDoctorDto saved = this.statusReportDoctorService.Save(dto);
+                    StatusReportDoctorDto saved = this.statusReportDoctorService.Save(dto);
 
                     try
                     {
@@ -555,12 +579,12 @@ namespace HC_OSHA.StatusReport
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
             if (dt.Rows.Count > 0)
             {
-                if(dt.Rows[0]["TotCount"].ToString().Trim() != "") numericUpDown1.SetValue(long.Parse(dt.Rows[0]["TotCount"].ToString()));
-                if (dt.Rows[0]["BpCount"].ToString().Trim()!="") numericUpDown22.SetValue(long.Parse(dt.Rows[0]["BpCount"].ToString()+""));
-                if (dt.Rows[0]["BstCount"].ToString().Trim() != "") numericUpDown23.SetValue(long.Parse(dt.Rows[0]["BstCount"].ToString()+""));
-                if (dt.Rows[0]["DanCount"].ToString().Trim() != "") numericUpDown24.SetValue(long.Parse(dt.Rows[0]["DanCount"].ToString()+""));
-                if (dt.Rows[0]["BMICount"].ToString().Trim() != "") numericUpDown25.SetValue(long.Parse(dt.Rows[0]["BMICount"].ToString()+""));
-                if (dt.Rows[0]["ExamCount"].ToString().Trim() != "") numericUpDown30.SetValue(long.Parse(dt.Rows[0]["ExamCount"].ToString()+""));
+                if (dt.Rows[0]["TotCount"].ToString().Trim() != "") numericUpDown1.SetValue(long.Parse(dt.Rows[0]["TotCount"].ToString()));
+                if (dt.Rows[0]["BpCount"].ToString().Trim() != "") numericUpDown22.SetValue(long.Parse(dt.Rows[0]["BpCount"].ToString() + ""));
+                if (dt.Rows[0]["BstCount"].ToString().Trim() != "") numericUpDown23.SetValue(long.Parse(dt.Rows[0]["BstCount"].ToString() + ""));
+                if (dt.Rows[0]["DanCount"].ToString().Trim() != "") numericUpDown24.SetValue(long.Parse(dt.Rows[0]["DanCount"].ToString() + ""));
+                if (dt.Rows[0]["BMICount"].ToString().Trim() != "") numericUpDown25.SetValue(long.Parse(dt.Rows[0]["BMICount"].ToString() + ""));
+                if (dt.Rows[0]["ExamCount"].ToString().Trim() != "") numericUpDown30.SetValue(long.Parse(dt.Rows[0]["ExamCount"].ToString() + ""));
             }
             dt.Dispose();
             dt = null;
@@ -757,7 +781,7 @@ namespace HC_OSHA.StatusReport
             informationForm.SelectedSite = base.SelectedSite;
             informationForm.OnSelected += (item) =>
             {
-                if(item != null)
+                if (item != null)
                 {
                     textBox12.Text = item.REMARK;
                 }

@@ -22,6 +22,7 @@ namespace HC_OSHA.Model.Schedule
         public string visitUserId2 { get; set; }
         public string visitUserName2 { get; set; }
         public string visitUserRole2 { get; set; }
+        public string visitPlace { get; set; }
         public string SENDDATE { get; set; }
         public string SENDNAME { get; set; }
         public string SENDMAIL { get; set; }

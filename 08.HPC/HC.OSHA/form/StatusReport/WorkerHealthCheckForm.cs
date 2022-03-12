@@ -83,6 +83,7 @@ namespace HC_OSHA.StatusReport
             SSWorkerList.AddColumnText("검진소견", nameof(HealthCheckWorkerModel.PanName), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
             SSWorkerList.AddColumnText("검진", nameof(HealthCheckWorkerModel.IsSpecial), 50, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("퇴사일자", nameof(HealthCheckWorkerModel.END_DATE), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSWorkerList.AddColumnText("사번", nameof(HealthCheckWorkerModel.Sabun), 50, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
 
             SSMemo.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true });
             SSMemo.AddColumnText("메모", nameof(HIC_OSHA_PATIENT_MEMO.MEMO), 347, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true });
@@ -271,6 +272,7 @@ namespace HC_OSHA.StatusReport
             string strPanjeng1 = "";
             string strPanjeng2 = "";
             string strPanjeng = "";
+            string strSabun = "";
             int nAge = 0;
 
             if (CboDept.SelectedItem != null)
@@ -300,7 +302,7 @@ namespace HC_OSHA.StatusReport
             strSiteList = READ_Relation_LTD(base.SelectedSite.ID);
             try
             {
-                SQL = "SELECT ID,NAME,DEPT,WORKER_ROLE,JUMIN,IPSADATE,END_DATE,ISMANAGEOSHA ";
+                SQL = "SELECT ID,NAME,DEPT,WORKER_ROLE,SABUN,JUMIN,IPSADATE,END_DATE,ISMANAGEOSHA ";
                 SQL = SQL + ComNum.VBLF + " FROM HIC_SITE_WORKER ";
                 SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND SITEID IN (" + strSiteList + ") ";
@@ -317,6 +319,7 @@ namespace HC_OSHA.StatusReport
                 {
                     SQL = SQL + ComNum.VBLF + " AND ID IN (SELECT WORKER_ID FROM HIC_OSHA_HEALTHCHECK ";
                     SQL = SQL + ComNum.VBLF + "             WHERE REPORT_ID=" + reportId + " ";
+                    SQL = SQL + ComNum.VBLF + "               AND ISDELETED='N' ";
                     SQL = SQL + ComNum.VBLF + "               AND SWLicense='" + clsType.HosInfo.SwLicense + "') ";
                 }
                 SQL = SQL + ComNum.VBLF + "ORDER BY NAME ";
@@ -332,6 +335,7 @@ namespace HC_OSHA.StatusReport
                         strJumin = dt.Rows[i]["JUMIN"].ToString().Trim();
                         strIpsaDate = dt.Rows[i]["IPSADATE"].ToString().Trim();
                         strTesaDate = dt.Rows[i]["END_DATE"].ToString().Trim();
+                        strSabun = dt.Rows[i]["SABUN"].ToString().Trim();
                         strPanjeng1 = Get_Last_Panjeng(strID, "특수");
                         strPanjeng2 = Get_Last_Panjeng(strID, "일반");
                         bOK = false;
@@ -396,6 +400,7 @@ namespace HC_OSHA.StatusReport
                             SSWorkerList_Sheet1.Cells[nRow, 6].Text = VB.Pstr(strPanjeng, "{}", 7); //검진소견
                             SSWorkerList_Sheet1.Cells[nRow, 7].Text = dt.Rows[i]["ISMANAGEOSHA"].ToString().Trim();
                             SSWorkerList_Sheet1.Cells[nRow, 8].Text = strTesaDate;
+                            SSWorkerList_Sheet1.Cells[nRow, 9].Text = strSabun;
                             if (dt.Rows[i]["ISMANAGEOSHA"].ToString().Trim() == "Y")
                             {
                                 SSWorkerList.ActiveSheet.Rows[nRow].BackColor = Color.FromArgb(237, 211, 237);
@@ -773,6 +778,7 @@ namespace HC_OSHA.StatusReport
                 dto.bpr = "";
                 dto.dan = "";
                 dto.bst = "";
+                dto.sabun = "";
                 SetHealthCheckData(dto);
             }
             else
@@ -934,7 +940,7 @@ namespace HC_OSHA.StatusReport
             worker.Name = SSWorkerList_Sheet1.Cells[e.Row, 1].Text.Trim();
             worker.Gender = "";
             worker.Age = 0;
-            if (VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 2)!= "")
+            if (VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 2)!= "" && VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 2) != ")")
             {
                 worker.Gender = VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 1);
                 worker.Age = Int32.Parse(VB.Pstr(VB.Pstr(SSWorkerList_Sheet1.Cells[e.Row, 2].Text.Trim(), "(", 2), ")", 1));
@@ -942,6 +948,7 @@ namespace HC_OSHA.StatusReport
             worker.Dept = SSWorkerList_Sheet1.Cells[e.Row, 3].Text.Trim();
             worker.SITEID = base.SelectedSite.ID;
             worker.END_DATE = SSWorkerList_Sheet1.Cells[e.Row, 8].Text.Trim();
+            worker.Sabun = SSWorkerList_Sheet1.Cells[e.Row, 9].Text.Trim();
             worker.IsManageOsha = SSWorkerList_Sheet1.Cells[e.Row, 7].Text.Trim();
 
             SELECTED_WORKED = worker;
@@ -955,6 +962,7 @@ namespace HC_OSHA.StatusReport
             dto.site_id = base.SelectedSite.ID;
             dto.worker_id = worker.Worker_ID;
             dto.END_DATE = worker.END_DATE;
+            dto.sabun = worker.Sabun;
             
             SetHealthCheckData(dto);
 
