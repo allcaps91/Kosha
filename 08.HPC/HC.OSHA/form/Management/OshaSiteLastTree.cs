@@ -86,13 +86,11 @@ namespace HC_OSHA
         public void Search(string idOrName)
         {
             TxtName.Text = idOrName;
-            //BtnSearch.PerformClick();
             SearchSite();
 
         }
         public void Search()
         {
-          //    BtnSearch.PerformClick();
             SearchSite();
         }
 

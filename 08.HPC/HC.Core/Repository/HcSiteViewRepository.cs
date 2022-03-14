@@ -53,7 +53,8 @@ namespace HC.Core.Repository
 
             if (userId != "all" & userId != "")
             {
-                parameter.AppendSql("AND A.ISACTIVE = 'Y' ");
+                parameter.AppendSql(" AND A.ISACTIVE = 'Y' ");
+                parameter.AppendSql(" AND C.ISDELETED = 'N' ");
                 if (userId.NotEmpty() && role == Role.DOCTOR)
                 {
                     parameter.AppendSql("AND C.MANAGEDOCTOR = :USERID ");

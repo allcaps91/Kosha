@@ -1209,44 +1209,7 @@ namespace HC_OSHA
 
                 string dayOfWeek = DateUtil.ToDayOfWeek(date);
                 SSScheduleList.ActiveSheet.Cells[i, 0].Text = date.ToString("yyyy-MM-dd")  + "(" + dayOfWeek.Substring(0,1) +")";
-                if (dto.ID == 754)
-                {
-                    string xx = ";";
-                }
-                if(dto.GBCHANGE == null)
-                {
 
-                }
-                else if (dto.GBCHANGE.Equals("1"))
-                {
-                    SSScheduleList.ActiveSheet.Rows[i].ForeColor = Color.FromArgb(0, 0, 160);
-                }
-                else if (dto.GBCHANGE.Equals("Y"))
-                {
-                    SSScheduleList.ActiveSheet.Rows[i].ForeColor = Color.FromArgb(255, 0, 0);
-                }
-
-                //if(beforDto != null)
-                //{
-                //    if (dto.VISITRESERVEDATE != beforDto.VISITRESERVEDATE)
-                //    {
-                //        SSScheduleList.ActiveSheet.Rows[i-1].Border = new FarPoint.Win.LineBorder(Color.Red, 2, false, false, false, true);
-                //    }
-                //}
-                
-                
-
-                if (i > 0)
-                {
-                    if(list[i-1].VISITRESERVEDATE == dto.VISITRESERVEDATE && list[i-1].SITE_ID == dto.SITE_ID) {
-                        if(dto.VISITUSERID == "25091" || dto.VISITUSERID == "44918")
-                        {
-                            SSScheduleList.ActiveSheet.Rows[i].ForeColor = Color.Green;
-                            SSScheduleList.ActiveSheet.Rows[i - 1].ForeColor = Color.Green;
-                        }
-                            
-                    }
-                }
                 beforDto = dto;
             }
         }

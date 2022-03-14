@@ -325,11 +325,11 @@
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_3.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_4.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_5.cs" />
-    <Compile Include="form\Report\Form1.cs">
+    <Compile Include="form\Report\FrmSangdamReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\Report\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="form\Report\FrmSangdamReport.Designer.cs">
+      <DependentUpon>FrmSangdamReport.cs</DependentUpon>
     </Compile>
     <Compile Include="form\Report\IncomeReport.cs">
       <SubType>Form</SubType>
@@ -411,6 +411,12 @@
     </Compile>
     <Compile Include="form\Visit\DailyReportForm.Designer.cs">
       <DependentUpon>DailyReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Visit\FrmVisitCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Visit\FrmVisitCheck.Designer.cs">
+      <DependentUpon>FrmVisitCheck.cs</DependentUpon>
     </Compile>
     <Compile Include="form\Visit\VisitDocument.cs">
       <SubType>Form</SubType>
@@ -893,6 +899,9 @@
     <EmbeddedResource Include="form\Report\EducationReportForm.resx">
       <DependentUpon>EducationReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form\Report\FrmSangdamReport.resx">
+      <DependentUpon>FrmSangdamReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\Report\IncomeReport.resx">
       <DependentUpon>IncomeReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -1015,6 +1024,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Visit\EducationForm.resx">
       <DependentUpon>EducationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Visit\FrmVisitCheck.resx">
+      <DependentUpon>FrmVisitCheck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Visit\InformationForm.resx">
       <DependentUpon>InformationForm.cs</DependentUpon>

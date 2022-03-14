@@ -75,6 +75,7 @@ namespace HC_OSHA
                 SSCard.ActiveSheet.Cells[row, 0].ColumnSpan = 1;
                 SSCard.ActiveSheet.Cells[row, 1].Value = list[i].name;
                 SSCard.ActiveSheet.Cells[row, 2].Value = list[i].dept;
+                if (list[i].sabun != "") SSCard.ActiveSheet.Cells[row, 2].Value += "(" + list[i].sabun + ")";
                 SSCard.ActiveSheet.Cells[row, 3].Value = list[i].gender + "(" + list[i].age + ")";
 
                 string exam = string.Empty;
