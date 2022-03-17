@@ -59,6 +59,7 @@ namespace HC_OSHA.StatusReport
             InitializeComponent();
             hicOshaGeneralResultRepository = new HicOshaGeneralResultRepository();
             hicOshaSpecialResultRepository = new HicOshaSpecialResultRepository();
+            Set_btnLocation();
         }
 
         private void SiteStatusControl_Load(object sender, EventArgs e)
@@ -102,6 +103,7 @@ namespace HC_OSHA.StatusReport
             //autoCompleteMacro.Add(TxtWEMHarmfulFactors);
             autoCompleteMacro1.Add(TxtWEMHarmfulFactors);
             autoCompleteMacro1.Hide();
+            Set_btnLocation();
         }
         public void SetAcciendt(int d, int a, int d2)
         {
@@ -136,6 +138,7 @@ namespace HC_OSHA.StatusReport
         public void SetSitName(string name)
         {
             TxtSiteName.Text = name;
+            Set_btnLocation();
         }
         public void SetTxtOshaData(TextBox textbox)
         {
@@ -159,6 +162,7 @@ namespace HC_OSHA.StatusReport
         public void Initialize(CommonForm commonForm, string visitDate)
         {
             this.commonForm = commonForm;
+
             //       panSiteSatus.SetData(new SiteStatusDto());
             try
             {
@@ -192,8 +196,9 @@ namespace HC_OSHA.StatusReport
                     model.SpecialTotalCount = list2[0].TOTALCOUNT;
                     SetSpecialCount(model);
                 }
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Error(ex);
             }
@@ -374,6 +379,45 @@ namespace HC_OSHA.StatusReport
                 Cursor.Current = Cursors.Default;
                 ComFunc.MsgBox(ex.Message);
             }
+        }
+
+        private void label30_Click(object sender, EventArgs e)
+        {
+            if (commonForm == null)
+            {
+                return;
+            }
+            if (getCommonForm().SelectedEstimate == null)
+            {
+                return;
+            }
+            long estimateId = getCommonForm().SelectedEstimate.ID;
+            if (this.commonForm != null)
+            {
+                OshaPriceService oshaPriceService = new OshaPriceService();
+                OSHA_PRICE price = oshaPriceService.OshaPriceRepository.FindMaxIdByEstimate(estimateId);
+                if (price != null)
+                {
+                    NumCurrentWorkerCount.SetValue(price.WORKERTOTALCOUNT);
+                }
+
+                StatisReportDataLinkForm frm = new StatisReportDataLinkForm();
+                frm.SetStatisReportDataLinkForm(this);
+                frm.Show();
+            }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Set_btnLocation();
+        }
+
+        public void Set_btnLocation()
+        {
+            //윈도우11에서 위치가 변하여 다시 설정함
+            BtnDataLink.Location = new System.Drawing.Point(871, 5);
+            btnDate.Location = new System.Drawing.Point(424, 150);
+            button3.Location = new System.Drawing.Point(917, 90);
         }
     }
 }

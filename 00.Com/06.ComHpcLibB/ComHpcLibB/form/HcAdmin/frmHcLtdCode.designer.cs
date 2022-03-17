@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.FlatFocusIndicatorRenderer flatFocusIndicatorRenderer2 = new FarPoint.Win.Spread.FlatFocusIndicatorRenderer();
-            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer5 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
-            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer6 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
+            FarPoint.Win.Spread.FlatFocusIndicatorRenderer flatFocusIndicatorRenderer1 = new FarPoint.Win.Spread.FlatFocusIndicatorRenderer();
             FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer1 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
             FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer2 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
+            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer3 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
+            FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer4 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
             this.panTitle = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panSub04 = new System.Windows.Forms.Panel();
@@ -1464,12 +1464,12 @@
             this.label9.AutoEllipsis = true;
             this.label9.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label9.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label9.Location = new System.Drawing.Point(280, 93);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 25);
+            this.label9.Size = new System.Drawing.Size(95, 25);
             this.label9.TabIndex = 149;
-            this.label9.Text = "산재번호";
+            this.label9.Text = "사업장관리번호";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtGesiNo
@@ -1890,12 +1890,12 @@
             // 
             this.SSTax.AccessibleDescription = "";
             this.SSTax.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SSTax.FocusRenderer = flatFocusIndicatorRenderer2;
+            this.SSTax.FocusRenderer = flatFocusIndicatorRenderer1;
             this.SSTax.HorizontalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSTax.HorizontalScrollBar.Name = "";
-            flatScrollBarRenderer5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSTax.HorizontalScrollBar.Renderer = flatScrollBarRenderer5;
-            this.SSTax.HorizontalScrollBar.TabIndex = 137;
+            flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSTax.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
+            this.SSTax.HorizontalScrollBar.TabIndex = 139;
             this.SSTax.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSTax.Location = new System.Drawing.Point(3, 30);
             this.SSTax.Name = "SSTax";
@@ -1906,9 +1906,9 @@
             this.SSTax.TabIndex = 6;
             this.SSTax.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSTax.VerticalScrollBar.Name = "";
-            flatScrollBarRenderer6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSTax.VerticalScrollBar.Renderer = flatScrollBarRenderer6;
-            this.SSTax.VerticalScrollBar.TabIndex = 138;
+            flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSTax.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
+            this.SSTax.VerticalScrollBar.TabIndex = 140;
             this.SSTax.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SSTax_Sheet1
@@ -2069,12 +2069,12 @@
             // 
             this.SSList.AccessibleDescription = "";
             this.SSList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SSList.FocusRenderer = flatFocusIndicatorRenderer2;
+            this.SSList.FocusRenderer = flatFocusIndicatorRenderer1;
             this.SSList.HorizontalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSList.HorizontalScrollBar.Name = "";
-            flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSList.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SSList.HorizontalScrollBar.TabIndex = 135;
+            flatScrollBarRenderer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSList.HorizontalScrollBar.Renderer = flatScrollBarRenderer3;
+            this.SSList.HorizontalScrollBar.TabIndex = 137;
             this.SSList.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.Location = new System.Drawing.Point(2, 2);
             this.SSList.Name = "SSList";
@@ -2085,9 +2085,9 @@
             this.SSList.TabIndex = 2;
             this.SSList.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSList.VerticalScrollBar.Name = "";
-            flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SSList.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SSList.VerticalScrollBar.TabIndex = 136;
+            flatScrollBarRenderer4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SSList.VerticalScrollBar.Renderer = flatScrollBarRenderer4;
+            this.SSList.VerticalScrollBar.TabIndex = 138;
             this.SSList.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
             // 

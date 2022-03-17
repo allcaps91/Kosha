@@ -43,7 +43,7 @@ namespace HC.OSHA.Repository
             {
                 parameter.AppendSql("AND A.VISITMANAGERID = :visitUserid2 ");
             }
-            parameter.AppendSql("ORDER BY A.visitreservedate,  A.VISITSTARTTIME ");
+            parameter.AppendSql("ORDER BY A.visitreservedate,A.VISITUSERNAME,A.VISITSTARTTIME ");
 
             parameter.Add("startDate", startDate);
             parameter.Add("endDate", endDate);

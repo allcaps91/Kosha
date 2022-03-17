@@ -261,6 +261,8 @@ namespace HC_OSHA.StatusReport
             string strSiteList = "";
             string dept = "";
             string panjeong = "";
+            string strP1 = "";
+            string strP2 = "";
             long reportId = 0;
 
             string strID = "";
@@ -341,25 +343,76 @@ namespace HC_OSHA.StatusReport
                         bOK = false;
                         if (panjeong != "")
                         {
-                            if (panjeong == "A")
+                            strP1 = VB.Pstr(strPanjeng1, "{}", 6);
+                            strP2 = VB.Pstr(strPanjeng2, "{}", 6);
+                            if (panjeong == "D1,D2,CN,DN")
                             {
-                                if (VB.Pstr(strPanjeng1, "{}", 6)==panjeong)
+                                if (VB.InStr(strP1, "D1") > 0) bOK = true;
+                                if (VB.InStr(strP1, "D2") > 0) bOK = true;
+                                if (VB.InStr(strP1, "CN") > 0) bOK = true;
+                                if (VB.InStr(strP1, "DN") > 0) bOK = true;
+                                if (bOK==true)
+                                {
+                                    strPanjeng = strPanjeng1;
+                                }
+                                else
+                                {
+                                    if (VB.InStr(strP2, "D1") > 0) bOK = true;
+                                    if (VB.InStr(strP2, "D2") > 0) bOK = true;
+                                    if (VB.InStr(strP2, "CN") > 0) bOK = true;
+                                    if (VB.InStr(strP2, "DN") > 0) bOK = true;
+                                    if (bOK == true) strPanjeng = strPanjeng2;
+                                }
+                            }
+                            else if (panjeong == "D1,D2")
+                            {
+                                if (VB.InStr(strP1, "D1") > 0) bOK = true;
+                                if (VB.InStr(strP1, "D2") > 0) bOK = true;
+                                if (bOK == true)
+                                {
+                                    strPanjeng = strPanjeng1;
+                                }
+                                else
+                                {
+                                    if (VB.InStr(strP2, "D1") > 0) bOK = true;
+                                    if (VB.InStr(strP2, "D2") > 0) bOK = true;
+                                    if (bOK == true) strPanjeng = strPanjeng2;
+                                }
+                            }
+                            else if (panjeong == "CN,DN")
+                            {
+                                if (VB.InStr(strP1, "CN") > 0) bOK = true;
+                                if (VB.InStr(strP1, "DN") > 0) bOK = true;
+                                if (bOK == true)
+                                {
+                                    strPanjeng = strPanjeng1;
+                                }
+                                else
+                                {
+                                    if (VB.InStr(strP2, "CN") > 0) bOK = true;
+                                    if (VB.InStr(strP2, "DN") > 0) bOK = true;
+                                    if (bOK == true) strPanjeng = strPanjeng2;
+                                }
+                            }
+                            else if (panjeong == "A")
+                            {
+                                if (strP1==panjeong)
                                 {
                                     strPanjeng = strPanjeng1;
                                     bOK = true;
                                 }
-                                else if (VB.Pstr(strPanjeng2, "{}", 6)==panjeong) 
+                                else if (strP2==panjeong) 
                                 {
                                     strPanjeng = strPanjeng2;
                                     bOK = true;
                                 }
                             }
-                            else if (VB.InStr(VB.Pstr(strPanjeng1, "{}", 6), panjeong) > 0)
+                            else if (VB.InStr(strP1, panjeong) > 0)
                             {
                                 strPanjeng = strPanjeng1;
                                 bOK = true;
                             }
-                            else if (VB.InStr(VB.Pstr(strPanjeng2, "{}", 6), panjeong) > 0)
+                            else if (VB.InStr(strP2, panjeong) > 0)
                             {
                                 strPanjeng = strPanjeng2;
                                 bOK = true;
@@ -394,7 +447,7 @@ namespace HC_OSHA.StatusReport
                                 nAge = Age_Gesan(strJumin);
                                 if (nAge > 0) SSWorkerList_Sheet1.Cells[nRow, 2].Text = "(" + nAge.ToString() + ")"; //(연령)
                             }
-                            SSWorkerList_Sheet1.Cells[nRow, 3].Text = VB.Pstr(strPanjeng, "{}", 3); //부서
+                            SSWorkerList_Sheet1.Cells[nRow, 3].Text = strDept; //부서
                             SSWorkerList_Sheet1.Cells[nRow, 4].Text = VB.Pstr(strPanjeng, "{}", 6); //건강구분
                             SSWorkerList_Sheet1.Cells[nRow, 5].Text = VB.Pstr(strPanjeng, "{}", 2); //년도
                             SSWorkerList_Sheet1.Cells[nRow, 6].Text = VB.Pstr(strPanjeng, "{}", 7); //검진소견
@@ -437,6 +490,9 @@ namespace HC_OSHA.StatusReport
         {
             CboPanjeong.Items.Clear();
             CboPanjeong.Items.Add("전체");
+            CboPanjeong.Items.Add("D1,D2,CN,DN");
+            CboPanjeong.Items.Add("D1,D2");
+            CboPanjeong.Items.Add("CN,DN");
             CboPanjeong.Items.Add("A");
             CboPanjeong.Items.Add("U");
             CboPanjeong.Items.Add("AAA");

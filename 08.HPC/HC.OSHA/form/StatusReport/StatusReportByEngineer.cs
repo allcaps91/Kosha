@@ -155,7 +155,11 @@ namespace HC_OSHA
             InitENVCHECKJSON(GrpEnvCheckJson1, "RdoENVCHECKJSON");
             InitENVCHECKJSON(GrpEnvCheckJson2, "RdoENVCHECKJSON2");
             InitENVCHECKJSON(GrpEnvCheckJson3, "RdoENVCHECKJSON3");
-            
+
+            //InitRadioButton(GrpEnvCheckJson1, "RdoENVCHECKJSON","");
+            //InitRadioButton(GrpEnvCheckJson2, "RdoENVCHECKJSON2","");
+            //InitRadioButton(GrpEnvCheckJson3, "RdoENVCHECKJSON3","");
+
             ckEditor.Clear();
             card19List.Clear();
             TxtENGINEERNAME.Text = clsType.User.UserName;
@@ -172,7 +176,7 @@ namespace HC_OSHA
                 }
             }
         }
-    
+
         private void InitENVCHECKJSON(GroupBox groupBox, string rdoButtonStartName)
         {
             string value = string.Empty;
@@ -185,7 +189,7 @@ namespace HC_OSHA
                     {
                         if (rdo.Name.StartsWith(rdoButtonStartName))
                         {
-                            if(rdoButtonStartName == "RdoENVCHECKJSON")
+                            if (rdoButtonStartName == "RdoENVCHECKJSON")
                             {
                                 value = rdo.Name.Split(new char[] { '_' })[1];
                                 number = rdo.Name.Split(new char[] { '_' })[0].Replace(rdoButtonStartName, "");
@@ -199,7 +203,7 @@ namespace HC_OSHA
                             }
 
                             RadioButton radioButton = rdo as RadioButton;
-                            if(rdoButtonStartName == "RdoENVCHECKJSON")
+                            if (rdoButtonStartName == "RdoENVCHECKJSON")
                             {
                                 radioButton.SetOptions(new RadioButtonOption { DataField = "ENVCHECK" + number, CheckValue = value, UnCheckValue = "" });
                             }
@@ -211,14 +215,14 @@ namespace HC_OSHA
                             {
                                 radioButton.SetOptions(new RadioButtonOption { DataField = "ENVCHECK3_" + number, CheckValue = value, UnCheckValue = "" });
                             }
-                            
+
                             radioButton.SetValue("N");
                         }
                     }
                 }
             }
         }
-  
+
         private void BtnNew_Click(object sender, EventArgs e)
         {
             InitForm();
@@ -862,6 +866,101 @@ namespace HC_OSHA
             }
             dt.Dispose();
             dt = null;
+        }
+
+        private void label26_Click(object sender, EventArgs e)
+        {
+            InitRadioButton(GrpEnvCheckJson1, "RdoENVCHECKJSON", "1,2");
+        }
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+            InitRadioButton(GrpEnvCheckJson1, "RdoENVCHECKJSON", "3,4,5,6,7");
+        }
+
+        private void label41_Click(object sender, EventArgs e)
+        {
+            InitRadioButton(GrpEnvCheckJson1, "RdoENVCHECKJSON", "8,9,10,11,12,13,14,15,16");
+        }
+
+        private void label69_Click(object sender, EventArgs e)
+        {
+            InitRadioButton(GrpEnvCheckJson2, "RdoENVCHECKJSON2", "_1,_2,_3,_4,_5,_6,_7,_8,_9,_10");
+        }
+
+        private void label88_Click(object sender, EventArgs e)
+        {
+            InitRadioButton(GrpEnvCheckJson2, "RdoENVCHECKJSON2", "_11,_12,_13,_14,_15,_16,_17");
+        }
+
+        private void label137_Click(object sender, EventArgs e)
+        {
+            InitRadioButton(GrpEnvCheckJson2, "RdoENVCHECKJSON2", "_100,_101,_102,_103,_104,_105,_106,_107");
+        }
+
+        private void label82_Click(object sender, EventArgs e)
+        {
+            InitRadioButton(GrpEnvCheckJson2, "RdoENVCHECKJSON2", "_18,_19,_20,_21,_22,_23,_24,_25");
+        }
+
+        private void label85_Click(object sender, EventArgs e)
+        {
+            InitRadioButton(GrpEnvCheckJson2, "RdoENVCHECKJSON2", "_26,_27,_28,_29,_30,_31,_32,_33,_34,_35,_36,_37,_38,_39");
+        }
+
+        private void label107_Click(object sender, EventArgs e)
+        {
+            InitRadioButton(GrpEnvCheckJson3, "RdoENVCHECKJSON3", "_1,_2,_3,_4,_5,_6,_7,_8,_9,_10,_11,_12");
+        }
+
+        private void label122_Click(object sender, EventArgs e)
+        {
+            InitRadioButton(GrpEnvCheckJson3, "RdoENVCHECKJSON3", "_18,_19,_20,_21,_22,_23,_24,_25,_26");
+        }
+
+        private void label127_Click(object sender, EventArgs e)
+        {
+            InitRadioButton(GrpEnvCheckJson3, "RdoENVCHECKJSON3", "_27,_28,_29,_30,_31,_32,_33,_34");
+        }
+
+        // Radio버튼을 선택 안함으로 초기화
+        private void InitRadioButton(GroupBox groupBox, string rdoButtonStartName, string strList)
+        {
+            string strName = "";
+            bool bOK = false;
+
+            foreach (Control control in groupBox.Controls)
+            {
+                if (control is FlowLayoutPanel)
+                {
+                    foreach (Control rdo in control.Controls)
+                    {
+                        if (rdo.Name.StartsWith(rdoButtonStartName))
+                        {
+                            bOK = true;
+                            if (strList != "")
+                            {
+                                strName = rdo.Name.Trim();
+                                bOK = false;
+                                for (int i = 1; i <= VB.L(strList, ","); i++)
+                                {
+                                    if (VB.InStr(strName, rdoButtonStartName + VB.Pstr(strList, ",", i) + "_") > 0)
+                                    {
+                                        bOK = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (bOK == true)
+                            {
+                                RadioButton radioButton = rdo as RadioButton;
+                                if (radioButton.Checked == true) radioButton.Checked = false;
+                            }
+
+                        }
+                    }
+                }
+            }
         }
     }
 }

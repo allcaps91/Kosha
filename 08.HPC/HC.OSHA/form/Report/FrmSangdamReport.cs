@@ -1,6 +1,7 @@
 ﻿using ComBase;
 using ComBase.Controls;
 using ComBase.Mvc.Utils;
+using ComBase.Mvc.Enums;
 using ComHpcLibB.Model;
 using FarPoint.Win.Spread;
 using FarPoint.Win.Spread.CellType;
@@ -53,6 +54,18 @@ namespace HC_OSHA
                 }
             }
             cboYear.SelectedIndex = 0;
+
+            SSList.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true, RowHeaderVisible = true, ColumnHeaderHeight = 30 });
+            SSList.AddColumnText("코드", "", 50, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("사업장명", "", 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("ID", "", 50, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("근로자명", "", 60, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("부서","", 70, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = true, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("성별", "", 50, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = true, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("일자", "", 50, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("상담 지도 내용", "", 300, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = true, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("상담 후 건의사항","", 300, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = true, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("상담자", "", 50, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
         }
 
         private void BtnSearchSite_Click(object sender, EventArgs e)
@@ -123,7 +136,8 @@ namespace HC_OSHA
                     {
                         SSList.ActiveSheet.Cells[i, 4].Text += "(" + dt.Rows[i]["SABUN"].ToString().Trim() + ")";
                     }
-                    SSList.ActiveSheet.Cells[i, 5].Text = dt.Rows[i]["GENDER"].ToString().Trim() + "(" + dt.Rows[i]["AGE"].ToString().Trim() + ")";
+                    SSList.ActiveSheet.Cells[i, 5].Text = dt.Rows[i]["GENDER"].ToString().Trim();
+                    if (dt.Rows[i]["AGE"].ToString().Trim()!="0") SSList.ActiveSheet.Cells[i, 5].Text += "(" + dt.Rows[i]["AGE"].ToString().Trim() + ")";
                     SSList.ActiveSheet.Cells[i, 6].Text = dt.Rows[i]["CHARTDATE"].ToString().Substring(4, 2) + "-" + dt.Rows[i]["CHARTDATE"].ToString().Substring(6, 2);
 
                     string exam = string.Empty;
@@ -160,7 +174,7 @@ namespace HC_OSHA
                     SSList.ActiveSheet.Cells[i, 8].Text = dt.Rows[i]["suggestion"].ToString();
                     SSList.ActiveSheet.Cells[i, 9].Text = dt.Rows[i]["UserName"].ToString();
 
-                    SSList_Sheet1.Rows[i].Height = SSList_Sheet1.Rows[i].GetPreferredHeight();
+                    SSList_Sheet1.Rows[i].Height = SSList_Sheet1.Rows[i].GetPreferredHeight()+10;
                 }
             }
             dt.Dispose();
@@ -174,6 +188,17 @@ namespace HC_OSHA
             sp.Period = "회사명: " + TxtLtdcode.Text + "          " + "근로자: " + TxtName.Text;
             sp.orientation = PrintOrientation.Landscape;
             sp.Execute();
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            bool bOk = SSList.SaveExcel("c:\\temp\\사업장별 상담내역.xls", FarPoint.Excel.ExcelSaveFlags.SaveCustomColumnHeaders);
+            {
+                if (bOk == true)
+                    ComFunc.MsgBox("Temp 폴더에 엑셀파일이 생성이 되었습니다.", "확인");
+                else
+                    ComFunc.MsgBox("엑셀파일 생성에 오류가 발생 하였습니다.", "확인");
+            }
         }
     }
 }

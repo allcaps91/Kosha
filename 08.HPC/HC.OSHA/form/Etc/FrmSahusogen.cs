@@ -48,7 +48,17 @@ namespace HC_OSHA
                     nYear--;
                 }
             }
-            CboYear.SelectedIndex = 0;
+            CboYear.SelectedIndex = 1;
+
+            if (cboJong.Items.Count == 0)
+            {
+                cboJong.Items.Add("전체");
+                cboJong.Items.Add("특수");
+                cboJong.Items.Add("일반");
+                cboJong.Items.Add("배치전");
+                cboJong.Items.Add("배치후");
+            }
+            cboJong.SelectedIndex = 0;
 
             cboPanjeng.Items.Clear();
             cboPanjeng.Items.Add("전체");
@@ -84,12 +94,15 @@ namespace HC_OSHA
             string strYear = "";
             string strPanjeng = "";
             string strName = "";
+            string strJong = "";
 
             strLtdcode = VB.Pstr(TxtLtdcode.Text.Trim(), ".", 1);
             strYear = CboYear.Text;
             strPanjeng = cboPanjeng.Text;
             strName = txtName.Text;
             if (strPanjeng == "전체") strPanjeng = "";
+            strJong = cboJong.Text;
+            if (strJong == "전체") strJong = "";
 
             if (strLtdcode == "") { ComFunc.MsgBox("회사코드가 공란입니다."); return; }
 
@@ -105,6 +118,7 @@ namespace HC_OSHA
                 SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND SITEID=" + strLtdcode + " ";
                 SQL = SQL + ComNum.VBLF + "   AND YEAR='" + strYear + "' ";
+                if (strJong != "") SQL = SQL + ComNum.VBLF + "   AND JONG='" + strJong + "' ";
                 if (strName != "") SQL = SQL + ComNum.VBLF + "   AND NAME LIKE '%" + strName + "%' ";
                 if (strPanjeng != "")
                 {
@@ -186,6 +200,21 @@ namespace HC_OSHA
         private void SSHealthCheck_CellClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
         {
 
+        }
+
+        private void panSearch_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void BtnExportExcel_Click(object sender, EventArgs e)
+        {
+            bool bOk = SSHealthCheck.SaveExcel("c:\\temp\\사후관리소견서.xls", FarPoint.Excel.ExcelSaveFlags.SaveCustomColumnHeaders);
+            {
+                if (bOk == true)
+                    ComFunc.MsgBox("Temp 폴더에 엑셀파일이 생성이 되었습니다.", "확인");
+                else
+                    ComFunc.MsgBox("엑셀파일 생성에 오류가 발생 하였습니다.", "확인");
+            }
         }
     }
 }

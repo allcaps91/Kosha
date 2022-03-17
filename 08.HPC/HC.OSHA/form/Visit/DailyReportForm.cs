@@ -82,9 +82,9 @@ namespace HC_OSHA.Visit
             //작업일자 기준으로 결재정보를 읽음
             strGPath = Get_Approve_Path(date);
 
-            SSList.ActiveSheet.Cells[2, 27].Text = VB.Pstr(strGPath, ",", 1);
-            SSList.ActiveSheet.Cells[2, 30].Text = VB.Pstr(strGPath, ",", 2);
-            SSList.ActiveSheet.Cells[2, 33].Text = VB.Pstr(strGPath, ",", 3);
+            SSList.ActiveSheet.Cells[2, 26].Text = VB.Pstr(strGPath, ",", 1);
+            SSList.ActiveSheet.Cells[2, 29].Text = VB.Pstr(strGPath, ",", 2);
+            SSList.ActiveSheet.Cells[2, 32].Text = VB.Pstr(strGPath, ",", 3);
         
             string title = "◎출장일:" + date.Substring(0, 4) + "년 " + date.Substring(5, 2) + "월 " + date.Substring(8, 2) + "일(" + DateUtil.ToDayOfWeek(DtpVisitDate.Value).Substring(0, 1) + ")";
 
@@ -187,7 +187,6 @@ namespace HC_OSHA.Visit
 
                 preItem = visitList[i];
                 lastRowIndex = rowIndex;
-        //        SSList.ActiveSheet.Rows[rowIndex].Height = SSList.ActiveSheet.Rows[rowIndex].GetPreferredHeight();
             }
 
             if (visitList.Count > 0)
@@ -213,7 +212,6 @@ namespace HC_OSHA.Visit
         {
             try
             {
-         //       Cursor.Current = Curors.Wait
                 SpreadPrint sp = new SpreadPrint(SSList, PrintStyle.STANDARD_APPROVAL);
                 sp.Execute();
             }

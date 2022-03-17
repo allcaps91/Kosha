@@ -236,6 +236,7 @@
             this.label5.TabIndex = 132;
             this.label5.Text = "작업변경";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // NumChangeWorkerCount
             // 
@@ -878,6 +879,7 @@
             this.label30.TabIndex = 181;
             this.label30.Text = "참고사항";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label30.Click += new System.EventHandler(this.label30_Click);
             // 
             // button3
             // 
@@ -935,11 +937,11 @@
             // BtnDataLink
             // 
             this.BtnDataLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnDataLink.Location = new System.Drawing.Point(882, 4);
+            this.BtnDataLink.Location = new System.Drawing.Point(871, 5);
             this.BtnDataLink.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnDataLink.Name = "BtnDataLink";
-            this.BtnDataLink.Size = new System.Drawing.Size(96, 27);
-            this.BtnDataLink.TabIndex = 173;
+            this.BtnDataLink.Size = new System.Drawing.Size(91, 25);
+            this.BtnDataLink.TabIndex = 184;
             this.BtnDataLink.Text = "불러오기";
             this.BtnDataLink.UseVisualStyleBackColor = true;
             this.BtnDataLink.Click += new System.EventHandler(this.BtnDataLink_Click);

@@ -198,8 +198,8 @@
             // 
             this.tab.BackColor = System.Drawing.Color.Transparent;
             this.tab.CanReorderTabs = true;
-            this.tab.Controls.Add(this.tabControlPanel6);
             this.tab.Controls.Add(this.tabControlPanel2);
+            this.tab.Controls.Add(this.tabControlPanel6);
             this.tab.Controls.Add(this.tabControlPanel5);
             this.tab.Controls.Add(this.tabControlPanel4);
             this.tab.Controls.Add(this.tabControlPanel3);

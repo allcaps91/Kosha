@@ -28,89 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.NamedStyle namedStyle41 = new FarPoint.Win.Spread.NamedStyle("Color418637057397334994997", "DataAreaDefault");
-            FarPoint.Win.Spread.NamedStyle namedStyle42 = new FarPoint.Win.Spread.NamedStyle("Text684637057397335024977", "DataAreaDefault");
-            FarPoint.Win.Spread.CellType.TextCellType textCellType23 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.NamedStyle namedStyle43 = new FarPoint.Win.Spread.NamedStyle("Text1085637057397335154564");
-            FarPoint.Win.Spread.CellType.TextCellType textCellType24 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.NamedStyle namedStyle44 = new FarPoint.Win.Spread.NamedStyle("Font1143637057397335164537");
-            FarPoint.Win.Spread.NamedStyle namedStyle45 = new FarPoint.Win.Spread.NamedStyle("Text1245637057397335234353");
-            FarPoint.Win.Spread.CellType.TextCellType textCellType25 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.NamedStyle namedStyle46 = new FarPoint.Win.Spread.NamedStyle("BorderEx1283637057397335264275");
-            FarPoint.Win.ComplexBorder complexBorder81 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.NamedStyle namedStyle47 = new FarPoint.Win.Spread.NamedStyle("Text1331637057397335334091");
-            FarPoint.Win.ComplexBorder complexBorder82 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.CellType.TextCellType textCellType26 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.NamedStyle namedStyle48 = new FarPoint.Win.Spread.NamedStyle("BorderEx1392637057397335364008");
-            FarPoint.Win.ComplexBorder complexBorder83 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.NamedStyle namedStyle49 = new FarPoint.Win.Spread.NamedStyle("BorderEx3027637057397336012531");
-            FarPoint.Win.ComplexBorder complexBorder84 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.NamedStyle namedStyle50 = new FarPoint.Win.Spread.NamedStyle("Text3075637057397336042466");
-            FarPoint.Win.ComplexBorder complexBorder85 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.CellType.TextCellType textCellType27 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.NamedStyle namedStyle51 = new FarPoint.Win.Spread.NamedStyle("BorderEx3113637057397336052174");
-            FarPoint.Win.ComplexBorder complexBorder86 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.NamedStyle namedStyle52 = new FarPoint.Win.Spread.NamedStyle("Text3161637057397336072119");
-            FarPoint.Win.ComplexBorder complexBorder87 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.CellType.TextCellType textCellType28 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.NamedStyle namedStyle53 = new FarPoint.Win.Spread.NamedStyle("BorderEx3602637057397336211745");
-            FarPoint.Win.ComplexBorder complexBorder88 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.NamedStyle namedStyle54 = new FarPoint.Win.Spread.NamedStyle("BorderEx3662637057397336231695");
-            FarPoint.Win.ComplexBorder complexBorder89 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.NamedStyle namedStyle55 = new FarPoint.Win.Spread.NamedStyle("BorderEx38637057397336361596");
-            FarPoint.Win.ComplexBorder complexBorder90 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.NamedStyle namedStyle56 = new FarPoint.Win.Spread.NamedStyle("BorderEx98637057397336381577");
-            FarPoint.Win.ComplexBorder complexBorder91 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.NamedStyle namedStyle57 = new FarPoint.Win.Spread.NamedStyle("BorderEx398637057397337747636");
-            FarPoint.Win.ComplexBorder complexBorder92 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.NamedStyle namedStyle58 = new FarPoint.Win.Spread.NamedStyle("BorderEx458637057397337767590");
-            FarPoint.Win.ComplexBorder complexBorder93 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
-            FarPoint.Win.Spread.NamedStyle namedStyle59 = new FarPoint.Win.Spread.NamedStyle("Color840637057397337867314");
-            FarPoint.Win.Spread.NamedStyle namedStyle60 = new FarPoint.Win.Spread.NamedStyle("Text882637057397337937126");
-            FarPoint.Win.Spread.CellType.TextCellType textCellType29 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.TipAppearance tipAppearance3 = new FarPoint.Win.Spread.TipAppearance();
-            FarPoint.Win.ComplexBorder complexBorder94 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 0, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowFrame, 0, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 0, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder95 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder96 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder97 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder98 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder99 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder100 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder101 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder102 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder103 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.Spread.CellType.TextCellType textCellType30 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.ComplexBorder complexBorder104 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder105 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder106 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder107 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder108 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder109 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder110 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder111 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder112 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder113 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.Spread.CellType.TextCellType textCellType31 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.ComplexBorder complexBorder114 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder115 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.Spread.CellType.TextCellType textCellType32 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.ComplexBorder complexBorder116 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.Spread.CellType.TextCellType textCellType33 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.ComplexBorder complexBorder117 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder118 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None, System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None, System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder119 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText, 0), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText, 0), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.ComplexBorder complexBorder120 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None, System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None, System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
-            FarPoint.Win.Spread.NoPrinterPrintInfo noPrinterPrintInfo3 = new FarPoint.Win.Spread.NoPrinterPrintInfo();
+            FarPoint.Win.Spread.NamedStyle namedStyle1 = new FarPoint.Win.Spread.NamedStyle("Color418637057397334994997", "DataAreaDefault");
+            FarPoint.Win.Spread.NamedStyle namedStyle2 = new FarPoint.Win.Spread.NamedStyle("Text684637057397335024977", "DataAreaDefault");
+            FarPoint.Win.Spread.CellType.TextCellType textCellType1 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.NamedStyle namedStyle3 = new FarPoint.Win.Spread.NamedStyle("Text1085637057397335154564");
+            FarPoint.Win.Spread.CellType.TextCellType textCellType2 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.NamedStyle namedStyle4 = new FarPoint.Win.Spread.NamedStyle("Font1143637057397335164537");
+            FarPoint.Win.Spread.NamedStyle namedStyle5 = new FarPoint.Win.Spread.NamedStyle("Text1245637057397335234353");
+            FarPoint.Win.Spread.CellType.TextCellType textCellType3 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.NamedStyle namedStyle6 = new FarPoint.Win.Spread.NamedStyle("BorderEx1283637057397335264275");
+            FarPoint.Win.ComplexBorder complexBorder1 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.NamedStyle namedStyle7 = new FarPoint.Win.Spread.NamedStyle("Text1331637057397335334091");
+            FarPoint.Win.ComplexBorder complexBorder2 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.CellType.TextCellType textCellType4 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.NamedStyle namedStyle8 = new FarPoint.Win.Spread.NamedStyle("BorderEx1392637057397335364008");
+            FarPoint.Win.ComplexBorder complexBorder3 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.NamedStyle namedStyle9 = new FarPoint.Win.Spread.NamedStyle("BorderEx3027637057397336012531");
+            FarPoint.Win.ComplexBorder complexBorder4 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.NamedStyle namedStyle10 = new FarPoint.Win.Spread.NamedStyle("Text3075637057397336042466");
+            FarPoint.Win.ComplexBorder complexBorder5 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.CellType.TextCellType textCellType5 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.NamedStyle namedStyle11 = new FarPoint.Win.Spread.NamedStyle("BorderEx3113637057397336052174");
+            FarPoint.Win.ComplexBorder complexBorder6 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.NamedStyle namedStyle12 = new FarPoint.Win.Spread.NamedStyle("Text3161637057397336072119");
+            FarPoint.Win.ComplexBorder complexBorder7 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.CellType.TextCellType textCellType6 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.NamedStyle namedStyle13 = new FarPoint.Win.Spread.NamedStyle("BorderEx3602637057397336211745");
+            FarPoint.Win.ComplexBorder complexBorder8 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.NamedStyle namedStyle14 = new FarPoint.Win.Spread.NamedStyle("BorderEx3662637057397336231695");
+            FarPoint.Win.ComplexBorder complexBorder9 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.NamedStyle namedStyle15 = new FarPoint.Win.Spread.NamedStyle("BorderEx38637057397336361596");
+            FarPoint.Win.ComplexBorder complexBorder10 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.NamedStyle namedStyle16 = new FarPoint.Win.Spread.NamedStyle("BorderEx98637057397336381577");
+            FarPoint.Win.ComplexBorder complexBorder11 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.NamedStyle namedStyle17 = new FarPoint.Win.Spread.NamedStyle("BorderEx398637057397337747636");
+            FarPoint.Win.ComplexBorder complexBorder12 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.NamedStyle namedStyle18 = new FarPoint.Win.Spread.NamedStyle("BorderEx458637057397337767590");
+            FarPoint.Win.ComplexBorder complexBorder13 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), false, false);
+            FarPoint.Win.Spread.NamedStyle namedStyle19 = new FarPoint.Win.Spread.NamedStyle("Color840637057397337867314");
+            FarPoint.Win.Spread.NamedStyle namedStyle20 = new FarPoint.Win.Spread.NamedStyle("Text882637057397337937126");
+            FarPoint.Win.Spread.CellType.TextCellType textCellType7 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.TipAppearance tipAppearance1 = new FarPoint.Win.Spread.TipAppearance();
+            FarPoint.Win.ComplexBorder complexBorder14 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 0, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowFrame, 0, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 0, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder15 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder16 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder17 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder18 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder19 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder20 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder21 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder22 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder23 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.Spread.CellType.TextCellType textCellType8 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.ComplexBorder complexBorder24 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder25 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder26 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder27 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder28 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder29 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder30 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder31 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(false, System.Drawing.SystemColors.WindowText, 1, System.Drawing.Drawing2D.DashStyle.Solid, new float[0], new float[0]), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder32 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder33 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.Spread.CellType.TextCellType textCellType9 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.ComplexBorder complexBorder34 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder35 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.Spread.CellType.TextCellType textCellType10 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.ComplexBorder complexBorder36 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.Spread.CellType.TextCellType textCellType11 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.ComplexBorder complexBorder37 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder38 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None, System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None, System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder39 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText, 0), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText, 0), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.ComplexBorder complexBorder40 = new FarPoint.Win.ComplexBorder(new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None, System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.None, System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(System.Drawing.SystemColors.WindowText), new FarPoint.Win.ComplexBorderSide(FarPoint.Win.ComplexBorderSideStyle.ThinLine), false, false);
+            FarPoint.Win.Spread.NoPrinterPrintInfo noPrinterPrintInfo1 = new FarPoint.Win.Spread.NoPrinterPrintInfo();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.SSCard = new FarPoint.Win.Spread.FpSpread();
             this.SSCard_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnPrintSearch = new System.Windows.Forms.Button();
+            this.CboEndYear1 = new System.Windows.Forms.ComboBox();
+            this.CboStartYear1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.BtnPrint = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.SSList = new FarPoint.Win.Spread.FpSpread();
             this.SSList_Sheet1 = new FarPoint.Win.Spread.SheetView();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.BtnSearch = new System.Windows.Forms.Button();
+            this.CboEndYear2 = new System.Windows.Forms.ComboBox();
+            this.CboStartYear2 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.BtnNew = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
@@ -133,15 +142,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.contentTitle1 = new ComBase.Mvc.UserControls.ContentTitle();
-            this.label6 = new System.Windows.Forms.Label();
-            this.CboStartYear1 = new System.Windows.Forms.ComboBox();
-            this.CboEndYear1 = new System.Windows.Forms.ComboBox();
-            this.BtnPrintSearch = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.BtnSearch = new System.Windows.Forms.Button();
-            this.CboEndYear2 = new System.Windows.Forms.ComboBox();
-            this.CboStartYear2 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -152,9 +152,9 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.pan19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SignImage)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -187,163 +187,163 @@
             this.SSCard.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never;
             this.SSCard.Location = new System.Drawing.Point(3, 40);
             this.SSCard.Name = "SSCard";
-            namedStyle41.Font = new System.Drawing.Font("돋움", 9F);
-            namedStyle41.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle41.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle41.Parent = "DataAreaDefault";
-            namedStyle41.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            textCellType23.MaxLength = 32000;
-            namedStyle42.CellType = textCellType23;
-            namedStyle42.Font = new System.Drawing.Font("돋움", 9F);
-            namedStyle42.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle42.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle42.Parent = "DataAreaDefault";
-            namedStyle42.Renderer = textCellType23;
-            namedStyle42.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            textCellType24.MaxLength = 32000;
-            namedStyle43.CellType = textCellType24;
-            namedStyle43.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
-            namedStyle43.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle43.Renderer = textCellType24;
-            namedStyle43.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
-            namedStyle44.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold);
-            namedStyle44.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle44.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle44.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            textCellType25.MaxLength = 32000;
-            textCellType25.Multiline = true;
-            namedStyle45.CellType = textCellType25;
-            namedStyle45.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
-            namedStyle45.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle45.Renderer = textCellType25;
-            namedStyle45.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
-            namedStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            namedStyle46.Border = complexBorder81;
-            namedStyle46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            namedStyle46.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle46.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle46.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            namedStyle47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            namedStyle47.Border = complexBorder82;
-            textCellType26.MaxLength = 32000;
-            textCellType26.Multiline = true;
-            namedStyle47.CellType = textCellType26;
-            namedStyle47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            namedStyle47.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
-            namedStyle47.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle47.Renderer = textCellType26;
-            namedStyle47.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
-            namedStyle48.Border = complexBorder83;
-            namedStyle48.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle48.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle48.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            namedStyle49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            namedStyle49.Border = complexBorder84;
-            namedStyle49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            namedStyle49.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle49.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle49.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            namedStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            namedStyle50.Border = complexBorder85;
-            textCellType27.MaxLength = 32000;
-            textCellType27.Multiline = true;
-            namedStyle50.CellType = textCellType27;
-            namedStyle50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            namedStyle50.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Right;
-            namedStyle50.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle50.Renderer = textCellType27;
-            namedStyle50.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
-            namedStyle51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            namedStyle51.Border = complexBorder86;
-            namedStyle51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            namedStyle51.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle51.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle51.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            namedStyle52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            namedStyle52.Border = complexBorder87;
-            textCellType28.MaxLength = 32000;
-            textCellType28.Multiline = true;
-            namedStyle52.CellType = textCellType28;
-            namedStyle52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            namedStyle52.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
-            namedStyle52.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle52.Renderer = textCellType28;
-            namedStyle52.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
-            namedStyle53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            namedStyle53.Border = complexBorder88;
-            namedStyle53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            namedStyle53.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle53.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle53.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            namedStyle54.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            namedStyle54.Border = complexBorder89;
-            namedStyle54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            namedStyle54.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle54.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle54.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            namedStyle55.Border = complexBorder90;
-            namedStyle55.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle55.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle55.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            namedStyle56.Border = complexBorder91;
-            namedStyle56.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle56.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle56.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            namedStyle57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            namedStyle57.Border = complexBorder92;
-            namedStyle57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            namedStyle57.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle57.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle57.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            namedStyle58.Border = complexBorder93;
-            namedStyle58.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle58.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle58.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            namedStyle59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            namedStyle59.Font = new System.Drawing.Font("돋움", 8F);
-            namedStyle59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            namedStyle59.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            namedStyle59.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle59.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            namedStyle60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            textCellType29.MaxLength = 32000;
-            namedStyle60.CellType = textCellType29;
-            namedStyle60.Font = new System.Drawing.Font("돋움", 8F);
-            namedStyle60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            namedStyle60.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
-            namedStyle60.NoteIndicatorColor = System.Drawing.Color.Red;
-            namedStyle60.Renderer = textCellType29;
-            namedStyle60.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            namedStyle1.Font = new System.Drawing.Font("돋움", 9F);
+            namedStyle1.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle1.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle1.Parent = "DataAreaDefault";
+            namedStyle1.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            textCellType1.MaxLength = 32000;
+            namedStyle2.CellType = textCellType1;
+            namedStyle2.Font = new System.Drawing.Font("돋움", 9F);
+            namedStyle2.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle2.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle2.Parent = "DataAreaDefault";
+            namedStyle2.Renderer = textCellType1;
+            namedStyle2.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            textCellType2.MaxLength = 32000;
+            namedStyle3.CellType = textCellType2;
+            namedStyle3.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
+            namedStyle3.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle3.Renderer = textCellType2;
+            namedStyle3.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            namedStyle4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold);
+            namedStyle4.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle4.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle4.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            textCellType3.MaxLength = 32000;
+            textCellType3.Multiline = true;
+            namedStyle5.CellType = textCellType3;
+            namedStyle5.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            namedStyle5.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle5.Renderer = textCellType3;
+            namedStyle5.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            namedStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            namedStyle6.Border = complexBorder1;
+            namedStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            namedStyle6.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle6.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle6.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            namedStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            namedStyle7.Border = complexBorder2;
+            textCellType4.MaxLength = 32000;
+            textCellType4.Multiline = true;
+            namedStyle7.CellType = textCellType4;
+            namedStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            namedStyle7.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            namedStyle7.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle7.Renderer = textCellType4;
+            namedStyle7.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            namedStyle8.Border = complexBorder3;
+            namedStyle8.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle8.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle8.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            namedStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            namedStyle9.Border = complexBorder4;
+            namedStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            namedStyle9.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle9.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle9.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            namedStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            namedStyle10.Border = complexBorder5;
+            textCellType5.MaxLength = 32000;
+            textCellType5.Multiline = true;
+            namedStyle10.CellType = textCellType5;
+            namedStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            namedStyle10.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Right;
+            namedStyle10.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle10.Renderer = textCellType5;
+            namedStyle10.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            namedStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            namedStyle11.Border = complexBorder6;
+            namedStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            namedStyle11.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle11.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle11.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            namedStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            namedStyle12.Border = complexBorder7;
+            textCellType6.MaxLength = 32000;
+            textCellType6.Multiline = true;
+            namedStyle12.CellType = textCellType6;
+            namedStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            namedStyle12.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
+            namedStyle12.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle12.Renderer = textCellType6;
+            namedStyle12.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
+            namedStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            namedStyle13.Border = complexBorder8;
+            namedStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            namedStyle13.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle13.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle13.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            namedStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            namedStyle14.Border = complexBorder9;
+            namedStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            namedStyle14.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle14.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle14.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            namedStyle15.Border = complexBorder10;
+            namedStyle15.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle15.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle15.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            namedStyle16.Border = complexBorder11;
+            namedStyle16.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle16.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle16.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            namedStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            namedStyle17.Border = complexBorder12;
+            namedStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            namedStyle17.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle17.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle17.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            namedStyle18.Border = complexBorder13;
+            namedStyle18.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle18.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle18.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            namedStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            namedStyle19.Font = new System.Drawing.Font("돋움", 8F);
+            namedStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            namedStyle19.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            namedStyle19.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle19.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            namedStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            textCellType7.MaxLength = 32000;
+            namedStyle20.CellType = textCellType7;
+            namedStyle20.Font = new System.Drawing.Font("돋움", 8F);
+            namedStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            namedStyle20.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
+            namedStyle20.NoteIndicatorColor = System.Drawing.Color.Red;
+            namedStyle20.Renderer = textCellType7;
+            namedStyle20.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard.NamedStyles.AddRange(new FarPoint.Win.Spread.NamedStyle[] {
-            namedStyle41,
-            namedStyle42,
-            namedStyle43,
-            namedStyle44,
-            namedStyle45,
-            namedStyle46,
-            namedStyle47,
-            namedStyle48,
-            namedStyle49,
-            namedStyle50,
-            namedStyle51,
-            namedStyle52,
-            namedStyle53,
-            namedStyle54,
-            namedStyle55,
-            namedStyle56,
-            namedStyle57,
-            namedStyle58,
-            namedStyle59,
-            namedStyle60});
+            namedStyle1,
+            namedStyle2,
+            namedStyle3,
+            namedStyle4,
+            namedStyle5,
+            namedStyle6,
+            namedStyle7,
+            namedStyle8,
+            namedStyle9,
+            namedStyle10,
+            namedStyle11,
+            namedStyle12,
+            namedStyle13,
+            namedStyle14,
+            namedStyle15,
+            namedStyle16,
+            namedStyle17,
+            namedStyle18,
+            namedStyle19,
+            namedStyle20});
             this.SSCard.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSCard_Sheet1});
             this.SSCard.Size = new System.Drawing.Size(819, 564);
             this.SSCard.TabIndex = 1;
             this.SSCard.TabStripRatio = 0.6D;
-            tipAppearance3.BackColor = System.Drawing.SystemColors.Info;
-            tipAppearance3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            tipAppearance3.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.SSCard.TextTipAppearance = tipAppearance3;
+            tipAppearance1.BackColor = System.Drawing.SystemColors.Info;
+            tipAppearance1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            tipAppearance1.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.SSCard.TextTipAppearance = tipAppearance1;
             this.SSCard.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SSCard_Sheet1
@@ -354,111 +354,111 @@
             this.SSCard_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1;
             this.SSCard_Sheet1.ColumnCount = 9;
             this.SSCard_Sheet1.RowCount = 35;
-            this.SSCard_Sheet1.Cells.Get(0, 0).Border = complexBorder94;
+            this.SSCard_Sheet1.Cells.Get(0, 0).Border = complexBorder14;
             this.SSCard_Sheet1.Cells.Get(0, 0).ColumnSpan = 8;
             this.SSCard_Sheet1.Cells.Get(0, 0).Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SSCard_Sheet1.Cells.Get(0, 0).Value = "19. 위탁업무수행 일지(총괄)";
             this.SSCard_Sheet1.Cells.Get(1, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(1, 0).Border = complexBorder95;
+            this.SSCard_Sheet1.Cells.Get(1, 0).Border = complexBorder15;
             this.SSCard_Sheet1.Cells.Get(1, 0).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(1, 0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 0).RowSpan = 2;
             this.SSCard_Sheet1.Cells.Get(1, 0).Value = "방문\r\n일자";
             this.SSCard_Sheet1.Cells.Get(1, 0).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 1).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(1, 1).Border = complexBorder96;
+            this.SSCard_Sheet1.Cells.Get(1, 1).Border = complexBorder16;
             this.SSCard_Sheet1.Cells.Get(1, 1).ColumnSpan = 2;
             this.SSCard_Sheet1.Cells.Get(1, 1).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(1, 1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 1).Value = "업무수행자";
             this.SSCard_Sheet1.Cells.Get(1, 1).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 2).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(1, 2).Border = complexBorder97;
+            this.SSCard_Sheet1.Cells.Get(1, 2).Border = complexBorder17;
             this.SSCard_Sheet1.Cells.Get(1, 2).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(1, 2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 2).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 3).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(1, 3).Border = complexBorder98;
+            this.SSCard_Sheet1.Cells.Get(1, 3).Border = complexBorder18;
             this.SSCard_Sheet1.Cells.Get(1, 3).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(1, 3).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 3).RowSpan = 2;
             this.SSCard_Sheet1.Cells.Get(1, 3).Value = "업무수행\r\n내      용";
             this.SSCard_Sheet1.Cells.Get(1, 3).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 4).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(1, 4).Border = complexBorder99;
+            this.SSCard_Sheet1.Cells.Get(1, 4).Border = complexBorder19;
             this.SSCard_Sheet1.Cells.Get(1, 4).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(1, 4).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 4).RowSpan = 2;
             this.SSCard_Sheet1.Cells.Get(1, 4).Value = "문제점 및 개선지도사항";
             this.SSCard_Sheet1.Cells.Get(1, 4).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 5).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(1, 5).Border = complexBorder100;
+            this.SSCard_Sheet1.Cells.Get(1, 5).Border = complexBorder20;
             this.SSCard_Sheet1.Cells.Get(1, 5).ColumnSpan = 3;
             this.SSCard_Sheet1.Cells.Get(1, 5).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(1, 5).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 5).Value = "사업주 조치내용";
             this.SSCard_Sheet1.Cells.Get(1, 5).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 6).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(1, 6).Border = complexBorder101;
+            this.SSCard_Sheet1.Cells.Get(1, 6).Border = complexBorder21;
             this.SSCard_Sheet1.Cells.Get(1, 6).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(1, 6).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 6).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 7).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(1, 7).Border = complexBorder102;
+            this.SSCard_Sheet1.Cells.Get(1, 7).Border = complexBorder22;
             this.SSCard_Sheet1.Cells.Get(1, 7).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(1, 7).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 7).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 8).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(1, 8).Border = complexBorder103;
-            textCellType30.Multiline = true;
-            textCellType30.WordWrap = true;
-            this.SSCard_Sheet1.Cells.Get(1, 8).CellType = textCellType30;
+            this.SSCard_Sheet1.Cells.Get(1, 8).Border = complexBorder23;
+            textCellType8.Multiline = true;
+            textCellType8.WordWrap = true;
+            this.SSCard_Sheet1.Cells.Get(1, 8).CellType = textCellType8;
             this.SSCard_Sheet1.Cells.Get(1, 8).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(1, 8).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(1, 8).RowSpan = 2;
             this.SSCard_Sheet1.Cells.Get(1, 8).Value = "사업주\r\n 확   인\r\n 서   명";
             this.SSCard_Sheet1.Cells.Get(1, 8).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 0).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(2, 0).Border = complexBorder104;
+            this.SSCard_Sheet1.Cells.Get(2, 0).Border = complexBorder24;
             this.SSCard_Sheet1.Cells.Get(2, 0).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(2, 0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 0).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 1).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(2, 1).Border = complexBorder105;
+            this.SSCard_Sheet1.Cells.Get(2, 1).Border = complexBorder25;
             this.SSCard_Sheet1.Cells.Get(2, 1).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(2, 1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 1).Value = "자격";
             this.SSCard_Sheet1.Cells.Get(2, 1).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 2).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(2, 2).Border = complexBorder106;
+            this.SSCard_Sheet1.Cells.Get(2, 2).Border = complexBorder26;
             this.SSCard_Sheet1.Cells.Get(2, 2).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(2, 2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 2).Value = "성명";
             this.SSCard_Sheet1.Cells.Get(2, 2).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 3).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(2, 3).Border = complexBorder107;
+            this.SSCard_Sheet1.Cells.Get(2, 3).Border = complexBorder27;
             this.SSCard_Sheet1.Cells.Get(2, 3).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(2, 3).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 3).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 4).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(2, 4).Border = complexBorder108;
+            this.SSCard_Sheet1.Cells.Get(2, 4).Border = complexBorder28;
             this.SSCard_Sheet1.Cells.Get(2, 4).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(2, 4).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 4).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 5).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(2, 5).Border = complexBorder109;
+            this.SSCard_Sheet1.Cells.Get(2, 5).Border = complexBorder29;
             this.SSCard_Sheet1.Cells.Get(2, 5).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(2, 5).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 5).Value = "개선";
             this.SSCard_Sheet1.Cells.Get(2, 5).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 6).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(2, 6).Border = complexBorder110;
+            this.SSCard_Sheet1.Cells.Get(2, 6).Border = complexBorder30;
             this.SSCard_Sheet1.Cells.Get(2, 6).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(2, 6).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 6).Value = "진행";
             this.SSCard_Sheet1.Cells.Get(2, 6).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 7).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.SSCard_Sheet1.Cells.Get(2, 7).Border = complexBorder111;
+            this.SSCard_Sheet1.Cells.Get(2, 7).Border = complexBorder31;
             this.SSCard_Sheet1.Cells.Get(2, 7).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SSCard_Sheet1.Cells.Get(2, 7).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Cells.Get(2, 7).Value = "미개선";
@@ -468,57 +468,57 @@
             this.SSCard_Sheet1.ColumnHeader.Columns.Default.SortIndicator = FarPoint.Win.Spread.Model.SortIndicator.None;
             this.SSCard_Sheet1.ColumnHeader.Visible = false;
             this.SSCard_Sheet1.Columns.Default.SortIndicator = FarPoint.Win.Spread.Model.SortIndicator.None;
-            this.SSCard_Sheet1.Columns.Get(0).Border = complexBorder112;
+            this.SSCard_Sheet1.Columns.Get(0).Border = complexBorder32;
             this.SSCard_Sheet1.Columns.Get(0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(0).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(0).Width = 33F;
-            this.SSCard_Sheet1.Columns.Get(1).Border = complexBorder113;
-            textCellType31.Multiline = true;
-            textCellType31.WordWrap = true;
-            this.SSCard_Sheet1.Columns.Get(1).CellType = textCellType31;
+            this.SSCard_Sheet1.Columns.Get(1).Border = complexBorder33;
+            textCellType9.Multiline = true;
+            textCellType9.WordWrap = true;
+            this.SSCard_Sheet1.Columns.Get(1).CellType = textCellType9;
             this.SSCard_Sheet1.Columns.Get(1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(1).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(1).Width = 44F;
-            this.SSCard_Sheet1.Columns.Get(2).Border = complexBorder114;
+            this.SSCard_Sheet1.Columns.Get(2).Border = complexBorder34;
             this.SSCard_Sheet1.Columns.Get(2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(2).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
-            this.SSCard_Sheet1.Columns.Get(3).Border = complexBorder115;
-            textCellType32.Multiline = true;
-            textCellType32.WordWrap = true;
-            this.SSCard_Sheet1.Columns.Get(3).CellType = textCellType32;
-            this.SSCard_Sheet1.Columns.Get(3).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.SSCard_Sheet1.Columns.Get(3).Border = complexBorder35;
+            textCellType10.Multiline = true;
+            textCellType10.WordWrap = true;
+            this.SSCard_Sheet1.Columns.Get(3).CellType = textCellType10;
+            this.SSCard_Sheet1.Columns.Get(3).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SSCard_Sheet1.Columns.Get(3).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(3).Width = 170F;
-            this.SSCard_Sheet1.Columns.Get(4).Border = complexBorder116;
-            textCellType33.Multiline = true;
-            textCellType33.WordWrap = true;
-            this.SSCard_Sheet1.Columns.Get(4).CellType = textCellType33;
-            this.SSCard_Sheet1.Columns.Get(4).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.SSCard_Sheet1.Columns.Get(4).Border = complexBorder36;
+            textCellType11.Multiline = true;
+            textCellType11.WordWrap = true;
+            this.SSCard_Sheet1.Columns.Get(4).CellType = textCellType11;
+            this.SSCard_Sheet1.Columns.Get(4).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SSCard_Sheet1.Columns.Get(4).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(4).Width = 264F;
-            this.SSCard_Sheet1.Columns.Get(5).Border = complexBorder117;
+            this.SSCard_Sheet1.Columns.Get(5).Border = complexBorder37;
             this.SSCard_Sheet1.Columns.Get(5).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(5).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(5).Width = 36F;
-            this.SSCard_Sheet1.Columns.Get(6).Border = complexBorder118;
+            this.SSCard_Sheet1.Columns.Get(6).Border = complexBorder38;
             this.SSCard_Sheet1.Columns.Get(6).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(6).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(6).Width = 38F;
-            this.SSCard_Sheet1.Columns.Get(7).Border = complexBorder119;
+            this.SSCard_Sheet1.Columns.Get(7).Border = complexBorder39;
             this.SSCard_Sheet1.Columns.Get(7).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(7).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSCard_Sheet1.Columns.Get(7).Width = 41F;
-            this.SSCard_Sheet1.Columns.Get(8).Border = complexBorder120;
+            this.SSCard_Sheet1.Columns.Get(8).Border = complexBorder40;
             this.SSCard_Sheet1.Columns.Get(8).Width = 65F;
             this.SSCard_Sheet1.DefaultStyleName = "Text684637057397335024977";
             this.SSCard_Sheet1.PrintInfo.Footer = "";
             this.SSCard_Sheet1.PrintInfo.Header = "";
             this.SSCard_Sheet1.PrintInfo.JobName = "";
-            noPrinterPrintInfo3.Bounds = new System.Drawing.Rectangle(0, 0, 816, 11);
-            noPrinterPrintInfo3.HardMarginX = 0F;
-            noPrinterPrintInfo3.HardMarginY = 0F;
-            noPrinterPrintInfo3.SupportColor = true;
-            this.SSCard_Sheet1.PrintInfo.NoPrinterSetting = noPrinterPrintInfo3;
+            noPrinterPrintInfo1.Bounds = new System.Drawing.Rectangle(0, 0, 816, 11);
+            noPrinterPrintInfo1.HardMarginX = 0F;
+            noPrinterPrintInfo1.HardMarginY = 0F;
+            noPrinterPrintInfo1.SupportColor = true;
+            this.SSCard_Sheet1.PrintInfo.NoPrinterSetting = noPrinterPrintInfo1;
             this.SSCard_Sheet1.PrintInfo.PdfSecurity = null;
             this.SSCard_Sheet1.PrintInfo.Printer = "";
             this.SSCard_Sheet1.PrintInfo.ShowBorder = false;
@@ -548,6 +548,44 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(819, 37);
             this.panel1.TabIndex = 2;
+            // 
+            // BtnPrintSearch
+            // 
+            this.BtnPrintSearch.Location = new System.Drawing.Point(285, 4);
+            this.BtnPrintSearch.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.BtnPrintSearch.Name = "BtnPrintSearch";
+            this.BtnPrintSearch.Size = new System.Drawing.Size(65, 27);
+            this.BtnPrintSearch.TabIndex = 10;
+            this.BtnPrintSearch.Text = "조회";
+            this.BtnPrintSearch.UseVisualStyleBackColor = true;
+            this.BtnPrintSearch.Click += new System.EventHandler(this.BtnPrintSearch_Click);
+            // 
+            // CboEndYear1
+            // 
+            this.CboEndYear1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboEndYear1.FormattingEnabled = true;
+            this.CboEndYear1.Location = new System.Drawing.Point(183, 5);
+            this.CboEndYear1.Name = "CboEndYear1";
+            this.CboEndYear1.Size = new System.Drawing.Size(96, 25);
+            this.CboEndYear1.TabIndex = 9;
+            // 
+            // CboStartYear1
+            // 
+            this.CboStartYear1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboStartYear1.FormattingEnabled = true;
+            this.CboStartYear1.Location = new System.Drawing.Point(81, 5);
+            this.CboStartYear1.Name = "CboStartYear1";
+            this.CboStartYear1.Size = new System.Drawing.Size(96, 25);
+            this.CboStartYear1.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(73, 17);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "조회년도 : ";
             // 
             // BtnPrint
             // 
@@ -619,6 +657,56 @@
             this.SSList_Sheet1.FilterBarHeaderStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SSList_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SSList_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.BtnSearch);
+            this.panel3.Controls.Add(this.CboEndYear2);
+            this.panel3.Controls.Add(this.CboStartYear2);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(819, 38);
+            this.panel3.TabIndex = 116;
+            // 
+            // BtnSearch
+            // 
+            this.BtnSearch.Location = new System.Drawing.Point(284, 6);
+            this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.BtnSearch.Name = "BtnSearch";
+            this.BtnSearch.Size = new System.Drawing.Size(65, 27);
+            this.BtnSearch.TabIndex = 14;
+            this.BtnSearch.Text = "조회";
+            this.BtnSearch.UseVisualStyleBackColor = true;
+            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
+            // 
+            // CboEndYear2
+            // 
+            this.CboEndYear2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboEndYear2.FormattingEnabled = true;
+            this.CboEndYear2.Location = new System.Drawing.Point(182, 6);
+            this.CboEndYear2.Name = "CboEndYear2";
+            this.CboEndYear2.Size = new System.Drawing.Size(96, 25);
+            this.CboEndYear2.TabIndex = 13;
+            // 
+            // CboStartYear2
+            // 
+            this.CboStartYear2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboStartYear2.FormattingEnabled = true;
+            this.CboStartYear2.Location = new System.Drawing.Point(80, 6);
+            this.CboStartYear2.Name = "CboStartYear2";
+            this.CboStartYear2.Size = new System.Drawing.Size(96, 25);
+            this.CboStartYear2.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 11);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 17);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "조회년도 : ";
             // 
             // BtnNew
             // 
@@ -881,94 +969,6 @@
             this.contentTitle1.TabIndex = 111;
             this.contentTitle1.TitleText = "19. 위탁업무수행일지";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 17);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "조회년도 : ";
-            // 
-            // CboStartYear1
-            // 
-            this.CboStartYear1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboStartYear1.FormattingEnabled = true;
-            this.CboStartYear1.Location = new System.Drawing.Point(81, 5);
-            this.CboStartYear1.Name = "CboStartYear1";
-            this.CboStartYear1.Size = new System.Drawing.Size(96, 25);
-            this.CboStartYear1.TabIndex = 8;
-            // 
-            // CboEndYear1
-            // 
-            this.CboEndYear1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboEndYear1.FormattingEnabled = true;
-            this.CboEndYear1.Location = new System.Drawing.Point(183, 5);
-            this.CboEndYear1.Name = "CboEndYear1";
-            this.CboEndYear1.Size = new System.Drawing.Size(96, 25);
-            this.CboEndYear1.TabIndex = 9;
-            // 
-            // BtnPrintSearch
-            // 
-            this.BtnPrintSearch.Location = new System.Drawing.Point(285, 4);
-            this.BtnPrintSearch.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.BtnPrintSearch.Name = "BtnPrintSearch";
-            this.BtnPrintSearch.Size = new System.Drawing.Size(65, 27);
-            this.BtnPrintSearch.TabIndex = 10;
-            this.BtnPrintSearch.Text = "조회";
-            this.BtnPrintSearch.UseVisualStyleBackColor = true;
-            this.BtnPrintSearch.Click += new System.EventHandler(this.BtnPrintSearch_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.BtnSearch);
-            this.panel3.Controls.Add(this.CboEndYear2);
-            this.panel3.Controls.Add(this.CboStartYear2);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(819, 38);
-            this.panel3.TabIndex = 116;
-            // 
-            // BtnSearch
-            // 
-            this.BtnSearch.Location = new System.Drawing.Point(284, 6);
-            this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.BtnSearch.Name = "BtnSearch";
-            this.BtnSearch.Size = new System.Drawing.Size(65, 27);
-            this.BtnSearch.TabIndex = 14;
-            this.BtnSearch.Text = "조회";
-            this.BtnSearch.UseVisualStyleBackColor = true;
-            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
-            // 
-            // CboEndYear2
-            // 
-            this.CboEndYear2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboEndYear2.FormattingEnabled = true;
-            this.CboEndYear2.Location = new System.Drawing.Point(182, 6);
-            this.CboEndYear2.Name = "CboEndYear2";
-            this.CboEndYear2.Size = new System.Drawing.Size(96, 25);
-            this.CboEndYear2.TabIndex = 13;
-            // 
-            // CboStartYear2
-            // 
-            this.CboStartYear2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboStartYear2.FormattingEnabled = true;
-            this.CboStartYear2.Location = new System.Drawing.Point(80, 6);
-            this.CboStartYear2.Name = "CboStartYear2";
-            this.CboStartYear2.Size = new System.Drawing.Size(96, 25);
-            this.CboStartYear2.TabIndex = 12;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 11);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 17);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "조회년도 : ";
-            // 
             // CardPage_15_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -990,11 +990,11 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.pan19.ResumeLayout(false);
             this.pan19.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SignImage)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            HC.OSHA.Model.HC_OSHA_SITE_MODEL hC_OSHA_SITE_MODEL1 = new HC.OSHA.Model.HC_OSHA_SITE_MODEL();
+            HC.OSHA.Model.HC_OSHA_SITE_MODEL hC_OSHA_SITE_MODEL3 = new HC.OSHA.Model.HC_OSHA_SITE_MODEL();
             this.ContentTitle = new ComBase.Mvc.UserControls.ContentTitle();
             this.btnExit = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -1808,6 +1808,7 @@
             this.label107.TabIndex = 285;
             this.label107.Text = "특별관리대상유해물질";
             this.label107.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label107.Click += new System.EventHandler(this.label107_Click);
             // 
             // flowLayoutPanel75
             // 
@@ -2628,6 +2629,7 @@
             this.label122.TabIndex = 264;
             this.label122.Text = "금지유해물질";
             this.label122.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label122.Click += new System.EventHandler(this.label122_Click);
             // 
             // flowLayoutPanel89
             // 
@@ -2890,6 +2892,7 @@
             this.label127.TabIndex = 259;
             this.label127.Text = "그 밖의 유해인자";
             this.label127.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label127.Click += new System.EventHandler(this.label127_Click);
             // 
             // flowLayoutPanel93
             // 
@@ -3602,6 +3605,7 @@
             this.label137.TabIndex = 319;
             this.label137.Text = "소음진동";
             this.label137.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label137.Click += new System.EventHandler(this.label137_Click);
             // 
             // flowLayoutPanel63
             // 
@@ -4794,6 +4798,7 @@
             this.label69.TabIndex = 285;
             this.label69.Text = "밀폐공간";
             this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label69.Click += new System.EventHandler(this.label69_Click);
             // 
             // flowLayoutPanel37
             // 
@@ -5676,6 +5681,7 @@
             this.label82.TabIndex = 264;
             this.label82.Text = "근골격계 부담작업";
             this.label82.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label82.Click += new System.EventHandler(this.label82_Click);
             // 
             // flowLayoutPanel24
             // 
@@ -5936,8 +5942,9 @@
             this.label85.Padding = new System.Windows.Forms.Padding(3);
             this.label85.Size = new System.Drawing.Size(115, 403);
             this.label85.TabIndex = 259;
-            this.label85.Text = "관리대상      유해물질";
+            this.label85.Text = "관리대상 유해물질";
             this.label85.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label85.Click += new System.EventHandler(this.label85_Click);
             // 
             // flowLayoutPanel51
             // 
@@ -6076,6 +6083,7 @@
             this.label88.TabIndex = 246;
             this.label88.Text = "사무실 오염";
             this.label88.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label88.Click += new System.EventHandler(this.label88_Click);
             // 
             // flowLayoutPanel53
             // 
@@ -6178,60 +6186,60 @@
             // oshaSiteList1
             // 
             this.oshaSiteList1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            hC_OSHA_SITE_MODEL1.ADDRESS = null;
-            hC_OSHA_SITE_MODEL1.BIZCREATEDATE = null;
-            hC_OSHA_SITE_MODEL1.BIZJIDOWON = null;
-            hC_OSHA_SITE_MODEL1.BIZJONG = null;
-            hC_OSHA_SITE_MODEL1.BIZKIHO = null;
-            hC_OSHA_SITE_MODEL1.BIZNUMBER = null;
-            hC_OSHA_SITE_MODEL1.BIZTYPE = null;
-            hC_OSHA_SITE_MODEL1.CEONAME = null;
-            hC_OSHA_SITE_MODEL1.ComboDisplay = null;
-            hC_OSHA_SITE_MODEL1.EMAIL = null;
-            hC_OSHA_SITE_MODEL1.FAX = null;
-            hC_OSHA_SITE_MODEL1.HASCHILD = null;
-            hC_OSHA_SITE_MODEL1.ID = ((long)(0));
-            hC_OSHA_SITE_MODEL1.INDUSTRIALNUMBER = null;
-            hC_OSHA_SITE_MODEL1.INSURANCE = null;
-            hC_OSHA_SITE_MODEL1.ISACTIVE = null;
-            hC_OSHA_SITE_MODEL1.LABOR = null;
-            hC_OSHA_SITE_MODEL1.LASTMODIFIED = null;
-            hC_OSHA_SITE_MODEL1.MANAGEDOCTORCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGEDOCTORSTARTDATE = null;
-            hC_OSHA_SITE_MODEL1.MANAGEENGINEERCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGEENGINEERSTARTDATE = null;
-            hC_OSHA_SITE_MODEL1.MANAGENURSECOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.MANAGENURSESTARTDATE = null;
-            hC_OSHA_SITE_MODEL1.NAME = null;
-            hC_OSHA_SITE_MODEL1.PARENTSITE_ID = ((long)(0));
-            hC_OSHA_SITE_MODEL1.PARENTSITE_NAME = null;
-            hC_OSHA_SITE_MODEL1.RowStatus = ComBase.Mvc.RowStatus.None;
-            hC_OSHA_SITE_MODEL1.SITE_ID = ((long)(0));
-            hC_OSHA_SITE_MODEL1.TEL = null;
-            hC_OSHA_SITE_MODEL1.VISITDAY = ((long)(0));
-            hC_OSHA_SITE_MODEL1.VISITWEEK = ((long)(0));
-            hC_OSHA_SITE_MODEL1.WORKERTOTALCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL1.zTemp1 = null;
-            hC_OSHA_SITE_MODEL1.zTemp10 = null;
-            hC_OSHA_SITE_MODEL1.zTemp11 = null;
-            hC_OSHA_SITE_MODEL1.zTemp12 = null;
-            hC_OSHA_SITE_MODEL1.zTemp13 = null;
-            hC_OSHA_SITE_MODEL1.zTemp14 = null;
-            hC_OSHA_SITE_MODEL1.zTemp15 = null;
-            hC_OSHA_SITE_MODEL1.zTemp16 = null;
-            hC_OSHA_SITE_MODEL1.zTemp17 = null;
-            hC_OSHA_SITE_MODEL1.zTemp18 = null;
-            hC_OSHA_SITE_MODEL1.zTemp19 = null;
-            hC_OSHA_SITE_MODEL1.zTemp2 = null;
-            hC_OSHA_SITE_MODEL1.zTemp20 = null;
-            hC_OSHA_SITE_MODEL1.zTemp3 = null;
-            hC_OSHA_SITE_MODEL1.zTemp4 = null;
-            hC_OSHA_SITE_MODEL1.zTemp5 = null;
-            hC_OSHA_SITE_MODEL1.zTemp6 = null;
-            hC_OSHA_SITE_MODEL1.zTemp7 = null;
-            hC_OSHA_SITE_MODEL1.zTemp8 = null;
-            hC_OSHA_SITE_MODEL1.zTemp9 = null;
-            this.oshaSiteList1.GetSite = hC_OSHA_SITE_MODEL1;
+            hC_OSHA_SITE_MODEL3.ADDRESS = null;
+            hC_OSHA_SITE_MODEL3.BIZCREATEDATE = null;
+            hC_OSHA_SITE_MODEL3.BIZJIDOWON = null;
+            hC_OSHA_SITE_MODEL3.BIZJONG = null;
+            hC_OSHA_SITE_MODEL3.BIZKIHO = null;
+            hC_OSHA_SITE_MODEL3.BIZNUMBER = null;
+            hC_OSHA_SITE_MODEL3.BIZTYPE = null;
+            hC_OSHA_SITE_MODEL3.CEONAME = null;
+            hC_OSHA_SITE_MODEL3.ComboDisplay = null;
+            hC_OSHA_SITE_MODEL3.EMAIL = null;
+            hC_OSHA_SITE_MODEL3.FAX = null;
+            hC_OSHA_SITE_MODEL3.HASCHILD = null;
+            hC_OSHA_SITE_MODEL3.ID = ((long)(0));
+            hC_OSHA_SITE_MODEL3.INDUSTRIALNUMBER = null;
+            hC_OSHA_SITE_MODEL3.INSURANCE = null;
+            hC_OSHA_SITE_MODEL3.ISACTIVE = null;
+            hC_OSHA_SITE_MODEL3.LABOR = null;
+            hC_OSHA_SITE_MODEL3.LASTMODIFIED = null;
+            hC_OSHA_SITE_MODEL3.MANAGEDOCTORCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL3.MANAGEDOCTORSTARTDATE = null;
+            hC_OSHA_SITE_MODEL3.MANAGEENGINEERCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL3.MANAGEENGINEERSTARTDATE = null;
+            hC_OSHA_SITE_MODEL3.MANAGENURSECOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL3.MANAGENURSESTARTDATE = null;
+            hC_OSHA_SITE_MODEL3.NAME = null;
+            hC_OSHA_SITE_MODEL3.PARENTSITE_ID = ((long)(0));
+            hC_OSHA_SITE_MODEL3.PARENTSITE_NAME = null;
+            hC_OSHA_SITE_MODEL3.RowStatus = ComBase.Mvc.RowStatus.None;
+            hC_OSHA_SITE_MODEL3.SITE_ID = ((long)(0));
+            hC_OSHA_SITE_MODEL3.TEL = null;
+            hC_OSHA_SITE_MODEL3.VISITDAY = ((long)(0));
+            hC_OSHA_SITE_MODEL3.VISITWEEK = ((long)(0));
+            hC_OSHA_SITE_MODEL3.WORKERTOTALCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL3.zTemp1 = null;
+            hC_OSHA_SITE_MODEL3.zTemp10 = null;
+            hC_OSHA_SITE_MODEL3.zTemp11 = null;
+            hC_OSHA_SITE_MODEL3.zTemp12 = null;
+            hC_OSHA_SITE_MODEL3.zTemp13 = null;
+            hC_OSHA_SITE_MODEL3.zTemp14 = null;
+            hC_OSHA_SITE_MODEL3.zTemp15 = null;
+            hC_OSHA_SITE_MODEL3.zTemp16 = null;
+            hC_OSHA_SITE_MODEL3.zTemp17 = null;
+            hC_OSHA_SITE_MODEL3.zTemp18 = null;
+            hC_OSHA_SITE_MODEL3.zTemp19 = null;
+            hC_OSHA_SITE_MODEL3.zTemp2 = null;
+            hC_OSHA_SITE_MODEL3.zTemp20 = null;
+            hC_OSHA_SITE_MODEL3.zTemp3 = null;
+            hC_OSHA_SITE_MODEL3.zTemp4 = null;
+            hC_OSHA_SITE_MODEL3.zTemp5 = null;
+            hC_OSHA_SITE_MODEL3.zTemp6 = null;
+            hC_OSHA_SITE_MODEL3.zTemp7 = null;
+            hC_OSHA_SITE_MODEL3.zTemp8 = null;
+            hC_OSHA_SITE_MODEL3.zTemp9 = null;
+            this.oshaSiteList1.GetSite = hC_OSHA_SITE_MODEL3;
             this.oshaSiteList1.Location = new System.Drawing.Point(3, 4);
             this.oshaSiteList1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.oshaSiteList1.Name = "oshaSiteList1";
@@ -7126,12 +7134,10 @@
             // RdoENVCHECKJSON7_N
             // 
             this.RdoENVCHECKJSON7_N.AutoSize = true;
-            this.RdoENVCHECKJSON7_N.Checked = true;
             this.RdoENVCHECKJSON7_N.Location = new System.Drawing.Point(3, 3);
             this.RdoENVCHECKJSON7_N.Name = "RdoENVCHECKJSON7_N";
             this.RdoENVCHECKJSON7_N.Size = new System.Drawing.Size(78, 21);
             this.RdoENVCHECKJSON7_N.TabIndex = 254;
-            this.RdoENVCHECKJSON7_N.TabStop = true;
             this.RdoENVCHECKJSON7_N.Text = "해당없음";
             this.RdoENVCHECKJSON7_N.UseVisualStyleBackColor = true;
             // 
@@ -7179,12 +7185,10 @@
             // RdoENVCHECKJSON5_N
             // 
             this.RdoENVCHECKJSON5_N.AutoSize = true;
-            this.RdoENVCHECKJSON5_N.Checked = true;
             this.RdoENVCHECKJSON5_N.Location = new System.Drawing.Point(3, 3);
             this.RdoENVCHECKJSON5_N.Name = "RdoENVCHECKJSON5_N";
             this.RdoENVCHECKJSON5_N.Size = new System.Drawing.Size(78, 21);
             this.RdoENVCHECKJSON5_N.TabIndex = 254;
-            this.RdoENVCHECKJSON5_N.TabStop = true;
             this.RdoENVCHECKJSON5_N.Text = "해당없음";
             this.RdoENVCHECKJSON5_N.UseVisualStyleBackColor = true;
             // 
@@ -7250,12 +7254,10 @@
             // RdoENVCHECKJSON6_N
             // 
             this.RdoENVCHECKJSON6_N.AutoSize = true;
-            this.RdoENVCHECKJSON6_N.Checked = true;
             this.RdoENVCHECKJSON6_N.Location = new System.Drawing.Point(3, 3);
             this.RdoENVCHECKJSON6_N.Name = "RdoENVCHECKJSON6_N";
             this.RdoENVCHECKJSON6_N.Size = new System.Drawing.Size(78, 21);
             this.RdoENVCHECKJSON6_N.TabIndex = 254;
-            this.RdoENVCHECKJSON6_N.TabStop = true;
             this.RdoENVCHECKJSON6_N.Text = "해당없음";
             this.RdoENVCHECKJSON6_N.UseVisualStyleBackColor = true;
             // 
@@ -7807,6 +7809,7 @@
             this.label41.TabIndex = 264;
             this.label41.Text = "온, 습도";
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label41.Click += new System.EventHandler(this.label41_Click);
             // 
             // flowLayoutPanel8
             // 
@@ -7875,12 +7878,10 @@
             // RdoENVCHECKJSON3_N
             // 
             this.RdoENVCHECKJSON3_N.AutoSize = true;
-            this.RdoENVCHECKJSON3_N.Checked = true;
             this.RdoENVCHECKJSON3_N.Location = new System.Drawing.Point(3, 3);
             this.RdoENVCHECKJSON3_N.Name = "RdoENVCHECKJSON3_N";
             this.RdoENVCHECKJSON3_N.Size = new System.Drawing.Size(78, 21);
             this.RdoENVCHECKJSON3_N.TabIndex = 254;
-            this.RdoENVCHECKJSON3_N.TabStop = true;
             this.RdoENVCHECKJSON3_N.Text = "해당없음";
             this.RdoENVCHECKJSON3_N.UseVisualStyleBackColor = true;
             // 
@@ -7945,6 +7946,7 @@
             this.label31.TabIndex = 259;
             this.label31.Text = "분진";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label31.Click += new System.EventHandler(this.label31_Click);
             // 
             // flowLayoutPanel6
             // 
@@ -7960,12 +7962,10 @@
             // RdoENVCHECKJSON4_N
             // 
             this.RdoENVCHECKJSON4_N.AutoSize = true;
-            this.RdoENVCHECKJSON4_N.Checked = true;
             this.RdoENVCHECKJSON4_N.Location = new System.Drawing.Point(3, 3);
             this.RdoENVCHECKJSON4_N.Name = "RdoENVCHECKJSON4_N";
             this.RdoENVCHECKJSON4_N.Size = new System.Drawing.Size(78, 21);
             this.RdoENVCHECKJSON4_N.TabIndex = 254;
-            this.RdoENVCHECKJSON4_N.TabStop = true;
             this.RdoENVCHECKJSON4_N.Text = "해당없음";
             this.RdoENVCHECKJSON4_N.UseVisualStyleBackColor = true;
             // 
@@ -8013,12 +8013,10 @@
             // RdoENVCHECKJSON1_N
             // 
             this.RdoENVCHECKJSON1_N.AutoSize = true;
-            this.RdoENVCHECKJSON1_N.Checked = true;
             this.RdoENVCHECKJSON1_N.Location = new System.Drawing.Point(3, 3);
             this.RdoENVCHECKJSON1_N.Name = "RdoENVCHECKJSON1_N";
             this.RdoENVCHECKJSON1_N.Size = new System.Drawing.Size(78, 21);
             this.RdoENVCHECKJSON1_N.TabIndex = 254;
-            this.RdoENVCHECKJSON1_N.TabStop = true;
             this.RdoENVCHECKJSON1_N.Text = "해당없음";
             this.RdoENVCHECKJSON1_N.UseVisualStyleBackColor = true;
             // 
@@ -8083,6 +8081,7 @@
             this.label26.TabIndex = 246;
             this.label26.Text = "조도";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label26.Click += new System.EventHandler(this.label26_Click);
             // 
             // flowLayoutPanel4
             // 
@@ -8098,12 +8097,10 @@
             // RdoENVCHECKJSON2_N
             // 
             this.RdoENVCHECKJSON2_N.AutoSize = true;
-            this.RdoENVCHECKJSON2_N.Checked = true;
             this.RdoENVCHECKJSON2_N.Location = new System.Drawing.Point(3, 3);
             this.RdoENVCHECKJSON2_N.Name = "RdoENVCHECKJSON2_N";
             this.RdoENVCHECKJSON2_N.Size = new System.Drawing.Size(78, 21);
             this.RdoENVCHECKJSON2_N.TabIndex = 254;
-            this.RdoENVCHECKJSON2_N.TabStop = true;
             this.RdoENVCHECKJSON2_N.Text = "해당없음";
             this.RdoENVCHECKJSON2_N.UseVisualStyleBackColor = true;
             // 

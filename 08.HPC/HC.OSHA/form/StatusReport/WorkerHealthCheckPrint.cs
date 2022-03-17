@@ -141,9 +141,10 @@ namespace HC_OSHA.StatusReport
                 SSCard.ActiveSheet.Cells[row, 1].Value = list[i].name;
 
                 SSCard.ActiveSheet.Cells[row, 2].Value = list[i].dept;
-                if (list[i].sabun!="") SSCard.ActiveSheet.Cells[row, 2].Value += "(" + list[i].sabun + ")";
+                if (list[i].sabun.IsNullOrEmpty()==false) SSCard.ActiveSheet.Cells[row, 2].Value += "(" + list[i].sabun + ")";
 
-                SSCard.ActiveSheet.Cells[row, 3].Value = list[i].gender + "(" + list[i].age + ")";
+                SSCard.ActiveSheet.Cells[row, 3].Value = list[i].gender;
+                if (list[i].age>0) SSCard.ActiveSheet.Cells[row, 3].Value += "(" + list[i].age + ")";
                 SSCard.ActiveSheet.Cells[row, 4].ColumnSpan = 2;
                 SSCard.ActiveSheet.Cells[row, 6].ColumnSpan = 2;
 

@@ -4633,7 +4633,7 @@
             namedStyle56});
             this.SSList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSList_Sheet1});
-            this.SSList.Size = new System.Drawing.Size(673, 564);
+            this.SSList.Size = new System.Drawing.Size(673, 767);
             this.SSList.TabIndex = 93;
             this.SSList.TabStripRatio = 0.6D;
             tipAppearance1.BackColor = System.Drawing.SystemColors.Info;
@@ -20045,7 +20045,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(702, 637);
+            this.ClientSize = new System.Drawing.Size(702, 761);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.SSList);
             this.Controls.Add(this.label4);

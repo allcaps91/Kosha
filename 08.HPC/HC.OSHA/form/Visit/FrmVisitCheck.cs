@@ -1,5 +1,6 @@
 ﻿using ComBase;
 using ComBase.Controls;
+using ComBase.Mvc.Enums;
 using ComBase.Mvc.Utils;
 using ComHpcLibB.Model;
 using FarPoint.Win.Spread;
@@ -55,8 +56,30 @@ namespace HC_OSHA.form.Visit
                 cboVisit.Items.Add("간호사");
                 cboVisit.Items.Add("산업위생");
             }
+
             cboVisit.SelectedIndex = 1;
 
+            SSList.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true, RowHeaderVisible = true, ColumnHeaderHeight = 30 });
+            SSList.AddColumnText("코드", "", 50, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("사업장명", "", 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = true, WordWrap = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("계약시작일", "", 76, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("계약종료일", "", 76, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("담당자", "", 70, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = true, WordWrap = true, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("인원", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = true, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("주기", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("방문횟수", "", 40, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("1월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("2월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("3월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("4월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("5월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("6월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("7월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("8월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("9월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("10월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("11월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
+            SSList.AddColumnText("12월", "", 45, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Center });
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -194,9 +217,20 @@ namespace HC_OSHA.form.Visit
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             SpreadPrint sp = new SpreadPrint(SSList, PrintStyle.STANDARD_REPORT);
-            sp.Title = cboYear.Text.Trim() + "년 방문 CHECK LIST";
+            sp.Title = cboYear.Text.Trim() + "년 방문 날짜 점검 리스트";
             sp.orientation = PrintOrientation.Landscape;
             sp.Execute();
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            bool bOk = SSList.SaveExcel("c:\\temp\\방문날짜 점검 리스트.xls", FarPoint.Excel.ExcelSaveFlags.SaveCustomColumnHeaders);
+            {
+                if (bOk == true)
+                    ComFunc.MsgBox("Temp 폴더에 엑셀파일이 생성이 되었습니다.", "확인");
+                else
+                    ComFunc.MsgBox("엑셀파일 생성에 오류가 발생 하였습니다.", "확인");
+            }
         }
     }
 }

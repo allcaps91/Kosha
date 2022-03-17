@@ -129,6 +129,7 @@ namespace HC_OSHA.StatusReport
             SSReportList.AddColumnText("방문일자", nameof(VisitDateModel.VisitDate), 78, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSReportList.AddColumnText("작성자", nameof(VisitDateModel.Name), 55, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
 
+            siteStatusControl.Set_btnLocation();
             WindowState = FormWindowState.Maximized;
         }
 

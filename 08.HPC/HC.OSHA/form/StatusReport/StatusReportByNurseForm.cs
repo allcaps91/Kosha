@@ -177,6 +177,7 @@ namespace HC_OSHA
             SSperformContent.AddColumnText("수행내용", nameof(PerformContentModel.CheckboxText), 304, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
             SSperformContent.AddColumnCheckBox("선택여부", nameof(PerformContentModel.IsChecked), 35, new CheckBoxStringCellType {  IsHeaderCheckBox = false,  CheckedValue = "Y", UnCheckedValue = "N" }, new SpreadCellTypeOption { IsSort = false, });
 
+            siteStatusControl.Set_btnLocation();
             WindowState = FormWindowState.Maximized;
         }
         private void StatusReportByEngineer_ButtonClick(object sender, FarPoint.Win.Spread.EditorNotifyEventArgs e)
@@ -220,6 +221,7 @@ namespace HC_OSHA
             siteStatusControl.Initialize(this, DtpVisitDate.GetValue());
             siteStatusControl.SetTxtOshaData(TxtOshaData);
             siteStatusControl.SetSitName(base.SelectedSite.NAME);
+            siteStatusControl.Set_btnLocation();
 
             workerHealthCheckForm.Init();
        
