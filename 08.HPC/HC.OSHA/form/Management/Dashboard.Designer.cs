@@ -631,10 +631,10 @@
             // 
             // 수령증발급대장ToolStripMenuItem
             // 
-            this.수령증발급대장ToolStripMenuItem.Enabled = false;
             this.수령증발급대장ToolStripMenuItem.Name = "수령증발급대장ToolStripMenuItem";
             this.수령증발급대장ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.수령증발급대장ToolStripMenuItem.Text = "수령증발급대장";
+            this.수령증발급대장ToolStripMenuItem.Click += new System.EventHandler(this.수령증발급대장ToolStripMenuItem_Click);
             // 
             // 근골격계지원대장ToolStripMenuItem
             // 

@@ -44,7 +44,6 @@ namespace HC_OSHA
             SSList.AddColumnComboBox("발급자", nameof(HC_OSHA_VISIT_RECEIPT.REGUSERID), 100, IsReadOnly.N, users, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnButton(" ", 60, new SpreadCellTypeOption {  ButtonText = "삭제" }).ButtonClick += (s, ev) => { SSList.DeleteRow(ev.Row); };
 
-
             Search();
         }
         private void Search()

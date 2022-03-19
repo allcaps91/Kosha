@@ -86,7 +86,7 @@ namespace HC_OSHA
                 작업환경측정관리ToolStripMenuItem.Visible = false;
                 //사업장현황ToolStripMenuItem.Visible = false;
                 //사업장별상담대장ToolStripMenuItem.Visible = false;
-                수령증발급대장ToolStripMenuItem.Visible = false;
+                //수령증발급대장ToolStripMenuItem.Visible = false;
                 근골격계지원대장ToolStripMenuItem.Visible = false;
                 정보자료제공ToolStripMenuItem.Visible = false;
                 장비사용대장간호사ToolStripMenuItem.Visible = false;
@@ -865,6 +865,11 @@ namespace HC_OSHA
         private void 방문날짜조회ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FrmVisitCheck().Show();
+        }
+
+        private void 수령증발급대장ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmSuryengReport().Show();
         }
     }
 }

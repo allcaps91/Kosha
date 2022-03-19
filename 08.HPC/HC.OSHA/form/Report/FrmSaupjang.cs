@@ -130,8 +130,6 @@ namespace HC_OSHA
                 SQL = SQL + ComNum.VBLF + "  AND A.CONTRACTENDDATE>='" + cboYear.Text + "-01-01' ";
                 SQL = SQL + ComNum.VBLF + "  AND A.CONTRACTSTARTDATE<='" + cboYear.Text + "-12-31' ";
             }
-            // 회사이름으로 검색
-            if (strName != "") SQL = SQL + ComNum.VBLF + "  AND A.NAME LIKE '%" + strName + "%' ";
             //관리자별
             if (strManager != "")
             {
@@ -143,6 +141,8 @@ namespace HC_OSHA
             SQL = SQL + ComNum.VBLF + "  AND A.MANAGEDOCTOR=C.USERID(+) ";
             SQL = SQL + ComNum.VBLF + "  AND A.MANAGENURSE=D.USERID(+) ";
             SQL = SQL + ComNum.VBLF + "  AND A.MANAGEENGINEER=E.USERID(+) ";
+            // 회사이름으로 검색
+            if (strName != "") SQL = SQL + ComNum.VBLF + " AND B.NAME LIKE '%" + strName + "%' ";
             SQL = SQL + ComNum.VBLF + "  AND A.SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
             SQL = SQL + ComNum.VBLF + "  AND B.SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
             SQL = SQL + ComNum.VBLF + "  AND C.SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
@@ -260,6 +260,11 @@ namespace HC_OSHA
             dt2 = null;
 
             return strName;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

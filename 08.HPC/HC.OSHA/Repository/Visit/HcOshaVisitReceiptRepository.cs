@@ -14,7 +14,7 @@ namespace HC.OSHA.Repository
         public HC_OSHA_VISIT_RECEIPT FindOne(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT * FROM HC_OSHA_VISIT_RECEIPT ");
+            parameter.AppendSql("SELECT * FROM HIC_OSHA_VISIT_RECEIPT ");
             parameter.AppendSql(" WHERE ID = :ID ");
             parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
 
@@ -46,7 +46,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql(" (ID,SITE_ID,REGDATE,REGUSERID,REGUSERNAME,CANCELDATE,");
             parameter.AppendSql("  TAKEOVER,REMARK,SWLICENSE) ");
             parameter.AppendSql(" VALUES ");
-            parameter.AppendSql(" (:ID,:SITE_ID,:REGDATE,:REGUSERNAME,:REGUSERID,:CANCELDATE,");
+            parameter.AppendSql(" (:ID,:SITE_ID,:REGDATE,:REGUSERID,:REGUSERNAME,:CANCELDATE,");
             parameter.AppendSql("  :TAKEOVER,:REMARK,:SWLICENSE) ");
             parameter.Add("ID", dto.ID);
             parameter.Add("SITE_ID", dto.SITE_ID);

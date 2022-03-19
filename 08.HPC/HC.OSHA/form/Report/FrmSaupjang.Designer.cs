@@ -70,6 +70,7 @@
             this.BtnSearch = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.formTItle1 = new ComBase.Mvc.UserControls.FormTItle();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
             this.panSearch.SuspendLayout();
@@ -504,11 +505,23 @@
             this.formTItle1.TabIndex = 8;
             this.formTItle1.TitleText = "사업장 현황";
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(1065, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 35);
+            this.btnClose.TabIndex = 20;
+            this.btnClose.Text = "닫기";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // FrmSaupjang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.SSList);
             this.Controls.Add(this.panSearch);
             this.Controls.Add(this.formTItle1);
@@ -539,5 +552,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnClose;
     }
 }
