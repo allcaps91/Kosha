@@ -298,12 +298,6 @@
     <Compile Include="form\Management\SiteEquipMentForm.Designer.cs">
       <DependentUpon>SiteEquipMentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\Report\EducationReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\Report\EducationReportForm.Designer.cs">
-      <DependentUpon>EducationReportForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD10.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD11_1.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD11_2.cs" />
@@ -325,6 +319,24 @@
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_3.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_4.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_5.cs" />
+    <Compile Include="form\Report\FrmEduReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Report\FrmEduReport.Designer.cs">
+      <DependentUpon>FrmEduReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Report\FrmSanjeReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Report\FrmSanjeReport.Designer.cs">
+      <DependentUpon>FrmSanjeReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Report\FrmSaupjang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Report\FrmSaupjang.Designer.cs">
+      <DependentUpon>FrmSaupjang.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Report\FrmSangdamReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -896,11 +908,17 @@
     <EmbeddedResource Include="form\Management\SiteEquipMentForm.resx">
       <DependentUpon>SiteEquipMentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form\Report\EducationReportForm.resx">
-      <DependentUpon>EducationReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="form\Report\FrmEduReport.resx">
+      <DependentUpon>FrmEduReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Report\FrmSanjeReport.resx">
+      <DependentUpon>FrmSanjeReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Report\FrmSangdamReport.resx">
       <DependentUpon>FrmSangdamReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Report\FrmSaupjang.resx">
+      <DependentUpon>FrmSaupjang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Report\IncomeReport.resx">
       <DependentUpon>IncomeReport.cs</DependentUpon>

@@ -84,8 +84,7 @@ namespace HC_OSHA
             {
                 검진결과ToolStripMenuItem.Visible = false;
                 작업환경측정관리ToolStripMenuItem.Visible = false;
-                사업장현황ToolStripMenuItem.Visible = false;
-                개인별상담대장ToolStripMenuItem.Visible = false;
+                //사업장현황ToolStripMenuItem.Visible = false;
                 //사업장별상담대장ToolStripMenuItem.Visible = false;
                 수령증발급대장ToolStripMenuItem.Visible = false;
                 근골격계지원대장ToolStripMenuItem.Visible = false;
@@ -384,7 +383,7 @@ namespace HC_OSHA
 
         private void 보건교육지원대장ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new EducationReportForm().Show();
+            new FrmEduReport().Show();
         }
 
         private void 상태보고서의사용ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -503,7 +502,7 @@ namespace HC_OSHA
 
         private void 보건교육지원대장ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new EducationReportForm().Show();
+            new FrmEduReport().Show();
         }
 
         private void 일반검진결과표ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -803,17 +802,13 @@ namespace HC_OSHA
 
         private void 산재현황대장ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new FrmSanjeReport().Show();
         }
 
         private void 사업장현황ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void 개인별상담대장ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            FrmSaupjang form = new FrmSaupjang();
+            form.Show();
         }
 
         private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)

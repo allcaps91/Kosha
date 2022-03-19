@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panSearch = new System.Windows.Forms.Panel();
+            this.btnExcel = new System.Windows.Forms.Button();
             this.TxtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cboYear = new System.Windows.Forms.ComboBox();
@@ -41,7 +42,7 @@
             this.formTItle1 = new ComBase.Mvc.UserControls.FormTItle();
             this.SSList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.SSList = new FarPoint.Win.Spread.FpSpread();
-            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.panSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
@@ -67,6 +68,17 @@
             this.panSearch.Size = new System.Drawing.Size(1107, 44);
             this.panSearch.TabIndex = 4;
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(891, 6);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(75, 28);
+            this.btnExcel.TabIndex = 145;
+            this.btnExcel.Text = "엑셀";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // TxtName
             // 
             this.TxtName.Font = new System.Drawing.Font("맑은 고딕", 9.75F);
@@ -87,6 +99,7 @@
             this.label1.TabIndex = 144;
             this.label1.Text = "근로자 성명";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // cboYear
             // 
@@ -110,7 +123,7 @@
             // 
             this.BtnSearchSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnSearchSite.Font = new System.Drawing.Font("맑은 고딕", 9.75F);
-            this.BtnSearchSite.Location = new System.Drawing.Point(337, 8);
+            this.BtnSearchSite.Location = new System.Drawing.Point(345, 8);
             this.BtnSearchSite.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearchSite.Name = "BtnSearchSite";
             this.BtnSearchSite.Size = new System.Drawing.Size(50, 28);
@@ -237,22 +250,23 @@
             this.SSList.TabIndex = 6;
             this.SSList.SetActiveViewport(0, -1, -1);
             // 
-            // btnExcel
+            // btnClose
             // 
-            this.btnExcel.Location = new System.Drawing.Point(891, 6);
-            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(75, 28);
-            this.btnExcel.TabIndex = 145;
-            this.btnExcel.Text = "엑셀";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            this.btnClose.Location = new System.Drawing.Point(994, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 35);
+            this.btnClose.TabIndex = 146;
+            this.btnClose.Text = "닫기";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // FrmSangdamReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1107, 781);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.SSList);
             this.Controls.Add(this.panSearch);
             this.Controls.Add(this.formTItle1);
@@ -281,5 +295,6 @@
         private FarPoint.Win.Spread.SheetView SSList_Sheet1;
         private FarPoint.Win.Spread.FpSpread SSList;
         private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.Button btnClose;
     }
 }

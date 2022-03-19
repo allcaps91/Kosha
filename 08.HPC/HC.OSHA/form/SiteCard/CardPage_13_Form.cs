@@ -160,8 +160,6 @@ namespace HC_OSHA
             }
             string startDate = base.SelectedEstimate.CONTRACTSTARTDATE;
             string endDate = base.SelectedEstimate.CONTRACTENDDATE;
-            //List<HC_OSHA_CARD17> list = hcOshaCard17Service.hcOshaCard17Repository.FindAll(base.SelectedSite.ID, startDate, endDate);
-            //List<HC_OSHA_CARD17> list = hcOshaCard17Service.hcOshaCard17Repository.FindAll(base.SelectedSite.ID, base.GetCurrentYear());
             List<HC_OSHA_CARD17> list = hcOshaCard17Service.hcOshaCard17Repository.FindAll(base.SelectedSite.ID, startDate.Left(4));
             if (list.Count > 0)
             {

@@ -72,7 +72,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  FROM HIC_OSHA_CARD17 A ");
             parameter.AppendSql("       INNER JOIN HIC_USERS B ");
             parameter.AppendSql("             ON A.CREATEDUSER = B.USERID ");
-            parameter.AppendSql("             AND A.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("       INNER JOIN HIC_USERS C ");
             parameter.AppendSql("             ON A.MODIFIEDUSER = C.USERID ");
             parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");

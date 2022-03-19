@@ -100,7 +100,7 @@ namespace HC.OSHA.Dto
         /// <summary>
         public long SPECIALCNCOUNT { get; set; }
         /// <summary>
-        ///자연환경측정예정일
+        ///환경측정예정일
         /// <summary>
         public string WEMDATE { get; set; }
         /// <summary>

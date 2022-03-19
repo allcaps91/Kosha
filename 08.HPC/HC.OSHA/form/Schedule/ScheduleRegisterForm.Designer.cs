@@ -168,6 +168,7 @@
             this.DtpVISITRESERVEDATE = new System.Windows.Forms.DateTimePicker();
             this.contentTitle1 = new ComBase.Mvc.UserControls.ContentTitle();
             this.BtnClose = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tableBody.SuspendLayout();
             this.panLeftTop.SuspendLayout();
@@ -1005,6 +1006,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnExcel);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.CboMonth);
             this.panel1.Controls.Add(this.ChkSearchSchedule);
@@ -2010,6 +2012,17 @@
             this.BtnClose.UseVisualStyleBackColor = true;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(758, 16);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(75, 28);
+            this.btnExcel.TabIndex = 117;
+            this.btnExcel.Text = "엑셀";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // ScheduleRegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -2206,5 +2219,6 @@
         private System.Windows.Forms.ComboBox CboMonth;
         private System.Windows.Forms.TextBox TxtVISITPLACE;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnExcel;
     }
 }

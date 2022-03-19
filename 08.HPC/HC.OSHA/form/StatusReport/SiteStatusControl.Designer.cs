@@ -30,7 +30,6 @@
         {
             this.TxtWEMExporsureRemark = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.DtpGeneralHealthCheckDate = new System.Windows.Forms.DateTimePicker();
             this.NumCurrentWorkerCount = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,7 +53,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.DtpSpecialHealthCheckDate = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -71,7 +69,6 @@
             this.NumSpecialDNCount = new System.Windows.Forms.NumericUpDown();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.DtpWEMDate = new System.Windows.Forms.DateTimePicker();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -92,6 +89,9 @@
             this.BtnDataLink = new System.Windows.Forms.Button();
             this.NumGeneralTotalCount = new System.Windows.Forms.NumericUpDown();
             this.NumSpecialTotalCount = new System.Windows.Forms.NumericUpDown();
+            this.DtpGeneralHealthCheckDate = new System.Windows.Forms.TextBox();
+            this.DtpSpecialHealthCheckDate = new System.Windows.Forms.TextBox();
+            this.DtpWEMDate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.NumCurrentWorkerCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumNewWorkerCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumRetireWorkerCount)).BeginInit();
@@ -133,17 +133,6 @@
             this.label2.TabIndex = 122;
             this.label2.Text = "근로자 인원현황(현재기준)";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // DtpGeneralHealthCheckDate
-            // 
-            this.DtpGeneralHealthCheckDate.Checked = false;
-            this.DtpGeneralHealthCheckDate.CustomFormat = "yyyy-MM-dd";
-            this.DtpGeneralHealthCheckDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpGeneralHealthCheckDate.Location = new System.Drawing.Point(300, 91);
-            this.DtpGeneralHealthCheckDate.Name = "DtpGeneralHealthCheckDate";
-            this.DtpGeneralHealthCheckDate.ShowCheckBox = true;
-            this.DtpGeneralHealthCheckDate.Size = new System.Drawing.Size(118, 25);
-            this.DtpGeneralHealthCheckDate.TabIndex = 123;
             // 
             // NumCurrentWorkerCount
             // 
@@ -452,17 +441,6 @@
             this.label16.Text = "유소견자수";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // DtpSpecialHealthCheckDate
-            // 
-            this.DtpSpecialHealthCheckDate.Checked = false;
-            this.DtpSpecialHealthCheckDate.CustomFormat = "yyyy-MM-dd";
-            this.DtpSpecialHealthCheckDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpSpecialHealthCheckDate.Location = new System.Drawing.Point(300, 119);
-            this.DtpSpecialHealthCheckDate.Name = "DtpSpecialHealthCheckDate";
-            this.DtpSpecialHealthCheckDate.ShowCheckBox = true;
-            this.DtpSpecialHealthCheckDate.Size = new System.Drawing.Size(118, 25);
-            this.DtpSpecialHealthCheckDate.TabIndex = 148;
-            // 
             // label17
             // 
             this.label17.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -671,17 +649,6 @@
             this.label24.Text = "DN";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // DtpWEMDate
-            // 
-            this.DtpWEMDate.Checked = false;
-            this.DtpWEMDate.CustomFormat = "yyyy-MM-dd";
-            this.DtpWEMDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpWEMDate.Location = new System.Drawing.Point(300, 149);
-            this.DtpWEMDate.Name = "DtpWEMDate";
-            this.DtpWEMDate.ShowCheckBox = true;
-            this.DtpWEMDate.Size = new System.Drawing.Size(118, 25);
-            this.DtpWEMDate.TabIndex = 166;
-            // 
             // label25
             // 
             this.label25.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -747,6 +714,9 @@
             // 
             // panSiteSatus
             // 
+            this.panSiteSatus.Controls.Add(this.DtpWEMDate);
+            this.panSiteSatus.Controls.Add(this.DtpSpecialHealthCheckDate);
+            this.panSiteSatus.Controls.Add(this.DtpGeneralHealthCheckDate);
             this.panSiteSatus.Controls.Add(this.btnDate);
             this.panSiteSatus.Controls.Add(this.TxtDeptName);
             this.panSiteSatus.Controls.Add(this.label31);
@@ -761,7 +731,6 @@
             this.panSiteSatus.Controls.Add(this.BtnDataLink);
             this.panSiteSatus.Controls.Add(this.label7);
             this.panSiteSatus.Controls.Add(this.TxtWEMHarmfulFactors);
-            this.panSiteSatus.Controls.Add(this.DtpGeneralHealthCheckDate);
             this.panSiteSatus.Controls.Add(this.label28);
             this.panSiteSatus.Controls.Add(this.label2);
             this.panSiteSatus.Controls.Add(this.TxtWEMExporsureRemark);
@@ -770,7 +739,6 @@
             this.panSiteSatus.Controls.Add(this.label1);
             this.panSiteSatus.Controls.Add(this.label26);
             this.panSiteSatus.Controls.Add(this.NumNewWorkerCount);
-            this.panSiteSatus.Controls.Add(this.DtpWEMDate);
             this.panSiteSatus.Controls.Add(this.label3);
             this.panSiteSatus.Controls.Add(this.label25);
             this.panSiteSatus.Controls.Add(this.NumRetireWorkerCount);
@@ -808,7 +776,6 @@
             this.panSiteSatus.Controls.Add(this.label14);
             this.panSiteSatus.Controls.Add(this.label17);
             this.panSiteSatus.Controls.Add(this.label15);
-            this.panSiteSatus.Controls.Add(this.DtpSpecialHealthCheckDate);
             this.panSiteSatus.Controls.Add(this.label16);
             this.panSiteSatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panSiteSatus.Location = new System.Drawing.Point(0, 0);
@@ -819,7 +786,7 @@
             // btnDate
             // 
             this.btnDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDate.Location = new System.Drawing.Point(424, 150);
+            this.btnDate.Location = new System.Drawing.Point(424, 148);
             this.btnDate.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnDate.Name = "btnDate";
             this.btnDate.Size = new System.Drawing.Size(80, 27);
@@ -970,6 +937,27 @@
             this.NumSpecialTotalCount.Size = new System.Drawing.Size(78, 25);
             this.NumSpecialTotalCount.TabIndex = 153;
             // 
+            // DtpGeneralHealthCheckDate
+            // 
+            this.DtpGeneralHealthCheckDate.Location = new System.Drawing.Point(300, 91);
+            this.DtpGeneralHealthCheckDate.Name = "DtpGeneralHealthCheckDate";
+            this.DtpGeneralHealthCheckDate.Size = new System.Drawing.Size(118, 25);
+            this.DtpGeneralHealthCheckDate.TabIndex = 153;
+            // 
+            // DtpSpecialHealthCheckDate
+            // 
+            this.DtpSpecialHealthCheckDate.Location = new System.Drawing.Point(300, 119);
+            this.DtpSpecialHealthCheckDate.Name = "DtpSpecialHealthCheckDate";
+            this.DtpSpecialHealthCheckDate.Size = new System.Drawing.Size(118, 25);
+            this.DtpSpecialHealthCheckDate.TabIndex = 152;
+            // 
+            // DtpWEMDate
+            // 
+            this.DtpWEMDate.Location = new System.Drawing.Point(300, 148);
+            this.DtpWEMDate.Name = "DtpWEMDate";
+            this.DtpWEMDate.Size = new System.Drawing.Size(118, 25);
+            this.DtpWEMDate.TabIndex = 153;
+            // 
             // SiteStatusControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1008,7 +996,6 @@
 
         private System.Windows.Forms.TextBox TxtWEMExporsureRemark;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker DtpGeneralHealthCheckDate;
         private System.Windows.Forms.NumericUpDown NumCurrentWorkerCount;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
@@ -1032,7 +1019,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DateTimePicker DtpSpecialHealthCheckDate;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
@@ -1049,7 +1035,6 @@
         private System.Windows.Forms.NumericUpDown NumSpecialDNCount;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.DateTimePicker DtpWEMDate;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
@@ -1070,5 +1055,8 @@
         private System.Windows.Forms.TextBox TxtDeptName;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Button btnDate;
+        private System.Windows.Forms.TextBox DtpWEMDate;
+        private System.Windows.Forms.TextBox DtpSpecialHealthCheckDate;
+        private System.Windows.Forms.TextBox DtpGeneralHealthCheckDate;
     }
 }

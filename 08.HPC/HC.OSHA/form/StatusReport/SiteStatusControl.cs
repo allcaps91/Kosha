@@ -77,11 +77,11 @@ namespace HC_OSHA.StatusReport
             NumGeneralTotalCount.SetOptions(new NumericUpDownOption { DataField = nameof(SiteStatusDto.GENERALTOTALCOUNT), Min = 0 });
             NumSpecialTotalCount.SetOptions(new NumericUpDownOption { DataField = nameof(SiteStatusDto.SPECIALTOTALCOUNT), Min = 0 });
 
-            DtpGeneralHealthCheckDate.SetOptions(new DateTimePickerOption { DataField = nameof(SiteStatusDto.GENERALHEALTHCHECKDATE), DataBaseFormat = DateTimeType.YYYY_MM_DD, DisplayFormat = DateTimeType.YYYY_MM_DD });
+            DtpGeneralHealthCheckDate.SetOptions(new TextBoxOption { DataField = nameof(SiteStatusDto.GENERALHEALTHCHECKDATE) });
             NumGeneralD2Count.SetOptions(new NumericUpDownOption { DataField = nameof(SiteStatusDto.GENERALD2COUNT), Min = 0 });
             NumGeneralC2Count.SetOptions(new NumericUpDownOption { DataField = nameof(SiteStatusDto.GENERALC2COUNT), Min = 0 });
 
-            DtpSpecialHealthCheckDate.SetOptions(new DateTimePickerOption { DataField = nameof(SiteStatusDto.SPECIALHEALTHCHECKDATE), DataBaseFormat = DateTimeType.YYYY_MM_DD, DisplayFormat = DateTimeType.YYYY_MM_DD });
+            DtpSpecialHealthCheckDate.SetOptions(new TextBoxOption { DataField = nameof(SiteStatusDto.SPECIALHEALTHCHECKDATE) });
             NumSpecialD1Count.SetOptions(new NumericUpDownOption { DataField = nameof(SiteStatusDto.SPECIALD1COUNT), Min =0  });
             NumSpecialC1Count.SetOptions(new NumericUpDownOption { DataField = nameof(SiteStatusDto.SPECIALC1COUNT), Min = 0 });
             NumSpecialD2Count.SetOptions(new NumericUpDownOption { DataField = nameof(SiteStatusDto.SPECIALD2COUNT), Min = 0 });
@@ -89,7 +89,7 @@ namespace HC_OSHA.StatusReport
             NumSpecialDNCount.SetOptions(new NumericUpDownOption { DataField = nameof(SiteStatusDto.SPECIALDNCOUNT), Min = 0 });
             NumSpecialCNCount.SetOptions(new NumericUpDownOption { DataField = nameof(SiteStatusDto.SPECIALCNCOUNT), Min = 0 });
 
-            DtpWEMDate.SetOptions(new DateTimePickerOption { DataField = nameof(SiteStatusDto.WEMDATE), DataBaseFormat = DateTimeType.YYYY_MM_DD, DisplayFormat = DateTimeType.YYYY_MM_DD });
+            DtpWEMDate.SetOptions(new TextBoxOption { DataField = nameof(SiteStatusDto.WEMDATE) });
             RdoWEMExporsure1.SetOptions(new CheckBoxOption { DataField = nameof(SiteStatusDto.WEMEXPORSURE), CheckValue = "Y", UnCheckValue = "N" });
             RdoWEMExporsure2.SetOptions(new CheckBoxOption { DataField = nameof(SiteStatusDto.WEMEXPORSURE2), CheckValue = "Y", UnCheckValue = "N" });
             TxtWEMExporsureRemark.SetOptions(new TextBoxOption { DataField = nameof(SiteStatusDto.WEMEXPORSUREREMARK) });
@@ -418,6 +418,9 @@ namespace HC_OSHA.StatusReport
             BtnDataLink.Location = new System.Drawing.Point(871, 5);
             btnDate.Location = new System.Drawing.Point(424, 150);
             button3.Location = new System.Drawing.Point(917, 90);
+            DtpGeneralHealthCheckDate.Location = new System.Drawing.Point(300, 91);
+            DtpSpecialHealthCheckDate.Location = new System.Drawing.Point(300, 119);
+            DtpWEMDate.Location = new System.Drawing.Point(300, 148);
         }
     }
 }

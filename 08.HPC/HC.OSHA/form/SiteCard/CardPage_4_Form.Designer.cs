@@ -1068,7 +1068,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(710, 450);
+            this.tabControl1.Size = new System.Drawing.Size(973, 450);
             this.tabControl1.TabIndex = 4;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -5147,7 +5147,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(702, 420);
+            this.tabPage2.Size = new System.Drawing.Size(965, 420);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "입퇴사자";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -5157,7 +5157,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(702, 420);
+            this.tabPage3.Size = new System.Drawing.Size(965, 420);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "산업재해";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -5166,7 +5166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 450);
+            this.ClientSize = new System.Drawing.Size(973, 450);
             this.Controls.Add(this.tabControl1);
             this.Name = "CardPage_4_Form";
             this.Text = "CardPage_4_Form";

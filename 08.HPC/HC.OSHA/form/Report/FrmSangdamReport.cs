@@ -44,6 +44,7 @@ namespace HC_OSHA
 
             TxtLtdcode.Text = "";
             TxtName.Text = "";
+            BtnSearchSite.Location = new System.Drawing.Point(345, 8);
 
             if (cboYear.Items.Count == 0)
             {
@@ -199,6 +200,16 @@ namespace HC_OSHA
                 else
                     ComFunc.MsgBox("엑셀파일 생성에 오류가 발생 하였습니다.", "확인");
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.CellType.CheckBoxCellType checkBoxCellType1 = new FarPoint.Win.Spread.CellType.CheckBoxCellType();
-            FarPoint.Win.Spread.CellType.CheckBoxCellType checkBoxCellType2 = new FarPoint.Win.Spread.CellType.CheckBoxCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType1 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.GeneralCellType generalCellType1 = new FarPoint.Win.Spread.CellType.GeneralCellType();
+            FarPoint.Win.Spread.CellType.CheckBoxCellType checkBoxCellType5 = new FarPoint.Win.Spread.CellType.CheckBoxCellType();
+            FarPoint.Win.Spread.CellType.CheckBoxCellType checkBoxCellType6 = new FarPoint.Win.Spread.CellType.CheckBoxCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType3 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.GeneralCellType generalCellType3 = new FarPoint.Win.Spread.CellType.GeneralCellType();
             this.TxtDocNumber = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,6 +52,7 @@
             this.CboMonth = new System.Windows.Forms.ComboBox();
             this.BtnExportPdf = new System.Windows.Forms.Button();
             this.formulaProvider1 = new FarPoint.Win.Spread.FormulaProvider();
+            this.btnExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
@@ -165,22 +166,22 @@
             this.SSList_Sheet1.ColumnFooterSheetCornerStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SSList_Sheet1.ColumnFooterSheetCornerStyle.Parent = "CornerFooterDefaultEnhanced";
             this.SSList_Sheet1.ColumnFooterSheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).CellType = checkBoxCellType1;
+            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).CellType = checkBoxCellType5;
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).Value = "False";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "계약ID";
             this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 3).Value = "IDs";
             this.SSList_Sheet1.ColumnHeader.Rows.Get(0).Height = 43F;
-            checkBoxCellType2.FocusRectangle = FarPoint.Win.FocusRectangle.Show;
-            checkBoxCellType2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-            checkBoxCellType2.ThreeState = true;
-            this.SSList_Sheet1.Columns.Get(0).CellType = checkBoxCellType2;
+            checkBoxCellType6.FocusRectangle = FarPoint.Win.FocusRectangle.Show;
+            checkBoxCellType6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+            checkBoxCellType6.ThreeState = true;
+            this.SSList_Sheet1.Columns.Get(0).CellType = checkBoxCellType6;
             this.SSList_Sheet1.Columns.Get(0).Label = "False";
             this.SSList_Sheet1.Columns.Get(0).Width = 29F;
-            textCellType1.BackgroundImage = new FarPoint.Win.Picture(null, FarPoint.Win.RenderStyle.Normal, System.Drawing.Color.Empty, 0, FarPoint.Win.HorizontalAlignment.Center, FarPoint.Win.VerticalAlignment.Center);
-            this.SSList_Sheet1.Columns.Get(1).CellType = textCellType1;
+            textCellType3.BackgroundImage = new FarPoint.Win.Picture(null, FarPoint.Win.RenderStyle.Normal, System.Drawing.Color.Empty, 0, FarPoint.Win.HorizontalAlignment.Center, FarPoint.Win.VerticalAlignment.Center);
+            this.SSList_Sheet1.Columns.Get(1).CellType = textCellType3;
             this.SSList_Sheet1.Columns.Get(1).Width = 80F;
-            generalCellType1.ReadOnly = true;
-            this.SSList_Sheet1.Columns.Get(2).CellType = generalCellType1;
+            generalCellType3.ReadOnly = true;
+            this.SSList_Sheet1.Columns.Get(2).CellType = generalCellType3;
             this.SSList_Sheet1.Columns.Get(2).Label = "계약ID";
             this.SSList_Sheet1.Columns.Get(2).Visible = false;
             this.SSList_Sheet1.Columns.Get(3).Label = "IDs";
@@ -305,11 +306,23 @@
             this.BtnExportPdf.UseVisualStyleBackColor = true;
             this.BtnExportPdf.Click += new System.EventHandler(this.BtnExportPdf_Click);
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(1040, 2);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(56, 28);
+            this.btnExcel.TabIndex = 119;
+            this.btnExcel.Text = "엑셀";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // VIsitDocumentBatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 871);
+            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.SSList);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnClose);
@@ -350,5 +363,6 @@
         private System.Windows.Forms.ComboBox CboManager;
         private System.Windows.Forms.CheckBox chkMailSend;
         private FarPoint.Win.Spread.FormulaProvider formulaProvider1;
+        private System.Windows.Forms.Button btnExcel;
     }
 }

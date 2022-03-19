@@ -100,8 +100,6 @@ namespace HC_OSHA
             ChkEduMethod2.SetOptions(new CheckBoxOption { DataField = nameof(EduMethodJson.ChkEduMethod2), CheckValue = "Y", UnCheckValue = "N" });
             ChkEduMethod3.SetOptions(new CheckBoxOption { DataField = nameof(EduMethodJson.ChkEduMethod3), CheckValue = "Y", UnCheckValue = "N" });
 
-
-
             SSCard19.Initialize(new SpreadOption() { IsRowSelectColor = false });
             SSCard19.AddColumnText("업무수행내용", nameof(MacrowordDto.TITLE), 150, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = true });
             SSCard19.AddColumnText("문제점 및 개선내용", nameof(MacrowordDto.SUBTITLE), 150, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = true });
@@ -113,7 +111,6 @@ namespace HC_OSHA
             SSReportList.AddColumnText("방문일자", nameof(VisitDateModel.VisitDate), 78, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSReportList.AddColumnText("작성자", nameof(VisitDateModel.Name), 55, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
 
-
             ckEditor = new CkEditor("engineerCkeditor.html");
             browser = ckEditor.GetBrowser();
             
@@ -121,13 +118,11 @@ namespace HC_OSHA
             browser.Dock = DockStyle.Fill;
             browser.Show();
             InitForm();
-
             
             tabControl1.SelectedIndex = 4;//browser 초기화를 위해서
             tabControl1.SelectedIndex = 0;
 
             WindowState = FormWindowState.Maximized;
-
 
         }
 
@@ -140,12 +135,6 @@ namespace HC_OSHA
       
         public void InitForm()
         {
-      //      base.SelectedSite = null;
-
-
-      //      CboVisitYear.Items.Clear();
-      //      CboVisitDate.Items.Clear();
-
             TxtSiteName.Text = string.Empty;
             TxtSiteManagerTel.Text = string.Empty;
             TxtSiteCeoName.Text = string.Empty;
@@ -156,9 +145,9 @@ namespace HC_OSHA
             InitENVCHECKJSON(GrpEnvCheckJson2, "RdoENVCHECKJSON2");
             InitENVCHECKJSON(GrpEnvCheckJson3, "RdoENVCHECKJSON3");
 
-            //InitRadioButton(GrpEnvCheckJson1, "RdoENVCHECKJSON","");
-            //InitRadioButton(GrpEnvCheckJson2, "RdoENVCHECKJSON2","");
-            //InitRadioButton(GrpEnvCheckJson3, "RdoENVCHECKJSON3","");
+            InitRadioButton(GrpEnvCheckJson1, "RdoENVCHECKJSON","");
+            InitRadioButton(GrpEnvCheckJson2, "RdoENVCHECKJSON2","");
+            InitRadioButton(GrpEnvCheckJson3, "RdoENVCHECKJSON3","");
 
             ckEditor.Clear();
             card19List.Clear();
@@ -216,7 +205,7 @@ namespace HC_OSHA
                                 radioButton.SetOptions(new RadioButtonOption { DataField = "ENVCHECK3_" + number, CheckValue = value, UnCheckValue = "" });
                             }
 
-                            radioButton.SetValue("N");
+                            //radioButton.SetValue("N");
                         }
                     }
                 }

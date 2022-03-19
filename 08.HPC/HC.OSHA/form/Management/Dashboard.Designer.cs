@@ -91,7 +91,6 @@
             this.통계및대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.사업장현황ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.산재현황대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.개인별상담대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.사업장별상담대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.보건교육지원대장ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.수령증발급대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -214,14 +213,14 @@
             // 월별일정ToolStripMenuItem
             // 
             this.월별일정ToolStripMenuItem.Name = "월별일정ToolStripMenuItem";
-            this.월별일정ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.월별일정ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.월별일정ToolStripMenuItem.Text = "방문예정등록";
             this.월별일정ToolStripMenuItem.Click += new System.EventHandler(this.월별일정ToolStripMenuItem_Click);
             // 
             // 방문일정공문ToolStripMenuItem
             // 
             this.방문일정공문ToolStripMenuItem.Name = "방문일정공문ToolStripMenuItem";
-            this.방문일정공문ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.방문일정공문ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.방문일정공문ToolStripMenuItem.Text = "방문일정 공문";
             this.방문일정공문ToolStripMenuItem.Click += new System.EventHandler(this.방문일정공문ToolStripMenuItem_Click);
             // 
@@ -229,20 +228,20 @@
             // 
             this.스케쥴조회ToolStripMenuItem.Enabled = false;
             this.스케쥴조회ToolStripMenuItem.Name = "스케쥴조회ToolStripMenuItem";
-            this.스케쥴조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.스케쥴조회ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.스케쥴조회ToolStripMenuItem.Text = "스케쥴조회";
             // 
             // 방문주기조회ToolStripMenuItem
             // 
             this.방문주기조회ToolStripMenuItem.Name = "방문주기조회ToolStripMenuItem";
-            this.방문주기조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.방문주기조회ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.방문주기조회ToolStripMenuItem.Text = "방문주기조회";
             this.방문주기조회ToolStripMenuItem.Click += new System.EventHandler(this.방문주기조회ToolStripMenuItem_Click);
             // 
             // 방문날짜조회ToolStripMenuItem
             // 
             this.방문날짜조회ToolStripMenuItem.Name = "방문날짜조회ToolStripMenuItem";
-            this.방문날짜조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.방문날짜조회ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.방문날짜조회ToolStripMenuItem.Text = "방문날짜조회";
             this.방문날짜조회ToolStripMenuItem.Click += new System.EventHandler(this.방문날짜조회ToolStripMenuItem_Click);
             // 
@@ -591,7 +590,6 @@
             this.통계및대장ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.사업장현황ToolStripMenuItem,
             this.산재현황대장ToolStripMenuItem,
-            this.개인별상담대장ToolStripMenuItem,
             this.사업장별상담대장ToolStripMenuItem,
             this.보건교육지원대장ToolStripMenuItem1,
             this.수령증발급대장ToolStripMenuItem,
@@ -605,7 +603,6 @@
             // 
             // 사업장현황ToolStripMenuItem
             // 
-            this.사업장현황ToolStripMenuItem.Enabled = false;
             this.사업장현황ToolStripMenuItem.Name = "사업장현황ToolStripMenuItem";
             this.사업장현황ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.사업장현황ToolStripMenuItem.Text = "사업장현황";
@@ -613,19 +610,10 @@
             // 
             // 산재현황대장ToolStripMenuItem
             // 
-            this.산재현황대장ToolStripMenuItem.Enabled = false;
             this.산재현황대장ToolStripMenuItem.Name = "산재현황대장ToolStripMenuItem";
             this.산재현황대장ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.산재현황대장ToolStripMenuItem.Text = "산재현황대장";
             this.산재현황대장ToolStripMenuItem.Click += new System.EventHandler(this.산재현황대장ToolStripMenuItem_Click);
-            // 
-            // 개인별상담대장ToolStripMenuItem
-            // 
-            this.개인별상담대장ToolStripMenuItem.Enabled = false;
-            this.개인별상담대장ToolStripMenuItem.Name = "개인별상담대장ToolStripMenuItem";
-            this.개인별상담대장ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.개인별상담대장ToolStripMenuItem.Text = "개인별상담대장";
-            this.개인별상담대장ToolStripMenuItem.Click += new System.EventHandler(this.개인별상담대장ToolStripMenuItem_Click);
             // 
             // 사업장별상담대장ToolStripMenuItem
             // 
@@ -976,7 +964,6 @@
         private System.Windows.Forms.ToolStripMenuItem 통계및대장ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 사업장현황ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 산재현황대장ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 개인별상담대장ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 사업장별상담대장ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 보건교육지원대장ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 수령증발급대장ToolStripMenuItem;
