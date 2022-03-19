@@ -319,6 +319,18 @@
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_3.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_4.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_5.cs" />
+    <Compile Include="form\Report\FrmJengboReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Report\FrmJengboReport.Designer.cs">
+      <DependentUpon>FrmJengboReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Report\FrmJangbiReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Report\FrmJangbiReport.Designer.cs">
+      <DependentUpon>FrmJangbiReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Report\FrmSuryengReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -913,6 +925,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Management\SiteEquipMentForm.resx">
       <DependentUpon>SiteEquipMentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Report\FrmJengboReport.resx">
+      <DependentUpon>FrmJengboReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Report\FrmJangbiReport.resx">
+      <DependentUpon>FrmJangbiReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Report\FrmSuryengReport.resx">
       <DependentUpon>FrmSuryengReport.cs</DependentUpon>

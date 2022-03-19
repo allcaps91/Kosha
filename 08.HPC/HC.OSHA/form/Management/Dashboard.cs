@@ -88,8 +88,7 @@ namespace HC_OSHA
                 //사업장별상담대장ToolStripMenuItem.Visible = false;
                 //수령증발급대장ToolStripMenuItem.Visible = false;
                 근골격계지원대장ToolStripMenuItem.Visible = false;
-                정보자료제공ToolStripMenuItem.Visible = false;
-                장비사용대장간호사ToolStripMenuItem.Visible = false;
+                //정보자료제공ToolStripMenuItem.Visible = false;
 
                 건강증진프로그램ToolStripMenuItem.Visible = false;
                 직무스트레스평가ToolStripMenuItem.Visible = false;
@@ -533,12 +532,7 @@ namespace HC_OSHA
 
         private void 장비사용대장ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SiteEquipMentForm form = new SiteEquipMentForm();
-            form.SelectedSite = base.SelectedSite;
-            form.SelectedEstimate = base.SelectedEstimate;
-            CreateForm(form, menuName: (sender as ToolStripMenuItem).Text);
-            //(form as ISelectSite).Select(oshaSiteLastTree.GetSite);
-
+            new FrmJangbiReport().Show();
         }
 
         private void 뇌심혈관발병위험도평가ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -870,6 +864,11 @@ namespace HC_OSHA
         private void 수령증발급대장ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FrmSuryengReport().Show();
+        }
+
+        private void 정보자료제공ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmJengboReport().Show();
         }
     }
 }

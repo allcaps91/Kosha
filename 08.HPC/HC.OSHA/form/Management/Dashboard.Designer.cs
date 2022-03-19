@@ -97,7 +97,6 @@
             this.근골격계지원대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.장비사용대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.정보자료제공ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.장비사용대장간호사ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuBaseCode = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCode = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,8 +105,6 @@
             this.사용자관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LeftPanel = new System.Windows.Forms.Panel();
-            this.oshaSiteEstimateList = new HC_OSHA.OshaSiteEstimateList();
-            this.oshaSiteLastTree = new HC_OSHA.OshaSiteLastTree();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.TabContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -115,6 +112,8 @@
             this.Mnu_OtherAllClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_AllTabClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_TabPopup = new System.Windows.Forms.ToolStripMenuItem();
+            this.oshaSiteEstimateList = new HC_OSHA.OshaSiteEstimateList();
+            this.oshaSiteLastTree = new HC_OSHA.OshaSiteLastTree();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.LeftPanel.SuspendLayout();
@@ -595,8 +594,7 @@
             this.수령증발급대장ToolStripMenuItem,
             this.근골격계지원대장ToolStripMenuItem,
             this.장비사용대장ToolStripMenuItem,
-            this.정보자료제공ToolStripMenuItem,
-            this.장비사용대장간호사ToolStripMenuItem});
+            this.정보자료제공ToolStripMenuItem});
             this.통계및대장ToolStripMenuItem.Name = "통계및대장ToolStripMenuItem";
             this.통계및대장ToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.통계및대장ToolStripMenuItem.Text = "통계 및 대장";
@@ -604,35 +602,35 @@
             // 사업장현황ToolStripMenuItem
             // 
             this.사업장현황ToolStripMenuItem.Name = "사업장현황ToolStripMenuItem";
-            this.사업장현황ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.사업장현황ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.사업장현황ToolStripMenuItem.Text = "사업장현황";
             this.사업장현황ToolStripMenuItem.Click += new System.EventHandler(this.사업장현황ToolStripMenuItem_Click);
             // 
             // 산재현황대장ToolStripMenuItem
             // 
             this.산재현황대장ToolStripMenuItem.Name = "산재현황대장ToolStripMenuItem";
-            this.산재현황대장ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.산재현황대장ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.산재현황대장ToolStripMenuItem.Text = "산재현황대장";
             this.산재현황대장ToolStripMenuItem.Click += new System.EventHandler(this.산재현황대장ToolStripMenuItem_Click);
             // 
             // 사업장별상담대장ToolStripMenuItem
             // 
             this.사업장별상담대장ToolStripMenuItem.Name = "사업장별상담대장ToolStripMenuItem";
-            this.사업장별상담대장ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.사업장별상담대장ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.사업장별상담대장ToolStripMenuItem.Text = "사업장별상담대장";
             this.사업장별상담대장ToolStripMenuItem.Click += new System.EventHandler(this.사업장별상담대장ToolStripMenuItem_Click);
             // 
             // 보건교육지원대장ToolStripMenuItem1
             // 
             this.보건교육지원대장ToolStripMenuItem1.Name = "보건교육지원대장ToolStripMenuItem1";
-            this.보건교육지원대장ToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
+            this.보건교육지원대장ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.보건교육지원대장ToolStripMenuItem1.Text = "보건교육지원대장";
             this.보건교육지원대장ToolStripMenuItem1.Click += new System.EventHandler(this.보건교육지원대장ToolStripMenuItem1_Click);
             // 
             // 수령증발급대장ToolStripMenuItem
             // 
             this.수령증발급대장ToolStripMenuItem.Name = "수령증발급대장ToolStripMenuItem";
-            this.수령증발급대장ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.수령증발급대장ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.수령증발급대장ToolStripMenuItem.Text = "수령증발급대장";
             this.수령증발급대장ToolStripMenuItem.Click += new System.EventHandler(this.수령증발급대장ToolStripMenuItem_Click);
             // 
@@ -640,29 +638,22 @@
             // 
             this.근골격계지원대장ToolStripMenuItem.Enabled = false;
             this.근골격계지원대장ToolStripMenuItem.Name = "근골격계지원대장ToolStripMenuItem";
-            this.근골격계지원대장ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.근골격계지원대장ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.근골격계지원대장ToolStripMenuItem.Text = "근골격계지원대장";
             // 
             // 장비사용대장ToolStripMenuItem
             // 
             this.장비사용대장ToolStripMenuItem.Name = "장비사용대장ToolStripMenuItem";
-            this.장비사용대장ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.장비사용대장ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.장비사용대장ToolStripMenuItem.Text = "장비사용대장";
             this.장비사용대장ToolStripMenuItem.Click += new System.EventHandler(this.장비사용대장ToolStripMenuItem_Click);
             // 
             // 정보자료제공ToolStripMenuItem
             // 
-            this.정보자료제공ToolStripMenuItem.Enabled = false;
             this.정보자료제공ToolStripMenuItem.Name = "정보자료제공ToolStripMenuItem";
-            this.정보자료제공ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.정보자료제공ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.정보자료제공ToolStripMenuItem.Text = "정보자료제공";
-            // 
-            // 장비사용대장간호사ToolStripMenuItem
-            // 
-            this.장비사용대장간호사ToolStripMenuItem.Enabled = false;
-            this.장비사용대장간호사ToolStripMenuItem.Name = "장비사용대장간호사ToolStripMenuItem";
-            this.장비사용대장간호사ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.장비사용대장간호사ToolStripMenuItem.Text = "장비사용대장(간호사)";
+            this.정보자료제공ToolStripMenuItem.Click += new System.EventHandler(this.정보자료제공ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -727,6 +718,68 @@
             this.LeftPanel.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.LeftPanel.Size = new System.Drawing.Size(199, 817);
             this.LeftPanel.TabIndex = 9;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1264, 847);
+            this.tabControl1.TabIndex = 10;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControl1_ControlRemoved);
+            this.tabControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseUp);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.LeftPanel);
+            this.tabPage1.Controls.Add(this.panFrame);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(1256, 817);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "사업장 현황";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // TabContextMenu
+            // 
+            this.TabContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Mnu_TabClose,
+            this.Mnu_OtherAllClose,
+            this.Mnu_AllTabClose,
+            this.Mnu_TabPopup});
+            this.TabContextMenu.Name = "TabContextMenu";
+            this.TabContextMenu.Size = new System.Drawing.Size(215, 92);
+            // 
+            // Mnu_TabClose
+            // 
+            this.Mnu_TabClose.Name = "Mnu_TabClose";
+            this.Mnu_TabClose.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_TabClose.Text = "탭닫기";
+            this.Mnu_TabClose.Click += new System.EventHandler(this.Mnu_TabClose_Click);
+            // 
+            // Mnu_OtherAllClose
+            // 
+            this.Mnu_OtherAllClose.Name = "Mnu_OtherAllClose";
+            this.Mnu_OtherAllClose.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_OtherAllClose.Text = "이탭을 제외하고 모두닫기";
+            this.Mnu_OtherAllClose.Click += new System.EventHandler(this.Mnu_OtherAllClose_Click);
+            // 
+            // Mnu_AllTabClose
+            // 
+            this.Mnu_AllTabClose.Name = "Mnu_AllTabClose";
+            this.Mnu_AllTabClose.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_AllTabClose.Text = "모든 탭 닫기";
+            this.Mnu_AllTabClose.Click += new System.EventHandler(this.Mnu_AllTabClose_Click);
+            // 
+            // Mnu_TabPopup
+            // 
+            this.Mnu_TabPopup.Name = "Mnu_TabPopup";
+            this.Mnu_TabPopup.Size = new System.Drawing.Size(214, 22);
+            this.Mnu_TabPopup.Text = "팝업으로 보기";
+            this.Mnu_TabPopup.Click += new System.EventHandler(this.Mnu_TabPopup_Click);
             // 
             // oshaSiteEstimateList
             // 
@@ -836,68 +889,6 @@
             this.oshaSiteLastTree.NodeClick += new HC_OSHA.OshaSiteLastTree.SiteTreeViewNodeMouseClickEventHandler(this.OshaSiteLastTree_NodeClick);
             this.oshaSiteLastTree.Load += new System.EventHandler(this.oshaSiteLastTree_Load);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 24);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1264, 847);
-            this.tabControl1.TabIndex = 10;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            this.tabControl1.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControl1_ControlRemoved);
-            this.tabControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseUp);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.LeftPanel);
-            this.tabPage1.Controls.Add(this.panFrame);
-            this.tabPage1.Location = new System.Drawing.Point(4, 26);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1256, 817);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "사업장 현황";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // TabContextMenu
-            // 
-            this.TabContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Mnu_TabClose,
-            this.Mnu_OtherAllClose,
-            this.Mnu_AllTabClose,
-            this.Mnu_TabPopup});
-            this.TabContextMenu.Name = "TabContextMenu";
-            this.TabContextMenu.Size = new System.Drawing.Size(215, 92);
-            // 
-            // Mnu_TabClose
-            // 
-            this.Mnu_TabClose.Name = "Mnu_TabClose";
-            this.Mnu_TabClose.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_TabClose.Text = "탭닫기";
-            this.Mnu_TabClose.Click += new System.EventHandler(this.Mnu_TabClose_Click);
-            // 
-            // Mnu_OtherAllClose
-            // 
-            this.Mnu_OtherAllClose.Name = "Mnu_OtherAllClose";
-            this.Mnu_OtherAllClose.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_OtherAllClose.Text = "이탭을 제외하고 모두닫기";
-            this.Mnu_OtherAllClose.Click += new System.EventHandler(this.Mnu_OtherAllClose_Click);
-            // 
-            // Mnu_AllTabClose
-            // 
-            this.Mnu_AllTabClose.Name = "Mnu_AllTabClose";
-            this.Mnu_AllTabClose.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_AllTabClose.Text = "모든 탭 닫기";
-            this.Mnu_AllTabClose.Click += new System.EventHandler(this.Mnu_AllTabClose_Click);
-            // 
-            // Mnu_TabPopup
-            // 
-            this.Mnu_TabPopup.Name = "Mnu_TabPopup";
-            this.Mnu_TabPopup.Size = new System.Drawing.Size(214, 22);
-            this.Mnu_TabPopup.Text = "팝업으로 보기";
-            this.Mnu_TabPopup.Click += new System.EventHandler(this.Mnu_TabPopup_Click);
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -992,7 +983,6 @@
         private System.Windows.Forms.ToolStripMenuItem 밀폐공간프로그램ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 검진결과ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 기업건강증진지수EHPToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 장비사용대장간호사ToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ContextMenuStrip TabContextMenu;
