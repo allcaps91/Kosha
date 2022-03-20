@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            HC.OSHA.Model.HC_OSHA_SITE_MODEL hC_OSHA_SITE_MODEL3 = new HC.OSHA.Model.HC_OSHA_SITE_MODEL();
+            HC.OSHA.Model.HC_OSHA_SITE_MODEL hC_OSHA_SITE_MODEL1 = new HC.OSHA.Model.HC_OSHA_SITE_MODEL();
             this.ContentTitle = new ComBase.Mvc.UserControls.ContentTitle();
             this.btnExit = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -531,9 +531,11 @@
             this.TxtMemo = new System.Windows.Forms.TextBox();
             this.panStatusReportEngineerDto = new System.Windows.Forms.Panel();
             this.GrpPerformContent = new System.Windows.Forms.GroupBox();
+            this.DtpOSHADATE = new System.Windows.Forms.TextBox();
+            this.DtpWEMDate2 = new System.Windows.Forms.TextBox();
+            this.DtpWEMDate = new System.Windows.Forms.TextBox();
             this.btnBogen = new System.Windows.Forms.Button();
             this.TxtWEMDateRemark = new System.Windows.Forms.TextBox();
-            this.DtpWEMDate2 = new System.Windows.Forms.DateTimePicker();
             this.panEduTypeJson = new System.Windows.Forms.Panel();
             this.ChkEduType4 = new System.Windows.Forms.CheckBox();
             this.ChkEduType3 = new System.Windows.Forms.CheckBox();
@@ -558,7 +560,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.TxtOSHACONTENT = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.DtpOSHADATE = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.TxtWORKCONTENT = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -567,7 +568,6 @@
             this.TxtWEMExporsureRemark = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.DtpWEMDate = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -6186,60 +6186,60 @@
             // oshaSiteList1
             // 
             this.oshaSiteList1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            hC_OSHA_SITE_MODEL3.ADDRESS = null;
-            hC_OSHA_SITE_MODEL3.BIZCREATEDATE = null;
-            hC_OSHA_SITE_MODEL3.BIZJIDOWON = null;
-            hC_OSHA_SITE_MODEL3.BIZJONG = null;
-            hC_OSHA_SITE_MODEL3.BIZKIHO = null;
-            hC_OSHA_SITE_MODEL3.BIZNUMBER = null;
-            hC_OSHA_SITE_MODEL3.BIZTYPE = null;
-            hC_OSHA_SITE_MODEL3.CEONAME = null;
-            hC_OSHA_SITE_MODEL3.ComboDisplay = null;
-            hC_OSHA_SITE_MODEL3.EMAIL = null;
-            hC_OSHA_SITE_MODEL3.FAX = null;
-            hC_OSHA_SITE_MODEL3.HASCHILD = null;
-            hC_OSHA_SITE_MODEL3.ID = ((long)(0));
-            hC_OSHA_SITE_MODEL3.INDUSTRIALNUMBER = null;
-            hC_OSHA_SITE_MODEL3.INSURANCE = null;
-            hC_OSHA_SITE_MODEL3.ISACTIVE = null;
-            hC_OSHA_SITE_MODEL3.LABOR = null;
-            hC_OSHA_SITE_MODEL3.LASTMODIFIED = null;
-            hC_OSHA_SITE_MODEL3.MANAGEDOCTORCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL3.MANAGEDOCTORSTARTDATE = null;
-            hC_OSHA_SITE_MODEL3.MANAGEENGINEERCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL3.MANAGEENGINEERSTARTDATE = null;
-            hC_OSHA_SITE_MODEL3.MANAGENURSECOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL3.MANAGENURSESTARTDATE = null;
-            hC_OSHA_SITE_MODEL3.NAME = null;
-            hC_OSHA_SITE_MODEL3.PARENTSITE_ID = ((long)(0));
-            hC_OSHA_SITE_MODEL3.PARENTSITE_NAME = null;
-            hC_OSHA_SITE_MODEL3.RowStatus = ComBase.Mvc.RowStatus.None;
-            hC_OSHA_SITE_MODEL3.SITE_ID = ((long)(0));
-            hC_OSHA_SITE_MODEL3.TEL = null;
-            hC_OSHA_SITE_MODEL3.VISITDAY = ((long)(0));
-            hC_OSHA_SITE_MODEL3.VISITWEEK = ((long)(0));
-            hC_OSHA_SITE_MODEL3.WORKERTOTALCOUNT = ((long)(0));
-            hC_OSHA_SITE_MODEL3.zTemp1 = null;
-            hC_OSHA_SITE_MODEL3.zTemp10 = null;
-            hC_OSHA_SITE_MODEL3.zTemp11 = null;
-            hC_OSHA_SITE_MODEL3.zTemp12 = null;
-            hC_OSHA_SITE_MODEL3.zTemp13 = null;
-            hC_OSHA_SITE_MODEL3.zTemp14 = null;
-            hC_OSHA_SITE_MODEL3.zTemp15 = null;
-            hC_OSHA_SITE_MODEL3.zTemp16 = null;
-            hC_OSHA_SITE_MODEL3.zTemp17 = null;
-            hC_OSHA_SITE_MODEL3.zTemp18 = null;
-            hC_OSHA_SITE_MODEL3.zTemp19 = null;
-            hC_OSHA_SITE_MODEL3.zTemp2 = null;
-            hC_OSHA_SITE_MODEL3.zTemp20 = null;
-            hC_OSHA_SITE_MODEL3.zTemp3 = null;
-            hC_OSHA_SITE_MODEL3.zTemp4 = null;
-            hC_OSHA_SITE_MODEL3.zTemp5 = null;
-            hC_OSHA_SITE_MODEL3.zTemp6 = null;
-            hC_OSHA_SITE_MODEL3.zTemp7 = null;
-            hC_OSHA_SITE_MODEL3.zTemp8 = null;
-            hC_OSHA_SITE_MODEL3.zTemp9 = null;
-            this.oshaSiteList1.GetSite = hC_OSHA_SITE_MODEL3;
+            hC_OSHA_SITE_MODEL1.ADDRESS = null;
+            hC_OSHA_SITE_MODEL1.BIZCREATEDATE = null;
+            hC_OSHA_SITE_MODEL1.BIZJIDOWON = null;
+            hC_OSHA_SITE_MODEL1.BIZJONG = null;
+            hC_OSHA_SITE_MODEL1.BIZKIHO = null;
+            hC_OSHA_SITE_MODEL1.BIZNUMBER = null;
+            hC_OSHA_SITE_MODEL1.BIZTYPE = null;
+            hC_OSHA_SITE_MODEL1.CEONAME = null;
+            hC_OSHA_SITE_MODEL1.ComboDisplay = null;
+            hC_OSHA_SITE_MODEL1.EMAIL = null;
+            hC_OSHA_SITE_MODEL1.FAX = null;
+            hC_OSHA_SITE_MODEL1.HASCHILD = null;
+            hC_OSHA_SITE_MODEL1.ID = ((long)(0));
+            hC_OSHA_SITE_MODEL1.INDUSTRIALNUMBER = null;
+            hC_OSHA_SITE_MODEL1.INSURANCE = null;
+            hC_OSHA_SITE_MODEL1.ISACTIVE = null;
+            hC_OSHA_SITE_MODEL1.LABOR = null;
+            hC_OSHA_SITE_MODEL1.LASTMODIFIED = null;
+            hC_OSHA_SITE_MODEL1.MANAGEDOCTORCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL1.MANAGEDOCTORSTARTDATE = null;
+            hC_OSHA_SITE_MODEL1.MANAGEENGINEERCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL1.MANAGEENGINEERSTARTDATE = null;
+            hC_OSHA_SITE_MODEL1.MANAGENURSECOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL1.MANAGENURSESTARTDATE = null;
+            hC_OSHA_SITE_MODEL1.NAME = null;
+            hC_OSHA_SITE_MODEL1.PARENTSITE_ID = ((long)(0));
+            hC_OSHA_SITE_MODEL1.PARENTSITE_NAME = null;
+            hC_OSHA_SITE_MODEL1.RowStatus = ComBase.Mvc.RowStatus.None;
+            hC_OSHA_SITE_MODEL1.SITE_ID = ((long)(0));
+            hC_OSHA_SITE_MODEL1.TEL = null;
+            hC_OSHA_SITE_MODEL1.VISITDAY = ((long)(0));
+            hC_OSHA_SITE_MODEL1.VISITWEEK = ((long)(0));
+            hC_OSHA_SITE_MODEL1.WORKERTOTALCOUNT = ((long)(0));
+            hC_OSHA_SITE_MODEL1.zTemp1 = null;
+            hC_OSHA_SITE_MODEL1.zTemp10 = null;
+            hC_OSHA_SITE_MODEL1.zTemp11 = null;
+            hC_OSHA_SITE_MODEL1.zTemp12 = null;
+            hC_OSHA_SITE_MODEL1.zTemp13 = null;
+            hC_OSHA_SITE_MODEL1.zTemp14 = null;
+            hC_OSHA_SITE_MODEL1.zTemp15 = null;
+            hC_OSHA_SITE_MODEL1.zTemp16 = null;
+            hC_OSHA_SITE_MODEL1.zTemp17 = null;
+            hC_OSHA_SITE_MODEL1.zTemp18 = null;
+            hC_OSHA_SITE_MODEL1.zTemp19 = null;
+            hC_OSHA_SITE_MODEL1.zTemp2 = null;
+            hC_OSHA_SITE_MODEL1.zTemp20 = null;
+            hC_OSHA_SITE_MODEL1.zTemp3 = null;
+            hC_OSHA_SITE_MODEL1.zTemp4 = null;
+            hC_OSHA_SITE_MODEL1.zTemp5 = null;
+            hC_OSHA_SITE_MODEL1.zTemp6 = null;
+            hC_OSHA_SITE_MODEL1.zTemp7 = null;
+            hC_OSHA_SITE_MODEL1.zTemp8 = null;
+            hC_OSHA_SITE_MODEL1.zTemp9 = null;
+            this.oshaSiteList1.GetSite = hC_OSHA_SITE_MODEL1;
             this.oshaSiteList1.Location = new System.Drawing.Point(3, 4);
             this.oshaSiteList1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.oshaSiteList1.Name = "oshaSiteList1";
@@ -6302,9 +6302,11 @@
             // 
             // GrpPerformContent
             // 
+            this.GrpPerformContent.Controls.Add(this.DtpOSHADATE);
+            this.GrpPerformContent.Controls.Add(this.DtpWEMDate2);
+            this.GrpPerformContent.Controls.Add(this.DtpWEMDate);
             this.GrpPerformContent.Controls.Add(this.btnBogen);
             this.GrpPerformContent.Controls.Add(this.TxtWEMDateRemark);
-            this.GrpPerformContent.Controls.Add(this.DtpWEMDate2);
             this.GrpPerformContent.Controls.Add(this.panEduTypeJson);
             this.GrpPerformContent.Controls.Add(this.panEduMethodJson);
             this.GrpPerformContent.Controls.Add(this.flowLayoutPanel1);
@@ -6320,7 +6322,6 @@
             this.GrpPerformContent.Controls.Add(this.label22);
             this.GrpPerformContent.Controls.Add(this.TxtOSHACONTENT);
             this.GrpPerformContent.Controls.Add(this.label17);
-            this.GrpPerformContent.Controls.Add(this.DtpOSHADATE);
             this.GrpPerformContent.Controls.Add(this.label16);
             this.GrpPerformContent.Controls.Add(this.TxtWORKCONTENT);
             this.GrpPerformContent.Controls.Add(this.label13);
@@ -6329,7 +6330,6 @@
             this.GrpPerformContent.Controls.Add(this.TxtWEMExporsureRemark);
             this.GrpPerformContent.Controls.Add(this.label8);
             this.GrpPerformContent.Controls.Add(this.label9);
-            this.GrpPerformContent.Controls.Add(this.DtpWEMDate);
             this.GrpPerformContent.Controls.Add(this.label10);
             this.GrpPerformContent.Controls.Add(this.label14);
             this.GrpPerformContent.Controls.Add(this.label12);
@@ -6340,6 +6340,27 @@
             this.GrpPerformContent.TabIndex = 116;
             this.GrpPerformContent.TabStop = false;
             this.GrpPerformContent.Text = "2. 업무수행내용";
+            // 
+            // DtpOSHADATE
+            // 
+            this.DtpOSHADATE.Location = new System.Drawing.Point(308, 133);
+            this.DtpOSHADATE.Name = "DtpOSHADATE";
+            this.DtpOSHADATE.Size = new System.Drawing.Size(141, 25);
+            this.DtpOSHADATE.TabIndex = 266;
+            // 
+            // DtpWEMDate2
+            // 
+            this.DtpWEMDate2.Location = new System.Drawing.Point(441, 21);
+            this.DtpWEMDate2.Name = "DtpWEMDate2";
+            this.DtpWEMDate2.Size = new System.Drawing.Size(128, 25);
+            this.DtpWEMDate2.TabIndex = 265;
+            // 
+            // DtpWEMDate
+            // 
+            this.DtpWEMDate.Location = new System.Drawing.Point(308, 21);
+            this.DtpWEMDate.Name = "DtpWEMDate";
+            this.DtpWEMDate.Size = new System.Drawing.Size(128, 25);
+            this.DtpWEMDate.TabIndex = 264;
             // 
             // btnBogen
             // 
@@ -6358,17 +6379,6 @@
             this.TxtWEMDateRemark.Name = "TxtWEMDateRemark";
             this.TxtWEMDateRemark.Size = new System.Drawing.Size(638, 25);
             this.TxtWEMDateRemark.TabIndex = 262;
-            // 
-            // DtpWEMDate2
-            // 
-            this.DtpWEMDate2.Checked = false;
-            this.DtpWEMDate2.CustomFormat = "yyyy-MM-dd";
-            this.DtpWEMDate2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpWEMDate2.Location = new System.Drawing.Point(441, 21);
-            this.DtpWEMDate2.Name = "DtpWEMDate2";
-            this.DtpWEMDate2.ShowCheckBox = true;
-            this.DtpWEMDate2.Size = new System.Drawing.Size(131, 25);
-            this.DtpWEMDate2.TabIndex = 261;
             // 
             // panEduTypeJson
             // 
@@ -6623,17 +6633,6 @@
             this.label17.Text = "주요내용";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // DtpOSHADATE
-            // 
-            this.DtpOSHADATE.Checked = false;
-            this.DtpOSHADATE.CustomFormat = "yyyy-MM-dd";
-            this.DtpOSHADATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpOSHADATE.Location = new System.Drawing.Point(308, 134);
-            this.DtpOSHADATE.Name = "DtpOSHADATE";
-            this.DtpOSHADATE.ShowCheckBox = true;
-            this.DtpOSHADATE.Size = new System.Drawing.Size(141, 25);
-            this.DtpOSHADATE.TabIndex = 226;
-            // 
             // label16
             // 
             this.label16.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -6724,17 +6723,6 @@
             this.label9.TabIndex = 217;
             this.label9.Text = "주요유해인자";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // DtpWEMDate
-            // 
-            this.DtpWEMDate.Checked = false;
-            this.DtpWEMDate.CustomFormat = "yyyy-MM-dd";
-            this.DtpWEMDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpWEMDate.Location = new System.Drawing.Point(307, 21);
-            this.DtpWEMDate.Name = "DtpWEMDate";
-            this.DtpWEMDate.ShowCheckBox = true;
-            this.DtpWEMDate.Size = new System.Drawing.Size(128, 25);
-            this.DtpWEMDate.TabIndex = 216;
             // 
             // label10
             // 
@@ -8729,7 +8717,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox TxtOSHACONTENT;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DateTimePicker DtpOSHADATE;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox TxtWORKCONTENT;
         private System.Windows.Forms.Label label13;
@@ -8738,7 +8725,6 @@
         private System.Windows.Forms.TextBox TxtWEMExporsureRemark;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker DtpWEMDate;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
@@ -9127,7 +9113,9 @@
         private System.Windows.Forms.Button BtnClear;
         private System.Windows.Forms.Button BtnManageOshaCard19;
         private System.Windows.Forms.TextBox TxtWEMDateRemark;
-        private System.Windows.Forms.DateTimePicker DtpWEMDate2;
         private System.Windows.Forms.Button btnBogen;
+        private System.Windows.Forms.TextBox DtpWEMDate2;
+        private System.Windows.Forms.TextBox DtpWEMDate;
+        private System.Windows.Forms.TextBox DtpOSHADATE;
     }
 }

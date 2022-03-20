@@ -289,7 +289,7 @@ namespace HC_OSHA.StatusReport
             try
             {
                 SQL = "SELECT VISITRESERVEDATE,GENERALHEALTHCHECKDATE,SPECIALHEALTHCHECKDATE,WEMDATE ";
-                SQL = SQL + ComNum.VBLF + " FROM HIC_OSHA_REPORT_NURSE ";
+                SQL = SQL + ComNum.VBLF + "  FROM HIC_OSHA_REPORT_NURSE ";
                 SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND SITE_ID = " + nSITE_ID + " ";
                 SQL = SQL + ComNum.VBLF + "   AND VISITDATE>='" + strVisitdate.Substring(0, 4) + "0101' ";

@@ -1082,7 +1082,7 @@ namespace ComBase
 
                 RowAffected = Cmd.ExecuteNonQuery();
 
-                SaveSqlLog(SQL, pDbCon); //Query Log 저장
+                //SaveSqlLog(SQL, pDbCon); //Query Log 저장
 
                 return rtnVal;
             }

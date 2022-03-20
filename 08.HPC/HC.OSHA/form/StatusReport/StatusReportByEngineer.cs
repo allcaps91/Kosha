@@ -73,8 +73,8 @@ namespace HC_OSHA
             
             NumWORKERCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(StatusReportEngineerDto.WORKERCOUNT) });
 
-            DtpWEMDate.SetOptions(new DateTimePickerOption { DataField = nameof(StatusReportEngineerDto.WEMDATE), DataBaseFormat = DateTimeType.YYYYMMDD, DisplayFormat = DateTimeType.YYYY_MM_DD });
-            DtpWEMDate2.SetOptions(new DateTimePickerOption { DataField = nameof(StatusReportEngineerDto.WEMDATE2), DataBaseFormat = DateTimeType.YYYYMMDD, DisplayFormat = DateTimeType.YYYY_MM_DD });
+            DtpWEMDate.SetOptions(new TextBoxOption { DataField = nameof(StatusReportEngineerDto.WEMDATE) });
+            DtpWEMDate2.SetOptions(new TextBoxOption { DataField = nameof(StatusReportEngineerDto.WEMDATE2) });
             TxtWEMDateRemark.SetOptions(new TextBoxOption { DataField = nameof(StatusReportEngineerDto.WEMDATEREMARK) });
 
             RdoWEMEXPORSURE_N.SetOptions(new CheckBoxOption { DataField = nameof(StatusReportEngineerDto.WEMEXPORSURE), CheckValue = "Y", UnCheckValue = "N" });
@@ -83,7 +83,7 @@ namespace HC_OSHA
             TxtWEMHarmfulFactors.SetOptions(new TextBoxOption { DataField = nameof(StatusReportEngineerDto.WEMHARMFULFACTORS) });
 
             TxtWORKCONTENT.SetOptions(new TextBoxOption { DataField = nameof(StatusReportEngineerDto.WORKCONTENT) });
-            DtpOSHADATE.SetOptions(new DateTimePickerOption { DataField = nameof(StatusReportEngineerDto.OSHADATE), DataBaseFormat = DateTimeType.YYYYMMDD, DisplayFormat = DateTimeType.YYYY_MM_DD });
+            DtpOSHADATE.SetOptions(new TextBoxOption { DataField = nameof(StatusReportEngineerDto.OSHADATE) });
             TxtOSHACONTENT.SetOptions(new TextBoxOption { DataField = nameof(StatusReportEngineerDto.OSHACONTENT) });
 
             TxtEDUTARGET.SetOptions(new TextBoxOption { DataField = nameof(StatusReportEngineerDto.EDUTARGET) });
@@ -692,7 +692,7 @@ namespace HC_OSHA
                 dto.OPINION = opinion;
                 dto.SITE_ID = SelectedSite.ID;
                 dto.ESTIMATE_ID = SelectedEstimate.ID;
-                dto.NAME = clsType.User.UserName; 
+                dto.NAME = clsType.User.JobName;
                 dto.CERT = "산업위생기사";
                 hcOshaCard19Service.Save(dto);
 
@@ -850,7 +850,7 @@ namespace HC_OSHA
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
             if (dt.Rows.Count > 0)
             {
-                DtpOSHADATE.Value = DateUtil.stringToDateTime(dt.Rows[0]["MEETDATE"].ToString(), DateTimeType.YYYY_MM_DD);
+                DtpOSHADATE.Text = dt.Rows[0]["MEETDATE"].ToString().Trim();
                 TxtOSHACONTENT.Text = dt.Rows[0]["CONTENT"].ToString().Trim();
             }
             dt.Dispose();
@@ -950,6 +950,62 @@ namespace HC_OSHA
                     }
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string SQL = string.Empty;
+            string SqlErr = "";
+            string strDate = "";
+            DataTable dt = new DataTable();
+            string strID = "";
+            string strWEMDATE = "";
+            string strWEMDATE2 = "";
+            string strOSHADATE = "";
+            string strTemp = "";
+            int intRowAffected = 0;
+
+            SQL = "SELECT ID,WEMDATE,WEMDATE2,OSHADATE ";
+            SQL += ComNum.VBLF + " FROM HIC_OSHA_REPORT_ENGINEER ";
+            //SQL += ComNum.VBLF + "WHERE WEMDATE IS NOT NULL ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    strID = dt.Rows[i]["ID"].ToString().Trim();
+                    strTemp = dt.Rows[i]["WEMDATE"].ToString().Trim();
+                    strWEMDATE = strTemp;
+                    if (VB.Len(strTemp) == 8)
+                    {
+                        strWEMDATE = VB.Left(strTemp, 4) + "-" + VB.Mid(strTemp,5, 2) + "-" + VB.Right(strTemp, 2);
+                    }
+                    strTemp = dt.Rows[i]["WEMDATE2"].ToString().Trim();
+                    strWEMDATE2 = strTemp;
+                    if (VB.Len(strTemp) == 8)
+                    {
+                        strWEMDATE2 = VB.Left(strTemp, 4) + "-" + VB.Mid(strTemp,5, 2) + "-" + VB.Right(strTemp, 2);
+                    }
+                    strTemp = dt.Rows[i]["OSHADATE"].ToString().Trim();
+                    strOSHADATE = strTemp;
+                    if (VB.Len(strTemp) == 8)
+                    {
+                        strOSHADATE = VB.Left(strTemp, 4) + "-" + VB.Mid(strTemp,5, 2) + "-" + VB.Right(strTemp, 2);
+                    }
+
+                    SQL = "UPDATE HIC_OSHA_REPORT_ENGINEER SET ";
+                    SQL += ComNum.VBLF + " WEMDATE='" + strWEMDATE + "', ";
+                    SQL += ComNum.VBLF + " WEMDATE2='" + strWEMDATE2 + "', ";
+                    SQL += ComNum.VBLF + " OSHADATE='" + strOSHADATE + "'  ";
+                    SQL += ComNum.VBLF + " WHERE ID=" + strID + " ";
+                    SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+
+                }
+            }
+            dt.Dispose();
+            dt = null;
+
+            MessageUtil.Info("작업 완료");
         }
     }
 }

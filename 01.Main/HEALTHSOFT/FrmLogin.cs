@@ -91,6 +91,7 @@ namespace HEALTHSOFT
                     clsType.User.Sabun = "1";
                     clsType.User.IdNumber = "1";
                     clsType.User.JobName = "관리자";
+                    clsType.User.UserName = "관리자";
                     clsType.User.BuseName = "OSHA";
                     clsType.User.Jikmu = "YYYYYYNNNNNNNNN";
                     clsType.User.LtdUser = "";
@@ -101,6 +102,7 @@ namespace HEALTHSOFT
                     clsType.User.Sabun = "1";
                     clsType.User.IdNumber = "1";
                     clsType.User.JobName = "관리자";
+                    clsType.User.UserName = "관리자";
                     clsType.User.BuseName = "OSHA";
                     clsType.User.Jikmu = "YYYYYYNNNNNNNNN";
                     clsType.User.LtdUser = "";
@@ -402,6 +404,7 @@ namespace HEALTHSOFT
                 clsType.User.Sabun = ArgSabun;
                 clsType.User.IdNumber = ArgSabun;
                 clsType.User.JobName = dt.Rows[i]["Name"].ToString().Trim();
+                clsType.User.UserName = dt.Rows[i]["Name"].ToString().Trim();
                 clsType.User.BuseName = dt.Rows[i]["DEPT"].ToString().Trim();
                 clsType.User.Jikmu = dt.Rows[i]["JIKMU"].ToString().Trim();
                 clsType.User.LtdUser = dt.Rows[i]["LTDUSER"].ToString().Trim();

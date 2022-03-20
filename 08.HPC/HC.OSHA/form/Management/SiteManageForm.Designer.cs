@@ -1874,7 +1874,7 @@
             this.label33.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label33.Size = new System.Drawing.Size(66, 25);
             this.label33.TabIndex = 36;
-            this.label33.Text = "계약기간";
+            this.label33.Text = "위탁기간";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DtpCONTRACTDATE
