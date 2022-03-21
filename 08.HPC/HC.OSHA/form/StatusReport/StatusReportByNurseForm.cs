@@ -130,9 +130,6 @@ namespace HC_OSHA
             ChkIsHe2.SetOptions(new CheckBoxOption { DataField = nameof(NursePerformContentJson.IsHe2), CheckValue = "Y", UnCheckValue = "N" });
             ChkIsHe3.SetOptions(new CheckBoxOption { DataField = nameof(NursePerformContentJson.IsHe3), CheckValue = "Y", UnCheckValue = "N" });
 
-
-
-
             //건강상담
             NumSangdamCount.SetOptions(new NumericUpDownOption { DataField = nameof(NursePerformContentJson.SangdamCount) });
             ChkIsSangdam1.SetOptions(new CheckBoxOption { DataField = nameof(NursePerformContentJson.IsSangdam1), CheckValue = "Y", UnCheckValue = "N" });
@@ -141,7 +138,6 @@ namespace HC_OSHA
             ChkIsSangdam4.SetOptions(new CheckBoxOption { DataField = nameof(NursePerformContentJson.IsSangdam4), CheckValue = "Y", UnCheckValue = "N" });
             ChkIsSangdam5.SetOptions(new CheckBoxOption { DataField = nameof(NursePerformContentJson.IsSangdam5), CheckValue = "Y", UnCheckValue = "N" });
             ChkIsSangdam6.SetOptions(new CheckBoxOption { DataField = nameof(NursePerformContentJson.IsSangdam6), CheckValue = "Y", UnCheckValue = "N" });
-
 
             NumCheckCount1.SetOptions(new NumericUpDownOption { DataField = nameof(NursePerformContentJson.CheckCount1) });
             NumCheckCount2.SetOptions(new NumericUpDownOption { DataField = nameof(NursePerformContentJson.CheckCount2) });
@@ -159,7 +155,6 @@ namespace HC_OSHA
 
             TabReport.SelectedIndex = 1;
             TabReport.SelectedIndex = 0;
-
 
             SSCard19.Initialize(new SpreadOption() { IsRowSelectColor = false });
             SSCard19.AddColumnText("업무수행내용", nameof(MacrowordDto.TITLE), 150, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = true });
@@ -184,7 +179,6 @@ namespace HC_OSHA
         {
             SSCard19.ActiveSheet.RemoveRows(e.Row, 1);
         }
-
 
         private void BtnSearchSite_Click(object sender, EventArgs e)
         {
@@ -234,10 +228,10 @@ namespace HC_OSHA
             SearchReport();
 
             //보건담당자명 자동 표시
-            if (TxtSITEMANAGERNAME.Text.Trim() == "" && base.SelectedEstimate.ID > 0)
+            if (TxtSITEMANAGERNAME.Text.Trim() == "")
             {
                 TxtSITEMANAGERGRADE.Text = "보건담당자";
-                TxtSITEMANAGERNAME.Text = GetLtdBogen(base.SelectedEstimate.ID);
+                TxtSITEMANAGERNAME.Text = GetLtdBogen(base.SelectedSite.ID);
             }
             //간호사 이름 자동 표시
             if (TxtNURSENAME.Text.Trim() == "") TxtNURSENAME.Text = clsType.User.JobName;
@@ -820,21 +814,26 @@ namespace HC_OSHA
 
         }
         //회사 보건관리자 이름 찾기
-        private string GetLtdBogen(long ESTIMATE_ID)
+        private string GetLtdBogen(long Site_ID)
         {
             string SQL = "";
             string SqlErr = "";
             DataTable dt = null;
             string strName = "";
-            string email = string.Empty;
+            string strNow = DateTime.Now.ToString("yyyy-MM-dd");
 
             SQL = "";
             SQL = "SELECT NAME FROM HIC_OSHA_CONTRACT_MANAGER ";
-            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID=" + ESTIMATE_ID + " ";
+            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID IN (SELECT ESTIMATE_ID FROM HIC_OSHA_CONTRACT ";
+            SQL = SQL + ComNum.VBLF + "      WHERE OSHA_SITE_ID=" + Site_ID + " ";
+            SQL = SQL + ComNum.VBLF + "        AND CONTRACTSTARTDATE<='" + strNow + "' ";
+            SQL = SQL + ComNum.VBLF + "        AND CONTRACTENDDATE>='" + strNow + "' ";
+            SQL = SQL + ComNum.VBLF + "        AND ISDELETED='N') ";
             SQL = SQL + ComNum.VBLF + "  AND WORKER_ROLE='HEALTH_ROLE' ";
             SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
             SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            strName = "";
             if (dt.Rows.Count > 0) strName = dt.Rows[0]["NAME"].ToString().Trim();
             dt.Dispose();
             dt = null;

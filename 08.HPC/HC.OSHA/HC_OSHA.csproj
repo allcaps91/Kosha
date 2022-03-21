@@ -211,6 +211,12 @@
     <Compile Include="form\DataSync\StartImport.Designer.cs">
       <DependentUpon>StartImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\Etc\FrmPingTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Etc\FrmPingTest.Designer.cs">
+      <DependentUpon>FrmPingTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Etc\FrmSahusogen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,6 +325,12 @@
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_3.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_4.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_5.cs" />
+    <Compile Include="form\Report\FrmSuhangReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Report\FrmSuhangReport.Designer.cs">
+      <DependentUpon>FrmSuhangReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Report\FrmJengboReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -887,6 +899,9 @@
     <EmbeddedResource Include="form\DataSync\StartImport.resx">
       <DependentUpon>StartImport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form\Etc\FrmPingTest.resx">
+      <DependentUpon>FrmPingTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\Etc\FrmSahusogen.resx">
       <DependentUpon>FrmSahusogen.cs</DependentUpon>
     </EmbeddedResource>
@@ -931,6 +946,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Report\FrmJangbiReport.resx">
       <DependentUpon>FrmJangbiReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Report\FrmSuhangReport.resx">
+      <DependentUpon>FrmSuhangReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Report\FrmSuryengReport.resx">
       <DependentUpon>FrmSuryengReport.cs</DependentUpon>

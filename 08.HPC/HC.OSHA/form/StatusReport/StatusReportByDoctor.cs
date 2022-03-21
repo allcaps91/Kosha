@@ -153,10 +153,10 @@ namespace HC_OSHA.StatusReport
             SearchReport();
 
             //보건담당자명 자동 표시
-            if (TxtSITEMANAGERNAME.Text.Trim() == "" && base.SelectedEstimate.ID > 0)
+            if (TxtSITEMANAGERNAME.Text.Trim() == "")
             {
                 TxtSITEMANAGERGRADE.Text = "보건담당자";
-                TxtSITEMANAGERNAME.Text = GetLtdBogen(base.SelectedEstimate.ID);
+                TxtSITEMANAGERNAME.Text = GetLtdBogen(base.SelectedSite.ID);
             }
             //의사 이름 자동 표시
             if (TxtDoctorNAME.Text.Trim() == "") TxtDoctorNAME.Text = clsType.User.JobName;
@@ -164,21 +164,26 @@ namespace HC_OSHA.StatusReport
         }
 
         //회사 보건관리자 이름 찾기
-        private string GetLtdBogen(long ESTIMATE_ID)
+        private string GetLtdBogen(long Site_ID)
         {
             string SQL = "";
             string SqlErr = "";
             DataTable dt = null;
             string strName = "";
-            string email = string.Empty;
+            string strNow = DateTime.Now.ToString("yyyy-MM-dd");
 
             SQL = "";
             SQL = "SELECT NAME FROM HIC_OSHA_CONTRACT_MANAGER ";
-            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID=" + ESTIMATE_ID + " ";
+            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID IN (SELECT ESTIMATE_ID FROM HIC_OSHA_CONTRACT ";
+            SQL = SQL + ComNum.VBLF + "      WHERE OSHA_SITE_ID=" + Site_ID + " ";
+            SQL = SQL + ComNum.VBLF + "        AND CONTRACTSTARTDATE<='" + strNow + "' ";
+            SQL = SQL + ComNum.VBLF + "        AND CONTRACTENDDATE>='" + strNow + "' ";
+            SQL = SQL + ComNum.VBLF + "        AND ISDELETED='N') ";
             SQL = SQL + ComNum.VBLF + "  AND WORKER_ROLE='HEALTH_ROLE' ";
             SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
             SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            strName = "";
             if (dt.Rows.Count > 0) strName = dt.Rows[0]["NAME"].ToString().Trim();
             dt.Dispose();
             dt = null;

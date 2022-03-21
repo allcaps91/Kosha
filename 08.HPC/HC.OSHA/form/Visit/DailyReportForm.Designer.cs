@@ -4658,7 +4658,6 @@
             this.SSList_Sheet1.Cells.Get(0, 0).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SSList_Sheet1.Cells.Get(1, 0).ColumnSpan = 7;
             this.SSList_Sheet1.Cells.Get(1, 0).StyleName = "Text1237637082148259935544";
-            this.SSList_Sheet1.Cells.Get(1, 0).Value = "[대행-G-4]";
             this.SSList_Sheet1.Cells.Get(2, 0).StyleName = "Text1304637082148260005358";
             this.SSList_Sheet1.Cells.Get(2, 4).StyleName = "Text1346637082148260085143";
             this.SSList_Sheet1.Cells.Get(2, 10).ColumnSpan = 15;
@@ -5612,6 +5611,7 @@
             this.SSList_Sheet1.Cells.Get(9, 19).ColumnSpan = 4;
             this.SSList_Sheet1.Cells.Get(9, 19).Font = new System.Drawing.Font("돋움", 8F);
             this.SSList_Sheet1.Cells.Get(9, 19).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
+            this.SSList_Sheet1.Cells.Get(9, 19).Value = "1";
             this.SSList_Sheet1.Cells.Get(9, 19).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SSList_Sheet1.Cells.Get(9, 20).Border = complexBorder206;
             this.SSList_Sheet1.Cells.Get(9, 20).Font = new System.Drawing.Font("돋움", 8F);
@@ -19926,7 +19926,7 @@
             this.SSList_Sheet1.PrintInfo.ZoomFactor = 1F;
             this.SSList_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SSList_Sheet1.RowHeader.Visible = false;
-            this.SSList_Sheet1.Rows.Get(0).Height = 47F;
+            this.SSList_Sheet1.Rows.Get(0).Height = 29F;
             this.SSList_Sheet1.Rows.Get(8).Height = 16F;
             this.SSList_Sheet1.Rows.Get(9).Height = 16F;
             this.SSList_Sheet1.Rows.Get(10).Height = 16F;

@@ -12,6 +12,7 @@ namespace HC_OSHA.Model.Visit
     /// </summary>
     public class DailyReportSiteModel : BaseDto
     {
+        public long SITE_ID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Tel { get; set; }

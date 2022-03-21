@@ -15,20 +15,19 @@ namespace HC_OSHA.Repository.Visit
         public List<DailyReportSiteModel> FindVisitSite(string date)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.NAME, A.ADDRESS, A.TEL, (SELECT NAME FROM HC_SITE_WORKER_VIEW ");
-            parameter.AppendSql("       WHERE SITEID=A.ID AND WORKER_ROLE = 'HEALTH_ROLE' ");
-            parameter.AppendSql("         AND SWLICENSE=:SWLICENSE AND ROWNUM=1 ) AS SITE_MANAGER, ");
+            parameter.AppendSql("SELECT A.NAME, A.ADDRESS, A.TEL,B.SITE_ID,");
             parameter.AppendSql("       B.VISITUSER, B.VISITUSERNAME, D.ROLE, B.VISITDOCTOR, B.VISITDOCTORNAME,B.REMARK ");
             parameter.AppendSql("  FROM HC_SITE_VIEW A ");
             parameter.AppendSql("       INNER JOIN HIC_OSHA_VISIT B ");
             parameter.AppendSql("             ON A.ID = B.SITE_ID ");
             parameter.AppendSql("             AND B.ISPRECHARGE = 'N' ");
+            parameter.AppendSql("             AND B.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql("       INNER JOIN HIC_USERS D ");
             parameter.AppendSql("             ON B.VISITUSER = D.USERID ");
+            parameter.AppendSql("             AND D.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" WHERE B.ISDELETED = 'N' ");
             parameter.AppendSql("   AND TO_CHAR(B.VISITDATETIME, 'YYYY-MM-DD') = :dateTime ");
             parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("   AND D.SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY A.NAME ");
 
             parameter.Add("dateTime", date);

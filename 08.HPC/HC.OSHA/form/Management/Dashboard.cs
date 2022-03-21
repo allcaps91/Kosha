@@ -870,5 +870,15 @@ namespace HC_OSHA
         {
             new FrmJengboReport().Show();
         }
+
+        private void 위탁업무수행일지ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmSuhangReport().Show();
+        }
+
+        private void 네트웍상태점검ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmPingTest().Show();
+        }
     }
 }

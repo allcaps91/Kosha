@@ -97,8 +97,7 @@ namespace HC_OSHA.Visit
                 SSList.ActiveSheet.Cells[rowIndex, 0].Value = list[i].Name;
                 SSList.ActiveSheet.Cells[rowIndex, 6].Value = list[i].Address;
                 SSList.ActiveSheet.Cells[rowIndex, 19].Value = list[i].Tel;
-
-                SSList.ActiveSheet.Cells[rowIndex, 23].Value = list[i].SITE_MANAGER;
+                SSList.ActiveSheet.Cells[rowIndex, 23].Value = GetLtdBogen(list[i].SITE_ID, date);
                 if (list[i].ROLE == "NURSE")
                 {
                     SSList.ActiveSheet.Cells[rowIndex, 26].Value = list[i].VISITUSERNAME;
@@ -255,6 +254,33 @@ namespace HC_OSHA.Visit
                 ComFunc.MsgBox(ex.Message);
             }
             return strResult;
+        }
+
+        //회사 보건관리자 이름 찾기
+        private string GetLtdBogen(long Site_ID,string strDate)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            string strName = "";
+
+            SQL = "";
+            SQL = "SELECT NAME FROM HIC_OSHA_CONTRACT_MANAGER ";
+            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID IN (SELECT ESTIMATE_ID FROM HIC_OSHA_CONTRACT ";
+            SQL = SQL + ComNum.VBLF + "      WHERE OSHA_SITE_ID=" + Site_ID + " ";
+            SQL = SQL + ComNum.VBLF + "        AND CONTRACTSTARTDATE<='" + strDate + "' ";
+            SQL = SQL + ComNum.VBLF + "        AND CONTRACTENDDATE>='" + strDate + "' ";
+            SQL = SQL + ComNum.VBLF + "        AND ISDELETED='N') ";
+            SQL = SQL + ComNum.VBLF + "  AND WORKER_ROLE='HEALTH_ROLE' ";
+            SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
+            SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            strName = "";
+            if (dt.Rows.Count > 0) strName = dt.Rows[0]["NAME"].ToString().Trim();
+            dt.Dispose();
+            dt = null;
+
+            return strName;
         }
 
     }
