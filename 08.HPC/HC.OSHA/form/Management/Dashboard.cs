@@ -880,5 +880,25 @@ namespace HC_OSHA
         {
             new FrmPingTest().Show();
         }
+
+        private void 보호구ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmExcelUpload4().Show();
+        }
+
+        private void 유해물질업로드ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmExcelUpload5().Show();
+        }
+
+        private void 방문일정표ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmVisitMonth().Show();
+        }
+
+        private void 주간출장일지ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmChuljangIlji().Show();
+        }
     }
 }

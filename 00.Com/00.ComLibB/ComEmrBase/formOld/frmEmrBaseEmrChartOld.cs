@@ -421,7 +421,7 @@ namespace ComEmrBase
                 return;
             }
 
-            if (ComFunc.MsgBoxQ("기존내용을 삭제하시겠습니까?", "PSMH", MessageBoxDefaultButton.Button2) == DialogResult.No)
+            if (ComFunc.MsgBoxQ("기존내용을 삭제하시겠습니까?", "알림", MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
                 return;
             }

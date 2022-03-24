@@ -4605,7 +4605,7 @@ namespace ComBase
                 {
                     if (ArgSelf != "2")
                     {
-                        if (ComFunc.MsgBoxQ("★ 최초 처방일 : " + strCdate + ComNum.VBLF + " 2회 촬영부터는 선별 급여 본인부담 80% 입니다." + ComNum.VBLF + " s항에 2로 처방 해주세요" + ComNum.VBLF + " s항 변경없이 그대로 전송하시겠습니까??", "PSMH") == DialogResult.No)
+                        if (ComFunc.MsgBoxQ("★ 최초 처방일 : " + strCdate + ComNum.VBLF + " 2회 촬영부터는 선별 급여 본인부담 80% 입니다." + ComNum.VBLF + " s항에 2로 처방 해주세요" + ComNum.VBLF + " s항 변경없이 그대로 전송하시겠습니까??", "알림") == DialogResult.No)
                         {
                             rtnVal = "NO";
                         }

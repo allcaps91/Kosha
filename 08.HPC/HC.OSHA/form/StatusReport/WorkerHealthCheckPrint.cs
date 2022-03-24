@@ -22,6 +22,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Data;
+using System.Threading;
 
 namespace HC_OSHA.StatusReport
 {
@@ -574,6 +575,7 @@ namespace HC_OSHA.StatusReport
                     print.SiteName = SelectedSite.NAME;
                 }
                 print.ExportPDFNoWait(pdfFileName, SSCard.ActiveSheet);
+                Thread.Sleep(2000);
 
                 HC_CODE sendMailAddress = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail", "OSHA");
                 EstimateMailForm form = new EstimateMailForm();

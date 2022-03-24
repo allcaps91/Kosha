@@ -81,7 +81,7 @@ namespace ComLibB
                 {
                     if (Proc.Id != CurPro.Id)
                     {
-                        if (ComFunc.MsgBoxQ("프로그램이 이미 실행중입니다." + ComNum.VBLF + "재실행 하시겠습니까?", "PSMH", MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                        if (ComFunc.MsgBoxQ("프로그램이 이미 실행중입니다." + ComNum.VBLF + "재실행 하시겠습니까?", "알림", MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                         {
                             ComFunc.KillProc("ClinicalRef");
                         }

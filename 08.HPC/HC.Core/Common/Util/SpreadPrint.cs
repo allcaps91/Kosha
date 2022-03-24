@@ -145,28 +145,48 @@ namespace HC.Core.Common.Util
                 if (e.IsHeader == true)
                 {
                     #region 칸 그리기
-                    e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 555, 90, 220, 70);
-                    e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 555, 90, 30, 70);
-                    e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 585, 115, 190, 45);
-                    e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 650, 90, 65, 70);
+                    if (orientation == PrintOrientation.Landscape)
+                    {
+                        e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 855, 50, 220, 70);
+                        e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 855, 50, 30, 70);
+                        e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 885, 75, 190, 45);
+                        e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 950, 50, 65, 70);
+                    }
+                    else
+                    {
+                        e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 555, 50, 220, 70);
+                        e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 555, 50, 30, 70);
+                        e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 585, 75, 190, 45);
+                        e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), 650, 50, 65, 70);
+                    }
                     #endregion
 
                     #region 칸안에 글
-                    e.Graphics.DrawString("결", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 580, 93, drawFormat);
-                    e.Graphics.DrawString("재", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 580, 135, drawFormat);
-                    e.Graphics.DrawString("담  당", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 640, 93, drawFormat);
-                    //e.Graphics.DrawString("계  장", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 705, 93, drawFormat);
-                    e.Graphics.DrawString("팀  장", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 705, 93, drawFormat);
-                    e.Graphics.DrawString("부  장", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 770, 93, drawFormat);
+                    if (orientation == PrintOrientation.Landscape)
+                    {
+                        e.Graphics.DrawString("결", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 880, 53, drawFormat);
+                        e.Graphics.DrawString("재", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 880, 95, drawFormat);
+                        e.Graphics.DrawString("담  당", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 940, 53, drawFormat);
+                        e.Graphics.DrawString("실  장", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 1005, 53, drawFormat);
+                        e.Graphics.DrawString("사  장", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 1070, 53, drawFormat);
+                    }
+                    else
+                    {
+                        e.Graphics.DrawString("결", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 580, 53, drawFormat);
+                        e.Graphics.DrawString("재", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 580, 95, drawFormat);
+                        e.Graphics.DrawString("담  당", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 640, 53, drawFormat);
+                        e.Graphics.DrawString("실  장", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 705, 53, drawFormat);
+                        e.Graphics.DrawString("사  장", new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 770, 53, drawFormat);
+                    }
                     #endregion
 
                     #region  
                     drawFormat.Alignment = StringAlignment.Far;
                     if (Period.NotEmpty())
                     {
-                        e.Graphics.DrawString("작업기간 : " + Period, new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 280, 122, drawFormat);
+                        e.Graphics.DrawString("작업기간 : " + Period, new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 280, 82, drawFormat);
                     }
-                    e.Graphics.DrawString("출력시간 : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm"), new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 220, 135, drawFormat);
+                    e.Graphics.DrawString("출력시간 : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm"), new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 220, 95, drawFormat);
                     //e.Graphics.DrawString("Page : " + e.PageNumber, new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 135, 143, drawFormat);
                     #endregion
                 }
@@ -293,7 +313,7 @@ namespace HC.Core.Common.Util
             else if (this.printStyle == PrintStyle.HEAD_APPROVAL)
             {
                 margin.Top = 30; // 끝과 헤더의 간격
-                margin.Header = 125; // 헤더와 스프레드 간격
+                margin.Header = 85; // 헤더와 스프레드 간격
                 margin.Footer = 30; // 푸터와 스프레드 간격
                 margin.Bottom = 30; //푸터와 끝 간격
           
@@ -388,11 +408,6 @@ namespace HC.Core.Common.Util
                 spread.PrintSheet(printSheet);
             
             }
-            
-
-          
-
-
         }
      
         public void ExportPDF(string fileName, SheetView printSheet = null)

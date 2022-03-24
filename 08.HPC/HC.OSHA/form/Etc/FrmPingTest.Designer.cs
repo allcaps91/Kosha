@@ -35,6 +35,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TxtPing
@@ -68,9 +69,9 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(346, 12);
+            this.btnExit.Location = new System.Drawing.Point(372, 12);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(92, 28);
+            this.btnExit.Size = new System.Drawing.Size(66, 28);
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "닫기";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -91,12 +92,23 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "▶ 속도가 0~15ms는 네트웍상태가 정상입니다. 초과할 경우 알려주세요..";
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(300, 12);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(66, 28);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "저장";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // FrmPingTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(450, 372);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnStop);
@@ -123,5 +135,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSave;
     }
 }

@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Data;
+using System.Threading;
+using System.IO;
 
 namespace HC_OSHA.StatusReport
 {
@@ -313,7 +315,23 @@ namespace HC_OSHA.StatusReport
                 string pdfFileName = pdfPath.CodeName + "\\" + title +"_"+ DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
 
                 browser.PrintToPdfAsync(pdfFileName);
-                
+                Thread.Sleep(2000);
+                //pdf파일 생성여부 확인 및 파일크기 점검
+                for (int i = 0; i < 15; i++)
+                {
+                    Thread.Sleep(1000);
+                    if (File.Exists(pdfFileName))
+                    {
+                        FileInfo info = new FileInfo(pdfFileName);
+                        if (info.Length > 25000000)
+                        {
+                            MessageUtil.Alert("첨부파일 25MB 초과로 전송이 불가능합니다.");
+                            return;
+                        }
+                        break;
+                    }
+                }
+
                 HC_CODE sendMailAddress = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail", "OSHA");
                 EstimateMailForm form = new EstimateMailForm();
                 form.GetMailForm().SenderMailAddress = sendMailAddress.CodeName;
@@ -334,7 +352,7 @@ namespace HC_OSHA.StatusReport
                     estimateID = statusReportDoctorDto.ESTIMATE_ID;
                 }
 
-                string strMailList = GetEmail(estimateID);
+                string strMailList = GetEmail(this.siteId);
                 if (strMailList != "")
                 {
                     for (int i=1;i<=VB.L(strMailList,",");i++)
@@ -373,7 +391,7 @@ namespace HC_OSHA.StatusReport
             }
         }
 
-        private string GetEmail(long ESTIMATE_ID)
+        private string GetEmail(long Site_ID)
         {
             string SQL = "";
             string SqlErr = "";
@@ -381,12 +399,17 @@ namespace HC_OSHA.StatusReport
             string strEMail = "";
             string strList = "";
             string email = string.Empty;
+            string strNow = DateTime.Now.ToString("yyyy-MM-dd");
 
             SQL = "";
             SQL = "SELECT NAME,EMAIL FROM HIC_OSHA_CONTRACT_MANAGER ";
-            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID=" + ESTIMATE_ID + " ";
-            SQL = SQL + ComNum.VBLF + "  AND (EMAILSEND='Y' OR EMAILSEND='y') ";
+            SQL = SQL + ComNum.VBLF + "WHERE ESTIMATE_ID IN (SELECT ESTIMATE_ID FROM HIC_OSHA_CONTRACT ";
+            SQL = SQL + ComNum.VBLF + "      WHERE OSHA_SITE_ID=" + Site_ID + " ";
+            SQL = SQL + ComNum.VBLF + "        AND CONTRACTSTARTDATE<='" + strNow + "' ";
+            SQL = SQL + ComNum.VBLF + "        AND CONTRACTENDDATE>='" + strNow + "' ";
+            SQL = SQL + ComNum.VBLF + "        AND ISDELETED='N') ";
             SQL = SQL + ComNum.VBLF + "  AND WORKER_ROLE='HEALTH_ROLE' ";
+            SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
             SQL = SQL + ComNum.VBLF + "  AND EMAIL IS NOT NULL ";
             SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);

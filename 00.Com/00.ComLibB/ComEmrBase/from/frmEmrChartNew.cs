@@ -4579,7 +4579,7 @@ namespace ComEmrBase
             }
             catch (Exception ex)
             {
-                ComFunc.MsgBoxEx(this, ex.Message.ToString(), "PSMH");
+                ComFunc.MsgBoxEx(this, ex.Message.ToString(), "알림");
                 return ;
             }
         }
@@ -6149,7 +6149,7 @@ namespace ComEmrBase
                 }
                 else 
                 {
-                    if (pAcp.medFrDate != usFormTopMenuEvent.dtMedFrDate.Value.ToString("yyyyMMdd") && ComFunc.MsgBoxQEx(this, "외래진료일과 챠트 작성일이 다릅니다. 계속 진행하시겠습니까?", "PSMH", MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    if (pAcp.medFrDate != usFormTopMenuEvent.dtMedFrDate.Value.ToString("yyyyMMdd") && ComFunc.MsgBoxQEx(this, "외래진료일과 챠트 작성일이 다릅니다. 계속 진행하시겠습니까?", "알림", MessageBoxDefaultButton.Button2) == DialogResult.No)
                     {
                         return VB.Val(mstrEmrNo);
                     }

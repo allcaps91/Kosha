@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace HC_OSHA
@@ -38,7 +39,7 @@ namespace HC_OSHA
 
         private void MailForm_SendMailClick(object sender, EventArgs e)
         {
-            if(sender is Exception)
+            if (sender is Exception)
             {
                 Exception ex = sender as Exception;
                 MessageUtil.Info("메일 전송 실패하였습니다 \n" + ex.Message);

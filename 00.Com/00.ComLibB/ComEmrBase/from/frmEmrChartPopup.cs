@@ -542,7 +542,7 @@ namespace ComEmrBase
             //DrawHighighter();
             //tranPanel.Refresh();
             //return;
-            if (ComFunc.MsgBoxQEx(this, "삭제 하시겠습니까?", "PSMH", MessageBoxDefaultButton.Button2) == DialogResult.No)
+            if (ComFunc.MsgBoxQEx(this, "삭제 하시겠습니까?", "알림", MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
                 return;
             }

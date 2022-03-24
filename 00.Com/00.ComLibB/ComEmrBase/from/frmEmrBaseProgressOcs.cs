@@ -394,7 +394,7 @@ namespace ComEmrBase
                 return true;
             }
 
-            if (ComFunc.MsgBoxQ("EMR 차트 변경 내역이 있습니다." + ComNum.VBLF + "저장하시겠습니까?", "PSMH", MessageBoxDefaultButton.Button1) == DialogResult.No)
+            if (ComFunc.MsgBoxQ("EMR 차트 변경 내역이 있습니다." + ComNum.VBLF + "저장하시겠습니까?", "알림", MessageBoxDefaultButton.Button1) == DialogResult.No)
             {
                 ClearEnd();
                 return true;
@@ -2314,7 +2314,7 @@ namespace ComEmrBase
 
             if (VB.Val(txtEmrNo.Text) > 0)
             {
-                if (ComFunc.MsgBoxQ("기존내용을 변경하시겠습니까?", "PSMH", MessageBoxDefaultButton.Button2) == DialogResult.No)
+                if (ComFunc.MsgBoxQ("기존내용을 변경하시겠습니까?", "알림", MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
                     return;
                 }
@@ -2691,7 +2691,7 @@ namespace ComEmrBase
                 {
                     if (AcpEmr.medFrDate != dtpChartDate.Value.ToString("yyyyMMdd"))
                     {
-                        if (ComFunc.MsgBoxQ("외래진료일과 챠트 작성일이 다릅니다. 계속 진행하시겠습니까?", "PSMH", MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        if (ComFunc.MsgBoxQ("외래진료일과 챠트 작성일이 다릅니다. 계속 진행하시겠습니까?", "알림", MessageBoxDefaultButton.Button2) == DialogResult.No)
                         {
                             return false;
                         }
@@ -2992,7 +2992,7 @@ namespace ComEmrBase
                 return;
             }
 
-            if (ComFunc.MsgBoxQ("기존내용을 삭제하시겠습니까?", "PSMH", MessageBoxDefaultButton.Button2) == DialogResult.No)
+            if (ComFunc.MsgBoxQ("기존내용을 삭제하시겠습니까?", "알림", MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
                 return;
             }

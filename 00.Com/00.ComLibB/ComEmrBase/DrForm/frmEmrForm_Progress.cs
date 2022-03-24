@@ -327,7 +327,7 @@ namespace ComEmrBase
         //        return true;
         //    }
 
-        //    if (ComFunc.MsgBoxQ("EMR 차트 변경 내역이 있습니다." + ComNum.VBLF + "저장하시겠습니까?", "PSMH", MessageBoxDefaultButton.Button1) == DialogResult.No)
+        //    if (ComFunc.MsgBoxQ("EMR 차트 변경 내역이 있습니다." + ComNum.VBLF + "저장하시겠습니까?", "알림", MessageBoxDefaultButton.Button1) == DialogResult.No)
         //    {
         //        return true;
         //    }

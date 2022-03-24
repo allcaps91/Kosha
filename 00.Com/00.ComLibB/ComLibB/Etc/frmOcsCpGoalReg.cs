@@ -2170,7 +2170,7 @@ namespace ComLibB
 
             if (txtEMS.Text.Replace("-", "").Replace(":", "").Trim() == "")
             {
-                if (ComFunc.MsgBoxQ("도착시간이 비었습니다." + ComNum.VBLF + "저장하시겠습니까?","PSMH", MessageBoxDefaultButton.Button2) == DialogResult.No )
+                if (ComFunc.MsgBoxQ("도착시간이 비었습니다." + ComNum.VBLF + "저장하시겠습니까?","알림", MessageBoxDefaultButton.Button2) == DialogResult.No )
                 {
                     txtEMS.Focus();
                     return false;

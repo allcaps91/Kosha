@@ -174,7 +174,7 @@ namespace ComBase
             m_nRet = clsCertImport.EMR_Roaming(m_unContext, btId);
             if (m_nRet == 2)
             { // EMR_ERR_CALCEL == 2 // 취소되었을시 아무작없이 반환
-                ComFunc.MsgBox("취소하셨습니다.", "PSMH");
+                ComFunc.MsgBox("취소하셨습니다.", "알림");
                 return false;
             }
 
@@ -190,7 +190,7 @@ namespace ComBase
                 chErrMessage = Encoding.Default.GetChars(btErrMessage, 0, nErrLen);
                 String stErrMessage = new String(chErrMessage);
 
-                ComFunc.MsgBox(stErrMessage, "PSMH");
+                ComFunc.MsgBox(stErrMessage, "알림");
 
                 return false;
 

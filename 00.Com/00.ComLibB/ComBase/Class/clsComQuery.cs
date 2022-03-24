@@ -1207,7 +1207,7 @@ namespace ComBase
 
                 if (dblPSMHVERSION != clsPublic.PSMHVERSION)
                 {
-                    ComFunc.MsgBox("중요 업데이트가 있습니다." + ComNum.VBLF + "업데이트를 해 주시기 바랍니다.", "PSMH");
+                    ComFunc.MsgBox("중요 업데이트가 있습니다." + ComNum.VBLF + "업데이트를 해 주시기 바랍니다.", "알림");
                 }
 
                 return 1;

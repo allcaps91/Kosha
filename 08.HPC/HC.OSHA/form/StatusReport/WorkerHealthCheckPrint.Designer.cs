@@ -801,7 +801,7 @@
             this.SSView_Sheet1.Columns.Get(2).Border = complexBorder23;
             textCellType38.WordWrap = true;
             this.SSView_Sheet1.Columns.Get(2).CellType = textCellType38;
-            this.SSView_Sheet1.Columns.Get(2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
+            this.SSView_Sheet1.Columns.Get(2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SSView_Sheet1.Columns.Get(2).Width = 70F;
             this.SSView_Sheet1.Columns.Get(3).Border = complexBorder24;
             textCellType39.WordWrap = true;

@@ -235,6 +235,18 @@
     <Compile Include="form\Etc\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\Management\FrmExcelUpload5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Management\FrmExcelUpload5.Designer.cs">
+      <DependentUpon>FrmExcelUpload5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Management\FrmExcelUpload4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Management\FrmExcelUpload4.Designer.cs">
+      <DependentUpon>FrmExcelUpload4.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Management\FrmExcelUpload1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,6 +337,12 @@
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_3.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_4.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_5.cs" />
+    <Compile Include="form\Report\FrmChuljangIlji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Report\FrmChuljangIlji.Designer.cs">
+      <DependentUpon>FrmChuljangIlji.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Report\FrmSuhangReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -378,6 +396,12 @@
     </Compile>
     <Compile Include="form\Report\IncomeReport.Designer.cs">
       <DependentUpon>IncomeReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Schedule\FrmVisitMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Schedule\FrmVisitMonth.Designer.cs">
+      <DependentUpon>FrmVisitMonth.cs</DependentUpon>
     </Compile>
     <Compile Include="form\Schedule\SCheduleRegularForm.cs">
       <SubType>Form</SubType>
@@ -911,6 +935,12 @@
     <EmbeddedResource Include="form\Etc\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form\Management\FrmExcelUpload5.resx">
+      <DependentUpon>FrmExcelUpload5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Management\FrmExcelUpload4.resx">
+      <DependentUpon>FrmExcelUpload4.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\Management\FrmExcelUpload1.resx">
       <DependentUpon>FrmExcelUpload1.cs</DependentUpon>
     </EmbeddedResource>
@@ -941,6 +971,9 @@
     <EmbeddedResource Include="form\Management\SiteEquipMentForm.resx">
       <DependentUpon>SiteEquipMentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form\Report\FrmChuljangIlji.resx">
+      <DependentUpon>FrmChuljangIlji.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\Report\FrmJengboReport.resx">
       <DependentUpon>FrmJengboReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -967,6 +1000,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Report\IncomeReport.resx">
       <DependentUpon>IncomeReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Schedule\FrmVisitMonth.resx">
+      <DependentUpon>FrmVisitMonth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Schedule\SCheduleRegularForm.resx">
       <DependentUpon>SCheduleRegularForm.cs</DependentUpon>

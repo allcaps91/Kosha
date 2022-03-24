@@ -145,11 +145,10 @@ namespace HC_OSHA
 
             SSCard.ActiveSheet.Cells[0, 0].Value = "16. 유해물질";
             int row = 0;
-            for (int i = 0; i < 28; i++)
+            for (int i = 0; i < 107; i++)
             {
                 row = i + 4;
                 SSCard.ActiveSheet.Cells[row, 0].Value = "";
-
                 SSCard.ActiveSheet.Cells[row, 1].Value = "";
                 SSCard.ActiveSheet.Cells[row, 2].Value = "";
                 SSCard.ActiveSheet.Cells[row, 3].Value = "";
@@ -161,7 +160,8 @@ namespace HC_OSHA
                 SSCard.ActiveSheet.Cells[row, 8].Value = "";
                 SSCard.ActiveSheet.Cells[row, 9].Value = "";
                 SSCard.ActiveSheet.Cells[row, 10].Value = "";
-                
+
+                if (row > 42) SSCard.ActiveSheet.Rows[row].Visible = false;
             }
         }
         private void Search()
@@ -171,7 +171,6 @@ namespace HC_OSHA
                 return;
             }
             Clear();
-            //List<HC_OSHA_CARD16> list = hcOshaCard16Service.FindAll(base.SelectedSite.ID, base.GetCurrentYear());
             List<HC_OSHA_CARD16> list = hcOshaCard16Service.FindAll(base.SelectedSite.ID, base.SelectedEstimate.CONTRACTSTARTDATE.Left(4));
             if (list.Count > 0)
             {
@@ -181,26 +180,9 @@ namespace HC_OSHA
                 for (int i = 0; i < list.Count; i++)
                 {
                     row = i + 4;
+                    if (SSCard.ActiveSheet.Rows[row].Visible == false) SSCard.ActiveSheet.Rows[row].Visible = true;
                     SSCard.ActiveSheet.Cells[row, 0].Value = list[i].TASKNAME;
                     SSCard.ActiveSheet.Cells[row, 1].Value = list[i].TASKTYPE;
-
-                    //if (list[i].TASKTYPE == "0")
-                    //{
-                    //    SSCard.ActiveSheet.Cells[row, 1].Value = "01";
-                    //}
-                    //else if (list[i].TASKTYPE == "1")
-                    //{
-                    //    SSCard.ActiveSheet.Cells[row, 1].Value = "02";
-                    //}
-                    //else if (list[i].TASKTYPE == "2")
-                    //{
-                    //    SSCard.ActiveSheet.Cells[row, 1].Value = "03";
-                    //}
-                    //else if (list[i].TASKTYPE == "3")
-                    //{
-                    //    SSCard.ActiveSheet.Cells[row, 1].Value = "04";
-                    //}
-
                     SSCard.ActiveSheet.Cells[row, 2].Value = list[i].NAME;
                     SSCard.ActiveSheet.Cells[row, 3].Value = list[i].QTY;
                     SSCard.ActiveSheet.Cells[row, 4].Value = list[i].USAGE;
@@ -210,31 +192,6 @@ namespace HC_OSHA
                     SSCard.ActiveSheet.Cells[row, 8].Value = list[i].ISMSDSPUBLISH;
                     SSCard.ActiveSheet.Cells[row, 9].Value = list[i].ISALET;
                     SSCard.ActiveSheet.Cells[row, 10].Value = list[i].ISMSDSEDUCATION;
-
-                    //if (list[i].ISMSDSPUBLISH == "1")
-                    //{
-                    //    SSCard.ActiveSheet.Cells[row, 8].Value = "○";
-                    //}
-                    //else
-                    //{
-                    //    SSCard.ActiveSheet.Cells[row, 8].Value = "";
-                    //}
-                    //if (list[i].ISALET == "1")
-                    //{
-                    //    SSCard.ActiveSheet.Cells[row, 9].Value = "○";
-                    //}
-                    //else
-                    //{
-                    //    SSCard.ActiveSheet.Cells[row, 9].Value = "";
-                    //}
-                    //if (list[i].ISMSDSEDUCATION == "1")
-                    //{
-                    //    SSCard.ActiveSheet.Cells[row, 10].Value = "○";
-                    //}
-                    //else
-                    //{
-                    //    SSCard.ActiveSheet.Cells[row, 10].Value = "";
-                    //}
                 }                  
             }
             else
