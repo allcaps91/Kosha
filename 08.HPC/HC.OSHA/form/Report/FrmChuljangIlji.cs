@@ -98,8 +98,10 @@ namespace HC_OSHA
                 return;
             }
 
-            //주간 날짜를 표시
+            SSList.ActiveSheet.RowCount = 0;
             SSList.ActiveSheet.RowCount = 100;
+
+            //주간 날짜를 표시
             DateTime dtDate = Convert.ToDateTime(strDate);
             strDateList = "";
             strStartDate = strDate.Replace("-", "");
@@ -345,7 +347,6 @@ namespace HC_OSHA
                 else
                     ComFunc.MsgBox("엑셀파일 생성에 오류가 발생 하였습니다.", "확인");
             }
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)

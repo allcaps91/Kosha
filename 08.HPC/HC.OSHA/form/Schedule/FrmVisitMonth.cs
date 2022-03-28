@@ -45,6 +45,8 @@ namespace HC_OSHA.form.Schedule
             nYY = Int32.Parse(VB.Left(strYYMM, 4));
             nMM = Int32.Parse(VB.Right(strYYMM, 2));
 
+            nMM++;
+            if (nMM==13) { nMM = 1; nYY++; }
             for (i = 0; i < 24; i++)
             {
                 cboYYMM.Items.Add(nYY.ToString() + "-" + VB.Format(nMM,"00"));
@@ -55,7 +57,7 @@ namespace HC_OSHA.form.Schedule
                     nYY--;
                 }
             }
-            cboYYMM.SelectedIndex = 0;
+            cboYYMM.SelectedIndex = 1;
 
             SSList.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true, RowHeaderVisible = true, ColumnHeaderHeight = 40 });
             SSList.AddColumnText("구분", "", 70, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
@@ -169,12 +171,14 @@ namespace HC_OSHA.form.Schedule
                 }
                 else
                 {
-                    SSList_Sheet1.ColumnHeader.Cells[0, i + 1].Text = "";
+                    SSList_Sheet1.ColumnHeader.Cells[0, i + 1].Text = " ";
                     SSList.ActiveSheet.Rows[i + 1].Visible = false;
                 }
             }
 
+            SSList.ActiveSheet.RowCount = 0;
             SSList.ActiveSheet.RowCount = 100;
+
             SQL = "SELECT DECODE(C.ROLE,'DOCTOR','1','NURSE','2','3') AS ROLE,C.USERID,C.NAME, ";
             SQL = SQL + ComNum.VBLF + "  TO_CHAR(A.VISITRESERVEDATE,'yyyyMMdd') VISITRESERVEDATE,";
             SQL = SQL + ComNum.VBLF + "   A.VISITSTARTTIME,A.VISITMANAGERID,B.NAME AS LTDNAME ";

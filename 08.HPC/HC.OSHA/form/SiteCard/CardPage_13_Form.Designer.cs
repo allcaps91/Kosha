@@ -496,13 +496,11 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pan17 = new System.Windows.Forms.Panel();
             this.DtpEDUDATE = new System.Windows.Forms.DateTimePicker();
-            this.NumACTCOUNT = new System.Windows.Forms.NumericUpDown();
             this.CboEDUUSAGE = new System.Windows.Forms.ComboBox();
             this.CboEDUTYPE = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.NumTARGETCOUNT = new System.Windows.Forms.NumericUpDown();
             this.TxtEDUNAME = new System.Windows.Forms.TextBox();
             this.TxtEDUPLACE = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -518,6 +516,8 @@
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
             this.contentTitle1 = new ComBase.Mvc.UserControls.ContentTitle();
+            this.NumTARGETCOUNT = new System.Windows.Forms.TextBox();
+            this.NumACTCOUNT = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -526,8 +526,6 @@
             this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.pan17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumACTCOUNT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumTARGETCOUNT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
             this.SuspendLayout();
@@ -2433,14 +2431,14 @@
             // 
             // pan17
             // 
-            this.pan17.Controls.Add(this.DtpEDUDATE);
             this.pan17.Controls.Add(this.NumACTCOUNT);
+            this.pan17.Controls.Add(this.NumTARGETCOUNT);
+            this.pan17.Controls.Add(this.DtpEDUDATE);
             this.pan17.Controls.Add(this.CboEDUUSAGE);
             this.pan17.Controls.Add(this.CboEDUTYPE);
             this.pan17.Controls.Add(this.label8);
             this.pan17.Controls.Add(this.label7);
             this.pan17.Controls.Add(this.label6);
-            this.pan17.Controls.Add(this.NumTARGETCOUNT);
             this.pan17.Controls.Add(this.TxtEDUNAME);
             this.pan17.Controls.Add(this.TxtEDUPLACE);
             this.pan17.Controls.Add(this.label5);
@@ -2464,18 +2462,6 @@
             this.DtpEDUDATE.Name = "DtpEDUDATE";
             this.DtpEDUDATE.Size = new System.Drawing.Size(106, 25);
             this.DtpEDUDATE.TabIndex = 128;
-            // 
-            // NumACTCOUNT
-            // 
-            this.NumACTCOUNT.Location = new System.Drawing.Point(605, 68);
-            this.NumACTCOUNT.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.NumACTCOUNT.Name = "NumACTCOUNT";
-            this.NumACTCOUNT.Size = new System.Drawing.Size(52, 25);
-            this.NumACTCOUNT.TabIndex = 127;
             // 
             // CboEDUUSAGE
             // 
@@ -2534,18 +2520,6 @@
             this.label6.TabIndex = 121;
             this.label6.Text = "교육인원 ";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // NumTARGETCOUNT
-            // 
-            this.NumTARGETCOUNT.Location = new System.Drawing.Point(494, 68);
-            this.NumTARGETCOUNT.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.NumTARGETCOUNT.Name = "NumTARGETCOUNT";
-            this.NumTARGETCOUNT.Size = new System.Drawing.Size(52, 25);
-            this.NumTARGETCOUNT.TabIndex = 120;
             // 
             // TxtEDUNAME
             // 
@@ -2729,6 +2703,20 @@
             this.contentTitle1.TabIndex = 110;
             this.contentTitle1.TitleText = "17. 사업장안전보건교육";
             // 
+            // NumTARGETCOUNT
+            // 
+            this.NumTARGETCOUNT.Location = new System.Drawing.Point(494, 68);
+            this.NumTARGETCOUNT.Name = "NumTARGETCOUNT";
+            this.NumTARGETCOUNT.Size = new System.Drawing.Size(52, 25);
+            this.NumTARGETCOUNT.TabIndex = 129;
+            // 
+            // NumACTCOUNT
+            // 
+            this.NumACTCOUNT.Location = new System.Drawing.Point(605, 68);
+            this.NumACTCOUNT.Name = "NumACTCOUNT";
+            this.NumACTCOUNT.Size = new System.Drawing.Size(52, 25);
+            this.NumACTCOUNT.TabIndex = 130;
+            // 
             // CardPage_13_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -2747,8 +2735,6 @@
             this.tabPage2.ResumeLayout(false);
             this.pan17.ResumeLayout(false);
             this.pan17.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumACTCOUNT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumTARGETCOUNT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).EndInit();
             this.ResumeLayout(false);
@@ -2783,10 +2769,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown NumTARGETCOUNT;
         private System.Windows.Forms.ComboBox CboEDUTYPE;
-        private System.Windows.Forms.NumericUpDown NumACTCOUNT;
         private System.Windows.Forms.ComboBox CboEDUUSAGE;
         private System.Windows.Forms.DateTimePicker DtpEDUDATE;
+        private System.Windows.Forms.TextBox NumACTCOUNT;
+        private System.Windows.Forms.TextBox NumTARGETCOUNT;
     }
 }

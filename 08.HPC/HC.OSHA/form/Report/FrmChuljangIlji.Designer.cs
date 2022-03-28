@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.CellType.TextCellType textCellType21 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType22 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.GeneralCellType generalCellType11 = new FarPoint.Win.Spread.CellType.GeneralCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType1 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType2 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.GeneralCellType generalCellType1 = new FarPoint.Win.Spread.CellType.GeneralCellType();
             this.btnClose = new System.Windows.Forms.Button();
             this.SSList = new FarPoint.Win.Spread.FpSpread();
             this.SSList_Sheet1 = new FarPoint.Win.Spread.SheetView();
@@ -69,7 +69,7 @@
             this.SSList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSList_Sheet1});
             this.SSList.Size = new System.Drawing.Size(1124, 663);
-            this.SSList.TabIndex = 23;
+            this.SSList.TabIndex = 0;
             this.SSList.SetViewportLeftColumn(0, 0, 2);
             this.SSList.SetActiveViewport(0, -1, -1);
             // 
@@ -99,21 +99,21 @@
             this.SSList_Sheet1.ColumnHeader.DefaultStyle.Parent = "ColumnHeaderDefaultEnhanced";
             this.SSList_Sheet1.ColumnHeader.DefaultStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SSList_Sheet1.ColumnHeader.Rows.Get(0).Height = 26F;
-            textCellType21.ReadOnly = true;
-            this.SSList_Sheet1.Columns.Get(0).CellType = textCellType21;
+            textCellType1.ReadOnly = true;
+            this.SSList_Sheet1.Columns.Get(0).CellType = textCellType1;
             this.SSList_Sheet1.Columns.Get(0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSList_Sheet1.Columns.Get(0).Label = "구분";
             this.SSList_Sheet1.Columns.Get(0).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSList_Sheet1.Columns.Get(0).Width = 56F;
-            textCellType22.ReadOnly = true;
-            this.SSList_Sheet1.Columns.Get(1).CellType = textCellType22;
+            textCellType2.ReadOnly = true;
+            this.SSList_Sheet1.Columns.Get(1).CellType = textCellType2;
             this.SSList_Sheet1.Columns.Get(1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SSList_Sheet1.Columns.Get(1).Label = "성명";
             this.SSList_Sheet1.Columns.Get(1).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSList_Sheet1.Columns.Get(1).Width = 57F;
-            generalCellType11.ReadOnly = true;
-            generalCellType11.WordWrap = true;
-            this.SSList_Sheet1.Columns.Get(2).CellType = generalCellType11;
+            generalCellType1.ReadOnly = true;
+            generalCellType1.WordWrap = true;
+            this.SSList_Sheet1.Columns.Get(2).CellType = generalCellType1;
             this.SSList_Sheet1.Columns.Get(2).Font = new System.Drawing.Font("맑은 고딕", 8F);
             this.SSList_Sheet1.Columns.Get(2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SSList_Sheet1.Columns.Get(2).Label = "3/1 (월)";
@@ -179,7 +179,7 @@
             this.cboDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cboDate.Name = "cboDate";
             this.cboDate.Size = new System.Drawing.Size(104, 25);
-            this.cboDate.TabIndex = 0;
+            this.cboDate.TabIndex = 1;
             // 
             // BtnPrint
             // 
@@ -199,7 +199,7 @@
             this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(75, 35);
-            this.BtnSearch.TabIndex = 1;
+            this.BtnSearch.TabIndex = 2;
             this.BtnSearch.Text = "검색(&F)";
             this.BtnSearch.UseVisualStyleBackColor = true;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);

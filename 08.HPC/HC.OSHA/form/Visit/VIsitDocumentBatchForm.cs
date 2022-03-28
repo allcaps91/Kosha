@@ -423,22 +423,36 @@ namespace HC_OSHA.form.Visit
         }
         private void btnSendMail_Click(object sender, EventArgs e)
         {
+            int mailCount = 0;
+            int mailTot = 0;
+            long siteId = 0;
+            string siteName = "";
+            string email = "";
+
             if (TxtDocNumber.GetValue().IsNullOrEmpty())
             {
                 MessageUtil.Alert("문서번호를 입력하세요");
                 return;
             }
+
+            // 메일 동시에 20건씩 가능함
+            mailCount = 0;
+            for (int i = 0; i < SSList.ActiveSheet.RowCount; i++)
+            {
+                if (Convert.ToBoolean(SSList.ActiveSheet.Cells[i, 0].Value)) mailCount++;
+            }
+            if (mailCount > 20)
+            {
+                MessageUtil.Alert("동시에 최대 20개 메일전송이 가능합니다.");
+                return;
+            }
+
             try
             {
-                int mailCount = 0;
-                int mailTot = 0;
-                long siteId = 0;
-                string siteName = "";
-                string email = "";
-
                 Cursor.Current = Cursors.WaitCursor;
                 HcSiteWorkerRepository hcSiteWorkerRepository = new HcSiteWorkerRepository();
                 Dictionary<long, List<string>> receiverMailList = new Dictionary<long, List<string>>();
+                mailCount = 0;
                 for (int i = 0; i < SSList.ActiveSheet.RowCount; i++)
                 {
                     if (Convert.ToBoolean(SSList.ActiveSheet.Cells[i, 0].Value))

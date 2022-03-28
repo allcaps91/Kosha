@@ -415,6 +415,12 @@
     <Compile Include="form\StatusReport\DoctorOpinionForm.Designer.cs">
       <DependentUpon>DoctorOpinionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\StatusReport\FrmWorkerJindan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\StatusReport\FrmWorkerJindan.Designer.cs">
+      <DependentUpon>FrmWorkerJindan.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\StatusReport\OpinionModel.cs" />
     <Compile Include="form\StatusReport\SangDamCountForm.cs">
       <SubType>Form</SubType>
@@ -1084,6 +1090,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\StatusReport\DoctorOpinionForm.resx">
       <DependentUpon>DoctorOpinionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\StatusReport\FrmWorkerJindan.resx">
+      <DependentUpon>FrmWorkerJindan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\StatusReport\SangDamCountForm.resx">
       <DependentUpon>SangDamCountForm.cs</DependentUpon>

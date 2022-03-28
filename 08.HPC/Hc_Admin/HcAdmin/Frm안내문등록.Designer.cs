@@ -33,6 +33,7 @@
             this.저장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtRemark = new System.Windows.Forms.TextBox();
             this.chkNew = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +72,7 @@
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtRemark.Size = new System.Drawing.Size(674, 322);
-            this.txtRemark.TabIndex = 1;
+            this.txtRemark.TabIndex = 5;
             // 
             // chkNew
             // 
@@ -86,17 +87,27 @@
             this.chkNew.UseVisualStyleBackColor = true;
             this.chkNew.Visible = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(423, 392);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(135, 25);
+            this.textBox1.TabIndex = 0;
+            // 
             // Frm안내문등록
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 361);
+            this.ClientSize = new System.Drawing.Size(704, 357);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.chkNew);
             this.Controls.Add(this.txtRemark);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Frm안내문등록";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "안내문 등록";
@@ -115,5 +126,6 @@
         private System.Windows.Forms.ToolStripMenuItem 저장ToolStripMenuItem;
         private System.Windows.Forms.TextBox txtRemark;
         private System.Windows.Forms.CheckBox chkNew;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

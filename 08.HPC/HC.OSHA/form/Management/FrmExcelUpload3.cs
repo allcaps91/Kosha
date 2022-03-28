@@ -478,6 +478,7 @@ namespace HC_OSHA
                 if (VB.Len(strBirth) > 6) strBirth = VB.Left(strBirth, 6);
                 if (strSex == "M") strSex = "남";
                 if (strSex == "F") strSex = "여";
+                if (strAge == "") strAge = Age_Gesan1(strBirth);
 
                 // 전송오류는 별도 엑셀파일로 저장하기 위해 별도 보관함
                 if (strBirth=="")
@@ -667,7 +668,28 @@ namespace HC_OSHA
             }
             btnJob4.Enabled = true;
         }
+
+        // 생년월일 6자리로 오늘 기준 나이를 계산
+        // 근로자는 신생아는 없기 때문에 생년월일 6자리로 나이를 간이 계산함
+        private string Age_Gesan1(string strBirth)
+        {
+            int nAge = 0;
+            //생년월일이 오류이면 0살을 Return
+            if (strBirth == "" || strBirth == "000000" || strBirth == "123456")
+            {
+                return "0";
+            }
+
+            int nYear1 = Int32.Parse(DateTime.Now.ToString("yyyy"));
+            int nYear2 = Int32.Parse(VB.Left(strBirth, 2));
+            nAge = nYear1 - (2000 + nYear2);
+            if (nAge < 0) nAge = nYear1 - (1900 + nYear2);
+
+            return nAge.ToString();
+        }
+
     }
+
 }
 
 

@@ -73,8 +73,8 @@ namespace HC_OSHA
             TxtEDUNAME.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CARD17.EDUNAME) });
             TxtCONTENT.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CARD17.CONTENT) });
 
-            NumTARGETCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CARD17.TARGETCOUNT), Min = 0 });
-            NumACTCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CARD17.ACTCOUNT), Min = 0 } );
+            NumTARGETCOUNT.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CARD17.TARGETCOUNT) });
+            NumACTCOUNT.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_CARD17.ACTCOUNT) } );
 
             SSList.Initialize(new SpreadOption() { IsRowSelectColor = true });
             SSList.AddColumnText("일자", nameof(HC_OSHA_CARD17.EDUDATE), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });

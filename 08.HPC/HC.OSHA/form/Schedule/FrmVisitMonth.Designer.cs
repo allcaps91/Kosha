@@ -48,7 +48,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(988, 0);
+            this.btnClose.Location = new System.Drawing.Point(1160, 0);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 35);
@@ -68,10 +68,10 @@
             this.SSList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSList_Sheet1});
             this.SSList.Size = new System.Drawing.Size(1284, 682);
-            this.SSList.TabIndex = 19;
+            this.SSList.TabIndex = 0;
             this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
             this.SSList.SetViewportLeftColumn(0, 0, 2);
-            this.SSList.SetActiveViewport(0, 1, -1);
+            this.SSList.SetActiveViewport(0, -1, -1);
             // 
             // SSList_Sheet1
             // 
@@ -161,7 +161,7 @@
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(891, 6);
+            this.btnExcel.Location = new System.Drawing.Point(1159, 6);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(75, 28);
@@ -177,11 +177,11 @@
             this.cboYYMM.Location = new System.Drawing.Point(62, 8);
             this.cboYYMM.Name = "cboYYMM";
             this.cboYYMM.Size = new System.Drawing.Size(94, 25);
-            this.cboYYMM.TabIndex = 0;
+            this.cboYYMM.TabIndex = 1;
             // 
             // BtnPrint
             // 
-            this.BtnPrint.Location = new System.Drawing.Point(810, 6);
+            this.BtnPrint.Location = new System.Drawing.Point(1078, 6);
             this.BtnPrint.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnPrint.Name = "BtnPrint";
             this.BtnPrint.Size = new System.Drawing.Size(75, 28);
@@ -192,11 +192,11 @@
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(719, 8);
+            this.BtnSearch.Location = new System.Drawing.Point(162, 8);
             this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(75, 28);
-            this.BtnSearch.TabIndex = 1;
+            this.BtnSearch.TabIndex = 2;
             this.BtnSearch.Text = "검색(&F)";
             this.BtnSearch.UseVisualStyleBackColor = true;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
