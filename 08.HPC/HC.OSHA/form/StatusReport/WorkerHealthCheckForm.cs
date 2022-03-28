@@ -341,6 +341,7 @@ namespace HC_OSHA.StatusReport
                         strPanjeng1 = Get_Last_Panjeng(strID, "특수");
                         strPanjeng2 = Get_Last_Panjeng(strID, "일반");
                         bOK = false;
+                        if (panjeong == "전체") panjeong = "";
                         if (panjeong != "")
                         {
                             strP1 = VB.Pstr(strPanjeng1, "{}", 6);

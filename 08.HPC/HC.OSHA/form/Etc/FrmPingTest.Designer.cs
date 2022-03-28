@@ -36,6 +36,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TxtPing
@@ -88,9 +89,9 @@
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(9, 346);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(401, 15);
+            this.label1.Size = new System.Drawing.Size(408, 15);
             this.label1.TabIndex = 4;
-            this.label1.Text = "▶ 속도가 0~15ms는 네트웍상태가 정상입니다. 초과할 경우 알려주세요..";
+            this.label1.Text = "▶ 속도가 0~100ms는 네트웍상태가 정상입니다. 초과할 경우 알려주세요..";
             // 
             // btnSave
             // 
@@ -102,12 +103,23 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(9, 361);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(407, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "▶ 전송상태에 TIMEOUT 발생하면 네트웍상태가 물안정하다는 표시입니다.";
+            // 
             // FrmPingTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(450, 372);
+            this.ClientSize = new System.Drawing.Size(450, 395);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExit);
@@ -136,5 +148,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label2;
     }
 }
