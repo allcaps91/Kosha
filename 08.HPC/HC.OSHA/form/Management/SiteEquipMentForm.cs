@@ -39,13 +39,12 @@ namespace HC_OSHA
             SpreadComboBoxData users = userService.GetSpreadByOsha();
             SSList.Initialize(new SpreadOption() { IsRowSelectColor = false });
             SSList.AddColumnDateTime("사용일자", nameof(HC_OSHA_EQUIPMENT.REGDATE), 120, IsReadOnly.N, DateTimeType.YYYY_MM_DD, new SpreadCellTypeOption { IsShowCalendarButton = true, dateTimeEditorValue = FarPoint.Win.Spread.CellType.DateTimeEditorValue.String });
-            SSList.AddColumnComboBox("장비명", nameof(HC_OSHA_EQUIPMENT.NAME), 300, IsReadOnly.N, EQUIP_NAME, new SpreadCellTypeOption { });
-            SSList.AddColumnComboBox("모델명", nameof(HC_OSHA_EQUIPMENT.MODELNAME), 190, IsReadOnly.N, EQUIP_MODELNAME, new SpreadCellTypeOption { });
-         //   SSList.AddColumnText("시리얼번호", nameof(HC_OSHA_EQUIPMENT.SERIALNUMBER), 60, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
-            SSList.AddColumnText("사용내역", nameof(HC_OSHA_EQUIPMENT.REMARK), 190, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnComboBox("장비명", nameof(HC_OSHA_EQUIPMENT.NAME), 400, IsReadOnly.N, EQUIP_NAME, new SpreadCellTypeOption { });
+            //SSList.AddColumnComboBox("모델명", nameof(HC_OSHA_EQUIPMENT.MODELNAME), 100, IsReadOnly.N, EQUIP_MODELNAME, new SpreadCellTypeOption { });
+            //SSList.AddColumnText("시리얼번호", nameof(HC_OSHA_EQUIPMENT.SERIALNUMBER), 60, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("사용내역", nameof(HC_OSHA_EQUIPMENT.REMARK), 180, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
 
             SSList.AddColumnButton(" ", 60, new SpreadCellTypeOption { ButtonText = "삭제" }).ButtonClick += (s, ev) => { SSList.DeleteRow(ev.Row); };
-
 
             Search();
         }

@@ -357,8 +357,7 @@ namespace HC_OSHA
             strJong = cboJong.Text.Trim();
 
             HC_SITE_WORKER worker = new HC_SITE_WORKER();
-
-            strYuhe = SS1_Sheet1.Cells[1, 5].Text.ToString().Trim();
+            strYuhe = SS1_Sheet1.Cells[0, 5].Text.ToString().Trim();
             if (strJong == "일반" && strYuhe != "")
             {
                 ComFunc.MsgBox("일반인데 유해인자가 있음", "오류");

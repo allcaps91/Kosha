@@ -255,8 +255,12 @@ namespace HC_OSHA.StatusReport
                 statusReportViewer.ShowDialog();
             }
         }
-
         private void BtnSave_Click(object sender, EventArgs e)
+        {
+            DB_Save();
+        }
+
+        private void DB_Save()
         {
             if (base.SelectedSite == null)
             {
@@ -338,20 +342,6 @@ namespace HC_OSHA.StatusReport
 
                     SearchReport();
 
-                    //int selectedVisitYearIndex = CboVisitYear.SelectedIndex;
-                    //int selectedVisitDateIndex = CboVisitDate.SelectedIndex;
-                    //if (selectedVisitYearIndex <= 0 && selectedVisitDateIndex <= 0)
-                    //{
-                    //    SetCboVisitYear();
-                    //    CboVisitYear.SelectedIndex = 0;
-                    //}
-                    //else if (selectedVisitYearIndex >= 0 && selectedVisitDateIndex >= 0)
-                    //{
-                    //    SetCboVisitYear();
-                    //    CboVisitYear.SelectedIndex = selectedVisitYearIndex;
-                    //    CboVisitDate.SelectedIndex = selectedVisitDateIndex;
-                    //}
-
                     MessageUtil.Info("저장하였습니다");
                     for (int i = 0; i < SSReportList.ActiveSheet.RowCount; i++)
                     {
@@ -362,10 +352,7 @@ namespace HC_OSHA.StatusReport
                         }
 
                     }
-                    // Clear();
                 }
-                //SetCboVisitDate();
-
             }
         }
 
@@ -560,18 +547,6 @@ namespace HC_OSHA.StatusReport
             StatusReportDoctorDto dto = PanStatausReportDoctor.GetData<StatusReportDoctorDto>();
             if (dto.ID == 0) return;
 
-            ////의사,간호사 REPORT_ID를 찾음
-            //SQL = "SELECT ID FROM HIC_OSHA_REPORT_NURSE ";
-            //SQL = SQL + ComNum.VBLF + "WHERE SITE_ID=" + base.SelectedSite.ID + " ";
-            //SQL = SQL + ComNum.VBLF + "  AND VISITDATE='" + strVisitDate + "' ";
-            //SQL = SQL + ComNum.VBLF + "  AND ISDELETED='N' ";
-            //SQL = SQL + ComNum.VBLF + "  AND SWLicense='" + clsType.HosInfo.SwLicense + "' ";
-            //SQL = SQL + ComNum.VBLF + "ORDER BY ID DESC ";
-            //SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
-            //if (dt.Rows.Count > 0) nNurseId = long.Parse(dt.Rows[0]["ID"].ToString());
-            //dt.Dispose();
-            //dt = null;
-
             //상담건수, 혈압, 혈당 등 검사 건수
             SQL = "SELECT COUNT(*) as TotCount,sum(decode(bpl,null, 0, 1)) as BpCount,sum(decode(bst, null, 0, 1)) AS BstCount, ";
             SQL = SQL + ComNum.VBLF + "   sum(decode(dan, null, 0, 1)) AS DanCount,sum(decode(BMI, null, 0, 1)) as BMICount, ";
@@ -612,126 +587,7 @@ namespace HC_OSHA.StatusReport
             dt.Dispose();
             dt = null;
 
-            //SangDamCountRepository sangDamCountRepository = new SangDamCountRepository();
-            //try
-            //{
-            //    StatusReportDoctorDto dto = PanStatausReportDoctor.GetData<StatusReportDoctorDto>();
-            //    if (dto.ID > 0)
-            //    {
-            //        Cursor.Current = Cursors.WaitCursor;
-            //        string searchDate = codeService.CurrentDate.AddYears(-2).ToString("yyyy") + "-01-01";
-
-
-            //        SangDamGeneralCountModel model = sangDamCountRepository.FindByReport(dto.ID, true, searchDate);
-
-            //        numericUpDown1.SetValue(model.SANGDAMCOUNT);
-            //        //고혈압
-            //        numericUpDown20.SetValue(model.PANJENGU1);
-            //        numericUpDown19.SetValue(model.PANJENGR3);
-
-            //        //당뇨
-            //        numericUpDown18.SetValue(model.PANJENGR6);
-            //        numericUpDown17.SetValue(model.PANJENGU2);
-
-            //        //이상지질
-            //        numericUpDown16.SetValue(model.PANJENGU3);
-            //        numericUpDown15.SetValue(model.PANJENGR4);
-
-            //        //간장질환D2
-            //        numericUpDown14.SetValue(0);
-            //        //간장질환C
-            //        numericUpDown13.SetValue(model.PANJENGR5);
-
-            //        //기타
-            //        numericUpDown12.SetValue(model.ETC_D1 + model.ETC_C5 + model.ETC_C7);
-            //        numericUpDown11.SetValue(model.ETC_C1 + model.ETC_C2 + model.ETC_C3 + model.ETC_C4 + model.ETC_C6 + model.ETC_C8 + model.ETC_C9);
-
-
-            //        //직업병 건수
-            //        List<SandDamTongbun> list = sangDamCountRepository.FindSpecialReport(dto.ID, searchDate);
-
-            //        foreach (SandDamTongbun t in list)
-            //        {
-            //            //소음
-            //            if (t.TONGBUN == 1)
-            //            {
-            //                NumSangdamCount.SetValue(t.D1);
-            //                numericUpDown2.SetValue(t.C1);
-            //            }
-            //            else if (t.TONGBUN == 3 || t.TONGBUN == 4 || t.TONGBUN == 5)
-            //            {
-            //                //분진
-            //                numericUpDown4.SetValue(numericUpDown4.Value + t.D1);
-            //                numericUpDown3.SetValue(numericUpDown3.Value + t.C1);
-            //            }
-            //            else if (t.TONGBUN == 6 || t.TONGBUN == 12)
-            //            {
-            //                //화학물질
-            //                numericUpDown8.SetValue(numericUpDown8.Value + t.D1);
-            //                numericUpDown7.SetValue(numericUpDown7.Value + t.C1);
-            //            }
-            //            else if (t.TONGBUN == 7 || t.TONGBUN == 8 || t.TONGBUN == 9 || t.TONGBUN == 10 || t.TONGBUN == 11)
-            //            {
-            //                //금속류
-            //                numericUpDown6.SetValue(numericUpDown6.Value + t.D1);
-            //                numericUpDown5.SetValue(numericUpDown5.Value + t.C1);
-            //            }
-            //            else if (t.TONGBUN == 13 || t.TONGBUN == 14 || t.TONGBUN == 15)
-            //            {
-            //                //기타
-            //                numericUpDown10.SetValue(numericUpDown10.Value + t.D1);
-            //                numericUpDown9.SetValue(numericUpDown9.Value + t.C1);
-            //            }
-            //        }
-            //        List<SangDamDnCnCountModel> list2 = sangDamCountRepository.FindCnDnCount(dto.ID);
-            //        long cnCount = 0;
-            //        long dnCount = 0;
-            //        foreach (SangDamDnCnCountModel sangDamDnCnCountModel in list2)
-            //        {
-            //            if (sangDamDnCnCountModel.CNCOUNT > 0)
-            //            {
-            //                cnCount++;
-            //            }
-            //            if (sangDamDnCnCountModel.DNCOUNT > 0)
-            //            {
-            //                dnCount++;
-            //            }
-            //        }
-            //        numericUpDown26.SetValue(cnCount);
-            //        numericUpDown27.SetValue(dnCount);
-
-            //        //간이검사 건수
-            //        SangDamExamCountModel sangDamExamCountModel = sangDamCountRepository.FindSangDamExamCount2(dto.ID);
-            //        long totalCOunt = sangDamExamCountModel.BpCount + sangDamExamCountModel.BstCount + sangDamExamCountModel.DanCount + sangDamExamCountModel.BMICount;
-            //        numericUpDown21.SetValue(totalCOunt);
-
-            //        numericUpDown22.SetValue(sangDamExamCountModel.BpCount);
-            //        numericUpDown23.SetValue(sangDamExamCountModel.BstCount);
-            //        numericUpDown24.SetValue(sangDamExamCountModel.DanCount);
-            //        numericUpDown25.SetValue(sangDamExamCountModel.BMICount);
-
-            //        //외래진료 검사의뢰
-            //        List<SangDamOutExamCountModel> examList = sangDamCountRepository.FindSangDamOutExamCount(dto.ID);
-            //        string examContent = string.Empty;
-
-            //        foreach (SangDamOutExamCountModel examModel in examList)
-            //        {
-            //            examContent += examModel.Name + ":" + examModel.Exam + ", ";
-            //        }
-            //        textBox5.Text = examContent;
-            //        numericUpDown30.SetValue(examList.Count);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Log.Error(ex);
-            //    Cursor.Current = Cursors.Default;
-            //    MessageUtil.Alert(ex.Message);
-            //}
-            //finally
-            //{
-            //    Cursor.Current = Cursors.Default;
-            //}
+            DB_Save(); //자동저장
         }
 
         private void oshaSiteList1_CellDoubleClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
@@ -833,6 +689,7 @@ namespace HC_OSHA.StatusReport
             if (siteStatusDto != null)
             {
                 siteStatusControl.SetData(siteStatusDto);
+                DB_Save(); //자동저장
             }
         }
 

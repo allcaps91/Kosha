@@ -221,10 +221,9 @@ namespace HC_OSHA.form.Schedule
                     }
                     nDD = Int32.Parse(VB.Right(dt.Rows[i]["VISITRESERVEDATE"].ToString().Trim(), 2));
                     strVisit = "";
-                    if (dt.Rows[i]["ROLE"].ToString().Trim() != "1" && dt.Rows[i]["VISITMANAGERID"].ToString().Trim() != "") strVisit += "★";
-                    if (dt.Rows[i]["VISITSTARTTIME"].ToString().Trim() != "") strVisit = dt.Rows[i]["VISITSTARTTIME"].ToString().Trim() + " ";
+                    if (dt.Rows[i]["ROLE"].ToString().Trim() != "1" && dt.Rows[i]["VISITMANAGERID"].ToString().Trim() != "") strVisit += "▶";
+                    if (dt.Rows[i]["VISITSTARTTIME"].ToString().Trim() != "") strVisit += dt.Rows[i]["VISITSTARTTIME"].ToString().Trim() + " ";
                     strVisit += dt.Rows[i]["LTDNAME"].ToString().Trim();
-                    //if (strVisit.Length > 14) strVisit = strVisit.Substring(0, 14);
 
                     if (SSList.ActiveSheet.Cells[nRow - 1, nDD + 1].Text.Trim() == "")
                     {
@@ -233,7 +232,7 @@ namespace HC_OSHA.form.Schedule
                     else
                     {
                         //SSList.ActiveSheet.Cells[nRow-1, nDD + 1].Text += ComNum.VBLF + strVisit;
-                        SSList.ActiveSheet.Cells[nRow - 1, nDD + 1].Text += "\r" + strVisit;
+                        SSList.ActiveSheet.Cells[nRow - 1, nDD + 1].Text += "\r\n" + strVisit;
                     }
                     strOldData = strNewData;
                 }
@@ -253,7 +252,7 @@ namespace HC_OSHA.form.Schedule
                 }
                 if (bOK == false)
                 {
-                    SSList_Sheet1.ColumnHeader.Columns[i].Width = 45;
+                    SSList_Sheet1.ColumnHeader.Columns[i].Width = 0;
                 }
                 else
                 {

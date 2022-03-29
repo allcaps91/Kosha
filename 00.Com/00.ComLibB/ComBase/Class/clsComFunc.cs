@@ -2843,7 +2843,7 @@ namespace ComBase
         /// <param name="strCation"></param>
         public static void MsgBox(string strMsg, string strCation = "")
         { 
-            if (strCation == "") strCation = "PSMH";
+            if (strCation == "") strCation = "확인";
 
             MessageBox.Show(new Form() { TopMost = true, StartPosition = FormStartPosition.CenterParent }, strMsg, strCation, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -2858,7 +2858,7 @@ namespace ComBase
         /// <param name="strCation"></param>
         public static void MsgBoxEx(Form ownerForm, string strMsg, string strCation = "")
         {
-            if (strCation == "") strCation = "PSMH";
+            if (strCation == "") strCation = "확인";
 
             if (ownerForm == null)
             {
@@ -2903,7 +2903,7 @@ namespace ComBase
         /// <returns></returns>
         public static DialogResult MsgBoxQ(string strMsg, string strCation = "", MessageBoxDefaultButton btn2 = MessageBoxDefaultButton.Button2)
         {
-            if (strCation == "") strCation = "PSMH";
+            if (strCation == "") strCation = "확인";
 
             DialogResult rtnVal = MessageBox.Show(new Form() { TopMost = true, StartPosition = FormStartPosition.CenterParent }, strMsg, strCation, MessageBoxButtons.YesNo, MessageBoxIcon.Question, btn2);
 
@@ -2920,7 +2920,7 @@ namespace ComBase
         /// <returns></returns>
         public static DialogResult MsgBoxQEx(Form ownerForm, string strMsg, string strCation = "", MessageBoxDefaultButton btn2 = MessageBoxDefaultButton.Button2)
         {
-            if (strCation == "") strCation = "PSMH";
+            if (strCation == "") strCation = "확인";
 
             if (ownerForm == null)
             {

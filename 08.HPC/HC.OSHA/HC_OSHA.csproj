@@ -397,6 +397,12 @@
     <Compile Include="form\Report\IncomeReport.Designer.cs">
       <DependentUpon>IncomeReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\Schedule\FrmVisitMonth2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Schedule\FrmVisitMonth2.Designer.cs">
+      <DependentUpon>FrmVisitMonth2.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Schedule\FrmVisitMonth.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1006,6 +1012,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Report\IncomeReport.resx">
       <DependentUpon>IncomeReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Schedule\FrmVisitMonth2.resx">
+      <DependentUpon>FrmVisitMonth2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Schedule\FrmVisitMonth.resx">
       <DependentUpon>FrmVisitMonth.cs</DependentUpon>

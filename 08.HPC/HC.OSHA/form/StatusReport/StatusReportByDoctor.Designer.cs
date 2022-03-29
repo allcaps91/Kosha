@@ -246,11 +246,11 @@
             this.TabReport.Controls.Add(this.tabPage3);
             this.TabReport.Controls.Add(this.tabPage2);
             this.TabReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabReport.Location = new System.Drawing.Point(0, 41);
+            this.TabReport.Location = new System.Drawing.Point(0, 28);
             this.TabReport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabReport.Name = "TabReport";
             this.TabReport.SelectedIndex = 0;
-            this.TabReport.Size = new System.Drawing.Size(1545, 989);
+            this.TabReport.Size = new System.Drawing.Size(1545, 923);
             this.TabReport.TabIndex = 112;
             this.TabReport.SelectedIndexChanged += new System.EventHandler(this.TabReport_SelectedIndexChanged);
             // 
@@ -263,7 +263,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(1537, 959);
+            this.tabPage1.Size = new System.Drawing.Size(1537, 893);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "보건관리상태보고서";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -277,7 +277,7 @@
             this.SSReportList.Name = "SSReportList";
             this.SSReportList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSReportList_Sheet1});
-            this.SSReportList.Size = new System.Drawing.Size(194, 350);
+            this.SSReportList.Size = new System.Drawing.Size(194, 300);
             this.SSReportList.TabIndex = 114;
             this.SSReportList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSReportList_CellDoubleClick);
             // 
@@ -313,10 +313,10 @@
             this.PanStatausReportDoctor.Controls.Add(this.BtnDelete);
             this.PanStatausReportDoctor.Controls.Add(this.BtnLast);
             this.PanStatausReportDoctor.Controls.Add(this.BtnSave);
-            this.PanStatausReportDoctor.Location = new System.Drawing.Point(204, 8);
+            this.PanStatausReportDoctor.Location = new System.Drawing.Point(204, 3);
             this.PanStatausReportDoctor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PanStatausReportDoctor.Name = "PanStatausReportDoctor";
-            this.PanStatausReportDoctor.Size = new System.Drawing.Size(1325, 904);
+            this.PanStatausReportDoctor.Size = new System.Drawing.Size(1325, 820);
             this.PanStatausReportDoctor.TabIndex = 112;
             // 
             // BtnSaup
@@ -347,10 +347,10 @@
             this.panel2.Controls.Add(this.TxtMemo);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.GrpPerformContent);
-            this.panel2.Location = new System.Drawing.Point(3, 279);
+            this.panel2.Location = new System.Drawing.Point(3, 262);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1283, 608);
+            this.panel2.Size = new System.Drawing.Size(1283, 556);
             this.panel2.TabIndex = 214;
             // 
             // label3
@@ -359,22 +359,22 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(651, 504);
+            this.label3.Location = new System.Drawing.Point(651, 484);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.label3.Size = new System.Drawing.Size(84, 77);
+            this.label3.Size = new System.Drawing.Size(84, 66);
             this.label3.TabIndex = 216;
             this.label3.Text = "참고사항";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TxtMemo
             // 
-            this.TxtMemo.Location = new System.Drawing.Point(741, 504);
+            this.TxtMemo.Location = new System.Drawing.Point(741, 484);
             this.TxtMemo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtMemo.Multiline = true;
             this.TxtMemo.Name = "TxtMemo";
             this.TxtMemo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TxtMemo.Size = new System.Drawing.Size(490, 77);
+            this.TxtMemo.Size = new System.Drawing.Size(490, 66);
             this.TxtMemo.TabIndex = 333;
             this.TxtMemo.Tag = "chk42Content";
             // 
@@ -390,9 +390,9 @@
             this.panel3.Controls.Add(this.TxtDoctorNAME);
             this.panel3.Controls.Add(this.label32);
             this.panel3.Controls.Add(this.label35);
-            this.panel3.Location = new System.Drawing.Point(7, 504);
+            this.panel3.Location = new System.Drawing.Point(7, 484);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(615, 77);
+            this.panel3.Size = new System.Drawing.Size(615, 66);
             this.panel3.TabIndex = 216;
             // 
             // label37
@@ -652,7 +652,7 @@
             this.GrpPerformContent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GrpPerformContent.Name = "GrpPerformContent";
             this.GrpPerformContent.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.GrpPerformContent.Size = new System.Drawing.Size(1273, 492);
+            this.GrpPerformContent.Size = new System.Drawing.Size(1273, 486);
             this.GrpPerformContent.TabIndex = 116;
             this.GrpPerformContent.TabStop = false;
             this.GrpPerformContent.Text = "2. 업무수행내용";
@@ -670,7 +670,7 @@
             // 
             // BtnInfo
             // 
-            this.BtnInfo.Location = new System.Drawing.Point(1103, 421);
+            this.BtnInfo.Location = new System.Drawing.Point(1103, 401);
             this.BtnInfo.Name = "BtnInfo";
             this.BtnInfo.Size = new System.Drawing.Size(75, 36);
             this.BtnInfo.TabIndex = 339;
@@ -803,7 +803,7 @@
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(919, 461);
+            this.textBox12.Location = new System.Drawing.Point(919, 441);
             this.textBox12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(345, 25);
@@ -816,7 +816,7 @@
             this.label56.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label56.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label56.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label56.Location = new System.Drawing.Point(919, 424);
+            this.label56.Location = new System.Drawing.Point(919, 404);
             this.label56.Name = "label56";
             this.label56.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.label56.Size = new System.Drawing.Size(178, 33);
@@ -833,14 +833,14 @@
             this.label59.Location = new System.Drawing.Point(919, 147);
             this.label59.Name = "label59";
             this.label59.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.label59.Size = new System.Drawing.Size(75, 271);
+            this.label59.Size = new System.Drawing.Size(75, 251);
             this.label59.TabIndex = 327;
             this.label59.Text = "보건교육";
             this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(1075, 389);
+            this.textBox11.Location = new System.Drawing.Point(1075, 370);
             this.textBox11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(189, 25);
@@ -928,7 +928,7 @@
             // checkBox21
             // 
             this.checkBox21.AutoSize = true;
-            this.checkBox21.Location = new System.Drawing.Point(1075, 354);
+            this.checkBox21.Location = new System.Drawing.Point(1075, 340);
             this.checkBox21.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox21.Name = "checkBox21";
             this.checkBox21.Size = new System.Drawing.Size(66, 21);
@@ -940,7 +940,7 @@
             // checkBox22
             // 
             this.checkBox22.AutoSize = true;
-            this.checkBox22.Location = new System.Drawing.Point(1004, 397);
+            this.checkBox22.Location = new System.Drawing.Point(1004, 370);
             this.checkBox22.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox22.Name = "checkBox22";
             this.checkBox22.Size = new System.Drawing.Size(53, 21);
@@ -952,7 +952,7 @@
             // checkBox23
             // 
             this.checkBox23.AutoSize = true;
-            this.checkBox23.Location = new System.Drawing.Point(1003, 357);
+            this.checkBox23.Location = new System.Drawing.Point(1003, 340);
             this.checkBox23.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox23.Name = "checkBox23";
             this.checkBox23.Size = new System.Drawing.Size(66, 21);
@@ -1000,7 +1000,7 @@
             // checkBox20
             // 
             this.checkBox20.AutoSize = true;
-            this.checkBox20.Location = new System.Drawing.Point(609, 459);
+            this.checkBox20.Location = new System.Drawing.Point(609, 447);
             this.checkBox20.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox20.Name = "checkBox20";
             this.checkBox20.Size = new System.Drawing.Size(136, 21);
@@ -1012,7 +1012,7 @@
             // checkBox19
             // 
             this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(494, 459);
+            this.checkBox19.Location = new System.Drawing.Point(494, 447);
             this.checkBox19.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox19.Name = "checkBox19";
             this.checkBox19.Size = new System.Drawing.Size(105, 21);
@@ -1024,7 +1024,7 @@
             // checkBox17
             // 
             this.checkBox17.AutoSize = true;
-            this.checkBox17.Location = new System.Drawing.Point(308, 459);
+            this.checkBox17.Location = new System.Drawing.Point(308, 447);
             this.checkBox17.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox17.Name = "checkBox17";
             this.checkBox17.Size = new System.Drawing.Size(180, 21);
@@ -1036,7 +1036,7 @@
             // checkBox18
             // 
             this.checkBox18.AutoSize = true;
-            this.checkBox18.Location = new System.Drawing.Point(167, 459);
+            this.checkBox18.Location = new System.Drawing.Point(167, 447);
             this.checkBox18.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox18.Name = "checkBox18";
             this.checkBox18.Size = new System.Drawing.Size(136, 21);
@@ -1051,10 +1051,10 @@
             this.label54.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label54.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label54.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label54.Location = new System.Drawing.Point(8, 455);
+            this.label54.Location = new System.Drawing.Point(8, 445);
             this.label54.Name = "label54";
             this.label54.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.label54.Size = new System.Drawing.Size(148, 30);
+            this.label54.Size = new System.Drawing.Size(148, 25);
             this.label54.TabIndex = 305;
             this.label54.Text = "업무상질병관리";
             this.label54.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1062,7 +1062,7 @@
             // checkBox15
             // 
             this.checkBox15.AutoSize = true;
-            this.checkBox15.Location = new System.Drawing.Point(339, 425);
+            this.checkBox15.Location = new System.Drawing.Point(339, 416);
             this.checkBox15.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox15.Name = "checkBox15";
             this.checkBox15.Size = new System.Drawing.Size(105, 21);
@@ -1074,7 +1074,7 @@
             // checkBox16
             // 
             this.checkBox16.AutoSize = true;
-            this.checkBox16.Location = new System.Drawing.Point(167, 426);
+            this.checkBox16.Location = new System.Drawing.Point(167, 416);
             this.checkBox16.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox16.Name = "checkBox16";
             this.checkBox16.Size = new System.Drawing.Size(165, 21);
@@ -1089,10 +1089,10 @@
             this.label53.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label53.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label53.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label53.Location = new System.Drawing.Point(8, 420);
+            this.label53.Location = new System.Drawing.Point(8, 415);
             this.label53.Name = "label53";
             this.label53.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.label53.Size = new System.Drawing.Size(148, 30);
+            this.label53.Size = new System.Drawing.Size(148, 25);
             this.label53.TabIndex = 302;
             this.label53.Text = "응 급 처 치 관 리";
             this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1100,7 +1100,7 @@
             // checkBox13
             // 
             this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(519, 394);
+            this.checkBox13.Location = new System.Drawing.Point(519, 390);
             this.checkBox13.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.Size = new System.Drawing.Size(53, 21);
@@ -1112,7 +1112,7 @@
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(460, 394);
+            this.checkBox9.Location = new System.Drawing.Point(460, 390);
             this.checkBox9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(53, 21);
@@ -1124,7 +1124,7 @@
             // checkBox10
             // 
             this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(401, 394);
+            this.checkBox10.Location = new System.Drawing.Point(401, 390);
             this.checkBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox10.Name = "checkBox10";
             this.checkBox10.Size = new System.Drawing.Size(53, 21);
@@ -1136,7 +1136,7 @@
             // checkBox11
             // 
             this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(342, 394);
+            this.checkBox11.Location = new System.Drawing.Point(342, 390);
             this.checkBox11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.Size = new System.Drawing.Size(53, 21);
@@ -1148,7 +1148,7 @@
             // checkBox12
             // 
             this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(283, 394);
+            this.checkBox12.Location = new System.Drawing.Point(283, 390);
             this.checkBox12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox12.Name = "checkBox12";
             this.checkBox12.Size = new System.Drawing.Size(53, 21);
@@ -1160,7 +1160,7 @@
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(163, 396);
+            this.label52.Location = new System.Drawing.Point(163, 390);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(115, 17);
             this.label52.TabIndex = 294;
@@ -1175,7 +1175,7 @@
             this.label43.Location = new System.Drawing.Point(8, 385);
             this.label43.Name = "label43";
             this.label43.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.label43.Size = new System.Drawing.Size(148, 30);
+            this.label43.Size = new System.Drawing.Size(148, 25);
             this.label43.TabIndex = 293;
             this.label43.Text = "건 강 증 진 지 도";
             this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2338,11 +2338,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.siteStatusControl);
-            this.groupBox1.Location = new System.Drawing.Point(3, 47);
+            this.groupBox1.Location = new System.Drawing.Point(3, 42);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(1319, 230);
+            this.groupBox1.Size = new System.Drawing.Size(1319, 220);
             this.groupBox1.TabIndex = 115;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "1. 사업장현황";
@@ -2351,10 +2351,10 @@
             // 
             this.siteStatusControl.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.siteStatusControl.IsDoctor = true;
-            this.siteStatusControl.Location = new System.Drawing.Point(6, 16);
+            this.siteStatusControl.Location = new System.Drawing.Point(6, 12);
             this.siteStatusControl.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.siteStatusControl.Name = "siteStatusControl";
-            this.siteStatusControl.Size = new System.Drawing.Size(1280, 212);
+            this.siteStatusControl.Size = new System.Drawing.Size(1280, 202);
             this.siteStatusControl.TabIndex = 0;
             this.siteStatusControl.VisitDate = null;
             // 
@@ -2473,7 +2473,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Size = new System.Drawing.Size(1537, 959);
+            this.tabPage3.Size = new System.Drawing.Size(1537, 893);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = " 종합의견";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -2484,7 +2484,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(1537, 959);
+            this.tabPage2.Size = new System.Drawing.Size(1537, 893);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "근로자 건강상담";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2496,7 +2496,7 @@
             this.ContentTitle.Location = new System.Drawing.Point(0, 0);
             this.ContentTitle.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.ContentTitle.Name = "ContentTitle";
-            this.ContentTitle.Size = new System.Drawing.Size(1545, 41);
+            this.ContentTitle.Size = new System.Drawing.Size(1545, 28);
             this.ContentTitle.TabIndex = 111;
             this.ContentTitle.TitleText = "보건관리상태보고서 의사 - 사업장을 선택하세요";
             // 
@@ -2516,7 +2516,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1545, 1030);
+            this.ClientSize = new System.Drawing.Size(1545, 951);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.TabReport);
             this.Controls.Add(this.ContentTitle);

@@ -525,9 +525,6 @@ namespace HC_OSHA
             TxtSiteName.Text = view.NAME;
             TxtSiteCeoName.Text = view.CEONAME;
             TxtSiteAddress.Text = view.ADDRESS;
-            //보건담당자 어디서?
-            //TxtSiteManagerTel.Text = ""
-
 
             SetEstimateId();
             if (this.SelectedEstimate != null)
@@ -735,7 +732,8 @@ namespace HC_OSHA
             {
                 TxtTmp.Text += "\r\n";
             }
-            TxtTmp.Text += "장비명:" + name + " , 모델명:" + modelName + " , 사용내역:" + reamark + "\r\n";
+            //TxtTmp.Text += "장비명:" + name + " , 모델명:" + modelName + " , 사용내역:" + reamark + "\r\n";
+            TxtTmp.Text += "장비명:" + name + " , 사용내역:" + reamark + "\r\n";
         }
         private void BtnEquipment_Click(object sender, EventArgs e)
         {

@@ -1,6 +1,6 @@
 ﻿namespace HC_OSHA.form.Schedule
 {
-    partial class FrmVisitMonth
+    partial class FrmVisitMonth2
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,6 @@
             FarPoint.Win.Spread.CellType.TextCellType textCellType1 = new FarPoint.Win.Spread.CellType.TextCellType();
             FarPoint.Win.Spread.CellType.TextCellType textCellType2 = new FarPoint.Win.Spread.CellType.TextCellType();
             FarPoint.Win.Spread.CellType.GeneralCellType generalCellType1 = new FarPoint.Win.Spread.CellType.GeneralCellType();
-            this.btnClose = new System.Windows.Forms.Button();
             this.SSList = new FarPoint.Win.Spread.FpSpread();
             this.SSList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.panSearch = new System.Windows.Forms.Panel();
@@ -41,37 +40,26 @@
             this.BtnSearch = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.formTItle1 = new ComBase.Mvc.UserControls.FormTItle();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
             this.panSearch.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(1160, 0);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 35);
-            this.btnClose.TabIndex = 20;
-            this.btnClose.Text = "닫기";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // SSList
             // 
             this.SSList.AccessibleDescription = "SSList, Sheet1, Row 0, Column 0, ";
             this.SSList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SSList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SSList.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SSList.Font = new System.Drawing.Font("굴림", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SSList.Location = new System.Drawing.Point(0, 79);
             this.SSList.Name = "SSList";
             this.SSList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSList_Sheet1});
-            this.SSList.Size = new System.Drawing.Size(1284, 742);
-            this.SSList.TabIndex = 0;
-            this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
-            this.SSList.SetViewportLeftColumn(0, 0, 2);
-            this.SSList.SetActiveViewport(0, -1, -1);
+            this.SSList.Size = new System.Drawing.Size(1234, 832);
+            this.SSList.TabIndex = 19;
+            this.SSList.SetViewportLeftColumn(0, 0, 1);
+            this.SSList.SetActiveViewport(0, 0, -1);
             // 
             // SSList_Sheet1
             // 
@@ -79,10 +67,8 @@
             this.SSList_Sheet1.SheetName = "Sheet1";
             // Formulas and custom names must be loaded with R1C1 reference style
             this.SSList_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1;
-            this.SSList_Sheet1.ColumnCount = 3;
-            this.SSList_Sheet1.RowCount = 0;
-            this.SSList_Sheet1.ActiveColumnIndex = -1;
-            this.SSList_Sheet1.ActiveRowIndex = -1;
+            this.SSList_Sheet1.ColumnCount = 50;
+            this.SSList_Sheet1.RowCount = 31;
             this.SSList_Sheet1.ColumnFooter.DefaultStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SSList_Sheet1.ColumnFooter.DefaultStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SSList_Sheet1.ColumnFooter.DefaultStyle.Parent = "ColumnHeaderDefaultEnhanced";
@@ -91,32 +77,29 @@
             this.SSList_Sheet1.ColumnFooterSheetCornerStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SSList_Sheet1.ColumnFooterSheetCornerStyle.Parent = "CornerFooterDefaultEnhanced";
             this.SSList_Sheet1.ColumnFooterSheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).Value = "구분";
-            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "성명";
-            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "3/1 (월)";
+            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 0).Value = "일자";
+            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 1).Value = "요일";
+            this.SSList_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "홍길동";
             this.SSList_Sheet1.ColumnHeader.DefaultStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SSList_Sheet1.ColumnHeader.DefaultStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SSList_Sheet1.ColumnHeader.DefaultStyle.Parent = "ColumnHeaderDefaultEnhanced";
             this.SSList_Sheet1.ColumnHeader.DefaultStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SSList_Sheet1.ColumnHeader.Rows.Get(0).Height = 26F;
-            textCellType1.ReadOnly = true;
             this.SSList_Sheet1.Columns.Get(0).CellType = textCellType1;
-            this.SSList_Sheet1.Columns.Get(0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
-            this.SSList_Sheet1.Columns.Get(0).Label = "구분";
-            this.SSList_Sheet1.Columns.Get(0).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
-            this.SSList_Sheet1.Columns.Get(0).Width = 56F;
+            this.SSList_Sheet1.Columns.Get(0).Label = "일자";
+            this.SSList_Sheet1.Columns.Get(0).Width = 52F;
             textCellType2.ReadOnly = true;
             this.SSList_Sheet1.Columns.Get(1).CellType = textCellType2;
             this.SSList_Sheet1.Columns.Get(1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
-            this.SSList_Sheet1.Columns.Get(1).Label = "성명";
+            this.SSList_Sheet1.Columns.Get(1).Label = "요일";
             this.SSList_Sheet1.Columns.Get(1).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
-            this.SSList_Sheet1.Columns.Get(1).Width = 57F;
+            this.SSList_Sheet1.Columns.Get(1).Width = 39F;
             generalCellType1.ReadOnly = true;
             generalCellType1.WordWrap = true;
             this.SSList_Sheet1.Columns.Get(2).CellType = generalCellType1;
             this.SSList_Sheet1.Columns.Get(2).Font = new System.Drawing.Font("맑은 고딕", 8F);
             this.SSList_Sheet1.Columns.Get(2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
-            this.SSList_Sheet1.Columns.Get(2).Label = "3/1 (월)";
+            this.SSList_Sheet1.Columns.Get(2).Label = "홍길동";
             this.SSList_Sheet1.Columns.Get(2).VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.Center;
             this.SSList_Sheet1.Columns.Get(2).Width = 123F;
             this.SSList_Sheet1.DefaultStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
@@ -131,7 +114,8 @@
             this.SSList_Sheet1.FilterBarHeaderStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SSList_Sheet1.FilterBarHeaderStyle.Parent = "RowHeaderDefaultEnhanced";
             this.SSList_Sheet1.FilterBarHeaderStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            this.SSList_Sheet1.FrozenColumnCount = 2;
+            this.SSList_Sheet1.FrozenColumnCount = 1;
+            this.SSList_Sheet1.HorizontalGridLine = new FarPoint.Win.Spread.GridLine(FarPoint.Win.Spread.GridLineType.Raised);
             this.SSList_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SSList_Sheet1.RowHeader.DefaultStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SSList_Sheet1.RowHeader.DefaultStyle.NoteIndicatorColor = System.Drawing.Color.Red;
@@ -155,13 +139,12 @@
             this.panSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panSearch.Location = new System.Drawing.Point(0, 35);
             this.panSearch.Name = "panSearch";
-            this.panSearch.Size = new System.Drawing.Size(1284, 44);
-            this.panSearch.TabIndex = 17;
-            this.panSearch.Paint += new System.Windows.Forms.PaintEventHandler(this.panSearch_Paint);
+            this.panSearch.Size = new System.Drawing.Size(1234, 44);
+            this.panSearch.TabIndex = 20;
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(1159, 6);
+            this.btnExcel.Location = new System.Drawing.Point(1137, 7);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(75, 28);
@@ -181,7 +164,7 @@
             // 
             // BtnPrint
             // 
-            this.BtnPrint.Location = new System.Drawing.Point(1078, 6);
+            this.BtnPrint.Location = new System.Drawing.Point(1056, 7);
             this.BtnPrint.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnPrint.Name = "BtnPrint";
             this.BtnPrint.Size = new System.Drawing.Size(75, 28);
@@ -222,24 +205,35 @@
             this.formTItle1.Location = new System.Drawing.Point(0, 0);
             this.formTItle1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.formTItle1.Name = "formTItle1";
-            this.formTItle1.Size = new System.Drawing.Size(1284, 35);
-            this.formTItle1.TabIndex = 18;
+            this.formTItle1.Size = new System.Drawing.Size(1234, 35);
+            this.formTItle1.TabIndex = 21;
             this.formTItle1.TitleText = "보건관리 일정표";
             // 
-            // FrmVisitMonth
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(1137, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 35);
+            this.btnClose.TabIndex = 22;
+            this.btnClose.Text = "닫기";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // FrmVisitMonth2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 821);
+            this.ClientSize = new System.Drawing.Size(1234, 911);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.SSList);
             this.Controls.Add(this.panSearch);
             this.Controls.Add(this.formTItle1);
             this.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FrmVisitMonth";
+            this.Name = "FrmVisitMonth2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "일정표";
+            this.Text = "보건관리 일정표";
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).EndInit();
             this.panSearch.ResumeLayout(false);
@@ -249,7 +243,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnClose;
         private FarPoint.Win.Spread.FpSpread SSList;
         private FarPoint.Win.Spread.SheetView SSList_Sheet1;
         private System.Windows.Forms.Panel panSearch;
@@ -259,5 +252,6 @@
         private System.Windows.Forms.Button BtnSearch;
         private System.Windows.Forms.Label label15;
         private ComBase.Mvc.UserControls.FormTItle formTItle1;
+        private System.Windows.Forms.Button btnClose;
     }
 }

@@ -900,5 +900,10 @@ namespace HC_OSHA
         {
             new FrmChuljangIlji().Show();
         }
+
+        private void 방문일정표1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmVisitMonth2().Show();
+        }
     }
 }

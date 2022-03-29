@@ -51,7 +51,7 @@ namespace ComBase.Mvc.Utils
         }
 
         /// <summary>
-        /// 오뮤메세지 (확인버튼)
+        /// 오류메세지 (확인버튼)
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>

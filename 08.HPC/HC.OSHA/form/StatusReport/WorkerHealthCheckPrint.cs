@@ -552,22 +552,25 @@ namespace HC_OSHA.StatusReport
              
                 long siteId = 0;
                 long estimateID = 0;
+                string strGbn = "";
               
                 if (this.statusReportDoctorDto != null)
                 {
                     siteId = statusReportDoctorDto.SITE_ID;
                     estimateID = statusReportDoctorDto.ESTIMATE_ID;
+                    strGbn = "의사";
                 }
                 else if (this.statusReportNurseDto != null)
                 {
                     siteId = statusReportNurseDto.SITE_ID;
                     estimateID = statusReportNurseDto.ESTIMATE_ID;
+                    strGbn = "간호사";
                 }
 
                 Cursor.Current = Cursors.WaitCursor;
                 HcCodeService codeService = new HcCodeService();
                 HC_CODE pdfPath = codeService.FindActiveCodeByGroupAndCode("PDF_PATH", "OSHA_ESTIMATE", "OSHA");
-                string title = "근로자 건강상담_" + SelectedSite.NAME;
+                string title = "근로자 건강상담_" + strGbn + "_" + SelectedSite.NAME;
                 string pdfFileName = pdfPath.CodeName + "\\" + title + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
                 SpreadPrint print = new SpreadPrint(SSCard, PrintStyle.STANDARD_APPROVAL, false);
                 if (this.SelectedSite != null)
