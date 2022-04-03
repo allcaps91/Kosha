@@ -145,12 +145,12 @@ namespace HC_OSHA.form.Visit
                 string month = yearAndMonth.Substring(5, 2);
                 string strVisit = "";
                 ssDoc.ActiveSheet.Cells[nP1[5], nP2[5]].Value = "대한 " + year + " - " + docNumber + "호" + "(" + executeDate + ")";
-                ssDoc.ActiveSheet.Cells[nP1[0], nP2[0]].Value = siteName + " 대표이사";
-                ssDoc.ActiveSheet.Cells[nP1[1], nP2[1]].Value = year + "년 " + month + "월 " + "보건관리전문기관 방문일정 안내";
+                ssDoc.ActiveSheet.Cells[nP1[0], nP2[0]].Value = siteName + " 대표";
+                ssDoc.ActiveSheet.Cells[nP1[1], nP2[1]].Value = year + "년 " + month + "월 " + "보건관리지원(대행) 방문일정 안내";
                 if (nP1[6] > 0) ssDoc.ActiveSheet.Cells[nP1[6], nP2[6]].Value = clsType.User.JobName; //담당
 
-                chargeEmailModel.Title = year + "년 " + month + "월 보건관리전문기관 방문일정 안내";
-                if (clsType.HosInfo.SwLicense == "9555-88P5-8P33") chargeEmailModel.Title = "대한보건환경연구소 " + year + "년 " + month + "월 보건관리전문기관 방문일정 안내";
+                chargeEmailModel.Title = year + "년 " + month + "월 보건관리지원(대행) 방문일정 안내";
+                if (clsType.HosInfo.SwLicense == "9555-88P5-8P33") chargeEmailModel.Title = "대한보건환경연구소 " + year + "년 " + month + "월 보건관리지원(대행) 방문일정 안내";
                 
                 chargeEmailModel.Content = "<html><body> 1. 귀사의 무궁한 발전과 무재해를 기원합니다 <br>";
                 chargeEmailModel.Content = chargeEmailModel.Content + "2. "+ month + "월 일정을 첨부와 같이 보내드리오니 직원 여러분의 많은 참여 부탁드립니다 ";

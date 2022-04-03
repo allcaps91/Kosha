@@ -103,12 +103,13 @@ namespace HC_OSHA
                     SSCard.ActiveSheet.Cells[row + i, 3].Value = list[i].WORKERCOUNT;
                     SSCard.ActiveSheet.Cells[row + i, 4].Value = list[i].WORKDESC;
                     SSCard.ActiveSheet.Cells[row + i, 5].Value = list[i].REMARK;
-                    SSCard.ActiveSheet.Rows[row + i].Height = 47;
+                    //SSCard.ActiveSheet.Rows[row + i].Height = 47;
+                    SSCard.ActiveSheet.Rows[row + i].Height = SSCard.ActiveSheet.Rows[row + i].GetPreferredHeight()+4;
                 }
 
-                if(SSCard.ActiveSheet.RowCount < 24)
+                if(SSCard.ActiveSheet.RowCount < 22)
                 {
-                    int gap = 24 - SSCard.RowCount();
+                    int gap = 22 - SSCard.RowCount();
 
                     for(int i = 0; i<gap; i++)
                     {
@@ -161,6 +162,7 @@ namespace HC_OSHA
                 {
                     HC_OSHA_CARD4_2 dto = panTask.GetData<HC_OSHA_CARD4_2>();
                     dto.ESTIMATE_ID = base.SelectedEstimate.ID;
+                    dto.SITE_ID = base.SelectedSite.ID;
                     //dto.YEAR = GetCurrentYear();
                     dto.YEAR = base.SelectedEstimate.CONTRACTSTARTDATE.Left(4);
                     HC_OSHA_CARD4_2 saved = hcOshaCard4_2Service.Save(dto);

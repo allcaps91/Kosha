@@ -42,6 +42,7 @@
             this.일정관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.월별일정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.방문일정공문ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.방문일정표1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.방문일정표2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.방문주기조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.방문날짜조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,7 +120,7 @@
             this.Mnu_OtherAllClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_AllTabClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_TabPopup = new System.Windows.Forms.ToolStripMenuItem();
-            this.방문일정표1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.업무개요업로드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.LeftPanel.SuspendLayout();
@@ -219,35 +220,42 @@
             // 월별일정ToolStripMenuItem
             // 
             this.월별일정ToolStripMenuItem.Name = "월별일정ToolStripMenuItem";
-            this.월별일정ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.월별일정ToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.월별일정ToolStripMenuItem.Text = "방문예정등록";
             this.월별일정ToolStripMenuItem.Click += new System.EventHandler(this.월별일정ToolStripMenuItem_Click);
             // 
             // 방문일정공문ToolStripMenuItem
             // 
             this.방문일정공문ToolStripMenuItem.Name = "방문일정공문ToolStripMenuItem";
-            this.방문일정공문ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.방문일정공문ToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.방문일정공문ToolStripMenuItem.Text = "방문일정 공문";
             this.방문일정공문ToolStripMenuItem.Click += new System.EventHandler(this.방문일정공문ToolStripMenuItem_Click);
+            // 
+            // 방문일정표1ToolStripMenuItem
+            // 
+            this.방문일정표1ToolStripMenuItem.Name = "방문일정표1ToolStripMenuItem";
+            this.방문일정표1ToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.방문일정표1ToolStripMenuItem.Text = "보건관리 일정표1";
+            this.방문일정표1ToolStripMenuItem.Click += new System.EventHandler(this.방문일정표1ToolStripMenuItem_Click);
             // 
             // 방문일정표2ToolStripMenuItem
             // 
             this.방문일정표2ToolStripMenuItem.Name = "방문일정표2ToolStripMenuItem";
-            this.방문일정표2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.방문일정표2ToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.방문일정표2ToolStripMenuItem.Text = "보건관리 일정표2";
             this.방문일정표2ToolStripMenuItem.Click += new System.EventHandler(this.방문일정표ToolStripMenuItem_Click);
             // 
             // 방문주기조회ToolStripMenuItem
             // 
             this.방문주기조회ToolStripMenuItem.Name = "방문주기조회ToolStripMenuItem";
-            this.방문주기조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.방문주기조회ToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.방문주기조회ToolStripMenuItem.Text = "방문주기조회";
             this.방문주기조회ToolStripMenuItem.Click += new System.EventHandler(this.방문주기조회ToolStripMenuItem_Click);
             // 
             // 방문날짜조회ToolStripMenuItem
             // 
             this.방문날짜조회ToolStripMenuItem.Name = "방문날짜조회ToolStripMenuItem";
-            this.방문날짜조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.방문날짜조회ToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.방문날짜조회ToolStripMenuItem.Text = "방문날짜조회";
             this.방문날짜조회ToolStripMenuItem.Click += new System.EventHandler(this.방문날짜조회ToolStripMenuItem_Click);
             // 
@@ -337,7 +345,8 @@
             this.뇌심혈관계발병위험도평가ToolStripMenuItem,
             this.질병유소견자사후관리ToolStripMenuItem,
             this.보호구ToolStripMenuItem,
-            this.유해물질업로드ToolStripMenuItem});
+            this.유해물질업로드ToolStripMenuItem,
+            this.업무개요업로드ToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(79, 20);
             this.toolStripMenuItem2.Text = "엑셀업로드";
@@ -937,12 +946,12 @@
             this.Mnu_TabPopup.Text = "팝업으로 보기";
             this.Mnu_TabPopup.Click += new System.EventHandler(this.Mnu_TabPopup_Click);
             // 
-            // 방문일정표1ToolStripMenuItem
+            // 업무개요업로드ToolStripMenuItem
             // 
-            this.방문일정표1ToolStripMenuItem.Name = "방문일정표1ToolStripMenuItem";
-            this.방문일정표1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.방문일정표1ToolStripMenuItem.Text = "보건관리 일정표1";
-            this.방문일정표1ToolStripMenuItem.Click += new System.EventHandler(this.방문일정표1ToolStripMenuItem_Click);
+            this.업무개요업로드ToolStripMenuItem.Name = "업무개요업로드ToolStripMenuItem";
+            this.업무개요업로드ToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.업무개요업로드ToolStripMenuItem.Text = "업무개요 업로드";
+            this.업무개요업로드ToolStripMenuItem.Click += new System.EventHandler(this.업무개요업로드ToolStripMenuItem_Click);
             // 
             // Dashboard
             // 
@@ -1060,5 +1069,6 @@
         private System.Windows.Forms.ToolStripMenuItem 유해물질업로드ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 주간출장일지ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 방문일정표1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 업무개요업로드ToolStripMenuItem;
     }
 }

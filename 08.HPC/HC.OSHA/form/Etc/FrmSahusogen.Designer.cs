@@ -33,6 +33,8 @@
             FarPoint.Win.Spread.FlatScrollBarRenderer flatScrollBarRenderer2 = new FarPoint.Win.Spread.FlatScrollBarRenderer();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSahusogen));
             this.panSearch = new System.Windows.Forms.Panel();
+            this.cboJong = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.TxtLtdcode = new System.Windows.Forms.TextBox();
             this.BtnSearchSite = new System.Windows.Forms.Button();
             this.lblLTD02 = new System.Windows.Forms.Label();
@@ -50,8 +52,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.SSHealthCheck = new FarPoint.Win.Spread.FpSpread();
             this.SSHealthCheck_Sheet1 = new FarPoint.Win.Spread.SheetView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cboJong = new System.Windows.Forms.ComboBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panSearch.SuspendLayout();
             this.panTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SSHealthCheck)).BeginInit();
@@ -60,6 +61,7 @@
             // 
             // panSearch
             // 
+            this.panSearch.Controls.Add(this.btnDelete);
             this.panSearch.Controls.Add(this.cboJong);
             this.panSearch.Controls.Add(this.label3);
             this.panSearch.Controls.Add(this.TxtLtdcode);
@@ -77,22 +79,42 @@
             this.panSearch.Location = new System.Drawing.Point(0, 54);
             this.panSearch.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.panSearch.Name = "panSearch";
-            this.panSearch.Size = new System.Drawing.Size(1281, 46);
+            this.panSearch.Size = new System.Drawing.Size(1373, 46);
             this.panSearch.TabIndex = 30;
             this.panSearch.Paint += new System.Windows.Forms.PaintEventHandler(this.panSearch_Paint);
+            // 
+            // cboJong
+            // 
+            this.cboJong.FormattingEnabled = true;
+            this.cboJong.Location = new System.Drawing.Point(551, 9);
+            this.cboJong.Name = "cboJong";
+            this.cboJong.Size = new System.Drawing.Size(91, 25);
+            this.cboJong.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.LightBlue;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(487, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 23);
+            this.label3.TabIndex = 143;
+            this.label3.Text = "검진";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TxtLtdcode
             // 
             this.TxtLtdcode.Location = new System.Drawing.Point(253, 10);
             this.TxtLtdcode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtLtdcode.Name = "TxtLtdcode";
-            this.TxtLtdcode.Size = new System.Drawing.Size(152, 25);
+            this.TxtLtdcode.Size = new System.Drawing.Size(140, 25);
             this.TxtLtdcode.TabIndex = 1;
             // 
             // BtnSearchSite
             // 
             this.BtnSearchSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSearchSite.Location = new System.Drawing.Point(414, 10);
+            this.BtnSearchSite.Location = new System.Drawing.Point(399, 11);
             this.BtnSearchSite.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearchSite.Name = "BtnSearchSite";
             this.BtnSearchSite.Size = new System.Drawing.Size(56, 26);
@@ -207,7 +229,7 @@
             this.panTitle.Location = new System.Drawing.Point(0, 0);
             this.panTitle.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.panTitle.Name = "panTitle";
-            this.panTitle.Size = new System.Drawing.Size(1281, 54);
+            this.panTitle.Size = new System.Drawing.Size(1373, 54);
             this.panTitle.TabIndex = 29;
             // 
             // LblSite
@@ -216,15 +238,14 @@
             this.LblSite.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.LblSite.Location = new System.Drawing.Point(184, 16);
             this.LblSite.Name = "LblSite";
-            this.LblSite.Size = new System.Drawing.Size(122, 21);
+            this.LblSite.Size = new System.Drawing.Size(0, 21);
             this.LblSite.TabIndex = 30;
-            this.LblSite.Text = "사후관리소견서";
             // 
             // btnExit
             // 
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnExit.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnExit.Location = new System.Drawing.Point(1197, 0);
+            this.btnExit.Location = new System.Drawing.Point(1289, 0);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(82, 52);
@@ -252,23 +273,24 @@
             this.SSHealthCheck.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSHealthCheck.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SSHealthCheck.HorizontalScrollBar.TabIndex = 179;
+            this.SSHealthCheck.HorizontalScrollBar.TabIndex = 191;
             this.SSHealthCheck.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSHealthCheck.Location = new System.Drawing.Point(0, 100);
             this.SSHealthCheck.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.SSHealthCheck.Name = "SSHealthCheck";
             this.SSHealthCheck.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSHealthCheck_Sheet1});
-            this.SSHealthCheck.Size = new System.Drawing.Size(1281, 732);
+            this.SSHealthCheck.Size = new System.Drawing.Size(1373, 732);
             this.SSHealthCheck.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Office2013;
             this.SSHealthCheck.TabIndex = 166;
             this.SSHealthCheck.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
             this.SSHealthCheck.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSHealthCheck.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SSHealthCheck.VerticalScrollBar.TabIndex = 180;
+            this.SSHealthCheck.VerticalScrollBar.TabIndex = 192;
             this.SSHealthCheck.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSHealthCheck.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSHealthCheck_CellClick);
+            this.SSHealthCheck.SetViewportTopRow(0, 0, 3);
             // 
             // SSHealthCheck_Sheet1
             // 
@@ -276,36 +298,27 @@
             this.SSHealthCheck_Sheet1.SheetName = "Sheet1";
             // Formulas and custom names must be loaded with R1C1 reference style
             this.SSHealthCheck_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1;
-            this.SSHealthCheck_Sheet1.ColumnCount = 14;
+            this.SSHealthCheck_Sheet1.ColumnCount = 15;
             this.SSHealthCheck_Sheet1.RowCount = 50;
             this.SSHealthCheck_Sheet1.Models = ((FarPoint.Win.Spread.SheetView.DocumentModels)(resources.GetObject("SSHealthCheck_Sheet1.Models")));
             this.SSHealthCheck_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
-            // label3
+            // btnDelete
             // 
-            this.label3.BackColor = System.Drawing.Color.LightBlue;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(487, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 23);
-            this.label3.TabIndex = 143;
-            this.label3.Text = "검진";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cboJong
-            // 
-            this.cboJong.FormattingEnabled = true;
-            this.cboJong.Location = new System.Drawing.Point(551, 9);
-            this.cboJong.Name = "cboJong";
-            this.cboJong.Size = new System.Drawing.Size(91, 25);
-            this.cboJong.TabIndex = 2;
+            this.btnDelete.Location = new System.Drawing.Point(1261, 10);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(100, 30);
+            this.btnDelete.TabIndex = 144;
+            this.btnDelete.Text = "선택한것 삭제";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // FrmSahusogen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1281, 832);
+            this.ClientSize = new System.Drawing.Size(1373, 832);
             this.Controls.Add(this.SSHealthCheck);
             this.Controls.Add(this.panSearch);
             this.Controls.Add(this.panTitle);
@@ -344,5 +357,6 @@
         private System.Windows.Forms.Label lblLTD02;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboJong;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

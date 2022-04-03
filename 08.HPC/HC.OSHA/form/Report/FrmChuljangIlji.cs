@@ -179,7 +179,7 @@ namespace HC_OSHA
                         }
                         else
                         {
-                            SSList.ActiveSheet.Cells[nRow - 1, nCol].Text += "\r" + strVisit;
+                            SSList.ActiveSheet.Cells[nRow - 1, nCol].Text += "\r\n" + strVisit;
                         }
                     }
                     strOldData = strNewData;
@@ -244,7 +244,7 @@ namespace HC_OSHA
                         }
                         else
                         {
-                            SSList.ActiveSheet.Cells[nRow - 1, nCol].Text += "\r" + strVisit;
+                            SSList.ActiveSheet.Cells[nRow - 1, nCol].Text += "\r\n" + strVisit;
                         }
                     }
                     strOldData = strNewData;
@@ -309,7 +309,7 @@ namespace HC_OSHA
                         }
                         else
                         {
-                            SSList.ActiveSheet.Cells[nRow - 1, nCol].Text += "\r" + strVisit;
+                            SSList.ActiveSheet.Cells[nRow - 1, nCol].Text += "\r\n" + strVisit;
                         }
                     }
                     strOldData = strNewData;
@@ -333,7 +333,8 @@ namespace HC_OSHA
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             SpreadPrint sp = new SpreadPrint(SSList, PrintStyle.HEAD_APPROVAL);
-            sp.Title =  "주간 출장 업무일지(" + cboDate.Text.Trim() + ")";
+            sp.Title =  "주 간  출 장  업 무 일 지";
+            sp.Period = "작업 일자 : " + cboDate.Text.Trim();
             sp.orientation = PrintOrientation.Landscape;
             sp.Execute();
         }

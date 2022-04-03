@@ -69,6 +69,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  SWLICENSE,                      ");
             parameter.AppendSql("  ID,                             ");
             parameter.AppendSql("  ESTIMATE_ID,                    ");
+            parameter.AppendSql("  SITE_ID,                        ");
             parameter.AppendSql("  YEAR,                           ");
             parameter.AppendSql("  RANK,                           ");
             parameter.AppendSql("  TASK,                           ");
@@ -87,6 +88,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  :SWLICENSE,                     ");
             parameter.AppendSql("  :ID,                            ");
             parameter.AppendSql("  :ESTIMATE_ID,                   ");
+            parameter.AppendSql("  :SITE_ID,                       ");
             parameter.AppendSql("  :YEAR,                          ");
             parameter.AppendSql("  :RANK,                          ");
             parameter.AppendSql("  :TASK,                          ");
@@ -103,6 +105,7 @@ namespace HC.OSHA.Repository
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             parameter.Add("ID", dto.ID);
             parameter.Add("ESTIMATE_ID", dto.ESTIMATE_ID);
+            parameter.Add("SITE_ID", dto.SITE_ID);
             parameter.Add("YEAR", dto.YEAR);
             parameter.Add("RANK", dto.RANK);
             parameter.Add("TASK", dto.TASK);

@@ -79,7 +79,6 @@ namespace HC.OSHA.Service
                     {
                         ID = model.ID,
                         ESTIMATE_ID = model.ESTIMATE_ID,
-                        //   WORKER_ID = model.WORKER_ID,
                         WORKER_ROLE = model.WORKER_ROLE,
                         NAME = model.NAME,
                         DEPT = model.DEPT,

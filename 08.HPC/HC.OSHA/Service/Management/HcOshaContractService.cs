@@ -149,7 +149,6 @@ namespace HC.OSHA.Service
 
             LogService.Instance.Task(dto.OSHA_SITE_ID, TaskName.CONTRACT);
 
-
             HC_OSHA_CONTRACT saved = hcOshaContractRepository.FindByEstimateId(dto.ESTIMATE_ID);
 
             if (!dto.TERMINATEDATE.IsNullOrEmpty())

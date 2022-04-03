@@ -15,7 +15,6 @@ using HC.OSHA.Dto;
 using HC.OSHA.Model;
 using HC.OSHA.Service;
 using HC_Core;
-using HC_Core.Service;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,7 +26,7 @@ namespace HC_OSHA
     /// <summary>
     /// 
     /// </summary>
-    public partial class SiteManageForm : CommonForm , ISelectSite, ISelectEstimate
+    public partial class SiteManageForm : CommonForm, ISelectSite, ISelectEstimate
     {
         private HcOshaSiteService hcOShaSiteService;
         private HcOshaEstimateService hcOshaEstimateService;
@@ -123,14 +122,14 @@ namespace HC_OSHA
         {
             DtpESTIMATEDATE.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_ESTIMATE.ESTIMATEDATE), DataBaseFormat = DateTimeType.YYYY_MM_DD, DisplayFormat = DateTimeType.YYYY_MM_DD });
             DtpSTARTDATE.SetOptions(new DateTimePickerOption { DataField = nameof(HC_OSHA_ESTIMATE.STARTDATE), DataBaseFormat = DateTimeType.YYYY_MM_DD, DisplayFormat = DateTimeType.YYYY_MM_DD });
-            NumOFFICIALFEE.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_ESTIMATE.OFFICIALFEE),  Min = 0, });
+            NumOFFICIALFEE.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_ESTIMATE.OFFICIALFEE), Min = 0, });
             NumSITEFEE.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_ESTIMATE.SITEFEE), Min = 0 });
             NumMONTHLYFEE.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_ESTIMATE.MONTHLYFEE), Min = 0 });
-            NumWORKERTOTALCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_ESTIMATE.WORKERTOTALCOUNT), Min = 0,});
+            NumWORKERTOTALCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_ESTIMATE.WORKERTOTALCOUNT), Min = 0, });
             //TxtFEETYPE.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_ESTIMATE.FEETYPE) });
             TxtRemark.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_ESTIMATE.REMARK) });
             TxtSENDMAILDATE.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_ESTIMATE.SENDMAILDATE) });
-            TxtPRINTDATE.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_ESTIMATE.PRINTDATE)});
+            TxtPRINTDATE.SetOptions(new TextBoxOption { DataField = nameof(HC_OSHA_ESTIMATE.PRINTDATE) });
 
             //엑셀 견적서 서식을 읽어 시트에 셋팅
             //estimateExcelPath = codeService.FindActiveCodeByGroupAndCode("EXCEL_PATH", "OSHA_ESTIMATE", "OSHA");
@@ -143,10 +142,10 @@ namespace HC_OSHA
             int nMaxCols = 0;
 
             //RowCount 설정
-            for (int i=100;i>5;i--)
+            for (int i = 100; i > 5; i--)
             {
                 str = "";
-                for (int j=0;j<20;j++)
+                for (int j = 0; j < 20; j++)
                 {
                     str += SSEstimate.ActiveSheet.Cells[i, j].Text.Trim();
                 }
@@ -182,12 +181,12 @@ namespace HC_OSHA
 
             //값을 대체할 위치를 찾음
             excelSetValue = "";
-            for (int i=0;i< SSEstimate.ActiveSheet.RowCount;i++)
+            for (int i = 0; i < SSEstimate.ActiveSheet.RowCount; i++)
             {
-                for (int j=0;j< SSEstimate.ActiveSheet.ColumnCount;j++)
+                for (int j = 0; j < SSEstimate.ActiveSheet.ColumnCount; j++)
                 {
                     str = SSEstimate.ActiveSheet.Cells[i, j].Text.Trim();
-                    if (VB.Left(str,1)=="~")
+                    if (VB.Left(str, 1) == "~")
                     {
                         excelSetValue += str + ";" + i + ";" + j + "{}";
                     }
@@ -227,9 +226,9 @@ namespace HC_OSHA
             RdoISPRODUCTTYPE_1.SetOptions(new RadioButtonOption { DataField = nameof(HC_OSHA_CONTRACT.ISPRODUCTTYPE), CheckValue = "1" });
 
             // 근로자수
-            NumWORKERWHITEMALECOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.WORKERWHITEMALECOUNT), Min=0 });
+            NumWORKERWHITEMALECOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.WORKERWHITEMALECOUNT), Min = 0 });
             NumWORKERWHITEFEMALECOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.WORKERWHITEFEMALECOUNT), Min = 0 });
-            NumWORKERBLUEMALECOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.WORKERBLUEMALECOUNT), Min = 0 } );
+            NumWORKERBLUEMALECOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.WORKERBLUEMALECOUNT), Min = 0 });
             NumWORKERBLUEFEMALECOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.WORKERBLUEFEMALECOUNT), Min = 0 });
             NumContractWORKERTOTALCOUNT.SetOptions(new NumericUpDownOption { DataField = nameof(HC_OSHA_CONTRACT.WORKERTOTALCOUNT), Min = 0 });
 
@@ -334,9 +333,10 @@ namespace HC_OSHA
         private void BtnDeleteEstimate_Click(object sender, EventArgs e)
         {
             HC_OSHA_ESTIMATE dto = PanEstimate.GetData<HC_OSHA_ESTIMATE>();
-            if (dto.ID > 0){
+            if (dto.ID > 0)
+            {
 
-                DialogResult result = MessageUtil.Confirm(dto.ESTIMATEDATE +" 견적서를 삭제하시겠습니까?");
+                DialogResult result = MessageUtil.Confirm(dto.ESTIMATEDATE + " 견적서를 삭제하시겠습니까?");
                 if (result == DialogResult.Yes)
                 {
 
@@ -353,12 +353,12 @@ namespace HC_OSHA
                 MessageUtil.Alert("사업장을 선택하세요");
                 return;
             }
-         
+
             if (PanEstimate.Validate<HC_OSHA_ESTIMATE>())
             {
 
                 HC_OSHA_ESTIMATE dto = PanEstimate.GetData<HC_OSHA_ESTIMATE>();
-            
+
                 dto.OSHA_SITE_ID = SelectedSite.ID;
                 dto.EXCELPATH = @"C:\HealthSoft\엑셀서식\견적서.xlsx";
 
@@ -368,8 +368,8 @@ namespace HC_OSHA
                 }
                 else
                 {
-                    
-                    if(sender == null)
+
+                    if (sender == null)
                     {
                         dto.ESTIMATEDATE = DtpCONTRACTDATE.GetValue();
                     }
@@ -448,33 +448,10 @@ namespace HC_OSHA
             }
             else
             {
-            
-                //if(RdoIsContract_Y.Checked == false && RdoIsContract_N.Checked == false)
-                //{
-                //    MessageUtil.Alert("계약 또는 계약해지를 선택해주세요");
-                //    return;
-                //}
-                //if (RdoIsContract_N.Checked)
-                //{
-                //    if (DtpTERMINATEDATE.GetValue().IsNullOrEmpty())
-                //    {
-                //        MessageUtil.Alert("계약해지일을 선택해주세요");
-                //        return;
-                //    }
-                //}
-
-                //if (RdoIsContract_Y.Checked)
-                //{
-                //    if (DtpCONTRACTDATE.GetValue().IsNullOrEmpty())
-                //    {
-                //        MessageUtil.Alert("계약일을 선택해주세요");
-                //        return;
-                //    }
-                //}
                 if (SelectedEstimate == null)
                 {
-                     MessageUtil.Alert("견적 정보가 없습니다 견적을 먼저 저장하세요");
-                     return;
+                    MessageUtil.Alert("견적 정보가 없습니다 견적을 먼저 저장하세요");
+                    return;
                 }
 
                 ManageDoctorCount_AutoSet(); //방문주기 자동설정
@@ -482,7 +459,7 @@ namespace HC_OSHA
                 if (PanContract.Validate<HC_OSHA_CONTRACT>())
                 {
                     HC_OSHA_CONTRACT contract = PanContract.GetData<HC_OSHA_CONTRACT>();
-                    HC_OSHA_ESTIMATE estimate = PanEstimate.GetData<HC_OSHA_ESTIMATE> () ;
+                    HC_OSHA_ESTIMATE estimate = PanEstimate.GetData<HC_OSHA_ESTIMATE>();
                     contract.ESTIMATE_ID = estimate.ID;
                     contract.OSHA_SITE_ID = SelectedSite.ID;
 
@@ -522,50 +499,81 @@ namespace HC_OSHA
                     OshaSiteEstimateList.SearhAndDoubleClik(oshaSiteLastTree.GetSite.ID, true);
                 }
             }
-          
+
         }
 
         private void GetContractManager()
         {
-           IList workerList = hcOshaContractManagerService.FindContractManager(base.SelectedEstimate.ID);
+            IList workerList = hcOshaContractManagerService.FindContractManager(base.SelectedEstimate.ID);
             SSWorkerList.SetDataSource(workerList);
         }
 
 
         private void BtnLastContract_Click(object sender, EventArgs e)
         {
-            if (SelectedSite == null)
-            {
-                MessageUtil.Alert("사업장을 선택하세요");
-                return;
-            }
+            if (SelectedSite == null) { MessageUtil.Alert("사업장을 선택하세요"); return; }
+            if (SelectedEstimate == null) { MessageUtil.Alert("견적 정보가 없습니다"); return; }
 
-            if (SelectedEstimate == null)
-            {
-                
-                MessageUtil.Alert("견적 정보가 없습니다");
-                return;
-            }
+            string SQL = "";
+            string strNow = DateTime.Now.ToString("yyyy-MM-dd");
+            string strNextYear = "";
+            string SqlErr = "";
+            int intRowAffected = 0;
+            string strEndDate = "";
 
-            if (OshaSiteEstimateList.GetRowCount() == 1)
-            {
-                MessageUtil.Alert("새로운 견적 정보를 생성하세요!");
-                return;
-            }
+            ManageDoctorCount_AutoSet(); //방문주기 자동설정
+            strEndDate = DtpTERMINATEDATE.GetValue();
+            strNextYear = (Int32.Parse(VB.Left(strNow, 4)) + 1).ToString();
 
-
-            if(hcOshaContractService.Copy(SelectedSite.ID, SelectedEstimate.ID))
+            HC_OSHA_ESTIMATE dto = PanEstimate.GetData<HC_OSHA_ESTIMATE>();
+            dto.ID = 0;  //신규등록
+            dto.OSHA_SITE_ID = SelectedSite.ID;
+            dto.EXCELPATH = @"C:\HealthSoft\엑셀서식\견적서.xlsx";
+            if (!strEndDate.IsNullOrEmpty()==false)
             {
-                MessageUtil.Alert("복사 하였습니다");
+                dto.ESTIMATEDATE = strNow;
+                dto.STARTDATE = strNow;
             }
             else
             {
-                MessageUtil.Alert("복사 할 수 업습니다.");
+                dto.ESTIMATEDATE = strNextYear + "-01-01";
+                dto.STARTDATE = strNextYear + "-01-01";
             }
-             //PanContract.SetData(new HC_OSHA_CONTRACT());
-            
-            //PanContract.Initialize();
-            
+            dto = hcOshaEstimateService.Save(dto);
+
+            HC_OSHA_CONTRACT contract = PanContract.GetData<HC_OSHA_CONTRACT>();
+            contract.ESTIMATE_ID = dto.ID;
+            contract.OSHA_SITE_ID = SelectedSite.ID;
+            if (strEndDate.IsNullOrEmpty() == false)
+            {
+                contract.CONTRACTDATE = strNow;
+                contract.CONTRACTSTARTDATE = strNow;
+                contract.CONTRACTENDDATE = VB.Left(strNow, 4) + "-12-31";
+                contract.TERMINATEDATE = "";
+            }
+            else
+            {
+                contract.CONTRACTSTARTDATE = strNextYear + "-01-01";
+                contract.CONTRACTENDDATE = VB.Left(strNextYear, 4) + "-12-31";
+                contract.TERMINATEDATE = "";
+            }
+            hcOshaContractService.Save(contract);
+
+            //관리자를 복사
+            SQL = "INSERT INTO HIC_OSHA_CONTRACT_MANAGER (ESTIMATE_ID,WORKER_ROLE,NAME,DEPT,";
+            SQL += " TEL,HP,EMAIL,ISDELETED,ID,EMAILSEND,SWLICENSE) ";
+            SQL += " SELECT '" + dto.ID + "',WORKER_ROLE,NAME,DEPT,TEL,HP,EMAIL,ISDELETED,";
+            SQL += " HC_OSHA_SHARED_ID_SEQ.NEXTVAL,EMAILSEND,SWLICENSE ";
+            SQL += " FROM HIC_OSHA_CONTRACT_MANAGER ";
+            SQL += "WHERE ESTIMATE_ID=" + SelectedEstimate.ID + " ";
+            SQL += "  AND ISDELETED='N' ";
+            SQL += "  AND SWLICENSE = '" + clsType.HosInfo.SwLicense + "' ";
+            SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+
+            OshaSiteEstimateList.Searh(oshaSiteLastTree.GetSite.ID, false);
+
+            MessageUtil.Alert("복사 하였습니다");
+
         }
 
         private void BtnWorkerAdd_Click(object sender, EventArgs e)
@@ -584,13 +592,13 @@ namespace HC_OSHA
             {
                 workerList2 = new List<HC_OSHA_CONTRACT_MANAGER_MODEL>();
             }
-            List<HC_OSHA_CONTRACT_MANAGER_MODEL>  workerList = new List<HC_OSHA_CONTRACT_MANAGER_MODEL>();
+            List<HC_OSHA_CONTRACT_MANAGER_MODEL> workerList = new List<HC_OSHA_CONTRACT_MANAGER_MODEL>();
             //선택된 근로자
             foreach (HC_SITE_WORKER worker in form.GetWorker())
             {
                 HC_OSHA_CONTRACT_MANAGER_MODEL model = new HC_OSHA_CONTRACT_MANAGER_MODEL();
                 model.ESTIMATE_ID = base.SelectedEstimate.ID;
-              //  model.WORKER_ID = worker.ID;
+                //  model.WORKER_ID = worker.ID;
                 model.WORKER_ROLE = worker.WORKER_ROLE;
                 model.NAME = worker.NAME;
                 model.DEPT = worker.DEPT;
@@ -598,10 +606,10 @@ namespace HC_OSHA
                 model.HP = worker.HP;
                 model.EMAIL = worker.EMAIL;
                 model.RowStatus = RowStatus.Insert;
-               
+
                 workerList.Add(model);
             }
-            foreach(HC_OSHA_CONTRACT_MANAGER_MODEL model in workerList2)
+            foreach (HC_OSHA_CONTRACT_MANAGER_MODEL model in workerList2)
             {
                 workerList.Add(model);
             }
@@ -635,7 +643,7 @@ namespace HC_OSHA
                     HC_CODE pdfPath = codeService.FindActiveCodeByGroupAndCode("PDF_PATH", "OSHA_ESTIMATE", "OSHA");
                     SpreadPrint print = new SpreadPrint(SSEstimate, PrintStyle.STANDARD_APPROVAL, false);
 
-                    string pdfFileName = pdfPath.CodeName + "\\" + SelectedSite.NAME+"_" + DtpESTIMATEDATE.GetValue() + dto.ID + ".pdf";
+                    string pdfFileName = pdfPath.CodeName + "\\" + SelectedSite.NAME + "_" + DtpESTIMATEDATE.GetValue() + dto.ID + ".pdf";
                     print.ExportPDFNoWait(pdfFileName, SSEstimate.ActiveSheet);
 
                     EstimateMailForm form = new EstimateMailForm();
@@ -660,12 +668,12 @@ namespace HC_OSHA
                 }
                 Cursor.Current = Cursors.Default;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageUtil.Alert(ex.Message);
                 Cursor.Current = Cursors.Default;
             }
-          
+
 
         }
 
@@ -685,14 +693,14 @@ namespace HC_OSHA
             if (excelSetValue == "") return;
 
             nCnt = VB.L(excelSetValue, "{}");
-            for (int i=1;i<nCnt;i++)
+            for (int i = 1; i < nCnt; i++)
             {
                 strData = VB.Pstr(excelSetValue, "{}", i);
                 strGubun = VB.Pstr(strData, ";", 1);
                 nRow = Int32.Parse(VB.Pstr(strData, ";", 2));
                 nCol = Int32.Parse(VB.Pstr(strData, ";", 3));
 
-                if (strGubun== "~PublishDate") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = DateUtil.ToKorean(dto.ESTIMATEDATE, DateTimeType.YYYY_MM_DD);
+                if (strGubun == "~PublishDate") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = DateUtil.ToKorean(dto.ESTIMATEDATE, DateTimeType.YYYY_MM_DD);
                 if (strGubun == "~SiteName") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = SelectedSite.NAME;
                 if (strGubun == "~StartDate") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = DateUtil.ToKorean(dto.STARTDATE, DateTimeType.YYYY_MM_DD) + " 부터";
                 if (strGubun == "~Title") SSEstimate.ActiveSheet.Cells[nRow, nCol].Value = dto.STARTDATE.Substring(0, 4) + "년 보건관리업무 수수료 견적";
@@ -716,9 +724,9 @@ namespace HC_OSHA
             if (dto.ID > 0)
             {
                 SpreadPrint print = new SpreadPrint(SSEstimate, PrintStyle.STANDARD_APPROVAL, true);
-           //     print.Title = "견적서";
+                //     print.Title = "견적서";
                 print.Execute();
-             
+
                 dto = hcOshaEstimateService.hcOshaEstimateRepository.UpdatePRINTDATE(dto);
 
                 PanEstimate.SetData(dto);
@@ -745,20 +753,20 @@ namespace HC_OSHA
                     TxtParentSiteName.Text = view.NAME;
                 }
             }
-    
+
         }
 
         private void OshaSiteLastTree_NodeClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             InitForm();
             base.SelectedSite = oshaSiteLastTree.GetSite;
-            if(this.Parent.Parent.Parent is Dashboard)
+            if (this.Parent.Parent.Parent is Dashboard)
             {
                 (this.Parent.Parent.Parent as Dashboard).SelectedSite = base.SelectedSite;
             }
             SetSiteInfo(oshaSiteLastTree.GetSite);
             OshaSiteEstimateList.SearhAndDoubleClik(oshaSiteLastTree.GetSite.ID, true);
-     
+
         }
 
         private void OshaSiteEstimateList_CellDoubleClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
@@ -818,7 +826,7 @@ namespace HC_OSHA
         private void SetCombo(string userId)
         {
             bool isDeleteUser = true;
-            foreach(HC_USER user in doctorList)
+            foreach (HC_USER user in doctorList)
             {
                 if (user.UserId == userId)
                 {
@@ -841,7 +849,7 @@ namespace HC_OSHA
             }
             if (isDeleteUser)
             {
-                HC_USER user =  hcUsersService.FindByUserId(userId);
+                HC_USER user = hcUsersService.FindByUserId(userId);
                 if (user == null)
                 {
                     return;
@@ -875,7 +883,7 @@ namespace HC_OSHA
             PanContract.Initialize();
             PanEstimate.Initialize();
             PanEstimate.SetData(new HC_OSHA_ESTIMATE());
-            
+
             SSWorkerList.SetDataSource(null);
 
             PanPrice.SetData(new OSHA_PRICE());
@@ -912,8 +920,8 @@ namespace HC_OSHA
             SSPrice.AddColumnText("ID", nameof(OSHA_PRICE.ID), 50, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
             SSPrice.AddColumnText("인원", nameof(OSHA_PRICE.WORKERTOTALCOUNT), 70, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
             SSPrice.AddColumnText("단가", nameof(OSHA_PRICE.UNITPRICE), 90, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-           // SSPrice.AddColumnText("단가금액", nameof(OSHA_PRICE.UNITTOTALPRICE), 90, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSPrice.AddColumnText("계산금액", nameof(OSHA_PRICE.UNITTOTALPRICE ), 90, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            // SSPrice.AddColumnText("단가금액", nameof(OSHA_PRICE.UNITTOTALPRICE), 90, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSPrice.AddColumnText("계산금액", nameof(OSHA_PRICE.UNITTOTALPRICE), 90, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSPrice.AddColumnText("계약금액", nameof(OSHA_PRICE.TOTALPRICE), 90, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
 
             SSPrice.AddColumnText("정액여부", nameof(OSHA_PRICE.ISFIX), 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
@@ -925,25 +933,25 @@ namespace HC_OSHA
             SSPrice.AddColumnText("사용자", nameof(OSHA_PRICE.MODIFIEDUSER), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
 
             SSChildPrice.Initialize(new SpreadOption() { IsRowSelectColor = false, ColumnHeaderHeight = 35 });
-            SSChildPrice.AddColumnText("사업장명", nameof(OSHA_PRICE.SITE_NAME), 180, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });            
+            SSChildPrice.AddColumnText("사업장명", nameof(OSHA_PRICE.SITE_NAME), 180, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
             SSChildPrice.AddColumnText("인원", nameof(OSHA_PRICE.WORKERTOTALCOUNT), 70, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
             SSChildPrice.AddColumnText("단가", nameof(OSHA_PRICE.UNITPRICE), 90, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSChildPrice.AddColumnText("계산금액", nameof(OSHA_PRICE.UNITTOTALPRICE), 90, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSChildPrice.AddColumnText("계약금액", nameof(OSHA_PRICE.TOTALPRICE), 90, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
-            SSChildPrice.AddColumnCheckBox("정액여부", nameof(OSHA_PRICE.ISFIX), 60,  new CheckBoxFlagEnumCellType<IsFix>());
-            SSChildPrice.AddColumnCheckBox("계산서인원단가", nameof(OSHA_PRICE.ISBILL),  112, new CheckBoxFlagEnumCellType<IsBill>());
+            SSChildPrice.AddColumnCheckBox("정액여부", nameof(OSHA_PRICE.ISFIX), 60, new CheckBoxFlagEnumCellType<IsFix>());
+            SSChildPrice.AddColumnCheckBox("계산서인원단가", nameof(OSHA_PRICE.ISBILL), 112, new CheckBoxFlagEnumCellType<IsBill>());
         }
 
         private void SearchPrice()
         {
-            if(SelectedEstimate != null)
+            if (SelectedEstimate != null)
             {
                 List<OSHA_PRICE> list = oshaPriceService.OshaPriceRepository.FindAllByEstimateId(SelectedEstimate.ID);
-                
+
                 SSPrice.SetDataSource(list);
-                for(int i=0; i< list.Count; i++)
+                for (int i = 0; i < list.Count; i++)
                 {
-                    if(list[i].ISDELETED == "Y")
+                    if (list[i].ISDELETED == "Y")
                     {
                         SSPrice.ActiveSheet.Rows[i].BackColor = Color.LightGray;
                     }
@@ -1005,7 +1013,7 @@ namespace HC_OSHA
                 }
 
             }
-            
+
         }
         private void BtnSavePrice_Click(object sender, EventArgs e)
         {
@@ -1065,7 +1073,7 @@ namespace HC_OSHA
 
             price.UNITPRICE = estimate.MONTHLYFEE;
             price.WORKERTOTALCOUNT = estimate.WORKERTOTALCOUNT;
-            
+
             PanPrice.SetData(price);
 
         }
@@ -1088,8 +1096,8 @@ namespace HC_OSHA
             NumTOTALPRICE.SetValue(dto.TOTALPRICE);
 
             HC_OSHA_SITE osha = hcOShaSiteService.HcOshaSiteRepository.FindById(SelectedSite.ID);
-            
-            if(osha.ISPARENTCHARGE == "Y")
+
+            if (osha.ISPARENTCHARGE == "Y")
             {
                 ChkCharge.Checked = true;
             }
@@ -1107,7 +1115,7 @@ namespace HC_OSHA
                 ChkQuarterCharge.Checked = false;
             }
         }
-   
+
 
         private void NumPriceWORKERTOTALCOUNT_ValueChanged(object sender, EventArgs e)
         {
@@ -1130,19 +1138,20 @@ namespace HC_OSHA
         }
         private void SetTotalPrice()
         {
-            try{
+            try
+            {
                 double totalPrice = oshaPriceService.GetTotalPrice(NumPriceWORKERTOTALCOUNT.GetValue(), NumUNITPRICE.GetValue());
                 NumUNITTOTALPRICE.SetValue(totalPrice);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Error(ex);
             }
-            
+
 
         }
 
-      
+
 
         private void contentTitle1_Load(object sender, EventArgs e)
         {
@@ -1169,7 +1178,7 @@ namespace HC_OSHA
 
         }
 
-     
+
 
         private void NumUNITTOTALPRICE_ValueChanged(object sender, EventArgs e)
         {
@@ -1177,7 +1186,7 @@ namespace HC_OSHA
             {
                 NumTOTALPRICE.SetValue(NumUNITTOTALPRICE.Value);
             }
-           
+
         }
 
         private void NumWORKERTOTALCOUNT_ValueChanged(object sender, EventArgs e)
@@ -1205,7 +1214,7 @@ namespace HC_OSHA
 
         public void Select(IEstimateModel estimateModel)
         {
-           
+
         }
 
         private void BtnClear_Click(object sender, EventArgs e)
@@ -1249,9 +1258,9 @@ namespace HC_OSHA
 
         private void BtnSaveChildPrice_Click(object sender, EventArgs e)
         {
-            for(int i=0; i< SSChildPrice.RowCount(); i++)
+            for (int i = 0; i < SSChildPrice.RowCount(); i++)
             {
-                OSHA_PRICE dto = SSChildPrice.GetRowData(i) as OSHA_PRICE;                
+                OSHA_PRICE dto = SSChildPrice.GetRowData(i) as OSHA_PRICE;
                 oshaPriceService.Save(dto);
             }
             SearchPrice();
@@ -1304,32 +1313,32 @@ namespace HC_OSHA
                 if (SelectedSite.ID > 0)
                 {
                     HC_OSHA_SITE self = hcOShaSiteService.HcOshaSiteRepository.FindById(SelectedSite.ID);
-                    if(self.PARENTSITE_ID > 0)
+                    if (self.PARENTSITE_ID > 0)
                     {
                         if (MessageUtil.Confirm(SelectedSite.NAME + " 하청 사업장의 원청 소속을 해제 하시겠습니까?") == DialogResult.Yes)
                         {
                             try
                             {
                                 clsDB.setBeginTran(clsDB.DbCon);
-                                
+
                                 hcOShaSiteService.HcOshaSiteRepository.UpdateCandelParentSite(SelectedSite.ID, Convert.ToInt64(TxtParentSiteId.Text));
 
                                 clsDB.setCommitTran(clsDB.DbCon);
                             }
-                            catch(Exception ex)
+                            catch (Exception ex)
                             {
                                 Log.Error(ex);
                                 MessageUtil.Alert(ex.Message);
                                 clsDB.setRollbackTran(clsDB.DbCon);
                             }
-                            
+
                         }
                     }
-                    
-                        
+
+
                 }
             }
-           
+
         }
 
         private void label20_Click(object sender, EventArgs e)
@@ -1364,14 +1373,5 @@ namespace HC_OSHA
                 NumMANAGEENGINEERCOUNT.SetValue(3);
             }
         }
-        //private void NumUNITTOTALPRICE_KeyUp(object sender, KeyEventArgs e)
-        //{
-        //    double unitPrice = oshaPriceService.GetUnitPrice(NumPriceWORKERTOTALCOUNT.GetValue(), NumUNITTOTALPRICE.GetValue());
-        //    NumUNITPRICE.SetValue(unitPrice);
-        //    NumTOTALPRICE.SetValue(NumUNITTOTALPRICE.GetValue());
-        //}
-
-
     }
-    
 }

@@ -905,5 +905,10 @@ namespace HC_OSHA
         {
             new FrmVisitMonth2().Show();
         }
+
+        private void 업무개요업로드ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmExcelupload6().Show();
+        }
     }
 }

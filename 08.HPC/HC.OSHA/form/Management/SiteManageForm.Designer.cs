@@ -933,12 +933,12 @@
             // 
             // BtnLastContract
             // 
-            this.BtnLastContract.Location = new System.Drawing.Point(553, 4);
+            this.BtnLastContract.Location = new System.Drawing.Point(648, 4);
             this.BtnLastContract.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnLastContract.Name = "BtnLastContract";
-            this.BtnLastContract.Size = new System.Drawing.Size(152, 28);
+            this.BtnLastContract.Size = new System.Drawing.Size(75, 28);
             this.BtnLastContract.TabIndex = 80;
-            this.BtnLastContract.Text = "작년 현황 복사하기";
+            this.BtnLastContract.Text = "복사하기";
             this.BtnLastContract.UseVisualStyleBackColor = true;
             this.BtnLastContract.Click += new System.EventHandler(this.BtnLastContract_Click);
             // 

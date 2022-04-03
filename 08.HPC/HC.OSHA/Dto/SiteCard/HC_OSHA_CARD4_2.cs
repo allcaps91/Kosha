@@ -21,6 +21,11 @@ namespace HC.OSHA.Dto
         /// </summary>
 		public long ESTIMATE_ID { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public long SITE_ID { get; set; }
+
         public string YEAR { get; set; }
         /// <summary>
         /// 

@@ -466,7 +466,7 @@ namespace HC_OSHA.form.Visit
                         // 전송할 메일 목록을 보관(최대 4개)
                         for (int j = 0; j < 4; j++)
                         {
-                            email = SSList.ActiveSheet.Cells[i, 7 + j].Text.Trim();
+                            email = SSList.ActiveSheet.Cells[i, 9 + j].Text.Trim();
                             if (email != "")
                             {
                                 mailTot++;
@@ -493,7 +493,7 @@ namespace HC_OSHA.form.Visit
                 {
                     Dictionary<long, ChargeEmailModel> exportPdfList = new Dictionary<long, ChargeEmailModel>();
                     exportPdfList = Print(true);
-                    Thread.Sleep(2000);
+                    Thread.Sleep(5000);
                     SendMail(receiverMailList, exportPdfList);
                 }
                 else

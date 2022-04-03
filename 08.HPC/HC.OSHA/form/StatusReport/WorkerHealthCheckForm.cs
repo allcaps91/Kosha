@@ -684,6 +684,7 @@ namespace HC_OSHA.StatusReport
         /// <param name="worker_id"></param>
         public void SearchHistory(string worker_id)
         {
+            bool bDisplay = false;
             SSHistory.ActiveSheet.RowCount = 0;
             List<HealthCheckDto> list = healthCheckService.healthCheckRepository.FindAll(worker_id);
             foreach (HealthCheckDto healthCheckDto in list)
@@ -699,7 +700,17 @@ namespace HC_OSHA.StatusReport
                 {
                     healthCheckDto.bp = healthCheckDto.bpl + "/" + healthCheckDto.bpr;
                 }
-                
+                //음주량,흡연량,체중 최근정보 표시
+                if (bDisplay==false && textBox3.Text.Trim() == "")
+                {
+                    bDisplay = true;
+                    if (IsDoctor == false) //간호사만
+                    {
+                        textBox3.Text = healthCheckDto.ALCHOL;
+                        textBox2.Text = healthCheckDto.SMOKE;
+                        textBox1.Text = healthCheckDto.WEIGHT;
+                    }
+                }
             }
             SSHistory.SetDataSource(list);
 

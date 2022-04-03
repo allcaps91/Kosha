@@ -76,6 +76,9 @@ namespace HC_OSHA
             cboPanjeng.Items.Add("DN");
             cboPanjeng.Items.Add("확진검사대상");
             cboPanjeng.SelectedIndex = 0;
+
+            //btnDelete.Enabled = false;
+            //if (clsType.User.IdNumber == "1") btnDelete.Enabled = true;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -84,6 +87,11 @@ namespace HC_OSHA
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void Search()
         {
             string SQL = "";
             string SqlErr = "";
@@ -112,7 +120,7 @@ namespace HC_OSHA
 
             try
             {
-                SQL = "SELECT GONGJENG,NAME,SEX,AGE,GUNSOK,YUHE,GGUBUN,SOGEN,SAHU,";
+                SQL = "SELECT ID,GONGJENG,NAME,SEX,AGE,GUNSOK,YUHE,GGUBUN,SOGEN,SAHU,";
                 SQL = SQL + ComNum.VBLF + " UPMU,YEAR,JINDATE,JIPYO  ";
                 SQL = SQL + ComNum.VBLF + "  FROM HIC_LTD_RESULT3 ";
                 SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
@@ -124,7 +132,7 @@ namespace HC_OSHA
                 {
                     if (strPanjeng == "A") SQL = SQL + ComNum.VBLF + "   AND GGUBUN='A' ";
                     if (strPanjeng == "C") SQL = SQL + ComNum.VBLF + "   AND GGUBUN='C' ";
-                    if (strPanjeng!="A" && strPanjeng != "C") SQL = SQL + ComNum.VBLF + "   AND GGUBUN LIKE '%" + strPanjeng + "%' ";
+                    if (strPanjeng != "A" && strPanjeng != "C") SQL = SQL + ComNum.VBLF + "   AND GGUBUN LIKE '%" + strPanjeng + "%' ";
                 }
                 SQL = SQL + ComNum.VBLF + " ORDER BY NAME,JINDATE,JONG ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -147,7 +155,9 @@ namespace HC_OSHA
                         SSHealthCheck_Sheet1.Cells[i, 9].Text = dt.Rows[i]["SAHU"].ToString().Trim();
                         SSHealthCheck_Sheet1.Cells[i, 10].Text = dt.Rows[i]["UPMU"].ToString().Trim();
                         SSHealthCheck_Sheet1.Cells[i, 11].Text = dt.Rows[i]["YEAR"].ToString().Trim();
-                        SSHealthCheck_Sheet1.Cells[i, 12].Text = VB.Right(dt.Rows[i]["JINDATE"].ToString().Trim(),5);
+                        SSHealthCheck_Sheet1.Cells[i, 12].Text = VB.Right(dt.Rows[i]["JINDATE"].ToString().Trim(), 5);
+                        SSHealthCheck_Sheet1.Cells[i, 13].Text = dt.Rows[i]["ID"].ToString().Trim();
+                        SSHealthCheck_Sheet1.Cells[i, 14].Value = false;
                         SSHealthCheck_Sheet1.Rows[i].Height = SSHealthCheck_Sheet1.Rows[i].GetPreferredHeight();
                     }
                 }
@@ -172,7 +182,6 @@ namespace HC_OSHA
                 ComFunc.MsgBox(ex.Message);
                 Cursor.Current = Cursors.Default;
             }
-
         }
 
         private void BtnSearchSite_Click(object sender, EventArgs e)
@@ -216,5 +225,57 @@ namespace HC_OSHA
                     ComFunc.MsgBox("엑셀파일 생성에 오류가 발생 하였습니다.", "확인");
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int nSelectCnt = 0;
+            string strIDs = "";
+            string SQL = "";    //Query문
+            string SqlErr = ""; //에러문 받는 변수
+            int intRowAffected = 0; //변경된 Row 받는 변수
+
+            if (ComFunc.MsgBoxQ("정말로 선택한것을 삭제하시겠습니까?", "삭제") == DialogResult.No) return;
+
+            // 선택한 것을 찾음
+            nSelectCnt = 0;
+            strIDs = "";
+            for (int i = 0; i < SSHealthCheck_Sheet1.RowCount; i++)
+            {
+                if (Convert.ToBoolean(SSHealthCheck_Sheet1.Cells[i, 14].Value))
+                {
+                    nSelectCnt++;
+                    if (strIDs == "")
+                    {
+                        strIDs = SSHealthCheck_Sheet1.Cells[i, 13].Text.Trim();
+                    }
+                    else
+                    {
+                        strIDs += "," + SSHealthCheck_Sheet1.Cells[i, 13].Text.Trim();
+                    }
+                }
+            }
+
+            if (nSelectCnt == 0)
+            {
+                ComFunc.MsgBox("삭제할 자료를 1건도 선택을 않함", "오류");
+                return;
+            }
+
+            try
+            {
+                SQL = "DELETE FROM HIC_LTD_RESULT3 ";
+                SQL = SQL + "WHERE ID IN (" + strIDs + ") ";
+                SQL = SQL + "  AND SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+
+                Search();
+            }
+            catch (Exception ex)
+            {
+                MessageUtil.Alert("사후관리소견서 삭제 오류");
+            }
+        }
     }
+
 }
+

@@ -184,10 +184,12 @@ namespace HC.Core.Common.Util
                     drawFormat.Alignment = StringAlignment.Far;
                     if (Period.NotEmpty())
                     {
-                        e.Graphics.DrawString("작업기간 : " + Period, new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 280, 82, drawFormat);
+                        e.Graphics.DrawString(Period, new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 220, 95, drawFormat);
                     }
-                    e.Graphics.DrawString("출력시간 : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm"), new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 220, 95, drawFormat);
-                    //e.Graphics.DrawString("Page : " + e.PageNumber, new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 135, 143, drawFormat);
+                    else
+                    {
+                        e.Graphics.DrawString("출력시간 : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm"), new Font("맑은 고딕", 11, FontStyle.Regular), Brushes.Black, 220, 95, drawFormat);
+                    }
                     #endregion
                 }
             }

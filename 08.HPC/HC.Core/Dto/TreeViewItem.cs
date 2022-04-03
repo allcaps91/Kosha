@@ -15,5 +15,5 @@ namespace HC_Core.Dto
         public object Model { get; set; }
 
         public Color Color { get; set; }
-}
+    }
 }
