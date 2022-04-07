@@ -703,6 +703,7 @@
             this.BtnLast = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.btnDB재접속 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -8204,12 +8205,25 @@
             this.tabControl1.Size = new System.Drawing.Size(1474, 831);
             this.tabControl1.TabIndex = 135;
             // 
+            // btnDB재접속
+            // 
+            this.btnDB재접속.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDB재접속.Location = new System.Drawing.Point(1299, 1);
+            this.btnDB재접속.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnDB재접속.Name = "btnDB재접속";
+            this.btnDB재접속.Size = new System.Drawing.Size(80, 28);
+            this.btnDB재접속.TabIndex = 137;
+            this.btnDB재접속.Text = "DB 재접속";
+            this.btnDB재접속.UseVisualStyleBackColor = true;
+            this.btnDB재접속.Click += new System.EventHandler(this.btnDB재접속_Click);
+            // 
             // StatusReportByEngineer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1474, 870);
+            this.Controls.Add(this.btnDB재접속);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.ContentTitle);
@@ -9117,5 +9131,6 @@
         private System.Windows.Forms.TextBox DtpWEMDate2;
         private System.Windows.Forms.TextBox DtpWEMDate;
         private System.Windows.Forms.TextBox DtpOSHADATE;
+        private System.Windows.Forms.Button btnDB재접속;
     }
 }

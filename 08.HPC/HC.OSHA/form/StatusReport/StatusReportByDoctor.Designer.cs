@@ -197,6 +197,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ContentTitle = new ComBase.Mvc.UserControls.ContentTitle();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnDB재접속 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.TabReport.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -2512,11 +2513,24 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnDB재접속
+            // 
+            this.btnDB재접속.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDB재접속.Location = new System.Drawing.Point(1367, 0);
+            this.btnDB재접속.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnDB재접속.Name = "btnDB재접속";
+            this.btnDB재접속.Size = new System.Drawing.Size(80, 28);
+            this.btnDB재접속.TabIndex = 138;
+            this.btnDB재접속.Text = "DB 재접속";
+            this.btnDB재접속.UseVisualStyleBackColor = true;
+            this.btnDB재접속.Click += new System.EventHandler(this.btnDB재접속_Click);
+            // 
             // StatusReportByDoctor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1545, 951);
+            this.Controls.Add(this.btnDB재접속);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.TabReport);
             this.Controls.Add(this.ContentTitle);
@@ -2743,5 +2757,6 @@
         private System.Windows.Forms.Button BtnInfo;
         private System.Windows.Forms.Button BtnSaup;
         private System.Windows.Forms.Button btnBogen;
+        private System.Windows.Forms.Button btnDB재접속;
     }
 }

@@ -305,6 +305,11 @@ namespace HC_OSHA
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
+            DB_Save();
+        }
+
+        private void DB_Save()
+        {
             if (base.SelectedSite == null)
             {
                 MessageUtil.Alert("사업장을 선택하세요");
@@ -323,7 +328,7 @@ namespace HC_OSHA
                 dto.SITE_ID = base.SelectedSite.ID;
                 string visitdate = dto.VISITDATE.Substring(0, 4) + "-" + dto.VISITDATE.Substring(4, 2) + "-" + dto.VISITDATE.Substring(6, 2);
                 HC_OSHA_CONTRACT contract = hcOshaContractRepository.FindByDate(dto.SITE_ID, visitdate);
-                if(contract == null)
+                if (contract == null)
                 {
                     MessageUtil.Alert("방문일자가 계약일자에 해당되지 않습니다.");
                     return;
@@ -382,11 +387,11 @@ namespace HC_OSHA
 
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Log.Error(ex);
                 }
-         
+
 
                 ckEditor.SetStatusReportNurseDto(saved);
 
@@ -499,7 +504,8 @@ namespace HC_OSHA
                 dto.ID = 0;
                 dto.PERFORMCONTENT = null;
                 dto.SANGDAMSIGN = "";
-              
+                dto.VISITDATE = DateTime.Now.ToString("yyyyMMdd");
+
                 SetData(dto);
             }
         }
@@ -692,6 +698,8 @@ namespace HC_OSHA
                 if (list[2].COUNT > 0) ChkIsSangdam2.Checked = true;
                 if (list[3].COUNT > 0) ChkIsSangdam3.Checked = true;
                 if (list[4].COUNT > 0) ChkIsSangdam3.Checked = true;
+
+                DB_Save(); //자동저장
             }               
         }
 
@@ -841,5 +849,11 @@ namespace HC_OSHA
             return strName;
         }
 
+        private void btnDB재접속_Click(object sender, EventArgs e)
+        {
+            clsDB.DisDBConnect(clsDB.DbCon);
+            clsDB.DbCon = clsDB.DBConnect_Cloud();
+            ComFunc.MsgBox("DB 재접속 완료", "알림");
+        }
     }
 }

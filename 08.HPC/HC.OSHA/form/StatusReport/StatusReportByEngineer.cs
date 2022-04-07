@@ -767,8 +767,8 @@ namespace HC_OSHA
             StatusReportEngineerDto dto = statusReportEngineerService.StatusReportEngineerRepository.FindLast(base.SelectedSite.ID);
             if(dto != null)
             {
-             
                 dto.ID = 0;
+                dto.VISITDATE = DateTime.Now.ToString("yyyyMMdd");
                 //dto.SITEMANAGERSIGN = "";
                 SetData(dto);
             }
@@ -1002,6 +1002,13 @@ namespace HC_OSHA
             dt = null;
 
             MessageUtil.Info("작업 완료");
+        }
+
+        private void btnDB재접속_Click(object sender, EventArgs e)
+        {
+            clsDB.DisDBConnect(clsDB.DbCon);
+            clsDB.DbCon = clsDB.DBConnect_Cloud();
+            ComFunc.MsgBox("DB 재접속 완료", "알림");
         }
     }
 }

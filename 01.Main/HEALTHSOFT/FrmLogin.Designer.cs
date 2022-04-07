@@ -117,6 +117,7 @@
             this.btnExit.TabIndex = 86;
             this.btnExit.Text = "종  료";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnLogin
             // 

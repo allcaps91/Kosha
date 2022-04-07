@@ -1051,7 +1051,10 @@ namespace HC_OSHA.StatusReport
             ClearSScard();
 
             //질병유소견자 
-            SSHealthCheck_Show(worker.Worker_ID); 
+            SSHealthCheck_Show(worker.Worker_ID);
+
+            //업무적합성 판정 건수
+            JekhapJindan_Cnt(worker.Worker_ID);
 
             //List<HealthCareReciptModel> receiptList = healthCareReceiptService.FindHealthCareByPano(worker.Pano);
             //if (receiptList != null)
@@ -1758,6 +1761,58 @@ namespace HC_OSHA.StatusReport
             if (nAge < 0) nAge = nYear1 - (1900 + nYear2);
 
             return nAge;
+        }
+
+        private void btnJekhap_Click(object sender, EventArgs e)
+        {
+            string strSEND = "";
+
+            if (base.SelectedSite == null)  return;
+
+            HealthCheckDto dto = panHealthCheck.GetData<HealthCheckDto>();
+            if (dto.worker_id.IsNullOrEmpty())
+            {
+                MessageUtil.Alert("근로자를 선택하세요");
+                return;
+            }
+
+            strSEND = base.SelectedSite.ID + "{}" + base.SelectedSite.NAME + "{}" + dto.ISDOCTOR + "{}"; //1,2,3
+            strSEND += DateUtil.DateTimeToStrig(DtpChartDate.Value, DateTimeType.YYYY_MM_DD) + "{}"; // 4
+            strSEND += dto.worker_id + "{}" + dto.name + "{}" + dto.gender + "{}" + dto.age + "{}"; //5,6,7,8
+            if (StatusReportDoctorDto != null)
+            {
+                strSEND += StatusReportDoctorDto.ID + "{}"; //9
+            }
+            else
+            {
+                strSEND += "{}"; //9
+            }
+            FrmWorkerJiindan form = new FrmWorkerJiindan();
+            form.Show();
+            form.Set_Data(strSEND);
+        }
+
+        //적합성검사 건수를 표시함
+        private void JekhapJindan_Cnt(string worker_id)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+
+            btnJekhap.Text = "업무적합성평가";
+
+            SQL = "SELECT * FROM HIC_OSHA_WORKER_JINDAN ";
+            SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+            SQL = SQL + ComNum.VBLF + "   AND ISDELETED='N' ";
+            SQL = SQL + ComNum.VBLF + "   AND SITE_ID=" + base.SelectedSite.ID + " ";
+            SQL = SQL + ComNum.VBLF + "   AND WORKER_ID='" + worker_id + "' ";
+            SQL = SQL + ComNum.VBLF + "   AND CHARTDATE>='" + DateUtil.DateTimeToStrig(DtpChartDate.Value, DateTimeType.YYYY) + "-01-01' ";
+            SQL = SQL + ComNum.VBLF + "   AND CHARTDATE<='" + DateUtil.DateTimeToStrig(DtpChartDate.Value, DateTimeType.YYYY) + "-12-31' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0) btnJekhap.Text = "업무적합성평가(" + dt.Rows.Count + ")";
+            dt.Dispose();
+            dt = null;
+
         }
     }
 }

@@ -805,11 +805,6 @@ namespace HC_OSHA
             form.Show();
         }
 
-        private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void 뇌심혈관계발병위험도평가ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmExcelUpload2 form = new FrmExcelUpload2();
@@ -909,6 +904,18 @@ namespace HC_OSHA
         private void 업무개요업로드ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FrmExcelupload6().Show();
+        }
+
+        private void 종료ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void DB재접속ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            clsDB.DisDBConnect(clsDB.DbCon);
+            clsDB.DbCon = clsDB.DBConnect_Cloud();
+            ComFunc.MsgBox("DB 재접속 완료", "알림");
         }
     }
 }

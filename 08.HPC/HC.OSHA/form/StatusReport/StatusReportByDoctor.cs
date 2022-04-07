@@ -530,6 +530,7 @@ namespace HC_OSHA.StatusReport
             if (dto != null)
             {
                 dto.ID = 0;
+                dto.VISITDATE = DateTime.Now.ToString("yyyyMMdd");
                 //CboVisitYear.Text = "";
                 //CboVisitDate.Text = "";
                 SetData(dto);
@@ -716,6 +717,13 @@ namespace HC_OSHA.StatusReport
             }
             dt.Dispose();
             dt = null;
+        }
+
+        private void btnDB재접속_Click(object sender, EventArgs e)
+        {
+            clsDB.DisDBConnect(clsDB.DbCon);
+            clsDB.DbCon = clsDB.DBConnect_Cloud();
+            ComFunc.MsgBox("DB 재접속 완료", "알림");
         }
     }
 }

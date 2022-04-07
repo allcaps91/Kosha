@@ -360,7 +360,7 @@
             this.SSCard_Sheet1.Columns.Get(4).Border = complexBorder17;
             textCellType20.WordWrap = true;
             this.SSCard_Sheet1.Columns.Get(4).CellType = textCellType20;
-            this.SSCard_Sheet1.Columns.Get(4).Width = 148F;
+            this.SSCard_Sheet1.Columns.Get(4).Width = 165F;
             this.SSCard_Sheet1.Columns.Get(5).Border = complexBorder18;
             textCellType21.WordWrap = true;
             this.SSCard_Sheet1.Columns.Get(5).CellType = textCellType21;
