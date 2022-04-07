@@ -147,14 +147,23 @@ function SetPERFORMCONTENT(json){
     if(x.IsSangdam6=="Y"){
         $('#IsSangdam6').prop('checked', true); 
     }
+    if(x.SangdamCount>"0"){
+        $('#IsSuhang14').text(getCheck("Y")); 
+    }
   
     console.log(x.CheckCount1)
     $('#CheckCount1').text("•혈압: " + x.CheckCount1 +" 건");
     $('#CheckCount2').text("•혈당: " + x.CheckCount2+" 건");
     $('#CheckCount3').text("•소변: " + x.CheckCount3+" 건");
     $('#CheckCount4').text("•체지방: " + x.CheckCount4+" 건");
+    if(x.CheckCount1>"0"){
+        $('#IsSuhang15').text(getCheck("Y"));
+    }
 
     $('#OshaData').text(x.OshaData);
+    if(x.OshaData!=""){
+        $('#IsSuhang16').text(getCheck("Y"));
+    }
 
     $("input[type=radio]").each(function () {
 

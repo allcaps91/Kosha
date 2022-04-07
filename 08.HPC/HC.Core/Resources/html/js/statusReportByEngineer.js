@@ -10,9 +10,9 @@ $(document).ready(function () {
 
 //기관보관용
 function setOSHA() {
-    //$('#osha1').text("계 장");
-    $('#osha1').text("팀 장");
-    $('#osha2').text("부 장");
+    //$('#osha1').text("담당");
+    $('#osha1').text("실장");
+    $('#osha2').text("사장");
 }
 function unSetOSHA() {
     $('#osha1').text("");
@@ -24,12 +24,12 @@ function SetSite(json){
   
     var j = JSON.parse(json);
     console.log(j);
-    $('#siteName').text(j.SITENAME);
+    $('#SITENAME').text(j.SITENAME);
     $('#footer').text(j.SITENAME);
-    $('#siteCEONAME').text(j.SITEOWENER);
-    $('#siteAddress').text(j.SITEADDRESS);
-    $('#siteTel').text("보건 담당자 연락처:"+j.SITETEL);
-    $('#WORKERCOUNT').text("총원: "+j.WORKERCOUNT);
+    // $('#siteCEONAME').text(j.SITEOWENER);
+    // $('#siteAddress').text(j.SITEADDRESS);
+    // $('#siteTel').text("보건 담당자 연락처:"+j.SITETEL);
+    // $('#WORKERCOUNT').text("총원: "+j.WORKERCOUNT);
     
     var month = j.VISITDATE.substr(4, 2);
     if (month.length > 1) {
@@ -41,12 +41,10 @@ function SetSite(json){
     $('#month_text').text(month);
 
     if (j.WEMDATE.length > 0) {
-
-        
-        $('#WEMDATE').text("측정일: " + j.WEMDATE.substr(0, 4) + "-" + j.WEMDATE.substr(4, 2) + "-" + j.WEMDATE.substr(6, 2)); 
+        $('#WEMDATE').text("측정일: " + j.WEMDATE); 
     }
     if (j.WEMDATE2.length > 0) {
-        var html = j.WEMDATE.substr(0, 4) + "-" + j.WEMDATE.substr(4, 2) + "-" + j.WEMDATE.substr(6, 2) + " ~ " + j.WEMDATE2.substr(0, 4) + "-" + j.WEMDATE2.substr(4, 2) + "-" + j.WEMDATE2.substr(6, 2);
+        var html = j.WEMDATE + " ~ " + j.WEMDATE2;
         $('#WEMDATE').text(html); 
     }
 
@@ -237,11 +235,11 @@ function SetENVCHECKJSON3(json){
     $('#ENVCHECK3_12').text(getEnv(e.ENVCHECK3_12));
     console.log("ChkAccNone:" + e.ChkAccNone);
     if(e.ENVCHECK3_13=="" || e.ENVCHECK3_13==null){
-        $('#ENVCHECK3_13').text("해당없음");
-        $('#ENVCHECK3_14').text("해당없음");
-        $('#ENVCHECK3_15').text("해당없음");
-        $('#ENVCHECK3_16').text("해당없음");
-        $('#ENVCHECK3_17').text("해당없음");
+        $('#ENVCHECK3_13').text("-");
+        $('#ENVCHECK3_14').text("-");
+        $('#ENVCHECK3_15').text("-");
+        $('#ENVCHECK3_16').text("-");
+        $('#ENVCHECK3_17').text("-");
     }else{
         $('#ENVCHECK3_13').text(getEnv("산업재해 발생일시: "+e.ENVCHECK3_13));
         $('#ENVCHECK3_14').text(getEnv("산업재해발생경위: " + e.ENVCHECK3_14));
@@ -284,6 +282,8 @@ function getEnv(val){
         return "양호";
     }else if(val == "C"){
         return "미흡";
+    }else if(val == ""){
+        return "-";
     }else{
         return val;
     }

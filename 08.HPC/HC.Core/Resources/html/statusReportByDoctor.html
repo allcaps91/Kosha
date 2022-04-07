@@ -14,7 +14,7 @@
       </div>
       <div class="page">
           <div class="section">
-              <div class="title">( <span id="month_text"></span> )월 보건관리상태보고서(의사용)</div>
+              <div class="title">( <span id="month_text"></span> )월 보건관리상태보고서(의사)</div>
               <table class="header text-center">
                   <tr>
                       <td rowspan=2 style="width: 10px;line-height: 5.79mm; ">결재</td>
@@ -132,7 +132,7 @@
                               </td>
                           </tr>
                           <tr>
-                              <td class="text-center">타 병원 진단</td>
+                              <td class="text-center">참고 사항</td>
                               <td>
                                   <table border="0" class='no-border'>
                                       <tr>
@@ -431,13 +431,10 @@
           <div class="section">
               <table style="width:100%">
                   <tr>
-                      <td class="text-center" width="10%">사업장확인</td>
-                      <td style="padding-left:10px" width="20%">
-                          직위 : <span id="SITEMANAGERGRADE"></span>
-
-                      </td>
-                      <td style="padding-left:10px">
-                          성명 :<span id="SITEMANAGERNAME"> </span><span> (서명)</span>
+                      <td class="text-center" width="10%" height="40">사업장확인</td>
+                      <td style="padding-left:10px" colspan=2>
+                          <span id="SITEMANAGERGRADE"></span>
+                            : <span id="SITEMANAGERNAME"> </span><span> (서명)</span>
                           <img id="siteManagerSign" src="" class="sign-image" />
                       </td>
 
@@ -449,7 +446,7 @@
 
                   </tr>
                   <tr>
-                      <td class="text-center">방문일자</td>
+                      <td class="text-center" height="30">방문일자</td>
                       <td id="VISITDATE" style="padding-left:10px" colspan=2></td>
                       <td class="text-center">방문예정일</td>
                       <td id="VISITRESERVEDATE" style="padding-left:10px" colspan=2></td>
