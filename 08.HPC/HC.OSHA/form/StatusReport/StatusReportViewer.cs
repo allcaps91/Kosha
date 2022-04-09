@@ -273,6 +273,7 @@ namespace HC_OSHA.StatusReport
         private void btnSave_Click(object sender, EventArgs e)
         {
             browser.Print();
+            
         }
 
         private void BtnPdf_Click(object sender, EventArgs e)

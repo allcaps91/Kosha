@@ -61,6 +61,7 @@ function SetPERFORMCONTENT(json){
     console.log(json);
     var x = JSON.parse(json);
     console.log(getCheck(x.IsOshaPlan))
+	$('#IsVisit').text(getCheck(x.IsVisit));
     $('#IsOshaPlan').text(getCheck(x.IsOshaPlan));
     $('#IsOshaGeneral').text(getCheck(x.IsOshaGeneral));
     $('#IsMsds').text(getCheck(x.IsMsds));

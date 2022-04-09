@@ -1367,5 +1367,10 @@ namespace HC_OSHA
                     ComFunc.MsgBox("엑셀파일 생성에 오류가 발생 하였습니다.", "확인");
             }
         }
+
+        private void TabEduPage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

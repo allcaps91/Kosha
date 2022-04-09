@@ -157,6 +157,8 @@
             this.ContentTitle = new ComBase.Mvc.UserControls.ContentTitle();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDB재접속 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ChkIsVisit = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.TabReport.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -362,6 +364,8 @@
             // 
             // GrpPerformContent
             // 
+            this.GrpPerformContent.Controls.Add(this.ChkIsVisit);
+            this.GrpPerformContent.Controls.Add(this.label4);
             this.GrpPerformContent.Controls.Add(this.BtnInfo);
             this.GrpPerformContent.Controls.Add(this.BtnLoadCount);
             this.GrpPerformContent.Controls.Add(this.TxtOshaData);
@@ -811,7 +815,7 @@
             // 
             // TxtIsEduTitle
             // 
-            this.TxtIsEduTitle.Location = new System.Drawing.Point(548, 317);
+            this.TxtIsEduTitle.Location = new System.Drawing.Point(544, 269);
             this.TxtIsEduTitle.Name = "TxtIsEduTitle";
             this.TxtIsEduTitle.Size = new System.Drawing.Size(204, 25);
             this.TxtIsEduTitle.TabIndex = 182;
@@ -819,7 +823,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(488, 317);
+            this.label20.Location = new System.Drawing.Point(488, 276);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(34, 17);
             this.label20.TabIndex = 181;
@@ -828,7 +832,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(475, 276);
+            this.label19.Location = new System.Drawing.Point(400, 224);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(47, 17);
             this.label19.TabIndex = 180;
@@ -836,7 +840,7 @@
             // 
             // NumIsEduCount
             // 
-            this.NumIsEduCount.Location = new System.Drawing.Point(549, 276);
+            this.NumIsEduCount.Location = new System.Drawing.Point(453, 219);
             this.NumIsEduCount.Maximum = new decimal(new int[] {
             999,
             0,
@@ -1540,7 +1544,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1362, 792);
+            this.tabPage3.Size = new System.Drawing.Size(1477, 792);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = " 종합의견";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1805,7 +1809,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1362, 792);
+            this.tabPage2.Size = new System.Drawing.Size(1477, 792);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "근로자 건강상담";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1844,6 +1848,31 @@
             this.btnDB재접속.Text = "DB 재접속";
             this.btnDB재접속.UseVisualStyleBackColor = true;
             this.btnDB재접속.Click += new System.EventHandler(this.btnDB재접속_Click);
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(387, 312);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(3);
+            this.label4.Size = new System.Drawing.Size(135, 30);
+            this.label4.TabIndex = 341;
+            this.label4.Text = "작업장 순회 및 점검";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ChkIsVisit
+            // 
+            this.ChkIsVisit.AutoSize = true;
+            this.ChkIsVisit.Location = new System.Drawing.Point(625, 314);
+            this.ChkIsVisit.Name = "ChkIsVisit";
+            this.ChkIsVisit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ChkIsVisit.Size = new System.Drawing.Size(146, 21);
+            this.ChkIsVisit.TabIndex = 342;
+            this.ChkIsVisit.Text = "작업장 순회 및 점검";
+            this.ChkIsVisit.UseVisualStyleBackColor = true;
             // 
             // StatusReportByNurseForm
             // 
@@ -2019,5 +2048,7 @@
         private System.Windows.Forms.Button BtnClear;
         private System.Windows.Forms.Button BtnInfo;
         private System.Windows.Forms.Button btnDB재접속;
+        private System.Windows.Forms.CheckBox ChkIsVisit;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -723,16 +723,15 @@ namespace HC_OSHA
 
             //browser.ExecuteScriptAsync("insertEquipment('"+ dto.NAME + "','" + dto.MODELNAME + "','" + dto.SERIALNUMBER + "')");
             // browser.ExecuteScriptAsync("insertEquipment('" + dto.NAME + "','" + dto.MODELNAME + "','')");
-            SetEquipemtnText(dto.NAME, dto.MODELNAME, dto.REMARK);
+            SetEquipemtnText(dto.NAME, dto.REMARK);
 
         }
-        private void SetEquipemtnText(string name, string modelName, string reamark)
+        private void SetEquipemtnText(string name, string reamark)
         {
             if (TxtTmp.Text.IsNullOrEmpty())
             {
                 TxtTmp.Text += "\r\n";
             }
-            //TxtTmp.Text += "장비명:" + name + " , 모델명:" + modelName + " , 사용내역:" + reamark + "\r\n";
             TxtTmp.Text += "장비명:" + name + " , 사용내역:" + reamark + "\r\n";
         }
         private void BtnEquipment_Click(object sender, EventArgs e)
@@ -753,8 +752,7 @@ namespace HC_OSHA
             List<HC_OSHA_EQUIPMENT> list = hcOshaEquipmentService.FindAll(base.SelectedSite.ID);
             foreach(HC_OSHA_EQUIPMENT dto in list)
             {
-                
-                SetEquipemtnText(dto.NAME, dto.MODELNAME, dto.REMARK);
+                SetEquipemtnText(dto.NAME, dto.REMARK);
             }
         }
 

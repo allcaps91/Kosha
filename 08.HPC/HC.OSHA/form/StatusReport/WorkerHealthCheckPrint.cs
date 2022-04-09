@@ -207,8 +207,8 @@ namespace HC_OSHA.StatusReport
                 buttonCellType.TextColor = "Y".Equals(list[i].IsDeleted) ? Color.Blue : Color.Red;
                 SSView.ActiveSheet.Cells[row, 8].CellType = buttonCellType;
 
-                SSCard.ActiveSheet.Rows[row].Height = SSCard.ActiveSheet.Rows[row].GetPreferredHeight() + 20;
-                SSView.ActiveSheet.Rows[row].Height = SSView.ActiveSheet.Rows[row].GetPreferredHeight() + 20;
+                SSCard.ActiveSheet.Rows[row].Height = SSCard.ActiveSheet.Rows[row].GetPreferredHeight() + 30;
+                SSView.ActiveSheet.Rows[row].Height = SSView.ActiveSheet.Rows[row].GetPreferredHeight() + 30;
                 row = row + 1;
             }
 
@@ -293,73 +293,66 @@ namespace HC_OSHA.StatusReport
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-            SpreadPrint sp = new SpreadPrint(SSCard, PrintStyle.STANDARD_REPORT);
-            //sp.Title = cboYear.Text.Trim() + "년 보건교육지원 대장";
-            //sp.Period = "회사명: " + TxtLtdcode.Text + "          " + "근로자: " + TxtName.Text;
-            //sp.orientation = PrintOrientation.Landscape;
-            sp.Execute();
+            PrintSignModel model = new PrintSignModel();
+            if (this.statusReportDoctorDto != null)
+            {
+                statusReportDoctorDto = this.statusReportDoctorRepository.FindOne(statusReportDoctorDto.ID);
+                if (statusReportDoctorDto != null)
+                {
+                    model.SiteManagerSign = SetSiteSign(statusReportDoctorDto.SANGDAMSIGN);
+                    model.SiteManagerName = "담당자: " + statusReportDoctorDto.SITEMANAGERNAME;
 
-            //PrintSignModel model = new PrintSignModel();
-            //if (this.statusReportDoctorDto != null)
-            //{
-            //    statusReportDoctorDto = this.statusReportDoctorRepository.FindOne(statusReportDoctorDto.ID);
-            //    if (statusReportDoctorDto != null)
-            //    {
-            //        model.SiteManagerSign = SetSiteSign(statusReportDoctorDto.SANGDAMSIGN);
-            //        model.SiteManagerName= "담당자: " + statusReportDoctorDto.SITEMANAGERNAME;
+                    HcUserSignRepository hcUserSignRepository = new HcUserSignRepository();
+                    HIC_USERSIGN userSign = hcUserSignRepository.FindOne(statusReportDoctorDto.CREATEDUSER);
+                    if (userSign.IMAGEBASE64 != null)
+                    {
+                        model.OshaSign = SetUserSign(userSign.IMAGEBASE64);
+                        model.OshaName = "상담자:  " + statusReportDoctorDto.DOCTORNAME;
+                    }
 
-            //        HcUserSignRepository hcUserSignRepository = new HcUserSignRepository();
-            //        HIC_USERSIGN userSign = hcUserSignRepository.FindOne(statusReportDoctorDto.CREATEDUSER);
-            //        if (userSign.IMAGEBASE64 != null)
-            //        {
-            //            model.OshaSign =  SetUserSign(userSign.IMAGEBASE64);
-            //            model.OshaName = "상담자:  " + statusReportDoctorDto.DOCTORNAME;
-            //        }
+                }
+            }
+            else if (this.statusReportNurseDto != null)
+            {
 
-            //    }
-            //}
-            //else if (this.statusReportNurseDto != null)
-            //{
-                
-            //    statusReportNurseDto = this.statusReportNurseRepository.FindOne(statusReportNurseDto.ID);
-            //    if (statusReportNurseDto != null)
-            //    {
-            //        model.SiteManagerSign = SetSiteSign(statusReportNurseDto.SANGDAMSIGN);
-            //        model.SiteManagerName = "담당자: " + statusReportNurseDto.SITEMANAGERNAME;
+                statusReportNurseDto = this.statusReportNurseRepository.FindOne(statusReportNurseDto.ID);
+                if (statusReportNurseDto != null)
+                {
+                    model.SiteManagerSign = SetSiteSign(statusReportNurseDto.SANGDAMSIGN);
+                    model.SiteManagerName = "담당자: " + statusReportNurseDto.SITEMANAGERNAME;
 
-            //        HcUserSignRepository hcUserSignRepository = new HcUserSignRepository();
-            //        HIC_USERSIGN userSign = null;
-            //        if(statusReportNurseDto.MODIFIEDUSER.NotEmpty())
-            //        {
-            //            userSign = hcUserSignRepository.FindOne(statusReportNurseDto.MODIFIEDUSER);
-            //        }
-            //        else
-            //        {
-            //            userSign = hcUserSignRepository.FindOne(statusReportNurseDto.CREATEDUSER);
-            //        }
-                    
-            //        if (userSign != null)
-            //        {
-            //            if (userSign.IMAGEBASE64 != null)
-            //            {
-            //                model.OshaSign = SetUserSign(userSign.IMAGEBASE64);
-            //                model.OshaName = "상담자:  " + statusReportNurseDto.NURSENAME;
-            //            }
-            //        }
+                    HcUserSignRepository hcUserSignRepository = new HcUserSignRepository();
+                    HIC_USERSIGN userSign = null;
+                    if (statusReportNurseDto.MODIFIEDUSER.NotEmpty())
+                    {
+                        userSign = hcUserSignRepository.FindOne(statusReportNurseDto.MODIFIEDUSER);
+                    }
+                    else
+                    {
+                        userSign = hcUserSignRepository.FindOne(statusReportNurseDto.CREATEDUSER);
+                    }
 
-            //    }
+                    if (userSign != null)
+                    {
+                        if (userSign.IMAGEBASE64 != null)
+                        {
+                            model.OshaSign = SetUserSign(userSign.IMAGEBASE64);
+                            model.OshaName = "상담자:  " + statusReportNurseDto.NURSENAME;
+                        }
+                    }
 
-            //}
+                }
+
+            }
 
 
-            //SpreadPrint print = new SpreadPrint(SSCard, PrintStyle.STANDARD_APPROVAL_SIGN);
-            //if (this.SelectedSite != null)
-            //{
-            //    print.SiteName = SelectedSite.NAME;
-            //}
-            
-            //print.PrintSignModel = model;
-            //print.Execute();
+            SpreadPrint print = new SpreadPrint(SSCard, PrintStyle.STANDARD_APPROVAL_SIGN);
+            if (this.SelectedSite != null)
+            {
+                print.SiteName = SelectedSite.NAME;
+            }
+            print.PrintSignModel = model;
+            print.Execute();
         }
 
         public Image Base64ToImage(string base64String)

@@ -134,6 +134,11 @@ namespace HC.OSHA.Dto
         public string IsEduTitle { get; set; }
 
         /// <summary>
+        /// 작업장 순회 및 점검
+        /// </summary>
+        public string IsVisit { get; set; }
+
+        /// <summary>
         /// 흡연음주비만 등 생활습관개선지도
         /// </summary>
         public string IsHealth1 { get; set; }

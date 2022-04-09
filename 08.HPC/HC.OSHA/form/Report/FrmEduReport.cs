@@ -54,13 +54,12 @@ namespace HC_OSHA.form.Report
 
             SSList.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true, RowHeaderVisible = true, ColumnHeaderHeight = 30 });
             SSList.AddColumnText("교육일자", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true });
-            SSList.AddColumnText("종류", "", 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true });
+            SSList.AddColumnText("회사명", "", 200, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("종류", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true });
+            SSList.AddColumnText("교육주제", "", 200, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("참석자", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("교육장소", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSList.AddColumnText("교육방법", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("실시자", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSList.AddColumnText("교육인원", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSList.AddColumnText("회사명", "", 120, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, Aligen = CellHorizontalAlignment.Left });
-            SSList.AddColumnText("교육내용", "", 320, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false, IsMulti = true, WordWrap = true, Aligen = CellHorizontalAlignment.Left });
         }
 
         private void panSearch_Paint(object sender, PaintEventArgs e)
@@ -84,16 +83,16 @@ namespace HC_OSHA.form.Report
 
             SSList.ActiveSheet.RowCount = 0;
 
-            SQL = "SELECT A.*,B.NAME,C.CODENAME AS EDUTYPENAME,D.CODENAME AS EDUUSAGENAME   ";
-            SQL = SQL + ComNum.VBLF + " FROM HIC_OSHA_CARD17 A,HC_SITE_VIEW B,HIC_CODES C,HIC_CODES D ";
+            SQL = "SELECT A.EDUDATE, B.NAME, C.CODENAME AS EDUTYPE,  A.TITLE, A.TARGET, ";
+            SQL = SQL + ComNum.VBLF + "      A.LOCATION, D.NAME AS EDUUSERNAME  ";
+            SQL = SQL + ComNum.VBLF + " FROM HIC_OSHA_VISIT_EDU A,HC_SITE_VIEW B,HIC_CODES C,HIC_USERS D ";
             SQL = SQL + ComNum.VBLF + "WHERE A.EDUDATE >='" + cboYear.Text + "-01-01' ";
             SQL = SQL + ComNum.VBLF + "  AND A.EDUDATE<='" + cboYear.Text + "-12-31' ";
             if (strLtdCode!="") SQL = SQL + ComNum.VBLF + " AND A.SITE_ID = " + strLtdCode + " ";
             SQL = SQL + ComNum.VBLF + "  AND A.SITE_ID = B.ID(+) ";
             SQL = SQL + ComNum.VBLF + "  AND A.EDUTYPE = C.CODE(+) ";
-            SQL = SQL + ComNum.VBLF + "  AND C.GROUPCODE = 'SITE_CARD_EDUTYPE' ";
-            SQL = SQL + ComNum.VBLF + "  AND A.EDUUSAGE = D.CODE(+) ";
-            SQL = SQL + ComNum.VBLF + "  AND D.GROUPCODE = 'SITE_CARD_EDUUSAGE' ";
+            SQL = SQL + ComNum.VBLF + "  AND C.GROUPCODE = 'VISIT_EDU_TYPE' ";
+            SQL = SQL + ComNum.VBLF + "  AND A.EDUUSERID = D.USERID(+) ";
             SQL = SQL + ComNum.VBLF + "  AND A.SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
             SQL = SQL + ComNum.VBLF + "  AND B.SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
             SQL = SQL + ComNum.VBLF + "  AND C.SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
@@ -106,14 +105,12 @@ namespace HC_OSHA.form.Report
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     SSList.ActiveSheet.Cells[i, 0].Text = dt.Rows[i]["EDUDATE"].ToString().Trim();
-                    SSList.ActiveSheet.Cells[i, 1].Text = dt.Rows[i]["EDUTYPENAME"].ToString().Trim();
-                    SSList.ActiveSheet.Cells[i, 2].Text = dt.Rows[i]["EDUPLACE"].ToString().Trim();
-                    SSList.ActiveSheet.Cells[i, 3].Text = dt.Rows[i]["EDUUSAGENAME"].ToString().Trim();
-                    SSList.ActiveSheet.Cells[i, 4].Text = dt.Rows[i]["EDUNAME"].ToString().Trim();
-                    SSList.ActiveSheet.Cells[i, 5].Text = dt.Rows[i]["TARGETCOUNT"].ToString().Trim() + "/";
-                    SSList.ActiveSheet.Cells[i, 5].Text += dt.Rows[i]["ACTCOUNT"].ToString().Trim();
-                    SSList.ActiveSheet.Cells[i, 6].Text = dt.Rows[i]["NAME"].ToString().Trim();
-                    SSList.ActiveSheet.Cells[i, 7].Text = dt.Rows[i]["CONTENT"].ToString().Trim();
+                    SSList.ActiveSheet.Cells[i, 1].Text = dt.Rows[i]["NAME"].ToString().Trim();
+                    SSList.ActiveSheet.Cells[i, 2].Text = dt.Rows[i]["EDUTYPE"].ToString().Trim();
+                    SSList.ActiveSheet.Cells[i, 3].Text = dt.Rows[i]["TITLE"].ToString().Trim();
+                    SSList.ActiveSheet.Cells[i, 4].Text = dt.Rows[i]["TARGET"].ToString().Trim();
+                    SSList.ActiveSheet.Cells[i, 5].Text = dt.Rows[i]["LOCATION"].ToString().Trim();
+                    SSList.ActiveSheet.Cells[i, 6].Text = dt.Rows[i]["EDUUSERNAME"].ToString().Trim();
 
                     SSList_Sheet1.Rows[i].Height = SSList_Sheet1.Rows[i].GetPreferredHeight() + 4;
                 }

@@ -87,6 +87,7 @@
             this.SSScheduleList = new FarPoint.Win.Spread.FpSpread();
             this.SSScheduleList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnExcel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.CboMonth = new System.Windows.Forms.ComboBox();
             this.ChkSearchSchedule = new System.Windows.Forms.CheckBox();
@@ -168,7 +169,6 @@
             this.DtpVISITRESERVEDATE = new System.Windows.Forms.DateTimePicker();
             this.contentTitle1 = new ComBase.Mvc.UserControls.ContentTitle();
             this.BtnClose = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tableBody.SuspendLayout();
             this.panLeftTop.SuspendLayout();
@@ -1022,6 +1022,17 @@
             this.panel1.Size = new System.Drawing.Size(1078, 54);
             this.panel1.TabIndex = 113;
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(758, 16);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(75, 28);
+            this.btnExcel.TabIndex = 117;
+            this.btnExcel.Text = "엑셀";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -1687,6 +1698,7 @@
             this.TabEduPage.TabIndex = 1;
             this.TabEduPage.Text = "보건교육지원";
             this.TabEduPage.UseVisualStyleBackColor = true;
+            this.TabEduPage.Click += new System.EventHandler(this.TabEduPage_Click);
             // 
             // TabCommitteePage
             // 
@@ -2011,17 +2023,6 @@
             this.BtnClose.Text = "닫기";
             this.BtnClose.UseVisualStyleBackColor = true;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Location = new System.Drawing.Point(758, 16);
-            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(75, 28);
-            this.btnExcel.TabIndex = 117;
-            this.btnExcel.Text = "엑셀";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // ScheduleRegisterForm
             // 

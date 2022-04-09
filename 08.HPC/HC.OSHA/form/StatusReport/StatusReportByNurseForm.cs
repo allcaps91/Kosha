@@ -118,6 +118,8 @@ namespace HC_OSHA
             NumIsEduCount.SetOptions(new NumericUpDownOption { DataField = nameof(NursePerformContentJson.IsEduCount) });
             TxtIsEduTitle.SetOptions(new TextBoxOption { DataField = nameof(NursePerformContentJson.IsEduTitle) });
 
+            //작업장 순회 및 점검
+            ChkIsVisit.SetOptions(new CheckBoxOption { DataField = nameof(NursePerformContentJson.IsVisit), CheckValue = "Y", UnCheckValue = "N" });
             //건강증진
             ChkIsHealth1.SetOptions(new CheckBoxOption { DataField = nameof(NursePerformContentJson.IsHealth1), CheckValue = "Y", UnCheckValue = "N" });
             ChkIsHealth2.SetOptions(new CheckBoxOption { DataField = nameof(NursePerformContentJson.IsHealth2), CheckValue = "Y", UnCheckValue = "N" });
@@ -146,7 +148,6 @@ namespace HC_OSHA
             TxtOshaData.SetOptions(new TextBoxOption { DataField = nameof(NursePerformContentJson.OshaData) });
 
             //    Clear();
-
             ckEditor = new CkEditor("nurseCkeditor.html");
             browser = ckEditor.GetBrowser();
             PanWeb.Controls.Add(browser);

@@ -80,6 +80,7 @@ namespace HC_OSHA
             SQL = SQL + ComNum.VBLF + " FROM HIC_OSHA_EQUIPMENT A,HC_SITE_VIEW B ";
             SQL = SQL + ComNum.VBLF + "WHERE A.REGDATE >='" + cboYear.Text + "-01-01' ";
             SQL = SQL + ComNum.VBLF + "  AND A.REGDATE<='" + cboYear.Text + "-12-31' ";
+            SQL = SQL + ComNum.VBLF + "  AND A.ISDELETED='N' ";
             if (strLtdCode != "") SQL = SQL + ComNum.VBLF + " AND A.SITE_ID = " + strLtdCode + " ";
             SQL = SQL + ComNum.VBLF + "  AND A.SITE_ID = B.ID(+) ";
             SQL = SQL + ComNum.VBLF + "  AND A.SWLicense = '" + clsType.HosInfo.SwLicense + "' ";

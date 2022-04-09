@@ -1800,6 +1800,7 @@ namespace HC_OSHA.StatusReport
             DataTable dt = null;
 
             btnJekhap.Text = "업무적합성평가";
+            if (StatusReportDoctorDto == null) btnJekhap.Visible = false;
 
             SQL = "SELECT * FROM HIC_OSHA_WORKER_JINDAN ";
             SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
@@ -1809,7 +1810,11 @@ namespace HC_OSHA.StatusReport
             SQL = SQL + ComNum.VBLF + "   AND CHARTDATE>='" + DateUtil.DateTimeToStrig(DtpChartDate.Value, DateTimeType.YYYY) + "-01-01' ";
             SQL = SQL + ComNum.VBLF + "   AND CHARTDATE<='" + DateUtil.DateTimeToStrig(DtpChartDate.Value, DateTimeType.YYYY) + "-12-31' ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
-            if (dt.Rows.Count > 0) btnJekhap.Text = "업무적합성평가(" + dt.Rows.Count + ")";
+            if (dt.Rows.Count > 0)
+            {
+                btnJekhap.Text = "업무적합성평가(" + dt.Rows.Count + ")";
+                btnJekhap.Visible = true;
+            }
             dt.Dispose();
             dt = null;
 

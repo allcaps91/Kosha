@@ -35,7 +35,7 @@ namespace HC_OSHA
         private void SiteEquipMentForm_Load(object sender, EventArgs e)
         {
             SpreadComboBoxData EQUIP_NAME = codeService.GetSpreadComboBoxData("OSHA_EQUIPMENT_NAME", "OSHA");
-            SpreadComboBoxData EQUIP_MODELNAME = codeService.GetSpreadComboBoxData("OSHA_EQUIPMENT_MODELNAME", "OSHA");
+            //SpreadComboBoxData EQUIP_MODELNAME = codeService.GetSpreadComboBoxData("OSHA_EQUIPMENT_MODELNAME", "OSHA");
             SpreadComboBoxData users = userService.GetSpreadByOsha();
             SSList.Initialize(new SpreadOption() { IsRowSelectColor = false });
             SSList.AddColumnDateTime("사용일자", nameof(HC_OSHA_EQUIPMENT.REGDATE), 120, IsReadOnly.N, DateTimeType.YYYY_MM_DD, new SpreadCellTypeOption { IsShowCalendarButton = true, dateTimeEditorValue = FarPoint.Win.Spread.CellType.DateTimeEditorValue.String });
