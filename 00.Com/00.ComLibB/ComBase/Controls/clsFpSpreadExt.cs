@@ -1361,8 +1361,7 @@ namespace ComBase.Controls
 
         /// <summary>
         /// 로우추가
-        /// 기본값 세팅하기 -> DTO 생성자에서 기본값 설
-        /// 정
+        /// 기본값 세팅하기 -> DTO 생성자에서 기본값 설정
         /// </summary>
         /// <param name="fpSpread"></param>
         public static int AddRows(this FpSpread fpSpread, int addRowCount = 1)

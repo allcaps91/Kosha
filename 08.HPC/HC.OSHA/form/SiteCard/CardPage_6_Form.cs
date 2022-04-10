@@ -42,9 +42,8 @@ namespace HC_OSHA
             SSList.AddColumnDateTime("제.개정일", nameof(HC_OSHA_CARD7.RULEDATE), 100, IsReadOnly.N, DateTimeType.YYYY_MM_DD, new SpreadCellTypeOption { IsShowCalendarButton = true, dateTimeEditorValue = FarPoint.Win.Spread.CellType.DateTimeEditorValue.String });
             SSList.AddColumnText("주요내용", nameof(HC_OSHA_CARD7.CONTENT), 350, IsReadOnly.N, new SpreadCellTypeOption { IsMulti=true,IsSort = false });
             SSList.AddColumnButton(" ", 60, new SpreadCellTypeOption { ButtonText = "삭제" }).ButtonClick += (s, ev) => { SSList.DeleteRow(ev.Row); };
-
       
-            SSList2.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeight= 50 });
+            SSList2.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeight= 52 });
             SSList2.AddColumnDateTime("회의개최일", nameof(HC_OSHA_CARD7_1.MEETDATE), 100, IsReadOnly.N, DateTimeType.YYYY_MM_DD, new SpreadCellTypeOption { IsShowCalendarButton = true, dateTimeEditorValue = FarPoint.Win.Spread.CellType.DateTimeEditorValue.String });
             SSList2.AddColumnText("정기임시회의여부", nameof(HC_OSHA_CARD7_1.ISREGULAR), 200, IsReadOnly.N, new SpreadCellTypeOption { IsMulti = false, IsSort = false });
             SSList2.AddColumnText("주요의견", nameof(HC_OSHA_CARD7_1.CONTENT), 350, IsReadOnly.N, new SpreadCellTypeOption { IsMulti = true, IsSort = false, Aligen = CellHorizontalAlignment.Left });
@@ -101,7 +100,7 @@ namespace HC_OSHA
         private void Clear()
         {
             int rowIndex = 3;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 4; i++)
             {
                 SSCard.ActiveSheet.Cells[rowIndex + i, 0].Text = string.Empty;
                 SSCard.ActiveSheet.Cells[rowIndex + i, 4].Text = string.Empty;
@@ -111,19 +110,19 @@ namespace HC_OSHA
             SSList.SetDataSource(new List<HC_OSHA_CARD7>());
             SSList2.SetDataSource(new List<HC_OSHA_CARD7_1>());
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 6; i++)
             {
-                SSCard.ActiveSheet.Cells[i + 15, 0].Value = "";
-                SSCard.ActiveSheet.Cells[i + 15, 4].Value = "";
-                SSCard.ActiveSheet.Cells[i + 15, 7].Value = "";
-                SSCard.ActiveSheet.Cells[i + 15,11].Value = "";
+                SSCard.ActiveSheet.Cells[i + 11, 0].Value = "";
+                SSCard.ActiveSheet.Cells[i + 11, 4].Value = "";
+                SSCard.ActiveSheet.Cells[i + 11, 7].Value = "";
+                SSCard.ActiveSheet.Cells[i + 11,11].Value = "";
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 6; i++)
             {
-                SSCard.ActiveSheet.Cells[i + 19, 0].Value = "";
-                SSCard.ActiveSheet.Cells[i + 19, 4].Value = "";
-                SSCard.ActiveSheet.Cells[i + 19, 7].Value = "";
-                SSCard.ActiveSheet.Cells[i + 19, 11].Value = "";
+                SSCard.ActiveSheet.Cells[i + 17, 0].Value = "";
+                SSCard.ActiveSheet.Cells[i + 17, 4].Value = "";
+                SSCard.ActiveSheet.Cells[i + 17, 7].Value = "";
+                SSCard.ActiveSheet.Cells[i + 17, 11].Value = "";
             }
         }
 
@@ -203,7 +202,7 @@ namespace HC_OSHA
             {
                 //  내용이 없으면 제목 표시줄에 해당없음 표시
                 SSCard.ActiveSheet.Cells[1, 0].Text = "7. 안전보건관리규정 제·개정내용 - 해당없음";
-                SSCard.ActiveSheet.Cells[13, 0].Text = "8. 산업안전보건위원회 운영 - 해당없음";
+                SSCard.ActiveSheet.Cells[9, 0].Text = "8. 산업안전보건위원회 운영 - 해당없음";
 
                 SSList.SetDataSource(new List<HC_OSHA_CARD7>());
                 SSList2.SetDataSource(new List<HC_OSHA_CARD7_1>());
@@ -221,15 +220,15 @@ namespace HC_OSHA
             List<HC_OSHA_CARD7_1> list = hcOshaCard7Service.FindAllByMeet(base.SelectedEstimate.ID, lastStartYear, lastEndYear);
 
             //  내용이 없으면 제목표시줄에 해당없음 표시
-            SSCard.ActiveSheet.Cells[13, 0].Text = "8. 산업안전보건위원회 운영 - 해당없음";
+            SSCard.ActiveSheet.Cells[9, 0].Text = "8. 산업안전보건위원회 운영 - 해당없음";
             for (int i=0; i<list.Count; i++)
             {
-                SSCard.ActiveSheet.Cells[13, 0].Text = "8. 산업안전보건위원회 운영";
+                SSCard.ActiveSheet.Cells[9, 0].Text = "8. 산업안전보건위원회 운영";
 
-                SSCard.ActiveSheet.Cells[i + 15, 0].Value = lastYear.Substring(2, 2);
-                SSCard.ActiveSheet.Cells[i + 15, 4].Value = list[i].MEETDATE;
-                SSCard.ActiveSheet.Cells[i + 15, 7].Value = list[i].ISREGULAR;
-                SSCard.ActiveSheet.Cells[i + 15, 11].Value = list[i].CONTENT;
+                SSCard.ActiveSheet.Cells[i + 11, 0].Value = lastYear.Substring(2, 2);
+                SSCard.ActiveSheet.Cells[i + 11, 4].Value = list[i].MEETDATE;
+                SSCard.ActiveSheet.Cells[i + 11, 7].Value = list[i].ISREGULAR;
+                SSCard.ActiveSheet.Cells[i + 11, 11].Value = list[i].CONTENT;
             }
 
             //금년
@@ -239,12 +238,12 @@ namespace HC_OSHA
 
             for (int i = 0; i < list2.Count; i++)
             {
-                SSCard.ActiveSheet.Cells[13, 0].Text = "8. 산업안전보건위원회 운영";
+                SSCard.ActiveSheet.Cells[9, 0].Text = "8. 산업안전보건위원회 운영";
 
-                SSCard.ActiveSheet.Cells[i + 19, 0].Value = year.Substring(2, 2);
-                SSCard.ActiveSheet.Cells[i + 19, 4].Value = list2[i].MEETDATE;
-                SSCard.ActiveSheet.Cells[i + 19, 7].Value = list2[i].ISREGULAR;
-                SSCard.ActiveSheet.Cells[i + 19, 11].Value = list2[i].CONTENT;
+                SSCard.ActiveSheet.Cells[i + 17, 0].Value = year.Substring(2, 2);
+                SSCard.ActiveSheet.Cells[i + 17, 4].Value = list2[i].MEETDATE;
+                SSCard.ActiveSheet.Cells[i + 17, 7].Value = list2[i].ISREGULAR;
+                SSCard.ActiveSheet.Cells[i + 17, 11].Value = list2[i].CONTENT;
             }
         }
 
