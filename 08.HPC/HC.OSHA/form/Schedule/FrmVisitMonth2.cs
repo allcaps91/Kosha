@@ -86,6 +86,7 @@ namespace HC_OSHA.form.Schedule
             string SQL = "";
             string SqlErr = "";
             DataTable dt = null;
+            DataTable dt1 = null;
             string strYYMM = "";
             string strDate = "";
             int nYY = 0;
@@ -160,6 +161,28 @@ namespace HC_OSHA.form.Schedule
                     {
                         nCol++;
                         SSList_Sheet1.ColumnHeader.Cells[0,nCol].Text = dt.Rows[i]["NAME"].ToString().Trim();
+
+                        //당월의 스케쥴을 읽어 표시함
+                        if (strNewData != strOldData)
+                        {
+                            SQL = "SELECT VISITDATE,SCHEDULE FROM HIC_USER_SCHEDULE ";
+                            SQL = SQL + ComNum.VBLF + "WHERE USERID='" + VB.Pstr(strNewData, "{}", 2) + "' ";
+                            SQL = SQL + ComNum.VBLF + "  AND VISITDATE>='" + VB.Left(strYYMM, 4) + "-" + VB.Right(strYYMM, 2) + "-01' ";
+                            SQL = SQL + ComNum.VBLF + "  AND VISITDATE<='" + VB.Left(strYYMM, 4) + "-" + VB.Right(strYYMM, 2) + "-31' ";
+                            SQL = SQL + ComNum.VBLF + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+                            SQL = SQL + ComNum.VBLF + "ORDER BY VISITDATE ";
+                            SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
+                            if (dt1.Rows.Count > 0)
+                            {
+                                for (int j = 0; j < dt1.Rows.Count; j++)
+                                {
+                                    nDD = Int32.Parse(VB.Right(dt1.Rows[j]["VISITDATE"].ToString().Trim(), 2));
+                                    SSList.ActiveSheet.Cells[nDD - 1, nCol].Text = "<" + dt1.Rows[j]["SCHEDULE"].ToString().Trim() + ">";
+                                }
+                            }
+                            dt1.Dispose();
+                            dt1 = null;
+                        }
                     }
                     nDD = Int32.Parse(VB.Right(dt.Rows[i]["VISITRESERVEDATE"].ToString().Trim(), 2));
                     strVisit = "";

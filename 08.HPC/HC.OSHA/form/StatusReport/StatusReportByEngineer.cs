@@ -241,7 +241,6 @@ namespace HC_OSHA
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
-
             //   browser.ExecuteScriptAsync("save()");
 
             //Cef.Shutdown();
@@ -254,12 +253,17 @@ namespace HC_OSHA
                 if(base.SelectedEstimate == null)
                 {
                     MessageUtil.Alert("계약 내용이 없습니다");
-                        return;
+                    return;
                 }
                 StatusReportEngineerDto dto = PanStatausReport.GetData<StatusReportEngineerDto>();
                 PanStatausReport.Validate<StatusReportEngineerDto>();
                 string jsonString = JsonConvert.SerializeObject(dto);
 
+                if (VB.Len(dto.OSHACONTENT)>50)
+                {
+                    MessageUtil.Alert("산업안전보건위원회 내용을 50자이내로 요약해 주세요.");
+                    return;
+                }
                 dto.SITE_ID = base.SelectedSite.ID;
                 dto.ESTIMATE_ID = base.SelectedEstimate.ID;
                 dto.ISDELETED = "N";
@@ -574,8 +578,6 @@ namespace HC_OSHA
                     statusReportViewer = new StatusReportViewer("statusReportByEngineer.html", base.SelectedSite.ID);
                     statusReportViewer.PrintStatusReportEngineerDto(dto, ContentTitle.TitleText);
                     statusReportViewer.ShowDialog();
-
-                    
                 }                
             }
         }
@@ -1006,7 +1008,14 @@ namespace HC_OSHA
         {
             clsDB.DisDBConnect(clsDB.DbCon);
             clsDB.DbCon = clsDB.DBConnect_Cloud();
-            ComFunc.MsgBox("DB 재접속 완료", "알림");
+            if (clsDB.DbCon == null)
+            {
+                ComFunc.MsgBox("DB 재접속 실패", "알림");
+            }
+            else
+            {
+                ComFunc.MsgBox("DB 재접속 완료", "알림");
+            }
         }
     }
 }

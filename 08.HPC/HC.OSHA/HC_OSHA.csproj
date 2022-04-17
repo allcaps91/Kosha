@@ -343,6 +343,12 @@
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_3.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_4.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_5.cs" />
+    <Compile Include="form\Report\FrmJekhapReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Report\FrmJekhapReport.Designer.cs">
+      <DependentUpon>FrmJekhapReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Report\FrmChuljangIlji.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -402,6 +408,12 @@
     </Compile>
     <Compile Include="form\Report\IncomeReport.Designer.cs">
       <DependentUpon>IncomeReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Schedule\FrmJikwonIljeng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Schedule\FrmJikwonIljeng.Designer.cs">
+      <DependentUpon>FrmJikwonIljeng.cs</DependentUpon>
     </Compile>
     <Compile Include="form\Schedule\FrmVisitMonth2.cs">
       <SubType>Form</SubType>
@@ -992,6 +1004,9 @@
     <EmbeddedResource Include="form\Management\SiteEquipMentForm.resx">
       <DependentUpon>SiteEquipMentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form\Report\FrmJekhapReport.resx">
+      <DependentUpon>FrmJekhapReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\Report\FrmChuljangIlji.resx">
       <DependentUpon>FrmChuljangIlji.cs</DependentUpon>
     </EmbeddedResource>
@@ -1021,6 +1036,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Report\IncomeReport.resx">
       <DependentUpon>IncomeReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Schedule\FrmJikwonIljeng.resx">
+      <DependentUpon>FrmJikwonIljeng.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Schedule\FrmVisitMonth2.resx">
       <DependentUpon>FrmVisitMonth2.cs</DependentUpon>

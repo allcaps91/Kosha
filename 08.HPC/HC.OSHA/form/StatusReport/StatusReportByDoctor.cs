@@ -723,7 +723,14 @@ namespace HC_OSHA.StatusReport
         {
             clsDB.DisDBConnect(clsDB.DbCon);
             clsDB.DbCon = clsDB.DBConnect_Cloud();
-            ComFunc.MsgBox("DB 재접속 완료", "알림");
+            if (clsDB.DbCon == null)
+            {
+                ComFunc.MsgBox("DB 재접속 실패", "알림");
+            }
+            else
+            {
+                ComFunc.MsgBox("DB 재접속 완료", "알림");
+            }
         }
     }
 }

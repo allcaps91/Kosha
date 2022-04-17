@@ -67,6 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmSignCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSignCopy.Designer.cs">
+      <DependentUpon>FrmSignCopy.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrnExcekTest1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmSignCopy.resx">
+      <DependentUpon>FrmSignCopy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrnExcekTest1.resx">
       <DependentUpon>FrnExcekTest1.cs</DependentUpon>
     </EmbeddedResource>

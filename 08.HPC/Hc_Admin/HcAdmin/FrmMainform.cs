@@ -67,12 +67,55 @@ namespace HcAdmin
 
                 clsDB.GetDbInfo();
                 clsDB.DbCon = clsDB.DBConnect_Cloud();
+
+                clsType.User.Sabun = "1";
+                clsType.User.IdNumber = "1";
+                clsType.User.JobName = "관리자";
+                clsType.User.UserName = "관리자";
+                clsType.User.BuseName = "OSHA";
+                clsType.User.Jikmu = "YYYYYYNNNNNNNNN";
+                clsType.User.LtdUser = "";
+                clsType.User.PassWord = "";
+
+                READ_Licno_Disk();
             }
             else
             {
                 ComFunc.MsgBox("관리자 비빌번호를 확인하세요");
             }
 
+        }
+
+        private bool READ_Licno_Disk()
+        {
+            string strPcData = "";
+            string strNewData = "";
+
+            clsType.HosInfo.SwLicense = "";
+            clsType.HosInfo.SwLicInfo = "";
+
+            //파일형식: 라이선스번호{}회사명{}종료일자{}관리자비번{}
+            string strLicFile = @"C:\HealthSoft\acledit392io87.dll";
+            if (System.IO.File.Exists(strLicFile) == true)
+            {
+                strPcData = System.IO.File.ReadAllText(strLicFile);
+                strNewData = clsAES.DeAES(strPcData);
+                if (VB.L(strNewData, "{}") != 5)
+                {
+                    ComFunc.MsgBox("라이선스 정보가 손상되어 종료됩니다.");
+                    return false;
+                }
+
+                clsType.HosInfo.SwLicense = VB.Pstr(strNewData, "{}", 1);
+                clsType.HosInfo.SwLicInfo = strNewData;
+
+                return true;
+            }
+            else
+            {
+                ComFunc.MsgBox("라이선스 정보가 손상되어 종료됩니다.");
+                return false;
+            }
         }
 
         private void CmdExit_Click_1(object sender, EventArgs e)
@@ -140,6 +183,12 @@ namespace HcAdmin
             {
                 ComFunc.MsgBox(strPath +" 폴더가 없습니다.");
             }
+        }
+
+        private void 싸인복사ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSignCopy form = new FrmSignCopy();
+            form.Show();
         }
     }
 }

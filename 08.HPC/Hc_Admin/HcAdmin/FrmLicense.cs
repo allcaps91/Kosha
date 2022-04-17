@@ -430,7 +430,41 @@ namespace HcAdmin
             strPcData = clsAES.AES(strNewData);
             System.IO.File.WriteAllText(@"C:\HealthSoft\acledit392io87.dll", strPcData);
 
+            READ_Licno_Disk();
+
             ComFunc.MsgBox("PC에 해당회사로 라이선스가 설정되었습니다.", "알림");
+        }
+
+        private bool READ_Licno_Disk()
+        {
+            string strPcData = "";
+            string strNewData = "";
+
+            clsType.HosInfo.SwLicense = "";
+            clsType.HosInfo.SwLicInfo = "";
+
+            //파일형식: 라이선스번호{}회사명{}종료일자{}관리자비번{}
+            string strLicFile = @"C:\HealthSoft\acledit392io87.dll";
+            if (System.IO.File.Exists(strLicFile) == true)
+            {
+                strPcData = System.IO.File.ReadAllText(strLicFile);
+                strNewData = clsAES.DeAES(strPcData);
+                if (VB.L(strNewData, "{}") != 5)
+                {
+                    ComFunc.MsgBox("라이선스 정보가 손상되어 종료됩니다.");
+                    return false;
+                }
+
+                clsType.HosInfo.SwLicense = VB.Pstr(strNewData, "{}", 1);
+                clsType.HosInfo.SwLicInfo = strNewData;
+
+                return true;
+            }
+            else
+            {
+                ComFunc.MsgBox("라이선스 정보가 손상되어 종료됩니다.");
+                return false;
+            }
         }
 
         private void 헬스소프트실행ToolStripMenuItem_Click_1(object sender, EventArgs e)

@@ -915,7 +915,24 @@ namespace HC_OSHA
         {
             clsDB.DisDBConnect(clsDB.DbCon);
             clsDB.DbCon = clsDB.DBConnect_Cloud();
-            ComFunc.MsgBox("DB 재접속 완료", "알림");
+            if (clsDB.DbCon == null)
+            {
+                ComFunc.MsgBox("DB 재접속 실패", "알림");
+            }
+            else
+            {
+                ComFunc.MsgBox("DB 재접속 완료", "알림");
+            }
+        }
+
+        private void 직원일정등록ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmJikwonIljeng().Show();
+        }
+
+        private void 업무적합성평가대장ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmJekhapReport().Show();
         }
     }
 }
