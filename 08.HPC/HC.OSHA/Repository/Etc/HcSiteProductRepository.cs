@@ -15,8 +15,8 @@ namespace HC.OSHA.Repository
         public HC_SITE_PRODUCT FindOne(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT * FROM HIC_SITE_PRODUCT    ");
-            parameter.AppendSql("WHERE ID = :ID                    ");
+            parameter.AppendSql("SELECT * FROM HIC_SITE_PRODUCT ");
+            parameter.AppendSql("WHERE ID = :ID ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", id);
@@ -27,10 +27,10 @@ namespace HC.OSHA.Repository
         public List<HC_SITE_PRODUCT> FindAll(long siteId)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT * FROM HIC_SITE_PRODUCT   ");
-            parameter.AppendSql("WHERE SITE_ID = :SITE_ID         ");
-            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE     ");
-            parameter.AppendSql("ORDER BY ID                      ");
+            parameter.AppendSql("SELECT * FROM HIC_SITE_PRODUCT ");
+            parameter.AppendSql("WHERE SITE_ID = :SITE_ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("ORDER BY ID ");
 
             parameter.Add("SITE_ID", siteId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);

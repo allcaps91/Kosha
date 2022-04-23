@@ -38,7 +38,6 @@ namespace HC_OSHA
             SSMSDSList.AddColumnText("단위", nameof(HC_SITE_MSDS_MODEL.UNIT), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.Always });
             SSMSDSList.AddColumnText("개정일자", nameof(HC_SITE_MSDS_MODEL.REVISIONDATE), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.Always });
             SSMSDSList.AddColumnImage("그림문자", nameof(HC_SITE_MSDS_MODEL.GHS_IMAGE), 100,  new SpreadCellTypeOption { IsSort = false });
-            
 
             SSMSDSList.AddColumnText("물질명", nameof(HC_SITE_MSDS_MODEL.NAME), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSMSDSList.AddColumnText("CasNo", nameof(HC_SITE_MSDS_MODEL.CASNO), 90, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
@@ -75,7 +74,6 @@ namespace HC_OSHA
             {
                 List<HC_SITE_MSDS_MODEL> list = hcSiteMsdsModelService.FindAll(base.SelectedSite.ID);
                 SSMSDSList.SetDataSource(list);
-
 
                 //imagecelltype은 자동머지가 안됨(MergePolicy) 수동으로 머지함.
                 List<GHSRowSpan> rowSpanList = new List<GHSRowSpan>();

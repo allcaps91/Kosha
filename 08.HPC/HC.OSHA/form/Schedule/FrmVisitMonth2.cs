@@ -64,7 +64,7 @@ namespace HC_OSHA.form.Schedule
             SSList.AddColumnText("요일", "", 40, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             for (i = 0; i < 30; i++)
             {
-                SSList.AddColumnText(" ", "", 124, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, WordWrap = true, IsMulti = true });
+                SSList.AddColumnText(" ", "", 124, IsReadOnly.Y, new SpreadCellTypeOption { Aligen = CellHorizontalAlignment.Left, IsSort = false, WordWrap = true, IsMulti = true });
             }
             SSList.ActiveSheet.RowCount = 0;
             SSList.ActiveSheet.RowCount = 31;

@@ -130,6 +130,18 @@ namespace HC_OSHA.StatusReport
 
             SSCard.ActiveSheet.RowCount = 2;
             SSView.ActiveSheet.RowCount = 2;
+
+            if (statusReportDoctorDto != null)
+            {
+                SSView.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(의사, " + SelectedSite.NAME + ")";
+                SSCard.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(의사, " + SelectedSite.NAME + ")";
+            }
+            else
+            {
+                SSView.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(간호사, " + SelectedSite.NAME + ")";
+                SSCard.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(간호사, " + SelectedSite.NAME + ")";
+            }
+
             int row = 2;
 
             for (int i = 0; i < list.Count; i++)

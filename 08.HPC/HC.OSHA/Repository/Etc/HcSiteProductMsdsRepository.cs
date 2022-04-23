@@ -17,27 +17,28 @@ namespace HC.OSHA.Repository
         public List<HC_SITE_PRODUCT_MSDS_MODEL> FindAll(long site_product_id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.Id, A.SITE_PRODUCT_ID, A.MSDS_ID, A.QTY,  B.NAME, B.CASNO, B.EXPOSURE_MATERIAL, B.WEM_MATERIAL, B.SPECIALHEALTH_MATERIAL, B.MANAGETARGET_MATERIAL,   ");
-            parameter.AppendSql("B.SPECIALMANAGE_MATERIAL, B.STANDARD_MATERIAL, B.PERMISSION_MATERIAL, B.PSM_MATERIAL, B.GHS_PICTURE, C.NAME AS MODIFIEDUSER  ");
-            parameter.AppendSql("FROM HIC_SITE_PRODUCT_MSDS A            ");
-            parameter.AppendSql("INNER JOIN HIC_MSDS B                   ");
-            parameter.AppendSql("ON A.MSDS_ID = B.ID                    ");
-            parameter.AppendSql("INNER JOIN HIC_USERS C                  ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = C.USERID           ");
-            parameter.AppendSql("WHERE A.SITE_PRODUCT_ID = :SITE_PRODUCT_ID  ");
-            parameter.AppendSql("  AND A.SWLICENSE = :SWLICENSE ");
-            parameter.AppendSql("  AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("SELECT A.Id, A.SITE_PRODUCT_ID, A.MSDS_ID, A.QTY,  B.NAME, B.CASNO,B.EXPOSURE_MATERIAL, ");
+            parameter.AppendSql("       B.WEM_MATERIAL, B.SPECIALHEALTH_MATERIAL, B.MANAGETARGET_MATERIAL, ");
+            parameter.AppendSql("       B.SPECIALMANAGE_MATERIAL, B.STANDARD_MATERIAL, B.PERMISSION_MATERIAL, ");
+            parameter.AppendSql("       B.PSM_MATERIAL, B.GHS_PICTURE, C.NAME AS MODIFIEDUSER  ");
+            parameter.AppendSql("  FROM HIC_SITE_PRODUCT_MSDS A ");
+            parameter.AppendSql("       INNER JOIN HIC_MSDS B ");
+            parameter.AppendSql("              ON A.MSDS_ID = B.ID ");
+            parameter.AppendSql("       INNER JOIN HIC_USERS C ");
+            parameter.AppendSql("             ON  A.MODIFIEDUSER = C.USERID ");
+            parameter.AppendSql("             AND C.SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql(" WHERE A.SITE_PRODUCT_ID = :SITE_PRODUCT_ID  ");
+            parameter.AppendSql("   AND A.SWLICENSE = :SWLICENSE ");
             parameter.Add("SITE_PRODUCT_ID", site_product_id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<HC_SITE_PRODUCT_MSDS_MODEL>(parameter);
-
         }
         public HC_SITE_PRODUCT_MSDS FindOne(long id)
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_SITE_PRODUCT_MSDS WHERE ID = :ID");
-            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
             return ExecuteReaderSingle<HC_SITE_PRODUCT_MSDS>(parameter);

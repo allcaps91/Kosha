@@ -13,6 +13,7 @@ using HC.Core.Service;
 using HC.Core.Common.Interface;
 using HC.OSHA.Dto;
 using HC.OSHA.Dto.StatusReport;
+using HC_OSHA.StatusReport;
 using HC.OSHA.Repository;
 using HC.OSHA.Repository.StatusReport;
 using HC.OSHA.Service.StatusReport;
@@ -59,6 +60,8 @@ namespace HC_OSHA
             SSList.AddColumnText("나이", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("업무적합성", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("발급자", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("회사코드", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, IsVisivle = false });
+            SSList.AddColumnText("사원ID", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, IsVisivle = false });
         }
 
         private void BtnSearchSite_Click(object sender, EventArgs e)
@@ -108,7 +111,8 @@ namespace HC_OSHA
             BtnPrint.Enabled = false;
             btnExcel.Enabled = false;
 
-            SQL = "SELECT A.CHARTDATE,A.NAME,A.BIRTH,A.SEX,A.AGE,A.GBJEKHAP,B.NAME AS LtdName,C.NAME AS USERNAME ";
+            SQL = "SELECT A.CHARTDATE,A.NAME,A.BIRTH,A.SEX,A.AGE,A.GBJEKHAP,B.NAME AS LtdName,C.NAME AS USERNAME, ";
+            SQL = SQL + ComNum.VBLF + "      A.SITE_ID,A.WORKER_ID ";
             SQL = SQL + ComNum.VBLF + " FROM HIC_OSHA_WORKER_JINDAN A,HC_SITE_VIEW B,HIC_USERS C ";
             SQL = SQL + ComNum.VBLF + "WHERE A.SWLicense='" + clsType.HosInfo.SwLicense + "' ";
             SQL = SQL + ComNum.VBLF + "  AND A.ISDELETED='N' ";
@@ -134,6 +138,8 @@ namespace HC_OSHA
                     SSList.ActiveSheet.Cells[i, 4].Text += dt.Rows[i]["SEX"].ToString().Trim();
                     SSList.ActiveSheet.Cells[i, 5].Text = dt.Rows[i]["GBJEKHAP"].ToString().Trim();
                     SSList.ActiveSheet.Cells[i, 6].Text = dt.Rows[i]["USERNAME"].ToString().Trim();
+                    SSList.ActiveSheet.Cells[i, 7].Text = dt.Rows[i]["SITE_ID"].ToString().Trim();
+                    SSList.ActiveSheet.Cells[i, 8].Text = dt.Rows[i]["WORKER_ID"].ToString().Trim();
 
                     SSList_Sheet1.Rows[i].Height = SSList_Sheet1.Rows[i].GetPreferredHeight() + 6;
                 }
@@ -168,6 +174,21 @@ namespace HC_OSHA
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void SSList_CellDoubleClick(object sender, CellClickEventArgs e)
+        {
+            string strSEND = "";
+
+            strSEND = SSList_Sheet1.Cells[e.Row, 7].Text.Trim() + "{}"; //회사코드
+            strSEND += SSList_Sheet1.Cells[e.Row, 1].Text.Trim() + "{}N{}"; //회사명,의사여부
+            strSEND += SSList_Sheet1.Cells[e.Row, 0].Text.Trim() + "{}"; //발급일자
+            strSEND += SSList_Sheet1.Cells[e.Row, 8].Text.Trim() + "{}"; //직원ID
+            strSEND += SSList_Sheet1.Cells[e.Row, 2].Text.Trim() + "{}"; //직원성명
+
+            FrmWorkerJiindan form = new FrmWorkerJiindan();
+            form.Show();
+            form.Set_Data(strSEND);
         }
     }
 }

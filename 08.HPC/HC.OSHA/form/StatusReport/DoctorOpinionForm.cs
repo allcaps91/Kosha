@@ -1,4 +1,5 @@
-﻿using ComBase.Controls;
+﻿using ComBase;
+using ComBase.Controls;
 using ComBase.Mvc.Enums;
 using ComBase.Mvc.Utils;
 using ComHpcLibB.Model;
@@ -21,9 +22,14 @@ namespace HC_OSHA.form.StatusReport
 {
     public partial class DoctorOpinionForm : CommonForm
     {
+        public delegate void OnMemoChangedHandle(string memo);
+        public event OnMemoChangedHandle MemoChanged;
+
         private StatusReportDoctorService statusReportDoctorService;
         private MacrowordService macrowordService;
         public StatusReportDoctorDto StatusReportDoctorDto { get; set; }
+        private bool bChanged = false;
+
         public DoctorOpinionForm()
         {
             InitializeComponent();
@@ -53,6 +59,12 @@ namespace HC_OSHA.form.StatusReport
             TxtOPINION.Text = dto.OPINION;
             this.SelectedSite = iSiteModel;
             this.SelectedEstimate = iEstimateModel;
+            Memo_Display();
+        }
+
+        public void SetMemo(string strMemo)
+        {
+            TxtMemo1.Text = strMemo;
         }
 
         private void BtnMacro_Click(object sender, EventArgs e)
@@ -86,13 +98,79 @@ namespace HC_OSHA.form.StatusReport
                 {
                     this.StatusReportDoctorDto.OPINION = TxtOPINION.Text;
                     statusReportDoctorService.UpdateOpinion(StatusReportDoctorDto);
-                    MessageUtil.Info("종합의견을 저장하였습니다.");
+                    if (Save_Memo(StatusReportDoctorDto.SITE_ID)==true)
+                    {
+                        MessageUtil.Info("종합의견을 저장하였습니다.");
+                    }
+                    //if (bChanged == true) MemoChanged(TxtMemo1.Text.Trim());
                 }
             }
             else
             {
                 MessageUtil.Info("상태보고서가 없습니다");
             }
+
+        }
+
+        //메모 저장
+        private bool Save_Memo(long SITE_ID)
+        {
+            string SQL = "";
+            string SqlErr = "";
+
+            int intRowAffected = 0;
+            DataTable dt = null;
+
+            //변경되지 않았으면 저장 안함
+            if (bChanged == false) return true;
+
+            //기존 메모내역을 읽음
+            SQL = "SELECT * FROM HIC_OSHA_MEMO ";
+            SQL = SQL + "WHERE SITEID=" + SITE_ID + " ";
+            SQL = SQL + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count == 0)
+            {
+                SQL = "INSERT INTO HIC_OSHA_MEMO (SITEID, MEMO,SWLICENSE) ";
+                SQL = SQL + "VALUES (" + SITE_ID + ",'" + TxtMemo1.Text.Trim() + "',";
+                SQL = SQL + "'" + clsType.HosInfo.SwLicense + "') ";
+            }
+            else
+            {
+                SQL = "UPDATE HIC_OSHA_MEMO SET MEMO='" + TxtMemo1.Text.Trim() + "' ";
+                SQL = SQL + "WHERE SITEID=" + SITE_ID + " ";
+                SQL = SQL + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            }
+            dt.Dispose();
+            dt = null;
+
+            SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+            if (SqlErr != "")
+            {
+                ComFunc.MsgBox("메모 업데이트 오류가 발생함", "알림");
+                Cursor.Current = Cursors.Default;
+                return false;
+            }
+            return true;
+
+        }
+
+        //메모 표시
+        private void Memo_Display()
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+
+            //기존 메모내역을 읽음
+            SQL = "SELECT * FROM HIC_OSHA_MEMO ";
+            SQL = SQL + "WHERE SITEID=" + StatusReportDoctorDto.SITE_ID + " ";
+            SQL = SQL + "  AND SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            TxtMemo1.Text = "";
+            if (dt.Rows.Count > 0) TxtMemo1.Text = dt.Rows[0]["MEMO"].ToString().Trim();
+            dt.Dispose();
+            dt = null;
         }
 
         private void BtnCard19_Click(object sender, EventArgs e)
@@ -123,6 +201,16 @@ namespace HC_OSHA.form.StatusReport
             {
                 TxtOPINION.Text = string.Empty;
             }
+        }
+
+        private void TxtMemo1_TextChanged(object sender, EventArgs e)
+        {
+            bChanged = true;
+        }
+
+        private void btnMemoRead_Click(object sender, EventArgs e)
+        {
+            Memo_Display();
         }
     }
 }

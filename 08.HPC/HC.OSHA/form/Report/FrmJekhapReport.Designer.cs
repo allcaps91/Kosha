@@ -41,6 +41,7 @@
             this.BtnSearch = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.formTItle1 = new ComBase.Mvc.UserControls.FormTItle();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
             this.panSearch.SuspendLayout();
@@ -57,6 +58,7 @@
             this.SSList_Sheet1});
             this.SSList.Size = new System.Drawing.Size(1224, 549);
             this.SSList.TabIndex = 18;
+            this.SSList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellDoubleClick);
             // 
             // SSList_Sheet1
             // 
@@ -109,6 +111,7 @@
             // 
             this.panSearch.BackColor = System.Drawing.Color.White;
             this.panSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panSearch.Controls.Add(this.label1);
             this.panSearch.Controls.Add(this.btnClose);
             this.panSearch.Controls.Add(this.TxtLtdcode);
             this.panSearch.Controls.Add(this.BtnSearchSite);
@@ -171,7 +174,7 @@
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(891, 6);
+            this.btnExcel.Location = new System.Drawing.Point(977, 7);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(75, 28);
@@ -191,7 +194,7 @@
             // 
             // BtnPrint
             // 
-            this.BtnPrint.Location = new System.Drawing.Point(810, 6);
+            this.BtnPrint.Location = new System.Drawing.Point(896, 7);
             this.BtnPrint.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnPrint.Name = "BtnPrint";
             this.BtnPrint.Size = new System.Drawing.Size(75, 28);
@@ -202,7 +205,7 @@
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(719, 8);
+            this.BtnSearch.Location = new System.Drawing.Point(805, 9);
             this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(75, 28);
@@ -235,6 +238,16 @@
             this.formTItle1.Size = new System.Drawing.Size(1224, 35);
             this.formTItle1.TabIndex = 17;
             this.formTItle1.TitleText = "업무적합성평가 대장";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(412, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(374, 17);
+            this.label1.TabIndex = 145;
+            this.label1.Text = "해당 줄을 더블클릭하시면 업무적합성평가 내역이 표시됩니다.";
             // 
             // FrmJekhapReport
             // 
@@ -269,5 +282,6 @@
         private System.Windows.Forms.Label label15;
         private ComBase.Mvc.UserControls.FormTItle formTItle1;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -201,6 +201,11 @@ namespace HC_OSHA.StatusReport
             }
         }
 
+        public void SetMemo(string strMemo)
+        {
+            TxtMemo.Text = strMemo;
+        }
+
         public void Clear()
         {
             DtpVisitDate.ValueChanged -= DtpVisitDate_ValueChanged;
@@ -412,10 +417,12 @@ namespace HC_OSHA.StatusReport
             if (memo != null)
             {
                 TxtMemo.Text = memo.MEMO;
+                doctorOpinionForm.SetMemo(memo.MEMO);
             }
             else
             {
                 TxtMemo.Text = "";
+                doctorOpinionForm.SetMemo("");
             }
         }
 
@@ -619,11 +626,22 @@ namespace HC_OSHA.StatusReport
             {
                 DoctorOpinionForm form = new DoctorOpinionForm();
                 form.SetDto(dto, base.SelectedSite, base.SelectedEstimate);
+                //form.MemoChanged += new EventHandler(memoChanged);
                 form.ShowDialog();
 
                 StatusReportDoctorDto saved = this.statusReportDoctorService.StatusReportDoctorRepository.FindOne(dto.ID);
                 SetData(saved);
             }
+        }
+
+        private void memoChanged(string memo)
+        {
+            TxtMemo.Text += memo;
+        }
+
+        private void memoChanged()
+        {
+            TxtMemo.Text += "변경됨";
         }
 
         private void BtnPopup1_Click(object sender, EventArgs e)
@@ -731,6 +749,22 @@ namespace HC_OSHA.StatusReport
             {
                 ComFunc.MsgBox("DB 재접속 완료", "알림");
             }
+        }
+
+        private void btnMemoRead_Click(object sender, EventArgs e)
+        {
+            HIC_OSHA_MEMO memo = statusReportMemoRepository.FindOne(base.SelectedSite.ID);
+            if (memo != null)
+            {
+                TxtMemo.Text = memo.MEMO;
+                doctorOpinionForm.SetMemo(memo.MEMO);
+            }
+            else
+            {
+                TxtMemo.Text = "";
+                doctorOpinionForm.SetMemo("");
+            }
+
         }
     }
 }

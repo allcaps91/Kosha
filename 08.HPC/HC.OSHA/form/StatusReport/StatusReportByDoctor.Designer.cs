@@ -37,6 +37,7 @@
             this.BtnSaup = new System.Windows.Forms.Button();
             this.BtnOpinion = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnMemoRead = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtMemo = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -344,6 +345,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnMemoRead);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.TxtMemo);
             this.panel2.Controls.Add(this.panel3);
@@ -354,28 +356,38 @@
             this.panel2.Size = new System.Drawing.Size(1283, 556);
             this.panel2.TabIndex = 214;
             // 
+            // btnMemoRead
+            // 
+            this.btnMemoRead.Location = new System.Drawing.Point(797, 524);
+            this.btnMemoRead.Name = "btnMemoRead";
+            this.btnMemoRead.Size = new System.Drawing.Size(86, 25);
+            this.btnMemoRead.TabIndex = 340;
+            this.btnMemoRead.Text = "더사앍가";
+            this.btnMemoRead.UseVisualStyleBackColor = true;
+            this.btnMemoRead.Click += new System.EventHandler(this.btnMemoRead_Click);
+            // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(651, 484);
+            this.label3.Location = new System.Drawing.Point(797, 484);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.label3.Size = new System.Drawing.Size(84, 66);
+            this.label3.Size = new System.Drawing.Size(84, 35);
             this.label3.TabIndex = 216;
             this.label3.Text = "참고사항";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TxtMemo
             // 
-            this.TxtMemo.Location = new System.Drawing.Point(741, 484);
+            this.TxtMemo.Location = new System.Drawing.Point(887, 484);
             this.TxtMemo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtMemo.Multiline = true;
             this.TxtMemo.Name = "TxtMemo";
             this.TxtMemo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TxtMemo.Size = new System.Drawing.Size(490, 66);
+            this.TxtMemo.Size = new System.Drawing.Size(384, 66);
             this.TxtMemo.TabIndex = 333;
             this.TxtMemo.Tag = "chk42Content";
             // 
@@ -653,7 +665,7 @@
             this.GrpPerformContent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GrpPerformContent.Name = "GrpPerformContent";
             this.GrpPerformContent.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.GrpPerformContent.Size = new System.Drawing.Size(1273, 486);
+            this.GrpPerformContent.Size = new System.Drawing.Size(1273, 474);
             this.GrpPerformContent.TabIndex = 116;
             this.GrpPerformContent.TabStop = false;
             this.GrpPerformContent.Text = "2. 업무수행내용";
@@ -2758,5 +2770,6 @@
         private System.Windows.Forms.Button BtnSaup;
         private System.Windows.Forms.Button btnBogen;
         private System.Windows.Forms.Button btnDB재접속;
+        private System.Windows.Forms.Button btnMemoRead;
     }
 }

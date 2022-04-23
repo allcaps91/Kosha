@@ -46,9 +46,9 @@ namespace HC_OSHA
             nYY = Int32.Parse(VB.Left(strYYMM, 4));
             nMM = Int32.Parse(VB.Right(strYYMM, 2));
 
-            nMM++;
-            if (nMM == 13) { nMM = 1; nYY++; }
-            for (i = 0; i < 12; i++)
+            nMM = nMM + 9;
+            if (nMM >= 13) { nMM = nMM - 12; nYY++; }
+            for (i = 0; i < 14; i++)
             {
                 cboYYMM.Items.Add(nYY.ToString() + "-" + VB.Format(nMM, "00"));
                 nMM--;
@@ -58,7 +58,7 @@ namespace HC_OSHA
                     nYY--;
                 }
             }
-            cboYYMM.SelectedIndex = 1;
+            cboYYMM.SelectedIndex = 9;
 
             SSList.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true, RowHeaderVisible = true, ColumnHeaderHeight = 40 });
             SSList.AddColumnText("사번", "", 50, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });

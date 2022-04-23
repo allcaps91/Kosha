@@ -255,15 +255,22 @@ namespace HC_OSHA
                     MessageUtil.Alert("계약 내용이 없습니다");
                     return;
                 }
-                StatusReportEngineerDto dto = PanStatausReport.GetData<StatusReportEngineerDto>();
-                PanStatausReport.Validate<StatusReportEngineerDto>();
-                string jsonString = JsonConvert.SerializeObject(dto);
 
-                if (VB.Len(dto.OSHACONTENT)>50)
+                if (VB.Len(TxtOSHACONTENT.Text.Trim()) > 50)
                 {
                     MessageUtil.Alert("산업안전보건위원회 내용을 50자이내로 요약해 주세요.");
                     return;
                 }
+
+                //crlf를 제거함
+                TxtOSHACONTENT.Text = VB.Replace(TxtOSHACONTENT.Text, "\r", "");
+                TxtOSHACONTENT.Text = VB.Replace(TxtOSHACONTENT.Text, "\n", "");
+                TxtOSHACONTENT.Text = VB.Replace(TxtOSHACONTENT.Text, "'", "`");
+
+                StatusReportEngineerDto dto = PanStatausReport.GetData<StatusReportEngineerDto>();
+                PanStatausReport.Validate<StatusReportEngineerDto>();
+                string jsonString = JsonConvert.SerializeObject(dto);
+
                 dto.SITE_ID = base.SelectedSite.ID;
                 dto.ESTIMATE_ID = base.SelectedEstimate.ID;
                 dto.ISDELETED = "N";
@@ -574,7 +581,7 @@ namespace HC_OSHA
                             statusReportViewer.Dispose();
                         }
                     }
-                    
+
                     statusReportViewer = new StatusReportViewer("statusReportByEngineer.html", base.SelectedSite.ID);
                     statusReportViewer.PrintStatusReportEngineerDto(dto, ContentTitle.TitleText);
                     statusReportViewer.ShowDialog();

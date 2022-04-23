@@ -37,6 +37,9 @@
             this.label90 = new System.Windows.Forms.Label();
             this.BtnCard19 = new System.Windows.Forms.Button();
             this.BtnClear = new System.Windows.Forms.Button();
+            this.TxtMemo1 = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.btnMemoRead = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ssMacroList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ssMacroList_Sheet1)).BeginInit();
@@ -74,7 +77,7 @@
             this.ssMacroList.Name = "ssMacroList";
             this.ssMacroList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.ssMacroList_Sheet1});
-            this.ssMacroList.Size = new System.Drawing.Size(384, 636);
+            this.ssMacroList.Size = new System.Drawing.Size(384, 436);
             this.ssMacroList.TabIndex = 151;
             this.ssMacroList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.ssMacroList_CellDoubleClick);
             // 
@@ -150,11 +153,48 @@
             this.BtnClear.UseVisualStyleBackColor = true;
             this.BtnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
+            // TxtMemo1
+            // 
+            this.TxtMemo1.Location = new System.Drawing.Point(830, 518);
+            this.TxtMemo1.Multiline = true;
+            this.TxtMemo1.Name = "TxtMemo1";
+            this.TxtMemo1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TxtMemo1.Size = new System.Drawing.Size(384, 162);
+            this.TxtMemo1.TabIndex = 184;
+            this.TxtMemo1.TextChanged += new System.EventHandler(this.TxtMemo1_TextChanged);
+            // 
+            // label30
+            // 
+            this.label30.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label30.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label30.Location = new System.Drawing.Point(830, 490);
+            this.label30.Name = "label30";
+            this.label30.Padding = new System.Windows.Forms.Padding(3);
+            this.label30.Size = new System.Drawing.Size(91, 25);
+            this.label30.TabIndex = 183;
+            this.label30.Text = "참고사항";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnMemoRead
+            // 
+            this.btnMemoRead.Location = new System.Drawing.Point(927, 490);
+            this.btnMemoRead.Name = "btnMemoRead";
+            this.btnMemoRead.Size = new System.Drawing.Size(86, 25);
+            this.btnMemoRead.TabIndex = 341;
+            this.btnMemoRead.Text = "더사앍가";
+            this.btnMemoRead.UseVisualStyleBackColor = true;
+            this.btnMemoRead.Click += new System.EventHandler(this.btnMemoRead_Click);
+            // 
             // DoctorOpinionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1223, 692);
+            this.Controls.Add(this.btnMemoRead);
+            this.Controls.Add(this.TxtMemo1);
+            this.Controls.Add(this.label30);
             this.Controls.Add(this.BtnClear);
             this.Controls.Add(this.BtnCard19);
             this.Controls.Add(this.ChkOverWrite);
@@ -185,5 +225,8 @@
         private System.Windows.Forms.Label label90;
         private System.Windows.Forms.Button BtnCard19;
         private System.Windows.Forms.Button BtnClear;
+        private System.Windows.Forms.TextBox TxtMemo1;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Button btnMemoRead;
     }
 }
