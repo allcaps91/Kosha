@@ -109,6 +109,7 @@ namespace HC_OSHA.StatusReport
                
                 CefSharp.Cef.Initialize(settings);
                 CefSharpSettings.LegacyJavascriptBindingEnabled = true;
+                settings.EnablePrintPreview();
 
             }
             else

@@ -83,7 +83,7 @@ namespace HC_OSHA
             if (clsType.User.IdNumber != "1")
             {
                 검진결과ToolStripMenuItem.Visible = false;
-                작업환경측정관리ToolStripMenuItem.Visible = false;
+                //작업환경측정관리ToolStripMenuItem.Visible = true;
                 //사업장현황ToolStripMenuItem.Visible = false;
                 //사업장별상담대장ToolStripMenuItem.Visible = false;
                 //수령증발급대장ToolStripMenuItem.Visible = false;
