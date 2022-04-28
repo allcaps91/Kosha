@@ -183,7 +183,7 @@
             this.btnMemoRead.Name = "btnMemoRead";
             this.btnMemoRead.Size = new System.Drawing.Size(86, 25);
             this.btnMemoRead.TabIndex = 341;
-            this.btnMemoRead.Text = "더사앍가";
+            this.btnMemoRead.Text = "다시읽기";
             this.btnMemoRead.UseVisualStyleBackColor = true;
             this.btnMemoRead.Click += new System.EventHandler(this.btnMemoRead_Click);
             // 

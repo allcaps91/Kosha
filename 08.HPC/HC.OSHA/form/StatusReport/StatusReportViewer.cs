@@ -292,18 +292,12 @@ namespace HC_OSHA.StatusReport
             {
                 pdfFileName = this.title + "_" + statusReportDoctorDto.VISITDATE;
             }
-                
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "PDF |*.pdf";
-            saveFileDialog1.Title = "PDF로 저장하기";
-            saveFileDialog1.FileName = pdfFileName+".pdf";
-            saveFileDialog1.ShowDialog();
-          
-            if (saveFileDialog1.FileName != "")
-            {
-                browser.PrintToPdfAsync(saveFileDialog1.FileName);
-            }
-            //   browser.PrintToPdfAsync
+
+            string fileName = @"c:\\temp\\" + pdfFileName + ".pdf";
+
+            browser.PrintToPdfAsync(fileName);
+
+            MessageUtil.Info("temp 폴더에 저장하였습니다");
         }
 
         private void BtnSendMail_Click(object sender, EventArgs e)

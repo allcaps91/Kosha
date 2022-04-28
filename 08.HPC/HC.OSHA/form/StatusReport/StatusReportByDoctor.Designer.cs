@@ -362,7 +362,7 @@
             this.btnMemoRead.Name = "btnMemoRead";
             this.btnMemoRead.Size = new System.Drawing.Size(86, 25);
             this.btnMemoRead.TabIndex = 340;
-            this.btnMemoRead.Text = "더사앍가";
+            this.btnMemoRead.Text = "다시읽기";
             this.btnMemoRead.UseVisualStyleBackColor = true;
             this.btnMemoRead.Click += new System.EventHandler(this.btnMemoRead_Click);
             // 
@@ -1013,7 +1013,7 @@
             // checkBox20
             // 
             this.checkBox20.AutoSize = true;
-            this.checkBox20.Location = new System.Drawing.Point(609, 447);
+            this.checkBox20.Location = new System.Drawing.Point(620, 447);
             this.checkBox20.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox20.Name = "checkBox20";
             this.checkBox20.Size = new System.Drawing.Size(136, 21);
@@ -1025,7 +1025,7 @@
             // checkBox19
             // 
             this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(494, 447);
+            this.checkBox19.Location = new System.Drawing.Point(510, 447);
             this.checkBox19.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox19.Name = "checkBox19";
             this.checkBox19.Size = new System.Drawing.Size(105, 21);
@@ -1037,7 +1037,7 @@
             // checkBox17
             // 
             this.checkBox17.AutoSize = true;
-            this.checkBox17.Location = new System.Drawing.Point(308, 447);
+            this.checkBox17.Location = new System.Drawing.Point(320, 447);
             this.checkBox17.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox17.Name = "checkBox17";
             this.checkBox17.Size = new System.Drawing.Size(180, 21);
@@ -1052,10 +1052,10 @@
             this.checkBox18.Location = new System.Drawing.Point(167, 447);
             this.checkBox18.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox18.Name = "checkBox18";
-            this.checkBox18.Size = new System.Drawing.Size(136, 21);
+            this.checkBox18.Size = new System.Drawing.Size(149, 21);
             this.checkBox18.TabIndex = 306;
             this.checkBox18.Tag = "chk31";
-            this.checkBox18.Text = "업무상질 예방지도";
+            this.checkBox18.Text = "업무상질병 예방지도";
             this.checkBox18.UseVisualStyleBackColor = true;
             // 
             // label54

@@ -471,6 +471,8 @@ namespace HC_OSHA.StatusReport
 
         private void BtnPdf_Click(object sender, EventArgs e)
         {
+            string title = "";
+
             try
             {
                 if (SelectedSite == null)
@@ -483,6 +485,7 @@ namespace HC_OSHA.StatusReport
                 PrintSignModel model = new PrintSignModel();
                 if (this.statusReportDoctorDto != null)
                 {
+                    title = "근로자 건강상담_의사_";
                     statusReportDoctorDto = this.statusReportDoctorRepository.FindOne(statusReportDoctorDto.ID);
                     if (statusReportDoctorDto != null)
                     {
@@ -501,6 +504,7 @@ namespace HC_OSHA.StatusReport
                 }
                 else if (this.statusReportNurseDto != null)
                 {
+                    title = "근로자 건강상담_간호사_";
                     statusReportNurseDto = this.statusReportNurseRepository.FindOne(statusReportNurseDto.ID);
                     if (statusReportNurseDto != null)
                     {
@@ -530,23 +534,18 @@ namespace HC_OSHA.StatusReport
                     }
 
                 }
-               
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "PDF |*.pdf";
-                saveFileDialog1.Title = "PDF로 저장하기";
-                saveFileDialog1.ShowDialog();
-                if (saveFileDialog1.FileName != "")
-                {
-                    SpreadPrint sp = new SpreadPrint(SSCard, PrintStyle.STANDARD_APPROVAL_SIGN, true); ;
-                    if (this.SelectedSite != null)
-                    {
-                        sp.SiteName = SelectedSite.NAME;
-                    }
-                    sp.PrintSignModel = model;
-                    sp.ExportPDF(saveFileDialog1.FileName);
 
-                    MessageUtil.Info("PDF를 저장하였습니다");
+                string pdfFileName = @"c:\\temp\\" + title + SelectedSite.NAME + ".pdf";
+
+                SpreadPrint sp = new SpreadPrint(SSCard, PrintStyle.STANDARD_APPROVAL_SIGN, true); ;
+                if (this.SelectedSite != null)
+                {
+                    sp.SiteName = SelectedSite.NAME;
                 }
+                sp.PrintSignModel = model;
+                sp.ExportPDF(pdfFileName);
+
+                MessageUtil.Info("temp 폴더에 저장하였습니다");
                 
             }
             catch(Exception ex)

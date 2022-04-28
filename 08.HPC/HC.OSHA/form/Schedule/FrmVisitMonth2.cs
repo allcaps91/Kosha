@@ -60,7 +60,8 @@ namespace HC_OSHA.form.Schedule
             }
             cboYYMM.SelectedIndex = 1;
 
-            SSList.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true, RowHeaderVisible = true, ColumnHeaderHeight = 30 });
+            SSList.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true, RowHeaderVisible = false, ColumnHeaderHeight = 30 });
+            SSList.AddColumnText("일자", "", 40, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("요일", "", 40, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             for (i = 0; i < 30; i++)
             {
@@ -68,7 +69,6 @@ namespace HC_OSHA.form.Schedule
             }
             SSList.ActiveSheet.RowCount = 0;
             SSList.ActiveSheet.RowCount = 31;
-
         }
 
 
@@ -119,8 +119,11 @@ namespace HC_OSHA.form.Schedule
             //시트 Clear
             for (int j = 1; j < SSList.ActiveSheet.ColumnCount; j++)
             {
-                SSList_Sheet1.ColumnHeader.Columns[j].Width = 124;
-                SSList_Sheet1.ColumnHeader.Columns[j].Visible = true;
+                if (j>2)
+                {
+                    SSList_Sheet1.ColumnHeader.Columns[j].Width = 124;
+                    SSList_Sheet1.ColumnHeader.Columns[j].Visible = true;
+                }
                 for (int i = 0; i < SSList.ActiveSheet.RowCount; i++)
                 {
                     SSList.ActiveSheet.Cells[i, j].Text = "";
@@ -131,7 +134,8 @@ namespace HC_OSHA.form.Schedule
             for (int i = 1; i <= nDD; i++)
             {
                 strDate = VB.Left(strYYMM, 4) + "-" + VB.Right(strYYMM, 2) + "-" + VB.Format(i, "00");
-                SSList.ActiveSheet.Cells[i - 1, 0].Text = VB.Left(clsVbfunc.GetYoIl(strDate), 1);
+                SSList.ActiveSheet.Cells[i - 1, 0].Text = VB.Format(i, "00") + "일";
+                SSList.ActiveSheet.Cells[i - 1, 1].Text = VB.Left(clsVbfunc.GetYoIl(strDate), 1);
             }
 
             SQL = "SELECT DECODE(C.ROLE,'DOCTOR','1','NURSE','2','3') AS ROLE,C.USERID,C.NAME, ";
@@ -148,7 +152,7 @@ namespace HC_OSHA.form.Schedule
             SQL = SQL + ComNum.VBLF + "ORDER BY ROLE,C.NAME,A.VISITRESERVEDATE,A.VISITSTARTTIME,LTDNAME ";
             SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
             strOldData = "";
-            nCol = 0;
+            nCol = 1;
             if (dt.Rows.Count > 0)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)

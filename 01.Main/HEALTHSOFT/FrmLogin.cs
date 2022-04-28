@@ -1,4 +1,5 @@
 ﻿using ComBase;
+using ComBase.Mvc.Utils;
 using HC_OSHA;
 using System;
 using System.Data;
@@ -79,9 +80,11 @@ namespace HEALTHSOFT
             //버전정보가 틀리면 자동 업데이트
             if (FstrOldVer != FstrNewVer)
             {
-                ComFunc.MsgBox("프로그램이 업데이트 됩니다.");
-                btnUpdate_Click();
-                return;
+                if (MessageUtil.Confirm("나중에 다시 업데이트를 하시겠습니까?") == DialogResult.No)
+                {
+                    btnUpdate_Click();
+                    return;
+                }
             }
 
             if (txtIdNumber.Text.Trim() == "admin")

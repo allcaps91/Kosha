@@ -58,7 +58,7 @@
             this.SSList_Sheet1});
             this.SSList.Size = new System.Drawing.Size(1234, 832);
             this.SSList.TabIndex = 19;
-            this.SSList.SetViewportLeftColumn(0, 0, 1);
+            this.SSList.SetViewportLeftColumn(0, 0, 2);
             this.SSList.SetActiveViewport(0, 0, -1);
             // 
             // SSList_Sheet1
@@ -154,13 +154,14 @@
             this.SSList_Sheet1.FilterBarHeaderStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SSList_Sheet1.FilterBarHeaderStyle.Parent = "RowHeaderDefaultEnhanced";
             this.SSList_Sheet1.FilterBarHeaderStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            this.SSList_Sheet1.FrozenColumnCount = 1;
+            this.SSList_Sheet1.FrozenColumnCount = 2;
             this.SSList_Sheet1.HorizontalGridLine = new FarPoint.Win.Spread.GridLine(FarPoint.Win.Spread.GridLineType.Raised);
             this.SSList_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SSList_Sheet1.RowHeader.DefaultStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SSList_Sheet1.RowHeader.DefaultStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SSList_Sheet1.RowHeader.DefaultStyle.Parent = "RowHeaderDefaultEnhanced";
             this.SSList_Sheet1.RowHeader.DefaultStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
+            this.SSList_Sheet1.RowHeader.Visible = false;
             this.SSList_Sheet1.SheetCornerStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SSList_Sheet1.SheetCornerStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SSList_Sheet1.SheetCornerStyle.Parent = "CornerDefaultEnhanced";
