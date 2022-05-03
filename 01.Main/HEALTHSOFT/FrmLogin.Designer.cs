@@ -117,7 +117,6 @@
             this.btnExit.TabIndex = 86;
             this.btnExit.Text = "종  료";
             this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnLogin
             // 
@@ -129,7 +128,6 @@
             this.btnLogin.TabIndex = 85;
             this.btnLogin.Text = "로  그  인";
             this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblLicno
             // 

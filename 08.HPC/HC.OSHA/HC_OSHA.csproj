@@ -235,6 +235,12 @@
     <Compile Include="form\Etc\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\Management\FrmExcelUpload7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Management\FrmExcelUpload7.Designer.cs">
+      <DependentUpon>FrmExcelUpload7.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Management\FrmExcelupload6.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -964,6 +970,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Etc\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Management\FrmExcelUpload7.resx">
+      <DependentUpon>FrmExcelUpload7.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Management\FrmExcelupload6.resx">
       <DependentUpon>FrmExcelupload6.cs</DependentUpon>
