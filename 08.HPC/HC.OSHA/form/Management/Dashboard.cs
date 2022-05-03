@@ -934,5 +934,10 @@ namespace HC_OSHA
         {
             new FrmJekhapReport().Show();
         }
+
+        private void 기업건강증진지수업로드ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmExcelUpload7().Show();
+        }
     }
 }

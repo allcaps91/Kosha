@@ -77,10 +77,12 @@ namespace HEALTHSOFT
 
         private void DoLogin()
         {
+            string strUpdate = "프로그램이 업데이트 되었습니다." + "\n" + "나중에 다시 업데이트를 하시겠습니까?";
+
             //버전정보가 틀리면 자동 업데이트
             if (FstrOldVer != FstrNewVer)
             {
-                if (MessageUtil.Confirm("나중에 다시 업데이트를 하시겠습니까?") == DialogResult.No)
+                if (MessageUtil.Confirm(strUpdate) == DialogResult.No)
                 {
                     btnUpdate_Click();
                     return;
@@ -455,16 +457,6 @@ namespace HEALTHSOFT
 
             intDelay = 0;
             timer1.Enabled = true;
-
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
 
         }
     }
