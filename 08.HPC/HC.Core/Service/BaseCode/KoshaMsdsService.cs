@@ -19,7 +19,7 @@ namespace HC.Core.Service
     public class KoshaMsdsService
     {
      
-        string serviceKey = "rCX%2BNeuRBFI%2BQL1nZZJ%2BdfZ5Ue2jqKVMhRWELOxsY0w02puA56c8XQpklGlySvzsFneHmIPe4Z11dxmhkqSZiA%3D%3D";
+        string serviceKey = "C3R4Jvh4rUUOEaIdjWLAUrpwZDN1QDM2Cylg36lZRvniNr8GXa3eG0UERXmEgL7mecFmDPE7pmhZ6Mr3iQVLMA%3D%3D";
         string hostUrl = "http://msds.kosha.or.kr/openapi/service/msdschem";
         /// <summary>
         /// kosha 물질 검색
