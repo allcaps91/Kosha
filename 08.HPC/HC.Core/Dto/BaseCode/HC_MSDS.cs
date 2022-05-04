@@ -79,25 +79,13 @@ namespace HC.Core.BaseCode.MSDS.Dto
         public string MODIFIEDUSER { get; set; }
         public DateTime? CREATED { get; set; }
         public string CREATEDUSER { get; set; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
         /// <summary>
         /// 
         /// </summary>
         public HC_MSDS()
         {
+
         }
     }
 }

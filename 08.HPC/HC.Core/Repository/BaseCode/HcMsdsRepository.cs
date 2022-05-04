@@ -15,9 +15,9 @@ namespace HC.Core.BaseCode.MSDS.Repository
         public List<HC_MSDS> FindByName(string name)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS MODIFIEDUSER FROM HIC_MSDS A          ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                                       ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = B.USERID                                ");
+            parameter.AppendSql("SELECT A.*, B.NAME AS MODIFIEDUSER FROM HIC_MSDS A ");
+            parameter.AppendSql("INNER JOIN HIC_USERS B ");
+            parameter.AppendSql("ON A.MODIFIEDUSER = B.USERID ");
             parameter.AppendSql("WHERE A.NAME LIKE :NAME ");
             parameter.AppendSql("ORDER BY A.NAME");
             parameter.AddLikeStatement("NAME", name);
@@ -26,9 +26,9 @@ namespace HC.Core.BaseCode.MSDS.Repository
         public HC_MSDS FindByCasNo(string casNo)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS MODIFIEDUSER FROM HIC_MSDS A          ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B                                       ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = B.USERID                                ");
+            parameter.AppendSql("SELECT A.*, B.NAME AS MODIFIEDUSER FROM HIC_MSDS A ");
+            parameter.AppendSql("INNER JOIN HIC_USERS B ");
+            parameter.AppendSql("ON A.MODIFIEDUSER = B.USERID ");
             parameter.AppendSql("WHERE A.CASNO LIKE :CASNO ");
             parameter.AppendSql("ORDER BY A.CASNO");
             parameter.AddLikeStatement("CASNO", casNo);
@@ -48,7 +48,7 @@ namespace HC.Core.BaseCode.MSDS.Repository
         public void Delete(long id)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("Delete FROM HIC_MSDS                                                         ");
+            parameter.AppendSql("Delete FROM HIC_MSDS ");
             parameter.AppendSql("WHERE ID = :ID ");
             parameter.Add("ID", id);
 
