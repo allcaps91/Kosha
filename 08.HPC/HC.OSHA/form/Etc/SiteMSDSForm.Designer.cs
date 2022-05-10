@@ -57,6 +57,7 @@
             this.LblProductName = new System.Windows.Forms.Label();
             this.contentTitle2 = new ComBase.Mvc.UserControls.ContentTitle();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnKosha = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tableBody.SuspendLayout();
             this.panBottomLeft.SuspendLayout();
@@ -435,11 +436,24 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnKosha
+            // 
+            this.btnKosha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnKosha.Location = new System.Drawing.Point(1006, 4);
+            this.btnKosha.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnKosha.Name = "btnKosha";
+            this.btnKosha.Size = new System.Drawing.Size(162, 28);
+            this.btnKosha.TabIndex = 36;
+            this.btnKosha.Text = "Kosha MSDS 찾기";
+            this.btnKosha.UseVisualStyleBackColor = true;
+            this.btnKosha.Click += new System.EventHandler(this.btnKosha_Click);
+            // 
             // SiteMSDSForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 871);
+            this.Controls.Add(this.btnKosha);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tableBody);
             this.Controls.Add(this.formTItle1);
@@ -501,5 +515,6 @@
         private System.Windows.Forms.Label LblProductName;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnKosha;
     }
 }

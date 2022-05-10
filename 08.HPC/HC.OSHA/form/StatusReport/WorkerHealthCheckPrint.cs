@@ -472,6 +472,7 @@ namespace HC_OSHA.StatusReport
         private void BtnPdf_Click(object sender, EventArgs e)
         {
             string title = "";
+            string pdfFileName = "";
 
             try
             {
@@ -485,7 +486,11 @@ namespace HC_OSHA.StatusReport
                 PrintSignModel model = new PrintSignModel();
                 if (this.statusReportDoctorDto != null)
                 {
-                    title = "근로자 건강상담_의사_";
+                    title =  "근로자 건강상담_의사_";
+                    pdfFileName = this.statusReportDoctorDto.VISITDATE + "_의사_" + SelectedSite.NAME;
+                    pdfFileName += "_근로자건강상담_" + this.statusReportDoctorDto.SITEMANAGERGRADE + "_";
+                    pdfFileName += this.statusReportDoctorDto.SITEMANAGERNAME + ".pdf";
+
                     statusReportDoctorDto = this.statusReportDoctorRepository.FindOne(statusReportDoctorDto.ID);
                     if (statusReportDoctorDto != null)
                     {
@@ -505,6 +510,10 @@ namespace HC_OSHA.StatusReport
                 else if (this.statusReportNurseDto != null)
                 {
                     title = "근로자 건강상담_간호사_";
+                    pdfFileName = this.statusReportNurseDto.VISITDATE + "_간호사_" + SelectedSite.NAME;
+                    pdfFileName += "_근로자건강상담_" + this.statusReportNurseDto.SITEMANAGERGRADE + "_";
+                    pdfFileName += this.statusReportNurseDto.SITEMANAGERNAME + ".pdf";
+
                     statusReportNurseDto = this.statusReportNurseRepository.FindOne(statusReportNurseDto.ID);
                     if (statusReportNurseDto != null)
                     {
@@ -535,7 +544,11 @@ namespace HC_OSHA.StatusReport
 
                 }
 
-                string pdfFileName = @"c:\\temp\\" + title + SelectedSite.NAME + ".pdf";
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                dialog.ShowDialog();
+                string strPath = dialog.SelectedPath;
+
+                string fileName = strPath + "\\" + pdfFileName;
 
                 SpreadPrint sp = new SpreadPrint(SSCard, PrintStyle.STANDARD_APPROVAL_SIGN, true); ;
                 if (this.SelectedSite != null)
@@ -543,12 +556,12 @@ namespace HC_OSHA.StatusReport
                     sp.SiteName = SelectedSite.NAME;
                 }
                 sp.PrintSignModel = model;
-                sp.ExportPDF(pdfFileName);
+                sp.ExportPDF(fileName);
 
-                MessageUtil.Info("temp 폴더에 저장하였습니다");
-                
+                MessageUtil.Info(strPath + " 폴더에 저장하였습니다");
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageUtil.Alert(ex.Message);
             }

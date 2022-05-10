@@ -87,7 +87,7 @@ namespace HC_Core.Macroword
         }
         public void SearchMacroword()
         {
-            List<MacrowordDto> list = macrowordService.FindAll(this.FormName, this.ControlId);
+            List<MacrowordDto> list = macrowordService.FindAll(this.FormName, this.ControlId, txtView.Text.Trim());
             SSList.SetDataSource(list);
         }
      
@@ -215,6 +215,11 @@ namespace HC_Core.Macroword
         public List<MacrowordDto> GetCard19List()
         {
             return this.card19List;
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            SearchMacroword();
         }
     }
 }

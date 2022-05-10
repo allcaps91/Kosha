@@ -43,6 +43,9 @@
             this.BtnDelete = new System.Windows.Forms.Button();
             this.SSList = new FarPoint.Win.Spread.FpSpread();
             this.SSList_Sheet1 = new FarPoint.Win.Spread.SheetView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtView = new System.Windows.Forms.TextBox();
+            this.btnView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDispSeq)).BeginInit();
@@ -224,11 +227,42 @@
             this.SSList_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SSList_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(125, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(141, 17);
+            this.label4.TabIndex = 144;
+            this.label4.Text = "찾으실 상용구 제목은?";
+            // 
+            // txtView
+            // 
+            this.txtView.Location = new System.Drawing.Point(272, 4);
+            this.txtView.Name = "txtView";
+            this.txtView.Size = new System.Drawing.Size(110, 25);
+            this.txtView.TabIndex = 137;
+            // 
+            // btnView
+            // 
+            this.btnView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnView.Location = new System.Drawing.Point(388, 4);
+            this.btnView.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(75, 25);
+            this.btnView.TabIndex = 145;
+            this.btnView.Text = "검색";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
             // MacrowordCkeditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1136, 660);
+            this.Controls.Add(this.btnView);
+            this.Controls.Add(this.txtView);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panWeb);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SSList);
@@ -244,6 +278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -264,5 +299,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtSUBTITLE;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtView;
+        private System.Windows.Forms.Button btnView;
     }
 }

@@ -84,6 +84,18 @@
       <DependentUpon>AutoCompleteMacro.cs</DependentUpon>
     </Compile>
     <Compile Include="Dto\AutoCompleteCode.cs" />
+    <Compile Include="form\Macroword\MacrowordCkeditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Macroword\MacrowordCkeditorForm.designer.cs">
+      <DependentUpon>MacrowordCkeditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Macroword\MacrowordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Macroword\MacrowordForm.designer.cs">
+      <DependentUpon>MacrowordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\SiteManagerPopupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,18 +148,6 @@
     <Compile Include="Dto\TaskHistory.cs" />
     <Compile Include="Dto\TreeViewItem.cs" />
     <Compile Include="form\Macroword\MacrowordCkEditorBound.cs" />
-    <Compile Include="form\Macroword\MacrowordCkeditorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\Macroword\MacrowordCkeditorForm.Designer.cs">
-      <DependentUpon>MacrowordCkeditorForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="form\Macroword\MacrowordForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\Macroword\MacrowordForm.Designer.cs">
-      <DependentUpon>MacrowordForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="form\TaskHistoryList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -245,14 +245,14 @@
     <EmbeddedResource Include="form\CommonForm.resx">
       <DependentUpon>CommonForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form\SiteManagerPopupForm.resx">
-      <DependentUpon>SiteManagerPopupForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="form\Macroword\MacrowordCkeditorForm.resx">
       <DependentUpon>MacrowordCkeditorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Macroword\MacrowordForm.resx">
       <DependentUpon>MacrowordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\SiteManagerPopupForm.resx">
+      <DependentUpon>SiteManagerPopupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\SignPad\SignPadForm.resx">
       <DependentUpon>SignPadForm.cs</DependentUpon>

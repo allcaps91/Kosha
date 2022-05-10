@@ -38,13 +38,14 @@ namespace HC.Core.Repository
         public List<MacrowordDto> FindAll(string formName, string controlId, string title)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.ID"   );
-            parameter.AppendSql("     , A.FORMNAME" );
-            parameter.AppendSql("     , A.CONTENT");
+            //parameter.AppendSql("SELECT A.ID"   );
+            //parameter.AppendSql("     , A.FORMNAME" );
+            //parameter.AppendSql("     , A.CONTENT");
+            parameter.AppendSql("SELECT *             ");
             parameter.AppendSql(" FROM HIC_MACROWORD A");
             parameter.AppendSql(" WHERE FORMNAME = :formName ");
             parameter.AppendSql(" AND CONTROL = :controlId ");
-            parameter.AppendSql(" AND TITLE LIKE '%"+title+"%'");
+            if (title != "") parameter.AppendSql(" AND TITLE LIKE '%"+title+"%' ");
             parameter.AppendSql(" ORDER BY DISPSEQ  ");
             parameter.Add("formName", formName);
             parameter.Add("controlId", controlId);

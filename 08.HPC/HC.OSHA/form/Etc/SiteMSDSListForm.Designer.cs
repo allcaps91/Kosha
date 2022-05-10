@@ -156,6 +156,7 @@
             this.contentTitle3.Size = new System.Drawing.Size(1264, 44);
             this.contentTitle3.TabIndex = 4;
             this.contentTitle3.TitleText = "화학물질 MSDS 목록 현황";
+            this.contentTitle3.Load += new System.EventHandler(this.contentTitle3_Load);
             // 
             // SiteMSDSListForm
             // 

@@ -502,8 +502,12 @@ namespace HC_OSHA
             StatusReportNurseDto dto = statusReportNurseService.StatusReportNurseRepository.FindLast(base.SelectedSite.ID);
             if (dto != null)
             {
+                Clear();
+                ckEditor.Clear();
+
                 dto.ID = 0;
                 dto.PERFORMCONTENT = null;
+                dto.OPINION = null;
                 dto.SANGDAMSIGN = "";
                 dto.VISITDATE = DateTime.Now.ToString("yyyyMMdd");
 

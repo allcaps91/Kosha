@@ -76,9 +76,7 @@ namespace HC.Core.BaseCode.MSDS.Dto
 		public string GHS_PICTURE { get; set; }
 
         public DateTime? MODIFIED { get; set; }
-        public string MODIFIEDUSER { get; set; }
         public DateTime? CREATED { get; set; }
-        public string CREATEDUSER { get; set; }
         
         /// <summary>
         /// 

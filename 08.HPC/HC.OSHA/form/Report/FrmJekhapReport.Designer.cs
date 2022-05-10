@@ -31,6 +31,7 @@
             this.SSList = new FarPoint.Win.Spread.FpSpread();
             this.SSList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.panSearch = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.TxtLtdcode = new System.Windows.Forms.TextBox();
             this.BtnSearchSite = new System.Windows.Forms.Button();
@@ -41,7 +42,6 @@
             this.BtnSearch = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.formTItle1 = new ComBase.Mvc.UserControls.FormTItle();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
             this.panSearch.SuspendLayout();
@@ -126,6 +126,16 @@
             this.panSearch.Name = "panSearch";
             this.panSearch.Size = new System.Drawing.Size(1224, 44);
             this.panSearch.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(412, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(374, 17);
+            this.label1.TabIndex = 145;
+            this.label1.Text = "해당 줄을 더블클릭하시면 업무적합성평가 내역이 표시됩니다.";
             // 
             // btnClose
             // 
@@ -239,16 +249,6 @@
             this.formTItle1.TabIndex = 17;
             this.formTItle1.TitleText = "업무적합성평가 대장";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(412, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(374, 17);
-            this.label1.TabIndex = 145;
-            this.label1.Text = "해당 줄을 더블클릭하시면 업무적합성평가 내역이 표시됩니다.";
-            // 
             // FrmJekhapReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -258,7 +258,9 @@
             this.Controls.Add(this.panSearch);
             this.Controls.Add(this.formTItle1);
             this.Name = "FrmJekhapReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "업무적합성평가 대장";
+            this.Load += new System.EventHandler(this.FrmJekhapReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).EndInit();
             this.panSearch.ResumeLayout(false);

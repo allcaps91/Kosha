@@ -39,6 +39,8 @@
             this.TxtMemo = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.GrpPerformContent = new System.Windows.Forms.GroupBox();
+            this.ChkIsVisit = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.BtnInfo = new System.Windows.Forms.Button();
             this.BtnLoadCount = new System.Windows.Forms.Button();
             this.TxtOshaData = new System.Windows.Forms.TextBox();
@@ -157,8 +159,6 @@
             this.ContentTitle = new ComBase.Mvc.UserControls.ContentTitle();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDB재접속 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ChkIsVisit = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.TabReport.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -448,6 +448,31 @@
             this.GrpPerformContent.TabIndex = 116;
             this.GrpPerformContent.TabStop = false;
             this.GrpPerformContent.Text = "2. 업무수행내용";
+            // 
+            // ChkIsVisit
+            // 
+            this.ChkIsVisit.AutoSize = true;
+            this.ChkIsVisit.Location = new System.Drawing.Point(625, 314);
+            this.ChkIsVisit.Name = "ChkIsVisit";
+            this.ChkIsVisit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ChkIsVisit.Size = new System.Drawing.Size(146, 21);
+            this.ChkIsVisit.TabIndex = 342;
+            this.ChkIsVisit.Text = "작업장 순회 및 점검";
+            this.ChkIsVisit.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(387, 312);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(3);
+            this.label4.Size = new System.Drawing.Size(135, 30);
+            this.label4.TabIndex = 341;
+            this.label4.Text = "작업장 순회 및 점검";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BtnInfo
             // 
@@ -1790,7 +1815,7 @@
             // 
             this.PanWeb.Location = new System.Drawing.Point(6, 38);
             this.PanWeb.Name = "PanWeb";
-            this.PanWeb.Size = new System.Drawing.Size(858, 666);
+            this.PanWeb.Size = new System.Drawing.Size(858, 711);
             this.PanWeb.TabIndex = 1;
             // 
             // SaveOpinionBtn
@@ -1848,31 +1873,6 @@
             this.btnDB재접속.Text = "DB 재접속";
             this.btnDB재접속.UseVisualStyleBackColor = true;
             this.btnDB재접속.Click += new System.EventHandler(this.btnDB재접속_Click);
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(387, 312);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(3);
-            this.label4.Size = new System.Drawing.Size(135, 30);
-            this.label4.TabIndex = 341;
-            this.label4.Text = "작업장 순회 및 점검";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ChkIsVisit
-            // 
-            this.ChkIsVisit.AutoSize = true;
-            this.ChkIsVisit.Location = new System.Drawing.Point(625, 314);
-            this.ChkIsVisit.Name = "ChkIsVisit";
-            this.ChkIsVisit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ChkIsVisit.Size = new System.Drawing.Size(146, 21);
-            this.ChkIsVisit.TabIndex = 342;
-            this.ChkIsVisit.Text = "작업장 순회 및 점검";
-            this.ChkIsVisit.UseVisualStyleBackColor = true;
             // 
             // StatusReportByNurseForm
             // 

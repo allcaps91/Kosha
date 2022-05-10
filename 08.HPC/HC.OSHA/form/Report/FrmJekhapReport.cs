@@ -187,8 +187,14 @@ namespace HC_OSHA
             strSEND += SSList_Sheet1.Cells[e.Row, 2].Text.Trim() + "{}"; //직원성명
 
             FrmWorkerJiindan form = new FrmWorkerJiindan();
-            form.Show();
             form.Set_Data(strSEND);
+            form.Owner = this;
+            form.Show();
+        }
+
+        private void FrmJekhapReport_Load(object sender, EventArgs e)
+        {
+            BtnSearchSite.Location = new System.Drawing.Point(344, 7);
         }
     }
 }

@@ -15,22 +15,18 @@ namespace HC.Core.BaseCode.MSDS.Repository
         public List<HC_MSDS> FindByName(string name)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS MODIFIEDUSER FROM HIC_MSDS A ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = B.USERID ");
-            parameter.AppendSql("WHERE A.NAME LIKE :NAME ");
-            parameter.AppendSql("ORDER BY A.NAME");
+            parameter.AppendSql("SELECT * FROM HIC_MSDS ");
+            parameter.AppendSql("WHERE NAME LIKE :NAME ");
+            parameter.AppendSql("ORDER BY NAME");
             parameter.AddLikeStatement("NAME", name);
             return ExecuteReader<HC_MSDS>(parameter);
         }
         public HC_MSDS FindByCasNo(string casNo)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("SELECT A.*, B.NAME AS MODIFIEDUSER FROM HIC_MSDS A ");
-            parameter.AppendSql("INNER JOIN HIC_USERS B ");
-            parameter.AppendSql("ON A.MODIFIEDUSER = B.USERID ");
-            parameter.AppendSql("WHERE A.CASNO LIKE :CASNO ");
-            parameter.AppendSql("ORDER BY A.CASNO");
+            parameter.AppendSql("SELECT * FROM HIC_MSDS ");
+            parameter.AppendSql("WHERE CASNO LIKE :CASNO ");
+            parameter.AppendSql("ORDER BY CASNO");
             parameter.AddLikeStatement("CASNO", casNo);
             return ExecuteReaderSingle<HC_MSDS>(parameter);
         }
@@ -62,46 +58,14 @@ namespace HC.Core.BaseCode.MSDS.Repository
             dto.ID = id;
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO HIC_MSDS                                                          ");
-            parameter.AppendSql("(                                                                            ");
-            parameter.AppendSql("  ID,                                                                        ");
-            parameter.AppendSql("  CHEMID,                                                                    ");
-            parameter.AppendSql("  NAME,                                                                      ");
-            parameter.AppendSql("  CASNO,                                                                     ");
-            parameter.AppendSql("  EXPOSURE_MATERIAL,                                                         ");
-            parameter.AppendSql("  WEM_MATERIAL,                                                              ");
-            parameter.AppendSql("  SPECIALHEALTH_MATERIAL,                                                    ");
-            parameter.AppendSql("  MANAGETARGET_MATERIAL,                                                     ");
-            parameter.AppendSql("  SPECIALMANAGE_MATERIAL,                                                    ");
-            parameter.AppendSql("  STANDARD_MATERIAL,                                                         ");
-            parameter.AppendSql("  PERMISSION_MATERIAL,                                                       ");
-            parameter.AppendSql("  PSM_MATERIAL,                                                              ");
-            parameter.AppendSql("  GHS_PICTURE,                                                               ");
-            parameter.AppendSql("  MODIFIED,                                                                  ");
-            parameter.AppendSql("  MODIFIEDUSER,                                                              ");
-            parameter.AppendSql("  CREATED,                                                                   ");
-            parameter.AppendSql("  CREATEDUSER                                                                ");
-            parameter.AppendSql(")                                                                            ");
-            parameter.AppendSql("VALUES                                                                       ");
-            parameter.AppendSql("(                                                                            ");
-            parameter.AppendSql("  :ID,                                                                        ");
-            parameter.AppendSql("  :CHEMID,                                                                    ");
-            parameter.AppendSql("  :NAME,                                                                     ");
-            parameter.AppendSql("  :CASNO,                                                                    ");
-            parameter.AppendSql("  :EXPOSURE_MATERIAL,                                                        ");
-            parameter.AppendSql("  :WEM_MATERIAL,                                                             ");
-            parameter.AppendSql("  :SPECIALHEALTH_MATERIAL,                                                   ");
-            parameter.AppendSql("  :MANAGETARGET_MATERIAL,                                                    ");
-            parameter.AppendSql("  :SPECIALMANAGE_MATERIAL,                                                   ");
-            parameter.AppendSql("  :STANDARD_MATERIAL,                                                        ");
-            parameter.AppendSql("  :PERMISSION_MATERIAL,                                                      ");
-            parameter.AppendSql("  :PSM_MATERIAL,                                                             ");
-            parameter.AppendSql("  :GHS_PICTURE,                                                              ");
-            parameter.AppendSql("  SYSTIMESTAMP,                                                                ");
-            parameter.AppendSql("  :MODIFIEDUSER,                                                                ");
-            parameter.AppendSql("  SYSTIMESTAMP,                                                                ");
-            parameter.AppendSql("  :CREATEDUSER                                                                ");
-            parameter.AppendSql(")                                                                           ");
+            parameter.AppendSql("INSERT INTO HIC_MSDS ( ");
+            parameter.AppendSql("  ID,CHEMID,NAME,CASNO,EXPOSURE_MATERIAL,WEM_MATERIAL,SPECIALHEALTH_MATERIAL,");
+            parameter.AppendSql("  MANAGETARGET_MATERIAL,SPECIALMANAGE_MATERIAL,STANDARD_MATERIAL,");
+            parameter.AppendSql("  PERMISSION_MATERIAL,PSM_MATERIAL,GHS_PICTURE,MODIFIED,CREATED) ");
+            parameter.AppendSql("VALUES ( ");
+            parameter.AppendSql("  :ID,:CHEMID,:NAME,:CASNO,:EXPOSURE_MATERIAL,:WEM_MATERIAL,:SPECIALHEALTH_MATERIAL,");
+            parameter.AppendSql("  :MANAGETARGET_MATERIAL,:SPECIALMANAGE_MATERIAL,:STANDARD_MATERIAL,");
+            parameter.AppendSql("  :PERMISSION_MATERIAL,:PSM_MATERIAL,:GHS_PICTURE,SYSTIMESTAMP,SYSTIMESTAMP ) ");
             parameter.Add("ID", dto.ID);
             parameter.Add("CHEMID", dto.CHEMID);
             parameter.Add("NAME", dto.NAME);
@@ -115,8 +79,6 @@ namespace HC.Core.BaseCode.MSDS.Repository
             parameter.Add("PERMISSION_MATERIAL", dto.PERMISSION_MATERIAL);
             parameter.Add("PSM_MATERIAL", dto.PSM_MATERIAL);
             parameter.Add("GHS_PICTURE", dto.GHS_PICTURE);
-            parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
-            parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
             ExecuteNonQuery(parameter);
 
             return FindById(id);
@@ -126,24 +88,23 @@ namespace HC.Core.BaseCode.MSDS.Repository
         public HC_MSDS Update(HC_MSDS dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_MSDS                                                              ");
-            parameter.AppendSql("SET                                                                         ");
-            parameter.AppendSql("  ID = :ID,                                                                  ");
-            parameter.AppendSql("  CHEMID = :CHEMID,                                                        ");
-            parameter.AppendSql("  NAME = :NAME,                                                              ");
-            parameter.AppendSql("  CASNO = :CASNO,                                                            ");
-            parameter.AppendSql("  EXPOSURE_MATERIAL = :EXPOSURE_MATERIAL,                                    ");
-            parameter.AppendSql("  WEM_MATERIAL = :WEM_MATERIAL,                                              ");
-            parameter.AppendSql("  SPECIALHEALTH_MATERIAL = :SPECIALHEALTH_MATERIAL,                          ");
-            parameter.AppendSql("  MANAGETARGET_MATERIAL = :MANAGETARGET_MATERIAL,                            ");
-            parameter.AppendSql("  SPECIALMANAGE_MATERIAL = :SPECIALMANAGE_MATERIAL,                          ");
-            parameter.AppendSql("  STANDARD_MATERIAL = :STANDARD_MATERIAL,                                    ");
-            parameter.AppendSql("  PERMISSION_MATERIAL = :PERMISSION_MATERIAL,                                ");
-            parameter.AppendSql("  PSM_MATERIAL = :PSM_MATERIAL,                                              ");
-            parameter.AppendSql("  GHS_PICTURE = :GHS_PICTURE,                                                ");
-            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,                                                    ");
-            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER                                                    ");
-            parameter.AppendSql("  WHERE ID = :ID                                                            ");
+            parameter.AppendSql("UPDATE HIC_MSDS ");
+            parameter.AppendSql("SET ");
+            parameter.AppendSql("  ID = :ID, ");
+            parameter.AppendSql("  CHEMID = :CHEMID, ");
+            parameter.AppendSql("  NAME = :NAME, ");
+            parameter.AppendSql("  CASNO = :CASNO, ");
+            parameter.AppendSql("  EXPOSURE_MATERIAL = :EXPOSURE_MATERIAL, ");
+            parameter.AppendSql("  WEM_MATERIAL = :WEM_MATERIAL, ");
+            parameter.AppendSql("  SPECIALHEALTH_MATERIAL = :SPECIALHEALTH_MATERIAL, ");
+            parameter.AppendSql("  MANAGETARGET_MATERIAL = :MANAGETARGET_MATERIAL, ");
+            parameter.AppendSql("  SPECIALMANAGE_MATERIAL = :SPECIALMANAGE_MATERIAL, ");
+            parameter.AppendSql("  STANDARD_MATERIAL = :STANDARD_MATERIAL, ");
+            parameter.AppendSql("  PERMISSION_MATERIAL = :PERMISSION_MATERIAL, ");
+            parameter.AppendSql("  PSM_MATERIAL = :PSM_MATERIAL, ");
+            parameter.AppendSql("  GHS_PICTURE = :GHS_PICTURE, ");
+            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP ");
+            parameter.AppendSql("  WHERE ID = :ID ");
             parameter.Add("ID", dto.ID);
             parameter.Add("CHEMID", dto.CHEMID);
             parameter.Add("NAME", dto.NAME);
@@ -157,8 +118,6 @@ namespace HC.Core.BaseCode.MSDS.Repository
             parameter.Add("PERMISSION_MATERIAL", dto.PERMISSION_MATERIAL);
             parameter.Add("PSM_MATERIAL", dto.PSM_MATERIAL);
             parameter.Add("GHS_PICTURE", dto.GHS_PICTURE);
-            parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
-          
          
             ExecuteNonQuery(parameter);
 

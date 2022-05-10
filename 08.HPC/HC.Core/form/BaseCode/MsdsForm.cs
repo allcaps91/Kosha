@@ -68,8 +68,6 @@ namespace HC_Core
             SSMSDSList.AddColumnText("물질명", nameof(HC_MSDS.NAME), 271, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = SortIndicator.Ascending });
             SSMSDSList.AddColumnText("CasNo", nameof(HC_MSDS.CASNO), 144, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSMSDSList.AddColumnDateTime("수정일시", nameof(HC_MSDS.MODIFIED), 134, IsReadOnly.Y, DateTimeType.YYYY_MM_DD_HH_MM, new SpreadCellTypeOption { IsSort = true, IsShowCalendarButton = false });
-            SSMSDSList.AddColumnText("수정자", nameof(HC_MSDS.MODIFIEDUSER), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-
 
             TxtChemId.SetOptions(new TextBoxOption { DataField = nameof(HC_MSDS.CHEMID), ReadOnly = true });
             TxtName.SetOptions(new TextBoxOption { DataField = nameof(HC_MSDS.NAME) });
@@ -87,8 +85,6 @@ namespace HC_Core
            dto.GHS_PICTURE = koshaMsdsService.GetGHSPicture(model.ChemId);
 
            SetData(dto);
-            
-
 
         }
         private void SetData(HC_MSDS dto)
@@ -112,6 +108,7 @@ namespace HC_Core
 
             SetDataCheckOrTextBox(dto.PSM_MATERIAL, ChkPSM_MATERIAL, TxtPSM_MATERIAL);
 
+            if (GhsPicture.Controls.Count > 0) GhsPicture.Controls.Clear();
             if (dto.GHS_PICTURE != "자료없음")
             {
                 string[] pictures = dto.GHS_PICTURE.Split('|');

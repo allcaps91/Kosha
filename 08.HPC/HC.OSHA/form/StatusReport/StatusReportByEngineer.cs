@@ -488,18 +488,26 @@ namespace HC_OSHA
             panEduMethodJson.SetData(eduMethodJson);
 
             //작업환경점검1
-            ENVCHECKJSON1 envCheckJson1 = JsonConvert.DeserializeObject<ENVCHECKJSON1>(dto.ENVCHECKJSON1);
-            panENVCHECKJSON1.SetData(envCheckJson1);
-
+            if (dto.ENVCHECKJSON1 != null)
+            {
+                ENVCHECKJSON1 envCheckJson1 = JsonConvert.DeserializeObject<ENVCHECKJSON1>(dto.ENVCHECKJSON1);
+                panENVCHECKJSON1.SetData(envCheckJson1);
+            }
 
             //작업환경점검2
-            ENVCHECKJSON2 envCheckJson2 = JsonConvert.DeserializeObject<ENVCHECKJSON2>(dto.ENVCHECKJSON2);
-            panENVCHECKJSON2.SetData(envCheckJson2);
+            if (dto.ENVCHECKJSON2 != null)
+            {
+                ENVCHECKJSON2 envCheckJson2 = JsonConvert.DeserializeObject<ENVCHECKJSON2>(dto.ENVCHECKJSON2);
+                panENVCHECKJSON2.SetData(envCheckJson2);
+            }
+
 
             //작업환경점검3
-            ENVCHECKJSON3 envCheckJson3 = JsonConvert.DeserializeObject<ENVCHECKJSON3>(dto.ENVCHECKJSON3);
-            panENVCHECKJSON3.SetData(envCheckJson3);
-
+            if (dto.ENVCHECKJSON2 != null)
+            {
+                ENVCHECKJSON3 envCheckJson3 = JsonConvert.DeserializeObject<ENVCHECKJSON3>(dto.ENVCHECKJSON3);
+                panENVCHECKJSON3.SetData(envCheckJson3);
+            }
 
             string month = dto.VISITDATE.Substring(4, 2);
             if (month.StartsWith("0"))
@@ -774,9 +782,18 @@ namespace HC_OSHA
             StatusReportEngineerDto dto = statusReportEngineerService.StatusReportEngineerRepository.FindLast(base.SelectedSite.ID);
             if(dto != null)
             {
+                InitForm();
+                ckEditor.Clear();
+
                 dto.ID = 0;
+                //dto.PERFORMCONTENT = null;
+                dto.ENVCHECKJSON1 = null;
+                dto.ENVCHECKJSON2 = null;
+                dto.ENVCHECKJSON3 = null;
+                dto.OPINION = null;
+                dto.SITEMANAGERSIGN = null;
                 dto.VISITDATE = DateTime.Now.ToString("yyyyMMdd");
-                //dto.SITEMANAGERSIGN = "";
+
                 SetData(dto);
             }
         }

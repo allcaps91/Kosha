@@ -18,7 +18,6 @@ namespace HC.Core.Service
     /// </summary>
     public class KoshaMsdsService
     {
-     
         string serviceKey = "C3R4Jvh4rUUOEaIdjWLAUrpwZDN1QDM2Cylg36lZRvniNr8GXa3eG0UERXmEgL7mecFmDPE7pmhZ6Mr3iQVLMA%3D%3D";
         string hostUrl = "http://msds.kosha.or.kr/openapi/service/msdschem";
         /// <summary>
@@ -59,7 +58,7 @@ namespace HC.Core.Service
                 KoshaMsds model = new KoshaMsds();
                 model.ChemId = node.SelectSingleNode("chemId").InnerText;
                 model.CasNo = node.SelectSingleNode("casNo").InnerText;
-                model.ChemNameKor = node.SelectSingleNode("chemNameKor").InnerText;
+                model.ChemNameKor = node.SelectSingleNode("chemNameKor").InnerText.Replace("<br/>", "");
                 list.Add(model);
             }
             return list;

@@ -101,7 +101,7 @@
             this.formTItle1.Location = new System.Drawing.Point(0, 0);
             this.formTItle1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.formTItle1.Name = "formTItle1";
-            this.formTItle1.Size = new System.Drawing.Size(1264, 35);
+            this.formTItle1.Size = new System.Drawing.Size(1274, 35);
             this.formTItle1.TabIndex = 0;
             this.formTItle1.TitleText = "MSDS(KOSHA)";
             // 
@@ -113,7 +113,7 @@
             this.panLeft.Location = new System.Drawing.Point(3, 3);
             this.panLeft.Name = "panLeft";
             this.tableLayoutPanel1.SetRowSpan(this.panLeft, 2);
-            this.panLeft.Size = new System.Drawing.Size(402, 830);
+            this.panLeft.Size = new System.Drawing.Size(406, 830);
             this.panLeft.TabIndex = 1;
             // 
             // panKoshaBody
@@ -124,7 +124,7 @@
             this.panKoshaBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panKoshaBody.Location = new System.Drawing.Point(0, 38);
             this.panKoshaBody.Name = "panKoshaBody";
-            this.panKoshaBody.Size = new System.Drawing.Size(402, 792);
+            this.panKoshaBody.Size = new System.Drawing.Size(406, 792);
             this.panKoshaBody.TabIndex = 2;
             // 
             // SSKoshaList
@@ -136,7 +136,7 @@
             this.SSKoshaList.Name = "SSKoshaList";
             this.SSKoshaList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSKoshaList_Sheet1});
-            this.SSKoshaList.Size = new System.Drawing.Size(402, 743);
+            this.SSKoshaList.Size = new System.Drawing.Size(406, 743);
             this.SSKoshaList.TabIndex = 2;
             this.SSKoshaList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSKoshaList_CellDoubleClick);
             this.SSKoshaList.SetActiveViewport(0, -1, -1);
@@ -196,7 +196,7 @@
             this.panKoshaSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panKoshaSearch.Location = new System.Drawing.Point(0, 0);
             this.panKoshaSearch.Name = "panKoshaSearch";
-            this.panKoshaSearch.Size = new System.Drawing.Size(402, 49);
+            this.panKoshaSearch.Size = new System.Drawing.Size(406, 49);
             this.panKoshaSearch.TabIndex = 4;
             // 
             // RdoCasNo
@@ -246,7 +246,7 @@
             this.contentTitle1.Location = new System.Drawing.Point(0, 0);
             this.contentTitle1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.contentTitle1.Name = "contentTitle1";
-            this.contentTitle1.Size = new System.Drawing.Size(402, 38);
+            this.contentTitle1.Size = new System.Drawing.Size(406, 38);
             this.contentTitle1.TabIndex = 0;
             this.contentTitle1.TitleText = "MSDS KOSHA 검색";
             // 
@@ -264,7 +264,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.2823F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.7177F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1264, 836);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1274, 836);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panRightTop
@@ -273,9 +273,9 @@
             this.panRightTop.Controls.Add(this.panMSDSSearch);
             this.panRightTop.Controls.Add(this.contentTitle3);
             this.panRightTop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panRightTop.Location = new System.Drawing.Point(411, 3);
+            this.panRightTop.Location = new System.Drawing.Point(415, 3);
             this.panRightTop.Name = "panRightTop";
-            this.panRightTop.Size = new System.Drawing.Size(850, 406);
+            this.panRightTop.Size = new System.Drawing.Size(856, 406);
             this.panRightTop.TabIndex = 3;
             // 
             // SSMSDSList
@@ -287,7 +287,7 @@
             this.SSMSDSList.Name = "SSMSDSList";
             this.SSMSDSList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSMSDSList_Sheet1});
-            this.SSMSDSList.Size = new System.Drawing.Size(850, 319);
+            this.SSMSDSList.Size = new System.Drawing.Size(856, 319);
             this.SSMSDSList.TabIndex = 6;
             this.SSMSDSList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSMSDSList_CellDoubleClick);
             // 
@@ -342,7 +342,7 @@
             this.panMSDSSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panMSDSSearch.Location = new System.Drawing.Point(0, 38);
             this.panMSDSSearch.Name = "panMSDSSearch";
-            this.panMSDSSearch.Size = new System.Drawing.Size(850, 49);
+            this.panMSDSSearch.Size = new System.Drawing.Size(856, 49);
             this.panMSDSSearch.TabIndex = 7;
             // 
             // RdoMsdsCasNo
@@ -395,7 +395,7 @@
             this.contentTitle3.Location = new System.Drawing.Point(0, 0);
             this.contentTitle3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.contentTitle3.Name = "contentTitle3";
-            this.contentTitle3.Size = new System.Drawing.Size(850, 38);
+            this.contentTitle3.Size = new System.Drawing.Size(856, 38);
             this.contentTitle3.TabIndex = 5;
             this.contentTitle3.TitleText = "MSDS DB 목록";
             // 
@@ -404,9 +404,9 @@
             this.panRightBottom.Controls.Add(this.panMsds);
             this.panRightBottom.Controls.Add(this.contentTitle2);
             this.panRightBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panRightBottom.Location = new System.Drawing.Point(411, 415);
+            this.panRightBottom.Location = new System.Drawing.Point(415, 415);
             this.panRightBottom.Name = "panRightBottom";
-            this.panRightBottom.Size = new System.Drawing.Size(850, 418);
+            this.panRightBottom.Size = new System.Drawing.Size(856, 418);
             this.panRightBottom.TabIndex = 2;
             // 
             // panMsds
@@ -442,7 +442,7 @@
             this.panMsds.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panMsds.Location = new System.Drawing.Point(0, 38);
             this.panMsds.Name = "panMsds";
-            this.panMsds.Size = new System.Drawing.Size(850, 380);
+            this.panMsds.Size = new System.Drawing.Size(856, 380);
             this.panMsds.TabIndex = 1;
             // 
             // label4
@@ -676,14 +676,14 @@
             this.contentTitle2.Location = new System.Drawing.Point(0, 0);
             this.contentTitle2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.contentTitle2.Name = "contentTitle2";
-            this.contentTitle2.Size = new System.Drawing.Size(850, 38);
+            this.contentTitle2.Size = new System.Drawing.Size(856, 38);
             this.contentTitle2.TabIndex = 0;
             this.contentTitle2.TitleText = "MSDS DB 등록";
             // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(1184, 4);
+            this.btnExit.Location = new System.Drawing.Point(1194, 4);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 28);
@@ -696,7 +696,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 871);
+            this.ClientSize = new System.Drawing.Size(1274, 871);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.formTItle1);

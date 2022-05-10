@@ -280,24 +280,39 @@ namespace HC_OSHA.StatusReport
         private void BtnPdf_Click(object sender, EventArgs e)
         {
             string pdfFileName = "";
+
             if (statusReportEngineerDto != null)
             {
-                pdfFileName = this.title + "_" + statusReportEngineerDto.VISITDATE;
+                pdfFileName = statusReportEngineerDto.VISITDATE + "_산업위생_";
+                pdfFileName += VB.Trim(VB.Pstr(this.title, "-", 2)) + "_";
+                pdfFileName += statusReportEngineerDto.SITEMANAGERGRADE + "_";
+                pdfFileName += statusReportEngineerDto.SITEMANAGERNAME + ".pdf";
             }
             else if (statusReportNurseDto != null)
             {
-                pdfFileName = this.title + "_" + statusReportNurseDto.VISITDATE;
+                pdfFileName = statusReportNurseDto.VISITDATE + "_간호사_";
+                pdfFileName += VB.Trim(VB.Pstr(this.title, "-", 2)) + "_";
+                pdfFileName += statusReportNurseDto.SITEMANAGERGRADE + "_";
+                pdfFileName += statusReportNurseDto.SITEMANAGERNAME + ".pdf";
             }
             else if (statusReportDoctorDto != null)
             {
-                pdfFileName = this.title + "_" + statusReportDoctorDto.VISITDATE;
+                pdfFileName = statusReportDoctorDto.VISITDATE + "_의사_";
+                pdfFileName += VB.Trim(VB.Pstr(this.title,"-",2)) + "_";
+                pdfFileName += statusReportDoctorDto.SITEMANAGERGRADE + "_";
+                pdfFileName += statusReportDoctorDto.SITEMANAGERNAME + ".pdf";
             }
 
-            string fileName = @"c:\\temp\\" + pdfFileName + ".pdf";
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.SelectedPath = @"c:\\";
+            dialog.ShowDialog();
+            string strPath = dialog.SelectedPath;
+
+            string fileName = strPath + "\\" + pdfFileName;
 
             browser.PrintToPdfAsync(fileName);
 
-            MessageUtil.Info("temp 폴더에 저장하였습니다");
+            MessageUtil.Info(strPath + " 폴더에 저장하였습니다");
         }
 
         private void BtnSendMail_Click(object sender, EventArgs e)

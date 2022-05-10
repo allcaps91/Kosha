@@ -71,10 +71,7 @@ namespace HC_OSHA
             SSProduct.AddColumnText("월취급량", nameof(HC_SITE_PRODUCT.MONTHLYAMOUNT), 80, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSProduct.AddColumnComboBox("단위", nameof(HC_SITE_PRODUCT.UNIT), 100, IsReadOnly.N, EduTypeComboBoxData, new SpreadCellTypeOption { IsSort = false });
             SSProduct.AddColumnDateTime("개정일자", nameof(HC_SITE_PRODUCT.REVISIONDATE), 90, IsReadOnly.N, DateTimeType.YYYY_MM_DD, new SpreadCellTypeOption { IsSort = false, dateTimeEditorValue = DateTimeEditorValue.String });
-  //          SSProduct.AddColumnImage("그림문자", nameof(HC_SITE_PRODUCT.GhsImage), 270,  new SpreadCellTypeOption { IsSort = false});
-            //SSProduct.AddColumnButton("그림문자", 60, new SpreadCellTypeOption { ButtonText = "그림문자" }).ButtonClick += SSProduct_ImageButtonClick; ;
             SSProduct.AddColumnButton("삭제", 60, new SpreadCellTypeOption { ButtonText = "삭제" }).ButtonClick += SSProduct_DelteButtonClick; ;
-        //    SSProduct.SetHeaderColor(Color.Red);
             SearchProduct();
 
 
@@ -83,14 +80,14 @@ namespace HC_OSHA
       //      SSMSDSList.AddColumnText("CHEMID", nameof(HC_MSDS.ID), 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSMSDSList.AddColumnText("CasNo", nameof(HC_MSDS.CASNO), 70, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSMSDSList.AddColumnText("물질명", nameof(HC_MSDS.NAME), 170, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = SortIndicator.Ascending });
-            SSMSDSList.AddColumnText("노출기준설정", nameof(HC_MSDS.EXPOSURE_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("작업환경측정", nameof(HC_MSDS.WEM_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("특수건강진단", nameof(HC_MSDS.SPECIALHEALTH_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("관리대상유해", nameof(HC_MSDS.MANAGETARGET_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("특별관리", nameof(HC_MSDS.SPECIALMANAGE_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("허용기준설정", nameof(HC_MSDS.STANDARD_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("허가대상유해", nameof(HC_MSDS.PERMISSION_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("PSM제출대상", nameof(HC_MSDS.PSM_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("노출기준설정", nameof(HC_MSDS.EXPOSURE_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("작업환경측정", nameof(HC_MSDS.WEM_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("특수건강진단", nameof(HC_MSDS.SPECIALHEALTH_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("관리대상유해", nameof(HC_MSDS.MANAGETARGET_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("특별관리", nameof(HC_MSDS.SPECIALMANAGE_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("허용기준설정", nameof(HC_MSDS.STANDARD_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("허가대상유해", nameof(HC_MSDS.PERMISSION_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("PSM제출대상", nameof(HC_MSDS.PSM_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSMSDSList.AddColumnButton("", 60, new SpreadCellTypeOption { ButtonText = "추가" }).ButtonClick += SSMSDSList_AddButtonClick; ; ;
        
             SSProductMsds.Initialize(new SpreadOption() { IsRowSelectColor = false });
@@ -99,14 +96,14 @@ namespace HC_OSHA
             SSProductMsds.AddColumnText("CasNo", nameof(HC_SITE_PRODUCT_MSDS_MODEL.CASNO), 70, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSProductMsds.AddColumnText("물질명", nameof(HC_SITE_PRODUCT_MSDS_MODEL.NAME), 140, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = SortIndicator.Ascending });
             SSProductMsds.AddColumnText("함유량", nameof(HC_SITE_PRODUCT_MSDS_MODEL.QTY), 69, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, sortIndicator = SortIndicator.Ascending });
-            SSProductMsds.AddColumnText("노출기준설정", nameof(HC_SITE_PRODUCT_MSDS_MODEL.EXPOSURE_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSProductMsds.AddColumnText("작업환경측정", nameof(HC_SITE_PRODUCT_MSDS_MODEL.WEM_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSProductMsds.AddColumnText("특수건강진단", nameof(HC_SITE_PRODUCT_MSDS_MODEL.SPECIALHEALTH_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSProductMsds.AddColumnText("관리대상유해", nameof(HC_SITE_PRODUCT_MSDS_MODEL.MANAGETARGET_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSProductMsds.AddColumnText("특별관리", nameof(HC_SITE_PRODUCT_MSDS_MODEL.SPECIALMANAGE_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSProductMsds.AddColumnText("허용기준설정", nameof(HC_SITE_PRODUCT_MSDS_MODEL.STANDARD_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSProductMsds.AddColumnText("허가대상유해", nameof(HC_SITE_PRODUCT_MSDS_MODEL.PERMISSION_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSProductMsds.AddColumnText("PSM제출대상", nameof(HC_SITE_PRODUCT_MSDS_MODEL.PSM_MATERIAL), 34, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSProductMsds.AddColumnText("노출기준설정", nameof(HC_SITE_PRODUCT_MSDS_MODEL.EXPOSURE_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSProductMsds.AddColumnText("작업환경측정", nameof(HC_SITE_PRODUCT_MSDS_MODEL.WEM_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSProductMsds.AddColumnText("특수건강진단", nameof(HC_SITE_PRODUCT_MSDS_MODEL.SPECIALHEALTH_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSProductMsds.AddColumnText("관리대상유해", nameof(HC_SITE_PRODUCT_MSDS_MODEL.MANAGETARGET_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSProductMsds.AddColumnText("특별관리", nameof(HC_SITE_PRODUCT_MSDS_MODEL.SPECIALMANAGE_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSProductMsds.AddColumnText("허용기준설정", nameof(HC_SITE_PRODUCT_MSDS_MODEL.STANDARD_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSProductMsds.AddColumnText("허가대상유해", nameof(HC_SITE_PRODUCT_MSDS_MODEL.PERMISSION_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSProductMsds.AddColumnText("PSM제출대상", nameof(HC_SITE_PRODUCT_MSDS_MODEL.PSM_MATERIAL), 42, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSProductMsds.AddColumnButton("", 50, new SpreadCellTypeOption { ButtonText = "삭제" }).ButtonClick += SSProductMsds_DeleteButtonClick;
 
             SSProductMsds.SetDataSource(new List<HC_SITE_PRODUCT_MSDS_MODEL>());
@@ -345,6 +342,13 @@ namespace HC_OSHA
         private void SiteMSDSForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.SiteMSDSListForm.Search();
+        }
+
+        private void btnKosha_Click(object sender, EventArgs e)
+        {
+            MsdsForm form = new MsdsForm();
+            form.Owner = this;
+            form.Show();
         }
     }
 }

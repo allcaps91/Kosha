@@ -31,7 +31,6 @@ namespace HC.Core.Service
             return this.MacrowordRepository.FindAll(formName, controlId);
         }
 
-
         public List<MacrowordDto> FindAll(string formName, string controlId, string title)
         {
             return this.MacrowordRepository.FindAll(formName, controlId, title);
