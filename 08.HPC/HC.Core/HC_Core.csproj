@@ -910,8 +910,8 @@
     <None Include="Resources\GHS09.gif" />
     <None Include="Resources\GHS01.gif" />
     <None Include="Resources\GHS02.gif" />
-    <None Include="Resources\GHS03.gif" />
     <None Include="Resources\GHS04.gif" />
+    <None Include="Resources\GHS03.gif" />
     <Content Include="Resources\html\ckeditor.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
