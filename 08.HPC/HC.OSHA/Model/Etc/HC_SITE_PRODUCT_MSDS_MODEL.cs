@@ -10,22 +10,12 @@ namespace HC.OSHA.Model
     /// </summary>
     public class HC_SITE_PRODUCT_MSDS_MODEL : BaseDto
     {
-        public long ID { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
 		public long SITE_PRODUCT_ID { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-		public long MSDS_ID { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [MTSNotEmpty]
-		public string QTY { get; set; }
+        public string CASNO { get; set; }
 
         /// <summary>
         /// 
@@ -35,7 +25,8 @@ namespace HC.OSHA.Model
         /// <summary>
         /// 
         /// </summary>
-		public string CASNO { get; set; }
+        [MTSNotEmpty]
+		public string QTY { get; set; }
 
         /// <summary>
         /// 
@@ -82,12 +73,6 @@ namespace HC.OSHA.Model
         /// </summary>
 		public string GHS_PICTURE { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-		public string MODIFIEDUSER { get; set; }
-
-        
         public HC_SITE_PRODUCT_MSDS_MODEL()
         {
         }

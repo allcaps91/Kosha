@@ -21,13 +21,32 @@ namespace HC.Core.BaseCode.MSDS.Repository
             parameter.AddLikeStatement("NAME", name);
             return ExecuteReader<HC_MSDS>(parameter);
         }
-        public HC_MSDS FindByCasNo(string casNo)
+        public List<HC_MSDS> FindLikeCasno(string casNo)
         {
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_MSDS ");
             parameter.AppendSql("WHERE CASNO LIKE :CASNO ");
             parameter.AppendSql("ORDER BY CASNO");
             parameter.AddLikeStatement("CASNO", casNo);
+            return ExecuteReader<HC_MSDS>(parameter);
+        }
+        public HC_MSDS FindByChemid(string chemid)
+        {
+            MParameter parameter = CreateParameter();
+            parameter.AppendSql("SELECT * FROM HIC_MSDS ");
+            parameter.AppendSql("WHERE CHEMID = :CHEMID ");
+            parameter.AppendSql("ORDER BY CHEMID");
+            parameter.Add("CHEMID", chemid);
+            return ExecuteReaderSingle<HC_MSDS>(parameter);
+        }
+
+        public HC_MSDS FindByCasno(string casNo)
+        {
+            MParameter parameter = CreateParameter();
+            parameter.AppendSql("SELECT * FROM HIC_MSDS ");
+            parameter.AppendSql("WHERE CASNO = :CASNO ");
+            parameter.AppendSql("ORDER BY CASNO");
+            parameter.Add("CASNO", casNo);
             return ExecuteReaderSingle<HC_MSDS>(parameter);
         }
 

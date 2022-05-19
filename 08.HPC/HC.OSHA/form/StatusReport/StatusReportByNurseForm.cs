@@ -509,6 +509,7 @@ namespace HC_OSHA
                 dto.PERFORMCONTENT = null;
                 dto.OPINION = null;
                 dto.SANGDAMSIGN = "";
+                dto.SITEMANAGERSIGN = null;
                 dto.VISITDATE = DateTime.Now.ToString("yyyyMMdd");
 
                 SetData(dto);

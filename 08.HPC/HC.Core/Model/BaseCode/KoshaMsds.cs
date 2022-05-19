@@ -11,6 +11,5 @@ namespace HC.Core.Model
         public string CasNo { get; set; }
         public string ChemNameKor { get; set; }
         public string ChemId { get; set; }
-
     }
 }

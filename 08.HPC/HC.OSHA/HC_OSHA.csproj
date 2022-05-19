@@ -117,6 +117,7 @@
     <Compile Include="Dto\Charge\HC_MISU_MST.cs" />
     <Compile Include="Dto\Charge\HC_MISU_SLIP.cs" />
     <Compile Include="Dto\Charge\HC_OSHA_CHARGE.cs" />
+    <Compile Include="Dto\Etc\HC_MSDS_PRODUCT.cs" />
     <Compile Include="Dto\Management\HC_OSHA_EQUIPMENT.cs" />
     <Compile Include="Dto\Management\HC_OSHA_PRICE.cs" />
     <Compile Include="Dto\Management\HC_OSHA_RELATION.cs" />
@@ -235,6 +236,18 @@
     <Compile Include="form\Etc\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\Etc\SiteMSDSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Etc\SiteMSDSForm.designer.cs">
+      <DependentUpon>SiteMSDSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Etc\SiteMSDSListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Etc\SiteMSDSListForm.designer.cs">
+      <DependentUpon>SiteMSDSListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Management\FrmExcelUpload7.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -349,6 +362,12 @@
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_3.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_4.cs" />
     <Compile Include="Dto\SiteCard\HC_OSHA_CARD9_5.cs" />
+    <Compile Include="form\Report\FrmMsdsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Report\FrmMsdsReport.Designer.cs">
+      <DependentUpon>FrmMsdsReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Report\FrmJekhapReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -567,6 +586,7 @@
     <Compile Include="Repository\Build\HicOshaSpecialResultRepository.cs" />
     <Compile Include="Repository\Charge\ChargeRepository.cs" />
     <Compile Include="Repository\Charge\HcOshaChargeRepository.cs" />
+    <Compile Include="Repository\Etc\HcMsdsProductRepository.cs" />
     <Compile Include="Repository\Etc\HicMailRepository.cs" />
     <Compile Include="Repository\Management\HcOshaEquipmentRepository.cs" />
     <Compile Include="Repository\Management\HcOshaRelationRepository.cs" />
@@ -614,6 +634,7 @@
     <Compile Include="Service\Charge\ChargeService.cs" />
     <Compile Include="Service\Charge\HcOshaChargeService.cs" />
     <Compile Include="Service\Etc\BrainRiskEvalutionService.cs" />
+    <Compile Include="Service\Etc\HcMsdsProductService.cs" />
     <Compile Include="Service\Management\HcOshaEquipmentService.cs" />
     <Compile Include="Service\Management\OshaPriceService.cs" />
     <Compile Include="Service\Report\IncomeService.cs" />
@@ -788,17 +809,11 @@
     <Compile Include="form\Etc\GHS_PictureForm.Designer.cs">
       <DependentUpon>GHS_PictureForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\Etc\SiteMSDSForm.cs">
+    <Compile Include="form\Etc\SiteMSDSJepum.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\Etc\SiteMSDSForm.Designer.cs">
-      <DependentUpon>SiteMSDSForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="form\Etc\SiteMSDSListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\Etc\SiteMSDSListForm.Designer.cs">
-      <DependentUpon>SiteMSDSListForm.cs</DependentUpon>
+    <Compile Include="form\Etc\SiteMSDSJepum.Designer.cs">
+      <DependentUpon>SiteMSDSJepum.cs</DependentUpon>
     </Compile>
     <Compile Include="Dto\Management\HC_OSHA_ESTIMATE.cs" />
     <Compile Include="Model\Management\HC_ESTIMATE_MODEL.cs" />
@@ -971,6 +986,12 @@
     <EmbeddedResource Include="form\Etc\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form\Etc\SiteMSDSForm.resx">
+      <DependentUpon>SiteMSDSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Etc\SiteMSDSListForm.resx">
+      <DependentUpon>SiteMSDSListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\Management\FrmExcelUpload7.resx">
       <DependentUpon>FrmExcelUpload7.cs</DependentUpon>
     </EmbeddedResource>
@@ -1012,6 +1033,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Management\SiteEquipMentForm.resx">
       <DependentUpon>SiteEquipMentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Report\FrmMsdsReport.resx">
+      <DependentUpon>FrmMsdsReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Report\FrmJekhapReport.resx">
       <DependentUpon>FrmJekhapReport.cs</DependentUpon>
@@ -1124,11 +1148,8 @@
     <EmbeddedResource Include="form\Etc\GHS_PictureForm.resx">
       <DependentUpon>GHS_PictureForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form\Etc\SiteMSDSForm.resx">
-      <DependentUpon>SiteMSDSForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="form\Etc\SiteMSDSListForm.resx">
-      <DependentUpon>SiteMSDSListForm.cs</DependentUpon>
+    <EmbeddedResource Include="form\Etc\SiteMSDSJepum.resx">
+      <DependentUpon>SiteMSDSJepum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Management\EstimateMailForm.resx">
       <DependentUpon>EstimateMailForm.cs</DependentUpon>

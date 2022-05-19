@@ -1,4 +1,5 @@
-﻿using ComBase.Controls;
+﻿using ComBase;
+using ComBase.Controls;
 using ComBase.Mvc.Enums;
 using ComBase.Mvc.Spread;
 using ComBase.Mvc.Utils;
@@ -30,21 +31,20 @@ namespace HC_OSHA
 
             SSMSDSList.Initialize(new SpreadOption() { IsRowSelectColor = false });
             SSMSDSList.AddColumnCheckBox("", "", 30, new CheckBoxBooleanCellType { IsHeaderCheckBox = false});
-            SSMSDSList.AddColumnText("취급공정", nameof(HC_SITE_MSDS_MODEL.PROCESS), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.Always });
-            SSMSDSList.AddColumnText("제품명", nameof(HC_SITE_MSDS_MODEL.PRODUCTNAME), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.Always });
-            SSMSDSList.AddColumnText("권고용도", nameof(HC_SITE_MSDS_MODEL.USAGE), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.Always });
-            SSMSDSList.AddColumnText("제조사", nameof(HC_SITE_MSDS_MODEL.MANUFACTURER), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.Always });
+            SSMSDSList.AddColumnText("취급공정", nameof(HC_SITE_MSDS_MODEL.PROCESS), 63, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left, mergePolicy = MergePolicy.Always });
+            SSMSDSList.AddColumnText("제품명", nameof(HC_SITE_MSDS_MODEL.PRODUCTNAME), 130, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left, mergePolicy = MergePolicy.Always });
+            SSMSDSList.AddColumnText("권고용도", nameof(HC_SITE_MSDS_MODEL.USAGE), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left,  mergePolicy = MergePolicy.Always });
+            SSMSDSList.AddColumnText("제조사", nameof(HC_SITE_MSDS_MODEL.MANUFACTURER), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left, mergePolicy = MergePolicy.Always });
             SSMSDSList.AddColumnText("월취급량", nameof(HC_SITE_MSDS_MODEL.MONTHLYAMOUNT), 67, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.Always });
             SSMSDSList.AddColumnText("단위", nameof(HC_SITE_MSDS_MODEL.UNIT), 40, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.Always });
             SSMSDSList.AddColumnText("개정일자", nameof(HC_SITE_MSDS_MODEL.REVISIONDATE), 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, mergePolicy = MergePolicy.Always });
             SSMSDSList.AddColumnImage("그림문자", nameof(HC_SITE_MSDS_MODEL.GHS_IMAGE), 100,  new SpreadCellTypeOption { IsSort = false });
-
-            SSMSDSList.AddColumnText("물질명", nameof(HC_SITE_MSDS_MODEL.NAME), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("물질명", nameof(HC_SITE_MSDS_MODEL.NAME), 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
             SSMSDSList.AddColumnText("CasNo", nameof(HC_SITE_MSDS_MODEL.CASNO), 90, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("함유량", nameof(HC_SITE_MSDS_MODEL.QTY), 50, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("함유량", nameof(HC_SITE_MSDS_MODEL.QTY), 70, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSMSDSList.AddColumnText("노출기준설정", nameof(HC_SITE_MSDS_MODEL.EXPOSURE_MATERIAL), 46, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("작업환경측정", nameof(HC_SITE_MSDS_MODEL.WEM_MATERIAL), 46, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("특수건강진단", nameof(HC_SITE_MSDS_MODEL.SPECIALHEALTH_MATERIAL), 46, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("작업환경측정", nameof(HC_SITE_MSDS_MODEL.WEM_MATERIAL), 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("특수건강진단", nameof(HC_SITE_MSDS_MODEL.SPECIALHEALTH_MATERIAL), 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSMSDSList.AddColumnText("관리대상유해", nameof(HC_SITE_MSDS_MODEL.MANAGETARGET_MATERIAL), 46, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSMSDSList.AddColumnText("특별관리", nameof(HC_SITE_MSDS_MODEL.SPECIALMANAGE_MATERIAL), 46, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSMSDSList.AddColumnText("허용기준설정", nameof(HC_SITE_MSDS_MODEL.STANDARD_MATERIAL), 46, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
@@ -56,14 +56,14 @@ namespace HC_OSHA
     
         public void ShowSiteCardButton() {
             BtnMange.Visible = false;
-            BtnPrint.Visible = false;
+            btnExcel.Visible = false;
             BtnApply.Visible = true;
             SSMSDSList.Column(0).Visible = true;
         }
         public void Search()
         {
-            //aaa
-            //bbbb
+            string strJepum = "";
+
             SSMSDSList.ActiveSheet.RowCount = 0;
             if (base.SelectedSite == null)
             {
@@ -81,9 +81,10 @@ namespace HC_OSHA
                 {
                     if (i == 0)
                     {
+                        strJepum = SSMSDSList.ActiveSheet.Cells[i, 1].Text.Trim();
                         GHSRowSpan rowSpan = new GHSRowSpan()
                         {
-                            ProductName = SSMSDSList.ActiveSheet.Cells[i, 1].Value.ToString(),
+                            ProductName = strJepum,
                             RowIndex = i,
                             RowSpan = 1
                         };
@@ -93,7 +94,7 @@ namespace HC_OSHA
                     else
                     {
                         bool isNewRow = true;
-                        string productName = SSMSDSList.ActiveSheet.Cells[i, 1].Value.ToString();
+                        string productName = SSMSDSList.ActiveSheet.Cells[i, 1].Text.Trim();
                         foreach (GHSRowSpan rowSpan in rowSpanList)
                         {
                             if (rowSpan.ProductName.Equals(productName))
@@ -170,10 +171,6 @@ namespace HC_OSHA
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-            SpreadPrint print = new SpreadPrint(SSMSDSList, PrintStyle.FORM, false);
-            print.Title = base.SelectedSite.NAME + " 화학물질 MSDS 목록 현황";
-            print.orientation = PrintOrientation.Landscape;
-            print.Execute();
         }
 
         public List<HC_SITE_MSDS_MODEL> GetSelectedMsds()
@@ -193,12 +190,33 @@ namespace HC_OSHA
                 }
             }
             this.Close();
-         
         }
 
         private void contentTitle3_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            bool bOk = SSMSDSList.SaveExcel("c:\\temp\\화학물질 MSDS 목록 현황_" + base.SelectedSite.NAME + ".xls", FarPoint.Excel.ExcelSaveFlags.UseOOXMLFormat);
+            {
+                if (bOk == true)
+                    ComFunc.MsgBox("Temp 폴더에 엑셀파일이 생성이 되었습니다.", "확인");
+                else
+                    ComFunc.MsgBox("엑셀파일 생성에 오류가 발생 하였습니다.", "확인");
+            }
+        }
+
+        private void btnPdf_Click(object sender, EventArgs e)
+        {
+            string fileName = "c:\\temp\\화학물질 MSDS 목록 현황_" + base.SelectedSite.NAME + ".pdf";
+
+            SpreadPrint sp = new SpreadPrint(SSMSDSList, PrintStyle.FORM, false);
+            sp.orientation = PrintOrientation.Landscape;
+            sp.ExportPDF(fileName);
+
+            MessageUtil.Info("Temp 폴더에 저장하였습니다");
         }
     }
 

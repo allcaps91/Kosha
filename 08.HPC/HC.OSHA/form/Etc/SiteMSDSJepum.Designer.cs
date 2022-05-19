@@ -1,6 +1,6 @@
 ﻿namespace HC_OSHA
 {
-    partial class SiteMSDSForm
+    partial class SiteMSDSJepum
     {
         /// <summary>
         /// Required designer variable.
@@ -31,19 +31,19 @@
             this.formTItle1 = new ComBase.Mvc.UserControls.FormTItle();
             this.tableBody = new System.Windows.Forms.TableLayoutPanel();
             this.panBottomLeft = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.panMsdsBoby = new System.Windows.Forms.Panel();
-            this.SSJepum = new FarPoint.Win.Spread.FpSpread();
-            this.SSJepum_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.SSMSDSList = new FarPoint.Win.Spread.FpSpread();
             this.SSMSDSList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.panSearch = new System.Windows.Forms.Panel();
-            this.RdoMsdsUse = new System.Windows.Forms.RadioButton();
             this.RdoMsdsCasNo = new System.Windows.Forms.RadioButton();
             this.RdoMsdsName = new System.Windows.Forms.RadioButton();
             this.BtnSearchMsds = new System.Windows.Forms.Button();
             this.TxtSearchMsdsWord = new System.Windows.Forms.TextBox();
             this.contentTitle3 = new ComBase.Mvc.UserControls.ContentTitle();
             this.panTop = new System.Windows.Forms.Panel();
+            this.btnViewJepum = new System.Windows.Forms.Button();
+            this.txtViewJepum = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SSProduct = new FarPoint.Win.Spread.FpSpread();
             this.SSProduct_Sheet1 = new FarPoint.Win.Spread.SheetView();
@@ -55,20 +55,15 @@
             this.SSProductMsds = new FarPoint.Win.Spread.FpSpread();
             this.SSProductMsds_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.panSiteProduct = new System.Windows.Forms.Panel();
-            this.chkJepum = new System.Windows.Forms.CheckBox();
             this.TxtProductName = new System.Windows.Forms.TextBox();
             this.BtnSaveMsds = new System.Windows.Forms.Button();
             this.LblProductName = new System.Windows.Forms.Label();
             this.contentTitle2 = new ComBase.Mvc.UserControls.ContentTitle();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnKosha = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tableBody.SuspendLayout();
             this.panBottomLeft.SuspendLayout();
             this.panMsdsBoby.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SSJepum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SSJepum_Sheet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSMSDSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSMSDSList_Sheet1)).BeginInit();
             this.panSearch.SuspendLayout();
@@ -89,14 +84,14 @@
             this.formTItle1.Location = new System.Drawing.Point(0, 0);
             this.formTItle1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.formTItle1.Name = "formTItle1";
-            this.formTItle1.Size = new System.Drawing.Size(1354, 35);
+            this.formTItle1.Size = new System.Drawing.Size(1384, 35);
             this.formTItle1.TabIndex = 0;
-            this.formTItle1.TitleText = "화학물질 MSDS 관리";
+            this.formTItle1.TitleText = "MSDS 상용제품 관리";
             // 
             // tableBody
             // 
             this.tableBody.ColumnCount = 2;
-            this.tableBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 666F));
+            this.tableBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 480F));
             this.tableBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableBody.Controls.Add(this.panBottomLeft, 0, 1);
             this.tableBody.Controls.Add(this.panTop, 0, 0);
@@ -107,63 +102,38 @@
             this.tableBody.RowCount = 2;
             this.tableBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 579F));
-            this.tableBody.Size = new System.Drawing.Size(1354, 836);
+            this.tableBody.Size = new System.Drawing.Size(1384, 836);
             this.tableBody.TabIndex = 1;
             // 
             // panBottomLeft
             // 
+            this.panBottomLeft.Controls.Add(this.label2);
             this.panBottomLeft.Controls.Add(this.panMsdsBoby);
             this.panBottomLeft.Controls.Add(this.contentTitle3);
             this.panBottomLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panBottomLeft.Location = new System.Drawing.Point(3, 260);
             this.panBottomLeft.Name = "panBottomLeft";
-            this.panBottomLeft.Size = new System.Drawing.Size(660, 573);
+            this.panBottomLeft.Size = new System.Drawing.Size(474, 573);
             this.panBottomLeft.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(236, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(187, 17);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "▶더블클릭 물질관리에 추가됨";
             // 
             // panMsdsBoby
             // 
-            this.panMsdsBoby.Controls.Add(this.SSJepum);
             this.panMsdsBoby.Controls.Add(this.SSMSDSList);
             this.panMsdsBoby.Controls.Add(this.panSearch);
             this.panMsdsBoby.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panMsdsBoby.Location = new System.Drawing.Point(0, 38);
             this.panMsdsBoby.Name = "panMsdsBoby";
-            this.panMsdsBoby.Size = new System.Drawing.Size(660, 535);
+            this.panMsdsBoby.Size = new System.Drawing.Size(474, 535);
             this.panMsdsBoby.TabIndex = 3;
-            // 
-            // SSJepum
-            // 
-            this.SSJepum.AccessibleDescription = "";
-            this.SSJepum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SSJepum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SSJepum.Location = new System.Drawing.Point(0, 48);
-            this.SSJepum.Name = "SSJepum";
-            this.SSJepum.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
-            this.SSJepum_Sheet1});
-            this.SSJepum.Size = new System.Drawing.Size(660, 487);
-            this.SSJepum.TabIndex = 4;
-            this.SSJepum.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSJepum_CellDoubleClick);
-            // 
-            // SSJepum_Sheet1
-            // 
-            this.SSJepum_Sheet1.Reset();
-            this.SSJepum_Sheet1.SheetName = "Sheet1";
-            // Formulas and custom names must be loaded with R1C1 reference style
-            this.SSJepum_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1;
-            this.SSJepum_Sheet1.ColumnCount = 0;
-            this.SSJepum_Sheet1.RowCount = 0;
-            this.SSJepum_Sheet1.ActiveColumnIndex = -1;
-            this.SSJepum_Sheet1.ActiveRowIndex = -1;
-            this.SSJepum_Sheet1.ColumnFooterSheetCornerStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            this.SSJepum_Sheet1.ColumnFooterSheetCornerStyle.NoteIndicatorColor = System.Drawing.Color.Red;
-            this.SSJepum_Sheet1.ColumnFooterSheetCornerStyle.Parent = "CornerFooterDefaultEnhanced";
-            this.SSJepum_Sheet1.ColumnFooterSheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            this.SSJepum_Sheet1.FilterBarHeaderStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
-            this.SSJepum_Sheet1.FilterBarHeaderStyle.NoteIndicatorColor = System.Drawing.Color.Red;
-            this.SSJepum_Sheet1.FilterBarHeaderStyle.Parent = "RowHeaderDefaultEnhanced";
-            this.SSJepum_Sheet1.FilterBarHeaderStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
-            this.SSJepum_Sheet1.RowHeader.Columns.Default.Resizable = false;
-            this.SSJepum_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
             // SSMSDSList
             // 
@@ -174,9 +144,10 @@
             this.SSMSDSList.Name = "SSMSDSList";
             this.SSMSDSList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSMSDSList_Sheet1});
-            this.SSMSDSList.Size = new System.Drawing.Size(660, 487);
+            this.SSMSDSList.Size = new System.Drawing.Size(474, 487);
             this.SSMSDSList.TabIndex = 2;
-            this.SSMSDSList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSMSDSList_CellClick);
+            this.SSMSDSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSMSDSList_CellClick);
+            this.SSMSDSList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSMSDSList_CellDoubleClick);
             this.SSMSDSList.SetActiveViewport(0, -1, -1);
             // 
             // SSMSDSList_Sheet1
@@ -204,7 +175,6 @@
             // 
             this.panSearch.BackColor = System.Drawing.Color.White;
             this.panSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panSearch.Controls.Add(this.RdoMsdsUse);
             this.panSearch.Controls.Add(this.RdoMsdsCasNo);
             this.panSearch.Controls.Add(this.RdoMsdsName);
             this.panSearch.Controls.Add(this.BtnSearchMsds);
@@ -212,19 +182,8 @@
             this.panSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panSearch.Location = new System.Drawing.Point(0, 0);
             this.panSearch.Name = "panSearch";
-            this.panSearch.Size = new System.Drawing.Size(660, 48);
+            this.panSearch.Size = new System.Drawing.Size(474, 48);
             this.panSearch.TabIndex = 3;
-            // 
-            // RdoMsdsUse
-            // 
-            this.RdoMsdsUse.AutoSize = true;
-            this.RdoMsdsUse.Location = new System.Drawing.Point(192, 13);
-            this.RdoMsdsUse.Name = "RdoMsdsUse";
-            this.RdoMsdsUse.Size = new System.Drawing.Size(78, 21);
-            this.RdoMsdsUse.TabIndex = 22;
-            this.RdoMsdsUse.Text = "상용코드";
-            this.RdoMsdsUse.UseVisualStyleBackColor = true;
-            this.RdoMsdsUse.CheckedChanged += new System.EventHandler(this.RdoMsdsUse_CheckedChanged);
             // 
             // RdoMsdsCasNo
             // 
@@ -235,7 +194,6 @@
             this.RdoMsdsCasNo.TabIndex = 21;
             this.RdoMsdsCasNo.Text = "CasNo";
             this.RdoMsdsCasNo.UseVisualStyleBackColor = true;
-            this.RdoMsdsCasNo.CheckedChanged += new System.EventHandler(this.RdoMsdsCasNo_CheckedChanged);
             // 
             // RdoMsdsName
             // 
@@ -248,12 +206,11 @@
             this.RdoMsdsName.TabStop = true;
             this.RdoMsdsName.Text = "물질명";
             this.RdoMsdsName.UseVisualStyleBackColor = true;
-            this.RdoMsdsName.CheckedChanged += new System.EventHandler(this.RdoMsdsName_CheckedChanged);
             // 
             // BtnSearchMsds
             // 
             this.BtnSearchMsds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSearchMsds.Location = new System.Drawing.Point(572, 7);
+            this.BtnSearchMsds.Location = new System.Drawing.Point(369, 12);
             this.BtnSearchMsds.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearchMsds.Name = "BtnSearchMsds";
             this.BtnSearchMsds.Size = new System.Drawing.Size(75, 28);
@@ -265,9 +222,9 @@
             // TxtSearchMsdsWord
             // 
             this.TxtSearchMsdsWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtSearchMsdsWord.Location = new System.Drawing.Point(282, 9);
+            this.TxtSearchMsdsWord.Location = new System.Drawing.Point(238, 10);
             this.TxtSearchMsdsWord.Name = "TxtSearchMsdsWord";
-            this.TxtSearchMsdsWord.Size = new System.Drawing.Size(281, 25);
+            this.TxtSearchMsdsWord.Size = new System.Drawing.Size(125, 25);
             this.TxtSearchMsdsWord.TabIndex = 18;
             // 
             // contentTitle3
@@ -277,13 +234,15 @@
             this.contentTitle3.Location = new System.Drawing.Point(0, 0);
             this.contentTitle3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.contentTitle3.Name = "contentTitle3";
-            this.contentTitle3.Size = new System.Drawing.Size(660, 38);
+            this.contentTitle3.Size = new System.Drawing.Size(474, 38);
             this.contentTitle3.TabIndex = 1;
-            this.contentTitle3.TitleText = "② MSDS DB 검색";
+            this.contentTitle3.TitleText = "② Kosha MSDS DB 검색";
             // 
             // panTop
             // 
             this.tableBody.SetColumnSpan(this.panTop, 2);
+            this.panTop.Controls.Add(this.btnViewJepum);
+            this.panTop.Controls.Add(this.txtViewJepum);
             this.panTop.Controls.Add(this.label1);
             this.panTop.Controls.Add(this.SSProduct);
             this.panTop.Controls.Add(this.BtnSaveProduct);
@@ -292,13 +251,33 @@
             this.panTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panTop.Location = new System.Drawing.Point(3, 3);
             this.panTop.Name = "panTop";
-            this.panTop.Size = new System.Drawing.Size(1348, 251);
+            this.panTop.Size = new System.Drawing.Size(1378, 251);
             this.panTop.TabIndex = 0;
+            // 
+            // btnViewJepum
+            // 
+            this.btnViewJepum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewJepum.Location = new System.Drawing.Point(1003, 2);
+            this.btnViewJepum.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnViewJepum.Name = "btnViewJepum";
+            this.btnViewJepum.Size = new System.Drawing.Size(75, 28);
+            this.btnViewJepum.TabIndex = 21;
+            this.btnViewJepum.Text = "검 색(&F)";
+            this.btnViewJepum.UseVisualStyleBackColor = true;
+            this.btnViewJepum.Click += new System.EventHandler(this.btnViewJepum_Click);
+            // 
+            // txtViewJepum
+            // 
+            this.txtViewJepum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtViewJepum.Location = new System.Drawing.Point(786, 4);
+            this.txtViewJepum.Name = "txtViewJepum";
+            this.txtViewJepum.Size = new System.Drawing.Size(211, 25);
+            this.txtViewJepum.TabIndex = 20;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(119, 8);
+            this.label1.Location = new System.Drawing.Point(140, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 17);
             this.label1.TabIndex = 12;
@@ -313,7 +292,7 @@
             this.SSProduct.Name = "SSProduct";
             this.SSProduct.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSProduct_Sheet1});
-            this.SSProduct.Size = new System.Drawing.Size(1348, 213);
+            this.SSProduct.Size = new System.Drawing.Size(1378, 213);
             this.SSProduct.TabIndex = 1;
             this.SSProduct.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSProduct_CellDoubleClick);
             this.SSProduct.SetActiveViewport(0, -1, -1);
@@ -342,7 +321,7 @@
             // BtnSaveProduct
             // 
             this.BtnSaveProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSaveProduct.Location = new System.Drawing.Point(1261, 2);
+            this.BtnSaveProduct.Location = new System.Drawing.Point(1291, 2);
             this.BtnSaveProduct.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSaveProduct.Name = "BtnSaveProduct";
             this.BtnSaveProduct.Size = new System.Drawing.Size(75, 28);
@@ -354,7 +333,7 @@
             // BtnAddProduct
             // 
             this.BtnAddProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAddProduct.Location = new System.Drawing.Point(1180, 2);
+            this.BtnAddProduct.Location = new System.Drawing.Point(1210, 2);
             this.BtnAddProduct.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnAddProduct.Name = "BtnAddProduct";
             this.BtnAddProduct.Size = new System.Drawing.Size(75, 28);
@@ -370,18 +349,18 @@
             this.contentTitle1.Location = new System.Drawing.Point(0, 0);
             this.contentTitle1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.contentTitle1.Name = "contentTitle1";
-            this.contentTitle1.Size = new System.Drawing.Size(1348, 38);
+            this.contentTitle1.Size = new System.Drawing.Size(1378, 38);
             this.contentTitle1.TabIndex = 0;
-            this.contentTitle1.TitleText = "① 제품 관리";
+            this.contentTitle1.TitleText = "① 상용제품 관리";
             // 
             // panBottomRight
             // 
             this.panBottomRight.Controls.Add(this.panProductMsdsBody);
             this.panBottomRight.Controls.Add(this.contentTitle2);
             this.panBottomRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panBottomRight.Location = new System.Drawing.Point(669, 260);
+            this.panBottomRight.Location = new System.Drawing.Point(483, 260);
             this.panBottomRight.Name = "panBottomRight";
-            this.panBottomRight.Size = new System.Drawing.Size(682, 573);
+            this.panBottomRight.Size = new System.Drawing.Size(898, 573);
             this.panBottomRight.TabIndex = 1;
             // 
             // panProductMsdsBody
@@ -391,7 +370,7 @@
             this.panProductMsdsBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panProductMsdsBody.Location = new System.Drawing.Point(0, 38);
             this.panProductMsdsBody.Name = "panProductMsdsBody";
-            this.panProductMsdsBody.Size = new System.Drawing.Size(682, 535);
+            this.panProductMsdsBody.Size = new System.Drawing.Size(898, 535);
             this.panProductMsdsBody.TabIndex = 14;
             // 
             // SSProductMsds
@@ -403,7 +382,7 @@
             this.SSProductMsds.Name = "SSProductMsds";
             this.SSProductMsds.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSProductMsds_Sheet1});
-            this.SSProductMsds.Size = new System.Drawing.Size(682, 487);
+            this.SSProductMsds.Size = new System.Drawing.Size(898, 487);
             this.SSProductMsds.TabIndex = 2;
             this.SSProductMsds.SetActiveViewport(0, -1, -1);
             // 
@@ -432,50 +411,39 @@
             // 
             this.panSiteProduct.BackColor = System.Drawing.Color.White;
             this.panSiteProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panSiteProduct.Controls.Add(this.chkJepum);
             this.panSiteProduct.Controls.Add(this.TxtProductName);
             this.panSiteProduct.Controls.Add(this.BtnSaveMsds);
             this.panSiteProduct.Controls.Add(this.LblProductName);
             this.panSiteProduct.Dock = System.Windows.Forms.DockStyle.Top;
             this.panSiteProduct.Location = new System.Drawing.Point(0, 0);
             this.panSiteProduct.Name = "panSiteProduct";
-            this.panSiteProduct.Size = new System.Drawing.Size(682, 48);
+            this.panSiteProduct.Size = new System.Drawing.Size(898, 48);
             this.panSiteProduct.TabIndex = 4;
-            // 
-            // chkJepum
-            // 
-            this.chkJepum.AutoSize = true;
-            this.chkJepum.Location = new System.Drawing.Point(403, 13);
-            this.chkJepum.Name = "chkJepum";
-            this.chkJepum.Size = new System.Drawing.Size(136, 21);
-            this.chkJepum.TabIndex = 20;
-            this.chkJepum.Text = "상푱코드에도 저장";
-            this.chkJepum.UseVisualStyleBackColor = true;
             // 
             // TxtProductName
             // 
-            this.TxtProductName.Location = new System.Drawing.Point(56, 10);
+            this.TxtProductName.Location = new System.Drawing.Point(64, 10);
             this.TxtProductName.Name = "TxtProductName";
             this.TxtProductName.ReadOnly = true;
-            this.TxtProductName.Size = new System.Drawing.Size(340, 25);
+            this.TxtProductName.Size = new System.Drawing.Size(542, 25);
             this.TxtProductName.TabIndex = 19;
             // 
             // BtnSaveMsds
             // 
             this.BtnSaveMsds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSaveMsds.Location = new System.Drawing.Point(600, 9);
+            this.BtnSaveMsds.Location = new System.Drawing.Point(795, 9);
             this.BtnSaveMsds.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSaveMsds.Name = "BtnSaveMsds";
-            this.BtnSaveMsds.Size = new System.Drawing.Size(75, 28);
+            this.BtnSaveMsds.Size = new System.Drawing.Size(90, 28);
             this.BtnSaveMsds.TabIndex = 13;
-            this.BtnSaveMsds.Text = "저장(&S)";
+            this.BtnSaveMsds.Text = "물질 저장(&S)";
             this.BtnSaveMsds.UseVisualStyleBackColor = true;
             this.BtnSaveMsds.Click += new System.EventHandler(this.BtnSaveMsds_Click);
             // 
             // LblProductName
             // 
             this.LblProductName.AutoSize = true;
-            this.LblProductName.Location = new System.Drawing.Point(6, 13);
+            this.LblProductName.Location = new System.Drawing.Point(11, 13);
             this.LblProductName.Name = "LblProductName";
             this.LblProductName.Size = new System.Drawing.Size(47, 17);
             this.LblProductName.TabIndex = 0;
@@ -488,14 +456,14 @@
             this.contentTitle2.Location = new System.Drawing.Point(0, 0);
             this.contentTitle2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.contentTitle2.Name = "contentTitle2";
-            this.contentTitle2.Size = new System.Drawing.Size(682, 38);
+            this.contentTitle2.Size = new System.Drawing.Size(898, 38);
             this.contentTitle2.TabIndex = 1;
             this.contentTitle2.TitleText = "③ 물질 관리";
             // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(1264, 4);
+            this.btnExit.Location = new System.Drawing.Point(1294, 4);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 28);
@@ -504,52 +472,24 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnKosha
-            // 
-            this.btnKosha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnKosha.Location = new System.Drawing.Point(1096, 4);
-            this.btnKosha.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.btnKosha.Name = "btnKosha";
-            this.btnKosha.Size = new System.Drawing.Size(162, 28);
-            this.btnKosha.TabIndex = 36;
-            this.btnKosha.Text = "Kosha MSDS 찾기";
-            this.btnKosha.UseVisualStyleBackColor = true;
-            this.btnKosha.Click += new System.EventHandler(this.btnKosha_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(980, 4);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 28);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "상용코드 관리";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // SiteMSDSForm
+            // SiteMSDSJepum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1354, 871);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnKosha);
+            this.ClientSize = new System.Drawing.Size(1384, 871);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tableBody);
             this.Controls.Add(this.formTItle1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "SiteMSDSForm";
+            this.Name = "SiteMSDSJepum";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SiteMSDSForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SiteMSDSForm_FormClosing);
-            this.Load += new System.EventHandler(this.SiteMSDSForm_Load);
+            this.Text = "SiteMSDSJepum";
+            this.Load += new System.EventHandler(this.SiteMSDSJepum_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.tableBody.ResumeLayout(false);
             this.panBottomLeft.ResumeLayout(false);
+            this.panBottomLeft.PerformLayout();
             this.panMsdsBoby.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SSJepum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SSJepum_Sheet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSMSDSList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSMSDSList_Sheet1)).EndInit();
             this.panSearch.ResumeLayout(false);
@@ -599,11 +539,8 @@
         private System.Windows.Forms.Label LblProductName;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnKosha;
-        private System.Windows.Forms.RadioButton RdoMsdsUse;
-        private FarPoint.Win.Spread.FpSpread SSJepum;
-        private FarPoint.Win.Spread.SheetView SSJepum_Sheet1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox chkJepum;
+        private System.Windows.Forms.Button btnViewJepum;
+        private System.Windows.Forms.TextBox txtViewJepum;
+        private System.Windows.Forms.Label label2;
     }
 }

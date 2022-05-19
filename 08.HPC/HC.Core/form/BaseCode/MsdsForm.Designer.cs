@@ -138,6 +138,7 @@
             this.SSKoshaList_Sheet1});
             this.SSKoshaList.Size = new System.Drawing.Size(406, 743);
             this.SSKoshaList.TabIndex = 2;
+            this.SSKoshaList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSKoshaList_CellClick);
             this.SSKoshaList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSKoshaList_CellDoubleClick);
             this.SSKoshaList.SetActiveViewport(0, -1, -1);
             // 
@@ -289,6 +290,7 @@
             this.SSMSDSList_Sheet1});
             this.SSMSDSList.Size = new System.Drawing.Size(856, 319);
             this.SSMSDSList.TabIndex = 6;
+            this.SSMSDSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSMSDSList_CellClick);
             this.SSMSDSList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSMSDSList_CellDoubleClick);
             // 
             // SSMSDSList_Sheet1
@@ -701,6 +703,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.formTItle1);
             this.Name = "MsdsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Msds 기초 코드";
             this.Load += new System.EventHandler(this.MsdsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

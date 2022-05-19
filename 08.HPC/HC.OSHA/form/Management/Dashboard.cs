@@ -939,5 +939,20 @@ namespace HC_OSHA
         {
             new FrmExcelUpload7().Show();
         }
+
+        private void mSDS상용물품관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new SiteMSDSJepum().Show();
+        }
+
+        private void 화학물질취급현황업로드ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmExcelUpload7().Show();
+        }
+
+        private void 화학물질MSDS목록현황ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmMsdsReport().Show();
+        }
     }
 }

@@ -11,6 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using FarPoint.Win.Spread;
+using System.Data;
+using ComBase;
 
 namespace HC_Core
 {
@@ -51,11 +54,9 @@ namespace HC_Core
 
         private void MsdsForm_Load(object sender, EventArgs e)
         {
-         
 
             TxtSearchKoshaWord.SetExecuteButton(BtnSearchKosha);
             TxtSearchMsdsWord.SetExecuteButton(BtnSearchMsds);
-
             
             SSKoshaList.Initialize(new SpreadOption() { IsRowSelectColor = true });
             SSKoshaList.AddColumnText("CHEMID", nameof(KoshaMsds.ChemId), 60,IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
@@ -64,8 +65,8 @@ namespace HC_Core
 
             SSMSDSList.Initialize(new SpreadOption() { IsRowSelectColor = true });
             SSMSDSList.AddColumnText("ID", nameof(HC_MSDS.ID), 88, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("CHEMID", nameof(HC_MSDS.ID), 105, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSMSDSList.AddColumnText("물질명", nameof(HC_MSDS.NAME), 271, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, sortIndicator = SortIndicator.Ascending });
+            SSMSDSList.AddColumnText("CHEMID", nameof(HC_MSDS.CHEMID), 105, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSMSDSList.AddColumnText("물질명", nameof(HC_MSDS.NAME), 271, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, Aligen = CellHorizontalAlignment.Left, sortIndicator = SortIndicator.Ascending });
             SSMSDSList.AddColumnText("CasNo", nameof(HC_MSDS.CASNO), 144, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSMSDSList.AddColumnDateTime("수정일시", nameof(HC_MSDS.MODIFIED), 134, IsReadOnly.Y, DateTimeType.YYYY_MM_DD_HH_MM, new SpreadCellTypeOption { IsSort = true, IsShowCalendarButton = false });
 
@@ -231,6 +232,14 @@ namespace HC_Core
             {
                 if (dto.ID > 0)
                 {
+                    //코드를 사용하였으면 삭제 불가능함
+                    long nUseCnt = GET_Msds_Use(dto.ID);
+                    if (nUseCnt>0)
+                    {
+                        MessageUtil.Info("[" + dto.NAME + "] 사용 중 이어서 삭제가 불가능합니다.");
+                        return;
+                    }
+
                     if(MessageUtil.Confirm("삭제 하시겠습니까?") == DialogResult.Yes)
                     {
                         hcMsdsService.Delete(dto.ID);
@@ -238,11 +247,29 @@ namespace HC_Core
                         panMsds.Initialize();
                         BtnSearchMsds.PerformClick();
                     }
-                    
                 }
             }
-            
-            
+        }
+
+        // MSDS가 사용중인지 점검
+        private long GET_Msds_Use(long msdsId)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            long nCnt = 0;
+
+            DataTable dt = null;
+
+            //계약번호를 찾기
+            SQL = "SELECT COUNT(SITE_PRODUCT_ID) AS CNT FROM HIC_SITE_PRODUCT_MSDS ";
+            SQL = SQL + ComNum.VBLF + "WHERE MSDS_ID=" + msdsId + " ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            nCnt = 0;
+            if (dt.Rows.Count > 0) nCnt = long.Parse(dt.Rows[0]["CNT"].ToString().Trim());
+            dt.Dispose();
+            dt = null;
+
+            return nCnt;
         }
 
         private void RdoMsdsCasNo_CheckedChanged(object sender, EventArgs e)
@@ -263,6 +290,16 @@ namespace HC_Core
         private void btnExit_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void SSMSDSList_CellClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
+        {
+
+        }
+
+        private void SSKoshaList_CellClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
+        {
+
         }
     }
     

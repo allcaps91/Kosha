@@ -540,6 +540,7 @@ namespace HC_OSHA.StatusReport
                 dto.VISITDATE = DateTime.Now.ToString("yyyyMMdd");
                 //CboVisitYear.Text = "";
                 //CboVisitDate.Text = "";
+                dto.SITEMANAGERSIGN = null;
                 SetData(dto);
             }
         }

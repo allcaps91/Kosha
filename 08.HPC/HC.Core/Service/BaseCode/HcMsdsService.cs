@@ -50,9 +50,10 @@ namespace HC.Core.BaseCode.MSDS.Service
         {
             hcMsdsRepository.Delete(id);
         }
+
         public HC_MSDS Save(HC_MSDS dto)
         {
-            HC_MSDS saved = hcMsdsRepository.FindByCasNo(dto.CASNO);
+            HC_MSDS saved = hcMsdsRepository.FindByCasno(dto.CASNO);
             if ( saved == null)
             {
                 return hcMsdsRepository.Save(dto);
@@ -70,10 +71,17 @@ namespace HC.Core.BaseCode.MSDS.Service
             {
                 return hcMsdsRepository.FindByName(searchWord);
             }
-            List<HC_MSDS> list = new List<HC_MSDS>();
-            list.Add(hcMsdsRepository.FindByCasNo(searchWord));
-            return list;
+            return hcMsdsRepository.FindLikeCasno(searchWord);
+        }
 
+        public HC_MSDS FindByCasNo(string casno)
+        {
+            return hcMsdsRepository.FindByCasno(casno);
+        }
+
+        public HC_MSDS FindByChemid(string chemid)
+        {
+            return hcMsdsRepository.FindByChemid(chemid);
         }
 
     }
