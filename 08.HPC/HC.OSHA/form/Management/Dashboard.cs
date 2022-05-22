@@ -935,11 +935,6 @@ namespace HC_OSHA
             new FrmJekhapReport().Show();
         }
 
-        private void 기업건강증진지수업로드ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new FrmExcelUpload7().Show();
-        }
-
         private void mSDS상용물품관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new SiteMSDSJepum().Show();
@@ -953,6 +948,11 @@ namespace HC_OSHA
         private void 화학물질MSDS목록현황ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FrmMsdsReport().Show();
+        }
+
+        private void 기업건강증진지수EHPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

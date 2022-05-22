@@ -44,19 +44,19 @@ namespace HC_OSHA
 
             SSList.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true, RowHeaderVisible = true, ColumnHeaderHeight = 30 });
             SSList.AddColumnText("회사명", "", 110, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
-            SSList.AddColumnText("취급공정", "", 70, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
-            SSList.AddColumnText("제품명", "", 140, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("취급공정", "", 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("제품명", "", 160, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
             SSList.AddColumnText("권고용도", "", 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
             SSList.AddColumnText("제조사", "", 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
             SSList.AddColumnText("월취급량", "", 60, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
-            SSList.AddColumnText("단위", "", 30, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("단위", "", 40, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("개정일자", "", 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
-            SSList.AddColumnText("물질명", "", 140, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
+            SSList.AddColumnText("물질명", "", 150, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
             SSList.AddColumnText("CASNO", "", 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, Aligen = CellHorizontalAlignment.Left });
             SSList.AddColumnText("함유량", "", 80, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSList.AddColumnText("노출", "", 50, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSList.AddColumnText("측정", "", 50, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSList.AddColumnText("특검", "", 50, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("노출", "", 40, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("측정", "", 40, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
+            SSList.AddColumnText("특검", "", 40, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)
@@ -189,6 +189,7 @@ namespace HC_OSHA
             string fileName = "c:\\temp\\화학물질목록현황.pdf";
 
             SpreadPrint sp = new SpreadPrint(SSList, PrintStyle.FORM, false);
+            sp.Title = "화학물질 MSDS 목록 현황";
             sp.orientation = PrintOrientation.Landscape;
             sp.ExportPDF(fileName);
 
