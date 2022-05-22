@@ -279,8 +279,6 @@
     <Content Include="Resources\dojang.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\GHS03.gif" />
-    <Content Include="Resources\GHS04.gif" />
     <Content Include="Resources\html\engineerCkeditor.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -912,6 +910,8 @@
     <None Include="Resources\GHS09.gif" />
     <None Include="Resources\GHS01.gif" />
     <None Include="Resources\GHS02.gif" />
+    <None Include="Resources\GHS04.gif" />
+    <None Include="Resources\GHS03.gif" />
     <Content Include="Resources\html\ckeditor.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
