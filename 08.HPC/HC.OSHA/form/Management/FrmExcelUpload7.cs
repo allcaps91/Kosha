@@ -589,5 +589,9 @@ namespace HC_OSHA
             return nID;
         }
 
+        private void FrmExcelUpload7_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

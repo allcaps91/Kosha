@@ -196,5 +196,10 @@ namespace HC_OSHA
         {
             BtnSearchSite.Location = new System.Drawing.Point(344, 7);
         }
+
+        private void SSList_CellClick(object sender, CellClickEventArgs e)
+        {
+
+        }
     }
 }

@@ -85,7 +85,7 @@
             this.SS1.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS1.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SS1.HorizontalScrollBar.TabIndex = 267;
+            this.SS1.HorizontalScrollBar.TabIndex = 269;
             this.SS1.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SS1.Location = new System.Drawing.Point(3, 409);
             this.SS1.Name = "SS1";
@@ -98,7 +98,7 @@
             this.SS1.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SS1.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SS1.VerticalScrollBar.TabIndex = 268;
+            this.SS1.VerticalScrollBar.TabIndex = 270;
             this.SS1.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SS1.SetViewportLeftColumn(0, 0, 2);
             // 
@@ -448,6 +448,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmExcelUpload7";
             this.Text = "화학물질취급현황 엑셀업로드";
+            this.Load += new System.EventHandler(this.FrmExcelUpload7_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SS1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SS1_Sheet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSConv)).EndInit();

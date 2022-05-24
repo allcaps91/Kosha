@@ -850,6 +850,7 @@
             this.label59.TabIndex = 327;
             this.label59.Text = "보건교육";
             this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label59.Click += new System.EventHandler(this.label59_Click);
             // 
             // textBox11
             // 

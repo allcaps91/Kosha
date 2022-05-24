@@ -618,7 +618,6 @@
             // 
             // 기업건강증진지수EHPToolStripMenuItem
             // 
-            this.기업건강증진지수EHPToolStripMenuItem.Enabled = false;
             this.기업건강증진지수EHPToolStripMenuItem.Name = "기업건강증진지수EHPToolStripMenuItem";
             this.기업건강증진지수EHPToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.기업건강증진지수EHPToolStripMenuItem.Text = "기업건강증진지수(EHP)";

@@ -58,6 +58,7 @@
             this.SSList_Sheet1});
             this.SSList.Size = new System.Drawing.Size(1224, 549);
             this.SSList.TabIndex = 18;
+            this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
             this.SSList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellDoubleClick);
             // 
             // SSList_Sheet1

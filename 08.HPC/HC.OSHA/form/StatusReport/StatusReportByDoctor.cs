@@ -767,6 +767,12 @@ namespace HC_OSHA.StatusReport
             }
 
         }
+
+        private void label59_Click(object sender, EventArgs e)
+        {
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+        }
     }
 }
 

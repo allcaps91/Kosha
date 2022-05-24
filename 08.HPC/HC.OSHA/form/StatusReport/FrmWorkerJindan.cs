@@ -745,16 +745,21 @@ namespace HC_OSHA.StatusReport
             string SITE_NAME = VB.Pstr(Send_Data, "{}", 2);
             string strNAME = SSList_Sheet1.Cells[0, 1].Text.Trim();
 
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.SelectedPath = @"c:\\";
+            dialog.ShowDialog();
+            string strPath = dialog.SelectedPath;
+
             SSPrint_Load();
 
             Cursor.Current = Cursors.WaitCursor;
             string title = "업무적합성평가_" + SITE_NAME + "_" + strNAME;
-            string pdfFileName = @"C:\Temp\" + title + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+            string pdfFileName = strPath + "\\" + title + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
             SpreadPrint print = new SpreadPrint(SSPrint, PrintStyle.STANDARD_APPROVAL, false);
             print.ExportPDFNoWait(pdfFileName, SSPrint.ActiveSheet);
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
 
-            ComFunc.MsgBox("Temp 폴더에 저장되었습니다.", "알림");
+            ComFunc.MsgBox(strPath + " 폴더에 저장되었습니다.", "알림");
         }
     }
 }

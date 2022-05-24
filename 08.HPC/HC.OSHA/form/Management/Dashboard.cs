@@ -950,9 +950,14 @@ namespace HC_OSHA
             new FrmMsdsReport().Show();
         }
 
+        private void 기업건강증진지수업로드ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmGiupEHP().Show();
+        }
+
         private void 기업건강증진지수EHPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new FrmGiupEHP().Show();
         }
     }
 }

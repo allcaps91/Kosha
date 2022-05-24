@@ -990,6 +990,7 @@
             this.label17.TabIndex = 146;
             this.label17.Text = "안전보건교육";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label16
             // 

@@ -129,6 +129,7 @@
             this.btnLogin.TabIndex = 85;
             this.btnLogin.Text = "로  그  인";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblLicno
             // 

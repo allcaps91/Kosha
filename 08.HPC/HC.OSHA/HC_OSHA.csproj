@@ -248,11 +248,11 @@
     <Compile Include="form\Etc\SiteMSDSListForm.designer.cs">
       <DependentUpon>SiteMSDSListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\Management\FrmExcelUpload8.cs">
+    <Compile Include="form\Management\FrmGiupEHP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\Management\FrmExcelUpload8.Designer.cs">
-      <DependentUpon>FrmExcelUpload8.cs</DependentUpon>
+    <Compile Include="form\Management\FrmGiupEHP.Designer.cs">
+      <DependentUpon>FrmGiupEHP.cs</DependentUpon>
     </Compile>
     <Compile Include="form\Management\FrmExcelUpload7.cs">
       <SubType>Form</SubType>
@@ -998,8 +998,8 @@
     <EmbeddedResource Include="form\Etc\SiteMSDSListForm.resx">
       <DependentUpon>SiteMSDSListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form\Management\FrmExcelUpload8.resx">
-      <DependentUpon>FrmExcelUpload8.cs</DependentUpon>
+    <EmbeddedResource Include="form\Management\FrmGiupEHP.resx">
+      <DependentUpon>FrmGiupEHP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Management\FrmExcelUpload7.resx">
       <DependentUpon>FrmExcelUpload7.cs</DependentUpon>

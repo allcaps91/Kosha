@@ -258,6 +258,8 @@ namespace HC_OSHA
 
             ckEditor.Clear();
             card19List.Clear();
+            RdoIsEduType1.Checked = false;
+            RdoIsEduType2.Checked = false;
             TxtNURSENAME.Text = clsType.User.UserName;//CommonService.Instance.Session.UserName;
             workerHealthCheckForm.Init();
             workerHealthCheckForm.StatusReportDoctorDto = null;
@@ -867,6 +869,12 @@ namespace HC_OSHA
             {
                 ComFunc.MsgBox("DB 재접속 완료", "알림");
             }
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+            RdoIsEduType1.Checked = false;
+            RdoIsEduType2.Checked = false;
         }
     }
 }
