@@ -42,6 +42,7 @@ namespace HC_OSHA
 
             TxtLtdcode.Text = "";
             BtnSearchSite.Location = new System.Drawing.Point(346, 8);
+
             if (cboYear.Items.Count == 0)
             {
                 for (i = 0; i < 5; i++)
@@ -60,8 +61,8 @@ namespace HC_OSHA
             SSList.AddColumnText("나이", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("업무적합성", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
             SSList.AddColumnText("발급자", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false });
-            SSList.AddColumnText("회사코드", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, IsVisivle = false });
-            SSList.AddColumnText("사원ID", "", 100, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, IsVisivle = false });
+            SSList.AddColumnText("코드", "", 10, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, IsVisivle = false });
+            SSList.AddColumnText("ID", "", 10, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = false, IsVisivle = false });
         }
 
         private void BtnSearchSite_Click(object sender, EventArgs e)

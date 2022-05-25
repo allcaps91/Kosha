@@ -1,6 +1,6 @@
 ﻿namespace HC_OSHA
 {
-    partial class FrmJekhapReport
+    partial class FrmEHPReport
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SSList = new FarPoint.Win.Spread.FpSpread();
-            this.SSList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.panSearch = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
             this.TxtLtdcode = new System.Windows.Forms.TextBox();
             this.BtnSearchSite = new System.Windows.Forms.Button();
             this.lblLTD02 = new System.Windows.Forms.Label();
@@ -41,11 +37,143 @@
             this.BtnPrint = new System.Windows.Forms.Button();
             this.BtnSearch = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             this.formTItle1 = new ComBase.Mvc.UserControls.FormTItle();
+            this.SSList = new FarPoint.Win.Spread.FpSpread();
+            this.SSList_Sheet1 = new FarPoint.Win.Spread.SheetView();
+            this.panSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SSList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).BeginInit();
-            this.panSearch.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panSearch
+            // 
+            this.panSearch.BackColor = System.Drawing.Color.White;
+            this.panSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panSearch.Controls.Add(this.TxtLtdcode);
+            this.panSearch.Controls.Add(this.BtnSearchSite);
+            this.panSearch.Controls.Add(this.lblLTD02);
+            this.panSearch.Controls.Add(this.btnExcel);
+            this.panSearch.Controls.Add(this.cboYear);
+            this.panSearch.Controls.Add(this.BtnPrint);
+            this.panSearch.Controls.Add(this.BtnSearch);
+            this.panSearch.Controls.Add(this.label15);
+            this.panSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panSearch.Location = new System.Drawing.Point(0, 35);
+            this.panSearch.Name = "panSearch";
+            this.panSearch.Size = new System.Drawing.Size(1084, 44);
+            this.panSearch.TabIndex = 21;
+            // 
+            // TxtLtdcode
+            // 
+            this.TxtLtdcode.Font = new System.Drawing.Font("맑은 고딕", 9.75F);
+            this.TxtLtdcode.Location = new System.Drawing.Point(202, 10);
+            this.TxtLtdcode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtLtdcode.Name = "TxtLtdcode";
+            this.TxtLtdcode.Size = new System.Drawing.Size(136, 25);
+            this.TxtLtdcode.TabIndex = 1;
+            // 
+            // BtnSearchSite
+            // 
+            this.BtnSearchSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSearchSite.Font = new System.Drawing.Font("맑은 고딕", 9.75F);
+            this.BtnSearchSite.Location = new System.Drawing.Point(300, 10);
+            this.BtnSearchSite.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.BtnSearchSite.Name = "BtnSearchSite";
+            this.BtnSearchSite.Size = new System.Drawing.Size(50, 28);
+            this.BtnSearchSite.TabIndex = 142;
+            this.BtnSearchSite.Text = "찾기";
+            this.BtnSearchSite.UseVisualStyleBackColor = true;
+            // 
+            // lblLTD02
+            // 
+            this.lblLTD02.BackColor = System.Drawing.Color.LightBlue;
+            this.lblLTD02.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblLTD02.Font = new System.Drawing.Font("맑은 고딕", 9.75F);
+            this.lblLTD02.Location = new System.Drawing.Point(148, 8);
+            this.lblLTD02.Name = "lblLTD02";
+            this.lblLTD02.Size = new System.Drawing.Size(50, 28);
+            this.lblLTD02.TabIndex = 143;
+            this.lblLTD02.Text = "회사";
+            this.lblLTD02.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(891, 6);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(75, 28);
+            this.btnExcel.TabIndex = 4;
+            this.btnExcel.Text = "엑셀";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // cboYear
+            // 
+            this.cboYear.Font = new System.Drawing.Font("맑은 고딕", 9.75F);
+            this.cboYear.FormattingEnabled = true;
+            this.cboYear.Location = new System.Drawing.Point(62, 8);
+            this.cboYear.Name = "cboYear";
+            this.cboYear.Size = new System.Drawing.Size(66, 25);
+            this.cboYear.TabIndex = 0;
+            // 
+            // BtnPrint
+            // 
+            this.BtnPrint.Location = new System.Drawing.Point(810, 6);
+            this.BtnPrint.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.BtnPrint.Name = "BtnPrint";
+            this.BtnPrint.Size = new System.Drawing.Size(75, 28);
+            this.BtnPrint.TabIndex = 3;
+            this.BtnPrint.Text = "인쇄(&P)";
+            this.BtnPrint.UseVisualStyleBackColor = true;
+            this.BtnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
+            // 
+            // BtnSearch
+            // 
+            this.BtnSearch.Location = new System.Drawing.Point(719, 8);
+            this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.BtnSearch.Name = "BtnSearch";
+            this.BtnSearch.Size = new System.Drawing.Size(75, 28);
+            this.BtnSearch.TabIndex = 2;
+            this.BtnSearch.Text = "검색(&F)";
+            this.BtnSearch.UseVisualStyleBackColor = true;
+            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label15.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label15.Location = new System.Drawing.Point(11, 6);
+            this.label15.Name = "label15";
+            this.label15.Padding = new System.Windows.Forms.Padding(3);
+            this.label15.Size = new System.Drawing.Size(45, 28);
+            this.label15.TabIndex = 78;
+            this.label15.Text = "년도";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(988, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 35);
+            this.btnClose.TabIndex = 24;
+            this.btnClose.Text = "닫기";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // formTItle1
+            // 
+            this.formTItle1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.formTItle1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.formTItle1.Location = new System.Drawing.Point(0, 0);
+            this.formTItle1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.formTItle1.Name = "formTItle1";
+            this.formTItle1.Size = new System.Drawing.Size(1084, 35);
+            this.formTItle1.TabIndex = 22;
+            this.formTItle1.TitleText = "기업건강증진지수 대장";
             // 
             // SSList
             // 
@@ -56,10 +184,8 @@
             this.SSList.Name = "SSList";
             this.SSList.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SSList_Sheet1});
-            this.SSList.Size = new System.Drawing.Size(1154, 549);
-            this.SSList.TabIndex = 18;
-            this.SSList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellClick);
-            this.SSList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SSList_CellDoubleClick);
+            this.SSList.Size = new System.Drawing.Size(1084, 682);
+            this.SSList.TabIndex = 25;
             // 
             // SSList_Sheet1
             // 
@@ -108,172 +234,27 @@
             this.SSList_Sheet1.SheetCornerStyle.VerticalAlignment = FarPoint.Win.Spread.CellVerticalAlignment.General;
             this.SSList_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
-            // panSearch
-            // 
-            this.panSearch.BackColor = System.Drawing.Color.White;
-            this.panSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panSearch.Controls.Add(this.label1);
-            this.panSearch.Controls.Add(this.btnClose);
-            this.panSearch.Controls.Add(this.TxtLtdcode);
-            this.panSearch.Controls.Add(this.BtnSearchSite);
-            this.panSearch.Controls.Add(this.lblLTD02);
-            this.panSearch.Controls.Add(this.btnExcel);
-            this.panSearch.Controls.Add(this.cboYear);
-            this.panSearch.Controls.Add(this.BtnPrint);
-            this.panSearch.Controls.Add(this.BtnSearch);
-            this.panSearch.Controls.Add(this.label15);
-            this.panSearch.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panSearch.Location = new System.Drawing.Point(0, 35);
-            this.panSearch.Name = "panSearch";
-            this.panSearch.Size = new System.Drawing.Size(1154, 44);
-            this.panSearch.TabIndex = 16;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(412, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(374, 17);
-            this.label1.TabIndex = 145;
-            this.label1.Text = "해당 줄을 더블클릭하시면 업무적합성평가 내역이 표시됩니다.";
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(1061, 5);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 31);
-            this.btnClose.TabIndex = 144;
-            this.btnClose.Text = "닫기";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // TxtLtdcode
-            // 
-            this.TxtLtdcode.Font = new System.Drawing.Font("맑은 고딕", 9.75F);
-            this.TxtLtdcode.Location = new System.Drawing.Point(202, 10);
-            this.TxtLtdcode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TxtLtdcode.Name = "TxtLtdcode";
-            this.TxtLtdcode.Size = new System.Drawing.Size(136, 25);
-            this.TxtLtdcode.TabIndex = 1;
-            // 
-            // BtnSearchSite
-            // 
-            this.BtnSearchSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSearchSite.Font = new System.Drawing.Font("맑은 고딕", 9.75F);
-            this.BtnSearchSite.Location = new System.Drawing.Point(274, 7);
-            this.BtnSearchSite.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.BtnSearchSite.Name = "BtnSearchSite";
-            this.BtnSearchSite.Size = new System.Drawing.Size(50, 28);
-            this.BtnSearchSite.TabIndex = 142;
-            this.BtnSearchSite.Text = "찾기";
-            this.BtnSearchSite.UseVisualStyleBackColor = true;
-            this.BtnSearchSite.Click += new System.EventHandler(this.BtnSearchSite_Click);
-            // 
-            // lblLTD02
-            // 
-            this.lblLTD02.BackColor = System.Drawing.Color.LightBlue;
-            this.lblLTD02.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblLTD02.Font = new System.Drawing.Font("맑은 고딕", 9.75F);
-            this.lblLTD02.Location = new System.Drawing.Point(148, 8);
-            this.lblLTD02.Name = "lblLTD02";
-            this.lblLTD02.Size = new System.Drawing.Size(50, 28);
-            this.lblLTD02.TabIndex = 143;
-            this.lblLTD02.Text = "회사";
-            this.lblLTD02.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Location = new System.Drawing.Point(977, 7);
-            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(75, 28);
-            this.btnExcel.TabIndex = 4;
-            this.btnExcel.Text = "엑셀";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // cboYear
-            // 
-            this.cboYear.Font = new System.Drawing.Font("맑은 고딕", 9.75F);
-            this.cboYear.FormattingEnabled = true;
-            this.cboYear.Location = new System.Drawing.Point(62, 8);
-            this.cboYear.Name = "cboYear";
-            this.cboYear.Size = new System.Drawing.Size(66, 25);
-            this.cboYear.TabIndex = 0;
-            // 
-            // BtnPrint
-            // 
-            this.BtnPrint.Location = new System.Drawing.Point(896, 7);
-            this.BtnPrint.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.BtnPrint.Name = "BtnPrint";
-            this.BtnPrint.Size = new System.Drawing.Size(75, 28);
-            this.BtnPrint.TabIndex = 3;
-            this.BtnPrint.Text = "인쇄(&P)";
-            this.BtnPrint.UseVisualStyleBackColor = true;
-            this.BtnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
-            // 
-            // BtnSearch
-            // 
-            this.BtnSearch.Location = new System.Drawing.Point(805, 9);
-            this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.BtnSearch.Name = "BtnSearch";
-            this.BtnSearch.Size = new System.Drawing.Size(75, 28);
-            this.BtnSearch.TabIndex = 2;
-            this.BtnSearch.Text = "검색(&F)";
-            this.BtnSearch.UseVisualStyleBackColor = true;
-            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
-            // 
-            // label15
-            // 
-            this.label15.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label15.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label15.Location = new System.Drawing.Point(11, 6);
-            this.label15.Name = "label15";
-            this.label15.Padding = new System.Windows.Forms.Padding(3);
-            this.label15.Size = new System.Drawing.Size(45, 28);
-            this.label15.TabIndex = 78;
-            this.label15.Text = "년도";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // formTItle1
-            // 
-            this.formTItle1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.formTItle1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.formTItle1.Location = new System.Drawing.Point(0, 0);
-            this.formTItle1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.formTItle1.Name = "formTItle1";
-            this.formTItle1.Size = new System.Drawing.Size(1154, 35);
-            this.formTItle1.TabIndex = 17;
-            this.formTItle1.TitleText = "업무적합성평가 대장";
-            // 
-            // FrmJekhapReport
+            // FrmEHPReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1154, 628);
+            this.ClientSize = new System.Drawing.Size(1084, 761);
             this.Controls.Add(this.SSList);
             this.Controls.Add(this.panSearch);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.formTItle1);
-            this.Name = "FrmJekhapReport";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
-            this.Text = "업무적합성평가 대장";
-            this.Load += new System.EventHandler(this.FrmJekhapReport_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.SSList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).EndInit();
+            this.Name = "FrmEHPReport";
+            this.Text = "FrmEHPReport";
             this.panSearch.ResumeLayout(false);
             this.panSearch.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SSList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SSList_Sheet1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private FarPoint.Win.Spread.FpSpread SSList;
-        private FarPoint.Win.Spread.SheetView SSList_Sheet1;
         private System.Windows.Forms.Panel panSearch;
         private System.Windows.Forms.TextBox TxtLtdcode;
         private System.Windows.Forms.Button BtnSearchSite;
@@ -283,8 +264,9 @@
         private System.Windows.Forms.Button BtnPrint;
         private System.Windows.Forms.Button BtnSearch;
         private System.Windows.Forms.Label label15;
-        private ComBase.Mvc.UserControls.FormTItle formTItle1;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label label1;
+        private ComBase.Mvc.UserControls.FormTItle formTItle1;
+        private FarPoint.Win.Spread.FpSpread SSList;
+        private FarPoint.Win.Spread.SheetView SSList_Sheet1;
     }
 }
