@@ -46,6 +46,8 @@ namespace HC_OSHA
 
             SSList.AddColumnButton(" ", 60, new SpreadCellTypeOption { ButtonText = "삭제" }).ButtonClick += (s, ev) => { SSList.DeleteRow(ev.Row); };
 
+            LblSite.Text = "";
+            if (base.SelectedSite != null) LblSite.Text = base.SelectedSite.NAME;
             Search();
         }
         private void Search()

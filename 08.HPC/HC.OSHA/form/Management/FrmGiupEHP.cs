@@ -409,16 +409,10 @@ namespace HC_OSHA
                     strJumin = dt.Rows[i]["JUMIN"].ToString().Trim();
                     if (VB.Len(strJumin)== 6 || VB.Len(strJumin) == 7)
                     {
-                        if (Int32.Parse(VB.Left(strJumin, 2)) > Int32.Parse(VB.Mid(strNow, 3, 2)))
-                        {
-                            nAge = Int32.Parse(VB.Left(strNow, 4)) - Int32.Parse("19" + VB.Left(strJumin, 2));
-                        }
-                        else
-                        {
-                            nAge = Int32.Parse(VB.Left(strNow, 4)) - Int32.Parse("20" + VB.Left(strJumin, 2));
-                        }
+                        nAge = Int32.Parse(VB.Left(strNow, 4)) - Int32.Parse("19" + VB.Left(strJumin, 2));
+                        if (nAge >= 100) nAge = nAge - 100;
                     }
-                    else
+                    else if (VB.Len(strJumin) >= 8)
                     {
                         nAge = Int32.Parse(VB.Left(strNow, 4)) - Int32.Parse(VB.Left(strJumin, 4));
                     }

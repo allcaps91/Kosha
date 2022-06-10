@@ -115,7 +115,7 @@ namespace HC.OSHA.Repository
         public HC_OSHA_CARD13 Update(HC_OSHA_CARD13 dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_CARD3                                                       ");
+            parameter.AppendSql("UPDATE HIC_OSHA_CARD13                                                      ");
             parameter.AppendSql("SET                                                                         ");
             parameter.AppendSql("  ID = :ID,                                                                 ");
             parameter.AppendSql("  NAME = :NAME,                                                             ");

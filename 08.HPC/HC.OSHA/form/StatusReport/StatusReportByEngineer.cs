@@ -139,6 +139,7 @@ namespace HC_OSHA
             TxtSiteManagerTel.Text = string.Empty;
             TxtSiteCeoName.Text = string.Empty;
             TxtSiteAddress.Text = string.Empty;
+            TxtTmp.Text = string.Empty;
 
             PanStatausReport.SetData(new StatusReportEngineerDto());
             InitENVCHECKJSON(GrpEnvCheckJson1, "RdoENVCHECKJSON");
@@ -767,7 +768,8 @@ namespace HC_OSHA
         {
             HcOshaEquipmentService hcOshaEquipmentService = new HcOshaEquipmentService();
             List<HC_OSHA_EQUIPMENT> list = hcOshaEquipmentService.FindAll(base.SelectedSite.ID);
-            foreach(HC_OSHA_EQUIPMENT dto in list)
+            TxtTmp.Text = string.Empty;
+            foreach (HC_OSHA_EQUIPMENT dto in list)
             {
                 SetEquipemtnText(dto.NAME, dto.REMARK);
             }
