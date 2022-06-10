@@ -12,13 +12,14 @@ using System.Windows.Forms;
 namespace ComBase.Mvc.Utils
 {
 
-    //구글사용시 https://myaccount.google.com/lesssecureapps 허용으로 해야함
+    //구글사용시 https://myaccount.google.com/lesssecureapps 허용으로 해야함 -> 2022.06.10 막힘
+    //네이버 사용시 2단계인증 해제해야함
     public class MailUtil
     {
-        private string SMTP_URL = "smtp.gmail.com";
+        //private string SMTP_URL = "smtp.gmail.com";
+        //private int SMTP_PORT = 587;
+        private string SMTP_URL = "smtp.naver.com";
         private int SMTP_PORT = 587;
-       // private string SMTP_URL = "smtp.mailplug.co.kr";
-       //  private int SMTP_PORT = 465;
 
         /// <summary>
         /// 보내는사람
