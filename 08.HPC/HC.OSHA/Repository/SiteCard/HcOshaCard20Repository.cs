@@ -76,7 +76,7 @@ namespace HC.OSHA.Repository
             dto.ID = GetSequenceNextVal("HC_OSHA_CARD_ID_SEQ");
 
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("INSERT INTO HIC_OSHACARD20                                                  ");
+            parameter.AppendSql("INSERT INTO HIC_OSHA_CARD20                                                 ");
             parameter.AppendSql("(                                                                           ");
             parameter.AppendSql("  ID,                                                                       ");
             parameter.AppendSql("  SITE_ID,                                                                  ");

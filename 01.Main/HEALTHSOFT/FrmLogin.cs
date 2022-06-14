@@ -190,6 +190,7 @@ namespace HEALTHSOFT
 
             clsType.HosInfo.SwLicense = "";
             clsType.HosInfo.SwLicInfo = "";
+            clsType.HosInfo.SMTP_Info = "smtp.naver.com{}587{}yjlee7788{}yjlee4349!";
 
             //파일형식: 라이선스번호{}회사명{}종료일자{}관리자비번{}
             string strLicFile = @"C:\HealthSoft\acledit392io87.dll";
@@ -227,6 +228,7 @@ namespace HEALTHSOFT
             string strEndDate = "";
             string strPcData = "";
 
+            clsType.HosInfo.SMTP_Info = "smtp.naver.com{}587{}yjlee7788{}yjlee4349!";
             DataTable dt = null;
 
             Cursor.Current = Cursors.WaitCursor;

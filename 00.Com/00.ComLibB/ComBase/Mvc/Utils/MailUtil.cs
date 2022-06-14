@@ -52,8 +52,11 @@ namespace ComBase.Mvc.Utils
             ReciverMailSddress = new List<string>();
             Attachments = new List<string>();
             smtpClient = new SmtpClient();
-            smtpClient.Host = this.SMTP_URL;
-            smtpClient.Port = this.SMTP_PORT;
+            //smtpClient.Host = this.SMTP_URL;
+            //smtpClient.Port = this.SMTP_PORT;
+            smtpClient.Host = VB.Pstr(clsType.HosInfo.SMTP_Info, "{}", 1);
+            smtpClient.Port = Int32.Parse(VB.Pstr(clsType.HosInfo.SMTP_Info, "{}", 2));
+
             smtpClient.EnableSsl = true;
             //      smtpClient.UseDefaultCredentials = true;
             //       smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;

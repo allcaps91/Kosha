@@ -42,8 +42,9 @@ namespace HC_Core
         {
             
             textBox.Leave += TextBox_Leave;
-            textBox.Click += TextBox_Click1;
-       //     textBox.TextChanged += TextBox_TextChanged;
+            textBox.DoubleClick += TextBox_Click1;
+            //textBox.Click += TextBox_Click1;
+            //     textBox.TextChanged += TextBox_TextChanged;
             textBoxList.Add(textBox);
         }
 

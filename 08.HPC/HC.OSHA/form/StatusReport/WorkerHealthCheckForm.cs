@@ -309,7 +309,6 @@ namespace HC_OSHA.StatusReport
                 SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
                 SQL = SQL + ComNum.VBLF + "   AND SITEID IN (" + strSiteList + ") ";
                 SQL = SQL + ComNum.VBLF + "   AND ISDELETED='N' ";
-                if (ChkEnd.Checked==false) SQL = SQL + ComNum.VBLF + " AND END_DATE IS NULL ";
                 //이름검색
                 if (txtSearchName.Text.Trim()!="") SQL = SQL + ComNum.VBLF + " AND NAME LIKE '%" + txtSearchName.Text.Trim() + "%' ";
                 //중점관리대상자
@@ -323,6 +322,10 @@ namespace HC_OSHA.StatusReport
                     SQL = SQL + ComNum.VBLF + "             WHERE REPORT_ID=" + reportId + " ";
                     SQL = SQL + ComNum.VBLF + "               AND ISDELETED='N' ";
                     SQL = SQL + ComNum.VBLF + "               AND SWLicense='" + clsType.HosInfo.SwLicense + "') ";
+                }
+                else
+                {
+                    if (ChkEnd.Checked == false) SQL = SQL + ComNum.VBLF + " AND END_DATE IS NULL ";
                 }
                 SQL = SQL + ComNum.VBLF + "ORDER BY NAME ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -642,33 +645,33 @@ namespace HC_OSHA.StatusReport
 
         private void ChangeRowColor(string workerId, bool isManageOsha)
         {
-            for (int i = 0; i < SSWorkerList.ActiveSheet.RowCount; i++)
-            {
+            //for (int i = 0; i < SSWorkerList.ActiveSheet.RowCount; i++)
+            //{
                 
-                HealthCheckWorkerModel model = SSWorkerList.GetRowData(i) as HealthCheckWorkerModel;
-                if (model.Worker_ID == workerId)
-                {
-                    if (isManageOsha)
-                    {
-                        model.IsManageOsha = "Y";
-                    }
-                    else
-                    {
-                        model.IsManageOsha = "N";
-                    }
+            //    HealthCheckWorkerModel model = SSWorkerList.GetRowData(i) as HealthCheckWorkerModel;
+            //    if (model.Worker_ID == workerId)
+            //    {
+            //        if (isManageOsha)
+            //        {
+            //            model.IsManageOsha = "Y";
+            //        }
+            //        else
+            //        {
+            //            model.IsManageOsha = "N";
+            //        }
 
-                    SSWorkerList.SetRowData(i, model);
-                    if (isManageOsha)
-                    {
-                        SSWorkerList.ActiveSheet.Rows[i].BackColor = Color.FromArgb(237, 211, 237);
-                    }
-                    else
-                    {
-                        SSWorkerList.ActiveSheet.Rows[i].BackColor = Color.White;
-                    }
+            //        SSWorkerList.SetRowData(i, model);
+            //        if (isManageOsha)
+            //        {
+            //            SSWorkerList.ActiveSheet.Rows[i].BackColor = Color.FromArgb(237, 211, 237);
+            //        }
+            //        else
+            //        {
+            //            SSWorkerList.ActiveSheet.Rows[i].BackColor = Color.White;
+            //        }
                     
-                }
-            }
+            //    }
+            //}
         }
         public void Select(ISiteModel siteModel)
         {
@@ -790,6 +793,9 @@ namespace HC_OSHA.StatusReport
 
                 healthCheckService.Save(dto);
 
+                //근로자정보 업데이트
+                Update_worker(dto.worker_id);
+
                 //  퇴직자정보 저장
                 HIC_OSHA_WORKER_END worker = new HIC_OSHA_WORKER_END();
                 worker.SITE_ID = SELECTED_WORKED.SITEID;
@@ -799,7 +805,7 @@ namespace HC_OSHA.StatusReport
                 if (DtpWorkerEndDate.Checked) worker.END_DATE = DateUtil.DateTimeToStrig(DtpWorkerEndDate.Value, DateTimeType.YYYYMMDD);
                 worker.CREATEDUSER = clsType.User.Sabun;
 
-                workerEndRepository.Update(worker);
+                // workerEndRepository.Update(worker);
 
                 //  퇴직자인경우 데이터를 저장하지 않는다.
                 if(worker.END_DATE.NotEmpty())
@@ -822,6 +828,43 @@ namespace HC_OSHA.StatusReport
                 LogService.Instance.Task(base.SelectedSite.ID, TaskName.HEALTHCHECK);
 
                 SearchHistory(SELECTED_WORKED.Worker_ID);
+            }
+        }
+
+        private void Update_worker(string worker_id)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+            int intRowAffected = 0;
+
+            string strEND_DATE = "";
+            if (DtpWorkerEndDate.Checked) strEND_DATE = DateUtil.DateTimeToStrig(DtpWorkerEndDate.Value, DateTimeType.YYYYMMDD);
+            string strISMANAGEOSHA = "N";
+            if (ChkIsManageOsha.Checked==true) strISMANAGEOSHA = "Y";
+
+            SQL = "SELECT ID,NAME,DEPT,WORKER_ROLE,SABUN,JUMIN,IPSADATE,END_DATE,ISMANAGEOSHA ";
+            SQL = SQL + ComNum.VBLF + " FROM HIC_SITE_WORKER ";
+            SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+            SQL = SQL + ComNum.VBLF + "   AND SITEID = " + base.SelectedSite.ID + " ";
+            SQL = SQL + ComNum.VBLF + "   AND ID = '" + worker_id + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            if (dt.Rows.Count > 0)
+            {
+                SQL = "UPDATE HIC_SITE_WORKER SET ";
+                if (strEND_DATE != dt.Rows[0]["END_DATE"].ToString().Trim()) SQL += " END_DATE='" + strEND_DATE + "',";
+                if (strISMANAGEOSHA != dt.Rows[0]["ISMANAGEOSHA"].ToString().Trim()) SQL += " ISMANAGEOSHA='" + strISMANAGEOSHA + "',";
+                SQL += " SABUN='" + TxtSABUN.Text.Trim() + "',";
+                SQL += " DEPT='" + txtDept.Text.Trim() + "' ";
+                SQL += " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+                SQL += "   AND SITEID = " + base.SelectedSite.ID + " ";
+                SQL += "   AND ID = '" + worker_id + "' ";
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+                if (SqlErr != "")
+                {
+                    ComFunc.MsgBox("HIC_SITE_WORKER 자료 업데이트시 오류가 발생함", "알림");
+                    Cursor.Current = Cursors.Default;
+                }
             }
         }
 
@@ -1651,15 +1694,15 @@ namespace HC_OSHA.StatusReport
         /// <param name="e"></param>
         private void BtnSaveMemo_Click(object sender, EventArgs e)
         {
-            if (!TxtMemo.Text.IsNullOrEmpty())
-            {
+            //if (!TxtMemo.Text.IsNullOrEmpty())
+            //{
                 HIC_OSHA_PATIENT_MEMO memoDto = new HIC_OSHA_PATIENT_MEMO();
                 memoDto.MEMO = TxtMemo.Text;
                 memoDto.WORKER_ID = SELECTED_WORKED.Worker_ID;
                 healthCheckMemoRepository.Insert(memoDto);
                 TxtMemo.Text = "";
                 SearchMemo(SELECTED_WORKED.Worker_ID);
-            }
+            //}
         }
 
         /// <summary>
@@ -1669,8 +1712,8 @@ namespace HC_OSHA.StatusReport
         /// <param name="e"></param>
         private void BtnSaveRemark_Click(object sender, EventArgs e)
         {
-            if (TxtRemark.Text.NotEmpty())
-            {
+            //if (TxtRemark.Text.NotEmpty())
+            //{
                 HIC_OSHA_PATIENT_REMARK dto = new HIC_OSHA_PATIENT_REMARK();
                 dto.REMARK = TxtRemark.Text;
                 dto.WORKER_ID = SELECTED_WORKED.Worker_ID;
@@ -1679,7 +1722,7 @@ namespace HC_OSHA.StatusReport
                 healthCheckMemoRepository.InsertRemark(dto);
                 TxtRemark.Text = string.Empty;
                 SearchRemark(SELECTED_WORKED.Worker_ID);
-            }
+            //}
         }
 
         /// <summary>

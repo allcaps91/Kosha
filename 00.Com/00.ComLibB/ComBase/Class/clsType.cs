@@ -450,6 +450,10 @@
             /// </summary>
             public static string SwLicense="";        //SW 라이선스번호
             public static string SwLicInfo="";        //SW 라이선스정보
+            /// <summary>
+            /// SMTP 정보
+            /// </summary>
+            public static string SMTP_Info = "";     //메일전송 SMTP 정보
         }
 
         public static void ClearHosInfo()
