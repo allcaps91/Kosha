@@ -541,8 +541,11 @@ namespace HC_OSHA.form.Visit
         public void SendMail(Dictionary<long, List<string>> receiverMailList, Dictionary<long, ChargeEmailModel> exportPdfList)
         {
             HcCodeService codeService = new HcCodeService();
-            string mail = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail", "OSHA").CodeName;
-            string password = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail_password", "OSHA").CodeName;
+            //string mail = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail", "OSHA").CodeName;
+            //string password = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail_password", "OSHA").CodeName;
+            string mail = VB.Pstr(clsType.HosInfo.SMTP_Info, "{}", 3);
+            string password = VB.Pstr(clsType.HosInfo.SMTP_Info, "{}", 4);
+
             string month = CboMonth.GetValue().Substring(5, 2);
             long siteId = 0;
             string strIDs = "";

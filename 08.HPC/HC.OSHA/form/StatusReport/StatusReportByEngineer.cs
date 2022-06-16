@@ -591,7 +591,9 @@ namespace HC_OSHA
                         }
                     }
 
-                    statusReportViewer = new StatusReportViewer("statusReportByEngineer.html", base.SelectedSite.ID);
+                    statusReportViewer = new StatusReportViewer("statusReportByEngineer.html", base.SelectedSite.ID, base.SelectedSite.NAME);
+                    statusReportViewer.Select(base.SelectedSite);
+                    statusReportViewer.Select(base.SelectedEstimate);
                     statusReportViewer.PrintStatusReportEngineerDto(dto, ContentTitle.TitleText);
                     statusReportViewer.ShowDialog();
                 }                

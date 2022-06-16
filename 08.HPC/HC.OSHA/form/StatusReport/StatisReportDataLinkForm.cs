@@ -81,32 +81,25 @@ namespace HC_OSHA
 
         private void StatisReportDataLinkForm_ButtonClick3(object sender, FarPoint.Win.Spread.EditorNotifyEventArgs e)
         {
-            HIC_OSHA_SPECIAL_RESULT dto = SSSpecialHealthCheckList.GetRowData(e.Row) as HIC_OSHA_SPECIAL_RESULT;
-            dto.SITE_ID = siteStatusControl.getCommonForm().SelectedSite.ID;
-            //dto.JEPDATE = hicOshaGeneralResultRepository.FindBySpecialMinJepDate(dto.SITE_ID, dto.YEAR);
-
             DESEASE_COUNT_MODEL model = new DESEASE_COUNT_MODEL();
-            model.D2 = dto.D2COUNT;
-            model.C2 = dto.C2COUNT;
-            model.D1 = dto.D1COUNT;
-            model.C1 = dto.C1COUNT;
-            model.CN = dto.CNCOUNT;
-            model.DN = dto.DNCOUNT;
+
+            model.D2 = long.Parse(SSSpecialHealthCheckList_Sheet1.Cells[e.Row, 4].Text);
+            model.C2 = long.Parse(SSSpecialHealthCheckList_Sheet1.Cells[e.Row, 5].Text);
+            model.D1 = long.Parse(SSSpecialHealthCheckList_Sheet1.Cells[e.Row, 2].Text);
+            model.C1 = long.Parse(SSSpecialHealthCheckList_Sheet1.Cells[e.Row, 3].Text);
+            model.CN = long.Parse(SSSpecialHealthCheckList_Sheet1.Cells[e.Row, 7].Text);
+            model.DN = long.Parse(SSSpecialHealthCheckList_Sheet1.Cells[e.Row, 6].Text);
             model.JEPDATE = null;  //dto.JEPDATE;
-            model.SpecialTotalCount = dto.TOTALCOUNT;
+            model.SpecialTotalCount = long.Parse(SSSpecialHealthCheckList_Sheet1.Cells[e.Row, 1].Text);
             siteStatusControl.SetSpecialCount(model);
         }
 
         private void StatisReportDataLinkForm_ButtonClick2(object sender, FarPoint.Win.Spread.EditorNotifyEventArgs e)
         {
-            HIC_OSHA_GENEAL_RESULT dto = SSGeneralHealthCare.GetRowData(e.Row) as HIC_OSHA_GENEAL_RESULT;
-            dto.SITE_ID = siteStatusControl.getCommonForm().SelectedSite.ID;
-            //dto.JEPDATE = hicOshaGeneralResultRepository.FindByMinJepDate(dto.SITE_ID, dto.YEAR);
-
             DESEASE_COUNT_MODEL model = new DESEASE_COUNT_MODEL();
-            model.D2 = dto.D2COUNT;
-            model.C2 = dto.C2COUNT;
-            model.GeneralTotalCount = dto.TOTALCOUNT;
+            model.D2 = long.Parse(SSGeneralHealthCare_Sheet1.Cells[e.Row, 2].Text);
+            model.C2 = long.Parse(SSGeneralHealthCare_Sheet1.Cells[e.Row, 3].Text);
+            model.GeneralTotalCount = long.Parse(SSGeneralHealthCare_Sheet1.Cells[e.Row, 1].Text);
             model.JEPDATE = null;  //dto.JEPDATE;
             siteStatusControl.SetGeneralCount(model);
         }
@@ -203,9 +196,10 @@ namespace HC_OSHA
             long nDN = 0;
             long nCN = 0;
 
-            List<HIC_OSHA_SPECIAL_RESULT> list = new List<HIC_OSHA_SPECIAL_RESULT>();
-            HIC_OSHA_SPECIAL_RESULT dto = new HIC_OSHA_SPECIAL_RESULT();
+            int nRow = 0;
 
+            List<HIC_OSHA_SPECIAL_RESULT> list = new List<HIC_OSHA_SPECIAL_RESULT>();
+            
             string startYear = DateTime.Now.AddYears(-5).ToString("yyyy");
 
             try
@@ -228,15 +222,16 @@ namespace HC_OSHA
                         if (strOldData == "") strOldData = strNewData;
                         if (strOldData != strNewData)
                         {
-                            dto.YEAR = strOldData;
-                            dto.TOTALCOUNT = nTotCnt;
-                            dto.C1COUNT = nC1;
-                            dto.C2COUNT = nC2;
-                            dto.D1COUNT = nD1;
-                            dto.D2COUNT = nD2;
-                            dto.CNCOUNT = nCN;
-                            dto.DNCOUNT = nDN;
-                            list.Add(dto);
+                            nRow++;
+                            SSSpecialHealthCheckList.ActiveSheet.RowCount = nRow;
+                            SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 0].Text = strOldData;
+                            SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 1].Text = nTotCnt.ToString();
+                            SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 2].Text = nC1.ToString();
+                            SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 3].Text = nC2.ToString();
+                            SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 4].Text = nD1.ToString();
+                            SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 5].Text = nD2.ToString();
+                            SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 6].Text = nCN.ToString();
+                            SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 7].Text = nDN.ToString();
 
                             strOldData = strNewData;
                             nC2 = 0;
@@ -255,22 +250,20 @@ namespace HC_OSHA
                         if (VB.InStr(strGGubun, "DN") > 0) nDN += nCnt;
                         if (VB.InStr(strGGubun, "CN") > 0) nCN += nCnt;
                     }
-
-                    dto.YEAR = strNewData;
-                    dto.TOTALCOUNT = nTotCnt;
-                    dto.C1COUNT = nC1;
-                    dto.C2COUNT = nC2;
-                    dto.D1COUNT = nD1;
-                    dto.D2COUNT = nD2;
-                    dto.CNCOUNT = nCN;
-                    dto.DNCOUNT = nDN;
-                    list.Add(dto);
+                    nRow++;
+                    SSSpecialHealthCheckList.ActiveSheet.RowCount = nRow;
+                    SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 0].Text = strOldData;
+                    SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 1].Text = nTotCnt.ToString();
+                    SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 2].Text = nC1.ToString();
+                    SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 3].Text = nC2.ToString();
+                    SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 4].Text = nD1.ToString();
+                    SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 5].Text = nD2.ToString();
+                    SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 6].Text = nCN.ToString();
+                    SSSpecialHealthCheckList_Sheet1.Cells[nRow - 1, 7].Text = nDN.ToString();
                 }
 
                 dt.Dispose();
                 dt = null;
-
-                SSSpecialHealthCheckList.SetDataSource(list);
             }
             catch (Exception ex)
             {
@@ -300,9 +293,9 @@ namespace HC_OSHA
             long nTotCnt = 0;
             long nD2 = 0;
             long nC2 = 0;
+            int nRow = 0;
 
             List<HIC_OSHA_GENEAL_RESULT> list = new List<HIC_OSHA_GENEAL_RESULT>();
-            HIC_OSHA_GENEAL_RESULT dto = new HIC_OSHA_GENEAL_RESULT();
 
             string startYear = DateTime.Now.AddYears(-5).ToString("yyyy");
 
@@ -326,11 +319,13 @@ namespace HC_OSHA
                         if (strOldData == "") strOldData = strNewData;
                         if (strOldData != strNewData)
                         {
-                            dto.YEAR = strOldData;
-                            dto.TOTALCOUNT = nTotCnt;
-                            dto.D2COUNT = nD2;
-                            dto.C2COUNT = nC2;
-                            list.Add(dto);
+                            nRow++;
+                            SSGeneralHealthCare.ActiveSheet.RowCount = nRow;
+                            SSGeneralHealthCare_Sheet1.Cells[nRow - 1, 0].Text = strOldData;
+                            SSGeneralHealthCare_Sheet1.Cells[nRow - 1, 1].Text = nTotCnt.ToString();
+                            SSGeneralHealthCare_Sheet1.Cells[nRow - 1, 2].Text = nD2.ToString();
+                            SSGeneralHealthCare_Sheet1.Cells[nRow - 1, 3].Text = nC2.ToString();
+
                             strOldData = strNewData;
                             nC2 = 0;
                             nD2 = 0;
@@ -340,17 +335,16 @@ namespace HC_OSHA
                         if (VB.InStr(strGGubun, "C") > 0) nC2 += nCnt;
                         if (VB.InStr(strGGubun, "D2") > 0) nD2 += nCnt; 
                     }
-                    dto.YEAR = strNewData;
-                    dto.TOTALCOUNT = nTotCnt;
-                    dto.D2COUNT = nD2;
-                    dto.C2COUNT = nC2;
-                    list.Add(dto);
+                    nRow++;
+                    SSGeneralHealthCare.ActiveSheet.RowCount = nRow;
+                    SSGeneralHealthCare_Sheet1.Cells[nRow - 1, 0].Text = strOldData;
+                    SSGeneralHealthCare_Sheet1.Cells[nRow - 1, 1].Text = nTotCnt.ToString();
+                    SSGeneralHealthCare_Sheet1.Cells[nRow - 1, 2].Text = nD2.ToString();
+                    SSGeneralHealthCare_Sheet1.Cells[nRow - 1, 3].Text = nC2.ToString();
                 }
 
                 dt.Dispose();
                 dt = null;
-
-                SSGeneralHealthCare.SetDataSource(list);
             }
             catch (Exception ex)
             {

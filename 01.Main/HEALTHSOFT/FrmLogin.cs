@@ -77,12 +77,12 @@ namespace HEALTHSOFT
 
         private void DoLogin()
         {
-            string strUpdate = "프로그램이 업데이트 되었습니다." + "\n" + "나중에 다시 업데이트를 하시겠습니까?";
+            string strUpdate = "최신 업데이트 파일이 있습니다." + "\n" + "지금 업데이트를 진행하시겠습니까?";
 
             //버전정보가 틀리면 자동 업데이트
             if (FstrOldVer != FstrNewVer)
             {
-                if (MessageUtil.Confirm(strUpdate) == DialogResult.No)
+                if (MessageUtil.Confirm(strUpdate) == DialogResult.Yes)
                 {
                     btnUpdate_Click();
                     return;
@@ -190,7 +190,7 @@ namespace HEALTHSOFT
 
             clsType.HosInfo.SwLicense = "";
             clsType.HosInfo.SwLicInfo = "";
-            clsType.HosInfo.SMTP_Info = "smtp.naver.com{}587{}yjlee7788{}yjlee4349!";
+            clsType.HosInfo.SMTP_Info = "";
 
             //파일형식: 라이선스번호{}회사명{}종료일자{}관리자비번{}
             string strLicFile = @"C:\HealthSoft\acledit392io87.dll";
@@ -228,7 +228,7 @@ namespace HEALTHSOFT
             string strEndDate = "";
             string strPcData = "";
 
-            clsType.HosInfo.SMTP_Info = "smtp.naver.com{}587{}yjlee7788{}yjlee4349!";
+            clsType.HosInfo.SMTP_Info = "";
             DataTable dt = null;
 
             Cursor.Current = Cursors.WaitCursor;
@@ -254,6 +254,7 @@ namespace HEALTHSOFT
                     strNewData += dt.Rows[0]["EDate"].ToString().Trim() + "{}";
                     strNewData += dt.Rows[0]["AdminPass"].ToString().Trim() + "{}";
                     clsType.HosInfo.strNameKor = dt.Rows[0]["Sangho"].ToString().Trim();
+                    clsType.HosInfo.SMTP_Info = dt.Rows[0]["SMTP_Setup"].ToString().Trim();
                 }
 
                 dt.Dispose();

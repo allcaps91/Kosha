@@ -84,8 +84,9 @@ namespace HC_OSHA
             SSWorkerList.AddColumnText("이름", nameof(HC_SITE_WORKER.NAME), 75, IsReadOnly.N, new SpreadCellTypeOption { IsSort = true, sortIndicator = FarPoint.Win.Spread.Model.SortIndicator.Ascending });
             SSWorkerList.AddColumnText("부서", nameof(HC_SITE_WORKER.DEPT), 140, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("직책", nameof(HC_SITE_WORKER.WORKER_ROLE), 120, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
-            SSWorkerList.AddColumnText("생년월일", nameof(HC_SITE_WORKER.JUMIN), 120, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSWorkerList.AddColumnText("생년월일", nameof(HC_SITE_WORKER.JUMIN), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("사원번호", nameof(HC_SITE_WORKER.SABUN), 100, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
+            SSWorkerList.AddColumnText("중점관리", nameof(HC_SITE_WORKER.ISMANAGEOSHA), 80, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnText("퇴사일자", nameof(HC_SITE_WORKER.END_DATE), 120, IsReadOnly.N, new SpreadCellTypeOption { IsSort = false });
             SSWorkerList.AddColumnButton("삭제", 60, new SpreadCellTypeOption { ButtonText = "삭제" }).ButtonClick += SSWorkerListDelete_ButtonClick;
 

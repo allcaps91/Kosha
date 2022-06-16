@@ -74,6 +74,9 @@
             this.txtSangho = new System.Windows.Forms.TextBox();
             this.SS1 = new FarPoint.Win.Spread.FpSpread();
             this.SS1_Sheet1 = new FarPoint.Win.Spread.SheetView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtSMTP = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -94,7 +97,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(949, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(983, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -216,7 +219,7 @@
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(375, 38);
+            this.BtnSearch.Location = new System.Drawing.Point(375, 34);
             this.BtnSearch.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(75, 41);
@@ -227,6 +230,9 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Controls.Add(this.txtSMTP);
             this.panel3.Controls.Add(this.txtDbConnect);
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label5);
@@ -266,7 +272,7 @@
             this.txtDbConnect.Multiline = true;
             this.txtDbConnect.Name = "txtDbConnect";
             this.txtDbConnect.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDbConnect.Size = new System.Drawing.Size(358, 57);
+            this.txtDbConnect.Size = new System.Drawing.Size(396, 57);
             this.txtDbConnect.TabIndex = 152;
             // 
             // label12
@@ -474,30 +480,30 @@
             // 
             this.txtJuso.Location = new System.Drawing.Point(108, 135);
             this.txtJuso.Name = "txtJuso";
-            this.txtJuso.Size = new System.Drawing.Size(358, 22);
+            this.txtJuso.Size = new System.Drawing.Size(397, 22);
             this.txtJuso.TabIndex = 129;
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(10, 354);
+            this.txtRemark.Location = new System.Drawing.Point(10, 353);
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRemark.Size = new System.Drawing.Size(451, 172);
+            this.txtRemark.Size = new System.Drawing.Size(494, 172);
             this.txtRemark.TabIndex = 126;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(108, 197);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(358, 22);
+            this.txtEmail.Size = new System.Drawing.Size(397, 22);
             this.txtEmail.TabIndex = 125;
             // 
             // txtTel
             // 
             this.txtTel.Location = new System.Drawing.Point(335, 163);
             this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(131, 22);
+            this.txtTel.Size = new System.Drawing.Size(170, 22);
             this.txtTel.TabIndex = 123;
             // 
             // txtDamdang
@@ -511,7 +517,7 @@
             // 
             this.txtAdminpass.Location = new System.Drawing.Point(332, 46);
             this.txtAdminpass.Name = "txtAdminpass";
-            this.txtAdminpass.Size = new System.Drawing.Size(131, 22);
+            this.txtAdminpass.Size = new System.Drawing.Size(170, 22);
             this.txtAdminpass.TabIndex = 117;
             // 
             // dptEDate
@@ -578,11 +584,39 @@
             this.SS1_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SS1_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.LightBlue;
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label13.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label13.Location = new System.Drawing.Point(10, 293);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 23);
+            this.label13.TabIndex = 154;
+            this.label13.Text = "SMTP설정값";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtSMTP
+            // 
+            this.txtSMTP.Location = new System.Drawing.Point(108, 295);
+            this.txtSMTP.Name = "txtSMTP";
+            this.txtSMTP.Size = new System.Drawing.Size(396, 22);
+            this.txtSMTP.TabIndex = 153;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(105, 320);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(340, 13);
+            this.label16.TabIndex = 155;
+            this.label16.Text = "smtp.naver.com{}587{}test1233@naver.com{}test123";
+            // 
             // FrmLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 592);
+            this.ClientSize = new System.Drawing.Size(983, 592);
             this.Controls.Add(this.SS1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.BtnSearch);
@@ -655,5 +689,8 @@
         private System.Windows.Forms.ToolStripMenuItem pC저장ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 기본정보생성ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 헬스소프트실행ToolStripMenuItem;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtSMTP;
     }
 }

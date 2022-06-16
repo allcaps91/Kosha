@@ -311,21 +311,28 @@ namespace HC_OSHA.StatusReport
                 SQL = SQL + ComNum.VBLF + "   AND ISDELETED='N' ";
                 //이름검색
                 if (txtSearchName.Text.Trim()!="") SQL = SQL + ComNum.VBLF + " AND NAME LIKE '%" + txtSearchName.Text.Trim() + "%' ";
-                //중점관리대상자
-                if (ChkSearchIsManageOsha.Checked == true) SQL = SQL + ComNum.VBLF + " AND ISMANAGEOSHA='Y' ";
                 //부서별 조회
                 if (dept != "전체") SQL = SQL + ComNum.VBLF + " AND DEPT='" + dept + "' ";
-                //상담자 명단 조회
-                if (reportId > 0)
+                //퇴직자 포함
+                if (ChkEnd.Checked == false) SQL = SQL + ComNum.VBLF + " AND END_DATE IS NULL ";
+
+                //중점관리대상자 미상담
+                if (ChkSearchIsManageNot.Checked == true)
                 {
-                    SQL = SQL + ComNum.VBLF + " AND ID IN (SELECT WORKER_ID FROM HIC_OSHA_HEALTHCHECK ";
-                    SQL = SQL + ComNum.VBLF + "             WHERE REPORT_ID=" + reportId + " ";
-                    SQL = SQL + ComNum.VBLF + "               AND ISDELETED='N' ";
-                    SQL = SQL + ComNum.VBLF + "               AND SWLicense='" + clsType.HosInfo.SwLicense + "') ";
+                    SQL = SQL + ComNum.VBLF + " AND ISMANAGEOSHA='Y' ";
                 }
                 else
                 {
-                    if (ChkEnd.Checked == false) SQL = SQL + ComNum.VBLF + " AND END_DATE IS NULL ";
+                    if (ChkSearchIsManageOsha.Checked == true) SQL = SQL + ComNum.VBLF + " AND ISMANAGEOSHA='Y' ";
+
+                    //상담자 명단 조회
+                    if (reportId > 0)
+                    {
+                        SQL = SQL + ComNum.VBLF + " AND ID IN (SELECT WORKER_ID FROM HIC_OSHA_HEALTHCHECK ";
+                        SQL = SQL + ComNum.VBLF + "             WHERE REPORT_ID=" + reportId + " ";
+                        SQL = SQL + ComNum.VBLF + "               AND ISDELETED='N' ";
+                        SQL = SQL + ComNum.VBLF + "               AND SWLicense='" + clsType.HosInfo.SwLicense + "') ";
+                    }
                 }
                 SQL = SQL + ComNum.VBLF + "ORDER BY NAME ";
                 SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
@@ -345,6 +352,10 @@ namespace HC_OSHA.StatusReport
                         strPanjeng2 = Get_Last_Panjeng(strID, "일반");
                         bOK = false;
                         if (panjeong == "전체") panjeong = "";
+
+                        //중점대상자 최근 120일이내 상담여부
+                        if (ChkSearchIsManageNot.Checked == true) panjeong = "";
+
                         if (panjeong != "")
                         {
                             strP1 = VB.Pstr(strPanjeng1, "{}", 6);
@@ -441,6 +452,13 @@ namespace HC_OSHA.StatusReport
                             }
                         }
 
+                        //중점대상자 최근 120일이내 상담여부
+                        if (ChkSearchIsManageNot.Checked == true)
+                        {
+                            bOK = false;
+                            if (Sangam_Lately_Check(strID, strSiteList) == false) bOK = true;
+                        }
+
                         if (bOK == true)
                         {
                             SSWorkerList_Sheet1.Cells[nRow, 0].Text = strID;
@@ -488,6 +506,28 @@ namespace HC_OSHA.StatusReport
                 Cursor.Current = Cursors.Default;
                 ComFunc.MsgBox(ex.Message);
             }
+        }
+
+        // 최근 120일이내 상담여부
+        private bool Sangam_Lately_Check(string worker_id,string site_list)
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt1 = null;
+            string strGdate = DateTime.Now.AddDays(-120).ToString("yyyyMMdd");
+            bool bOk = false;
+
+            SQL = "SELECT ID,CHARTDATE FROM HIC_OSHA_HEALTHCHECK ";
+            SQL = SQL + ComNum.VBLF + " WHERE SWLicense='" + clsType.HosInfo.SwLicense + "' ";
+            SQL = SQL + ComNum.VBLF + "   AND SITE_ID IN (" + site_list + ") ";
+            SQL = SQL + ComNum.VBLF + "   AND WORKER_ID='" + worker_id + "' ";
+            SQL = SQL + ComNum.VBLF + "   AND CHARTDATE>='" + strGdate + "' ";
+            SQL = SQL + ComNum.VBLF + "   AND ISDELETED='N' ";
+            SqlErr = clsDB.GetDataTable(ref dt1, SQL, clsDB.DbCon);
+            if (dt1.Rows.Count > 0) bOk = true;
+            dt1.Dispose();
+            dt1 = null;
+            return bOk;
         }
 
         public void SetPanjeong()
@@ -1552,9 +1592,9 @@ namespace HC_OSHA.StatusReport
             }
           
             WorkerHealthCheckPrint form = new WorkerHealthCheckPrint();
-            form.SelectedSite = SelectedSite;
-            form.SetStatusReportNurseDto(StatusReportNurseDto, SelectedSite);
-            form.SetStatusReportDoctorDto(StatusReportDoctorDto, SelectedSite);
+            form.SET_SelectedSiteInfo(SelectedSite.ID, SelectedSite.NAME);
+            form.SetStatusReportNurseDto(StatusReportNurseDto);
+            form.SetStatusReportDoctorDto(StatusReportDoctorDto);
             form.Show();
             
         }

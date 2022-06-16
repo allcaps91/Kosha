@@ -63,7 +63,7 @@ namespace HcAdmin
                     SQL += ComNum.VBLF + " INSERT INTO LICMST ";
                     SQL += ComNum.VBLF + "        (LicNo, AdminPass, SDate, EDate, LicCnt,";
                     SQL += ComNum.VBLF + "         chkHic1, chkHic2, chkHic3, Sangho,Juso,";
-                    SQL += ComNum.VBLF + "         Damdang, Tel, EMail,DbConnect,Remark) ";
+                    SQL += ComNum.VBLF + "         Damdang, Tel, EMail,DbConnect,SMTP_Setup,Remark) ";
                     SQL += ComNum.VBLF + " VALUES ('" + txtLicno.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtAdminpass.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + dptSDate.Value.ToString("yyyy-MM-dd") + "', ";
@@ -78,6 +78,7 @@ namespace HcAdmin
                     SQL += ComNum.VBLF + "         '" + txtTel.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtEmail.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtDbConnect.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "         '" + txtSMTP.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "         '" + txtRemark.Text.Trim() + "') ";
                 }
                 else
@@ -95,6 +96,7 @@ namespace HcAdmin
                     SQL += ComNum.VBLF + "        Damdang       = '" + txtDamdang.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        Tel           = '" + txtTel.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        EMail         = '" + txtEmail.Text.Trim() + "', ";
+                    SQL += ComNum.VBLF + "        SMTP_Setup    = '" + txtSMTP.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        DbConnect     = '" + txtDbConnect.Text.Trim() + "', ";
                     SQL += ComNum.VBLF + "        Remark        = '" + txtRemark.Text.Trim() + "'  ";
                     SQL += ComNum.VBLF + "  WHERE LicNo         = '" + txtLicno.Text.Trim() + "'";
@@ -264,6 +266,7 @@ namespace HcAdmin
             txtEmail.Text = "";
             txtTel.Text = "";
             txtRemark.Text = "";
+            txtSMTP.Text = "";
             txtDbConnect.Text = "";
             FbNew = false;
             삭제ToolStripMenuItem.Enabled = false;
@@ -320,6 +323,7 @@ namespace HcAdmin
                     txtTel.Text = dt.Rows[0]["Tel"].ToString().Trim();
                     txtEmail.Text = dt.Rows[0]["EMail"].ToString().Trim();
                     txtDbConnect.Text = dt.Rows[0]["DbConnect"].ToString().Trim();
+                    txtSMTP.Text = dt.Rows[0]["SMTP_Setup"].ToString().Trim();
                     txtRemark.Text = dt.Rows[0]["Remark"].ToString().Trim();
                 }
 
@@ -551,6 +555,37 @@ namespace HcAdmin
 
         private void BtnSearch_Click_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string SQL = string.Empty;
+            bool SqlErr;
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            try
+            {
+                SQL = "ALTER TABLE LICMST ADD SMTP_Setup VARCHAR(200)";
+                SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
+
+                if (SqlErr == false)
+                {
+                    ComFunc.MsgBox("테이블 칼럼추가 실패", "알림");
+                    Cursor.Current = Cursors.Default;
+                    return;
+                }
+
+                ComFunc.MsgBox("테이블 칼럼 추가되었습니다.", "알림");
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                ComFunc.MsgBox(ex.Message);
+                Cursor.Current = Cursors.Default;
+                return;
+            }
 
         }
     }

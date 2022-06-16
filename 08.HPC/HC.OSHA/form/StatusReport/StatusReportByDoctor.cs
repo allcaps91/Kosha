@@ -255,7 +255,9 @@ namespace HC_OSHA.StatusReport
                         statusReportViewer.Dispose();
                     }
                 }
-                statusReportViewer = new StatusReportViewer("statusReportByDoctor.html", base.SelectedSite.ID);
+                statusReportViewer = new StatusReportViewer("statusReportByDoctor.html", base.SelectedSite.ID, base.SelectedSite.NAME);
+                statusReportViewer.Select(base.SelectedSite);
+                statusReportViewer.Select(base.SelectedEstimate);
                 statusReportViewer.PrintStatusReportDoctorDto(dto, ContentTitle.TitleText);
                 statusReportViewer.ShowDialog();
             }
@@ -541,7 +543,9 @@ namespace HC_OSHA.StatusReport
                 //CboVisitYear.Text = "";
                 //CboVisitDate.Text = "";
                 dto.SITEMANAGERSIGN = null;
+                //dto.PERFORMCONTENT = null;
                 SetData(dto);
+                //Get_NurseSiteStatus();
             }
         }
 
@@ -681,6 +685,11 @@ namespace HC_OSHA.StatusReport
         //간호사가 입력한 사업장현황을 가져오기
         private void BtnSaup_Click(object sender, EventArgs e)
         {
+            Get_NurseSiteStatus();
+        }
+
+        private void Get_NurseSiteStatus()
+        {
             string SQL = "";
             string SqlErr = "";
             DataTable dt = null;
@@ -772,6 +781,11 @@ namespace HC_OSHA.StatusReport
         {
             radioButton1.Checked = false;
             radioButton2.Checked = false;
+        }
+
+        private void siteStatusControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

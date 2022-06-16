@@ -28,8 +28,10 @@ namespace HC_OSHA
         public EstimateMailForm()
         {
             InitializeComponent();
-            mailForm.SMTP_USERID = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail_user", "OSHA").CodeName;
-            mailForm.SMTP_PASSWORD = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail_password", "OSHA").CodeName;
+            //mailForm.SMTP_USERID = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail_user", "OSHA").CodeName;
+            //mailForm.SMTP_PASSWORD = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail_password", "OSHA").CodeName;
+            mailForm.SMTP_USERID = VB.Pstr(clsType.HosInfo.SMTP_Info, "{}", 3);
+            mailForm.SMTP_PASSWORD = VB.Pstr(clsType.HosInfo.SMTP_Info, "{}", 4);
         }
 
         public void set_SiteId(long siteId)

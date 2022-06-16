@@ -183,6 +183,7 @@
             this.CboPanjeong = new System.Windows.Forms.ComboBox();
             this.PanBottom = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ChkSearchIsManageNot = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -476,7 +477,7 @@
             this.SSHealthCheck.HorizontalScrollBar.Name = "";
             flatScrollBarRenderer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSHealthCheck.HorizontalScrollBar.Renderer = flatScrollBarRenderer1;
-            this.SSHealthCheck.HorizontalScrollBar.TabIndex = 205;
+            this.SSHealthCheck.HorizontalScrollBar.TabIndex = 207;
             this.SSHealthCheck.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             this.SSHealthCheck.Location = new System.Drawing.Point(0, 0);
             this.SSHealthCheck.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
@@ -490,7 +491,7 @@
             this.SSHealthCheck.VerticalScrollBar.Name = "";
             flatScrollBarRenderer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SSHealthCheck.VerticalScrollBar.Renderer = flatScrollBarRenderer2;
-            this.SSHealthCheck.VerticalScrollBar.TabIndex = 206;
+            this.SSHealthCheck.VerticalScrollBar.TabIndex = 208;
             this.SSHealthCheck.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
             // 
             // SSHealthCheck_Sheet1
@@ -1551,6 +1552,7 @@
             // 
             // PanSearch
             // 
+            this.PanSearch.Controls.Add(this.ChkSearchIsManageNot);
             this.PanSearch.Controls.Add(this.ChkEnd);
             this.PanSearch.Controls.Add(this.LblCount);
             this.PanSearch.Controls.Add(this.ChkSangDam);
@@ -1571,7 +1573,7 @@
             // ChkEnd
             // 
             this.ChkEnd.AutoSize = true;
-            this.ChkEnd.Location = new System.Drawing.Point(307, 91);
+            this.ChkEnd.Location = new System.Drawing.Point(339, 91);
             this.ChkEnd.Name = "ChkEnd";
             this.ChkEnd.Size = new System.Drawing.Size(97, 21);
             this.ChkEnd.TabIndex = 162;
@@ -1590,22 +1592,22 @@
             // ChkSangDam
             // 
             this.ChkSangDam.AutoSize = true;
-            this.ChkSangDam.Location = new System.Drawing.Point(212, 91);
+            this.ChkSangDam.Location = new System.Drawing.Point(267, 91);
             this.ChkSangDam.Name = "ChkSangDam";
-            this.ChkSangDam.Size = new System.Drawing.Size(92, 21);
+            this.ChkSangDam.Size = new System.Drawing.Size(66, 21);
             this.ChkSangDam.TabIndex = 160;
-            this.ChkSangDam.Text = "상담자보기";
+            this.ChkSangDam.Text = "상담자";
             this.ChkSangDam.UseVisualStyleBackColor = true;
             this.ChkSangDam.CheckedChanged += new System.EventHandler(this.ChkSangDam_CheckedChanged);
             // 
             // ChkSearchIsManageOsha
             // 
             this.ChkSearchIsManageOsha.AutoSize = true;
-            this.ChkSearchIsManageOsha.Location = new System.Drawing.Point(101, 91);
+            this.ChkSearchIsManageOsha.Location = new System.Drawing.Point(84, 91);
             this.ChkSearchIsManageOsha.Name = "ChkSearchIsManageOsha";
-            this.ChkSearchIsManageOsha.Size = new System.Drawing.Size(105, 21);
+            this.ChkSearchIsManageOsha.Size = new System.Drawing.Size(79, 21);
             this.ChkSearchIsManageOsha.TabIndex = 159;
-            this.ChkSearchIsManageOsha.Text = "중점관리보기";
+            this.ChkSearchIsManageOsha.Text = "중점관리";
             this.ChkSearchIsManageOsha.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -1649,6 +1651,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1007, 230);
             this.panel3.TabIndex = 169;
+            // 
+            // ChkSearchIsManageNot
+            // 
+            this.ChkSearchIsManageNot.AutoSize = true;
+            this.ChkSearchIsManageNot.Location = new System.Drawing.Point(169, 92);
+            this.ChkSearchIsManageNot.Name = "ChkSearchIsManageNot";
+            this.ChkSearchIsManageNot.Size = new System.Drawing.Size(92, 21);
+            this.ChkSearchIsManageNot.TabIndex = 163;
+            this.ChkSearchIsManageNot.Text = "중점미상담";
+            this.ChkSearchIsManageNot.UseVisualStyleBackColor = true;
             // 
             // WorkerHealthCheckForm
             // 
@@ -1797,5 +1809,6 @@
         private System.Windows.Forms.TextBox TxtSABUN;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button btnJekhap;
+        private System.Windows.Forms.CheckBox ChkSearchIsManageNot;
     }
 }

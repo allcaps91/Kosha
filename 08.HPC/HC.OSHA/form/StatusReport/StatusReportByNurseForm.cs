@@ -544,7 +544,9 @@ namespace HC_OSHA
                         statusReportViewer.Dispose();
                     }
                 }
-                statusReportViewer = new StatusReportViewer("statusReportByNurse.html", base.SelectedSite.ID);
+                statusReportViewer = new StatusReportViewer("statusReportByNurse.html", base.SelectedSite.ID, base.SelectedSite.NAME);
+                statusReportViewer.Select(base.SelectedSite);
+                statusReportViewer.Select(base.SelectedEstimate);
                 statusReportViewer.PrintStatusReportNurseDto(dto, ContentTitle.TitleText);
                 statusReportViewer.ShowDialog();
             }

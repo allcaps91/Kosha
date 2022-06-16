@@ -39,6 +39,8 @@ namespace HC_OSHA.StatusReport
 
         private Role USER_ROLE = Role.ENGINEER;
         private MailType MAIL_TYPE = MailType.STATUS_WORKER_DOCTOR;
+        private long site_id = 0;
+        private string site_name = "";
 
         public WorkerHealthCheckPrint()
         {
@@ -76,7 +78,7 @@ namespace HC_OSHA.StatusReport
         public void GetMailDate()
         {
             LblMailSendDate.Text = string.Empty;
-            List<HIC_OSHA_MAIL_SEND> mail = hicMailRepository.FindBySiteIdAndType(this.SelectedSite.ID, MAIL_TYPE.ToString());
+            List<HIC_OSHA_MAIL_SEND> mail = hicMailRepository.FindBySiteIdAndType(site_id, MAIL_TYPE.ToString());
 
             if (mail.Count > 0)
             {
@@ -84,19 +86,20 @@ namespace HC_OSHA.StatusReport
             }
         }
 
-        public void SetStatusReportNurseDto(StatusReportNurseDto statusReportNurseDto, ISiteModel SelectedSite)
+        public void SET_SelectedSiteInfo(long id,string name)
         {
-            this.statusReportNurseDto = statusReportNurseDto;
-            this.SelectedSite = SelectedSite;
+            site_id = id;
+            site_name = name;
 
             GetMailDate();
         }
-        public void SetStatusReportDoctorDto(StatusReportDoctorDto statusReportDoctorDto, ISiteModel SelectedSite)
+        public void SetStatusReportNurseDto(StatusReportNurseDto statusReportNurseDto)
+        {
+            this.statusReportNurseDto = statusReportNurseDto;
+        }
+        public void SetStatusReportDoctorDto(StatusReportDoctorDto statusReportDoctorDto)
         {
             this.statusReportDoctorDto = statusReportDoctorDto;
-            this.SelectedSite = SelectedSite;
-
-            GetMailDate();
         }
 
         private void Search()
@@ -104,7 +107,7 @@ namespace HC_OSHA.StatusReport
             string strStartDate = "";
             string strEndDate = "";
 
-            if (SelectedSite == null)
+            if (site_id == 0)
             {
                 MessageUtil.Alert("사업장 정보가 없습니다");
                 return;
@@ -133,13 +136,13 @@ namespace HC_OSHA.StatusReport
 
             if (statusReportDoctorDto != null)
             {
-                SSView.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(의사, " + SelectedSite.NAME + ")";
-                SSCard.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(의사, " + SelectedSite.NAME + ")";
+                SSView.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(의사, " + site_name + ")";
+                SSCard.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(의사, " + site_name + ")";
             }
             else
             {
-                SSView.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(간호사, " + SelectedSite.NAME + ")";
-                SSCard.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(간호사, " + SelectedSite.NAME + ")";
+                SSView.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(간호사, " + site_name + ")";
+                SSCard.ActiveSheet.Cells[0, 0].Value = "18. 근로자 건강상담(간호사, " + site_name + ")";
             }
 
             int row = 2;
@@ -359,9 +362,9 @@ namespace HC_OSHA.StatusReport
 
 
             SpreadPrint print = new SpreadPrint(SSCard, PrintStyle.STANDARD_APPROVAL_SIGN);
-            if (this.SelectedSite != null)
+            if (site_name != null)
             {
-                print.SiteName = SelectedSite.NAME;
+                print.SiteName = site_name;
             }
             print.PrintSignModel = model;
             print.Execute();
@@ -476,7 +479,7 @@ namespace HC_OSHA.StatusReport
 
             try
             {
-                if (SelectedSite == null)
+                if (site_id == 0)
                 {
                     MessageUtil.Alert("사업장 정보가 없습니다");
                     return;
@@ -487,7 +490,7 @@ namespace HC_OSHA.StatusReport
                 if (this.statusReportDoctorDto != null)
                 {
                     title =  "근로자 건강상담_의사_";
-                    pdfFileName = this.statusReportDoctorDto.VISITDATE + "_의사_" + SelectedSite.NAME;
+                    pdfFileName = this.statusReportDoctorDto.VISITDATE + "_의사_" + site_name;
                     pdfFileName += "_근로자건강상담_" + this.statusReportDoctorDto.SITEMANAGERGRADE + "_";
                     pdfFileName += this.statusReportDoctorDto.SITEMANAGERNAME + ".pdf";
 
@@ -510,7 +513,7 @@ namespace HC_OSHA.StatusReport
                 else if (this.statusReportNurseDto != null)
                 {
                     title = "근로자 건강상담_간호사_";
-                    pdfFileName = this.statusReportNurseDto.VISITDATE + "_간호사_" + SelectedSite.NAME;
+                    pdfFileName = this.statusReportNurseDto.VISITDATE + "_간호사_" + site_name;
                     pdfFileName += "_근로자건강상담_" + this.statusReportNurseDto.SITEMANAGERGRADE + "_";
                     pdfFileName += this.statusReportNurseDto.SITEMANAGERNAME + ".pdf";
 
@@ -543,6 +546,7 @@ namespace HC_OSHA.StatusReport
                     }
 
                 }
+                pdfFileName = FilenameError_Convert(pdfFileName); //파일명 오류 변환
 
                 FolderBrowserDialog dialog = new FolderBrowserDialog();
                 dialog.ShowDialog();
@@ -551,9 +555,9 @@ namespace HC_OSHA.StatusReport
                 string fileName = strPath + "\\" + pdfFileName;
 
                 SpreadPrint sp = new SpreadPrint(SSCard, PrintStyle.STANDARD_APPROVAL_SIGN, true); ;
-                if (this.SelectedSite != null)
+                if (site_name != null)
                 {
-                    sp.SiteName = SelectedSite.NAME;
+                    sp.SiteName = site_name;
                 }
                 sp.PrintSignModel = model;
                 sp.ExportPDF(fileName);
@@ -569,11 +573,26 @@ namespace HC_OSHA.StatusReport
         
         }
 
+        // 파일명에 \ | : * ? " < > / 글자가 있으면 null로 치환함
+        private string FilenameError_Convert(string strFilename)
+        {
+            string strReturn = strFilename.Trim();
+
+            strReturn = VB.Replace(strReturn, "|", "");
+            strReturn = VB.Replace(strReturn, ":", "");
+            strReturn = VB.Replace(strReturn, "*", "");
+            strReturn = VB.Replace(strReturn, "?", "");
+            strReturn = VB.Replace(strReturn, "<", "");
+            strReturn = VB.Replace(strReturn, ">", "");
+            strReturn = VB.Replace(strReturn, "/", "");
+            return strReturn;            
+        }
+
         private void BtnSendMail_Click(object sender, EventArgs e)
         {
             try
             {
-                if (SelectedSite == null)
+                if (site_id == 0)
                 {
                     MessageUtil.Alert("사업장 정보가 없습니다");
                     return;
@@ -582,7 +601,7 @@ namespace HC_OSHA.StatusReport
                 long siteId = 0;
                 long estimateID = 0;
                 string strGbn = "";
-              
+
                 if (this.statusReportDoctorDto != null)
                 {
                     siteId = statusReportDoctorDto.SITE_ID;
@@ -599,20 +618,21 @@ namespace HC_OSHA.StatusReport
                 Cursor.Current = Cursors.WaitCursor;
                 HcCodeService codeService = new HcCodeService();
                 HC_CODE pdfPath = codeService.FindActiveCodeByGroupAndCode("PDF_PATH", "OSHA_ESTIMATE", "OSHA");
-                string title = "근로자 건강상담_" + strGbn + "_" + SelectedSite.NAME;
+                string title = "근로자 건강상담_" + strGbn + "_" + site_name;
                 string pdfFileName = pdfPath.CodeName + "\\" + title + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
                 SpreadPrint print = new SpreadPrint(SSCard, PrintStyle.STANDARD_APPROVAL, false);
-                if (this.SelectedSite != null)
+                if (site_name != null)
                 {
-                    print.SiteName = SelectedSite.NAME;
+                    print.SiteName = site_name;
                 }
                 print.ExportPDFNoWait(pdfFileName, SSCard.ActiveSheet);
                 Thread.Sleep(2000);
 
-                HC_CODE sendMailAddress = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail", "OSHA");
+                //HC_CODE sendMailAddress = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail", "OSHA");
                 EstimateMailForm form = new EstimateMailForm();
                 form.set_SiteId(siteId);
-                form.GetMailForm().SenderMailAddress = sendMailAddress.CodeName;
+                //form.GetMailForm().SenderMailAddress = sendMailAddress.CodeName;
+                form.GetMailForm().SenderMailAddress = VB.Pstr(clsType.HosInfo.SMTP_Info, "{}", 3);
                 form.GetMailForm().AttachmentsList.Add(pdfFileName);
 
                 string strMailList = GetEmail(estimateID);
@@ -633,7 +653,7 @@ namespace HC_OSHA.StatusReport
                 {
                     HIC_OSHA_MAIL_SEND mail = new HIC_OSHA_MAIL_SEND
                     {
-                        SITE_ID = this.SelectedSite.ID,
+                        SITE_ID = site_id,
                         SEND_TYPE = MAIL_TYPE.ToString(),
                         SEND_USER = clsType.User.Sabun
                     };

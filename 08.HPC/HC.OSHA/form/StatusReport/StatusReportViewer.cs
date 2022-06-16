@@ -5,6 +5,7 @@ using ComBase;
 using ComBase.Controls;
 using ComBase.Mvc.Utils;
 using ComHpcLibB;
+using ComHpcLibB.Model;
 using HC.Core.Dto;
 using HC.Core.Repository;
 using HC.Core.Service;
@@ -23,7 +24,7 @@ using System.IO;
 
 namespace HC_OSHA.StatusReport
 {
-    public partial class StatusReportViewer : Form
+    public partial class StatusReportViewer : CommonForm, ISelectSite, ISelectEstimate
     {
         private ChromiumWebBrowser browser = null;
         private readonly string JavascriptBoundName = "cefsharpBoundAsync";
@@ -37,15 +38,17 @@ namespace HC_OSHA.StatusReport
         private HcUsersRepository hcUsersRepository;
         private HicMailRepository hicMailRepository;
 
-        private long siteId;
+        private long siteId=0;
+        private string sitename="";
         private string title;
 
         private Role USER_ROLE = Role.ENGINEER;
         private MailType MAIL_TYPE = MailType.STATUS_COMPANY_DOCTOR;
-        public StatusReportViewer(string htmlFile, long siteId)
+        public StatusReportViewer(string htmlFile, long site_Id, string site_name)
         {
             InitializeComponent();
-            this.siteId = siteId;
+            this.siteId = site_Id;
+            this.sitename = site_name;
 
             hcUsersRepository = new HcUsersRepository();
             hicMailRepository = new HicMailRepository();
@@ -261,6 +264,17 @@ namespace HC_OSHA.StatusReport
                 }
             }
         }
+
+        public void Select(IEstimateModel estimateModel)
+        {
+            base.SelectedEstimate = estimateModel;
+        }
+
+        public void Select(ISiteModel siteModel)
+        {
+            base.SelectedSite = siteModel;
+        }
+
         private void btnDevTool_Click(object sender, EventArgs e)
         {
             browser.ShowDevTools();
@@ -302,6 +316,7 @@ namespace HC_OSHA.StatusReport
                 pdfFileName += statusReportDoctorDto.SITEMANAGERGRADE + "_";
                 pdfFileName += statusReportDoctorDto.SITEMANAGERNAME + ".pdf";
             }
+            pdfFileName = FilenameError_Convert(pdfFileName); //파일명오류 점검
 
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             dialog.SelectedPath = @"c:\\";
@@ -313,6 +328,21 @@ namespace HC_OSHA.StatusReport
             browser.PrintToPdfAsync(fileName);
 
             MessageUtil.Info(strPath + " 폴더에 저장하였습니다");
+        }
+
+        // 파일명에 \ | : * ? " < > / 글자가 있으면 null로 치환함
+        private string FilenameError_Convert(string strFilename)
+        {
+            string strReturn = strFilename.Trim();
+
+            strReturn = VB.Replace(strReturn, "|", "");
+            strReturn = VB.Replace(strReturn, ":", "");
+            strReturn = VB.Replace(strReturn, "*", "");
+            strReturn = VB.Replace(strReturn, "?", "");
+            strReturn = VB.Replace(strReturn, "<", "");
+            strReturn = VB.Replace(strReturn, ">", "");
+            strReturn = VB.Replace(strReturn, "/", "");
+            return strReturn;
         }
 
         private void BtnSendMail_Click(object sender, EventArgs e)
@@ -343,9 +373,10 @@ namespace HC_OSHA.StatusReport
                     }
                 }
 
-                HC_CODE sendMailAddress = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail", "OSHA");
+                //HC_CODE sendMailAddress = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail", "OSHA");
                 EstimateMailForm form = new EstimateMailForm();
-                form.GetMailForm().SenderMailAddress = sendMailAddress.CodeName;
+                //form.GetMailForm().SenderMailAddress = sendMailAddress.CodeName;
+                form.GetMailForm().SenderMailAddress = VB.Pstr(clsType.HosInfo.SMTP_Info, "{}", 3);
                 form.GetMailForm().AttachmentsList.Add(pdfFileName);
                 form.set_SiteId(this.siteId);
                 //보낼 메일을 찾기
@@ -504,6 +535,42 @@ namespace HC_OSHA.StatusReport
             {
                 browser.ExecuteScriptAsync("blank4Show();");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.statusReportNurseDto == null && this.statusReportDoctorDto == null)
+            {
+                return;
+            }
+
+            WorkerHealthCheckPrint form = new WorkerHealthCheckPrint();
+            form.SET_SelectedSiteInfo(this.siteId, this.sitename);
+            form.SetStatusReportNurseDto(statusReportNurseDto);
+            form.SetStatusReportDoctorDto(statusReportDoctorDto);
+            form.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.siteId==0)
+            {
+                return;
+            }
+
+            CardPage_15_Form form = new CardPage_15_Form();
+            form.Show();
+
+            if (base.SelectedSite.ID > 0)
+            {
+                (form as ISelectSite).Select(base.SelectedSite);
+            }
+
+            if (base.SelectedEstimate.ID > 0)
+            {
+                (form as ISelectEstimate).Select(base.SelectedEstimate);
+            }
+
         }
     }
 }
