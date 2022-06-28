@@ -85,6 +85,8 @@ namespace HC_OSHA
             if (strSanje != "") SQL = SQL + ComNum.VBLF + "  AND A.IND_ACC_TYPE='" + strSanje + "' ";
             SQL = SQL + ComNum.VBLF + "  AND A.ESTIMATE_ID=B.ESTIMATE_ID(+) ";
             SQL = SQL + ComNum.VBLF + "  AND B.OSHA_SITE_ID=C.CODE(+) ";
+            //회사관계자 로그인
+            if (clsType.User.LtdUser != "") SQL = SQL + ComNum.VBLF + "  AND B.OSHA_SITE_ID='" + clsType.User.LtdUser + "' ";
             SQL = SQL + ComNum.VBLF + "  AND A.SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
             SQL = SQL + ComNum.VBLF + "  AND B.SWLicense = '" + clsType.HosInfo.SwLicense + "' ";
             SQL = SQL + ComNum.VBLF + "  AND C.SWLicense = '" + clsType.HosInfo.SwLicense + "' ";

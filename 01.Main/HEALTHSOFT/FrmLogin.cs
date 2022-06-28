@@ -24,6 +24,10 @@ namespace HEALTHSOFT
         public static string FstrOldVer = "";
         public int intDelay = 0;
 
+        private string FstrExcelVer = "";
+        private string FstrLicExcelVer = "";
+        private string FstrExcelPath = @"C:\HealthSoft\엑셀서식\excelVer.dat";
+
         public FrmLogin()
         {
             InitializeComponent();
@@ -86,6 +90,23 @@ namespace HEALTHSOFT
                 {
                     btnUpdate_Click();
                     return;
+                }
+            }
+
+
+            //엑셀서식파일 버전을 읽음
+            FstrExcelVer = "";
+            if (System.IO.File.Exists(FstrExcelPath) == true)
+            {
+                FstrExcelVer = System.IO.File.ReadAllText(FstrExcelPath);
+            }
+
+            //PC와 라이선스 DB 엑셀파일 버전이 틀리면 다운로드
+            if (FstrLicExcelVer != FstrExcelVer)
+            {
+                if (Download_ExcelFiles() == true)
+                {
+                    System.IO.File.WriteAllText(FstrExcelPath, FstrLicExcelVer);
                 }
             }
 
@@ -247,14 +268,18 @@ namespace HEALTHSOFT
                 dt = clsDbMySql.GetDataTable(SQL);
 
                 strNewData = "";
+                FstrLicExcelVer = "";
                 if (dt.Rows.Count > 0)
                 {
                     strNewData = clsType.HosInfo.SwLicense + "{}";
                     strNewData += dt.Rows[0]["Sangho"].ToString().Trim() + "{}";
                     strNewData += dt.Rows[0]["EDate"].ToString().Trim() + "{}";
                     strNewData += dt.Rows[0]["AdminPass"].ToString().Trim() + "{}";
+
                     clsType.HosInfo.strNameKor = dt.Rows[0]["Sangho"].ToString().Trim();
                     clsType.HosInfo.SMTP_Info = dt.Rows[0]["SMTP_Setup"].ToString().Trim();
+
+                    FstrLicExcelVer = dt.Rows[0]["ExcelVer"].ToString().Trim();
                 }
 
                 dt.Dispose();
@@ -463,14 +488,81 @@ namespace HEALTHSOFT
 
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private bool Download_ExcelFiles()
         {
+            string strList = "견적서.xlsx{}기업건강증진지수.xls{}업무적합성평가양식.xlsx{}일정공문양식.xlsx"; 
+            string strPcPath = @"C:\HealthSoft\엑셀서식\";
+            string strFile = "";
+            string strServerPath = "";
 
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                strServerPath = "/excelFiles/" + clsType.HosInfo.SwLicense + "/";
+
+                using (Ftpedt FtpedtX = new Ftpedt())
+                {
+                    FtpedtX.FtpConBatchEx = FtpedtX.FtpConnetBatchEx("115.68.23.223", "dhson", "@thsehdgml#");
+                    if (FtpedtX.FtpConBatchEx == null)
+                    {
+                        FtpedtX.Dispose();
+                        return false;
+                    }
+
+                    for (int i = 1; i <= 4; i++)
+                    {
+                        strFile = VB.Pstr(strList, "{}", i).Trim();
+                        if (strFile != "")
+                        {
+                            //파일이 있으면 삭제 후 다운로드
+                            if (File.Exists(strPcPath + strFile) == true) File.Delete(strPcPath + strFile);
+                            bool blnUp = FtpedtX.FtpDownloadBatchEx(FtpedtX.FtpConBatchEx,strPcPath + strFile, strFile, strServerPath); //파일업로드
+                            if (blnUp == false)
+                            {
+                                ComFunc.MsgBox(strFile + " 다운로드 실패", "오류");
+                                FtpedtX.Dispose();
+                                return false;
+                            }
+                        }
+                    }
+                }
+                Cursor.Current = Cursors.Default;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ComFunc.MsgBoxEx(this, ex.Message);
+                Cursor.Current = Cursors.Default;
+                return false;
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
 
+        }
+
+        // 엑셀서식을 재설치
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            bool bOk = false;
+
+            //엑셀서식파일 버전을 읽음
+            FstrExcelVer = "";
+            if (File.Exists(FstrExcelPath) == true) File.Delete(FstrExcelPath);
+
+            bOk = false;
+            if (FstrLicExcelVer != "")
+            {
+                if (Download_ExcelFiles() == true)
+                {
+                    bOk = true;
+                    System.IO.File.WriteAllText(FstrExcelPath, FstrLicExcelVer);
+                    ComFunc.MsgBox("엑셀서식 파일 다운로드 완료", "성공");
+                }
+            }
+            if (bOk==false) ComFunc.MsgBox("엑셀서식 파일 다운로드 실패", "실패");
         }
     }
 }

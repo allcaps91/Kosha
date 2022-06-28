@@ -50,16 +50,28 @@ namespace HC_OSHA
             {
                 사업장관리ToolStripMenuItem.Visible = false;
                 사업장등록ToolStripMenuItem.Visible = false; //거래처코드
+                사업장원하청관리ToolStripMenuItem.Visible = false;
                 일정관리ToolStripMenuItem.Visible = false; //일정관리
                 상태보고서의사용ToolStripMenuItem.Visible = false;
                 상태보고서간호사용ToolStripMenuItem.Visible = false;
                 상태보고서산업위생기사용ToolStripMenuItem.Visible = false;
                 출장일지인쇄ToolStripMenuItem.Visible = false;
                 수입일보인쇄ToolStripMenuItem.Visible = false;
+                주간출장일지ToolStripMenuItem.Visible = false;
+                네트웍상태점검ToolStripMenuItem.Visible = false;
+                수입일보인쇄ToolStripMenuItem.Visible = false;
+                사업장계약금액ToolStripMenuItem1.Visible = false;
+
+                작업환경측정결과표ToolStripMenuItem.Visible = false;
+                작업환경측정스케쥴ToolStripMenuItem.Visible = false;
+                mSDS상용물품관리ToolStripMenuItem.Visible = false;
+                건강증진프로그램ToolStripMenuItem.Visible = false;
+
                 검진결과ToolStripMenuItem.Visible = false;
+                사업장현황ToolStripMenuItem.Visible = false;
                 MenuChargeGroup.Visible = false;
                 MenuBaseCode.Visible = false;  //코드관리
-                toolStripMenuItem1.Visible = false;  //비밀번호변경
+                //toolStripMenuItem1.Visible = false;  //비밀번호변경
             }
             보건교육지원대장ToolStripMenuItem1.Enabled = true;
             //검진결과ToolStripMenuItem.Visible = false;
@@ -90,12 +102,12 @@ namespace HC_OSHA
                 근골격계지원대장ToolStripMenuItem.Visible = false;
                 //정보자료제공ToolStripMenuItem.Visible = false;
 
-                건강증진프로그램ToolStripMenuItem.Visible = false;
+                //건강증진프로그램ToolStripMenuItem.Visible = false;
                 직무스트레스평가ToolStripMenuItem.Visible = false;
                 근골격계유해요인조사ToolStripMenuItem.Visible = false;
                 청력보존프로그램ToolStripMenuItem1.Visible = false;
                 밀폐공간프로그램ToolStripMenuItem.Visible = false;
-                기업건강증진지수EHPToolStripMenuItem.Visible = false;
+                //기업건강증진지수EHPToolStripMenuItem.Visible = false;
             }
         }
 
@@ -963,6 +975,11 @@ namespace HC_OSHA
         private void 기업건강증진지수대장ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FrmEHPReport().Show();
+        }
+
+        private void 작업환경측정결과표ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

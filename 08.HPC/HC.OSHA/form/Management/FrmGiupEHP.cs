@@ -56,6 +56,22 @@ namespace HC_OSHA
             string strFileName = @"c:\\HealthSoft\\엑셀서식\\기업건강증진지수.xls";
 
             TxtLtdcode.Text = "";
+            //회사관계자 로그인
+            if (clsType.User.LtdUser != "")
+            {
+                TxtLtdcode.Text = clsType.User.LtdUser + "." + clsType.User.JobName;
+                TxtLtdcode.Enabled = false;
+                BtnSearchSite.Enabled = false;
+                btnDelete.Enabled = false;
+                btnAdd.Enabled = false;
+                button2.Enabled = false;
+                btnChange.Enabled = false;
+                btnExcelGet.Enabled = false;
+                btnDelete.Enabled = false;
+                btnExcel.Enabled = false;
+                btnSave.Enabled = false;
+            }
+
             SSExcel.OpenExcel(strFileName);
 
             SS1_Clear();
@@ -346,8 +362,12 @@ namespace HC_OSHA
             if (SSExcel_Sheet1.Cells[31, 2].Text.Trim() == "") SSExcel_Sheet1.Cells[31, 2].Text = "업무위탁요원";
             if (SSExcel_Sheet1.Cells[34, 2].Text.Trim() == "") SSExcel_Sheet1.Cells[34, 2].Text = "건강증진(간호사 등)";
 
-            btnSave.Enabled = true;
-            if (SS1_Sheet1.Cells[0, 10].Text.Trim() != "") btnDelete.Enabled = true;
+            //회사관계자 로그인
+            if (clsType.User.LtdUser == "")
+            {
+                btnSave.Enabled = true;
+                if (SS1_Sheet1.Cells[0, 10].Text.Trim() != "") btnDelete.Enabled = true;
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -555,10 +575,9 @@ namespace HC_OSHA
 
                 Thread.Sleep(3000);
 
-                HC_CODE sendMailAddress = codeService.FindActiveCodeByGroupAndCode("OSHA_MANAGER", "mail", "OSHA");
                 EstimateMailForm form = new EstimateMailForm();
                 form.set_SiteId(Selected_Ltd_id);
-                form.GetMailForm().SenderMailAddress = sendMailAddress.CodeName;
+                form.GetMailForm().SenderMailAddress = VB.Pstr(clsType.HosInfo.SMTP_Info, "{}", 3);
                 form.GetMailForm().AttachmentsList.Add(strPath);
 
                 string strMailList = GetEmail();

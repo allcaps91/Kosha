@@ -38,7 +38,6 @@ namespace HC_OSHA
             int nYear = Int32.Parse(DateTime.Now.ToString("yyyy"));
 
             txtName.Text = "";
-            txtName.Text = "";
 
             if (CboYear.Items.Count == 0)
             {
@@ -77,6 +76,14 @@ namespace HC_OSHA
             cboPanjeng.Items.Add("확진검사대상");
             cboPanjeng.SelectedIndex = 0;
 
+            //회사관계자 로그인
+            if (clsType.User.LtdUser != "")
+            {
+                TxtLtdcode.Text = clsType.User.LtdUser + "." + clsType.User.JobName;
+                TxtLtdcode.Enabled = false;
+                BtnSearchSite.Enabled = false;
+                btnDelete.Enabled = false;
+            }
             //btnDelete.Enabled = false;
             //if (clsType.User.IdNumber == "1") btnDelete.Enabled = true;
         }

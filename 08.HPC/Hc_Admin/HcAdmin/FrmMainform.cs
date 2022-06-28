@@ -131,19 +131,6 @@ namespace HcAdmin
 
         private void 서버업로드ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //필요없는 파일 삭제
-            DirectoryInfo d1 = new DirectoryInfo(@"C:\헬스소프트\Debug");
-            FileInfo[] files = d1.GetFiles();
-            foreach (FileInfo file in files)
-            {
-                //if (VB.Right(file.Name.ToLower(), 11) == ".exe.config") file.Delete();
-                //if (VB.Right(file.Name.ToLower(), 13) == ".exe.manifest") file.Delete();
-                if (VB.Right(file.Name.ToLower(), 11) == ".dll.config") file.Delete();
-                if (VB.Right(file.Name.ToLower(), 4) == ".pdb") file.Delete();
-            }
-
-            FrmUpload form = new FrmUpload();
-            form.Show();
         }
 
         private void 설치파일만들기ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -188,6 +175,30 @@ namespace HcAdmin
         private void 싸인복사ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmSignCopy form = new FrmSignCopy();
+            form.Show();
+        }
+
+        private void 서버업로드ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //필요없는 파일 삭제
+            DirectoryInfo d1 = new DirectoryInfo(@"C:\헬스소프트\Debug");
+            FileInfo[] files = d1.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                //if (VB.Right(file.Name.ToLower(), 11) == ".exe.config") file.Delete();
+                //if (VB.Right(file.Name.ToLower(), 13) == ".exe.manifest") file.Delete();
+                if (VB.Right(file.Name.ToLower(), 11) == ".dll.config") file.Delete();
+                if (VB.Right(file.Name.ToLower(), 4) == ".pdb") file.Delete();
+            }
+
+            FrmUpload form = new FrmUpload();
+            form.Show();
+
+        }
+
+        private void 엑셀파일업로드ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmExcelUpload form = new FrmExcelUpload();
             form.Show();
         }
     }

@@ -9,6 +9,7 @@ using HC.Core.Dto;
 using HC.Core.Service;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HC_Core.Macroword
 {
@@ -87,6 +88,8 @@ namespace HC_Core.Macroword
         }
         public void SearchMacroword()
         {
+            SSList.DataSource = null;
+
             List<MacrowordDto> list = macrowordService.FindAll(this.FormName, this.ControlId, txtView.Text.Trim());
             SSList.SetDataSource(list);
         }
@@ -125,17 +128,16 @@ namespace HC_Core.Macroword
             dto.CONTENT = html;
             dto.DISPSEQ = Double.Parse(numDispSeq.GetValue().ToString());
             MacrowordDto saved = macrowordService.Save(dto);
-
-          
-
-            SearchMacroword();
+            
+            //SearchMacroword();
             
             txtMacroId.BeginInvoke(new MacroHandler(UpdateMacroId), saved);
+
+            //BtnNew.PerformClick();
         }
         public void UpdateMacroId(MacrowordDto saved)
         {
             txtMacroId.Text = saved.ID.ToString();
-
         }
         public void Clear()
         {

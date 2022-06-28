@@ -13,6 +13,7 @@ using HC.Core.Repository;
 using HC.Core.Service;
 using System.Collections.Generic;
 using ComHpcLibB.Model;
+using ComBase;
 
 namespace HC_Core
 {
@@ -96,6 +97,7 @@ namespace HC_Core
             else
             {
                 TxtIdOrName.Text = idOrName;
+                if (clsType.User.LtdUser != "") TxtIdOrName.Text = clsType.User.LtdUser;
                 list =  hcSiteViewService.Search(idOrName, CboManager.GetValue());
                 if(list.Count == 1)
                 {

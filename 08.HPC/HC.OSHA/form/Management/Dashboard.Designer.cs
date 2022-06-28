@@ -109,6 +109,7 @@
             this.위탁업무수행일지ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.업무적합성평가대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.화학물질MSDS목록현황ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.기업건강증진지수대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuBaseCode = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCode = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,7 +128,6 @@
             this.Mnu_OtherAllClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_AllTabClose = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_TabPopup = new System.Windows.Forms.ToolStripMenuItem();
-            this.기업건강증진지수대장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.LeftPanel.SuspendLayout();
@@ -537,6 +537,7 @@
             this.작업환경측정결과표ToolStripMenuItem.Name = "작업환경측정결과표ToolStripMenuItem";
             this.작업환경측정결과표ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.작업환경측정결과표ToolStripMenuItem.Text = "작업환경측정 결과표";
+            this.작업환경측정결과표ToolStripMenuItem.Click += new System.EventHandler(this.작업환경측정결과표ToolStripMenuItem_Click);
             // 
             // 작업환경측정스케쥴ToolStripMenuItem
             // 
@@ -767,6 +768,13 @@
             this.화학물질MSDS목록현황ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.화학물질MSDS목록현황ToolStripMenuItem.Text = "화학물질MSDS 목록현황";
             this.화학물질MSDS목록현황ToolStripMenuItem.Click += new System.EventHandler(this.화학물질MSDS목록현황ToolStripMenuItem_Click);
+            // 
+            // 기업건강증진지수대장ToolStripMenuItem
+            // 
+            this.기업건강증진지수대장ToolStripMenuItem.Name = "기업건강증진지수대장ToolStripMenuItem";
+            this.기업건강증진지수대장ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.기업건강증진지수대장ToolStripMenuItem.Text = "기업건강증진지수대장";
+            this.기업건강증진지수대장ToolStripMenuItem.Click += new System.EventHandler(this.기업건강증진지수대장ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -1008,13 +1016,6 @@
             this.Mnu_TabPopup.Size = new System.Drawing.Size(214, 22);
             this.Mnu_TabPopup.Text = "팝업으로 보기";
             this.Mnu_TabPopup.Click += new System.EventHandler(this.Mnu_TabPopup_Click);
-            // 
-            // 기업건강증진지수대장ToolStripMenuItem
-            // 
-            this.기업건강증진지수대장ToolStripMenuItem.Name = "기업건강증진지수대장ToolStripMenuItem";
-            this.기업건강증진지수대장ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.기업건강증진지수대장ToolStripMenuItem.Text = "기업건강증진지수대장";
-            this.기업건강증진지수대장ToolStripMenuItem.Click += new System.EventHandler(this.기업건강증진지수대장ToolStripMenuItem_Click);
             // 
             // Dashboard
             // 

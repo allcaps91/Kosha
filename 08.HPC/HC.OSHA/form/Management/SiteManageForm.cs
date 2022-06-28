@@ -75,6 +75,8 @@ namespace HC_OSHA
                 BtnDeletePrice.Enabled = false;
                 BtnNewPrice.Enabled = false;
                 btnNewEstimate.Enabled = false;
+                BtnWorkerAdd.Enabled = false;
+                tabControl1.Visible = false;
             }
             //sitePriceManageForm.Dock = DockStyle.Fill;
             //sitePriceManageForm.FormBorderStyle = FormBorderStyle.None;
@@ -353,6 +355,11 @@ namespace HC_OSHA
                 MessageUtil.Alert("사업장을 선택하세요");
                 return;
             }
+
+            if (TxtWhiteMale.Text.Trim() == "") {MessageUtil.Alert("사무직 남자 인원수가 공란입니다."); return; }
+            if (TxtWhiteFeMale.Text.Trim() == "") { MessageUtil.Alert("사무직 여자 인원수가 공란입니다."); return; }
+            if (TxtBlueMale.Text.Trim() == "") { MessageUtil.Alert("생산직 남자 인원수가 공란입니다."); return; }
+            if (TxtBlueFeMale.Text.Trim() == "") { MessageUtil.Alert("생산직 여자 인원수가 공란입니다."); return; }
 
             if (PanEstimate.Validate<HC_OSHA_ESTIMATE>())
             {

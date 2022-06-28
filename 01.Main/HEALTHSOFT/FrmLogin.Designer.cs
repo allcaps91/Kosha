@@ -39,6 +39,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblLicno = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnExcel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -117,7 +118,6 @@
             this.btnExit.TabIndex = 86;
             this.btnExit.Text = "종  료";
             this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnLogin
             // 
@@ -146,6 +146,18 @@
             // 
             this.timer1.Interval = 1000;
             // 
+            // btnExcel
+            // 
+            this.btnExcel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcel.Location = new System.Drawing.Point(14, 66);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(112, 26);
+            this.btnExcel.TabIndex = 92;
+            this.btnExcel.Text = "엑셀서식 재설치";
+            this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -153,6 +165,7 @@
             this.BackgroundImage = global::HEALTHSOFT.Properties.Resources.login_bakImg1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(579, 435);
+            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblLTD02);
             this.Controls.Add(this.lblSangho);
@@ -184,6 +197,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblLicno;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnExcel;
     }
 }
 

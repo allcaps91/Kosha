@@ -52,6 +52,14 @@ namespace HC_OSHA
             }
             cboYear.SelectedIndex = 0;
 
+            //회사관계자 로그인
+            if (clsType.User.LtdUser != "")
+            {
+                TxtLtdcode.Text = clsType.User.LtdUser + "." + clsType.User.JobName;
+                TxtLtdcode.Enabled = false;
+                BtnSearchSite.Enabled = false;
+            }
+
             SSList.Initialize(new SpreadOption() { IsRowSelectColor = false, RowHeightAuto = true, RowHeaderVisible = true, ColumnHeaderHeight = 30 });
             SSList.AddColumnDateTime("방문일자", "", 90, IsReadOnly.N, DateTimeType.YYYY_MM_DD, new SpreadCellTypeOption { IsSort = true, IsShowCalendarButton = false });
             SSList.AddColumnText("회사명", "", 120, IsReadOnly.Y, new SpreadCellTypeOption { IsSort = true, IsMulti = false, WordWrap = false, Aligen = CellHorizontalAlignment.Left });

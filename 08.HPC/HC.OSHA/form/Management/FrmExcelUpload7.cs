@@ -50,6 +50,14 @@ namespace HC_OSHA
 
             TxtLtdcode.Text = "";
 
+            //회사관계자 로그인
+            if (clsType.User.LtdUser != "")
+            {
+                TxtLtdcode.Text = clsType.User.LtdUser + "." + clsType.User.JobName;
+                TxtLtdcode.Enabled = false;
+                BtnSearchSite.Enabled = false;
+            }
+
             for (i = 0; i < 1000; i++)
             {
                 FnCol[i] = 0;

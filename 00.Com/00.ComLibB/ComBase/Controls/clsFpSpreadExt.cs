@@ -1583,7 +1583,6 @@ namespace ComBase.Controls
             fpSpread.ActiveSheet.RowCount = 0;
             fpSpread.DataSource = collection;
 
-
             SpreadOption option = fpSpread.Tag as SpreadOption;
             if (option != null)
             {
