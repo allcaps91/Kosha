@@ -34,6 +34,7 @@
             this.SSReportList = new FarPoint.Win.Spread.FpSpread();
             this.SSReportList_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.PanStatausReportDoctor = new System.Windows.Forms.Panel();
+            this.btnApprove = new System.Windows.Forms.Button();
             this.BtnSaup = new System.Windows.Forms.Button();
             this.BtnOpinion = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -189,7 +190,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.siteStatusControl = new HC_OSHA.StatusReport.SiteStatusControl();
-            this.BtnNew = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnLast = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
@@ -304,6 +304,7 @@
             // 
             // PanStatausReportDoctor
             // 
+            this.PanStatausReportDoctor.Controls.Add(this.btnApprove);
             this.PanStatausReportDoctor.Controls.Add(this.BtnSaup);
             this.PanStatausReportDoctor.Controls.Add(this.BtnOpinion);
             this.PanStatausReportDoctor.Controls.Add(this.panel2);
@@ -311,7 +312,6 @@
             this.PanStatausReportDoctor.Controls.Add(this.BtnPrint);
             this.PanStatausReportDoctor.Controls.Add(this.label2);
             this.PanStatausReportDoctor.Controls.Add(this.groupBox1);
-            this.PanStatausReportDoctor.Controls.Add(this.BtnNew);
             this.PanStatausReportDoctor.Controls.Add(this.BtnDelete);
             this.PanStatausReportDoctor.Controls.Add(this.BtnLast);
             this.PanStatausReportDoctor.Controls.Add(this.BtnSave);
@@ -320,6 +320,17 @@
             this.PanStatausReportDoctor.Name = "PanStatausReportDoctor";
             this.PanStatausReportDoctor.Size = new System.Drawing.Size(1325, 820);
             this.PanStatausReportDoctor.TabIndex = 112;
+            // 
+            // btnApprove
+            // 
+            this.btnApprove.Location = new System.Drawing.Point(885, 10);
+            this.btnApprove.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.btnApprove.Name = "btnApprove";
+            this.btnApprove.Size = new System.Drawing.Size(75, 28);
+            this.btnApprove.TabIndex = 217;
+            this.btnApprove.Text = "완료";
+            this.btnApprove.UseVisualStyleBackColor = true;
+            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
             // 
             // BtnSaup
             // 
@@ -2326,7 +2337,7 @@
             // 
             // BtnPrint
             // 
-            this.BtnPrint.Location = new System.Drawing.Point(1080, 7);
+            this.BtnPrint.Location = new System.Drawing.Point(1130, 10);
             this.BtnPrint.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.BtnPrint.Name = "BtnPrint";
             this.BtnPrint.Size = new System.Drawing.Size(75, 28);
@@ -2373,20 +2384,9 @@
             this.siteStatusControl.VisitDate = null;
             this.siteStatusControl.Load += new System.EventHandler(this.siteStatusControl_Load);
             // 
-            // BtnNew
-            // 
-            this.BtnNew.Location = new System.Drawing.Point(1001, 7);
-            this.BtnNew.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
-            this.BtnNew.Name = "BtnNew";
-            this.BtnNew.Size = new System.Drawing.Size(75, 28);
-            this.BtnNew.TabIndex = 113;
-            this.BtnNew.Text = "화면정리";
-            this.BtnNew.UseVisualStyleBackColor = true;
-            this.BtnNew.Click += new System.EventHandler(this.BtnNew_Click);
-            // 
             // BtnDelete
             // 
-            this.BtnDelete.Location = new System.Drawing.Point(759, 7);
+            this.BtnDelete.Location = new System.Drawing.Point(966, 10);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(75, 28);
@@ -2397,18 +2397,18 @@
             // 
             // BtnLast
             // 
-            this.BtnLast.Location = new System.Drawing.Point(840, 7);
+            this.BtnLast.Location = new System.Drawing.Point(1047, 10);
             this.BtnLast.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.BtnLast.Name = "BtnLast";
-            this.BtnLast.Size = new System.Drawing.Size(158, 28);
+            this.BtnLast.Size = new System.Drawing.Size(77, 28);
             this.BtnLast.TabIndex = 83;
-            this.BtnLast.Text = "마지막 보고서 가져오기";
+            this.BtnLast.Text = "신규작성";
             this.BtnLast.UseVisualStyleBackColor = true;
             this.BtnLast.Click += new System.EventHandler(this.BtnLast_Click);
             // 
             // BtnSave
             // 
-            this.BtnSave.Location = new System.Drawing.Point(1161, 7);
+            this.BtnSave.Location = new System.Drawing.Point(1211, 10);
             this.BtnSave.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(75, 28);
@@ -2632,7 +2632,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private SiteStatusControl siteStatusControl;
         private System.Windows.Forms.DateTimePicker DtpVisitReserveDate;
-        private System.Windows.Forms.Button BtnNew;
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.Button BtnLast;
         private System.Windows.Forms.Label label2;
@@ -2773,5 +2772,6 @@
         private System.Windows.Forms.Button btnBogen;
         private System.Windows.Forms.Button btnDB재접속;
         private System.Windows.Forms.Button btnMemoRead;
+        private System.Windows.Forms.Button btnApprove;
     }
 }

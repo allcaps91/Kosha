@@ -85,6 +85,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  QUARTER,                                                                  ");
             parameter.AppendSql("  STATISFACTION,                                                            ");
             parameter.AppendSql("  NAME,                                                                     ");
+            parameter.AppendSql("  SITESIGN,                                                                 ");
             parameter.AppendSql("  MODIFIED,                                                                 ");
             parameter.AppendSql("  MODIFIEDUSER,                                                             ");
             parameter.AppendSql("  CREATED,                                                                  ");
@@ -100,6 +101,7 @@ namespace HC.OSHA.Repository
             parameter.AppendSql("  :QUARTER,                                                                 ");
             parameter.AppendSql("  :STATISFACTION,                                                           ");
             parameter.AppendSql("  :NAME,                                                                    ");
+            parameter.AppendSql("  :SITESIGN,                                                                ");
             parameter.AppendSql("  SYSTIMESTAMP,                                                             ");
             parameter.AppendSql("  :MODIFIEDUSER,                                                            ");
             parameter.AppendSql("  SYSTIMESTAMP,                                                             ");
@@ -113,6 +115,7 @@ namespace HC.OSHA.Repository
             parameter.Add("QUARTER", dto.QUARTER);
             parameter.Add("STATISFACTION", dto.STATISFACTION);
             parameter.Add("NAME", dto.NAME);
+            parameter.Add("SITESIGN", dto.SITESIGN);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("CREATEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -125,21 +128,23 @@ namespace HC.OSHA.Repository
         public HC_OSHA_CARD20 Update(HC_OSHA_CARD20 dto)
         {
             MParameter parameter = CreateParameter();
-            parameter.AppendSql("UPDATE HIC_OSHA_CARD20                                                      ");
-            parameter.AppendSql("SET                                                                         ");
-            parameter.AppendSql("  QUARTER = :QUARTER,                                                       ");
-            parameter.AppendSql("  YEAR = :YEAR,                                                             ");
-            parameter.AppendSql("  STATISFACTION = :STATISFACTION,                                           ");
-            parameter.AppendSql("  NAME = :NAME,                                                             ");
-            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP,                                                  ");
-            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER                                              ");
-            parameter.AppendSql("WHERE ID = :ID                                                              ");
+            parameter.AppendSql("UPDATE HIC_OSHA_CARD20 ");
+            parameter.AppendSql("SET ");
+            parameter.AppendSql("  QUARTER = :QUARTER, ");
+            parameter.AppendSql("  YEAR = :YEAR, ");
+            parameter.AppendSql("  STATISFACTION = :STATISFACTION, ");
+            parameter.AppendSql("  NAME = :NAME, ");
+            parameter.AppendSql("  SITESIGN = :SITESIGN, ");
+            parameter.AppendSql("  MODIFIED = SYSTIMESTAMP, ");
+            parameter.AppendSql("  MODIFIEDUSER = :MODIFIEDUSER ");
+            parameter.AppendSql("WHERE ID = :ID ");
             parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", dto.ID);
             parameter.Add("QUARTER", dto.QUARTER);
             parameter.Add("YEAR", dto.YEAR);
             parameter.Add("STATISFACTION", dto.STATISFACTION);
             parameter.Add("NAME", dto.NAME);
+            parameter.Add("SITESIGN", dto.SITESIGN);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 

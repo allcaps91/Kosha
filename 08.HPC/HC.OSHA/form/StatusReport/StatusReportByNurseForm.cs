@@ -35,7 +35,7 @@ namespace HC_OSHA
 {
     public partial class StatusReportByNurseForm : CommonForm, ISelectSite
     {
-        private AutoCompleteMacro autoCompleteMacro;
+        //private AutoCompleteMacro autoCompleteMacro;
         private ChromiumWebBrowser browser = null;
         private CkEditor ckEditor = null;
         private StatusReportNurseService statusReportNurseService;
@@ -270,8 +270,7 @@ namespace HC_OSHA
                 siteStatusControl.SetSitName(SelectedSite.NAME);
             }
         }
-      
-              
+
 
         private void SetData(StatusReportNurseDto dto)
         {
@@ -304,6 +303,20 @@ namespace HC_OSHA
             ckEditor.SetStatusReportNurseDto(dto);
             workerHealthCheckForm.StatusReportNurseDto = dto;
             //GrpPerformContent.Initialize();
+
+            BtnSave.Enabled = true;
+            btnApprove.Enabled = true;
+            SaveOpinionBtn.Enabled = true;
+            tabControl2.Enabled = true;
+
+            // 수정금지 여부
+            if (dto.APPROVE != null)
+            {
+                BtnSave.Enabled = false;
+                btnApprove.Enabled = false;
+                SaveOpinionBtn.Enabled = false;
+                tabControl2.Enabled = false;
+            }
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -513,14 +526,26 @@ namespace HC_OSHA
                 dto.SANGDAMSIGN = "";
                 dto.SITEMANAGERSIGN = null;
                 dto.VISITDATE = DateTime.Now.ToString("yyyyMMdd");
+                dto.APPROVE = null;
 
                 SetData(dto);
             }
+            BtnSave.Enabled = true;
+            btnApprove.Enabled = false;
+            SaveOpinionBtn.Enabled = true;
+            tabControl2.Enabled = true;
         }
 
-     
         private void SaveOpinionBtn_Click(object sender, EventArgs e)
         {
+            //완료처리된것 수정금지
+            StatusReportNurseDto dto = PanStatausReportNurse.GetData<StatusReportNurseDto>();
+            if (dto.APPROVE != null)
+            {
+                MessageUtil.Alert("상태보고서가 완료되어 수정이 불가능합니다.");
+                return;
+            }
+
             if (browser.CanExecuteJavascriptInMainFrame)
             {
                 if(MessageUtil.Confirm("저장 하시겠습니까?", this, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
@@ -877,6 +902,37 @@ namespace HC_OSHA
         {
             RdoIsEduType1.Checked = false;
             RdoIsEduType2.Checked = false;
+        }
+
+        private void btnApprove_Click(object sender, EventArgs e)
+        {
+            StatusReportNurseDto dto = PanStatausReportNurse.GetData<StatusReportNurseDto>();
+            if (dto.ID == 0) return;  //신규등록
+            if (dto.APPROVE != null)
+            {
+                ComFunc.MsgBox("이미 완료처리를 하였습니다.", "알림");
+                return;
+            }
+            if (dto.SITEMANAGERSIGN == null)
+            {
+                if (MessageUtil.Confirm("보건담당자 싸인이 없습니다. 그래도 완료하시겠습니까?") == DialogResult.Yes)
+                {
+                    statusReportNurseService.StatusReportNurseRepository.UpdateApprove(dto.ID);
+
+                    Clear();
+
+                    SearchReport();
+                }
+
+            }
+            else if (MessageUtil.Confirm("완료 후 수정이 불가합니다. 그래도 완료하시겠습니까?") == DialogResult.Yes)
+            {
+                statusReportNurseService.StatusReportNurseRepository.UpdateApprove(dto.ID);
+
+                Clear();
+
+                SearchReport();
+            }
         }
     }
 }

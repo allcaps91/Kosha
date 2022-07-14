@@ -117,7 +117,8 @@ namespace HC_OSHA.form.Schedule
             bool bOk = SSList.SaveExcel("c:\\temp\\보건관리일정표.xls", FarPoint.Excel.ExcelSaveFlags.SaveCustomColumnHeaders);
             {
                 if (bOk == true)
-                    ComFunc.MsgBox("Temp 폴더에 엑셀파일이 생성이 되었습니다.", "확인");
+                    System.Diagnostics.Process.Start(@"c:\Temp\");
+                    //ComFunc.MsgBox("Temp 폴더에 엑셀파일이 생성이 되었습니다.", "확인");
                 else
                     ComFunc.MsgBox("엑셀파일 생성에 오류가 발생 하였습니다.", "확인");
             }

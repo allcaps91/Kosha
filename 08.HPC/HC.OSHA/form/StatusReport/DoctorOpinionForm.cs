@@ -94,6 +94,12 @@ namespace HC_OSHA.form.StatusReport
         {
             if (StatusReportDoctorDto != null)
             {
+                if (StatusReportDoctorDto.APPROVE != null)
+                {
+                    MessageUtil.Info("상태보고서가 완료되어 저장이 불가능합니다.");
+                    return;
+                }
+
                 if (MessageUtil.Confirm("저장 하시겠습니까?", this, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 {
                     this.StatusReportDoctorDto.OPINION = TxtOPINION.Text;
@@ -178,6 +184,14 @@ namespace HC_OSHA.form.StatusReport
             if (base.SelectedSite == null || base.SelectedEstimate == null)
             {
                 return;
+            }
+            if (StatusReportDoctorDto != null)
+            {
+                if (StatusReportDoctorDto.APPROVE != null)
+                {
+                    MessageUtil.Info("상태보고서가 완료되어 저장이 불가능합니다.");
+                    return;
+                }
             }
 
             CardPage_15_Form form = new CardPage_15_Form();

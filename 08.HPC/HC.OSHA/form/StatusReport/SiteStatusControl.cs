@@ -422,5 +422,10 @@ namespace HC_OSHA.StatusReport
             DtpSpecialHealthCheckDate.Location = new System.Drawing.Point(300, 119);
             DtpWEMDate.Location = new System.Drawing.Point(300, 148);
         }
+
+        private void TxtWEMHarmfulFactors_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

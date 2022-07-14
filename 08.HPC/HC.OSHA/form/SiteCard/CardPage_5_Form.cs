@@ -56,7 +56,7 @@ namespace HC_OSHA
             SSCard.ActiveSheet.Cells[2, 0].Value = "";
             SSCard.ActiveSheet.Cells[14, 0].Value = "";
 
-            for (int i = 2; i < 26; i++)
+            for (int i = 2; i < 20; i++)
             {
                 SSCard.ActiveSheet.Cells[i, 4].Value = "";
                 SSCard.ActiveSheet.Cells[i, 7].Value = "";
@@ -82,7 +82,7 @@ namespace HC_OSHA
             string lastEndYear = lastYear + "-12-31 23:59:59";
 
             SSCard.ActiveSheet.Cells[2, 0].Value = lastYear;
-            SSCard.ActiveSheet.Cells[14, 0].Value = year ;
+            SSCard.ActiveSheet.Cells[11, 0].Value = year ;
 
             HcOshaCard6Repository hcOshaCard6Repository = new HcOshaCard6Repository();
             List<HC_OSHA_CARD6> accLastYear = hcOshaCard6Repository.FindAllByYear(base.SelectedEstimate.ID, lastStartYear, lastEndYear);
@@ -92,7 +92,7 @@ namespace HC_OSHA
             for(int i =0; i<accLastYear.Count; i++)
             {
              
-                if(row == 14)
+                if(row == 11)
                 {
                     break;
                 }
@@ -118,7 +118,7 @@ namespace HC_OSHA
             string endYear = year + "-12-31 23:59:59";
             List<HC_OSHA_CARD6> accYear = hcOshaCard6Repository.FindAllByYear(base.SelectedEstimate.ID, startYear, endYear);
             //금년 재해자별현황
-             row = 14;
+             row = 11;
             for (int i = 0; i < accYear.Count; i++)
             {
              

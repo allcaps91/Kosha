@@ -240,6 +240,22 @@ namespace HC_OSHA.StatusReport
         private void BtnNew_Click(object sender, EventArgs e)
         {
             Clear();
+
+            if (base.SelectedSite == null)
+            {
+                return;
+            }
+
+            StatusReportDoctorDto dto = PanStatausReportDoctor.GetData<StatusReportDoctorDto>();
+            if (dto != null)
+            {
+                dto.ID = 0;
+                dto.VISITDATE = DateTime.Now.ToString("yyyyMMdd");
+                dto.SITEMANAGERSIGN = null;
+                dto.PERFORMCONTENT = null;
+                SetData(dto);
+            }
+
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)
@@ -426,6 +442,17 @@ namespace HC_OSHA.StatusReport
                 TxtMemo.Text = "";
                 doctorOpinionForm.SetMemo("");
             }
+
+            BtnSave.Enabled = true;
+            btnApprove.Enabled = true;
+
+            // 수정금지 여부
+            if (dto.APPROVE != null)
+            {
+                BtnSave.Enabled = false;
+                btnApprove.Enabled = false;
+            }
+
         }
 
         private void DtpVisitDate_ValueChanged(object sender, EventArgs e)
@@ -535,18 +562,23 @@ namespace HC_OSHA.StatusReport
             {
                 return;
             }
+
+            Clear();
+
             StatusReportDoctorDto dto = statusReportDoctorService.StatusReportDoctorRepository.FindLast(base.SelectedSite.ID);
             if (dto != null)
             {
                 dto.ID = 0;
                 dto.VISITDATE = DateTime.Now.ToString("yyyyMMdd");
-                //CboVisitYear.Text = "";
-                //CboVisitDate.Text = "";
                 dto.SITEMANAGERSIGN = null;
-                //dto.PERFORMCONTENT = null;
+                dto.PERFORMCONTENT = null;
+                dto.OPINION = null;
+                dto.APPROVE = null;
+
                 SetData(dto);
-                //Get_NurseSiteStatus();
             }
+            BtnSave.Enabled = true;
+            btnApprove.Enabled = false;
         }
 
         private void BtnGetCount_Click(object sender, EventArgs e)
@@ -559,6 +591,11 @@ namespace HC_OSHA.StatusReport
 
             StatusReportDoctorDto dto = PanStatausReportDoctor.GetData<StatusReportDoctorDto>();
             if (dto.ID == 0) return;
+            if (dto.APPROVE != null)
+            {
+                ComFunc.MsgBox("상태보고서가 완료되었습니다.", "알림");
+                return;
+            }
 
             //상담건수, 혈압, 혈당 등 검사 건수
             SQL = "SELECT COUNT(*) as TotCount,sum(decode(bpl,null, 0, 1)) as BpCount,sum(decode(bst, null, 0, 1)) AS BstCount, ";
@@ -685,6 +722,13 @@ namespace HC_OSHA.StatusReport
         //간호사가 입력한 사업장현황을 가져오기
         private void BtnSaup_Click(object sender, EventArgs e)
         {
+            StatusReportDoctorDto dto = PanStatausReportDoctor.GetData<StatusReportDoctorDto>();
+            if (dto.APPROVE != null)
+            {
+                ComFunc.MsgBox("상태보고서가 완료되었습니다.", "알림");
+                return;
+            }
+
             Get_NurseSiteStatus();
         }
 
@@ -785,6 +829,38 @@ namespace HC_OSHA.StatusReport
 
         private void siteStatusControl_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnApprove_Click(object sender, EventArgs e)
+        {
+            StatusReportDoctorDto dto = PanStatausReportDoctor.GetData<StatusReportDoctorDto>();
+            if (dto.ID == 0) return;  //신규등록
+            if (dto.APPROVE != null)
+            {
+                ComFunc.MsgBox("이미 완료처리를 하였습니다.", "알림");
+                return;
+            }
+            if (dto.SITEMANAGERSIGN == null)
+            {
+                if (MessageUtil.Confirm("보건담당자 싸인이 없습니다. 그래도 완료하시겠습니까?") == DialogResult.Yes)
+                {
+                    statusReportDoctorService.StatusReportDoctorRepository.UpdateApprove(dto.ID);
+
+                    Clear();
+
+                    SearchReport();
+                }
+
+            }
+            else if (MessageUtil.Confirm("완료 후 수정이 불가합니다. 그래도 완료하시겠습니까?") == DialogResult.Yes)
+            {
+                statusReportDoctorService.StatusReportDoctorRepository.UpdateApprove(dto.ID);
+
+                Clear();
+
+                SearchReport();
+            }
 
         }
     }

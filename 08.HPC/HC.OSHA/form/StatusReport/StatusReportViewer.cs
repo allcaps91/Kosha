@@ -327,7 +327,8 @@ namespace HC_OSHA.StatusReport
 
             browser.PrintToPdfAsync(fileName);
 
-            MessageUtil.Info(strPath + " 폴더에 저장하였습니다");
+            System.Diagnostics.Process.Start(strPath);
+            //MessageUtil.Info(strPath + " 폴더에 저장하였습니다");
         }
 
         // 파일명에 \ | : * ? " < > / 글자가 있으면 null로 치환함

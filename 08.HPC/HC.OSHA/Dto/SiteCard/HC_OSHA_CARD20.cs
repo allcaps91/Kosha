@@ -42,6 +42,16 @@ namespace HC.OSHA.Dto
         /// </summary>
 		public string NAME { get; set; }
 
+        /// <summary>
+        /// 서명
+        /// </summary>
+        public string SITESIGN { get; set; }
+
+        /// <summary>
+        /// 서명여부
+        /// </summary>
+        public string ISSIGN { get; set; }
+
         public DateTime? MODIFIED { get; set; }
         public string MODIFIEDUSER { get; set; }
         public DateTime? CREATED { get; set; }

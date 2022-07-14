@@ -562,8 +562,8 @@ namespace HC_OSHA.StatusReport
                 sp.PrintSignModel = model;
                 sp.ExportPDF(fileName);
 
-                MessageUtil.Info(strPath + " 폴더에 저장하였습니다");
-
+                System.Diagnostics.Process.Start(strPath);
+                //MessageUtil.Info(strPath + " 폴더에 저장하였습니다");
             }
             catch (Exception ex)
             {

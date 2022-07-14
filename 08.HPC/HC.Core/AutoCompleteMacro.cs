@@ -62,7 +62,7 @@ namespace HC_Core
 
         private void TextBox_Leave(object sender, EventArgs e)
         {
-            HideMacro();
+            //HideMacro();
         }
         private void HideMacro()
         {

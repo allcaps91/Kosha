@@ -70,6 +70,10 @@ namespace HC.OSHA.Dto
         /// <summary>
         ///
         /// <summary>
+        public DateTime? APPROVE { get; set; }
+        /// <summary>
+        ///
+        /// <summary>
         public DateTime? MODIFIED { get; set; }
         /// <summary>
         ///

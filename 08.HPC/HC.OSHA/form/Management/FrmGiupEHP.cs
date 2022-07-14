@@ -171,7 +171,8 @@ namespace HC_OSHA
             bool bOk = SSExcel.SaveExcel(strPath + "\\기업건강증진지수_" + strLtdName + ".xls", FarPoint.Excel.ExcelSaveFlags.SaveCustomColumnHeaders);
             {
                 if (bOk == true)
-                    ComFunc.MsgBox(strPath + " 폴더에 엑셀파일이 생성이 되었습니다.", "확인");
+                    System.Diagnostics.Process.Start(strPath);
+                    //ComFunc.MsgBox(strPath + " 폴더에 엑셀파일이 생성이 되었습니다.", "확인");
                 else
                     ComFunc.MsgBox("엑셀파일 생성에 오류가 발생 하였습니다.", "확인");
             }

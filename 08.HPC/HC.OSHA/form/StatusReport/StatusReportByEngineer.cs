@@ -219,6 +219,7 @@ namespace HC_OSHA
             ckEditor.Clear();
             SetSiteStatus();
         }
+
         /// <summary>
         /// 산업재해 사업장 관리카드 저장
         /// </summary>
@@ -522,8 +523,6 @@ namespace HC_OSHA
             {
                 SetSiteStatus();
             }
-            
-
 
             ckEditor.SetStatusReportEngineerDto(dto);
 
@@ -532,6 +531,21 @@ namespace HC_OSHA
             {
                 TxtMemo.Text = memo.MEMO;
             }
+
+            BtnSave.Enabled = true;
+            btnApprove.Enabled = true;
+            SaveOpinionBtn.Enabled = true;
+            tabPage4.Enabled = true;
+
+            // 수정금지 여부
+            if (dto.APPROVE != null)
+            {
+                BtnSave.Enabled = false;
+                btnApprove.Enabled = false;
+                SaveOpinionBtn.Enabled = false;
+                tabPage4.Enabled = false;
+            }
+
         }
         private void SetSiteStatus()
         {
@@ -797,9 +811,14 @@ namespace HC_OSHA
                 dto.OPINION = null;
                 dto.SITEMANAGERSIGN = null;
                 dto.VISITDATE = DateTime.Now.ToString("yyyyMMdd");
+                dto.APPROVE = null;
 
                 SetData(dto);
             }
+            BtnSave.Enabled = true;
+            btnApprove.Enabled = false;
+            SaveOpinionBtn.Enabled = true;
+            tabPage4.Enabled = true;
         }
 
         private void oshaSiteList1_CellDoubleClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
@@ -1045,5 +1064,38 @@ namespace HC_OSHA
                 ComFunc.MsgBox("DB 재접속 완료", "알림");
             }
         }
+
+        private void SSReportList_CellClick(object sender, CellClickEventArgs e)
+        {
+
+        }
+
+        private void btnApprove_Click(object sender, EventArgs e)
+        {
+            StatusReportEngineerDto dto = PanStatausReport.GetData<StatusReportEngineerDto>();
+            if (dto.ID == 0) return;  //신규등록
+            if (dto.APPROVE != null)
+            {
+                ComFunc.MsgBox("이미 완료처리를 하였습니다.", "알림");
+                return;
+            }
+            if (dto.SITEMANAGERSIGN == null)
+            {
+                if (MessageUtil.Confirm("보건담당자 싸인이 없습니다. 그래도 완료하시겠습니까?") == DialogResult.Yes)
+                {
+                    statusReportEngineerService.StatusReportEngineerRepository.UpdateApprove(dto.ID);
+                    InitForm();
+                    SearchReport();
+                }
+
+            }
+            else if (MessageUtil.Confirm("완료 후 수정이 불가합니다. 그래도 완료하시겠습니까?") == DialogResult.Yes)
+            {
+                statusReportEngineerService.StatusReportEngineerRepository.UpdateApprove(dto.ID);
+                InitForm();
+                SearchReport();
+            }
+        }
     }
+
 }

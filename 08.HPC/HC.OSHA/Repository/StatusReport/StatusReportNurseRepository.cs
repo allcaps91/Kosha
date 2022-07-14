@@ -35,6 +35,22 @@ namespace HC.OSHA.Repository.StatusReport
 
             return dto;
         }
+        public void UpdateApprove(long id)
+        {
+            MParameter parameter = CreateParameter();
+            parameter.AppendSql("UPDATE HIC_OSHA_REPORT_NURSE ");
+            parameter.AppendSql("   SET APPROVE = SYSTIMESTAMP ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+
+            parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
+            ExecuteNonQuery(parameter);
+
+            DataSyncService.Instance.Update("HIC_OSHA_REPORT_NURSE", id);
+        }
+
         public void UpdateSign(long id, string base64Image)
         {
             MParameter parameter = CreateParameter();

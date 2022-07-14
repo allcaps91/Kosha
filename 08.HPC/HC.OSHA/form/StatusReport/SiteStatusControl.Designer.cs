@@ -75,6 +75,9 @@
             this.label28 = new System.Windows.Forms.Label();
             this.TxtWEMHarmfulFactors = new System.Windows.Forms.TextBox();
             this.panSiteSatus = new System.Windows.Forms.Panel();
+            this.DtpWEMDate = new System.Windows.Forms.TextBox();
+            this.DtpSpecialHealthCheckDate = new System.Windows.Forms.TextBox();
+            this.DtpGeneralHealthCheckDate = new System.Windows.Forms.TextBox();
             this.btnDate = new System.Windows.Forms.Button();
             this.TxtDeptName = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
@@ -89,9 +92,6 @@
             this.BtnDataLink = new System.Windows.Forms.Button();
             this.NumGeneralTotalCount = new System.Windows.Forms.NumericUpDown();
             this.NumSpecialTotalCount = new System.Windows.Forms.NumericUpDown();
-            this.DtpGeneralHealthCheckDate = new System.Windows.Forms.TextBox();
-            this.DtpSpecialHealthCheckDate = new System.Windows.Forms.TextBox();
-            this.DtpWEMDate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.NumCurrentWorkerCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumNewWorkerCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumRetireWorkerCount)).BeginInit();
@@ -711,6 +711,7 @@
             this.TxtWEMHarmfulFactors.Name = "TxtWEMHarmfulFactors";
             this.TxtWEMHarmfulFactors.Size = new System.Drawing.Size(972, 25);
             this.TxtWEMHarmfulFactors.TabIndex = 172;
+            this.TxtWEMHarmfulFactors.TextChanged += new System.EventHandler(this.TxtWEMHarmfulFactors_TextChanged);
             // 
             // panSiteSatus
             // 
@@ -782,6 +783,27 @@
             this.panSiteSatus.Name = "panSiteSatus";
             this.panSiteSatus.Size = new System.Drawing.Size(1280, 210);
             this.panSiteSatus.TabIndex = 173;
+            // 
+            // DtpWEMDate
+            // 
+            this.DtpWEMDate.Location = new System.Drawing.Point(300, 148);
+            this.DtpWEMDate.Name = "DtpWEMDate";
+            this.DtpWEMDate.Size = new System.Drawing.Size(118, 25);
+            this.DtpWEMDate.TabIndex = 153;
+            // 
+            // DtpSpecialHealthCheckDate
+            // 
+            this.DtpSpecialHealthCheckDate.Location = new System.Drawing.Point(300, 119);
+            this.DtpSpecialHealthCheckDate.Name = "DtpSpecialHealthCheckDate";
+            this.DtpSpecialHealthCheckDate.Size = new System.Drawing.Size(118, 25);
+            this.DtpSpecialHealthCheckDate.TabIndex = 152;
+            // 
+            // DtpGeneralHealthCheckDate
+            // 
+            this.DtpGeneralHealthCheckDate.Location = new System.Drawing.Point(300, 91);
+            this.DtpGeneralHealthCheckDate.Name = "DtpGeneralHealthCheckDate";
+            this.DtpGeneralHealthCheckDate.Size = new System.Drawing.Size(118, 25);
+            this.DtpGeneralHealthCheckDate.TabIndex = 153;
             // 
             // btnDate
             // 
@@ -936,27 +958,6 @@
             this.NumSpecialTotalCount.Name = "NumSpecialTotalCount";
             this.NumSpecialTotalCount.Size = new System.Drawing.Size(78, 25);
             this.NumSpecialTotalCount.TabIndex = 153;
-            // 
-            // DtpGeneralHealthCheckDate
-            // 
-            this.DtpGeneralHealthCheckDate.Location = new System.Drawing.Point(300, 91);
-            this.DtpGeneralHealthCheckDate.Name = "DtpGeneralHealthCheckDate";
-            this.DtpGeneralHealthCheckDate.Size = new System.Drawing.Size(118, 25);
-            this.DtpGeneralHealthCheckDate.TabIndex = 153;
-            // 
-            // DtpSpecialHealthCheckDate
-            // 
-            this.DtpSpecialHealthCheckDate.Location = new System.Drawing.Point(300, 119);
-            this.DtpSpecialHealthCheckDate.Name = "DtpSpecialHealthCheckDate";
-            this.DtpSpecialHealthCheckDate.Size = new System.Drawing.Size(118, 25);
-            this.DtpSpecialHealthCheckDate.TabIndex = 152;
-            // 
-            // DtpWEMDate
-            // 
-            this.DtpWEMDate.Location = new System.Drawing.Point(300, 148);
-            this.DtpWEMDate.Name = "DtpWEMDate";
-            this.DtpWEMDate.Size = new System.Drawing.Size(118, 25);
-            this.DtpWEMDate.TabIndex = 153;
             // 
             // SiteStatusControl
             // 

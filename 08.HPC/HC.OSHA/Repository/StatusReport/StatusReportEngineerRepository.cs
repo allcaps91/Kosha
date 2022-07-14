@@ -323,6 +323,21 @@ namespace HC.OSHA.Repository
 
             DataSyncService.Instance.Delete("HIC_OSHA_REPORT_ENGINEER", id);
         }
+        public void UpdateApprove(long id)
+        {
+            MParameter parameter = CreateParameter();
+            parameter.AppendSql("UPDATE HIC_OSHA_REPORT_ENGINEER ");
+            parameter.AppendSql("   SET APPROVE = SYSTIMESTAMP ");
+            parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
+
+            parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
+
+            ExecuteNonQuery(parameter);
+
+            DataSyncService.Instance.Update("HIC_OSHA_REPORT_ENGINEER", id);
+        }
     }
 }
 

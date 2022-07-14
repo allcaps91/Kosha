@@ -794,7 +794,25 @@ namespace HC_OSHA.StatusReport
                 MessageUtil.Alert("근로자를 선택하세요");
                 return;
             }
-           
+
+            //완료처리된것 수정금지
+            if (StatusReportDoctorDto != null)
+            {
+                if (StatusReportDoctorDto.APPROVE != null)
+                {
+                    MessageUtil.Alert("상태보고서가 완료되어 수정이 불가능합니다.");
+                    return;
+                }
+            }
+            if (StatusReportNurseDto != null)
+            {
+                if (StatusReportNurseDto.APPROVE != null)
+                {
+                    MessageUtil.Alert("상태보고서가 완료되어 수정이 불가능합니다.");
+                    return;
+                }
+            }
+
             // 상담내역은 본인만 수정 가능함
             if (dto.id > 0)
             {
@@ -1551,6 +1569,24 @@ namespace HC_OSHA.StatusReport
             if(SelectedSite != null)
             {
                 HealthCheckDto dto = panHealthCheck.GetData<HealthCheckDto>();
+
+                //완료처리된것 수정금지
+                if (StatusReportDoctorDto != null)
+                {
+                    if (StatusReportDoctorDto.APPROVE != null)
+                    {
+                        MessageUtil.Alert("상태보고서가 완료되어 삭제가 불가능합니다.");
+                        return;
+                    }
+                }
+                if (StatusReportNurseDto != null)
+                {
+                    if (StatusReportNurseDto.APPROVE != null)
+                    {
+                        MessageUtil.Alert("상태보고서가 완료되어 삭제가 불가능합니다.");
+                        return;
+                    }
+                }
 
                 // 상담내역은 본인만 삭제 가능함
                 if (dto.id > 0)
