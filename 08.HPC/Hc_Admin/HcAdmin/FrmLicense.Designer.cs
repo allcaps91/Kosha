@@ -35,6 +35,9 @@
             this.삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pC저장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.기본정보생성ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.연습자료만삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.전체자료삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.헬스소프트실행ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkEnd = new System.Windows.Forms.CheckBox();
@@ -44,6 +47,9 @@
             this.dtpViewSDate = new System.Windows.Forms.DateTimePicker();
             this.BtnSearch = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtSMTP = new System.Windows.Forms.TextBox();
             this.txtDbConnect = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -74,9 +80,6 @@
             this.txtSangho = new System.Windows.Forms.TextBox();
             this.SS1 = new FarPoint.Win.Spread.FpSpread();
             this.SS1_Sheet1 = new FarPoint.Win.Spread.SheetView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtSMTP = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -93,6 +96,7 @@
             this.삭제ToolStripMenuItem,
             this.pC저장ToolStripMenuItem,
             this.기본정보생성ToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.헬스소프트실행ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -142,6 +146,30 @@
             this.기본정보생성ToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.기본정보생성ToolStripMenuItem.Text = "기본정보생성";
             this.기본정보생성ToolStripMenuItem.Click += new System.EventHandler(this.기본정보생성ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.연습자료만삭제ToolStripMenuItem,
+            this.전체자료삭제ToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(91, 20);
+            this.toolStripMenuItem1.Text = "기본정보삭제";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // 연습자료만삭제ToolStripMenuItem
+            // 
+            this.연습자료만삭제ToolStripMenuItem.Name = "연습자료만삭제ToolStripMenuItem";
+            this.연습자료만삭제ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.연습자료만삭제ToolStripMenuItem.Text = "연습자료만 삭제";
+            this.연습자료만삭제ToolStripMenuItem.Click += new System.EventHandler(this.연습자료만삭제ToolStripMenuItem_Click);
+            // 
+            // 전체자료삭제ToolStripMenuItem
+            // 
+            this.전체자료삭제ToolStripMenuItem.Name = "전체자료삭제ToolStripMenuItem";
+            this.전체자료삭제ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.전체자료삭제ToolStripMenuItem.Text = "전체자료 삭제";
+            this.전체자료삭제ToolStripMenuItem.Click += new System.EventHandler(this.전체자료삭제ToolStripMenuItem_Click);
             // 
             // 헬스소프트실행ToolStripMenuItem
             // 
@@ -265,6 +293,34 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(609, 529);
             this.panel3.TabIndex = 87;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(105, 320);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(340, 13);
+            this.label16.TabIndex = 155;
+            this.label16.Text = "smtp.naver.com{}587{}test1233@naver.com{}test123";
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.LightBlue;
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label13.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label13.Location = new System.Drawing.Point(10, 293);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 23);
+            this.label13.TabIndex = 154;
+            this.label13.Text = "SMTP설정값";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtSMTP
+            // 
+            this.txtSMTP.Location = new System.Drawing.Point(108, 295);
+            this.txtSMTP.Name = "txtSMTP";
+            this.txtSMTP.Size = new System.Drawing.Size(396, 22);
+            this.txtSMTP.TabIndex = 153;
             // 
             // txtDbConnect
             // 
@@ -584,34 +640,6 @@
             this.SS1_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SS1_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.LightBlue;
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.Location = new System.Drawing.Point(10, 293);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(85, 23);
-            this.label13.TabIndex = 154;
-            this.label13.Text = "SMTP설정값";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtSMTP
-            // 
-            this.txtSMTP.Location = new System.Drawing.Point(108, 295);
-            this.txtSMTP.Name = "txtSMTP";
-            this.txtSMTP.Size = new System.Drawing.Size(396, 22);
-            this.txtSMTP.TabIndex = 153;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(105, 320);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(340, 13);
-            this.label16.TabIndex = 155;
-            this.label16.Text = "smtp.naver.com{}587{}test1233@naver.com{}test123";
-            // 
             // FrmLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
@@ -692,5 +720,8 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtSMTP;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 연습자료만삭제ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 전체자료삭제ToolStripMenuItem;
     }
 }
