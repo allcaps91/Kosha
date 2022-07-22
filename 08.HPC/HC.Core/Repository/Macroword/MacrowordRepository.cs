@@ -1,4 +1,5 @@
-﻿using ComBase.Controls;
+﻿using ComBase;
+using ComBase.Controls;
 using ComBase.Mvc;
 using HC.Core.Dto;
 using HC.Core.Service;
@@ -15,10 +16,11 @@ namespace HC.Core.Repository
             parameter.AppendSql("SELECT *    ");
             parameter.AppendSql("  FROM HIC_MACROWORD ");
             parameter.AppendSql(" WHERE ID = :ID ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE   ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReaderSingle<MacrowordDto>(parameter);
-
         }
 
         public List<MacrowordDto> FindAll(string formName, string controlId)
@@ -28,9 +30,11 @@ namespace HC.Core.Repository
             parameter.AppendSql("  FROM HIC_MACROWORD A");
             parameter.AppendSql(" WHERE FORMNAME = :formName ");
             parameter.AppendSql(" AND CONTROL = :controlId ");
+            parameter.AppendSql(" AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY DISPSEQ  ");
             parameter.Add("formName", formName);
             parameter.Add("controlId", controlId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader <MacrowordDto>(parameter);
 
@@ -38,17 +42,16 @@ namespace HC.Core.Repository
         public List<MacrowordDto> FindAll(string formName, string controlId, string title)
         {
             MParameter parameter = CreateParameter();
-            //parameter.AppendSql("SELECT A.ID"   );
-            //parameter.AppendSql("     , A.FORMNAME" );
-            //parameter.AppendSql("     , A.CONTENT");
             parameter.AppendSql("SELECT *             ");
             parameter.AppendSql(" FROM HIC_MACROWORD A");
             parameter.AppendSql(" WHERE FORMNAME = :formName ");
             parameter.AppendSql(" AND CONTROL = :controlId ");
             if (title != "") parameter.AppendSql(" AND TITLE LIKE '%"+title+"%' ");
+            parameter.AppendSql(" AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY DISPSEQ  ");
             parameter.Add("formName", formName);
             parameter.Add("controlId", controlId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             return ExecuteReader<MacrowordDto>(parameter);
 
@@ -68,6 +71,7 @@ namespace HC.Core.Repository
             parameter.AppendSql("      , MODIFIED = SYSTIMESTAMP");
             parameter.AppendSql("      , MODIFIEDUSER = :MODIFIEDUSER");
             parameter.AppendSql("     WHERE ID =:ID");
+            parameter.AppendSql("       AND SWLICENSE = :SWLICENSE ");
 
             parameter.Add("ID", item.ID);
             parameter.Add("FORMNAME", item.FORMNAME);
@@ -78,8 +82,8 @@ namespace HC.Core.Repository
             parameter.Add("CONTENT2", item.CONTENT2);
             parameter.Add("DISPSEQ", item.DISPSEQ);
             parameter.Add("MODIFIEDUSER", CommonService.Instance.Session.UserId);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
-          
             ExecuteNonQuery(parameter);
 
             DataSyncService.Instance.Update("HIC_MACROWORD", item.ID);
@@ -92,12 +96,13 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("DELETE FROM HIC_MACROWORD   ");
             parameter.AppendSql("WHERE ID = :ID             ");
+            parameter.AppendSql("  AND SWLICENSE = :SWLICENSE ");
             parameter.Add("ID", id);
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 
             DataSyncService.Instance.Delete("HIC_MACROWORD", id);
-
         }
         public MacrowordDto Insert(MacrowordDto item)
         {
@@ -118,6 +123,7 @@ namespace HC.Core.Repository
             parameter.AppendSql("  , MODIFIEDUSER");
             parameter.AppendSql("  , CREATED");
             parameter.AppendSql("  , CREATEDUSER");
+            parameter.AppendSql("  , SWLICENSE");
             parameter.AppendSql(") VALUES ( ");
             parameter.AppendSql("    :ID");
             parameter.AppendSql("  , :FORMNAME");
@@ -131,6 +137,7 @@ namespace HC.Core.Repository
             parameter.AppendSql("  , :MODIFIEDUSER");
             parameter.AppendSql("  , SYSTIMESTAMP");
             parameter.AppendSql("  , :CREATEDUSER");
+            parameter.AppendSql("  , :SWLICENSE");
             parameter.AppendSql(") ");
 
             parameter.Add("ID", item.ID);
@@ -151,8 +158,7 @@ namespace HC.Core.Repository
                 parameter.Add("MODIFIEDUSER", item.CREATEDUSER);
                 parameter.Add("CREATEDUSER", item.CREATEDUSER);
             }
-           
-
+            parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
 
             ExecuteNonQuery(parameter);
 

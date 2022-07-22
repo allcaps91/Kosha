@@ -33,6 +33,8 @@
             this.라이선스ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.안내문등록ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.서버업로드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.서버업로드ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.엑셀파일업로드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.설치파일만들기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.싸인복사ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,8 +45,9 @@
             this.CmdLogin = new System.Windows.Forms.Button();
             this.TxtPass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.서버업로드ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.엑셀파일업로드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pcmasterDBCreateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.정보조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.사용자정보조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panLogin.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +61,8 @@
             this.서버업로드ToolStripMenuItem,
             this.설치파일만들기ToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.테스트ToolStripMenuItem});
+            this.테스트ToolStripMenuItem,
+            this.정보조회ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -97,6 +101,20 @@
             this.서버업로드ToolStripMenuItem.Text = "서버업로드";
             this.서버업로드ToolStripMenuItem.Click += new System.EventHandler(this.서버업로드ToolStripMenuItem_Click);
             // 
+            // 서버업로드ToolStripMenuItem1
+            // 
+            this.서버업로드ToolStripMenuItem1.Name = "서버업로드ToolStripMenuItem1";
+            this.서버업로드ToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
+            this.서버업로드ToolStripMenuItem1.Text = "서버업로드";
+            this.서버업로드ToolStripMenuItem1.Click += new System.EventHandler(this.서버업로드ToolStripMenuItem1_Click);
+            // 
+            // 엑셀파일업로드ToolStripMenuItem
+            // 
+            this.엑셀파일업로드ToolStripMenuItem.Name = "엑셀파일업로드ToolStripMenuItem";
+            this.엑셀파일업로드ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.엑셀파일업로드ToolStripMenuItem.Text = "엑셀파일업로드";
+            this.엑셀파일업로드ToolStripMenuItem.Click += new System.EventHandler(this.엑셀파일업로드ToolStripMenuItem_Click);
+            // 
             // 설치파일만들기ToolStripMenuItem
             // 
             this.설치파일만들기ToolStripMenuItem.Name = "설치파일만들기ToolStripMenuItem";
@@ -107,7 +125,8 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.싸인복사ToolStripMenuItem});
+            this.싸인복사ToolStripMenuItem,
+            this.pcmasterDBCreateToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(59, 20);
             this.toolStripMenuItem1.Text = "DB관리";
@@ -115,7 +134,7 @@
             // 싸인복사ToolStripMenuItem
             // 
             this.싸인복사ToolStripMenuItem.Name = "싸인복사ToolStripMenuItem";
-            this.싸인복사ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.싸인복사ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.싸인복사ToolStripMenuItem.Text = "1.싸인 복사";
             this.싸인복사ToolStripMenuItem.Click += new System.EventHandler(this.싸인복사ToolStripMenuItem_Click);
             // 
@@ -190,19 +209,27 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "관리자의 비밀번호를 입력하세요";
             // 
-            // 서버업로드ToolStripMenuItem1
+            // pcmasterDBCreateToolStripMenuItem
             // 
-            this.서버업로드ToolStripMenuItem1.Name = "서버업로드ToolStripMenuItem1";
-            this.서버업로드ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.서버업로드ToolStripMenuItem1.Text = "서버업로드";
-            this.서버업로드ToolStripMenuItem1.Click += new System.EventHandler(this.서버업로드ToolStripMenuItem1_Click);
+            this.pcmasterDBCreateToolStripMenuItem.Name = "pcmasterDBCreateToolStripMenuItem";
+            this.pcmasterDBCreateToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.pcmasterDBCreateToolStripMenuItem.Text = "2.pc_master DB Create";
+            this.pcmasterDBCreateToolStripMenuItem.Click += new System.EventHandler(this.pcmasterDBCreateToolStripMenuItem_Click);
             // 
-            // 엑셀파일업로드ToolStripMenuItem
+            // 정보조회ToolStripMenuItem
             // 
-            this.엑셀파일업로드ToolStripMenuItem.Name = "엑셀파일업로드ToolStripMenuItem";
-            this.엑셀파일업로드ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.엑셀파일업로드ToolStripMenuItem.Text = "엑셀파일업로드";
-            this.엑셀파일업로드ToolStripMenuItem.Click += new System.EventHandler(this.엑셀파일업로드ToolStripMenuItem_Click);
+            this.정보조회ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.사용자정보조회ToolStripMenuItem});
+            this.정보조회ToolStripMenuItem.Name = "정보조회ToolStripMenuItem";
+            this.정보조회ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.정보조회ToolStripMenuItem.Text = "정보조회";
+            // 
+            // 사용자정보조회ToolStripMenuItem
+            // 
+            this.사용자정보조회ToolStripMenuItem.Name = "사용자정보조회ToolStripMenuItem";
+            this.사용자정보조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.사용자정보조회ToolStripMenuItem.Text = "사용자 정보 조회";
+            this.사용자정보조회ToolStripMenuItem.Click += new System.EventHandler(this.사용자정보조회ToolStripMenuItem_Click);
             // 
             // FrmMainform
             // 
@@ -245,6 +272,9 @@
         private System.Windows.Forms.ToolStripMenuItem 싸인복사ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 서버업로드ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 엑셀파일업로드ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pcmasterDBCreateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 정보조회ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 사용자정보조회ToolStripMenuItem;
     }
 }
 

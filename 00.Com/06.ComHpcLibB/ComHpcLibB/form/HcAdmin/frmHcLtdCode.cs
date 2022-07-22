@@ -7,6 +7,7 @@ using FarPoint.Win.Spread;
 using FarPoint.Win.Spread.CellType;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
@@ -247,12 +248,11 @@ namespace ComHpcLibB
             else if (sender == btnNew)
             {
                 Screen_Clear();
-                txtCode.Enabled = true;
-                txtCode.Text = ComQuery.GetSequencesNoEx(clsDB.DbCon, "HC_LTD_SEQ").ToString();
-                txtCode.Enabled = false;
                 btnNew.Enabled = false;
                 btnSave.Enabled = true;
                 btnCancel.Enabled = true;
+
+                GET_NewLtdNo(); //신규번호를 부여함
             }
             else if (sender == btnDelete)
             {
@@ -428,6 +428,29 @@ namespace ComHpcLibB
                     }
                 }
             }
+        }
+
+        //신규 거래처코드 찾기
+        private void GET_NewLtdNo()
+        {
+            string SQL = "";
+            string SqlErr = "";
+            DataTable dt = null;
+
+            txtCode.Enabled = true;
+            for (int i=0;i<5000;i++)
+            {
+                txtCode.Text = ComQuery.GetSequencesNoEx(clsDB.DbCon, "HC_LTD_SEQ").ToString();
+
+                //거래처가 등록되었는지 확인(라이선스 상관없이 점검)
+                SQL = "SELECT CODE FROM HIC_LTD ";
+                SQL = SQL + "WHERE CODE='" + txtCode.Text.Trim() + "' ";
+                SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+                if (dt.Rows.Count == 0) break;
+                dt.Dispose();
+                dt = null;
+            }
+            txtCode.Enabled = false;
         }
 
         private void eFormLoad(object sender, EventArgs e)

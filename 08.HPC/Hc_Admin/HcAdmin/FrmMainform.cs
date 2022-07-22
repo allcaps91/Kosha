@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using MySql.Data.MySqlClient;
 
 namespace HcAdmin
 {
@@ -34,6 +35,14 @@ namespace HcAdmin
 
             if (clsDB.DbCon == null)
             {
+                Application.Exit();
+                return;
+            }
+
+            //서버접속
+            if (clsDbMySql.DBConnect("115.68.23.223", "3306", "dhson", "@thsehdgml#", "dhson") == false)
+            {
+                ComFunc.MsgBox("라이선스 서버에 접속할 수 없습니다");
                 Application.Exit();
                 return;
             }
@@ -199,6 +208,61 @@ namespace HcAdmin
         private void 엑셀파일업로드ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmExcelUpload form = new FrmExcelUpload();
+            form.Show();
+        }
+
+        private void pcmasterDBCreateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string SQL = "";
+            bool SqlErr;
+            int nErrCnt = 0;
+
+            SqlErr = clsDbMySql.ExecuteNonQuery("DROP TABLE `pc_master`");
+            SqlErr = clsDbMySql.ExecuteNonQuery("DROP TABLE `pc_log`");
+
+            //라이선스 서버에 pc_master를 생성
+            SQL = "CREATE TABLE `pc_master` (";
+            SQL = SQL + " `MAC` varchar(30) NOT NULL DEFAULT '',";
+            SQL = SQL + " `LICNO` varchar(20) DEFAULT '',";
+            SQL = SQL + " `VER` varchar(20) DEFAULT '',";
+            SQL = SQL + " `IP` varchar(20) DEFAULT '',";
+            SQL = SQL + " `STARTDATE` varchar(20) DEFAULT '',";
+            SQL = SQL + " `LASTDATE` varchar(20) DEFAULT '',";
+            SQL = SQL + " `WINVER` varchar(30) DEFAULT '',";
+            SQL = SQL + " `REMARK` varchar(100) DEFAULT '',";
+            SQL = SQL + " `PCINFO` varchar(1000) DEFAULT '',";
+            SQL = SQL + " KEY `pcmaster0` (`MAC`)";
+            SQL = SQL + ") ENGINE=MyISAM DEFAULT CHARSET=utf8; ";
+            SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
+            if (SqlErr == false)
+            {
+                nErrCnt++;
+                ComFunc.MsgBox("pc_master 생성 실패", "알림");
+            }
+
+            SQL = "CREATE TABLE `pc_log` (";
+            SQL = SQL + " `SENDTIME` varchar(20) DEFAULT '',";
+            SQL = SQL + " `MAC` varchar(30) NOT NULL DEFAULT '',";
+            SQL = SQL + " `LICNO` varchar(20) DEFAULT '',";
+            SQL = SQL + " `VER` varchar(20) DEFAULT '',";
+            SQL = SQL + " `IP` varchar(20) DEFAULT '',";
+            SQL = SQL + " `SENDLOG` varchar(200) DEFAULT '',";
+            SQL = SQL + " KEY `pclog0` (`SENDTIME`)";
+            SQL = SQL + ") ENGINE=MyISAM DEFAULT CHARSET=utf8; ";
+            SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
+            if (SqlErr == false)
+            {
+                nErrCnt++;
+                ComFunc.MsgBox("pc_master 생성 실패", "알림");
+            }
+
+            if (nErrCnt==0) ComFunc.MsgBox("생성 완료", "알림");
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void 사용자정보조회ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUserInfo form = new FrmUserInfo();
             form.Show();
         }
     }

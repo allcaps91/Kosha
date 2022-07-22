@@ -5,6 +5,7 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
+using System.Management;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -28,6 +29,9 @@ namespace HEALTHSOFT
         private string FstrLicExcelVer = "";
         private string FstrExcelPath = @"C:\HealthSoft\엑셀서식\excelVer.dat";
 
+        private string FstrMac = "";
+        private string FstrIp = "";
+        private string FstrWinVer = "";
         public FrmLogin()
         {
             InitializeComponent();
@@ -45,8 +49,28 @@ namespace HEALTHSOFT
             this.timer1.Tick += new EventHandler(eTimerTick);
             this.txtIdNumber.KeyDown += new KeyEventHandler(eTxtKeyDown);
             this.txtPassword.KeyDown += new KeyEventHandler(eTxtKeyDown);
+
+            //PC정보를 읽음
+            clsCompuInfo.SetComputerInfo();
+            FstrIp = clsCompuInfo.gstrCOMIP;
+            FstrMac = clsCompuInfo.GetMACAddress();
+            FstrWinVer = GetOSFriendlyName();
         }
 
+        private string GetOSFriendlyName()
+        {
+            string result = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem");
+            foreach (ManagementObject os in searcher.Get())
+            {
+                result = os["Caption"].ToString();
+                break;
+            }
+
+            //결과에서 "microsoft"를 제거
+            if (VB.Left(result, 9) == "Microsoft") result = VB.Right(result, VB.Len(result) - 9).Trim();
+            return result;
+        }
         private void eTimerTick(object sender, EventArgs e)
         {
             intDelay++;
@@ -83,11 +107,14 @@ namespace HEALTHSOFT
         {
             string strUpdate = "최신 업데이트 파일이 있습니다." + "\n" + "지금 업데이트를 진행하시겠습니까?";
 
+            FstrLicno = clsType.HosInfo.SwLicense;
+
             //버전정보가 틀리면 자동 업데이트
             if (FstrOldVer != FstrNewVer)
             {
                 if (MessageUtil.Confirm(strUpdate) == DialogResult.Yes)
                 {
+                    Log_Send(FstrNewVer + " 버전으로 업데이트");
                     btnUpdate_Click();
                     return;
                 }
@@ -106,6 +133,7 @@ namespace HEALTHSOFT
             {
                 if (Download_ExcelFiles() == true)
                 {
+                    Log_Send(FstrLicExcelVer + " 버전 엑셀파일 다운로드");
                     System.IO.File.WriteAllText(FstrExcelPath, FstrLicExcelVer);
                 }
             }
@@ -160,6 +188,12 @@ namespace HEALTHSOFT
 
             // 최근 로그인 ID를 저장함
             Save_LastLoginID();
+
+            //라이선스 서버에 로그정보를 전송함
+            Log_Send(txtIdNumber.Text.Trim() + " 사용자 로그인");
+
+            //라이선스 서버에 pc정보를 업데이트
+            Update_PcMaster();
 
             // 프로그램 실행
             Dashboard form = new Dashboard();
@@ -330,7 +364,6 @@ namespace HEALTHSOFT
         private void GuideMsg_Display()
         {
             string SQL = "";
-
             DataTable dt = null;
 
             Cursor.Current = Cursors.WaitCursor;
@@ -362,6 +395,84 @@ namespace HEALTHSOFT
                 Cursor.Current = Cursors.Default;
             }
 
+        }
+
+        //라이선스 서버에 로그정보를 전송
+        private void Log_Send(string argLog)
+        {
+            string SQL = "";
+            bool SqlErr;
+            string strNow = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            try
+            {
+                //라이선스 서버에 로그를 전송함
+                SQL = "INSERT INTO pc_log (SENDTIME,MAC,LICNO,IP,SENDLOG) ";
+                SQL = SQL + "VALUES ('" + strNow + "','" + FstrMac + "','";
+                SQL = SQL + FstrLicno + "','" + FstrIp + "','" + argLog + "') ";
+                SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
+                if (SqlErr == false)
+                {
+                    ComFunc.MsgBox("pc_log에 로그전송 실패", "알림");
+                }
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                ComFunc.MsgBox(ex.Message);
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        //라이선스 서버에 pc정보를 Update
+        private void Update_PcMaster()
+        {
+            string SQL = "";
+            bool SqlErr;
+            DataTable dt = null;
+            string strNow = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            try
+            {
+                SQL = "SELECT * FROM pc_master ";
+                SQL = SQL + "WHERE MAC='" + FstrMac + "' ";
+                dt = clsDbMySql.GetDataTable(SQL);
+                if (dt.Rows.Count == 0)
+                {
+                    SQL = "INSERT INTO pc_master (MAC,LICNO,VER,IP,STARTDATE,LASTDATE,";
+                    SQL = SQL + "WINVER,REMARK,PCINFO) VALUES ('" + FstrMac + "','";
+                    SQL = SQL + FstrLicno + "','" + FstrOldVer + "','" + FstrIp + "','";
+                    SQL = SQL + strNow + "','" + strNow + "','" + FstrWinVer + "','','') ";
+                }
+                else
+                {
+                    SQL = "UPDATE pc_master SET ";
+                    SQL = SQL + " LICNO='" + FstrLicno + "',";
+                    SQL = SQL + " VER='" + FstrOldVer + "',";
+                    SQL = SQL + " IP='" + FstrIp + "',";
+                    SQL = SQL + " LASTDATE='" + strNow + "',";
+                    SQL = SQL + " WINVER='" + FstrWinVer + "' ";
+                    SQL = SQL + "WHERE MAC='" + FstrMac + "' ";
+                }
+                dt.Dispose();
+                dt = null;
+
+                SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
+                if (SqlErr == false)
+                {
+                    ComFunc.MsgBox("pc_master 업데이트 실패", "알림");
+                }
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                ComFunc.MsgBox(ex.Message);
+                Cursor.Current = Cursors.Default;
+            }
         }
 
         // 최근 로그인 성공한 ID를 표시함
