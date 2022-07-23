@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FarPoint.Win.Spread.CellType.TextCellType textCellType20 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType21 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType22 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType23 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType24 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType25 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType26 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType27 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType28 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType29 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType30 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType31 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType32 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType33 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType34 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType35 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType36 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType37 = new FarPoint.Win.Spread.CellType.TextCellType();
-            FarPoint.Win.Spread.CellType.TextCellType textCellType38 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType1 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType2 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType3 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType4 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType5 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType6 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType7 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType8 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType9 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType10 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType11 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType12 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType13 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType14 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType15 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType16 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType17 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType18 = new FarPoint.Win.Spread.CellType.TextCellType();
+            FarPoint.Win.Spread.CellType.TextCellType textCellType19 = new FarPoint.Win.Spread.CellType.TextCellType();
             this.SS1 = new FarPoint.Win.Spread.FpSpread();
             this.SS1_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.btnView = new System.Windows.Forms.Button();
@@ -54,6 +54,8 @@
             this.SS2_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.SS3 = new FarPoint.Win.Spread.FpSpread();
             this.SS3_Sheet1 = new FarPoint.Win.Spread.SheetView();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SS1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SS1_Sheet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SS2)).BeginInit();
@@ -71,7 +73,7 @@
             this.SS1.Name = "SS1";
             this.SS1.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.SS1_Sheet1});
-            this.SS1.Size = new System.Drawing.Size(653, 165);
+            this.SS1.Size = new System.Drawing.Size(726, 165);
             this.SS1.TabIndex = 5;
             this.SS1.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SS1_CellDoubleClick);
             // 
@@ -93,37 +95,38 @@
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 3).Value = "오늘접속";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 4).Value = "미접속";
             this.SS1_Sheet1.ColumnHeader.Cells.Get(0, 5).Value = "업데이트 누락";
-            textCellType20.ReadOnly = true;
-            textCellType20.WordWrap = true;
-            this.SS1_Sheet1.Columns.Get(0).CellType = textCellType20;
+            textCellType1.ReadOnly = true;
+            textCellType1.WordWrap = true;
+            this.SS1_Sheet1.Columns.Get(0).CellType = textCellType1;
             this.SS1_Sheet1.Columns.Get(0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(0).Label = "라이선스";
             this.SS1_Sheet1.Columns.Get(0).Width = 125F;
-            textCellType21.ReadOnly = true;
-            textCellType21.WordWrap = true;
-            this.SS1_Sheet1.Columns.Get(1).CellType = textCellType21;
+            textCellType2.ReadOnly = true;
+            textCellType2.WordWrap = true;
+            this.SS1_Sheet1.Columns.Get(1).CellType = textCellType2;
             this.SS1_Sheet1.Columns.Get(1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS1_Sheet1.Columns.Get(1).Label = "회사명";
-            this.SS1_Sheet1.Columns.Get(1).Width = 167F;
-            textCellType22.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(2).CellType = textCellType22;
+            this.SS1_Sheet1.Columns.Get(1).Width = 204F;
+            textCellType3.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(2).CellType = textCellType3;
             this.SS1_Sheet1.Columns.Get(2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(2).Label = "설치수량";
-            this.SS1_Sheet1.Columns.Get(2).Width = 74F;
-            textCellType23.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(3).CellType = textCellType23;
+            this.SS1_Sheet1.Columns.Get(2).Width = 88F;
+            textCellType4.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(3).CellType = textCellType4;
             this.SS1_Sheet1.Columns.Get(3).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(3).Label = "오늘접속";
-            this.SS1_Sheet1.Columns.Get(3).Width = 71F;
-            textCellType24.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(4).CellType = textCellType24;
+            this.SS1_Sheet1.Columns.Get(3).Width = 79F;
+            textCellType5.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(4).CellType = textCellType5;
             this.SS1_Sheet1.Columns.Get(4).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(4).Label = "미접속";
-            textCellType25.ReadOnly = true;
-            this.SS1_Sheet1.Columns.Get(5).CellType = textCellType25;
+            this.SS1_Sheet1.Columns.Get(4).Width = 78F;
+            textCellType6.ReadOnly = true;
+            this.SS1_Sheet1.Columns.Get(5).CellType = textCellType6;
             this.SS1_Sheet1.Columns.Get(5).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS1_Sheet1.Columns.Get(5).Label = "업데이트 누락";
-            this.SS1_Sheet1.Columns.Get(5).Width = 100F;
+            this.SS1_Sheet1.Columns.Get(5).Width = 94F;
             this.SS1_Sheet1.FilterBarHeaderStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SS1_Sheet1.FilterBarHeaderStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SS1_Sheet1.FilterBarHeaderStyle.Parent = "RowHeaderDefaultEnhanced";
@@ -133,11 +136,11 @@
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(704, 12);
+            this.btnView.Location = new System.Drawing.Point(736, 3);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(91, 29);
+            this.btnView.Size = new System.Drawing.Size(194, 29);
             this.btnView.TabIndex = 6;
-            this.btnView.Text = "자료감섹";
+            this.btnView.Text = "사용자정보 검색";
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
@@ -152,6 +155,7 @@
             this.SS2_Sheet1});
             this.SS2.Size = new System.Drawing.Size(935, 245);
             this.SS2.TabIndex = 7;
+            this.SS2.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SS2_CellDoubleClick);
             // 
             // SS2_Sheet1
             // 
@@ -159,7 +163,7 @@
             this.SS2_Sheet1.SheetName = "Sheet1";
             // Formulas and custom names must be loaded with R1C1 reference style
             this.SS2_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1;
-            this.SS2_Sheet1.ColumnCount = 8;
+            this.SS2_Sheet1.ColumnCount = 9;
             this.SS2_Sheet1.RowCount = 20;
             this.SS2_Sheet1.ColumnFooterSheetCornerStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SS2_Sheet1.ColumnFooterSheetCornerStyle.NoteIndicatorColor = System.Drawing.Color.Red;
@@ -173,47 +177,51 @@
             this.SS2_Sheet1.ColumnHeader.Cells.Get(0, 5).Value = "최종접속";
             this.SS2_Sheet1.ColumnHeader.Cells.Get(0, 6).Value = "윈도우버전";
             this.SS2_Sheet1.ColumnHeader.Cells.Get(0, 7).Value = "참고사항";
-            textCellType26.ReadOnly = true;
-            this.SS2_Sheet1.Columns.Get(0).CellType = textCellType26;
+            this.SS2_Sheet1.ColumnHeader.Cells.Get(0, 8).Value = "변경전";
+            textCellType7.ReadOnly = true;
+            this.SS2_Sheet1.Columns.Get(0).CellType = textCellType7;
             this.SS2_Sheet1.Columns.Get(0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS2_Sheet1.Columns.Get(0).Label = "Mac";
             this.SS2_Sheet1.Columns.Get(0).Width = 110F;
-            textCellType27.ReadOnly = true;
-            this.SS2_Sheet1.Columns.Get(1).CellType = textCellType27;
+            textCellType8.ReadOnly = true;
+            this.SS2_Sheet1.Columns.Get(1).CellType = textCellType8;
             this.SS2_Sheet1.Columns.Get(1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SS2_Sheet1.Columns.Get(1).Label = "라이선스";
             this.SS2_Sheet1.Columns.Get(1).Width = 109F;
-            textCellType28.ReadOnly = true;
-            this.SS2_Sheet1.Columns.Get(2).CellType = textCellType28;
+            textCellType9.ReadOnly = true;
+            this.SS2_Sheet1.Columns.Get(2).CellType = textCellType9;
             this.SS2_Sheet1.Columns.Get(2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS2_Sheet1.Columns.Get(2).Label = "Ver";
             this.SS2_Sheet1.Columns.Get(2).Width = 81F;
-            textCellType29.ReadOnly = true;
-            this.SS2_Sheet1.Columns.Get(3).CellType = textCellType29;
+            textCellType10.ReadOnly = true;
+            this.SS2_Sheet1.Columns.Get(3).CellType = textCellType10;
             this.SS2_Sheet1.Columns.Get(3).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS2_Sheet1.Columns.Get(3).Label = "IP";
-            this.SS2_Sheet1.Columns.Get(3).Width = 95F;
-            textCellType30.ReadOnly = true;
-            this.SS2_Sheet1.Columns.Get(4).CellType = textCellType30;
+            this.SS2_Sheet1.Columns.Get(3).Width = 87F;
+            textCellType11.ReadOnly = true;
+            this.SS2_Sheet1.Columns.Get(4).CellType = textCellType11;
             this.SS2_Sheet1.Columns.Get(4).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS2_Sheet1.Columns.Get(4).Label = "설치일";
-            this.SS2_Sheet1.Columns.Get(4).Width = 121F;
-            textCellType31.ReadOnly = true;
-            this.SS2_Sheet1.Columns.Get(5).CellType = textCellType31;
+            this.SS2_Sheet1.Columns.Get(4).Width = 106F;
+            textCellType12.ReadOnly = true;
+            this.SS2_Sheet1.Columns.Get(5).CellType = textCellType12;
             this.SS2_Sheet1.Columns.Get(5).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS2_Sheet1.Columns.Get(5).Label = "최종접속";
-            this.SS2_Sheet1.Columns.Get(5).Width = 126F;
-            textCellType32.ReadOnly = true;
-            this.SS2_Sheet1.Columns.Get(6).CellType = textCellType32;
+            this.SS2_Sheet1.Columns.Get(5).Width = 110F;
+            textCellType13.ReadOnly = true;
+            this.SS2_Sheet1.Columns.Get(6).CellType = textCellType13;
             this.SS2_Sheet1.Columns.Get(6).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS2_Sheet1.Columns.Get(6).Label = "윈도우버전";
-            this.SS2_Sheet1.Columns.Get(6).Width = 135F;
-            textCellType33.ReadOnly = true;
-            textCellType33.WordWrap = true;
-            this.SS2_Sheet1.Columns.Get(7).CellType = textCellType33;
-            this.SS2_Sheet1.Columns.Get(7).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
+            this.SS2_Sheet1.Columns.Get(6).Width = 130F;
             this.SS2_Sheet1.Columns.Get(7).Label = "참고사항";
-            this.SS2_Sheet1.Columns.Get(7).Width = 98F;
+            this.SS2_Sheet1.Columns.Get(7).Width = 146F;
+            textCellType14.ReadOnly = true;
+            textCellType14.WordWrap = true;
+            this.SS2_Sheet1.Columns.Get(8).CellType = textCellType14;
+            this.SS2_Sheet1.Columns.Get(8).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
+            this.SS2_Sheet1.Columns.Get(8).Label = "변경전";
+            this.SS2_Sheet1.Columns.Get(8).Visible = false;
+            this.SS2_Sheet1.Columns.Get(8).Width = 77F;
             this.SS2_Sheet1.FilterBarHeaderStyle.HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SS2_Sheet1.FilterBarHeaderStyle.NoteIndicatorColor = System.Drawing.Color.Red;
             this.SS2_Sheet1.FilterBarHeaderStyle.Parent = "RowHeaderDefaultEnhanced";
@@ -250,30 +258,30 @@
             this.SS3_Sheet1.ColumnHeader.Cells.Get(0, 2).Value = "Mac";
             this.SS3_Sheet1.ColumnHeader.Cells.Get(0, 3).Value = "IP";
             this.SS3_Sheet1.ColumnHeader.Cells.Get(0, 4).Value = "전송로그";
-            textCellType34.ReadOnly = true;
-            textCellType34.WordWrap = true;
-            this.SS3_Sheet1.Columns.Get(0).CellType = textCellType34;
+            textCellType15.ReadOnly = true;
+            textCellType15.WordWrap = true;
+            this.SS3_Sheet1.Columns.Get(0).CellType = textCellType15;
             this.SS3_Sheet1.Columns.Get(0).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS3_Sheet1.Columns.Get(0).Label = "전송시각";
             this.SS3_Sheet1.Columns.Get(0).Width = 142F;
-            textCellType35.ReadOnly = true;
-            textCellType35.WordWrap = true;
-            this.SS3_Sheet1.Columns.Get(1).CellType = textCellType35;
+            textCellType16.ReadOnly = true;
+            textCellType16.WordWrap = true;
+            this.SS3_Sheet1.Columns.Get(1).CellType = textCellType16;
             this.SS3_Sheet1.Columns.Get(1).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.General;
             this.SS3_Sheet1.Columns.Get(1).Label = "라이선스";
             this.SS3_Sheet1.Columns.Get(1).Width = 121F;
-            textCellType36.ReadOnly = true;
-            this.SS3_Sheet1.Columns.Get(2).CellType = textCellType36;
+            textCellType17.ReadOnly = true;
+            this.SS3_Sheet1.Columns.Get(2).CellType = textCellType17;
             this.SS3_Sheet1.Columns.Get(2).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Center;
             this.SS3_Sheet1.Columns.Get(2).Label = "Mac";
             this.SS3_Sheet1.Columns.Get(2).Width = 107F;
-            textCellType37.ReadOnly = true;
-            this.SS3_Sheet1.Columns.Get(3).CellType = textCellType37;
+            textCellType18.ReadOnly = true;
+            this.SS3_Sheet1.Columns.Get(3).CellType = textCellType18;
             this.SS3_Sheet1.Columns.Get(3).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS3_Sheet1.Columns.Get(3).Label = "IP";
             this.SS3_Sheet1.Columns.Get(3).Width = 104F;
-            textCellType38.ReadOnly = true;
-            this.SS3_Sheet1.Columns.Get(4).CellType = textCellType38;
+            textCellType19.ReadOnly = true;
+            this.SS3_Sheet1.Columns.Get(4).CellType = textCellType19;
             this.SS3_Sheet1.Columns.Get(4).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Left;
             this.SS3_Sheet1.Columns.Get(4).Label = "전송로그";
             this.SS3_Sheet1.Columns.Get(4).Width = 393F;
@@ -284,11 +292,33 @@
             this.SS3_Sheet1.RowHeader.Columns.Default.Resizable = false;
             this.SS3_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1;
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(738, 135);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(200, 33);
+            this.btnSave.TabIndex = 9;
+            this.btnSave.Text = "참고사항 변경내역 저장";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(753, 117);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(168, 15);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "▶PC삭제: Mac 칼럼 더블클릭";
+            // 
             // FrmUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 686);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.SS3);
             this.Controls.Add(this.SS2);
             this.Controls.Add(this.btnView);
@@ -305,6 +335,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SS3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SS3_Sheet1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -317,5 +348,7 @@
         private FarPoint.Win.Spread.SheetView SS2_Sheet1;
         private FarPoint.Win.Spread.FpSpread SS3;
         private FarPoint.Win.Spread.SheetView SS3_Sheet1;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label1;
     }
 }

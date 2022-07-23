@@ -77,6 +77,7 @@ namespace HC_OSHA
             chkLtduser.Checked = false;
             txtLtdcode.Text = "";
             lblLtdname.Text = "";
+            txtBuse.Enabled = false;
 
             삭제ToolStripMenuItem1.Enabled = false;
             비밀번호초기화ToolStripMenuItem.Enabled = false;
@@ -127,6 +128,7 @@ namespace HC_OSHA
         {
             Screen_Clear();
             FbNew = true;
+            txtBuse.Text = "OSHA";
             txtID.Enabled = true;
             txtID.Focus();
         }

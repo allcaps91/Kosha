@@ -20,10 +20,11 @@ namespace HcAdmin
 
         private void FrmUserInfo_Load(object sender, EventArgs e)
         {
-
+            Data_Select_all();
         }
 
-        private void btnView_Click(object sender, EventArgs e)
+        //전체 자료 검색
+        private void Data_Select_all()
         {
             string SQL = "";
             DataTable dt = null;
@@ -73,6 +74,7 @@ namespace HcAdmin
                     SS2_Sheet1.Cells[i, 5].Text = dt.Rows[i]["LASTDATE"].ToString().Trim();
                     SS2_Sheet1.Cells[i, 6].Text = dt.Rows[i]["WINVER"].ToString().Trim();
                     SS2_Sheet1.Cells[i, 7].Text = dt.Rows[i]["REMARK"].ToString().Trim();
+                    SS2_Sheet1.Cells[i, 8].Text = dt.Rows[i]["REMARK"].ToString().Trim();
 
                     strNEW = dt.Rows[i]["LICNO"].ToString().Trim();
                     if (strOLD == "") strOLD = strNEW;
@@ -226,6 +228,7 @@ namespace HcAdmin
                     SS2_Sheet1.Cells[i, 5].Text = dt.Rows[i]["LASTDATE"].ToString().Trim();
                     SS2_Sheet1.Cells[i, 6].Text = dt.Rows[i]["WINVER"].ToString().Trim();
                     SS2_Sheet1.Cells[i, 7].Text = dt.Rows[i]["REMARK"].ToString().Trim();
+                    SS2_Sheet1.Cells[i, 8].Text = dt.Rows[i]["REMARK"].ToString().Trim();
                 }
             }
 
@@ -258,6 +261,70 @@ namespace HcAdmin
             }
             dt.Dispose();
             dt = null;
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            Data_Select_all();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            string SQL = string.Empty;
+            bool SqlErr;
+
+            string strOld = "";
+            string strNew = "";
+            string strMac = "";
+            int nCnt = 0;
+
+            for (int i=0; i<SS2_Sheet1.RowCount; i++)
+            {
+                strMac = SS2_Sheet1.Cells[i, 0].Text.Trim();
+                strNew = SS2_Sheet1.Cells[i, 7].Text.Trim();
+                strOld = SS2_Sheet1.Cells[i, 8].Text.Trim();
+                if (strNew != strOld)
+                {
+                    nCnt++;
+                    SS2_Sheet1.Cells[i, 8].Text = strNew;
+
+                    SQL = "UPDATE pc_master SET ";
+                    SQL += "      Remark='" + strNew + "' ";
+                    SQL += "WHERE MAC = '" + strMac + "'";
+                    SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
+                    if (SqlErr == false)
+                    {
+                        ComFunc.MsgBox("참고사항 변경 실패", "알림");
+                        return;
+                    }
+                }
+            }
+            if (nCnt>0) ComFunc.MsgBox("변경 완료", "알림");
+        }
+
+        private void SS2_CellDoubleClick(object sender, FarPoint.Win.Spread.CellClickEventArgs e)
+        {
+            string SQL = "";
+            bool SqlErr;
+            DataTable dt = null;
+            string strMac = "";
+
+            if (e.Column != 0) return;
+
+            strMac = SS2.ActiveSheet.Cells[e.Row, 0].Value.ToString();
+            if (ComFunc.MsgBoxQ(strMac + " PC정보를 삭제하시겠습니까") == DialogResult.No) return;
+
+            SQL = "DELETE FROM pc_master ";
+            SQL += "WHERE MAC = '" + strMac + "'";
+            SqlErr = clsDbMySql.ExecuteNonQuery(SQL);
+            if (SqlErr == false)
+            {
+                ComFunc.MsgBox("PC정보 삭제 실패", "알림");
+                return;
+            }
+
+            Data_Select_all();
+            ComFunc.MsgBox("PC정보 삭제 완료", "알림");
         }
     }
 }

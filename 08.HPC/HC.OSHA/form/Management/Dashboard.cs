@@ -981,5 +981,10 @@ namespace HC_OSHA
         {
 
         }
+
+        private void 사업장정보업로드ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmExcelUpload8().Show();
+        }
     }
 }
