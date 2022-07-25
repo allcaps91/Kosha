@@ -160,7 +160,7 @@ namespace HC_OSHA
 
             if (txtID.Text.Trim() == "") { ComFunc.MsgBox("아이디가 공란입니다."); return; }
             int nID = Int32.Parse(txtID.Text.Trim());
-            if (nID < 1 || nID > 999999) { ComFunc.MsgBox("아이디는 1~999999만 가능합니다."); return; }
+            if (nID < 5 || nID > 999999) { ComFunc.MsgBox("아이디는 5~999999만 가능합니다."); return; }
             if (txtName.Text.Trim() == "") { ComFunc.MsgBox("성명이 공란입니다."); return; }
             if (txtBuse.Text.Trim() == "") { ComFunc.MsgBox("부서명이 공란입니다."); return; }
             if (cboRole.Text.Trim() == "") { ComFunc.MsgBox("권한이 공란입니다."); return; }

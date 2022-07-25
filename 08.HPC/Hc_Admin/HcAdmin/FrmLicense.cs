@@ -601,8 +601,88 @@ namespace HcAdmin
             copy_HIC_OSHA_REPORT_NURSE();  // 상태보고서(간호사)
             copy_HIC_OSHA_REPORT_ENGINEER();  // 상태보고서(산업위생)
             copy_HIC_OSHA_HEALTHCHECK();      // 근로자 건강상담
-
+            copy_HIC_OSHA_CARD19();           // 위탁업무 수행일지
+            copy_HIC_MACROWORD();             // 상용구
+            
             ComFunc.MsgBox("기본자료 생성 완료", "알림");
+        }
+
+        // 상용구
+        private void copy_HIC_MACROWORD()
+        {
+            string SQL = string.Empty;
+            string SqlErr = string.Empty;
+            int intRowAffected = 0; //변경된 Row 받는 변수
+            DataTable dt = null;
+
+            // 상용구가 있으면 다시 작업 안함
+            SQL = "SELECT * FROM HIC_MACROWORD ";
+            SQL += "WHERE SWLICENSE='" + txtLicno.Text.Trim() + "' ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+
+            if (dt.Rows.Count == 0)
+            {
+                SQL = "INSERT INTO HIC_MACROWORD (ID,FORMNAME,CONTROL,TITLE,DISPSEQ,SUBTITLE,";
+                SQL += " CONTENT2,CONTENT,MODIFIED,MODIFIEDUSER,CREATED,CREATEDUSER,SWLICENSE) ";
+                SQL += "SELECT ID,FORMNAME,CONTROL,TITLE,DISPSEQ,SUBTITLE,CONTENT2,CONTENT,";
+                SQL += " MODIFIED,'3',CREATED,'3','" + txtLicno.Text.Trim() + "' ";
+                SQL += " FROM HIC_MACROWORD ";
+                SQL += "WHERE SWLICENSE='9555-88P5-8P33' "; //대한
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+            }
+            dt.Dispose();
+            dt = null;
+        }
+
+        // 위탁업무 수행일지
+        private void copy_HIC_OSHA_CARD19()
+        {
+            string SQL = string.Empty;
+            string SqlErr = string.Empty;
+            int intRowAffected = 0; //변경된 Row 받는 변수
+            DataTable dt = null;
+
+            // 연습회사
+            SQL = "SELECT * FROM HIC_OSHA_CARD19 ";
+            SQL += "WHERE SWLICENSE='" + txtLicno.Text.Trim() + "' ";
+            SQL += "  AND SITE_ID=" + strLtdno1 + " ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+
+            if (dt.Rows.Count == 0)
+            {
+                dt.Dispose();
+                dt = null;
+
+                SQL = "INSERT INTO HIC_OSHA_CARD19 (ID,SITE_ID,ESTIMATE_ID,REGDATE,CERT,NAME,CONTENT,";
+                SQL += " STATUS,OPINION,MODIFIED,MODIFIEDUSER,CREATED,CREATEDUSER,SWLICENSE) ";
+                SQL += "SELECT ID,'" + strLtdno1 + "',ESTIMATE_ID,REGDATE,CERT,NAME,CONTENT,";
+                SQL += " STATUS,OPINION,MODIFIED,'3',CREATED,'3','" + txtLicno.Text.Trim() + "' ";
+                SQL += " FROM HIC_OSHA_CARD19 ";
+                SQL += "WHERE SITE_ID = 44873 "; //선안
+                SQL += "  AND SWLICENSE='9555-88P5-8P33' "; //대한
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+            }
+
+            // 감자상회
+            SQL = "SELECT * FROM HIC_OSHA_CARD19 ";
+            SQL += "WHERE SWLICENSE='" + txtLicno.Text.Trim() + "' ";
+            SQL += "  AND SITE_ID=" + strLtdno2 + " ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+
+            if (dt.Rows.Count == 0)
+            {
+                dt.Dispose();
+                dt = null;
+
+                SQL = "INSERT INTO HIC_OSHA_CARD19 (ID,SITE_ID,ESTIMATE_ID,REGDATE,CERT,NAME,CONTENT,";
+                SQL += " STATUS,OPINION,MODIFIED,MODIFIEDUSER,CREATED,CREATEDUSER,SWLICENSE) ";
+                SQL += "SELECT ID,'" + strLtdno2 + "',ESTIMATE_ID,REGDATE,CERT,NAME,CONTENT,";
+                SQL += " STATUS,OPINION,MODIFIED,'3',CREATED,'3','" + txtLicno.Text.Trim() + "' ";
+                SQL += " FROM HIC_OSHA_CARD19 ";
+                SQL += "WHERE SITE_ID = 44909 "; //선화이엔지
+                SQL += "  AND SWLICENSE='9555-88P5-8P33' "; //대한
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+            }
         }
 
         // 근로자 건강상담
@@ -1389,6 +1469,8 @@ namespace HcAdmin
             strList1 += "HIC_OSHA_REPORT_NURSE{}";
             strList1 += "HIC_OSHA_REPORT_ENGINEER{}";
             strList1 += "HIC_OSHA_HEALTHCHECK{}";
+            strList1 += "HIC_OSHA_CARD19{}";
+            strList1 += "HIC_MACROWORD{}";
 
             nTableCnt = VB.L(strList1, "{}");
 
@@ -1480,6 +1562,7 @@ namespace HcAdmin
             strList1 += "HIC_OSHA_REPORT_NURSE{}";
             strList1 += "HIC_OSHA_REPORT_ENGINEER{}";
             strList1 += "HIC_OSHA_HEALTHCHECK{}";
+            strList1 += "HIC_OSHA_CARD19{}";
 
             nTableCnt = VB.L(strList1, "{}");
 
@@ -1508,6 +1591,7 @@ namespace HcAdmin
                         if (strTable == "HIC_OSHA_REPORT_NURSE") SQL += " AND SITE_ID IN (" + strLTD + ") ";
                         if (strTable == "HIC_OSHA_REPORT_ENGINEER") SQL += " AND SITE_ID IN (" + strLTD + ") ";
                         if (strTable == "HIC_OSHA_HEALTHCHECK") SQL += " AND SITE_ID IN (" + strLTD + ") ";
+                        if (strTable == "HIC_OSHA_CARD19") SQL += " AND SITE_ID IN (" + strLTD + ") ";
 
                         //AND 조건이 누락되면 실행금지
                         if (VB.InStr(SQL," AND ")==0)
