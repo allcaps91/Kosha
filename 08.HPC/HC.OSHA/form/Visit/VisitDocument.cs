@@ -144,7 +144,7 @@ namespace HC_OSHA.form.Visit
                 string year = yearAndMonth.Substring(0, 4);
                 string month = yearAndMonth.Substring(5, 2);
                 string strVisit = "";
-                ssDoc.ActiveSheet.Cells[nP1[5], nP2[5]].Value = "대한 " + year + " - " + docNumber + "호" + "(" + executeDate + ")";
+                ssDoc.ActiveSheet.Cells[nP1[5], nP2[5]].Value = docNumber + "  (" + executeDate + ")";
                 ssDoc.ActiveSheet.Cells[nP1[0], nP2[0]].Value = siteName + " 대표";
                 ssDoc.ActiveSheet.Cells[nP1[1], nP2[1]].Value = year + "년 " + month + "월 " + "보건관리지원(대행) 방문일정 안내";
                 if (nP1[6] > 0) ssDoc.ActiveSheet.Cells[nP1[6], nP2[6]].Value = clsType.User.JobName; //담당

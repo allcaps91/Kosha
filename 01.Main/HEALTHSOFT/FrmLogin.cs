@@ -53,7 +53,18 @@ namespace HEALTHSOFT
             //PC정보를 읽음
             clsCompuInfo.SetComputerInfo();
             FstrIp = clsCompuInfo.gstrCOMIP;
-            FstrMac = clsCompuInfo.GetMACAddress();
+
+            //MAC번호가 임의로 변경이 되어 PC에 저장 후 사용함
+            FstrMac = "";
+            if (System.IO.File.Exists(@"C:\HealthSoft\MacAddress.txt") == true)
+            {
+                FstrMac = System.IO.File.ReadAllText(@"C:\HealthSoft\MacAddress.txt");
+            }
+            if (FstrMac == "")
+            {
+                FstrMac = clsCompuInfo.GetMACAddress();
+                System.IO.File.WriteAllText(@"C:\HealthSoft\MacAddress.txt", FstrMac);
+            }
             FstrWinVer = GetOSFriendlyName();
         }
 

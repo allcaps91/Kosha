@@ -591,8 +591,6 @@ namespace HcAdmin
             }
 
             // 3.테트스 데이타 복사 
-            copy_HIC_LTD_RESULT2();
-            copy_HIC_LTD_RESULT3();
             copy_HIC_OSHA_CONTRACT();
             copy_HIC_OSHA_ESTIMATE();
             copy_HIC_USERS(); // 테스트 사용자 등록
@@ -602,9 +600,99 @@ namespace HcAdmin
             copy_HIC_OSHA_REPORT_ENGINEER();  // 상태보고서(산업위생)
             copy_HIC_OSHA_HEALTHCHECK();      // 근로자 건강상담
             copy_HIC_OSHA_CARD19();           // 위탁업무 수행일지
+            copy_HIC_LTD_RESULT2();
+            copy_HIC_LTD_RESULT3();
             copy_HIC_MACROWORD();             // 상용구
+            Update_Gunro_Name();  //근로자명을 설씨로 변경             
             
             ComFunc.MsgBox("기본자료 생성 완료", "알림");
+        }
+
+        // 근로자명을 설씨로 강제 변경
+        private void Update_Gunro_Name()
+        {
+            string SQL = string.Empty;
+            string SqlErr = string.Empty;
+            int intRowAffected = 0; //변경된 Row 받는 변수
+            DataTable dt = null;
+            string strName = "";
+
+            // HIC_SITE_WORKER
+            SQL = "SELECT * FROM HIC_SITE_WORKER ";
+            SQL += "WHERE SWLICENSE='" + txtLicno.Text.Trim() + "' ";
+            SQL += "  AND SITEID IN (" + strLtdno1 + "," + strLtdno2 + ") ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            for (int i=0; i< dt.Rows.Count; i++)
+            {
+                strName = dt.Rows[i]["NAME"].ToString().Trim();
+                strName = "설" + VB.Right(strName, VB.Len(strName) - 1);
+
+                SQL = "UPDATE HIC_SITE_WORKER SET Name='" + strName + "' ";
+                SQL += "WHERE SWLICENSE='" + txtLicno.Text.Trim() + "' ";
+                SQL += "  AND SITEID=" + dt.Rows[i]["SITEID"].ToString().Trim() + " ";
+                SQL += "  AND ID='" + dt.Rows[i]["ID"].ToString().Trim() + "' ";
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+            }
+            dt.Dispose();
+            dt = null;
+
+            // HIC_OSHA_HEALTHCHECK
+            SQL = "SELECT * FROM HIC_OSHA_HEALTHCHECK ";
+            SQL += "WHERE SWLICENSE='" + txtLicno.Text.Trim() + "' ";
+            SQL += "  AND SITE_ID IN (" + strLtdno1 + "," + strLtdno2 + ") ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                strName = dt.Rows[i]["NAME"].ToString().Trim();
+                strName = "설" + VB.Right(strName, VB.Len(strName) - 1);
+
+                SQL = "UPDATE HIC_OSHA_HEALTHCHECK SET Name='" + strName + "' ";
+                SQL += "WHERE SWLICENSE='" + txtLicno.Text.Trim() + "' ";
+                SQL += "  AND SITE_ID=" + dt.Rows[i]["SITE_ID"].ToString().Trim() + " ";
+                SQL += "  AND ID=" + dt.Rows[i]["ID"].ToString().Trim() + " ";
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+            }
+            dt.Dispose();
+            dt = null;
+
+            // HIC_LTD_RESULT2
+            SQL = "SELECT * FROM HIC_LTD_RESULT2 ";
+            SQL += "WHERE SWLICENSE='" + txtLicno.Text.Trim() + "' ";
+            SQL += "  AND SITEID IN (" + strLtdno1 + "," + strLtdno2 + ") ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                strName = dt.Rows[i]["NAME"].ToString().Trim();
+                strName = "설" + VB.Right(strName, VB.Len(strName) - 1);
+
+                SQL = "UPDATE HIC_LTD_RESULT2 SET Name='" + strName + "' ";
+                SQL += "WHERE SWLICENSE='" + txtLicno.Text.Trim() + "' ";
+                SQL += "  AND SITEID=" + dt.Rows[i]["SITEID"].ToString().Trim() + " ";
+                SQL += "  AND ID=" + dt.Rows[i]["ID"].ToString().Trim() + " ";
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+            }
+            dt.Dispose();
+            dt = null;
+
+            // HIC_LTD_RESULT3
+            SQL = "SELECT * FROM HIC_LTD_RESULT3 ";
+            SQL += "WHERE SWLICENSE='" + txtLicno.Text.Trim() + "' ";
+            SQL += "  AND SITEID IN (" + strLtdno1 + "," + strLtdno2 + ") ";
+            SqlErr = clsDB.GetDataTable(ref dt, SQL, clsDB.DbCon);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                strName = dt.Rows[i]["NAME"].ToString().Trim();
+                strName = "설" + VB.Right(strName, VB.Len(strName) - 1);
+
+                SQL = "UPDATE HIC_LTD_RESULT3 SET Name='" + strName + "' ";
+                SQL += "WHERE SWLICENSE='" + txtLicno.Text.Trim() + "' ";
+                SQL += "  AND SITEID=" + dt.Rows[i]["SITEID"].ToString().Trim() + " ";
+                SQL += "  AND ID=" + dt.Rows[i]["ID"].ToString().Trim() + " ";
+                SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
+            }
+            dt.Dispose();
+            dt = null;
+
         }
 
         // 상용구
@@ -1068,7 +1156,8 @@ namespace HcAdmin
                 SQL += "  AND ID IN (SELECT WORKER_ID FROM HIC_OSHA_HEALTHCHECK ";
                 SQL += "      WHERE SITEID=44873 "; //선안
                 SQL += "        AND ISDELETED='N' ";
-                SQL += "        AND ISDOCTOR='Y' ";
+                SQL += "        AND (NAME LIKE '김%' OR NAME LIKE '박%') ";
+                //SQL += "        AND ISDOCTOR='Y' ";
                 SQL += "        AND SWLICENSE='9555-88P5-8P33') "; //대한
 
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
@@ -1098,7 +1187,8 @@ namespace HcAdmin
                 SQL += "  AND ID IN (SELECT WORKER_ID FROM HIC_OSHA_HEALTHCHECK ";
                 SQL += "      WHERE SITEID=44909 "; //선화이엔지
                 SQL += "        AND ISDELETED='N' ";
-                SQL += "        AND ISDOCTOR='Y' ";
+                SQL += "        AND (NAME LIKE '김%' OR NAME LIKE '박%') ";
+                //SQL += "        AND ISDOCTOR='Y' ";
                 SQL += "        AND SWLICENSE='9555-88P5-8P33') "; //대한
                 SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
             }
@@ -1269,7 +1359,7 @@ namespace HcAdmin
                 SQL += " ISSKELETONDATE,ISSPACEPROGRAM,ISSPACEPROGRAMDATE,ISEARPROGRAM,";
                 SQL += " ISEARPROGRAMDATE,ISSTRESS,ISSTRESSDATE,ISBRAINTEST,";
                 SQL += " ISBRAINTESTDATE,ISSPECIAL,ISSPECIALDATA,ISDELETED,";
-                SQL += " MODIFIED,'1',CREATED,'1',REMARK,TERMINATEDATE,";
+                SQL += " MODIFIED,'1',CREATED,'1','',TERMINATEDATE,";
                 SQL += " VISITPLACE,'" + txtLicno.Text.Trim() + "' ";
                 SQL += " FROM HIC_OSHA_CONTRACT ";
                 SQL += "WHERE OSHA_SITE_ID = 44873 "; //선안
@@ -1319,7 +1409,7 @@ namespace HcAdmin
                 SQL += " ISSKELETONDATE,ISSPACEPROGRAM,ISSPACEPROGRAMDATE,ISEARPROGRAM,";
                 SQL += " ISEARPROGRAMDATE,ISSTRESS,ISSTRESSDATE,ISBRAINTEST,";
                 SQL += " ISBRAINTESTDATE,ISSPECIAL,ISSPECIALDATA,ISDELETED,";
-                SQL += " MODIFIED,'1',CREATED,'1',REMARK,TERMINATEDATE,";
+                SQL += " MODIFIED,'1',CREATED,'1','',TERMINATEDATE,";
                 SQL += " VISITPLACE,'" + txtLicno.Text.Trim() + "' ";
                 SQL += " FROM HIC_OSHA_CONTRACT ";
                 SQL += "WHERE OSHA_SITE_ID = 44909 "; //선화이엔지
@@ -1348,6 +1438,9 @@ namespace HcAdmin
             SQL += " FROM HIC_LTD_RESULT2 ";
             SQL += "WHERE SITEID = 44873 "; //선안
             SQL += "  AND SWLICENSE='9555-88P5-8P33' "; //대한
+            SQL += "  AND ID IN (SELECT ID FROM HIC_SITE_WORKER ";
+            SQL += "              WHERE SITEID=" + strLtdno1 + " ";
+            SQL += "                AND SWLICENSE='" + txtLicno.Text.Trim() + "') "; 
             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
             // 감자상회
@@ -1358,6 +1451,9 @@ namespace HcAdmin
             SQL += " FROM HIC_LTD_RESULT2 ";
             SQL += "WHERE SITEID = 44909 "; //선화이엔지
             SQL += "  AND SWLICENSE='9555-88P5-8P33' "; //대한
+            SQL += "  AND ID IN (SELECT ID FROM HIC_SITE_WORKER ";
+            SQL += "              WHERE SITEID=" + strLtdno2 + " ";
+            SQL += "                AND SWLICENSE='" + txtLicno.Text.Trim() + "') ";
             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
         }
@@ -1383,6 +1479,9 @@ namespace HcAdmin
             SQL += " FROM HIC_LTD_RESULT3 ";
             SQL += "WHERE SITEID = 44873 "; //선안
             SQL += "  AND SWLICENSE='9555-88P5-8P33' "; //대한
+            SQL += "  AND ID IN (SELECT ID FROM HIC_SITE_WORKER ";
+            SQL += "              WHERE SITEID=" + strLtdno1 + " ";
+            SQL += "                AND SWLICENSE='" + txtLicno.Text.Trim() + "') ";
             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
             // 감자상회
@@ -1395,6 +1494,9 @@ namespace HcAdmin
             SQL += " FROM HIC_LTD_RESULT3 ";
             SQL += "WHERE SITEID = 44909 "; //선화이엔지
             SQL += "  AND SWLICENSE='9555-88P5-8P33' "; //대한
+            SQL += "  AND ID IN (SELECT ID FROM HIC_SITE_WORKER ";
+            SQL += "              WHERE SITEID=" + strLtdno2 + " ";
+            SQL += "                AND SWLICENSE='" + txtLicno.Text.Trim() + "') ";
             SqlErr = clsDB.ExecuteNonQueryEx(SQL, ref intRowAffected, clsDB.DbCon);
 
         }
@@ -1463,6 +1565,7 @@ namespace HcAdmin
             strList1 += "HIC_LTD_RESULT2{}";
             strList1 += "HIC_LTD_RESULT3{}";
             strList1 += "HIC_OSHA_CONTRACT{}";
+            strList1 += "HIC_OSHA_CONTRACT_MANAGER{}";
             strList1 += "HIC_OSHA_ESTIMATE{}";
             strList1 += "HIC_SITE_WORKER{}";
             strList1 += "HIC_OSHA_REPORT_DOCTOR{}";
@@ -1471,7 +1574,7 @@ namespace HcAdmin
             strList1 += "HIC_OSHA_HEALTHCHECK{}";
             strList1 += "HIC_OSHA_CARD19{}";
             strList1 += "HIC_MACROWORD{}";
-
+            
             nTableCnt = VB.L(strList1, "{}");
 
             Cursor.Current = Cursors.WaitCursor;
@@ -1535,7 +1638,7 @@ namespace HcAdmin
             {
                 for (int i=0;i< dt.Rows.Count; i++)
                 {
-                    strLTD += "'" + dt.Rows[0]["CODE"].ToString() + "',";
+                    strLTD += "'" + dt.Rows[i]["CODE"].ToString() + "',";
                 }
                 if (VB.Right(strLTD, 1) == ",") strLTD = VB.Left(strLTD, VB.Len(strLTD) - 1);
             }

@@ -24,6 +24,12 @@ namespace HS_SETUP
         public frmSetup()
         {
             InitializeComponent();
+
+            //MAC번호 보관용 파일이 있으면 삭제함
+            if (System.IO.File.Exists(@"C:\HealthSoft\MacAddress.txt") == true)
+            {
+                System.IO.File.Delete(@"C:\HealthSoft\MacAddress.txt");
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)

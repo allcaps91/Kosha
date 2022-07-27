@@ -37,6 +37,7 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_USERS ");
             parameter.AppendSql(" WHERE ISDELETED = 'N' ");
+            //parameter.AppendSql("   AND LTDUSER IS NULL ");
             parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY NAME ");
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -47,8 +48,10 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_USERS ");
             parameter.AppendSql(" WHERE ISDELETED = 'N' ");
-            parameter.AppendSql("   AND ROLE = 'DOCTOR' ");
+            parameter.AppendSql("   AND SUBSTR(JIKMU,4,1)='Y' "); //대행의사
+            //parameter.AppendSql("   AND ROLE = 'DOCTOR' ");
             parameter.AppendSql("   AND ISACTIVE='Y' ");
+            parameter.AppendSql("   AND LTDUSER IS NULL ");
             parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY NAME ");
 
@@ -60,8 +63,10 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_USERS ");
             parameter.AppendSql(" WHERE ISDELETED = 'N' ");
-            parameter.AppendSql("   AND ROLE = 'NURSE' ");
+            parameter.AppendSql("   AND SUBSTR(JIKMU,5,1)='Y' "); //대행간호사
+            //parameter.AppendSql("   AND ROLE = 'NURSE' ");
             parameter.AppendSql("   AND ISACTIVE='Y' ");
+            parameter.AppendSql("   AND LTDUSER IS NULL ");
             parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY NAME ");
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -74,8 +79,10 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_USERS ");
             parameter.AppendSql(" WHERE ISDELETED = 'N' ");
-            parameter.AppendSql("   AND ROLE = 'ENGINEER' ");
-            parameter.AppendSql("   AND DEPT ='OSHA' ");
+            //parameter.AppendSql("   AND ROLE = 'ENGINEER' ");
+            //parameter.AppendSql("   AND DEPT ='OSHA' ");
+            parameter.AppendSql("   AND SUBSTR(JIKMU,6,1)='Y' "); //대행 산업위생
+            parameter.AppendSql("   AND LTDUSER IS NULL ");
             parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY NAME ");
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -88,8 +95,10 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_USERS ");
             parameter.AppendSql(" WHERE ISDELETED = 'N' ");
-            parameter.AppendSql("   AND ROLE = 'ENGINEER' ");
-            parameter.AppendSql("   AND DEPT ='WEM' ");
+            //parameter.AppendSql("   AND ROLE = 'ENGINEER' ");
+            //parameter.AppendSql("   AND DEPT ='WEM' ");
+            parameter.AppendSql("   AND (SUBSTR(JIKMU,7,1)='Y' OR SUBSTR(JIKMU,8,1)='Y') ");
+            parameter.AppendSql("   AND LTDUSER IS NULL ");
             parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY NAME ");
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -108,8 +117,10 @@ namespace HC.Core.Repository
             parameter.AppendSql("SELECT * FROM HIC_USERS ");
             parameter.AppendSql(" WHERE ISDELETED = 'N' ");
             parameter.AppendSql("   AND ROLE = 'ANALYST' ");
-            parameter.AppendSql("   AND DEPT ='WEM' ");
+            //parameter.AppendSql("   AND DEPT ='WEM' ");
+            parameter.AppendSql("   AND SUBSTR(JIKMU,8,1)='Y' ");
             parameter.AppendSql("   AND ISACTIVE='Y' ");
+            parameter.AppendSql("   AND LTDUSER IS NULL ");
             parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             parameter.AppendSql(" ORDER BY NAME ");
             parameter.Add("SWLICENSE", clsType.HosInfo.SwLicense);
@@ -121,7 +132,9 @@ namespace HC.Core.Repository
             MParameter parameter = CreateParameter();
             parameter.AppendSql("SELECT * FROM HIC_USERS ");
             parameter.AppendSql(" WHERE ISDELETED = 'N' ");
-            parameter.AppendSql("   AND DEPT ='OSHA' "); 
+            parameter.AppendSql("   AND (USERID='1' OR SUBSTR(JIKMU,4,1)='Y' OR SUBSTR(JIKMU,5,1)='Y' OR SUBSTR(JIKMU,6,1)='Y') ");
+            //parameter.AppendSql("   AND DEPT ='OSHA' "); 
+            parameter.AppendSql("   AND LTDUSER IS NULL ");
             parameter.AppendSql("   AND ISACTIVE='Y' ");
             parameter.AppendSql("   AND SWLICENSE = :SWLICENSE ");
             //관계사 사용자
